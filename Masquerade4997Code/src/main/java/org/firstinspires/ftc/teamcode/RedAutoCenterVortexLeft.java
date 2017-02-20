@@ -37,7 +37,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         double power = -0.4;
         chimera.setPowerShooter(power);
         double parallelAngle = chimera.imu.getHeading();
-        chimera.drivePID(POWER, 15, Direction.FORWARD);
+        chimera.drivePID(POWER, 18, Direction.FORWARD);
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
         double i  = 0.001;
@@ -74,6 +74,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         double changeTurn = chimera.imu.getHeading();
         double turn = changeTurn - parallelAngle;
         chimera.turnPID(POWER, (int) turn, Direction.RIGHT, 5);
+        chimera.turnPID(POWER, 5, Direction.LEFT, 1);
         // Stop at first Beacon
         chimera.stopWhite(0.2, Direction.BACKWARD);
         chimera.stopRed(0.2, Direction.BACKWARD);
@@ -84,7 +85,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.sleep(2000);
         chimera.setRightPresser(1);
         double turn2 = parallelAngle - chimera.imu.getHeading();
-        chimera.turnPID(POWER, (int) turn2, Direction.LEFT, 3, 0.5);
+        chimera.turnPID(POWER, (int) turn2, Direction.LEFT, 2, 0.5);
         // drive to the next beacon
         chimera.drivePID(0.5, 150, Direction.FORWARD, 500);
 
