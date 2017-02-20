@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -8,7 +9,7 @@ import BasicLib4997.Motors.TankDrive.TankDrive;
 /**
  * TeleOp NFS
  */
-@TeleOp(name="Test", group="Final")// change name
+@Autonomous(name="Test", group="Final")// change name
 
 public class Test extends LinearOpMode { // change file name
     public void main() throws InterruptedException {

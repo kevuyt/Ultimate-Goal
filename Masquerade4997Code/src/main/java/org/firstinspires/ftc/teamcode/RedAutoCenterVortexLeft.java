@@ -35,13 +35,33 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         //SetPower to the shooter and drive foreword in order to make a shot
         chimera.setPowerCollector(-1);
         chimera.setPowerShooter(newShooterPower(-0.75));
+        double power = -0.5;
         double parallelAngle = chimera.imu.getHeading();
         chimera.drivePID(POWER, 15, Direction.FORWARD);
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
+        double i  = 0.001;
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -550)) {
+            chimera.setIndexer(0);
+            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
+            chimera.setPowerShooter(power - i);
+            i += 0.001;
+            telemetry.update();
+        }
         chimera.setIndexer(0.6);
+        chimera.sleep(500);
+        chimera.setIndexer(0);
         chimera.sleep(1000);
+        i = 0.001;
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -550)) {
+            chimera.setIndexer(0);
+            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
+            chimera.setPowerShooter(power - i);
+            i += 0.001;
+            telemetry.update();
+        }
         chimera.setIndexer(0.6);
+        chimera.sleep(700);
         chimera.setPowerShooter(-0.5);
         chimera.setPowerShooter(-0.3);
         chimera.setPowerShooter(0);
