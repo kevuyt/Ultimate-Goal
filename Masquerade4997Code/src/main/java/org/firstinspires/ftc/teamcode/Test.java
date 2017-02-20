@@ -19,13 +19,6 @@ public class Test extends LinearOpMode { // change file name
 
         TankDrive chimera = new TankDrive(telemetry);
         while (!isStarted()) {
-            chimera.setPowerShooter(-0.6);
-            if ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) < 500)) {
-                telemetry.addLine("less than");
-            }
-            else {
-                telemetry.addLine("greater than");
-            }
             double rate = (chimera.shooter.getRate() + chimera.shooter2.getRate())/2;
             telemetry.addData("RATE", rate);
             chimera.setIndexer(0);
@@ -35,25 +28,27 @@ public class Test extends LinearOpMode { // change file name
         }
 
         waitForStart();
+        double power = -0.5;
         chimera.setPowerCollector(-1);
-        chimera.setPowerShooter(-0.6);
+        chimera.setPowerShooter(power);
         chimera.drivePID(0.5, 15, Direction.FORWARD);
         double i  = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500)) {
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -550)) {
             chimera.setIndexer(0);
             telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
-            chimera.setPowerShooter(-0.75 - i);
+            chimera.setPowerShooter(power - i);
             i += 0.001;
             telemetry.update();
         }
         chimera.setIndexer(0.6);
-        chimera.sleep(700);
-        chimera.setIndexer(0);
         chimera.sleep(500);
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -550)) {
+        chimera.setIndexer(0);
+        chimera.sleep(1000);
+        i = 0.001;
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -550)) {
         chimera.setIndexer(0);
         telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
-        chimera.setPowerShooter(-0.75 - i);
+        chimera.setPowerShooter(power - i);
         i += 0.001;
         telemetry.update();
         }
