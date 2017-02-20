@@ -34,7 +34,7 @@ public class Test extends LinearOpMode { // change file name
         chimera.setPowerShooter(power);
         chimera.drivePID(0.5, 15, Direction.FORWARD);
         double i  = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -550)) {
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -525)) {
             chimera.setIndexer(0);
             telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
             chimera.setPowerShooter(power - i);
@@ -46,7 +46,7 @@ public class Test extends LinearOpMode { // change file name
         chimera.setIndexer(0);
         chimera.sleep(1000);
         i = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -550)) {
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -525)) {
         chimera.setIndexer(0);
         telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
         chimera.setPowerShooter(power - i);
@@ -59,6 +59,7 @@ public class Test extends LinearOpMode { // change file name
         chimera.setPowerShooter(-0.3);
         chimera.setPowerShooter(0);
         chimera.setPowerCollector(0);
+        chimera.drivePID(0.5, 15, Direction.BACKWARD);
 
     }
     private double getBatteryVoltage() {
