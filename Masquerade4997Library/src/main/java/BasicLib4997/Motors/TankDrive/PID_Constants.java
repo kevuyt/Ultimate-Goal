@@ -4,7 +4,7 @@ package BasicLib4997.Motors.TankDrive;
  */
 public interface PID_Constants {
     double
-            KP_TURN = 0.003,
+            KP_TURN = 0.005,
             KI_TURN = 0.1,
             KD_TURN = 0.000008,
             ID = 1;
