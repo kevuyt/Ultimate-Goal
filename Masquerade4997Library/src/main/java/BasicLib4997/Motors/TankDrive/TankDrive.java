@@ -121,35 +121,6 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
     public void drivePID(double power, int distance, Direction DIRECTION) {
         drivePID(power, distance, DIRECTION, DEFAULT_SLEEP_TIME);
     }
-    public void drivePID2(double power, int distance, Direction DIRECTION, int sleepTime, double targetAngle) {
-        int newDistance = convert(distance);
-        driveTrain.resetEncoders();
-        driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
-        driveTrain.runToPosition();
-        double targetDistance = newDistance;
-        double currentDistance;
-        double distanceError;
-        double distanceOut;
-        TankDrive.getTelemetry().addSticky("Heading", driveTrain.getCurrentPos());
-        while (driveTrain.rightIsBusy() && opModeIsActive()) {
-            currentDistance = driveTrain.convert(driveTrain.getCurrentPos());
-            distanceError = targetDistance - (currentDistance * DIRECTION.value);
-            distanceOut = distanceError / targetDistance;
-            double newPowerLeft = power;
-            double imuVal = imu.getHeading();
-            double error = targetAngle - imuVal;
-            double errorkp = error * KP_STRAIGHT;
-            newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value) * distanceOut;
-            driveTrain.setPowerRight(power);
-            driveTrain.setPowerLeft(newPowerLeft);
-            TankDrive.getTelemetry().addTelemetry("Heading", imuVal);
-            TankDrive.getTelemetry().addTelemetry("DistanceLeft", distanceError);
-            telemetry.update();
-        }
-        driveTrain.StopDriving();
-        driveTrain.runUsingEncoder();
-        sleep(sleepTime);
-    }
     public void turnPID(double power, int angle, Direction DIRECTION, double timeOut,  int sleepTime) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
