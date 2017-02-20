@@ -121,6 +121,38 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
     public void drivePID(double power, int distance, Direction DIRECTION) {
         drivePID(power, distance, DIRECTION, DEFAULT_SLEEP_TIME);
     }
+    public void turnPID(double power, int angle, Direction DIRECTION, double timeout, double ki) {
+        double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
+        double acceptableError = 0.5;
+        double currentError = 1;
+        double prevError = 0;
+        double integral = 0;
+        double newPower = power;
+        double previousTime = 0;
+        Clock clock = new Clock("clock");
+        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeout, Clock.Resolution.SECONDS)) {
+            double tChange = System.nanoTime() - previousTime;
+            previousTime = System.nanoTime();
+            tChange = tChange / 1e9;
+            double imuVAL = imu.getHeading();
+            currentError = imu.adjustAngle(targetAngle - imuVAL);
+            integral += currentError  * ID;
+            double errorkp = currentError * KP_TURN;
+            double integralki = currentError * ki * tChange;
+            double dervitive = (currentError - prevError) / tChange;
+            double dervitivekd = dervitive * KD_TURN;
+            newPower = (errorkp + integralki + dervitivekd);
+            driveTrain.setPowerRight(-newPower);
+            driveTrain.setPowerLeft(newPower);
+            prevError = currentError;
+            TankDrive.getTelemetry().addTelemetry("TargetAngle", targetAngle);
+            TankDrive.getTelemetry().addTelemetry("Heading", imuVAL);
+            TankDrive.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
+            telemetry.update();
+        }
+        driveTrain.StopDriving();
+        sleep(1000);
+    }
     public void turnPID(double power, int angle, Direction DIRECTION, double timeOut,  int sleepTime) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
