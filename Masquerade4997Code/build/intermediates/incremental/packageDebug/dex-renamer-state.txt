@@ -1,4 +1,4 @@
-#Mon Feb 20 14:45:59 EST 2017
+#Mon Feb 20 14:53:30 EST 2017
 base.0=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_96b26a75b52160bd6b7b0799e191dddd53bde98a
 renamed.1=classes.dex
 renamed.0=classes2.dex
