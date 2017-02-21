@@ -31,6 +31,7 @@ public class TeleopNFS extends LinearOpMode { // change file name
         double targetPower = -0.7;
         double lowPowerFactor = 0.1;
         while (opModeIsActive()) {
+            telemetry.addData("RATE", chimera.shooter.getRate() + chimera.shooter2.getRate()/2);
             float move = -gamepad1.left_stick_y;
             float turn = -gamepad1.right_stick_x;
             double collector = -1.5;

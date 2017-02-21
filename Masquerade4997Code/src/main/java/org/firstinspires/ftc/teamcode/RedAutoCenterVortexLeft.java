@@ -21,6 +21,11 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         double POWER = 0.50;
         TankDrive chimera = new TankDrive(telemetry);
         while (!isStarted()) {
+            chimera.setPowerShooter(-0.45);
+            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
+            telemetry.addData("SHOOTER2", (chimera.shooter2.getRate()));
+            telemetry.addData("SHOOTER1", (chimera.shooter.getRate()));
+
             chimera.setIndexer(0);
             chimera.imu.telemetryRun();
             chimera.leftColor.telemetryRun();
@@ -39,7 +44,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
         double i  = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -525)) {
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) <= - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) >= -525)) {
             chimera.setIndexer(0);
             telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
             chimera.setPowerShooter(power - i);
@@ -51,7 +56,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.setIndexer(0);
         chimera.sleep(1000);
         i = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -525)) {
+        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) <= - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) >= -525)) {
             chimera.setIndexer(0);
             telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
             chimera.setPowerShooter(power - i);
