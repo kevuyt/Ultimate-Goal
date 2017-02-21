@@ -68,6 +68,7 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
     public MR_RangeSensor rangeSensor = new MR_RangeSensor("rangeSensor");
     private static final int DEFAULT_SLEEP_TIME = 1000;
     private static final double DEFAULT_TIMEOUT = 3;
+    public double angleLeftCover = 0;
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
@@ -180,6 +181,7 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             TankDrive.getTelemetry().addTelemetry("TargetAngle", targetAngle);
             TankDrive.getTelemetry().addTelemetry("Heading", imuVAL);
             TankDrive.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
+            angleLeftCover = currentError;
             telemetry.update();
         }
         driveTrain.StopDriving();

@@ -31,6 +31,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         waitForStart();
         chimera.colorRejection.setActiveMode();
         chimera.rightColor.setPassiveMode();
+        boolean isNeccesary = true;
         //SetPower to the shooter and drive foreword in order to make a shot
         chimera.setPowerCollector(-1);
         double power = -0.4;
@@ -67,6 +68,9 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.setPowerCollector(0);
         //turn away from the center vortex 48 degrees - our disruption
         chimera.turnPID(POWER, (int) (49 - disruption), Direction.LEFT, 3);
+        if (chimera.angleLeftCover >= -1.5 && chimera.angleLeftCover <= 1.5) {
+            isNeccesary = false;
+        }
         // drive parallel to the ramp
         chimera.drivePID(0.5, 298, Direction.FORWARD);
         // turn parallel to the Beacon
@@ -77,19 +81,21 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.stopWhite(0.2, Direction.BACKWARD);
         chimera.stopRed(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
-        chimera.drivePID(POWER, 15, Direction.BACKWARD);
+        chimera.drivePID(POWER, 40, Direction.BACKWARD);
         // move the beacon presser
         chimera.setRightPresser(-1);
         chimera.sleep(2000);
         chimera.setRightPresser(1);
         double turn2 = parallelAngle - chimera.imu.getHeading();
         chimera.turnPID(POWER, (int) turn2, Direction.LEFT, 2, 0.3);
-        chimera.turnPID(POWER, 5, Direction.LEFT, 1, 0.3);
+        if (isNeccesary) {
+            chimera.turnPID(POWER, 3, Direction.LEFT, 1, 0.3);
+        }
         // drive to the next beacon
+        double turn3 = parallelAngle - chimera.imu.getHeading();
         chimera.drivePID(0.5, 150, Direction.FORWARD, 500);
-
+        chimera.turnPID(POWER, (int) turn3, Direction.LEFT, 2, 0.1);
         chimera.setRightPresser(0);
-
         chimera.stopWhite(0.3, Direction.BACKWARD);
         chimera.stopRed(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
