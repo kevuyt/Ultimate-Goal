@@ -20,7 +20,6 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
     }
     @Override
     public void runOpMode() throws InterruptedException {
-        boolean telemetrizeModules;
         double POWER = 0.50;
         TankDrive chimera = new TankDrive(telemetry);
         while (!isStarted()) {
@@ -100,22 +99,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.sleep(2000);
         chimera.setRightPresser(1);
     }
-    private double getBatteryVoltage() {
-        double result = Double.POSITIVE_INFINITY;
-        for (VoltageSensor sensor : hardwareMap.voltageSensor) {
-            double voltage = sensor.getVoltage();
-            if (voltage > 0) {
-                result = Math.min(result, voltage);
-            }
-        }
-        return result;
-    }
-    private double newShooterPower(double targetPower){
-        double voltsge = getBatteryVoltage();
-        double targetVoltage = 13.5;
-        double error = targetVoltage - voltsge;
-        return targetPower - (error * 0.02);
-    }
+
 
 
 }
