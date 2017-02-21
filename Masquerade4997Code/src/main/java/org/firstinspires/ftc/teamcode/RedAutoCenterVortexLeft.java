@@ -2,11 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
 
-import BasicLib4997.Motors.TankDrive.Direction;
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.Direction;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Beacons + Shoot for Red8

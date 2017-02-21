@@ -1,30 +1,24 @@
-package BasicLib4997.Motors;
+package BasicLib4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-import BasicLib4997.Motors.TankDrive.PID_Constants;
-import BasicLib4997.Motors.TankDrive.TankDrive;
-
-import static android.R.attr.borderlessButtonStyle;
-import static android.R.attr.name;
+import BasicLib4997.MasqMotors.TankDrive.PID_Constants;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class MotorSystem implements PID_Constants {
-    private Motor motor1 = null;
-    private Motor motor2 = null;
-    private Motor motor3 = null;
-    private Motor motor4 = null;
-    public MotorSystem(String name1, String name2, String name3, String name4) {
-        motor1 = new Motor(name1, DcMotor.Direction.REVERSE);
-        motor2 = new Motor(name2, DcMotor.Direction.REVERSE);
-        motor3 = new Motor(name3, DcMotor.Direction.FORWARD);
-        motor4 = new Motor(name4, DcMotor.Direction.FORWARD);
+public class MasqMotorSystem implements PID_Constants {
+    private MasqMotor motor1 = null;
+    private MasqMotor motor2 = null;
+    private MasqMotor motor3 = null;
+    private MasqMotor motor4 = null;
+    public MasqMotorSystem(String name1, String name2, String name3, String name4) {
+        motor1 = new MasqMotor(name1, DcMotor.Direction.REVERSE);
+        motor2 = new MasqMotor(name2, DcMotor.Direction.REVERSE);
+        motor3 = new MasqMotor(name3, DcMotor.Direction.FORWARD);
+        motor4 = new MasqMotor(name4, DcMotor.Direction.FORWARD);
     }
     public void resetEncoders () {
         motor1.resetEncoder();

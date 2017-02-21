@@ -1,21 +1,16 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
-import com.qualcomm.hardware.adafruit.BNO055IMU;
-import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.I2cDevice;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 
-public class I2CRangeSensor{
+public class Masqi2cRangeSensor {
 
     byte[] range1Cache;
 
@@ -26,7 +21,7 @@ public class I2CRangeSensor{
     public I2cDevice RANGE1;
     public I2cDeviceSynch RANGE1Reader;
     String nameRangeSensor;
-    public I2CRangeSensor(String name){
+    public Masqi2cRangeSensor(String name){
         this.nameRangeSensor = name;
         RANGE1 = FtcOpModeRegister.opModeManager.getHardwareMap().i2cDevice.get("rangeSensor");
         RANGE1Reader = new I2cDeviceSynchImpl(RANGE1, RANGE1ADDRESS, false);

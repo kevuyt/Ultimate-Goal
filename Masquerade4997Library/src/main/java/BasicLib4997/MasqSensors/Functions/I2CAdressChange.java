@@ -1,4 +1,4 @@
-package BasicLib4997.Sensors.Functions;
+package BasicLib4997.MasqSensors.Functions;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsUsbDeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
@@ -10,8 +10,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import java.util.concurrent.locks.Lock;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
-import BasicLib4997.Sensors.MRColorSensor;
+import BasicLib4997.MasqSensors.MasqMRColorSensor;
 
 /**
  * Created by Archish on 12/1/16.
@@ -57,7 +56,7 @@ public class I2CAdressChange {
     DeviceInterfaceModule dim;
     public void changeAdress() {
         dim = FtcOpModeRegister.opModeManager.getHardwareMap().deviceInterfaceModule.get("DIM");
-        MRColorSensor colorSensor = new MRColorSensor(colorName);
+        MasqMRColorSensor colorSensor = new MasqMRColorSensor(colorName);
         readCache = dim.getI2cReadCache(port);
         readLock = dim.getI2cReadCacheLock(port);
         writeCache = dim.getI2cWriteCache(port);

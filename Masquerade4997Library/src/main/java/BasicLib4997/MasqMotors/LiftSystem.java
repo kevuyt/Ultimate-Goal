@@ -1,19 +1,15 @@
-package BasicLib4997.Motors;
-
-import com.qualcomm.robotcore.hardware.DcMotor;
-
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
+package BasicLib4997.MasqMotors;
 
 /**
  * Created by Archish on 12/21/16.
  */
 
 public class LiftSystem {
-    private Motor liftMotor1;
-    private Motor liftMotor2;
+    private MasqMotor liftMotor1;
+    private MasqMotor liftMotor2;
     public LiftSystem (String liftmotor1, String liftmotor2) {
-        liftMotor1 = new Motor(liftmotor1);
-        liftMotor2 = new Motor(liftmotor2);
+        liftMotor1 = new MasqMotor(liftmotor1);
+        liftMotor2 = new MasqMotor(liftmotor2);
     }
     public void moveDown (double power) {
         power *= -1;

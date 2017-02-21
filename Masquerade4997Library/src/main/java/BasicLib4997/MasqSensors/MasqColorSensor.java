@@ -1,4 +1,4 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 import android.graphics.Color;
 
@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 
 /**
@@ -31,8 +31,7 @@ public class MasqColorSensor {
             RED_VALUE_REGISTER = 0x05,
             GREEN_VALUE_REGISTER = 0x06,
             BLUE_VALUE_REGISTER = 0x07,
-            WHITE_VALUE_REGISTER = 0x08,
-            NORMAL_RED_REGISTER = 0x16/0x17;
+            WHITE_VALUE_REGISTER = 0x08;
 
     private static final int
             READ_WINDOW_START = COLOR_NUMBER_REGISTER,
@@ -45,7 +44,7 @@ public class MasqColorSensor {
 
     private int
             blueMinThreshold = 1, blueMaxThreshold = 4,
-            redMinThreshold = 10, redMaxThreshold = 13,
+            redMinThreshold = 10, redMaxThreshold = 12,
             whiteMinThreshold = 14, whiteMaxThreshold = 16;
 
 
@@ -71,8 +70,6 @@ public class MasqColorSensor {
     public int green() {return colorSensorManager.read8(GREEN_VALUE_REGISTER);}
     public int blue() {return colorSensorManager.read8(BLUE_VALUE_REGISTER);}
     public int alpha() {return colorSensorManager.read8(WHITE_VALUE_REGISTER);}
-    public int normalRed () {return  colorSensorManager.read8(NORMAL_RED_REGISTER);}
-    public int readRed () {return colorSensorManager.read8(0x0A);}
 
     private void rgb2hsv() {
         byte[] colorSensorCache = colorSensorManager.read(RED_VALUE_REGISTER, 3);
@@ -106,6 +103,10 @@ public class MasqColorSensor {
     public boolean isRed() {
         int colorNumber = colorNumber();
         return colorNumber >= redMinThreshold && colorNumber <= redMaxThreshold;
+    }
+    public boolean isWhite () {
+        int colorNumber = colorNumber();
+        return colorNumber >= whiteMinThreshold && colorNumber <= whiteMaxThreshold;
     }
 
     public boolean detectWhite() {

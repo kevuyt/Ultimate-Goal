@@ -1,4 +1,4 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 /**
  * Created by Archish on 10/28/16.

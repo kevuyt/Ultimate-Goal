@@ -1,14 +1,11 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 import com.qualcomm.hardware.adafruit.BNO055IMU;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
 
-import java.util.Locale;
-
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 
 /**

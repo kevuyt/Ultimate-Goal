@@ -1,24 +1,21 @@
-package BasicLib4997.Servos;
+package BasicLib4997.MasqServos;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.ServoController;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
-
-import static android.R.attr.max;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Created by Archish on 10/28/16.
  */
 
-public class Servo {
+public class MasqServo {
     private Telemetry telemetry;
     private com.qualcomm.robotcore.hardware.Servo servo;
     private String nameServo;
-    public Servo(String name){
+    public MasqServo(String name){
         this.nameServo = name;
         servo = FtcOpModeRegister.opModeManager.getHardwareMap().servo.get(name);
     }

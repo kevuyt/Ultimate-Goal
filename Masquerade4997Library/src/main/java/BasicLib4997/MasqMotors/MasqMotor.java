@@ -1,33 +1,30 @@
-package BasicLib4997.Motors;
+package BasicLib4997.MasqMotors;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcore.internal.TelemetryImpl;
 
 import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
 
-import BasicLib4997.Motors.TankDrive.PID_Constants;
-import BasicLib4997.Motors.TankDrive.TankDrive;
-import BasicLib4997.Sensors.Clock;
+import BasicLib4997.MasqMotors.TankDrive.PID_Constants;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqSensors.MasqClock;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class Motor implements PID_Constants{
+public class MasqMotor implements PID_Constants{
     private DcMotor motor;
     private String nameMotor;
-    private Clock clock = new Clock();
+    private MasqClock clock = new MasqClock();
     private double tChange;
     private double prevPos= 0;
     private double previousTime = 0;
     private double startTime = System.nanoTime();
-    public Motor(String name){
+    public MasqMotor(String name){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
     }
-    public Motor(String name, DcMotor.Direction direction) {
+    public MasqMotor(String name, DcMotor.Direction direction) {
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);

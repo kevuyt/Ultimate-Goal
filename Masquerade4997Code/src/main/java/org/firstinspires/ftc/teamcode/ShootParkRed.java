@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import BasicLib4997.Motors.TankDrive.Direction;
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.Direction;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Created by Archish on 10/6/16.

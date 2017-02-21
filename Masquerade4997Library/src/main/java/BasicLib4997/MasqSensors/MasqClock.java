@@ -1,9 +1,9 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 import java.util.Locale;
 
 
-public class Clock {
+public class MasqClock {
 
     private long startTime;
 
@@ -14,8 +14,8 @@ public class Clock {
     private String name = "Timer";
 
 
-    public Clock() {this.reset();}
-    public Clock(String n) {setName(n); this.reset();}
+    public MasqClock() {this.reset();}
+    public MasqClock(String n) {setName(n); this.reset();}
 
 
     public void reset() {
@@ -60,7 +60,7 @@ public class Clock {
     public boolean isPaused() {return isPaused;}
 
 
-    public Clock setName (String n) {name = n; return this;}
+    public MasqClock setName (String n) {name = n; return this;}
     public String getName() {return name;}
 
     public String telemetryRun() {

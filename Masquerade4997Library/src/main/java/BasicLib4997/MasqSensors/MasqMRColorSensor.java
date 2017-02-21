@@ -1,24 +1,22 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 import android.graphics.Color;
 
 import com.qualcomm.robotcore.hardware.I2cAddr;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
-import BasicLib4997.Sensors.Sensor_Thresholds;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Created by Archish on 10/28/16.
  */
 
-public class MRColorSensor implements Sensor_Thresholds {
+public class MasqMRColorSensor implements Sensor_Thresholds {
     private com.qualcomm.robotcore.hardware.ColorSensor colorSensor;
     private String nameColorSensor;
 
-    public MRColorSensor(String name){
+    public MasqMRColorSensor(String name){
         this.nameColorSensor = name;
         colorSensor = FtcOpModeRegister.opModeManager.getHardwareMap().colorSensor.get(name);
     }

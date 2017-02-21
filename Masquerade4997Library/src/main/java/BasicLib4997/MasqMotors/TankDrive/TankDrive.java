@@ -1,21 +1,21 @@
-package BasicLib4997.Motors.TankDrive;
+package BasicLib4997.MasqMotors.TankDrive;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import BasicLib4997.Motors.Motor;
-import BasicLib4997.Motors.MotorSystem;
-import BasicLib4997.Sensors.AdafruitIMU;
-import BasicLib4997.Sensors.Clock;
-import BasicLib4997.Sensors.I2CColorSensor;
-import BasicLib4997.Sensors.MR_RangeSensor;
-import BasicLib4997.Sensors.ODS;
-import BasicLib4997.Sensors.Sensor_Thresholds;
-import BasicLib4997.Servos.CR_Servo;
-import BasicLib4997.Servos.Servo;
-import static BasicLib4997.Motors.MotorSystem.convert;
+import BasicLib4997.MasqMotors.MasqMotor;
+import BasicLib4997.MasqMotors.MasqMotorSystem;
+import BasicLib4997.MasqSensors.AdafruitIMU;
+import BasicLib4997.MasqSensors.MasqClock;
+import BasicLib4997.MasqSensors.MasqColorSensor;
+import BasicLib4997.MasqSensors.MasqRangeSensor;
+import BasicLib4997.MasqSensors.MasqODS;
+import BasicLib4997.MasqSensors.Sensor_Thresholds;
+import BasicLib4997.MasqServos.MasqCRServo;
+import BasicLib4997.MasqServos.MasqServo;
+import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
 
 /**
  * Created by Archish on 10/28/16.
@@ -46,26 +46,26 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
         telemetry.log().add(string, data);
         telemetry.update();
     }
-    // Motor and Motor Systems
-    public MotorSystem driveTrain = new MotorSystem("leftFront", "leftBack", "rightFront", "rightBack");
-    //private Motor collector = new Motor("collector");
-    public Motor shooter = new Motor("shooter");
-    public Motor shooter2 = new Motor("shooter2");
-    ///Clock
+    // MasqMotor and MasqMotor Systems
+    public MasqMotorSystem driveTrain = new MasqMotorSystem("leftFront", "leftBack", "rightFront", "rightBack");
+    //private MasqMotor collector = new MasqMotor("collector");
+    public MasqMotor shooter = new MasqMotor("shooter");
+    public MasqMotor shooter2 = new MasqMotor("shooter2");
+    ///MasqClock
     //Servos
-    private CR_Servo rightPresser = new CR_Servo("rightPresser");
-    private CR_Servo leftPresser = new CR_Servo("leftPresser");
-    private Motor collector = new Motor("collector");
-    private Servo indexer = new Servo("indexer");
+    private MasqCRServo rightPresser = new MasqCRServo("rightPresser");
+    private MasqCRServo leftPresser = new MasqCRServo("leftPresser");
+    private MasqMotor collector = new MasqMotor("collector");
+    private MasqServo indexer = new MasqServo("indexer");
     //IMU
     public AdafruitIMU imu = new AdafruitIMU("imu");
-    public ODS ods = new ODS ("ods");
+    public MasqODS ods = new MasqODS("ods");
     //ColorSensor
-    public I2CColorSensor rightColor = new I2CColorSensor("rightColor" , 62);
-    public I2CColorSensor colorRejection = new I2CColorSensor("colorRejection", 64);
-    public I2CColorSensor leftColor = new I2CColorSensor("leftColor", 60);
+    public MasqColorSensor rightColor = new MasqColorSensor("rightColor" , 62);
+    public MasqColorSensor colorRejection = new MasqColorSensor("colorRejection", 64);
+    public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
     //RangeSensor
-    public MR_RangeSensor rangeSensor = new MR_RangeSensor("rangeSensor");
+    public MasqRangeSensor rangeSensor = new MasqRangeSensor("rangeSensor");
     private static final int DEFAULT_SLEEP_TIME = 1000;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
@@ -130,8 +130,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
         double integral = 0;
         double newPower = power;
         double previousTime = 0;
-        Clock clock = new Clock("clock");
-        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeout, Clock.Resolution.SECONDS)) {
+        MasqClock clock = new MasqClock("clock");
+        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
             previousTime = System.nanoTime();
             tChange = tChange / 1e9;
@@ -162,8 +162,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
         double integral = 0;
         double newPower = power;
         double previousTime = 0;
-        Clock clock = new Clock("clock");
-        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeOut, Clock.Resolution.SECONDS)) {
+        MasqClock clock = new MasqClock("clock");
+        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
             previousTime = System.nanoTime();
             tChange = tChange / 1e9;

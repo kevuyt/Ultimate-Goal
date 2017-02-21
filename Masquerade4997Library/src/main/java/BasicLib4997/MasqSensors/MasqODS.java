@@ -1,20 +1,20 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Created by Archish on 10/28/16.
  */
 
-public class ODS implements Sensor_Thresholds {
+public class MasqODS implements Sensor_Thresholds {
     private OpticalDistanceSensor ods;
     private String nameODSSensor;
 
-    public ODS(String name){
+    public MasqODS(String name){
         this.nameODSSensor = name;
         ods = FtcOpModeRegister.opModeManager.getHardwareMap().opticalDistanceSensor.get(name);
     }

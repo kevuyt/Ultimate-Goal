@@ -1,18 +1,17 @@
-package BasicLib4997.Servos;
+package BasicLib4997.MasqServos;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Created by Archish on 11/4/16.
  */
 
-public class CR_Servo {
+public class MasqCRServo {
     private com.qualcomm.robotcore.hardware.CRServo servo;
     private String nameCr_Servo;
-    public CR_Servo(String name){
+    public MasqCRServo(String name){
         this.nameCr_Servo = name;
         servo = FtcOpModeRegister.opModeManager.getHardwareMap().crservo.get(name);
     }

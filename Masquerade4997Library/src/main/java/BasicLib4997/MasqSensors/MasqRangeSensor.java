@@ -1,21 +1,20 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-import BasicLib4997.Motors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.TankDrive;
 
 /**
  * Created by Archish on 10/28/16.
  */
 
-public class MR_RangeSensor{
+public class MasqRangeSensor {
     ModernRoboticsI2cRangeSensor rangeSensor;
     String nameRangeSensor;
-    public MR_RangeSensor(String name){
+    public MasqRangeSensor(String name){
         this.nameRangeSensor = name;
         rangeSensor = FtcOpModeRegister.opModeManager.getHardwareMap().get(ModernRoboticsI2cRangeSensor.class, name);
     }

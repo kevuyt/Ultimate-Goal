@@ -1,4 +1,4 @@
-package BasicLib4997.Sensors;
+package BasicLib4997.MasqSensors;
 
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DigitalChannelController;
@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
  * Assumes that a pull-up resistor is used, like is necessary to use VEX limit switches.
  */
 
-public class LimitSwitch{
+public class MasqLimitSwitch {
 
     private final DigitalChannel limitSwitch;
     private final String name;
@@ -20,7 +20,7 @@ public class LimitSwitch{
     private boolean logicalState;
 
 
-    public LimitSwitch(String name) {
+    public MasqLimitSwitch(String name) {
         this.name = name;
         limitSwitch = FtcOpModeRegister.opModeManager.getHardwareMap().digitalChannel.get(name);
         limitSwitch.setMode(DigitalChannelController.Mode.INPUT);
