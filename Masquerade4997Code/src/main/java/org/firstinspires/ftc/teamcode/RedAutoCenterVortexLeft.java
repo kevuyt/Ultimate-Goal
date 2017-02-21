@@ -83,8 +83,8 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.sleep(2000);
         chimera.setRightPresser(1);
         double turn2 = parallelAngle - chimera.imu.getHeading();
-        chimera.turnPID(POWER, (int) turn2, Direction.LEFT, 2, 0.5);
-        chimera.turnPID(POWER, 5, Direction.LEFT, 1);
+        chimera.turnPID(POWER, (int) turn2, Direction.LEFT, 2);
+        chimera.turnPID(POWER, 5, Direction.LEFT, 1, 0.2);
         // drive to the next beacon
         chimera.drivePID(0.5, 150, Direction.FORWARD, 500);
 
@@ -99,7 +99,4 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.sleep(2000);
         chimera.setRightPresser(1);
     }
-
-
-
 }
