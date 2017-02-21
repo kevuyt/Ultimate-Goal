@@ -44,10 +44,9 @@ public class BlueAutoCenterVortexLeft extends LinearOpMode { // change file name
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
         double i = 0.1;
+        double rateOfChange = 0.001;
         int lowThreshold = -1200;
         int highThreshold = -1100;
-        telemetry.addLine("Before");
-        update();
         TankDrive.getTelemetry().addTelemetry("RATE",  (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
         while ( ((((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) >= -highThreshold) || (((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) <= -lowThreshold)) ) {
             chimera.setIndexer(0);
@@ -58,11 +57,9 @@ public class BlueAutoCenterVortexLeft extends LinearOpMode { // change file name
             else {
                 chimera.setPowerShooter(power - i);
             }
-            i += 0.1;
+            i += rateOfChange;
             update();
         }
-        telemetry.addLine("after");
-        update();
         chimera.setIndexer(0.6);
         chimera.sleep(500);
         chimera.setIndexer(0);
@@ -77,7 +74,7 @@ public class BlueAutoCenterVortexLeft extends LinearOpMode { // change file name
             else {
                 chimera.setPowerShooter(power - i);
             }
-            i += 0.1;
+            i += rateOfChange;
             update();
         }
         chimera.setIndexer(0.6);
