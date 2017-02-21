@@ -16,13 +16,13 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
     public void main() throws InterruptedException {
 
     }
+
     @Override
     public void runOpMode() throws InterruptedException {
         double POWER = 0.50;
         TankDrive chimera = new TankDrive(telemetry);
         while (!isStarted()) {
-            chimera.setPowerShooter(-0.45);
-            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
+            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
             telemetry.addData("SHOOTER2", (chimera.shooter2.getRate()));
             telemetry.addData("SHOOTER1", (chimera.shooter.getRate()));
 
@@ -43,25 +43,30 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.drivePID(POWER, 18, Direction.FORWARD);
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
-        double i  = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) <= - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) >= -525)) {
+        double i = 0.001;
+        telemetry.addLine("Before");
+        update();
+        TankDrive.getTelemetry().addTelemetry("RATE",  (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
+        while (!(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) >= -1000) || !(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) <= -1050)) {
             chimera.setIndexer(0);
-            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
+            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
             chimera.setPowerShooter(power - i);
-            i += 0.001;
-            telemetry.update();
+           // i += 0.001;
+            update();
         }
+        telemetry.addLine("after");
+        update();
         chimera.setIndexer(0.6);
         chimera.sleep(500);
         chimera.setIndexer(0);
         chimera.sleep(1000);
         i = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) <= - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) >= -525)) {
+        while (!(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) >= -1000) || !(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) <= -1050)) {
             chimera.setIndexer(0);
-            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
+            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
             chimera.setPowerShooter(power - i);
             i += 0.001;
-            telemetry.update();
+            update();
         }
         chimera.setIndexer(0.6);
         chimera.sleep(700);
@@ -107,5 +112,9 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.setRightPresser(-1);
         chimera.sleep(1000);
         chimera.setRightPresser(1);
+    }
+
+    public void update() {
+        telemetry.update();
     }
 }
