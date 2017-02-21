@@ -79,9 +79,6 @@ public class MotorSystem implements PID_Constants {
     public static int convert(int TICKS) {
         return (int) ((TICKS * 35.1070765836) / 3 );
     }
-    public double convert(double TICKS) {
-        return (TICKS * 35.1070765836);
-    }
     boolean isStalled () {
         int i;
         boolean isStalled;
