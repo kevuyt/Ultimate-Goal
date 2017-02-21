@@ -66,7 +66,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.setPowerCollector(0);
         //turn away from the center vortex 48 degrees - our disruption
         chimera.turnPID(POWER, (int) (49 - disruption), Direction.LEFT, 3);
-        if (chimera.angleLeftCover >= 0 && chimera.angleLeftCover <= 1.5) {
+        if (chimera.angleLeftCover >= 0.5 && chimera.angleLeftCover <= 2) {
             isNeccesary = false;
         }
         // drive parallel to the ramp
