@@ -5,19 +5,19 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="117048322488399"
+    timestamp="117853154944479"
     token="-2541848046268905828"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="36" />
+        duration="38" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="7" />
+        duration="9" />
     <task
         name="verifier"
         duration="0" />
@@ -27,7 +27,7 @@
         type="MAIN" />
 
     <build
-        timestamp="117048322488399"
+        timestamp="117853154944479"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/outputs/apk/Masquerade4997Code-debug.apk"
