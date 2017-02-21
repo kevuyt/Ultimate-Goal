@@ -37,21 +37,28 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         boolean isNeccesary = true;
         //SetPower to the shooter and drive foreword in order to make a shot
         chimera.setPowerCollector(-1);
-        double power = -0.45;
+        double power = -0.55;
         chimera.setPowerShooter(power);
         double parallelAngle = chimera.imu.getHeading();
         chimera.drivePID(POWER, 18, Direction.FORWARD);
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
-        double i = 0.001;
+        double i = 0.1;
+        int lowThreshold = -1200;
+        int highThreshold = -1100;
         telemetry.addLine("Before");
         update();
         TankDrive.getTelemetry().addTelemetry("RATE",  (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
-        while (!(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) >= -1000) || !(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) <= -1050)) {
+        while ( ((((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) >= -highThreshold) || (((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) <= -lowThreshold)) ) {
             chimera.setIndexer(0);
             telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
-            chimera.setPowerShooter(power - i);
-           // i += 0.001;
+            if ((chimera.shooter.getRate() + chimera.shooter2.getRate() / 2) <= -lowThreshold) {
+                chimera.setPowerShooter(power + i);
+            }
+            else {
+                chimera.setPowerShooter(power - i);
+            }
+            i += 0.1;
             update();
         }
         telemetry.addLine("after");
@@ -60,12 +67,17 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.sleep(500);
         chimera.setIndexer(0);
         chimera.sleep(1000);
-        i = 0.001;
-        while (!(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) >= -1000) || !(((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) <= -1050)) {
+        i = 0.1;
+        while ( ((((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) >= -highThreshold) || (((chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2) <= -lowThreshold)) ) {
             chimera.setIndexer(0);
             telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate()) / 2);
-            chimera.setPowerShooter(power - i);
-            i += 0.001;
+            if ((chimera.shooter.getRate() + chimera.shooter2.getRate() / 2) <= -lowThreshold) {
+                chimera.setPowerShooter(power + i);
+            }
+            else {
+                chimera.setPowerShooter(power - i);
+            }
+            i += 0.1;
             update();
         }
         chimera.setIndexer(0.6);

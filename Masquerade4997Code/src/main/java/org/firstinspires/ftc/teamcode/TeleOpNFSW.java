@@ -88,7 +88,7 @@ public class TeleOpNFSW extends LinearOpMode { // change file name
                     power = targetPower + lowPowerFactor;
                     telemetry.addLine("Shooter is Revved Up.");
                 }
-                chimera.shooter.setPower(power);
+                chimera.setPowerShooter(power);
             }
             else {
                 power -= revDownFactor;
