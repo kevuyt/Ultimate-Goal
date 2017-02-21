@@ -66,7 +66,7 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
     public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
     //RangeSensor
     public MasqRangeSensor rangeSensor = new MasqRangeSensor("rangeSensor");
-    private static final int DEFAULT_SLEEP_TIME = 1000;
+    private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
     private boolean opModeIsActive() {

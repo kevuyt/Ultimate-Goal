@@ -32,7 +32,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         boolean isNeccesary = true;
         //SetPower to the shooter and drive foreword in order to make a shot
         chimera.setPowerCollector(-1);
-        double power = -0.4;
+        double power = -0.5;
         chimera.setPowerShooter(power);
         double parallelAngle = chimera.imu.getHeading();
         chimera.drivePID(POWER, 18, Direction.FORWARD);
@@ -82,7 +82,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.drivePID(POWER, 33, Direction.BACKWARD);
         // move the beacon presser
         chimera.setRightPresser(-1);
-        chimera.sleep(2000);
+        chimera.sleep(1000);
         chimera.setRightPresser(1);
         double turn2 = parallelAngle - chimera.imu.getHeading();
         chimera.turnPID(POWER, (int) turn2, Direction.LEFT, 2, 0.3);
@@ -100,7 +100,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.drivePID(POWER, 25, Direction.BACKWARD);
         // move the beacon presser
         chimera.setRightPresser(-1);
-        chimera.sleep(2000);
+        chimera.sleep(1000);
         chimera.setRightPresser(1);
     }
 }
