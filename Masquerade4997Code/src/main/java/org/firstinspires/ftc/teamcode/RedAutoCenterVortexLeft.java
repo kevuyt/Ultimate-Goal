@@ -81,7 +81,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.stopWhite(0.2, Direction.BACKWARD);
         chimera.stopRed(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
-        chimera.drivePID(POWER, 40, Direction.BACKWARD);
+        chimera.drivePID(POWER, 33, Direction.BACKWARD);
         // move the beacon presser
         chimera.setRightPresser(-1);
         chimera.sleep(2000);
