@@ -32,7 +32,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         boolean isNeccesary = true;
         //SetPower to the shooter and drive foreword in order to make a shot
         chimera.setPowerCollector(-1);
-        double power = -0.5;
+        double power = -0.45;
         chimera.setPowerShooter(power);
         double parallelAngle = chimera.imu.getHeading();
         chimera.drivePID(POWER, 18, Direction.FORWARD);
