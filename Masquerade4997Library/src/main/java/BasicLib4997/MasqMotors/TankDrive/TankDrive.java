@@ -253,6 +253,40 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
         }
         driveTrain.StopDriving();
     }
+    public void stopRedRight(double power, Direction Direction) {
+        driveTrain.runUsingEncoder();
+        double targetAngle = imu.getHeading();
+        while (!(rightColor.isRed()) && opModeIsActive()) {
+            double newPower = power;
+            double heading = imu.getHeading();
+            double error = targetAngle - heading;
+            double errorkp = error * KP_STRAIGHT;
+            newPower = newPower - (errorkp * Direction.value);
+            driveTrain.setPowerLeft(power * Direction.value);
+            driveTrain.setPowerRight(newPower * Direction.value);
+            TankDrive.getTelemetry().addTelemetry("Heading", heading);
+            TankDrive.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
+            telemetry.update();
+        }
+        driveTrain.StopDriving();
+    }
+    public void stopBlueRight(double power, Direction Direction) {
+        driveTrain.runUsingEncoder();
+        double targetAngle = imu.getHeading();
+        while ((!rightColor.isBlue()) && opModeIsActive()){
+            double newPower = power;
+            double heading = imu.getHeading();
+            double error = targetAngle - heading;
+            double errorkp = error * KP_STRAIGHT;
+            newPower = newPower - (errorkp * Direction.value);
+            driveTrain.setPowerLeft(power * Direction.value);
+            driveTrain.setPowerRight(newPower * Direction.value);
+            TankDrive.getTelemetry().addTelemetry("Heading", heading);
+            TankDrive.getTelemetry().addTelemetry("Blue Val", leftColor.colorNumber());
+            telemetry.update();
+        }
+        driveTrain.StopDriving();
+    }
     public void stopWhite (double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
@@ -310,6 +344,7 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
         rightPresser.setPower(power);
     }
     public void setLeftPresser(double power) {
+        power *= -1;
         leftPresser.setPower(power);
     }
     public void runAllTelemetry() {
