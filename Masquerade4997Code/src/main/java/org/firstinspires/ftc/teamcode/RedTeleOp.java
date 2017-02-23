@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 /**
  * TeleOp NFS
  */
@@ -16,7 +16,7 @@ public class RedTeleOp extends LinearOpMode { // change file name
     @Override
     public void runOpMode() throws InterruptedException {
 
-        TankDrive chimera = new TankDrive(telemetry);
+        MasqRobot chimera = new MasqRobot(telemetry);
         while (!isStarted()) {
             chimera.setIndexer(0);
             telemetry.update();

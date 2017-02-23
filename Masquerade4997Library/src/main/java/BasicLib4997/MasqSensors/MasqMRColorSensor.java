@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.I2cAddr;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
@@ -97,12 +97,12 @@ public class MasqMRColorSensor implements Sensor_Thresholds {
         float[] hsvValues;
         hsvValues = new float[]{0F, 0F, 0F};
         Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
-        TankDrive.getTelemetry().addTelemetry(nameColorSensor + "telemetry");
-        TankDrive.getTelemetry().addTelemetry("Clear", colorSensor.alpha());
-        TankDrive.getTelemetry().addTelemetry("Red  ", colorSensor.red());
-        TankDrive.getTelemetry().addTelemetry("Green", colorSensor.green());
-        TankDrive.getTelemetry().addTelemetry("Blue ", colorSensor.blue());
-        TankDrive.getTelemetry().addTelemetry("Hue", hsvValues[0]);
+        MasqRobot.getTelemetry().addTelemetry(nameColorSensor + "telemetry");
+        MasqRobot.getTelemetry().addTelemetry("Clear", colorSensor.alpha());
+        MasqRobot.getTelemetry().addTelemetry("Red  ", colorSensor.red());
+        MasqRobot.getTelemetry().addTelemetry("Green", colorSensor.green());
+        MasqRobot.getTelemetry().addTelemetry("Blue ", colorSensor.blue());
+        MasqRobot.getTelemetry().addTelemetry("Hue", hsvValues[0]);
     }
 
 }

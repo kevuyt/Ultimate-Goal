@@ -5,7 +5,7 @@ import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
@@ -35,11 +35,11 @@ public class MasqRangeSensor {
     }
 
     public void telemetryRun () {
-        TankDrive.getTelemetry().addTelemetry(nameRangeSensor + "telemetry");
-        TankDrive.getTelemetry().addTelemetry("raw ultrasonic", rangeSensor.rawUltrasonic());
-        TankDrive.getTelemetry().addTelemetry("raw optical", rangeSensor.rawOptical());
-        TankDrive.getTelemetry().addTelemetry("cm optical", rangeSensor.cmOptical());
-        TankDrive.getTelemetry().addTelemetry("cm", rangeSensor.getDistance(DistanceUnit.CM));
+        MasqRobot.getTelemetry().addTelemetry(nameRangeSensor + "telemetry");
+        MasqRobot.getTelemetry().addTelemetry("raw ultrasonic", rangeSensor.rawUltrasonic());
+        MasqRobot.getTelemetry().addTelemetry("raw optical", rangeSensor.rawOptical());
+        MasqRobot.getTelemetry().addTelemetry("cm optical", rangeSensor.cmOptical());
+        MasqRobot.getTelemetry().addTelemetry("cm", rangeSensor.getDistance(DistanceUnit.CM));
     }
 
 }

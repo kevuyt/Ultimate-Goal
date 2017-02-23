@@ -3,7 +3,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 /**
  * TeleOp NFS
  */
@@ -16,7 +16,7 @@ public class TeleopNFS extends LinearOpMode { // change file name
     @Override
     public void runOpMode() throws InterruptedException {
 
-        TankDrive chimera = new TankDrive(telemetry);
+        MasqRobot chimera = new MasqRobot(telemetry);
         while (!isStarted()) {
             chimera.setIndexer(0);
             telemetry.addData("Voltage", getBatteryVoltage());

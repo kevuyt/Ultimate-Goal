@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 11/5/16.
@@ -20,7 +20,7 @@ public class TankTeleOp extends LinearOpMode{
         double LOW_POWER = 0.50;
         double POWER = 0.70;
         double HIGH_POWER = 0.90;
-        TankDrive chimera = new TankDrive(telemetry);
+        MasqRobot chimera = new MasqRobot(telemetry);
 
         while (!isStarted()) {
 

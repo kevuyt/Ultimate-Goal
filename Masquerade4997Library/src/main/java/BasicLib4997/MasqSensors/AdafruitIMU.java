@@ -5,7 +5,7 @@ import com.qualcomm.hardware.adafruit.BNO055IMU;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 
 /**
@@ -60,9 +60,9 @@ public class AdafruitIMU {
     }
 
     public void telemetryRun() {
-        TankDrive.getTelemetry().addTelemetry("Heading", getHeading());
-        TankDrive.getTelemetry().addTelemetry("Pitch", getAngles() [1]);
-        TankDrive.getTelemetry().addTelemetry("Roll", getAngles() [2]);
+        MasqRobot.getTelemetry().addTelemetry("Heading", getHeading());
+        MasqRobot.getTelemetry().addTelemetry("Pitch", getAngles() [1]);
+        MasqRobot.getTelemetry().addTelemetry("Roll", getAngles() [2]);
 
     }
 

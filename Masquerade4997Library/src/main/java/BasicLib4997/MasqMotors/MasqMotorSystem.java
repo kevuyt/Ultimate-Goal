@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
 import BasicLib4997.MasqMotors.TankDrive.PID_Constants;
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
@@ -129,6 +129,6 @@ public class MasqMotorSystem implements PID_Constants {
         motor2.telemetryRun(false);
         motor3.telemetryRun(false);
         motor4.telemetryRun(false);
-        TankDrive.getTelemetry().addTelemetry("Current Position", getCurrentPos());
+        MasqRobot.getTelemetry().addTelemetry("Current Position", getCurrentPos());
     }
 }

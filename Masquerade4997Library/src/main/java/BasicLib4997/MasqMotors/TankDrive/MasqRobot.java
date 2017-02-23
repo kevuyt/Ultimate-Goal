@@ -21,16 +21,16 @@ import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
  * Created by Archish on 10/28/16.
  */
 
-public class TankDrive implements PID_Constants, Sensor_Thresholds {
+public class MasqRobot implements PID_Constants, Sensor_Thresholds {
 
-    public TankDrive(Telemetry telemetry){
+    public MasqRobot(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
     }
-    public static TankDrive getTelemetry(){
+    public static MasqRobot getTelemetry(){
         return instance;
     }
-    private static TankDrive instance;
+    private static MasqRobot instance;
     private Telemetry telemetry;
     public void addTelemetry(String string) {
         telemetry.addLine(string);
@@ -86,8 +86,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value);
             driveTrain.setPowerRight(power);
             driveTrain.setPowerLeft(newPowerLeft);
-            TankDrive.getTelemetry().addTelemetry("Heading", imuVal);
-            TankDrive.getTelemetry().addTelemetry("DistanceLeft", newDistance + driveTrain.getCurrentPos());
+            MasqRobot.getTelemetry().addTelemetry("Heading", imuVal);
+            MasqRobot.getTelemetry().addTelemetry("DistanceLeft", newDistance + driveTrain.getCurrentPos());
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -111,8 +111,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value);
             driveTrain.setPowerRight(power);
             driveTrain.setPowerLeft(newPowerLeft);
-            TankDrive.getTelemetry().addTelemetry("Heading", imuVal);
-            TankDrive.getTelemetry().addTelemetry("DistanceLeft", newDistance + driveTrain.getCurrentPos());
+            MasqRobot.getTelemetry().addTelemetry("Heading", imuVal);
+            MasqRobot.getTelemetry().addTelemetry("DistanceLeft", newDistance + driveTrain.getCurrentPos());
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -146,9 +146,9 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             driveTrain.setPowerRight(-newPower);
             driveTrain.setPowerLeft(newPower);
             prevError = currentError;
-            TankDrive.getTelemetry().addTelemetry("TargetAngle", targetAngle);
-            TankDrive.getTelemetry().addTelemetry("Heading", imuVAL);
-            TankDrive.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
+            MasqRobot.getTelemetry().addTelemetry("TargetAngle", targetAngle);
+            MasqRobot.getTelemetry().addTelemetry("Heading", imuVAL);
+            MasqRobot.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -178,9 +178,9 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             driveTrain.setPowerRight(-newPower);
             driveTrain.setPowerLeft(newPower);
             prevError = currentError;
-            TankDrive.getTelemetry().addTelemetry("TargetAngle", targetAngle);
-            TankDrive.getTelemetry().addTelemetry("Heading", imuVAL);
-            TankDrive.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
+            MasqRobot.getTelemetry().addTelemetry("TargetAngle", targetAngle);
+            MasqRobot.getTelemetry().addTelemetry("Heading", imuVAL);
+            MasqRobot.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
             angleLeftCover = currentError;
             telemetry.update();
         }
@@ -204,8 +204,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPowerLeft = (newPowerLeft - (errorkp));
             driveTrain.setPowerRight(-power);
             driveTrain.setPowerLeft(-newPowerLeft);
-            TankDrive.getTelemetry().addTelemetry("Heading", imuVal);
-            TankDrive.getTelemetry().addTelemetry("Ultrasonic", rangeSensor.rawUltrasonic());
+            MasqRobot.getTelemetry().addTelemetry("Heading", imuVal);
+            MasqRobot.getTelemetry().addTelemetry("Ultrasonic", rangeSensor.rawUltrasonic());
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -230,8 +230,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            TankDrive.getTelemetry().addTelemetry("Heading", heading);
-            TankDrive.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
+            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
+            MasqRobot.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -247,8 +247,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            TankDrive.getTelemetry().addTelemetry("Heading", heading);
-            TankDrive.getTelemetry().addTelemetry("Blue Val", leftColor.colorNumber());
+            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
+            MasqRobot.getTelemetry().addTelemetry("Blue Val", leftColor.colorNumber());
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -264,8 +264,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            TankDrive.getTelemetry().addTelemetry("Heading", heading);
-            TankDrive.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
+            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
+            MasqRobot.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -281,8 +281,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            TankDrive.getTelemetry().addTelemetry("Heading", heading);
-            TankDrive.getTelemetry().addTelemetry("Blue Val", leftColor.colorNumber());
+            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
+            MasqRobot.getTelemetry().addTelemetry("Blue Val", leftColor.colorNumber());
             telemetry.update();
         }
         driveTrain.StopDriving();
@@ -298,8 +298,8 @@ public class TankDrive implements PID_Constants, Sensor_Thresholds {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            TankDrive.getTelemetry().addTelemetry("Heading", heading);
-            TankDrive.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
+            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
+            MasqRobot.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
             telemetry.update();
         }
         driveTrain.StopDriving();

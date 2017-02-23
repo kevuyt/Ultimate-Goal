@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
@@ -40,9 +40,9 @@ public class MasqODS implements Sensor_Thresholds {
         return lightDetected() >= 0.3;
     }
     public void telemetryRun () {
-        TankDrive.getTelemetry().addTelemetry(nameODSSensor);
-        TankDrive.getTelemetry().addTelemetry("Light Detected", lightDetected());
-        TankDrive.getTelemetry().addTelemetry("Raw Light", rawLight());
-        TankDrive.getTelemetry().addTelemetry("Raw Light Max", rawLightMax());
+        MasqRobot.getTelemetry().addTelemetry(nameODSSensor);
+        MasqRobot.getTelemetry().addTelemetry("Light Detected", lightDetected());
+        MasqRobot.getTelemetry().addTelemetry("Raw Light", rawLight());
+        MasqRobot.getTelemetry().addTelemetry("Raw Light Max", rawLightMax());
     }
 }

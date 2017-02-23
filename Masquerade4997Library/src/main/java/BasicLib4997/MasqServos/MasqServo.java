@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.ServoController;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
@@ -41,8 +41,8 @@ public class MasqServo {
         return servo.getController();
     }
     public void telemetryRun () {
-        TankDrive.getTelemetry().addTelemetry(nameServo + "telemetry");
-        TankDrive.getTelemetry().addTelemetry("Current Position:", servo.getPosition());
+        MasqRobot.getTelemetry().addTelemetry(nameServo + "telemetry");
+        MasqRobot.getTelemetry().addTelemetry("Current Position:", servo.getPosition());
     }
 
 }

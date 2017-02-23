@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 
 public class Masqi2cRangeSensor {
@@ -36,9 +36,9 @@ public class Masqi2cRangeSensor {
         return range1Cache[1] & 0xFF;
     }
     public void telemetryRun () {
-        TankDrive.getTelemetry().addTelemetry(nameRangeSensor + " :telemetry");
-        TankDrive.getTelemetry().addTelemetry("raw ultrasonic", Ultrasonic());
-        TankDrive.getTelemetry().addTelemetry("cm optical", ODS());
+        MasqRobot.getTelemetry().addTelemetry(nameRangeSensor + " :telemetry");
+        MasqRobot.getTelemetry().addTelemetry("raw ultrasonic", Ultrasonic());
+        MasqRobot.getTelemetry().addTelemetry("cm optical", ODS());
     }
 
 }

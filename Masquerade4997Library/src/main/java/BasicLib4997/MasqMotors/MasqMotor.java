@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
 import BasicLib4997.MasqMotors.TankDrive.PID_Constants;
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
 
 /**
@@ -97,11 +97,11 @@ public class MasqMotor implements PID_Constants{
         }
     }
     public void telemetryRun (boolean showCurrentPos) {
-        TankDrive.getTelemetry().addTelemetry(nameMotor + "telemetry");
-        TankDrive.getTelemetry().addTelemetry("isStalled", isStalled());
-        TankDrive.getTelemetry().addTelemetry("isBusy", isBusy());
+        MasqRobot.getTelemetry().addTelemetry(nameMotor + "telemetry");
+        MasqRobot.getTelemetry().addTelemetry("isStalled", isStalled());
+        MasqRobot.getTelemetry().addTelemetry("isBusy", isBusy());
         if (showCurrentPos) {
-        TankDrive.getTelemetry().addTelemetry("Current Position", getCurrentPos());
+        MasqRobot.getTelemetry().addTelemetry("Current Position", getCurrentPos());
         }
     }
 }

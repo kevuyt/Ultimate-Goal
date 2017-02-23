@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import BasicLib4997.MasqMotors.TankDrive.Direction;
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Beacons + Shoot for Red8
@@ -24,7 +24,7 @@ public class RedAutoCenterVortexRight extends LinearOpMode { // change file name
     public void runOpMode() throws InterruptedException {
         boolean telemetrizeModules;
         double POWER = 0.50;
-        TankDrive chimera = new TankDrive(telemetry);
+        MasqRobot chimera = new MasqRobot(telemetry);
         while (!isStarted()) {
             chimera.setIndexer(0);
             chimera.imu.telemetryRun();

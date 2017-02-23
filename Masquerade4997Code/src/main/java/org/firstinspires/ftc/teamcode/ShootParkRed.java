@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import BasicLib4997.MasqMotors.TankDrive.Direction;
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/6/16.
@@ -26,7 +26,7 @@ public class ShootParkRed extends LinearOpMode { // change file name
         double Power_Optimal = 0.50;
         double POWER_LOW = 0.3;
         double HIGH_POWER = 0.90;
-        TankDrive chimera = new TankDrive(telemetry);
+        MasqRobot chimera = new MasqRobot(telemetry);
         while (!isStarted()) {
             chimera.setIndexer(0.8);
             telemetry.addData("hue", chimera.leftColor.hue());

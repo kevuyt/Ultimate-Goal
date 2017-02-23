@@ -2,7 +2,7 @@ package BasicLib4997.MasqServos;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 11/4/16.
@@ -25,7 +25,7 @@ public class MasqCRServo {
         servo.getPower();
     }
     public void telemetryRun () {
-        TankDrive.getTelemetry().addTelemetry(nameCr_Servo + "telemetry");
-        TankDrive.getTelemetry().addTelemetry("Current Power:", servo.getPower());
+        MasqRobot.getTelemetry().addTelemetry(nameCr_Servo + "telemetry");
+        MasqRobot.getTelemetry().addTelemetry("Current Power:", servo.getPower());
     }
 }

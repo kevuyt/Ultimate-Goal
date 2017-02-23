@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.TankDrive.TankDrive;
+import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 
 /**
@@ -127,20 +127,20 @@ public class MasqColorSensor {
 
 
     public void telemetryRun() {
-        TankDrive.getTelemetry().addTelemetry(name, colorNumber());
-        TankDrive.getTelemetry().addTelemetry("color Number", colorNumber());
-        TankDrive.getTelemetry().addTelemetry("red", red());
-        TankDrive.getTelemetry().addTelemetry("alpha", alpha());
-        TankDrive.getTelemetry().addTelemetry("blue", blue());
-        TankDrive.getTelemetry().addTelemetry("green", green());
-        TankDrive.getTelemetry().addTelemetry("hue", hue());
-        TankDrive.getTelemetry().addTelemetry("saturation", saturation());
-        TankDrive.getTelemetry().addTelemetry("detectBlue", isBlue());
-        TankDrive.getTelemetry().addTelemetry("detectWhite", detectWhite());
-        TankDrive.getTelemetry().addTelemetry("isRed", isRed());
-        TankDrive.getTelemetry().addTelemetry("colorAvg", colorAvg());
-        TankDrive.getTelemetry().addTelemetry("colorAvg2", colorAvgCN());
-        TankDrive.getTelemetry().addTelemetry("colorAvg3", colorAvgA());
+        MasqRobot.getTelemetry().addTelemetry(name, colorNumber());
+        MasqRobot.getTelemetry().addTelemetry("color Number", colorNumber());
+        MasqRobot.getTelemetry().addTelemetry("red", red());
+        MasqRobot.getTelemetry().addTelemetry("alpha", alpha());
+        MasqRobot.getTelemetry().addTelemetry("blue", blue());
+        MasqRobot.getTelemetry().addTelemetry("green", green());
+        MasqRobot.getTelemetry().addTelemetry("hue", hue());
+        MasqRobot.getTelemetry().addTelemetry("saturation", saturation());
+        MasqRobot.getTelemetry().addTelemetry("detectBlue", isBlue());
+        MasqRobot.getTelemetry().addTelemetry("detectWhite", detectWhite());
+        MasqRobot.getTelemetry().addTelemetry("isRed", isRed());
+        MasqRobot.getTelemetry().addTelemetry("colorAvg", colorAvg());
+        MasqRobot.getTelemetry().addTelemetry("colorAvg2", colorAvgCN());
+        MasqRobot.getTelemetry().addTelemetry("colorAvg3", colorAvgA());
     }
 
 
