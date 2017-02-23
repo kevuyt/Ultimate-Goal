@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import BasicLib4997.DashBoard;
 import BasicLib4997.MasqMotors.MasqMotor;
 import BasicLib4997.MasqMotors.MasqMotorSystem;
 import BasicLib4997.MasqSensors.AdafruitIMU;
@@ -22,7 +23,7 @@ import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
  */
 
 public class MasqRobot implements PID_Constants, Sensor_Thresholds {
-
+    DashBoard dash;
     public MasqRobot(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
