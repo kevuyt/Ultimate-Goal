@@ -73,7 +73,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds {
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
-    public void drivePID(double power, int distance, Direction DIRECTION, int sleepTime, double targetAngle) {
+    public void drive(double power, int distance, Direction DIRECTION, int sleepTime, double targetAngle) {
         double angle = targetAngle;
         int newDistance = convert(distance);
         driveTrain.resetEncoders();
@@ -95,10 +95,10 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds {
         driveTrain.runUsingEncoder();
         sleep(sleepTime);
     }
-    public void drivePID(double power, int distance, double targetAngle, Direction DIRECTION) {
-        drivePID(power, distance, DIRECTION, DEFAULT_SLEEP_TIME, targetAngle);
+    public void drive(double power, int distance, double targetAngle, Direction DIRECTION) {
+        drive(power, distance, DIRECTION, DEFAULT_SLEEP_TIME, targetAngle);
     }
-    public void drivePID(double power, int distance, Direction DIRECTION, int sleepTime) {
+    public void drive(double power, int distance, Direction DIRECTION, int sleepTime) {
         double targetAngle = imu.getHeading();
         int newDistance = convert(distance);
         driveTrain.resetEncoders();
@@ -120,10 +120,10 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds {
         driveTrain.runUsingEncoder();
         sleep(sleepTime);
     }
-    public void drivePID(double power, int distance, Direction DIRECTION) {
-        drivePID(power, distance, DIRECTION, DEFAULT_SLEEP_TIME);
+    public void drive(double power, int distance, Direction DIRECTION) {
+        drive(power, distance, DIRECTION, DEFAULT_SLEEP_TIME);
     }
-    public void turnPID(double power, int angle, Direction DIRECTION, double timeout, double ki) {
+    public void turn(double power, int angle, Direction DIRECTION, double timeout, double ki) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
         double currentError = 1;
@@ -155,7 +155,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds {
         driveTrain.StopDriving();
         sleep(1000);
     }
-    public void turnPID(double power, int angle, Direction DIRECTION, double timeOut,  int sleepTime) {
+    public void turn(double power, int angle, Direction DIRECTION, double timeOut, int sleepTime) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
         double currentError = 1;
@@ -188,11 +188,11 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds {
         driveTrain.StopDriving();
         sleep(sleepTime);
     }
-    public void turnPID(double power, int angle, Direction DIRECTION, double timeout)  {
-        turnPID(power, angle, DIRECTION, timeout, DEFAULT_SLEEP_TIME);
+    public void turn(double power, int angle, Direction DIRECTION, double timeout)  {
+        turn(power, angle, DIRECTION, timeout, DEFAULT_SLEEP_TIME);
     }
-    public void turnPID(double power, int angle, Direction DIRECTION)  {
-        turnPID(power, angle, DIRECTION, DEFAULT_TIMEOUT);
+    public void turn(double power, int angle, Direction DIRECTION)  {
+        turn(power, angle, DIRECTION, DEFAULT_TIMEOUT);
     }
     public void drivePIDRange(double power, int distance, int sleepTime) {
         double targetAngle = imu.getHeading();

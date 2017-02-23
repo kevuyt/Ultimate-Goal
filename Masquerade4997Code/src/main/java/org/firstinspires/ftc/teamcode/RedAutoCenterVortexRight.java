@@ -43,7 +43,7 @@ public class RedAutoCenterVortexRight extends LinearOpMode { // change file name
         double power = -0.45;
         chimera.setPowerShooter(power);
         double parallelAngle = chimera.imu.getHeading();
-        chimera.drivePID(POWER, 15, Direction.FORWARD);
+        chimera.drive(POWER, 15, Direction.FORWARD);
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
         double i  = 0.001;
@@ -73,39 +73,39 @@ public class RedAutoCenterVortexRight extends LinearOpMode { // change file name
         chimera.setPowerShooter(0);
         chimera.setPowerCollector(0);
         //turn away from the center vortex 48 degrees - our disruption
-        chimera.turnPID(POWER, (int) (49 - disruption), Direction.RIGHT, 3);
+        chimera.turn(POWER, (int) (49 - disruption), Direction.RIGHT, 3);
         if (chimera.angleLeftCover >= 0.5 && chimera.angleLeftCover <= 2) {
             isNeccesary = false;
         }
         // drive parallel to the ramp
-        chimera.drivePID(0.5, 298, Direction.FORWARD);
+        chimera.drive(0.5, 298, Direction.FORWARD);
         // turn parallel to the Beacon
         double changeTurn = chimera.imu.getHeading();
         double turn = changeTurn + parallelAngle;
-        chimera.turnPID(POWER, (int) turn, Direction.RIGHT, 5);
+        chimera.turn(POWER, (int) turn, Direction.RIGHT, 5);
         // Stop at first Beacon
         chimera.stopWhite(0.2, Direction.BACKWARD);
         chimera.stopRedRight(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
-        chimera.drivePID(POWER, 33, Direction.BACKWARD);
+        chimera.drive(POWER, 33, Direction.BACKWARD);
         // move the beacon presser
         chimera.setLeftPresser(-1);
         chimera.sleep(1000);
         chimera.setLeftPresser(1);
         double turn2 = parallelAngle + chimera.imu.getHeading();
-        chimera.turnPID(POWER, (int) turn2, Direction.RIGHT, 2, 0.3);
+        chimera.turn(POWER, (int) turn2, Direction.RIGHT, 2, 0.3);
         if (isNeccesary) {
-            chimera.turnPID(POWER, 3, Direction.RIGHT, 1, 0.3);
+            chimera.turn(POWER, 3, Direction.RIGHT, 1, 0.3);
         }
         // drive to the next beacon
         double turn3 = parallelAngle + chimera.imu.getHeading();
-        chimera.drivePID(0.5, 150, Direction.FORWARD, 500);
-        chimera.turnPID(POWER, (int) turn3, Direction.RIGHT, 2, 0.1);
+        chimera.drive(0.5, 150, Direction.FORWARD, 500);
+        chimera.turn(POWER, (int) turn3, Direction.RIGHT, 2, 0.1);
         chimera.setLeftPresser(0);
         chimera.stopWhite(0.3, Direction.BACKWARD);
         chimera.stopRedRight(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
-        chimera.drivePID(POWER, 25, Direction.BACKWARD);
+        chimera.drive(POWER, 25, Direction.BACKWARD);
         // move the beacon presser
         chimera.setLeftPresser(-1);
         chimera.sleep(1000);

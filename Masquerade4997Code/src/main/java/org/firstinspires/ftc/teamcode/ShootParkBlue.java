@@ -35,7 +35,7 @@ public class ShootParkBlue extends LinearOpMode { // change file name
             idle();
         }
         waitForStart();
-        chimera.drivePID(Power_Optimal, 15, Direction.BACKWARD);
+        chimera.drive(Power_Optimal, 15, Direction.BACKWARD);
         chimera.setPowerShooter(-0.8);
         chimera.sleep(3000);
         chimera.setPowerCollector(-1);
@@ -50,10 +50,10 @@ public class ShootParkBlue extends LinearOpMode { // change file name
         chimera.setPowerShooter(-0.3);
         chimera.setPowerShooter(0);
         chimera.setPowerCollector(0);
-        chimera.drivePID(Power_Optimal, 130, Direction.BACKWARD);
+        chimera.drive(Power_Optimal, 130, Direction.BACKWARD);
         chimera.setPowerCollector(1);
-        chimera.turnPID(Power_Optimal, 45, Direction.LEFT);
-        chimera.drivePID(Power_Optimal, 200, Direction.FORWARD);
+        chimera.turn(Power_Optimal, 45, Direction.LEFT);
+        chimera.drive(Power_Optimal, 200, Direction.FORWARD);
         chimera.setBrakeMode(10000);
 
     }

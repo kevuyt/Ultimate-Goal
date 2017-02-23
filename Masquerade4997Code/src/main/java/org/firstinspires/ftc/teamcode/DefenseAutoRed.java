@@ -31,7 +31,7 @@ public class DefenseAutoRed extends LinearOpMode { // change file name
         waitForStart();
         chimera.setPowerCollector(-1);
         chimera.setPowerShooter(newShooterPower(-0.65));
-        chimera.drivePID(POWER, 10, Direction.FORWARD);
+        chimera.drive(POWER, 10, Direction.FORWARD);
         // find how arr of we are from our orignial position
         chimera.sleep(1000);
         chimera.setIndexer(0.6);
@@ -44,9 +44,9 @@ public class DefenseAutoRed extends LinearOpMode { // change file name
         chimera.setPowerShooter(-0.3);
         chimera.setPowerShooter(0);
         chimera.sleep(1000);
-        chimera.drivePID(0.6, 300, Direction.FORWARD);
-        chimera.turnPID(POWER, 45, Direction.RIGHT, 3);
-        chimera.drivePID(1, 500, Direction.FORWARD);
+        chimera.drive(0.6, 300, Direction.FORWARD);
+        chimera.turn(POWER, 45, Direction.RIGHT, 3);
+        chimera.drive(1, 500, Direction.FORWARD);
     }
     private double getBatteryVoltage() {
         double result = Double.POSITIVE_INFINITY;
