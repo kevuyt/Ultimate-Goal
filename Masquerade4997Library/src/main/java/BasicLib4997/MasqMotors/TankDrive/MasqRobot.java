@@ -317,8 +317,8 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds {
         collector.setPower(powerCollector);
     }
     public void setPowerShooter(double powerShooter){
-      shooter2.runWithoutEncoders();
-      shooter.runWithoutEncoders();
+      shooter2.runUsingEncoder();
+      shooter.runUsingEncoder();
       shooter2.setPower(powerShooter);
       shooter.setPower(powerShooter);
     }
