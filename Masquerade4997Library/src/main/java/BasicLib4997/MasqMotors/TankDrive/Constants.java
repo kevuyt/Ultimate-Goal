@@ -2,7 +2,7 @@ package BasicLib4997.MasqMotors.TankDrive;
 /**
  * These are the constants used in PID
  */
-public interface PID_Constants {
+public interface Constants {
     double
             KP_TURN = 0.004,
             KI_TURN = 0.06,
@@ -12,6 +12,7 @@ public interface PID_Constants {
             KP_STRAIGHT = 0.02,
             KI_STRAIGHT = 0,
             KD_STRAIGHT = 0;
+    double shooterPowerAuto = -0.5;
     double tickForAndymark = 1120;
     double wheelDiameter = 4;
     double cmToInches = 2.54;

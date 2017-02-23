@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
+import BasicLib4997.MasqMotors.TankDrive.Constants;
 import BasicLib4997.MasqMotors.TankDrive.Direction;
 import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
@@ -13,7 +14,7 @@ import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 @Autonomous(name = "BlueAutoCenterVortexRight", group = "G1") // change name
 
-public class BlueAutoCenterVortexRight extends LinearOpMode { // change file name
+public class BlueAutoCenterVortexRight extends LinearOpMode implements Constants  { // change file name
     public void main() throws InterruptedException {
 
     }
@@ -40,7 +41,7 @@ public class BlueAutoCenterVortexRight extends LinearOpMode { // change file nam
         boolean isNeccesary = true;
         //SetPower to the shooter and drive foreword in order to make a shot
         chimera.setPowerCollector(-1);
-        double power = -0.45;
+        double power = shooterPowerAuto;
         chimera.setPowerShooter(power);
         double parallelAngle = chimera.imu.getHeading();
         chimera.drive(POWER, 15, Direction.FORWARD);

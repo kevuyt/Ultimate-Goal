@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import BasicLib4997.MasqMotors.TankDrive.Constants;
 import BasicLib4997.MasqMotors.TankDrive.Direction;
 import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
@@ -12,13 +13,13 @@ import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 @Autonomous(name = "BlueAutoCenterVortexLeft", group = "G1") // change name
 
-public class BlueAutoCenterVortexLeft extends LinearOpMode { // change file name
+public class BlueAutoCenterVortexLeft extends LinearOpMode implements Constants{ // change file name
     public void main() throws InterruptedException {
 
     }
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() throws InterruptedException  {
         double POWER = 0.50;
         MasqRobot chimera = new MasqRobot(telemetry);
         while (!isStarted()) {
@@ -37,7 +38,7 @@ public class BlueAutoCenterVortexLeft extends LinearOpMode { // change file name
         boolean isNeccesary = true;
         //SetPower to the shooter and drive foreword in order to make a shot
         chimera.setPowerCollector(-1);
-        double power = -0.45;
+        double power = shooterPowerAuto;
         chimera.setPowerShooter(power);
         double parallelAngle = chimera.imu.getHeading();
         chimera.drive(POWER, 15, Direction.FORWARD);
