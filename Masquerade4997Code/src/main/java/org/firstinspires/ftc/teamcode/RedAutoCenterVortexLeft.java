@@ -43,26 +43,10 @@ public class RedAutoCenterVortexLeft extends LinearOpMode { // change file name
         chimera.drive(POWER, 15, Direction.FORWARD);
         // find how arr of we are from our orignial position
         double disruption = chimera.imu.getHeading();
-        double i  = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -525)) {
-            chimera.setIndexer(0);
-            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
-            chimera.setPowerShooter(power - i);
-            i += 0.001;
-            telemetry.update();
-        }
         chimera.setIndexer(0.6);
         chimera.sleep(500);
         chimera.setIndexer(0);
         chimera.sleep(2000);
-        i = 0.001;
-        while ((((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > - 500 && ((chimera.shooter.getRate() + chimera.shooter2.getRate())/2) > -525)) {
-            chimera.setIndexer(0);
-            telemetry.addData("RATE", (chimera.shooter.getRate() + chimera.shooter2.getRate())/2);
-            chimera.setPowerShooter(power - i);
-            i += 0.001;
-            telemetry.update();
-        }
         chimera.setIndexer(0.6);
         chimera.sleep(700);
         chimera.setPowerShooter(-0.5);
