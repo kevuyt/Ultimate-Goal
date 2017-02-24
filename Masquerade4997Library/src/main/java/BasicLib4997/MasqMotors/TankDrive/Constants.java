@@ -6,8 +6,8 @@ public interface Constants {
     double
             KP_TURN = 0.004,
             KI_TURN = 0.06,
-            KD_TURN = 0.000008,
-            ID = 1;
+            KD_TURN = 4,//            KD_TURN = 0.000008,//
+    ID = 1;
     double
             KP_STRAIGHT = 0.02,
             KI_STRAIGHT = 0,

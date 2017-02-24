@@ -22,7 +22,7 @@ import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
  * Created by Archish on 10/28/16.
  */
 
-public class MasqRobot implements PID_Constants, Sensor_Thresholds {
+public class MasqRobot implements Constants, Sensor_Thresholds {
     DashBoard dash;
     public MasqRobot(Telemetry telemetry){
         this.telemetry  = telemetry;

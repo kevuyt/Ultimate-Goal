@@ -8,7 +8,7 @@ import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 /**
  * TeleOp NFS
  */
-@Autonomous(name="Test", group="Final")// change name
+@Autonomous(name="TestMeme", group="Final")// change name
 
 public class Test extends LinearOpMode { // change file name
     public void main() throws InterruptedException {

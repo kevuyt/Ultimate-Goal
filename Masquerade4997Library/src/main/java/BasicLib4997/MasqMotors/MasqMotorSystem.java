@@ -3,13 +3,13 @@ package BasicLib4997.MasqMotors;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
-import BasicLib4997.MasqMotors.TankDrive.PID_Constants;
+import BasicLib4997.MasqMotors.TankDrive.Constants;
 import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqMotorSystem implements PID_Constants {
+public class MasqMotorSystem implements Constants {
     private MasqMotor motor1 = null;
     private MasqMotor motor2 = null;
     private MasqMotor motor3 = null;
