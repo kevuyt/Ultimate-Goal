@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Thu Feb 23 15:31:59 EST 2017
+#Fri Feb 24 21:40:20 EST 2017
 175.set=ASSET
-122.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/pushbotsens.xml
+122.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/analog_output_device.xml
 60.set=ASSET
 129.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/disconnect.ogg
 52.set=ASSET
@@ -23,7 +23,7 @@
 100.set=ASSET
 106.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 162.set=ASSET
-143.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_inspection.xml
+143.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/darker_gray_line.xml
 153.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 52.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/quote1.png
 62.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
@@ -47,7 +47,7 @@
 35.set=ASSET
 152.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/blocks_compressed.js
 27.set=ANDROID_RESOURCE
-159.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable/icon_robotcontroller.png
+159.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/preferences.xml
 68.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcServo.png
 19.set=ANDROID_RESOURCE
 36.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
@@ -80,7 +80,7 @@
 173.set=ASSET
 89.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcDigitalChannel.png
 99.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
-121.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/analog_output_device.xml
+121.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/pushbotsens.xml
 50.set=ASSET
 128.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_blocks.xml
 42.set=ASSET
@@ -129,7 +129,7 @@
 151.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/disconnect.mp3
 17.set=ASSET
 95.set=ASSET
-158.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/preferences.xml
+158.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable/icon_robotcontroller.png
 35.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 67.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo_controller_banner.xml
 87.set=ASSET
@@ -156,7 +156,7 @@
 119.set=ASSET
 44.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 171.set=ASSET
-81.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/raw/warningmessage.wav
+81.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable-hdpi-v4/button_shape.xml
 91.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 7.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 88.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcOpMode.png
@@ -235,7 +235,7 @@
 109.set=ASSET
 43.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 181.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
-80.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable-hdpi-v4/button_shape.xml
+80.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/raw/warningmessage.wav
 90.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 6.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 87.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/sprites.svg
@@ -361,7 +361,7 @@ count=182
 101.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/toolbox/elapsed_time.xml
 81.set=ANDROID_RESOURCE
 73.set=ANDROID_RESOURCE
-108.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/header.xml
+108.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/digital_device.xml
 17.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/msg/js/en.js
 65.set=ASSET
 155.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable/black_border.xml
@@ -440,7 +440,7 @@ count=182
 100.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/StonesAndChips.xml
 71.set=ANDROID_RESOURCE
 63.set=ANDROID_RESOURCE
-107.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/digital_device.xml
+107.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/header.xml
 55.set=ANDROID_RESOURCE
 154.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable-xhdpi-v4/icon_menu.png
 31.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
@@ -496,7 +496,7 @@ count=182
 100.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 102.set=ASSET
 107.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
-144.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/darker_gray_line.xml
+144.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_inspection.xml
 154.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 53.file=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo.xml
 63.base=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_

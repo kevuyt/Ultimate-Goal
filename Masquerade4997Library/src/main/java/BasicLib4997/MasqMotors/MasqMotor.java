@@ -69,7 +69,7 @@ public class MasqMotor implements Constants{
     public void setbrakeMode () {
         setPower(0.001);
     }
-    double getCurrentPos () {
+    public double getCurrentPos () {
         double currentPos;
         currentPos = motor.getCurrentPosition();
         return currentPos;
