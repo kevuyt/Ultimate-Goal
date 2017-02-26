@@ -22,6 +22,7 @@ public class AdafruitIMU implements MasqHardware{
         setParameters();
     }
     private void setParameters() {
+        //heh
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.mode = BNO055IMU.SensorMode.IMU;
         parameters.useExternalCrystal = true;
