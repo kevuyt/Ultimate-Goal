@@ -5,13 +5,15 @@ import com.qualcomm.robotcore.hardware.DigitalChannelController;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
+import BasicLib4997.MasqHardware;
+
 
 /**
  * This is a basic limit switch.
  * Assumes that a pull-up resistor is used, like is necessary to use VEX limit switches.
  */
 
-public class MasqLimitSwitch {
+public class MasqLimitSwitch implements MasqHardware {
 
     private final DigitalChannel limitSwitch;
     private final String name;
@@ -47,6 +49,6 @@ public class MasqLimitSwitch {
 
 
     public String getName() {return name;}
-    public String telemetrize() {return Boolean.toString(getState());}
+    public String getDash() {return Boolean.toString(getState());}
 
 }

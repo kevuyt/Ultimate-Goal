@@ -9,6 +9,9 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
+import java.util.Locale;
+
+import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 
@@ -18,7 +21,7 @@ import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
  * Can detect red, white, and blue, and thresholds for those can be set.
  */
 
-public class MasqColorSensor {
+public class MasqColorSensor implements MasqHardware {
 
     private final I2cDevice colorSensor;
     private final I2cDeviceSynch colorSensorManager;
@@ -144,4 +147,12 @@ public class MasqColorSensor {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDash() {
+        return String.format(Locale.US, "Color #: %d   ARGB:[%d,%d,%d,%d]  HSV:[%.3f,%.3f,%.3f]",
+                colorNumber(), alpha(), red(), green(), blue(), hue(), saturation(), value());
+    }
 }

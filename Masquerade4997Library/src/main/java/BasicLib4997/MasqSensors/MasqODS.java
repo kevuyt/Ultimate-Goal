@@ -4,13 +4,14 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
+import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
  */
 
-public class MasqODS implements Sensor_Thresholds {
+public class MasqODS implements Sensor_Thresholds, MasqHardware {
     private OpticalDistanceSensor ods;
     private String nameODSSensor;
 
@@ -44,5 +45,11 @@ public class MasqODS implements Sensor_Thresholds {
         MasqRobot.getTelemetry().addTelemetry("Light Detected", lightDetected());
         MasqRobot.getTelemetry().addTelemetry("Raw Light", rawLight());
         MasqRobot.getTelemetry().addTelemetry("Raw Light Max", rawLightMax());
+    }
+    public String getName() {
+        return nameODSSensor;
+    }
+    public String getDash() {
+        return "Light Detected" + Double.toString(lightDetected());
     }
 }

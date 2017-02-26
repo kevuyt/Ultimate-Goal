@@ -6,13 +6,16 @@ import com.qualcomm.robotcore.hardware.I2cAddr;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
+import java.util.Locale;
+
+import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
  */
 
-public class MasqMRColorSensor implements Sensor_Thresholds {
+public class MasqMRColorSensor implements Sensor_Thresholds, MasqHardware {
     private com.qualcomm.robotcore.hardware.ColorSensor colorSensor;
     private String nameColorSensor;
 
@@ -105,4 +108,12 @@ public class MasqMRColorSensor implements Sensor_Thresholds {
         MasqRobot.getTelemetry().addTelemetry("Hue", hsvValues[0]);
     }
 
+    public String getName() {
+        return nameColorSensor;
+    }
+
+    public String getDash() {
+        return String.format(Locale.US, "Color #: %d   ARGB:[%d,%d,%d,%d]  HSV:[%.3f,%.3f,%.3f]",
+                alpha(), red(), green(), blue(), hue());
+    }
 }

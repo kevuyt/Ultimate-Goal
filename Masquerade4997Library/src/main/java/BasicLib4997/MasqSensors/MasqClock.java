@@ -2,8 +2,10 @@ package BasicLib4997.MasqSensors;
 
 import java.util.Locale;
 
+import BasicLib4997.MasqHardware;
 
-public class MasqClock {
+
+public class MasqClock implements MasqHardware {
 
     private long startTime;
 
@@ -63,7 +65,7 @@ public class MasqClock {
     public MasqClock setName (String n) {name = n; return this;}
     public String getName() {return name;}
 
-    public String telemetryRun() {
+    public String getDash() {
         return String.format(Locale.US, "%.5f  %s", seconds(), isPaused() ? "PAUSED" : "");
     }
 

@@ -5,13 +5,14 @@ import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
+import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
  */
 
-public class MasqRangeSensor {
+public class MasqRangeSensor implements MasqHardware{
     ModernRoboticsI2cRangeSensor rangeSensor;
     String nameRangeSensor;
     public MasqRangeSensor(String name){
@@ -42,4 +43,11 @@ public class MasqRangeSensor {
         MasqRobot.getTelemetry().addTelemetry("cm", rangeSensor.getDistance(DistanceUnit.CM));
     }
 
+    public String getName() {
+        return nameRangeSensor;
+    }
+
+    public String getDash() {
+        return "Raw UltraSonic" + Double.toString(rawUltrasonic());
+    }
 }

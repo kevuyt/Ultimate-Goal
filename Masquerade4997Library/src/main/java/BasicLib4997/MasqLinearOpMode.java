@@ -10,11 +10,11 @@ import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 
 public abstract class MasqLinearOpMode extends LinearOpMode {
 
-    protected DashBoard dashBoard;
+    protected DashBoard dash;
     public MasqRobot robot;
     public final void runOpMode() throws InterruptedException {
         try {
-            dashBoard = new DashBoard(super.telemetry);
+            dash = new DashBoard(super.telemetry);
             runLinearOpMode();
         } finally {
             stopLinearOpMode();

@@ -123,13 +123,13 @@ public class MasqRobot implements Constants, Sensor_Thresholds {
     public void drive(double power, int distance, Direction DIRECTION) {
         drive(power, distance, DIRECTION, DEFAULT_SLEEP_TIME);
     }
-    public void turn(double power, int angle, Direction DIRECTION, double timeout, double ki) {
+    public void turn(int angle, Direction DIRECTION, double timeout, double ki) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
         double currentError = 1;
         double prevError = 0;
         double integral = 0;
-        double newPower = power;
+        double newPower = 0;
         double previousTime = 0;
         MasqClock clock = new MasqClock("clock");
         while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
@@ -155,13 +155,13 @@ public class MasqRobot implements Constants, Sensor_Thresholds {
         driveTrain.StopDriving();
         sleep(1000);
     }
-    public void turn(double power, int angle, Direction DIRECTION, double timeOut, int sleepTime) {
+    public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
         double currentError = 1;
         double prevError = 0;
         double integral = 0;
-        double newPower = power;
+        double newPower = 0;
         double previousTime = 0;
         MasqClock clock = new MasqClock("clock");
         while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
@@ -188,11 +188,11 @@ public class MasqRobot implements Constants, Sensor_Thresholds {
         driveTrain.StopDriving();
         sleep(sleepTime);
     }
-    public void turn(double power, int angle, Direction DIRECTION, double timeout)  {
-        turn(power, angle, DIRECTION, timeout, DEFAULT_SLEEP_TIME);
+    public void turn( int angle, Direction DIRECTION, double timeout)  {
+        turn(angle, DIRECTION, timeout, DEFAULT_SLEEP_TIME);
     }
-    public void turn(double power, int angle, Direction DIRECTION)  {
-        turn(power, angle, DIRECTION, DEFAULT_TIMEOUT);
+    public void turn(int angle, Direction DIRECTION)  {
+        turn(angle, DIRECTION, DEFAULT_TIMEOUT);
     }
     public void drivePIDRange(double power, int distance, int sleepTime) {
         double targetAngle = imu.getHeading();
