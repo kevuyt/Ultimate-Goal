@@ -24,7 +24,7 @@ public class BlueAutoCenterVortexRight extends LinearOpMode implements Constants
     @Override
     public void runOpMode() throws InterruptedException {
         boolean telemetrizeModules;
-        double POWER = 0.50;
+        double POWER = 0.30;
         MasqRobot chimera = new MasqRobot(telemetry);
         while (!isStarted()) {
             chimera.setIndexer(0);
@@ -69,7 +69,7 @@ public class BlueAutoCenterVortexRight extends LinearOpMode implements Constants
         double turn = changeTurn + parallelAngle;
         chimera.turn(POWER, (int) turn, Direction.RIGHT, 5);
         // Stop at first Beacon
-        chimera.stopWhite(0.2, Direction.BACKWARD);
+        //chimera.stopWhite(0.2, Direction.BACKWARD);
         chimera.stopBlueRight(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
         chimera.drive(POWER, 33, Direction.BACKWARD);
@@ -79,18 +79,15 @@ public class BlueAutoCenterVortexRight extends LinearOpMode implements Constants
         chimera.setLeftPresser(1);
         double turn2 = parallelAngle + chimera.imu.getHeading();
         chimera.turn(POWER, (int) turn2, Direction.RIGHT, 2, 0.3);
-        if (isNeccesary) {
-            chimera.turn(POWER, 3, Direction.RIGHT, 1, 0.3);
-        }
         // drive to the next beacon
         double turn3 = parallelAngle + chimera.imu.getHeading();
         chimera.drive(0.5, 150, Direction.FORWARD, 500);
         chimera.turn(POWER, (int) turn3, Direction.RIGHT, 2, 0.1);
         chimera.setLeftPresser(0);
-        chimera.stopWhite(0.3, Direction.BACKWARD);
+        //chimera.stopWhite(0.3, Direction.BACKWARD);
         chimera.stopBlueRight(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
-        chimera.drive(POWER, 25, Direction.BACKWARD);
+        chimera.drive(POWER, 15, Direction.BACKWARD);
         // move the beacon presser
         chimera.setLeftPresser(-1);
         chimera.sleep(1000);

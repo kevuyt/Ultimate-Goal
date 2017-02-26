@@ -11,8 +11,8 @@ import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
  * Created by Archish on 10/6/16.
  */
 
-@Autonomous(name = "DEFENSE_AUTO_RED", group = "Test") // change name
-public class DefenseAutoRed extends LinearOpMode { // change file name
+@Autonomous(name = "DEFENSE_AUTO_BLUE", group = "Test") // change name
+public class DefenseAutoBlue extends LinearOpMode { // change file name
     public void main() throws InterruptedException {
 
     }
@@ -32,7 +32,6 @@ public class DefenseAutoRed extends LinearOpMode { // change file name
         chimera.setPowerCollector(-1);
         chimera.setPowerShooter(newShooterPower(-0.65));
         chimera.drive(POWER, 10, Direction.FORWARD);
-        // find how arr of we are from our orignial position
         chimera.sleep(1000);
         chimera.setIndexer(0.6);
         chimera.sleep(400);

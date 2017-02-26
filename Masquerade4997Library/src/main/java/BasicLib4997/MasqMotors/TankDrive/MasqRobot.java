@@ -57,7 +57,7 @@ public class MasqRobot implements Constants, Sensor_Thresholds {
     private MasqCRServo rightPresser = new MasqCRServo("rightPresser");
     private MasqCRServo leftPresser = new MasqCRServo("leftPresser");
     private MasqMotor collector = new MasqMotor("collector");
-    private MasqServo indexer = new MasqServo("indexer");
+    public MasqServo indexer = new MasqServo("indexer");
     //IMU
     public AdafruitIMU imu = new AdafruitIMU("imu");
     public MasqODS ods = new MasqODS("ods");

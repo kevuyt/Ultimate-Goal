@@ -60,13 +60,13 @@ public class RedAutoCenterVortexLeft extends LinearOpMode implements Constants {
             isNeccesary = false;
         }
         // drive parallel to the ramp
-        chimera.drive(0.5, 298, Direction.FORWARD);
+        chimera.drive(0.5, 290, Direction.FORWARD);
         // turn parallel to the Beacon
         double changeTurn = chimera.imu.getHeading();
         double turn = changeTurn - parallelAngle;
         chimera.turn(POWER, (int) turn, Direction.RIGHT, 5);
         // Stop at first Beacon
-        chimera.stopWhite(0.2, Direction.BACKWARD);
+        //chimera.stopWhite(0.2, Direction.BACKWARD);
         chimera.stopRed(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
         chimera.drive(POWER, 33, Direction.BACKWARD);
@@ -84,7 +84,7 @@ public class RedAutoCenterVortexLeft extends LinearOpMode implements Constants {
         chimera.drive(0.5, 150, Direction.FORWARD, 500);
         chimera.turn(POWER, (int) turn3, Direction.LEFT, 2, 0.1);
         chimera.setRightPresser(0);
-        chimera.stopWhite(0.3, Direction.BACKWARD);
+        //chimera.stopWhite(0.3, Direction.BACKWARD);
         chimera.stopRed(0.2, Direction.BACKWARD);
         // drive in position to hit the beacon
         chimera.drive(POWER, 25, Direction.BACKWARD);

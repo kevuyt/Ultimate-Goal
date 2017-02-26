@@ -9,9 +9,9 @@ import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
 /**
  * TeleOp NFS
  */
-@TeleOp(name="TeleOpNFSBB", group="Final")// change name
+@TeleOp(name="meme", group="Final")// change name
 
-public class TeleopBangBang extends LinearOpMode { // change file name
+public class memeTeleop extends LinearOpMode { // change file name
     public void main() throws InterruptedException {
 
     }
@@ -30,6 +30,7 @@ public class TeleopBangBang extends LinearOpMode { // change file name
     private double fVelocity = 0.0;
     double error = 0;
     double motorOut = 0;
+    double shooterSpeed = 0.8;
 
     int fEncoder = 0;
     int fLastEncoder = 0;
@@ -87,16 +88,10 @@ public class TeleopBangBang extends LinearOpMode { // change file name
             }
 
             if (gamepad2.right_bumper) {
-                voltage = batteryVoltage();
-                error = TARGET_VOLTAGE - voltage;
-                motorOut = (error * kP) + .72;
-                if (motorOut > 1){
-                    motorOut = 1;
+                if(System.nanoTime() - fLastVelocityTime > 300000){
+                    bangBang();
                 }
-                else if (motorOut < 0) {
-                    motorOut = 0;
-                }
-                chimera.setPowerShooter(-motorOut);
+                chimera.setPowerShooter(shooterSpeed);
             }
             else if (gamepad2.left_bumper) {
                 chimera.shooter.setPower(-1);
@@ -145,7 +140,7 @@ public class TeleopBangBang extends LinearOpMode { // change file name
         }
 
     }
-     double getBatteryVoltage() {
+    double getBatteryVoltage() {
         double result = Double.POSITIVE_INFINITY;
         for (VoltageSensor sensor : hardwareMap.voltageSensor) {
             double voltage = sensor.getVoltage();
@@ -167,12 +162,12 @@ public class TeleopBangBang extends LinearOpMode { // change file name
 
         if(fVelocity >= (fTarget + tolerance))
         {
-            setFPower(0.8);
+            shooterSpeed = 0.5;
         }
 
         else if(fVelocity < (fTarget - tolerance))
         {
-            setFPower(0.8);
+            shooterSpeed = 1;
         }
 
         fLastEncoder = fEncoder;

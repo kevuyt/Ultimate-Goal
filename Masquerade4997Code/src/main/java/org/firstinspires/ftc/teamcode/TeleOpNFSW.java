@@ -28,7 +28,7 @@ public class TeleOpNFSW extends LinearOpMode { // change file name
         double power = 0;
         double revUpFactor = 0.1;
         double revDownFactor = 0.01;
-        double targetPower = -0.6;
+        double targetPower = -0.52;
         double lowPowerFactor = 0;
         while (opModeIsActive()) {
             float move = -gamepad1.left_stick_y;
