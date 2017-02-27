@@ -15,6 +15,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     public final void runOpMode() throws InterruptedException {
         try {
             dash = new DashBoard(super.telemetry);
+            dash.setNewFirst();
             runLinearOpMode();
         } finally {
             stopLinearOpMode();
