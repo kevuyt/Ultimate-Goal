@@ -5,7 +5,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import java.util.Locale;
+
 import BasicLib4997.DashBoard;
+import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqMotor;
 import BasicLib4997.MasqMotors.MasqTankDrive;
 import BasicLib4997.MasqSensors.AdafruitIMU;
@@ -22,7 +25,7 @@ import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
  * Created by Archish on 10/28/16.
  */
 
-public class MasqRobot implements Constants, Sensor_Thresholds {
+public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     DashBoard dash;
     public MasqRobot(Telemetry telemetry){
         this.telemetry  = telemetry;
@@ -364,6 +367,11 @@ public class MasqRobot implements Constants, Sensor_Thresholds {
     }
 
 
+    public String getName() {
+        return "Robot";
+    }
 
-
+    public String getDash() {
+        return String.format(Locale.US, colorRejection.getDash(), imu.getDash(), leftColor.getDash(), rightColor.getDash(), shooter.getDash(), collector.getDash());
+    }
 }

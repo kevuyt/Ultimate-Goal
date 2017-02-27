@@ -26,15 +26,15 @@ public class DashBoard {
         telemetry.addData(hardware.getName(), hardware.getDash());
     }
 
-    public void createSticky(String string){
+    public void createLog(String string){
         telemetry.log().add(string);
         update();
     }
-    public void createSticky(String string, Object data){
+    public void createLog(String string, Object data){
         telemetry.log().add(string, data);
         update();
     }
-    public void createSticky(MasqHardware hardware) {
+    public void createLog(MasqHardware hardware) {
         telemetry.log().add(hardware.getName(), hardware.getDash());
         update();
     }

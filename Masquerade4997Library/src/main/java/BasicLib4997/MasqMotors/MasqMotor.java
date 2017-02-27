@@ -5,6 +5,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
+import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqRobot.Constants;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
@@ -12,7 +13,7 @@ import BasicLib4997.MasqSensors.MasqClock;
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class MasqMotor implements Constants{
+public class MasqMotor implements Constants, MasqHardware{
     private DcMotor motor;
     private String nameMotor;
     private MasqClock clock = new MasqClock();
@@ -103,6 +104,14 @@ public class MasqMotor implements Constants{
         if (showCurrentPos) {
         MasqRobot.getTelemetry().addTelemetry("Current Position", getCurrentPos());
         }
+    }
+
+    public String getName() {
+        return nameMotor;
+    }
+
+    public String getDash() {
+        return "Current Position" + Double.toString(getCurrentPos());
     }
 }
 
