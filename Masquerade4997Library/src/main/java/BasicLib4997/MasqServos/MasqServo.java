@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.ServoController;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
+import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.

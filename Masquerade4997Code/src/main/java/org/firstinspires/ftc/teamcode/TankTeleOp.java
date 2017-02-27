@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
+import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
  * Created by Archish on 11/5/16.

@@ -3,18 +3,15 @@ package BasicLib4997.MasqMotors;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
-import BasicLib4997.MasqMotors.TankDrive.Constants;
-import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
+import BasicLib4997.MasqMotors.MasqRobot.Constants;
+import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqMotorSystem implements Constants {
-    private MasqMotor motor1 = null;
-    private MasqMotor motor2 = null;
-    private MasqMotor motor3 = null;
-    private MasqMotor motor4 = null;
-    public MasqMotorSystem(String name1, String name2, String name3, String name4) {
+public class MasqTankDrive implements Constants {
+    private MasqMotor motor1 , motor2, motor3, motor4 = null;
+    public MasqTankDrive(String name1, String name2, String name3, String name4) {
         motor1 = new MasqMotor(name1, DcMotor.Direction.REVERSE);
         motor2 = new MasqMotor(name2, DcMotor.Direction.REVERSE);
         motor3 = new MasqMotor(name3, DcMotor.Direction.FORWARD);
@@ -131,4 +128,5 @@ public class MasqMotorSystem implements Constants {
         motor4.telemetryRun(false);
         MasqRobot.getTelemetry().addTelemetry("Current Position", getCurrentPos());
     }
+
 }

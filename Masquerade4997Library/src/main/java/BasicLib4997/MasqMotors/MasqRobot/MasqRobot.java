@@ -1,4 +1,4 @@
-package BasicLib4997.MasqMotors.TankDrive;
+package BasicLib4997.MasqMotors.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -7,7 +7,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqMotors.MasqMotor;
-import BasicLib4997.MasqMotors.MasqMotorSystem;
+import BasicLib4997.MasqMotors.MasqTankDrive;
 import BasicLib4997.MasqSensors.AdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
@@ -16,7 +16,7 @@ import BasicLib4997.MasqSensors.MasqODS;
 import BasicLib4997.MasqSensors.Sensor_Thresholds;
 import BasicLib4997.MasqServos.MasqCRServo;
 import BasicLib4997.MasqServos.MasqServo;
-import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
+import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
 /**
  * Created by Archish on 10/28/16.
@@ -48,7 +48,7 @@ public class MasqRobot implements Constants, Sensor_Thresholds {
         telemetry.update();
     }
     // MasqMotor and MasqMotor Systems
-    public MasqMotorSystem driveTrain = new MasqMotorSystem("leftFront", "leftBack", "rightFront", "rightBack");
+    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
     //private MasqMotor collector = new MasqMotor("collector");
     public MasqMotor shooter = new MasqMotor("shooter");
     public MasqMotor shooter2 = new MasqMotor("shooter2");

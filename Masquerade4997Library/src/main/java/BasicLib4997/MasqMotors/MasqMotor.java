@@ -5,8 +5,8 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
-import BasicLib4997.MasqMotors.TankDrive.Constants;
-import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
+import BasicLib4997.MasqMotors.MasqRobot.Constants;
+import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
 
 /**

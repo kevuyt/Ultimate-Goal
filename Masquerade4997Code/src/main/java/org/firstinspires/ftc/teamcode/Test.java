@@ -3,8 +3,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
-import BasicLib4997.MasqMotors.TankDrive.Direction;
-import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
+import BasicLib4997.MasqMotors.MasqRobot.Direction;
+import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 /**
  * TeleOp NFS
  */

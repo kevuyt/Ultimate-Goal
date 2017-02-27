@@ -2,7 +2,7 @@ package BasicLib4997.MasqServos;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.TankDrive.MasqRobot;
+import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
  * Created by Archish on 11/4/16.
