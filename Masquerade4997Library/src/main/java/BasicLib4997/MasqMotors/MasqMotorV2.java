@@ -1,5 +1,6 @@
 package BasicLib4997.MasqMotors;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
@@ -7,8 +8,11 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqRobot.Constants;
+import BasicLib4997.MasqMotors.MasqRobot.Direction;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
+
+import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -20,6 +24,7 @@ public class MasqMotorV2 implements Constants, MasqHardware{
     private double prevPos= 0;
     private double previousTime = 0;
     private double startTime = System.nanoTime();
+    private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition= 0;
     private MasqClock clock = new MasqClock();
     public MasqMotorV2(String name){
@@ -44,8 +49,25 @@ public class MasqMotorV2 implements Constants, MasqHardware{
     public void runUsingEncoder() {
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
-    public void runToPosition(){
-        motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    public void setDistance (double distance) {
+        destination = currentPosition + 0;
+    }
+    private boolean opModeIsActive() {
+        return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
+    }
+    public void runToPosition(Direction direction, double speed){
+        resetEncoder();
+        int targetClicks = (int)(destination * CLICKS_PER_CM);
+        int clicksRemaining;
+        double inchesRemaining;
+        double power;
+        do {
+            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPos()));
+            inchesRemaining = clicksRemaining / CLICKS_PER_CM;
+            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            setPower(power);
+        } while (opModeIsActive() && inchesRemaining > 0.5);
+        setPower(0);
     }
     boolean isBusy () {
         return motor.isBusy();
