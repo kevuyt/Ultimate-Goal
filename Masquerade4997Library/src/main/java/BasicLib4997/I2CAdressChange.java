@@ -1,4 +1,4 @@
-package BasicLib4997.MasqSensors.Functions;
+package BasicLib4997;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsUsbDeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
