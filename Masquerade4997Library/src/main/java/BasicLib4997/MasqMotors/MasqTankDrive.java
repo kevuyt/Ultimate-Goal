@@ -92,14 +92,7 @@ public class MasqTankDrive implements Constants {
         return isBusy;
     }
     public boolean rightIsBusy(){
-        boolean isBusy;
-        if (motor3.isBusy() && motor4.isBusy()) {
-            isBusy = true;
-        }
-        else {
-            isBusy = false;
-        }
-        return isBusy;
+         return (motor3.isBusy() && motor4.isBusy());
     }
     public double getCurrentPos () {
 
