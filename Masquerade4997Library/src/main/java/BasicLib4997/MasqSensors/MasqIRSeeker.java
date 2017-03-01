@@ -38,11 +38,6 @@ public class MasqIRSeeker implements MasqHardware {
     private static final int
             READ_WINDOW_START = DIRECTION_REGISTER_1200,
             READ_WINDOW_LENGTH = 5;
-    private int
-            blueMinThreshold = 1, blueMaxThreshold = 4,
-            redMinThreshold = 10, redMaxThreshold = 12,
-            whiteMinThreshold = 14, whiteMaxThreshold = 16;
-
 
     public MasqIRSeeker(String name, int i2cAddress) {
         this.name = name;
