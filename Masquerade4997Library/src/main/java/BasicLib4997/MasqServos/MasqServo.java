@@ -6,6 +6,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
+import BasicLib4997.MasqSensors.MasqClock;
 
 /**
  * Created by Archish on 10/28/16.
@@ -15,6 +16,7 @@ public class MasqServo {
     private Telemetry telemetry;
     private com.qualcomm.robotcore.hardware.Servo servo;
     private String nameServo;
+    MasqClock clock = new MasqClock();
     public MasqServo(String name){
         this.nameServo = name;
         servo = FtcOpModeRegister.opModeManager.getHardwareMap().servo.get(name);
@@ -43,6 +45,14 @@ public class MasqServo {
     public void telemetryRun () {
         MasqRobot.getTelemetry().addTelemetry(nameServo + "telemetry");
         MasqRobot.getTelemetry().addTelemetry("Current Position:", servo.getPosition());
+    }
+    public boolean isStalled(int time) {
+        boolean isStalled = false;
+        double prePos = servo.getPosition();
+        if (servo.getPosition() == prePos && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) {
+            isStalled = true;
+        }
+        return isStalled;
     }
 
 }

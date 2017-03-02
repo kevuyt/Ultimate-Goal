@@ -50,7 +50,7 @@ public class MasqMotorV2 implements Constants, MasqHardware{
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
     public void setDistance (double distance) {
-        destination = currentPosition + 0;
+        destination = currentPosition + zeroEncoderPosition;
     }
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
