@@ -1,16 +1,24 @@
 package BasicLib4997.MasqMotors;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
+import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
+
 import BasicLib4997.MasqMotors.MasqRobot.Constants;
+import BasicLib4997.MasqMotors.MasqRobot.Direction;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
+import BasicLib4997.MasqSensors.MasqClock;
 
 /**
  * Created by Archish on 10/28/16.
  */
 public class MasqTankDriveV2 implements Constants {
     private MasqMotorV2 motor1 , motor2, motor3, motor4 = null;
+    private double destination = 0;
+    private double currentPosition = 0, zeroEncoderPosition= 0;
+    private MasqClock clock = new MasqClock();
     public MasqTankDriveV2(String name1, String name2, String name3, String name4) {
         motor1 = new MasqMotorV2(name1, DcMotor.Direction.REVERSE);
         motor2 = new MasqMotorV2(name2, DcMotor.Direction.REVERSE);
@@ -43,11 +51,25 @@ public class MasqTankDriveV2 implements Constants {
         motor3.runUsingEncoder();
         motor4.runUsingEncoder();
     }
-    public void runToPosition(){
-        motor1.runToPosition();
-        motor2.runToPosition();
-        motor3.runToPosition();
-        motor4.runToPosition();
+    private boolean opModeIsActive() {
+        return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
+    }
+    public void setDistance (double distance) {
+        destination = currentPosition + zeroEncoderPosition;
+    }
+    public void runToPosition(Direction direction, double speed){
+        resetEncoders();
+        int targetClicks = (int)(destination * CLICKS_PER_CM);
+        int clicksRemaining;
+        double inchesRemaining;
+        double power;
+        do {
+            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPos()));
+            inchesRemaining = clicksRemaining / CLICKS_PER_CM;
+            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            setPower(power);
+        } while (opModeIsActive() && inchesRemaining > 0.5);
+        setPower(0);
     }
     public void runWithoutEncoders() {
         motor1.runWithoutEncoders();
