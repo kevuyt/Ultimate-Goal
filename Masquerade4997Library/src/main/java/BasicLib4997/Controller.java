@@ -6,16 +6,16 @@ import BasicLib4997.MasqSensors.MasqClock;
  * Created by Archish on 3/3/17.
  */
 
-public class Contoller {
+public class Controller {
     MasqClock clock = new MasqClock();
-    public Contoller(com.qualcomm.robotcore.hardware.Gamepad gamepad){
+    public Controller(com.qualcomm.robotcore.hardware.Gamepad gamepad){
         this.gamepad  = gamepad;
         instance = this;
     }
-    public static Contoller getDash(){
+    public static Controller getController(){
         return instance;
     }
-    private static Contoller instance;
+    private static Controller instance;
     private com.qualcomm.robotcore.hardware.Gamepad gamepad;
     boolean a() {
         return gamepad.a;

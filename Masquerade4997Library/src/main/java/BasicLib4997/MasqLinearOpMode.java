@@ -12,15 +12,15 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
 
     protected DashBoard dash;
     public MasqRobot robot;
-    public Contoller controller1;
-    public Contoller controller2;
+    public Controller controller1;
+    public Controller controller2;
     public final void runOpMode() throws InterruptedException {
         try {
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();
             robot = new MasqRobot(super.telemetry);
-            controller1 = new Contoller(super.gamepad1);
-            controller2 = new Contoller(super.gamepad2);
+            controller1 = new Controller(super.gamepad1);
+            controller2 = new Controller(super.gamepad2);
             runLinearOpMode();
         } finally {
             stopLinearOpMode();
