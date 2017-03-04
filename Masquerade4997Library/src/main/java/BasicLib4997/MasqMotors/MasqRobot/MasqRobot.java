@@ -15,6 +15,7 @@ import BasicLib4997.MasqMotors.NeutDriveTrain;
 import BasicLib4997.MasqSensors.AdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
+import BasicLib4997.MasqSensors.MasqLimitSwitch;
 import BasicLib4997.MasqSensors.MasqRangeSensor;
 import BasicLib4997.MasqSensors.MasqODS;
 import BasicLib4997.MasqSensors.Sensor_Thresholds;
@@ -27,6 +28,7 @@ import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
  */
 
 public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
+    //thisworks
     DashBoard dash;
     public MasqRobot(Telemetry telemetry){
         this.telemetry  = telemetry;
@@ -53,7 +55,8 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     }
 
     // MasqMotor and MasqMotor Systems
-    public NeutDriveTrain driveTrain = new NeutDriveTrain("motor_left", "motor_right");
+    public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("switch");
+    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
     public MasqMotor shooter = new MasqMotor("motor_shoot");
     ///MasqClock
     //Servos
@@ -298,7 +301,6 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
         return "Robot";
     }
 
-    public String getDash() {
-        return imu.getDash() +  leftColor.getDash() +  shooter.getDash() + collector.getDash() + driveTrain.getDash();
+    public String getDash() {return imu.getDash() +  leftColor.getDash() +  shooter.getDash() + collector.getDash() + driveTrain.getDash();
     }
 }

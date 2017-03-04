@@ -13,7 +13,7 @@ public class AutoTest extends MasqLinearOpMode {
 
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
-            dash.create(robot);
+            dash.create(robot.limitSwitch);
             dash.update();
         }
         waitForStart();
