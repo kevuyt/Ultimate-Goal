@@ -4,9 +4,9 @@ package BasicLib4997.MasqMotors.MasqRobot;
  */
 public interface Constants {
     double
-            KP_TURN = 0.004,
-            KI_TURN = 0.06,
-            KD_TURN = 0.000008,
+            KP_TURN = 0.0075,
+            KI_TURN = 0.08,
+            KD_TURN = 0,
             ID = 1;
     double
             KP_STRAIGHT = 0.02,

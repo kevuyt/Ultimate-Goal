@@ -22,7 +22,7 @@ public class DashBoard {
     public void create(String string, Object data) {
         telemetry.addData(string, data);
     }
-    public void create(MasqHardware hardware) {
+    public void create(final MasqHardware hardware) {
         telemetry.addData(hardware.getName(), hardware.getDash());
     }
 

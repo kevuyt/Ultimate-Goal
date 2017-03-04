@@ -60,19 +60,9 @@ public class AdafruitIMU implements MasqHardware{
     public double getRoll() {
         return getAngles()[2];
     }
-    public void telemetryRun() {
-        MasqRobot.getTelemetry().addTelemetry("Heading", getHeading());
-        MasqRobot.getTelemetry().addTelemetry("Pitch", getAngles() [1]);
-        MasqRobot.getTelemetry().addTelemetry("Roll", getAngles() [2]);
-
-    }
-
-
     public String getName() {
-        return name;
+        return "IMU";
     }
-
-    @Override
     public String getDash() {
         return "Heading" + Double.toString(getHeading());
     }

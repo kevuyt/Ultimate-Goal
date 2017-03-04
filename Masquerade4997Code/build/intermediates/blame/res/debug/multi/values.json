@@ -6880,9 +6880,9 @@
                     "startLine": 425,
                     "startColumn": 4,
                     "startOffset": 30028,
-                    "endLine": 427,
+                    "endLine": 431,
                     "endColumn": 12,
-                    "endOffset": 30106
+                    "endOffset": 30314
                 },
                 "from": {
                     "file": "/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/values/values.xml",
@@ -6890,62 +6890,62 @@
                         "startLine": 30,
                         "startColumn": 4,
                         "startOffset": 1681,
-                        "endLine": 32,
+                        "endLine": 36,
                         "endColumn": 12,
-                        "endOffset": 1759
+                        "endOffset": 1967
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 428,
+                    "startLine": 432,
                     "startColumn": 4,
-                    "startOffset": 30111,
-                    "endLine": 434,
+                    "startOffset": 30319,
+                    "endLine": 438,
                     "endColumn": 10,
-                    "endOffset": 30419
+                    "endOffset": 30715
                 },
                 "from": {
                     "file": "/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/values/values.xml",
                     "position": {
-                        "startLine": 33,
+                        "startLine": 37,
                         "startColumn": 4,
-                        "startOffset": 1764,
-                        "endLine": 39,
+                        "startOffset": 1972,
+                        "endLine": 43,
                         "endColumn": 10,
-                        "endOffset": 2072
+                        "endOffset": 2368
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 435,
+                    "startLine": 439,
                     "startColumn": 4,
-                    "startOffset": 30424,
-                    "endLine": 439,
+                    "startOffset": 30720,
+                    "endLine": 443,
                     "endColumn": 10,
-                    "endOffset": 30691
+                    "endOffset": 30987
                 },
                 "from": {
                     "file": "/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/values/values.xml",
                     "position": {
-                        "startLine": 40,
+                        "startLine": 44,
                         "startColumn": 4,
-                        "startOffset": 2077,
-                        "endLine": 44,
+                        "startOffset": 2373,
+                        "endLine": 48,
                         "endColumn": 10,
-                        "endOffset": 2344
+                        "endOffset": 2640
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 440,
+                    "startLine": 444,
                     "startColumn": 4,
-                    "startOffset": 30696,
-                    "endLine": 441,
+                    "startOffset": 30992,
+                    "endLine": 445,
                     "endColumn": 10,
-                    "endOffset": 30769
+                    "endOffset": 31065
                 },
                 "from": {
                     "file": "/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/values/values.xml",
@@ -6961,43 +6961,43 @@
             },
             {
                 "to": {
-                    "startLine": 442,
+                    "startLine": 446,
                     "startColumn": 4,
-                    "startOffset": 30774,
-                    "endLine": 444,
+                    "startOffset": 31070,
+                    "endLine": 448,
                     "endColumn": 10,
-                    "endOffset": 30913
+                    "endOffset": 31209
                 },
                 "from": {
                     "file": "/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/values/values.xml",
                     "position": {
-                        "startLine": 45,
+                        "startLine": 49,
                         "startColumn": 4,
-                        "startOffset": 2349,
-                        "endLine": 47,
+                        "startOffset": 2645,
+                        "endLine": 51,
                         "endColumn": 10,
-                        "endOffset": 2488
+                        "endOffset": 2784
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 445,
+                    "startLine": 449,
                     "startColumn": 4,
-                    "startOffset": 30918,
-                    "endLine": 447,
+                    "startOffset": 31214,
+                    "endLine": 451,
                     "endColumn": 10,
-                    "endOffset": 31056
+                    "endOffset": 31352
                 },
                 "from": {
                     "file": "/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/values/values.xml",
                     "position": {
-                        "startLine": 48,
+                        "startLine": 52,
                         "startColumn": 4,
-                        "startOffset": 2493,
-                        "endLine": 50,
+                        "startOffset": 2789,
+                        "endLine": 54,
                         "endColumn": 10,
-                        "endOffset": 2631
+                        "endOffset": 2927
                     }
                 }
             }

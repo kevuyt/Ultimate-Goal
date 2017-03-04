@@ -51,14 +51,15 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
         telemetry.log().add(string, data);
         telemetry.update();
     }
+
     // MasqMotor and MasqMotor Systems
     public NeutDriveTrain driveTrain = new NeutDriveTrain("motor_left", "motor_right");
     public MasqMotor shooter = new MasqMotor("motor_shoot");
     ///MasqClock
     //Servos
-    private MasqServo rightPresser = new MasqServo("servo_blue");
-    private MasqServo leftPresser = new MasqServo("servo_red");
-    private MasqMotor collector = new MasqMotor("motor_sweep");
+    public MasqServo rightPresser = new MasqServo("servo_blue");
+    public MasqServo leftPresser = new MasqServo("servo_red");
+    public MasqMotor collector = new MasqMotor("motor_sweep");
     public MasqServo indexer = new MasqServo("ball_stop");
     //IMU
     public AdafruitIMU imu = new AdafruitIMU("imu");
@@ -298,6 +299,6 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     }
 
     public String getDash() {
-        return String.format(Locale.US, imu.getDash(), leftColor.getDash(), shooter.getDash(), collector.getDash());
+        return imu.getDash() +  leftColor.getDash() +  shooter.getDash() + collector.getDash() + driveTrain.getDash();
     }
 }
