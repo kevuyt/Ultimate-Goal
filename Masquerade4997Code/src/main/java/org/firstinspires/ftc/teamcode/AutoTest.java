@@ -17,6 +17,6 @@ public class AutoTest extends MasqLinearOpMode {
         }
         waitForStart();
         robot.drive(0.5, 60, Direction.FORWARD);
-        robot.turn(90, Direction.LEFT);
+        //robot.turn(90, Direction.LEFT);
     }
 }
