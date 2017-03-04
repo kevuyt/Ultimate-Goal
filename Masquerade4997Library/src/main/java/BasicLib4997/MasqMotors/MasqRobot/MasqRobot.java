@@ -11,6 +11,7 @@ import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqMotor;
 import BasicLib4997.MasqMotors.MasqTankDrive;
+import BasicLib4997.MasqMotors.NeutDriveTrain;
 import BasicLib4997.MasqSensors.AdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
@@ -51,25 +52,19 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
         telemetry.update();
     }
     // MasqMotor and MasqMotor Systems
-    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
-    //private MasqMotor collector = new MasqMotor("collector");
-    public MasqMotor shooter = new MasqMotor("shooter");
-    public MasqMotor shooter2 = new MasqMotor("shooter2");
+    public NeutDriveTrain driveTrain = new NeutDriveTrain("motor_left", "motor_right");
+    public MasqMotor shooter = new MasqMotor("motor_shoot");
     ///MasqClock
     //Servos
-    private MasqCRServo rightPresser = new MasqCRServo("rightPresser");
-    private MasqCRServo leftPresser = new MasqCRServo("leftPresser");
-    private MasqMotor collector = new MasqMotor("collector");
-    public MasqServo indexer = new MasqServo("indexer");
+    private MasqServo rightPresser = new MasqServo("servo_blue");
+    private MasqServo leftPresser = new MasqServo("servo_red");
+    private MasqMotor collector = new MasqMotor("motor_sweep");
+    public MasqServo indexer = new MasqServo("ball_stop");
     //IMU
     public AdafruitIMU imu = new AdafruitIMU("imu");
-    public MasqODS ods = new MasqODS("ods");
-    //ColorSensor
-    public MasqColorSensor rightColor = new MasqColorSensor("rightColor" , 62);
-    public MasqColorSensor colorRejection = new MasqColorSensor("colorRejection", 64);
-    public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
+    public MasqODS ods = new MasqODS("ODS");
+    public MasqColorSensor leftColor = new MasqColorSensor("sensor_color", 60);
     //RangeSensor
-    public MasqRangeSensor rangeSensor = new MasqRangeSensor("rangeSensor");
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
@@ -197,28 +192,6 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     public void turn(int angle, Direction DIRECTION)  {
         turn(angle, DIRECTION, DEFAULT_TIMEOUT);
     }
-    public void drivePIDRange(double power, int distance, int sleepTime) {
-        double targetAngle = imu.getHeading();
-        driveTrain.runUsingEncoder();
-        while (rangeSensor.rawUltrasonic() > distance && opModeIsActive()) {
-            double newPowerLeft = power;
-            double imuVal = imu.getHeading();
-            double error = targetAngle - imuVal;
-            double errorkp = error * KP_STRAIGHT;
-            newPowerLeft = (newPowerLeft - (errorkp));
-            driveTrain.setPowerRight(-power);
-            driveTrain.setPowerLeft(-newPowerLeft);
-            MasqRobot.getTelemetry().addTelemetry("Heading", imuVal);
-            MasqRobot.getTelemetry().addTelemetry("Ultrasonic", rangeSensor.rawUltrasonic());
-            telemetry.update();
-        }
-        driveTrain.StopDriving();
-        driveTrain.runWithoutEncoders();
-        sleep(sleepTime);
-    }
-    public void drivePIDRange(double power, int distance ) {
-        drivePIDRange(power, distance, DEFAULT_SLEEP_TIME);
-    }
     public void setBrakeMode(int time) {
         driveTrain.setBrakeMode();
         sleep(time);
@@ -260,7 +233,7 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     public void stopRedRight(double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
-        while (!(rightColor.isRed()) && opModeIsActive()) {
+        while (!(leftColor.isRed()) && opModeIsActive()) {
             double newPower = power;
             double heading = imu.getHeading();
             double error = targetAngle - heading;
@@ -277,7 +250,7 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     public void stopBlueRight(double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
-        while ((!rightColor.isBlue()) && opModeIsActive()){
+        while ((!leftColor.isBlue()) && opModeIsActive()){
             double newPower = power;
             double heading = imu.getHeading();
             double error = targetAngle - heading;
@@ -294,7 +267,7 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     public void stopWhite (double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
-        while ((!colorRejection.isWhite() || !ods.isWhite()) && opModeIsActive()) {
+        while ((!ods.isWhite()) && opModeIsActive()) {
             double newPower = power;
             double heading = imu.getHeading();
             double error = targetAngle - heading;
@@ -310,25 +283,6 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     }
     //rangeSensor
     //setPower
-    public void setPowerLeft(double power) {
-        driveTrain.setPowerLeft(power);
-    }
-    public void setPowerRight(double power) {
-        driveTrain.setPowerRight(power);
-    }
-    public void setPowerCollector(double powerCollector) {
-        collector.setPower(powerCollector);
-    }
-    public void setPowerShooter(double powerShooter){
-      shooter2.runUsingEncoder();
-      shooter.runUsingEncoder();
-      shooter2.setPower(powerShooter);
-      shooter.setPower(powerShooter);
-    }
-    public void resetShooterEncoder () {
-        shooter.resetEncoder();
-        shooter2.resetEncoder();
-    }
     public void sleep() {
         sleep(1000);
     }
@@ -339,39 +293,11 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             Thread.currentThread().interrupt();
         }
     }
-
-    //servos
-    public void setIndexer(double position) {
-     indexer.setPosition(position);
-    }
-    public void setRightPresser(double power) {
-        rightPresser.setPower(power);
-    }
-    public void setLeftPresser(double power) {
-        power *= -1;
-        leftPresser.setPower(power);
-    }
-    public void runAllTelemetry() {
-        runSensorTelemetry();
-        driveTrain.telemetryRun();
-        collector.telemetryRun(false);
-        shooter.telemetryRun(true);
-        rightPresser.telemetryRun();
-        indexer.telemetryRun();
-    }
-    public void runSensorTelemetry () {
-        imu.telemetryRun();
-        leftColor.telemetryRun();
-        rightColor.telemetryRun();
-        colorRejection.telemetryRun();
-    }
-
-
     public String getName() {
         return "Robot";
     }
 
     public String getDash() {
-        return String.format(Locale.US, colorRejection.getDash(), imu.getDash(), leftColor.getDash(), rightColor.getDash(), shooter.getDash(), collector.getDash());
+        return String.format(Locale.US, imu.getDash(), leftColor.getDash(), shooter.getDash(), collector.getDash());
     }
 }
