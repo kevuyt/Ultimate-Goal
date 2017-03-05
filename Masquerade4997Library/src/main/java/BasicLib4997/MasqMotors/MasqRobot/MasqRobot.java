@@ -1,25 +1,18 @@
 package BasicLib4997.MasqMotors.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-
-import java.util.Locale;
-
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqMotor;
 import BasicLib4997.MasqMotors.MasqTankDrive;
-import BasicLib4997.MasqMotors.NeutDriveTrain;
 import BasicLib4997.MasqSensors.AdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
 import BasicLib4997.MasqSensors.MasqLimitSwitch;
-import BasicLib4997.MasqSensors.MasqRangeSensor;
 import BasicLib4997.MasqSensors.MasqODS;
 import BasicLib4997.MasqSensors.Sensor_Thresholds;
-import BasicLib4997.MasqServos.MasqCRServo;
 import BasicLib4997.MasqServos.MasqServo;
 import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
@@ -55,18 +48,18 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     }
 
     // MasqMotor and MasqMotor Systems
-    public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("switch");
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
-    public MasqMotor shooter = new MasqMotor("motor_shoot");
+    public MasqMotor shooter1 = new MasqMotor("flicker1");
+    public MasqMotor shooter2 = new MasqMotor("flicker2");
     ///MasqClock
     //Servos
     public MasqServo rightPresser = new MasqServo("servo_blue");
     public MasqServo leftPresser = new MasqServo("servo_red");
-    public MasqMotor collector = new MasqMotor("motor_sweep");
+    public MasqMotor collector = new MasqMotor("collector");
     public MasqServo indexer = new MasqServo("ball_stop");
     //IMU
     public AdafruitIMU imu = new AdafruitIMU("imu");
-    public MasqODS ods = new MasqODS("ODS");
+    public MasqODS ods = new MasqODS("ods");
     public MasqColorSensor leftColor = new MasqColorSensor("sensor_color", 60);
     //RangeSensor
     private static final int DEFAULT_SLEEP_TIME = 500;
@@ -287,6 +280,7 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     }
     //rangeSensor
     //setPower
+    String shooterDash = shooter1.getDash() + shooter2.getDash();
     public void sleep() {
         sleep(1000);
     }
@@ -301,6 +295,6 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
         return "Robot";
     }
 
-    public String getDash() {return imu.getDash() +  leftColor.getDash() +  shooter.getDash() + collector.getDash() + driveTrain.getDash();
+    public String getDash() {return imu.getDash() +  leftColor.getDash() +  shooterDash + collector.getDash() + driveTrain.getDash();
     }
 }
