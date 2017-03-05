@@ -18,7 +18,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         try {
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();
-            robot = new MasqRobot(super.telemetry);
+            robot = new MasqRobot();
             controller1 = new Controller(super.gamepad1);
             controller2 = new Controller(super.gamepad2);
             runLinearOpMode();

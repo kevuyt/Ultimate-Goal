@@ -13,7 +13,6 @@ import BasicLib4997.MasqSensors.MasqClock;
  */
 
 public class MasqServo {
-    private Telemetry telemetry;
     private com.qualcomm.robotcore.hardware.Servo servo;
     private String nameServo;
     MasqClock clock = new MasqClock();
@@ -46,10 +45,10 @@ public class MasqServo {
         MasqRobot.getTelemetry().addTelemetry(nameServo + "telemetry");
         MasqRobot.getTelemetry().addTelemetry("Current Position:", servo.getPosition());
     }
-    public boolean isStalled(int time) {
+    public boolean isStalled(int time, double targetPosition) {
         boolean isStalled = false;
         double prePos = servo.getPosition();
-        if (servo.getPosition() == prePos && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) {
+        if ((servo.getPosition() == prePos && servo.getPosition() != targetPosition) && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) {
             isStalled = true;
         }
         return isStalled;

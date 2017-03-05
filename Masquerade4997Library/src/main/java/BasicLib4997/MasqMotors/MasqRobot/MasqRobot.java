@@ -11,6 +11,7 @@ import BasicLib4997.MasqSensors.AdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
 import BasicLib4997.MasqSensors.MasqLimitSwitch;
+import BasicLib4997.MasqSensors.MasqMatiboxUltraSensor;
 import BasicLib4997.MasqSensors.MasqODS;
 import BasicLib4997.MasqSensors.Sensor_Thresholds;
 import BasicLib4997.MasqServos.MasqServo;
@@ -21,32 +22,6 @@ import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
  */
 
 public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
-    //thisworks
-    DashBoard dash;
-    public MasqRobot(Telemetry telemetry){
-        this.telemetry  = telemetry;
-        instance = this;
-    }
-    public static MasqRobot getTelemetry(){
-        return instance;
-    }
-    private static MasqRobot instance;
-    private Telemetry telemetry;
-    public void addTelemetry(String string) {
-        telemetry.addLine(string);
-    }
-    public void addTelemetry(String string, Object data) {
-        telemetry.addData(string, data);
-    }
-    public void addSticky(String string){
-        telemetry.log().add(string);
-        telemetry.update();
-    }
-    public void addSticky(String string, Object data){
-        telemetry.log().add(string, data);
-        telemetry.update();
-    }
-
     // MasqMotor and MasqMotor Systems
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
     public MasqMotor shooter1 = new MasqMotor("flicker1");
@@ -58,6 +33,7 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
     public MasqMotor collector = new MasqMotor("collector");
     public MasqServo indexer = new MasqServo("ball_stop");
     //IMU
+    public MasqMatiboxUltraSensor ultra = new MasqMatiboxUltraSensor("mata");
     public AdafruitIMU imu = new AdafruitIMU("imu");
     public MasqODS ods = new MasqODS("ods");
     public MasqColorSensor leftColor = new MasqColorSensor("sensor_color", 60);
@@ -82,9 +58,9 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value);
             driveTrain.setPowerRight(power);
             driveTrain.setPowerLeft(newPowerLeft);
-            MasqRobot.getTelemetry().addTelemetry("Heading", imuVal);
-            MasqRobot.getTelemetry().addTelemetry("DistanceLeft", newDistance + driveTrain.getCurrentPos());
-            telemetry.update();
+            DashBoard.getDash().create("Heading", imuVal);
+            DashBoard.getDash().create("DistanceLeft", newDistance + driveTrain.getCurrentPos());
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
         driveTrain.runUsingEncoder();
@@ -107,9 +83,9 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value);
             driveTrain.setPowerRight(power);
             driveTrain.setPowerLeft(newPowerLeft);
-            MasqRobot.getTelemetry().addTelemetry("Heading", imuVal);
-            MasqRobot.getTelemetry().addTelemetry("DistanceLeft", newDistance + driveTrain.getCurrentPos());
-            telemetry.update();
+            DashBoard.getDash().create("Heading", imuVal);
+            DashBoard.getDash().create("DistanceLeft", newDistance + driveTrain.getCurrentPos());
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
         driveTrain.runUsingEncoder();
@@ -142,10 +118,10 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             driveTrain.setPowerRight(-newPower);
             driveTrain.setPowerLeft(newPower);
             prevError = currentError;
-            MasqRobot.getTelemetry().addTelemetry("TargetAngle", targetAngle);
-            MasqRobot.getTelemetry().addTelemetry("Heading", imuVAL);
-            MasqRobot.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
-            telemetry.update();
+            DashBoard.getDash().create("TargetAngle", targetAngle);
+            DashBoard.getDash().create("Heading", imuVAL);
+            DashBoard.getDash().create("AngleLeftToCover", currentError);
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
         sleep(1000);
@@ -174,11 +150,11 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             driveTrain.setPowerRight(-newPower);
             driveTrain.setPowerLeft(newPower);
             prevError = currentError;
-            MasqRobot.getTelemetry().addTelemetry("TargetAngle", targetAngle);
-            MasqRobot.getTelemetry().addTelemetry("Heading", imuVAL);
-            MasqRobot.getTelemetry().addTelemetry("AngleLeftToCover", currentError);
+            DashBoard.getDash().create("TargetAngle", targetAngle);
+            DashBoard.getDash().create("Heading", imuVAL);
+            DashBoard.getDash().create("AngleLeftToCover", currentError);
             angleLeftCover = currentError;
-            telemetry.update();
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
         sleep(sleepTime);
@@ -204,9 +180,9 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
-            MasqRobot.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
-            telemetry.update();
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("red Val", leftColor.colorNumber());
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
     }
@@ -221,9 +197,9 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
-            MasqRobot.getTelemetry().addTelemetry("Blue Val", leftColor.colorNumber());
-            telemetry.update();
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("Blue Val", leftColor.colorNumber());
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
     }
@@ -238,9 +214,9 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
-            MasqRobot.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
-            telemetry.update();
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("red Val", leftColor.colorNumber());
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
     }
@@ -255,9 +231,9 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
-            MasqRobot.getTelemetry().addTelemetry("Blue Val", leftColor.colorNumber());
-            telemetry.update();
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("Blue Val", leftColor.colorNumber());
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
     }
@@ -272,9 +248,9 @@ public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(power * Direction.value);
             driveTrain.setPowerRight(newPower * Direction.value);
-            MasqRobot.getTelemetry().addTelemetry("Heading", heading);
-            MasqRobot.getTelemetry().addTelemetry("red Val", leftColor.colorNumber());
-            telemetry.update();
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("red Val", leftColor.colorNumber());
+            DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
     }

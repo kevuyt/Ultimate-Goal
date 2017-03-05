@@ -14,7 +14,7 @@ public class DashBoard {
     public static DashBoard getDash(){
         return instance;
     }
-    private static DashBoard instance;
+    public static DashBoard instance;
     private org.firstinspires.ftc.robotcore.external.Telemetry telemetry;
     public void create(String string) {
         telemetry.addLine(string);

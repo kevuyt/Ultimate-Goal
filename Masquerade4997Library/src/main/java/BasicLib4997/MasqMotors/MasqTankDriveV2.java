@@ -37,6 +37,12 @@ public class MasqTankDriveV2 implements Constants {
         motor3.setPower(power);
         motor4.setPower(power);
     }
+    public void setPower (double powerLeft, double powerRight) {
+        motor1.setPower(powerLeft);
+        motor2.setPower(powerLeft);
+        motor3.setPower(powerRight);
+        motor4.setPower(powerRight);
+    }
     public void setPowerLeft (double power) {
         motor1.setPower(power);
         motor2.setPower(power);
@@ -80,41 +86,8 @@ public class MasqTankDriveV2 implements Constants {
     public void StopDriving() {
         setPower(0);
     }
-    public void setBrakeMode () {
-        setPower(0.001);
-    }
-    public static int convert(int TICKS) {
-        return (int) ((TICKS * 35.1070765836) / 3 );
-    }
-    public boolean isBusy() {
-        boolean isBusy;
-        if (motor1.isBusy() && motor2.isBusy() && motor3.isBusy() && motor4.isBusy()) {
-            isBusy = true;
-        }
-        else {
-            isBusy = false;
-        }
-        return isBusy;
-    }
-    public boolean rightIsBusy(){
-        boolean isBusy;
-        if (motor3.isBusy() && motor4.isBusy()) {
-            isBusy = true;
-        }
-        else {
-            isBusy = false;
-        }
-        return isBusy;
-    }
     public double getCurrentPos () {
-        double motor1Pos = motor1.getCurrentPos();
-        double motor2Pos = motor2.getCurrentPos();
-        double motor3Pos = motor3.getCurrentPos();
-        double motor4Pos = motor4.getCurrentPos();
-        double motor12Pos = (motor1Pos + motor2Pos) / 2;
-        double motor34Pos = (motor3Pos + motor4Pos) / 2;
-        double currentPos = (motor12Pos + motor34Pos) / 2;
-        return currentPos;
+        return currentPosition;
     }
 
 

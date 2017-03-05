@@ -14,6 +14,8 @@ public class AutoTest extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.imu);
+            dash.create(robot.ultra);
+            dash.create(robot.leftColor);
             dash.update();
         }
         waitForStart();
@@ -21,7 +23,7 @@ public class AutoTest extends MasqLinearOpMode {
             telemetry.addData("IMU", robot.imu.getHeading());
             telemetry.update();
         }
-        //robot.drive(0.5, 10, Direction.FORWARD);
+        robot.drive(0.7, 100, Direction.FORWARD, 1000);
        // robot.turn(45, Direction.RIGHT);
     }
 }
