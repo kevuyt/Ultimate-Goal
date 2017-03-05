@@ -1,10 +1,12 @@
 package BasicLib4997.MasqServos;
 
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import BasicLib4997.DashBoard;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
 
@@ -42,8 +44,8 @@ public class MasqServo {
         return servo.getController();
     }
     public void telemetryRun () {
-        MasqRobot.getTelemetry().addTelemetry(nameServo + "telemetry");
-        MasqRobot.getTelemetry().addTelemetry("Current Position:", servo.getPosition());
+        DashBoard.getDash().create(nameServo + "telemetry");
+        DashBoard.getDash().create("Current Position:", servo.getPosition());
     }
     public boolean isStalled(int time, double targetPosition) {
         boolean isStalled = false;

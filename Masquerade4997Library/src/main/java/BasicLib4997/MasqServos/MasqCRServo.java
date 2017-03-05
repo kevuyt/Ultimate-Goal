@@ -2,6 +2,7 @@ package BasicLib4997.MasqServos;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
+import BasicLib4997.DashBoard;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
@@ -25,7 +26,7 @@ public class MasqCRServo {
         servo.getPower();
     }
     public void telemetryRun () {
-        MasqRobot.getTelemetry().addTelemetry(nameCr_Servo + "telemetry");
-        MasqRobot.getTelemetry().addTelemetry("Current Power:", servo.getPower());
+        DashBoard.getDash().create(nameCr_Servo + "telemetry");
+        DashBoard.getDash().create("Current Power:", servo.getPower());
     }
 }

@@ -5,6 +5,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
+import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqRobot.Constants;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
@@ -98,11 +99,11 @@ public class MasqMotor implements Constants, MasqHardware{
         }
     }
     public void telemetryRun (boolean showCurrentPos) {
-        MasqRobot.getTelemetry().addTelemetry(nameMotor + "telemetry");
-        MasqRobot.getTelemetry().addTelemetry("isStalled", isStalled());
-        MasqRobot.getTelemetry().addTelemetry("isBusy", isBusy());
+        DashBoard.getDash().create(nameMotor + "telemetry");
+        DashBoard.getDash().create("isStalled", isStalled());
+        DashBoard.getDash().create("isBusy", isBusy());
         if (showCurrentPos) {
-        MasqRobot.getTelemetry().addTelemetry("Current Position", getCurrentPos());
+        DashBoard.getDash().create("Current Position", getCurrentPos());
         }
     }
 

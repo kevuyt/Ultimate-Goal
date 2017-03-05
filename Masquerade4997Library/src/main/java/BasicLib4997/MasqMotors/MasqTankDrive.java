@@ -3,6 +3,7 @@ package BasicLib4997.MasqMotors;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 
+import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqRobot.Constants;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
@@ -120,7 +121,7 @@ public class MasqTankDrive implements Constants, MasqHardware {
         motor2.telemetryRun(false);
         motor3.telemetryRun(false);
         motor4.telemetryRun(false);
-        MasqRobot.getTelemetry().addTelemetry("Current Position", getCurrentPos());
+        DashBoard.getDash().create("Current Position", getCurrentPos());
     }
 
     public String getName() {
