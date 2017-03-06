@@ -14,7 +14,6 @@ public class MasqTouch implements MasqHardware {
         this.nameTouchSensor = name;
         touchSensor = FtcOpModeRegister.opModeManager.getHardwareMap().touchSensor.get(name);
     }
-
     public boolean isPressed () {
         return touchSensor.isPressed();
     }
