@@ -17,47 +17,47 @@ public class Controller {
     }
     private static Controller instance;
     private com.qualcomm.robotcore.hardware.Gamepad gamepad;
-    boolean a() {
+    public boolean a() {
         return gamepad.a;
     }
-    boolean x() {
+    public boolean x() {
         return gamepad.x;
     }
-    boolean y() {
+    public boolean y() {
         return gamepad.y;
     }
-    boolean b() {
+    public boolean b() {
         return gamepad.b;
     }
-    boolean aIsDoubleTapped () {
+    public boolean aIsDoubleTapped () {
         boolean doubleTapped = false;
          if (aPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = a();
         }
         return doubleTapped;
     }
-    boolean bIsDoubleTapped () {
+    public boolean bIsDoubleTapped () {
         boolean doubleTapped = false;
         if (bPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = b();
         }
         return doubleTapped;
     }
-    boolean xIsDoubleTapped () {
+    public boolean xIsDoubleTapped () {
         boolean doubleTapped = false;
         if (xPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = x();
         }
         return doubleTapped;
     }
-    boolean yIsDoubleTapped () {
+    public boolean yIsDoubleTapped () {
         boolean doubleTapped = false;
         if (yPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = y();
         }
         return doubleTapped;
     }
-    boolean aPressedAndRealeased () {
+    public boolean aPressedAndRealeased () {
         boolean pressed = false, realeaed = false;
         while (a()) {
             realeaed = false;
@@ -68,7 +68,7 @@ public class Controller {
         }
         return pressed && realeaed;
     }
-    boolean bPressedAndRealeased () {
+    public boolean bPressedAndRealeased () {
         boolean pressed = false, realeaed = false;
         while (b()) {
             realeaed = false;
@@ -79,7 +79,7 @@ public class Controller {
         }
         return pressed && realeaed;
     }
-    boolean yPressedAndRealeased () {
+    public boolean yPressedAndRealeased () {
         boolean pressed = false, realeaed = false;
         while (b()) {
             realeaed = false;
@@ -90,7 +90,7 @@ public class Controller {
         }
         return pressed && realeaed;
     }
-    boolean xPressedAndRealeased () {
+    public boolean xPressedAndRealeased () {
         boolean pressed = false, realeaed = false;
         while (x()) {
             realeaed = false;
