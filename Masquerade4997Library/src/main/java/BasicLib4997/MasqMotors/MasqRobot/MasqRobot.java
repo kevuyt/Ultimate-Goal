@@ -14,6 +14,7 @@ import BasicLib4997.MasqSensors.MasqLimitSwitch;
 import BasicLib4997.MasqSensors.MasqMatiboxUltraSensor;
 import BasicLib4997.MasqSensors.MasqODS;
 import BasicLib4997.MasqSensors.Sensor_Thresholds;
+import BasicLib4997.MasqServos.MasqCRServo;
 import BasicLib4997.MasqServos.MasqServo;
 import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
