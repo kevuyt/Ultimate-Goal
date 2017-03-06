@@ -12,8 +12,8 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
 
     protected DashBoard dash;
     public MasqRobot robot;
-    public Controller controller1;
-    public Controller controller2;
+    protected Controller controller1;
+    protected Controller controller2;
     public final void runOpMode() throws InterruptedException {
         try {
             dash = new DashBoard(super.telemetry);

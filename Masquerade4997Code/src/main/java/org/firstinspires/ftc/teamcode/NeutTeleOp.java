@@ -1,12 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.Range;
 
 import team4997lib.MasqOpMode;
@@ -57,16 +52,6 @@ public class NeutTeleOp extends MasqOpMode {
     public void loop() {
         robot.leftPresser.setPosition(1);
         robot.rightPresser.setPosition(.03);
-
-
-        //////////////////////////////////////////////////////////////////////////////
-        // Code for drive train. Sets right and left motor to values on Gamepad 1   //
-        // for the right and left sticks for corresponding motors. Negative for     //
-        // forward values. Then right/left values clipped so values don't exceed    //
-        // +/- 1. Then values are writ0ten to motor wth setpower.                    //
-        //////////////////////////////////////////////////////////////////////////////
-        //Max = .76
-        //Min = .31
         float right = -controller1.left_stick_y();
         float left = controller1.right_stick_y();
 
@@ -83,7 +68,7 @@ public class NeutTeleOp extends MasqOpMode {
             robot.driveTrain.setPowerLeft(left * SCALEDOWN);
         } else {
             robot.driveTrain.setPowerRight(-1 * right);
-            robot.driveTrain.setPowerLeft(-1* left);
+            robot.driveTrain.setPowerLeft(-1 * left);
         }
         if (controller2.b()) {
             robot.indexer.setPosition(.3);
@@ -123,22 +108,12 @@ public class NeutTeleOp extends MasqOpMode {
         }
         robot.shooter2.setPower(shooterPower);
         robot.shooter1.setPower(shooterPower);
-//        if (gamepad2.a)
-//        {
-//            blueServo.setPosition(0);
-//            redServo.setPosition(.45);
-//            waitNow(2000);
-//            blueServo.setPosition(.8);
-//            redServo.setPosition(.7);
-//        }
     }
-
-
 
     public void waitNow(long waitTime)
     {
         try {
-            Thread.sleep(waitTime);                 //1000 milliseconds is one second.
+            Thread.sleep(waitTime);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
 

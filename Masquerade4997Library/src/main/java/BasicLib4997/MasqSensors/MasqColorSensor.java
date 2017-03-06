@@ -129,22 +129,6 @@ public class MasqColorSensor implements MasqHardware {
     }
 
 
-    public void telemetryRun() {
-        MasqRobot.getTelemetry().addTelemetry(name, colorNumber());
-        MasqRobot.getTelemetry().addTelemetry("color Number", colorNumber());
-        MasqRobot.getTelemetry().addTelemetry("red", red());
-        MasqRobot.getTelemetry().addTelemetry("alpha", alpha());
-        MasqRobot.getTelemetry().addTelemetry("blue", blue());
-        MasqRobot.getTelemetry().addTelemetry("green", green());
-        MasqRobot.getTelemetry().addTelemetry("hue", hue());
-        MasqRobot.getTelemetry().addTelemetry("saturation", saturation());
-        MasqRobot.getTelemetry().addTelemetry("detectBlue", isBlue());
-        MasqRobot.getTelemetry().addTelemetry("detectWhite", detectWhite());
-        MasqRobot.getTelemetry().addTelemetry("isRed", isRed());
-        MasqRobot.getTelemetry().addTelemetry("colorAvg", colorAvg());
-        MasqRobot.getTelemetry().addTelemetry("colorAvg2", colorAvgCN());
-        MasqRobot.getTelemetry().addTelemetry("colorAvg3", colorAvgA());
-    }
 
 
     public String getName() {

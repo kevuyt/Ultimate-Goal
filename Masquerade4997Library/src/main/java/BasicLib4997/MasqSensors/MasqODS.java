@@ -40,12 +40,6 @@ public class MasqODS implements Sensor_Thresholds, MasqHardware {
     public boolean isBlack () {
         return lightDetected() >= 0.3;
     }
-    public void telemetryRun () {
-        MasqRobot.getTelemetry().addTelemetry(nameODSSensor);
-        MasqRobot.getTelemetry().addTelemetry("Light Detected", lightDetected());
-        MasqRobot.getTelemetry().addTelemetry("Raw Light", rawLight());
-        MasqRobot.getTelemetry().addTelemetry("Raw Light Max", rawLightMax());
-    }
     public String getName() {
         return nameODSSensor;
     }

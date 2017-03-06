@@ -14,6 +14,6 @@ public abstract class MasqOpMode extends OpMode {
 
     public MasqRobot robot = new MasqRobot();
     public DashBoard dash = new DashBoard(super.telemetry);
-    public Controller controller1 = new Controller(super.gamepad1);
-    public Controller controller2 = new Controller(super.gamepad2);
+    protected Controller controller1 = new Controller(super.gamepad1);
+    protected Controller controller2 = new Controller(super.gamepad2);
 }

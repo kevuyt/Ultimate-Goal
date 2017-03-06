@@ -96,18 +96,6 @@ public class MasqMRColorSensor implements Sensor_Thresholds, MasqHardware {
     public I2cAddr getI2CAdress() {
         return colorSensor.getI2cAddress();
     }
-    public void telemetryRun () {
-        float[] hsvValues;
-        hsvValues = new float[]{0F, 0F, 0F};
-        Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
-        MasqRobot.getTelemetry().addTelemetry(nameColorSensor + "telemetry");
-        MasqRobot.getTelemetry().addTelemetry("Clear", colorSensor.alpha());
-        MasqRobot.getTelemetry().addTelemetry("Red  ", colorSensor.red());
-        MasqRobot.getTelemetry().addTelemetry("Green", colorSensor.green());
-        MasqRobot.getTelemetry().addTelemetry("Blue ", colorSensor.blue());
-        MasqRobot.getTelemetry().addTelemetry("Hue", hsvValues[0]);
-    }
-
     public String getName() {
         return nameColorSensor;
     }

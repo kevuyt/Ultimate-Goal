@@ -36,11 +36,6 @@ public class Masqi2cRangeSensor implements MasqHardware{
     public double ODS () {
         return range1Cache[1] & 0xFF;
     }
-    public void telemetryRun () {
-        MasqRobot.getTelemetry().addTelemetry(nameRangeSensor + " :telemetry");
-        MasqRobot.getTelemetry().addTelemetry("raw ultrasonic", Ultrasonic());
-        MasqRobot.getTelemetry().addTelemetry("cm optical", ODS());
-    }
 
     public String getName() {
         return nameRangeSensor;

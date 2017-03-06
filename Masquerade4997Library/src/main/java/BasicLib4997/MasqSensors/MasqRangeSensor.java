@@ -35,13 +35,6 @@ public class MasqRangeSensor implements MasqHardware{
         return  rangeSensor.cmOptical();
     }
 
-    public void telemetryRun () {
-        MasqRobot.getTelemetry().addTelemetry(nameRangeSensor + "telemetry");
-        MasqRobot.getTelemetry().addTelemetry("raw ultrasonic", rangeSensor.rawUltrasonic());
-        MasqRobot.getTelemetry().addTelemetry("raw optical", rangeSensor.rawOptical());
-        MasqRobot.getTelemetry().addTelemetry("cm optical", rangeSensor.cmOptical());
-        MasqRobot.getTelemetry().addTelemetry("cm", rangeSensor.getDistance(DistanceUnit.CM));
-    }
 
     public String getName() {
         return nameRangeSensor;
