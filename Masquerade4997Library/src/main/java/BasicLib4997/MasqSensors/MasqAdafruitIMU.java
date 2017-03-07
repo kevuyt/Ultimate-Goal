@@ -3,6 +3,7 @@ package BasicLib4997.MasqSensors;
 import com.qualcomm.hardware.adafruit.BNO055IMU;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
+import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
 
 import BasicLib4997.MasqHardware;
@@ -22,7 +23,6 @@ public class MasqAdafruitIMU implements MasqHardware{
         setParameters();
     }
     private void setParameters() {
-        //heh
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.mode = BNO055IMU.SensorMode.IMU;
         parameters.useExternalCrystal = true;
@@ -34,7 +34,6 @@ public class MasqAdafruitIMU implements MasqHardware{
     }
     private double[] getAngles() {
         Quaternion quatAngles = imu.getQuaternionOrientation();
-
         double w = quatAngles.w;
         double x = quatAngles.x;
         double y = quatAngles.y;
@@ -59,6 +58,9 @@ public class MasqAdafruitIMU implements MasqHardware{
     }
     public double getRoll() {
         return getAngles()[2];
+    }
+    public Position getPosition() {
+        return imu.getPosition();
     }
     public String getName() {
         return name;

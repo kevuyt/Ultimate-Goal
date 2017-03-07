@@ -7,6 +7,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  */
 
 public class DashBoard {
+    private int i = 0;
     public DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
@@ -23,7 +24,11 @@ public class DashBoard {
         telemetry.addData(string, data);
     }
     public void create(final MasqHardware hardware) {
-        telemetry.addData(hardware.getName(), hardware.getDash());
+        int dashLength = hardware.getDash().length;
+        while (i <= dashLength) {
+            telemetry.addData(hardware.getName(), hardware.getDash()[i]);
+            i++;
+        }
     }
 
     public void createSticky(String string){
@@ -34,8 +39,12 @@ public class DashBoard {
         telemetry.log().add(string, data);
         update();
     }
-    public void createSticky(MasqHardware hardware) {
-        telemetry.log().add(hardware.getName(), hardware.getDash());
+    public void createSticky(final MasqHardware hardware) {
+        int dashLength = hardware.getDash().length;
+        while (i <= dashLength) {
+            telemetry.log().add(hardware.getName(), hardware.getDash()[i]);
+            i++;
+        }
         update();
     }
     public void setNewFirst() {
