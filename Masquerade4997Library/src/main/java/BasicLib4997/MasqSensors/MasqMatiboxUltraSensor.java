@@ -1,6 +1,7 @@
 package BasicLib4997.MasqSensors;
 
 import com.qualcomm.robotcore.hardware.AnalogInput;
+import com.qualcomm.robotcore.hardware.AnalogSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
@@ -11,21 +12,21 @@ import BasicLib4997.MasqHardware;
  */
 
 public class MasqMatiboxUltraSensor implements MasqHardware{
-        private AnalogInput ds;
+        private AnalogSensor ds;
         private String nameDS;
 
         public MasqMatiboxUltraSensor(String name){
             this.nameDS = name;
-            ds = FtcOpModeRegister.opModeManager.getHardwareMap().analogInput.get(name);
+            ds = FtcOpModeRegister.opModeManager.getHardwareMap().get(AnalogSensor.class, name);
         }
-        public double getData() {
-            return ds.getVoltage();
+        public double getDistance() {
+            return ds.readRawVoltage();
         }
         public String getName() {
             return nameDS;
         }
         public String getDash() {
-            return "Distance" + Double.toString(getData());
+            return "Distance" + Double.toString(getDistance());
         }
 }
 

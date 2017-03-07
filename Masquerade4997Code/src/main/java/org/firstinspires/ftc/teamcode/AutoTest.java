@@ -17,11 +17,5 @@ public class AutoTest extends MasqLinearOpMode {
             dash.create(robot.leftColor);
         }
         waitForStart();
-        while (opModeIsActive()) {
-            telemetry.addData("IMU", robot.imu.getHeading());
-            controller1.left_stick_y();
-            controller2.left_stick_y();
-            telemetry.update();
-        }
     }
 }

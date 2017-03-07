@@ -116,7 +116,6 @@ public class NeutTeleOp extends MasqOpMode {
             Thread.sleep(waitTime);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
-
         }
 
 
