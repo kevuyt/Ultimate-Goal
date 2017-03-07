@@ -1,4 +1,4 @@
-package team4997lib;
+package BasicLib4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
@@ -11,7 +11,6 @@ import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
  */
 
 public abstract class MasqOpMode extends OpMode {
-
     public MasqRobot robot = new MasqRobot();
     public DashBoard dash = new DashBoard(super.telemetry);
     protected Controller controller1 = new Controller(super.gamepad1);
