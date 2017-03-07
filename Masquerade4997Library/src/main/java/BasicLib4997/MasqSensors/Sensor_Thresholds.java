@@ -15,6 +15,8 @@ public interface Sensor_Thresholds {
     double WHITE_MIN = 100,
             WHITE_MAX = 270;
     //I2C Vals
+    double ODS_WHITE = 0.7,
+           ODS_BLACK = 0.3;
     //Red Vals
     double RED_MIN_I2C = 1,
             RED_MAX_I2C = 4;

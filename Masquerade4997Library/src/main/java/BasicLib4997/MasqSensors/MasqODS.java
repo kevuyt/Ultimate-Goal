@@ -31,14 +31,11 @@ public class MasqODS implements Sensor_Thresholds, MasqHardware {
     public double rawLight () {
         return ods.getRawLightDetected();
     }
-    public double rawLightMax () {
-        return ods.getLightDetected();
-    }
     public boolean isWhite () {
-        return lightDetected() <= 0.7;
+        return lightDetected() <= ODS_WHITE;
     }
     public boolean isBlack () {
-        return lightDetected() >= 0.3;
+        return lightDetected() >= ODS_BLACK;
     }
     public String getName() {
         return nameODSSensor;
