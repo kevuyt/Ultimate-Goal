@@ -1,10 +1,11 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.TeleOp;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import team4997lib.MasqOpMode;
+import BasicLib4997.MasqOpMode;
+
 
 /**
  * TeleOp Mode
