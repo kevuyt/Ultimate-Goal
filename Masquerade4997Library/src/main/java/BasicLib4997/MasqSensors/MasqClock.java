@@ -65,8 +65,8 @@ public class MasqClock implements MasqHardware {
     public MasqClock setName (String n) {name = n; return this;}
     public String getName() {return name;}
 
-    public String getDash() {
-        return String.format(Locale.US, "%.5f  %s", seconds(), isPaused() ? "PAUSED" : "");
+    public String[] getDash() {
+        return new String[]{String.format(Locale.US, "%.5f  %s", seconds(), isPaused() ? "PAUSED" : "")};
     }
 
 }

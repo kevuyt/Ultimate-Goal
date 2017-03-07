@@ -127,8 +127,7 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         return "DRIVETRAIN";
     }
 
-    @Override
-    public String getDash() {
-        return "Current Position"+ getCurrentPos();
+    public String[] getDash() {
+        return new String[]{ "Current Position"+ getCurrentPos()};
     }
 }

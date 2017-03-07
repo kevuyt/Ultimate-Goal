@@ -97,8 +97,8 @@ public class MasqMotorV2 implements PID_Constants, MasqHardware{
         return nameMotor;
     }
 
-    public String getDash() {
-        return "Current Position" + Double.toString(getCurrentPos());
+    public String[] getDash() {
+        return new String[] {"Current Position" + Double.toString(getCurrentPos())};
     }
 }
 

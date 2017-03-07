@@ -109,9 +109,10 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     public String getName() {
         return nameMotor;
     }
-
-    public String getDash() {
-        return "Current Position" + Double.toString(getCurrentPos());
+    public String[] getDash() {
+        return new String[]{
+                "Current Position" + Double.toString(getCurrentPos())
+        };
     }
 }
 

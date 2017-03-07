@@ -3,6 +3,8 @@ package BasicLib4997.MasqMotors.MasqRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
+import java.util.Arrays;
+
 import BasicLib4997.PID_Constants;
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
@@ -256,7 +258,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     }
     //rangeSensor
     //setPower
-    String shooterDash = shooter1.getDash() + shooter2.getDash();
+    private String[] shooterDash = shooter1.getDash();
     public void sleep() {
         sleep(1000);
     }
@@ -271,6 +273,11 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
         return "Robot";
     }
 
-    public String getDash() {return imu.getDash() +  leftColor.getDash() +  shooterDash + collector.getDash() + driveTrain.getDash();
+    public String[] getDash() {return new String[]{
+            Arrays.toString(imu.getDash()),
+            Arrays.toString(leftColor.getDash()),
+            Arrays.toString(shooterDash),
+            Arrays.toString(collector.getDash()),
+            Arrays.toString(driveTrain.getDash())};
     }
 }

@@ -23,7 +23,9 @@ public class MasqMotorSystem implements MasqHardware, PID_Constants {
         return name;
     }
 
-    public String getDash() {
-        return null;
+    public String[] getDash() {
+        return new String[]{
+                "lol"
+        };
     }
 }

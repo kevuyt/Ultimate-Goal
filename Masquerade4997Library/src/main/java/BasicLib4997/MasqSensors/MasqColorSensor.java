@@ -112,21 +112,7 @@ public class MasqColorSensor implements MasqHardware {
         return colorNumber >= whiteMinThreshold && colorNumber <= whiteMaxThreshold;
     }
 
-    public boolean detectWhite() {
-        int colorNumber = colorNumber();
-        return colorNumber >= whiteMinThreshold && colorNumber <= whiteMaxThreshold;
-    }
 
-    private double colorAvg () {
-        return  (red() + blue() + green() + alpha()) / 4;
-    }
-
-    private double colorAvgCN () {
-        return  (red() + blue() + green() + alpha() + colorNumber()) / 5;
-    }
-    private double colorAvgA () {
-        return (colorAvg() + colorAvgCN()) / 2;
-    }
 
 
 
@@ -135,8 +121,12 @@ public class MasqColorSensor implements MasqHardware {
         return name;
     }
 
-    public String getDash() {
-        return String.format(Locale.US, "Color #: %d   ARGB:[%d,%d,%d,%d]  HSV:[%.3f,%.3f,%.3f]",
-                colorNumber(), alpha(), red(), green(), blue(), hue(), saturation(), value());
+    public String[] getDash() {
+        return new String[]{
+                "Color #:" + colorNumber(),
+                "Detect White" + isWhite(),
+                "Detect Red" + isRed(),
+                "Detect Blue" + isBlue()
+                };
     }
 }

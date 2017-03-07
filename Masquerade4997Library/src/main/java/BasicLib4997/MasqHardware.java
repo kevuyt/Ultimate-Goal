@@ -6,5 +6,5 @@ package BasicLib4997;
 
 public interface MasqHardware {
     String getName();
-    String getDash();
+    String[] getDash();
 }

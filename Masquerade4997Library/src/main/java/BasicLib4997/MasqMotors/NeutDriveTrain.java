@@ -76,7 +76,9 @@ public class NeutDriveTrain implements PID_Constants, MasqHardware {
         return "DriveTrain";
     }
 
-    public String getDash() {
-        return "CurrentPosition" + Double.toString(getCurrentPos());
+    public String[] getDash() {
+        return new String[]{
+                "CurrentPosition" + Double.toString(getCurrentPos())
+        };
     }
 }

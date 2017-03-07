@@ -61,9 +61,9 @@ public class AdafruitIMU implements MasqHardware{
         return getAngles()[2];
     }
     public String getName() {
-        return "IMU";
+        return name;
     }
-    public String getDash() {
-        return "Heading" + Double.toString(getHeading());
+    public String[] getDash() {
+        return new String[]{"Heading:" + Double.toString(getHeading())};
     }
 }
