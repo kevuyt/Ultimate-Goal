@@ -7,10 +7,10 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import BasicLib4997.MasqHardware;
 
-public class MasqTouch implements MasqHardware {
+public class MasqTouchSensor implements MasqHardware {
     TouchSensor touchSensor;
     String nameTouchSensor;
-    public MasqTouch(String name){
+    public MasqTouchSensor(String name){
         this.nameTouchSensor = name;
         touchSensor = FtcOpModeRegister.opModeManager.getHardwareMap().touchSensor.get(name);
     }

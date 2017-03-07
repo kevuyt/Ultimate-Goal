@@ -13,10 +13,10 @@ import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
  * Created by Archish on 10/28/16.
  */
 
-public class AdafruitIMU implements MasqHardware{
+public class MasqAdafruitIMU implements MasqHardware{
     private final BNO055IMU imu;
     private final String name;
-    public AdafruitIMU(String name) {
+    public MasqAdafruitIMU(String name) {
         this.name = name;
         imu = FtcOpModeRegister.opModeManager.getHardwareMap().get(BNO055IMU.class, name);
         setParameters();

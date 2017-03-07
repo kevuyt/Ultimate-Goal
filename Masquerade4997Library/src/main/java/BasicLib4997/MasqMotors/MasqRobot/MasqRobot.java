@@ -10,7 +10,7 @@ import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqMotor;
 import BasicLib4997.MasqMotors.MasqTankDrive;
-import BasicLib4997.MasqSensors.AdafruitIMU;
+import BasicLib4997.MasqSensors.MasqAdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
 import BasicLib4997.MasqSensors.MasqMatiboxUltraSensor;
@@ -36,7 +36,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public MasqServo indexer = new MasqServo("ball_stop");
     //IMU
     public MasqMatiboxUltraSensor ultra = new MasqMatiboxUltraSensor("mata");
-    public AdafruitIMU imu = new AdafruitIMU("imu");
+    public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     public MasqODS ods = new MasqODS("ods");
     public MasqColorSensor leftColor = new MasqColorSensor("sensor_color", 60);
     //RangeSensor
