@@ -7,6 +7,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import BasicLib4997.DashBoard;
+import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
 
@@ -14,7 +15,7 @@ import BasicLib4997.MasqSensors.MasqClock;
  * Created by Archish on 10/28/16.
  */
 
-public class MasqServo {
+public class MasqServo implements MasqHardware{
     private com.qualcomm.robotcore.hardware.Servo servo;
     private String nameServo;
     MasqClock clock = new MasqClock();
@@ -55,7 +56,25 @@ public class MasqServo {
         }
         return isStalled;
     }
+    public boolean isStalled(double targetPosition) {
+        boolean isStalled = false;
+        double prePos = servo.getPosition();
+        if ((servo.getPosition() == prePos && servo.getPosition() != targetPosition) && !clock.elapsedTime(1, MasqClock.Resolution.SECONDS)) {
+            isStalled = true;
+        }
+        return isStalled;
+    }
 
+    public String getName() {
+        return nameServo;
+    }
+
+    public String[] getDash() {
+        return new String[]{
+                "Current Position:" + Double.toString(servo.getPosition()),
+                "Stalled:" + Boolean.toString(isStalled(1))
+        };
+    }
 }
 
 

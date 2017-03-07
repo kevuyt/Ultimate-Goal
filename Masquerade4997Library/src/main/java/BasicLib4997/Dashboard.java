@@ -25,7 +25,7 @@ public class DashBoard {
     }
     public void create(final MasqHardware hardware) {
         int dashLength = hardware.getDash().length;
-        while (i <= dashLength) {
+        while (i < dashLength) {
             telemetry.addData(hardware.getName(), hardware.getDash()[i]);
             i++;
         }
@@ -41,7 +41,7 @@ public class DashBoard {
     }
     public void createSticky(final MasqHardware hardware) {
         int dashLength = hardware.getDash().length;
-        while (i <= dashLength) {
+        while (i < dashLength) {
             telemetry.log().add(hardware.getName(), hardware.getDash()[i]);
             i++;
         }

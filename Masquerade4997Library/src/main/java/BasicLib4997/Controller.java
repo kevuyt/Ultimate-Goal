@@ -6,9 +6,11 @@ import BasicLib4997.MasqSensors.MasqClock;
  * Created by Archish on 3/3/17.
  */
 
-public class Controller {
+public class Controller implements MasqHardware{
     MasqClock clock = new MasqClock();
-    public Controller(com.qualcomm.robotcore.hardware.Gamepad gamepad){
+    String name;
+    public Controller(com.qualcomm.robotcore.hardware.Gamepad gamepad,String name){
+        this.name = name;
         this.gamepad  = gamepad;
         instance = this;
     }
@@ -153,5 +155,11 @@ public class Controller {
     }
 
 
+    public String getName() {
+        return name;
+    }
 
+    public String[] getDash() {
+        return new String[]{"Lef"};
+    }
 }

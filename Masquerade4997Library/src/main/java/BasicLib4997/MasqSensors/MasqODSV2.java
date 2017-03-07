@@ -15,10 +15,9 @@ public class MasqODSV2 implements MasqHardware{
     private AnalogSensor ods;
     private String nameODS;
     private int scale;
-    private int defaultScale = 200;
     public MasqODSV2(String name){
         this.nameODS = name;
-        this.scale = defaultScale;
+        this.scale = 200;
         ods = FtcOpModeRegister.opModeManager.getHardwareMap().get(AnalogSensor.class, name);
     }
     public MasqODSV2(String name, int scale){

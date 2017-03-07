@@ -49,6 +49,8 @@ public class MasqLimitSwitch implements MasqHardware {
 
 
     public String getName() {return name;}
-    public String[] getDash() {return new String[] {Boolean.toString(getState())};}
+    public String[] getDash() {return new String[] {
+            Boolean.toString(getState())};
+    }
 
 }

@@ -41,6 +41,8 @@ public class MasqODS implements Sensor_Thresholds, MasqHardware {
         return nameODSSensor;
     }
     public String[] getDash() {
-        return new String[]{ "Light Detected" + Double.toString(lightDetected())};
+        return new String[]{
+                "Light Detected" + Double.toString(lightDetected())
+        };
     }
 }

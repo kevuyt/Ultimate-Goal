@@ -42,6 +42,8 @@ public class MasqRangeSensor implements MasqHardware{
     }
 
     public String[] getDash() {
-        return new String[]{"raw ultrasonic" + Double.toString(Ultrasonic())};
+        return new String[]{
+                "Raw Ultrasonic" + Double.toString(Ultrasonic())
+        };
     }
 }
