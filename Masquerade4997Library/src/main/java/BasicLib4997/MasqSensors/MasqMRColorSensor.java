@@ -100,8 +100,10 @@ public class MasqMRColorSensor implements Sensor_Thresholds, MasqHardware {
         return nameColorSensor;
     }
 
-    public String getDash() {
-        return String.format(Locale.US, "Color #: %d   ARGB:[%d,%d,%d,%d]  HSV:[%.3f,%.3f,%.3f]",
-                alpha(), red(), green(), blue(), hue());
+    public String[] getDash() {
+        return new String[]{
+                "Red" + red(),
+                "Blue" + blue()
+        };
     }
 }

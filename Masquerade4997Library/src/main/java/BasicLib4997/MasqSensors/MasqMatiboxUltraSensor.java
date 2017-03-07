@@ -25,8 +25,10 @@ public class MasqMatiboxUltraSensor implements MasqHardware{
         public String getName() {
             return nameDS;
         }
-        public String getDash() {
-            return "Distance" + Double.toString(getDistance());
+        public String[] getDash() {
+            return new String[]{
+                    "Distance" + Double.toString(getDistance())
+            };
         }
 }
 

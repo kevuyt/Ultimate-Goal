@@ -63,8 +63,12 @@ public class MasqIRSeeker implements MasqHardware {
         return name;
     }
 
-    public String getDash() {
-        return String.format(Locale.US, "Color #: %d   ARGB:[%d,%d,%d,%d]  HSV:[%.3f,%.3f,%.3f]",
-                direction600(), signal600(), direction1200(), signal1200());
+    public String[] getDash() {
+        return new String[]{
+                "Direction @ 600:" + Integer.toString(direction600()),
+                "Signal @ 600:" + Integer.toString(signal600()),
+                "Direction @ 1200:" + Integer.toString(direction1200()),
+                "Signal @ 1200:" + Integer.toString(signal1200())
+        };
     }
 }

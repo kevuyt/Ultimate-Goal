@@ -32,8 +32,8 @@ public class MasqODSV2 implements MasqHardware{
     public String getName() {
         return nameODS;
     }
-    public String getDash() {
-        return "Distance" + Double.toString(getDistance());
+    public String[] getDash() {
+       return new String[]{ "Distance" + Double.toString(getDistance())};
     }
 }
 
