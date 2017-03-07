@@ -7,14 +7,13 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
-import BasicLib4997.MasqMotors.MasqRobot.Constants;
-import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
+import BasicLib4997.PID_Constants;
 import BasicLib4997.MasqSensors.MasqClock;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class MasqMotor implements Constants, MasqHardware{
+public class MasqMotor implements PID_Constants, MasqHardware{
     private DcMotor motor;
     private String nameMotor;
     private MasqClock clock = new MasqClock();

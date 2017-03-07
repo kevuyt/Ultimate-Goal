@@ -1,17 +1,14 @@
 package BasicLib4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import BasicLib4997.MasqHardware;
-import BasicLib4997.MasqMotors.MasqRobot.Constants;
-import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
+import BasicLib4997.PID_Constants;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class NeutDriveTrain implements Constants, MasqHardware {
+public class NeutDriveTrain implements PID_Constants, MasqHardware {
     private MasqMotor motor1 , motor2;
     public NeutDriveTrain(String name1, String name2) {
         motor1 = new MasqMotor(name1, DcMotor.Direction.REVERSE);

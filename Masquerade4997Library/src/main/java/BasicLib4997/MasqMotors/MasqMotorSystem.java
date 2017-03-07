@@ -1,13 +1,13 @@
 package BasicLib4997.MasqMotors;
 
 import BasicLib4997.MasqHardware;
-import BasicLib4997.MasqMotors.MasqRobot.Constants;
+import BasicLib4997.PID_Constants;
 
 /**
  * Created by Archish on 2/27/17.
  */
 
-public class MasqMotorSystem implements MasqHardware,Constants {
+public class MasqMotorSystem implements MasqHardware, PID_Constants {
     double currentPosition, zeroPos, currentPos, prevPos;
     String name;
     public MasqMotorSystem (String name1, String name2, String name3, String name4){

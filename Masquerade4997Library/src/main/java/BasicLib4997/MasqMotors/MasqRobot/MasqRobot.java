@@ -2,7 +2,8 @@ package BasicLib4997.MasqMotors.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
+
+import BasicLib4997.PID_Constants;
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqMotor;
@@ -10,11 +11,9 @@ import BasicLib4997.MasqMotors.MasqTankDrive;
 import BasicLib4997.MasqSensors.AdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
-import BasicLib4997.MasqSensors.MasqLimitSwitch;
 import BasicLib4997.MasqSensors.MasqMatiboxUltraSensor;
 import BasicLib4997.MasqSensors.MasqODS;
 import BasicLib4997.MasqSensors.Sensor_Thresholds;
-import BasicLib4997.MasqServos.MasqCRServo;
 import BasicLib4997.MasqServos.MasqServo;
 import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
@@ -22,7 +21,7 @@ import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
  * Created by Archish on 10/28/16.
  */
 
-public class MasqRobot implements Constants, Sensor_Thresholds, MasqHardware {
+public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware {
     // MasqMotor and MasqMotor Systems
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
     public MasqMotor shooter1 = new MasqMotor("flicker1");

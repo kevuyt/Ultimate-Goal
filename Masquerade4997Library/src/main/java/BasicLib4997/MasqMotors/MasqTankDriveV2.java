@@ -2,19 +2,17 @@ package BasicLib4997.MasqMotors;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorController;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.MasqRobot.Constants;
+import BasicLib4997.PID_Constants;
 import BasicLib4997.MasqMotors.MasqRobot.Direction;
-import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqTankDriveV2 implements Constants {
+public class MasqTankDriveV2 implements PID_Constants {
     private MasqMotorV2 motor1 , motor2, motor3, motor4 = null;
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition= 0;

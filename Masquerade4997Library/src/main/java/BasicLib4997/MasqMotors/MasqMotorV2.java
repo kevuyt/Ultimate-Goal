@@ -4,20 +4,15 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import com.qualcomm.robotcore.hardware.DcMotorController;
-
 import BasicLib4997.MasqHardware;
-import BasicLib4997.MasqMotors.MasqRobot.Constants;
+import BasicLib4997.PID_Constants;
 import BasicLib4997.MasqMotors.MasqRobot.Direction;
-import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 import BasicLib4997.MasqSensors.MasqClock;
-
-import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class MasqMotorV2 implements Constants, MasqHardware{
+public class MasqMotorV2 implements PID_Constants, MasqHardware{
     private DcMotor motor;
     private String nameMotor;
     private double tChange;

@@ -1,8 +1,8 @@
-package BasicLib4997.MasqMotors.MasqRobot;
+package BasicLib4997;
 /**
  * These are the constants used in PID
  */
-public interface Constants {
+public interface PID_Constants {
     double
             KP_TURN = 0.0075,
             KI_TURN = 0.08,
@@ -12,7 +12,6 @@ public interface Constants {
             KP_STRAIGHT = 0.02,
             KI_STRAIGHT = 0,
             KD_STRAIGHT = 0;
-    double shooterPowerAuto = -0.6;
     double tickForAndymark = 1120;
     double wheelDiameter = 4;
     double cmToInches = 2.54;
