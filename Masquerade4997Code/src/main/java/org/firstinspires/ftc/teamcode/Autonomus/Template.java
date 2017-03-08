@@ -10,7 +10,7 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
  * This is a basic autonomous program to test the various autonomous functions.
  */
 
-@Autonomous(name = "Template", group = "Test")
+@Autonomous(name = "Template-auto", group = "Test")
 @Disabled
 public class Template extends MasqLinearOpMode implements Auto_Constants {
     public void runLinearOpMode() throws InterruptedException {
