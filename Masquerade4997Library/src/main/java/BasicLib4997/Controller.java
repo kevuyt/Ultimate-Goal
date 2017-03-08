@@ -103,7 +103,7 @@ public class Controller implements MasqHardware{
         }
         return pressed && realeaed;
     }
-
+    //Standard gamepad controls
     public float left_stick_x(){
         return gamepad.left_stick_x;
     }
