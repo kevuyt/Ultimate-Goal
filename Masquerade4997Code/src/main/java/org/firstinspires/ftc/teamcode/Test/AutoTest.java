@@ -12,9 +12,7 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
 public class AutoTest extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
-            dash.create(robot.imu);
-            dash.create(robot.ultra);
-            dash.create(robot.leftColor);
+            dash.create(robot);
             dash.update();
         }
         waitForStart();

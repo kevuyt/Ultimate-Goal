@@ -127,6 +127,6 @@ public class MasqColorSensor implements MasqHardware {
                 "Detect White" + isWhite(),
                 "Detect Red" + isRed(),
                 "Detect Blue" + isBlue()
-                };
+        };
     }
 }

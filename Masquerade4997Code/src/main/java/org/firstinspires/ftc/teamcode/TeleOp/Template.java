@@ -8,7 +8,8 @@ import BasicLib4997.MasqLinearOpMode;
 import BasicLib4997.MasqMotors.MasqRobot.Direction;
 
 /**
- * A Template to follow for all TeleOp Opmodes
+ * This is a basic template copy and paste this class for any teleop,
+ * refactor the file name to match the teleop class title
  */
 
 @TeleOp(name = "Template-telop", group = "Test")
@@ -23,9 +24,7 @@ public class Template extends MasqLinearOpMode implements TeleOp_Constants{
         dash.createSticky(controller1);
         dash.createSticky(controller2);
         while (opModeIsActive()) {
-        /**
-        * Place all TelOpCode Here
-        */
+        //Place all teleop code here
         }
     }
 }

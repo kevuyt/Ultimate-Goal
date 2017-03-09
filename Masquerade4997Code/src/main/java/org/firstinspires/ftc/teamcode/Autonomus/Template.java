@@ -7,7 +7,8 @@ import BasicLib4997.MasqLinearOpMode;
 import BasicLib4997.MasqMotors.MasqRobot.Direction;
 
 /**
- * This is a basic autonomous program to test the various autonomous functions.
+ * This is a basic template copy and paste this class for any auto,
+ * refactor the file name to match the auto class title
  */
 
 @Autonomous(name = "Template-auto", group = "Test")
