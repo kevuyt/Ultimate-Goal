@@ -42,7 +42,9 @@ public class MasqODS implements Sensor_Thresholds, MasqHardware {
     }
     public String[] getDash() {
         return new String[]{
-                "Light Detected" + Double.toString(lightDetected())
+                "Light Detected" + Double.toString(lightDetected()),
+                "is Black:" + Boolean.toString(isBlack()),
+                "IS White:" + Boolean.toString(isWhite())
         };
     }
 }

@@ -13,7 +13,7 @@ public class MasqClock implements MasqHardware {
     private long pauseStart;
     private long pauseLength;
 
-    private String name = "Timer";
+    private String name = "CLOCK";
 
 
     public MasqClock() {this.reset();}
@@ -33,15 +33,11 @@ public class MasqClock implements MasqHardware {
 
 
     public enum Resolution {
-
         NANOSECONDS (1),
         MILLISECONDS (1E6),
         SECONDS (1E9);
-
         private final double multiplier;
-
         Resolution (double multiplier) {this.multiplier = multiplier;}
-
     }
 
 
