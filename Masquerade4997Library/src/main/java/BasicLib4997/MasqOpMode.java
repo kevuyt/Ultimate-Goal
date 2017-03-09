@@ -7,7 +7,7 @@ import BasicLib4997.DashBoard;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
- * This is a Masquerade OpMode. It includes a MasqRobot and MasqTelemetry.
+ * This is a Masquerade OpMode. It includes a MasqRobot and Dashboard along with the custom gamepads.
  */
 
 public abstract class MasqOpMode extends OpMode {

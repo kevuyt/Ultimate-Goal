@@ -153,8 +153,6 @@ public class Controller implements MasqHardware{
     public float right_trigger() {
         return gamepad.right_trigger;
     }
-
-
     public String getName() {
         return name;
     }

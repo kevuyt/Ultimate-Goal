@@ -52,6 +52,7 @@ public class NeutDriveTrain implements PID_Constants, MasqHardware {
     public void setBrakeMode () {
         setPower(0.001);
     }
+
     public static int convert(int TICKS) {
         return (int) ((TICKS * 35.1070765836) / 3 );
     }
