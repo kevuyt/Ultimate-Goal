@@ -57,20 +57,16 @@ public class MasqMRColorSensor implements Sensor_Thresholds, MasqHardware {
         colorSensor.enableLed(true);
     }
     public int red(){
-        int redVal = colorSensor.red();
-        return redVal;
+        return colorSensor.red();
     }
     public int blue(){
-        int blueVal = colorSensor.blue();
-        return blueVal;
+        return colorSensor.blue();
     }
     public int alpha(){
-        int alphaVal = colorSensor.alpha();
-        return alphaVal;
+        return colorSensor.alpha();
     }
     public int green(){
-        int greenVal = colorSensor.green();
-        return greenVal;
+        return colorSensor.green();
     }
     public float hue(){
         float[] hsvValues;
