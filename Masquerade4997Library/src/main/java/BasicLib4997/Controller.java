@@ -160,6 +160,11 @@ public class Controller implements MasqHardware{
     }
 
     public String[] getDash() {
-        return new String[]{"Lef"};
+        return new String[]{
+                "LeftStickX" + Double.toString(left_stick_x()),
+                "LeftStickY" + Double.toString(left_stick_y()),
+                "RightStickX" + Double.toString(right_stick_x()),
+                "RightStickY" + Double.toString(right_stick_y()),
+        };
     }
 }

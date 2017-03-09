@@ -6,4 +6,5 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 public interface TeleOp_Constants {
     double INDEXER_CLOSED = 0.7;
+    double SCALEDOWN = 0.15;
 }

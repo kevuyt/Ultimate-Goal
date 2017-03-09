@@ -20,6 +20,8 @@ public class Template extends MasqLinearOpMode implements TeleOp_Constants{
             dash.update();
         }
         waitForStart();
+        dash.createSticky(controller1);
+        dash.createSticky(controller2);
         while (opModeIsActive()) {
         /**
         * Place all TelOpCode Here

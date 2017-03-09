@@ -15,6 +15,7 @@ public class AutoTest extends MasqLinearOpMode {
             dash.create(robot.imu);
             dash.create(robot.ultra);
             dash.create(robot.leftColor);
+            dash.update();
         }
         waitForStart();
     }

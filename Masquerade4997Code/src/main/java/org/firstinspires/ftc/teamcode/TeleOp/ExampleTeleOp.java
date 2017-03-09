@@ -20,19 +20,9 @@ public class ExampleTeleOp extends MasqLinearOpMode implements TeleOp_Constants{
             dash.create(robot);
             dash.update();
         }
-        final double SCALEDOWN = 0.15;
         double shooterPower = 0;
-        boolean rightOpenPressed = false;
-        boolean leftOpenPressed = false;
         boolean sweepPressed = false;
-        boolean shooterPressed = false;
-        boolean swervePressed = false;
-        boolean switchPressed = false;
-        boolean slowPressed = false;
-        boolean hookPressed = false;
         double sweepPower = 0;
-        int counter = 0;
-        double finalPosition;
         waitForStart();
         while (opModeIsActive()) {
             robot.leftPresser.setPosition(1);

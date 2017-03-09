@@ -10,9 +10,8 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
  * This is a basic autonomous program to test the various autonomous functions.
  */
 
-@Autonomous(name = "Template-auto", group = "Test")
-@Disabled
-public class Template extends MasqLinearOpMode implements Auto_Constants {
+@Autonomous(name = "Example-Auto", group = "Test")
+public class ExampleAuto extends MasqLinearOpMode implements Auto_Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot);
@@ -20,6 +19,8 @@ public class Template extends MasqLinearOpMode implements Auto_Constants {
         }
         waitForStart();
         dash.createSticky(robot);
-
+        //Example Auto
+        robot.drive(POWER_OPTIMAL, 60, Direction.FORWARD);
+        robot.turn(90, Direction.LEFT);
     }
 }
