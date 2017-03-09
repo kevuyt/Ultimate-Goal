@@ -44,10 +44,6 @@ public class MasqServo implements MasqHardware{
     public ServoController getController (){
         return servo.getController();
     }
-    public void telemetryRun () {
-        DashBoard.getDash().create(nameServo + "telemetry");
-        DashBoard.getDash().create("Current Position:", servo.getPosition());
-    }
     public boolean isStalled(int time, double targetPosition) {
         boolean isStalled = false;
         double prePos = servo.getPosition();

@@ -115,13 +115,6 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
     public DcMotorController getControllerRight() {
         return motor3.getController();
     }
-    public void telemetryRun () {
-        motor1.telemetryRun(false);
-        motor2.telemetryRun(false);
-        motor3.telemetryRun(false);
-        motor4.telemetryRun(false);
-        DashBoard.getDash().create("Current Position", getCurrentPos());
-    }
 
     public String getName() {
         return "DRIVETRAIN";

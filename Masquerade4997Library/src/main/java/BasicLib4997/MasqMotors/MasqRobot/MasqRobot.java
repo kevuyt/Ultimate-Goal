@@ -278,6 +278,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             Arrays.toString(leftColor.getDash()),
             Arrays.toString(shooterDash),
             Arrays.toString(collector.getDash()),
-            Arrays.toString(driveTrain.getDash())};
-    }
+            Arrays.toString(driveTrain.getDash())
+    };}
 }

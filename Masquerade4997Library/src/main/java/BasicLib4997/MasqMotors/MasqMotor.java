@@ -97,14 +97,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
             e.printStackTrace();
         }
     }
-    public void telemetryRun (boolean showCurrentPos) {
-        DashBoard.getDash().create(nameMotor + "telemetry");
-        DashBoard.getDash().create("isStalled", isStalled());
-        DashBoard.getDash().create("isBusy", isBusy());
-        if (showCurrentPos) {
-        DashBoard.getDash().create("Current Position", getCurrentPos());
-        }
-    }
+
 
     public String getName() {
         return nameMotor;
