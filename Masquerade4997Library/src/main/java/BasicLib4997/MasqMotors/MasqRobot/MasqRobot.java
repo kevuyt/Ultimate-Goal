@@ -43,10 +43,10 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
-    double color = 1;
+    private double color = 1;
     public enum AllianceColor {
-        BLUE (+1.0),
-        RED (-1.0);
+        BLUE (-1.0),
+        RED (+1.0);
         public final double color;
         AllianceColor (double color) {this.color = color;}
     }
@@ -57,7 +57,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
     public void drive(double power, int distance, Direction DIRECTION, int sleepTime, double targetAngle) {
-        double angle = targetAngle;
         int newDistance = convert(distance);
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
@@ -65,7 +64,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
         while (driveTrain.rightIsBusy() && opModeIsActive()) {
             double newPowerLeft = power;
             double imuVal = imu.getHeading();
-            double error = angle - imuVal;
+            double error = targetAngle - imuVal;
             double errorkp = error * KP_STRAIGHT;
             newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value);
             driveTrain.setPowerRight(power);
@@ -93,8 +92,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             double error = targetAngle - imuVal;
             double errorkp = error * KP_STRAIGHT;
             newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value);
-            driveTrain.setPowerRight(power);
-            driveTrain.setPowerLeft(newPowerLeft);
+            driveTrain.setPower(newPowerLeft, power);
             DashBoard.getDash().create("Heading", imuVal);
             DashBoard.getDash().create("DistanceLeft", newDistance + driveTrain.getCurrentPos());
             DashBoard.getDash().update();
@@ -128,8 +126,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             double dervitive = (currentError - prevError) / tChange;
             double dervitivekd = dervitive * KD_TURN;
             newPower = (errorkp + integralki + dervitivekd);
-            driveTrain.setPowerRight(-newPower);
-            driveTrain.setPowerLeft(newPower);
+            driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
             DashBoard.getDash().create("TargetAngle", targetAngle);
             DashBoard.getDash().create("Heading", imuVAL);
@@ -160,8 +157,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             double dervitive = (currentError - prevError) / tChange;
             double dervitivekd = dervitive * KD_TURN;
             newPower = (errorkp + integralki + dervitivekd);
-            driveTrain.setPowerRight(-newPower);
-            driveTrain.setPowerLeft(newPower);
+            driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
             DashBoard.getDash().create("TargetAngle", targetAngle);
             DashBoard.getDash().create("Heading", imuVAL);

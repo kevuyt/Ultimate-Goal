@@ -24,11 +24,11 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         motor3.resetEncoder();
         motor4.resetEncoder();
     }
-    public void setPower (double power) {
-        motor1.setPower(power);
-        motor2.setPower(power);
-        motor3.setPower(power);
-        motor4.setPower(power);
+    public void setPower (double leftPower, double rightPower) {
+        motor1.setPower(leftPower);
+        motor2.setPower(leftPower);
+        motor3.setPower(rightPower);
+        motor4.setPower(rightPower);
     }
     public void setPowerLeft (double power) {
         motor1.setPower(power);
@@ -63,10 +63,13 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         motor4.runWithoutEncoders();
     }
     public void StopDriving() {
-        setPower(0);
+        setPower(0,0);
     }
     public void setBrakeMode () {
-        setPower(0.001);
+        motor1.setbrakeMode();
+        motor2.setbrakeMode();
+        motor3.setbrakeMode();
+        motor4.setbrakeMode();
     }
     public static int convert(int TICKS) {
         return (int) ((TICKS * 35.1070765836));
@@ -83,43 +86,24 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         return isStalled;
     }
     public boolean isBusy() {
-        boolean isBusy;
-        if (motor1.isBusy() && motor2.isBusy() && motor3.isBusy() && motor4.isBusy()) {
-            isBusy = true;
-        }
-        else {
-            isBusy = false;
-        }
-        return isBusy;
+        return (motor1.isBusy() && motor2.isBusy() && motor3.isBusy() && motor4.isBusy());
     }
     public boolean rightIsBusy(){
          return (motor3.isBusy() && motor4.isBusy());
     }
     public double getCurrentPos () {
-
         double motor1Pos = motor1.getCurrentPos();
         double motor2Pos = motor2.getCurrentPos();
         double motor3Pos = motor3.getCurrentPos();
         double motor4Pos = motor4.getCurrentPos();
         double motor12Pos = (motor1Pos + motor2Pos) / 2;
         double motor34Pos = (motor3Pos + motor4Pos) / 2;
-
         double currentPos = (motor12Pos + motor34Pos) / 2;
-
         return currentPos;
-
     }
-    public DcMotorController getControllerLeft() {
-        return motor1.getController();
-    }
-    public DcMotorController getControllerRight() {
-        return motor3.getController();
-    }
-
     public String getName() {
         return "DRIVETRAIN";
     }
-
     public String[] getDash() {
         return new String[]{ "Current Position"+ getCurrentPos()};
     }
