@@ -11,9 +11,9 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
  * refactor the file name to match the auto class title
  */
 
-@Autonomous(name = "Template-auto", group = "Test")
+@Autonomous(name = "Template-Auto", group = "Test")
 @Disabled
-public class Template extends MasqLinearOpMode implements Auto_Constants {
+public class Template extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot);
@@ -21,6 +21,5 @@ public class Template extends MasqLinearOpMode implements Auto_Constants {
         }
         waitForStart();
         dash.createSticky(robot);
-
     }
 }

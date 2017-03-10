@@ -43,6 +43,16 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
+    double color = 1;
+    public enum AllianceColor {
+        BLUE (+1.0),
+        RED (-1.0);
+        public final double color;
+        AllianceColor (double color) {this.color = color;}
+    }
+    public void setAllianceColor(AllianceColor allianceColor){
+        this.color = allianceColor.color;
+    }
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
@@ -98,6 +108,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     }
     public void turn(int angle, Direction DIRECTION, double timeout, double ki) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
+        targetAngle *= color;
         double acceptableError = 0.5;
         double currentError = 1;
         double prevError = 0;

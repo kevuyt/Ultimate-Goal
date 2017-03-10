@@ -69,7 +69,7 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         setPower(0.001);
     }
     public static int convert(int TICKS) {
-        return (int) ((TICKS * 35.1070765836) / 3 );
+        return (int) ((TICKS * 35.1070765836));
     }
     boolean isStalled () {
         int i;

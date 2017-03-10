@@ -9,7 +9,6 @@ import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
  */
 
 public abstract class MasqLinearOpMode extends LinearOpMode {
-
     protected DashBoard dash;
     public MasqRobot robot;
     protected Controller controller1;
@@ -28,7 +27,6 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     }
 
     public abstract void runLinearOpMode() throws InterruptedException;
-    public void stopLinearOpMode() {
-    }
+    public void stopLinearOpMode() {}
 
 }

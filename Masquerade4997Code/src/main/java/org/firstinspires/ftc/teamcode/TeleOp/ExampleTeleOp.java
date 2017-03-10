@@ -24,7 +24,7 @@ public class ExampleTeleOp extends MasqLinearOpMode implements TeleOp_Constants{
         boolean sweepPressed = false;
         double sweepPower = 0;
         waitForStart();
-        while (opModeIsActive()) {
+        while (opModeIsActive()){
             robot.leftPresser.setPosition(1);
             robot.rightPresser.setPosition(.03);
             float right = -controller1.left_stick_y();

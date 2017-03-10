@@ -11,7 +11,7 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
  */
 
 @Autonomous(name = "Example-Auto", group = "Test")
-public class ExampleAuto extends MasqLinearOpMode implements Auto_Constants {
+public class ExampleAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot);

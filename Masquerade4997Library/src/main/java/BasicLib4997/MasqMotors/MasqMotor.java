@@ -71,28 +71,26 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         setPower(0.001);
     }
     public double getCurrentPos () {
-        double currentPos;
-        currentPos = motor.getCurrentPosition();
-        return currentPos;
+         return motor.getCurrentPosition();
     }
     public double getPower() {
         return motor.getPower();
     }
     public double getRate () {
-        double posC = getCurrentPos() - prevPos;
+        double positionChange = getCurrentPos() - prevPos;
         sleep(100);
-        double tChange = System.nanoTime() - previousTime;
+        double timeChange = System.nanoTime() - previousTime;
         previousTime = System.nanoTime();
-        tChange = tChange / 1e9;
+        timeChange = timeChange / 1e9;
         prevPos = getCurrentPos();
-        return posC / tChange;
+        return positionChange / timeChange;
     }
     public DcMotorController getController() {
         return motor.getController();
     }
     public void sleep (int sleepTime) {
         try {
-            Thread.sleep(100);
+            Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -104,7 +102,8 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     }
     public String[] getDash() {
         return new String[]{
-                "Current Position" + Double.toString(getCurrentPos())
+                "Current Position" + Double.toString(getCurrentPos()),
+                "Rate" + Double.toString(getRate())
         };
     }
 }
