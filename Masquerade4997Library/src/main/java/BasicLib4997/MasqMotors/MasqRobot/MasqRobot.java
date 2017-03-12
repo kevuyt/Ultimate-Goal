@@ -36,9 +36,8 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public MasqMotor collector2 = new MasqMotor("motor_sweep2");
     public MasqServo indexer = new MasqServo("ball_stop");
     //IMU
-    //public MasqMatiboxUltraSensor ultra = new MasqMatiboxUltraSensor("mata");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
-    public MasqODS ods = new MasqODS("ods");
+    public MasqODS ods = new MasqODS("ODS");
     public MasqColorSensor leftColor = new MasqColorSensor("color_sensor", 60);
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
@@ -283,8 +282,5 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public String[] getDash() {return new String[]{
             Arrays.toString(imu.getDash()),
             Arrays.toString(leftColor.getDash()),
-            Arrays.toString(collector.getDash()),
-            Arrays.toString(driveTrain.getDash()),
-            Arrays.toString(shooter1.getDash())
     };}
 }
