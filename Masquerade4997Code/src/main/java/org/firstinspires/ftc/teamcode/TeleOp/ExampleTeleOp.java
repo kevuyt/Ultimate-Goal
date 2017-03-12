@@ -14,7 +14,7 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
 
 @TeleOp(name = "Template-telop", group = "Test")
 @Disabled
-public class ExampleTeleOp extends MasqLinearOpMode implements TeleOp_Constants{
+public class ExampleTeleOp extends MasqLinearOpMode implements Constants{
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot);

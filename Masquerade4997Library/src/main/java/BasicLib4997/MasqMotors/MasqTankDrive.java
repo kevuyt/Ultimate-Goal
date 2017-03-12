@@ -2,6 +2,7 @@ package BasicLib4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;

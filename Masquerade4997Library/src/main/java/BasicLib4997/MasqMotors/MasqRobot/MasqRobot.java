@@ -25,21 +25,21 @@ import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
 public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware {
     // MasqMotor and MasqMotor Systems
-    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
-    public MasqMotor shooter1 = new MasqMotor("flicker1");
-    public MasqMotor shooter2 = new MasqMotor("flicker2");
+    public MasqTankDrive driveTrain = new MasqTankDrive("left_front", "left_back", "right_front", "right_back");
+    public MasqMotor shooter1 = new MasqMotor("motor_shoot2");
+    public MasqMotor shooter2 = new MasqMotor("motor_shoot1");
     ///MasqClock
     //Servos
     public MasqServo rightPresser = new MasqServo("servo_blue");
     public MasqServo leftPresser = new MasqServo("servo_red");
-    public MasqMotor collector = new MasqMotor("collector");
+    public MasqMotor collector = new MasqMotor("motor_sweep1");
+    public MasqMotor collector2 = new MasqMotor("motor_sweep2");
     public MasqServo indexer = new MasqServo("ball_stop");
     //IMU
-    public MasqMatiboxUltraSensor ultra = new MasqMatiboxUltraSensor("mata");
+    //public MasqMatiboxUltraSensor ultra = new MasqMatiboxUltraSensor("mata");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     public MasqODS ods = new MasqODS("ods");
-    public MasqColorSensor leftColor = new MasqColorSensor("sensor_color", 60);
-    //RangeSensor
+    public MasqColorSensor leftColor = new MasqColorSensor("color_sensor", 60);
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
@@ -92,7 +92,8 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             double error = targetAngle - imuVal;
             double errorkp = error * KP_STRAIGHT;
             newPowerLeft = (newPowerLeft - (errorkp) * DIRECTION.value);
-            driveTrain.setPower(newPowerLeft, power);
+            driveTrain.setPowerLeft(newPowerLeft);
+            driveTrain.setPowerRight(power);
             DashBoard.getDash().create("Heading", imuVal);
             DashBoard.getDash().create("DistanceLeft", newDistance + driveTrain.getCurrentPos());
             DashBoard.getDash().update();
@@ -265,7 +266,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     }
     //rangeSensor
     //setPower
-    private String[] shooterDash = shooter1.getDash();
     public void sleep() {
         sleep(1000);
     }
@@ -283,8 +283,8 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public String[] getDash() {return new String[]{
             Arrays.toString(imu.getDash()),
             Arrays.toString(leftColor.getDash()),
-            Arrays.toString(shooterDash),
             Arrays.toString(collector.getDash()),
-            Arrays.toString(driveTrain.getDash())
+            Arrays.toString(driveTrain.getDash()),
+            Arrays.toString(shooter1.getDash())
     };}
 }

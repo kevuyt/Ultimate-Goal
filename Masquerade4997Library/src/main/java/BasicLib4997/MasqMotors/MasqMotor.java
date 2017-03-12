@@ -95,8 +95,6 @@ public class MasqMotor implements PID_Constants, MasqHardware{
             e.printStackTrace();
         }
     }
-
-
     public String getName() {
         return nameMotor;
     }

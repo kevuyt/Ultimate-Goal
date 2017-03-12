@@ -12,7 +12,7 @@ import BasicLib4997.MasqLinearOpMode;
 
 @TeleOp(name = "Template-TelOp", group = "Test")
 @Disabled
-public class Template extends MasqLinearOpMode implements TeleOp_Constants{
+public class Template extends MasqLinearOpMode implements Constants{
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot);

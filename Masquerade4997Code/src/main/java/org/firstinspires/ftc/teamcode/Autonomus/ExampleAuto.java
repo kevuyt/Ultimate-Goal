@@ -14,12 +14,10 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
 public class ExampleAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
-            dash.create(robot);
+            dash.create("Status", "Initialized");
             dash.update();
         }
         waitForStart();
-        dash.createSticky(robot);
-        //Example Auto
         robot.drive(POWER_OPTIMAL, 60, Direction.FORWARD);
         robot.turn(90, Direction.LEFT);
     }

@@ -7,11 +7,10 @@ import BasicLib4997.MasqLinearOpMode;
 import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
- * Created by Archish on 3/7/17.
+ * Red Autonomous
  */
 
 @Autonomous(name = "RedAuto", group = "Test")
-@Disabled
 public class RedAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {

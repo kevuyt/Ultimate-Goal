@@ -5,7 +5,7 @@ package BasicLib4997;
 public interface PID_Constants {
     double
             KP_TURN = 0.0075,
-            KI_TURN = 0.08,
+            KI_TURN = 0,
             KD_TURN = 0,
             ID = 1;
     double
