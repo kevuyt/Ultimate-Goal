@@ -116,6 +116,13 @@ public class MasqVuforia implements MasqHardware, Sensor_Thresholds{
     }
 
     public String[] getDash() {
-        return new String[0];
+        return new String[]{
+                "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),
+                "TargetTwoSeen" + Boolean.toString(isSeen(targetTwo)),
+                "TargetThreeSeen" + Boolean.toString(isSeen(targetThree)),
+                "TargetOnePosition" + position(targetOne),
+                "TargetTwoPosition" + position(targetOne),
+                "TargetThreePosition" + position(targetOne),
+        };
     }
 }
