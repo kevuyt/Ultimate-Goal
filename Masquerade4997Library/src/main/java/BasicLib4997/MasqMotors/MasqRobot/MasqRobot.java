@@ -25,7 +25,6 @@ import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
  */
 
 public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware {
-    // MasqMotor and MasqMotor Systems
     public MasqTankDrive driveTrain = new MasqTankDrive("left_front", "left_back", "right_front", "right_back");
     public MasqMotorSystem shooter = new MasqMotorSystem("motor_shoot1", "motor_shoot2", "Shooter");
     public MasqServo rightPresser = new MasqServo("servo_blue");
@@ -33,7 +32,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public MasqMotorSystem collector = new MasqMotorSystem("motor_sweep1", "motor_sweep2","collector");
     public MasqServo indexer = new MasqServo("ball_stop");
     public MasqTouchSensor frontTouch = new MasqTouchSensor("touch_front");
-    //IMU
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     public MasqODS ods = new MasqODS("ODS");
     public MasqColorSensor leftColor = new MasqColorSensor("color_sensor", 60);
@@ -257,7 +255,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public String getName() {
         return "Robot";
     }
-
     public String[] getDash() {return new String[]{
             Arrays.toString(imu.getDash()),
             Arrays.toString(leftColor.getDash()),
