@@ -114,7 +114,6 @@ public class MasqVuforia implements MasqHardware, Sensor_Thresholds{
     public String getName() {
         return name;
     }
-
     public String[] getDash() {
         return new String[]{
                 "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),

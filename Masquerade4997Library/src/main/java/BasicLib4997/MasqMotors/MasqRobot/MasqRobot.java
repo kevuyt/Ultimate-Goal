@@ -29,9 +29,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public MasqTankDrive driveTrain = new MasqTankDrive("left_front", "left_back", "right_front", "right_back");
     public MasqMotor shooter1 = new MasqMotor("motor_shoot2");
     public MasqMotor shooter2 = new MasqMotor("motor_shoot1");
-    ///MasqClock
-    //Servos
-
     public MasqServo rightPresser = new MasqServo("servo_blue");
     public MasqServo leftPresser = new MasqServo("servo_red");
     public MasqMotor collector = new MasqMotor("motor_sweep1");
@@ -265,8 +262,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
         }
         driveTrain.StopDriving();
     }
-    //rangeSensor
-    //setPower
     public void sleep() {
         sleep(1000);
     }
