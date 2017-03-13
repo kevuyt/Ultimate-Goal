@@ -5,20 +5,19 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import java.util.Arrays;
 
-import BasicLib4997.MasqSensors.MasqVuforia;
+import BasicLib4997.MasqSensors.MasqTouchSensor;
 import BasicLib4997.PID_Constants;
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.MasqMotors.MasqMotor;
-import BasicLib4997.MasqMotors.MasqTankDrive;
+import BasicLib4997.MasqMotors.MasqMotorSystem;
 import BasicLib4997.MasqSensors.MasqAdafruitIMU;
 import BasicLib4997.MasqSensors.MasqClock;
 import BasicLib4997.MasqSensors.MasqColorSensor;
-import BasicLib4997.MasqSensors.MasqMatiboxUltraSensor;
 import BasicLib4997.MasqSensors.MasqODS;
 import BasicLib4997.MasqSensors.Sensor_Thresholds;
 import BasicLib4997.MasqServos.MasqServo;
-import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
+import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
 
 /**
  * Created by Archish on 10/28/16.
@@ -26,7 +25,7 @@ import static BasicLib4997.MasqMotors.MasqTankDrive.convert;
 
 public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware {
     // MasqMotor and MasqMotor Systems
-    public MasqTankDrive driveTrain = new MasqTankDrive("left_front", "left_back", "right_front", "right_back");
+    public MasqMotorSystem driveTrain = new MasqMotorSystem("left_front", "left_back", "right_front", "right_back");
     public MasqMotor shooter1 = new MasqMotor("motor_shoot2");
     public MasqMotor shooter2 = new MasqMotor("motor_shoot1");
     public MasqServo rightPresser = new MasqServo("servo_blue");
@@ -34,6 +33,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public MasqMotor collector = new MasqMotor("motor_sweep1");
     public MasqMotor collector2 = new MasqMotor("motor_sweep2");
     public MasqServo indexer = new MasqServo("ball_stop");
+    public MasqTouchSensor frontTouch = new MasqTouchSensor("touch_front");
     //IMU
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     public MasqODS ods = new MasqODS("ODS");
@@ -137,6 +137,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     }
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
+        targetAngle *= color;
         double acceptableError = 0.5;
         double currentError = 1;
         double prevError = 0;
@@ -211,40 +212,6 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
         }
         driveTrain.StopDriving();
     }
-    public void stopRedRight(double power, Direction Direction) {
-        driveTrain.runUsingEncoder();
-        double targetAngle = imu.getHeading();
-        while (!(leftColor.isRed()) && opModeIsActive()) {
-            double newPower = power;
-            double heading = imu.getHeading();
-            double error = targetAngle - heading;
-            double errorkp = error * KP_STRAIGHT;
-            newPower = newPower - (errorkp * Direction.value);
-            driveTrain.setPowerLeft(power * Direction.value);
-            driveTrain.setPowerRight(newPower * Direction.value);
-            DashBoard.getDash().create("Heading", heading);
-            DashBoard.getDash().create("red Val", leftColor.colorNumber());
-            DashBoard.getDash().update();
-        }
-        driveTrain.StopDriving();
-    }
-    public void stopBlueRight(double power, Direction Direction) {
-        driveTrain.runUsingEncoder();
-        double targetAngle = imu.getHeading();
-        while ((!leftColor.isBlue()) && opModeIsActive()){
-            double newPower = power;
-            double heading = imu.getHeading();
-            double error = targetAngle - heading;
-            double errorkp = error * KP_STRAIGHT;
-            newPower = newPower - (errorkp * Direction.value);
-            driveTrain.setPowerLeft(power * Direction.value);
-            driveTrain.setPowerRight(newPower * Direction.value);
-            DashBoard.getDash().create("Heading", heading);
-            DashBoard.getDash().create("Blue Val", leftColor.colorNumber());
-            DashBoard.getDash().update();
-        }
-        driveTrain.StopDriving();
-    }
     public void stopWhite (double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
@@ -258,6 +225,22 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             driveTrain.setPowerRight(newPower * Direction.value);
             DashBoard.getDash().create("Heading", heading);
             DashBoard.getDash().create("red Val", leftColor.colorNumber());
+            DashBoard.getDash().update();
+        }
+        driveTrain.StopDriving();
+    }
+    public void stopTouch(double power, Direction Direction) {
+        driveTrain.runUsingEncoder();
+        double targetAngle = imu.getHeading();
+        while (!frontTouch.isPressed() && opModeIsActive()) {
+            double newPower = power;
+            double heading = imu.getHeading();
+            double error = targetAngle - heading;
+            double errorKP = error * KP_STRAIGHT;
+            newPower = newPower - (errorKP * Direction.value);
+            driveTrain.setPowerLeft(power * Direction.value);
+            driveTrain.setPowerRight(newPower * Direction.value);
+            DashBoard.getDash().create("is Presser", frontTouch.isPressed());
             DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
