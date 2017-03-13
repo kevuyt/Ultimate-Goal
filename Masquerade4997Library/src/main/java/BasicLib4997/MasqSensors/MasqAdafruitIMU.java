@@ -59,9 +59,6 @@ public class MasqAdafruitIMU implements MasqHardware{
     public double getRoll() {
         return getAngles()[2];
     }
-    public Position getPosition() {
-        return imu.getPosition();
-    }
     public String getName() {
         return name;
     }
@@ -70,7 +67,6 @@ public class MasqAdafruitIMU implements MasqHardware{
                 "Heading:" + Double.toString(getHeading()),
                 "Roll" + Double.toString(getRoll()),
                 "Pitch" + Double.toString(getPitch()),
-                "Position" + getPosition().toString()
         };
     }
 }
