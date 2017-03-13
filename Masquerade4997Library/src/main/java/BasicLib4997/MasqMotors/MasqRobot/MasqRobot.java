@@ -5,6 +5,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import java.util.Arrays;
 
+import BasicLib4997.MasqMotors.MasqTankDrive;
 import BasicLib4997.MasqSensors.MasqTouchSensor;
 import BasicLib4997.PID_Constants;
 import BasicLib4997.DashBoard;
@@ -25,13 +26,11 @@ import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
 
 public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware {
     // MasqMotor and MasqMotor Systems
-    public MasqMotorSystem driveTrain = new MasqMotorSystem("left_front", "left_back", "right_front", "right_back");
-    public MasqMotor shooter1 = new MasqMotor("motor_shoot2");
-    public MasqMotor shooter2 = new MasqMotor("motor_shoot1");
+    public MasqTankDrive driveTrain = new MasqTankDrive("left_front", "left_back", "right_front", "right_back");
+    public MasqMotorSystem shooter = new MasqMotorSystem("motor_shoot1", "motor_shoot2", "Shooter");
     public MasqServo rightPresser = new MasqServo("servo_blue");
     public MasqServo leftPresser = new MasqServo("servo_red");
-    public MasqMotor collector = new MasqMotor("motor_sweep1");
-    public MasqMotor collector2 = new MasqMotor("motor_sweep2");
+    public MasqMotorSystem collector = new MasqMotorSystem("motor_sweep1", "motor_sweep2","collector");
     public MasqServo indexer = new MasqServo("ball_stop");
     public MasqTouchSensor frontTouch = new MasqTouchSensor("touch_front");
     //IMU
