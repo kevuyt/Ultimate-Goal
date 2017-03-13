@@ -5,6 +5,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import java.util.Arrays;
 
+import BasicLib4997.MasqSensors.MasqVuforia;
 import BasicLib4997.PID_Constants;
 import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
@@ -30,6 +31,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public MasqMotor shooter2 = new MasqMotor("motor_shoot1");
     ///MasqClock
     //Servos
+
     public MasqServo rightPresser = new MasqServo("servo_blue");
     public MasqServo leftPresser = new MasqServo("servo_red");
     public MasqMotor collector = new MasqMotor("motor_sweep1");
