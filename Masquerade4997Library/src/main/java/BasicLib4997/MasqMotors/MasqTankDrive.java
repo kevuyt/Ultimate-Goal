@@ -13,6 +13,8 @@ import BasicLib4997.PID_Constants;
  */
 public class MasqTankDrive implements PID_Constants, MasqHardware {
     private MasqMotor motor1 , motor2, motor3, motor4 = null;
+    private MasqMotorSystem leftDrive;
+    private MasqMotorSystem rightDrive;
     public MasqTankDrive(String name1, String name2, String name3, String name4) {
         motor1 = new MasqMotor(name1, DcMotor.Direction.REVERSE);
         motor2 = new MasqMotor(name2, DcMotor.Direction.REVERSE);

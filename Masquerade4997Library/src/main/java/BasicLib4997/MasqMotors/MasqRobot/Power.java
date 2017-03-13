@@ -1,7 +1,7 @@
 package BasicLib4997.MasqMotors.MasqRobot;
 
 /**
- * Created by Archish on 12/25/16.
+ * Enums For Levels of Powers
  */
 
 public enum Power {

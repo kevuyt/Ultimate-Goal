@@ -21,7 +21,7 @@ import BasicLib4997.MasqServos.MasqServo;
 import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
 
 /**
- * Created by Archish on 10/28/16.
+ * The MasqRobot Because Masquerade is the Best
  */
 
 public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware {

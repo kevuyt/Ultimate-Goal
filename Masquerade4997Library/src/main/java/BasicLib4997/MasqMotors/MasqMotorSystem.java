@@ -9,7 +9,7 @@ import BasicLib4997.MasqHardware;
 import BasicLib4997.PID_Constants;
 
 /**
- * Created by Archish on 10/28/16.
+ * MasqMotorSystem That supports two motora and treats them as one
  */
 public class MasqMotorSystem implements PID_Constants, MasqHardware {
     private MasqMotor motor1 , motor2 = null;

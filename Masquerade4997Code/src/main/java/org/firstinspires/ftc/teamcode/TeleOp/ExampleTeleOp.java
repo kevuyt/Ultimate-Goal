@@ -12,8 +12,8 @@ import BasicLib4997.MasqMotors.MasqRobot.Direction;
  * A Template to follow for all TeleOp Opmodes
  */
 
-@TeleOp(name = "Template-telop", group = "Test")
-public class ExampleTeleOp extends MasqLinearOpMode implements Constants{
+@TeleOp(name = "NEUT-TELEOP", group = "Test")
+public class ExampleTeleOp extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             telemetry.addLine("Status");
@@ -27,7 +27,7 @@ public class ExampleTeleOp extends MasqLinearOpMode implements Constants{
             robot.leftPresser.setPosition(1);
             robot.rightPresser.setPosition(.03);
             float right = -gamepad1.left_stick_y;
-            float left = gamepad1.right_stick_y;
+            float left = -gamepad1.right_stick_y;
 
             right = Range.clip(right, -1, 1);
             left = Range.clip(left, -1, 1);
@@ -80,8 +80,7 @@ public class ExampleTeleOp extends MasqLinearOpMode implements Constants{
             } else if (controller2.left_bumper()) {
                 shooterPower = 0;
             }
-            robot.shooter2.setPower(shooterPower);
-            robot.shooter1.setPower(shooterPower);
+            robot.shooter.setPower(-shooterPower);
         }
 
     }
