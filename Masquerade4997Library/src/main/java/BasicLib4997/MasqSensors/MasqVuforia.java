@@ -120,8 +120,8 @@ public class MasqVuforia implements MasqHardware, Sensor_Thresholds{
                 "TargetTwoSeen" + Boolean.toString(isSeen(targetTwo)),
                 "TargetThreeSeen" + Boolean.toString(isSeen(targetThree)),
                 "TargetOnePosition" + position(targetOne),
-                "TargetTwoPosition" + position(targetOne),
-                "TargetThreePosition" + position(targetOne),
+                "TargetTwoPosition" + position(targetTwo),
+                "TargetThreePosition" + position(targetThree),
         };
     }
 }
