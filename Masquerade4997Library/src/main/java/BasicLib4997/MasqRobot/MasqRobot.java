@@ -33,6 +33,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
     public MasqMotorSystem shooter = new MasqMotorSystem("shooter", "shooter2", "shooter");
     ///MasqClock
     //Servos
+    public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
     private MasqCRServo rightPresser = new MasqCRServo("rightPresser");
     private MasqCRServo leftPresser = new MasqCRServo("leftPresser");
     private MasqMotor collector = new MasqMotor("collector");
@@ -248,7 +249,7 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             newPower = newPower - (errorKP * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            DashBoard.getDash().create("is Presser", sensor.isPressed());
+            DashBoard.getDash().create("is Pressed", sensor.isPressed());
             DashBoard.getDash().update();
         }
         driveTrain.StopDriving();

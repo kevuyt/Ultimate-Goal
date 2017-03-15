@@ -22,16 +22,8 @@ public class MasqCRServo implements MasqHardware{
     public void sleep (int time) throws InterruptedException {
         servo.wait(time);
     }
-    public double getPower() {
-        return servo.getPower();
-    }
-    public void telemetryRun () {
-        DashBoard.getDash().create(nameCr_Servo + "telemetry");
-        DashBoard.getDash().create("Current Power:", servo.getPower());
-    }
-
-    public String getName() {
-        return nameCr_Servo;
+    public double getPower() {return servo.getPower();}
+    public String getName() {return nameCr_Servo;
     }
 
     public String[] getDash() {

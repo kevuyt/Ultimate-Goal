@@ -1,7 +1,7 @@
 package BasicLib4997.MasqRobot;
 
 /**
- *This enum gives values to direction
+ * This enum gives values to direction
  */
 
 public enum Direction {

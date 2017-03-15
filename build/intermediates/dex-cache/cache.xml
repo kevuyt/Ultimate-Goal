@@ -2,130 +2,130 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/WirelessP2p-release/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-WirelessP2p-release_db4a23db37faa8b33059dad3983255a99ee7a271.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
         sha1="ec068454985de756c760317d9c63c23b3ce2055c">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-FtcCommon-release_e124c9e07842ab787373a261c7b6bea79aa0217c.jar" />
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-FtcCommon-release_e124c9e07842ab787373a261c7b6bea79aa0217c/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Analytics-release/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Analytics-release_07b9dd12eecfe65dd0ce48778e26783b7548f30b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/gson-2.7.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="f8bcd8ef93636064d155d8e8ea6541ea7e4280d0">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-2.7_e0c84750dc3915257efc85de7cda997a74892828.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/support-annotations-23.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="15632afee8c14c7c0ba7168d25710c38badee7c8">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_908fc31c02b8b10e356d7f6b7d353563ed34d08f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/Vuforia.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="ca5be875a082e7b5f0277a0e85564617b181ae76">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/Vuforia_e65c3a261a18a42d4206c7a9963687d67444b75a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="86e43bc32c3f2fd0ff7a093c66d3d2090ef013f5">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/instant-run-bootstrap_fc8f2a9fa9e7831b7f5c312e8da67959c3838a3d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/d2xx.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="a6cc281519866bbb2d0ac480409212d8d9816d18">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/d2xx_d62fd9c9eab81ea2a7d1c93b9887f36c229dd197.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Hardware-release/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="4d964a43f48520428edfadad534fa0a3279deb84">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Hardware-release_cc12b95eb35269a297aafb17afe150f03fecede2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/ModernRobotics-release/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="01999c87afe3d10ffa06f3efa66f39e61e6aba0c">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-ModernRobotics-release_1068986648fd96f7a32a048048d22d3e26448c72.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="2a24cdb4bd53ff8f890698775608b84ab6703fe2">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-RobotCore-release_2e145180443ce192ff9dd02db8c285cdce643f87.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Blocks-release/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c5216545889f13d4560613d35d498b2ca2db1d1f">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Blocks-release_f928c06eff56bc95bf8f9bcf4cc7244c8a28edc0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="f3e2e033b8b5ed70648e1c81d6e074d1739625a6">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/instant-run_0eeed784be097e93831f5ca2ced617f635bd72bf.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Inspection-release/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
         sha1="b1a3a00c0ec6312741914629ed283101a3301293">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Inspection-release_66d7a013dac76f21918efdacc9b962994825a8ff.jar" />
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Inspection-release_66d7a013dac76f21918efdacc9b962994825a8ff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Analytics-release/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Analytics-release_07b9dd12eecfe65dd0ce48778e26783b7548f30b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/WirelessP2p-release/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-WirelessP2p-release_db4a23db37faa8b33059dad3983255a99ee7a271/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/ModernRobotics-release/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="01999c87afe3d10ffa06f3efa66f39e61e6aba0c">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-ModernRobotics-release_1068986648fd96f7a32a048048d22d3e26448c72/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/d2xx.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="a6cc281519866bbb2d0ac480409212d8d9816d18">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/d2xx_d62fd9c9eab81ea2a7d1c93b9887f36c229dd197/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/Vuforia.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ca5be875a082e7b5f0277a0e85564617b181ae76">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/Vuforia_e65c3a261a18a42d4206c7a9963687d67444b75a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="f8bcd8ef93636064d155d8e8ea6541ea7e4280d0">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.7_e0c84750dc3915257efc85de7cda997a74892828/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="15632afee8c14c7c0ba7168d25710c38badee7c8">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_908fc31c02b8b10e356d7f6b7d353563ed34d08f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Hardware-release/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="4d964a43f48520428edfadad534fa0a3279deb84">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Hardware-release_cc12b95eb35269a297aafb17afe150f03fecede2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Blocks-release/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c5216545889f13d4560613d35d498b2ca2db1d1f">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-Blocks-release_f928c06eff56bc95bf8f9bcf4cc7244c8a28edc0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="25508facbbc0c476feeb5eb9ce51e90eaf64f53d">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_0eeed784be097e93831f5ca2ced617f635bd72bf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="5c8188905ff403f67b6d4e9c050fdf6622069094">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_fc8f2a9fa9e7831b7f5c312e8da67959c3838a3d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="2a24cdb4bd53ff8f890698775608b84ab6703fe2">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-RobotCore-release_2e145180443ce192ff9dd02db8c285cdce643f87/classes.dex" />
     </item>
 
 </items>
