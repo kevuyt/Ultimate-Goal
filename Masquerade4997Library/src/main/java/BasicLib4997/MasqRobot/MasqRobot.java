@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import BasicLib4997.MasqMotors.MasqMotor;
 import BasicLib4997.MasqMotors.MasqTankDrive;
+import BasicLib4997.MasqSensors.MasqLimitSwitch;
 import BasicLib4997.MasqSensors.MasqRangeSensor;
 import BasicLib4997.MasqSensors.MasqTouchSensor;
 import BasicLib4997.MasqServos.MasqCRServo;
@@ -248,6 +249,22 @@ public class MasqRobot implements PID_Constants, Sensor_Thresholds, MasqHardware
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
             DashBoard.getDash().create("is Presser", sensor.isPressed());
+            DashBoard.getDash().update();
+        }
+        driveTrain.StopDriving();
+    }
+    public void stopLimit(double power, Direction Direction, MasqLimitSwitch lswitch) {
+        driveTrain.runUsingEncoder();
+        double targetAngle = imu.getHeading();
+        while (!lswitch.isPressed() && opModeIsActive()) {
+            double newPower = power;
+            double heading = imu.getHeading();
+            double error = targetAngle - heading;
+            double errorKP = error * KP_STRAIGHT;
+            newPower = newPower - (errorKP * Direction.value);
+            driveTrain.setPowerLeft(newPower * Direction.value);
+            driveTrain.setPowerRight(power * Direction.value);
+            DashBoard.getDash().create("is Presser", lswitch.isPressed());
             DashBoard.getDash().update();
         }
         driveTrain.StopDriving();

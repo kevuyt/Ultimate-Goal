@@ -42,9 +42,6 @@ public class MasqLimitSwitch implements MasqHardware {
     }
 
     public boolean isPressed() {return getState();}
-    public boolean onRealese() {
-        return true;
-    }
     // Possibly add onContact() and onRelease() methods for more precise control
 
 
