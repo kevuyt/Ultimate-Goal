@@ -24,6 +24,7 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         motor1 = new MasqMotor(name1, DcMotor.Direction.FORWARD);
         motor2 = new MasqMotor(name2, DcMotor.Direction.FORWARD);
     }
+
     public void resetEncoders () {
         motor1.resetEncoder();
         motor2.resetEncoder();
