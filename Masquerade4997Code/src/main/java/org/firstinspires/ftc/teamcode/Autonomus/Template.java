@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import BasicLib4997.MasqLinearOpMode;
-import BasicLib4997.MasqMotors.MasqRobot.Direction;
 
 /**
  * This is a basic template copy and paste this class for any auto,

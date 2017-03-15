@@ -1,8 +1,6 @@
 package BasicLib4997.MasqSensors;
 
 import com.qualcomm.robotcore.util.RobotLog;
-import com.qualcomm.robotcore.util.Statistics;
-import com.vuforia.Vuforia;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
@@ -19,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import BasicLib4997.MasqHardware;
-import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 /**
  * Created by Archish on 3/12/17.

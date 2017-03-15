@@ -4,6 +4,18 @@
         "source": "/Users/Archish/Desktop/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/icon_robotcontroller.png"
     },
     {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_robotcontroller.png",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/icon_robotcontroller.png"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_menu.png",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/icon_menu.png"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable-xhdpi-v4/masq.png",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/masq.png"
+    },
+    {
         "merged": "/Users/Archish/Desktop/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_menu.png",
         "source": "/Users/Archish/Desktop/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/icon_menu.png"
     },
@@ -14,5 +26,9 @@
     {
         "merged": "/Users/Archish/Desktop/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable-xhdpi-v4/masq.png",
         "source": "/Users/Archish/Desktop/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/masq.png"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable-xhdpi-v4/ic_launcher.png",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/ic_launcher.png"
     }
 ]

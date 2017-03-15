@@ -1,7 +1,4 @@
-#Mon Mar 13 00:32:58 EDT 2017
-base.0=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_96b26a75b52160bd6b7b0799e191dddd53bde98a
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3506e53852a1f18877aab9dbfe4fda9de750e30a/classes.dex
-base.1=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3506e53852a1f18877aab9dbfe4fda9de750e30a
-file.0=/Users/Archish/Desktop/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_96b26a75b52160bd6b7b0799e191dddd53bde98a/classes.dex
+#Tue Mar 14 17:56:24 EDT 2017
+base.0=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

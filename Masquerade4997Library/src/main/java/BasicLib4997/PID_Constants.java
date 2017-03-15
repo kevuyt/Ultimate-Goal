@@ -4,12 +4,12 @@ package BasicLib4997;
  */
 public interface PID_Constants {
     double
-            KP_TURN = 0.0075,
+            KP_TURN = 0.001,
             KI_TURN = 0.0002,
             KD_TURN = 0,
             ID = 1;
     double
-            KP_STRAIGHT = 0.02,
+            KP_STRAIGHT = 0.03,
             KI_STRAIGHT = 0,
             KD_STRAIGHT = 0;
     double tickForAndymark = 1120;

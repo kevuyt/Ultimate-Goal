@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
-import BasicLib4997.MasqMotors.MasqRobot.Power;
-
 /**
  * Constants in autonomous
  */

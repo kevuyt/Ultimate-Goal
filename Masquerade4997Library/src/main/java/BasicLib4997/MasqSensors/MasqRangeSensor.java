@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import BasicLib4997.MasqHardware;
-import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
 
 
 public class MasqRangeSensor implements MasqHardware{

@@ -1,4 +1,4 @@
-package BasicLib4997.MasqMotors.MasqRobot;
+package BasicLib4997.MasqRobot;
 
 /**
  *This enum gives values to direction

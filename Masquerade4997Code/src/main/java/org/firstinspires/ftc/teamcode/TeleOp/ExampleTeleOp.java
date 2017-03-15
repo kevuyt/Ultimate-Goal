@@ -1,12 +1,9 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 import BasicLib4997.MasqLinearOpMode;
-import BasicLib4997.MasqMotors.MasqRobot.Direction;
 
 /**
  * A Template to follow for all TeleOp Opmodes
@@ -24,8 +21,7 @@ public class ExampleTeleOp extends MasqLinearOpMode implements Constants {
         double sweepPower = 0;
         waitForStart();
         while (opModeIsActive()){
-            robot.leftPresser.setPosition(1);
-            robot.rightPresser.setPosition(.03);
+
             float right = -controller1.left_stick_y();
             float left = -controller1.right_stick_y();
 

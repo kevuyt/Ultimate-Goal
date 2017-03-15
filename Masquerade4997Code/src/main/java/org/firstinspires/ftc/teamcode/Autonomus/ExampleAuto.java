@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import BasicLib4997.MasqLinearOpMode;
-import BasicLib4997.MasqMotors.MasqRobot.Direction;
+import BasicLib4997.MasqRobot.Direction;
 /**
  * This is a basic autonomous program to test the various autonomous functions.
  */
@@ -19,6 +19,5 @@ public class ExampleAuto extends MasqLinearOpMode implements Constants {
         robot.drive(0.4, 33, Direction.FORWARD);
         robot.turn(45, Direction.RIGHT);
         robot.drive(0.4, 100, Direction.FORWARD);
-        robot.stopTouch(0.5, Direction.FORWARD);
     }
 }

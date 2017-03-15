@@ -2,7 +2,7 @@ package BasicLib4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import BasicLib4997.MasqMotors.MasqRobot.MasqRobot;
+import BasicLib4997.MasqRobot.MasqRobot;
 
 /**
  * Custom Linear opMode

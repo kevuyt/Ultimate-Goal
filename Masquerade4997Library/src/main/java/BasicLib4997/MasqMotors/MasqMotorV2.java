@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import BasicLib4997.MasqHardware;
 import BasicLib4997.PID_Constants;
-import BasicLib4997.MasqMotors.MasqRobot.Direction;
+import BasicLib4997.MasqRobot.Direction;
 import BasicLib4997.MasqSensors.MasqClock;
 
 /**
