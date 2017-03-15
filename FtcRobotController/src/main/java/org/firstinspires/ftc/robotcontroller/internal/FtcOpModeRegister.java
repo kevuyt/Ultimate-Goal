@@ -46,17 +46,8 @@ public class FtcOpModeRegister implements OpModeRegister {
     //Edited by archishmaan peyyety to make hardware maps in objects easier and cleaner
     public static OpModeManagerImpl opModeManager;
     public void register(OpModeManager manager) {
-
         opModeManager = (OpModeManagerImpl) manager;
         BlocksOpMode.registerAll(manager);
-
-        /**
-         * Register OpModes that use the annotation-based registration mechanism.
-         */
         AnnotatedOpModeRegistrar.register(manager);
-
-        /**
-         * Any manual OpMode class registrations should go here.
-         */
     }
 }
