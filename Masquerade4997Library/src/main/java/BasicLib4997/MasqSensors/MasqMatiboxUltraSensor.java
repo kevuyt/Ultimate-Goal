@@ -13,15 +13,15 @@ import BasicLib4997.MasqHardware;
  */
 
 public class MasqMatiboxUltraSensor implements MasqHardware{
-        private AnalogSensor ds;
+        private AnalogInput ds;
         private String nameDS;
 
         public MasqMatiboxUltraSensor(String name){
             this.nameDS = name;
-            ds = FtcOpModeRegister.opModeManager.getHardwareMap().get(AnalogSensor.class, name);
+            ds = FtcOpModeRegister.opModeManager.getHardwareMap().get(AnalogInput.class, name);
         }
         public double getDistance() {
-            return ds.readRawVoltage();
+            return ds.getVoltage();
         }
         public String getName() {
             return nameDS;

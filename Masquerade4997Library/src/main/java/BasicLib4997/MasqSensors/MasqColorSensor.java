@@ -59,6 +59,17 @@ public class MasqColorSensor implements MasqHardware {
         colorSensorManager.engage();
         colorSensorManager.setReadWindow(new I2cDeviceSynch.ReadWindow(READ_WINDOW_START, READ_WINDOW_LENGTH, I2cDeviceSynch.ReadMode.REPEAT));
     }
+    public MasqColorSensor(String name) {
+        this.name = name;
+
+        colorSensor = FtcOpModeRegister.opModeManager.getHardwareMap().i2cDevice.get(name);
+        colorSensor.resetDeviceConfigurationForOpMode();
+
+        colorSensorManager = new I2cDeviceSynchImpl(colorSensor, I2cAddr.create8bit(60), false);
+        colorSensorManager.resetDeviceConfigurationForOpMode();
+        colorSensorManager.engage();
+        colorSensorManager.setReadWindow(new I2cDeviceSynch.ReadWindow(READ_WINDOW_START, READ_WINDOW_LENGTH, I2cDeviceSynch.ReadMode.REPEAT));
+    }
 
 
 
