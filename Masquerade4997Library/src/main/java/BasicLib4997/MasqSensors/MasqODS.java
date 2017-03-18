@@ -10,7 +10,7 @@ import BasicLib4997.MasqHardware;
  * Created by Archish on 10/28/16.
  */
 
-public class MasqODS implements Sensor_Thresholds, MasqHardware {
+public class MasqODS implements MasqSensor, MasqHardware {
     private OpticalDistanceSensor ods;
     private String nameODSSensor;
 

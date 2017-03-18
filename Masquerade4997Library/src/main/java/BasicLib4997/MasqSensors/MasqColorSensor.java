@@ -128,7 +128,6 @@ public class MasqColorSensor implements MasqHardware {
     public String getName() {
         return name;
     }
-
     public String[] getDash() {
         return new String[]{
                 "Color #:" + colorNumber(),
@@ -137,4 +136,5 @@ public class MasqColorSensor implements MasqHardware {
                 "Detect Blue" + isBlue()
         };
     }
+
 }

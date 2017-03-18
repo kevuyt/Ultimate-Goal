@@ -22,13 +22,13 @@ import BasicLib4997.MasqHardware;
  * Created by Archish on 3/12/17.
  */
 
-public class MasqVuforia implements MasqHardware, Sensor_Thresholds{
-    String name, target1, target2, target3, asset;
+public class MasqVuforia implements MasqHardware, MasqSensor{
+    private String name, target1, target2, target3, asset;
     public VuforiaTrackable targetOne, targetTwo, targetThree;
     VuforiaLocalizer vuforia;
-    float mmPerInch        = 25.4f;
-    float mmBotWidth       = 18 * mmPerInch;
-    float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
+    private float mmPerInch        = 25.4f;
+    private float mmBotWidth       = 18 * mmPerInch;
+    private float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
     OpenGLMatrix lastLocation = null;
 
     public MasqVuforia (String name, String target1, String target2, String target3, String asset){
@@ -91,6 +91,9 @@ public class MasqVuforia implements MasqHardware, Sensor_Thresholds{
     }
     public boolean isSeen (VuforiaTrackable trackable) {
         return ((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible();
+    }
+    public void createTarget () {
+
     }
     public String position(VuforiaTrackable trackable) {
             String position;
