@@ -13,7 +13,7 @@ import BasicLib4997.MasqHardware;
  * Assumes that a pull-up resistor is used, like is necessary to use VEX limit switches.
  */
 
-public class MasqLimitSwitch implements MasqHardware {
+public class MasqLimitSwitch implements MasqHardware,MasqSensor {
 
     private final DigitalChannel limitSwitch;
     private final String name;
@@ -51,5 +51,7 @@ public class MasqLimitSwitch implements MasqHardware {
     };
 
     }
-
+    public boolean stop() {
+        return isPressed();
+    }
 }

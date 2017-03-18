@@ -119,12 +119,6 @@ public class MasqColorSensor implements MasqHardware {
         int colorNumber = colorNumber();
         return colorNumber >= whiteMinThreshold && colorNumber <= whiteMaxThreshold;
     }
-
-
-
-
-
-
     public String getName() {
         return name;
     }

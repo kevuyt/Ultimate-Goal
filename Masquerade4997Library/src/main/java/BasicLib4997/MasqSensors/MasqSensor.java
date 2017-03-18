@@ -7,6 +7,7 @@ import BasicLib4997.MasqHardware;
  */
 
 public interface MasqSensor {
+    boolean stop();
     double RED_MIN = 1,
             RED_MAX = 4;
     double BLUE_MIN = 1,

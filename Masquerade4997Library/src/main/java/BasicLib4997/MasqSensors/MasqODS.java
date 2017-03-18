@@ -46,4 +46,9 @@ public class MasqODS implements MasqSensor, MasqHardware {
                 "IS White:" + Boolean.toString(isWhite())
         };
     }
+
+    @Override
+    public boolean stop() {
+        return isWhite();
+    }
 }

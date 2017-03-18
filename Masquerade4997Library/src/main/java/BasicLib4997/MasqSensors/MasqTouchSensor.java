@@ -7,7 +7,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import BasicLib4997.MasqHardware;
 
-public class MasqTouchSensor implements MasqHardware {
+public class MasqTouchSensor implements MasqHardware, MasqSensor {
     TouchSensor touchSensor;
     String nameTouchSensor;
     public MasqTouchSensor(String name){
@@ -28,5 +28,9 @@ public class MasqTouchSensor implements MasqHardware {
         return new String[]{
                 "IsPressed" + Boolean.toString(isPressed())
         };
+    }
+
+    public boolean stop() {
+        return isPressed();
     }
 }

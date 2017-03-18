@@ -19,7 +19,7 @@ import java.util.List;
 import BasicLib4997.MasqHardware;
 
 /**
- * Created by Archish on 3/12/17.
+ * This onject assumes that target 2 and 3 are meant for tracking and target 1 i meant to stop at.
  */
 
 public class MasqVuforia implements MasqHardware, MasqSensor{
@@ -111,6 +111,8 @@ public class MasqVuforia implements MasqHardware, MasqSensor{
     private String format(OpenGLMatrix transformationMatrix) {
         return transformationMatrix.formatAsTransform();
     }
+
+
     public String getName() {
         return name;
     }
@@ -123,5 +125,8 @@ public class MasqVuforia implements MasqHardware, MasqSensor{
                 "TargetTwoPosition" + position(targetTwo),
                 "TargetThreePosition" + position(targetThree),
         };
+    }
+    public boolean stop() {
+        return isSeen(targetOne);
     }
 }
