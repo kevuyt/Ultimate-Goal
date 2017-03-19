@@ -1,9 +1,9 @@
-package BasicLib4997.MasqMotors;
+package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import BasicLib4997.MasqHardware;
-import BasicLib4997.PID_Constants;
+import Library4997.MasqHardware;
+import Library4997.PID_Constants;
 
 /**
  * Created by Archish on 10/28/16.

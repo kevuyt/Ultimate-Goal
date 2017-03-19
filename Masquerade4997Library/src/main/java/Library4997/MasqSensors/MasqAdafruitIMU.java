@@ -1,11 +1,11 @@
-package BasicLib4997.MasqSensors;
+package Library4997.MasqSensors;
 
 import com.qualcomm.hardware.adafruit.BNO055IMU;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
 
-import BasicLib4997.MasqHardware;
+import Library4997.MasqHardware;
 
 
 /**

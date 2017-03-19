@@ -1,4 +1,4 @@
-package BasicLib4997.MasqSensors;
+package Library4997.MasqSensors;
 
 import android.graphics.Color;
 
@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqHardware;
+import Library4997.MasqHardware;
 
 
 /**

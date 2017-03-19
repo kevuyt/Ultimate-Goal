@@ -1,25 +1,23 @@
-package BasicLib4997.MasqRobot;
+package Library4997.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqMotors.MasqMotor;
-import BasicLib4997.MasqMotors.MasqTankDrive;
-import BasicLib4997.MasqSensors.MasqLimitSwitch;
-import BasicLib4997.MasqSensors.MasqSensor;
-import BasicLib4997.MasqSensors.MasqTouchSensor;
-import BasicLib4997.MasqServos.MasqCRServo;
-import BasicLib4997.PID_Constants;
-import BasicLib4997.DashBoard;
-import BasicLib4997.MasqMotors.MasqMotorSystem;
-import BasicLib4997.MasqSensors.MasqAdafruitIMU;
-import BasicLib4997.MasqSensors.MasqClock;
-import BasicLib4997.MasqSensors.MasqColorSensor;
-import BasicLib4997.MasqSensors.MasqODS;
-import BasicLib4997.MasqServos.MasqServo;
-import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
+import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqMotors.MasqTankDrive;
+import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqSensors.MasqSensor;
+import Library4997.MasqServos.MasqCRServo;
+import Library4997.PID_Constants;
+import Library4997.DashBoard;
+import Library4997.MasqMotors.MasqMotorSystem;
+import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqSensors.MasqColorSensor;
+import Library4997.MasqSensors.MasqODS;
+import Library4997.MasqServos.MasqServo;
+import static Library4997.MasqMotors.MasqMotorSystem.convert;
 
 /**
  * The MasqRobot Because Masquerade is the Best

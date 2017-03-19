@@ -1,11 +1,10 @@
-package BasicLib4997.MasqSensors;
+package Library4997.MasqSensors;
 
-import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.AnalogSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqHardware;
+import Library4997.MasqHardware;
 
 /**
  * Created by Archish on 2/28/17.

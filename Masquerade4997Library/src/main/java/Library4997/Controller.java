@@ -1,6 +1,6 @@
-package BasicLib4997;
+package Library4997;
 
-import BasicLib4997.MasqSensors.MasqClock;
+import Library4997.MasqSensors.MasqClock;
 
 /**
  * Created by Archish on 3/3/17.

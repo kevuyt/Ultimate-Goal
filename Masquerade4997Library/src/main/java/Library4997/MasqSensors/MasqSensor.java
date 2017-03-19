@@ -1,6 +1,4 @@
-package BasicLib4997.MasqSensors;
-
-import BasicLib4997.MasqHardware;
+package Library4997.MasqSensors;
 
 /**
  * Created by Archish on 3/17/17.

@@ -1,11 +1,11 @@
-package BasicLib4997.MasqServos;
+package Library4997.MasqServos;
 
 import com.qualcomm.robotcore.hardware.ServoController;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqHardware;
-import BasicLib4997.MasqSensors.MasqClock;
+import Library4997.MasqHardware;
+import Library4997.MasqSensors.MasqClock;
 
 /**
  * Created by Archish on 10/28/16.

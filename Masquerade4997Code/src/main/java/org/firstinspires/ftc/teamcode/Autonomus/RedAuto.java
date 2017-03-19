@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import BasicLib4997.MasqLinearOpMode;
-import BasicLib4997.MasqRobot.MasqRobot;
+import Library4997.MasqLinearOpMode;
+import Library4997.MasqRobot.MasqRobot;
 
 /**
  * Red Autonomous

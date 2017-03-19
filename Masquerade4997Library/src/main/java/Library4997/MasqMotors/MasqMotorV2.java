@@ -1,13 +1,13 @@
-package BasicLib4997.MasqMotors;
+package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.MasqHardware;
-import BasicLib4997.PID_Constants;
-import BasicLib4997.MasqRobot.Direction;
-import BasicLib4997.MasqSensors.MasqClock;
+import Library4997.MasqHardware;
+import Library4997.PID_Constants;
+import Library4997.MasqRobot.Direction;
+import Library4997.MasqSensors.MasqClock;
 
 /**
  * This is a custom motor that includes stall detection and telemetry

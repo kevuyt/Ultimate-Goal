@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import BasicLib4997.MasqLinearOpMode;
+import Library4997.MasqLinearOpMode;
 
 /**
  * This is a basic autonomous program to test the various autonomous functions.

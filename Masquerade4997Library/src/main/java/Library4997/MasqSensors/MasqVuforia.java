@@ -1,4 +1,4 @@
-package BasicLib4997.MasqSensors;
+package Library4997.MasqSensors;
 
 import com.qualcomm.robotcore.util.RobotLog;
 
@@ -16,7 +16,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import java.util.ArrayList;
 import java.util.List;
 
-import BasicLib4997.MasqHardware;
+import Library4997.MasqHardware;
 
 /**
  * This onject assumes that target 2 and 3 are meant for tracking and target 1 i meant to stop at.

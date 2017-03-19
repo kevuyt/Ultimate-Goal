@@ -1,9 +1,8 @@
-package BasicLib4997.MasqServos;
+package Library4997.MasqServos;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import BasicLib4997.DashBoard;
-import BasicLib4997.MasqHardware;
+import Library4997.MasqHardware;
 
 /**
  * Created by Archish on 11/4/16.

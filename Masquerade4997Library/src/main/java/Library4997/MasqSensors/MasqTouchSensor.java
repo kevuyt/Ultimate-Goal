@@ -1,11 +1,9 @@
-package BasicLib4997.MasqSensors;
-import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
+package Library4997.MasqSensors;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-import BasicLib4997.MasqHardware;
+import Library4997.MasqHardware;
 
 public class MasqTouchSensor implements MasqHardware, MasqSensor {
     TouchSensor touchSensor;
