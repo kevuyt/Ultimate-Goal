@@ -1,6 +1,8 @@
 package BasicLib4997.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import BasicLib4997.MasqMotors.MasqMotor;
@@ -58,12 +60,13 @@ public class MasqRobot implements PID_Constants {
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
-    public void drive(double power, int distance, Direction DIRECTION, int sleepTime, double targetAngle) {
+    public void drive(int distance, double power, Direction DIRECTION, double timeOut, int sleepTime, double targetAngle) {
         int newDistance = convert(distance);
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
         driveTrain.runToPosition();
-        while (driveTrain.rightIsBusy() && opModeIsActive()) {
+        MasqClock clock = new MasqClock("clock");
+        while (driveTrain.rightIsBusy() && opModeIsActive() && !clock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double newPowerLeft = power;
             double imuVal = imu.getHeading();
             double error = targetAngle - imuVal;
@@ -79,16 +82,14 @@ public class MasqRobot implements PID_Constants {
         driveTrain.runUsingEncoder();
         sleep(sleepTime);
     }
-    public void drive(double power, int distance, double targetAngle, Direction DIRECTION) {
-        drive(power, distance, DIRECTION, DEFAULT_SLEEP_TIME, targetAngle);
-    }
-    public void drive(double power, int distance, Direction DIRECTION, int sleepTime) {
+    public void drive(int distance, double power, Direction DIRECTION, double timeOut, int sleepTime) {
         double targetAngle = imu.getHeading();
         int newDistance = convert(distance);
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
         driveTrain.runToPosition();
-        while (driveTrain.rightIsBusy() && opModeIsActive()) {
+        MasqClock clock = new MasqClock("clock");
+        while (driveTrain.rightIsBusy() && opModeIsActive() && !clock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double newPowerLeft = power;
             double imuVal = imu.getHeading();
             double error = targetAngle - imuVal;
@@ -104,9 +105,19 @@ public class MasqRobot implements PID_Constants {
         driveTrain.runUsingEncoder();
         sleep(sleepTime);
     }
-    public void drive(double power, int distance, Direction DIRECTION) {
-        drive(power, distance, DIRECTION, DEFAULT_SLEEP_TIME);
+    public void drive(int distance, double power, Direction DIRECTION, double timeOut) {
+        drive(distance, power, DIRECTION, timeOut, DEFAULT_SLEEP_TIME);
     }
+    public void drive(int distance, double power, Direction Direction) {
+        drive(distance, power, Direction, DEFAULT_TIMEOUT);
+    }
+    public void drive (int distance, double power){
+        drive(distance, power, Direction.FORWARD);
+    }
+    public void drive(int distance) {
+        drive(distance, 0.5);
+    }
+
     public void turn(int angle, Direction DIRECTION, double timeout, int sleepTime, double kp, double ki, double kd) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         targetAngle *= color;
@@ -154,6 +165,7 @@ public class MasqRobot implements PID_Constants {
     public void turn(int angle, Direction DIRECTION)  {
         turn(angle, DIRECTION, DEFAULT_TIMEOUT);
     }
+
     public void stopRed(double power, Direction Direction, MasqColorSensor colorSensor) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
@@ -204,6 +216,7 @@ public class MasqRobot implements PID_Constants {
         }
         driveTrain.StopDriving();
     }
+
     public void sleep(int time) {
         try {
             Thread.sleep((long) time);
