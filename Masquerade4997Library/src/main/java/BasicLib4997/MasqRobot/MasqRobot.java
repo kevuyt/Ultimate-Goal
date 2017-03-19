@@ -27,27 +27,30 @@ import static BasicLib4997.MasqMotors.MasqMotorSystem.convert;
 
 public class MasqRobot implements PID_Constants {
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
-    //private MasqMotor collector = new MasqMotor("collector");
     public MasqMotorSystem shooter = new MasqMotorSystem("shooter", "shooter2", "shooter");
-    ///MasqClock
-    //Servos
-    public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
+
+
+    private MasqServo indexer = new MasqServo("indexer");
+
     private MasqCRServo rightPresser = new MasqCRServo("rightPresser");
     private MasqCRServo leftPresser = new MasqCRServo("leftPresser");
+
     private MasqMotor collector = new MasqMotor("collector");
-    private MasqServo indexer = new MasqServo("indexer");
-    //IMU
+
+    public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
+
     public MasqODS ods = new MasqODS("ods");
-    //ColorSensor
+
     public MasqColorSensor rightColor = new MasqColorSensor("rightColor" , 62);
     public MasqColorSensor colorRejection = new MasqColorSensor("colorRejection", 64);
     public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
-    //RangeSensor
+
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
     private double color = 1;
+
     public enum AllianceColor {
         BLUE (-1.0),
         RED (+1.0);
@@ -60,6 +63,7 @@ public class MasqRobot implements PID_Constants {
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
+
     public void drive(int distance, double power, Direction DIRECTION, double timeOut, int sleepTime, double targetAngle) {
         int newDistance = convert(distance);
         driveTrain.resetEncoders();
