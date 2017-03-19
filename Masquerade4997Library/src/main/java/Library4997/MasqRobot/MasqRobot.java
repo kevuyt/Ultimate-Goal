@@ -1,6 +1,7 @@
 package Library4997.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
@@ -167,6 +168,10 @@ public class MasqRobot implements PID_Constants {
     }
     public void turn(int angle, Direction DIRECTION)  {
         turn(angle, DIRECTION, DEFAULT_TIMEOUT);
+    }
+
+    public double getDelta (double mesureOne, Direction direction) {
+        return mesureOne - (imu.getHeading() * direction.value);
     }
 
     public void stopRed(double power, Direction Direction, MasqColorSensor colorSensor) {
