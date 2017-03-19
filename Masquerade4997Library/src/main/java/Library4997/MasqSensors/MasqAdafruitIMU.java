@@ -15,6 +15,7 @@ import Library4997.MasqHardware;
 public class MasqAdafruitIMU implements MasqHardware{
     private final BNO055IMU imu;
     private final String name;
+    private double zeroPos;
     public MasqAdafruitIMU(String name) {
         this.name = name;
         imu = FtcOpModeRegister.opModeManager.getHardwareMap().get(BNO055IMU.class, name);
@@ -50,6 +51,12 @@ public class MasqAdafruitIMU implements MasqHardware{
     } //puts angle from 0-360 to -180 to 180
     public double getHeading() {
         return getAngles()[0];
+    }
+    public double getYaw () {
+        return getHeading() - zeroPos;
+    }
+    public void reset(){
+        zeroPos = getHeading();
     }
     public double getPitch() {
         return getAngles()[1];

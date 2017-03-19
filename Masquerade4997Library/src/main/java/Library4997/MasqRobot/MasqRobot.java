@@ -24,6 +24,7 @@ import static Library4997.MasqMotors.MasqMotorSystem.convert;
  */
 
 public class MasqRobot implements PID_Constants {
+    //Place All Hardware Here///////////////////////////////////////////////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
     public MasqMotorSystem shooter = new MasqMotorSystem("shooter", "shooter2", "shooter");
 
@@ -43,7 +44,7 @@ public class MasqRobot implements PID_Constants {
     public MasqColorSensor rightColor = new MasqColorSensor("rightColor" , 62);
     public MasqColorSensor colorRejection = new MasqColorSensor("colorRejection", 64);
     public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
@@ -156,10 +157,10 @@ public class MasqRobot implements PID_Constants {
         turn(angle, DIRECTION, timeOut, sleepTime, kp, ki, KD_TURN);
     }
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp) {
-        turn(angle, DIRECTION, timeOut, sleepTime, kp, KI_TURN, KD_TURN);
+        turn(angle, DIRECTION, timeOut, sleepTime, kp, KI_TURN);
     }
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime) {
-        turn(angle, DIRECTION, timeOut, sleepTime, KP_TURN, KI_TURN, KD_TURN);
+        turn(angle, DIRECTION, timeOut, sleepTime, KP_TURN);
     }
     public void turn( int angle, Direction DIRECTION, double timeout)  {
         turn(angle, DIRECTION, timeout, DEFAULT_SLEEP_TIME);

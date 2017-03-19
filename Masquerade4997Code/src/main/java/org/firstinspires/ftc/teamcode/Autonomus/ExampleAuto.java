@@ -16,8 +16,7 @@ public class ExampleAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.drive(POWER_OPTIMAL, 33, Direction.FORWARD);
-        robot.turn(45, Direction.RIGHT);
-        robot.drive(POWER_HIGH, 100, Direction.FORWARD);
+        robot.drive(33, POWER_OPTIMAL, Direction.FORWARD);
+        robot.drive(100,POWER_OPTIMAL, Direction.FORWARD);
     }
 }
