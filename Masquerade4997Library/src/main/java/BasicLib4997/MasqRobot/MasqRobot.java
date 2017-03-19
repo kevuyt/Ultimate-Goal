@@ -6,6 +6,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import BasicLib4997.MasqMotors.MasqMotor;
 import BasicLib4997.MasqMotors.MasqTankDrive;
 import BasicLib4997.MasqSensors.MasqLimitSwitch;
+import BasicLib4997.MasqSensors.MasqSensor;
 import BasicLib4997.MasqSensors.MasqTouchSensor;
 import BasicLib4997.MasqServos.MasqCRServo;
 import BasicLib4997.PID_Constants;
@@ -232,10 +233,10 @@ public class MasqRobot implements PID_Constants {
         }
         driveTrain.StopDriving();
     }
-    public void stopTouch(double power, Direction Direction, MasqTouchSensor sensor) {
+    public void stop(double power, Direction Direction, MasqSensor sensor) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
-        while (!sensor.isPressed() && opModeIsActive()) {
+        while (sensor.stop() && opModeIsActive()) {
             double newPower = power;
             double heading = imu.getHeading();
             double error = targetAngle - heading;
@@ -243,28 +244,11 @@ public class MasqRobot implements PID_Constants {
             newPower = newPower - (errorKP * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            DashBoard.getDash().create("is Pressed", sensor.isPressed());
+            DashBoard.getDash().create("is Stopped", sensor.stop());
             DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
     }
-    public void stopLimit(double power, Direction Direction, MasqLimitSwitch lswitch) {
-        driveTrain.runUsingEncoder();
-        double targetAngle = imu.getHeading();
-        while (!lswitch.isPressed() && opModeIsActive()) {
-            double newPower = power;
-            double heading = imu.getHeading();
-            double error = targetAngle - heading;
-            double errorKP = error * KP_STRAIGHT;
-            newPower = newPower - (errorKP * Direction.value);
-            driveTrain.setPowerLeft(newPower * Direction.value);
-            driveTrain.setPowerRight(power * Direction.value);
-            DashBoard.getDash().create("is Pressed", lswitch.isPressed());
-            DashBoard.getDash().update();
-        }
-        driveTrain.StopDriving();
-    }
-    
     public void sleep() {
         sleep(1000);
     }

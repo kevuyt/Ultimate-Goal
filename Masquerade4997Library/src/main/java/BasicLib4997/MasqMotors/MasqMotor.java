@@ -67,8 +67,8 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     boolean isBusy () {
         return motor.isBusy();
     }
-    public void setbrakeMode () {
-        setPower(0.001);
+    public void setBrakeMode() {
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public double getCurrentPos () {
          return motor.getCurrentPosition();

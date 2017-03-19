@@ -13,11 +13,11 @@ import BasicLib4997.MasqRobot.MasqRobot;
 public class RedAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
-            dash.create(robot);
+            dash.create(robot.imu);
             dash.update();
         }
         waitForStart();
-        dash.createSticky(robot);
+        dash.createSticky(robot.imu);
         robot.setAllianceColor(MasqRobot.AllianceColor.RED);
     }
 }

@@ -52,6 +52,6 @@ public class MasqLimitSwitch implements MasqHardware,MasqSensor {
 
     }
     public boolean stop() {
-        return isPressed();
+        return !isPressed();
     }
 }

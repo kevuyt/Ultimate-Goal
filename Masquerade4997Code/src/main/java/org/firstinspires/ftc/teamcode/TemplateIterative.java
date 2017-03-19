@@ -43,7 +43,7 @@ public class TemplateIterative extends MasqOpMode {
     public void init() {}
     @Override
     public void init_loop() {
-        dash.create(robot);
+        dash.create(robot.imu);
         dash.update();
     }
     @Override

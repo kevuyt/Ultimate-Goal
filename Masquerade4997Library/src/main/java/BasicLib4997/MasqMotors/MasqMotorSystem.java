@@ -1,10 +1,7 @@
 package BasicLib4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import BasicLib4997.DashBoard;
 import BasicLib4997.MasqHardware;
 import BasicLib4997.PID_Constants;
 
@@ -55,8 +52,8 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         setPower(0);
     }
     public void setBrakeMode () {
-        motor1.setbrakeMode();
-        motor2.setbrakeMode();
+        motor1.setBrakeMode();
+        motor2.setBrakeMode();
     }
     public static int convert(int TICKS) {
         return (int) ((TICKS * 35.1070765836));

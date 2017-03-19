@@ -15,7 +15,7 @@ import BasicLib4997.MasqLinearOpMode;
 public class Template extends MasqLinearOpMode implements Constants{
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
-            dash.create(robot);
+            dash.create(robot.imu);
             dash.update();
         }
         waitForStart();

@@ -15,7 +15,7 @@ import BasicLib4997.MasqHardware;
 public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor{
         private AnalogInput ds;
         private String nameDS;
-    private int stopThresh = 0;
+    private int stopThresh = 30;
     public MasqMatiboxUltraSensor(String name){
             this.nameDS = name;
             ds = FtcOpModeRegister.opModeManager.getHardwareMap().get(AnalogInput.class, name);
