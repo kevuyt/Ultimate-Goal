@@ -69,7 +69,7 @@ public class MasqRobot implements PID_Constants {
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
         driveTrain.runToPosition();
-        MasqClock clock = new MasqClock("clock");
+        MasqClock clock = new MasqClock();
         while (driveTrain.rightIsBusy() && opModeIsActive() && !clock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double newPowerLeft = power;
             double imuVal = imu.getHeading();
@@ -92,7 +92,7 @@ public class MasqRobot implements PID_Constants {
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
         driveTrain.runToPosition();
-        MasqClock clock = new MasqClock("clock");
+        MasqClock clock = new MasqClock();
         while (driveTrain.rightIsBusy() && opModeIsActive() && !clock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double newPowerLeft = power;
             double imuVal = imu.getHeading();
@@ -131,7 +131,7 @@ public class MasqRobot implements PID_Constants {
         double integral = 0;
         double newPower = 0;
         double previousTime = 0;
-        MasqClock clock = new MasqClock("clock");
+        MasqClock clock = new MasqClock();
         while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
             previousTime = System.nanoTime();
@@ -170,8 +170,8 @@ public class MasqRobot implements PID_Constants {
         turn(angle, DIRECTION, DEFAULT_TIMEOUT);
     }
 
-    public double getDelta (double mesureOne, Direction direction) {
-        return mesureOne - (imu.getHeading() * direction.value);
+    public double getDelta (double measureOne, Direction direction) {
+        return measureOne - (imu.getHeading() * direction.value);
     }
 
     public void stopRed(double power, Direction Direction, MasqColorSensor colorSensor) {

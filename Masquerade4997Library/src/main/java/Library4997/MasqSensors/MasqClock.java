@@ -17,9 +17,6 @@ public class MasqClock implements MasqHardware {
 
 
     public MasqClock() {this.reset();}
-    public MasqClock(String n) {setName(n); this.reset();}
-
-
     public void reset() {
         isPaused = false;
         pauseStart = 0L;
@@ -56,11 +53,7 @@ public class MasqClock implements MasqHardware {
     }
 
     public boolean isPaused() {return isPaused;}
-
-
-    public MasqClock setName (String n) {name = n; return this;}
     public String getName() {return name;}
-
     public String[] getDash() {
         return new String[]{
                 String.format(Locale.US, "%.5f  %s", seconds(), isPaused() ? "PAUSED" : "")
