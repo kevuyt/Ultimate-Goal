@@ -16,6 +16,7 @@ import Library4997.PID_Constants;
 public class MasqMotorSystem implements PID_Constants, MasqHardware {
     private MasqMotor motor1 , motor2, motor3;
     private List<MasqMotor> motors;
+    private int numMotors;
     String systemName;
     public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction directionOther, String systemName) {
         this.systemName = systemName;
@@ -23,6 +24,7 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         motor2 = new MasqMotor(name2, directionOther);
         motor3 = null;
         motors = Arrays.asList(motor1, motor2);
+        numMotors = 2;
     }
     public MasqMotorSystem(String name1, String name2, String systemName) {
         this.systemName = systemName;
@@ -30,6 +32,7 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         motor2 = new MasqMotor(name2, DcMotor.Direction.FORWARD);
         motor3 = null;
         motors = Arrays.asList(motor1, motor2);
+        numMotors = 2;
     }
     public MasqMotorSystem(String name1, DcMotor.Direction direction,
                            String name2, DcMotor.Direction directionOther,
@@ -39,6 +42,7 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         motor2 = new MasqMotor(name2, directionOther);
         motor3 = new MasqMotor(name3, direction3);
         motors = Arrays.asList(motor1, motor2, motor3);
+        numMotors = 3;
     }
     public MasqMotorSystem(String name1, String name2, String name3, String systemName) {
         this.systemName = systemName;
@@ -46,6 +50,7 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         motor2 = new MasqMotor(name2, DcMotor.Direction.FORWARD);
         motor3 = new MasqMotor(name3, DcMotor.Direction.FORWARD);
         motors = Arrays.asList(motor1, motor2, motor3);
+        numMotors = 3;
     }
     public MasqMotorSystem resetEncoder () {
         for (MasqMotor masqMotor : motors)
@@ -94,9 +99,9 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         return isBusy;
     }
     public double getCurrentPos () {
-        double motor1Pos = motor1.getCurrentPos();
-        double motor2Pos = motor2.getCurrentPos();
-        return (motor1Pos + motor2Pos) / 2;
+        int total = 0;
+        for (MasqMotor m : motors) total += m.getCurrentPos();
+        return total / numMotors;
     }
     public String getName() {
         return systemName;
