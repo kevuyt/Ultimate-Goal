@@ -14,6 +14,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefau
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import Library4997.MasqHardware;
@@ -26,18 +28,49 @@ import Library4997.MasqSensor;
 public class MasqVuforia implements MasqHardware, MasqSensor {
     private String name, target1, target2, target3, asset;
     public VuforiaTrackable targetOne, targetTwo, targetThree;
-    VuforiaLocalizer vuforia;
+    private List<VuforiaTrackable> trackables;
+    private List<String> names;
+    private List <OpenGLMatrix> trackableLocation;
+    private List<Integer> trackableCount;
+    private OpenGLMatrix location1, location2, location3;
+    private VuforiaLocalizer vuforia;
     private float mmPerInch        = 25.4f;
     private float mmBotWidth       = 18 * mmPerInch;
     private float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
     OpenGLMatrix lastLocation = null;
 
-    public MasqVuforia (String name, String target1, String target2, String target3, String asset){
-        this.name = name;
+    public MasqVuforia (String target1, String target2, String target3, String asset){
         this.target1 = target1;
         this.target2 = target2;
         this.target3 = target3;
         this.asset = asset;
+        trackables = Arrays.asList(targetOne, targetTwo, targetThree);
+        names = Arrays.asList(target1, target2, target3);
+        trackableCount = Arrays.asList(1,2,3);
+        trackableLocation = Arrays.asList(location1, location2, location3);
+        for (Integer i: trackableCount) {
+            trackableLocation.get(i) = OpenGLMatrix.translation(-mmFTCFieldWidth / 2, 0, 0)
+                    .multiplied(Orientation.getRotationMatrix(
+                            AxesReference.EXTRINSIC, AxesOrder.XZX,
+                            AngleUnit.DEGREES, 90, 90, 0));
+        }
+        setUp();
+    }
+    public MasqVuforia (String target1, String target2, String asset){
+        this.target1 = target1;
+        this.target2 = target2;
+        this.asset = asset;
+        trackables = Arrays.asList(targetOne, targetTwo);
+        names = Arrays.asList(target1, target2);
+        trackableCount = Arrays.asList(1,2);
+        setUp();
+    }
+    public MasqVuforia (String target1, String asset){
+        this.target1 = target1;
+        this.asset = asset;
+        trackables = Collections.singletonList(targetOne);
+        names = Collections.singletonList(target1);
+        trackableCount = Collections.singletonList(1);
         setUp();
     }
     private void setUp () {
@@ -46,22 +79,18 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         VuforiaTrackables target = this.vuforia.loadTrackablesFromAsset(asset);
-        targetOne = target.get(0);
-        targetOne.setName(target1);
-        targetTwo  = target.get(1);
-        targetTwo.setName(target2);
-        targetThree = target.get(2);
-        targetThree.setName(target3);
-        List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
-        allTrackables.addAll(target);
-
-        OpenGLMatrix target1Location = OpenGLMatrix
-                .translation(-mmFTCFieldWidth/2, 0, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 90, 0));
-        targetOne.setLocation(target1Location);
-        RobotLog.ii(this.name, target1 + "=%s", format(target1Location));
+        for (VuforiaTrackable trackable: trackables) {
+            int i = 0;
+            trackable = target.get(i);
+            trackable.setName(names.get(i));
+            OpenGLMatrix target1Location = OpenGLMatrix
+                    .translation(-mmFTCFieldWidth / 2, 0, 0)
+                    .multiplied(Orientation.getRotationMatrix(
+                            AxesReference.EXTRINSIC, AxesOrder.XZX,
+                            AngleUnit.DEGREES, 90, 90, 0));
+            trackable.setLocation(target1Location);
+            RobotLog.ii(this.name, target1 + "=%s", format(target1Location));
+        }
 
         OpenGLMatrix target2Location = OpenGLMatrix
                 .translation(0, mmFTCFieldWidth/2, 0)
@@ -86,9 +115,10 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
                         AngleUnit.DEGREES, -90, 0, 0));
         RobotLog.ii(this.name, "phone=%s", format(phoneLocationOnRobot));
 
-        ((VuforiaTrackableDefaultListener)targetOne.getListener()).setPhoneInformation(phoneLocationOnRobot, parameters.cameraDirection);
-        ((VuforiaTrackableDefaultListener)targetTwo.getListener()).setPhoneInformation(phoneLocationOnRobot, parameters.cameraDirection);
-        ((VuforiaTrackableDefaultListener)targetThree.getListener()).setPhoneInformation(phoneLocationOnRobot, parameters.cameraDirection);
+        for (VuforiaTrackable vuforiaTrackable: trackables){
+            ((VuforiaTrackableDefaultListener)vuforiaTrackable.getListener()).setPhoneInformation(phoneLocationOnRobot, parameters.cameraDirection);
+        }
+        trackables.addAll(target);
     }
     public boolean isSeen (VuforiaTrackable trackable) {
         return ((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible();
@@ -119,6 +149,7 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
     }
     public String[] getDash() {
         return new String[]{
+                name +
                 "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),
                 "TargetTwoSeen" + Boolean.toString(isSeen(targetTwo)),
                 "TargetThreeSeen" + Boolean.toString(isSeen(targetThree)),
