@@ -17,12 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqHardware;
+import Library4997.MasqSensor;
 
 /**
  * This onject assumes that target 2 and 3 are meant for tracking and target 1 i meant to stop at.
  */
 
-public class MasqVuforia implements MasqHardware, MasqSensor{
+public class MasqVuforia implements MasqHardware, MasqSensor {
     private String name, target1, target2, target3, asset;
     public VuforiaTrackable targetOne, targetTwo, targetThree;
     VuforiaLocalizer vuforia;

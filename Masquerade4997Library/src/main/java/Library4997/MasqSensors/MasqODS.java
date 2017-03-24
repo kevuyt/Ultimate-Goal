@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
+import Library4997.MasqSensor;
 
 /**
  * Created by Archish on 10/28/16.

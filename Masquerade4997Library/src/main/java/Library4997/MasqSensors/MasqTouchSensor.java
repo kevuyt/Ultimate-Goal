@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
+import Library4997.MasqSensor;
 
 public class MasqTouchSensor implements MasqHardware, MasqSensor {
     TouchSensor touchSensor;

@@ -36,17 +36,13 @@ public class MasqIRSeeker implements MasqHardware {
 
     public MasqIRSeeker(String name, int i2cAddress) {
         this.name = name;
-
         irSeeker = FtcOpModeRegister.opModeManager.getHardwareMap().i2cDevice.get(name);
         irSeeker.resetDeviceConfigurationForOpMode();
-
         irSeekerManager = new I2cDeviceSynchImpl(irSeeker, I2cAddr.create8bit(i2cAddress), false);
         irSeekerManager.resetDeviceConfigurationForOpMode();
         irSeekerManager.engage();
         irSeekerManager.setReadWindow(new I2cDeviceSynch.ReadWindow(READ_WINDOW_START, READ_WINDOW_LENGTH, I2cDeviceSynch.ReadMode.REPEAT));
     }
-
-
     public int direction1200() {return irSeekerManager.read8(DIRECTION_REGISTER_1200);}
     public int signal1200() {return irSeekerManager.read8(SIGNAL_STRENGTH_REGISTER_1200);}
     public int direction600() {return irSeekerManager.read8(DIRECTION_REGISTER_600);}

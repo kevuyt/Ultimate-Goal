@@ -1,4 +1,4 @@
-package Library4997.MasqSensors;
+package Library4997;
 
 /**
  * Created by Archish on 3/17/17.

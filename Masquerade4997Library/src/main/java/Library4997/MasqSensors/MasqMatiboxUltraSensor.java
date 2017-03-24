@@ -5,12 +5,13 @@ import com.qualcomm.robotcore.hardware.AnalogInput;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
+import Library4997.MasqSensor;
 
 /**
  * Created by Archish on 2/28/17.
  */
 
-public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor{
+public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
         private AnalogInput ds;
         private String nameDS;
     private int stopThresh = 30;
