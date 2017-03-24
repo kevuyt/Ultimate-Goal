@@ -1,6 +1,11 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import Library4997.MasqHardware;
 import Library4997.PID_Constants;
@@ -9,66 +14,84 @@ import Library4997.PID_Constants;
  * MasqMotorSystem That supports two motora and treats them as one
  */
 public class MasqMotorSystem implements PID_Constants, MasqHardware {
-    private MasqMotor motor1 , motor2 = null;
+    private MasqMotor motor1 , motor2, motor3;
+    private List<MasqMotor> motors;
     String systemName;
     public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction directionOther, String systemName) {
         this.systemName = systemName;
         motor1 = new MasqMotor(name1, direction);
         motor2 = new MasqMotor(name2, directionOther);
+        motor3 = null;
+        motors = Arrays.asList(motor1, motor2);
     }
     public MasqMotorSystem(String name1, String name2, String systemName) {
         this.systemName = systemName;
         motor1 = new MasqMotor(name1, DcMotor.Direction.FORWARD);
         motor2 = new MasqMotor(name2, DcMotor.Direction.FORWARD);
+        motor3 = null;
+        motors = Arrays.asList(motor1, motor2);
     }
-
-    public void resetEncoders () {
-        motor1.resetEncoder();
-        motor2.resetEncoder();
+    public MasqMotorSystem(String name1, DcMotor.Direction direction,
+                           String name2, DcMotor.Direction directionOther,
+                           String name3, DcMotor.Direction direction3, String systemName) {
+        this.systemName = systemName;
+        motor1 = new MasqMotor(name1, direction);
+        motor2 = new MasqMotor(name2, directionOther);
+        motor3 = new MasqMotor(name3, direction3);
+        motors = Arrays.asList(motor1, motor2, motor3);
+    }
+    public MasqMotorSystem(String name1, String name2, String name3, String systemName) {
+        this.systemName = systemName;
+        motor1 = new MasqMotor(name1, DcMotor.Direction.FORWARD);
+        motor2 = new MasqMotor(name2, DcMotor.Direction.FORWARD);
+        motor3 = new MasqMotor(name3, DcMotor.Direction.FORWARD);
+        motors = Arrays.asList(motor1, motor2, motor3);
+    }
+    public MasqMotorSystem resetEncoder () {
+        for (MasqMotor masqMotor : motors)
+        masqMotor.resetEncoder();
+        return this;
     }
     public void setPower (double power) {
-        motor1.setPower(power);
-        motor2.setPower(power);
+        for (MasqMotor masqMotor : motors)
+        masqMotor.setPower(power);
     }
-    public void setDistance(int distance){
-        motor1.setDistance(distance);
-        motor2.setDistance(distance);
+    public MasqMotorSystem setDistance(int distance){
+        for (MasqMotor masqMotor: motors)
+        masqMotor.setDistance(distance);
+        return this;
     }
-    public void runUsingEncoder() {
-        motor1.runUsingEncoder();
-        motor2.runUsingEncoder();
+    public MasqMotorSystem runUsingEncoder() {
+        for (MasqMotor masqMotor: motors)
+            masqMotor.runUsingEncoder();
+        return this;
     }
-    public void runToPosition(){
-        motor1.runToPosition();
-        motor2.runToPosition();
-
+    public MasqMotorSystem runToPosition(){
+        for (MasqMotor masqMotor: motors)
+            masqMotor.runToPosition();
+        return this;
     }
-    public void runWithoutEncoders() {
-        motor1.runWithoutEncoders();
-        motor2.runWithoutEncoders();
-
+    public MasqMotorSystem runWithoutEncoders() {
+        for (MasqMotor masqMotor: motors)
+            masqMotor.runWithoutEncoders();
+        return this;
     }
     public void StopDriving() {
         setPower(0);
     }
-    public void setBrakeMode () {
-        motor1.setBrakeMode();
-        motor2.setBrakeMode();
+    public MasqMotorSystem setBrakeMode () {
+        for (MasqMotor masqMotor: motors)
+            masqMotor.setBrakeMode();
+        return this;
     }
     public static int convert(int TICKS) {
         return (int) ((TICKS * 35.1070765836));
     }
-    boolean isStalled () {
-        int i;
-        boolean isStalled;
-        if (motor1.isStalled()) i = 1;
-        else if (motor2.isStalled()) i = 2;
-        else i = 0;
-        isStalled = i >= 1;
-        return isStalled;
-    }
     public boolean isBusy() {
-        return (motor1.isBusy() && motor2.isBusy());
+        boolean isBusy = false;
+        for (MasqMotor masqMotor: motors)
+        isBusy = masqMotor.isBusy();
+        return isBusy;
     }
     public double getCurrentPos () {
         double motor1Pos = motor1.getCurrentPos();
