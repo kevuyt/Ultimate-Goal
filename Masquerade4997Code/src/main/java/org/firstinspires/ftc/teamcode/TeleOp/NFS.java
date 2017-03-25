@@ -10,7 +10,7 @@ import Library4997.MasqLinearOpMode;
  */
 @TeleOp(name="TeleOpNFS", group="Final")// change name
 
-public class NFS extends MasqLinearOpMode { // change file name
+public class NFS extends MasqLinearOpMode implements Constants { // change file name
     public void main() throws InterruptedException {
 
     }
@@ -27,6 +27,7 @@ public class NFS extends MasqLinearOpMode { // change file name
 
 
     @Override
+
     public void runLinearOpMode() throws InterruptedException {
         while (!isStarted()) {
             robot.indexer.setPosition(0);
@@ -34,18 +35,12 @@ public class NFS extends MasqLinearOpMode { // change file name
             telemetry.update();
             idle();
         }
-
+        double power = 0;
         waitForStart();
         robot.shooter.runUsingEncoder();
-        double power = 0;
-        double revUpFactor = 0.1;
-        double revDownFactor = 0.01;
-        double targetPower = -0.8;
-        double lowPowerFactor = 0.2;
         while (opModeIsActive()) {
             float move = -gamepad1.left_stick_y;
             float turn = -gamepad1.right_stick_x;
-            double collector = -1.5;
             double left = move - turn;
             double right = move + turn;
 
@@ -79,35 +74,35 @@ public class NFS extends MasqLinearOpMode { // change file name
 
 
             if (gamepad1.right_bumper) {
-                robot.collector.setPower(collector);
+                robot.collector.setPower(COLLECTOR_IN);
             }
             else if (gamepad1.left_bumper) {
-                robot.collector.setPower(-collector);
+                robot.collector.setPower(COLLECTOR_OUT);
             }
             else {
                 robot.collector.setPower(0);
             }
 
             if(gamepad2.right_bumper) {
-                power += revUpFactor;
-                if (power > targetPower) {
-                    power = targetPower;
+                power += REV_UP;
+                if (power > TARGET_POWER) {
+                    power = TARGET_POWER;
                     telemetry.addLine("Shooter is Revved Up.");
                 }
                 robot.shooter.setPower(power);
             }
 
             else if(gamepad2.left_bumper) {
-                power += revUpFactor;
-                if (power > targetPower) {
-                    power = targetPower + lowPowerFactor;
+                power += REV_UP;
+                if (power > TARGET_POWER) {
+                    power = TARGET_POWER + LOW_POWER_FACTOR;
                     telemetry.addLine("Shooter is Revved Up.");
                 }
                 robot.shooter.setPower(power);
             }
             else {
-                power -= revDownFactor;
-                if (power < targetPower) {
+                power -= REV_DOWN;
+                if (power < TARGET_POWER) {
                     telemetry.addLine("Shooter is Not Revved Up.");
                 }
                 if (power < 0) {
@@ -116,35 +111,35 @@ public class NFS extends MasqLinearOpMode { // change file name
                 robot.shooter.setPower(power);
             }
 
-            if (gamepad2.right_bumper && gamepad2.x && robot.shooter.getPower() < (targetPower + 0.05)) {
-                robot.indexer.setPosition(0.6);
+            if (gamepad2.right_bumper && gamepad2.x && robot.shooter.getPower() < (TARGET_POWER + SHOOTER_ERROR)) {
+                robot.indexer.setPosition(INDEXER_OPENED);
             }
 
-            else if (gamepad2.left_bumper && gamepad2.x && robot.shooter.getPower() < (targetPower + lowPowerFactor + 0.05)) {
-                robot.indexer.setPosition(0.6);
+            else if (gamepad2.left_bumper && gamepad2.x && robot.shooter.getPower() < (TARGET_POWER + LOW_POWER_FACTOR + SHOOTER_ERROR)) {
+                robot.indexer.setPosition(INDEXER_OPENED);
             }
 
             else {
-                robot.indexer.setPosition(0);
+                robot.indexer.setPosition(INDEXER_CLOSED);
             }
 
             if (gamepad2.dpad_left){
-                robot.rightPresser.setPower(1);
+                robot.rightPresser.setPower(BEACON_OUT);
             }
 
             else if (gamepad2.dpad_right){
-                robot.rightPresser.setPower(-1);
+                robot.rightPresser.setPower(BEACON_IN);
             }
 
             else {
                 robot.rightPresser.setPower(0);
             }
-            if (gamepad2.dpad_up){
-                robot.leftPresser.setPower(1);
-            }
 
+            if (gamepad2.dpad_up){
+                robot.leftPresser.setPower(BEACON_OUT);
+            }
             else if (gamepad2.dpad_down){
-                robot.leftPresser.setPower(-1);
+                robot.leftPresser.setPower(BEACON_IN);
             }
             else {
                 robot.leftPresser.setPower(0);
