@@ -44,12 +44,13 @@ public class TemplateIterative extends MasqOpMode {
     @Override
     public void init_loop() {
         dash.create(robot.imu);
+        dash.createSticky(controller1);
+        dash.createSticky(controller2);
         dash.update();
     }
     @Override
     public void start(){
-        dash.createSticky(controller1);
-        dash.createSticky(controller2);
+
     }
     @Override
     public void loop() {}
