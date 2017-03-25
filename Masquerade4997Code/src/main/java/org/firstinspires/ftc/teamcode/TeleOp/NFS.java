@@ -36,11 +36,12 @@ public class NFS extends MasqLinearOpMode { // change file name
         }
 
         waitForStart();
+        robot.shooter.runUsingEncoder();
         double power = 0;
         double revUpFactor = 0.1;
         double revDownFactor = 0.01;
-        double targetPower = -0.6;
-        double lowPowerFactor = 0;
+        double targetPower = -0.8;
+        double lowPowerFactor = 0.2;
         while (opModeIsActive()) {
             float move = -gamepad1.left_stick_y;
             float turn = -gamepad1.right_stick_x;
@@ -49,10 +50,13 @@ public class NFS extends MasqLinearOpMode { // change file name
             double right = move + turn;
 
             if (gamepad1.right_trigger > 0) {
-                left/= 3;
-                right /=3;
-                robot.driveTrain.setPowerLeft(-left);
-                robot.driveTrain.setPowerRight(-right);
+                robot.lift.setPower(1);
+            }
+            else if (gamepad1.left_trigger >0){
+                robot.lift.setPower(-1);
+            }
+            else {
+                robot.lift.setPower(0);
             }
             if(left > 1.0) {
                 left /= left;
@@ -145,6 +149,7 @@ public class NFS extends MasqLinearOpMode { // change file name
             else {
                 robot.leftPresser.setPower(0);
             }
+
             telemetry.addData("Shooter Power", robot.shooter.getPower());
             telemetry.addData("Left Power", left);
             telemetry.addData("Right Power", right);
