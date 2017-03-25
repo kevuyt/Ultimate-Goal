@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+import org.firstinspires.ftc.teamcode.TeleOp.Constants;
+
 import Library4997.MasqLinearOpMode;
 
 /**
@@ -8,7 +11,7 @@ import Library4997.MasqLinearOpMode;
  */
 
 @Autonomous(name = "AutoTest", group = "Test")
-public class AutoTest extends MasqLinearOpMode {
+public class AutoTest extends MasqLinearOpMode implements Constants{
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.limitSwitch);

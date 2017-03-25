@@ -33,12 +33,15 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.TeleOp.Constants;
+
 import Library4997.MasqOpMode;
 
 
 @TeleOp(name="Template Iterative", group="Template")
 @Disabled
-public class TemplateIterative extends MasqOpMode {
+public class TemplateIterative extends MasqOpMode implements Constants, org.firstinspires.ftc.teamcode.Autonomus.Constants {
     @Override
     public void init() {}
     @Override
