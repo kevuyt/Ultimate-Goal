@@ -14,26 +14,17 @@ public class NFS extends MasqLinearOpMode implements Constants { // change file 
     public void main() throws InterruptedException {
 
     }
-    private double getBatteryVoltage() {
-        double result = Double.POSITIVE_INFINITY;
-        for (VoltageSensor sensor : hardwareMap.voltageSensor) {
-            double voltage = sensor.getVoltage();
-            if (voltage > 0) {
-                result = Math.min(result, voltage);
-            }
-        }
-        return result;
-    }
-
-
     @Override
-
     public void runLinearOpMode() throws InterruptedException {
+        int i = 0;
         while (!isStarted()) {
             robot.indexer.setPosition(0);
             telemetry.addData("Voltage", getBatteryVoltage());
             telemetry.update();
-            idle();
+            if (controller1.aPressedAndRealeased()){
+                dash.create("Pressed and Realsed", i);
+            }
+            i++;
         }
         double power = 0;
         waitForStart();
@@ -153,4 +144,16 @@ public class NFS extends MasqLinearOpMode implements Constants { // change file 
             telemetry.update();
         }
     }
+    private double getBatteryVoltage() {
+        double result = Double.POSITIVE_INFINITY;
+        for (VoltageSensor sensor : hardwareMap.voltageSensor) {
+            double voltage = sensor.getVoltage();
+            if (voltage > 0) {
+                result = Math.min(result, voltage);
+            }
+        }
+        return result;
+    }
+
+
 }

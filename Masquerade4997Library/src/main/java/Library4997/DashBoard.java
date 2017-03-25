@@ -8,7 +8,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class DashBoard {
 
-    DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
+    public DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
     }

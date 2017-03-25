@@ -7,9 +7,9 @@ import Library4997.MasqSensors.MasqClock;
  */
 
 public class Controller implements MasqHardware{
-    MasqClock clock = new MasqClock();
-    String name;
-    public Controller(com.qualcomm.robotcore.hardware.Gamepad gamepad,String name){
+    private MasqClock clock = new MasqClock();
+    private String name;
+    public Controller(com.qualcomm.robotcore.hardware.Gamepad gamepad, String name){
         this.name = name;
         this.gamepad  = gamepad;
         instance = this;
@@ -112,7 +112,6 @@ public class Controller implements MasqHardware{
     public float right_stick_x() {
         return gamepad.right_stick_x;
     }
-
     public float right_stick_y() {
         return gamepad.right_stick_y;
     }
@@ -155,7 +154,6 @@ public class Controller implements MasqHardware{
     public String getName() {
         return name;
     }
-
     public String[] getDash() {
         return new String[]{
                 "LeftStickX" + Double.toString(left_stick_x()),

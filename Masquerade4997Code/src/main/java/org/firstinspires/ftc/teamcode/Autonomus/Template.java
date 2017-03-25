@@ -13,12 +13,18 @@ import Library4997.MasqLinearOpMode;
 @Autonomous(name = "Template-Auto", group = "Template")
 @Disabled
 public class Template extends MasqLinearOpMode implements Constants {
+    private int delay = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
+            if (controller1.aPressedAndRealeased()){
+                delay += 1000;
+            }
+            dash.create("DELAY: ", delay);
             dash.create(robot.imu);
+            dash.createSticky(robot.imu);
             dash.update();
         }
         waitForStart();
-        dash.createSticky(robot.imu);
+        robot.sleep(delay);
     }
 }
