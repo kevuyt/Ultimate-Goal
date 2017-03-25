@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import Library4997.MasqLinearOpMode;
 import Library4997.MasqRobot.Direction;
@@ -19,7 +20,7 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.drive(POWER_OPTIMAL, 60, Direction.FORWARD);
+        robot.drive(60);
 
     }
 }

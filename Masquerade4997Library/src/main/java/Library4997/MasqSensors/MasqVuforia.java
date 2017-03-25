@@ -48,12 +48,6 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
         names = Arrays.asList(target1, target2, target3);
         trackableCount = Arrays.asList(1,2,3);
         trackableLocation = Arrays.asList(location1, location2, location3);
-        for (Integer i: trackableCount) {
-            trackableLocation.get(i) = OpenGLMatrix.translation(-mmFTCFieldWidth / 2, 0, 0)
-                    .multiplied(Orientation.getRotationMatrix(
-                            AxesReference.EXTRINSIC, AxesOrder.XZX,
-                            AngleUnit.DEGREES, 90, 90, 0));
-        }
         setUp();
     }
     public MasqVuforia (String target1, String target2, String asset){

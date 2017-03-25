@@ -26,15 +26,14 @@ import static Library4997.MasqMotors.MasqMotorSystem.convert;
 public class MasqRobot implements PID_Constants {
     //Place All Hardware Here///////////////////////////////////////////////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
-    public MasqMotorSystem shooter = new MasqMotorSystem("shooter", "shooter2", "shooter");
+    public MasqMotor shooter = new MasqMotor("shooter");
+    public MasqMotor lift = new MasqMotor("lift");
+    public MasqServo indexer = new MasqServo("indexer");
 
+    public MasqCRServo rightPresser = new MasqCRServo("rightPresser");
+    public MasqCRServo leftPresser = new MasqCRServo("leftPresser");
 
-    private MasqServo indexer = new MasqServo("indexer");
-
-    private MasqCRServo rightPresser = new MasqCRServo("rightPresser");
-    private MasqCRServo leftPresser = new MasqCRServo("leftPresser");
-
-    private MasqMotor collector = new MasqMotor("collector");
+    public MasqMotor collector = new MasqMotor("collector");
 
     public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
@@ -48,7 +47,7 @@ public class MasqRobot implements PID_Constants {
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
-    private double color = 1;
+    public double color = 1;
 
     public enum AllianceColor {
         BLUE (-1.0),
