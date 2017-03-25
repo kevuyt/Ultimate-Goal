@@ -10,7 +10,7 @@ import Library4997.MasqLinearOpMode;
  * refactor the file name to match the auto class title
  */
 
-@Autonomous(name = "Template-Auto", group = "Test")
+@Autonomous(name = "Template-Auto", group = "Template")
 @Disabled
 public class Template extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {

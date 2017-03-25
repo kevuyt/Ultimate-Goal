@@ -9,7 +9,7 @@ import Library4997.MasqRobot.MasqRobot;
  * Red Autonomous
  */
 
-@Autonomous(name = "RedAuto", group = "Test")
+@Autonomous(name = "RedAuto", group = "REd")
 public class RedAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {

@@ -8,7 +8,7 @@ import Library4997.MasqLinearOpMode;
  * A Template to follow for all TeleOp Opmodes
  */
 
-@TeleOp(name = "Example-Teleop", group = "Test")
+@TeleOp(name = "Example-Teleop", group = "Example")
 public class ExampleTeleOp extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {

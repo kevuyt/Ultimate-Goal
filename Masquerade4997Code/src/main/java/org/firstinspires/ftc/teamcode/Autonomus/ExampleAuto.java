@@ -7,7 +7,7 @@ import Library4997.MasqRobot.Direction;
 /**
  * This is a basic autonomous program to test the various autonomous functions.
  */
-@Autonomous(name = "Example-Auto", group = "Test")
+@Autonomous(name = "Example-Auto", group = "Example")
 public class ExampleAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {

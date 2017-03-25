@@ -10,7 +10,7 @@ import Library4997.MasqLinearOpMode;
  * refactor the file name to match the TeleOp class title
  */
 
-@TeleOp(name = "Template-TelOp", group = "Test")
+@TeleOp(name = "Template-TelOp", group = "Template")
 @Disabled
 public class Template extends MasqLinearOpMode implements Constants{
     public void runLinearOpMode() throws InterruptedException {
