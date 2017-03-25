@@ -7,7 +7,7 @@ import Library4997.MasqLinearOpMode;
 import Library4997.MasqRobot.Direction;
 
 /**
- * This is a basic autonomous program to test the various autonomous functions.
+ * BlueAuto
  */
 
 @Autonomous(name = "BlueAuto", group = "Blue")
