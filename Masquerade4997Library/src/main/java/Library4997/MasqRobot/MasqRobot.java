@@ -11,7 +11,6 @@ import Library4997.MasqSensor;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.PID_Constants;
 import Library4997.DashBoard;
-import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
@@ -20,7 +19,7 @@ import Library4997.MasqServos.MasqServo;
 import static Library4997.MasqMotors.MasqMotorSystem.convert;
 
 /**
- * The MasqRobot Because Masquerade is the Best
+ * The MasqRobot Because Masquerade is the Best.
  */
 
 public class MasqRobot implements PID_Constants {
@@ -43,7 +42,7 @@ public class MasqRobot implements PID_Constants {
     public MasqColorSensor rightColor = new MasqColorSensor("rightColor" , 62);
     public MasqColorSensor colorRejection = new MasqColorSensor("colorRejection", 64);
     public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
-    private MasqClock timeout = new MasqClock();
+    private MasqClock timeoutClock = new MasqClock();
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
@@ -68,8 +67,8 @@ public class MasqRobot implements PID_Constants {
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
         driveTrain.runToPosition();
-        timeout.reset();
-        while (driveTrain.rightIsBusy() && opModeIsActive() && !timeout.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
+        timeoutClock.reset();
+        while (driveTrain.rightIsBusy() && opModeIsActive() && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double newPowerLeft = power;
             double imuVal = imu.getHeading();
             double error = targetAngle - imuVal;
@@ -91,8 +90,8 @@ public class MasqRobot implements PID_Constants {
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
         driveTrain.runToPosition();
-        timeout.reset();
-        while (driveTrain.rightIsBusy() && opModeIsActive() && !timeout.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
+        timeoutClock.reset();
+        while (driveTrain.rightIsBusy() && opModeIsActive() && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double newPowerLeft = power;
             double imuVal = imu.getHeading();
             double error = targetAngle - imuVal;
@@ -130,8 +129,8 @@ public class MasqRobot implements PID_Constants {
         double integral = 0;
         double newPower = 0;
         double previousTime = 0;
-        timeout.reset();
-        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !timeout.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
+        timeoutClock.reset();
+        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
             previousTime = System.nanoTime();
             tChange = tChange / 1e9;
