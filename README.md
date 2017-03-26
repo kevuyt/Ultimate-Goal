@@ -86,9 +86,18 @@ new MasqRobot and new DashBoard for every opMode.
 
 ********************
 
+MasqLimitSwitch
+
+This is just a hardware blurb about using the vex limit switches
+in the ftc competition. To use a Vex Limit Switch u must first wire a 1.5k ohm
+resistor between the power and signal wires (red and white). This will
+create a mini capacitor,
+So you don't blow the switch.
+********************
 MasqSensors
 
 For all other Sensors you can create them just as you
 did with all other hardware and whatever data or things
 you may need to do just type the name of that hardware
 and the method will pop up in auto complete.
+
