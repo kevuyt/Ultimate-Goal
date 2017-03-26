@@ -45,7 +45,8 @@ public class MasqMotorV2 implements PID_Constants, MasqHardware{
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
     public void setDistance (double distance) {
-        destination = currentPosition + zeroEncoderPosition;
+        resetEncoder();
+        destination = distance;
     }
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
