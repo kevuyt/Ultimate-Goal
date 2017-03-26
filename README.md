@@ -2,6 +2,27 @@ The Masquerade FTC Library.
 
 This README will teach you all you need to know about using this API if you have further questions
 you can contact me on telegram @An0nXm0us or email at archishou@gmail.com
+*****************************************
+Setup
+
+This Document Will Describe How To Use This API.
+
+The first step to use the masq api is to configure your robot to
+match the Tank Drive Class. You must have at least two drive motors
+and an imu or some sort of gyro to use this system effectively.
+First navigate to the tank drive class, Masquerade4997Library -->
+Library4997 --> MasqRobot --> MasqRobot. Open the file and begin to
+initialize all your hardware in the block of code that currently has
+public Motor leftFront = new Motor("leftFront") and so on.
+To create a new motor Type public Motor then type the name of the
+motor for example leftFront then new Motor( then type the name
+of the motor in your config to avoid confusion use the same name
+you used in the code so the full line would be
+public Motor leftFront = new Motor("leftFront")
+In this manner all the sensors can be created with the
+exception of the color sensor(scroll to the color section block for more info).
+After creating all your hardware get rid of any methods that don't use the
+hardware you have obviously you can't use those methods.
 
 *****************************************
 MasqAdafruitIMU
@@ -60,24 +81,14 @@ updated and constantly tracked no need to call the update method.
 
 MasqLinearOpMode
 
-MasqLinearOpMode
-
 The MasqLinearOpMode implement the MasqRobot, and DashBoard so its not necessary to create a
-new MasqRobot and new DashBoard for every opMode Example Implementation
+new MasqRobot and new DashBoard for every opMode.
 
-`@Autonomous (name = "AutoTest", group = "Test")
-public class AutoTest extends MasqLinearOpMode {
-public void runLinearOpMode() throws InterruptedException {
-    while (!isStarted()) {
-        dashBoard.create("Status", "Initialized");
-        dashBoard.create(robot.driveTrain);
-        dashBoard.create(robot.imu);
-        dashBoard.update();
-    }
-        waitForStart();
-        robot.drive(90, Direction.FORWARD);
-        robot.turn(90, Direction.FORWARD);
-    }
-}
-`
+********************
 
+MasqSensors
+
+For all other Sensors you can create them just as you
+did with all other hardware and whatever data or things
+you may need to do just type the name of that hardware
+and the method will pop up in auto complete.
