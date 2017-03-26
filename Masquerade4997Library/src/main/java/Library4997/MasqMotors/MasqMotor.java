@@ -84,9 +84,6 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         prevPos = getCurrentPos();
         return positionChange / timeChange;
     }
-    public DcMotorController getController() {
-        return motor.getController();
-    }
     public void sleep (int sleepTime) {
         try {
             Thread.sleep(sleepTime);
