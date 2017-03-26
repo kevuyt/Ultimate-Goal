@@ -30,9 +30,7 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
     public VuforiaTrackable targetOne, targetTwo, targetThree;
     private List<VuforiaTrackable> trackables;
     private List<String> names;
-    private List <OpenGLMatrix> trackableLocation;
     private List<Integer> trackableCount;
-    private OpenGLMatrix location1, location2, location3;
     private VuforiaLocalizer vuforia;
     private float mmPerInch        = 25.4f;
     private float mmBotWidth       = 18 * mmPerInch;
@@ -47,7 +45,6 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
         trackables = Arrays.asList(targetOne, targetTwo, targetThree);
         names = Arrays.asList(target1, target2, target3);
         trackableCount = Arrays.asList(1,2,3);
-        trackableLocation = Arrays.asList(location1, location2, location3);
         setUp();
     }
     public MasqVuforia (String target1, String target2, String asset){
@@ -77,13 +74,6 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
             int i = 0;
             trackable = target.get(i);
             trackable.setName(names.get(i));
-            OpenGLMatrix target1Location = OpenGLMatrix
-                    .translation(-mmFTCFieldWidth / 2, 0, 0)
-                    .multiplied(Orientation.getRotationMatrix(
-                            AxesReference.EXTRINSIC, AxesOrder.XZX,
-                            AngleUnit.DEGREES, 90, 90, 0));
-            trackable.setLocation(target1Location);
-            RobotLog.ii(this.name, target1 + "=%s", format(target1Location));
         }
 
         OpenGLMatrix target2Location = OpenGLMatrix
