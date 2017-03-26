@@ -8,7 +8,7 @@ Setup
 This Document Will Describe How To Use This API.
 
 The first step to use the masq api is to configure your robot to
-match the Tank Drive Class. You must have at least two drive motors
+match the MasqRobot Class. You must have at least two drive motors
 and an imu or some sort of gyro to use this system effectively.
 First navigate to the tank drive class, Masquerade4997Library -->
 Library4997 --> MasqRobot --> MasqRobot. Open the file and begin to
