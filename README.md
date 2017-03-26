@@ -67,9 +67,6 @@ new MasqRobot and new DashBoard for every opMode Example Implementation
 
 `@Autonomous (name = "AutoTest", group = "Test")
 public class AutoTest extends MasqLinearOpMode {
-`
-public class AutoTest extends MasqLinearOpMode {
-
 public void runLinearOpMode() throws InterruptedException {
     while (!isStarted()) {
         dashBoard.create("Status", "Initialized");
@@ -77,10 +74,10 @@ public void runLinearOpMode() throws InterruptedException {
         dashBoard.create(robot.imu);
         dashBoard.update();
     }
-
-    waitForStart();
-    robot.drive(90, Direction.FORWARD);
-    robot.turn(90, Direction.FORWARD);
-
+        waitForStart();
+        robot.drive(90, Direction.FORWARD);
+        robot.turn(90, Direction.FORWARD);
     }
 }
+`
+
