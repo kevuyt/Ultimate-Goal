@@ -9,6 +9,7 @@ import Library4997.MasqSensors.MasqClock;
 public class Controller implements MasqHardware{
     private MasqClock clock = new MasqClock();
     private String name;
+    private double min, max;
     public Controller(com.qualcomm.robotcore.hardware.Gamepad gamepad, String name){
         this.name = name;
         this.gamepad  = gamepad;
@@ -33,44 +34,44 @@ public class Controller implements MasqHardware{
     }
     public boolean aIsDoubleTapped () {
         boolean doubleTapped = false;
-         if (aPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
+         if (apr() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = a();
         }
         return doubleTapped;
     }
     public boolean bIsDoubleTapped () {
         boolean doubleTapped = false;
-        if (bPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
+        if (bpr() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = b();
         }
         return doubleTapped;
     }
     public boolean xIsDoubleTapped () {
         boolean doubleTapped = false;
-        if (xPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
+        if (xpr() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = x();
         }
         return doubleTapped;
     }
     public boolean yIsDoubleTapped () {
         boolean doubleTapped = false;
-        if (yPressedAndRealeased() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
+        if (ypr() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
             doubleTapped = y();
         }
         return doubleTapped;
     }
-    public boolean aPressedAndRealeased () {
-        boolean pressed = false, realeaed = false;
+    public boolean apr() {
+        boolean pressed = false, released = false;
         while (a()) {
-            realeaed = false;
+            released = false;
             pressed = true;
         }
         while (!a()) {
-            realeaed = true;
+            released = true;
         }
-        return pressed && realeaed;
+        return pressed && released;
     }
-    public boolean bPressedAndRealeased () {
+    public boolean bpr() {
         boolean pressed = false, realeaed = false;
         while (b()) {
             realeaed = false;
@@ -81,7 +82,7 @@ public class Controller implements MasqHardware{
         }
         return pressed && realeaed;
     }
-    public boolean yPressedAndRealeased () {
+    public boolean ypr() {
         boolean pressed = false, realeaed = false;
         while (b()) {
             realeaed = false;
@@ -92,7 +93,7 @@ public class Controller implements MasqHardware{
         }
         return pressed && realeaed;
     }
-    public boolean xPressedAndRealeased () {
+    public boolean xpr() {
         boolean pressed = false, realeaed = false;
         while (x()) {
             realeaed = false;
@@ -102,6 +103,14 @@ public class Controller implements MasqHardware{
             realeaed = true;
         }
         return pressed && realeaed;
+    }
+    public void setTriggerThersholds(double min, double max){
+        this.min = min;
+        this.max = max;
+    }
+    public void setTriggerThersholds (double min){
+        this.min = min;
+        this.max = 1;
     }
     public float left_stick_x(){
         return gamepad.left_stick_x;
@@ -140,10 +149,11 @@ public class Controller implements MasqHardware{
         return gamepad.right_stick_button;
     }
     public boolean left_triggerb() {
-        return gamepad.left_trigger > 0;
+        return gamepad.left_trigger > min && gamepad.left_trigger < max;
     }
     public boolean right_triggerb() {
-        return gamepad.right_trigger > 0;
+        return gamepad.right_trigger >= min && gamepad.right_trigger <= max;
+
     }
     public float left_trigger() {
         return gamepad.left_trigger;
