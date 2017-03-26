@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
@@ -21,10 +20,6 @@ public class NFS extends MasqLinearOpMode implements Constants { // change file 
             robot.indexer.setPosition(0);
             telemetry.addData("Voltage", getBatteryVoltage());
             telemetry.update();
-            if (controller1.aPressedAndRealeased()){
-                dash.create("Pressed and Realsed", i);
-            }
-            i++;
         }
         double power = 0;
         waitForStart();
