@@ -16,7 +16,7 @@ public class Template extends MasqLinearOpMode implements Constants {
     private int delay = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
-            if (controller1.aPressedAndRealeased()){
+            if (controller1.apr()){
                 delay += 1000;
             }
             dash.create("DELAY: ", delay);
