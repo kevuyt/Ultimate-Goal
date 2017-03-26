@@ -6,19 +6,19 @@ import Library4997.MasqSensors.MasqClock;
  * Created by Archish on 3/3/17.
  */
 
-public class Controller implements MasqHardware{
+public class MasqController implements MasqHardware{
     private MasqClock clock = new MasqClock();
     private String name;
     private double min, max;
-    public Controller(com.qualcomm.robotcore.hardware.Gamepad gamepad, String name){
+    public MasqController(com.qualcomm.robotcore.hardware.Gamepad gamepad, String name){
         this.name = name;
         this.gamepad  = gamepad;
         instance = this;
     }
-    public static Controller getController(){
+    public static MasqController getController(){
         return instance;
     }
-    private static Controller instance;
+    private static MasqController instance;
     private com.qualcomm.robotcore.hardware.Gamepad gamepad;
     public boolean a() {
         return gamepad.a;
