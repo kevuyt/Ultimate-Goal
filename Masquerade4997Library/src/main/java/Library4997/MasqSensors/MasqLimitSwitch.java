@@ -43,17 +43,20 @@ public class MasqLimitSwitch implements MasqHardware, MasqSensor {
     }
 
     public boolean isPressed() {return getState();}
-    // Possibly add onContact() and onRelease() methods for more precise control
     public boolean pr() {
         boolean pressed = false, released = false;
         while (isPressed()) {
             released = false;
             pressed = true;
         }
-        while (!isPressed()) {
-            released = true;
-        }
+        while (!isPressed()) released = true;
         return pressed && released;
+    }
+    public boolean isReleased () {
+        boolean released = false;
+        while (isPressed()) released = false;
+        while (!isPressed()) released = true;
+        return released;
     }
     public String getName() {return name;}
     public String[] getDash() {return new String[] {
