@@ -60,7 +60,9 @@ public class MasqLimitSwitch implements MasqHardware, MasqSensor {
     }
     public String getName() {return name;}
     public String[] getDash() {return new String[] {
-            "Is Pressed" + Boolean.toString(isPressed())
+            "Is Pressed" + Boolean.toString(isPressed()),
+            "Pressed and Released" + Boolean.toString(pr()),
+            "Released" + Boolean.toString(isReleased())
         };
     }
     public boolean stop() {
