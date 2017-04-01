@@ -23,7 +23,7 @@ import static Library4997.MasqMotors.MasqMotorSystem.convert;
  */
 
 public class MasqRobot implements PID_Constants {
-    //Place All Hardware Here///////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
     public MasqMotor shooter = new MasqMotor("shooter");
     public MasqMotor lift = new MasqMotor("lift");
@@ -144,6 +144,7 @@ public class MasqRobot implements PID_Constants {
             newPower = (errorkp + integralki + dervitivekd);
             driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
+            this.angleLeftCover = currentError;
             DashBoard.getDash().create("TargetAngle", targetAngle);
             DashBoard.getDash().create("Heading", imuVAL);
             DashBoard.getDash().create("AngleLeftToCover", currentError);
