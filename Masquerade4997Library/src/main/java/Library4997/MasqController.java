@@ -1,5 +1,7 @@
 package Library4997;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
+
 import Library4997.MasqSensors.MasqClock;
 
 /**
@@ -10,16 +12,11 @@ public class MasqController implements MasqHardware{
     private MasqClock clock = new MasqClock();
     private String name;
     private double min = 0, max = 1;
-    public MasqController(com.qualcomm.robotcore.hardware.Gamepad gamepad, String name){
+    private Gamepad gamepad;
+    public MasqController(com.qualcomm.robotcore.hardware.Gamepad g, String name){
         this.name = name;
-        this.gamepad = gamepad;
-        instance = this;
+        this.gamepad = g;
     }
-    public static MasqController getController(){
-        return instance;
-    }
-    private static MasqController instance;
-    private com.qualcomm.robotcore.hardware.Gamepad gamepad;
     public boolean a() {
         return gamepad.a;
     }
