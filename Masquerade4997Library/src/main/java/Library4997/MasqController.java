@@ -9,10 +9,10 @@ import Library4997.MasqSensors.MasqClock;
 public class MasqController implements MasqHardware{
     private MasqClock clock = new MasqClock();
     private String name;
-    private double min, max;
+    private double min = 0, max = 1;
     public MasqController(com.qualcomm.robotcore.hardware.Gamepad gamepad, String name){
         this.name = name;
-        this.gamepad  = gamepad;
+        this.gamepad = gamepad;
         instance = this;
     }
     public static MasqController getController(){
