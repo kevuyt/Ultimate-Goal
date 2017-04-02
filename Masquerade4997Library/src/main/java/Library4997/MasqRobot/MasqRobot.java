@@ -48,7 +48,6 @@ public class MasqRobot implements PID_Constants {
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
     public double color = 1;
-
     public enum AllianceColor {
         BLUE (-1.0),
         RED (+1.0);
@@ -136,7 +135,7 @@ public class MasqRobot implements PID_Constants {
             tChange = tChange / 1e9;
             double imuVAL = imu.getHeading();
             currentError = imu.adjustAngle(targetAngle - imuVAL);
-            integral += currentError  * ID;
+            integral += currentError * ID;
             double errorkp = currentError * kp;
             double integralki = currentError * ki * tChange;
             double dervitive = (currentError - prevError) / tChange;

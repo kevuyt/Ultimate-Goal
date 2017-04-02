@@ -39,7 +39,7 @@ import org.firstinspires.ftc.teamcode.TeleOp.Constants;
 import Library4997.MasqOpMode;
 
 
-@TeleOp(name="Template Iterative", group="Template")
+@TeleOp(name="TemplateIterative", group="Template")
 @Disabled
 public class TemplateIterative extends MasqOpMode implements Constants, org.firstinspires.ftc.teamcode.Autonomus.Constants {
     @Override
