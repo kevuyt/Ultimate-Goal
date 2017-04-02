@@ -7,9 +7,9 @@ import Library4997.MasqLinearOpMode;
 /**
  * TeleOp NFS
  */
-@TeleOp(name="TeleOpNFS", group="Final")// change name
+@TeleOp(name="TeleOpNFS", group="Final")
 
-public class NFS extends MasqLinearOpMode implements Constants { // change file name
+public class NFS extends MasqLinearOpMode implements Constants {
     public void main() throws InterruptedException {
 
     }
