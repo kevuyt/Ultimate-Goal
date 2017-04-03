@@ -50,6 +50,6 @@ public class MasqODS implements MasqSensor, MasqHardware {
 
     @Override
     public boolean stop() {
-        return isWhite();
+        return !isWhite();
     }
 }

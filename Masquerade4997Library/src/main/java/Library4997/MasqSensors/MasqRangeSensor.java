@@ -50,6 +50,6 @@ public class MasqRangeSensor implements MasqHardware, MasqSensor {
     }
 
     public boolean stop() {
-        return Ultrasonic() < stopThresh;
+        return Ultrasonic() > stopThresh;
     }
 }

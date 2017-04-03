@@ -36,7 +36,7 @@ public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
 
     @Override
     public boolean stop() {
-        return getDistance() < stopThresh;
+        return getDistance() > stopThresh;
     }
 }
 
