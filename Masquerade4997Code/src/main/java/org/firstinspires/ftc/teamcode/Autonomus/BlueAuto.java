@@ -21,6 +21,5 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.drive(60);
-
     }
 }

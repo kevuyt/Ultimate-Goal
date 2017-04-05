@@ -25,14 +25,16 @@ import static Library4997.MasqMotors.MasqMotorSystem.convert;
 public class MasqRobot implements PID_Constants {
     //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
+
+    public MasqMotor collector = new MasqMotor("collector");
     public MasqMotor shooter = new MasqMotor("shooter");
     public MasqMotor lift = new MasqMotor("lift");
+
     public MasqServo indexer = new MasqServo("indexer");
 
     public MasqCRServo rightPresser = new MasqCRServo("rightPresser");
     public MasqCRServo leftPresser = new MasqCRServo("leftPresser");
 
-    public MasqMotor collector = new MasqMotor("collector");
 
     public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
