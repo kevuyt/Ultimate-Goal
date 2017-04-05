@@ -73,20 +73,6 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         motor3.setBrakeMode();
         motor4.setBrakeMode();
     }
-    public static int convert(int TICKS) {
-        return (int) ((TICKS * 35.1070765836));
-    }
-    boolean isStalled () {
-        int i;
-        boolean isStalled;
-        if (motor1.isStalled()) i = 1;
-        else if (motor2.isStalled()) i = 2;
-        else if (motor3.isStalled()) i = 3;
-        else if (motor4.isStalled()) i = 4;
-        else i = 0;
-        isStalled = i >= 3;
-        return isStalled;
-    }
     public boolean isBusy() {
         return (motor1.isBusy() && motor2.isBusy() && motor3.isBusy() && motor4.isBusy());
     }
