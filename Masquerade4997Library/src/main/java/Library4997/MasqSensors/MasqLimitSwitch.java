@@ -12,6 +12,7 @@ import Library4997.MasqSensor;
 /**
  * This is a basic limit switch.
  * Assumes that a pull-up resistor is used, like is necessary to use VEX limit switches.
+ * To wire this you need a 1.5k ohm resistor that wires from the power to signal wires.
  */
 
 public class MasqLimitSwitch implements MasqHardware, MasqSensor {
