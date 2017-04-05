@@ -17,7 +17,7 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
     private MasqMotor motor1 , motor2, motor3;
     private List<MasqMotor> motors;
     private int numMotors;
-    String systemName;
+    private String systemName;
     public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction directionOther, String systemName) {
         this.systemName = systemName;
         motor1 = new MasqMotor(name1, direction);
