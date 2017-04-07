@@ -32,6 +32,8 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
     private List<String> names;
     private List<Integer> trackableCount;
     private VuforiaLocalizer vuforia;
+    private List<OpenGLMatrix> locations;
+    private OpenGLMatrix targetOneL, tagrgetTwoL, targetThreeL;
     private float mmPerInch        = 25.4f;
     private float mmBotWidth       = 18 * mmPerInch;
     private float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
@@ -74,6 +76,8 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
             int i = 0;
             trackable = target.get(i);
             trackable.setName(names.get(i));
+            for (OpenGLMatrix o: locations)
+            trackable.setLocation(locations.get(i));
         }
 
         OpenGLMatrix target2Location = OpenGLMatrix
