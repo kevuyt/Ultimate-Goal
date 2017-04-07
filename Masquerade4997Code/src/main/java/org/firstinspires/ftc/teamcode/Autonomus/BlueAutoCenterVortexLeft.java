@@ -8,11 +8,11 @@ import Library4997.MasqRobot.Direction;
 import Library4997.MasqRobot.MasqRobot;
 
 /**
- * BlueAuto
+ * BlueAutoCenterVortexLeft
  */
 
-@Autonomous(name = "BlueAuto", group = "Blue")
-public class BlueAuto extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "BlueAutoCenterVortexLeft", group = "Blue")
+public class BlueAutoCenterVortexLeft extends MasqLinearOpMode implements Constants {
     private int delay = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
