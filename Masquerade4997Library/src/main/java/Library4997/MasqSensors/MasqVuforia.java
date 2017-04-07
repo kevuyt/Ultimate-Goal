@@ -47,6 +47,7 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
         trackables = Arrays.asList(targetOne, targetTwo, targetThree);
         names = Arrays.asList(target1, target2, target3);
         trackableCount = Arrays.asList(1,2,3);
+
         setUp();
     }
     public MasqVuforia (String target1, String target2, String asset){
