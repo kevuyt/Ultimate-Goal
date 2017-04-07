@@ -1,6 +1,7 @@
 package Library4997.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
@@ -174,7 +175,7 @@ public class MasqRobot implements PID_Constants {
         return measureOne - (imu.getHeading() * direction.value);
     }
 
-    public void stopRed(double power, Direction Direction, MasqColorSensor colorSensor) {
+    public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
         while (!(colorSensor.isRed()) && opModeIsActive()) {
@@ -191,7 +192,14 @@ public class MasqRobot implements PID_Constants {
         }
         driveTrain.StopDriving();
     }
-    public void stopBlue(double power, Direction Direction, MasqColorSensor colorSensor) {
+    public void stopRed (MasqColorSensor colorSensor, double power){
+        stopRed(colorSensor, power, Direction.FORWARD);
+    }
+    public void stopRed (MasqColorSensor colorSensor){
+        stopRed(colorSensor, 0.5);
+    }
+
+    public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
         while ((!colorSensor.isBlue()) && opModeIsActive()){
@@ -208,7 +216,14 @@ public class MasqRobot implements PID_Constants {
         }
         driveTrain.StopDriving();
     }
-    public void stop(double power, Direction Direction, MasqSensor sensor) {
+    public void stopBlue (MasqColorSensor colorSensor, double power){
+        stopBlue(colorSensor, power, Direction.FORWARD);
+    }
+    public void stopBlue (MasqColorSensor colorSensor){
+        stopBlue(colorSensor, 0.5);
+    }
+
+    public void stop(MasqSensor sensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
         while (sensor.stop() && opModeIsActive()) {
@@ -223,6 +238,12 @@ public class MasqRobot implements PID_Constants {
             DashBoard.getDash().update();
         }
         driveTrain.StopDriving();
+    }
+    public void stop (MasqSensor sensor, double power){
+        stop(sensor, power, Direction.FORWARD);
+    }
+    public void stop (MasqSensor sensor){
+        stop(sensor, 0.5);
     }
 
     public void sleep(int time) {
