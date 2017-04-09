@@ -11,9 +11,8 @@ import Library4997.MasqRobot.Direction;
  * refactor the file name to match the auto class title
  */
 
-@Autonomous(name = "ELIJAHHHHHHH-Auto", group = "Template")
-@Disabled
-public class Elijah extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "Defense_Auto", group = "Template")
+public class DefenseAuto extends MasqLinearOpMode implements Constants {
     private int delay = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
@@ -27,11 +26,14 @@ public class Elijah extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.sleep(delay);
-        robot.drive(90, POWER_OPTIMAL, Direction.FORWARD);
+        robot.drive(10);
         robot.shooter.setPower(-1);
+        robot.sleep(1000);
         robot.indexer.setPosition(INDEXER_OPENED);
-        robot.turn(45, Direction.LEFT);
-        robot.turn(30, Direction.RIGHT);
+        robot.drive(270);
+        
+
+
 
     }
 }

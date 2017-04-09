@@ -18,5 +18,6 @@ public class AutoTest extends MasqLinearOpMode implements Constants{
             dash.update();
         }
         waitForStart();
+
     }
 }

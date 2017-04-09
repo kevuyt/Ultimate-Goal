@@ -1,11 +1,9 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import Library4997.MasqLinearOpMode;
 import Library4997.MasqRobot.Direction;
-import Library4997.MasqRobot.MasqRobot;
 
 /**
  * BlueAutoCenterVortexLeft

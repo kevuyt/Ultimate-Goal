@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  * Custom Telemetry
  */
 
-public class DashBoard {
+public class  DashBoard {
 
     public DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
         this.telemetry  = telemetry;
