@@ -2,6 +2,8 @@ package Library4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
+import Library4997.MasqRobot.MasqRobot;
+
 /**
  * This is a Masquerade OpMode. It includes a MasqRobot and Dashboard along with the custom gamepads.
  */
