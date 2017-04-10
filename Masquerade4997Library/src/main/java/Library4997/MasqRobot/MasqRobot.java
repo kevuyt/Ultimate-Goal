@@ -1,7 +1,6 @@
 package Library4997.MasqRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
@@ -39,18 +38,19 @@ public class MasqRobot implements PID_Constants {
 
     public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
-
     public MasqODS ods = new MasqODS("ods");
 
     public MasqColorSensor rightColor = new MasqColorSensor("rightColor" , 62);
     public MasqColorSensor colorRejection = new MasqColorSensor("colorRejection", 64);
     public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
+
     private MasqClock timeoutClock = new MasqClock();
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
     public double color = 1;
+
     public enum AllianceColor {
         BLUE (-1.0),
         RED (+1.0);
@@ -64,7 +64,7 @@ public class MasqRobot implements PID_Constants {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
 
-    public void drive(int distance, double power, Direction DIRECTION, double timeOut, int sleepTime, double targetAngle) {
+    public void drive(int distance, double power, Direction DIRECTION, double targetAngle, int sleepTime, double timeOut) {
         int newDistance = convert(distance);
         driveTrain.resetEncoders();
         driveTrain.setDistance((int)((-newDistance) * DIRECTION.value));
@@ -82,7 +82,7 @@ public class MasqRobot implements PID_Constants {
             DashBoard.getDash().create("DistanceLeft", newDistance + driveTrain.getCurrentPos());
             DashBoard.getDash().update();
         }
-        driveTrain.StopDriving();
+        driveTrain.stopDriving();
         driveTrain.runUsingEncoder();
         sleep(sleepTime);
     }
@@ -105,7 +105,7 @@ public class MasqRobot implements PID_Constants {
             DashBoard.getDash().create("DistanceLeft", newDistance + driveTrain.getCurrentPos());
             DashBoard.getDash().update();
         }
-        driveTrain.StopDriving();
+        driveTrain.stopDriving();
         driveTrain.runUsingEncoder();
         sleep(sleepTime);
     }
@@ -152,7 +152,7 @@ public class MasqRobot implements PID_Constants {
             DashBoard.getDash().create("AngleLeftToCover", currentError);
             DashBoard.getDash().update();
         }
-        driveTrain.StopDriving();
+        driveTrain.stopDriving();
         sleep(sleepTime);
     }
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki) {
@@ -171,8 +171,8 @@ public class MasqRobot implements PID_Constants {
         turn(angle, DIRECTION, DEFAULT_TIMEOUT);
     }
 
-    public double getDelta (double measureOne, Direction direction) {
-        return measureOne - (imu.getHeading() * direction.value);
+    public int getDelta (double measureOne, Direction direction) {
+        return (int) (measureOne - (imu.getHeading() * direction.value));
     }
 
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
@@ -190,7 +190,7 @@ public class MasqRobot implements PID_Constants {
             DashBoard.getDash().create("red Val", colorSensor.colorNumber());
             DashBoard.getDash().update();
         }
-        driveTrain.StopDriving();
+        driveTrain.stopDriving();
     }
     public void stopRed (MasqColorSensor colorSensor, double power){
         stopRed(colorSensor, power, Direction.FORWARD);
@@ -214,7 +214,7 @@ public class MasqRobot implements PID_Constants {
             DashBoard.getDash().create("Blue Val", colorSensor.colorNumber());
             DashBoard.getDash().update();
         }
-        driveTrain.StopDriving();
+        driveTrain.stopDriving();
     }
     public void stopBlue (MasqColorSensor colorSensor, double power){
         stopBlue(colorSensor, power, Direction.FORWARD);
@@ -237,7 +237,7 @@ public class MasqRobot implements PID_Constants {
             DashBoard.getDash().create("is Stopped", sensor.stop());
             DashBoard.getDash().update();
         }
-        driveTrain.StopDriving();
+        driveTrain.stopDriving();
     }
     public void stop (MasqSensor sensor, double power){
         stop(sensor, power, Direction.FORWARD);

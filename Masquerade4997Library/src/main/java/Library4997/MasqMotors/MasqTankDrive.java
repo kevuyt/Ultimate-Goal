@@ -64,7 +64,7 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         motor3.runWithoutEncoders();
         motor4.runWithoutEncoders();
     }
-    public void StopDriving() {
+    public void stopDriving() {
         setPower(0,0);
     }
     public void setBrakeMode () {
