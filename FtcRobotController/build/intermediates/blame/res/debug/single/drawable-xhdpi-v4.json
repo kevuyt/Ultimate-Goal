@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/Users/Archish/Desktop/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon_robotcontroller.png",
-        "source": "/Users/Archish/Desktop/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/icon_robotcontroller.png"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/ic_launcher.png"
     },
@@ -16,19 +12,7 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/icon_robotcontroller.png"
     },
     {
-        "merged": "/Users/Archish/Desktop/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png",
-        "source": "/Users/Archish/Desktop/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/drawable-xhdpi-v4/masq.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/masq.png"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon_menu.png",
-        "source": "/Users/Archish/Desktop/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/icon_menu.png"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/drawable-xhdpi-v4/masq.png",
-        "source": "/Users/Archish/Desktop/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/masq.png"
     }
 ]

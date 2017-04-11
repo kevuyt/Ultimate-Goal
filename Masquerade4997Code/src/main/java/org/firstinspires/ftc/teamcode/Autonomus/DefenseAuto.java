@@ -30,6 +30,7 @@ public class DefenseAuto extends MasqLinearOpMode implements Constants {
         robot.shooter.setPower(-1);
         robot.sleep(1000);
         robot.indexer.setPosition(INDEXER_OPENED);
+        robot.turn(43, Direction.LEFT);
         robot.drive(270);
         
 

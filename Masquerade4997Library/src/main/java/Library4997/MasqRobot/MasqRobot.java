@@ -35,7 +35,6 @@ public class MasqRobot implements PID_Constants {
     public MasqCRServo rightPresser = new MasqCRServo("rightPresser");
     public MasqCRServo leftPresser = new MasqCRServo("leftPresser");
 
-
     public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     public MasqODS ods = new MasqODS("ods");
@@ -124,7 +123,6 @@ public class MasqRobot implements PID_Constants {
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
-        targetAngle *= color;
         double acceptableError = 0.5;
         double currentError = 1;
         double prevError = 0;
