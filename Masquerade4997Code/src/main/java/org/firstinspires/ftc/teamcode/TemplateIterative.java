@@ -52,9 +52,7 @@ public class TemplateIterative extends MasqOpMode implements Constants, org.firs
         dash.update();
     }
     @Override
-    public void start(){
-
-    }
+    public void start(){}
     @Override
     public void loop() {}
     @Override
