@@ -25,15 +25,15 @@ public class NFS extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.shooter.runUsingEncoder();
         while (opModeIsActive()) {
-            float move = -gamepad1.left_stick_y;
-            float turn = -gamepad1.right_stick_x;
+            float move = -controller1.left_stick_y();
+            float turn = -controller1.right_stick_x();
             double left = move - turn;
             double right = move + turn;
 
-            if (gamepad1.right_trigger > 0) {
+            if (controller1.right_triggerb()) {
                 robot.lift.setPower(1);
             }
-            else if (gamepad1.left_trigger >0){
+            else if (controller1.left_triggerb()){
                 robot.lift.setPower(-1);
             }
             else {
@@ -59,17 +59,17 @@ public class NFS extends MasqLinearOpMode implements Constants {
             }
 
 
-            if (gamepad1.right_bumper) {
+            if (controller1.right_bumper()) {
                 robot.collector.setPower(COLLECTOR_IN);
             }
-            else if (gamepad1.left_bumper) {
+            else if (controller1.left_bumper()) {
                 robot.collector.setPower(COLLECTOR_OUT);
             }
             else {
                 robot.collector.setPower(0);
             }
 
-            if(gamepad2.right_bumper) {
+            if(controller2.right_bumper()) {
                 power += REV_UP;
                 if (power > TARGET_POWER) {
                     power = TARGET_POWER;
@@ -78,7 +78,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.shooter.setPower(power);
             }
 
-            else if(gamepad2.left_bumper) {
+            else if(controller2.left_bumper()) {
                 power += REV_UP;
                 if (power > TARGET_POWER) {
                     power = TARGET_POWER + LOW_POWER_FACTOR;
@@ -97,11 +97,11 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.shooter.setPower(power);
             }
 
-            if (gamepad2.right_bumper && gamepad2.x && robot.shooter.getPower() < (TARGET_POWER + SHOOTER_ERROR)) {
+            if (controller2.right_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + SHOOTER_ERROR)) {
                 robot.indexer.setPosition(INDEXER_OPENED);
             }
 
-            else if (gamepad2.left_bumper && gamepad2.x && robot.shooter.getPower() < (TARGET_POWER + LOW_POWER_FACTOR + SHOOTER_ERROR)) {
+            else if (controller2.left_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + LOW_POWER_FACTOR + SHOOTER_ERROR)) {
                 robot.indexer.setPosition(INDEXER_OPENED);
             }
 
@@ -109,11 +109,11 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.indexer.setPosition(INDEXER_CLOSED);
             }
 
-            if (gamepad2.dpad_left){
+            if (controller2.dpad_left()){
                 robot.rightPresser.setPower(BEACON_OUT);
             }
 
-            else if (gamepad2.dpad_right){
+            else if (controller2.dpad_right()){
                 robot.rightPresser.setPower(BEACON_IN);
             }
 
@@ -121,10 +121,10 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.rightPresser.setPower(0);
             }
 
-            if (gamepad2.dpad_up){
+            if (controller2.dpad_up()){
                 robot.leftPresser.setPower(BEACON_OUT);
             }
-            else if (gamepad2.dpad_down){
+            else if (controller2.dpad_down()){
                 robot.leftPresser.setPower(BEACON_IN);
             }
             else {
