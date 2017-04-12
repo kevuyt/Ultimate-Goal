@@ -17,9 +17,22 @@ public class BlueAutoCenterVortexLeft extends MasqLinearOpMode implements Consta
             dash.update();
         }
         waitForStart();
+        robot.imu.reset();
+        double startAngle = robot.imu.getYaw();
         robot.colorRejection.setActiveMode();
         robot.rightColor.setPassiveMode();
-        robot.collector.setPower(-1);
-        robot.turn(10, Direction.LEFT);
+        robot.drive(10);
+        robot.turn((int) ((robot.imu.getHeading() - startAngle) + 47), Direction.LEFT);
+        robot.drive(90);
+        robot.turn((int) (robot.imu.getHeading() - startAngle),Direction.RIGHT);
+        robot.stopBlue(robot.leftColor);
+        robot.leftPresser.setPower(-1);
+        robot.sleep();
+        robot.leftPresser.setPower(1);
+        robot.drive(40);
+        robot.stopBlue(robot.leftColor);
+        robot.leftPresser.setPower(-1);
+        robot.sleep();
+        robot.leftPresser.setPower(1);
     }
 }

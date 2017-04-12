@@ -4,7 +4,7 @@ package Library4997;
  */
 public interface PID_Constants {
     double
-            KP_TURN = 0.001,
+            KP_TURN = 0.005,
             KI_TURN = 0.0002,
             KD_TURN = 0,
             ID = 1;
