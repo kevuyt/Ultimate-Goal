@@ -18,10 +18,10 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
     private List<MasqMotor> motors;
     private int numMotors;
     private String systemName;
-    public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction directionOther, String systemName) {
+    public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction direction2, String systemName) {
         this.systemName = systemName;
         motor1 = new MasqMotor(name1, direction);
-        motor2 = new MasqMotor(name2, directionOther);
+        motor2 = new MasqMotor(name2, direction2);
         motor3 = null;
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
@@ -35,11 +35,11 @@ public class MasqMotorSystem implements PID_Constants, MasqHardware {
         numMotors = 2;
     }
     public MasqMotorSystem(String name1, DcMotor.Direction direction,
-                           String name2, DcMotor.Direction directionOther,
+                           String name2, DcMotor.Direction direction2,
                            String name3, DcMotor.Direction direction3, String systemName) {
         this.systemName = systemName;
         motor1 = new MasqMotor(name1, direction);
-        motor2 = new MasqMotor(name2, directionOther);
+        motor2 = new MasqMotor(name2, direction2);
         motor3 = new MasqMotor(name3, direction3);
         motors = Arrays.asList(motor1, motor2, motor3);
         numMotors = 3;
