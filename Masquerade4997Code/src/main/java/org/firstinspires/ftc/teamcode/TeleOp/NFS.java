@@ -30,10 +30,10 @@ public class NFS extends MasqLinearOpMode implements Constants {
             double left = move - turn;
             double right = move + turn;
 
-            if (controller1.right_triggerb()) {
+            if (controller1.rightTriggerPressed()) {
                 robot.lift.setPower(1);
             }
-            else if (controller1.left_triggerb()){
+            else if (controller1.leftTriggerPressed()){
                 robot.lift.setPower(-1);
             }
             else {

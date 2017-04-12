@@ -145,10 +145,10 @@ public class MasqController implements MasqHardware{
     public boolean right_stick_button() {
         return gamepad.right_stick_button;
     }
-    public boolean left_triggerb() {
+    public boolean leftTriggerPressed() {
         return gamepad.left_trigger > min && gamepad.left_trigger < max;
     }
-    public boolean right_triggerb() {
+    public boolean rightTriggerPressed() {
         return gamepad.right_trigger >= min && gamepad.right_trigger <= max;
 
     }

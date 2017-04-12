@@ -11,7 +11,7 @@ import Library4997.MasqHardware;
 import Library4997.PID_Constants;
 
 /**
- * MasqMotorSystem That supports two motora and treats them as one
+ * MasqMotorSystem That supports two or more motors and treats them as one
  */
 public class MasqMotorSystem implements PID_Constants, MasqHardware {
     private MasqMotor motor1 , motor2, motor3;
