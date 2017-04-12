@@ -23,10 +23,10 @@ public class BlueAutoCenterVortexRight extends MasqLinearOpMode implements Const
             }
             dash.create("DELAY: ", delay);
             dash.create(robot.imu);
-            dash.createSticky(robot.imu);
             dash.update();
         }
         waitForStart();
+        robot.sleep(delay);
         robot.colorRejection.setActiveMode();
         robot.rightColor.setPassiveMode();
         boolean isNeccesary = true;
