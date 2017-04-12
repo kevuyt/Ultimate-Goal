@@ -19,14 +19,12 @@ public class ElijahAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.driveTrain.setPower(1,1);
-        robot.sleep();
         robot.drive(40, POWER_OPTIMAL);
-        robot.shooter.setPower(-1);
+        robot.shooter.setPower(TARGET_POWER);
         robot.indexer.setPosition(INDEXER_OPENED);
-        robot.sleep();
+        robot.sleep(500);
         robot.indexer.setPosition(INDEXER_CLOSED);
-        robot.sleep();
+        robot.sleep(500);
         robot.indexer.setPosition(INDEXER_OPENED);
         robot.turn(30,Direction.RIGHT);
         robot.drive(10);
