@@ -20,9 +20,11 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     private double prevPos= 0;
     private double previousTime = 0;
     private double startTime = System.nanoTime();
+    private double rate = 0;
     public MasqMotor(String name){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
+
     }
     public MasqMotor(String name, DcMotor.Direction direction) {
         this.nameMotor = name;
@@ -99,6 +101,18 @@ public class MasqMotor implements PID_Constants, MasqHardware{
                 "Current Position" + Double.toString(getCurrentPos()),
                 "Rate" + Double.toString(getRate())
         };
+    }
+
+    private class RateThread implements Runnable{
+        public void run(){
+                double positionChange = getCurrentPos() - prevPos;
+                sleep(200);
+                double timeChange = System.nanoTime() - previousTime;
+                previousTime = System.nanoTime();
+                timeChange = timeChange / 1e9;
+                prevPos = getCurrentPos();
+                rate = positionChange / timeChange;
+        }
     }
 }
 

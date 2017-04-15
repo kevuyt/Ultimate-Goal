@@ -3,6 +3,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import Library4997.MasqLinearOpMode;
+import Library4997.MasqSensors.MasqClock;
 
 /**
  * TeleOp NFS
@@ -10,11 +11,13 @@ import Library4997.MasqLinearOpMode;
 @TeleOp(name="TeleOpNFS", group="Final")
 
 public class NFS extends MasqLinearOpMode implements Constants {
+    public MasqClock clock = new MasqClock();
     public void main() throws InterruptedException {
 
     }
     @Override
     public void runLinearOpMode() throws InterruptedException {
+
         int i = 0;
         while (!isStarted()) {
             robot.indexer.setPosition(0);
@@ -48,6 +51,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.driveTrain.setPowerRight(-right);
             }
 
+            robot.lights.setPower(Math.cos( (4 * Math.PI * clock.milliseconds()) + Math.PI ) + 1);
 
             if (controller1.right_bumper()) {
                 robot.collector.setPower(COLLECTOR_IN);

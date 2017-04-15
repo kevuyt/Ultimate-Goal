@@ -11,7 +11,6 @@ import Library4997.MasqRobot.Direction;
 
 @Autonomous(name = "BlueAutoCenterVortexRight", group = "Blue")
 public class BlueAutoCenterVortexRight extends MasqLinearOpMode implements Constants {
-    private int delay = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.imu);
@@ -27,20 +26,15 @@ public class BlueAutoCenterVortexRight extends MasqLinearOpMode implements Const
         robot.drive(90);
         robot.turn((int) (robot.imu.getYaw() + startAngle), Direction.RIGHT);
         robot.stopBlue(robot.rightColor, POWER_LOW);
+        robot.turn((int) (robot.imu.getYaw() - startAngle), Direction.LEFT);
         robot.leftPresser.setPower(-1);
         robot.sleep(1500);
         robot.leftPresser.setPower(1);
         robot.drive(40);
         robot.stopBlue(robot.rightColor, POWER_LOW);
+        robot.turn((int) (robot.imu.getYaw() - startAngle), Direction.LEFT);
         robot.leftPresser.setPower(-1);
         robot.sleep(1500);
         robot.leftPresser.setPower(1);
-
-        //go forward
-        shoot ball
-        do a backflip
-         spin in circle until someone dies
-        eat archis ass
-        win;
     }
 }
