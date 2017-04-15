@@ -23,9 +23,9 @@ public class RedAutoCenterVortexRight extends MasqLinearOpMode implements Consta
         robot.colorRejection.setActiveMode();
         robot.rightColor.setPassiveMode();
         robot.drive(10);
-        robot.turn((int) ((robot.imu.getHeading() - startAngle) + 47), Direction.RIGHT);
+        robot.turn((int) ((robot.imu.getHeading() - startAngle) + cornerTurn), Direction.RIGHT);
         robot.drive(90);
-        robot.turn((int) (robot.imu.getHeading() - startAngle),Direction.LEFT);
+        robot.turn((int) (robot.imu.getHeading() - startAngle), Direction.LEFT);
         robot.stopRed(robot.leftColor);
         robot.leftPresser.setPower(-1);
         robot.sleep();

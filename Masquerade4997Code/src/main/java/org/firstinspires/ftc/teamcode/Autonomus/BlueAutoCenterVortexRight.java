@@ -23,18 +23,24 @@ public class BlueAutoCenterVortexRight extends MasqLinearOpMode implements Const
         robot.colorRejection.setActiveMode();
         robot.rightColor.setPassiveMode();
         robot.drive(10);
-        robot.turn((int) ((robot.imu.getHeading() - startAngle) + 47), Direction.RIGHT);
+        robot.turn((int) ((robot.imu.getYaw() - startAngle) + cornerTurn), Direction.RIGHT);
         robot.drive(90);
-        robot.turn((int) (robot.imu.getHeading() - startAngle),Direction.LEFT);
-        robot.stopBlue(robot.leftColor);
+        robot.turn((int) (robot.imu.getYaw() + startAngle), Direction.RIGHT);
+        robot.stopBlue(robot.rightColor, POWER_LOW);
         robot.leftPresser.setPower(-1);
-        robot.sleep();
+        robot.sleep(1500);
         robot.leftPresser.setPower(1);
         robot.drive(40);
-        robot.stopBlue(robot.leftColor);
+        robot.stopBlue(robot.rightColor, POWER_LOW);
         robot.leftPresser.setPower(-1);
-        robot.sleep();
+        robot.sleep(1500);
         robot.leftPresser.setPower(1);
 
+        //go forward
+        shoot ball
+        do a backflip
+         spin in circle until someone dies
+        eat archis ass
+        win;
     }
 }

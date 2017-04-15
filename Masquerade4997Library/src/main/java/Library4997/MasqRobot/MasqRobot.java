@@ -190,7 +190,7 @@ public class MasqRobot implements PID_Constants {
         driveTrain.stopDriving();
     }
     public void stopRed (MasqColorSensor colorSensor, double power){
-        stopRed(colorSensor, power, Direction.FORWARD);
+        stopRed(colorSensor, power, Direction.BACKWARD);
     }
     public void stopRed (MasqColorSensor colorSensor){
         stopRed(colorSensor, 0.5);
@@ -214,7 +214,7 @@ public class MasqRobot implements PID_Constants {
         driveTrain.stopDriving();
     }
     public void stopBlue (MasqColorSensor colorSensor, double power){
-        stopBlue(colorSensor, power, Direction.FORWARD);
+        stopBlue(colorSensor, power, Direction.BACKWARD);
     }
     public void stopBlue (MasqColorSensor colorSensor){
         stopBlue(colorSensor, 0.5);
@@ -237,7 +237,7 @@ public class MasqRobot implements PID_Constants {
         driveTrain.stopDriving();
     }
     public void stop (MasqSensor sensor, double power){
-        stop(sensor, power, Direction.FORWARD);
+        stop(sensor, power, Direction.BACKWARD);
     }
     public void stop (MasqSensor sensor){
         stop(sensor, 0.5);

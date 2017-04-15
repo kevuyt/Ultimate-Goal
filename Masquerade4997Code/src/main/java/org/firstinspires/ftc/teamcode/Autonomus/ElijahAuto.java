@@ -27,7 +27,7 @@ public class ElijahAuto extends MasqLinearOpMode implements Constants {
         robot.indexer.setPosition(INDEXER_CLOSED);
         robot.sleep(900);
         robot.indexer.setPosition(INDEXER_OPENED);
-        robot.turn(50,Direction.LEFT);
+        robot.turn(50,Direction.RIGHT);
         robot.drive(30);
     }
 }

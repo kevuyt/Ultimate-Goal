@@ -25,4 +25,5 @@ public interface Constants {
 
     double COLLECTOR_IN = -1.5;
     double COLLECTOR_OUT = 1.5;
+    int cornerTurn = 43;
 }

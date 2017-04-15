@@ -22,9 +22,9 @@ public class BlueAutoCenterVortexLeft extends MasqLinearOpMode implements Consta
         robot.colorRejection.setActiveMode();
         robot.rightColor.setPassiveMode();
         robot.drive(10);
-        robot.turn((int) ((robot.imu.getHeading() - startAngle) + 47), Direction.LEFT);
+        robot.turn((int) ((robot.imu.getHeading() - startAngle) + cornerTurn), Direction.LEFT);
         robot.drive(90);
-        robot.turn((int) (robot.imu.getHeading() - startAngle),Direction.RIGHT);
+        robot.turn((int) (robot.imu.getHeading() - startAngle), Direction.RIGHT);
         robot.stopBlue(robot.leftColor);
         robot.leftPresser.setPower(-1);
         robot.sleep();
