@@ -28,7 +28,6 @@ public class MasqRobot implements PID_Constants {
 
     public MasqMotor collector = new MasqMotor("collector");
     public MasqMotor shooter = new MasqMotor("shooter");
-    public MasqMotor lift = new MasqMotor("lift");
 
     public MasqServo indexer = new MasqServo("indexer");
 
