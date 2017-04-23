@@ -46,9 +46,7 @@ public class TemplateIterative extends MasqOpMode implements Constants, org.firs
     public void init() {}
     @Override
     public void init_loop() {
-        dash.createSticky(robot.imu);
-        dash.createSticky(controller1);
-        dash.createSticky(controller2);
+        dash.create(robot.imu);
         dash.update();
     }
     @Override
