@@ -34,6 +34,5 @@ public class BlueAutoCenterVortexLeft extends MasqLinearOpMode implements Consta
         robot.leftPresser.setPower(-1);
         robot.sleep();
         robot.leftPresser.setPower(1);
-        // ok so the first thing u do is u shoot da ball into da hole and then you do a backflip then you win $$$$$$$$//
     }
 }
