@@ -13,14 +13,12 @@ import Library4997.MasqRobot.Direction;
 
 @Autonomous(name = "Defense_Auto", group = "Template")
 public class DefenseAuto extends MasqLinearOpMode implements Constants {
-    private int delay = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
         }
         waitForStart();
-        robot.sleep(delay);
         robot.drive(30);
         robot.shooter.setPower(-1);
         robot.sleep(1000);
@@ -29,9 +27,5 @@ public class DefenseAuto extends MasqLinearOpMode implements Constants {
         robot.drive(270);
         robot.sleep();
         robot.drive(50, POWER_OPTIMAL, Direction.BACKWARD);
-        
-
-
-
     }
 }

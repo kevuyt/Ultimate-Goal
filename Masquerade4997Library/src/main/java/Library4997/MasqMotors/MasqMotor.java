@@ -24,18 +24,33 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     public MasqMotor(String name){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
-
     }
     public MasqMotor(String name, DcMotor.Direction direction) {
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);
     }
+    public MasqMotor(String name, Rate rate){
+        this.nameMotor = name;
+        motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
+    }
+    public MasqMotor(String name, DcMotor.Direction direction, Rate rate) {
+        this.nameMotor = name;
+        motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
+        motor.setDirection(direction);
+    }
+    public enum Rate {
+        RUN (true),
+        MINIMIZE(false);
+        public final boolean value;
+        Rate (boolean value) {this.value = value;}
+    }
+
+
     public void runWithoutEncoders () {
         motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
     boolean isStalled () {
-
         double prevPosition = motor.getCurrentPosition();
         boolean isStalled;
         if (motor.getCurrentPosition() > prevPosition) {
@@ -102,7 +117,6 @@ public class MasqMotor implements PID_Constants, MasqHardware{
                 "Rate" + Double.toString(getRate())
         };
     }
-
     private class RateThread implements Runnable{
         public void run(){
                 double positionChange = getCurrentPos() - prevPos;
