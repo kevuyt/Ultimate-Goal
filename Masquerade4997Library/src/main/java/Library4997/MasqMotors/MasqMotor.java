@@ -14,7 +14,7 @@ import Library4997.PID_Constants;
 import Library4997.MasqSensors.MasqClock;
 
 /**
- * This is a custom motor that includes stall detection and telemetry
+ * This is a custom motor that includes stall detection and telemetry, it assumes the use of an andymark motor
  */
 public class MasqMotor implements PID_Constants, MasqHardware{
     private DcMotor motor;
@@ -74,7 +74,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
 
     }
     public synchronized double getRate(){
-        return rate;
+        return (rate / 1220) * 60;
     }
     private synchronized void setRate (double rate){
         this.rate = rate;
