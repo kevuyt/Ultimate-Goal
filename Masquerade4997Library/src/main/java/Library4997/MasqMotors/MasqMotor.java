@@ -76,7 +76,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     public synchronized double getRate(){
         return rate;
     }
-    public synchronized void setRate (double rate){
+    private synchronized void setRate (double rate){
         this.rate = rate;
     }
     public void resetEncoder() {
