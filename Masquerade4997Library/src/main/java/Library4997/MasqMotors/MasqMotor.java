@@ -52,7 +52,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         public final boolean value;
         Rate (boolean value) {this.value = value;}
     }
-    public void runWithoutEncoders () {
+    void runWithoutEncoders() {
         motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
     boolean isStalled () {
@@ -76,7 +76,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     private synchronized void setRate (double rate){
         this.rate = rate;
     }
-    public void resetEncoder() {
+    void resetEncoder() {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
     public void setPower (double power) {
@@ -88,16 +88,16 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     public void runUsingEncoder() {
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
-    public void runToPosition(){
+    void runToPosition(){
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
     boolean isBusy () {
         return motor.isBusy();
     }
-    public void setBrakeMode() {
+    void setBrakeMode() {
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
-    public double getCurrentPos () {
+    double getCurrentPos() {
          return motor.getCurrentPosition();
     }
     public double getPower() {
