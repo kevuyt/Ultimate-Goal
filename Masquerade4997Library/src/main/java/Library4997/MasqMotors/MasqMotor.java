@@ -73,6 +73,9 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         return isStalled;
 
     }
+    public double getRate () {
+        return rate;
+    }
     public void resetEncoder() {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
