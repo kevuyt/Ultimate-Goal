@@ -70,6 +70,9 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         return isStalled;
 
     }
+    public void ACCURATE(double targetRPM){
+
+    }
     public synchronized double getRate(){
         return (rate / TICKS_PER_ROTATION) * 60;
     }

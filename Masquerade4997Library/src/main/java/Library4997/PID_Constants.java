@@ -12,6 +12,10 @@ public interface PID_Constants {
             KP_STRAIGHT = 0.03,
             KI_STRAIGHT = 0,
             KD_STRAIGHT = 0;
+    double
+            KP_BATTERY = 0.01,
+            KI_BATTERY = 0.001,
+            KD_BATTERY = 0;
     double TICKS_PER_ROTATION = 1120;
     double wheelDiameter = 4;
     double cmToInches = 2.54;
