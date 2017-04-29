@@ -19,11 +19,8 @@ import Library4997.MasqSensors.MasqClock;
 public class MasqMotor implements PID_Constants, MasqHardware{
     private DcMotor motor;
     private String nameMotor;
-    private MasqClock clock = new MasqClock();
-    private double tChange;
     private double prevPos= 0;
     private double previousTime = 0;
-    private double startTime = System.nanoTime();
     private double rate = 0;
     private RateThread rateThread = new RateThread();
     public MasqMotor(String name){
@@ -51,7 +48,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     }
     public enum Rate {
         RUN (true),
-        MINIMIZE(false);
+        MINIMIZE (false);
         public final boolean value;
         Rate (boolean value) {this.value = value;}
     }
