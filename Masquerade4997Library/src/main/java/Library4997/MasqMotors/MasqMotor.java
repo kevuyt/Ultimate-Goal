@@ -73,8 +73,11 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         return isStalled;
 
     }
-    public double getRate () {
+    public synchronized double getRate(){
         return rate;
+    }
+    public synchronized void setRate (double rate){
+        this.rate = rate;
     }
     public void resetEncoder() {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -131,7 +134,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
             previousTime = System.nanoTime();
             timeChange = timeChange / 1e9;
             prevPos = getCurrentPos();
-            rate = positionChange / timeChange;
+            setRate(positionChange / timeChange);
         }
     }
 }
