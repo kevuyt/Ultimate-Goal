@@ -1,9 +1,13 @@
 package Library4997.MasqMotors;
 
+import android.widget.TabHost;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import com.qualcomm.robotcore.hardware.DcMotorController;
+
+import javax.xml.transform.sax.TemplatesHandler;
 
 import Library4997.MasqHardware;
 import Library4997.PID_Constants;
@@ -21,9 +25,11 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     private double previousTime = 0;
     private double startTime = System.nanoTime();
     private double rate = 0;
+    private RateThread rateThread = new RateThread();
     public MasqMotor(String name){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
+
     }
     public MasqMotor(String name, DcMotor.Direction direction) {
         this.nameMotor = name;
@@ -33,11 +39,15 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     public MasqMotor(String name, Rate rate){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
+        if (rate.value)
+        rateThread.run();
     }
     public MasqMotor(String name, DcMotor.Direction direction, Rate rate) {
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);
+        if (rate.value)
+        rateThread.run();
     }
     public enum Rate {
         RUN (true),
@@ -45,8 +55,6 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         public final boolean value;
         Rate (boolean value) {this.value = value;}
     }
-
-
     public void runWithoutEncoders () {
         motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
@@ -92,15 +100,6 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     public double getPower() {
         return motor.getPower();
     }
-    public double getRate () {
-        double positionChange = getCurrentPos() - prevPos;
-        sleep(100);
-        double timeChange = System.nanoTime() - previousTime;
-        previousTime = System.nanoTime();
-        timeChange = timeChange / 1e9;
-        prevPos = getCurrentPos();
-        return positionChange / timeChange;
-    }
     public void sleep (int sleepTime) {
         try {
             Thread.sleep(sleepTime);
@@ -113,19 +112,23 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     }
     public String[] getDash() {
         return new String[]{
-                "Current Position" + Double.toString(getCurrentPos()),
-                "Rate" + Double.toString(getRate())
+                "Current Position" + Double.toString(getCurrentPos())
         };
     }
     private class RateThread implements Runnable{
-        public void run(){
-                double positionChange = getCurrentPos() - prevPos;
-                sleep(200);
-                double timeChange = System.nanoTime() - previousTime;
-                previousTime = System.nanoTime();
-                timeChange = timeChange / 1e9;
-                prevPos = getCurrentPos();
-                rate = positionChange / timeChange;
+        @Override
+        public void run() {
+            double positionChange = getCurrentPos() - prevPos;
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            double timeChange = System.nanoTime() - previousTime;
+            previousTime = System.nanoTime();
+            timeChange = timeChange / 1e9;
+            prevPos = getCurrentPos();
+            rate = positionChange / timeChange;
         }
     }
 }

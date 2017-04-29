@@ -129,7 +129,6 @@ public class NFS extends MasqLinearOpMode implements Constants {
             telemetry.addData("Left Power", left);
             telemetry.addData("Right Power", right);
             telemetry.addData("Voltage", getBatteryVoltage());
-            telemetry.addData("Rate", robot.shooter.getRate());
             telemetry.update();
         }
     }
