@@ -48,7 +48,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     }
     public enum Rate {
         RUN (true),
-        MINIMIZE (false);
+        KILL(false);
         public final boolean value;
         Rate (boolean value) {this.value = value;}
     }
