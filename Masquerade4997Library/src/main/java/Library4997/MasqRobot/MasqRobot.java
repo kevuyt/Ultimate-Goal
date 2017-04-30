@@ -254,4 +254,43 @@ public class MasqRobot implements PID_Constants {
         sleep(DEFAULT_SLEEP_TIME);
     }
 
+    public void move(boolean control, MasqMotor motor, double power){
+        if (control){
+            motor.setPower(power);
+        }
+        else if (!control){
+            motor.setPower(0);
+        }
+    }
+    public void move(boolean forwardControl, boolean backwordControl, MasqMotor motor, double power){
+        if (forwardControl){
+            motor.setPower(power);
+        }
+        else if (backwordControl){
+            motor.setPower(-power);
+        }
+        else {
+            motor.setPower(0);
+        }
+    }
+    public void move(boolean control, MasqServo motor, double position, double zeroPosition){
+        if (control){
+            motor.setPosition(position);
+        }
+        else if (!control){
+            motor.setPosition(zeroPosition);
+        }
+    }
+    public void move(boolean forwardControl, boolean backwordControl, MasqCRServo servo, double power){
+        if (forwardControl){
+            servo.setPower(power);
+        }
+        else if (backwordControl){
+            servo.setPower(-power);
+        }
+        else {
+            servo.setPower(0);
+        }
+    }
+
 }
