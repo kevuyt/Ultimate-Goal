@@ -27,7 +27,7 @@ public class MasqRobot implements PID_Constants {
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
 
     public MasqMotor collector = new MasqMotor("collector");
-    public MasqMotor shooter = new MasqMotor("shooter");
+    public MasqMotor shooter = new MasqMotor("shooter", MasqMotor.Rate.RUN);
     public MasqMotor lights = new MasqMotor("light");
     public MasqServo indexer = new MasqServo("indexer");
 
