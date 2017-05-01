@@ -32,36 +32,26 @@ public class NFS extends MasqLinearOpMode implements Constants {
             float turn = -controller1.right_stick_x();
             double left = move - turn;
             double right = move + turn;
+
             if(left > 1.0) {
                 left /= left;
                 right /= left;
                 robot.driveTrain.setPowerLeft(-left);
                 robot.driveTrain.setPowerRight(-right);
             }
-
             else if (right > 1.0) {
                 left /= right;
                 right /= right;
                 robot.driveTrain.setPowerLeft(-left);
                 robot.driveTrain.setPowerRight(-right);
             }
-
             else {
                 robot.driveTrain.setPowerLeft(-left);
                 robot.driveTrain.setPowerRight(-right);
             }
 
             robot.lights.setPower(Math.cos( (4 * Math.PI * clock.milliseconds()) + Math.PI ) + 1);
-
-            if (controller1.right_bumper()) {
-                robot.collector.setPower(COLLECTOR_IN);
-            }
-            else if (controller1.left_bumper()) {
-                robot.collector.setPower(COLLECTOR_OUT);
-            }
-            else {
-                robot.collector.setPower(0);
-            }
+            robot.move(controller1.right_bumper(), controller1.left_bumper(), robot.collector, COLLECTOR_IN);
 
             if(controller2.right_bumper()) {
                 power += REV_UP;
@@ -71,7 +61,6 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 }
                 robot.shooter.setPower(power);
             }
-
             else if(controller2.left_bumper()) {
                 power += REV_UP;
                 if (power > TARGET_POWER) {
@@ -90,41 +79,12 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 }
                 robot.shooter.setPower(power);
             }
+            robot.move((controller2.right_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + SHOOTER_ERROR)),
+                    controller2.left_bumper() && controller2.x() && robot.shooter.getPower() < TARGET_POWER + LOW_POWER_FACTOR + SHOOTER_ERROR,
+                    robot.indexer, INDEXER_OPENED, INDEXER_CLOSED);
 
-            if (controller2.right_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + SHOOTER_ERROR)) {
-                robot.indexer.setPosition(INDEXER_OPENED);
-            }
-
-            else if (controller2.left_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + LOW_POWER_FACTOR + SHOOTER_ERROR)) {
-                robot.indexer.setPosition(INDEXER_OPENED);
-            }
-
-            else {
-                robot.indexer.setPosition(INDEXER_CLOSED);
-            }
-
-            if (controller2.dpad_left()){
-                robot.rightPresser.setPower(BEACON_OUT);
-            }
-
-            else if (controller2.dpad_right()){
-                robot.rightPresser.setPower(BEACON_IN);
-            }
-
-            else {
-                robot.rightPresser.setPower(0);
-            }
-
-            if (controller2.dpad_up()){
-                robot.leftPresser.setPower(BEACON_OUT);
-            }
-            else if (controller2.dpad_down()){
-                robot.leftPresser.setPower(BEACON_IN);
-            }
-            else {
-                robot.leftPresser.setPower(0);
-            }
-
+            robot.move(controller2.dpad_left(), controller2.dpad_right(), robot.rightPresser, BEACON_IN);
+            robot.move(controller2.dpad_up(), controller2.dpad_down(), robot.leftPresser, BEACON_IN);
             telemetry.addData("Shooter Power", robot.shooter.getPower());
             telemetry.addData("Left Power", left);
             telemetry.addData("Right Power", right);
