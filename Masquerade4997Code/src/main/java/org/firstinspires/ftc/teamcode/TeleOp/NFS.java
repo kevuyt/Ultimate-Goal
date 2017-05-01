@@ -49,8 +49,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.driveTrain.setPowerLeft(-left);
                 robot.driveTrain.setPowerRight(-right);
             }
-
-            robot.lights.setPower(Math.cos( (4 * Math.PI * clock.milliseconds()) + Math.PI ) + 1);
+            robot.move(robot.lights, Math.cos( (4 * Math.PI * clock.milliseconds()) + Math.PI ) + 1);
             robot.move(controller1.right_bumper(), controller1.left_bumper(), robot.collector, COLLECTOR_IN);
 
             if(controller2.right_bumper()) {
@@ -85,6 +84,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
 
             robot.move(controller2.dpad_left(), controller2.dpad_right(), robot.rightPresser, BEACON_IN);
             robot.move(controller2.dpad_up(), controller2.dpad_down(), robot.leftPresser, BEACON_IN);
+            
             telemetry.addData("Shooter Power", robot.shooter.getPower());
             telemetry.addData("Left Power", left);
             telemetry.addData("Right Power", right);

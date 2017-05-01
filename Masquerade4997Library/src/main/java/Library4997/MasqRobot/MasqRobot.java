@@ -300,5 +300,8 @@ public class MasqRobot implements PID_Constants {
             servo.setPower(0);
         }
     }
+    public void move(MasqMotor motor, double power){
+        motor.setPower(power);
+    }
 
 }
