@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import Library4997.MasqLinearOpMode;
+import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * This is a basic template copy and paste this class for any TeleOp,

@@ -1,4 +1,4 @@
-package Library4997.MasqRobot;
+package Library4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -9,8 +9,9 @@ import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensor;
 import Library4997.MasqServos.MasqCRServo;
+import Library4997.MasqWrappers.Direction;
 import Library4997.PID_Constants;
-import Library4997.DashBoard;
+import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;

@@ -1,4 +1,4 @@
-package Library4997.MasqRobot;
+package Library4997.MasqWrappers;
 
 /**
  * This enum gives values to direction

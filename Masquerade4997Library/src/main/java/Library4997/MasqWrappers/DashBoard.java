@@ -1,6 +1,8 @@
-package Library4997;
+package Library4997.MasqWrappers;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+
+import Library4997.MasqHardware;
 
 /**
  * Custom Telemetry

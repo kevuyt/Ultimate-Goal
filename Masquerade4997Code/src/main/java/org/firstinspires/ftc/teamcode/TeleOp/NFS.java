@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
-import Library4997.MasqLinearOpMode;
+import Library4997.MasqWrappers.MasqLinearOpMode;
 import Library4997.MasqSensors.MasqClock;
 
 /**

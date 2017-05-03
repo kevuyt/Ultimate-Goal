@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.TeleOp.Constants;
 
-import Library4997.MasqOpMode;
+import Library4997.MasqWrappers.MasqOpMode;
 
 
 @TeleOp(name="TemplateIterative", group="Template")

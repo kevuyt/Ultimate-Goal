@@ -1,14 +1,15 @@
-package Library4997;
+package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import Library4997.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
 
 /**
  * Created by Archish on 3/3/17.
  */
 
-public class MasqController implements MasqHardware{
+public class MasqController implements MasqHardware {
     private MasqClock clock = new MasqClock();
     private String name;
     private double min = 0, max = 1;
