@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.Direction;
  * refactor the file name to match the auto class title
  */
 
-@Autonomous(name = "ElijahAuto", group = "Template")
+@Autonomous(name = "Elihahahahahah-auto", group = "Template")
 public class ElijahAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
