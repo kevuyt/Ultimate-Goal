@@ -61,7 +61,6 @@ public class MasqRobot implements PID_Constants {
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
-
     public void drive(int distance, double power, Direction DIRECTION, double targetAngle, int sleepTime, double timeOut) {
         int newDistance = convert(distance);
         driveTrain.resetEncoders();

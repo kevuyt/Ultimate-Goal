@@ -56,7 +56,6 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 power += REV_UP;
                 if (power > TARGET_POWER) {
                     power = TARGET_POWER;
-                    telemetry.addLine("Shooter is Revved Up.");
                 }
                 robot.shooter.setPower(power);
             }
@@ -64,15 +63,11 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 power += REV_UP;
                 if (power > TARGET_POWER) {
                     power = TARGET_POWER + LOW_POWER_FACTOR;
-                    telemetry.addLine("Shooter is Revved Up.");
                 }
                 robot.shooter.setPower(power);
             }
             else {
                 power -= REV_DOWN;
-                if (power < TARGET_POWER) {
-                    telemetry.addLine("Shooter is Not Revved Up.");
-                }
                 if (power < 0) {
                     power = 0;
                 }
