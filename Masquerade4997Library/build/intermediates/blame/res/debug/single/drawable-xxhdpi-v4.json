@@ -2,5 +2,9 @@
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_launcher.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xxhdpi-v4/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/CommandSystem/Masquerade4997Library/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_launcher.png",
+        "source": "/Users/Archish/Documents/Projects/CommandSystem/Masquerade4997Library/build/intermediates/exploded-aar/CommandSystem/FtcRobotController/unspecified/res/drawable-xxhdpi-v4/ic_launcher.png"
     }
 ]
