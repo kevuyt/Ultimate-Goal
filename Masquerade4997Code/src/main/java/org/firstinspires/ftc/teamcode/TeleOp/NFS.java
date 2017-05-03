@@ -19,10 +19,13 @@ public class NFS extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
 
         int i = 0;
+        double count = 0;
         while (!isStarted()) {
             robot.indexer.setPosition(0);
-            telemetry.addData("Voltage", getBatteryVoltage());
-            telemetry.update();
+            dash.create("COUNT", count);
+            if(controller1.apr()) {
+                count +=1;
+            }
         }
         double power = 0;
         waitForStart();
