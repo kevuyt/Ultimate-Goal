@@ -18,7 +18,6 @@ public class NFS extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode() throws InterruptedException {
 
-        int i = 0;
         double count = 0;
         while (!isStarted()) {
             robot.indexer.setPosition(0);

@@ -281,11 +281,11 @@ public class MasqRobot implements PID_Constants {
             motor.setPosition(zeroPosition);
         }
     }
-    public void move(boolean control, boolean backwordCOntrol, MasqServo motor, double position, double zeroPosition){
+    public void move(boolean control, boolean backwordControl, MasqServo motor, double position, double zeroPosition){
         if (control){
             motor.setPosition(position);
         }
-        else if (control){
+        else if (backwordControl){
             motor.setPosition(zeroPosition);
         }
     }
