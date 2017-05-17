@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
@@ -8,29 +9,21 @@ import Library4997.MasqSensors.MasqClock;
 /**
  * TeleOp NFS
  */
-@TeleOp(name="TeleOpNFS", group="Final")
-
+@TeleOp(name="NFS", group="Final")
 public class NFS extends MasqLinearOpMode implements Constants {
     public MasqClock clock = new MasqClock();
-    public void main() throws InterruptedException {
-
-    }
     @Override
     public void runLinearOpMode() throws InterruptedException {
-
-        double count = 0;
         while (!isStarted()) {
             robot.indexer.setPosition(0);
-            dash.create("COUNT", count);
-            if(controller1.apr()) {
-                count +=1;
-            }
+            dash.create("COUNT");
             dash.update();
         }
         double power = 0;
         waitForStart();
         robot.shooter.runUsingEncoder();
         while (opModeIsActive()) {
+            robot.shooter.killRate(opModeIsActive());
             float move = -controller1.left_stick_y();
             float turn = -controller1.right_stick_x();
             double left = move - turn;
@@ -52,7 +45,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.driveTrain.setPowerLeft(-left);
                 robot.driveTrain.setPowerRight(-right);
             }
-            robot.move(robot.lights, Math.cos( (4 * Math.PI * clock.milliseconds()) + Math.PI ) + 1);
+            robot.move(robot.lights, Math.cos( (0.0025 * Math.PI * clock.milliseconds()) + Math.PI ) + 1);
             robot.move(controller1.right_bumper(), controller1.left_bumper(), robot.collector, COLLECTOR_IN);
 
             if(controller2.right_bumper()) {
@@ -76,14 +69,20 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 }
                 robot.shooter.setPower(power);
             }
-            robot.move((controller2.right_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + SHOOTER_ERROR)),
-                    controller2.left_bumper() && controller2.x() && robot.shooter.getPower() < TARGET_POWER + LOW_POWER_FACTOR + SHOOTER_ERROR,
-                    robot.indexer, INDEXER_OPENED, INDEXER_CLOSED);
+            if (controller2.right_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + SHOOTER_ERROR)) {
+                robot.indexer.setPosition(INDEXER_OPENED);
+            }
 
+            else if (controller2.left_bumper() && controller2.x() && robot.shooter.getPower() < (TARGET_POWER + LOW_POWER_FACTOR + SHOOTER_ERROR)) {
+                robot.indexer.setPosition(INDEXER_OPENED);
+            }
+
+            else {
+                robot.indexer.setPosition(INDEXER_CLOSED);
+            }
             robot.move(controller2.dpad_left(), controller2.dpad_right(), robot.rightPresser, BEACON_IN);
             robot.move(controller2.dpad_up(), controller2.dpad_down(), robot.leftPresser, BEACON_IN);
-            
-            dash.create("Shooter Power", robot.shooter.getPower());
+            dash.create("Shooter Power", robot.shooter.getRate());
             dash.create("Left Power", left);
             dash.create("Right Power", right);
             dash.create("Voltage", getBatteryVoltage());

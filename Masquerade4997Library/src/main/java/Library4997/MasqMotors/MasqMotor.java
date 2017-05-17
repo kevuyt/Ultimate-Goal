@@ -22,6 +22,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     private double prevPos= 0;
     private double previousTime = 0;
     private double rate = 0;
+    public boolean kill;
     private RateThread rateThread = new RateThread();
     public MasqMotor(String name){
         this.nameMotor = name;
@@ -37,14 +38,14 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
         if (rate.value)
-        rateThread.run();
+        rateThread.start();
     }
     public MasqMotor(String name, DcMotor.Direction direction, Rate rate) {
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);
         if (rate.value)
-        rateThread.run();
+            rateThread.start();
     }
     public enum Rate {
         RUN (true),
@@ -70,8 +71,8 @@ public class MasqMotor implements PID_Constants, MasqHardware{
         return isStalled;
 
     }
-    public void ACCURATE(double targetRPM){
-
+    public void killRate (boolean bool){
+        this.kill = bool;
     }
     public synchronized double getRate(){
         return (rate / TICKS_PER_ROTATION) * 60;
@@ -121,20 +122,24 @@ public class MasqMotor implements PID_Constants, MasqHardware{
                 "Current Position" + Double.toString(getCurrentPos())
         };
     }
-    private class RateThread implements Runnable{
+    private class RateThread extends Thread{
         @Override
         public void run() {
-            double positionChange = getCurrentPos() - prevPos;
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while (kill) {
+                double positionChange = getCurrentPos() - prevPos;
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                double timeChange = System.nanoTime() - previousTime;
+                previousTime = System.nanoTime();
+                timeChange = timeChange / 1e9;
+                prevPos = getCurrentPos();
+
+                setRate(positionChange / timeChange);
+                run();
             }
-            double timeChange = System.nanoTime() - previousTime;
-            previousTime = System.nanoTime();
-            timeChange = timeChange / 1e9;
-            prevPos = getCurrentPos();
-            setRate(positionChange / timeChange);
         }
     }
 }
