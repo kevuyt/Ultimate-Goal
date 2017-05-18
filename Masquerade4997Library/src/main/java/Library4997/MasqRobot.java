@@ -169,20 +169,6 @@ public class MasqRobot implements PID_Constants {
         turn(angle, DIRECTION, DEFAULT_TIMEOUT);
     }
 
-    public int getDelta (double measureOne, Direction direction) {
-        return (int) (measureOne - (imu.getHeading() * direction.value));
-    }
-    private double getBatteryVoltage() {
-        double result = Double.POSITIVE_INFINITY;
-        for (VoltageSensor sensor : FtcOpModeRegister.opModeManager.getHardwareMap().voltageSensor) {
-            double voltage = sensor.getVoltage();
-            if (voltage > 0) {
-                result = Math.min(result, voltage);
-            }
-        }
-        return result;
-    }
-
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
@@ -254,17 +240,6 @@ public class MasqRobot implements PID_Constants {
         stop(sensor, 0.5);
     }
 
-    public void sleep(int time) {
-        try {
-            Thread.sleep((long) time);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
-    public void sleep() {
-        sleep(DEFAULT_SLEEP_TIME);
-    }
-
     public void move(boolean control, MasqMotor motor, double power){
         if (control){
             motor.setPower(power);
@@ -313,6 +288,31 @@ public class MasqRobot implements PID_Constants {
     }
     public void move(MasqMotor motor, double power){
         motor.setPower(power);
+    }
+
+    public int getDelta (double measureOne, Direction direction) {
+        return (int) (measureOne - (imu.getHeading() * direction.value));
+    }
+    public double getBatteryVoltage() {
+        double result = Double.POSITIVE_INFINITY;
+        for (VoltageSensor sensor : FtcOpModeRegister.opModeManager.getHardwareMap().voltageSensor) {
+            double voltage = sensor.getVoltage();
+            if (voltage > 0) {
+                result = Math.min(result, voltage);
+            }
+        }
+        return result;
+    }
+
+    public void sleep(int time) {
+        try {
+            Thread.sleep((long) time);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+    public void sleep() {
+        sleep(DEFAULT_SLEEP_TIME);
     }
 
 }
