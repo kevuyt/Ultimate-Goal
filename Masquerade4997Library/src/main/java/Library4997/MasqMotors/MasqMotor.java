@@ -22,7 +22,7 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     private double prevPos= 0;
     private double previousTime = 0;
     private double rate = 0;
-    public boolean kill;
+    private boolean kill;
     private RateThread rateThread = new RateThread();
     public MasqMotor(String name){
         this.nameMotor = name;
