@@ -59,17 +59,8 @@ public class MasqMotor implements PID_Constants, MasqHardware{
     boolean isStalled () {
         double prevPosition = motor.getCurrentPosition();
         boolean isStalled;
-        if (motor.getCurrentPosition() > prevPosition) {
-            isStalled = false;
-        }
-        else if(motor.getCurrentPosition() - 10 > prevPosition) {
-            isStalled = false;
-        }
-        else {
-            isStalled = true;
-        }
+        isStalled = motor.getCurrentPosition() <= prevPosition && motor.getCurrentPosition() - 10 <= prevPosition;
         return isStalled;
-
     }
     public void killRate (boolean bool){
         this.kill = bool;
