@@ -1,6 +1,7 @@
 package Library4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
@@ -170,6 +171,16 @@ public class MasqRobot implements PID_Constants {
 
     public int getDelta (double measureOne, Direction direction) {
         return (int) (measureOne - (imu.getHeading() * direction.value));
+    }
+    private double getBatteryVoltage() {
+        double result = Double.POSITIVE_INFINITY;
+        for (VoltageSensor sensor : FtcOpModeRegister.opModeManager.getHardwareMap().voltageSensor) {
+            double voltage = sensor.getVoltage();
+            if (voltage > 0) {
+                result = Math.min(result, voltage);
+            }
+        }
+        return result;
     }
 
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {

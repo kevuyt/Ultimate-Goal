@@ -89,16 +89,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
             dash.update();
         }
     }
-    private double getBatteryVoltage() {
-        double result = Double.POSITIVE_INFINITY;
-        for (VoltageSensor sensor : hardwareMap.voltageSensor) {
-            double voltage = sensor.getVoltage();
-            if (voltage > 0) {
-                result = Math.min(result, voltage);
-            }
-        }
-        return result;
-    }
+
 
 
 }
