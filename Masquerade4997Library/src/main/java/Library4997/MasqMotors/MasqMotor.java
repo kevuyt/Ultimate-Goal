@@ -138,7 +138,6 @@ public class MasqMotor implements PID_Constants, MasqHardware{
                 prevPos = getCurrentPos();
 
                 setRate(positionChange / timeChange);
-                run();
             }
         }
     }
