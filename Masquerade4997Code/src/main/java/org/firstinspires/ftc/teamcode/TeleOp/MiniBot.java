@@ -21,6 +21,7 @@ public class MiniBot extends LinearOpMode {
             telemetry.addLine("COUNT");
             telemetry.update();
         }
+        //push
         double power = 0;
         waitForStart();
         while (opModeIsActive()) {
