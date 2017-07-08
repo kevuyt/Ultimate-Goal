@@ -28,7 +28,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
             float turn = -controller1.right_stick_x();
             double left = move - turn;
             double right = move + turn;
-
+            double lights;
             if(left > 1.0) {
                 left /= left;
                 right /= left;
@@ -45,7 +45,12 @@ public class NFS extends MasqLinearOpMode implements Constants {
                 robot.driveTrain.setPowerLeft(-left);
                 robot.driveTrain.setPowerRight(-right);
             }
-            robot.move(robot.lights, Math.cos( (0.0025 * Math.PI * clock.milliseconds())  + Math.sin(clock.milliseconds()) ) + 1.5);
+            if (left != 0 || right != 0) {
+                robot.lights.setPower(1);
+            }
+            else {
+                robot.lights.setPower(0);
+            }
             robot.move(controller1.right_bumper(), controller1.left_bumper(), robot.collector, COLLECTOR_IN);
 
             if(controller2.right_bumper()) {

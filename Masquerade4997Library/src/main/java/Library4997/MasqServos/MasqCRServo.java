@@ -22,8 +22,7 @@ public class MasqCRServo implements MasqHardware{
         servo.wait(time);
     }
     public double getPower() {return servo.getPower();}
-    public String getName() {return nameCr_Servo;
-    }
+    public String getName() {return nameCr_Servo;}
 
     public String[] getDash() {
         return new String[]{

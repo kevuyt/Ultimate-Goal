@@ -16,8 +16,6 @@ public class Template extends MasqLinearOpMode implements Constants{
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.imu);
-            dash.createSticky(controller1);
-            dash.createSticky(controller2);
             dash.update();
         }
         waitForStart();
