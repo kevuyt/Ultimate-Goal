@@ -10,6 +10,7 @@ import Library4997.MasqHardware;
 
 public class DashBoard {
     private int dashLength;
+
     public DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
