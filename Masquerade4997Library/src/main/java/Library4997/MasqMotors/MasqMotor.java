@@ -19,6 +19,7 @@ import Library4997.MasqSensors.MasqClock;
 public class MasqMotor implements PID_Constants, MasqHardware{
     private DcMotor motor;
     private String nameMotor;
+
     private double prevPos= 0;
     private double previousTime = 0;
     private double rate = 0;
