@@ -5,7 +5,6 @@
 # Java class files
 *.class
 OneStickNFS.java
-
 # generated files
 bin/
 gen/
