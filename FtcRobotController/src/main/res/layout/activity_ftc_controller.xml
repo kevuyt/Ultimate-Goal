@@ -49,9 +49,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <ImageView
       android:id="@+id/robotIcon"
-      android:src="@drawable/icon_robotcontroller"
-      android:layout_width="wrap_content"
-      android:layout_height="fill_parent"
+      android:src="@drawable/masq”
+      android:layout_width=“78dp”
+      android:layout_height=“78dp”
       android:adjustViewBounds="true"
       android:layout_margin="1dp"/>
 
@@ -142,7 +142,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             android:layout_height="wrap_content"
             android:text=""
             android:visibility="invisible"
-            android:textColor="#990000"
+            android:textColor="@color/bright_red_text"
             android:textStyle="bold"/>
 
     </FrameLayout>

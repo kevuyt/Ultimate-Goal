@@ -44,7 +44,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         android:paddingRight="8dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:background="@color/medium_red_background"
+        android:background="@color/masq_gold_dark”
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -52,16 +52,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+	    android:background="@color/masq_gold_dark"
             android:text="@string/activeConfigCaption"
             android:layout_weight="1"
             android:textColor="@color/white"
+	    android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
             android:id="@+id/idActiveConfigName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+	    android:background="@color/masq_gold_dark"
             android:textColor="@color/white"
+	    android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>
