@@ -13,7 +13,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "Template-Auto", group = "Template")
 @Disabled
 public class Template extends MasqLinearOpMode implements Constants {
-    private int delay = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.imu);
