@@ -12,16 +12,16 @@ import Library4997.MasqSensors.MasqClock;
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqTankDriveV2 implements PID_Constants {
-    private MasqMotorV2 motor1 , motor2, motor3, motor4 = null;
+public class MasqTankDrive implements PID_Constants {
+    private MasqMotor motor1 , motor2, motor3, motor4 = null;
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition= 0;
     private MasqClock clock = new MasqClock();
-    public MasqTankDriveV2(String name1, String name2, String name3, String name4) {
-        motor1 = new MasqMotorV2(name1, DcMotor.Direction.REVERSE);
-        motor2 = new MasqMotorV2(name2, DcMotor.Direction.REVERSE);
-        motor3 = new MasqMotorV2(name3, DcMotor.Direction.FORWARD);
-        motor4 = new MasqMotorV2(name4, DcMotor.Direction.FORWARD);
+    public MasqTankDrive(String name1, String name2, String name3, String name4) {
+        motor1 = new MasqMotor(name1, DcMotor.Direction.REVERSE);
+        motor2 = new MasqMotor(name2, DcMotor.Direction.REVERSE);
+        motor3 = new MasqMotor(name3, DcMotor.Direction.FORWARD);
+        motor4 = new MasqMotor(name4, DcMotor.Direction.FORWARD);
     }
     public void resetEncoders () {
         motor1.resetEncoder();
@@ -81,7 +81,7 @@ public class MasqTankDriveV2 implements PID_Constants {
         motor3.runWithoutEncoders();
         motor4.runWithoutEncoders();
     }
-    public void StopDriving() {
+    public void stopDriving() {
         setPower(0);
     }
     public double getCurrentPos () {

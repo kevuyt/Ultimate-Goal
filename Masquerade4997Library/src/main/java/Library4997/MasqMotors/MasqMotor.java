@@ -12,7 +12,7 @@ import Library4997.MasqSensors.MasqClock;
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class MasqMotorV2 implements PID_Constants, MasqHardware{
+public class MasqMotor implements PID_Constants, MasqHardware{
     private DcMotor motor;
     private String nameMotor;
     private double tChange;
@@ -22,11 +22,11 @@ public class MasqMotorV2 implements PID_Constants, MasqHardware{
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition= 0;
     private MasqClock clock = new MasqClock();
-    public MasqMotorV2(String name){
+    public MasqMotor(String name){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
     }
-    public MasqMotorV2(String name, DcMotor.Direction direction) {
+    public MasqMotor(String name, DcMotor.Direction direction) {
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);
