@@ -27,3 +27,7 @@ repositories {
 }
 
 apply from: 'build.release.gradle'
+
+dependencies {
+    compile 'com.android.support:design:25.1.0'
+}
