@@ -15,10 +15,8 @@ import Library4997.MasqSensors.MasqClock;
 public class MasqMotor implements PID_Constants, MasqHardware{
     private DcMotor motor;
     private String nameMotor;
-    private double tChange;
     private double prevPos= 0;
     private double previousTime = 0;
-    private double startTime = System.nanoTime();
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition= 0;
     private MasqClock clock = new MasqClock();

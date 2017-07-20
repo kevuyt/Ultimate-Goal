@@ -2,64 +2,50 @@ package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import Library4997.PID_Constants;
+import Library4997.MasqHardware;
 import Library4997.MasqWrappers.Direction;
-import Library4997.MasqSensors.MasqClock;
+import Library4997.PID_Constants;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqTankDrive implements PID_Constants {
-    private MasqMotor motor1 , motor2, motor3, motor4 = null;
+public class MasqTankDrive implements PID_Constants, MasqHardware {
+    private MasqMotorSystem leftDrive, rightDrive = null;
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition= 0;
-    private MasqClock clock = new MasqClock();
     public MasqTankDrive(String name1, String name2, String name3, String name4) {
-        motor1 = new MasqMotor(name1, DcMotor.Direction.REVERSE);
-        motor2 = new MasqMotor(name2, DcMotor.Direction.REVERSE);
-        motor3 = new MasqMotor(name3, DcMotor.Direction.FORWARD);
-        motor4 = new MasqMotor(name4, DcMotor.Direction.FORWARD);
+        leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE");
+        rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE");
     }
     public void resetEncoders () {
-        motor1.resetEncoder();
-        motor2.resetEncoder();
-        motor3.resetEncoder();
-        motor4.resetEncoder();
+        leftDrive.resetEncoder();
+        rightDrive.resetEncoder();
     }
-    public void setPower (double power) {
-        motor1.setPower(power);
-        motor2.setPower(power);
-        motor3.setPower(power);
-        motor4.setPower(power);
+    public void setPower (double leftPower, double rightPower) {
+        leftDrive.setPower(leftPower);
+        rightDrive.setPower(rightPower);
     }
-    public void setPower (double powerLeft, double powerRight) {
-        motor1.setPower(powerLeft);
-        motor2.setPower(powerLeft);
-        motor3.setPower(powerRight);
-        motor4.setPower(powerRight);
+    public void setPower(double power){
+        leftDrive.setPower(power);
+        rightDrive.setPower(power);
     }
     public void setPowerLeft (double power) {
-        motor1.setPower(power);
-        motor2.setPower(power);
+        leftDrive.setPower(power);
     }
     public void setPowerRight (double power) {
-        motor3.setPower(power);
-        motor4.setPower(power);
+        rightDrive.setPower(power);
+    }
+    public void setDistance(int distance){
+        leftDrive.setDistance(distance);
+        rightDrive.setDistance(distance);
     }
     public void runUsingEncoder() {
-        motor1.runUsingEncoder();
-        motor2.runUsingEncoder();
-        motor3.runUsingEncoder();
-        motor4.runUsingEncoder();
-    }
-    private boolean opModeIsActive() {
-        return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
-    }
-    public void setDistance (double distance) {
-        destination = currentPosition + zeroEncoderPosition;
+        leftDrive.runUsingEncoder();
+        rightDrive.runUsingEncoder();
     }
     public void runToPosition(Direction direction, double speed){
         resetEncoders();
@@ -76,17 +62,22 @@ public class MasqTankDrive implements PID_Constants {
         setPower(0);
     }
     public void runWithoutEncoders() {
-        motor1.runWithoutEncoders();
-        motor2.runWithoutEncoders();
-        motor3.runWithoutEncoders();
-        motor4.runWithoutEncoders();
+        leftDrive.runUsingEncoder();
+        rightDrive.runUsingEncoder();
     }
     public void stopDriving() {
-        setPower(0);
+        setPower(0,0);
+    }
+    private boolean opModeIsActive() {
+        return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
     public double getCurrentPos () {
-        return currentPosition;
+        return (leftDrive.getCurrentPos() + rightDrive.getCurrentPos())/2;
     }
-
-
+    public String getName() {
+        return "DRIVETRAIN";
+    }
+    public String[] getDash() {
+        return new String[]{ "Current Position"+ getCurrentPos()};
+    }
 }
