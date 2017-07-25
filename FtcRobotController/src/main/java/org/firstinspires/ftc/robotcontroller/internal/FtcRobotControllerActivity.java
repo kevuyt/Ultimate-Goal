@@ -45,6 +45,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.transition.ChangeTransform;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -126,7 +127,7 @@ public class FtcRobotControllerActivity extends Activity {
   protected TextView[] textGamepad = new TextView[NUM_GAMEPADS];
   protected TextView textOpMode;
   protected TextView textErrorMessage;
-  public TextView delayTime;
+  public static TextView delayTime;
   protected ImmersiveMode immersion;
 
   protected UpdateUI updateUI;
@@ -599,5 +600,8 @@ public class FtcRobotControllerActivity extends Activity {
         }
       });
     }
+  }
+  public static double getDelay(){
+    return Double.parseDouble(delayTime.getText().toString());
   }
 }
