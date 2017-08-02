@@ -132,7 +132,7 @@ public class FtcRobotControllerActivity extends Activity {
   public Button setDelay;
   public EditText delayTime;
   protected ImmersiveMode immersion;
-  private double delay;
+  private static double delay;
   protected UpdateUI updateUI;
   protected Dimmer dimmer;
   protected LinearLayout entireScreenLayout;
@@ -223,6 +223,7 @@ public class FtcRobotControllerActivity extends Activity {
       }
     }
     setDelay = (Button) findViewById(R.id.set);
+    delayTime.setTransformationMethod(null);
     context = this;
     utility = new Utility(this);
     appUtil.setThisApp(new PeerAppRobotController(context));
@@ -610,7 +611,7 @@ public class FtcRobotControllerActivity extends Activity {
       });
     }
   }
-  public  double getDelay(){
+  public static double getDelay(){
     return delay;
   }
 }
