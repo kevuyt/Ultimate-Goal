@@ -51,6 +51,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -127,9 +129,10 @@ public class FtcRobotControllerActivity extends Activity {
   protected TextView[] textGamepad = new TextView[NUM_GAMEPADS];
   protected TextView textOpMode;
   protected TextView textErrorMessage;
-  public static TextView delayTime;
+  public Button setDelay;
+  public EditText delayTime;
   protected ImmersiveMode immersion;
-
+  private double delay;
   protected UpdateUI updateUI;
   protected Dimmer dimmer;
   protected LinearLayout entireScreenLayout;
@@ -219,7 +222,7 @@ public class FtcRobotControllerActivity extends Activity {
         DragonboardLynxDragonboardIsPresentPin.getInstance().setState(true);
       }
     }
-
+    setDelay = (Button) findViewById(R.id.set);
     context = this;
     utility = new Utility(this);
     appUtil.setThisApp(new PeerAppRobotController(context));
@@ -260,7 +263,7 @@ public class FtcRobotControllerActivity extends Activity {
     textRobotStatus = (TextView) findViewById(R.id.textRobotStatus);
     textOpMode = (TextView) findViewById(R.id.textOpMode);
     textErrorMessage = (TextView) findViewById(R.id.textErrorMessage);
-    delayTime = (TextView)findViewById(R.id.sleep);
+    delayTime = (EditText) findViewById(R.id.sleep);
     textGamepad[0] = (TextView) findViewById(R.id.textGamepad1);
     textGamepad[1] = (TextView) findViewById(R.id.textGamepad2);
     immersion = new ImmersiveMode(getWindow().getDecorView());
@@ -286,6 +289,12 @@ public class FtcRobotControllerActivity extends Activity {
     startWatchdogService();
     bindToService();
     logPackageVersions();
+    setDelay.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        delay = Double.parseDouble(String.valueOf(delayTime.getText()));
+      }
+    });
   }
 
   protected UpdateUI createUpdateUI() {
@@ -601,7 +610,7 @@ public class FtcRobotControllerActivity extends Activity {
       });
     }
   }
-  public static double getDelay(){
-    return Double.parseDouble(delayTime.getText().toString());
+  public  double getDelay(){
+    return delay;
   }
 }
