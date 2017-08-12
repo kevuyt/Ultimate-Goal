@@ -79,7 +79,6 @@ public class MasqRobot implements PID_Constants {
         double rightPower;
         double maxPower;
         double dt;
-
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPos()));
             inchesRemaining = clicksRemaining / CLICKS_PER_CM;
