@@ -72,8 +72,18 @@
         <item>Channel  9 – 2.452 GHz|9</item>
         <item>Channel 10 – 2.457 GHz|10</item>
         <item>Channel 11 – 2.462 GHz|11</item>
-        
-        
+        <!--
+        <item>5GHz, Channel 36</item>
+        <item>5GHz, Channel 40</item>
+        <item>5GHz, Channel 44</item>
+        <item>5GHz, Channel 48</item>
+        -->
+        <!--
+        <item>5GHz, Channel 149</item>
+        <item>5GHz, Channel 153</item>
+        <item>5GHz, Channel 157</item>
+        <item>5GHz, Channel 161</item>
+        -->
     </string-array>
     <color name="black">#000000</color>
     <color name="bright_qcom_blue">#309EA4</color>

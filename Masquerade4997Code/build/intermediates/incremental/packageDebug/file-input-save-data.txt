@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Jul 15 13:07:02 EDT 2017
+#Sat Aug 12 11:30:28 EDT 2017
 210.set=NATIVE_RESOURCE
 14.set=ASSET
 180.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/legacy.xml
@@ -202,7 +202,7 @@
 29.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blocks/led.js
 109.set=ASSET
 51.set=ASSET
-56.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo_list.xml
+56.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/button_list.xml
 239.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 31.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcDcMotor.png
 155.set=ANDROID_RESOURCE
@@ -232,7 +232,7 @@
 149.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 79.set=ANDROID_RESOURCE
 201.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
-70.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/preferences.xml
+70.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable/button_shape.xml
 124.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 222.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable/icon_robotcontroller.png
 145.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcOpMode.png
@@ -266,7 +266,7 @@
 119.set=ASSET
 61.set=ANDROID_RESOURCE
 3.set=ASSET
-57.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/button_list.xml
+57.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo_list.xml
 32.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/template_info.xml
 165.set=ASSET
 63.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
@@ -287,12 +287,12 @@
 17.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcLinearOpMode.png
 13.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 69.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/delete.mp3
-44.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/resources.arsc
+44.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_ftc_configuration.xml
 119.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/LICENSE
 96.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blocks/linear_op_mode.js
 89.set=ASSET
 202.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
-71.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/drawable/button_shape.xml
+71.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/preferences.xml
 125.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 223.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/FIRST_logo.png
 146.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/toolbox/misc.xml
@@ -319,7 +319,7 @@
 210.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi-v7a/libVuforia.so
 133.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/device_interface_module.xml
 64.set=ASSET
-185.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/loading_indicator_overlay.xml
+185.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/k9usbbot.xml
 6.set=ASSET
 160.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blockly/msg/js/en.js
 168.set=ASSET
@@ -347,7 +347,7 @@
 143.set=ASSET
 18.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_ftc_lynx_fw_update.xml
 14.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
-45.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_ftc_configuration.xml
+45.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/resources.arsc
 228.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 99.set=ASSET
 104.set=ANDROID_RESOURCE
@@ -382,8 +382,8 @@
 211.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/toolbox/bno055imu_parameters.xml
 134.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blocks/elapsed_time2.js
 74.set=ASSET
-186.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/k9usbbot.xml
-161.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/raw/nxtstartupsound.wav
+186.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/loading_indicator_overlay.xml
+161.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/digital_devices.xml
 192.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 231.set=ANDROID_RESOURCE
 172.set=ASSET
@@ -573,7 +573,7 @@ count=240
 189.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blocks/misc.js
 112.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcGamepad.png
 19.set=ANDROID_RESOURCE
-164.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/digital_devices.xml
+164.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/raw/nxtstartupsound.wav
 195.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 170.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 65.set=ASSET
