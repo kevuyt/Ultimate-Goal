@@ -56,6 +56,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.blocks.ftcrobotcontroller.BlocksActivity;
 import com.google.blocks.ftcrobotcontroller.ProgrammingModeActivity;
@@ -121,7 +122,7 @@ public class FtcRobotControllerActivity extends Activity {
   protected StartResult deviceNameManagerStartResult = new StartResult();
   protected StartResult prefRemoterStartResult = new StartResult();
   protected PreferencesHelper preferencesHelper;
-
+  private Toast toast;
   protected ImageButton buttonMenu;
   protected TextView textDeviceName;
   protected TextView textNetworkConnectionStatus;
@@ -294,6 +295,8 @@ public class FtcRobotControllerActivity extends Activity {
       @Override
       public void onClick(View view) {
         delay = Double.parseDouble(String.valueOf(delayTime.getText()));
+        Toast.makeText(getApplicationContext(), "Your delay is: " + delayTime.getText() + "s",
+                Toast.LENGTH_LONG).show();
       }
     });
   }
