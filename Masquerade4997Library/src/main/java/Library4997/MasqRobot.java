@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
+import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
@@ -308,8 +309,18 @@ public class MasqRobot implements PID_Constants {
             Thread.currentThread().interrupt();
         }
     }
+    public void sleep(double time) {
+        try {
+            Thread.sleep((long) time);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
     public void sleep() {
         sleep(DEFAULT_SLEEP_TIME);
+    }
+    public double getDelay(){
+        return FtcRobotControllerActivity.getDelay();
     }
 
 }

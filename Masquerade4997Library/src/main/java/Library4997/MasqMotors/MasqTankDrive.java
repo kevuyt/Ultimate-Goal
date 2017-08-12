@@ -21,6 +21,10 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
         leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE");
         rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE");
     }
+    public MasqTankDrive(){
+        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE");
+        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack2", DcMotor.Direction.FORWARD, "RIGHTDRIVE");
+    }
     public void resetEncoders () {
         leftDrive.resetEncoder();
         rightDrive.resetEncoder();
