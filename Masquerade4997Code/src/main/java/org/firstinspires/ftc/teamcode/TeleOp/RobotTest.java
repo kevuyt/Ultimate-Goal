@@ -23,7 +23,6 @@ public class RobotTest extends LinearOpMode {
             float turn = -gamepad1.right_stick_x;
             double left = move - turn;
             double right = move + turn;
-            double lights;
             if(left > 1.0) {
                 left /= left;
                 right /= left;

@@ -248,7 +248,7 @@ public class MasqRobot implements PID_Constants {
         if (control){
             motor.setPower(power);
         }
-        else if (!control){
+        else {
             motor.setPower(0);
         }
     }
@@ -267,7 +267,7 @@ public class MasqRobot implements PID_Constants {
         if (control){
             motor.setPosition(position);
         }
-        else if (!control){
+        else {
             motor.setPosition(zeroPosition);
         }
     }
