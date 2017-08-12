@@ -28,7 +28,6 @@ public class NFS extends MasqLinearOpMode implements Constants {
             float turn = -controller1.right_stick_x();
             double left = move - turn;
             double right = move + turn;
-            double lights;
             if(left > 1.0) {
                 left /= left;
                 right /= left;

@@ -58,8 +58,7 @@ public class FtcRobotControllerWatchdogService extends Service
     // Construction
     //----------------------------------------------------------------------------------------------
 
-    @Nullable @Override public IBinder onBind(Intent intent)
-        {
+    @Nullable @Override public IBinder onBind(Intent intent) {
         return null; // we're not this kind of service: we're a 'startable' not a 'bindable' one
         }
 
@@ -74,19 +73,16 @@ public class FtcRobotControllerWatchdogService extends Service
         }
 
     /** On restart after crash, intent is always null; when the RC activity starts us, it's never null */
-    @Override public int onStartCommand(Intent intent, int flags, int startId)
-        {
+    @Override public int onStartCommand(Intent intent, int flags, int startId) {
         RobotLog.vv(TAG, "onStartCommand() intent=%s flags=0x%x startId=%d", intent, flags, startId);
         boolean autoStart = shouldAutoLaunchRobotController();
-        if (null == intent && autoStart)
-            {
+        if (null == intent && autoStart) {
             launchRobotController(this);
             }
         return autoStart ? START_STICKY : START_NOT_STICKY;
         }
 
-    @Override public void onDestroy()
-        {
+    @Override public void onDestroy() {
         super.onDestroy();
         RobotLog.vv(TAG, "onDestroy()");
         }
@@ -95,19 +91,15 @@ public class FtcRobotControllerWatchdogService extends Service
     // Operations
     //----------------------------------------------------------------------------------------------
 
-    public static boolean shouldAutoLaunchRobotController()
-        {
+    public static boolean shouldAutoLaunchRobotController() {
         boolean result = false;
 
         // We only *ever* autorun in the embedded, headless lynx case
-        if (LynxConstants.isDragonboardWithEmbeddedLynxModule())
-            {
+        if (LynxConstants.isDragonboardWithEmbeddedLynxModule()) {
             // But we might be asked to pretend we're not there
-            if (!LynxConstants.disableDragonboard())
-                {
+            if (!LynxConstants.disableDragonboard()) {
                 // We examine the policy flag
-                if (LynxConstants.autorunRobotController())
-                    {
+                if (LynxConstants.autorunRobotController()) {
                     result = true;
                     }
                 }
@@ -117,8 +109,7 @@ public class FtcRobotControllerWatchdogService extends Service
         return result;
         }
 
-    public static void launchRobotController(Context context)
-        {
+    public static void launchRobotController(Context context) {
         RobotLog.vv(TAG, "launchRobotController()");
         Intent openApp = new Intent(context, FtcRobotControllerActivity.class);
         openApp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);    // nb: task != process
