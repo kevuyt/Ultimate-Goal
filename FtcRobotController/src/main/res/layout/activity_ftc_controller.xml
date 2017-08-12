@@ -169,6 +169,26 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         android:visibility="invisible"
         android:text="" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/textOpMode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:id="@+id/sleep"
+        android:hint="Enter A Delay" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/set"
+        android:text="Set Delay"
+        android:layout_below="@+id/sleep"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp" />
+
   </RelativeLayout>
 
   <WebView

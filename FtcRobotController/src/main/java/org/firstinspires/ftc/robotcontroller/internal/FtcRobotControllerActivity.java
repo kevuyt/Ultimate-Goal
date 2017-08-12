@@ -45,14 +45,18 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.transition.ChangeTransform;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.blocks.ftcrobotcontroller.BlocksActivity;
 import com.google.blocks.ftcrobotcontroller.ProgrammingModeActivity;
@@ -118,7 +122,7 @@ public class FtcRobotControllerActivity extends Activity {
   protected StartResult deviceNameManagerStartResult = new StartResult();
   protected StartResult prefRemoterStartResult = new StartResult();
   protected PreferencesHelper preferencesHelper;
-
+  private Toast toast;
   protected ImageButton buttonMenu;
   protected TextView textDeviceName;
   protected TextView textNetworkConnectionStatus;
@@ -126,8 +130,10 @@ public class FtcRobotControllerActivity extends Activity {
   protected TextView[] textGamepad = new TextView[NUM_GAMEPADS];
   protected TextView textOpMode;
   protected TextView textErrorMessage;
+  public Button setDelay;
+  public EditText delayTime;
   protected ImmersiveMode immersion;
-
+  private static double delay;
   protected UpdateUI updateUI;
   protected Dimmer dimmer;
   protected LinearLayout entireScreenLayout;
@@ -217,7 +223,7 @@ public class FtcRobotControllerActivity extends Activity {
         DragonboardLynxDragonboardIsPresentPin.getInstance().setState(true);
       }
     }
-
+    //delayTime.setTransformationMethod(null);
     context = this;
     utility = new Utility(this);
     appUtil.setThisApp(new PeerAppRobotController(context));
@@ -258,6 +264,7 @@ public class FtcRobotControllerActivity extends Activity {
     textRobotStatus = (TextView) findViewById(R.id.textRobotStatus);
     textOpMode = (TextView) findViewById(R.id.textOpMode);
     textErrorMessage = (TextView) findViewById(R.id.textErrorMessage);
+    delayTime = (EditText) findViewById(R.id.sleep);
     textGamepad[0] = (TextView) findViewById(R.id.textGamepad1);
     textGamepad[1] = (TextView) findViewById(R.id.textGamepad2);
     immersion = new ImmersiveMode(getWindow().getDecorView());
@@ -283,6 +290,15 @@ public class FtcRobotControllerActivity extends Activity {
     startWatchdogService();
     bindToService();
     logPackageVersions();
+    setDelay = (Button) findViewById(R.id.set);
+    setDelay.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        delay = Double.parseDouble(String.valueOf(delayTime.getText()));
+        Toast.makeText(getApplicationContext(), "Your delay is: " + delayTime.getText() + "s",
+                Toast.LENGTH_LONG).show();
+      }
+    });
   }
 
   protected UpdateUI createUpdateUI() {
@@ -597,5 +613,8 @@ public class FtcRobotControllerActivity extends Activity {
         }
       });
     }
+  }
+  public static double getDelay(){
+    return delay;
   }
 }
