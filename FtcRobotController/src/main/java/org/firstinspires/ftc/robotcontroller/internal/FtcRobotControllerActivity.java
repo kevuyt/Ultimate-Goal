@@ -223,7 +223,6 @@ public class FtcRobotControllerActivity extends Activity {
         DragonboardLynxDragonboardIsPresentPin.getInstance().setState(true);
       }
     }
-    setDelay = (Button) findViewById(R.id.set);
     //delayTime.setTransformationMethod(null);
     context = this;
     utility = new Utility(this);
@@ -291,6 +290,7 @@ public class FtcRobotControllerActivity extends Activity {
     startWatchdogService();
     bindToService();
     logPackageVersions();
+    setDelay = (Button) findViewById(R.id.set);
     setDelay.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {

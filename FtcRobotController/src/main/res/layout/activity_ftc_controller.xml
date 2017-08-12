@@ -184,10 +184,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/set"
-        android:layout_alignBaseline="@+id/textRemoteProgrammingMode"
-        android:layout_alignBottom="@+id/textRemoteProgrammingMode"
+        android:text="Set Delay"
+        android:layout_below="@+id/sleep"
         android:layout_centerHorizontal="true"
-        android:text="Set Delay" />
+        android:layout_marginTop="13dp" />
 
   </RelativeLayout>
 
