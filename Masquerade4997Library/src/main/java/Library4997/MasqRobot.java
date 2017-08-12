@@ -10,6 +10,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensor;
+import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqWrappers.Direction;
 import Library4997.PID_Constants;
@@ -46,6 +47,8 @@ public class MasqRobot implements PID_Constants {
     public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
 
     private MasqClock timeoutClock = new MasqClock();
+
+    private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
@@ -295,14 +298,8 @@ public class MasqRobot implements PID_Constants {
         return (int) (measureOne - (imu.getHeading() * direction.value));
     }
     public double getBatteryVoltage() {
-        double result = Double.POSITIVE_INFINITY;
-        for (VoltageSensor sensor : FtcOpModeRegister.opModeManager.getHardwareMap().voltageSensor) {
-            double voltage = sensor.getVoltage();
-            if (voltage > 0) {
-                result = Math.min(result, voltage);
-            }
-        }
-        return result;
+
+        return voltageSensor.getVoltage();
     }
 
     public void sleep(int time) {
