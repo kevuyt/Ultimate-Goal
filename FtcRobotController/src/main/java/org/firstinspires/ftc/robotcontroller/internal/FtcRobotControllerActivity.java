@@ -223,7 +223,7 @@ public class FtcRobotControllerActivity extends Activity {
       }
     }
     setDelay = (Button) findViewById(R.id.set);
-    delayTime.setTransformationMethod(null);
+    //delayTime.setTransformationMethod(null);
     context = this;
     utility = new Utility(this);
     appUtil.setThisApp(new PeerAppRobotController(context));
