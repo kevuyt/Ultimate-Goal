@@ -290,6 +290,7 @@ public class FtcRobotControllerActivity extends Activity {
     startWatchdogService();
     bindToService();
     logPackageVersions();
+    delayTime.setText("0");
     setDelay = (Button) findViewById(R.id.set);
     setDelay.setOnClickListener(new View.OnClickListener() {
       @Override
