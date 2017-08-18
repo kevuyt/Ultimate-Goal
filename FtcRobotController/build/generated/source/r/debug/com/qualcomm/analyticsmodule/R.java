@@ -13,10 +13,10 @@ public final class R {
 		public static int bright_red_text = 0x7f090003;
 		public static int dark_red_background = 0x7f090008;
 		public static int light_red_background = 0x7f09000a;
-		public static int medium_red_background = 0x7f09000b;
-		public static int transparent_color = 0x7f09000c;
-		public static int very_bright_red = 0x7f09000d;
-		public static int white = 0x7f09000e;
+		public static int medium_red_background = 0x7f09000e;
+		public static int transparent_color = 0x7f09000f;
+		public static int very_bright_red = 0x7f090010;
+		public static int white = 0x7f090011;
 	}
 	public static final class string {
 		public static int app_name = 0x7f0a002b;

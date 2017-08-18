@@ -26,4 +26,6 @@ repositories {
     }
 }
 
+group='com.github.archishou'
+apply plugin: 'com.github.dcendents.android-maven'
 apply from: 'build.release.gradle'
