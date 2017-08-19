@@ -23,6 +23,6 @@ Thumbs.db
 .idea
 .gradle
 build/
-
+*.js
 *ASUS_PC_01*
 
