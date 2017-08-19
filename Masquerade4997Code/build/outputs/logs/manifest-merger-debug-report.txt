@@ -15,7 +15,7 @@ ADDED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main
 		INJECTED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml
 application
 ADDED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:11:5-19
-MERGED from [com.github.archishou:Masquerade4997Library:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/com.github.archishou/Masquerade4997Library/unspecified/AndroidManifest.xml:15:5-20
+MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/Masquerade4997Library/unspecified/AndroidManifest.xml:15:5-20
 MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:14:5-64:19
 MERGED from [:Inspection-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Inspection-release/AndroidManifest.xml:19:5-40:19
 MERGED from [:Blocks-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Blocks-release/AndroidManifest.xml:18:5-49:19
@@ -38,7 +38,7 @@ MERGED from [:Analytics-release:] /Users/Archish/Documents/Projects/MasqLib/Masq
 		ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:67:18-90
 uses-sdk
 INJECTED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.github.archishou:Masquerade4997Library:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/com.github.archishou/Masquerade4997Library/unspecified/AndroidManifest.xml:11:5-13:41
+MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/Masquerade4997Library/unspecified/AndroidManifest.xml:11:5-13:41
 MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:8:5-10:41
 MERGED from [:Inspection-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Inspection-release/AndroidManifest.xml:7:5-9:41
 MERGED from [:Blocks-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Blocks-release/AndroidManifest.xml:7:5-9:41
