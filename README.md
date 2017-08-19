@@ -1,4 +1,4 @@
-# ftc_app
+# MasqLib
 FTC Android Studio project to create FTC Robot Controller app.
 
 This is the FTC SDK that can be used to create an FTC Robot Controller app, with custom op modes.
@@ -30,6 +30,19 @@ Documentation for the FTC SDK is also included with this repository.  There is a
 For technical questions regarding the SDK, please visit the FTC Technology forum:
 
   http://ftcforum.usfirst.org/forumdisplay.php?156-FTC-Technology
+**************************************************************************************
+
+Version 7.00 (built on 17.08.12)
+
+This version of the software provides support for the REV Robotics Expansion Hub.  This version also includes improvements in the USB communication layer in an effort to enhance system resiliency.  If you were using a 2.x version of the software previously, updating to version 3.1 requires that you also update your Driver Station software in addition to updating the Robot Controller software.
+
+Also note that in version 7.00 software, the setMaxSpeed and getMaxSpeed methods are no longer available (not deprecated, they have been removed from the SDK). Also note that the the new 3.x software incorporates motor profiles that a user can select as he/she configures the robot.
+
+Changes include:
+ * Blocks changes
+     - Added delay picker for autonomous mode so that we can allow another team to pass before us.
+     - Added getDelay method to MasqRobot to access delay set.
+     - Added better motor methods for all MasqRobot class
 
 **************************************************************************************
 
