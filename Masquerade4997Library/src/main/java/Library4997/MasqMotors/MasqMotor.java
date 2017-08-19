@@ -16,7 +16,7 @@ import Library4997.MasqSensors.MasqClock;
 /**
  * This is a custom motor that includes stall detection and telemetry, it assumes the use of an andymark motor
  */
-public class MasqMotor implements PID_Constants, MasqHardware{
+public class MasqMotor implements PID_Constants, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
     private double prevPos= 0;

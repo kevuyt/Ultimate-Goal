@@ -19,5 +19,6 @@ public class Template extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
+        robot.sleep(robot.getDelay());
     }
 }
