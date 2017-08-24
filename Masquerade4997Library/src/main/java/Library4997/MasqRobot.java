@@ -1,7 +1,6 @@
 package Library4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
@@ -9,11 +8,9 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqWrappers.Direction;
-import Library4997.PID_Constants;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
@@ -26,7 +23,7 @@ import static Library4997.MasqMotors.MasqMotorSystem.convert;
  * MasqRobot--> Contains all hardware and methods to run the robot.k
  */
 
-public class MasqRobot implements PID_Constants {
+public class MasqRobot implements PID_CONSTANTS {
     //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
 

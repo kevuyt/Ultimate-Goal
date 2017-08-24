@@ -1,22 +1,15 @@
 package Library4997.MasqMotors;
 
-import android.widget.TabHost;
-
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
-import com.qualcomm.robotcore.hardware.DcMotorController;
-
-import javax.xml.transform.sax.TemplatesHandler;
-
 import Library4997.MasqHardware;
-import Library4997.PID_Constants;
-import Library4997.MasqSensors.MasqClock;
+import Library4997.PID_CONSTANTS;
 
 /**
  * This is a custom motor that includes stall detection and telemetry, it assumes the use of an andymark motor
  */
-public class MasqMotor implements PID_Constants, MasqHardware {
+public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
     private double prevPos= 0;

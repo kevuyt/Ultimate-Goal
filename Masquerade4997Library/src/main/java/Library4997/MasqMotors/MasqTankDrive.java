@@ -1,15 +1,14 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import Library4997.MasqHardware;
-import Library4997.PID_Constants;
+import Library4997.PID_CONSTANTS;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqTankDrive implements PID_Constants, MasqHardware {
+public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     private MasqMotorSystem leftDrive, rightDrive = null;
     public MasqTankDrive(String name1, String name2, String name3, String name4) {
         leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE");
