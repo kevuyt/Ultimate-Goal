@@ -134,7 +134,8 @@ public class MasqRobot implements PID_Constants {
         double newPower = 0;
         double previousTime = 0;
         timeoutClock.reset();
-        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
+        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) &&
+                !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
             previousTime = System.nanoTime();
             tChange = tChange / 1e9;
