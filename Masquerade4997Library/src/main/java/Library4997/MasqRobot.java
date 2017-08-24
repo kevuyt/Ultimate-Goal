@@ -25,7 +25,7 @@ import static Library4997.MasqMotors.MasqMotorSystem.convert;
 
 public class MasqRobot implements PID_CONSTANTS {
     //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
-    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
+    public MasqTankDrive driveTrain = new MasqTankDrive();
 
     public MasqMotor collector = new MasqMotor("collector");
     public MasqMotor shooter = new MasqMotor("shooter", MasqMotor.Rate.RUN);
