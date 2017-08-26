@@ -20,7 +20,5 @@ public class RelicDefAuto extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.drive(100, POWER_OPTIMAL, Direction.FORWARD);
-        robot.turn(90, Direction.LEFT);
-        robot.turn(90, Direction.RIGHT);
     }
 }
