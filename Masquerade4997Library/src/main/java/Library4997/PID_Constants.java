@@ -2,7 +2,7 @@ package Library4997;
 /**
  * These are the constants used in PID
  */
-public interface PID_Constants {
+public interface PID_CONSTANTS {
     double
             KP_TURN = 0.005,
             KI_TURN = 0.0002,

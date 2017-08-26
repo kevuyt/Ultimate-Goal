@@ -46,7 +46,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         public final boolean value;
         Rate (boolean value) {this.value = value;}
     }
-    void runWithoutEncoders() {
+    public void runWithoutEncoders() {
         motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
     boolean isStalled () {
