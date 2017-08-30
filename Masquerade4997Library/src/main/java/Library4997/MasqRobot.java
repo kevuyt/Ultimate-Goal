@@ -130,7 +130,7 @@ public class MasqRobot implements PID_CONSTANTS {
         double currentError = 1;
         double prevError = 0;
         double integral = 0;
-        double newPower = 0;
+        double newPower;
         double previousTime = 0;
         timeoutClock.reset();
         while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError)
@@ -142,7 +142,7 @@ public class MasqRobot implements PID_CONSTANTS {
             currentError = imu.adjustAngle(targetAngle - imuVAL);
             integral += currentError * ID;
             double errorkp = currentError * kp;
-            double integralki = currentError * ki * tChange;
+            double integralki = integral * ki * tChange;
             double dervitive = (currentError - prevError) / tChange;
             double dervitivekd = dervitive * kd;
             newPower = (errorkp + integralki + dervitivekd);

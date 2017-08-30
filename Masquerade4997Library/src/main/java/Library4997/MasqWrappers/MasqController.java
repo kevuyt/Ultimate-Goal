@@ -6,7 +6,7 @@ import Library4997.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
 
 /**
- * Created by Archish on 3/3/17.
+ * Custom gamepad
  */
 
 public class MasqController implements MasqHardware {
