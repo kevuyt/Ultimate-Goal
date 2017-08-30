@@ -52,16 +52,16 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
     }
     public MasqMotorSystem resetEncoder () {
         for (MasqMotor masqMotor : motors)
-        masqMotor.resetEncoder();
+            masqMotor.resetEncoder();
         return this;
     }
     public void setPower (double power) {
         for (MasqMotor masqMotor : motors)
-        masqMotor.setPower(power);
+            masqMotor.setPower(power);
     }
     public MasqMotorSystem setDistance(int distance){
         for (MasqMotor masqMotor: motors)
-        masqMotor.setDistance(distance);
+            masqMotor.setDistance(distance);
         return this;
     }
     public MasqMotorSystem runUsingEncoder() {
@@ -69,23 +69,13 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
             masqMotor.runUsingEncoder();
         return this;
     }
-    public MasqMotorSystem runToPosition(){
-        for (MasqMotor masqMotor: motors)
-            masqMotor.runToPosition();
-        return this;
-    }
     public MasqMotorSystem runWithoutEncoders() {
         for (MasqMotor masqMotor: motors)
             masqMotor.runWithoutEncoders();
         return this;
     }
-    public void StopDriving() {
+    public void stopDriving() {
         setPower(0);
-    }
-    public MasqMotorSystem setBrakeMode () {
-        for (MasqMotor masqMotor: motors)
-            masqMotor.setBrakeMode();
-        return this;
     }
     public static int convert(int TICKS) {
         return (int) ((TICKS * 35.1070765836));
@@ -93,7 +83,7 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
     public boolean isBusy() {
         boolean isBusy = false;
         for (MasqMotor masqMotor: motors)
-        isBusy = masqMotor.isBusy();
+            isBusy = masqMotor.isBusy();
         return isBusy;
     }
     public double getCurrentPos () {

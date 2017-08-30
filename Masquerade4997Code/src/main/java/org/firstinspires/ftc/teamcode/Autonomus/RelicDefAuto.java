@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+import Library4997.MasqWrappers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -18,5 +19,6 @@ public class RelicDefAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
+        robot.drive(100, POWER_OPTIMAL, Direction.FORWARD);
     }
 }

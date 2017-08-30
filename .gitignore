@@ -22,8 +22,9 @@ Thumbs.db
 *.iml
 .idea
 .gradle
+build/
+*.js
 
-*ASUS_PC_01*
 
 FtcRobotController/build/generated/assets/
 FtcRobotController/build/generated/res/
