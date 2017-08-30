@@ -5,14 +5,14 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
-import Library4997.PID_Constants;
+import Library4997.PID_CONSTANTS;
 import Library4997.MasqWrappers.Direction;
 import Library4997.MasqSensors.MasqClock;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class MasqMotor implements PID_Constants, MasqHardware {
+public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
     private double prevPos= 0;

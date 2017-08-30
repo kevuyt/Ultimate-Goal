@@ -26,7 +26,7 @@ import Library4997.MasqServos.MasqServo;
  * MasqRobot--> Contains all hardware and methods to run the robot.k
  */
 
-public class MasqRobot implements PID_Constants {
+public class MasqRobot implements PID_CONSTANTS {
     //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
 
@@ -133,7 +133,8 @@ public class MasqRobot implements PID_Constants {
         double newPower = 0;
         double previousTime = 0;
         timeoutClock.reset();
-        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError) && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
+        while (opModeIsActive() && (imu.adjustAngle(Math.abs(currentError)) > acceptableError)
+                && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
             previousTime = System.nanoTime();
             tChange = tChange / 1e9;

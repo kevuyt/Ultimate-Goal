@@ -21,9 +21,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import java.util.ArrayList;
 import java.util.List;
 
-import Library4997.MasqSensor;
-import Library4997.PID_Constants;
-
 import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.FRONT;
 @Autonomous(name="Vuforia Navigation", group ="Concept")
 @Disabled

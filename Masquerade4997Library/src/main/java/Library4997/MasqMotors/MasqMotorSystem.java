@@ -1,19 +1,17 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import Library4997.MasqHardware;
-import Library4997.PID_Constants;
+import Library4997.PID_CONSTANTS;
 
 /**
  * MasqMotorSystem That supports two or more motors and treats them as one
  */
-public class MasqMotorSystem implements PID_Constants, MasqHardware {
+public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
     private MasqMotor motor1 , motor2, motor3;
     private List<MasqMotor> motors;
     private int numMotors;
