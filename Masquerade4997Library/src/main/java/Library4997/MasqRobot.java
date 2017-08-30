@@ -26,8 +26,6 @@ import Library4997.MasqServos.MasqServo;
  * MasqRobot--> Contains all hardware and methods to run the robot.k
  */
 
-//Hello
-
 public class MasqRobot implements PID_CONSTANTS {
     //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
