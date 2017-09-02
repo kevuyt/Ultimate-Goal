@@ -2,12 +2,12 @@ package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
-import Library4997.PID_CONSTANTS;
 import Library4997.MasqWrappers.Direction;
-import Library4997.MasqSensors.MasqClock;
+import Library4997.PID_CONSTANTS;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -19,7 +19,6 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double previousTime = 0;
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition= 0;
-    private MasqClock clock = new MasqClock();
     public MasqMotor(String name){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
