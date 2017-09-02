@@ -48,12 +48,14 @@ public class DashBoard {
         }
         update();
     }
+
     public void setNewFirst() {
         telemetry.log().setDisplayOrder(Telemetry.Log.DisplayOrder.NEWEST_FIRST);
     }
     public void setNewLast() {
         telemetry.log().setDisplayOrder(Telemetry.Log.DisplayOrder.OLDEST_FIRST);
     }
+
     public void update () {
         telemetry.update();
     }
