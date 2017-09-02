@@ -18,6 +18,7 @@ public class MasqController implements MasqHardware {
         this.name = name;
         this.gamepad = g;
     }
+
     public boolean a() {
         return gamepad.a;
     }
@@ -30,6 +31,7 @@ public class MasqController implements MasqHardware {
     public boolean b() {
         return gamepad.b;
     }
+
     public boolean aIsDoubleTapped () {
         boolean doubleTapped = false;
          if (apr() && !clock.elapsedTime(0.5 ,MasqClock.Resolution.SECONDS)){
@@ -58,6 +60,7 @@ public class MasqController implements MasqHardware {
         }
         return doubleTapped;
     }
+
     public boolean apr() {
         boolean pressed = false, released = false;
         while (a()) {
@@ -102,6 +105,7 @@ public class MasqController implements MasqHardware {
         }
         return pressed && realeaed;
     }
+
     public void setTriggerThersholds(double min, double max){
         this.min = min;
         this.max = max;
@@ -110,6 +114,7 @@ public class MasqController implements MasqHardware {
         this.min = min;
         this.max = 1;
     }
+
     public float left_stick_x(){
         return gamepad.left_stick_x;
     }
@@ -122,6 +127,7 @@ public class MasqController implements MasqHardware {
     public float right_stick_y() {
         return gamepad.right_stick_y;
     }
+
     public boolean dpad_up() {
         return gamepad.dpad_up;
     }
@@ -134,18 +140,21 @@ public class MasqController implements MasqHardware {
     public boolean dpad_right() {
         return gamepad.dpad_right;
     }
+
     public boolean left_bumper() {
         return gamepad.left_bumper;
     }
     public boolean right_bumper() {
         return gamepad.right_bumper;
     }
+
     public boolean left_stick_button() {
         return gamepad.left_stick_button;
     }
     public boolean right_stick_button() {
         return gamepad.right_stick_button;
     }
+
     public boolean leftTriggerPressed() {
         return gamepad.left_trigger > min && gamepad.left_trigger < max;
     }
@@ -153,12 +162,14 @@ public class MasqController implements MasqHardware {
         return gamepad.right_trigger >= min && gamepad.right_trigger <= max;
 
     }
+
     public float left_trigger() {
         return gamepad.left_trigger;
     }
     public float right_trigger() {
         return gamepad.right_trigger;
     }
+
     public String getName() {
         return name;
     }
