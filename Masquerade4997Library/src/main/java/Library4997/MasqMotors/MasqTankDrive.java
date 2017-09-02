@@ -2,18 +2,18 @@ package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.Direction;
-import Library4997.PID_Constants;
+import Library4997.PID_CONSTANTS;
 
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqTankDrive implements PID_Constants, MasqHardware {
+public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     private MasqMotorSystem leftDrive, rightDrive = null;
     private double destination = 0;
     public MasqTankDrive(String name1, String name2, String name3, String name4) {
@@ -45,12 +45,15 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
     public void setDistance(int distance){
         leftDrive.setDistance(distance);
         rightDrive.setDistance(distance);
+        destination = distance;
     }
     public void runUsingEncoder() {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
     }
-    public void runToPosition(Direction direction, double speed){
+
+    public void runToPosition(Direction direction, double speed, double timeOut) {
+        MasqClock timeoutTimer = new MasqClock();
         resetEncoders();
         int targetClicks = (int)(destination * CLICKS_PER_CM);
         int clicksRemaining;
@@ -61,7 +64,8 @@ public class MasqTankDrive implements PID_Constants, MasqHardware {
             inchesRemaining = clicksRemaining / CLICKS_PER_CM;
             power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power);
-        } while (opModeIsActive() && inchesRemaining > 0.5);
+        }
+        while (opModeIsActive() && inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         setPower(0);
     }
     public void runWithoutEncoders() {

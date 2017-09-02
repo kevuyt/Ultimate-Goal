@@ -1,7 +1,6 @@
 package Library4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
@@ -9,18 +8,16 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
 
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
-import Library4997.MasqSensors.MasqLimitSwitch;
-
-import Library4997.MasqSensors.MasqVoltageSensor;
-
-import Library4997.MasqServos.MasqCRServo;
-import Library4997.MasqWrappers.Direction;
-import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
+import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqODS;
+import Library4997.MasqSensors.MasqVoltageSensor;
+import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
+import Library4997.MasqWrappers.DashBoard;
+import Library4997.MasqWrappers.Direction;
 
 /**
  * MasqRobot--> Contains all hardware and methods to run the robot.k
@@ -122,6 +119,28 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void drive(int distance) {
         drive(distance, 0.5);
+    }
+
+    public void runToPosition(int distance, Direction direction, double speed, double timeOut, int sleepTime) {
+        driveTrain.setDistance(distance);
+        driveTrain.runToPosition(direction, speed, timeOut);
+        sleep(sleepTime);
+    }
+
+    public void runToPosition(int distance, Direction direction, double speed, double timeOut) {
+        runToPosition(distance, direction, speed, timeOut, DEFAULT_SLEEP_TIME);
+    }
+
+    public void runToPosition(int distance, Direction direction, double speed) {
+        runToPosition(distance, direction, speed, DEFAULT_TIMEOUT);
+    }
+
+    public void runToPosition(int distance, Direction direction) {
+        runToPosition(distance, direction, 0.7);
+    }
+
+    public void runToPosition(int distance) {
+        runToPosition(distance, Direction.FORWARD);
     }
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
