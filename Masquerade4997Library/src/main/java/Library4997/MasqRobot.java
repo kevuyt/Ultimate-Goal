@@ -126,19 +126,15 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.runToPosition(direction, speed, timeOut);
         sleep(sleepTime);
     }
-
     public void runToPosition(int distance, Direction direction, double speed, double timeOut) {
         runToPosition(distance, direction, speed, timeOut, DEFAULT_SLEEP_TIME);
     }
-
     public void runToPosition(int distance, Direction direction, double speed) {
         runToPosition(distance, direction, speed, DEFAULT_TIMEOUT);
     }
-
     public void runToPosition(int distance, Direction direction) {
         runToPosition(distance, direction, 0.7);
     }
-
     public void runToPosition(int distance) {
         runToPosition(distance, Direction.FORWARD);
     }
