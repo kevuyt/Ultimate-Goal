@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/layout/motor.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/motor.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/layout/matrices.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/matrices.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/layout/motor.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/motor.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/layout/analog_outputs.xml",

@@ -23,7 +23,7 @@ public class OneNFS extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.shooter.runUsingEncoder();
         while (opModeIsActive()) {
-            robot.shooter.killRate(opModeIsActive());
+            //robot.shooter.killRate(opModeIsActive());
             float move = -controller1.left_stick_y();
             float turn = -controller1.right_stick_x();
             double left = move - turn;

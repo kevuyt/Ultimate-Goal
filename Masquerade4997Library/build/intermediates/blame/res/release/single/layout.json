@@ -12,12 +12,12 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/item_list_parent.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/port_attached_row.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/port_attached_row.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/darker_gray_line.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/darker_gray_line.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/port_attached_row.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/port_attached_row.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/lynx_module_configure_address.xml",
@@ -48,12 +48,12 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/button_list.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/digital_device.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/digital_device.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/motor.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/motor.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/digital_device.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/digital_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/activity_inspection.xml",
@@ -64,12 +64,12 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_ftc_lynx_address_update.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/orange_warning.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/orange_warning.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/simple_device.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/simple_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/orange_warning.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/orange_warning.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/activity_load.xml",

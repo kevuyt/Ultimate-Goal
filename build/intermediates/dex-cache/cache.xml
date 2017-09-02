@@ -16,7 +16,7 @@
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="f3edb5eec8739601d8bc1876334b564f3d2e27f3">
+        sha1="b138c6d0f47bce5f63d628e821db18b3477f051c">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/MasqLib-Masquerade4997Library-unspecified_04c77d7c23b71b6d32241bd14695551d6c08d1b7.jar" />
     </item>
     <item
@@ -108,6 +108,15 @@
         revision="23.0.3"
         sha1="06d0c532279cced9231c96dbd1cc583e95faa2b6">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/MasqLib-FtcRobotController-unspecified_e2daab6439ec60edce26af4f8e08500a378fd139.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/Masquerade4997Library/unspecified/jars/libs/mysql-connector.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="407e5ce1919741167c46e6c206e548a8f5d0ce99">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/mysql-connector_03e7dcade2c8290560674fa0682fdaa5d2ca83f1.jar" />
     </item>
     <item
         is-multidex="false"

@@ -307,6 +307,9 @@ public final class R {
 		public static int main_menu = 0x7f0c0001;
 		public static int menu_server = 0x7f0c0002;
 	}
+	public static final class mipmap {
+		public static int ic_masq_i = 0x7f030000;
+	}
 	public static final class raw {
 		public static int chimeconnect = 0x7f060000;
 		public static int chimedisconnect = 0x7f060001;

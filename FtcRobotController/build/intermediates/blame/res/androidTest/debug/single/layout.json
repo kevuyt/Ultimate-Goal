@@ -8,16 +8,16 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/lynx_usb_device.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/legacy.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/legacy.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/activity_about.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_about.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/analog_output_device.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/analog_output_device.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/activity_about.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_about.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/legacy.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/legacy.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/digital_device_lynx.xml",
@@ -40,12 +40,12 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/servo_controller_banner.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_controller.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/layout/activity_ftc_controller.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/matrix_devices.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/exploded-aar/FtcCommon-release/res/layout/matrix_devices.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_controller.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/layout/activity_ftc_controller.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/layout/analog_outputs.xml",

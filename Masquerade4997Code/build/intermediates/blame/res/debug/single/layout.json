@@ -44,12 +44,12 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_ftc_wifi_channel_selector.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/simple_device.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/layout/simple_device.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/layout/i2cs.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/layout/i2cs.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/simple_device.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/layout/simple_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/matrix_devices.xml",

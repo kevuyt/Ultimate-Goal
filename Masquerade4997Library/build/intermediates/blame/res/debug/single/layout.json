@@ -76,12 +76,12 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/Blocks-release/res/layout/activity_blocks.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/res/merged/debug/layout/activity_view_logs.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_view_logs.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/res/merged/debug/layout/matrices.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/matrices.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/res/merged/debug/layout/activity_view_logs.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/layout/activity_view_logs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/motor_controller_banner.xml",
