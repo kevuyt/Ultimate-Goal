@@ -13,4 +13,7 @@ public interface Constants {
            SLEEPTIME_LOW = 250;
     double COLLECTOR_IN = -1.5;
     double COLLECTOR_OUT = 1.5;
+    double INDEXER_OPEN = 0.7,
+           INDECER_CLOSE = 0.3;
+
 }
