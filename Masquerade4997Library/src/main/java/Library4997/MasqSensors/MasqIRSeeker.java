@@ -53,7 +53,6 @@ public class MasqIRSeeker implements MasqHardware {
     public String getName() {
         return name;
     }
-
     public String[] getDash() {
         return new String[]{
                 "Direction @ 600:" + Integer.toString(direction600()),
