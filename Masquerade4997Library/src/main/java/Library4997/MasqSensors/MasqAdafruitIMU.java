@@ -7,8 +7,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
 
 import Library4997.MasqHardware;
 
-import static com.google.blocks.ftcrobotcontroller.util.HardwareType.BNO055IMU;
-
 
 /**
  * Created by Archish on 10/28/16.
@@ -50,7 +48,7 @@ public class MasqAdafruitIMU implements MasqHardware{
         while (angle > 180)  angle -= 360;
         while (angle <= -180) angle += 360;
         return angle;
-    } //puts angle from 0-360 to -180 to 180
+    }
     public double getHeading() {
         return getAngles()[0];
     }
