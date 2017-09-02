@@ -10,6 +10,9 @@ This Documents all major changes to the MasqRobot Class.
 Changes and Commits
 -------------
 
+v0.0.1
+
+
 Commit Tag --> 7b6334bb93ba4a4719972fba09f4e4bff33f339f -->Added runToPositon()
 
 > **Changes:**
