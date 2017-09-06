@@ -13,7 +13,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -47,7 +46,6 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
         trackables = Arrays.asList(targetOne, targetTwo, targetThree);
         names = Arrays.asList(target1, target2, target3);
         trackableCount = Arrays.asList(1,2,3);
-
         setUp();
     }
     public MasqVuforia (String target1, String target2, String asset){
@@ -88,7 +86,6 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
                         AngleUnit.DEGREES, 90, 0, 0));
         targetTwo.setLocation(target2Location);
         RobotLog.ii(this.name, target2 + "=%s", format(target2Location));
-
         OpenGLMatrix target3Location = OpenGLMatrix
                 .translation(0, mmFTCFieldWidth/2, 0)
                 .multiplied(Orientation.getRotationMatrix(
@@ -96,7 +93,6 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
                         AngleUnit.DEGREES, 90, 0, 0));
         targetThree.setLocation(target3Location);
         RobotLog.ii(this.name, target3 + "=%s", format(target3Location));
-
         OpenGLMatrix phoneLocationOnRobot = OpenGLMatrix
                 .translation(mmBotWidth/2,0,0)
                 .multiplied(Orientation.getRotationMatrix(

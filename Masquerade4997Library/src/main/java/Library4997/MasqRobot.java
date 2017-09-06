@@ -310,9 +310,9 @@ public class MasqRobot implements PID_CONSTANTS {
         motor.setPower(power);
     }
 
-    public void NFS(MasqController c1, MasqController c2){
+    public void NFS(MasqController c1){
         float move = -c1.left_stick_x();
-        float turn = -c2.right_stick_y();
+        float turn = -c1.right_stick_y();
         double left = move - turn;
         double right = move + turn;
         if(left > 1.0) {
@@ -331,6 +331,28 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerLeft(-left);
             driveTrain.setPowerRight(-right);
         }
+    }
+    public void MECH(MasqController c1){
+        driveTrain.zeroPowerBehavior();
+        float Ch1 = c1.right_stick_x();
+        float Ch3 = -c1.left_stick_y();
+        float Ch4 = c1.left_stick_x();
+        float rightfront = Ch3 - Ch1 - Ch4;
+        float rightback = Ch3 - Ch1 + Ch4;
+        float leftfront = Ch3 + Ch1 + Ch4;
+        float leftback = Ch3 + Ch1 - Ch4;
+        rightback = Range.clip(rightback, -1, 1);
+        leftback = Range.clip(leftback, -1, 1);
+        rightfront = Range.clip(rightfront, -1, 1);
+        leftfront = Range.clip(leftfront, -1, 1);
+        rightfront = (float)scaleInput(rightfront);
+        leftfront =  (float)scaleInput(leftfront);
+        rightback = (float)scaleInput(rightback);
+        leftback =  (float)scaleInput(leftback);
+        driveTrain.rightDrive.motor1.setPower(rightfront);
+        driveTrain.leftDrive.motor1.setPower(leftfront);
+        driveTrain.rightDrive.motor2.setPower(rightback);
+        driveTrain.rightDrive.motor2.setPower(leftback);
     }
 
     public int getDelta (double inital, Direction direction) {
@@ -360,6 +382,17 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public double getDelay(){
         return FtcRobotControllerActivity.getDelay();
+    }
+    private double scaleInput(double d)  {
+        double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
+                0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };
+        int index = (int) (d * 16.0);
+        if (index < 0) {index = -index;}
+        if (index > 16) {index = 16;}
+        double dScale = 0.0;
+        if (d < 0) {dScale = -scaleArray[index];}
+        else {dScale = scaleArray[index];}
+        return dScale;
     }
 
 }

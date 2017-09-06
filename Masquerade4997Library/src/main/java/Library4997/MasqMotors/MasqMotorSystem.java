@@ -12,7 +12,7 @@ import Library4997.PID_CONSTANTS;
  * MasqMotorSystem That supports two or more motors and treats them as one
  */
 public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
-    private MasqMotor motor1 , motor2, motor3;
+    public MasqMotor motor1 , motor2, motor3;
     private List<MasqMotor> motors;
     private int numMotors;
     private String systemName;
@@ -69,6 +69,11 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
             masqMotor.runUsingEncoder();
         return this;
     }
+    public MasqMotorSystem breakMotors(){
+        for (MasqMotor masqMotor: motors)
+            masqMotor.setBreakMode();
+        return this;
+    }
     public MasqMotorSystem runWithoutEncoders() {
         for (MasqMotor masqMotor: motors)
             masqMotor.runWithoutEncoders();
@@ -91,6 +96,7 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         for (MasqMotor m : motors) total += m.getCurrentPos();
         return total / numMotors;
     }
+
     public String getName() {
         return systemName;
     }

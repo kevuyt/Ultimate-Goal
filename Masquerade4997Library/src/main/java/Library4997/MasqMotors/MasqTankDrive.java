@@ -14,7 +14,7 @@ import Library4997.PID_CONSTANTS;
  * Created by Archish on 10/28/16.
  */
 public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
-    private MasqMotorSystem leftDrive, rightDrive = null;
+    public MasqMotorSystem leftDrive, rightDrive = null;
     private double destination = 0;
     public MasqTankDrive(String name1, String name2, String name3, String name4) {
         leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE");
@@ -77,6 +77,9 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     }
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
+    }
+    public void zeroPowerBehavior(){
+        rightDrive.breakMotors();
     }
     public double getCurrentPos () {
         return (leftDrive.getCurrentPos() + rightDrive.getCurrentPos())/2;
