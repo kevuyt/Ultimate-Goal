@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -19,8 +18,8 @@ public class RobotTest extends LinearOpMode {
             telemetry.update();
         }
         while (opModeIsActive()) {
-            float move = -gamepad1.left_stick_y;
-            float turn = -gamepad1.right_stick_x;
+            float move = -gamepad1.left_stick_x;
+            float turn = -gamepad1.right_stick_y;
             double left = move - turn;
             double right = move + turn;
             if(left > 1.0) {

@@ -22,7 +22,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     }
     public MasqTankDrive(){
         leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE");
-        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack2", DcMotor.Direction.FORWARD, "RIGHTDRIVE");
+        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE");
     }
     public void resetEncoders () {
         leftDrive.resetEncoder();
@@ -63,7 +63,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPos()));
             inchesRemaining = clicksRemaining / CLICKS_PER_CM;
             power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
-            setPower(power);
+            setPower(power, -power);
         }
         while (opModeIsActive() && inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         setPower(0);

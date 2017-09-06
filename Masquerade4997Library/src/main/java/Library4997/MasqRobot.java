@@ -18,6 +18,7 @@ import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.Direction;
+import Library4997.MasqWrappers.MasqController;
 
 /**
  * MasqRobot--> Contains all hardware and methods to run the robot.k
@@ -309,8 +310,31 @@ public class MasqRobot implements PID_CONSTANTS {
         motor.setPower(power);
     }
 
-    public int getDelta (double measureOne, Direction direction) {
-        return (int) (measureOne - (imu.getHeading() * direction.value));
+    public void NFS(MasqController c1, MasqController c2){
+        float move = -c1.left_stick_x();
+        float turn = -c2.right_stick_y();
+        double left = move - turn;
+        double right = move + turn;
+        if(left > 1.0) {
+            left /= left;
+            right /= left;
+            driveTrain.setPowerLeft(-left);
+            driveTrain.setPowerRight(-right);
+        }
+        else if (right > 1.0) {
+            left /= right;
+            right /= right;
+            driveTrain.setPowerLeft(-left);
+            driveTrain.setPowerRight(-right);
+        }
+        else {
+            driveTrain.setPowerLeft(-left);
+            driveTrain.setPowerRight(-right);
+        }
+    }
+
+    public int getDelta (double inital, Direction direction) {
+        return (int) (inital- (imu.getHeading() * direction.value));
     }
     public double getBatteryVoltage() {
 
