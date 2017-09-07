@@ -22,7 +22,8 @@ import Library4997.MasqSensor;
  */
     //TODO CLEAN THIS CODE IT IS REALLY UGLY
 public class MasqVuforia implements MasqSensor {
-    VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
+    VuforiaLocalizer.Parameters parameters = new
+            VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
     VuforiaLocalizer vuforia;
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;

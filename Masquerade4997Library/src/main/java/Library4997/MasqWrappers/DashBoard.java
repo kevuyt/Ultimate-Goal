@@ -9,6 +9,7 @@ import Library4997.MasqHardware;
  */
 
 public class DashBoard {
+
     private int dashLength;
     private org.firstinspires.ftc.robotcore.external.Telemetry telemetry;
     public DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
