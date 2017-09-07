@@ -21,7 +21,7 @@ import Library4997.MasqSensor;
  * Created by Archish on 9/6/17.
  */
     //TODO CLEAN THIS CODE IT IS REALLY UGLY
-public class MasqVuforiaV2 implements MasqSensor {
+public class MasqVuforia implements MasqSensor {
     VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
     VuforiaLocalizer vuforia;
     VuforiaTrackables vuforiaTrackables;
@@ -38,7 +38,7 @@ public class MasqVuforiaV2 implements MasqSensor {
     float mmPerInch        = 25.4f;
     float mmBotWidth       = 18 * mmPerInch;
     float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
-    public MasqVuforiaV2(String t1, String t2, String t3){
+    public MasqVuforia(String t1, String t2, String t3){
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
@@ -79,7 +79,7 @@ public class MasqVuforiaV2 implements MasqSensor {
         ((VuforiaTrackableDefaultListener)trackThree.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         vuforiaTrackables.activate();
     }
-    public MasqVuforiaV2(String t1, String t2){
+    public MasqVuforia(String t1, String t2){
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
@@ -115,7 +115,7 @@ public class MasqVuforiaV2 implements MasqSensor {
         ((VuforiaTrackableDefaultListener)trackTwo.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         vuforiaTrackables.activate();
     }
-    public MasqVuforiaV2(String t1){
+    public MasqVuforia(String t1){
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);

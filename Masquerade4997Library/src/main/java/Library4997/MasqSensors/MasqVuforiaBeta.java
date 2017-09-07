@@ -1,4 +1,4 @@
-package Library4997.MasqSensors.Vuforia;
+package Library4997.MasqSensors;
 
 import com.qualcomm.robotcore.util.RobotLog;
 
@@ -24,7 +24,7 @@ import Library4997.MasqSensor;
  * This onject assumes that target 2 and 3 are meant for tracking and target 1 i meant to stop at.
  */
 
-public class MasqVuforia implements MasqHardware, MasqSensor {
+public class MasqVuforiaBeta implements MasqHardware, MasqSensor {
     private String name, target1, target2, target3, asset;
     public VuforiaTrackable targetOne, targetTwo, targetThree;
     private List<VuforiaTrackable> trackables;
@@ -38,7 +38,7 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
     private float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
     OpenGLMatrix lastLocation = null;
 
-    public MasqVuforia (String target1, String target2, String target3, String asset){
+    public MasqVuforiaBeta(String target1, String target2, String target3, String asset){
         this.target1 = target1;
         this.target2 = target2;
         this.target3 = target3;
@@ -48,7 +48,7 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
         trackableCount = Arrays.asList(1,2,3);
         setUp();
     }
-    public MasqVuforia (String target1, String target2, String asset){
+    public MasqVuforiaBeta(String target1, String target2, String asset){
         this.target1 = target1;
         this.target2 = target2;
         this.asset = asset;
@@ -57,7 +57,7 @@ public class MasqVuforia implements MasqHardware, MasqSensor {
         trackableCount = Arrays.asList(1,2);
         setUp();
     }
-    public MasqVuforia (String target1, String asset){
+    public MasqVuforiaBeta(String target1, String asset){
         this.target1 = target1;
         this.asset = asset;
         trackables = Collections.singletonList(targetOne);
