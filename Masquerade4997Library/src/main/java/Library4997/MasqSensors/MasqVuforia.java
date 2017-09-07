@@ -144,12 +144,35 @@ public class MasqVuforia implements MasqSensor {
         vuforiaTrackables.activate();
     }
     public void init(){
+        int i = 0;
         lastLocation = null;
+        for (VuforiaTrackable trackable: trackables){
+            trackable = vuforiaTrackables.get(i);
+            i++;
+        }
+        i = 0;
+        for (OpenGLMatrix matrix: locations){
+            matrix = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
+                    .multiplied(Orientation.getRotationMatrix(
+                            AxesReference.EXTRINSIC, AxesOrder.XZX,
+                            AngleUnit.DEGREES, 90, 90, 0));
+            trackables.get(i).setLocation(matrix);
+            i++;
+        }
+        for (VuforiaTrackable trackable: trackables){
+            ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        }
+        phoneLoco = OpenGLMatrix
+                .translation(mmBotWidth/2,0,0)
+                .multiplied(Orientation.getRotationMatrix(
+                        AxesReference.EXTRINSIC, AxesOrder.YZY,
+                        AngleUnit.DEGREES, -90, 0, 0));
+        vuforiaTrackables.activate();
     }
     public Boolean isSeen(String target){
         return ((VuforiaTrackableDefaultListener)whichTrack(target).getListener()).isVisible();
     }
-    public VuforiaTrackable whichTrack(String target){
+    private VuforiaTrackable whichTrack(String target){
         VuforiaTrackable v = null;
         if (target.equals(targetOne))
             v =  trackOne;
