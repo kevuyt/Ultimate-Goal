@@ -32,16 +32,12 @@ public class MasqVuforia implements MasqSensor {
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
     private int numLocations;
     private int numTrackables;
-    private int u1 = 90,
-                u2 = 90,
-                u3 = 90,
-                v1 = 0,
-                v2 = 0,
-                v3 = 0,
-                w1 = 90,
-                w2 = 90,
-                w3 = 90,
-                x1,x2,x3,y1,y2,y3,z1,z2,z3;
+    private int u1 = 90, u2 = 90, u3 = 90,
+                v1 = 0, v2 = 0, v3 = 0,
+                w1 = 90, w2 = 90, w3 = 90,
+                x1 = 0, x2 = 0, x3 = 0,
+                y1 = 0, y2 = 0, y3 = 0,
+                z1 = 0, z2 = 0,z3 = 0;
     private List<VuforiaTrackable> trackables = new ArrayList<>();
     private List<VuforiaTrackable> allTrackables = new ArrayList<>();
     String asset;
