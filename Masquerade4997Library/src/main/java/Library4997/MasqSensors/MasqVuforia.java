@@ -28,10 +28,20 @@ public class MasqVuforia implements MasqSensor {
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;
     // redTarget = trackOne...
-    List<OpenGLMatrix> locations = new ArrayList<OpenGLMatrix>();
+    List<OpenGLMatrix> locations = new ArrayList<>();
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
     private int numLocations;
     private int numTrackables;
+    private int u1 = 90,
+                u2 = 90,
+                u3 = 90,
+                v1 = 0,
+                v2 = 0,
+                v3 = 0,
+                w1 = 90,
+                w2 = 90,
+                w3 = 90,
+                x1,x2,x3,y1,y2,y3,z1,z2,z3;
     private List<VuforiaTrackable> trackables = new ArrayList<>();
     private List<VuforiaTrackable> allTrackables = new ArrayList<>();
     String asset;
@@ -39,7 +49,17 @@ public class MasqVuforia implements MasqSensor {
     float mmPerInch        = 25.4f;
     float mmBotWidth       = 18 * mmPerInch;
     float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
-    public MasqVuforia(String t1, String t2, String t3){
+    public MasqVuforia(String t1, String t2, String t3, int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3){
+        this.x1 = x1;
+        this.x2 = x2;
+        this.x3 = x3;
+        this.y1 = y1;
+        this.y2 = y2;
+        this.y3 = y3;
+        this.z1 = z1;
+        this.z2 = z2;
+        this.z3 = z3;
+        lastLocation = null;
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
@@ -53,18 +73,9 @@ public class MasqVuforia implements MasqSensor {
         trackThree = vuforiaTrackables.get(2);
         allTrackables.addAll(vuforiaTrackables);
         numTrackables = 3;
-        locationOne = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 90, 0));
-        locationTwo = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 90, 0));
-        locationThree = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 90, 0));
+        locationOne = createMatrix(x1,y1,z1,u1,v1,w1);
+        locationTwo = createMatrix(x2,y2,z2,u2,v2,w2);
+        locationThree = createMatrix(x3,y3,z3,u3,v3,w3);
          phoneLoco = OpenGLMatrix
                 .translation(mmBotWidth/2,0,0)
                 .multiplied(Orientation.getRotationMatrix(
@@ -80,7 +91,14 @@ public class MasqVuforia implements MasqSensor {
         ((VuforiaTrackableDefaultListener)trackThree.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         vuforiaTrackables.activate();
     }
-    public MasqVuforia(String t1, String t2){
+    public MasqVuforia(String t1, String t2, int x1, int y1, int z1, int x2, int y2, int z2){
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+        this.z1 = z1;
+        this.z2 = z2;
+        lastLocation = null;
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
@@ -94,14 +112,8 @@ public class MasqVuforia implements MasqSensor {
         trackThree = null;
         allTrackables.addAll(vuforiaTrackables);
         numTrackables = 2;
-        locationOne = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 90, 0));
-        locationTwo = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 90, 0));
+        locationOne = createMatrix(x1,y1,z1,90,0,90);
+        locationTwo = createMatrix(x2,y2,z2,90,0,90);
         locationThree = null;
         phoneLoco = OpenGLMatrix
                 .translation(mmBotWidth/2,0,0)
@@ -116,7 +128,11 @@ public class MasqVuforia implements MasqSensor {
         ((VuforiaTrackableDefaultListener)trackTwo.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         vuforiaTrackables.activate();
     }
-    public MasqVuforia(String t1){
+    public MasqVuforia(String t1, int x1, int y1, int z1){
+        this.x1 = x1;
+        this.y1 = y1;
+        this.z1 = z1;
+        lastLocation = null;
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
@@ -127,11 +143,9 @@ public class MasqVuforia implements MasqSensor {
         trackTwo = trackThree = null;
         allTrackables.addAll(vuforiaTrackables);
         numTrackables = 1;
-        locationOne = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 90, 0));
+        locationOne = createMatrix(x1,y1,z1,90,0,90);
         locationTwo = locationThree = null;
+        locationThree = null;
         phoneLoco = OpenGLMatrix
                 .translation(mmBotWidth/2,0,0)
                 .multiplied(Orientation.getRotationMatrix(
@@ -169,10 +183,25 @@ public class MasqVuforia implements MasqSensor {
                         AngleUnit.DEGREES, -90, 0, 0));
         vuforiaTrackables.activate();
     }
-    public Boolean isSeen(String target){
-        return ((VuforiaTrackableDefaultListener)whichTrack(target).getListener()).isVisible();
+    public void setOrientationOne(int u, int v, int w){
+        locationOne = createMatrix(x1,y1,z1,u,v,w);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
     }
-    private VuforiaTrackable whichTrack(String target){
+    public void setOrientationTwo(int u, int v, int w){
+        locationOne = createMatrix(x2,y2,z2,u,v,w);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
+    }
+    public void setOrientationThree(int u, int v, int w){
+        locationOne = createMatrix(x3,y3,z3,u,v,w);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
+    }
+    public Boolean isSeen(String target){
+        return ((VuforiaTrackableDefaultListener) getTrackable(target).getListener()).isVisible();
+    }
+    private VuforiaTrackable getTrackable(String target){
         VuforiaTrackable v = null;
         if (target.equals(targetOne))
             v =  trackOne;
@@ -183,11 +212,16 @@ public class MasqVuforia implements MasqSensor {
         return v;
     }
     public String position(String target){
-        OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener)whichTrack(target).getListener()).getUpdatedRobotLocation();
+        OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener) getTrackable(target).getListener()).getUpdatedRobotLocation();
         if (robotLocationTransform != null) {
             lastLocation = robotLocationTransform;
         }
         return lastLocation.formatAsTransform();
+    }
+    private OpenGLMatrix createMatrix(float x, float y, float z, float u, float v, float w){
+        return OpenGLMatrix.translation(x, y, z).
+                multiplied(Orientation.getRotationMatrix
+                        (AxesReference.EXTRINSIC, AxesOrder.XYX, AngleUnit.DEGREES, u, v, w));
     }
     @Override
     public boolean stop() {
