@@ -77,6 +77,7 @@ public class MasqVuforiaV2 implements MasqSensor {
         ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         ((VuforiaTrackableDefaultListener)trackTwo.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         ((VuforiaTrackableDefaultListener)trackThree.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        vuforiaTrackables.activate();
     }
     public MasqVuforiaV2(String t1, String t2){
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
@@ -112,6 +113,7 @@ public class MasqVuforiaV2 implements MasqSensor {
         trackTwo.setLocation(locationTwo);
         ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         ((VuforiaTrackableDefaultListener)trackTwo.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        vuforiaTrackables.activate();
     }
     public MasqVuforiaV2(String t1){
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
@@ -138,6 +140,7 @@ public class MasqVuforiaV2 implements MasqSensor {
         locations = Arrays.asList(locationOne);
         trackOne.setLocation(locationOne);
         ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        vuforiaTrackables.activate();
     }
     public Boolean isSeen(String target){
         boolean b = false;
