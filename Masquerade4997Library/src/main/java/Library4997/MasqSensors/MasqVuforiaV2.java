@@ -27,7 +27,6 @@ public class MasqVuforiaV2 implements MasqSensor{
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
-    // redTarget = trackOne...
     List<OpenGLMatrix> locations = new ArrayList<>();
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
     private int u1 = 90, u2 = 90, u3 = 90,
@@ -38,7 +37,6 @@ public class MasqVuforiaV2 implements MasqSensor{
             z1 = 0, z2 = 0,z3 = 0;
     private List<VuforiaTrackable> trackables = new ArrayList<>();
     private List<VuforiaTrackable> allTrackables = new ArrayList<>();
-    String asset;
     String targetOne, targetTwo, targetThree;
     float mmPerInch        = 25.4f;
     float mmBotWidth       = 18 * mmPerInch;
@@ -156,6 +154,14 @@ public class MasqVuforiaV2 implements MasqSensor{
             v =  trackThree;
         return v;
     }
+    public String position(String target){
+        OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener) getTrackable(target).getListener()).getUpdatedRobotLocation();
+        if (robotLocationTransform != null) {
+            lastLocation = robotLocationTransform;
+        }
+        return lastLocation.formatAsTransform();
+    }
+
     @Override
     public boolean stop() {
         return false;
