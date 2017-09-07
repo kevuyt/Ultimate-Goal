@@ -184,17 +184,50 @@ public class MasqVuforia implements MasqSensor {
         vuforiaTrackables.activate();
     }
     public void setOrientationOne(int u, int v, int w){
+        u1 = u;
+        v1 = v;
+        w1 = w;
         locationOne = createMatrix(x1,y1,z1,u,v,w);
         locations = Arrays.asList(locationOne, locationTwo, locationThree);
         trackOne.setLocation(locationOne);
     }
     public void setOrientationTwo(int u, int v, int w){
+        u2 = u;
+        v2 = v;
+        w2 = w;
         locationOne = createMatrix(x2,y2,z2,u,v,w);
         locations = Arrays.asList(locationOne, locationTwo, locationThree);
         trackOne.setLocation(locationOne);
     }
     public void setOrientationThree(int u, int v, int w){
+        u3 = u;
+        v3 = v;
+        w3 = w;
         locationOne = createMatrix(x3,y3,z3,u,v,w);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
+    }
+    public void setPositionOne(int x, int y, int z){
+        x1 = x;
+        y1 = y;
+        z1 = z;
+        locationOne = createMatrix(x,y,z,u1,v1,w1);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
+    }
+    public void setPositionTwo(int x, int y, int z){
+        x2 = x;
+        y2 = y;
+        z2 = z;
+        locationOne = createMatrix(x,y,z,u2,v2,w2);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
+    }
+    public void setPositionThree(int x, int y, int z){
+        x3 = x;
+        y3 = y;
+        z3 = z;
+        locationOne = createMatrix(x,y,z,u3,v3,w3);
         locations = Arrays.asList(locationOne, locationTwo, locationThree);
         trackOne.setLocation(locationOne);
     }
