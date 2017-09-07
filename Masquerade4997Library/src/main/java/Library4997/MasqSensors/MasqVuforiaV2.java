@@ -20,7 +20,7 @@ import Library4997.MasqSensor;
 /**
  * Created by Archish on 9/6/17.
  */
-
+    //TODO CLEAN THIS CODE IT IS REALLY UGLY
 public class MasqVuforiaV2 implements MasqSensor {
     VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
     VuforiaLocalizer vuforia;
@@ -31,8 +31,8 @@ public class MasqVuforiaV2 implements MasqSensor {
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco;
     private int numLocations;
     private int numTrackables;
-    private List<VuforiaTrackable> trackables = new ArrayList<VuforiaTrackable>();
-    private List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
+    private List<VuforiaTrackable> trackables = new ArrayList<>();
+    private List<VuforiaTrackable> allTrackables = new ArrayList<>();
     String asset;
     String targetOne, targetTwo, targetThree;
     float mmPerInch        = 25.4f;
@@ -139,15 +139,20 @@ public class MasqVuforiaV2 implements MasqSensor {
         trackOne.setLocation(locationOne);
         ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
     }
-
-
-
-
-
-
-
+    public Boolean isSeen(String target){
+        boolean b = false;
+            if (target.equals(targetOne))
+                b =  ((VuforiaTrackableDefaultListener)trackOne.getListener()).isVisible();
+            else if (target.equals(targetTwo))
+                b =  ((VuforiaTrackableDefaultListener)trackTwo.getListener()).isVisible();
+            else if (target.equals(targetThree))
+                b =  ((VuforiaTrackableDefaultListener)trackThree.getListener()).isVisible();
+            else
+                b = false;
+        return b;
+    }
     @Override
     public boolean stop() {
-        return false;
+        return ((VuforiaTrackableDefaultListener)trackOne.getListener()).isVisible();
     }
 }

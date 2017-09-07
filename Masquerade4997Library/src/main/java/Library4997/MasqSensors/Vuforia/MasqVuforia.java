@@ -1,4 +1,4 @@
-package Library4997.MasqSensors;
+package Library4997.MasqSensors.Vuforia;
 
 import com.qualcomm.robotcore.util.RobotLog;
 
