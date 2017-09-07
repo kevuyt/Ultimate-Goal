@@ -29,7 +29,7 @@ public class MasqVuforia implements MasqSensor {
     VuforiaTrackable trackOne, trackTwo, trackThree;
     // redTarget = trackOne...
     List<OpenGLMatrix> locations = new ArrayList<OpenGLMatrix>();
-    OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco;
+    OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
     private int numLocations;
     private int numTrackables;
     private List<VuforiaTrackable> trackables = new ArrayList<>();
@@ -143,17 +143,28 @@ public class MasqVuforia implements MasqSensor {
         ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
         vuforiaTrackables.activate();
     }
+    public void init(){
+        lastLocation = null;
+    }
     public Boolean isSeen(String target){
-        boolean b = false;
-            if (target.equals(targetOne))
-                b =  ((VuforiaTrackableDefaultListener)trackOne.getListener()).isVisible();
-            else if (target.equals(targetTwo))
-                b =  ((VuforiaTrackableDefaultListener)trackTwo.getListener()).isVisible();
-            else if (target.equals(targetThree))
-                b =  ((VuforiaTrackableDefaultListener)trackThree.getListener()).isVisible();
-            else
-                b = false;
-        return b;
+        return ((VuforiaTrackableDefaultListener)whichTrack(target).getListener()).isVisible();
+    }
+    public VuforiaTrackable whichTrack(String target){
+        VuforiaTrackable v = null;
+        if (target.equals(targetOne))
+            v =  trackOne;
+        else if (target.equals(targetTwo))
+            v =  trackTwo;
+        else if (target.equals(targetThree))
+            v =  trackThree;
+        return v;
+    }
+    public String position(String target){
+        OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener)whichTrack(target).getListener()).getUpdatedRobotLocation();
+        if (robotLocationTransform != null) {
+            lastLocation = robotLocationTransform;
+        }
+        return lastLocation.formatAsTransform();
     }
     @Override
     public boolean stop() {
