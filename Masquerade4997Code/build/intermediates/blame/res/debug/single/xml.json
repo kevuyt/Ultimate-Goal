@@ -8,28 +8,12 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9legacybot.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/pushbotsens.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbotsens.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/squarebot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/squarebot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9usbbot.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/advanced_rc_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/device_filter.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/xml/device_filter.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/device_filter.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib3.0/FtcRobotController/unspecified/res/xml/device_filter.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/preferences.xml",
@@ -40,27 +24,11 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/squarebot.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/k9legacybot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9legacybot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/advanced_rc_settings.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/pushbotsens.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9usbbot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/pushbot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib3.0/FtcRobotController/unspecified/res/xml/preferences.xml"
     }
 ]

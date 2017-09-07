@@ -4,14 +4,6 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/Inspection-release/res/drawable/icon_menu.png"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable/icon_robotcontroller.png",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/Inspection-release/res/drawable/icon_robotcontroller.png"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable/black_border.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/Blocks-release/res/drawable/black_border.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable/button_shape.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/drawable/button_shape.xml"
     },
@@ -20,15 +12,7 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/Inspection-release/res/drawable/icon_robotcontroller.png"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable/icon_menu.png",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/Inspection-release/res/drawable/icon_menu.png"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable/black_border.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/exploded-aar/Blocks-release/res/drawable/black_border.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable/button_shape.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib3.0/Masquerade4997Library/build/intermediates/exploded-aar/FtcCommon-release/res/drawable/button_shape.xml"
     }
 ]
