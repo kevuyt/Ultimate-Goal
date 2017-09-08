@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import Library4997.MasqHardware;
 import Library4997.MasqSensor;
 
 /**
  * Created by Archish on 9/7/17.
  */
-public class MasqVuforia implements MasqSensor{
+public class MasqVuforia implements MasqSensor, MasqHardware{
     VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
     VuforiaLocalizer vuforia;
     VuforiaTrackables vuforiaTrackables;
@@ -152,9 +153,27 @@ public class MasqVuforia implements MasqSensor{
         }
         return lastLocation.formatAsTransform();
     }
-
+    public boolean isSeen(String track){
+        return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();
+    }
     @Override
     public boolean stop() {
-        return false;
+        return isSeen(targetOne);
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    public String[] getDash() {
+        return new String[]{
+                "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),
+                "TargetTwoSeen" + Boolean.toString(isSeen(targetTwo)),
+                "TargetThreeSeen" + Boolean.toString(isSeen(targetThree)),
+                "TargetOnePosition" + position(targetOne),
+                "TargetTwoPosition" + position(targetTwo),
+                "TargetThreePosition" + position(targetThree),
+        };
     }
 }
