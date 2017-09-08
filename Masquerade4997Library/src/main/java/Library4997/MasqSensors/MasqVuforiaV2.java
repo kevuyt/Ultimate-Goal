@@ -80,24 +80,17 @@ public class MasqVuforiaV2 implements MasqSensor{
         numTargets = 1;
     }
     public void init(){
-        if (numTargets == 3){
-            locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
-            locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
-            locationThree = createMatrix(x3, y3, z3, u3, v3, w3);
-            trackOne.setLocation(locationOne);
-            trackTwo.setLocation(locationTwo);
-            trackThree.setLocation(locationThree);
-        } else if (numTargets == 2){
-            locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
-            locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
+        locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
+        locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
+        locationThree = createMatrix(x3, y3, z3, u3, v3, w3);
+        trackOne.setLocation(locationOne);
+        trackTwo.setLocation(locationTwo);
+        trackThree.setLocation(locationThree);
+        if (numTargets <= 2){
             locationThree = null;
-            trackOne.setLocation(locationOne);
-            trackTwo.setLocation(locationTwo);
-        } else if (numTargets == 1){
-            locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
+        }
+        if (numTargets == 1){
             locationTwo = null;
-            locationThree = null;
-            trackOne.setLocation(locationOne);
         }
         phoneLoco = OpenGLMatrix
                 .translation(mmBotWidth/2,0,0)
