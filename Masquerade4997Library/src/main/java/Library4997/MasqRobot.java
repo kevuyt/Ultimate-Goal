@@ -336,26 +336,51 @@ public class MasqRobot implements PID_CONSTANTS {
         }
     }
     public void MECH(MasqController c1){
-        driveTrain.zeroPowerBehavior();
-        float Ch1 = c1.right_stick_x();
-        float Ch3 = -c1.left_stick_y();
-        float Ch4 = c1.left_stick_x();
-        float rightfront = Ch3 - Ch1 - Ch4;
-        float rightback = Ch3 - Ch1 + Ch4;
-        float leftfront = Ch3 + Ch1 + Ch4;
-        float leftback = Ch3 + Ch1 - Ch4;
-        rightback = Range.clip(rightback, -1, 1);
-        leftback = Range.clip(leftback, -1, 1);
-        rightfront = Range.clip(rightfront, -1, 1);
-        leftfront = Range.clip(leftfront, -1, 1);
-        rightfront = (float)scaleInput(rightfront);
-        leftfront =  (float)scaleInput(leftfront);
-        rightback = (float)scaleInput(rightback);
-        leftback =  (float)scaleInput(leftback);
-        driveTrain.rightDrive.motor1.setPower(rightfront);
-        driveTrain.leftDrive.motor1.setPower(leftfront);
-        driveTrain.rightDrive.motor2.setPower(rightback);
-        driveTrain.rightDrive.motor2.setPower(leftback);
+        double angle = 0;
+        double x = c1.left_stick_y();
+        double y = -c1.left_stick_x();
+        if (x != 0) {
+            angle = Math.atan(y/x);
+        }
+        else {
+            angle = 0;
+        }
+        if (x < 0 && y > 0) {
+            angle = angle + Math.PI;
+        }
+        else if (x < 0 && y <= 0) {
+            angle = angle + Math.PI;
+        }
+        else if (x > 0 && y < 0) {
+            angle = angle + (2*Math.PI);
+        }
+        else if (x == 0 && y > 0 ) {
+            angle = Math.PI/2;
+        }
+        else if (x == 0 && y < 0 ) {
+            angle = (3 * Math.PI) / 2;
+        }
+        double speedMagnitude = Math.hypot(x, y);
+        double frontLeft = -(Math.sin(angle + (Math.PI/4))) * speedMagnitude + c1.right_stick_x();
+        double backLeft = -(Math.cos(angle + (Math.PI/4))) * speedMagnitude + c1.right_stick_x();
+        double frontRight = (Math.cos(angle + (Math.PI/4))) * speedMagnitude + c1.right_stick_x();
+        double backRight = (Math.sin(angle + (Math.PI/4))) * speedMagnitude + c1.right_stick_x();
+
+        double driveScaleFactor = Math.abs(Math.max(
+                Math.max(frontLeft, frontRight),
+                Math.max(backLeft, backRight)))
+                != 0 ? Math.abs(Math.max(
+                Math.max(frontLeft, frontRight),
+                Math.max(backLeft, backRight))) : 1
+        ;
+        frontLeft /= driveScaleFactor;
+        frontRight /= driveScaleFactor;
+        backLeft /= driveScaleFactor;
+        backRight /= driveScaleFactor;
+        driveTrain.leftDrive.motor1.setPower(frontLeft);
+        driveTrain.leftDrive.motor2.setPower(backLeft);
+        driveTrain.rightDrive.motor1.setPower(frontRight);
+        driveTrain.rightDrive.motor2.setPower(backRight);
     }
 
     public int getDelta (double inital, Direction direction) {
