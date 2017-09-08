@@ -156,18 +156,19 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     public boolean isSeen(String track){
         return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();
     }
+
+
     @Override
     public boolean stop() {
         return isSeen(targetOne);
     }
-
     @Override
     public String getName() {
-        return null;
+        return "VUFORIA";
     }
-
     public String[] getDash() {
         return new String[]{
+                getName() +
                 "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),
                 "TargetTwoSeen" + Boolean.toString(isSeen(targetTwo)),
                 "TargetThreeSeen" + Boolean.toString(isSeen(targetThree)),
