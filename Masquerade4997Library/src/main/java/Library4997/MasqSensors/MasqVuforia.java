@@ -26,7 +26,6 @@ public class MasqVuforia implements MasqSensor{
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
-    List<OpenGLMatrix> locations = new ArrayList<>();
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
     private int u1 = 90, u2 = 90, u3 = 90,
             v1 = 0, v2 = 0, v3 = 0,
