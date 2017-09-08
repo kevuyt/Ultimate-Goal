@@ -334,6 +334,7 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerLeft(-left);
             driveTrain.setPowerRight(-right);
         }
+        voltageSensor.update();
     }
     public void MECH(MasqController c){
         double angle;
@@ -381,17 +382,18 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.leftDrive.motor2.setPower(backLeft);
         driveTrain.rightDrive.motor1.setPower(frontRight);
         driveTrain.rightDrive.motor2.setPower(backRight);
+        voltageSensor.update();
     }
     public void TANK(MasqController c){
         driveTrain.rightDrive.setPower(c.right_stick_y());
         driveTrain.leftDrive.setPower(c.left_stick_x());
+        voltageSensor.update();
     }
 
     public int getDelta (double inital, Direction direction) {
         return (int) (inital- (imu.getHeading() * direction.value));
     }
-    public double getBatteryVoltage() {
-
+    public double getVoltage() {
         return voltageSensor.getVoltage();
     }
 
