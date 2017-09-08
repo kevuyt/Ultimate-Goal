@@ -14,7 +14,7 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqODS;
 import Library4997.MasqSensors.MasqVoltageSensor;
-import Library4997.MasqSensors.MasqVuforia;
+import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
@@ -49,7 +49,7 @@ public class MasqRobot implements PID_CONSTANTS {
 
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
 
-    public MasqVuforia vuforia = new MasqVuforia("FTC_2016-17",0,500,0);
+    public MasqVuforiaBeta vuforia = new MasqVuforiaBeta("FTC_2016-17",0,500,0);
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;

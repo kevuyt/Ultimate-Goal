@@ -1,7 +1,5 @@
 package Library4997.MasqSensors;
 
-import com.qualcomm.robotcore.util.RobotLog;
-
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -13,137 +11,249 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import Library4997.MasqHardware;
 import Library4997.MasqSensor;
 
 /**
- * This onject assumes that target 2 and 3 are meant for tracking and target 1 i meant to stop at.
+ * Created by Archish on 9/6/17.
  */
-
-public class MasqVuforiaBeta implements MasqHardware, MasqSensor {
-    private String name, target1, target2, target3, asset;
-    public VuforiaTrackable targetOne, targetTwo, targetThree;
-    private List<VuforiaTrackable> trackables;
-    private List<String> names;
-    private List<Integer> trackableCount;
-    private VuforiaLocalizer vuforia;
-    private List<OpenGLMatrix> locations;
-    private OpenGLMatrix targetOneL, tagrgetTwoL, targetThreeL;
-    private float mmPerInch        = 25.4f;
-    private float mmBotWidth       = 18 * mmPerInch;
-    private float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
-    OpenGLMatrix lastLocation = null;
-
-    public MasqVuforiaBeta(String target1, String target2, String target3, String asset){
-        this.target1 = target1;
-        this.target2 = target2;
-        this.target3 = target3;
-        this.asset = asset;
-        trackables = Arrays.asList(targetOne, targetTwo, targetThree);
-        names = Arrays.asList(target1, target2, target3);
-        trackableCount = Arrays.asList(1,2,3);
-        setUp();
-    }
-    public MasqVuforiaBeta(String target1, String target2, String asset){
-        this.target1 = target1;
-        this.target2 = target2;
-        this.asset = asset;
-        trackables = Arrays.asList(targetOne, targetTwo);
-        names = Arrays.asList(target1, target2);
-        trackableCount = Arrays.asList(1,2);
-        setUp();
-    }
-    public MasqVuforiaBeta(String target1, String asset){
-        this.target1 = target1;
-        this.asset = asset;
-        trackables = Collections.singletonList(targetOne);
-        names = Collections.singletonList(target1);
-        trackableCount = Collections.singletonList(1);
-        setUp();
-    }
-    private void setUp () {
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
+    //TODO CLEAN THIS CODE IT IS REALLY UGLY
+public class MasqVuforiaBeta implements MasqSensor {
+    VuforiaLocalizer.Parameters parameters = new
+            VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
+    VuforiaLocalizer vuforia;
+    VuforiaTrackables vuforiaTrackables;
+    VuforiaTrackable trackOne, trackTwo, trackThree;
+    // redTarget = trackOne...
+    List<OpenGLMatrix> locations = new ArrayList<>();
+    OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
+    private int numLocations;
+    private int numTrackables;
+    private int u1 = 90, u2 = 90, u3 = 90,
+                v1 = 0, v2 = 0, v3 = 0,
+                w1 = 90, w2 = 90, w3 = 90,
+                x1 = 0, x2 = 0, x3 = 0,
+                y1 = 0, y2 = 0, y3 = 0,
+                z1 = 0, z2 = 0,z3 = 0;
+    private List<VuforiaTrackable> trackables = new ArrayList<>();
+    private List<VuforiaTrackable> allTrackables = new ArrayList<>();
+    String asset;
+    String targetOne, targetTwo, targetThree;
+    float mmPerInch        = 25.4f;
+    float mmBotWidth       = 18 * mmPerInch;
+    float mmFTCFieldWidth  = (12*12 - 2) * mmPerInch;
+    public MasqVuforiaBeta(String t1, String t2, String t3, int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3){
+        this.x1 = x1;
+        this.x2 = x2;
+        this.x3 = x3;
+        this.y1 = y1;
+        this.y2 = y2;
+        this.y3 = y3;
+        this.z1 = z1;
+        this.z2 = z2;
+        this.z3 = z3;
+        lastLocation = null;
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
-        VuforiaTrackables target = this.vuforia.loadTrackablesFromAsset(asset);
-        for (VuforiaTrackable trackable: trackables) {
-            int i = 0;
-            trackable = target.get(i);
-            trackable.setName(names.get(i));
-            for (OpenGLMatrix o: locations)
-            trackable.setLocation(locations.get(i));
-        }
-
-        OpenGLMatrix target2Location = OpenGLMatrix
-                .translation(0, mmFTCFieldWidth/2, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 0, 0));
-        targetTwo.setLocation(target2Location);
-        RobotLog.ii(this.name, target2 + "=%s", format(target2Location));
-        OpenGLMatrix target3Location = OpenGLMatrix
-                .translation(0, mmFTCFieldWidth/2, 0)
-                .multiplied(Orientation.getRotationMatrix(
-                        AxesReference.EXTRINSIC, AxesOrder.XZX,
-                        AngleUnit.DEGREES, 90, 0, 0));
-        targetThree.setLocation(target3Location);
-        RobotLog.ii(this.name, target3 + "=%s", format(target3Location));
-        OpenGLMatrix phoneLocationOnRobot = OpenGLMatrix
+        targetOne = t1;
+        targetTwo = t2;
+        targetThree = t3;
+        vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
+        trackables = Arrays.asList(trackOne, trackTwo, trackThree);
+        trackOne = vuforiaTrackables.get(0);
+        trackTwo = vuforiaTrackables.get(1);
+        trackThree = vuforiaTrackables.get(2);
+        allTrackables.addAll(vuforiaTrackables);
+        numTrackables = 3;
+        locationOne = createMatrix(x1,y1,z1,u1,v1,w1);
+        locationTwo = createMatrix(x2,y2,z2,u2,v2,w2);
+        locationThree = createMatrix(x3,y3,z3,u3,v3,w3);
+         phoneLoco = OpenGLMatrix
                 .translation(mmBotWidth/2,0,0)
                 .multiplied(Orientation.getRotationMatrix(
                         AxesReference.EXTRINSIC, AxesOrder.YZY,
                         AngleUnit.DEGREES, -90, 0, 0));
-        RobotLog.ii(this.name, "phone=%s", format(phoneLocationOnRobot));
-
-        for (VuforiaTrackable vuforiaTrackable: trackables){
-            ((VuforiaTrackableDefaultListener)vuforiaTrackable.getListener()).setPhoneInformation(phoneLocationOnRobot, parameters.cameraDirection);
+        numLocations = 3;
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
+        trackTwo.setLocation(locationTwo);
+        trackThree.setLocation(locationThree);
+        ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        ((VuforiaTrackableDefaultListener)trackTwo.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        ((VuforiaTrackableDefaultListener)trackThree.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        vuforiaTrackables.activate();
+    }
+    public MasqVuforiaBeta(String t1, String t2, int x1, int y1, int z1, int x2, int y2, int z2){
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+        this.z1 = z1;
+        this.z2 = z2;
+        lastLocation = null;
+        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        targetOne = t1;
+        targetTwo = t2;
+        targetThree = null;
+        vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
+        trackables = Arrays.asList(trackOne, trackTwo);
+        trackOne = vuforiaTrackables.get(0);
+        trackTwo = vuforiaTrackables.get(1);
+        trackThree = null;
+        allTrackables.addAll(vuforiaTrackables);
+        numTrackables = 2;
+        locationOne = createMatrix(x1,y1,z1,90,0,90);
+        locationTwo = createMatrix(x2,y2,z2,90,0,90);
+        locationThree = null;
+        phoneLoco = OpenGLMatrix
+                .translation(mmBotWidth/2,0,0)
+                .multiplied(Orientation.getRotationMatrix(
+                        AxesReference.EXTRINSIC, AxesOrder.YZY,
+                        AngleUnit.DEGREES, -90, 0, 0));
+        numLocations = 3;
+        locations = Arrays.asList(locationOne, locationTwo);
+        trackOne.setLocation(locationOne);
+        trackTwo.setLocation(locationTwo);
+        ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        ((VuforiaTrackableDefaultListener)trackTwo.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        vuforiaTrackables.activate();
+    }
+    public MasqVuforiaBeta(String t1, int x1, int y1, int z1){
+        this.x1 = x1;
+        this.y1 = y1;
+        this.z1 = z1;
+        lastLocation = null;
+        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        targetOne = t1;
+        vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
+        trackables = Arrays.asList(trackOne);
+        trackOne = vuforiaTrackables.get(0);
+        trackTwo = trackThree = null;
+        allTrackables.addAll(vuforiaTrackables);
+        numTrackables = 1;
+        locationOne = createMatrix(x1,y1,z1,90,0,90);
+        locationTwo = locationThree = null;
+        locationThree = null;
+        phoneLoco = OpenGLMatrix
+                .translation(mmBotWidth/2,0,0)
+                .multiplied(Orientation.getRotationMatrix(
+                        AxesReference.EXTRINSIC, AxesOrder.YZY,
+                        AngleUnit.DEGREES, -90, 0, 0));
+        numLocations = 3;
+        locations = Arrays.asList(locationOne);
+        trackOne.setLocation(locationOne);
+        ((VuforiaTrackableDefaultListener)trackOne.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        vuforiaTrackables.activate();
+    }
+    public void init(){
+        int i = 0;
+        lastLocation = null;
+        for (VuforiaTrackable trackable: trackables){
+            trackable = vuforiaTrackables.get(i);
+            i++;
         }
-        trackables.addAll(target);
+        i = 0;
+        for (OpenGLMatrix matrix: locations){
+            matrix = OpenGLMatrix.translation(-mmFTCFieldWidth/2, 0, 0)
+                    .multiplied(Orientation.getRotationMatrix(
+                            AxesReference.EXTRINSIC, AxesOrder.XZX,
+                            AngleUnit.DEGREES, 90, 90, 0));
+            trackables.get(i).setLocation(matrix);
+            i++;
+        }
+        for (VuforiaTrackable trackable: trackables){
+            ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+        }
+        phoneLoco = OpenGLMatrix
+                .translation(mmBotWidth/2,0,0)
+                .multiplied(Orientation.getRotationMatrix(
+                        AxesReference.EXTRINSIC, AxesOrder.YZY,
+                        AngleUnit.DEGREES, -90, 0, 0));
+        vuforiaTrackables.activate();
     }
-    public boolean isSeen (VuforiaTrackable trackable) {
-        return ((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible();
+    public void setOrientationOne(int u, int v, int w){
+        u1 = u;
+        v1 = v;
+        w1 = w;
+        locationOne = createMatrix(x1,y1,z1,u,v,w);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
     }
-    public void createTarget () {
-
+    public void setOrientationTwo(int u, int v, int w){
+        u2 = u;
+        v2 = v;
+        w2 = w;
+        locationOne = createMatrix(x2,y2,z2,u,v,w);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
     }
-    public String position(VuforiaTrackable trackable) {
-            String position;
-            OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener)trackable.getListener()).getUpdatedRobotLocation();
-            if (robotLocationTransform != null) {
-                lastLocation = robotLocationTransform;
-            }
-            if (lastLocation != null) {
-                position = format(lastLocation);
-            } else {
-                position =  "Pos" + "Unknown";
-            }
-            return position;
+    public void setOrientationThree(int u, int v, int w){
+        u3 = u;
+        v3 = v;
+        w3 = w;
+        locationOne = createMatrix(x3,y3,z3,u,v,w);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
     }
-    private String format(OpenGLMatrix transformationMatrix) {
-        return transformationMatrix.formatAsTransform();
+    public void setPositionOne(int x, int y, int z){
+        x1 = x;
+        y1 = y;
+        z1 = z;
+        locationOne = createMatrix(x,y,z,u1,v1,w1);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
     }
-
-
-    public String getName() {
-        return name;
+    public void setPositionTwo(int x, int y, int z){
+        x2 = x;
+        y2 = y;
+        z2 = z;
+        locationOne = createMatrix(x,y,z,u2,v2,w2);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
     }
-    public String[] getDash() {
-        return new String[]{
-                name +
-                "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),
-                "TargetTwoSeen" + Boolean.toString(isSeen(targetTwo)),
-                "TargetThreeSeen" + Boolean.toString(isSeen(targetThree)),
-                "TargetOnePosition" + position(targetOne),
-                "TargetTwoPosition" + position(targetTwo),
-                "TargetThreePosition" + position(targetThree),
-        };
+    public void setPositionThree(int x, int y, int z){
+        x3 = x;
+        y3 = y;
+        z3 = z;
+        locationOne = createMatrix(x,y,z,u3,v3,w3);
+        locations = Arrays.asList(locationOne, locationTwo, locationThree);
+        trackOne.setLocation(locationOne);
     }
+    public Boolean isSeen(String target){
+        return ((VuforiaTrackableDefaultListener) getTrackable(target).getListener()).isVisible();
+    }
+    private VuforiaTrackable getTrackable(String target){
+        VuforiaTrackable v = null;
+        if (target.equals(targetOne))
+            v =  trackOne;
+        else if (target.equals(targetTwo))
+            v =  trackTwo;
+        else if (target.equals(targetThree))
+            v =  trackThree;
+        return v;
+    }
+    public String position(String target){
+        OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener) getTrackable(target).getListener()).getUpdatedRobotLocation();
+        if (robotLocationTransform != null) {
+            lastLocation = robotLocationTransform;
+        }
+        return lastLocation.formatAsTransform();
+    }
+    private OpenGLMatrix createMatrix(float x, float y, float z, float u, float v, float w){
+        return OpenGLMatrix.translation(x, y, z).
+                multiplied(Orientation.getRotationMatrix
+                        (AxesReference.EXTRINSIC, AxesOrder.XYX, AngleUnit.DEGREES, u, v, w));
+    }
+    @Override
     public boolean stop() {
-        return isSeen(targetOne);
+        return ((VuforiaTrackableDefaultListener)trackOne.getListener()).isVisible();
     }
 }
