@@ -21,6 +21,8 @@ public class Template extends MasqLinearOpMode implements Constants{
         waitForStart();
         while (opModeIsActive()){
             robot.NFS(controller1);
+            // or robot.MECH(controller1);
+            // or robot.TANK(controller1);
         }
     }
 }
