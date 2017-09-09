@@ -11,8 +11,6 @@ import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
-import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqSensors.MasqODS;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
@@ -29,26 +27,9 @@ public class MasqRobot implements PID_CONSTANTS {
     //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
 
-    public MasqMotor collector = new MasqMotor("collector");
-    public MasqMotor shooter = new MasqMotor("shooter");
-    public MasqMotor lights = new MasqMotor("light");
-    public MasqServo indexer = new MasqServo("indexer");
-
-    public MasqCRServo rightPresser = new MasqCRServo("rightPresser");
-    public MasqCRServo leftPresser = new MasqCRServo("leftPresser");
-
-    public MasqLimitSwitch limitSwitch = new MasqLimitSwitch("l");
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
-    public MasqODS ods = new MasqODS("ods");
-
-    public MasqColorSensor rightColor = new MasqColorSensor("rightColor" , 62);
-    public MasqColorSensor colorRejection = new MasqColorSensor("colorRejection", 64);
-    public MasqColorSensor leftColor = new MasqColorSensor("leftColor", 60);
-
     private MasqClock timeoutClock = new MasqClock();
-
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
-
     public MasqVuforia vuforia = new MasqVuforia("Wheels", "FTC_2016-17");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
