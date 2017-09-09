@@ -30,7 +30,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     private MasqClock timeoutClock = new MasqClock();
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
-    public MasqVuforia vuforia = new MasqVuforia("Wheels", "FTC_2016-17");
+    public MasqVuforia vuforia = new MasqVuforia("Wheels", "RelicRecoveryAssets");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
