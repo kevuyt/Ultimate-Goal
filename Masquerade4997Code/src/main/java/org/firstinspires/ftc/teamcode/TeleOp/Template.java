@@ -20,26 +20,7 @@ public class Template extends MasqLinearOpMode implements Constants{
         }
         waitForStart();
         while (opModeIsActive()){
-            float move = -controller1.left_stick_y();
-            float turn = -controller1.right_stick_x();
-            double left = move - turn;
-            double right = move + turn;
-            if(left > 1.0) {
-                left /= left;
-                right /= left;
-                robot.driveTrain.setPowerLeft(-left);
-                robot.driveTrain.setPowerRight(-right);
-            }
-            else if (right > 1.0) {
-                left /= right;
-                right /= right;
-                robot.driveTrain.setPowerLeft(-left);
-                robot.driveTrain.setPowerRight(-right);
-            }
-            else {
-                robot.driveTrain.setPowerLeft(-left);
-                robot.driveTrain.setPowerRight(-right);
-            }
+            robot.NFS(controller1);
         }
     }
 }

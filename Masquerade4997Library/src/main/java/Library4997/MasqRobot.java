@@ -22,7 +22,7 @@ import Library4997.MasqWrappers.MasqController;
 /**
  * MasqRobot--> Contains all hardware and methods to run the robot.k
  */
-
+//TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, maiin bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
     //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
