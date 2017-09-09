@@ -13,6 +13,10 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.vuforia.setPositionOne(0,500,0);
         robot.vuforia.setOrientationOne(90,0,90);
+        robot.vuforia.setPositionTwo(0,500,0);
+        robot.vuforia.setOrientationTwo(90,0,90);
+        robot.vuforia.setPositionThree(0,500,0);
+        robot.vuforia.setOrientationThree(90,0,90);
         robot.vuforia.init();
         while (!opModeIsActive()){
             dash.create("IS SEEN", robot.vuforia.isSeen("Wheels"));
