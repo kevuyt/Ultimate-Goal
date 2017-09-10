@@ -30,7 +30,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
-    OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocoation, lastLocation;
+    OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocation, lastLocation;
     public enum Facing {
         RIGHT (new int[]{90,0,90}),
         LEFT (new int[]{90,0,-90}),
@@ -59,9 +59,6 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     float mmPerInch = 25.4f;
     float mmBotWidth = 18 * mmPerInch;
     public MasqVuforia(String t1, String t2, String t3, String asset){
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
         targetTwo = t2;
         targetThree = t3;
@@ -74,9 +71,6 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         numTargets = 3;
     }
     public MasqVuforia(String t1, String t2, String asset){
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
         targetTwo = t2;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
@@ -87,9 +81,6 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         numTargets = 2;
     }
     public MasqVuforia(String t1, String asset){
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
         trackables = Arrays.asList(trackOne);
@@ -98,6 +89,9 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         numTargets = 1;
     }
     public void init(){
+        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
         locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
         locationThree = createMatrix(x3, y3, z3, u3, v3, w3);
@@ -110,30 +104,23 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         if (numTargets == 1){
             locationTwo = null;
         }
-        phoneLocoation = OpenGLMatrix
-                .translation(mmBotWidth/2,0,0)
+        phoneLocation = OpenGLMatrix.translation(mmBotWidth/2,0,0)
                 .multiplied(Orientation.getRotationMatrix(
                         AxesReference.EXTRINSIC, AxesOrder.YZY,
                         AngleUnit.DEGREES, -90, 0, 0));
         for (VuforiaTrackable trackable: trackables){
-            ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLocoation, parameters.cameraDirection);
+            ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLocation, parameters.cameraDirection);
         }
         vuforiaTrackables.activate();
     }
     public void setOrientationOne(int u, int v, int w){
-        u1 = u;
-        v1 = v;
-        w1 = w;
+        u1 = u; v1 = v; w1 = w;
     }
     public void setOrientationTwo(int u, int v, int w){
-        u2 = u;
-        v2 = v;
-        w2 = w;
+        u2 = u; v2 = v; w2 = w;
     }
     public void setOrientationThree(int u, int v, int w){
-        u3 = u;
-        v3 = v;
-        w3 = w;
+        u3 = u; v3 = v; w3 = w;
     }
     public void setOrientationOne(Facing t){
         setOrientationOne(t.value[0], t.value[1], t.value[2]);
@@ -145,19 +132,13 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         setOrientationThree(t.value[0], t.value[1], t.value[2]);
     }
     public void setPositionOne(int x, int y, int z){
-        x1 = x;
-        y1 = y;
-        z1 = z;
+        x1 = x; y1 = y; z1 = z;
     }
     public void setPositionTwo(int x, int y, int z){
-        x2 = x;
-        y2 = y;
-        z2 = z;
+        x2 = x; y2 = y; z2 = z;
     }
     public void setPositionThree(int x, int y, int z){
-        x3 = x;
-        y3 = y;
-        z3 = z;
+        x3 = x; y3 = y; z3 = z;
     }
     private OpenGLMatrix createMatrix(float x, float y, float z, float u, float v, float w){
         return OpenGLMatrix.translation(x, y, z).
