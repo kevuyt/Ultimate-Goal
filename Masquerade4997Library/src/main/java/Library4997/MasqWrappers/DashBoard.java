@@ -9,13 +9,13 @@ import Library4997.MasqHardware;
  */
 
 public class DashBoard {
-
     private int dashLength;
     private org.firstinspires.ftc.robotcore.external.Telemetry telemetry;
     public DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
     }
+
     public static DashBoard getDash(){
         return instance;
     }
@@ -23,6 +23,9 @@ public class DashBoard {
 
     public void create(String string) {
         telemetry.addLine(string);
+    }
+    public void create(Object data) {
+        telemetry.addLine(data.toString());
     }
     public void create(String string, Object data) {
         telemetry.addData(string, data);
@@ -36,6 +39,10 @@ public class DashBoard {
 
     public void createSticky(String string){
         telemetry.log().add(string);
+        update();
+    }
+    public void createSticky(Object data){
+        telemetry.log().add(data.toString());
         update();
     }
     public void createSticky(String string, Object data){
@@ -60,6 +67,4 @@ public class DashBoard {
     public void update () {
         telemetry.update();
     }
-
-
 }

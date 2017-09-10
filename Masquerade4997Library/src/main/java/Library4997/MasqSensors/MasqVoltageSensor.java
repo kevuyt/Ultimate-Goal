@@ -14,7 +14,6 @@ public class MasqVoltageSensor {
     public MasqVoltageSensor() {
         sensor = FtcOpModeRegister.opModeManager.getHardwareMap().voltageSensor.iterator().next();
         average = new RollingAverage(samples);
-
     }
 
     public void update() {
