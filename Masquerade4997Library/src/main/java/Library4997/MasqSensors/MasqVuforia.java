@@ -136,19 +136,13 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         w3 = w;
     }
     public void setOrientationOne(TargetFacing t){
-        u1 = t.value[0];
-        v1 = t.value[1];
-        w1 = t.value[2];
+        setOrientationOne(t.value[0], t.value[1], t.value[2]);
     }
     public void setOrientationTwo(TargetFacing t){
-        u2 = t.value[0];
-        v2 = t.value[1];
-        w2 = t.value[2];
+        setOrientationTwo(t.value[0], t.value[1], t.value[2]);
     }
     public void setOrientationThree(TargetFacing t){
-        u3 = t.value[0];
-        v3 = t.value[1];
-        w3 = t.value[2];
+        setOrientationThree(t.value[0], t.value[1], t.value[2]);
     }
     public void setPositionOne(int x, int y, int z){
         x1 = x;
