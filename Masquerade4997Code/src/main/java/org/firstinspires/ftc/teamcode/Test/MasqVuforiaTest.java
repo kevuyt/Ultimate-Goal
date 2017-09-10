@@ -23,6 +23,7 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
         while (!opModeIsActive()){
             dash.create("IS SEEN", robot.vuforia.isSeen(Targets.TARGET_ONE));
             dash.create("POSITION", robot.vuforia.position(Targets.TARGET_ONE));
+            dash.update();
         }
     }
 }
