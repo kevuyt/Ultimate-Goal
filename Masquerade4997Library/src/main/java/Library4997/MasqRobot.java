@@ -35,7 +35,7 @@ public class MasqRobot implements PID_CONSTANTS {
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
-    public double color = 1;
+    public double color = 0;
 
     public enum AllianceColor {
         BLUE (-1.0),

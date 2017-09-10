@@ -30,7 +30,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
-    OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
+    OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocoation, lastLocation;
     public enum TargetFacing{
         RIGHT (new int[]{90,0,90}),
         LEFT (new int[]{90,0,-90}),
@@ -110,13 +110,13 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         if (numTargets == 1){
             locationTwo = null;
         }
-        phoneLoco = OpenGLMatrix
+        phoneLocoation = OpenGLMatrix
                 .translation(mmBotWidth/2,0,0)
                 .multiplied(Orientation.getRotationMatrix(
                         AxesReference.EXTRINSIC, AxesOrder.YZY,
                         AngleUnit.DEGREES, -90, 0, 0));
         for (VuforiaTrackable trackable: trackables){
-            ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLoco, parameters.cameraDirection);
+            ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLocoation, parameters.cameraDirection);
         }
         vuforiaTrackables.activate();
     }
