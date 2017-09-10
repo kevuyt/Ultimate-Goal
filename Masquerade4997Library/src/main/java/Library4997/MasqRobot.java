@@ -22,9 +22,9 @@ import Library4997.MasqWrappers.MasqController;
 /**
  * MasqRobot--> Contains all hardware and methods to run the robot.k
  */
-//TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, maiin bot, so forth
+//TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
-    //////////////////////////////PlaceAllHardwareHere/////////////////////////////////////
+    ////////////////////////////// Place All Hardware Here ///////////////////////////////////////////////////
     public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
 
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
@@ -146,6 +146,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double dervitive = (currentError - prevError) / tChange;
             double dervitivekd = dervitive * kd;
             newPower = (errorkp + integralki + dervitivekd);
+            if (Math.abs(newPower) > 1.0) {newPower /= newPower;}
             driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
