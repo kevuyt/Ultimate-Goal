@@ -30,7 +30,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     private MasqClock timeoutClock = new MasqClock();
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
-    public MasqVuforia vuforia = new MasqVuforia("vumark-us1-t1", "vumark-us2-t1","vumark-us3-t3", "RelicRecoveryAssets");
+    public MasqVuforia vuforia = new MasqVuforia("vumark-us1-TARGET_ONE", "vumark-us2-TARGET_ONE","vumark-us3-t3", "RelicRecoveryAssets");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
@@ -42,6 +42,13 @@ public class MasqRobot implements PID_CONSTANTS {
         RED (+1.0);
         public final double color;
         AllianceColor (double color) {this.color = color;}
+    }
+    public enum Targets {
+        TARGET_ONE("vumark-us1-TARGET_ONE"),
+        TARGET_TWO ("vumark-us2-TARGET_ONE"),
+        TARGET_THREE ("vumark-us3-t3");
+        public final String value;
+        Targets (String value) {this.value = value;}
     }
     public void setAllianceColor(AllianceColor allianceColor){
         this.color = allianceColor.color;

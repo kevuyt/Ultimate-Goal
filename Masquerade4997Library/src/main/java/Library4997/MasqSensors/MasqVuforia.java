@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import Library4997.MasqHardware;
+import Library4997.MasqRobot;
 import Library4997.MasqSensor;
 
 /**
@@ -28,6 +29,12 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
+    public enum TargetFacing{
+        RIGHT (new int[]{90,0,90}),
+        LEFT (new int[]{90,0,-90});
+        public final int[] value;
+        TargetFacing (int[] value) {this.value = value;}
+    }
     private int
             u1 = 90, u2 = 90, u3 = 90,
             v1 = 0, v2 = 0, v3 = 0,
@@ -117,6 +124,21 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         v3 = v;
         w3 = w;
     }
+    public void setOrientationOne(TargetFacing t){
+        u1 = t.value[0];
+        v1 = t.value[1];
+        w1 = t.value[2];
+    }
+    public void setOrientationTwo(TargetFacing t){
+        u2 = t.value[0];
+        v2 = t.value[1];
+        w2 = t.value[2];
+    }
+    public void setOrientationThree(TargetFacing t){
+        u3 = t.value[0];
+        v3 = t.value[1];
+        w3 = t.value[2];
+    }
     public void setPositionOne(int x, int y, int z){
         x1 = x;
         y1 = y;
@@ -156,6 +178,12 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     }
     public boolean isSeen(String track){
         return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();
+    }
+    public String position(MasqRobot.Targets target){
+        return position(target.value);
+    }
+    public boolean isSeen(MasqRobot.Targets track){
+        return isSeen(track.value);
     }
     @Override
     public boolean stop() {
