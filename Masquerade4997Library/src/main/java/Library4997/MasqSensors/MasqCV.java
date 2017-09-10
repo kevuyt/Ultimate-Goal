@@ -1,16 +1,26 @@
 package Library4997.MasqSensors;
 
+import com.vuforia.Vec3F;
+
+import org.opencv.core.Mat;
+import org.opencv.imgcodecs.Imgcodecs;
+
+import static org.opencv.imgcodecs.Imgcodecs.CV_LOAD_IMAGE_COLOR;
+
 /**
  * Created by Archish on 9/7/17.
  */
 
 public class MasqCV {
-    String targetOne, targetTwo, targetThree, asset;
+    String targetOne, targetTwo, targetThree, asset, assetPath;
+    Mat img;
+    Vec3F pixel;
     public MasqCV (String t1, String t2, String t3, String asset){
         targetOne = t1;
         targetTwo = t2;
         targetThree = t3;
         this.asset = asset;
+        img = Imgcodecs.imread(getPathName(), CV_LOAD_IMAGE_COLOR);
     }
     public MasqCV (String t1, String t2, String asset){
         targetOne = t1;
@@ -28,9 +38,7 @@ public class MasqCV {
         int[] rbgreturn = new int[]{0};
         return rbgreturn;
     }
-    public boolean isSeen(String target){
-        return true;
-    }
+    public boolean isSeen(String target){return true;}
     public String getTargetSeen(){
         if (isSeen(targetOne)){
             return targetOne;
@@ -42,10 +50,7 @@ public class MasqCV {
             return null;
         }
     }
-    private void findInAssets(){
-
-    }
-    private void pdf2jpeg(){
-
+    private String getPathName(){
+        return "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/assets/" + asset;
     }
 }
