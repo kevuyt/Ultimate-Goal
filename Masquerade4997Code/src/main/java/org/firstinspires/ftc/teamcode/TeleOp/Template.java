@@ -13,6 +13,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "Template-TelOp", group = "Template")
 @Disabled
 public class Template extends MasqLinearOpMode implements Constants{
+    int i = 0;
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.imu);
@@ -21,6 +22,8 @@ public class Template extends MasqLinearOpMode implements Constants{
         waitForStart();
         while (opModeIsActive()){
             robot.NFS(controller1);
+            i ++;
+            dash.create("LOOP COUNT", i);
             // or robot.MECH(controller1);
             // or robot.TANK(controller1);
         }

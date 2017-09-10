@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.RollingAverage;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 public class MasqVoltageSensor {
-    public final static int samples = 2000;
+    public final static int samples = 2000000;
     VoltageSensor sensor;
     RollingAverage average;
 
