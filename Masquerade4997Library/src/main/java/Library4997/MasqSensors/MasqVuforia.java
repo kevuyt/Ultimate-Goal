@@ -31,7 +31,9 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLoco, lastLocation;
     public enum TargetFacing{
         RIGHT (new int[]{90,0,90}),
-        LEFT (new int[]{90,0,-90});
+        LEFT (new int[]{90,0,-90}),
+        BACK (new int[]{90,0,0}),
+        FOREWORD (new int[]{-90,0,0});
         public final int[] value;
         TargetFacing (int[] value) {this.value = value;}
     }
