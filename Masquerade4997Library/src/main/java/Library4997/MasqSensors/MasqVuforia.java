@@ -31,13 +31,13 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocoation, lastLocation;
-    public enum TargetFacing{
+    public enum Facing {
         RIGHT (new int[]{90,0,90}),
         LEFT (new int[]{90,0,-90}),
         BACK (new int[]{90,0,0}),
         FOREWORD (new int[]{-90,0,0});
         public final int[] value;
-        TargetFacing (int[] value) {this.value = value;}
+        Facing(int[] value) {this.value = value;}
     }
     private int
             u1 = 90, u2 = 90, u3 = 90,
@@ -56,8 +56,8 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     private List<VuforiaTrackable> trackables = new ArrayList<>();
     private List<VuforiaTrackable> allTrackables = new ArrayList<>();
     String targetOne, targetTwo, targetThree;
-    float mmPerInch        = 25.4f;
-    float mmBotWidth       = 18 * mmPerInch;
+    float mmPerInch = 25.4f;
+    float mmBotWidth = 18 * mmPerInch;
     public MasqVuforia(String t1, String t2, String t3, String asset){
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
@@ -135,13 +135,13 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         v3 = v;
         w3 = w;
     }
-    public void setOrientationOne(TargetFacing t){
+    public void setOrientationOne(Facing t){
         setOrientationOne(t.value[0], t.value[1], t.value[2]);
     }
-    public void setOrientationTwo(TargetFacing t){
+    public void setOrientationTwo(Facing t){
         setOrientationTwo(t.value[0], t.value[1], t.value[2]);
     }
-    public void setOrientationThree(TargetFacing t){
+    public void setOrientationThree(Facing t){
         setOrientationThree(t.value[0], t.value[1], t.value[2]);
     }
     public void setPositionOne(int x, int y, int z){
