@@ -1,5 +1,7 @@
 package Library4997.MasqSensors;
 
+import com.qualcomm.ftcrobotcontroller.R.id;
+
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -23,7 +25,7 @@ import Library4997.MasqSensor;
  * Created by Archish on 9/7/17.
  */
 public class MasqVuforia implements MasqSensor, MasqHardware{
-    VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(com.qualcomm.ftcrobotcontroller.R.id.cameraMonitorViewId);
+    VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(id.cameraMonitorViewId);
     VuforiaLocalizer vuforia;
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;
@@ -44,6 +46,13 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
             x1 = 0, x2 = 0, x3 = 0,
             y1 = 0, y2 = 0, y3 = 0,
             z1 = 0, z2 = 0,z3 = 0;
+    private int[][] values = new int[][]{ // order... u, v, w, x, y, z
+            new int[]{90, 90, 90},        // order... 1, 2, 3
+            new int[]{0, 0, 0},
+            new int[]{90, 90, 90},
+            new int[]{0, 0, 0},
+            new int[]{0, 0, 0},
+            new int[]{0, 0, 0}};
     private List<VuforiaTrackable> trackables = new ArrayList<>();
     private List<VuforiaTrackable> allTrackables = new ArrayList<>();
     String targetOne, targetTwo, targetThree;
