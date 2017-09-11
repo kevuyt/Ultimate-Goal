@@ -22,7 +22,3 @@ repositories {
     }
 }
 apply from: 'build.release.gradle'
-
-dependencies {
-    compile project(':opencv')
-}

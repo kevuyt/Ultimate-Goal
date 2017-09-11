@@ -74,6 +74,4 @@ public class MasqAdafruitIMU implements MasqHardware{
                 "Pitch" + Double.toString(getPitch()),
         };
     }
-
-
 }

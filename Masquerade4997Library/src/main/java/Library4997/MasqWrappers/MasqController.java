@@ -19,18 +19,10 @@ public class MasqController implements MasqHardware {
         this.gamepad = g;
     }
 
-    public boolean a() {
-        return gamepad.a;
-    }
-    public boolean x() {
-        return gamepad.x;
-    }
-    public boolean y() {
-        return gamepad.y;
-    }
-    public boolean b() {
-        return gamepad.b;
-    }
+    public boolean a() {return gamepad.a;}
+    public boolean x() {return gamepad.x;}
+    public boolean y() {return gamepad.y;}
+    public boolean b() {return gamepad.b;}
 
     public boolean aIsDoubleTapped () {
         boolean doubleTapped = false;

@@ -33,32 +33,6 @@ public final class R {
         public static int wifi_direct_channels=0x7f090008;
     }
     public static final class attr {
-        /** <p>May be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-<p>May be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>any</code></td><td>-1</td><td></td></tr>
-<tr><td><code>back</code></td><td>99</td><td></td></tr>
-<tr><td><code>front</code></td><td>98</td><td></td></tr>
-</table>
-         */
-        public static int camera_id=0x7f010001;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static int show_fps=0x7f010000;
     }
     public static final class color {
         public static int black=0x7f0a0000;
@@ -93,202 +67,199 @@ containing a value of this type.
         public static int masq=0x7f020005;
     }
     public static final class id {
-        public static int RelativeLayout=0x7f0d0016;
-        public static int aboutList=0x7f0d0003;
-        public static int action_about=0x7f0d00c0;
-        public static int action_blocks=0x7f0d00ba;
-        public static int action_configure_robot=0x7f0d00bd;
-        public static int action_exit_app=0x7f0d00c1;
-        public static int action_help=0x7f0d00c3;
-        public static int action_inspection_mode=0x7f0d00bf;
-        public static int action_programming_mode=0x7f0d00be;
-        public static int action_restart_robot=0x7f0d00bc;
-        public static int action_settings=0x7f0d00bb;
-        public static int active_connections=0x7f0d0057;
-        public static int activity_fix_misconfig_wifi_direct=0x7f0d0005;
-        public static int addButton=0x7f0d006a;
-        public static int addressListCaption=0x7f0d0024;
-        public static int airplaneMode=0x7f0d0033;
-        public static int any=0x7f0d0000;
-        public static int appsInstalled=0x7f0d003e;
-        public static int appsStatus=0x7f0d003f;
-        public static int attached_title=0x7f0d0085;
-        public static int back=0x7f0d0001;
-        public static int bannerParent=0x7f0d0066;
-        public static int batteryLevel=0x7f0d0031;
-        public static int bluetoothEnabled=0x7f0d0035;
-        public static int buttonList=0x7f0d0067;
-        public static int cameraMonitorViewId=0x7f0d001b;
-        public static int cancelButton=0x7f0d0069;
-        public static int channelPickList=0x7f0d0028;
-        public static int checkbox_port=0x7f0d00ac;
-        public static int choiceMotorSpinner=0x7f0d00ad;
-        public static int choiceSpinner=0x7f0d0061;
-        public static int configIsReadOnlyFeedback=0x7f0d0079;
-        public static int configureButton=0x7f0d00b9;
-        public static int configureFromTemplate=0x7f0d0051;
-        public static int configureFromTemplateArea=0x7f0d0050;
-        public static int controller_name=0x7f0d00ae;
-        public static int controller_name_prompt_text=0x7f0d0083;
-        public static int controllersList=0x7f0d0010;
-        public static int darker_gray_line=0x7f0d006e;
-        public static int device_interface_module_name=0x7f0d006f;
-        public static int devices_holder=0x7f0d000e;
-        public static int devices_info_btn=0x7f0d000f;
-        public static int disconnect_from_wifidirect=0x7f0d00c2;
-        public static int display_server_log_button=0x7f0d005a;
-        public static int doneButton=0x7f0d0068;
-        public static int dropdown_layout=0x7f0d00b5;
-        public static int editTextResult=0x7f0d0062;
-        public static int edit_controller_btn=0x7f0d00b6;
-        public static int empty_filelist=0x7f0d004f;
-        public static int entire_screen=0x7f0d0011;
-        public static int file_activate_button=0x7f0d007c;
-        public static int file_buttons=0x7f0d0075;
-        public static int file_delete_button=0x7f0d007d;
-        public static int file_edit_button=0x7f0d007b;
-        public static int file_info_layout=0x7f0d0074;
-        public static int filename_editText=0x7f0d0078;
-        public static int files_holder=0x7f0d004c;
-        public static int fixButton=0x7f0d006c;
-        public static int front=0x7f0d0002;
-        public static int groupList=0x7f0d0029;
-        public static int holds_buttons=0x7f0d004a;
-        public static int horizontalButtons=0x7f0d007a;
-        public static int idActiveConfigHeader=0x7f0d007e;
-        public static int idActiveConfigName=0x7f0d007f;
-        public static int included_header=0x7f0d0008;
-        public static int inclusionlayout=0x7f0d004e;
-        public static int infoButton=0x7f0d00b8;
-        public static int info_btn=0x7f0d0081;
-        public static int instructions_and_status_container=0x7f0d0052;
-        public static int isCCInstalled=0x7f0d0048;
-        public static int isDSInstalled=0x7f0d0045;
-        public static int isRCInstalled=0x7f0d0042;
-        public static int item_list_parent=0x7f0d0082;
-        public static int labelManufacturer=0x7f0d002a;
-        public static int labelModel=0x7f0d002c;
-        public static int linearLayout=0x7f0d0077;
-        public static int linearLayout0=0x7f0d0088;
-        public static int linearLayout1=0x7f0d008b;
-        public static int linearLayout2=0x7f0d008e;
-        public static int linearLayout3=0x7f0d0091;
-        public static int linearLayout4=0x7f0d0094;
-        public static int linearLayout5=0x7f0d0097;
-        public static int linearLayout_matrix1=0x7f0d00a3;
-        public static int linearLayout_matrix2=0x7f0d00a4;
-        public static int linearLayout_matrix3=0x7f0d00a5;
-        public static int linearLayout_matrix4=0x7f0d00a6;
-        public static int linearLayout_matrix5=0x7f0d00a8;
-        public static int linearLayout_matrix6=0x7f0d00a9;
-        public static int linearLayout_matrix7=0x7f0d00aa;
-        public static int linearLayout_matrix8=0x7f0d00ab;
-        public static int listView_devices=0x7f0d0071;
-        public static int load_bottom=0x7f0d0009;
-        public static int loadingIndicator=0x7f0d0099;
-        public static int loadingIndicatorOverlay=0x7f0d0098;
-        public static int log=0x7f0d0059;
-        public static int log_container=0x7f0d0058;
-        public static int lynxAddressButtons=0x7f0d0022;
-        public static int lynxAddressListInstructions=0x7f0d0023;
-        public static int lynxFirmwareInstructions=0x7f0d0026;
-        public static int lynxFirmwareUpdateButton=0x7f0d0027;
-        public static int lynxUsbDeviceModules=0x7f0d00a0;
-        public static int lynxUsbDeviceName=0x7f0d009f;
-        public static int lynx_module_devices=0x7f0d009b;
-        public static int lynx_module_name=0x7f0d009a;
-        public static int matrixcontroller_name=0x7f0d00a1;
-        public static int menu_buttons=0x7f0d0015;
-        public static int moduleAddressText=0x7f0d009d;
-        public static int moduleList=0x7f0d0025;
-        public static int moduleSerialText=0x7f0d009c;
-        public static int motors_title=0x7f0d00a7;
-        public static int network_name=0x7f0d0053;
-        public static int new_button=0x7f0d004b;
-        public static int orangeTextAnchor=0x7f0d000c;
-        public static int orangeTextOKButton=0x7f0d00b2;
-        public static int orange_end_of_list_anchor=0x7f0d005c;
-        public static int orange_warning=0x7f0d00af;
-        public static int orange_warning_anchor=0x7f0d000d;
-        public static int orangetext0=0x7f0d00b0;
-        public static int orangetext1=0x7f0d00b1;
-        public static int osVersion=0x7f0d002f;
-        public static int passphrase=0x7f0d0054;
-        public static int port0=0x7f0d0087;
-        public static int port1=0x7f0d008a;
-        public static int port2=0x7f0d008d;
-        public static int port3=0x7f0d0090;
-        public static int port4=0x7f0d0093;
-        public static int port5=0x7f0d0096;
-        public static int portNumber=0x7f0d00b4;
-        public static int port_number=0x7f0d0060;
-        public static int port_title=0x7f0d0084;
-        public static int readOnlyExplanation=0x7f0d004d;
-        public static int robotIcon=0x7f0d0013;
-        public static int row_port=0x7f0d005f;
-        public static int row_port0=0x7f0d0086;
-        public static int row_port1=0x7f0d0089;
-        public static int row_port2=0x7f0d008c;
-        public static int row_port3=0x7f0d008f;
-        public static int row_port4=0x7f0d0092;
-        public static int row_port5=0x7f0d0095;
-        public static int row_port_digital_device=0x7f0d0072;
-        public static int row_port_i2c=0x7f0d0080;
-        public static int scanButton=0x7f0d006b;
-        public static int scrollView=0x7f0d005d;
-        public static int serialNumber=0x7f0d0070;
-        public static int server_status=0x7f0d0056;
-        public static int server_url=0x7f0d0055;
-        public static int servos_title=0x7f0d00a2;
-        public static int set=0x7f0d0020;
-        public static int shape=0x7f0d00b3;
-        public static int sleep=0x7f0d001f;
-        public static int spinnerChooseAddress=0x7f0d009e;
-        public static int swapButton=0x7f0d006d;
-        public static int swapCaption=0x7f0d005b;
-        public static int tableLayout=0x7f0d0073;
-        public static int tableLayout_analogOutput_devices=0x7f0d0065;
-        public static int tableLayout_analog_input_devices=0x7f0d0064;
-        public static int table_header=0x7f0d0076;
-        public static int templateList=0x7f0d000b;
-        public static int templateListCaption=0x7f0d000a;
-        public static int templateNameText=0x7f0d00b7;
-        public static int textAdbLogs=0x7f0d005e;
-        public static int textBadDeviceName=0x7f0d0007;
-        public static int textDeviceName=0x7f0d0014;
-        public static int textErrorMessage=0x7f0d001c;
-        public static int textGamepad1=0x7f0d001a;
-        public static int textGamepad2=0x7f0d001d;
-        public static int textNetworkConnectionStatus=0x7f0d0017;
-        public static int textOpMode=0x7f0d0019;
-        public static int textPleaseWait=0x7f0d0006;
-        public static int textRemoteProgrammingMode=0x7f0d001e;
-        public static int textRobotStatus=0x7f0d0018;
-        public static int textView=0x7f0d003a;
-        public static int textView10=0x7f0d0032;
-        public static int textView11=0x7f0d0038;
-        public static int textView12=0x7f0d002e;
-        public static int textView13=0x7f0d0034;
-        public static int textView3=0x7f0d0040;
-        public static int textView4=0x7f0d0043;
-        public static int textView5=0x7f0d0046;
-        public static int textView6=0x7f0d003c;
-        public static int textView7=0x7f0d0036;
-        public static int textView8=0x7f0d0030;
-        public static int textView9=0x7f0d0049;
-        public static int titleTextView=0x7f0d0063;
-        public static int top_bar=0x7f0d0012;
-        public static int txtIsCCInstalled=0x7f0d0047;
-        public static int txtIsDSInstalled=0x7f0d0044;
-        public static int txtIsRCInstalled=0x7f0d0041;
-        public static int txtManufacturer=0x7f0d002b;
-        public static int txtModel=0x7f0d002d;
-        public static int webViewBlockly=0x7f0d0004;
-        public static int webViewBlocksRuntime=0x7f0d0021;
-        public static int widiConnected=0x7f0d003d;
-        public static int widiName=0x7f0d003b;
-        public static int wifiConnected=0x7f0d0039;
-        public static int wifiEnabled=0x7f0d0037;
+        public static int RelativeLayout=0x7f0d0013;
+        public static int aboutList=0x7f0d0000;
+        public static int action_about=0x7f0d00bd;
+        public static int action_blocks=0x7f0d00b7;
+        public static int action_configure_robot=0x7f0d00ba;
+        public static int action_exit_app=0x7f0d00be;
+        public static int action_help=0x7f0d00c0;
+        public static int action_inspection_mode=0x7f0d00bc;
+        public static int action_programming_mode=0x7f0d00bb;
+        public static int action_restart_robot=0x7f0d00b9;
+        public static int action_settings=0x7f0d00b8;
+        public static int active_connections=0x7f0d0054;
+        public static int activity_fix_misconfig_wifi_direct=0x7f0d0002;
+        public static int addButton=0x7f0d0067;
+        public static int addressListCaption=0x7f0d0021;
+        public static int airplaneMode=0x7f0d0030;
+        public static int appsInstalled=0x7f0d003b;
+        public static int appsStatus=0x7f0d003c;
+        public static int attached_title=0x7f0d0082;
+        public static int bannerParent=0x7f0d0063;
+        public static int batteryLevel=0x7f0d002e;
+        public static int bluetoothEnabled=0x7f0d0032;
+        public static int buttonList=0x7f0d0064;
+        public static int cameraMonitorViewId=0x7f0d0018;
+        public static int cancelButton=0x7f0d0066;
+        public static int channelPickList=0x7f0d0025;
+        public static int checkbox_port=0x7f0d00a9;
+        public static int choiceMotorSpinner=0x7f0d00aa;
+        public static int choiceSpinner=0x7f0d005e;
+        public static int configIsReadOnlyFeedback=0x7f0d0076;
+        public static int configureButton=0x7f0d00b6;
+        public static int configureFromTemplate=0x7f0d004e;
+        public static int configureFromTemplateArea=0x7f0d004d;
+        public static int controller_name=0x7f0d00ab;
+        public static int controller_name_prompt_text=0x7f0d0080;
+        public static int controllersList=0x7f0d000d;
+        public static int darker_gray_line=0x7f0d006b;
+        public static int device_interface_module_name=0x7f0d006c;
+        public static int devices_holder=0x7f0d000b;
+        public static int devices_info_btn=0x7f0d000c;
+        public static int disconnect_from_wifidirect=0x7f0d00bf;
+        public static int display_server_log_button=0x7f0d0057;
+        public static int doneButton=0x7f0d0065;
+        public static int dropdown_layout=0x7f0d00b2;
+        public static int editTextResult=0x7f0d005f;
+        public static int edit_controller_btn=0x7f0d00b3;
+        public static int empty_filelist=0x7f0d004c;
+        public static int entire_screen=0x7f0d000e;
+        public static int file_activate_button=0x7f0d0079;
+        public static int file_buttons=0x7f0d0072;
+        public static int file_delete_button=0x7f0d007a;
+        public static int file_edit_button=0x7f0d0078;
+        public static int file_info_layout=0x7f0d0071;
+        public static int filename_editText=0x7f0d0075;
+        public static int files_holder=0x7f0d0049;
+        public static int fixButton=0x7f0d0069;
+        public static int groupList=0x7f0d0026;
+        public static int holds_buttons=0x7f0d0047;
+        public static int horizontalButtons=0x7f0d0077;
+        public static int idActiveConfigHeader=0x7f0d007b;
+        public static int idActiveConfigName=0x7f0d007c;
+        public static int included_header=0x7f0d0005;
+        public static int inclusionlayout=0x7f0d004b;
+        public static int infoButton=0x7f0d00b5;
+        public static int info_btn=0x7f0d007e;
+        public static int instructions_and_status_container=0x7f0d004f;
+        public static int isCCInstalled=0x7f0d0045;
+        public static int isDSInstalled=0x7f0d0042;
+        public static int isRCInstalled=0x7f0d003f;
+        public static int item_list_parent=0x7f0d007f;
+        public static int labelManufacturer=0x7f0d0027;
+        public static int labelModel=0x7f0d0029;
+        public static int linearLayout=0x7f0d0074;
+        public static int linearLayout0=0x7f0d0085;
+        public static int linearLayout1=0x7f0d0088;
+        public static int linearLayout2=0x7f0d008b;
+        public static int linearLayout3=0x7f0d008e;
+        public static int linearLayout4=0x7f0d0091;
+        public static int linearLayout5=0x7f0d0094;
+        public static int linearLayout_matrix1=0x7f0d00a0;
+        public static int linearLayout_matrix2=0x7f0d00a1;
+        public static int linearLayout_matrix3=0x7f0d00a2;
+        public static int linearLayout_matrix4=0x7f0d00a3;
+        public static int linearLayout_matrix5=0x7f0d00a5;
+        public static int linearLayout_matrix6=0x7f0d00a6;
+        public static int linearLayout_matrix7=0x7f0d00a7;
+        public static int linearLayout_matrix8=0x7f0d00a8;
+        public static int listView_devices=0x7f0d006e;
+        public static int load_bottom=0x7f0d0006;
+        public static int loadingIndicator=0x7f0d0096;
+        public static int loadingIndicatorOverlay=0x7f0d0095;
+        public static int log=0x7f0d0056;
+        public static int log_container=0x7f0d0055;
+        public static int lynxAddressButtons=0x7f0d001f;
+        public static int lynxAddressListInstructions=0x7f0d0020;
+        public static int lynxFirmwareInstructions=0x7f0d0023;
+        public static int lynxFirmwareUpdateButton=0x7f0d0024;
+        public static int lynxUsbDeviceModules=0x7f0d009d;
+        public static int lynxUsbDeviceName=0x7f0d009c;
+        public static int lynx_module_devices=0x7f0d0098;
+        public static int lynx_module_name=0x7f0d0097;
+        public static int matrixcontroller_name=0x7f0d009e;
+        public static int menu_buttons=0x7f0d0012;
+        public static int moduleAddressText=0x7f0d009a;
+        public static int moduleList=0x7f0d0022;
+        public static int moduleSerialText=0x7f0d0099;
+        public static int motors_title=0x7f0d00a4;
+        public static int network_name=0x7f0d0050;
+        public static int new_button=0x7f0d0048;
+        public static int orangeTextAnchor=0x7f0d0009;
+        public static int orangeTextOKButton=0x7f0d00af;
+        public static int orange_end_of_list_anchor=0x7f0d0059;
+        public static int orange_warning=0x7f0d00ac;
+        public static int orange_warning_anchor=0x7f0d000a;
+        public static int orangetext0=0x7f0d00ad;
+        public static int orangetext1=0x7f0d00ae;
+        public static int osVersion=0x7f0d002c;
+        public static int passphrase=0x7f0d0051;
+        public static int port0=0x7f0d0084;
+        public static int port1=0x7f0d0087;
+        public static int port2=0x7f0d008a;
+        public static int port3=0x7f0d008d;
+        public static int port4=0x7f0d0090;
+        public static int port5=0x7f0d0093;
+        public static int portNumber=0x7f0d00b1;
+        public static int port_number=0x7f0d005d;
+        public static int port_title=0x7f0d0081;
+        public static int readOnlyExplanation=0x7f0d004a;
+        public static int robotIcon=0x7f0d0010;
+        public static int row_port=0x7f0d005c;
+        public static int row_port0=0x7f0d0083;
+        public static int row_port1=0x7f0d0086;
+        public static int row_port2=0x7f0d0089;
+        public static int row_port3=0x7f0d008c;
+        public static int row_port4=0x7f0d008f;
+        public static int row_port5=0x7f0d0092;
+        public static int row_port_digital_device=0x7f0d006f;
+        public static int row_port_i2c=0x7f0d007d;
+        public static int scanButton=0x7f0d0068;
+        public static int scrollView=0x7f0d005a;
+        public static int serialNumber=0x7f0d006d;
+        public static int server_status=0x7f0d0053;
+        public static int server_url=0x7f0d0052;
+        public static int servos_title=0x7f0d009f;
+        public static int set=0x7f0d001d;
+        public static int shape=0x7f0d00b0;
+        public static int sleep=0x7f0d001c;
+        public static int spinnerChooseAddress=0x7f0d009b;
+        public static int swapButton=0x7f0d006a;
+        public static int swapCaption=0x7f0d0058;
+        public static int tableLayout=0x7f0d0070;
+        public static int tableLayout_analogOutput_devices=0x7f0d0062;
+        public static int tableLayout_analog_input_devices=0x7f0d0061;
+        public static int table_header=0x7f0d0073;
+        public static int templateList=0x7f0d0008;
+        public static int templateListCaption=0x7f0d0007;
+        public static int templateNameText=0x7f0d00b4;
+        public static int textAdbLogs=0x7f0d005b;
+        public static int textBadDeviceName=0x7f0d0004;
+        public static int textDeviceName=0x7f0d0011;
+        public static int textErrorMessage=0x7f0d0019;
+        public static int textGamepad1=0x7f0d0017;
+        public static int textGamepad2=0x7f0d001a;
+        public static int textNetworkConnectionStatus=0x7f0d0014;
+        public static int textOpMode=0x7f0d0016;
+        public static int textPleaseWait=0x7f0d0003;
+        public static int textRemoteProgrammingMode=0x7f0d001b;
+        public static int textRobotStatus=0x7f0d0015;
+        public static int textView=0x7f0d0037;
+        public static int textView10=0x7f0d002f;
+        public static int textView11=0x7f0d0035;
+        public static int textView12=0x7f0d002b;
+        public static int textView13=0x7f0d0031;
+        public static int textView3=0x7f0d003d;
+        public static int textView4=0x7f0d0040;
+        public static int textView5=0x7f0d0043;
+        public static int textView6=0x7f0d0039;
+        public static int textView7=0x7f0d0033;
+        public static int textView8=0x7f0d002d;
+        public static int textView9=0x7f0d0046;
+        public static int titleTextView=0x7f0d0060;
+        public static int top_bar=0x7f0d000f;
+        public static int txtIsCCInstalled=0x7f0d0044;
+        public static int txtIsDSInstalled=0x7f0d0041;
+        public static int txtIsRCInstalled=0x7f0d003e;
+        public static int txtManufacturer=0x7f0d0028;
+        public static int txtModel=0x7f0d002a;
+        public static int webViewBlockly=0x7f0d0001;
+        public static int webViewBlocksRuntime=0x7f0d001e;
+        public static int widiConnected=0x7f0d003a;
+        public static int widiName=0x7f0d0038;
+        public static int wifiConnected=0x7f0d0036;
+        public static int wifiEnabled=0x7f0d0034;
     }
     public static final class layout {
         public static int activity_about=0x7f040000;
@@ -879,59 +850,4 @@ containing a value of this type.
         public static int pushbotsens=0x7f050006;
         public static int squarebot=0x7f050007;
     }
-    public static final class styleable {
-        /** Attributes that can be used with a CameraBridgeViewBase.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CameraBridgeViewBase_camera_id team4997lib:camera_id}</code></td><td></td></tr>
-           <tr><td><code>{@link #CameraBridgeViewBase_show_fps team4997lib:show_fps}</code></td><td></td></tr>
-           </table>
-           @see #CameraBridgeViewBase_camera_id
-           @see #CameraBridgeViewBase_show_fps
-         */
-        public static final int[] CameraBridgeViewBase = {
-            0x7f010000, 0x7f010001
-        };
-        /**
-          <p>This symbol is the offset where the {@link team4997lib.R.attr#camera_id}
-          attribute's value can be found in the {@link #CameraBridgeViewBase} array.
-
-
-          <p>May be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-<p>May be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>any</code></td><td>-1</td><td></td></tr>
-<tr><td><code>back</code></td><td>99</td><td></td></tr>
-<tr><td><code>front</code></td><td>98</td><td></td></tr>
-</table>
-          @attr name team4997lib:camera_id
-        */
-        public static int CameraBridgeViewBase_camera_id = 1;
-        /**
-          <p>This symbol is the offset where the {@link team4997lib.R.attr#show_fps}
-          attribute's value can be found in the {@link #CameraBridgeViewBase} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name team4997lib:show_fps
-        */
-        public static int CameraBridgeViewBase_show_fps = 0;
-    };
 }

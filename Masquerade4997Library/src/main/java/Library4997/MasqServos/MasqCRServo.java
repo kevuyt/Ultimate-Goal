@@ -15,12 +15,8 @@ public class MasqCRServo implements MasqHardware{
         this.nameCr_Servo = name;
         servo = FtcOpModeRegister.opModeManager.getHardwareMap().crservo.get(name);
     }
-    public void setPower (double power) {
-        servo.setPower(power);
-    }
-    public void sleep (int time) throws InterruptedException {
-        servo.wait(time);
-    }
+    public void setPower (double power) {servo.setPower(power);}
+    public void sleep (int time) throws InterruptedException {servo.wait(time);}
     public double getPower() {return servo.getPower();}
     public String getName() {return nameCr_Servo;}
 

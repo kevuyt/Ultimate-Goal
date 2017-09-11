@@ -27,5 +27,4 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     }
     public abstract void runLinearOpMode() throws InterruptedException;
     public void stopLinearOpMode() {}
-
 }
