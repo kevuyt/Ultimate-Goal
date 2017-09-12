@@ -109,9 +109,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void drive (int distance, double power){
         drive(distance, power, Direction.FORWARD);
     }
-    public void drive(int distance) {
-        drive(distance, 0.5);
-    }
+    public void drive(int distance) {drive(distance, 0.5);}
 
     public void runToPosition(int distance, Direction direction, double speed, double timeOut, int sleepTime) {
         driveTrain.setDistance(distance);
