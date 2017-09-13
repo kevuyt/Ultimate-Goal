@@ -383,7 +383,9 @@ public class MasqRobot implements PID_CONSTANTS {
     public double getVoltage() {
         return voltageSensor.getVoltage();
     }
+    public void changeI2C(MasqHardware h, int newAd){
 
+    }
     public void sleep(int time) {
         try {
             Thread.sleep((long) time);
