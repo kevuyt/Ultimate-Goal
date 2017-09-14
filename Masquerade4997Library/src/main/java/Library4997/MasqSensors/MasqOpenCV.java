@@ -11,24 +11,24 @@ import static org.opencv.imgcodecs.Imgcodecs.CV_LOAD_IMAGE_COLOR;
  * Created by Archish on 9/7/17.
  */
 
-public class MasqCV {
+public class MasqOpenCV {
     String targetOne, targetTwo, targetThree, asset, assetPath;
     Mat img;
     Vec3F pixel;
-    public MasqCV (String t1, String t2, String t3, String asset){
+    public MasqOpenCV(String t1, String t2, String t3, String asset){
         targetOne = t1;
         targetTwo = t2;
         targetThree = t3;
         this.asset = asset;
         img = Imgcodecs.imread(getPathName(), CV_LOAD_IMAGE_COLOR);
     }
-    public MasqCV (String t1, String t2, String asset){
+    public MasqOpenCV(String t1, String t2, String asset){
         targetOne = t1;
         targetTwo = t2;
         targetThree = null;
         this.asset = asset;
     }
-    public MasqCV (String t1, String asset){
+    public MasqOpenCV(String t1, String asset){
         targetOne = t1;
         targetTwo = null;
         targetThree = null;
