@@ -14,6 +14,7 @@ import Library4997.MasqSensors.MasqClock;
 public class MasqServo implements MasqHardware{
     private com.qualcomm.robotcore.hardware.Servo servo;
     private String nameServo;
+    private double zero = 0;
     MasqClock clock = new MasqClock();
     public MasqServo(String name){
         this.nameServo = name;
@@ -56,7 +57,12 @@ public class MasqServo implements MasqHardware{
         }
         return isStalled;
     }
-
+    public double getZero() {
+        return zero;
+    }
+    public void setZero(double zero) {
+        this.zero = zero;
+    }
     public String getName() {
         return nameServo;
     }

@@ -20,7 +20,7 @@ import Library4997.MasqWrappers.Direction;
 import Library4997.MasqWrappers.MasqController;
 
 /**
- * MasqRobot--> Contains all hardware and methods to run the robot.k
+ * MasqRobot--> Contains all hardware and methods to run the robot.
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
@@ -270,20 +270,36 @@ public class MasqRobot implements PID_CONSTANTS {
             motor.setPower(0);
         }
     }
-    public void move(boolean control, MasqServo motor, double position, double zeroPosition){
+    public void move(boolean control, MasqServo servo, double position, double zeroPosition){
         if (control){
-            motor.setPosition(position);
+            servo.setPosition(position);
         }
         else {
-            motor.setPosition(zeroPosition);
+            servo.setPosition(zeroPosition);
         }
     }
-    public void move(boolean control, boolean backwordControl, MasqServo motor, double position, double zeroPosition){
+    public void move(boolean control, MasqServo servo, double position){
         if (control){
-            motor.setPosition(position);
+            servo.setPosition(position);
+        }
+        else {
+            servo.setPosition(servo.getZero());
+        }
+    }
+    public void move(boolean control, boolean backwordControl, MasqServo zero, double position, double zeroPosition){
+        if (control){
+            zero.setPosition(position);
         }
         else if (backwordControl){
-            motor.setPosition(zeroPosition);
+            zero.setPosition(zeroPosition);
+        }
+    }
+    public void move(boolean control, boolean backwordControl, MasqServo zero, double position){
+        if (control){
+            zero.setPosition(position);
+        }
+        else if (backwordControl){
+            zero.setPosition(zero.getZero());
         }
     }
     public void move(boolean forwardControl, boolean backwordControl, MasqCRServo servo, double power){
@@ -296,9 +312,6 @@ public class MasqRobot implements PID_CONSTANTS {
         else {
             servo.setPower(0);
         }
-    }
-    public void move(MasqMotor motor, double power){
-        motor.setPower(power);
     }
 
     public void NFS(MasqController c){
