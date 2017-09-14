@@ -35,6 +35,7 @@ public class MasqRobot implements PID_CONSTANTS {
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
+    private double color = 1;
 
     public enum AllianceColor {
         BLUE (-1.0),
@@ -50,7 +51,7 @@ public class MasqRobot implements PID_CONSTANTS {
         Targets (String value) {this.value = value;}
     }
     public void setAllianceColor(AllianceColor allianceColor){
-        double color = allianceColor.color;
+        this.color = allianceColor.color;
     }
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
@@ -150,6 +151,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double dervitive = (currentError - prevError) / tChange;
             double dervitivekd = dervitive * kd;
             newPower = (errorkp + integralki + dervitivekd);
+            newPower *= color;
             if (Math.abs(newPower) > 1.0) {newPower /= newPower;}
             driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
