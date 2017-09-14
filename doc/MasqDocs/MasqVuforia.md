@@ -15,7 +15,6 @@ v0.0.1
 Commit Tag --> bbf0a1caaf11923af7083742ba8605b2411e8cac
 
 > **Changes:**
-
 > - Created new MasqVuforia Class
 > - Supports three to one target, room to add more
 > - Custom target position, and target orientation for max usability
