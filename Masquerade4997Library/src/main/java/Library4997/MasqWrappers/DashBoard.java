@@ -1,5 +1,7 @@
 package Library4997.MasqWrappers;
 
+import com.qualcomm.robotcore.util.RobotLog;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Library4997.MasqHardware;
@@ -55,6 +57,22 @@ public class DashBoard {
             telemetry.log().add(hardware.getName(), hardware.getDash()[i]);
         }
         update();
+    }
+
+    public void log(String string){
+        RobotLog.i(string);
+    }
+    public void log(Object data){
+        RobotLog.i(data.toString());
+    }
+    public void log(String string, Object data){
+        RobotLog.i(string, data);
+    }
+    public void log(final MasqHardware hardware) {
+        dashLength = hardware.getDash().length;
+        for (int i = 0; i < dashLength; i ++) {
+            RobotLog.i(hardware.getName(), hardware.getDash()[i]);
+        }
     }
 
     public void setNewFirst() {
