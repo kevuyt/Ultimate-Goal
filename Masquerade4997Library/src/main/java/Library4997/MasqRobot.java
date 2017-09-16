@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
@@ -399,6 +400,16 @@ public class MasqRobot implements PID_CONSTANTS {
         vuforia.setPositionThree(0,500,0);
         vuforia.setOrientationThree(MasqVuforia.Facing.RIGHT);
         vuforia.init();
+    }
+    public String getTrackable(){
+            String v = null;
+            if (vuforia.isSeen(Targets.TARGET_ONE))
+                v =  "LEFT";
+            if (vuforia.isSeen(Targets.TARGET_TWO))
+                v =  "CENTER";
+            if (vuforia.isSeen(Targets.TARGET_THREE))
+                v =  "RIGHT";
+            return v;
     }
 
     public int getDelta (double inital, Direction direction) {
