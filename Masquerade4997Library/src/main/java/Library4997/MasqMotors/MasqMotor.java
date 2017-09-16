@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.Direction;
 import Library4997.PID_CONSTANTS;
 
@@ -18,7 +19,8 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double prevPos= 0;
     private double previousTime = 0;
     private double destination = 0;
-    private double currentPosition = 0, zeroEncoderPosition= 0;
+    private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
+    private MasqClock clock = new MasqClock();
     public MasqMotor(String name){
         this.nameMotor = name;
         motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
@@ -77,12 +79,17 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public double getRate () {
         double posC = getCurrentPos() - prevPos;
-        sleep(100);
         double tChange = System.nanoTime() - previousTime;
         previousTime = System.nanoTime();
         tChange = tChange / 1e9;
         prevPos = getCurrentPos();
-        return posC / tChange;
+        double rate = posC / tChange;
+        if (rate != 0)
+            return rate;
+        else {
+            prevRate = rate;
+            return prevRate;
+        }
     }
     public void sleep (int sleepTime) {
         try {
