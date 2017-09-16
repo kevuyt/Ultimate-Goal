@@ -9,9 +9,14 @@ This Documents all major changes to the MasqRobot Class.
 
 Changes and Commits
 -------------
+v0.0.2
+
+Commit Tag --> f36083621aedff8645487abd0540aa0581c65034
+
+> **Changes:**
+> - Made a method that returns encoded position.
 
 v0.0.1
-
 
 Commit Tag --> 7b6334bb93ba4a4719972fba09f4e4bff33f339f -->Added runToPositon()
 
