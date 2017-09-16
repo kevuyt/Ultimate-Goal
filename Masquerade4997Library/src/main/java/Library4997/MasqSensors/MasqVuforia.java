@@ -59,39 +59,51 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
     float mmPerInch = 25.4f;
     float mmBotWidth = 18 * mmPerInch;
     public MasqVuforia(String t1, String t2, String t3, String asset){
+        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
         targetTwo = t2;
         targetThree = t3;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
-        trackables = Arrays.asList(trackOne, trackTwo, trackThree);
         trackOne = vuforiaTrackables.get(0);
         trackTwo = vuforiaTrackables.get(1);
         trackThree = vuforiaTrackables.get(2);
+        trackables = Arrays.asList(trackOne, trackTwo, trackThree);
+        trackOne.setName(targetOne);
+        trackTwo.setName(targetTwo);
+        trackThree.setName(targetThree);
         allTrackables.addAll(vuforiaTrackables);
         numTargets = 3;
     }
     public MasqVuforia(String t1, String t2, String asset){
+        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
         targetTwo = t2;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
-        trackables = Arrays.asList(trackOne, trackTwo);
         trackOne = vuforiaTrackables.get(0);
         trackTwo = vuforiaTrackables.get(1);
+        trackables = Arrays.asList(trackOne, trackTwo);
+        trackOne.setName(targetOne);
+        trackTwo.setName(targetTwo);
         allTrackables.addAll(vuforiaTrackables);
         numTargets = 2;
     }
     public MasqVuforia(String t1, String asset){
+        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
-        trackables = Arrays.asList(trackOne);
         trackOne = vuforiaTrackables.get(0);
+        trackables = Arrays.asList(trackOne);
+        trackOne.setName(targetOne);
         allTrackables.addAll(vuforiaTrackables);
         numTargets = 1;
     }
     public void init(){
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
         locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
         locationThree = createMatrix(x3, y3, z3, u3, v3, w3);
@@ -159,6 +171,9 @@ public class MasqVuforia implements MasqSensor, MasqHardware{
         OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener) getTrackable(target).getListener()).getUpdatedRobotLocation();
         if (robotLocationTransform != null) {
             lastLocation = robotLocationTransform;
+        }
+        if (lastLocation == null) {
+            return "Position UNKNOWN";
         }
         return lastLocation.formatAsTransform();
     }
