@@ -126,9 +126,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void runToPosition(int distance, Direction direction) {
         runToPosition(distance, direction, 0.7);
     }
-    public void runToPosition(int distance) {
-        runToPosition(distance, Direction.FORWARD);
-    }
+    public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
@@ -438,7 +436,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void sleep() {
         sleep(DEFAULT_SLEEP_TIME);
     }
-    public double getDelay(){return FtcRobotControllerActivity.getDelay();}
+    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
     private double scaleInput(double d)  {
         double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
                 0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };

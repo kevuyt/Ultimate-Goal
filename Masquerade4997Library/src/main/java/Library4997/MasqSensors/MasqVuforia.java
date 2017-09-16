@@ -24,7 +24,7 @@ import Library4997.MasqSensor;
 /**
  * Created by Archish on 9/7/17.
  */
-public class MasqVuforia implements MasqSensor, MasqHardware{
+public class MasqVuforia implements MasqSensor, MasqHardware {
     VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(id.cameraMonitorViewId);
     VuforiaLocalizer vuforia;
     VuforiaTrackables vuforiaTrackables;

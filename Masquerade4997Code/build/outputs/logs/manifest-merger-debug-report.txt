@@ -16,24 +16,24 @@ ADDED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main
 application
 ADDED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:11:5-19
 MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/Masquerade4997Library/unspecified/AndroidManifest.xml:15:5-20
-MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:14:5-64:19
+MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:28:5-78:19
 MERGED from [:Inspection-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Inspection-release/AndroidManifest.xml:19:5-40:19
 MERGED from [:Blocks-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Blocks-release/AndroidManifest.xml:18:5-49:19
 MERGED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:67:5-93
 MERGED from [:FtcCommon-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/AndroidManifest.xml:22:5-255:19
 MERGED from [:Analytics-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Analytics-release/AndroidManifest.xml:19:5-24:19
 	android:label
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:17:9-41
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:31:9-41
 	android:exported
 		ADDED from [:Analytics-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Analytics-release/AndroidManifest.xml:21:9-32
 	android:allowBackup
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:15:9-35
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:29:9-35
 	android:icon
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:16:9-45
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:30:9-45
 	android:largeHeap
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:18:9-33
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:32:9-33
 	android:theme
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:19:9-40
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:33:9-40
 	android:name
 		ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:67:18-90
 uses-sdk
@@ -59,74 +59,105 @@ uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
 ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:12:5-81
 	android:name
 		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:12:22-78
+uses-permission#android.permission.CAMERA
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:13:5-65
+MERGED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:48:5-65
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:13:22-62
+uses-feature#android.hardware.camera
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:15:5-17:36
+MERGED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:65:5-60
+	android:required
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:17:9-33
+		MERGED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:15:5-17:36
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:16:9-47
+uses-feature#android.hardware.camera.autofocus
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:18:5-20:36
+	android:required
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:20:9-33
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:19:9-57
+uses-feature#android.hardware.camera.front
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:21:5-23:36
+	android:required
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:23:9-33
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:22:9-53
+uses-feature#android.hardware.camera.front.autofocus
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:24:5-26:36
+	android:required
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:26:9-33
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:25:9-63
 activity#org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:22:9-39:20
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:36:9-53:20
 	android:label
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:25:13-45
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:39:13-45
 	android:launchMode
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:26:13-44
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:40:13-44
 	android:configChanges
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:24:13-59
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:38:13-59
 	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:23:13-101
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:37:13-101
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:27:13-31:29
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:41:13-45:29
 category#android.intent.category.LAUNCHER
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:28:17-77
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:42:17-77
 	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:28:27-74
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:42:27-74
 action#android.intent.action.MAIN
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:30:17-69
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:44:17-69
 	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:30:25-66
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:44:25-66
 intent-filter#android.hardware.usb.action.USB_DEVICE_ATTACHED
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:32:13-34:29
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:46:13-48:29
 action#android.hardware.usb.action.USB_DEVICE_ATTACHED
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:33:17-90
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:47:17-90
 	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:33:25-87
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:47:25-87
 meta-data#android.hardware.usb.action.USB_DEVICE_ATTACHED
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:36:13-38:57
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:50:13-52:57
 	android:resource
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:38:17-54
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:52:17-54
 	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:37:17-79
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:51:17-79
 receiver#org.firstinspires.ftc.robotcontroller.internal.RunOnStartup
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:42:9-53:20
-	android:enabled
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:44:13-35
-	android:exported
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:45:13-36
-	android:permission
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:46:13-75
-	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:43:13-87
-intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.QUICKBOOT_POWERON+android.intent.category.DEFAULT
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:47:13-52:29
-category#android.intent.category.DEFAULT
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:48:17-76
-	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:48:27-73
-action#android.intent.action.BOOT_COMPLETED
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:50:17-79
-	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:50:25-76
-action#android.intent.action.QUICKBOOT_POWERON
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:51:17-82
-	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:51:25-79
-service#com.qualcomm.ftccommon.FtcRobotControllerService
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:56:9-58:38
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:56:9-67:20
 	android:enabled
 		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:58:13-35
+	android:exported
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:59:13-36
+	android:permission
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:60:13-75
 	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:57:13-76
-service#org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerWatchdogService
-ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:61:9-63:38
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:57:13-87
+intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.QUICKBOOT_POWERON+android.intent.category.DEFAULT
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:61:13-66:29
+category#android.intent.category.DEFAULT
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:62:17-76
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:62:27-73
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:64:17-79
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:64:25-76
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:65:17-82
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:65:25-79
+service#com.qualcomm.ftccommon.FtcRobotControllerService
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:70:9-72:38
 	android:enabled
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:63:13-35
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:72:13-35
 	android:name
-		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:62:13-108
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:71:13-76
+service#org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerWatchdogService
+ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:75:9-77:38
+	android:enabled
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:77:13-35
+	android:name
+		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/AndroidManifest.xml:76:13-108
 uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [:Inspection-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Inspection-release/AndroidManifest.xml:11:5-76
 MERGED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:11:5-13:35
@@ -280,10 +311,6 @@ ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masqu
 		ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:47:9-32
 	android:name
 		ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:46:9-52
-uses-permission#android.permission.CAMERA
-ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:48:5-65
-	android:name
-		ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:48:22-62
 uses-feature#android.hardware.usb.accessory
 ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:50:5-67
 	android:name
@@ -292,10 +319,6 @@ uses-feature#0x00020000
 ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:51:5-54
 	android:glEsVersion
 		ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:51:19-51
-uses-feature#android.hardware.camera
-ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:65:5-60
-	android:name
-		ADDED from [:RobotCore-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/AndroidManifest.xml:65:19-57
 activity#com.qualcomm.ftccommon.FtcRobotControllerSettingsActivity
 ADDED from [:FtcCommon-release:] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/AndroidManifest.xml:27:9-36:20
 	android:label
