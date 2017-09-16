@@ -9,6 +9,15 @@ This Documents all major changes to the Dashboard Class.
 
 Changes and Commits
 -------------
+v0.0.2
+
+
+Commit Tag --> a7cc21ac4fc6bdc90cf6215926a576481f39094d
+
+> **Changes:**
+> - Dashboard can now add to robot log
+> - Supports all masqhardware, and similar set up of other Dashboard modes.
+
 v0.0.1
 
 
