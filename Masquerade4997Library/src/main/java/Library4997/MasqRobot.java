@@ -391,6 +391,16 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor.update();
     }
 
+    public void vuforiaInit(){
+        vuforia.setPositionOne(0,500,0);
+        vuforia.setOrientationOne(MasqVuforia.Facing.RIGHT);
+        vuforia.setPositionTwo(0,500,0);
+        vuforia.setOrientationTwo(MasqVuforia.Facing.RIGHT);
+        vuforia.setPositionThree(0,500,0);
+        vuforia.setOrientationThree(MasqVuforia.Facing.RIGHT);
+        vuforia.init();
+    }
+
     public int getDelta (double inital, Direction direction) {
         return (int) (inital- (imu.getHeading() * direction.value));
     }
