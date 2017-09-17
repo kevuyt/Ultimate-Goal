@@ -5,17 +5,13 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 
-import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
-import Library4997.MasqServos.MasqCRServo;
-import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.Direction;
 import Library4997.MasqWrappers.MasqController;
@@ -259,8 +255,8 @@ public class MasqRobot implements PID_CONSTANTS {
         double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
         double leftError =  left - leftRate;
         double rightError = right - rightRate;
-        left = left - (leftError * TELE_KP);
-        right = right - (rightError * TELE_KP);
+        left = left - (leftError * KP_TELE);
+        right = right - (rightError * KP_TELE);
         if(left > 1.0) {
             left /= left;
             right /= left;
@@ -328,8 +324,14 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor.update();
     }
     public void TANK(MasqController c){
-        driveTrain.rightDrive.setPower(c.right_stick_y());
-        driveTrain.leftDrive.setPower(c.left_stick_x());
+        double left = c.left_stick_x();
+        double right = c.right_stick_y();
+        double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
+        double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
+        double leftError =  left - leftRate;
+        double rightError = right - rightRate;
+        driveTrain.rightDrive.setPower(right - (rightError * KP_TELE));
+        driveTrain.leftDrive.setPower(left - (leftError * KP_TELE));
         voltageSensor.update();
     }
 
