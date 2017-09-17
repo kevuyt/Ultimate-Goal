@@ -250,69 +250,6 @@ public class MasqRobot implements PID_CONSTANTS {
         stop(sensor, 0.5);
     }
 
-    public void move(boolean control, MasqMotor motor, double power){
-        if (control){
-            motor.setPower(power);
-        }
-        else {
-            motor.setPower(0);
-        }
-    }
-    public void move(boolean forwardControl, boolean backwordControl, MasqMotor motor, double power){
-        if (forwardControl){
-            motor.setPower(power);
-        }
-        else if (backwordControl){
-            motor.setPower(-power);
-        }
-        else {
-            motor.setPower(0);
-        }
-    }
-    public void move(boolean control, MasqServo servo, double position, double zeroPosition){
-        if (control){
-            servo.setPosition(position);
-        }
-        else {
-            servo.setPosition(zeroPosition);
-        }
-    }
-    public void move(boolean control, MasqServo servo, double position){
-        if (control){
-            servo.setPosition(position);
-        }
-        else {
-            servo.setPosition(servo.getZero());
-        }
-    }
-    public void move(boolean control, boolean backwordControl, MasqServo zero, double position, double zeroPosition){
-        if (control){
-            zero.setPosition(position);
-        }
-        else if (backwordControl){
-            zero.setPosition(zeroPosition);
-        }
-    }
-    public void move(boolean control, boolean backwordControl, MasqServo zero, double position){
-        if (control){
-            zero.setPosition(position);
-        }
-        else if (backwordControl){
-            zero.setPosition(zero.getZero());
-        }
-    }
-    public void move(boolean forwardControl, boolean backwordControl, MasqCRServo servo, double power){
-        if (forwardControl){
-            servo.setPower(power);
-        }
-        else if (backwordControl){
-            servo.setPower(-power);
-        }
-        else {
-            servo.setPower(0);
-        }
-    }
-
     public void NFS(MasqController c){
         float move = -c.left_stick_x();
         float turn = -c.right_stick_y();
