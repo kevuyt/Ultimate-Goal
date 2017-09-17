@@ -9,6 +9,13 @@ This Documents all major changes to the MasqRobot Class.
 
 Changes and Commits
 -------------
+v0.0.3
+
+Commit Tag --> e62e9f529988bc4c83e6015e0530f8f2fc7f027a
+
+> **Changes:**
+> - Teleop modes are closed loop.
+
 v0.0.2
 
 Commit Tag --> f36083621aedff8645487abd0540aa0581c65034
