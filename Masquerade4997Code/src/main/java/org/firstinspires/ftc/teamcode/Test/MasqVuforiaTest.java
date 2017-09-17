@@ -16,10 +16,9 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.vuforiaInit();
         while (!opModeIsActive()){
-            dash.create("IS SEEN", robot.vuforia.isSeen(Targets.TARGET_ONE));
-            dash.create("POSITION", robot.vuforia.position(Targets.TARGET_ONE));
             dash.create(robot.getTrackable());
             dash.update();
         }
+        waitForStart();
     }
 }

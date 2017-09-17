@@ -339,11 +339,11 @@ public class MasqRobot implements PID_CONSTANTS {
     public String getTrackable(){
             String v = null;
             if (vuforia.isSeen(Targets.TARGET_ONE))
-                v =  "LEFT";
-            if (vuforia.isSeen(Targets.TARGET_TWO))
-                v =  "CENTER";
-            if (vuforia.isSeen(Targets.TARGET_THREE))
                 v =  "RIGHT";
+            else if (vuforia.isSeen(Targets.TARGET_TWO))
+                v =  "CENTER";
+            else if (vuforia.isSeen(Targets.TARGET_THREE))
+                v =  "LEFT";
             return v;
     }
 
