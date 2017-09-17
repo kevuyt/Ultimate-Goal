@@ -246,6 +246,26 @@ public class MasqRobot implements PID_CONSTANTS {
         stop(sensor, 0.5);
     }
 
+    public void vuforiaInit(){
+        vuforia.setPositionOne(0,500,0);
+        vuforia.setOrientationOne(MasqVuforia.Facing.RIGHT);
+        vuforia.setPositionTwo(0,500,0);
+        vuforia.setOrientationTwo(MasqVuforia.Facing.RIGHT);
+        vuforia.setPositionThree(0,500,0);
+        vuforia.setOrientationThree(MasqVuforia.Facing.RIGHT);
+        vuforia.init();
+    }
+    public String getTrackable(){
+        String v = null;
+        if (vuforia.isSeen(Targets.TARGET_ONE))
+            v =  "RIGHT";
+        else if (vuforia.isSeen(Targets.TARGET_TWO))
+            v =  "CENTER";
+        else if (vuforia.isSeen(Targets.TARGET_THREE))
+            v =  "LEFT";
+        return v;
+    }
+
     public void NFS(MasqController c){
         float move = c.left_stick_y();
         float turn = c.right_stick_x();
@@ -335,32 +355,14 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor.update();
     }
 
-    public void vuforiaInit(){
-        vuforia.setPositionOne(0,500,0);
-        vuforia.setOrientationOne(MasqVuforia.Facing.RIGHT);
-        vuforia.setPositionTwo(0,500,0);
-        vuforia.setOrientationTwo(MasqVuforia.Facing.RIGHT);
-        vuforia.setPositionThree(0,500,0);
-        vuforia.setOrientationThree(MasqVuforia.Facing.RIGHT);
-        vuforia.init();
-    }
-    public String getTrackable(){
-            String v = null;
-            if (vuforia.isSeen(Targets.TARGET_ONE))
-                v =  "RIGHT";
-            else if (vuforia.isSeen(Targets.TARGET_TWO))
-                v =  "CENTER";
-            else if (vuforia.isSeen(Targets.TARGET_THREE))
-                v =  "LEFT";
-            return v;
-    }
-
     public int getDelta (double inital, Direction direction) {
         return (int) (inital- (imu.getHeading() * direction.value));
     }
     public double getVoltage() {
         return voltageSensor.getVoltage();
     }
+    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
+
     public void sleep(int time) {
         try {
             Thread.sleep((long) time);
@@ -378,7 +380,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void sleep() {
         sleep(DEFAULT_SLEEP_TIME);
     }
-    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
+
     private double scaleInput(double d)  {
         double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
                 0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };
