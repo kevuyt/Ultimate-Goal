@@ -251,10 +251,16 @@ public class MasqRobot implements PID_CONSTANTS {
     }
 
     public void NFS(MasqController c){
-        float move = -c.left_stick_x();
-        float turn = -c.right_stick_y();
+        float move = c.left_stick_y();
+        float turn = c.right_stick_x();
         double left = move - turn;
         double right = move + turn;
+        double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
+        double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
+        double leftError =  left - leftRate;
+        double rightError = right - rightRate;
+        left = left - (leftError * TELE_KP);
+        right = right - (rightError * TELE_KP);
         if(left > 1.0) {
             left /= left;
             right /= left;

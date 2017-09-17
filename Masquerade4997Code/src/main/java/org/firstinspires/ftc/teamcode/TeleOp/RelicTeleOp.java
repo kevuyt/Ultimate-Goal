@@ -17,6 +17,9 @@ public class RelicTeleOp extends MasqLinearOpMode {
         }
         while (opModeIsActive()){
             robot.NFS(controller1);
+            dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
+            dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
+            dash.update();
         }
     }
 }

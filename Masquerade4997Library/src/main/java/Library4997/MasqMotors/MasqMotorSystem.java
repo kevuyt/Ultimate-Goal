@@ -79,6 +79,15 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
             masqMotor.runWithoutEncoders();
         return this;
     }
+    public double getRate(){
+        double i = 1;
+        double rate = 0;
+        for (MasqMotor masqMotor: motors){
+            rate += masqMotor.getRate() / i;
+            i++;
+        }
+        return rate;
+    }
     public void stopDriving() {
         setPower(0);
     }

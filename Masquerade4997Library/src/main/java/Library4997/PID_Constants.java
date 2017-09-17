@@ -16,6 +16,8 @@ public interface PID_CONSTANTS {
             KP_BATTERY = 0.01,
             KI_BATTERY = 0.001,
             KD_BATTERY = 0;
+    double TELE_KP = 0.1;
+    double MAX_RATE = 3100;
     double TICKS_PER_ROTATION = 1120;
     double wheelDiameter = 4;
     double cmToInches = 2.54;
