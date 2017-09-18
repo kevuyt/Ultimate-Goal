@@ -171,9 +171,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void turn(int angle, Direction DIRECTION, double timeout)  {
         turn(angle, DIRECTION, timeout, DEFAULT_SLEEP_TIME);
     }
-    public void turn(int angle, Direction DIRECTION)  {
-        turn(angle, DIRECTION, DEFAULT_TIMEOUT);
-    }
+    public void turn(int angle, Direction DIRECTION)  {turn(angle, DIRECTION, DEFAULT_TIMEOUT);}
 
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -195,9 +193,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void stopRed (MasqColorSensor colorSensor, double power){
         stopRed(colorSensor, power, Direction.BACKWARD);
     }
-    public void stopRed (MasqColorSensor colorSensor){
-        stopRed(colorSensor, 0.5);
-    }
+    public void stopRed (MasqColorSensor colorSensor){stopRed(colorSensor, 0.5);}
 
     public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -219,9 +215,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void stopBlue (MasqColorSensor colorSensor, double power){
         stopBlue(colorSensor, power, Direction.BACKWARD);
     }
-    public void stopBlue (MasqColorSensor colorSensor){
-        stopBlue(colorSensor, 0.5);
-    }
+    public void stopBlue (MasqColorSensor colorSensor){stopBlue(colorSensor, 0.5);}
 
     public void stop(MasqSensor sensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -242,9 +236,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void stop (MasqSensor sensor, double power){
         stop(sensor, power, Direction.BACKWARD);
     }
-    public void stop (MasqSensor sensor){
-        stop(sensor, 0.5);
-    }
+    public void stop (MasqSensor sensor){stop(sensor, 0.5);}
 
     public void vuforiaInit(){
         vuforia.setPositionOne(0,500,0);
@@ -377,9 +369,7 @@ public class MasqRobot implements PID_CONSTANTS {
             Thread.currentThread().interrupt();
         }
     }
-    public void sleep() {
-        sleep(DEFAULT_SLEEP_TIME);
-    }
+    public void sleep() {sleep(DEFAULT_SLEEP_TIME);}
 
     private double scaleInput(double d)  {
         double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
