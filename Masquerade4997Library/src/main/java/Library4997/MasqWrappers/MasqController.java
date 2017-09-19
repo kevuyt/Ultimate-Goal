@@ -1,7 +1,6 @@
 package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
-
 import Library4997.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
 
