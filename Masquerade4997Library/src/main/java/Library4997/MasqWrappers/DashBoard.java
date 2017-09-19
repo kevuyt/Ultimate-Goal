@@ -7,20 +7,20 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import Library4997.MasqHardware;
 
 /**
- * Custom Telemetry
+ * This is a telemetry wrapper class.
+ * It provides additional functionality such as stickied messages.
+ * It supports multiple types of inputs, including MasqHardware objects.
  */
 
 public class DashBoard {
     private int dashLength;
-    private org.firstinspires.ftc.robotcore.external.Telemetry telemetry;
-    public DashBoard(org.firstinspires.ftc.robotcore.external.Telemetry telemetry){
+    private Telemetry telemetry;
+    public DashBoard(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
     }
 
-    public static DashBoard getDash(){
-        return instance;
-    }
+    public static DashBoard getDash(){return instance;}
     public static DashBoard instance;
 
     public void create(String string) {
