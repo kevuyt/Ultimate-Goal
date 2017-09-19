@@ -15,6 +15,7 @@ import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.Direction;
 import Library4997.MasqWrappers.MasqController;
+import Library4997.MasqWrappers.MasqControllerAlpha;
 
 /**
  * MasqRobot--> Contains all hardware and methods to run the robot.
@@ -286,32 +287,19 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerRight(-right);
         }
         voltageSensor.update();
+        c.update();
     }
     public void MECH(MasqController c){
         double angle;
         double x = c.left_stick_y();
         double y = -c.left_stick_x();
-        if (x != 0) {
-            angle = Math.atan(y/x);
-        }
-        else {
-            angle = 0;
-        }
-        if (x < 0 && y > 0) {
-            angle = angle + Math.PI;
-        }
-        else if (x < 0 && y <= 0) {
-            angle = angle + Math.PI;
-        }
-        else if (x > 0 && y < 0) {
-            angle = angle + (2*Math.PI);
-        }
-        else if (x == 0 && y > 0 ) {
-            angle = Math.PI/2;
-        }
-        else if (x == 0 && y < 0 ) {
-            angle = (3 * Math.PI) / 2;
-        }
+        if (x != 0) {angle = Math.atan(y/x);}
+        else {angle = 0;}
+        if (x < 0 && y > 0) {angle = angle + Math.PI;}
+        else if (x < 0 && y <= 0) {angle = angle + Math.PI;}
+        else if (x > 0 && y < 0) {angle = angle + (2*Math.PI);}
+        else if (x == 0 && y > 0 ) {angle = Math.PI/2;}
+        else if (x == 0 && y < 0 ) {angle = (3 * Math.PI) / 2;}
         double speedMagnitude = Math.hypot(x, y);
         double frontLeft = -(Math.sin(angle + (Math.PI/4))) * speedMagnitude + c.right_stick_x();
         double backLeft = -(Math.cos(angle + (Math.PI/4))) * speedMagnitude + c.right_stick_x();
@@ -334,6 +322,7 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.rightDrive.motor1.setPower(frontRight);
         driveTrain.rightDrive.motor2.setPower(backRight);
         voltageSensor.update();
+        c.update();
     }
     public void TANK(MasqController c){
         double left = c.left_stick_x();
@@ -345,6 +334,7 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.rightDrive.setPower(right - (rightError * KP_TELE));
         driveTrain.leftDrive.setPower(left - (leftError * KP_TELE));
         voltageSensor.update();
+        c.update();
     }
 
     public int getDelta (double inital, Direction direction) {
