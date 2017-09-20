@@ -48,9 +48,7 @@ public class MasqRobot implements PID_CONSTANTS {
         public final String value;
         Targets (String value) {this.value = value;}
     }
-    public void setAllianceColor(AllianceColor allianceColor){
-        this.color = allianceColor.color;
-    }
+    public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     private boolean opModeIsActive() {
         return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
     }
