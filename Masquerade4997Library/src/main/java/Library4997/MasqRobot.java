@@ -15,7 +15,6 @@ import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.Direction;
 import Library4997.MasqWrappers.MasqController;
-import Library4997.MasqWrappers.MasqControllerAlpha;
 
 /**
  * MasqRobot--> Contains all hardware and methods to run the robot.
@@ -258,8 +257,8 @@ public class MasqRobot implements PID_CONSTANTS {
     }
 
     public void NFS(MasqController c){
-        float move = c.left_stick_y();
-        float turn = c.right_stick_x();
+        float move = c.leftStickY();
+        float turn = c.rightStickX();
         double left = move - turn;
         double right = move + turn;
         double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
@@ -285,12 +284,11 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerRight(-right);
         }
         voltageSensor.update();
-        c.update();
     }
     public void MECH(MasqController c){
         double angle;
-        double x = c.left_stick_y();
-        double y = -c.left_stick_x();
+        double x = c.leftStickY();
+        double y = -c.leftStickX();
         if (x != 0) {angle = Math.atan(y/x);}
         else {angle = 0;}
         if (x < 0 && y > 0) {angle = angle + Math.PI;}
@@ -299,10 +297,10 @@ public class MasqRobot implements PID_CONSTANTS {
         else if (x == 0 && y > 0 ) {angle = Math.PI/2;}
         else if (x == 0 && y < 0 ) {angle = (3 * Math.PI) / 2;}
         double speedMagnitude = Math.hypot(x, y);
-        double frontLeft = -(Math.sin(angle + (Math.PI/4))) * speedMagnitude + c.right_stick_x();
-        double backLeft = -(Math.cos(angle + (Math.PI/4))) * speedMagnitude + c.right_stick_x();
-        double frontRight = (Math.cos(angle + (Math.PI/4))) * speedMagnitude + c.right_stick_x();
-        double backRight = (Math.sin(angle + (Math.PI/4))) * speedMagnitude + c.right_stick_x();
+        double frontLeft = -(Math.sin(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
+        double backLeft = -(Math.cos(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
+        double frontRight = (Math.cos(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
+        double backRight = (Math.sin(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
 
         double driveScaleFactor = Math.abs(Math.max(
                 Math.max(frontLeft, frontRight),
@@ -320,11 +318,10 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.rightDrive.motor1.setPower(frontRight);
         driveTrain.rightDrive.motor2.setPower(backRight);
         voltageSensor.update();
-        c.update();
     }
     public void TANK(MasqController c){
-        double left = c.left_stick_x();
-        double right = c.right_stick_y();
+        double left = c.leftStickX();
+        double right = c.rightStickY();
         double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
         double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
         double leftError =  left - leftRate;
@@ -332,7 +329,6 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.rightDrive.setPower(right - (rightError * KP_TELE));
         driveTrain.leftDrive.setPower(left - (leftError * KP_TELE));
         voltageSensor.update();
-        c.update();
     }
 
     public int getDelta (double inital, Direction direction) {
