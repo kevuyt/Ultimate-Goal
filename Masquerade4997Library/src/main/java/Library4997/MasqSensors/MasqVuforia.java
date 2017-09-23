@@ -22,8 +22,8 @@ import java.util.List;
 import Library4997.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqSensor;
-import Library4997.MasqWrappers.VuMark;
-import Library4997.MasqWrappers.VuforiaListener;
+import Library4997.MasqWrappers.MasqVuMark;
+import Library4997.MasqWrappers.MasqVuforiaListener;
 
 /**
  * Created by Archish on 9/7/17.
@@ -35,7 +35,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocation, lastLocation;
-    private VuMark vuMark;
+    private MasqVuMark vuMark;
     private int
             u1 = 90, u2 = 90, u3 = 90,
             v1 = 0, v2 = 0, v3 = 0,
@@ -125,12 +125,12 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         vuforiaTrackables.activate();
     }
     private void loadVuMark(@Nullable VuforiaTrackable trackable){
-        vuMark = ((VuforiaListener)trackable.getListener()).getVuMarkInstanceId();
+        vuMark = ((MasqVuforiaListener)trackable.getListener()).getVuMarkInstanceId();
     }
 
     public String getVuMarkID(){
         String result = null;
-        if (vuMark != null && vuMark.getType() == VuMark.Type.NUMERIC) {
+        if (vuMark != null && vuMark.getType() == MasqVuMark.Type.NUMERIC) {
             long value = vuMark.getNumericValue();
             if (value==1) {
                 result = "LEFT";

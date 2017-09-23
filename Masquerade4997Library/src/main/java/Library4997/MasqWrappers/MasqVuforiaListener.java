@@ -49,7 +49,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * {@link VuforiaListener} is the default listener used for {@link VuforiaTrackable}
+ * {@link MasqVuforiaListener} is the default listener used for {@link VuforiaTrackable}
  * implementations. This listener facilitates polling for results of the tracking. (Advanced:) Alternate
  * listeners could make use of event-driven results by taking actions in the {@link VuforiaTrackable.Listener}
  * methods.
@@ -58,7 +58,7 @@ import java.util.Map;
  * @see VuforiaTrackable#getListener()
  */
 @SuppressWarnings("WeakerAccess")
-public class VuforiaListener implements VuforiaTrackable.Listener
+public class MasqVuforiaListener implements VuforiaTrackable.Listener
 {
     //----------------------------------------------------------------------------------------------
     // State
@@ -71,7 +71,7 @@ public class VuforiaListener implements VuforiaTrackable.Listener
     protected boolean newLocationAvailable;
     protected Matrix34F currentPose;
     protected Matrix34F lastTrackedPose;
-    protected VuMark vuMarkInstanceId = null;
+    protected MasqVuMark vuMarkInstanceId = null;
     protected OpenGLMatrix phoneLocationOnRobotInverted;
     protected VuforiaLocalizer.CameraDirection cameraDirection;
     protected final Map<VuforiaLocalizer.CameraDirection, OpenGLMatrix> poseCorrectionMatrices;
@@ -80,7 +80,7 @@ public class VuforiaListener implements VuforiaTrackable.Listener
     // Construction
     //----------------------------------------------------------------------------------------------
 
-    public VuforiaListener(VuforiaTrackable trackable)
+    public MasqVuforiaListener(VuforiaTrackable trackable)
     {
         this.trackable = trackable;
         this.newPoseAvailable = false;
@@ -308,13 +308,14 @@ public class VuforiaListener implements VuforiaTrackable.Listener
     }
 
     /**
-     * Returns the instance id of the currently visible VuMark associated with this
-     * VuMark template, if any presently exists.
+     * Returns the instance id of the currently visible MasqVuMark associated with this
+     * MasqVuMark template, if any presently exists.
      *
-     * @return the instance id of the currently visible VuMark
-     * @see <a href="https://library.vuforia.com/content/vuforia-library/en/reference/java/classcom_1_1vuforia_1_1VuMarkTemplate.html">VuMark template</a>
+     * @return the instance id of the currently visible MasqVuMark
+     * @see <a href="https://library.vuforia.com/content/vuforia-library/en/reference/java/classcom_1_1vuforia_1_1VuMarkTemplate.html">MasqVuMark template</a>
      */
-    public synchronized @Nullable VuMark getVuMarkInstanceId()
+    public synchronized @Nullable
+    MasqVuMark getVuMarkInstanceId()
     {
         return vuMarkInstanceId;
     }
@@ -336,7 +337,7 @@ public class VuforiaListener implements VuforiaTrackable.Listener
         {
             VuMarkTargetResult vuMarkTargetResult = (VuMarkTargetResult)trackableResult;
             VuMarkTarget vuMarkTarget = (VuMarkTarget) vuMarkTargetResult.getTrackable();
-            vuMarkInstanceId = new VuMark(vuMarkTarget.getInstanceId());
+            vuMarkInstanceId = new MasqVuMark(vuMarkTarget.getInstanceId());
         }
     }
 

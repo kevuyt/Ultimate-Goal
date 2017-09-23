@@ -40,13 +40,13 @@ import java.util.Arrays;
 
 /**
  * {@link } captures the identifying state decoded from a particular instance
- * of a Vuforia VuMark.
+ * of a Vuforia MasqVuMark.
  *
  * @see com.vuforia.VuMarkTarget
  * @see com.vuforia.InstanceId
  */
 @SuppressWarnings("WeakerAccess")
-public class VuMark
+public class MasqVuMark
 {
     //----------------------------------------------------------------------------------------------
     // Types
@@ -65,11 +65,6 @@ public class VuMark
         STRING,
         DATA;
     }
-
-    //----------------------------------------------------------------------------------------------
-    // State
-    //----------------------------------------------------------------------------------------------
-
     protected Type type;
     protected int numericValue;
     protected String stringValue;
@@ -80,12 +75,7 @@ public class VuMark
     {
         return "VuMarkInstanceId(" + this.getType() + ", " + this.getValue() + ")";
     }
-
-    //----------------------------------------------------------------------------------------------
-    // Construction
-    //----------------------------------------------------------------------------------------------
-
-    public VuMark(InstanceId instanceId)
+    public MasqVuMark(InstanceId instanceId)
     {
         this.type = typeFrom(instanceId);
         switch (this.type)
@@ -114,17 +104,12 @@ public class VuMark
             default:                                return Type.UNKNOWN;
         }
     }
-
-    //----------------------------------------------------------------------------------------------
-    // Comparison
-    //----------------------------------------------------------------------------------------------
-
     @Override
     public boolean equals(Object o)
     {
-        if (o instanceof VuMark)
+        if (o instanceof MasqVuMark)
         {
-            VuMark them = (VuMark)o;
+            MasqVuMark them = (MasqVuMark)o;
             if (this.getType() == them.getType())
             {
                 switch (this.getType())
@@ -149,11 +134,6 @@ public class VuMark
         }
         return super.hashCode();
     }
-
-    //----------------------------------------------------------------------------------------------
-    // Accessing
-    //----------------------------------------------------------------------------------------------
-
     public Type getType()
     {
         return type;

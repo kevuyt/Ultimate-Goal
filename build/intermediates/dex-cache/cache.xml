@@ -3,138 +3,138 @@
 
     <item
         is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/jars/classes.jar"
+        jar="/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="db410b668c4e48408eb2f0735962e1e8da3f4f51">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-FtcCommon-release_e124c9e07842ab787373a261c7b6bea79aa0217c.jar" />
+        revision="25.0.0"
+        sha1="026c9973867cd43529a833f00165d033137f75d6">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_f45836b0084c797d6a5773ca632faf73484b6143.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/Masquerade4997Library/unspecified/jars/classes.jar"
+        jar="/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/jars/libs/gson-extras-0.2.1.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="0919dcc610e9f1a384c4e35d0803e52a71e7bd77">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/MasqLib-Masquerade4997Library-unspecified_04c77d7c23b71b6d32241bd14695551d6c08d1b7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/MasqOpenCV/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="1d3816055824b115d458355588f0e75f5605bad3">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/MasqLib-MasqOpenCV-unspecified_7ade92c42293fe1e14156d39ae7dfac7c2ebc339.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/Vuforia.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="91b46366eb9f8203073ee2935087c097c888c0ed">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/Vuforia_e65c3a261a18a42d4206c7a9963687d67444b75a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Inspection-release/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c1495a71d5ade3ccab4ad71ddb1eaad2c1b179a8">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Inspection-release_66d7a013dac76f21918efdacc9b962994825a8ff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/gson-extras-0.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
+        revision="25.0.0"
         sha1="b30c2655badcc7ce97f84e49f777b7dd154bad57">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-extras-0.2.1_49a71478fd0918368c1c880da1a5dfa443d70c1c.jar" />
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-extras-0.2.1_0dcf6459a5a20f4c6ce323a9facdccac631f3571.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Analytics-release/jars/classes.jar"
+        jar="/Users/Archish/.android/build-cache/713f75c5ac3f7d07fd2fcdaa2b498276a7bd20e5/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
+        revision="25.0.0"
         sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Analytics-release_07b9dd12eecfe65dd0ce48778e26783b7548f30b.jar" />
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_a47edcc3e91c344b724b2317f4b4d7973aa920bd.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Blocks-release/jars/classes.jar"
+        jar="/Users/Archish/.android/build-cache/f70a274b453887416774f75dac77e71f7ba66f15/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="2f39fa40374399d9ebd63001ce4f9a103ebbc12f">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Blocks-release_f928c06eff56bc95bf8f9bcf4cc7244c8a28edc0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/ModernRobotics-release/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="01999c87afe3d10ffa06f3efa66f39e61e6aba0c">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-ModernRobotics-release_1068986648fd96f7a32a048048d22d3e26448c72.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/Hardware-release/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
+        revision="25.0.0"
         sha1="85717fa7cfc790531843fee43c7f4462f1712999">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-Hardware-release_cc12b95eb35269a297aafb17afe150f03fecede2.jar" />
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_99566e32ecbd287aad53b17001db175a8f3c5b68.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/gson-2.8.0.jar"
+        jar="/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="23.0.3"
-        sha1="e118dd0900e4a18fb928ebb8df2d9fbda78f2b5d">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-2.8.0_279c8140ee5867ba94b41bc4e0979910402daf2f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/WirelessP2p-release/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-WirelessP2p-release_db4a23db37faa8b33059dad3983255a99ee7a271.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="06d0c532279cced9231c96dbd1cc583e95faa2b6">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/MasqLib-FtcRobotController-unspecified_e2daab6439ec60edce26af4f8e08500a378fd139.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/libs/support-annotations-23.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="5a214d3b1b12e72f4fb0d5d5d8d0ec43c96de2b5">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_908fc31c02b8b10e356d7f6b7d353563ed34d08f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/RobotCore-release/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
+        revision="25.0.0"
         sha1="273a08fde808d0bc40ee02cbd128d145579ea637">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/intermediates-exploded-aar-RobotCore-release_2e145180443ce192ff9dd02db8c285cdce643f87.jar" />
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_b2b1bd0343a16ccb9072d932e27e7f704a299c61.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/jars/libs/Vuforia.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="91b46366eb9f8203073ee2935087c097c888c0ed">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/Vuforia_becd43805da9cebd890ee0534f278349e00e7fc2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/4666cdbc2269c815bf9860e99ce9e3c01a205472/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_26601bd9b7dcb726919dca0b238dddc9957267bb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/jars/libs/support-annotations-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5a214d3b1b12e72f4fb0d5d5d8d0ec43c96de2b5">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_59217cece8867170c77c21c097468761cdeb8087.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/1c9844cc0899dde64734a2586b38e71dd90dec86/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c1495a71d5ade3ccab4ad71ddb1eaad2c1b179a8">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_f58168b28db421cbcb1800c21f5010d8513ee5eb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/Documents/Projects/MasqLib/MasqOpenCV/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e1d5cfdb78b8a8201a0f22fc7ca14d95dffb3e18">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_87c8773a7c85cf1fa79361856a4e71d9fcbb31ca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/4c66078b6bb3f0b2b67c75fcca17c01bbd19f589/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="01999c87afe3d10ffa06f3efa66f39e61e6aba0c">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_e6bb75ec8bae3cfba0a2ae186b3c91973ae7465d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0919dcc610e9f1a384c4e35d0803e52a71e7bd77">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/jars/libs/gson-2.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e118dd0900e4a18fb928ebb8df2d9fbda78f2b5d">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-2.8.0_e755793c6abc2493ff2b6fc9357440fbfb023abb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/edd8b2d611b376f382cde77f3bfe50c49d6291cf/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2f39fa40374399d9ebd63001ce4f9a103ebbc12f">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_9078909ddaaa30d9dfd669cd2e775d01c1eb1b6d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="db410b668c4e48408eb2f0735962e1e8da3f4f51">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_9ed93e80fe43ece6d9decc84e266ddf333cef368.jar" />
     </item>
 
 </items>
