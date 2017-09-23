@@ -35,6 +35,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocation, lastLocation;
+    String vuMarkID;
     private MasqVuMark vuMark;
     private int
             u1 = 90, u2 = 90, u3 = 90,
@@ -105,14 +106,18 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
         locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
         locationThree = createMatrix(x3, y3, z3, u3, v3, w3);
-        trackOne.setLocation(locationOne);
-        trackTwo.setLocation(locationTwo);
-        trackThree.setLocation(locationThree);
-        if (numTargets <= 2){
-            locationThree = null;
-        }
-        if (numTargets == 1){
+        if (numTargets == 1) {
+            trackOne.setLocation(locationOne);
             locationTwo = null;
+            locationThree = null;
+        } else if (numTargets == 2) {
+            trackOne.setLocation(locationOne);
+            trackTwo.setLocation(locationTwo);
+            locationThree = null;
+        } else if (numTargets == 3) {
+            trackOne.setLocation(locationOne);
+            trackTwo.setLocation(locationTwo);
+            trackThree.setLocation(locationThree);
         }
         phoneLocation = OpenGLMatrix.translation(mmBotWidth/2,0,0)
                 .multiplied(Orientation.getRotationMatrix(
@@ -121,17 +126,21 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         for (VuforiaTrackable trackable: trackables){
             ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLocation, parameters.cameraDirection);
         }
+        System.out.println("Hello");
         loadVuMark(trackOne);
+        System.out.println("Hello");
         vuforiaTrackables.activate();
+        System.out.println("Hello");
     }
-    private void loadVuMark(@Nullable VuforiaTrackable trackable){
-        vuMark = ((MasqVuforiaListener)trackable.getListener()).getVuMarkInstanceId();
+    private MasqVuforia loadVuMark (@Nullable VuforiaTrackable trackable){
+        if (trackable != null && trackable.getListener() instanceof MasqVuforiaListener) {
+            return loadVuMark(((MasqVuforiaListener)trackable.getListener()).getVuMarkInstanceId());
+        } return null;
     }
-
-    public String getVuMarkID(){
+    private MasqVuforia loadVuMark (@Nullable MasqVuMark instanceId){
         String result = null;
-        if (vuMark != null && vuMark.getType() == MasqVuMark.Type.NUMERIC) {
-            long value = vuMark.getNumericValue();
+        if (instanceId != null && instanceId.getType() == MasqVuMark.Type.NUMERIC) {
+            long value = instanceId.getNumericValue();
             if (value==1) {
                 result = "LEFT";
             } else if (value==2) {
@@ -140,8 +149,14 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
                 result = "RIGHT";
             }
         }
-        return result;
+        this.vuMarkID = result;
+        return this;
     }
+
+    public String getVuMarkID(){
+        return vuMarkID;
+    }
+
     public void setOrientationOne(int u, int v, int w){
         u1 = u; v1 = v; w1 = w;
     }

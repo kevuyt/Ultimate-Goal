@@ -46,8 +46,7 @@ import java.util.Arrays;
  * @see com.vuforia.InstanceId
  */
 @SuppressWarnings("WeakerAccess")
-public class MasqVuMark
-{
+public class MasqVuMark {
     //----------------------------------------------------------------------------------------------
     // Types
     //----------------------------------------------------------------------------------------------
@@ -58,8 +57,7 @@ public class MasqVuMark
      *
      * @see #getType()
      */
-    public enum Type
-    {
+    public enum Type {
         UNKNOWN,
         NUMERIC,
         STRING,
@@ -71,33 +69,27 @@ public class MasqVuMark
     protected byte[] dataValue;
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "VuMarkInstanceId(" + this.getType() + ", " + this.getValue() + ")";
     }
-    public MasqVuMark(InstanceId instanceId)
-    {
+    public MasqVuMark(InstanceId instanceId) {
         this.type = typeFrom(instanceId);
-        switch (this.type)
-        {
+        switch (this.type) {
             case NUMERIC: this.numericValue = instanceId.getNumericValue().intValue(); break;
             case STRING: this.stringValue = new String(dataFrom(instanceId), Charset.forName("US-ASCII")); break;
             case DATA: this.dataValue = dataFrom(instanceId); break;
         }
     }
 
-    protected static byte[] dataFrom(InstanceId instanceId)
-    {
+    protected static byte[] dataFrom(InstanceId instanceId) {
         ByteBuffer buffer = instanceId.getBuffer();
         byte[] bytes = new byte[buffer.remaining()];
         buffer.get(bytes);
         return bytes;
     }
 
-    protected static Type typeFrom(InstanceId instanceId)
-    {
-        switch (instanceId.getDataType())
-        {
+    protected static Type typeFrom(InstanceId instanceId) {
+        switch (instanceId.getDataType()) {
             case InstanceId.ID_DATA_TYPE.STRING:    return Type.STRING;
             case InstanceId.ID_DATA_TYPE.NUMERIC:   return Type.NUMERIC;
             case InstanceId.ID_DATA_TYPE.BYTES:     return Type.DATA;
@@ -105,15 +97,11 @@ public class MasqVuMark
         }
     }
     @Override
-    public boolean equals(Object o)
-    {
-        if (o instanceof MasqVuMark)
-        {
+    public boolean equals(Object o) {
+        if (o instanceof MasqVuMark) {
             MasqVuMark them = (MasqVuMark)o;
-            if (this.getType() == them.getType())
-            {
-                switch (this.getType())
-                {
+            if (this.getType() == them.getType()) {
+                switch (this.getType()) {
                     case STRING: return getStringValue().equals(them.getStringValue());
                     case NUMERIC: return getNumericValue() == them.getNumericValue();
                     case DATA: return Arrays.equals(getDataValue(), them.getDataValue());
@@ -124,10 +112,8 @@ public class MasqVuMark
     }
 
     @Override
-    public int hashCode()
-    {
-        switch (this.getType())
-        {
+    public int hashCode() {
+        switch (this.getType()) {
             case STRING: return getStringValue().hashCode() ^ 0x55adef;
             case NUMERIC: return getNumericValue() ^ 0x55adef;
             case DATA: return Arrays.hashCode(getDataValue()) ^ 0x55adef;
@@ -154,10 +140,8 @@ public class MasqVuMark
         return dataValue;
     }
 
-    Object getValue()
-    {
-        switch (this.getType())
-        {
+    Object getValue() {
+        switch (this.getType()) {
             case STRING: return getStringValue();
             case NUMERIC: return getNumericValue();
             case DATA: return getDataValue();

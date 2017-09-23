@@ -27,8 +27,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     private MasqClock timeoutClock = new MasqClock();
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
-    public MasqVuforia vuforia = new MasqVuforia("vumark-us1-t1", "vumark-us2-t1","vumark-us3-t3", "RelicRecoveryAssets");
-    public MasqVuforia v2 = new MasqVuforia("RelicRecovery","RelicVuMark");
+    //public MasqVuforia vuforia = new MasqVuforia("vumark-us1-t1", "vumark-us2-t1","vumark-us3-t3", "RelicRecoveryAssets");
+    public MasqVuforia v2 = new MasqVuforia("RelicRecovery", "RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
@@ -238,29 +238,29 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stop (MasqSensor sensor){stop(sensor, 0.5);}
 
-    public void vuforiaInit(){
-        vuforia.setPositionOne(0,500,0);
-        vuforia.setOrientationOne(MasqVuforia.Facing.RIGHT);
-        vuforia.setPositionTwo(0,500,0);
-        vuforia.setOrientationTwo(MasqVuforia.Facing.RIGHT);
-        vuforia.setPositionThree(0,500,0);
-        vuforia.setOrientationThree(MasqVuforia.Facing.RIGHT);
-        vuforia.init();
-    }
-    public String getTrackable(){
-        String v;
-        if (vuforia.isSeen(Targets.TARGET_ONE))
-            v =  "RIGHT";
-        else if (vuforia.isSeen(Targets.TARGET_TWO))
-            v =  "CENTER";
-        else if (vuforia.isSeen(Targets.TARGET_THREE))
-            v =  "LEFT";
-        else
-            return null;
-        return v;
-    }
+//    public void vuforiaInit(){
+//        vuforia.setPositionOne(0,500,0);
+//        vuforia.setOrientationOne(MasqVuforia.Facing.RIGHT);
+//        vuforia.setPositionTwo(0,500,0);
+//        vuforia.setOrientationTwo(MasqVuforia.Facing.RIGHT);
+//        vuforia.setPositionThree(0,500,0);
+//        vuforia.setOrientationThree(MasqVuforia.Facing.RIGHT);
+//        vuforia.init();
+//    }
+//    public String getTrackable(){
+//        String v;
+//        if (vuforia.isSeen(Targets.TARGET_ONE))
+//            v =  "RIGHT";
+//        else if (vuforia.isSeen(Targets.TARGET_TWO))
+//            v =  "CENTER";
+//        else if (vuforia.isSeen(Targets.TARGET_THREE))
+//            v =  "LEFT";
+//        else
+//            return null;
+//        return v;
+//    }
     public String getTrackableV2 (){
-        return vuforia.getVuMarkID();
+        return v2.getVuMarkID();
     }
 
     public void NFS(MasqController c) {
