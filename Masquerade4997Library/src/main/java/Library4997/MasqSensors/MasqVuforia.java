@@ -1,7 +1,9 @@
 package Library4997.MasqSensors;
 
-import com.qualcomm.ftcrobotcontroller.R.id;
 
+import android.support.annotation.Nullable;
+
+import com.qualcomm.ftcrobotcontroller.R.id;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -20,6 +22,8 @@ import java.util.List;
 import Library4997.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqSensor;
+import Library4997.MasqWrappers.VuMark;
+import Library4997.MasqWrappers.VuforiaListener;
 
 /**
  * Created by Archish on 9/7/17.
@@ -31,6 +35,19 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocation, lastLocation;
+    private VuMark vuMark;
+    private int
+            u1 = 90, u2 = 90, u3 = 90,
+            v1 = 0, v2 = 0, v3 = 0,
+            w1 = 90, w2 = 90, w3 = 90,
+            x1 = 0, x2 = 0, x3 = 0,
+            y1 = 0, y2 = 0, y3 = 0,
+            z1 = 0, z2 = 0,z3 = 0;
+    private List<VuforiaTrackable> trackables = new ArrayList<>();
+    private List<VuforiaTrackable> allTrackables = new ArrayList<>();
+    String targetOne, targetTwo, targetThree;
+    float mmPerInch = 25.4f;
+    float mmBotWidth = 18 * mmPerInch;
     public enum Facing {
         RIGHT (new int[]{90,0,90}),
         LEFT (new int[]{90,0,-90}),
@@ -39,25 +56,6 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         public final int[] value;
         Facing(int[] value) {this.value = value;}
     }
-    private int
-            u1 = 90, u2 = 90, u3 = 90,
-            v1 = 0, v2 = 0, v3 = 0,
-            w1 = 90, w2 = 90, w3 = 90,
-            x1 = 0, x2 = 0, x3 = 0,
-            y1 = 0, y2 = 0, y3 = 0,
-            z1 = 0, z2 = 0,z3 = 0;
-    private int[][] values = new int[][]{ // order... u, v, w, x, y, z
-            new int[]{90, 90, 90},        // order... 1, 2, 3
-            new int[]{0, 0, 0},
-            new int[]{90, 90, 90},
-            new int[]{0, 0, 0},
-            new int[]{0, 0, 0},
-            new int[]{0, 0, 0}};
-    private List<VuforiaTrackable> trackables = new ArrayList<>();
-    private List<VuforiaTrackable> allTrackables = new ArrayList<>();
-    String targetOne, targetTwo, targetThree;
-    float mmPerInch = 25.4f;
-    float mmBotWidth = 18 * mmPerInch;
     public MasqVuforia(String t1, String t2, String t3, String asset){
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
@@ -123,7 +121,26 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         for (VuforiaTrackable trackable: trackables){
             ((VuforiaTrackableDefaultListener)trackable.getListener()).setPhoneInformation(phoneLocation, parameters.cameraDirection);
         }
+        loadVuMark(trackOne);
         vuforiaTrackables.activate();
+    }
+    private void loadVuMark(@Nullable VuforiaTrackable trackable){
+        vuMark = ((VuforiaListener)trackable.getListener()).getVuMarkInstanceId();
+    }
+
+    public String getVuMarkID(){
+        String result = null;
+        if (vuMark != null && vuMark.getType() == VuMark.Type.NUMERIC) {
+            long value = vuMark.getNumericValue();
+            if (value==1) {
+                result = "LEFT";
+            } else if (value==2) {
+                result = "CENTER";
+            } else if (value==3) {
+                result = "RIGHT";
+            }
+        }
+        return result;
     }
     public void setOrientationOne(int u, int v, int w){
         u1 = u; v1 = v; w1 = w;

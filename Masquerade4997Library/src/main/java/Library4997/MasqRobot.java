@@ -28,6 +28,7 @@ public class MasqRobot implements PID_CONSTANTS {
     private MasqClock timeoutClock = new MasqClock();
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
     public MasqVuforia vuforia = new MasqVuforia("vumark-us1-t1", "vumark-us2-t1","vumark-us3-t3", "RelicRecoveryAssets");
+    public MasqVuforia v2 = new MasqVuforia("RelicRecovery","RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
@@ -247,14 +248,19 @@ public class MasqRobot implements PID_CONSTANTS {
         vuforia.init();
     }
     public String getTrackable(){
-        String v = null;
+        String v;
         if (vuforia.isSeen(Targets.TARGET_ONE))
             v =  "RIGHT";
         else if (vuforia.isSeen(Targets.TARGET_TWO))
             v =  "CENTER";
         else if (vuforia.isSeen(Targets.TARGET_THREE))
             v =  "LEFT";
+        else
+            return null;
         return v;
+    }
+    public String getTrackableV2 (){
+        return vuforia.getVuMarkID();
     }
 
     public void NFS(MasqController c) {
@@ -265,11 +271,11 @@ public class MasqRobot implements PID_CONSTANTS {
         double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
         double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
         double leftError =  left - leftRate;
-        double rightError = right - rightRate;
+        double rightError = right + rightRate;
         leftI += leftError;
         rightI += rightError;
-        left -= (leftError * KP_TELE) + (leftI * KI_TELE);
-        right -=  (rightError * KP_TELE) + (rightI * KI_TELE);
+        left = (leftError * KP_TELE) + (leftI * KI_TELE);
+        right =  (rightError * KP_TELE) + (rightI * KI_TELE);
         if(left > 1.0) {
             left /= left;
             right /= left;
@@ -369,5 +375,4 @@ public class MasqRobot implements PID_CONSTANTS {
         else {dScale = scaleArray[index];}
         return dScale;
     }
-
 }

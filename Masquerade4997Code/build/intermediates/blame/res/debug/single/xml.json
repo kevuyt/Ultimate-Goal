@@ -1,34 +1,34 @@
 [
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/pushbot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbot.xml"
+        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/xml/pushbot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/k9legacybot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9legacybot.xml"
+        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/xml/k9legacybot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/advanced_rc_settings.xml"
+        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/xml/advanced_rc_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/device_filter.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/xml/device_filter.xml"
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/xml/device_filter.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/xml/preferences.xml"
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/xml/preferences.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/squarebot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/squarebot.xml"
+        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/xml/squarebot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/pushbotsens.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/pushbotsens.xml"
+        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/FtcCommon-release/res/xml/k9usbbot.xml"
+        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/xml/k9usbbot.xml"
     }
 ]

@@ -1,14 +1,14 @@
 [
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-xhdpi-v4/masq.png",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/masq.png"
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-xhdpi-v4/masq.png"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/ic_launcher.png"
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-xhdpi-v4/ic_launcher.png"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon_menu.png",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/exploded-aar/MasqLib/FtcRobotController/unspecified/res/drawable-xhdpi-v4/icon_menu.png"
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-xhdpi-v4/icon_menu.png"
     }
 ]

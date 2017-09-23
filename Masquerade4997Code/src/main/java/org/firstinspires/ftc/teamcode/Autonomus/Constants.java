@@ -11,4 +11,7 @@ public interface Constants {
     double SLEEPTIME_HIGH = 1000,
            SLEEPTIME_OPTIMAL = 500,
            SLEEPTIME_LOW = 250;
+    String LEFT = "LEFT",
+           RIGHT = "RIGHT",
+           CENTER = "CENTER";
 }

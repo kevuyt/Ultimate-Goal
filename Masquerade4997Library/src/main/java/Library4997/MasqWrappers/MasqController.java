@@ -9,9 +9,7 @@ import Library4997.MasqSensors.MasqClock;
  */
 
 public class MasqController implements MasqHardware {
-    private MasqClock clock = new MasqClock();
     private String name;
-    private double min = 0, max = 1;
     private Gamepad gamepad;
 
     public MasqController(com.qualcomm.robotcore.hardware.Gamepad g, String name){
@@ -67,15 +65,6 @@ public class MasqController implements MasqHardware {
             realeaed = true;
         }
         return pressed && realeaed;
-    }
-
-    public void setTriggerThersholds(double min, double max){
-        this.min = min;
-        this.max = max;
-    }
-    public void setTriggerThersholds (double min){
-        this.min = min;
-        this.max = 1;
     }
 
     public float leftStickX(){

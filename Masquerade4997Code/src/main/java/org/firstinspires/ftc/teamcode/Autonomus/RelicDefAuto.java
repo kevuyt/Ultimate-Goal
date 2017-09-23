@@ -13,11 +13,17 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "DefenseAuto", group = "Auto")
 public class RelicDefAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
+        robot.vuforiaInit();
         while (!opModeIsActive()) {
             dash.create(robot.imu);
+            dash.create(robot.getTrackable());
             dash.update();
         }
         waitForStart();
-        robot.drive(100, POWER_OPTIMAL, Direction.FORWARD);
+        while (robot.getTrackable() ==  null){}
+        if (robot.getTrackable() ==  LEFT)
+            robot.drive(50);
+        else if (robot.getTrackable() == RIGHT)
+            robot.turn(90, Direction.LEFT);
     }
 }
