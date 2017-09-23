@@ -33,6 +33,7 @@ public class MasqRobot implements PID_CONSTANTS {
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
     private double color = 1;
+    private double leftI, rightI = 0;
 
     public enum AllianceColor {
         BLUE (-1.0),
@@ -256,7 +257,7 @@ public class MasqRobot implements PID_CONSTANTS {
         return v;
     }
 
-    public void NFS(MasqController c){
+    public void NFS(MasqController c) {
         float move = c.leftStickY();
         float turn = c.rightStickX();
         double left = move - turn;
@@ -265,8 +266,10 @@ public class MasqRobot implements PID_CONSTANTS {
         double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
         double leftError =  left - leftRate;
         double rightError = right - rightRate;
-        left = (leftError * KP_TELE);
-        right =  (rightError * KP_TELE);
+        leftI += leftError;
+        rightI += rightError;
+        left -= (leftError * KP_TELE) + (leftI * KI_TELE);
+        right -=  (rightError * KP_TELE) + (rightI * KI_TELE);
         if(left > 1.0) {
             left /= left;
             right /= left;
