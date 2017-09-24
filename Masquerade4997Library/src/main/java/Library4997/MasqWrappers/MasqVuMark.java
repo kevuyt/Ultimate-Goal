@@ -38,25 +38,8 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
-/**
- * {@link } captures the identifying state decoded from a particular instance
- * of a Vuforia MasqVuMark.
- *
- * @see com.vuforia.VuMarkTarget
- * @see com.vuforia.InstanceId
- */
 @SuppressWarnings("WeakerAccess")
 public class MasqVuMark {
-    //----------------------------------------------------------------------------------------------
-    // Types
-    //----------------------------------------------------------------------------------------------
-
-    /**
-     * {@link Type} indicates the type of data that was found in the {@link InstanceId}
-     * from which this data was decoded.
-     *
-     * @see #getType()
-     */
     public enum Type {
         UNKNOWN,
         NUMERIC,

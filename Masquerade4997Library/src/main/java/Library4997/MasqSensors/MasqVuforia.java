@@ -131,12 +131,12 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         vuforiaTrackables.activate();
     }
     private MasqVuforia loadVuMark (@Nullable VuforiaTrackable trackable){
-        if (trackable != null && trackable.getListener() instanceof MasqVuforiaListener) {
+        if (trackable.getListener() instanceof VuforiaTrackable.Listener) {
             vuMark = ((MasqVuforiaListener)trackable.getListener()).getVuMarkInstanceId();
         } return this;
     }
     public String getVuMark (){
-        String result = "";
+        String result = "vuMark is null";
         if (vuMark != null && vuMark.getType() == MasqVuMark.Type.NUMERIC) {
             long value = vuMark.getNumericValue();
             if (value == 1) {
