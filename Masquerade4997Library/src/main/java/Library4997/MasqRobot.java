@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import Library4997.MasqExternal.MasqVuMark;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -44,11 +45,9 @@ public class MasqRobot implements PID_CONSTANTS {
         AllianceColor (double color) {this.color = color;}
     }
     public enum Targets {
-        TARGET_ONE("vumark-us1-t1"),
-        TARGET_TWO ("vumark-us2-t1"),
-        TARGET_THREE ("vumark-us3-t3");
+        T1 ("T1");
         public final String value;
-        Targets (String value) {this.value = value;}
+        Targets(String value) {this.value = value;}
     }
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     private boolean opModeIsActive() {
@@ -239,29 +238,19 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stop (MasqSensor sensor){stop(sensor, 0.5);}
 
-//    public void vuforiaInit(){
-//        vuforia.setPositionOne(0,500,0);
-//        vuforia.setOrientationOne(MasqVuforia.Facing.RIGHT);
-//        vuforia.setPositionTwo(0,500,0);
-//        vuforia.setOrientationTwo(MasqVuforia.Facing.RIGHT);
-//        vuforia.setPositionThree(0,500,0);
-//        vuforia.setOrientationThree(MasqVuforia.Facing.RIGHT);
-//        vuforia.init();
-//    }
-//    public String getTrackable(){
-//        String v;
-//        if (vuforia.isSeen(Targets.TARGET_ONE))
-//            v =  "RIGHT";
-//        else if (vuforia.isSeen(Targets.TARGET_TWO))
-//            v =  "CENTER";
-//        else if (vuforia.isSeen(Targets.TARGET_THREE))
-//            v =  "LEFT";
-//        else
-//            return null;
-//        return v;
-//    }
-    public String getTrackableV2 (){
-        return v2.getVuMark();
+    public String getTrackable (){
+        String result;
+            long value = v2.getVuMarkID();
+            if (value == 1) {
+                result = "LEFT";
+            } else if (value == 2) {
+                result = "CENTER";
+            } else if (value == 3) {
+                result = "RIGHT";
+            } else {
+                result = "UNKNOWN";
+            }
+        return result;
     }
 
     public void NFS(MasqController c) {

@@ -133,22 +133,12 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
             vuMark = ((MasqVuforiaListener)trackable.getListener()).getVuMarkInstanceId();
         } return this;
     }
-    public String getVuMark (){
-        String result = "vuMark is null";
-        if (vuMark != null && vuMark.getType() == MasqVuMark.Type.NUMERIC) {
-            long value = vuMark.getNumericValue();
-            if (value == 1) {
-                result = "LEFT";
-            } else if (value == 2) {
-                result = "CENTER";
-            } else if (value == 3) {
-                result = "RIGHT";
-            } else {
-                result = "UNKNOWN";
-            }
-        }
-        return result;
+    public int getVuMarkID () {
+        if (vuMark != null && vuMark.getType() == MasqVuMark.Type.NUMERIC)
+            return vuMark.getNumericValue();
+        return 100;
     }
+
     public void setOrientationOne(int u, int v, int w){
         u1 = u; v1 = v; w1 = w;
     }
