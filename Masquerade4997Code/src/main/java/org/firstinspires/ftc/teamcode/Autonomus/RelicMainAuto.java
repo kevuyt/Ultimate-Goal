@@ -18,5 +18,17 @@ public class RelicMainAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
+        while (opModeIsActive()) {
+            if (controller1.a()) {
+                robot.crServoOne.setPower(1);
+                robot.crServoTwo.setPower(1);
+            } else if (controller1.b()) {
+                robot.crServoOne.setPower(-1);
+                robot.crServoTwo.setPower(-1);
+            } else {
+                robot.crServoOne.setPower(0);
+                robot.crServoTwo.setPower(0);
+            }
+        }
     }
 }

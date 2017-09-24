@@ -13,6 +13,7 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
+import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
@@ -28,6 +29,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
     private MasqClock timeoutClock = new MasqClock();
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
+    public MasqCRServo crServoOne = new MasqCRServo("servoOne");
+    public MasqCRServo crServoTwo = new MasqCRServo("servoTwo");
     //public MasqVuforia vuforia = new MasqVuforia("vumark-us1-t1", "vumark-us2-t1","vumark-us3-t3", "RelicRecoveryAssets");
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,6 +253,9 @@ public class MasqRobot implements PID_CONSTANTS {
                 result = "UNKNOWN";
             }
         return result;
+    }
+    public int anInt () {
+        return vuforia.getVuMarkID();
     }
 
     public void NFS(MasqController c) {

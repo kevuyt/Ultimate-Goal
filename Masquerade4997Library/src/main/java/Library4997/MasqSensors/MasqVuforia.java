@@ -24,6 +24,7 @@ import Library4997.MasqRobot;
 import Library4997.MasqSensor;
 import Library4997.MasqExternal.MasqVuMark;
 import Library4997.MasqExternal.MasqVuforiaListener;
+import Library4997.MasqWrappers.DashBoard;
 
 /**
  * Created by Archish on 9/7/17.
@@ -33,9 +34,10 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     VuforiaLocalizer vuforia;
     VuforiaTrackables vuforiaTrackables;
     VuforiaTrackable trackOne, trackTwo, trackThree;
+    MasqVuforiaListener listener;
     int numTargets = 0;
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocation, lastLocation;
-    private MasqVuMark vuMark;
+    public MasqVuMark vuMark;
     private int
             u1 = 90, u2 = 90, u3 = 90,
             v1 = 0, v2 = 0, v3 = 0,
@@ -129,9 +131,9 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         vuforiaTrackables.activate();
     }
     private MasqVuforia loadVuMark (@Nullable VuforiaTrackable trackable){
-        if (trackable.getListener() instanceof VuforiaTrackable.Listener) {
-            vuMark = ((MasqVuforiaListener)trackable.getListener()).getVuMarkInstanceId();
-        } return this;
+            listener = new MasqVuforiaListener(trackable);
+            vuMark = listener.getVuMarkInstanceId();
+        return this;
     }
     public int getVuMarkID () {
         if (vuMark != null && vuMark.getType() == MasqVuMark.Type.NUMERIC)
