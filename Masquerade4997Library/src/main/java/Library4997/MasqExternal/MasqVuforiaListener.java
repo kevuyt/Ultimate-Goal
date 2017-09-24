@@ -58,8 +58,7 @@ import java.util.Map;
  * @see VuforiaTrackable#getListener()
  */
 @SuppressWarnings("WeakerAccess")
-public class MasqVuforiaListener implements VuforiaTrackable.Listener
-{
+public class MasqVuforiaListener implements VuforiaTrackable.Listener {
     public final static String TAG = "Vuforia";
 
     protected VuforiaTrackable trackable;
@@ -72,8 +71,7 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener
     protected VuforiaLocalizer.CameraDirection cameraDirection;
     protected final Map<VuforiaLocalizer.CameraDirection, OpenGLMatrix> poseCorrectionMatrices;
 
-    public MasqVuforiaListener(VuforiaTrackable trackable)
-    {
+    public MasqVuforiaListener(VuforiaTrackable trackable) {
         this.trackable = trackable;
         this.newPoseAvailable = false;
         this.newLocationAvailable = false;
@@ -82,44 +80,37 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener
         this.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
 
         this.poseCorrectionMatrices = new HashMap<VuforiaLocalizer.CameraDirection, OpenGLMatrix>();
-        this.poseCorrectionMatrices.put(VuforiaLocalizer.CameraDirection.BACK, new OpenGLMatrix(new float[]
-                {
+        this.poseCorrectionMatrices.put(VuforiaLocalizer.CameraDirection.BACK, new OpenGLMatrix(new float[]{
                         0, -1,  0,  0,
                         -1,  0,  0,  0,
                         0,  0, -1,  0,
                         0,  0,  0,  1
                 }));
-        this.poseCorrectionMatrices.put(VuforiaLocalizer.CameraDirection.FRONT, new OpenGLMatrix(new float[]
-                {
+        this.poseCorrectionMatrices.put(VuforiaLocalizer.CameraDirection.FRONT, new OpenGLMatrix(new float[]{
                         0,  1,  0,  0,
                         -1,  0,  0,  0,
                         0,  0,  1,  0,
                         0,  0,  0,  1
                 }));
     }
-    public synchronized void setPhoneInformation(@NonNull OpenGLMatrix phoneLocationOnRobot, @NonNull VuforiaLocalizer.CameraDirection cameraDirection)
-    {
+    public synchronized void setPhoneInformation(@NonNull OpenGLMatrix phoneLocationOnRobot, @NonNull VuforiaLocalizer.CameraDirection cameraDirection) {
         this.phoneLocationOnRobotInverted = phoneLocationOnRobot.inverted();
         this.cameraDirection = cameraDirection;
     }
 
-    public synchronized OpenGLMatrix getPhoneLocationOnRobot()
-    {
+    public synchronized OpenGLMatrix getPhoneLocationOnRobot() {
         return this.phoneLocationOnRobotInverted == null ? null : this.phoneLocationOnRobotInverted.inverted();
     }
 
-    public synchronized VuforiaLocalizer.CameraDirection getCameraDirection()
-    {
+    public synchronized VuforiaLocalizer.CameraDirection getCameraDirection() {
         return this.cameraDirection;
     }
 
-    public synchronized @Nullable OpenGLMatrix getRobotLocation()
-    {
+    public synchronized @Nullable OpenGLMatrix getRobotLocation() {
         // Capture the location in order to avoid races with concurrent updates
         OpenGLMatrix trackableLocationOnField = trackable.getLocation();
         OpenGLMatrix pose = this.getPose();
-        if (pose != null && trackableLocationOnField != null && this.phoneLocationOnRobotInverted != null)
-        {
+        if (pose != null && trackableLocationOnField != null && this.phoneLocationOnRobotInverted != null) {
             OpenGLMatrix result =
                     trackableLocationOnField
                             .multiplied(pose.inverted())
@@ -132,25 +123,20 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener
 
     public @NonNull OpenGLMatrix getPoseCorrectionMatrix(VuforiaLocalizer.CameraDirection direction)
     {
-        synchronized (this.poseCorrectionMatrices)
-        {
+        synchronized (this.poseCorrectionMatrices) {
             return this.poseCorrectionMatrices.get(direction);
         }
     }
 
     /** @see #getPoseCorrectionMatrix(VuforiaLocalizer.CameraDirection) */
-    public void setPoseCorrectionMatrix(VuforiaLocalizer.CameraDirection direction, @NonNull OpenGLMatrix matrix)
-    {
-        synchronized (this.poseCorrectionMatrices)
-        {
+    public void setPoseCorrectionMatrix(VuforiaLocalizer.CameraDirection direction, @NonNull OpenGLMatrix matrix) {
+        synchronized (this.poseCorrectionMatrices) {
             this.poseCorrectionMatrices.put(direction, matrix);
         }
     }
 
-    public synchronized OpenGLMatrix getUpdatedRobotLocation()
-    {
-        if (this.newLocationAvailable)
-        {
+    public synchronized OpenGLMatrix getUpdatedRobotLocation() {
+        if (this.newLocationAvailable) {
             this.newLocationAvailable = false;
             return getRobotLocation();
         }
@@ -158,16 +144,14 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener
             return null;
     }
 
-    public synchronized @Nullable OpenGLMatrix getPose()
-    {
+    public synchronized @Nullable OpenGLMatrix getPose() {
         OpenGLMatrix pose = getRawPose();
         return pose==null ? null : this.getPoseCorrectionMatrix(this.cameraDirection).multiplied(pose);
     }
 
     public synchronized @Nullable OpenGLMatrix getRawPose()
     {
-        if (this.currentPose != null)
-        {
+        if (this.currentPose != null) {
             OpenGLMatrix result = new VuforiaPoseMatrix(this.currentPose).toOpenGL();
             // RobotLog.vv(TAG, "rawPose -> %s", result.toString());
             return result;
@@ -176,10 +160,8 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener
             return null;
     }
 
-    public synchronized @Nullable OpenGLMatrix getRawUpdatedPose()
-    {
-        if (this.newPoseAvailable)
-        {
+    public synchronized @Nullable OpenGLMatrix getRawUpdatedPose() {
+        if (this.newPoseAvailable) {
             this.newPoseAvailable = false;
             return getRawPose();
         }
@@ -192,19 +174,16 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener
         return getPose() != null;
     }
 
-    public synchronized OpenGLMatrix getLastTrackedRawPose()
-    {
+    public synchronized OpenGLMatrix getLastTrackedRawPose() {
         return this.lastTrackedPose == null ? null : new VuforiaPoseMatrix(this.lastTrackedPose).toOpenGL();
     }
 
     public synchronized @Nullable
-    MasqVuMark getVuMarkInstanceId()
-    {
+    MasqVuMark getVuMarkInstanceId() {
         return vuMarkInstanceId;
     }
 
-    public synchronized void onTracked(TrackableResult trackableResult, VuforiaTrackable child)
-    {
+    public synchronized void onTracked(TrackableResult trackableResult, VuforiaTrackable child) {
         this.currentPose = trackableResult.getPose();
         this.newPoseAvailable = true;
         this.newLocationAvailable = true;
@@ -223,8 +202,7 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener
 
     }
 
-    @Override public synchronized void onNotTracked()
-    {
+    @Override public synchronized void onNotTracked() {
         this.currentPose = null;
         this.newPoseAvailable = true;
         this.newLocationAvailable = true;

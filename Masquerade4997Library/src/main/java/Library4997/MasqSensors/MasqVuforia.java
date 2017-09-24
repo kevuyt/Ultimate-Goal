@@ -35,7 +35,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     VuforiaTrackable trackOne, trackTwo, trackThree;
     int numTargets = 0;
     OpenGLMatrix locationOne, locationTwo, locationThree, phoneLocation, lastLocation;
-    public MasqVuMark vuMark;
+    private MasqVuMark vuMark;
     private int
             u1 = 90, u2 = 90, u3 = 90,
             v1 = 0, v2 = 0, v3 = 0,

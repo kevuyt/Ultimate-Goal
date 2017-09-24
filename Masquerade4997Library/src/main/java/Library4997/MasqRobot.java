@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
-import Library4997.MasqExternal.MasqVuMark;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -30,7 +29,7 @@ public class MasqRobot implements PID_CONSTANTS {
     private MasqClock timeoutClock = new MasqClock();
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
     //public MasqVuforia vuforia = new MasqVuforia("vumark-us1-t1", "vumark-us2-t1","vumark-us3-t3", "RelicRecoveryAssets");
-    public MasqVuforia v2 = new MasqVuforia("RelicRecovery", "RelicVuMark");
+    public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
@@ -240,7 +239,7 @@ public class MasqRobot implements PID_CONSTANTS {
 
     public String getTrackable (){
         String result;
-            long value = v2.getVuMarkID();
+            long value = vuforia.getVuMarkID();
             if (value == 1) {
                 result = "LEFT";
             } else if (value == 2) {
