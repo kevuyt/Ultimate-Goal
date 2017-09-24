@@ -1,4 +1,4 @@
-package Library4997.MasqHelpers;
+package Library4997.MasqExternal;
 /**
  * These are the constants used in PID
  */
@@ -12,10 +12,6 @@ public interface PID_CONSTANTS {
             KP_STRAIGHT = 0.03,
             KI_STRAIGHT = 0,
             KD_STRAIGHT = 0;
-    double
-            KP_BATTERY = 0.01,
-            KI_BATTERY = 0.001,
-            KD_BATTERY = 0;
     double  KP_TELE = 0.3,
             KI_TELE = 0;
     double MAX_RATE = 3100;

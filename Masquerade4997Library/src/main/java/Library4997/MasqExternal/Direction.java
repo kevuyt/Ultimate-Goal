@@ -1,4 +1,4 @@
-package Library4997.MasqHelpers;
+package Library4997.MasqExternal;
 
 /**
  * This enum gives values to direction

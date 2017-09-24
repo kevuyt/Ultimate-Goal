@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import Library4997.MasqHardware;
-import Library4997.MasqHelpers.PID_CONSTANTS;
+import Library4997.MasqExternal.PID_CONSTANTS;
 
 /**
  * MasqMotorSystem That supports two or more motors and treats them as one

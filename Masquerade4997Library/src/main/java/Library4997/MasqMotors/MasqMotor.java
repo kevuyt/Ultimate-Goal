@@ -7,8 +7,8 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqHelpers.Direction;
-import Library4997.MasqHelpers.PID_CONSTANTS;
+import Library4997.MasqExternal.Direction;
+import Library4997.MasqExternal.PID_CONSTANTS;
 
 /**
  * This is a custom motor that includes stall detection and telemetry

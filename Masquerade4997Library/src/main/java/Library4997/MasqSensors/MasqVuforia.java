@@ -22,8 +22,8 @@ import java.util.List;
 import Library4997.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqSensor;
-import Library4997.MasqHelpers.MasqVuMark;
-import Library4997.MasqHelpers.MasqVuforiaListener;
+import Library4997.MasqExternal.MasqVuMark;
+import Library4997.MasqExternal.MasqVuforiaListener;
 
 /**
  * Created by Archish on 9/7/17.

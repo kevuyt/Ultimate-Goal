@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
-import Library4997.MasqHelpers.PID_CONSTANTS;
+import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
@@ -14,7 +14,7 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqWrappers.DashBoard;
-import Library4997.MasqHelpers.Direction;
+import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
 
 /**
