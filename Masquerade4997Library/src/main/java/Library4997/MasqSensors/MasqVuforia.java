@@ -14,7 +14,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import org.firstinspires.ftc.robotcore.internal.DataLogger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,9 +22,8 @@ import java.util.List;
 import Library4997.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqSensor;
-import Library4997.MasqWrappers.DashBoard;
-import Library4997.MasqWrappers.MasqVuMark;
-import Library4997.MasqWrappers.MasqVuforiaListener;
+import Library4997.MasqHelpers.MasqVuMark;
+import Library4997.MasqHelpers.MasqVuforiaListener;
 
 /**
  * Created by Archish on 9/7/17.
