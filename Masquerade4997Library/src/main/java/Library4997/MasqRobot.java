@@ -260,7 +260,7 @@ public class MasqRobot implements PID_CONSTANTS {
 //        return v;
 //    }
     public String getTrackableV2 (){
-        return v2.getVuMarkID();
+        return v2.getVuMark();
     }
 
     public void NFS(MasqController c) {

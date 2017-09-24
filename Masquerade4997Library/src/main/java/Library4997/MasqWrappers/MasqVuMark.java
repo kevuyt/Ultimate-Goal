@@ -72,7 +72,7 @@ public class MasqVuMark {
     public String toString() {
         return "VuMarkInstanceId(" + this.getType() + ", " + this.getValue() + ")";
     }
-    public MasqVuMark(InstanceId instanceId) {
+    public MasqVuMark (InstanceId instanceId) {
         this.type = typeFrom(instanceId);
         switch (this.type) {
             case NUMERIC: this.numericValue = instanceId.getNumericValue().intValue(); break;

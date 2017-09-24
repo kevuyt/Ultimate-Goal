@@ -16,7 +16,8 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.v2.init();
         while (!opModeIsActive()){
-            dash.create(robot.v2.getVuMarkID());
+            dash.create(robot.v2.getVuMark());
+            dash.create(robot.v2.vuMark.toString());
             dash.update();
         }
         waitForStart();
