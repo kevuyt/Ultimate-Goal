@@ -43,7 +43,5 @@ public class FtcOpModeRegister implements OpModeRegister {
     public static OpModeManagerImpl opModeManager;
     public void register(OpModeManager manager) {
         opModeManager = (OpModeManagerImpl) manager;
-        BlocksOpMode.registerAll(manager);
-        AnnotatedOpModeRegistrar.register(manager);
     }
 }
