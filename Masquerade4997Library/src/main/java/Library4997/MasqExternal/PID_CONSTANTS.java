@@ -12,7 +12,7 @@ public interface PID_CONSTANTS {
             KP_STRAIGHT = 0.03,
             KI_STRAIGHT = 0,
             KD_STRAIGHT = 0;
-    double  KP_TELE = 0.3,
+    double  KP_TELE = 0.1,
             KI_TELE = 0;
     double MAX_RATE = 3100;
     double TICKS_PER_ROTATION = 1120;

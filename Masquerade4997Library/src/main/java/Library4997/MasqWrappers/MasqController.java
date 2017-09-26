@@ -12,7 +12,7 @@ public class MasqController implements MasqHardware {
     private String name;
     private Gamepad gamepad;
 
-    public MasqController(com.qualcomm.robotcore.hardware.Gamepad g, String name){
+    public MasqController(Gamepad g, String name){
         this.name = name;
         this.gamepad = g;
     }

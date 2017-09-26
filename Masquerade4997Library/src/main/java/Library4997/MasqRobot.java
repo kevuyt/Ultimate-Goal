@@ -31,7 +31,6 @@ public class MasqRobot implements PID_CONSTANTS {
     private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
     public MasqCRServo crServoOne = new MasqCRServo("servoOne");
     public MasqCRServo crServoTwo = new MasqCRServo("servoTwo");
-    //public MasqVuforia vuforia = new MasqVuforia("vumark-us1-t1", "vumark-us2-t1","vumark-us3-t3", "RelicRecoveryAssets");
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
@@ -269,8 +268,8 @@ public class MasqRobot implements PID_CONSTANTS {
         double rightError = right + rightRate;
         leftI += leftError;
         rightI += rightError;
-        left = (leftError * KP_TELE) + (leftI * KI_TELE);
-        right =  (rightError * KP_TELE) + (rightI * KI_TELE);
+        left =  left - ((leftError * KP_TELE));
+        right =  right - ((rightError * KP_TELE));
         if(left > 1.0) {
             left /= left;
             right /= left;

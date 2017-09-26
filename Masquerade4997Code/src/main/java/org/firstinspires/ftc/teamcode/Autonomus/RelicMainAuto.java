@@ -15,10 +15,14 @@ public class RelicMainAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
             dash.create(robot.imu);
+            dash.create(controller1);
             dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {
+            dash.create(controller1);
+            dash.create(robot.crServoOne);
+            dash.update();
             if (controller1.a()) {
                 robot.crServoOne.setPower(1);
                 robot.crServoTwo.setPower(1);

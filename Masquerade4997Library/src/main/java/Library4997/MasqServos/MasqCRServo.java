@@ -1,7 +1,7 @@
 package Library4997.MasqServos;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-
+import com.qualcomm.robotcore.hardware.CRServo;
 import Library4997.MasqHardware;
 
 /**
@@ -9,7 +9,7 @@ import Library4997.MasqHardware;
  */
 
 public class MasqCRServo implements MasqHardware{
-    private com.qualcomm.robotcore.hardware.CRServo servo;
+    private CRServo servo;
     private String nameCr_Servo;
     public MasqCRServo(String name){
         this.nameCr_Servo = name;
