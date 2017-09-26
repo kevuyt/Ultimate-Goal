@@ -34,7 +34,7 @@
     <View
       android:layout_width="match_parent"
       android:layout_height="2dip"
-      android:background="#FF0000" />
+      android:background="?attr/lineBright" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -110,7 +110,7 @@
     <View
       android:layout_width="match_parent"
       android:layout_height="2dip"
-      android:background="#FF0000" />
+      android:background="?attr/lineBright" />
     <RelativeLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

@@ -13,7 +13,7 @@
 
     <include layout="@layout/button_list"/>
 
-    <include layout="@layout/darker_gray_line"/>
+    <include layout="@layout/gray_line"/>
 
     <LinearLayout
         android:layout_width="match_parent"

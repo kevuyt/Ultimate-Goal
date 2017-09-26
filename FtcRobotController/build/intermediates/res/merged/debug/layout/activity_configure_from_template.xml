@@ -39,7 +39,7 @@
             android:textSize="14sp"
             android:textStyle="bold"/>
 
-        <!-- FrameLayout allows the orange text to overlay the template list -->
+        <!-- FrameLayout allows the feedback text to overlay the template list -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -58,7 +58,7 @@
             </ScrollView>
 
             <LinearLayout
-                android:id="@+id/orangeTextAnchor"
+                android:id="@+id/feedbackAnchor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -83,6 +83,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dip"
-            android:background="#FF0000"/>
+            android:background="?attr/lineBright"/>
     </LinearLayout>
 </RelativeLayout>

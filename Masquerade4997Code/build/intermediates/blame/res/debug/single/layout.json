@@ -1,215 +1,247 @@
 [
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module_configure_address.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/lynx_module_configure_address.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/lynx_module_configure_address.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_input_device.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/analog_input_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/i2c_device.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/i2c_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_about.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_about.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_about.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/servo_controller_banner.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/servo_controller_banner.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/servo_controller_banner.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/lynx_module.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_load.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_load.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_view_logs.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_view_logs.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_view_logs.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_generic_settings.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_generic_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_configuration.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_ftc_configuration.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_ftc_configuration.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/motor.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/motor.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/template_info.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/template_info.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/template_info.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor_controller_banner.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/motor_controller_banner.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor_controller_banner.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/motor_controller_banner.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/shape.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/shape.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/simple_device.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/simple_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/simple_device.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/simple_device.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/simple_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/matrix_devices.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/matrix_devices.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/matrix_devices.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/i2c_device.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/i2c_device.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/i2c_device.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_configure_from_template.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_configure_from_template.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/legacy.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/legacy.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/file_info.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/file_info.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_device_lynx.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/digital_device_lynx.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/feedback.xml",
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/layout/feedback.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_device.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/digital_device.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_config_wifi_direct.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_config_wifi_direct.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/digital_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/device_interface_module.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/device_interface_module.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/device_interface_module.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_wifi_channel_selector.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_ftc_wifi_channel_selector.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/color_list_preference_line_item.xml",
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/layout/color_list_preference_line_item.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_devices.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/digital_devices.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/i2cs.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/i2cs.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/loading_indicator_overlay.xml",
-        "source": "/Users/Archish/.android/build-cache/35130c4562556acaa4c08c3c7e80c14eff4f3346/output/res/layout/loading_indicator_overlay.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_configure_from_template.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_configure_from_template.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_devices.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/digital_devices.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_address_update.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_ftc_lynx_address_update.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/i2cs.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/i2cs.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/i2cs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_inputs.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/analog_inputs.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/analog_inputs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_inspection.xml",
-        "source": "/Users/Archish/.android/build-cache/4d698216237f45bb0678799dbaf94cd537658935/output/res/layout/activity_inspection.xml"
+        "source": "/Users/Archish/.android/build-cache/2b07c2a07e6de45eb9556601045a07489c8962d5/output/res/layout/activity_inspection.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/item_list_parent.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/item_list_parent.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_inputs.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/analog_inputs.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/gray_line.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/gray_line.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module_configure_address_spin_item.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/lynx_module_configure_address_spin_item.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/lynx_module_configure_address_spin_item.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/banner_parent.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/banner_parent.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/red_line.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/red_line.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/gray_line.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/gray_line.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_wifi_remembered_groups.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_ftc_wifi_remembered_groups.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_ftc_wifi_remembered_groups.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_device_lynx.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/digital_device_lynx.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/digital_device_lynx.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_programming_mode.xml",
-        "source": "/Users/Archish/.android/build-cache/e1a357b7da4d4581f728cbf2f8f535f6fa4c5be9/output/res/layout/activity_programming_mode.xml"
+        "source": "/Users/Archish/.android/build-cache/ab6105728ec50e550fd8775cb0c3086f2872ac4b/output/res/layout/activity_programming_mode.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/header.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLibTest/FtcRobotController/build/intermediates/bundles/default/res/layout/header.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/servo.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/servo.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/matrices.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/matrices.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_output_device.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/analog_output_device.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/analog_output_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_outputs.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/analog_outputs.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/template_info.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/template_info.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/servo_list.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/servo_list.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/servo_list.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/port_attached_row.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/port_attached_row.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/orange_warning.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/orange_warning.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_fw_update.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_ftc_lynx_fw_update.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_wifi_channel_selector.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_ftc_wifi_channel_selector.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_input_device.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/analog_input_device.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/analog_input_device.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_address_update.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_ftc_lynx_address_update.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/matrices.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/matrices.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor_list.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/motor_list.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_view_logs.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_view_logs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_outputs.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/analog_outputs.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/analog_outputs.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/servo_list.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/servo_list.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_swap_usb_devices.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_swap_usb_devices.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_swap_usb_devices.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/header.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/layout/header.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/item_list_parent.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/item_list_parent.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_usb_device.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/lynx_usb_device.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_controller.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLibTest/FtcRobotController/build/intermediates/bundles/default/res/layout/activity_ftc_controller.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_load.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_load.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/matrix_devices.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/matrix_devices.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/pwm_device.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/pwm_device.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_configuration.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_ftc_configuration.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/legacy.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/legacy.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/port_attached_row.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/port_attached_row.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/darker_gray_line.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/darker_gray_line.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/button_list.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/button_list.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/servo_controller_banner.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/servo_controller_banner.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/pwms.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/pwms.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/pwms.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/pwms.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/pwms.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_blocks.xml",
-        "source": "/Users/Archish/.android/build-cache/e1a357b7da4d4581f728cbf2f8f535f6fa4c5be9/output/res/layout/activity_blocks.xml"
+        "source": "/Users/Archish/.android/build-cache/ab6105728ec50e550fd8775cb0c3086f2872ac4b/output/res/layout/activity_blocks.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/info_button.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/info_button.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/info_button.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/button_list.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/button_list.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_generic_settings.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/activity_generic_settings.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_blocks.xml",
+        "source": "/Users/Archish/.android/build-cache/98e0107ce85ff6e2f1a26f6438b4626b846f4046/output/res/layout/activity_blocks.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_controller.xml",
@@ -217,6 +249,202 @@
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/servo.xml",
-        "source": "/Users/Archish/.android/build-cache/8c17104477f8166d60792a302a8a250808fb47af/output/res/layout/servo.xml"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/servo.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_inspection.xml",
+        "source": "/Users/Archish/.android/build-cache/b318fd9e3b80d3863322508ad5e96f054d67b2fb/output/res/layout/activity_inspection.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_swap_usb_devices.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_swap_usb_devices.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/lynx_module.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module_configure_address_spin_item.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/lynx_module_configure_address_spin_item.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_output_device.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/analog_output_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor_controller_banner.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/motor_controller_banner.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/file_info.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/file_info.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/color_list_preference_line_item.xml",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/layout/color_list_preference_line_item.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor_list.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/motor_list.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_configure_from_template.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_configure_from_template.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module_configure_address.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/lynx_module_configure_address.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/file_info.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/file_info.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_config_wifi_direct.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_config_wifi_direct.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_wifi_channel_selector.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_ftc_wifi_channel_selector.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/banner_parent.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/banner_parent.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_devices.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/digital_devices.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/lynx_module.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/loading_indicator_overlay.xml",
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/layout/loading_indicator_overlay.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/red_line.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/red_line.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/device_interface_module.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/device_interface_module.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/motor.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/item_list_parent.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/item_list_parent.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/loading_indicator_overlay.xml",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/layout/loading_indicator_overlay.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/banner_parent.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/banner_parent.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/pwm_device.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/pwm_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/red_line.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/red_line.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_about.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_about.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/port_attached_row.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/port_attached_row.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/feedback.xml",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/layout/feedback.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_fw_update.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_ftc_lynx_fw_update.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_address_update.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_ftc_lynx_address_update.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/matrices.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/matrices.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor_list.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/motor_list.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_wifi_remembered_groups.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_ftc_wifi_remembered_groups.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_programming_mode.xml",
+        "source": "/Users/Archish/.android/build-cache/98e0107ce85ff6e2f1a26f6438b4626b846f4046/output/res/layout/activity_programming_mode.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_device.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/digital_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/header.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/layout/header.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_load.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_load.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_usb_device.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/lynx_usb_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_config_wifi_direct.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_config_wifi_direct.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_program_and_manage.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_program_and_manage.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/pwm_device.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/pwm_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/legacy.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/legacy.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_usb_device.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/lynx_usb_device.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/info_button.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/info_button.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_program_and_manage.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_program_and_manage.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/button_list.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/button_list.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_generic_settings.xml",
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/layout/activity_generic_settings.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_fw_update.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_ftc_lynx_fw_update.xml"
     }
 ]

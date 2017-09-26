@@ -43,12 +43,12 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_shape"
                 android:onClick="onDoneInfoButtonPressed"
-                android:shadowColor="#A8A8A8"
+                android:shadowColor="@color/info_shadow"
                 android:shadowDx="0"
                 android:shadowDy="0"
                 android:shadowRadius="5"
                 android:text="i"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/textWhite"
                 android:textSize="12sp"
                 android:textStyle="bold"/>
 
@@ -56,7 +56,7 @@
 
     </LinearLayout>
 
-    <include layout="@layout/darker_gray_line"/>
+    <include layout="@layout/gray_line"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,9 +78,9 @@
             android:layout_height="wrap_content"
             android:text="@string/rescanButton_text"/>
 
-        <!-- an anchor for pop-up orange text when we need same -->
+        <!-- an anchor for pop-up feedback text when we need same -->
         <LinearLayout
-            android:id="@+id/orange_warning_anchor"
+            android:id="@+id/feedbackAnchorDuplicateNames"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
               android:onClick="onDevicesInfoButtonPressed"
 
               android:text="i"
-              android:textColor="#FFFFFF"
+              android:textColor="?attr/textWhite"
               android:textSize="12sp"
               android:textStyle="bold"
 
@@ -122,7 +122,7 @@
               android:layout_alignParentEnd="true"
 
               android:background="@drawable/button_shape"
-              android:shadowColor="#A8A8A8"
+              android:shadowColor="@color/info_shadow"
               android:shadowDx="0"
               android:shadowDy="0"
               android:shadowRadius="5"
@@ -130,7 +130,7 @@
 
         </RelativeLayout>
 
-        <!-- FrameLayout allows the orange text to overlay the list -->
+        <!-- FrameLayout allows the feedback text to overlay the list -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -141,9 +141,9 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"/>
 
-            <!-- also used for orange text placement -->
+            <!-- also used for feedback text placement -->
             <LinearLayout
-                android:id="@+id/orangeTextAnchor"
+                android:id="@+id/feedbackAnchor"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

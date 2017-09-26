@@ -4,7 +4,6 @@ Copyright 2016 Google Inc.
 Author: lizlooney@google.com (Liz Looney)
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:keepScreenOn="true"
@@ -13,10 +12,10 @@ Author: lizlooney@google.com (Liz Looney)
   <RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="80dp"
-    android:background="#FF0000">
+    android:background="?attr/backgroundMedium">
     <TextView
       android:text="@string/programming_mode"
-      android:textColor="#FFFFFF"
+      android:textColor="?attr/textWhite"
       android:padding="8dp"
       android:textSize="24sp"
       android:textStyle="bold"
@@ -30,10 +29,9 @@ Author: lizlooney@google.com (Liz Looney)
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:src="@drawable/icon_menu"
-      android:background="#FF0000"
+      android:background="@android:color/transparent"
       android:padding="15dp"
       android:adjustViewBounds="true"
-      android:layout_alignParentRight="true"
       android:layout_alignParentEnd="true"
       android:layout_centerInParent="true"
       android:layout_centerHorizontal="true"
@@ -64,7 +62,7 @@ Author: lizlooney@google.com (Liz Looney)
         <TextView
           android:id="@+id/network_name"
           android:textStyle="bold"
-          android:layout_marginLeft="20dp"
+          android:layout_marginStart="20dp"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content" />
         <TextView
@@ -75,7 +73,7 @@ Author: lizlooney@google.com (Liz Looney)
         <TextView
           android:id="@+id/passphrase"
           android:textStyle="bold"
-          android:layout_marginLeft="20dp"
+          android:layout_marginStart="20dp"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content" />
         <TextView
@@ -86,7 +84,7 @@ Author: lizlooney@google.com (Liz Looney)
         <TextView
           android:id="@+id/server_url"
           android:textStyle="bold"
-          android:layout_marginLeft="20dp"
+          android:layout_marginStart="20dp"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content" />
       </LinearLayout>
@@ -109,7 +107,7 @@ Author: lizlooney@google.com (Liz Looney)
         <TextView
           android:id="@+id/server_status"
           android:textStyle="bold"
-          android:layout_marginLeft="20dp"
+          android:layout_marginStart="20dp"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content" />
         <TextView

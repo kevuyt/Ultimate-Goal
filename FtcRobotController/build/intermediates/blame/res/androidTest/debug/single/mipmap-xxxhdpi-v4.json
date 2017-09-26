@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/FtcRobotController/build/intermediates/res/merged/androidTest/debug/mipmap-xxxhdpi-v4/ic_masq_i.png",
+        "source": "/Users/Archish/Documents/Projects/MasqLibTest/FtcRobotController/build/intermediates/bundles/debug/res/mipmap-xxxhdpi-v4/ic_masq_i.png"
+    },
+    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/mipmap-xxxhdpi-v4/ic_masq_i.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/mipmap-xxxhdpi-v4/ic_masq_i.png"
     }

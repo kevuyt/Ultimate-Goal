@@ -19,7 +19,7 @@
             <include layout="@layout/button_list"/>
         </RelativeLayout>
 
-        <include layout="@layout/darker_gray_line"/>
+        <include layout="@layout/gray_line"/>
 
     </LinearLayout>
 
@@ -83,7 +83,7 @@
             </ScrollView>
 
             <LinearLayout
-                android:id="@+id/orangeTextAnchor"
+                android:id="@+id/feedbackAnchor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -109,6 +109,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dip"
-            android:background="#FF0000"/>
+            android:background="?attr/lineBright"/>
     </LinearLayout>
 </RelativeLayout>

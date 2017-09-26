@@ -10,7 +10,7 @@
         layout="@layout/header"/>
 
     <include layout="@layout/button_list"/>
-    <include layout="@layout/darker_gray_line"/>
+    <include layout="@layout/gray_line"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 <!-- just draw a red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
                 <include layout="@layout/item_list_parent"/>
 

@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <array name="app_theme_colors">
+        <item>@color/medium_light_red</item>
+        <item>@color/medium_light_green</item>
+        <item>@color/medium_light_blue</item>
+        <item>@color/medium_light_purple</item>
+        <item>@color/medium_light_orange</item>
+        <item>@color/medium_light_teal</item>
+    </array>
+    <integer-array name="app_theme_ids">
+      <item>@style/AppThemeRedRC</item>
+      <item>@style/AppThemeGreenRC</item>
+      <item>@style/AppThemeBlueRC</item>
+      <item>@style/AppThemePurpleRC</item>
+      <item>@style/AppThemeOrangeRC</item>
+      <item>@style/AppThemeTealRC</item>
+  </integer-array>
+    <string-array name="app_theme_names">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Purple</item>
+        <item>Orange</item>
+        <item>Teal</item>
+    </string-array>
+    <string-array name="app_theme_tokens">
+        <item>@string/tokenThemeRed</item>
+        <item>@string/tokenThemeGreen</item>
+        <item>@string/tokenThemeBlue</item>
+        <item>@string/tokenThemePurple</item>
+        <item>@string/tokenThemeOrange</item>
+        <item>@string/tokenThemeTeal</item>
+    </string-array>
     <string-array name="choice_array_analogInput">
     <item>NOTHING</item>
     <item>OPTICAL_DISTANCE_SENSOR</item>
@@ -85,29 +117,125 @@
         <item>5GHz, Channel 161</item>
         -->
     </string-array>
+    <attr format="color" name="backgroundAlmostDark"/>
+    <attr format="color" name="backgroundDark"/>
+    <attr format="color" name="backgroundLight"/>
+    <attr format="color" name="backgroundMedium"/>
+    <attr format="color" name="backgroundMediumDark"/>
+    <attr format="color" name="backgroundMediumLight"/>
+    <attr format="color" name="backgroundMediumMedium"/>
+    <attr format="color" name="backgroundVeryDark"/>
+    <attr format="color" name="backgroundVeryVeryDark"/>
+    <attr format="color" name="feedbackBackground"/>
+    <attr format="color" name="feedbackBorder"/>
+    <attr format="reference" name="feedbackShape"/>
+    <attr format="color" name="lineBright"/>
+    <attr format="color" name="lineLight"/>
+    <attr format="color" name="textBright"/>
+    <attr format="color" name="textLight"/>
+    <attr format="color" name="textMedium"/>
+    <attr format="color" name="textMediumAlmostDark"/>
+    <attr format="color" name="textMediumDark"/>
+    <attr format="color" name="textMediumLight"/>
+    <attr format="color" name="textMediumMedium"/>
+    <attr format="color" name="textVeryDark"/>
+    <attr format="color" name="textVeryVeryDark"/>
+    <attr format="color" name="textWhite"/>
+    <color name="active_button_green">#4a9e21</color>
+    <color name="almost_dark_blue">#100c49</color>
+    <color name="almost_dark_green">#0c4b0c</color>
+    <color name="almost_dark_orange">#4b270c</color>
+    <color name="almost_dark_purple">#270c4b</color>
+    <color name="almost_dark_red">#490c10</color>
+    <color name="almost_dark_teal">#0c3a4b</color>
+    <color name="background_black">#000000</color>
+    <color name="background_dark_gray">#444444</color>
+    <color name="background_orange">#ff9000</color>
+    <color name="background_white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="bright_qcom_blue">#309EA4</color>
+    <color name="border_orange">#ff6700</color>
+    <color name="bright_blue">#190aff</color>
+    <color name="bright_green">#0aff0a</color>
+    <color name="bright_orange">#ff740a</color>
+    <color name="bright_purple">#740aff</color>
     <color name="bright_red">#A6040E</color>
     <color name="bright_red_text">#ff0a19</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorTitle">#FF0000</color>
+    <color name="bright_teal">#0abeff</color>
+    <color name="dark_blue">#06014e</color>
+    <color name="dark_green">#014b01</color>
+    <color name="dark_orange">#4b2101</color>
+    <color name="dark_purple">#21014b</color>
+    <color name="dark_red">#4e0106</color>
     <color name="dark_red_background">#3F0206</color>
-    <color name="light_qcom_blue">#C1E2E4</color>
+    <color name="dark_teal">#01384b</color>
+    <color name="firstblue">#009cd7</color>
+    <color name="firstgreen">#00a651</color>
+    <color name="firstorgange">#f57e25</color>
+    <color name="firstred">#ed1c24</color>
+    <color name="inactive_button_gray">#666666</color>
+    <color name="info_shadow">#A8A8A8</color>
+    <color name="light_blue">#1005bf</color>
+    <color name="light_green">#05bd05</color>
+    <color name="light_orange">#bd5505</color>
+    <color name="light_purple">#5505bd</color>
+    <color name="light_red">#bf0510</color>
     <color name="light_red_background">#790E15</color>
+    <color name="light_teal">#059bd1</color>
+    <color name="line_gray">#aaaaaa</color>
     <color name="masq_gold">#806B00</color>
     <color name="masq_gold_dark">#5A4B00</color>
     <color name="masq_gold_light">#A28B16</color>
+    <color name="medium_blue">#150e79</color>
+    <color name="medium_dark_blue">#070253</color>
+    <color name="medium_dark_green">#025502</color>
+    <color name="medium_dark_orange">#552602</color>
+    <color name="medium_dark_purple">#260255</color>
+    <color name="medium_dark_red">#530207</color>
+    <color name="medium_dark_teal">#023f55</color>
+    <color name="medium_green">#0e770e</color>
+    <color name="medium_light_blue">#0e04a6</color>
+    <color name="medium_light_green">#04a404</color>
+    <color name="medium_light_orange">#a44904</color>
+    <color name="medium_light_purple">#4904a4</color>
+    <color name="medium_light_red">#a6040e</color>
+    <color name="medium_light_teal">#0588b8</color>
+    <color name="medium_medium_blue">#080262</color>
+    <color name="medium_medium_green">#026402</color>
+    <color name="medium_medium_orange">#642c02</color>
+    <color name="medium_medium_purple">#2c0264</color>
+    <color name="medium_medium_red">#620208</color>
+    <color name="medium_medium_teal">#025978</color>
+    <color name="medium_orange">#a95414</color>
+    <color name="medium_purple">#3b0e77</color>
+    <color name="medium_red">#790e15</color>
     <color name="medium_red_background">#4e0106</color>
+    <color name="medium_teal">#106989</color>
+    <color name="text_error">@color/bright_red</color>
+    <color name="text_okay">#009900</color>
+    <color name="text_toast">@color/text_white</color>
+    <color name="text_warning">#ff8000</color>
+    <color name="text_white">#FFFFFFFF</color>
     <color name="transparent_color">#00000000</color>
     <color name="very_bright_red">#bf0510</color>
+    <color name="very_dark_blue">#06023f</color>
+    <color name="very_dark_green">#024002</color>
+    <color name="very_dark_orange">#401d02</color>
+    <color name="very_dark_purple">#1d0240</color>
+    <color name="very_dark_red">#3f0206</color>
+    <color name="very_dark_teal">#023040</color>
+    <color name="very_very_dark_blue">#04012d</color>
+    <color name="very_very_dark_green">#012d01</color>
+    <color name="very_very_dark_orange">#2d1401</color>
+    <color name="very_very_dark_purple">#14012d</color>
+    <color name="very_very_dark_red">#2d0104</color>
+    <color name="very_very_dark_teal">#01212d</color>
     <color name="white">#FFFFFF</color>
     <declare-styleable name="CameraBridgeViewBase"><attr format="boolean" name="show_fps"/><attr format="integer" name="camera_id">
           <enum name="any" value="-1"/>
           <enum name="back" value="99"/>
           <enum name="front" value="98"/>
        </attr></declare-styleable>
+    <declare-styleable name="ColorListPreference"><attr format="reference" name="colors"/></declare-styleable>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">5dp</dimen>
     <string name="VUFORIA_INIT_ERROR_DEVICE_NOT_SUPPORTED">Failed to initialize Vuforia. This device is not supported.</string>
@@ -153,6 +281,13 @@
     <string name="add_servo_controller_menu_item">Add Servo Controller</string>
     <string name="alertLynxFirmwareUpdateFailed">Firmware update of Expansion Hub %s failed. Please try again.</string>
     <string name="alertLynxFirmwareUpdateFailedTitle">Firmware Update Failed</string>
+    <string name="alertMessageNoActionGetContent">Your device lacks system support for selecting files.</string>
+    <string name="alertTitleRobotControllerConsole">Robot Controller Console</string>
+    <string name="appNameDriverStation">Driver Station</string>
+    <string name="appNameRobotController">Robot Controller</string>
+    <string name="appNameUnknown">Unknown Application</string>
+    <string name="appThemeChangeRestartNotifyDS">App color scheme has changed. The driver station will restart.</string>
+    <string name="appThemeChangeRestartNotifyRC">App color scheme has changed. The robot controller will restart.</string>
     <string name="app_name">FTC Robot Controller</string>
     <string name="attached">Attached</string>
     <string name="availableConfigListCaption">Available configurations:</string>
@@ -269,6 +404,7 @@
     <string name="displayNameMatrixServoController">Matrix Servo Controller</string>
     <string name="display_server_log_button">Display Server Log</string>
     <string name="edit_analog_input_devices_activity">Edit Analog Input Devices</string>
+    <string name="edit_analog_input_devices_activity_lynx">Edit Analog Input Devices (Expansion Hub)</string>
     <string name="edit_analog_output_devices_activity">Edit Analog Output Devices</string>
     <string name="edit_controller">Edit Controller</string>
     <string name="edit_core_device_interface_module_controller_activity">Edit Core Device Interface Module Controller</string>
@@ -310,8 +446,6 @@
     <string name="hide_server_log_button">Hide Server Log</string>
     <string name="hwDeviceDescriptionAndConnection">\"%1$s [%2$s]\"</string>
     <string name="hwPoorlyNamedDevice">an attached device</string>
-    <string name="idAppDriverStation">Driver Station</string>
-    <string name="idAppRobotController">Robot Controller</string>
     <string name="incompatibleAppsError">Incompatible apps: %1$s=v%2$d vs %3$s=v%4$d</string>
     <string name="input_name_hint">Enter device name here</string>
     <string name="input_name_label">Device name</string>
@@ -401,10 +535,15 @@
     <string name="not_available">&lt;NOT AVAILABLE></string>
     <string name="nxtDcMotorControllerName">Hitechnic DC Motor Controller</string>
     <string name="nxtServoControllerName">Hitechnic Servo Controller</string>
+    <string name="packageName">@string/packageNameRobotController</string>
+    <string name="packageNameDriverStation" translatable="false">com.qualcomm.ftcdriverstation</string>
+    <string name="packageNameRobotController" translatable="false">com.qualcomm.ftcrobotcontroller</string>
     <string name="passphrase_label">Use the following passphrase to gain access to the network:</string>
     <string name="peerStatusConnected">connected</string>
     <string name="peerStatusDisconnected">disconnected</string>
     <string name="port">Port</string>
+    <string name="pref_app_theme">pref_app_theme</string>
+    <string name="pref_app_theme_rc">pref_app_theme_rc</string>
     <string name="pref_autostarted_robot_controller">pref_autostarted_robot_controller</string>
     <string name="pref_connection_owner_identity">pref_connection_owner_identity</string>
     <string name="pref_connection_owner_password">pref_connection_owner_password</string>
@@ -443,6 +582,10 @@
     <string name="prefcat_logging">Logging</string>
     <string name="prefcat_wifi_config">Network Configuration</string>
     <string name="prefcat_wifi_settings">Wifi Settings</string>
+    <string name="prefedit_app_theme_ds">Driver Station Color Scheme</string>
+    <string name="prefedit_app_theme_rc">Robot Controller Color Scheme</string>
+    <string name="prefedit_app_theme_summary_ds">Change the color scheme of the driver station. Note: the app will restart if the color scheme is changed</string>
+    <string name="prefedit_app_theme_summary_rc">Change the color scheme of the robot controller. Note: the app will restart if the color scheme is changed</string>
     <string name="prefedit_change_wifi_channel">Change Wifi Channel</string>
     <string name="prefedit_clear_remembered_groups_summary">Clears remembered Wifi Direct groups from the robot controller</string>
     <string name="prefedit_debug_driver_station_logs">Log Internal Events</string>
@@ -460,7 +603,7 @@
     <string name="prefedit_launch_inspect_ds_summary">Creates a self-inspection report for the driver station</string>
     <string name="prefedit_launch_inspect_rc">Inspect Robot Controller</string>
     <string name="prefedit_launch_inspect_rc_summary">Creates a self-inspection report for the robot controller</string>
-    <string name="prefedit_pair_rc">Connect with Robot Controller</string>
+    <string name="prefedit_pair_rc">Pair with Robot Controller</string>
     <string name="prefedit_pair_rc_summary">Change the robot controller this driver station is paired with</string>
     <string name="prefedit_remembered_groups">Clear Wifi Direct Groups</string>
     <string name="prefedit_sound_on_off">Sound</string>
@@ -469,6 +612,9 @@
     <string name="prefedit_view_logs">View Logs</string>
     <string name="prefedit_view_logs_summary">Shows recently-logged activity of the robot controller.</string>
     <string name="preferred_imu_name">imu</string>
+    <string name="program_and_manage_activity">Program &amp; Manage</string>
+    <string name="program_and_manage_menu_item">Program &amp; Manage</string>
+    <string name="programming_and_manage">Program &amp; Manage</string>
     <string name="programming_mode">Programming Mode</string>
     <string name="programming_mode_activity">Programming Mode</string>
     <string name="programming_mode_menu_item">Programming Mode</string>
@@ -574,13 +720,22 @@
     <string name="toastLynxAddressChangeNothingToDo">No Expansion Hub address changes indicated.</string>
     <string name="toastLynxFirmwareUpdateSuccessful">Firmware update of Expansion Hub %s succeeded.</string>
     <string name="toastOpModeStuck">OpMode stuck in %s. Restarting robot controller app.</string>
+    <string name="toastRebootRC">Rebooting Robot Controller</string>
     <string name="toastRestartRobotComplete">Restart Robot Complete</string>
     <string name="toastRestartingRobot">Restarting Robot</string>
     <string name="toastSaved">Saved</string>
     <string name="toastUnableToLaunchZTEWifiChannelEditor">Unable to launch ZTE WifiChannelEditor</string>
+    <string name="toastWebViewDownloadFile">Downloading %1$s</string>
+    <string name="toastWebViewDownloadsComplete">Downloads Complete</string>
     <string name="toastWifiConfigurationComplete">Configuration Complete</string>
     <string name="toastWifiP2pChannelChangeRequestedDS">Asked Robot Controller to change to channel \'%s\'. A restart of the Driver Station may be needed.</string>
     <string name="toastWifiP2pRememberedGroupsCleared">Wifi Direct remembered groups have been cleared from the robot controller.</string>
+    <string name="tokenThemeBlue">blue</string>
+    <string name="tokenThemeGreen">green</string>
+    <string name="tokenThemeOrange">orange</string>
+    <string name="tokenThemePurple">purple</string>
+    <string name="tokenThemeRed">red</string>
+    <string name="tokenThemeTeal">teal</string>
     <string name="unhealthyDevice">problem with %s</string>
     <string name="unknown_wifi_direct_channel">Unknown channel</string>
     <string name="update_lynx_firmware">Update Expansion Hub Firmware</string>
@@ -589,35 +744,199 @@
     <string name="warningProblemCommunicatingWithUSBDevice">problem communicating with %s</string>
     <string name="warningUSBDeviceDetached">%s detached</string>
     <string name="warningUnableToOpen">unable to open %s</string>
+    <string name="webViewDownloadRequestDescription">Download file...</string>
     <string name="wifi_direct_bad_device_name">The Wifi-Direct device name contains non-printable characters. Please go into the Wifi-Direct settings menu and rename this device.</string>
     <string name="wifi_direct_update_settings">Please wait while we update the Wifi Direct settings on this device.</string>
     <string name="writeXML_prompt">Select an XML file to instantiate a Robot from that file</string>
     <string name="writeXML_text">Press this button to write the current configuration to an XML file</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+        <!-- Theme customizations available in newer API levels can go in res/values-vXX/styles.xml,
+        while customizations related to backward-compatibility can go here. -->
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    <item name="android:windowFullscreen">true</item>
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
-    <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
-  </style>
-    <style name="CustomAlertDialog" parent="@android:style/Theme.Dialog">
-    <item name="android:background">@color/black</item>
-    <item name="android:textColor">@color/white</item>
-    <item name="android:windowBackground">@color/dark_red_background</item>
-  </style>
-    <style name="OrangeTextButton" parent="android:Widget.Button">
-  </style>
-    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
-    <item name="android:fontFamily">sans-serif-light</item>
-  </style>
-    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
-    <item name="android:fontFamily">sans-serif-light</item>
-  </style>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textViewStyle">@style/FtcTextViewStyle</item>
+        <item name="android:buttonStyle">@style/FtcButtonStyle</item>
+        <item name="textWhite">@color/text_white</item>
+    </style>
+    <style name="AppTheme.Blue">
+        <item name="textBright">@color/bright_blue</item>
+        <item name="textLight">@color/light_blue</item>
+        <item name="textMedium">@color/medium_blue</item>
+        <item name="textMediumDark">@color/medium_dark_blue</item>
+        <item name="textVeryDark">@color/very_dark_blue</item>
+        <item name="textVeryVeryDark">@color/very_very_dark_blue</item>
+
+        <item name="backgroundLight">@color/light_blue</item>
+        <item name="backgroundMediumLight">@color/medium_light_blue</item>
+        <item name="backgroundMedium">@color/medium_blue</item>
+        <item name="backgroundMediumMedium">@color/medium_medium_blue</item>
+        <item name="backgroundMediumDark">@color/medium_dark_blue</item>
+        <item name="backgroundAlmostDark">@color/almost_dark_blue</item>
+        <item name="backgroundDark">@color/dark_blue</item>
+        <item name="backgroundVeryDark">@color/very_dark_blue</item>
+        <item name="backgroundVeryVeryDark">@color/very_very_dark_blue</item>
+        <item name="lineBright">@color/bright_blue</item>
+        <item name="lineLight">@color/light_blue</item>
+        <item name="feedbackBackground">@color/background_orange</item>
+        <item name="feedbackBorder">@color/border_orange</item>
+        <item name="feedbackShape">@drawable/feedback_shape_orange</item>
+    </style>
+    <style name="AppTheme.Green">
+        <item name="textBright">@color/bright_green</item>
+        <item name="textLight">@color/light_green</item>
+        <item name="textMedium">@color/medium_green</item>
+        <item name="textMediumDark">@color/medium_dark_green</item>
+        <item name="textVeryDark">@color/very_dark_green</item>
+        <item name="textVeryVeryDark">@color/very_very_dark_green</item>
+
+        <item name="backgroundLight">@color/light_green</item>
+        <item name="backgroundMediumLight">@color/medium_light_green</item>
+        <item name="backgroundMedium">@color/medium_green</item>
+        <item name="backgroundMediumMedium">@color/medium_medium_green</item>
+        <item name="backgroundMediumDark">@color/medium_dark_green</item>
+        <item name="backgroundAlmostDark">@color/almost_dark_green</item>
+        <item name="backgroundDark">@color/dark_green</item>
+        <item name="backgroundVeryDark">@color/very_dark_green</item>
+        <item name="backgroundVeryVeryDark">@color/very_very_dark_green</item>
+        <item name="lineBright">@color/bright_green</item>
+        <item name="lineLight">@color/light_green</item>
+        <item name="feedbackBackground">@color/background_orange</item>
+        <item name="feedbackBorder">@color/border_orange</item>
+        <item name="feedbackShape">@drawable/feedback_shape_orange</item>
+    </style>
+    <style name="AppTheme.Orange">
+        <item name="textBright">@color/bright_orange</item>
+        <item name="textLight">@color/light_orange</item>
+        <item name="textMedium">@color/medium_orange</item>
+        <item name="textMediumDark">@color/medium_dark_orange</item>
+        <item name="textVeryDark">@color/very_dark_orange</item>
+        <item name="textVeryVeryDark">@color/very_very_dark_orange</item>
+
+        <item name="backgroundLight">@color/light_orange</item>
+        <item name="backgroundMediumLight">@color/medium_light_orange</item>
+        <item name="backgroundMedium">@color/medium_orange</item>
+        <item name="backgroundMediumMedium">@color/medium_medium_orange</item>
+        <item name="backgroundMediumDark">@color/medium_dark_orange</item>
+        <item name="backgroundAlmostDark">@color/almost_dark_orange</item>
+        <item name="backgroundDark">@color/dark_orange</item>
+        <item name="backgroundVeryDark">@color/very_dark_orange</item>
+        <item name="backgroundVeryVeryDark">@color/very_very_dark_orange</item>
+        <item name="lineBright">@color/bright_orange</item>
+        <item name="lineLight">@color/light_orange</item>
+        <item name="feedbackBackground">@color/background_orange</item>
+        <item name="feedbackBorder">@color/border_orange</item>
+        <item name="feedbackShape">@drawable/feedback_shape_orange</item>
+    </style>
+    <style name="AppTheme.Purple">
+        <item name="textBright">@color/bright_purple</item>
+        <item name="textLight">@color/light_purple</item>
+        <item name="textMedium">@color/medium_purple</item>
+        <item name="textMediumDark">@color/medium_dark_purple</item>
+        <item name="textVeryDark">@color/very_dark_purple</item>
+        <item name="textVeryVeryDark">@color/very_very_dark_purple</item>
+
+        <item name="backgroundLight">@color/light_purple</item>
+        <item name="backgroundMediumLight">@color/medium_light_purple</item>
+        <item name="backgroundMedium">@color/medium_purple</item>
+        <item name="backgroundMediumMedium">@color/medium_medium_purple</item>
+        <item name="backgroundMediumDark">@color/medium_dark_purple</item>
+        <item name="backgroundAlmostDark">@color/almost_dark_purple</item>
+        <item name="backgroundDark">@color/dark_purple</item>
+        <item name="backgroundVeryDark">@color/very_dark_purple</item>
+        <item name="backgroundVeryVeryDark">@color/very_very_dark_purple</item>
+        <item name="lineBright">@color/bright_purple</item>
+        <item name="lineLight">@color/light_purple</item>
+        <item name="feedbackBackground">@color/background_orange</item>
+        <item name="feedbackBorder">@color/border_orange</item>
+        <item name="feedbackShape">@drawable/feedback_shape_orange</item>
+    </style>
+    <style name="AppTheme.Red">
+        <item name="textBright">@color/bright_red</item>
+        <item name="textLight">@color/light_red</item>
+        <item name="textMedium">@color/medium_red</item>
+        <item name="textMediumDark">@color/medium_dark_red</item>
+        <item name="textVeryDark">@color/very_dark_red</item>
+        <item name="textVeryVeryDark">@color/very_very_dark_red</item>
+
+        <item name="backgroundLight">@color/light_red</item>
+        <item name="backgroundMediumLight">@color/medium_light_red</item>
+        <item name="backgroundMedium">@color/medium_red</item>
+        <item name="backgroundMediumMedium">@color/medium_medium_red</item>
+        <item name="backgroundMediumDark">@color/medium_dark_red</item>
+        <item name="backgroundAlmostDark">@color/almost_dark_red</item>
+        <item name="backgroundDark">@color/dark_red</item>
+        <item name="backgroundVeryDark">@color/very_dark_red</item>
+        <item name="backgroundVeryVeryDark">@color/very_very_dark_red</item>
+        <item name="lineBright">@color/bright_red</item>
+        <item name="lineLight">@color/light_red</item>
+        <item name="feedbackBackground">@color/background_orange</item>
+        <item name="feedbackBorder">@color/border_orange</item>
+        <item name="feedbackShape">@drawable/feedback_shape_orange</item>
+    </style>
+    <style name="AppTheme.Teal">
+        <item name="textBright">@color/bright_teal</item>
+        <item name="textLight">@color/light_teal</item>
+        <item name="textMedium">@color/medium_teal</item>
+        <item name="textMediumDark">@color/medium_dark_teal</item>
+        <item name="textVeryDark">@color/very_dark_teal</item>
+        <item name="textVeryVeryDark">@color/very_very_dark_teal</item>
+
+        <item name="backgroundLight">@color/light_teal</item>
+        <item name="backgroundMediumLight">@color/medium_light_teal</item>
+        <item name="backgroundMedium">@color/medium_teal</item>
+        <item name="backgroundMediumMedium">@color/medium_medium_teal</item>
+        <item name="backgroundMediumDark">@color/medium_dark_teal</item>
+        <item name="backgroundAlmostDark">@color/almost_dark_teal</item>
+        <item name="backgroundDark">@color/dark_teal</item>
+        <item name="backgroundVeryDark">@color/very_dark_teal</item>
+        <item name="backgroundVeryVeryDark">@color/very_very_dark_teal</item>
+        <item name="lineBright">@color/bright_teal</item>
+        <item name="lineLight">@color/light_teal</item>
+        <item name="feedbackBackground">@color/background_orange</item>
+        <item name="feedbackBorder">@color/border_orange</item>
+        <item name="feedbackShape">@drawable/feedback_shape_orange</item>
+    </style>
+    <style name="AppThemeBlueRC" parent="AppTheme.Blue">
+    </style>
+    <style name="AppThemeGreenRC" parent="AppTheme.Green">
+    </style>
+    <style name="AppThemeOrangeRC" parent="AppTheme.Orange">
+    </style>
+    <style name="AppThemePurpleRC" parent="AppTheme.Purple">
+    </style>
+    <style name="AppThemeRedRC" parent="AppTheme.Red">
+    </style>
+    <style name="AppThemeTealRC" parent="AppTheme.Teal">
+    </style>
+    <style name="ConfigWifiDirectDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:background">@color/background_black</item>
+        <item name="android:textColor">?attr/textWhite</item>
+        <item name="android:windowBackground">?attr/backgroundVeryDark</item>
+    </style>
+    <style name="FeedbackButton" parent="android:Widget.Button">
+        <item name="android:textColor">?attr/feedbackBorder</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="FeedbackText" parent="FtcTextViewStyle">
+        <item name="android:textColor">?attr/textWhite</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="FtcButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="FtcTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="FtcTextViewStyleBold" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="OpModeDialogTextAppearance" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">?android:attr/textColorAlertDialogListItem</item>
+    </style>
 </resources>
