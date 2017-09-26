@@ -43,7 +43,7 @@ import com.vuforia.VuMarkTargetResult;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-import org.firstinspires.ftc.robotcore.internal.VuforiaPoseMatrix;
+import org.firstinspires.ftc.robotcore.internal.vuforia.VuforiaPoseMatrix;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -197,7 +197,6 @@ public class MasqVuforiaListener implements VuforiaTrackable.Listener {
         }
     }
 
-    @Override
     public void onTracked(TrackableResult trackableResult) {
 
     }
