@@ -8,18 +8,18 @@ package com.qualcomm.analyticsmodule;
 
 public final class R {
     public static final class color {
-        public static final int black = 0x7f0a0000;
-        public static final int bright_red = 0x7f0a0002;
-        public static final int bright_red_text = 0x7f0a0003;
-        public static final int dark_red_background = 0x7f0a0008;
-        public static final int light_red_background = 0x7f0a000a;
-        public static final int medium_red_background = 0x7f0a000e;
-        public static final int transparent_color = 0x7f0a000f;
-        public static final int very_bright_red = 0x7f0a0010;
-        public static final int white = 0x7f0a0011;
+        public static final int black = 0x7f0a000b;
+        public static final int bright_red = 0x7f0a0011;
+        public static final int bright_red_text = 0x7f0a0012;
+        public static final int dark_red_background = 0x7f0a0019;
+        public static final int light_red_background = 0x7f0a0026;
+        public static final int medium_red_background = 0x7f0a0043;
+        public static final int transparent_color = 0x7f0a004a;
+        public static final int very_bright_red = 0x7f0a004b;
+        public static final int white = 0x7f0a0058;
     }
     public static final class string {
-        public static final int app_name = 0x7f0b002b;
+        public static final int app_name = 0x7f0b0032;
     }
     public static final class style {
         public static final int AppBaseTheme = 0x7f080000;

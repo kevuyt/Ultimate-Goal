@@ -13,7 +13,7 @@
 
     <include layout="@layout/button_list"/>
 
-    <include layout="@layout/darker_gray_line"/>
+    <include layout="@layout/gray_line"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                 <!-- red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
                 <!-- ****************************************************** Port 0 ******************************************************-->
                 <TableRow
@@ -126,7 +126,7 @@
                 <!-- red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
 
                 <!-- ****************************************************** Port 1 ******************************************************-->
@@ -162,7 +162,7 @@
                 <!-- red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
                 <!-- ****************************************************** Port 2 ******************************************************-->
                 <TableRow
@@ -197,7 +197,7 @@
                 <!-- red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
 
                 <!-- ****************************************************** Port 3 ******************************************************-->
@@ -233,7 +233,7 @@
                 <!-- red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
                 <!-- ****************************************************** Port 4 ******************************************************-->
                 <TableRow
@@ -268,7 +268,7 @@
                 <!-- red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
                 <!-- ****************************************************** Port 5 ******************************************************-->
                 <TableRow
@@ -303,7 +303,7 @@
                 <!-- red line -->
                 <View
                     android:layout_height="2dip"
-                    android:background="#FF0000"/>
+                    android:background="?attr/lineBright"/>
 
             </TableLayout>
         </LinearLayout>

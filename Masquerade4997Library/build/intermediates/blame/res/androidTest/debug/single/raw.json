@@ -1,46 +1,90 @@
 [
     {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/texture_fragment_shader.glsl",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/raw/texture_fragment_shader.glsl"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/errormessage.wav",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/raw/errormessage.wav"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/simple_vertex_shader.glsl",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/raw/simple_vertex_shader.glsl"
+    },
+    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/texture_fragment_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/res/raw/texture_fragment_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/raw/texture_fragment_shader.glsl"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_fragment_shader.glsl",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/raw/cube_mesh_fragment_shader.glsl"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/warningmessage.wav",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/raw/warningmessage.wav"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_fragment_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/res/raw/cube_mesh_fragment_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/raw/cube_mesh_fragment_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/color_fragment_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/res/raw/color_fragment_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/raw/color_fragment_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/errormessage.wav",
-        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/raw/errormessage.wav"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/raw/errormessage.wav"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_vertex_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/res/raw/cube_mesh_vertex_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/raw/cube_mesh_vertex_shader.glsl"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/color_fragment_shader.glsl",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/raw/color_fragment_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/chimedisconnect.wav",
-        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/raw/chimedisconnect.wav"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/raw/chimedisconnect.wav"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/chimedisconnect.wav",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/raw/chimedisconnect.wav"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_vertex_shader.glsl",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/raw/cube_mesh_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/warningmessage.wav",
-        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/raw/warningmessage.wav"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/raw/warningmessage.wav"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/chimeconnect.wav",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/raw/chimeconnect.wav"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/simple_vertex_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/res/raw/simple_vertex_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/raw/simple_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/nxtstartupsound.wav",
-        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/raw/nxtstartupsound.wav"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/raw/nxtstartupsound.wav"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/texture_vertex_shader.glsl",
+        "source": "/Users/Archish/.android/build-cache/7e4f1cbcdfd9fb42e432b36c7ce44db29ff9305e/output/res/raw/texture_vertex_shader.glsl"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/nxtstartupsound.wav",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/raw/nxtstartupsound.wav"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/texture_vertex_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/448892ee638cf799be73d536ad98d6596b274390/output/res/raw/texture_vertex_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/7963ccb97c49c864d988a80756d5df72adcf7ce1/output/res/raw/texture_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/raw/chimeconnect.wav",
-        "source": "/Users/Archish/.android/build-cache/0fb3a47e99f54ea7eec9aabf08b8e36664bbaf77/output/res/raw/chimeconnect.wav"
+        "source": "/Users/Archish/.android/build-cache/39a625aa66b9bde0191fbbc18c675ea98ee552a3/output/res/raw/chimeconnect.wav"
     }
 ]

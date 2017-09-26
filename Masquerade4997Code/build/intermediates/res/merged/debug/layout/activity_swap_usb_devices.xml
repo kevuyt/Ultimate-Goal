@@ -18,7 +18,7 @@
 
     </LinearLayout>
 
-    <include layout="@layout/darker_gray_line"/>
+    <include layout="@layout/gray_line"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,9 +35,9 @@
             android:paddingTop="3dp"
             android:text="(replaced at runtime)"/>
 
-        <!-- an anchor for pop-up orange text when we need same -->
+        <!-- an anchor for pop-up feedback text when we need same -->
         <LinearLayout
-            android:id="@+id/orange_warning_anchor"
+            android:id="@+id/feedbackAnchor"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
