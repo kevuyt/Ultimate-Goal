@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
 import Library4997.MasqHardware;
+import Library4997.MasqRobot;
 
 
 /**
@@ -21,6 +22,7 @@ public class MasqAdafruitIMU implements MasqHardware{
         imu = hardwareMap.get(BNO055IMU.class, name);
         setParameters();
     }
+
     private void setParameters() {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         //parameters.mode = BNO055IMU.IMU;

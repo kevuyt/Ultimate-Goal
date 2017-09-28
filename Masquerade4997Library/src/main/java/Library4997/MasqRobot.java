@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqTankDrive;
@@ -25,18 +26,18 @@ import Library4997.MasqWrappers.MasqController;
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
-    HardwareMap hwmp;
-    public MasqRobot (HardwareMap hwmp) {
-        this.hwmp = hwmp;
+    public HardwareMap hardwareMap = null;
+    public MasqRobot(HardwareMap hardwareMap){
+        this.hardwareMap  = hardwareMap;
     }
     ////////////////////////////// Place All Hardware Here ///////////////////////////////////////////////////
-    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", hwmp);
+    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", hardwareMap);
 
-    public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu", hwmp);
+    public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu", hardwareMap);
     private MasqClock timeoutClock = new MasqClock();
-    private MasqVoltageSensor voltageSensor = new MasqVoltageSensor(hwmp);
-    public MasqCRServo crServoOne = new MasqCRServo("servoOne", hwmp);
-    public MasqCRServo crServoTwo = new MasqCRServo("servoTwo", hwmp);
+    private MasqVoltageSensor voltageSensor = new MasqVoltageSensor(hardwareMap);
+    public MasqCRServo crServoOne = new MasqCRServo("servoOne", hardwareMap);
+    public MasqCRServo crServoTwo = new MasqCRServo("servoTwo", hardwareMap);
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;

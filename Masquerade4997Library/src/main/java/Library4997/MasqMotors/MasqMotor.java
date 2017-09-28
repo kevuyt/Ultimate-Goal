@@ -24,7 +24,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private MasqClock clock = new MasqClock();
     public MasqMotor(String name, HardwareMap hardwareMap){
         this.nameMotor = name;
-        motor = hardwareMap.dcMotor.get(name);
+        motor = hardwareMap.get(DcMotor.class, name);
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
         this.nameMotor = name;
