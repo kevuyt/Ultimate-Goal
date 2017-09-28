@@ -77,7 +77,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         setPower(0,0);
     }
     private boolean opModeIsActive() {
-        return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
+        return true;
     }
     public void zeroPowerBehavior(){
         rightDrive.breakMotors();

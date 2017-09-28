@@ -357,6 +357,7 @@ containing a value of this type.
         public static int ic_launcher=0x7f020003;
         public static int icon_menu=0x7f020004;
         public static int icon_robotcontroller=0x7f020005;
+        public static int masq=0x7f020006;
     }
     public static final class id {
         public static int RelativeLayout=0x7f0c0016;

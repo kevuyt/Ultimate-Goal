@@ -32,9 +32,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import com.google.blocks.ftcrobotcontroller.runtime.BlocksOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 import com.qualcomm.robotcore.eventloop.opmode.AnnotatedOpModeRegistrar;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.internal.opmode.OpModeManagerImpl;
 
@@ -44,9 +47,6 @@ import org.firstinspires.ftc.robotcore.internal.opmode.OpModeManagerImpl;
  */
 public class FtcOpModeRegister implements OpModeRegister {
     //Edited by Archishmaan Peyyety to make hardware maps in objects easier and cleaner
-    public static OpModeManagerImpl opModeManager;
     public void register(OpModeManager manager) {
-        BlocksOpMode.registerAll(manager);
-        AnnotatedOpModeRegistrar.register(manager);
     }
 }

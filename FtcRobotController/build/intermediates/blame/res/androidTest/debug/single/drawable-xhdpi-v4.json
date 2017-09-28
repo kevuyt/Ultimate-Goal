@@ -12,6 +12,10 @@
         "source": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/icon_menu.png"
     },
     {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/masq.png",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/masq.png"
+    },
+    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/icon_robotcontroller.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/icon_robotcontroller.png"
     },

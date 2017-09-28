@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.internal.opmode.OpModeManagerImpl;
 
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqTankDrive;
@@ -26,18 +27,21 @@ import Library4997.MasqWrappers.MasqController;
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
-    public HardwareMap hardwareMap = null;
-    public MasqRobot(HardwareMap hardwareMap){
-        this.hardwareMap  = hardwareMap;
+    public MasqTankDrive driveTrain;
+    public MasqAdafruitIMU imu;
+    public MasqVoltageSensor voltageSensor;
+    public MasqCRServo crServoOne, crServoTwo;
+    HardwareMap hardwareMap;
+    public void mapHardware(HardwareMap hardwareMap){
+        this.hardwareMap = hardwareMap;
+        driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
+        imu = new MasqAdafruitIMU("imu", this.hardwareMap);
+        voltageSensor = new MasqVoltageSensor(this.hardwareMap);
+        crServoOne = new MasqCRServo("servoOne", this.hardwareMap);
+        crServoTwo = new MasqCRServo("servoTwo", this.hardwareMap);
     }
-    ////////////////////////////// Place All Hardware Here ///////////////////////////////////////////////////
-    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", hardwareMap);
 
-    public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu", hardwareMap);
     private MasqClock timeoutClock = new MasqClock();
-    private MasqVoltageSensor voltageSensor = new MasqVoltageSensor(hardwareMap);
-    public MasqCRServo crServoOne = new MasqCRServo("servoOne", hardwareMap);
-    public MasqCRServo crServoTwo = new MasqCRServo("servoTwo", hardwareMap);
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
@@ -59,7 +63,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     private boolean opModeIsActive() {
-        return ((LinearOpMode) (FtcOpModeRegister.opModeManager.getActiveOpMode())).opModeIsActive();
+        return true;
     }
     public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
         MasqClock timeoutTimer = new MasqClock();

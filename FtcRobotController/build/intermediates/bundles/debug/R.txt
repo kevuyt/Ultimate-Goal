@@ -122,6 +122,7 @@ int drawable feedback_shape_orange 0x7f020002
 int drawable ic_launcher 0x7f020003
 int drawable icon_menu 0x7f020004
 int drawable icon_robotcontroller 0x7f020005
+int drawable masq 0x7f020006
 int id RelativeLayout 0x7f0c0013
 int id aboutList 0x7f0c0000
 int id action_about 0x7f0c00c0

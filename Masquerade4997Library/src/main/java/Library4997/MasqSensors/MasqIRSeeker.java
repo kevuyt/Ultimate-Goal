@@ -1,5 +1,6 @@
 package Library4997.MasqSensors;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.I2cDevice;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
@@ -34,9 +35,9 @@ public class MasqIRSeeker implements MasqHardware {
             READ_WINDOW_START = DIRECTION_REGISTER_1200,
             READ_WINDOW_LENGTH = 5;
 
-    public MasqIRSeeker(String name, int i2cAddress) {
+    public MasqIRSeeker(String name, int i2cAddress, HardwareMap hardwareMap) {
         this.name = name;
-        irSeeker = FtcOpModeRegister.opModeManager.getHardwareMap().i2cDevice.get(name);
+        irSeeker = hardwareMap.i2cDevice.get(name);
         irSeeker.resetDeviceConfigurationForOpMode();
         irSeekerManager = new I2cDeviceSynchImpl(irSeeker, I2cAddr.create8bit(i2cAddress), false);
         irSeekerManager.resetDeviceConfigurationForOpMode();
