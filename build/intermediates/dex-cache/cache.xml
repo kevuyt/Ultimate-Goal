@@ -7,7 +7,7 @@
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="738a73e8b21564e79377950323d33dadee3b6e2e">
+        sha1="43df04a036ec6876816d71d82b7c6f4ad9c1d932">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_f45836b0084c797d6a5773ca632faf73484b6143.jar" />
     </item>
     <item
@@ -18,42 +18,6 @@
         revision="25.0.0"
         sha1="9da82f9829b6cafb8407989729481220ca06c905">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_0a0ad35ec19f3f074369377d565fb43432011a50.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/libs/gson-extras-0.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b30c2655badcc7ce97f84e49f777b7dd154bad57">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-extras-0.2.1_858846aa91296dcde8d7cdfc138b7812a80dada1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/libs/support-annotations-23.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="5a214d3b1b12e72f4fb0d5d5d8d0ec43c96de2b5">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_437c573adb8a558a3ddcbf689c179d18546f4f8b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/libs/Vuforia.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="91b46366eb9f8203073ee2935087c097c888c0ed">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/Vuforia_3f7535be5ac537bd8702e6cd77161143a84d1709.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e259d01a014f392930432e85cc1ac9bf807a92df">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_d08c204268d6d954fc46b51abd856da1a2dc0ece.jar" />
     </item>
     <item
         is-multidex="false"
@@ -84,12 +48,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/libs/gson-extras-0.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b30c2655badcc7ce97f84e49f777b7dd154bad57">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-extras-0.2.1_858846aa91296dcde8d7cdfc138b7812a80dada1.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/Archish/.android/build-cache/bfe69e50c02948f1db2e68dbe9ef2a44ac8a1311/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_74ee1034f4c8f9959fd699784bc19cb633ddeed4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/libs/support-annotations-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5a214d3b1b12e72f4fb0d5d5d8d0ec43c96de2b5">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_437c573adb8a558a3ddcbf689c179d18546f4f8b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -108,6 +90,15 @@
         revision="25.0.0"
         sha1="f7d39ab9d3cd2d3930c065d48d8c57aacfd7573b">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/libs/Vuforia.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="91b46366eb9f8203073ee2935087c097c888c0ed">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/Vuforia_3f7535be5ac537bd8702e6cd77161143a84d1709.jar" />
     </item>
     <item
         is-multidex="false"
@@ -144,6 +135,15 @@
         revision="25.0.0"
         sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_57ec556d29c1d291e404e339c34d0f51125b6016.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e259d01a014f392930432e85cc1ac9bf807a92df">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_d08c204268d6d954fc46b51abd856da1a2dc0ece.jar" />
     </item>
 
 </items>

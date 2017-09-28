@@ -1,5 +1,6 @@
 package Library4997.MasqSensors;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
@@ -15,9 +16,9 @@ public class MasqODS implements MasqSensor, MasqHardware {
     private OpticalDistanceSensor ods;
     private String nameODSSensor;
 
-    public MasqODS(String name){
+    public MasqODS(String name, HardwareMap hardwareMap){
         this.nameODSSensor = name;
-        ods = FtcOpModeRegister.opModeManager.getHardwareMap().opticalDistanceSensor.get(name);
+        ods = hardwareMap.opticalDistanceSensor.get(name);
     }
     public void enableLED() {
         ods.enableLed(true);

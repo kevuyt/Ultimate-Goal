@@ -1,6 +1,8 @@
 package Library4997;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.Hardware;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
@@ -23,14 +25,18 @@ import Library4997.MasqWrappers.MasqController;
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
+    HardwareMap hwmp;
+    public MasqRobot (HardwareMap hwmp) {
+        this.hwmp = hwmp;
+    }
     ////////////////////////////// Place All Hardware Here ///////////////////////////////////////////////////
-    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack");
+    public MasqTankDrive driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", hwmp);
 
-    public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu");
+    public MasqAdafruitIMU imu = new MasqAdafruitIMU("imu", hwmp);
     private MasqClock timeoutClock = new MasqClock();
-    private MasqVoltageSensor voltageSensor = new MasqVoltageSensor();
-    public MasqCRServo crServoOne = new MasqCRServo("servoOne");
-    public MasqCRServo crServoTwo = new MasqCRServo("servoTwo");
+    private MasqVoltageSensor voltageSensor = new MasqVoltageSensor(hwmp);
+    public MasqCRServo crServoOne = new MasqCRServo("servoOne", hwmp);
+    public MasqCRServo crServoTwo = new MasqCRServo("servoTwo", hwmp);
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
@@ -340,7 +346,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public double getVoltage() {
         return voltageSensor.getVoltage();
     }
-    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
+//    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
     public void sleep(int time) {
         try {

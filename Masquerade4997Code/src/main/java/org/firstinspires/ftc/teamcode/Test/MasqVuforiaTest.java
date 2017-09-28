@@ -15,7 +15,6 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
         while (!opModeIsActive()){
             dash.create(robot.getTrackable());
             dash.create(robot.anInt());
-            dash.create(robot.vuforia.vuMark.toString());
             dash.update();
         }
         waitForStart();

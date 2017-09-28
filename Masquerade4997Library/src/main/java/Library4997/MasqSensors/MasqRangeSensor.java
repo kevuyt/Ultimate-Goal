@@ -1,5 +1,6 @@
 package Library4997.MasqSensors;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.I2cDevice;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
@@ -22,9 +23,9 @@ public class MasqRangeSensor implements MasqHardware, MasqSensor {
     public I2cDevice RANGE1;
     public I2cDeviceSynch RANGE1Reader;
     String nameRangeSensor;
-    public MasqRangeSensor(String name){
+    public MasqRangeSensor(String name, HardwareMap hardwareMap){
         this.nameRangeSensor = name;
-        RANGE1 = FtcOpModeRegister.opModeManager.getHardwareMap().i2cDevice.get("rangeSensor");
+        RANGE1 = hardwareMap.i2cDevice.get("rangeSensor");
         RANGE1Reader = new I2cDeviceSynchImpl(RANGE1, RANGE1ADDRESS, false);
         RANGE1Reader.engage();
     }

@@ -2,6 +2,7 @@ package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
@@ -21,13 +22,13 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
     private MasqClock clock = new MasqClock();
-    public MasqMotor(String name){
+    public MasqMotor(String name, HardwareMap hardwareMap){
         this.nameMotor = name;
-        motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
+        motor = hardwareMap.dcMotor.get(name);
     }
-    public MasqMotor(String name, DcMotor.Direction direction) {
+    public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
         this.nameMotor = name;
-        motor = FtcOpModeRegister.opModeManager.getHardwareMap().dcMotor.get(name);
+        motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
     }
     public void runWithoutEncoders () {

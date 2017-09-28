@@ -39,12 +39,36 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     >
 
     <LinearLayout
+        android:id="@+id/backgroundLightHolder"
+        android:visibility="gone"
+        android:background="?attr/backgroundLight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/backgroundMediumHolder"
+        android:visibility="gone"
+        android:background="?attr/backgroundMedium"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/backgroundDarkGrayHolder"
+        android:visibility="gone"
+        android:background="@color/background_dark_gray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
         android:id="@+id/idActiveConfigHeader"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:background= "@color/masq_gold_dark"
+        android:background="?attr/backgroundDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -52,16 +76,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/configure_robot_menu_item"
+            android:text="@string/activeConfigCaption"
             android:layout_weight="1"
-            android:textColor="@color/white"
+            android:textColor="?attr/textWhite"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
             android:id="@+id/idActiveConfigName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="?attr/textWhite"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>

@@ -104,18 +104,8 @@
         <item>Channel  9 – 2.452 GHz|9</item>
         <item>Channel 10 – 2.457 GHz|10</item>
         <item>Channel 11 – 2.462 GHz|11</item>
-        <!--
-        <item>5GHz, Channel 36</item>
-        <item>5GHz, Channel 40</item>
-        <item>5GHz, Channel 44</item>
-        <item>5GHz, Channel 48</item>
-        -->
-        <!--
-        <item>5GHz, Channel 149</item>
-        <item>5GHz, Channel 153</item>
-        <item>5GHz, Channel 157</item>
-        <item>5GHz, Channel 161</item>
-        -->
+        
+        
     </string-array>
     <attr format="color" name="backgroundAlmostDark"/>
     <attr format="color" name="backgroundDark"/>
@@ -152,21 +142,18 @@
     <color name="background_dark_gray">#444444</color>
     <color name="background_orange">#ff9000</color>
     <color name="background_white">#ffffff</color>
-    <color name="black">#000000</color>
     <color name="border_orange">#ff6700</color>
     <color name="bright_blue">#190aff</color>
     <color name="bright_green">#0aff0a</color>
     <color name="bright_orange">#ff740a</color>
     <color name="bright_purple">#740aff</color>
-    <color name="bright_red">#A6040E</color>
-    <color name="bright_red_text">#ff0a19</color>
+    <color name="bright_red">#ff0a19</color>
     <color name="bright_teal">#0abeff</color>
     <color name="dark_blue">#06014e</color>
     <color name="dark_green">#014b01</color>
     <color name="dark_orange">#4b2101</color>
     <color name="dark_purple">#21014b</color>
     <color name="dark_red">#4e0106</color>
-    <color name="dark_red_background">#3F0206</color>
     <color name="dark_teal">#01384b</color>
     <color name="firstblue">#009cd7</color>
     <color name="firstgreen">#00a651</color>
@@ -179,12 +166,8 @@
     <color name="light_orange">#bd5505</color>
     <color name="light_purple">#5505bd</color>
     <color name="light_red">#bf0510</color>
-    <color name="light_red_background">#790E15</color>
     <color name="light_teal">#059bd1</color>
     <color name="line_gray">#aaaaaa</color>
-    <color name="masq_gold">#806B00</color>
-    <color name="masq_gold_dark">#5A4B00</color>
-    <color name="masq_gold_light">#A28B16</color>
     <color name="medium_blue">#150e79</color>
     <color name="medium_dark_blue">#070253</color>
     <color name="medium_dark_green">#025502</color>
@@ -208,15 +191,12 @@
     <color name="medium_orange">#a95414</color>
     <color name="medium_purple">#3b0e77</color>
     <color name="medium_red">#790e15</color>
-    <color name="medium_red_background">#4e0106</color>
     <color name="medium_teal">#106989</color>
     <color name="text_error">@color/bright_red</color>
     <color name="text_okay">#009900</color>
     <color name="text_toast">@color/text_white</color>
     <color name="text_warning">#ff8000</color>
     <color name="text_white">#FFFFFFFF</color>
-    <color name="transparent_color">#00000000</color>
-    <color name="very_bright_red">#bf0510</color>
     <color name="very_dark_blue">#06023f</color>
     <color name="very_dark_green">#024002</color>
     <color name="very_dark_orange">#401d02</color>
@@ -229,7 +209,6 @@
     <color name="very_very_dark_purple">#14012d</color>
     <color name="very_very_dark_red">#2d0104</color>
     <color name="very_very_dark_teal">#01212d</color>
-    <color name="white">#FFFFFF</color>
     <declare-styleable name="CameraBridgeViewBase"><attr format="boolean" name="show_fps"/><attr format="integer" name="camera_id">
           <enum name="any" value="-1"/>
           <enum name="back" value="99"/>
@@ -750,11 +729,10 @@
     <string name="writeXML_prompt">Select an XML file to instantiate a Robot from that file</string>
     <string name="writeXML_text">Press this button to write the current configuration to an XML file</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!-- Theme customizations available in newer API levels can go in res/values-vXX/styles.xml,
-        while customizations related to backward-compatibility can go here. -->
+        
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/FtcTextViewStyle</item>

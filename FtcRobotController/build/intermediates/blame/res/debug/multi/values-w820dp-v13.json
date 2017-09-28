@@ -24,7 +24,7 @@
         ]
     },
     {
-        "outputFile": "/Users/Archish/Documents/Projects/MasqLibTest/FtcRobotController/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
+        "outputFile": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -35,7 +35,7 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "/Users/Archish/Documents/Projects/MasqLibTest/FtcRobotController/src/main/res/values-w820dp/dimens.xml",
+                    "file": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/src/main/res/values-w820dp/dimens.xml",
                     "position": {
                         "startLine": 37,
                         "startColumn": 4,

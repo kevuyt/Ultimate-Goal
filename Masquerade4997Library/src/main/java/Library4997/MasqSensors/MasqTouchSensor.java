@@ -1,4 +1,5 @@
 package Library4997.MasqSensors;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
@@ -9,9 +10,9 @@ import Library4997.MasqSensor;
 public class MasqTouchSensor implements MasqHardware, MasqSensor {
     TouchSensor touchSensor;
     String nameTouchSensor;
-    public MasqTouchSensor(String name){
+    public MasqTouchSensor(String name, HardwareMap hardwareMap){
         this.nameTouchSensor = name;
-        touchSensor = FtcOpModeRegister.opModeManager.getHardwareMap().touchSensor.get(name);
+        touchSensor = hardwareMap.touchSensor.get(name);
     }
     public boolean isPressed () {
         return touchSensor.isPressed();

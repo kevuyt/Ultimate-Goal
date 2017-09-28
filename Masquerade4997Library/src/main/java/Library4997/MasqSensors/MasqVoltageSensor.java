@@ -1,6 +1,7 @@
 package Library4997.MasqSensors;
 
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.util.RollingAverage;
 
@@ -11,8 +12,8 @@ public class MasqVoltageSensor {
     VoltageSensor sensor;
     RollingAverage average;
 
-    public MasqVoltageSensor() {
-        sensor = FtcOpModeRegister.opModeManager.getHardwareMap().voltageSensor.iterator().next();
+    public MasqVoltageSensor(HardwareMap hardwareMap) {
+        sensor = hardwareMap.voltageSensor.iterator().next();
         average = new RollingAverage(samples);
     }
 

@@ -9,18 +9,10 @@
                     "startOffset": 55,
                     "endLine": 4,
                     "endColumn": 12,
-                    "endOffset": 187
+                    "endOffset": 138
                 },
                 "from": {
-                    "file": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/values-v11/values-v11.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endLine": 4,
-                        "endColumn": 12,
-                        "endOffset": 187
-                    }
+                    "file": "/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/res/values-v11/values-v11.xml"
                 }
             }
         ]
