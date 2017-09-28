@@ -133,9 +133,8 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         loadVuMark(trackOne);
         vuforiaTrackables.activate();
     }
-    private MasqVuforia loadVuMark (@Nullable VuforiaTrackable trackable){
+    private void loadVuMark (VuforiaTrackable trackable){
         vuMark = ((VuforiaTrackableDefaultListener)trackable.getListener()).getVuMarkInstanceId();
-        return this;
     }
     public int getVuMarkID () {
         Method getNumericValue = null;
