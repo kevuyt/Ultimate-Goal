@@ -137,7 +137,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     private void loadVuMark (VuforiaTrackable trackable){
         vuMark = RelicRecoveryVuMark.from(trackable);
     }
-    public String getVuMarkID () {
+    public String getTrackable() {
         return String.valueOf(vuMark);
     }
     private void setOrientationOne(int u, int v, int w){

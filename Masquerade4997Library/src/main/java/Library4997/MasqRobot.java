@@ -254,23 +254,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stop (MasqSensor sensor){stop(sensor, 0.5);}
 
-    public String getTrackable (){
-        String result;
-            long value = vuforia.getVuMarkID();
-            if (value == 1) {
-                result = "LEFT";
-            } else if (value == 2) {
-                result = "CENTER";
-            } else if (value == 3) {
-                result = "RIGHT";
-            } else {
-                result = "UNKNOWN";
-            }
-        return result;
-    }
-    public int anInt () {
-        return vuforia.getVuMarkID();
-    }
 
     public void NFS(MasqController c) {
         float move = c.leftStickY();

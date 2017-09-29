@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import Library4997.MasqRobot;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -15,8 +14,7 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
         robot.mapHardware(hardwareMap);
         robot.vuforia.init();
         while (!opModeIsActive()){
-            dash.create(robot.getTrackable());
-            dash.create(robot.anInt());
+            dash.create(robot.vuforia.getTrackable());
             dash.update();
         }
         waitForStart();
