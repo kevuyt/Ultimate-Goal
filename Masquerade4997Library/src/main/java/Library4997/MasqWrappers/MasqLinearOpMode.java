@@ -18,7 +18,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     private MasqOpModeInternal opModeInternal;
     public final void runOpMode() throws InterruptedException {
         try {
-            opModeInternal = new MasqOpModeInternal(this, this.hardwareMap);
+            opModeInternal = new MasqOpModeInternal(this);
             robot = MasqRobot.getInstance(this);
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();

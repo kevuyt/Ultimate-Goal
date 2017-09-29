@@ -11,16 +11,16 @@ public class MasqOpModeInternal {
     private MasqLinearOpMode masqLinearOpMode;
     private HardwareMap hardwareMap;
     private static MasqOpModeInternal instance;
-    public MasqOpModeInternal (MasqLinearOpMode linearOpMode, HardwareMap hardwareMap) {
+    public MasqOpModeInternal (MasqLinearOpMode linearOpMode) {
         masqLinearOpMode = linearOpMode;
-        this.hardwareMap = hardwareMap;
     }
-    public static MasqOpModeInternal getOpModeIsActive(MasqLinearOpMode linearOpMode, HardwareMap hardwareMap){
+    public static MasqOpModeInternal getOpModeIsActive(MasqLinearOpMode linearOpMode){
         if (instance==null)
-            instance = new MasqOpModeInternal(linearOpMode, hardwareMap);
+            instance = new MasqOpModeInternal(linearOpMode);
         return instance;
     }
     public boolean opModeIsActive() {return masqLinearOpMode.opModeIsActive();}
-    public HardwareMap getHardwareMap (){return hardwareMap;
+    public HardwareMap getHardwareMap (){
+        return masqLinearOpMode.hardwareMap;
     }
 }
