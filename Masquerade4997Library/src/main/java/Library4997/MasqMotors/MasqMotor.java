@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
+import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
@@ -51,7 +52,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         destination = distance;
     }
     private boolean opModeIsActive() {
-        return true;
+        return MasqRobot.getInstance(null).opModeIsActive();
     }
     public void runToPosition(Direction direction, double speed){
         resetEncoder();

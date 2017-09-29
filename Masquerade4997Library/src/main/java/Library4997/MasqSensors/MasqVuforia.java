@@ -10,6 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
@@ -40,7 +41,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     private int numTargets = 0;
     private OpenGLMatrix locationOne, locationTwo, locationThree,
             lastLocation, phoneLocation;
-    private VuMarkInstanceId vuMark;
+    private RelicRecoveryVuMark vuMark;
     private int
             u1 = 90, u2 = 90, u3 = 90,
             v1 = 0, v2 = 0, v3 = 0,
@@ -134,24 +135,10 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         vuforiaTrackables.activate();
     }
     private void loadVuMark (VuforiaTrackable trackable){
-        vuMark = ((VuforiaTrackableDefaultListener)trackable.getListener()).getVuMarkInstanceId();
+        vuMark = RelicRecoveryVuMark.from(trackable);
     }
-    public int getVuMarkID () {
-        Method getNumericValue = null;
-        try {
-            getNumericValue = vuMark.getClass().getDeclaredMethod("getNumericValue");
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        try {
-            getNumericValue.setAccessible(true);
-            return (int)getNumericValue.invoke(vuMark);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return 99;
+    public String getVuMarkID () {
+        return String.valueOf(vuMark);
     }
     private void setOrientationOne(int u, int v, int w){
         u1 = u; v1 = v; w1 = w;

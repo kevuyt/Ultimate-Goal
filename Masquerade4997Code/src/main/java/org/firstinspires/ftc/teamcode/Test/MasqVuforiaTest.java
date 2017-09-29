@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import Library4997.MasqRobot;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**

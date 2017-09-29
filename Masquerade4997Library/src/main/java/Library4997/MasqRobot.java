@@ -1,15 +1,7 @@
 package Library4997;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.util.Hardware;
 import com.qualcomm.robotcore.util.Range;
-
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.internal.opmode.OpModeManagerImpl;
-
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -21,12 +13,24 @@ import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
+import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * MasqRobot--> Contains all hardware and methods to run the robot.
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
+    public MasqLinearOpMode masqLinearOpMode;
+    public MasqRobot (MasqLinearOpMode linearOpMode) {
+        this.masqLinearOpMode = linearOpMode;
+    }
+    public MasqRobot () {}
+    private static MasqRobot instance;
+    public static MasqRobot getInstance (MasqLinearOpMode OPMODE) {
+        if (instance==null)
+             instance = new MasqRobot(OPMODE);
+        return instance;
+    }
     public MasqTankDrive driveTrain;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
@@ -62,8 +66,8 @@ public class MasqRobot implements PID_CONSTANTS {
         Targets(String value) {this.value = value;}
     }
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
-    private boolean opModeIsActive() {
-        return true;
+    public boolean opModeIsActive() {
+        return masqLinearOpMode.opModeIsActive();
     }
     public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
         MasqClock timeoutTimer = new MasqClock();
