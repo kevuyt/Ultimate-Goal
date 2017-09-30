@@ -168,13 +168,9 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         return isSeen(track.value);
     }
     @Override
-    public boolean stop() {
-        return isSeen(targetOne);
-    }
+    public boolean stop() {return isSeen(targetOne);}
     @Override
-    public String getName() {
-        return "VUFORIA";
-    }
+    public String getName() {return "VUFORIA";}
     public String[] getDash() {
         return new String[]{
                 getName() +
