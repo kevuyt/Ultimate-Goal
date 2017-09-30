@@ -1,9 +1,7 @@
 package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqExternal.MasqOpModeInternal;
 import Library4997.MasqRobot;
 
 /**
@@ -15,10 +13,8 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     public MasqRobot robot;
     protected MasqController controller1;
     protected MasqController controller2;
-    private MasqOpModeInternal opModeInternal;
     public final void runOpMode() throws InterruptedException {
         try {
-            opModeInternal = new MasqOpModeInternal(this);
             robot = MasqRobot.getInstance(this);
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();
