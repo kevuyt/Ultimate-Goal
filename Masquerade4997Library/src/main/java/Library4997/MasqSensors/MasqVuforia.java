@@ -1,8 +1,6 @@
 package Library4997.MasqSensors;
 
 
-import android.support.annotation.Nullable;
-
 import com.qualcomm.ftcrobotcontroller.R.id;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
@@ -11,24 +9,16 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
-import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import Library4997.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqSensor;
-import Library4997.MasqExternal.MasqVuMark;
-import Library4997.MasqExternal.MasqVuforiaListener;
-import Library4997.MasqWrappers.DashBoard;
 
 /**
  * Created by Archish on 9/7/17.
@@ -134,39 +124,17 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         loadVuMark(trackOne);
         vuforiaTrackables.activate();
     }
-    private void loadVuMark (VuforiaTrackable trackable){
-        vuMark = RelicRecoveryVuMark.from(trackable);
-    }
-    public String getTrackable() {
-        return String.valueOf(vuMark);
-    }
-    private void setOrientationOne(int u, int v, int w){
-        u1 = u; v1 = v; w1 = w;
-    }
-    private void setOrientationTwo(int u, int v, int w){
-        u2 = u; v2 = v; w2 = w;
-    }
-    private void setOrientationThree(int u, int v, int w){
-        u3 = u; v3 = v; w3 = w;
-    }
-    public void setOrientationOne(Facing t){
-        setOrientationOne(t.value[0], t.value[1], t.value[2]);
-    }
-    public void setOrientationTwo(Facing t){
-        setOrientationTwo(t.value[0], t.value[1], t.value[2]);
-    }
-    public void setOrientationThree(Facing t){
-        setOrientationThree(t.value[0], t.value[1], t.value[2]);
-    }
-    public void setPositionOne(int x, int y, int z){
-        x1 = x; y1 = y; z1 = z;
-    }
-    public void setPositionTwo(int x, int y, int z){
-        x2 = x; y2 = y; z2 = z;
-    }
-    public void setPositionThree(int x, int y, int z){
-        x3 = x; y3 = y; z3 = z;
-    }
+    private void loadVuMark (VuforiaTrackable trackable){vuMark = RelicRecoveryVuMark.from(trackable);}
+    public String getTrackable() {return String.valueOf(vuMark);}
+    private void setOrientationOne(int u, int v, int w){u1 = u; v1 = v; w1 = w;}
+    private void setOrientationTwo(int u, int v, int w){u2 = u; v2 = v; w2 = w;}
+    private void setOrientationThree(int u, int v, int w){u3 = u; v3 = v; w3 = w;}
+    public void setOrientationOne(Facing t){setOrientationOne(t.value[0], t.value[1], t.value[2]);}
+    public void setOrientationTwo(Facing t){setOrientationTwo(t.value[0], t.value[1], t.value[2]);}
+    public void setOrientationThree(Facing t){setOrientationThree(t.value[0], t.value[1], t.value[2]);}
+    public void setPositionOne(int x, int y, int z){x1 = x; y1 = y; z1 = z;}
+    public void setPositionTwo(int x, int y, int z){x2 = x; y2 = y; z2 = z;}
+    public void setPositionThree(int x, int y, int z){x3 = x; y3 = y; z3 = z;}
     private OpenGLMatrix createMatrix(float x, float y, float z, float u, float v, float w){
         return OpenGLMatrix.translation(x, y, z).
                 multiplied(Orientation.getRotationMatrix
@@ -192,9 +160,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         }
         return lastLocation.formatAsTransform();
     }
-    private boolean isSeen(String track){
-        return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();
-    }
+    private boolean isSeen(String track){return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();}
     public String position(MasqRobot.Targets target){
         return position(target.value);
     }
