@@ -51,7 +51,6 @@ public class MasqRobot implements PID_CONSTANTS {
 
     private MasqClock timeoutClock = new MasqClock();
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final int DEFAULT_SLEEP_TIME = 500;
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;

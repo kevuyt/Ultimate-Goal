@@ -139,7 +139,6 @@ public class FtcRobotControllerActivity extends Activity
   protected StartResult prefRemoterStartResult = new StartResult();
   protected PreferencesHelper preferencesHelper;
   protected final SharedPreferencesListener sharedPreferencesListener = new SharedPreferencesListener();
-  private Toast toast;
   protected ImageButton buttonMenu;
   protected TextView textDeviceName;
   protected TextView textNetworkConnectionStatus;
