@@ -14,7 +14,7 @@ public class MasqOpModeInternal {
     public MasqOpModeInternal (MasqLinearOpMode linearOpMode) {
         masqLinearOpMode = linearOpMode;
     }
-    public static MasqOpModeInternal getOpModeIsActive(MasqLinearOpMode linearOpMode){
+    public static MasqOpModeInternal getInstance(MasqLinearOpMode linearOpMode){
         if (instance==null)
             instance = new MasqOpModeInternal(linearOpMode);
         return instance;

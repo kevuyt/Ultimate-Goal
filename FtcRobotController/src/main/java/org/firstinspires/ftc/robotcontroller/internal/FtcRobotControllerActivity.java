@@ -54,9 +54,12 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.blocks.ftcrobotcontroller.BlocksActivity;
 import com.google.blocks.ftcrobotcontroller.ProgrammingModeActivity;
@@ -136,12 +139,15 @@ public class FtcRobotControllerActivity extends Activity
   protected StartResult prefRemoterStartResult = new StartResult();
   protected PreferencesHelper preferencesHelper;
   protected final SharedPreferencesListener sharedPreferencesListener = new SharedPreferencesListener();
-
+  private Toast toast;
   protected ImageButton buttonMenu;
   protected TextView textDeviceName;
   protected TextView textNetworkConnectionStatus;
   protected TextView textRobotStatus;
   protected TextView[] textGamepad = new TextView[NUM_GAMEPADS];
+  private EditText delayText;
+  private Button setDelay;
+  private static double delay;
   protected TextView textOpMode;
   protected TextView textErrorMessage;
   protected ImmersiveMode immersion;
@@ -282,6 +288,7 @@ public class FtcRobotControllerActivity extends Activity
     textErrorMessage = (TextView) findViewById(R.id.textErrorMessage);
     textGamepad[0] = (TextView) findViewById(R.id.textGamepad1);
     textGamepad[1] = (TextView) findViewById(R.id.textGamepad2);
+    delayText = (EditText) findViewById(R.id.delayText);
     textErrorMessage.setTextColor(Color.RED);
     immersion = new ImmersiveMode(getWindow().getDecorView());
     dimmer = new Dimmer(this);
@@ -307,6 +314,16 @@ public class FtcRobotControllerActivity extends Activity
     ServiceController.startService(FtcRobotControllerWatchdogService.class);
     bindToService();
     logPackageVersions();
+    delayText.setText("0");
+    setDelay = (Button) findViewById(R.id.setDelay);
+    setDelay.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        delay = Double.parseDouble(String.valueOf(delayText.getText()));
+        Toast.makeText(getApplicationContext(), "Your delay is: " + delayText.getText() + "s",
+                Toast.LENGTH_LONG).show();
+      }
+    });
   }
 
   protected UpdateUI createUpdateUI() {
@@ -623,5 +640,8 @@ public class FtcRobotControllerActivity extends Activity
         ThemedActivity.restartForAppThemeChange(getTag(), getString(R.string.appThemeChangeRestartNotifyRC));
       }
     }
+  }
+  public static double getDelay(){
+    return delay;
   }
 }

@@ -2,6 +2,10 @@ package Library4997;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
+
+import Library4997.MasqExternal.MasqOpModeInternal;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -52,7 +56,6 @@ public class MasqRobot implements PID_CONSTANTS {
     private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
     private double color = 1;
-    private double leftI, rightI = 0;
 
     public enum AllianceColor {
         BLUE (-1.0),
@@ -264,8 +267,6 @@ public class MasqRobot implements PID_CONSTANTS {
         double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
         double leftError =  left - leftRate;
         double rightError = right + rightRate;
-        leftI += leftError;
-        rightI += rightError;
         left =  left - ((leftError * KP_TELE));
         right =  right - ((rightError * KP_TELE));
         if(left > 1.0) {
@@ -338,7 +339,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public double getVoltage() {
         return voltageSensor.getVoltage();
     }
-//    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
+    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
     public void sleep(int time) {
         try {
