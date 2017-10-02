@@ -15,16 +15,11 @@ import Library4997.MasqSensors.MasqClock;
 public class MasqServo implements MasqHardware{
     private com.qualcomm.robotcore.hardware.Servo servo;
     private String nameServo;
-    private double zero = 0;
     MasqClock clock = new MasqClock();
     private double targetPosition;
     public MasqServo(String name, HardwareMap hardwareMap){
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
-    }
-    public void setPosition (double angle, double maxPos) {
-        angle = logicalToPhysical(angle,maxPos);
-        servo.setPosition(angle);
     }
     public void setPosition (double position) {
         targetPosition = position;
@@ -36,11 +31,6 @@ public class MasqServo implements MasqHardware{
     public void sleep (int time) throws InterruptedException {
         servo.wait(time);
     }
-    public double logicalToPhysical (double angle, double maxPosition) {
-        double convertedNum;
-        convertedNum = angle/maxPosition;
-        return convertedNum;
-    }
     public boolean isStalled(int time) {
         boolean isStalled = false;
         double prePos = servo.getPosition();
@@ -48,12 +38,6 @@ public class MasqServo implements MasqHardware{
             isStalled = true;
         }
         return isStalled;
-    }
-    public double getZero() {
-        return zero;
-    }
-    public void setZero(double zero) {
-        this.zero = zero;
     }
     public String getName() {
         return nameServo;
