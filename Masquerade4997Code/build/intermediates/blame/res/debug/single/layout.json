@@ -28,12 +28,12 @@
         "source": "/Users/Archish/.android/build-cache/137bb6c69a173b0dc7261d6a97c97d894ec1820b/output/res/layout/activity_view_logs.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_generic_settings.xml",
-        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_generic_settings.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_ftc_configuration.xml",
         "source": "/Users/Archish/.android/build-cache/137bb6c69a173b0dc7261d6a97c97d894ec1820b/output/res/layout/activity_ftc_configuration.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_generic_settings.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_generic_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor.xml",
@@ -80,20 +80,20 @@
         "source": "/Users/Archish/.android/build-cache/137bb6c69a173b0dc7261d6a97c97d894ec1820b/output/res/layout/digital_device.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/device_interface_module.xml",
-        "source": "/Users/Archish/.android/build-cache/137bb6c69a173b0dc7261d6a97c97d894ec1820b/output/res/layout/device_interface_module.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/color_list_preference_line_item.xml",
         "source": "/Users/Archish/.android/build-cache/e9badd1f5242c9963a1f6e2dc0f31f07330e8543/output/res/layout/color_list_preference_line_item.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/i2cs.xml",
-        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/i2cs.xml"
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/device_interface_module.xml",
+        "source": "/Users/Archish/.android/build-cache/137bb6c69a173b0dc7261d6a97c97d894ec1820b/output/res/layout/device_interface_module.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/activity_configure_from_template.xml",
         "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/activity_configure_from_template.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/i2cs.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/i2cs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/digital_devices.xml",
@@ -116,12 +116,12 @@
         "source": "/Users/Archish/.android/build-cache/0cf3776919e65d7935916e10ab998661b5cb9a03/output/res/layout/activity_inspection.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_inputs.xml",
-        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/analog_inputs.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/gray_line.xml",
         "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/gray_line.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Code/build/intermediates/res/merged/debug/layout/analog_inputs.xml",
+        "source": "/Users/Archish/.android/build-cache/ad8acf8409ea689dfc7ad8b3c5c83d2df79ad85a/output/res/layout/analog_inputs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/lynx_module_configure_address_spin_item.xml",

@@ -8,6 +8,7 @@ import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
+import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -19,17 +20,23 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double previousTime = 0;
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
-    private HardwareMap hardwareMap = null;
-    private MasqClock clock = new MasqClock();
+    private MasqLimitSwitch minLim, maxLim = null;
+    private boolean limitDetection;
     public MasqMotor(String name, HardwareMap hardwareMap){
+        limitDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
+        limitDetection = false;
         this.nameMotor = name;
-        this.hardwareMap = hardwareMap;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
+    }
+    public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
+        maxLim = max; minLim = min;
+        limitDetection = true;
+        return this;
     }
     public void runWithoutEncoders () {
         motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -39,7 +46,14 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         currentPosition = 0;
     }
     public void setPower (double power) {
-        motor.setPower(power);
+        if (!limitDetection)
+            motor.setPower(power);
+        else {
+            if (maxLim.isPressed() && minLim.isPressed())
+                motor.setPower(power);
+            else
+                motor.setPower(0);
+        }
     }
     public void runUsingEncoder() {
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

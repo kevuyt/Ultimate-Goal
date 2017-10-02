@@ -24,9 +24,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
     public MasqLinearOpMode masqLinearOpMode;
-    public MasqRobot (MasqLinearOpMode linearOpMode) {
-        this.masqLinearOpMode = linearOpMode;
-    }
+    public MasqRobot (MasqLinearOpMode linearOpMode) {this.masqLinearOpMode = linearOpMode;}
     public MasqRobot () {}
     private static MasqRobot instance;
     public static MasqRobot getInstance (MasqLinearOpMode linearOpModeInstance) {
