@@ -17,6 +17,7 @@ public class MasqServo implements MasqHardware{
     private String nameServo;
     private double zero = 0;
     MasqClock clock = new MasqClock();
+    private double targetPosition;
     public MasqServo(String name, HardwareMap hardwareMap){
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
@@ -26,6 +27,7 @@ public class MasqServo implements MasqHardware{
         servo.setPosition(angle);
     }
     public void setPosition (double position) {
+        targetPosition = position;
         servo.setPosition(position);
     }
     public void scaleRange (double min, double max) {
@@ -39,21 +41,10 @@ public class MasqServo implements MasqHardware{
         convertedNum = angle/maxPosition;
         return convertedNum;
     }
-    public ServoController getController (){
-        return servo.getController();
-    }
-    public boolean isStalled(int time, double targetPosition) {
+    public boolean isStalled(int time) {
         boolean isStalled = false;
         double prePos = servo.getPosition();
         if ((servo.getPosition() == prePos && servo.getPosition() != targetPosition) && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) {
-            isStalled = true;
-        }
-        return isStalled;
-    }
-    public boolean isStalled(double targetPosition) {
-        boolean isStalled = false;
-        double prePos = servo.getPosition();
-        if ((servo.getPosition() == prePos && servo.getPosition() != targetPosition) && !clock.elapsedTime(1, MasqClock.Resolution.SECONDS)) {
             isStalled = true;
         }
         return isStalled;
