@@ -47,7 +47,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         if (!limitDetection)
             motor.setPower(power);
         else {
-            if (maxLim.isPressed() && minLim.isPressed())
+            if (!maxLim.isPressed() && !minLim.isPressed())
                 motor.setPower(power);
             else
                 motor.setPower(0);
