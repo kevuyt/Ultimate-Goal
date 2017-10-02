@@ -38,9 +38,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         limitDetection = true;
         return this;
     }
-    public void runWithoutEncoders () {
-        motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    }
+    public void runWithoutEncoders () {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
     public void resetEncoder() {
         zeroEncoderPosition = motor.getCurrentPosition();
         currentPosition = 0;
@@ -104,13 +102,6 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         else {
             prevRate = rate;
             return prevRate;
-        }
-    }
-    public void sleep (int sleepTime) {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
     public String getName() {

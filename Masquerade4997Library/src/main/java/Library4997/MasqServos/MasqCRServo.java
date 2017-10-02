@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqHardware;
+import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**
  * Created by Archish on 11/4/16.
@@ -13,9 +14,14 @@ import Library4997.MasqHardware;
 public class MasqCRServo implements MasqHardware{
     private CRServo servo;
     private String nameCr_Servo;
+    private MasqLimitSwitch min, max = null;
     public MasqCRServo(String name, HardwareMap hardwareMap){
         this.nameCr_Servo = name;
         servo = hardwareMap.crservo.get(name);
+    }
+    public MasqCRServo setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
+        this.min = min; this.max = max;
+        return this;
     }
     public void setPower (double power) {servo.setPower(power);}
     public void sleep (int time) throws InterruptedException {servo.wait(time);}
