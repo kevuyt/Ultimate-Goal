@@ -46,7 +46,6 @@ import org.firstinspires.ftc.robotcore.internal.opmode.OpModeManagerImpl;
  * @see #register(OpModeManager)
  */
 public class FtcOpModeRegister implements OpModeRegister {
-    //Edited by Archishmaan Peyyety to make hardware maps in objects easier and cleaner
     public void register(OpModeManager manager) {
     }
 }

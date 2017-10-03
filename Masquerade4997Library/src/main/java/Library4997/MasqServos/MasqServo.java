@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.ServoController;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-
+import com.qualcomm.robotcore.hardware.Servo;
 import Library4997.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
 
@@ -13,10 +13,11 @@ import Library4997.MasqSensors.MasqClock;
  */
 
 public class MasqServo implements MasqHardware{
-    private com.qualcomm.robotcore.hardware.Servo servo;
+    private Servo servo;
     private String nameServo;
     MasqClock clock = new MasqClock();
     private double targetPosition;
+    private double max, min;
     public MasqServo(String name, HardwareMap hardwareMap){
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
@@ -25,9 +26,9 @@ public class MasqServo implements MasqHardware{
         targetPosition = position;
         servo.setPosition(position);
     }
-    public void scaleRange (double min, double max) {
-        servo.scaleRange(min,max);
-    }
+    public void setMax(double max){this.max = max;}
+    public void setMin(double min){this.min = min;}
+    public void scaleRange (double min, double max) {servo.scaleRange(min,max);}
     public void sleep (int time) throws InterruptedException {
         servo.wait(time);
     }
