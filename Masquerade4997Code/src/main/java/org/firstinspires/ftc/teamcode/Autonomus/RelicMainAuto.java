@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import Library4997.MasqRobot;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -13,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "MainAuto", group = "Auto")
 public class RelicMainAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
-        while (!opModeIsActive()) {
+        while (!MasqRobot.getInstance(null).opModeIsActive()) {
             dash.create(robot.imu);
             dash.create(controller1);
             dash.update();

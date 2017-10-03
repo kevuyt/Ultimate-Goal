@@ -7,6 +7,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import com.qualcomm.robotcore.hardware.Servo;
 import Library4997.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**
  * Created by Archish on 10/28/16.
@@ -18,6 +19,8 @@ public class MasqServo implements MasqHardware{
     MasqClock clock = new MasqClock();
     private double targetPosition;
     private double max, min;
+    private MasqLimitSwitch limMin, limMax;
+    private boolean limDetection;
     public MasqServo(String name, HardwareMap hardwareMap){
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
@@ -25,6 +28,19 @@ public class MasqServo implements MasqHardware{
     public void setPosition (double position) {
         targetPosition = position;
         servo.setPosition(position);
+    }
+    public void setPositionV2 (double position) {
+        double i = servo.getPosition();
+        while (i < position && !isStalled(1) && !limPressed()) {
+            servo.setPosition(i);
+            i += 0.01;
+        }
+    }
+    public void setLimMin (MasqLimitSwitch min){limMin = min; limDetection = true;}
+    public void setLimMax (MasqLimitSwitch max){limMax = max; limDetection = true;}
+    private boolean limPressed () {
+        if (limDetection) return  limMin.isPressed() || limMax.isPressed();
+        else return false;
     }
     public void setMax(double max){this.max = max;}
     public void setMin(double min){this.min = min;}
@@ -35,9 +51,8 @@ public class MasqServo implements MasqHardware{
     public boolean isStalled(int time) {
         boolean isStalled = false;
         double prePos = servo.getPosition();
-        if ((servo.getPosition() == prePos && servo.getPosition() != targetPosition) && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) {
-            isStalled = true;
-        }
+        if ((servo.getPosition() == prePos && servo.getPosition() != targetPosition)
+                && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) isStalled = true;
         return isStalled;
     }
     public String getName() {
