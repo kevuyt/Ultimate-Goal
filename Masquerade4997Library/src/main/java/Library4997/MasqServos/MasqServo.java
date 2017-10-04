@@ -31,10 +31,10 @@ public class MasqServo implements MasqHardware{
     }
     public void setPositionV2 (double position) {
         targetPosition = position;
-        double i = servo.getPosition();
-        while (i < position && !isStalled(1) && !limPressed()) {
-            servo.setPosition(i);
-            i += 0.01;
+        double newPosition = servo.getPosition();
+        while (newPosition < position && !isStalled(1) && !limPressed()) {
+            servo.setPosition(newPosition);
+            newPosition += 0.01;
         }
     }
     public void setLimMin (MasqLimitSwitch min){limMin = min; limDetection = true;}
