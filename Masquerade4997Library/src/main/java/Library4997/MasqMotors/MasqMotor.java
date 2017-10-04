@@ -3,7 +3,7 @@ package Library4997.MasqMotors;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqHardware;
+import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;

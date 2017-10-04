@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import Library4997.MasqHardware;
+import Library4997.MasqExternal.MasqHardware;
 
 /**
  * This is a telemetry wrapper class.

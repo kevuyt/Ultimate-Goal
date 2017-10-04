@@ -8,9 +8,7 @@ import com.qualcomm.robotcore.hardware.I2cDevice;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-
-import Library4997.MasqHardware;
+import Library4997.MasqExternal.MasqHardware;
 
 
 /**

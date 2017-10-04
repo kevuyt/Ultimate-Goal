@@ -1,13 +1,10 @@
 package Library4997.MasqSensors;
 
 import com.qualcomm.robotcore.hardware.DigitalChannel;
-import com.qualcomm.robotcore.hardware.DigitalChannelController;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
-
-import Library4997.MasqHardware;
-import Library4997.MasqSensor;
+import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqExternal.MasqSensor;
 
 
 /**

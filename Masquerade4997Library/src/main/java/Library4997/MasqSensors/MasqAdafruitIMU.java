@@ -3,10 +3,8 @@ package Library4997.MasqSensors;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
-import Library4997.MasqHardware;
-import Library4997.MasqRobot;
+import Library4997.MasqExternal.MasqHardware;
 
 
 /**

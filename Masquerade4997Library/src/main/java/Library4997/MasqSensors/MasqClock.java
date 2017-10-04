@@ -2,7 +2,7 @@ package Library4997.MasqSensors;
 
 import java.util.Locale;
 
-import Library4997.MasqHardware;
+import Library4997.MasqExternal.MasqHardware;
 
 
 public class MasqClock implements MasqHardware {

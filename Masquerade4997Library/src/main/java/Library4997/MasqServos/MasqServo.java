@@ -1,11 +1,9 @@
 package Library4997.MasqServos;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.ServoController;
 
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import com.qualcomm.robotcore.hardware.Servo;
-import Library4997.MasqHardware;
+import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
