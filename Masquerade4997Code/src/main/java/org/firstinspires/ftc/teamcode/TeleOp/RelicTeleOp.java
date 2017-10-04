@@ -19,19 +19,10 @@ public class RelicTeleOp extends MasqLinearOpMode {
         waitForStart();
         while (opModeIsActive()){
             robot.NFS(controller1);
+            if (controller1.a()) robot.lift.setPower(1);
+            else robot.lift.setPower(0);
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
-            if (controller1.a()) {
-                robot.crServoOne.setPower(1);
-                robot.crServoTwo.setPower(1);
-            } else if (controller1.b()) {
-                robot.crServoOne.setPower(-1);
-                robot.crServoTwo.setPower(-1);
-            } else {
-                robot.crServoOne.setPower(0);
-                robot.crServoTwo.setPower(0);
-            }
-            robot.crServoTwo.setPower(1);
             dash.update();
         }
     }

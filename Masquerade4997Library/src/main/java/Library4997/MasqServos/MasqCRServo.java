@@ -27,13 +27,10 @@ public class MasqCRServo implements MasqHardware{
         return this;
     }
     public void setPower (double power) {
-        if (!limitDetection)
-            servo.setPower(power);
+        if (!limitDetection) servo.setPower(power);
         else {
-            if (!max.isPressed() && !min.isPressed())
-                servo.setPower(power);
-            else
-                servo.setPower(0);
+            if (!max.isPressed() && !min.isPressed()) servo.setPower(power);
+            else servo.setPower(0);
         }
     }
     public void sleep (int time) throws InterruptedException {servo.wait(time);}

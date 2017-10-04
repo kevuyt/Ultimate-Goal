@@ -2,10 +2,9 @@ package Library4997;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
-
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
-
 import Library4997.MasqExternal.PID_CONSTANTS;
+import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
@@ -36,14 +35,14 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
     public MasqCRServo crServoOne, crServoTwo;
+    public MasqMotor lift;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        crServoOne = new MasqCRServo("servoOne", this.hardwareMap);
-        crServoTwo = new MasqCRServo("servoTwo", this.hardwareMap);
+        lift = new MasqMotor("lift", this.hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();

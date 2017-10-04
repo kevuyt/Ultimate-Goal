@@ -30,6 +30,7 @@ public class MasqServo implements MasqHardware{
         servo.setPosition(position);
     }
     public void setPositionV2 (double position) {
+        targetPosition = position;
         double i = servo.getPosition();
         while (i < position && !isStalled(1) && !limPressed()) {
             servo.setPosition(i);
