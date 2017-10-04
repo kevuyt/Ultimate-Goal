@@ -23,7 +23,6 @@ public class MasqAdafruitIMU implements MasqHardware{
 
     private void setParameters() {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        //parameters.mode = BNO055IMU.IMU;
         parameters.useExternalCrystal = true;
         parameters.angleUnit = com.qualcomm.hardware.bosch.BNO055IMU.AngleUnit.RADIANS;
         parameters.pitchMode = com.qualcomm.hardware.bosch.BNO055IMU.PitchMode.WINDOWS;

@@ -50,9 +50,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             else motor.setPower(0);
         }
     }
-    public void runUsingEncoder() {
-        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    }
+    public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
         destination = distance;

@@ -14,6 +14,7 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
@@ -36,15 +37,15 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqTankDrive driveTrain;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
-    public MasqCRServo crServoOne, crServoTwo;
-    public MasqMotor lift;
+    public MasqServo leftGlyph, rightGlyph;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        lift = new MasqMotor("lift", this.hardwareMap);
+        leftGlyph = new MasqServo("letGlyph", hardwareMap);
+        rightGlyph = new MasqServo("rightGlyph",hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -260,11 +261,8 @@ public class MasqRobot implements PID_CONSTANTS {
         float turn = c.rightStickX();
         double left = move - turn;
         double right = move + turn;
-        double leftRate = driveTrain.leftDrive.getRate();
-        double rightRate = driveTrain.rightDrive.getRate();
-        double maxRate = Math.max(Math.abs(leftRate/left), Math.abs(rightRate/right));
-        leftRate /= maxRate;
-        rightRate /= maxRate;
+        double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
+        double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
         double leftError =  left - leftRate;
         double rightError = right + rightRate;
         left =  left - ((leftError * KP_TELE));

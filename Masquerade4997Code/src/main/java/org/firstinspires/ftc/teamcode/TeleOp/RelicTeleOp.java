@@ -11,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class RelicTeleOp extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
+        robot.mapHardware(hardwareMap);
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());
             dash.create(controller1.a());
@@ -19,8 +20,7 @@ public class RelicTeleOp extends MasqLinearOpMode {
         waitForStart();
         while (opModeIsActive()){
             robot.NFS(controller1);
-            if (controller1.a()) robot.lift.setPower(1);
-            else robot.lift.setPower(0);
+            robot.leftGlyph.setPosition((gamepad1.left_stick_x/2) + .5);
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
             dash.update();

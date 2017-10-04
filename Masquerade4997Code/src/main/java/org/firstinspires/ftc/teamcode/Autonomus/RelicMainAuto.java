@@ -14,6 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "MainAuto", group = "Auto")
 public class RelicMainAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
+        robot.mapHardware(hardwareMap);
         while (!MasqRobot.getInstance(null).opModeIsActive()) {
             dash.create(robot.imu);
             dash.create(controller1);
@@ -22,18 +23,6 @@ public class RelicMainAuto extends MasqLinearOpMode implements Constants {
         waitForStart();
         while (opModeIsActive()) {
             dash.create(controller1);
-            dash.create(robot.crServoOne);
-            dash.update();
-            if (controller1.a()) {
-                robot.crServoOne.setPower(1);
-                robot.crServoTwo.setPower(1);
-            } else if (controller1.b()) {
-                robot.crServoOne.setPower(-1);
-                robot.crServoTwo.setPower(-1);
-            } else {
-                robot.crServoOne.setPower(0);
-                robot.crServoTwo.setPower(0);
-            }
         }
     }
 }
