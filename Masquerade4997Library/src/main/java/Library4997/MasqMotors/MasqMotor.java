@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqHardware;
 import Library4997.MasqRobot;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqSensors.MasqLimitSwitch;
@@ -47,10 +46,8 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         if (!limitDetection)
             motor.setPower(power);
         else {
-            if (!maxLim.isPressed() && !minLim.isPressed())
-                motor.setPower(power);
-            else
-                motor.setPower(0);
+            if (!maxLim.isPressed() && !minLim.isPressed()) motor.setPower(power);
+            else motor.setPower(0);
         }
     }
     public void runUsingEncoder() {
@@ -70,7 +67,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         double inchesRemaining;
         double power;
         do {
-            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPos()));
+            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_CM;
             power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power);
@@ -83,7 +80,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void setBreakMode () {
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
-    public double getCurrentPos () {
+    public double getCurrentPosition() {
         currentPosition = motor.getCurrentPosition() - zeroEncoderPosition;
         return currentPosition;
     }
@@ -91,14 +88,13 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return motor.getPower();
     }
     public double getRate () {
-        double posC = getCurrentPos() - prevPos;
+        double deltaPosition = getCurrentPosition() - prevPos;
         double tChange = System.nanoTime() - previousTime;
         previousTime = System.nanoTime();
         tChange = tChange / 1e9;
-        prevPos = getCurrentPos();
-        double rate = posC / tChange;
-        if (rate != 0)
-            return rate;
+        prevPos = getCurrentPosition();
+        double rate = deltaPosition / tChange;
+        if (rate != 0) return rate;
         else {
             prevRate = rate;
             return prevRate;
@@ -109,7 +105,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
 
     public String[] getDash() {
-        return new String[] {"Current Position" + Double.toString(getCurrentPos())};
+        return new String[] {"Current Position" + Double.toString(getCurrentPosition())};
     }
 }
 

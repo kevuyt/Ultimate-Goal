@@ -1,10 +1,7 @@
 package Library4997.MasqMotors;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
 import Library4997.MasqHardware;
 import Library4997.MasqRobot;
@@ -62,7 +59,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         double inchesRemaining;
         double power;
         do {
-            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPos()));
+            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_CM;
             power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power, -power);
@@ -83,13 +80,13 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     public void zeroPowerBehavior(){
         rightDrive.breakMotors();
     }
-    public double getCurrentPos () {
-        return (leftDrive.getCurrentPos() + rightDrive.getCurrentPos())/2;
+    public double getCurrentPosition() {
+        return (leftDrive.getCurrentPosition() + rightDrive.getCurrentPosition())/2;
     }
     public String getName() {
         return "DRIVETRAIN";
     }
     public String[] getDash() {
-        return new String[]{ "Current Position"+ getCurrentPos()};
+        return new String[]{ "Current Position"+ getCurrentPosition()};
     }
 }

@@ -102,9 +102,9 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
             isBusy = masqMotor.isBusy();
         return isBusy;
     }
-    public double getCurrentPos () {
+    public double getCurrentPosition() {
         int total = 0;
-        for (MasqMotor m : motors) total += m.getCurrentPos();
+        for (MasqMotor m : motors) total += m.getCurrentPosition();
         return total / numMotors;
     }
 
@@ -112,6 +112,6 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         return systemName;
     }
     public String[] getDash() {
-        return new String[]{ "Current Position" + getCurrentPos()};
+        return new String[]{ "Current Position" + getCurrentPosition()};
     }
 }
