@@ -260,8 +260,11 @@ public class MasqRobot implements PID_CONSTANTS {
         float turn = c.rightStickX();
         double left = move - turn;
         double right = move + turn;
-        double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
-        double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
+        double leftRate = driveTrain.leftDrive.getRate();
+        double rightRate = driveTrain.rightDrive.getRate();
+        double maxRate = Math.max(Math.abs(leftRate/left), Math.abs(rightRate/right));
+        leftRate /= maxRate;
+        rightRate /= maxRate;
         double leftError =  left - leftRate;
         double rightError = right + rightRate;
         left =  left - ((leftError * KP_TELE));
