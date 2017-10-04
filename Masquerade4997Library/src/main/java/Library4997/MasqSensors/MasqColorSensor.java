@@ -97,7 +97,7 @@ public class MasqColorSensor implements MasqHardware {
         else if (value == 10) return "ORANGE, 10";
         else if (value == 11) return "RED, 11";
         else if (value == 12) return "PINK, 12";
-        return "";
+        return "UNKNOWN";
     }
 
     private void rgb2hsv() {
