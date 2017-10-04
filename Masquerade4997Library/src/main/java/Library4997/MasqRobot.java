@@ -324,8 +324,11 @@ public class MasqRobot implements PID_CONSTANTS {
     public void TANK(MasqController c){
         double left = c.leftStickX();
         double right = c.rightStickY();
-        double leftRate = driveTrain.leftDrive.getRate() / MAX_RATE;
-        double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
+        double leftRate = driveTrain.leftDrive.getRate();
+        double rightRate = driveTrain.rightDrive.getRate();
+        double maxRate = Math.max(Math.abs(leftRate/left), Math.abs(rightRate/right));
+        leftRate /= maxRate;
+        rightRate /= maxRate;
         double leftError =  left - leftRate;
         double rightError = right - rightRate;
         driveTrain.rightDrive.setPower(right - (rightError * KP_TELE));
