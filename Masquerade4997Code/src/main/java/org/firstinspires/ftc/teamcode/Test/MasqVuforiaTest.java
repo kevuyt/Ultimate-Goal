@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "TEST: VUFORIA", group = "Auto")
 public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void run() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.init();
         while (!opModeIsActive()){

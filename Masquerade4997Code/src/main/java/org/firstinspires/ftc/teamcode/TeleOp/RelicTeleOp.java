@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "NFS", group = "Template")
 public class RelicTeleOp extends MasqLinearOpMode {
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void run() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());
