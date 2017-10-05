@@ -37,7 +37,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqTankDrive driveTrain;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
-    public MasqServo leftGlyph, rightGlyph;
+    public MasqServo leftGlyph, rightGlyph, jewelArm;
+    public MasqColorSensor jewelColor;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
@@ -46,6 +47,8 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         leftGlyph = new MasqServo("letGlyph", hardwareMap);
         rightGlyph = new MasqServo("rightGlyph",hardwareMap);
+        jewelArm = new MasqServo("jewelArm", hardwareMap);
+        jewelColor = new MasqColorSensor("jewelColor", 60, hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();
