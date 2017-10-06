@@ -11,6 +11,7 @@ import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
+import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
@@ -35,6 +36,8 @@ public class MasqRobot implements PID_CONSTANTS {
         return instance;
     }
     public MasqTankDrive driveTrain;
+    public MasqMotor lift;
+    public MasqLimitSwitch liftSwitch;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
     public MasqServo leftGlyph, rightGlyph, jewelArm;
@@ -42,6 +45,8 @@ public class MasqRobot implements PID_CONSTANTS {
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
+        lift = new MasqMotor("lift", this.hardwareMap);
+        liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);

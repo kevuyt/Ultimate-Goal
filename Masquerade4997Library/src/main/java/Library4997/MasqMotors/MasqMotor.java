@@ -37,6 +37,11 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         limitDetection = true;
         return this;
     }
+    public MasqMotor setLimit(MasqLimitSwitch min){
+        minLim = min;
+        limitDetection = true;
+        return this;
+    }
     public void runWithoutEncoders () {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
     public void resetEncoder() {
         zeroEncoderPosition = motor.getCurrentPosition();
@@ -47,6 +52,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             motor.setPower(power);
         else {
             if (!maxLim.isPressed() && !minLim.isPressed()) motor.setPower(power);
+            else if (!minLim.isPressed() && maxLim == null) motor.setPower(power);
             else motor.setPower(0);
         }
     }
