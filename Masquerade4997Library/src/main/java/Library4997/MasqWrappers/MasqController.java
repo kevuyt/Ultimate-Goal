@@ -26,9 +26,7 @@ public class MasqController implements MasqHardware {
     public boolean yOnPress() {return onPress(y());}
     public boolean xOnPress() {return onPress(x());}
 
-    public float leftStickX(){
-        return gamepad.left_stick_x;
-    }
+    public float leftStickX(){return gamepad.left_stick_x;}
     public float leftStickY() {
         return gamepad.left_stick_y;
     }
@@ -76,8 +74,8 @@ public class MasqController implements MasqHardware {
         return rightTrigger() > 0;
     }
 
-    public boolean leftTriggerOnPress(){return onPress(leftTriggerPressed());}
-    public boolean rightTriggerOnPress(){return onPress(leftTriggerPressed());}
+    public boolean leftTriggerOnPress() {return onPress(leftTriggerPressed());}
+    public boolean rightTriggerOnPress() {return onPress(leftTriggerPressed());}
 
     public float leftTrigger() {return gamepad.left_trigger;}
     public float rightTrigger() {return gamepad.right_trigger;}
@@ -94,9 +92,7 @@ public class MasqController implements MasqHardware {
         return pressed && released;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
     public String[] getDash() {
         return new String[]{
                 name,
