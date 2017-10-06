@@ -48,18 +48,14 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         currentPosition = 0;
     }
     public void setPower (double power) {
-        if (!limitDetection)
-            motor.setPower(power);
-        else {
-            if (maxLim != null && minLim != null) {
-                if (!maxLim.isPressed() && !minLim.isPressed()) motor.setPower(power);
-                else motor.setPower(0);
-            }
-            if (minLim != null) {
-                if (!minLim.isPressed() && maxLim == null) motor.setPower(power);
-                else motor.setPower(0);
-            }
-        }
+        double motorPower = power;
+        if (minLim != null && minLim.isPressed() && power < 0 ||
+                maxLim != null && maxLim.isPressed() && power > 0)
+            motorPower = 0;
+        else if (minLim != null && minLim.isPressed()
+                && power < 0 && maxLim == null)
+            motorPower = 0;
+        motor.setPower(motorPower);
     }
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
