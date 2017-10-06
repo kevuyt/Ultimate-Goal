@@ -37,7 +37,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public MasqTankDrive driveTrain;
     public MasqMotor lift;
-    public MasqLimitSwitch liftSwitch;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
     public MasqServo leftGlyph, rightGlyph, jewelArm;
@@ -46,7 +45,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         lift = new MasqMotor("lift", this.hardwareMap);
-        liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);

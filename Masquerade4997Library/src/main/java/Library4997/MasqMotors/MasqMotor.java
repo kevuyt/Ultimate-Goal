@@ -20,26 +20,21 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
     private MasqLimitSwitch minLim, maxLim = null;
-    private boolean limitDetection;
     public MasqMotor(String name, HardwareMap hardwareMap){
-        limitDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
-        limitDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
     }
     public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
         maxLim = max; minLim = min;
-        limitDetection = true;
         return this;
     }
     public MasqMotor setLimit(MasqLimitSwitch min){
         minLim = min; maxLim = null;
-        limitDetection = true;
         return this;
     }
     public void runWithoutEncoders () {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}

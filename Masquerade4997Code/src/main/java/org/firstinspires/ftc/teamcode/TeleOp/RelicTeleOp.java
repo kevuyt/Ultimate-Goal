@@ -13,7 +13,6 @@ public class RelicTeleOp extends MasqLinearOpMode {
     public void run() throws InterruptedException {
         //Make hardware map and set minimum limit switch
         robot.mapHardware(hardwareMap);
-        robot.lift.setLimit(robot.liftSwitch);
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());
             dash.create(controller1.a());
@@ -35,7 +34,7 @@ public class RelicTeleOp extends MasqLinearOpMode {
                         robot.lift.setPower(1);
 
             //Set power zero if position is greater than usable range using getCurrentPosition
-            else if (controller1.rightTrigger() > 0 || robot.lift.getCurrentPosition() > 1000) robot.lift.setPower(0);
+            else if (controller1.rightTrigger() == 0 || robot.lift.getCurrentPosition() <= 0) robot.lift.setPower(0);
 
             //If trigger isn't pressed move down until limit switch is pressed
             else robot.lift.setPower(-1);
