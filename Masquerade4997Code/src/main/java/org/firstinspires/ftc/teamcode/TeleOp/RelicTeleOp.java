@@ -20,7 +20,8 @@ public class RelicTeleOp extends MasqLinearOpMode {
         waitForStart();
         while (opModeIsActive()){
             robot.NFS(controller1);
-            robot.leftGlyph.setPosition((gamepad1.left_stick_x/2) + .5);
+            robot.leftGlyph.setPosition((controller1.leftTrigger()/2) + .5);
+            robot.rightGlyph.setPosition((-controller1.leftTrigger()/2) - .5);
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
             dash.update();

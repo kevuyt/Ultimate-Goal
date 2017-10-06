@@ -21,50 +21,10 @@ public class MasqController implements MasqHardware {
     public boolean y() {return gamepad.y;}
     public boolean b() {return gamepad.b;}
 
-    public boolean aOnPress() {
-        boolean pressed = false, released = false;
-        while (a()) {
-            released = false;
-            pressed = true;
-        }
-        while (!a()) {
-            released = true;
-        }
-        return pressed && released;
-    }
-    public boolean bOnPress() {
-        boolean pressed = false, realeaed = false;
-        while (b()) {
-            realeaed = false;
-            pressed = true;
-        }
-        while (!b()) {
-            realeaed = true;
-        }
-        return pressed && realeaed;
-    }
-    public boolean yOnPress() {
-        boolean pressed = false, realeaed = false;
-        while (b()) {
-            realeaed = false;
-            pressed = true;
-        }
-        while (!b()) {
-            realeaed = true;
-        }
-        return pressed && realeaed;
-    }
-    public boolean xOnPress() {
-        boolean pressed = false, realeaed = false;
-        while (x()) {
-            realeaed = false;
-            pressed = true;
-        }
-        while (!x()) {
-            realeaed = true;
-        }
-        return pressed && realeaed;
-    }
+    public boolean aOnPress() {return onPress(a());}
+    public boolean bOnPress() {return onPress(b());}
+    public boolean yOnPress() {return onPress(y());}
+    public boolean xOnPress() {return onPress(x());}
 
     public float leftStickX(){
         return gamepad.left_stick_x;
@@ -139,6 +99,7 @@ public class MasqController implements MasqHardware {
     }
     public String[] getDash() {
         return new String[]{
+                name,
                 "A: " + Boolean.toString(a()),
                 "aPress: " + Boolean.toString(aOnPress()),
                 "B: " + Boolean.toString(b()),
