@@ -31,8 +31,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqRobot () {}
     private static MasqRobot instance;
     public static MasqRobot getInstance (MasqLinearOpMode linearOpModeInstance) {
-        if (instance==null)
-             instance = new MasqRobot(linearOpModeInstance);
+        if (instance==null) instance = new MasqRobot(linearOpModeInstance);
         return instance;
     }
     public MasqTankDrive driveTrain;
