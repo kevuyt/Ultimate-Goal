@@ -34,6 +34,8 @@ public class MasqColorSensorV2 implements MasqHardware {
     private MasqColorSensorV2Driver driver;
     public MasqColorSensorV2 (String name, HardwareMap hardwareMap) {
         this.name = name;
+        driver.resetDeviceConfigurationForOpMode();
+        driver.setEngage();
         driver = hardwareMap.get(MasqColorSensorV2Driver.class, name);
     }
 

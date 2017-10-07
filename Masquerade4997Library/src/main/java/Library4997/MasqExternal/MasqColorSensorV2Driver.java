@@ -42,6 +42,9 @@ public class MasqColorSensorV2Driver extends I2cDeviceSynchDevice<I2cDeviceSynch
         I2cDeviceSynch.ReadWindow readWindow = new I2cDeviceSynch.ReadWindow(READ_WINDOW_START, READ_WINDOW_LENGTH, I2cDeviceSynch.ReadMode.REPEAT);
         this.deviceClient.setReadWindow(readWindow);
     }
+    public void setEngage () {
+        engage();
+    }
 
     @Override
     protected boolean doInitialize() {
