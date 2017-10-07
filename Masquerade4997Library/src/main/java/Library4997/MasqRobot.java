@@ -12,6 +12,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqSensors.MasqMRColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
@@ -193,6 +194,28 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void turn(int angle, Direction DIRECTION)  {turn(angle, DIRECTION, DEFAULT_TIMEOUT);}
 
+    public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
+        driveTrain.runUsingEncoder();
+        double targetAngle = imu.getHeading();
+        while ((!colorSensor.isBlue()) && opModeIsActive()){
+            double newPower = power;
+            double heading = imu.getHeading();
+            double error = targetAngle - heading;
+            double errorkp = error * KP_STRAIGHT;
+            newPower = newPower - (errorkp * Direction.value);
+            driveTrain.setPowerLeft(newPower * Direction.value);
+            driveTrain.setPowerRight(power * Direction.value);
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("Blue Val", colorSensor.colorNumber());
+            DashBoard.getDash().update();
+        }
+        driveTrain.stopDriving();
+    }
+    public void stopBlue (MasqColorSensor colorSensor, double power){
+        stopBlue(colorSensor, power, Direction.BACKWARD);
+    }
+    public void stopBlue (MasqColorSensor colorSensor){stopBlue(colorSensor, 0.5);}
+
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
@@ -215,7 +238,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stopRed (MasqColorSensor colorSensor){stopRed(colorSensor, 0.5);}
 
-    public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
+    public void stopMRBlue(MasqMRColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
         while ((!colorSensor.isBlue()) && opModeIsActive()){
@@ -227,15 +250,36 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
             DashBoard.getDash().create("Heading", heading);
-            DashBoard.getDash().create("Blue Val", colorSensor.colorNumber());
             DashBoard.getDash().update();
         }
         driveTrain.stopDriving();
     }
-    public void stopBlue (MasqColorSensor colorSensor, double power){
-        stopBlue(colorSensor, power, Direction.BACKWARD);
+    public void stopMRBlue (MasqMRColorSensor colorSensor, double power){
+        stopMRBlue(colorSensor, power, Direction.BACKWARD);
     }
-    public void stopBlue (MasqColorSensor colorSensor){stopBlue(colorSensor, 0.5);}
+    public void stopMRBlue (MasqMRColorSensor colorSensor){stopMRBlue(colorSensor, 0.5);}
+
+    public void stopMRRed(MasqMRColorSensor colorSensor, double power, Direction Direction) {
+        driveTrain.runUsingEncoder();
+        double targetAngle = imu.getHeading();
+        while (!(colorSensor.isRed()) && opModeIsActive()) {
+            double newPower = power;
+            double heading = imu.getHeading();
+            double error = targetAngle - heading;
+            double errorkp = error * KP_STRAIGHT;
+            newPower = newPower - (errorkp * Direction.value);
+            driveTrain.setPowerLeft(newPower * Direction.value);
+            driveTrain.setPowerRight(power * Direction.value);
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().update();
+        }
+        driveTrain.stopDriving();
+    }
+    public void stopMRRed (MasqMRColorSensor colorSensor, double power){
+        stopMRRed(colorSensor, power, Direction.BACKWARD);
+    }
+    public void stopMRRed (MasqMRColorSensor colorSensor){stopMRRed(colorSensor, 0.5);}
+
 
     public void stop(MasqSensor sensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
