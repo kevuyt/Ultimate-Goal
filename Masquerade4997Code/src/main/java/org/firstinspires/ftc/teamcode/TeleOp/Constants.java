@@ -5,5 +5,6 @@ package org.firstinspires.ftc.teamcode.TeleOp;
  */
 
 public interface Constants {
-
+    int LIFT_MAX_ROTATIONS = 10;
+    int TICKS_PER_ROTATION = 1120;
 }

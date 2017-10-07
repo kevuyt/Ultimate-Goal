@@ -20,13 +20,15 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
     private double minPosition, maxPosition;
-    private boolean limitDetection, positionDetection = false;
+    private boolean limitDetection, positionDetection;
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
+        limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
+        limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
