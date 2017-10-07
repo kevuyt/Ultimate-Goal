@@ -11,7 +11,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class RelicTeleOp extends MasqLinearOpMode {
     @Override
     public void run() throws InterruptedException {
-        //Make hardware map and set minimum limit switch
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());

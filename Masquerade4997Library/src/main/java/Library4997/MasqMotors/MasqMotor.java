@@ -19,6 +19,8 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double previousTime = 0;
     private double destination = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
+    private double minPosition, maxPosition;
+    private boolean limitDetection, positionDetection = false;
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
         this.nameMotor = name;
@@ -31,10 +33,22 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
         maxLim = max; minLim = min;
+        limitDetection = true;
         return this;
     }
     public MasqMotor setLimit(MasqLimitSwitch min){
         minLim = min; maxLim = null;
+        limitDetection = true;
+        return this;
+    }
+    public MasqMotor setPositionLimits (double min, double max) {
+        minPosition = min; maxPosition = max;
+        positionDetection = true;
+        return this;
+    }
+    public MasqMotor setPositionLimit (double min) {
+        minPosition = min;
+        positionDetection = true;
         return this;
     }
     public void runWithoutEncoders () {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
@@ -44,12 +58,20 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public void setPower (double power) {
         double motorPower = power;
-        if (minLim != null && minLim.isPressed() && power < 0 ||
-                maxLim != null && maxLim.isPressed() && power > 0)
-            motorPower = 0;
-        else if (minLim != null && minLim.isPressed()
-                && power < 0 && maxLim == null)
-            motorPower = 0;
+        if (limitDetection) {
+            if (minLim != null && minLim.isPressed() && power < 0 ||
+                    maxLim != null && maxLim.isPressed() && power > 0)
+                motorPower = 0;
+            else if (minLim != null && minLim.isPressed()
+                    && power < 0 && maxLim == null)
+                motorPower = 0;
+        } else if (positionDetection) {
+            if (motor.getCurrentPosition() < minPosition && power < 0 ||
+                    motor.getCurrentPosition() > maxPosition && power > 0)
+                motorPower = 0;
+            else if (motor.getCurrentPosition() < minPosition && power < 0)
+                motorPower = 0;
+        }
         motor.setPower(motorPower);
     }
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
