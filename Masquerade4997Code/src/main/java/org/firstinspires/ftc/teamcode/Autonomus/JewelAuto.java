@@ -18,6 +18,6 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.sleep(robot.getDelay());
-        robot.jewelArm.setPosition(1);
+        robot.jewelArm.setPower(1);
     }
 }

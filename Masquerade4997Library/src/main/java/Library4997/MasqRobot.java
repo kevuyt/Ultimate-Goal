@@ -39,7 +39,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqMotor lift;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
-    public MasqServo leftGlyph, rightGlyph, jewelArm;
+    public MasqCRServo leftGlyph, rightGlyph, jewelArm;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
@@ -47,9 +47,9 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        leftGlyph = new MasqServo("letGlyph", hardwareMap);
-        rightGlyph = new MasqServo("rightGlyph",hardwareMap);
-        jewelArm = new MasqServo("jewelArm", hardwareMap);
+        leftGlyph = new MasqCRServo("letGlyph", hardwareMap);
+        rightGlyph = new MasqCRServo("rightGlyph",hardwareMap);
+        jewelArm = new MasqCRServo("jewelArm", hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();
