@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqExternal.MasqSensor;
-import Library4997.MasqWrappers.DashBoard;
 
 public class MasqMRColorSensor implements MasqSensor, MasqHardware {
     private com.qualcomm.robotcore.hardware.ColorSensor colorSensor;

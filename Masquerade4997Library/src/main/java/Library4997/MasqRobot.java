@@ -280,7 +280,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stopMRRed (MasqMRColorSensor colorSensor){stopMRRed(colorSensor, 0.5);}
 
-
     public void stop(MasqSensor sensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getHeading();
@@ -301,7 +300,6 @@ public class MasqRobot implements PID_CONSTANTS {
         stop(sensor, power, Direction.BACKWARD);
     }
     public void stop (MasqSensor sensor){stop(sensor, 0.5);}
-
 
     public void NFS(MasqController c) {
         float move = c.leftStickY();
