@@ -1,5 +1,8 @@
 package Library4997;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
@@ -43,7 +46,7 @@ public class MasqRobot implements PID_CONSTANTS {
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
-        lift = new MasqMotor("lift", this.hardwareMap);
+        lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);

@@ -18,5 +18,8 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
             dash.update();
         }
         waitForStart();
+        while (opModeIsActive()) {
+
+        }
     }
 }
