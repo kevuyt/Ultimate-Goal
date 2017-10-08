@@ -26,11 +26,11 @@ public class MasqColorSensorV2Driver extends I2cDeviceSynchDevice<I2cDeviceSynch
         return TypeConversion.byteArrayToShort(deviceClient.read(reg, 2));
     }
 
-    protected MasqColorSensorV2Driver(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {
+    private MasqColorSensorV2Driver(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {
         super(i2cDeviceSynch, deviceClientIsOwned);
     }
 
-    public MasqColorSensorV2Driver(I2cDeviceSynch deviceClient, int read) {
+    private MasqColorSensorV2Driver(I2cDeviceSynch deviceClient, int read) {
         super(deviceClient, true);
         this.setOptimalReadWindow();
         this.deviceClient.setI2cAddress(I2cAddr.create8bit(read));
@@ -38,7 +38,7 @@ public class MasqColorSensorV2Driver extends I2cDeviceSynchDevice<I2cDeviceSynch
         this.deviceClient.engage();
     }
 
-    protected void setOptimalReadWindow() {
+    private void setOptimalReadWindow() {
         I2cDeviceSynch.ReadWindow readWindow = new I2cDeviceSynch.ReadWindow(READ_WINDOW_START, READ_WINDOW_LENGTH, I2cDeviceSynch.ReadMode.REPEAT);
         this.deviceClient.setReadWindow(readWindow);
     }
@@ -47,7 +47,7 @@ public class MasqColorSensorV2Driver extends I2cDeviceSynchDevice<I2cDeviceSynch
     }
 
     @Override
-    protected boolean doInitialize() {
+    public boolean doInitialize() {
         return true;
     }
 
