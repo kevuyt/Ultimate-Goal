@@ -28,7 +28,9 @@ public class MasqCRServo implements MasqHardware{
     public void setPower (double power) {
         if (!limitDetection) servo.setPower(power);
         else {
-            if (!max.isPressed() && !min.isPressed()) servo.setPower(power);
+            if (min != null && min.isPressed() && power < 0 ||
+                    max != null && min.isPressed() && power > 0)
+                servo.setPower(power);
             else servo.setPower(0);
         }
     }
