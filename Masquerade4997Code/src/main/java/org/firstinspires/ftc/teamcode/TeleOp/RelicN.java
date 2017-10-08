@@ -22,8 +22,7 @@ public class RelicN extends MasqLinearOpMode implements Constants{
         while (opModeIsActive()){
             robot.NFS(controller1);
             if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
-            else if (controller1.leftTriggerPressed()) robot.lift.setPower(-1);
-            else robot.lift.setPower(0);
+            else robot.lift.setPower(-1);
 
             dash.create(controller1.a());
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
