@@ -1,12 +1,8 @@
 package Library4997.MasqSensors;
 
-import android.graphics.Color;
-
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import Library4997.MasqExternal.MasqColorSensorV2Driver;
 import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqExternal.MasqSensor;
 
 /**
  * Created by Archish on 10/7/17.
