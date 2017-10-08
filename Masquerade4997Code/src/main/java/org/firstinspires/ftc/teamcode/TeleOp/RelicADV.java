@@ -8,7 +8,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 9/8/17.
  */
 @TeleOp(name = "NFSV2", group = "Template")
-public class ADV extends MasqLinearOpMode implements Constants{
+public class RelicADV extends MasqLinearOpMode implements Constants{
     @Override
     public void run() throws InterruptedException {
         robot.mapHardware(hardwareMap);
@@ -31,8 +31,9 @@ public class ADV extends MasqLinearOpMode implements Constants{
                 robot.leftGlyph.setPower(0);
                 robot.rightGlyph.setPower(0);
             }
-            robot.lift.setPower(controller1.rightTrigger());
-            if (!controller1.rightTriggerPressed()) robot.lift.setPower(-1);
+            if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
+            else if (controller1.leftTriggerPressed()) robot.lift.setPower(-1);
+            else robot.lift.setPower(0);
 
             dash.create(controller1.a());
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());

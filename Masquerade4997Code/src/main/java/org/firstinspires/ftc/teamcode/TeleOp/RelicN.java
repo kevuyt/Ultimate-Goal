@@ -8,7 +8,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 9/8/17.
  */
 @TeleOp(name = "NFS", group = "Template")
-public class Normal extends MasqLinearOpMode implements Constants{
+public class RelicN extends MasqLinearOpMode implements Constants{
     @Override
     public void run() throws InterruptedException {
         robot.mapHardware(hardwareMap);
