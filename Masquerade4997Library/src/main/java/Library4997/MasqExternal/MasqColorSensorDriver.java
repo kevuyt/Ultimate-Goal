@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.util.TypeConversion;
  * Created by Archish on 10/7/17.
  */
 @I2cSensor(name = "MasqColorSensor", description = "I2C Sensor that supports color number", xmlTag = "ColorSensor")
-public class MasqColorSensorV2Driver extends I2cDeviceSynchDevice<I2cDeviceSynch> {
+public class MasqColorSensorDriver extends I2cDeviceSynchDevice<I2cDeviceSynch> {
 
     private static final int
             READ_WINDOW_START = 0x04,
@@ -26,11 +26,11 @@ public class MasqColorSensorV2Driver extends I2cDeviceSynchDevice<I2cDeviceSynch
         return TypeConversion.byteArrayToShort(deviceClient.read(reg, 2));
     }
 
-    private MasqColorSensorV2Driver(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {
+    private MasqColorSensorDriver(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {
         super(i2cDeviceSynch, deviceClientIsOwned);
     }
 
-    private MasqColorSensorV2Driver(I2cDeviceSynch deviceClient, int read) {
+    private MasqColorSensorDriver(I2cDeviceSynch deviceClient, int read) {
         super(deviceClient, true);
         this.setOptimalReadWindow();
         this.deviceClient.setI2cAddress(I2cAddr.create8bit(read));

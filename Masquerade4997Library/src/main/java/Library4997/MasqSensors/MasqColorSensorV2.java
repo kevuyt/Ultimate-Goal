@@ -1,7 +1,7 @@
 package Library4997.MasqSensors;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import Library4997.MasqExternal.MasqColorSensorV2Driver;
+import Library4997.MasqExternal.MasqColorSensorDriver;
 import Library4997.MasqExternal.MasqHardware;
 
 /**
@@ -27,12 +27,12 @@ public class MasqColorSensorV2 implements MasqHardware {
             whiteMinThreshold = 14, whiteMaxThreshold = 16;
 
     String name;
-    private MasqColorSensorV2Driver driver;
+    private MasqColorSensorDriver driver;
     public MasqColorSensorV2 (String name, HardwareMap hardwareMap) {
         this.name = name;
         driver.resetDeviceConfigurationForOpMode();
         driver.setEngage();
-        driver = hardwareMap.get(MasqColorSensorV2Driver.class, name);
+        driver = hardwareMap.get(MasqColorSensorDriver.class, name);
     }
 
     public int colorNumber() {return driver.read(COLOR_NUMBER_REGISTER);}

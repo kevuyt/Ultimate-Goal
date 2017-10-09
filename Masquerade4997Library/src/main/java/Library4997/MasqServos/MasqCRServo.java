@@ -20,6 +20,12 @@ public class MasqCRServo implements MasqHardware{
         servo = hardwareMap.crservo.get(name);
         limitDetection = false;
     }
+    public MasqCRServo (String name, CRServo.Direction direction, HardwareMap hardwareMap){
+        this.nameCr_Servo = name;
+        servo = hardwareMap.crservo.get(name);
+        servo.setDirection(direction);
+        limitDetection = false;
+    }
     public MasqCRServo setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
         this.min = min; this.max = max;
         limitDetection = true;

@@ -1,5 +1,6 @@
 package Library4997;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -19,6 +20,7 @@ import Library4997.MasqSensors.MasqMRColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
+import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
@@ -30,7 +32,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
-    public MasqLinearOpMode masqLinearOpMode;
+    private MasqLinearOpMode masqLinearOpMode;
     public MasqRobot (MasqLinearOpMode linearOpMode) {this.masqLinearOpMode = linearOpMode;}
     public MasqRobot () {}
     private static MasqRobot instance;
@@ -42,16 +44,16 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqMotor lift;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
-    public MasqCRServo leftGlyph, rightGlyph, jewelArm;
+    public MasqCRServo jewelArm;
+    public MasqCRServoSystem glyphSystem;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
+        glyphSystem = new MasqCRServoSystem("letGlyph", CRServo.Direction.FORWARD, "rightGlyph", CRServo.Direction.REVERSE, hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        leftGlyph = new MasqCRServo("letGlyph", hardwareMap);
-        rightGlyph = new MasqCRServo("rightGlyph",hardwareMap);
         jewelArm = new MasqCRServo("jewelArm", hardwareMap);
     }
 

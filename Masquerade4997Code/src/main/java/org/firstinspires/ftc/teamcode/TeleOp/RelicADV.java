@@ -12,6 +12,7 @@ public class RelicADV extends MasqLinearOpMode implements Constants{
     @Override
     public void run() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        boolean glyphOpenState = true;
         robot.lift.setPositionLimits(-500, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());
@@ -21,15 +22,12 @@ public class RelicADV extends MasqLinearOpMode implements Constants{
         waitForStart();
         while (opModeIsActive()){
             robot.NFS(controller1);
-            if (controller1.rightBumper()) {
-                robot.leftGlyph.setPower(1);
-                robot.rightGlyph.setPower(-1);
-            } else if (controller1.leftBumper()) {
-                robot.leftGlyph.setPower(-1);
-                robot.rightGlyph.setPower(1);
-            } else {
-                robot.leftGlyph.setPower(0);
-                robot.rightGlyph.setPower(0);
+            if (controller1.aOnPress() && glyphOpenState) {
+                glyphOpenState = false;
+                robot.glyphSystem.setPower(GLYPH_CLOSED);
+            } if (controller1.aOnPress() && !glyphOpenState) {
+                glyphOpenState = true;
+                robot.glyphSystem.setPower(GLYPH_OPENED);
             }
             if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
             else if (controller1.leftTriggerPressed()) robot.lift.setPower(-1);
