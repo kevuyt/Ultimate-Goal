@@ -23,6 +23,11 @@ public class MasqServo implements MasqHardware{
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
     }
+    public MasqServo(String name, Servo.Direction direction, HardwareMap hardwareMap){
+        this.nameServo = name;
+        servo = hardwareMap.servo.get(name);
+        servo.setDirection(direction);
+    }
     public void setPosition (double position) {
         targetPosition = position;
         servo.setPosition(position);
@@ -35,8 +40,10 @@ public class MasqServo implements MasqHardware{
             newPosition += 0.01;
         }
     }
-    public void setLimMin (MasqLimitSwitch min){limMin = min; limDetection = true;}
-    public void setLimMax (MasqLimitSwitch max){limMax = max; limDetection = true;}
+    public void setLimits (MasqLimitSwitch min, MasqLimitSwitch max){
+        limMin = min; limMax = max;
+        limDetection = true;
+    }
     private boolean limPressed () {
         if (limDetection) return  limMin.isPressed() || limMax.isPressed();
         else return false;
