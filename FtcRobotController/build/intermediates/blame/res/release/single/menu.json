@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/menu/menu_server.xml",
+        "source": "/Users/Archish/.android/build-cache/b70f3d67d7e8025378f37de74f86962bdd05ac8d/output/res/menu/menu_server.xml"
+    },
+    {
+        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/menu/menu_server.xml",
+        "source": "/Users/Archish/.android/build-cache/64abf0e6e54e6ed306d9dbb01f1aed1f878df46b/output/res/menu/menu_server.xml"
+    },
+    {
+        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/menu/ftc_robot_controller.xml",
+        "source": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/src/main/res/menu/ftc_robot_controller.xml"
+    },
+    {
+        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/menu/main_menu.xml",
+        "source": "/Users/Archish/.android/build-cache/19f645c4f45212583aadfcd77befb8a257b96b85/output/res/menu/main_menu.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/menu/ftc_robot_controller.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/menu/ftc_robot_controller.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/menu/main_menu.xml",
+        "source": "/Users/Archish/.android/build-cache/0cf3776919e65d7935916e10ab998661b5cb9a03/output/res/menu/main_menu.xml"
+    }
+]
