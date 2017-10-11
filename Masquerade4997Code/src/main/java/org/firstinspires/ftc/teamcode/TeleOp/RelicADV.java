@@ -24,10 +24,10 @@ public class RelicADV extends MasqLinearOpMode implements Constants{
             robot.NFS(controller1);
             if (controller1.aOnPress() && glyphOpenState) {
                 glyphOpenState = false;
-                robot.glyphSystem.setPower(GLYPH_CLOSED);
+                robot.glyphSystem.setPosition(GLYPH_CLOSED);
             } if (controller1.aOnPress() && !glyphOpenState) {
                 glyphOpenState = true;
-                robot.glyphSystem.setPower(GLYPH_OPENED);
+                robot.glyphSystem.setPosition(GLYPH_OPENED);
             }
             if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
             else if (controller1.leftTriggerPressed()) robot.lift.setPower(-1);

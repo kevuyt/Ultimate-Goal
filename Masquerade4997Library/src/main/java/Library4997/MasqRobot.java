@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
@@ -22,6 +23,7 @@ import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
+import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
@@ -45,13 +47,13 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
     public MasqCRServo jewelArm;
-    public MasqCRServoSystem glyphSystem;
+    public MasqServoSystem glyphSystem;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
-        glyphSystem = new MasqCRServoSystem("letGlyph", CRServo.Direction.FORWARD, "rightGlyph", CRServo.Direction.REVERSE, hardwareMap);
+        glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArm = new MasqCRServo("jewelArm", hardwareMap);

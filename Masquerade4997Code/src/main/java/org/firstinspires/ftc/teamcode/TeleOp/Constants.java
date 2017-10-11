@@ -7,6 +7,6 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 public interface Constants {
     int LIFT_MAX_ROTATIONS = 10;
     int TICKS_PER_ROTATION = 1120;
-    double GLYPH_CLOSED = -1,
-           GLYPH_OPENED = 1;
+    double GLYPH_CLOSED = 0,
+           GLYPH_OPENED = 0.5;
 }
