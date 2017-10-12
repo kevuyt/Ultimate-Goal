@@ -82,13 +82,8 @@ public class MasqController implements MasqHardware {
 
     private boolean onPress(boolean b){
         boolean pressed = false, released = false;
-        while (b) {
-            released = false;
-            pressed = true;
-        }
-        while (!b) {
-            released = true;
-        }
+        if (b) {released = false; pressed = true;}
+        if (!b) {released = true;}
         return pressed && released;
     }
 
