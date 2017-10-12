@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "VuMarkAuto", group = "Autonomus")
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
     public void run() throws InterruptedException {
-        robot.mapHardware(hardwareMap);
+        robot.mapHardware(hardwareMap, controller1V2, controller2V2);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();

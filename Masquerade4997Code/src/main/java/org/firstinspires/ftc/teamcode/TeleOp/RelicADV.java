@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class RelicADV extends MasqLinearOpMode implements Constants{
     @Override
     public void run() throws InterruptedException {
-        robot.mapHardware(hardwareMap);
+        robot.mapHardware(hardwareMap, controller1V2, controller2V2);
         boolean glyphOpenState = true;
         robot.lift.setPositionLimits(-500, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
         while (!opModeIsActive()){

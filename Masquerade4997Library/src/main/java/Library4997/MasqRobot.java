@@ -7,6 +7,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
 import Library4997.MasqExternal.MasqSensor;
@@ -27,6 +29,7 @@ import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
+import Library4997.MasqWrappers.MasqControllerV2;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -49,7 +52,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqCRServo jewelArm;
     public MasqServoSystem glyphSystem;
     HardwareMap hardwareMap;
-    public void mapHardware(HardwareMap hardwareMap){
+    private MasqControllerV2 controller1, controller2;
+    public void mapHardware(HardwareMap hardwareMap, MasqControllerV2 controller1, MasqControllerV2 controller2){
         this.hardwareMap = hardwareMap;
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
@@ -57,6 +61,8 @@ public class MasqRobot implements PID_CONSTANTS {
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArm = new MasqCRServo("jewelArm", hardwareMap);
+        this.controller1 = controller1;
+        this.controller2 = controller2;
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -336,6 +342,8 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerRight(-right);
         }
         voltageSensor.update();
+        controller1.update();
+        controller2.update();
     }
     public void MECH(MasqController c){
         double angle;
