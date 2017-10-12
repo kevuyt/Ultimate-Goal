@@ -33,7 +33,7 @@ public class RelicADV extends MasqLinearOpMode implements Constants{
             else if (controller1.leftTriggerPressed()) robot.lift.setPower(-1);
             else robot.lift.setPower(0);
 
-            dash.create(controller1.a());
+            dash.create(controller1.aOnPress());
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
             dash.create("LIFT POSITION", robot.lift.getCurrentPosition());
