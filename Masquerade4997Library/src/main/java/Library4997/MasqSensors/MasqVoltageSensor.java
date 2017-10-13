@@ -27,5 +27,5 @@ public class MasqVoltageSensor {
         return sum/num;
     }
 
-    public double getVoltageInstantaneous() {return (int) sensor.getVoltage();}
+    public double getVoltageInstantaneous() {return sensor.getVoltage();}
 }
