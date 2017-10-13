@@ -7,25 +7,25 @@ import com.qualcomm.robotcore.util.RollingAverage;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MasqVoltageSensor {
-    public final static int samples = 2000000;
     VoltageSensor sensor;
-    RollingAverage average;
+    List<Double> average;
 
     public MasqVoltageSensor(HardwareMap hardwareMap) {
         sensor = hardwareMap.voltageSensor.iterator().next();
-        average = new RollingAverage(samples);
+        average = new ArrayList<>();
     }
 
-    public void update() {
-        average.addNumber(getVoltageInstantaneous());
-    }
+    public void update() {average.add(getVoltageInstantaneous());}
 
     public double getVoltage() {
-        return average.getAverage();
+        double sum =0, num = 0;
+        for (Double sample: average){num++; sum += sample;}
+        return sum/num;
     }
 
-    public int getVoltageInstantaneous() {
-        return (int) sensor.getVoltage();
-    }
+    public double getVoltageInstantaneous() {return (int) sensor.getVoltage();}
 }
