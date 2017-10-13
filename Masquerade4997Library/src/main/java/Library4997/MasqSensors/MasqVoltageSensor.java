@@ -12,19 +12,18 @@ import java.util.List;
 
 public class MasqVoltageSensor {
     VoltageSensor sensor;
-    List<Double> average;
+    double sum;
+    double count;
 
     public MasqVoltageSensor(HardwareMap hardwareMap) {
         sensor = hardwareMap.voltageSensor.iterator().next();
-        average = new ArrayList<>();
+        sum = count = 0;
     }
 
-    public void update() {average.add(getVoltageInstantaneous());}
+    public void update() {sum+=getVoltageInstantaneous(); count++; }
 
     public double getVoltage() {
-        double sum =0, num = 0;
-        for (Double sample: average){num++; sum += sample;}
-        return sum/num;
+        return sum/count;
     }
 
     public double getVoltageInstantaneous() {return sensor.getVoltage();}
