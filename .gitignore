@@ -24,7 +24,7 @@ Thumbs.db
 
 
 
-
+.idea
 .idea/fileTemplates/
 FtcRobotController/build/generated/assets/
 FtcRobotController/build/generated/res/
@@ -237,3 +237,5 @@ Masquerade4997Library/build/intermediates/rs/
 Masquerade4997Library/build/intermediates/shaders/
 Masquerade4997Library/build/intermediates/transforms/
 Masquerade4997Library/build/tmp/
+Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/aapt-temp/
+Masquerade4997Library/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/
