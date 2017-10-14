@@ -105,8 +105,17 @@ public class DashBoard implements Runnable{
         boolean close = false;
         while (!close) {
             update();
+            telemetry.clearAll();
             close = this.close;
+            sleep();
         }
     }
     public void startUpdate (){new Thread(this).start();}
+    private void sleep(){
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -21,9 +21,7 @@ public class RelicADV extends MasqLinearOpMode implements Constants{
             controller1.update();
             dash.create(num);
             dash.create(controller1.a());
-            dash.update();
         }
-        dash.close();
         waitForStart();
         while (opModeIsActive()){
             robot.NFS(controller1);

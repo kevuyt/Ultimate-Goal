@@ -78,7 +78,7 @@ public class MasqController implements Runnable{
     public float leftTrigger() {return gamepad.left_trigger;}
     public float rightTrigger() {return gamepad.right_trigger;}
 
-    public void update(){
+    public synchronized void update(){
         aPrev = gamepad.a;
         bPrev = gamepad.b;
         xPrev = gamepad.x;
@@ -122,10 +122,19 @@ public class MasqController implements Runnable{
     public void run() {
         boolean close = false;
         while (!close) {
+            System.out.println(a());
             update();
             close = this.close;
+            sleep();
         }
     }
     public void close() {close = true;}
     public void startUpdate (){new Thread(this).start();}
+    private void sleep(){
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
