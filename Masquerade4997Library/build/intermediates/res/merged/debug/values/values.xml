@@ -104,8 +104,18 @@
         <item>Channel  9 – 2.452 GHz|9</item>
         <item>Channel 10 – 2.457 GHz|10</item>
         <item>Channel 11 – 2.462 GHz|11</item>
-        
-        
+        <!--
+        <item>5GHz, Channel 36</item>
+        <item>5GHz, Channel 40</item>
+        <item>5GHz, Channel 44</item>
+        <item>5GHz, Channel 48</item>
+        -->
+        <!--
+        <item>5GHz, Channel 149</item>
+        <item>5GHz, Channel 153</item>
+        <item>5GHz, Channel 157</item>
+        <item>5GHz, Channel 161</item>
+        -->
     </string-array>
     <attr format="color" name="backgroundAlmostDark"/>
     <attr format="color" name="backgroundDark"/>
@@ -729,10 +739,11 @@
     <string name="writeXML_prompt">Select an XML file to instantiate a Robot from that file</string>
     <string name="writeXML_text">Press this button to write the current configuration to an XML file</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        
+        <!-- Theme customizations available in newer API levels can go in res/values-vXX/styles.xml,
+        while customizations related to backward-compatibility can go here. -->
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-        
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/FtcTextViewStyle</item>

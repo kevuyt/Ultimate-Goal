@@ -21,6 +21,19 @@ public final class R {
         public static final int choice_array_servo=0x7f080009;
         public static final int device_interface_module_options_array=0x7f08000a;
         public static final int lynx_module_options_array=0x7f08000b;
+        /** 
+        <item>5GHz, Channel 36</item>
+        <item>5GHz, Channel 40</item>
+        <item>5GHz, Channel 44</item>
+        <item>5GHz, Channel 48</item>
+        
+
+        <item>5GHz, Channel 149</item>
+        <item>5GHz, Channel 153</item>
+        <item>5GHz, Channel 157</item>
+        <item>5GHz, Channel 161</item>
+        
+         */
         public static final int wifi_direct_channels=0x7f08000c;
     }
     public static final class attr {
@@ -1152,6 +1165,11 @@ containing a value of this type.
         public static final int writeXML_text=0x7f0a01fe;
     }
     public static final class style {
+        /**  API 11 theme customizations can go here. 
+ API 14 theme customizations can go here. 
+ Theme customizations available in newer API levels can go in res/values-vXX/styles.xml,
+        while customizations related to backward-compatibility can go here. 
+         */
         public static final int AppBaseTheme=0x7f070000;
         public static final int AppTheme=0x7f070001;
         public static final int AppTheme_Blue=0x7f070002;
