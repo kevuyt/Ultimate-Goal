@@ -16,7 +16,6 @@ public class RelicN extends MasqLinearOpMode implements Constants{
             dash.create(robot.imu.getHeading());
             dash.create("USE RIGHT TRIGGER, and LEFT TRIGGER for lift");
             dash.create(controller1.a());
-            dash.update();
         }
         waitForStart();
         while (opModeIsActive()){
@@ -28,7 +27,6 @@ public class RelicN extends MasqLinearOpMode implements Constants{
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
             dash.create("LIFT POSITION", robot.lift.getCurrentPosition());
-            dash.update();
         }
     }
 }

@@ -13,7 +13,6 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         robot.mapHardware(hardwareMap, controller1, controller2);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
-            dash.update();
         }
         waitForStart();
         robot.sleep(robot.getDelay());

@@ -21,7 +21,6 @@ public class RelicADV extends MasqLinearOpMode implements Constants {
             controller1.update();
             dash.create(num);
             dash.create(controller1.a());
-            dash.update();
         }
         waitForStart();
         while (opModeIsActive()){
@@ -44,7 +43,6 @@ public class RelicADV extends MasqLinearOpMode implements Constants {
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
             dash.create("LIFT POSITION", robot.lift.getCurrentPosition());
-            dash.update();
         }
     }
 }
