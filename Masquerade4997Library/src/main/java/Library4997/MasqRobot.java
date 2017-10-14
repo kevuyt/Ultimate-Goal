@@ -43,8 +43,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqCRServo jewelArm;
     public MasqServoSystem glyphSystem;
     HardwareMap hardwareMap;
-    private MasqController controller1, controller2;
-    public void mapHardware(HardwareMap hardwareMap, MasqController controller1, MasqController controller2){
+    private DashBoard dash = DashBoard.getDash();
+    public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
@@ -52,8 +52,6 @@ public class MasqRobot implements PID_CONSTANTS {
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArm = new MasqCRServo("jewelArm", hardwareMap);
-        this.controller1 = controller1;
-        this.controller2 = controller2;
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -118,6 +116,9 @@ public class MasqRobot implements PID_CONSTANTS {
                 rightPower /= maxPower;
             }
             driveTrain.setPower(leftPower, rightPower);
+            dash.create("LEFT POWER: ",leftPower);
+            dash.create("RIGHT POWER: ",rightPower);
+            dash.create("ERROR: ",angularError);
         } while (opModeIsActive() && (inchesRemaining > 0.5 || Math.abs(angularError) > 0.5) && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         driveTrain.stopDriving();
         sleep(sleepTime);
@@ -176,10 +177,9 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
-            DashBoard.getDash().create("TargetAngle", targetAngle);
-            DashBoard.getDash().create("Heading", imuVAL);
-            DashBoard.getDash().create("AngleLeftToCover", currentError);
-            DashBoard.getDash().update();
+            dash.create("TargetAngle", targetAngle);
+            dash.create("Heading", imuVAL);
+            dash.create("AngleLeftToCover", currentError);
         }
         driveTrain.setPower(0,0);
         sleep(sleepTime);
@@ -209,9 +209,8 @@ public class MasqRobot implements PID_CONSTANTS {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            DashBoard.getDash().create("Heading", heading);
-            DashBoard.getDash().create("Blue Val", colorSensor.colorNumber());
-            DashBoard.getDash().update();
+            dash.create("Heading", heading);
+            dash.create("Blue Val", colorSensor.colorNumber());
         }
         driveTrain.stopDriving();
     }
@@ -231,9 +230,8 @@ public class MasqRobot implements PID_CONSTANTS {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            DashBoard.getDash().create("Heading", heading);
-            DashBoard.getDash().create("red Val", colorSensor.colorNumber());
-            DashBoard.getDash().update();
+            dash.create("Heading", heading);
+            dash.create("red Val", colorSensor.colorNumber());
         }
         driveTrain.stopDriving();
     }
@@ -253,8 +251,7 @@ public class MasqRobot implements PID_CONSTANTS {
             newPower = newPower - (errorKP * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            DashBoard.getDash().create("is Stopped", sensor.stop());
-            DashBoard.getDash().update();
+            dash.create("is Stopped", sensor.stop());
         }
         driveTrain.stopDriving();
     }
@@ -291,6 +288,7 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerRight(-right);
         }
         voltageSensor.update();
+
     }
     public void MECH(MasqController c){
         double angle;
