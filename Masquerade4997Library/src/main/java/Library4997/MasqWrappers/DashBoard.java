@@ -88,10 +88,6 @@ public class DashBoard{
     public void setNewLast() {
         telemetry.log().setDisplayOrder(Telemetry.Log.DisplayOrder.OLDEST_FIRST);
     }
-    public void close () {
-        telemetry.clearAll();
-        close = true;
-    }
     private void update () {
         telemetry.update();
     }
