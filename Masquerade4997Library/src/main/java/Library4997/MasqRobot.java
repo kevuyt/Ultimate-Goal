@@ -1,14 +1,10 @@
 package Library4997;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
 import Library4997.MasqExternal.MasqSensor;
@@ -18,19 +14,13 @@ import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
-import Library4997.MasqSensors.MasqColorSensorV2;
-import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqSensors.MasqMRColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
-import Library4997.MasqServos.MasqCRServoSystem;
-import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
-import Library4997.MasqWrappers.MasqControllerV2;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -53,8 +43,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqCRServo jewelArm;
     public MasqServoSystem glyphSystem;
     HardwareMap hardwareMap;
-    private MasqControllerV2 controller1, controller2;
-    public void mapHardware(HardwareMap hardwareMap, MasqControllerV2 controller1, MasqControllerV2 controller2){
+    private MasqController controller1, controller2;
+    public void mapHardware(HardwareMap hardwareMap, MasqController controller1, MasqController controller2){
         this.hardwareMap = hardwareMap;
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);

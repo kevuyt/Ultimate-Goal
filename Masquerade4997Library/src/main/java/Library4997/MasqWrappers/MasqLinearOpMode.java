@@ -12,7 +12,6 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     protected DashBoard dash;
     public MasqRobot robot;
     protected MasqController controller1, controller2;
-    protected MasqControllerV2 controller1V2, controller2V2;
     public final void runOpMode() throws InterruptedException {
         try {
             robot = MasqRobot.getInstance(this);
@@ -20,8 +19,6 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             dash.setNewFirst();
             controller1 = new MasqController(super.gamepad1, "controller1");
             controller2 = new MasqController(super.gamepad2, "controller2");
-            controller1V2 = new MasqControllerV2(super.gamepad1, "controller1");
-            controller2V2 = new MasqControllerV2(super.gamepad2, "controller2");
             run();
         } finally {
             stopLinearOpMode();

@@ -1,15 +1,17 @@
 package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
-import Library4997.MasqExternal.MasqHardware;
 
 /**
- * Custom gamepad
+ * Created by Archish on 10/12/17.
  */
 
-public class MasqController implements MasqHardware {
+public class MasqController {
     private String name;
     private Gamepad gamepad;
+    private boolean
+            aPrev = false, bPrev = false, xPrev = false, yPrev = false,
+            leftBumperPrev = false, rightBumperPrev = false;
 
     public MasqController(Gamepad g, String name){
         this.name = name;
@@ -21,10 +23,10 @@ public class MasqController implements MasqHardware {
     public boolean y() {return gamepad.y;}
     public boolean b() {return gamepad.b;}
 
-    public boolean aOnPress() {return onPress(a());}
-    public boolean bOnPress() {return onPress(b());}
-    public boolean yOnPress() {return onPress(y());}
-    public boolean xOnPress() {return onPress(x());}
+    public boolean aOnPress() {return a() && !aPrev;}
+    public boolean bOnPress() {return b() && !bPrev;}
+    public boolean yOnPress() {return y() && !yPrev;}
+    public boolean xOnPress() {return x() && !xPrev;}
 
     public float leftStickX(){return gamepad.left_stick_x;}
     public float leftStickY() {
@@ -57,8 +59,8 @@ public class MasqController implements MasqHardware {
         return gamepad.right_bumper;
     }
 
-    public boolean leftBumperOnPress () {return onPress(rightBumper());}
-    public boolean rightBumperOnPress () {return onPress(rightBumper());}
+    public boolean leftBumperOnPress () {return leftBumper() && !leftBumperPrev;}
+    public boolean rightBumperOnPress () {return rightBumper() && !rightBumperPrev;}
 
     public boolean leftStickButton() {
         return gamepad.left_stick_button;
@@ -74,17 +76,16 @@ public class MasqController implements MasqHardware {
         return rightTrigger() > 0;
     }
 
-    public boolean leftTriggerOnPress() {return onPress(leftTriggerPressed());}
-    public boolean rightTriggerOnPress() {return onPress(leftTriggerPressed());}
-
     public float leftTrigger() {return gamepad.left_trigger;}
     public float rightTrigger() {return gamepad.right_trigger;}
 
-    private boolean onPress(boolean b){
-        boolean pressed = false, released = false;
-        if (b) {released = false; pressed = true;}
-        if (!b) {released = true;}
-        return pressed && released;
+    public void update(){
+        aPrev = gamepad.a;
+        bPrev = gamepad.b;
+        xPrev = gamepad.x;
+        yPrev = gamepad.y;
+        leftBumperPrev = gamepad.left_bumper;
+        rightBumperPrev = gamepad.right_bumper;
     }
 
     public String getName() {return name;}
