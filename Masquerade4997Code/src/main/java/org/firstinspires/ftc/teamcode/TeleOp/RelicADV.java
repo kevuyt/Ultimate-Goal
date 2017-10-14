@@ -8,7 +8,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 9/8/17.
  */
 @TeleOp(name = "NFSV2", group = "Template")
-public class RelicADV extends MasqLinearOpMode implements Constants{
+public class RelicADV extends MasqLinearOpMode implements Constants {
     @Override
     public void run() throws InterruptedException {
         robot.mapHardware(hardwareMap, controller1, controller2);
@@ -21,6 +21,7 @@ public class RelicADV extends MasqLinearOpMode implements Constants{
             controller1.update();
             dash.create(num);
             dash.create(controller1.a());
+            dash.update();
         }
         waitForStart();
         while (opModeIsActive()){

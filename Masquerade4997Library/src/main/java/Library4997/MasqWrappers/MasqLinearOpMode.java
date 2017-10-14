@@ -22,11 +22,12 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             run();
         } finally {
             stopLinearOpMode();
-            controller1.close();
-            controller2.close();
-            dash.close();
         }
     }
     public abstract void run() throws InterruptedException;
-    public void stopLinearOpMode() {}
+    public void stopLinearOpMode() {
+        controller1.close();
+        controller2.close();
+        dash.close();
+    }
 }

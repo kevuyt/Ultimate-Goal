@@ -13,10 +13,9 @@ import Library4997.MasqExternal.MasqHardware;
  * It supports multiple types of inputs, including MasqHardware objects.
  */
 
-public class DashBoard implements Runnable{
+public class DashBoard{
     private int dashLength;
     private Telemetry telemetry;
-    private boolean close = false;
     public DashBoard(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
@@ -27,12 +26,15 @@ public class DashBoard implements Runnable{
 
     public void create(String string) {
         telemetry.addLine(string);
+        update();
     }
     public void create(Object data) {
         telemetry.addLine(data.toString());
+        update();
     }
     public void create(String string, Object data) {
         telemetry.addData(string, data);
+        update();
     }
     public void create(final MasqHardware hardware) {
         if (hardware.getDash() != null) {
@@ -41,6 +43,7 @@ public class DashBoard implements Runnable{
                 telemetry.addData(hardware.getName(), hardware.getDash()[i]);
             }
         } else throwException(hardware);
+        update();
     }
 
     public void createSticky(String string){
@@ -89,7 +92,7 @@ public class DashBoard implements Runnable{
         telemetry.clearAll();
         close = true;
     }
-    public void update () {
+    private void update () {
         telemetry.update();
     }
     private void throwException(MasqHardware hardware){
@@ -100,22 +103,4 @@ public class DashBoard implements Runnable{
         }
     }
 
-    @Override
-    public void run() {
-        boolean close = false;
-        while (!close) {
-            update();
-            telemetry.clearAll();
-            close = this.close;
-            sleep();
-        }
-    }
-    public void startUpdate (){new Thread(this).start();}
-    private void sleep(){
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
