@@ -6,9 +6,10 @@ import com.qualcomm.robotcore.hardware.Gamepad;
  * Created by Archish on 10/12/17.
  */
 
-public class MasqController {
+public class MasqController implements Runnable{
     private String name;
     private Gamepad gamepad;
+    private boolean close = false;
     private boolean
             aPrev = false, bPrev = false, xPrev = false, yPrev = false,
             leftBumperPrev = false, rightBumperPrev = false;
@@ -116,4 +117,15 @@ public class MasqController {
                 "D_RIGHT: " + Boolean.toString(dPadRight()),
         };
     }
+
+    @Override
+    public void run() {
+        boolean close = false;
+        while (!close) {
+            update();
+            close = this.close;
+        }
+    }
+    public void close() {close = true;}
+    public void startUpdate (){new Thread(this).start();}
 }

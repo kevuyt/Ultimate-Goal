@@ -15,10 +15,10 @@ public class RelicADV extends MasqLinearOpMode implements Constants{
         int num = 0;
         boolean glyphOpenState = true;
         robot.lift.setPositionLimits(-500, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
+        controller1.startUpdate();
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());
             if (controller1.aOnPress()) num++;
-            controller1.update();
             dash.create(num);
             dash.create(controller1.a());
             dash.update();
