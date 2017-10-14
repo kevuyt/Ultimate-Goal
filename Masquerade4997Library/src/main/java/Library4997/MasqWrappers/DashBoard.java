@@ -13,9 +13,10 @@ import Library4997.MasqExternal.MasqHardware;
  * It supports multiple types of inputs, including MasqHardware objects.
  */
 
-public class DashBoard {
+public class DashBoard implements Runnable{
     private int dashLength;
     private Telemetry telemetry;
+    private boolean close = false;
     public DashBoard(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
@@ -86,6 +87,7 @@ public class DashBoard {
     }
     public void close () {
         telemetry.clearAll();
+        close = true;
     }
     public void update () {
         telemetry.update();
@@ -97,4 +99,14 @@ public class DashBoard {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void run() {
+        boolean close = false;
+        while (!close) {
+            update();
+            close = this.close;
+        }
+    }
+    public void startUpdate (){new Thread(this).start();}
 }
