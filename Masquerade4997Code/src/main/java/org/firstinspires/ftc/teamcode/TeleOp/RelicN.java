@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class RelicN extends MasqLinearOpMode implements Constants{
     @Override
     public void run() throws InterruptedException {
-        robot.mapHardware(hardwareMap, controller1, controller2);
+        robot.mapHardware(hardwareMap);
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());
             dash.create("USE RIGHT TRIGGER, and LEFT TRIGGER for lift");
