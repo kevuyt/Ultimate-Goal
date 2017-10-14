@@ -51,13 +51,11 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
     public MasqCRServo jewelArm;
-    public MasqColorSensorV2 jewelColor;
     public MasqServoSystem glyphSystem;
     HardwareMap hardwareMap;
     private MasqControllerV2 controller1, controller2;
     public void mapHardware(HardwareMap hardwareMap, MasqControllerV2 controller1, MasqControllerV2 controller2){
         this.hardwareMap = hardwareMap;
-        jewelColor = new MasqColorSensorV2("jewelColor", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, hardwareMap);

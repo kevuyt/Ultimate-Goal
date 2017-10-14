@@ -74,9 +74,10 @@ public class MasqServoSystem implements MasqHardware {
         return this;
     }
 
-    public void setPosition(double power) {
-        for (MasqServo s : servos) s.setPosition(power);
+    public void setPosition(double position) {
+        for (MasqServo s : servos) s.setPosition(position);
     }
+    public void setPositionV2(double position){for (MasqServo s: servos) s.setPositionV2(position);}
 
     @Override
     public String getName() {
