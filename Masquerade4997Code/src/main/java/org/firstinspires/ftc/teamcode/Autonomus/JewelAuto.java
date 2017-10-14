@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "JewelAuto", group = "Autonomus")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
     public void run() throws InterruptedException {
-        robot.mapHardware(hardwareMap, controller1V2, controller2V2);
+        robot.mapHardware(hardwareMap, controller1, controller2);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();

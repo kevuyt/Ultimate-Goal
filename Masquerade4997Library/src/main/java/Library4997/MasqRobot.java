@@ -291,8 +291,6 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPowerRight(-right);
         }
         voltageSensor.update();
-        controller1.update();
-        controller2.update();
     }
     public void MECH(MasqController c){
         double angle;

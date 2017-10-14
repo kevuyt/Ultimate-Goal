@@ -39,16 +39,14 @@ public class MasqController {
         return gamepad.right_stick_y;
     }
 
-    public boolean dpad_up() {
-        return gamepad.dpad_up;
-    }
-    public boolean dpad_down() {
+    public boolean dPadUp() {return gamepad.dpad_up;}
+    public boolean dPadDown() {
         return gamepad.dpad_down;
     }
-    public boolean dpad_left() {
+    public boolean dPadLeft() {
         return gamepad.dpad_left;
     }
-    public boolean dpad_right() {
+    public boolean dPadRight() {
         return gamepad.dpad_right;
     }
 
@@ -112,10 +110,10 @@ public class MasqController {
                 "rightStickX: " + Double.toString(rightStickX()),
                 "leftStickY: " + Double.toString(leftStickY()),
                 "leftStickX: " + Double.toString(leftStickX()),
-                "D_UP: " + Boolean.toString(dpad_up()),
-                "D_DOWN: " + Boolean.toString(dpad_down()),
-                "D_LEFT: " + Boolean.toString(dpad_left()),
-                "D_RIGHT: " + Boolean.toString(dpad_right()),
+                "D_UP: " + Boolean.toString(dPadUp()),
+                "D_DOWN: " + Boolean.toString(dPadDown()),
+                "D_LEFT: " + Boolean.toString(dPadLeft()),
+                "D_RIGHT: " + Boolean.toString(dPadRight()),
         };
     }
 }

@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
     public void run() throws InterruptedException {
-        robot.mapHardware(hardwareMap, controller1V2, controller2V2);
+        robot.mapHardware(hardwareMap, controller1, controller2);
         robot.vuforia.init();
         while (!opModeIsActive()){
             dash.create(robot.vuforia.getTrackable());
