@@ -43,9 +43,10 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqCRServo jewelArm;
     public MasqServoSystem glyphSystem;
     HardwareMap hardwareMap;
-    private DashBoard dash = DashBoard.getDash();
+    private DashBoard dash;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
+        dash = DashBoard.getDash();
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
         glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, hardwareMap);
