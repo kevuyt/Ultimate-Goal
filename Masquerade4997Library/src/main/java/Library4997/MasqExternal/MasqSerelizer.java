@@ -1,13 +1,8 @@
 package Library4997.MasqExternal;
 
-import android.content.Context;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Archish on 10/15/17.
@@ -15,12 +10,40 @@ import java.io.OutputStreamWriter;
 
 public class MasqSerelizer implements Runnable {
     private boolean close = false;
-    private MasqHardware hardware;
+    private List<MasqHardware> hardwareList = new ArrayList<>(5);
+    private MasqHardware hardwareOne, hardwareTwo, hardwareThree, hardwareFour, hardwareFive;
     public void startFileWriting(){
         new Thread(this).start();
     }
-    public void setHardwareTracking(MasqHardware hardware){
-        this.hardware = hardware;
+    public void setHardwareTracking(MasqHardware hardwareOne){
+        this.hardwareOne = hardwareOne;
+        hardwareList = Arrays.asList(this.hardwareOne);
+    }
+    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo){
+        this.hardwareOne = hardwareOne;
+        this.hardwareTwo = hardwareTwo;
+        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo);
+    }
+    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo, MasqHardware hardwareThree){
+        this.hardwareOne = hardwareOne;
+        this.hardwareTwo = hardwareTwo;
+        this.hardwareThree = hardwareThree;
+        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo, this.hardwareThree);
+    }
+    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo, MasqHardware hardwareThree, MasqHardware hardwareFour){
+        this.hardwareOne = hardwareOne;
+        this.hardwareTwo = hardwareTwo;
+        this.hardwareThree = hardwareThree;
+        this.hardwareFour = hardwareFour;
+        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo, this.hardwareThree, this.hardwareFour);
+    }
+    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo, MasqHardware hardwareThree, MasqHardware hardwareFour, MasqHardware hardwareFive){
+        this.hardwareOne = hardwareOne;
+        this.hardwareTwo = hardwareTwo;
+        this.hardwareThree = hardwareThree;
+        this.hardwareFour = hardwareFour;
+        this.hardwareFive = hardwareFive;
+        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo, this.hardwareThree, this.hardwareFour, this.hardwareFive);
     }
     private void createFile(){
 
@@ -29,7 +52,9 @@ public class MasqSerelizer implements Runnable {
 
     }
     public String[] readFromFile(){
+        return new String[]{
 
+        };
     }
     private void update () {
 
