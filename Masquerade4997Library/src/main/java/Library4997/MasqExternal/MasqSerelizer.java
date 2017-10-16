@@ -1,5 +1,11 @@
 package Library4997.MasqExternal;
 
+import org.firstinspires.ftc.robotcontroller.internal.FtcOpModeRegister;
+import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +15,14 @@ import java.util.List;
  */
 
 public class MasqSerelizer implements Runnable {
+    FtcRobotControllerActivity ftcRobotControllerActivity = new FtcRobotControllerActivity();
     private boolean close = false;
     private List<MasqHardware> hardwareList = new ArrayList<>(5);
     private MasqHardware hardwareOne, hardwareTwo, hardwareThree, hardwareFour, hardwareFive;
+    private OutputStream outputStream;
+    public MasqSerelizer (){
+
+    }
     public void startFileWriting(){
         new Thread(this).start();
     }
@@ -45,7 +56,7 @@ public class MasqSerelizer implements Runnable {
         this.hardwareFive = hardwareFive;
         hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo, this.hardwareThree, this.hardwareFour, this.hardwareFive);
     }
-    private void createFile(){
+    private void createFiles(){
 
     }
     private void writeToFile(){

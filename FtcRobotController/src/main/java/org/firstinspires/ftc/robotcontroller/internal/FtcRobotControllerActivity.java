@@ -114,12 +114,13 @@ import org.firstinspires.ftc.robotcore.internal.webserver.RobotControllerWebInfo
 import org.firstinspires.ftc.robotcore.internal.webserver.WebServer;
 import org.firstinspires.inspection.RcInspectionActivity;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @SuppressWarnings("WeakerAccess")
-public class FtcRobotControllerActivity extends Activity
-  {
+public class FtcRobotControllerActivity extends Activity {
   public static final String TAG = "RCActivity";
   public String getTag() { return TAG; }
 
@@ -620,6 +621,7 @@ public class FtcRobotControllerActivity extends Activity
   }
 
   protected void hittingMenuButtonBrightensScreen() {
+
     ActionBar actionBar = getActionBar();
     if (actionBar != null) {
       actionBar.addOnMenuVisibilityListener(new ActionBar.OnMenuVisibilityListener() {
@@ -642,5 +644,8 @@ public class FtcRobotControllerActivity extends Activity
   }
   public static double getDelay(){
     return delay;
+  }
+  public FileInputStream getFileInput(String s) throws FileNotFoundException {
+    return openFileInput(s);
   }
 }
