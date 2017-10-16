@@ -116,6 +116,7 @@ import org.firstinspires.inspection.RcInspectionActivity;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -644,6 +645,9 @@ public class FtcRobotControllerActivity extends Activity {
   }
   public static double getDelay(){
     return delay;
+  }
+  public FileOutputStream getFileOutput(String s) throws FileNotFoundException {
+    return openFileOutput(s, MODE_WORLD_READABLE);
   }
   public FileInputStream getFileInput(String s) throws FileNotFoundException {
     return openFileInput(s);

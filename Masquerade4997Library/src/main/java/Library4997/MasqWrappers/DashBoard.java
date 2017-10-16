@@ -107,7 +107,6 @@ public class DashBoard implements Runnable{
             update();
             close = this.close;
             MasqExternal.sleep(100);
-            telemetry.clearAll();
         }
     }
     public void close() {close = true;}
