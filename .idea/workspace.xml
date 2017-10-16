@@ -9,12 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.java" afterPath="$PROJECT_DIR$/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/FtcRobotControllerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/MasqSerelizer.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/MasqSerelizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java" />
-    </list>
+    <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs" />
     <list id="8d78c8f9-ba4f-4bbb-bbf4-13a676c4c2bf" name="New changelist" comment="" />
     <ignored path="MasqLib.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -143,7 +138,7 @@
       <file leaf-file-name="MasqSerelizer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/MasqSerelizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
+            <state relative-caret-position="1944">
               <caret line="83" column="33" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -6121,14 +6116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-218">
-          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-23/android.jar!/android/content/ContextWrapper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
@@ -6215,9 +6202,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-218">
+          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/MasqSerelizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
+        <state relative-caret-position="1944">
           <caret line="83" column="33" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
