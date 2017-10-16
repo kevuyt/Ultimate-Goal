@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.util.RobotLog;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Library4997.MasqExternal.MasqExceptions.DashBoardException;
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 
 /**
@@ -13,9 +14,10 @@ import Library4997.MasqExternal.MasqHardware;
  * It supports multiple types of inputs, including MasqHardware objects.
  */
 
-public class DashBoard{
+public class DashBoard implements Runnable{
     private int dashLength;
     private Telemetry telemetry;
+    private boolean close;
     public DashBoard(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
@@ -98,5 +100,17 @@ public class DashBoard{
             e.printStackTrace();
         }
     }
+
+    public void run() {
+        boolean close = false;
+        while (!close) {
+            update();
+            close = this.close;
+            MasqExternal.sleep(100);
+            telemetry.clearAll();
+        }
+    }
+    public void close() {close = true;}
+    public void startUpdate (){new Thread(this).start();}
 
 }
