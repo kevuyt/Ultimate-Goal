@@ -25,32 +25,24 @@ public class MasqExternal {
         try {Thread.sleep(sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
-    public enum KP {
-        TURN (+0.005),
-        DRIVE (+0.03),
-        TELEOP (+0.1);
-        public final double value;
-        KP (double value) {this.value = value;}
+    public class KP {
+        public static final double TURN = +0.005;
+        public static final double DRIVE = +0.03;
+        public static final double TELEOP = +0.1;
     }
-    public enum KI {
-        TURN (+0.0002),
-        DRIVE (+0.0),
-        TELEOP (+0.0);
-        public final double value;
-        KI (double value) {this.value = value;}
+    public class KI {
+        public static final double TURN = +0.0002;
+        public static final double DRIVE = +0.0;
+        public static final double TELEOP = +0.0;
     }
-    public enum KD {
-        TURN (+0.0),
-        DRIVE (+0.0),
-        TELEOP (+0.0);
-        public final double value;
-        KD (double value) {this.value = value;}
+    public class KD {
+        public static final double TURN = +0.0;
+        public static final double DRIVE = +0.0;
+        public static final double TELEOP = +0.0;
     }
-    public enum ID {
-        TURN (+0.0),
-        DRIVE (+0.0),
-        TELEOP (+0.0);
-        public final double value;
-        ID (double value) {this.value = value;}
+    public class ID {
+        public static final double TURN = +0.0;
+        public static final double DRIVE = +0.0;
+        public static final double TELEOP = +0.0;
     }
 }
