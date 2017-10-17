@@ -13,6 +13,9 @@ public class MasqExternal {
     public static final double gearRatio = 1;
     public static final double CLICKS_PER_CM = ((TICKS_PER_ROTATION / (wheelDiameter * cmToInches)) / Math.PI) / gearRatio;
 
+    public static final int DEFAULT_SLEEP_TIME = 500;
+    public static final double DEFAULT_TIMEOUT = 3;
+
     public static double ODS_WHITE = 0.7,
             ODS_BLACK = 0.3;
     public static String VUFORIA_KEY = "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +

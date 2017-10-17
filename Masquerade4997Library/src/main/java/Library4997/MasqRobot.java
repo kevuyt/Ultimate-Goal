@@ -58,8 +58,6 @@ public class MasqRobot implements PID_CONSTANTS {
 
     private MasqClock timeoutClock = new MasqClock();
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
-    private static final int DEFAULT_SLEEP_TIME = 500;
-    private static final double DEFAULT_TIMEOUT = 3;
     public double angleLeftCover = 0;
     private double color = 1;
 
@@ -126,10 +124,10 @@ public class MasqRobot implements PID_CONSTANTS {
         sleep(sleepTime);
     }
     public void drive(int distance, double power, Direction DIRECTION, double timeOut) {
-        drive(distance, power, DIRECTION, timeOut, DEFAULT_SLEEP_TIME);
+        drive(distance, power, DIRECTION, timeOut, MasqExternal.DEFAULT_SLEEP_TIME);
     }
     public void drive(int distance, double power, Direction Direction) {
-        drive(distance, power, Direction, DEFAULT_TIMEOUT);
+        drive(distance, power, Direction, MasqExternal.DEFAULT_TIMEOUT);
     }
     public void drive (int distance, double power){
         drive(distance, power, Direction.FORWARD);
@@ -142,10 +140,10 @@ public class MasqRobot implements PID_CONSTANTS {
         sleep(sleepTime);
     }
     public void runToPosition(int distance, Direction direction, double speed, double timeOut) {
-        runToPosition(distance, direction, speed, timeOut, DEFAULT_SLEEP_TIME);
+        runToPosition(distance, direction, speed, timeOut, MasqExternal.DEFAULT_SLEEP_TIME);
     }
     public void runToPosition(int distance, Direction direction, double speed) {
-        runToPosition(distance, direction, speed, DEFAULT_TIMEOUT);
+        runToPosition(distance, direction, speed, MasqExternal.DEFAULT_TIMEOUT);
     }
     public void runToPosition(int distance, Direction direction) {
         runToPosition(distance, direction, 0.7);
@@ -196,9 +194,9 @@ public class MasqRobot implements PID_CONSTANTS {
         turn(angle, DIRECTION, timeOut, sleepTime, KP_TURN);
     }
     public void turn(int angle, Direction DIRECTION, double timeout)  {
-        turn(angle, DIRECTION, timeout, DEFAULT_SLEEP_TIME);
+        turn(angle, DIRECTION, timeout, MasqExternal.DEFAULT_SLEEP_TIME);
     }
-    public void turn(int angle, Direction DIRECTION)  {turn(angle, DIRECTION, DEFAULT_TIMEOUT);}
+    public void turn(int angle, Direction DIRECTION)  {turn(angle, DIRECTION, MasqExternal.DEFAULT_TIMEOUT);}
 
     public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -363,7 +361,7 @@ public class MasqRobot implements PID_CONSTANTS {
             Thread.currentThread().interrupt();
         }
     }
-    public void sleep() {sleep(DEFAULT_SLEEP_TIME);}
+    public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
     private double scaleInput(double d)  {
         double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
