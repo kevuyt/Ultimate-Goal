@@ -19,12 +19,12 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             dash.setNewFirst();
             controller1 = new MasqController(super.gamepad1, "controller1");
             controller2 = new MasqController(super.gamepad2, "controller2");
-            run();
+            runLinearOpMode();
         } finally {
             stopLinearOpMode();
         }
     }
-    public abstract void run() throws InterruptedException;
+    public abstract void runLinearOpMode() throws InterruptedException;
     public void stopLinearOpMode() {
         controller1.close();
         controller2.close();

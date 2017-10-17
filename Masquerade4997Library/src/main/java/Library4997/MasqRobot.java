@@ -24,7 +24,7 @@ import Library4997.MasqWrappers.MasqController;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
- * MasqRobot--> Contains all hardware and methods to run the robot.
+ * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {

@@ -75,7 +75,7 @@
                     android:layout_height="0dp"
                     android:orientation="vertical">
 
-                    <!-- this is just for design; will be removed & replaced at run time -->
+                    <!-- this is just for design; will be removed & replaced at runLinearOpMode time -->
                     <include layout="@layout/lynx_module_configure_address"/>
 
                 </LinearLayout>

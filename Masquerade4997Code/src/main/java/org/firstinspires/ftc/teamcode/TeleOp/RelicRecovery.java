@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "NFSV2", group = "Template")
 public class RelicRecovery extends MasqLinearOpMode implements Constants {
     @Override
-    public void run() throws InterruptedException {
+    public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         int num = 0;
         boolean glyphOpenState = true;
