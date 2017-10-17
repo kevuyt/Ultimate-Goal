@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqSensor;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqMotor;

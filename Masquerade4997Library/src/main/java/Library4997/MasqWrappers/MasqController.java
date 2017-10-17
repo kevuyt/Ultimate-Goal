@@ -2,6 +2,8 @@ package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import Library4997.MasqExternal.MasqExternal;
+
 /**
  * Created by Archish on 10/12/17.
  */
@@ -125,16 +127,9 @@ public class MasqController implements Runnable{
             System.out.println(a());
             update();
             close = this.close;
-            sleep();
+            MasqExternal.sleep(100);
         }
     }
     public void close() {close = true;}
     public void startUpdate (){new Thread(this).start();}
-    private void sleep(){
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
