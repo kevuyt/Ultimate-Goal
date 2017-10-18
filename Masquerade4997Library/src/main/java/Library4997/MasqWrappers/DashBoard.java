@@ -17,7 +17,7 @@ import Library4997.MasqExternal.MasqHardware;
 public class DashBoard implements Runnable{
     private int dashLength;
     private Telemetry telemetry;
-    private boolean close;
+    private boolean close = false;
     public DashBoard(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;

@@ -61,7 +61,7 @@ public class MasqSerelizer implements Runnable {
     private void createFiles(){
         for (MasqHardware hardware: hardwareList){
             try {
-                fileOutputStream = robotControllerActivity.getFileOutput(hardware.getName());
+                fileOutputStream = robotControllerActivity.getFileOutput(hardware.getName().replace(" ", "") + ".txt");
                 outputStreamWriter = new OutputStreamWriter(fileOutputStream);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -95,6 +95,9 @@ public class MasqSerelizer implements Runnable {
     }
     public void close() {
         close = true;
+        for (MasqHardware ha : hardwareList) {
+
+        }
         try {outputStreamWriter.flush();outputStreamWriter.close();}
         catch (IOException e) {e.printStackTrace();}
     }

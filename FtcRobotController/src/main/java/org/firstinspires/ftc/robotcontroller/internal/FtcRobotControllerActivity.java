@@ -647,7 +647,7 @@ public class FtcRobotControllerActivity extends Activity {
     return delay;
   }
   public FileOutputStream getFileOutput(String s) throws FileNotFoundException {
-    return openFileOutput(s, MODE_WORLD_READABLE);
+    return openFileOutput(s, 1);
   }
   public FileInputStream getFileInput(String s) throws FileNotFoundException {
     return openFileInput(s);
