@@ -85,17 +85,17 @@ public class MasqRobot implements PID_CONSTANTS {
         int clicksRemaining;
         double inchesRemaining, angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
-                angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, dt;
+                angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_CM;
             power = DIRECTION.value * speed * inchesRemaining * -KP_STRAIGHT;
             power = Range.clip(power, -1.0, +1.0);
-            dt = loopTimer.milliseconds();
+            timeChange = loopTimer.milliseconds();
             loopTimer.reset();
             angularError = imu.adjustAngle(targetAngle - imu.getHeading());
-            angularIntegral = angularIntegral + angularError * dt;
-            angularDerivative = (angularError - prevAngularError) / dt;
+            angularIntegral = angularIntegral + angularError * timeChange;
+            angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
             powerAdjustment = (.2 * power + .01) * angularError + KI_STRAIGHT * angularIntegral + KD_STRAIGHT * angularDerivative;
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
@@ -115,14 +115,14 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.stopDriving();
         sleep(sleepTime);
     }
-    public void drive(int distance, double power, Direction DIRECTION, double timeOut) {
-        drive(distance, power, DIRECTION, timeOut, MasqExternal.DEFAULT_SLEEP_TIME);
+    public void drive(int distance, double speed, Direction DIRECTION, double timeOut) {
+        drive(distance, speed, DIRECTION, timeOut, MasqExternal.DEFAULT_SLEEP_TIME);
     }
-    public void drive(int distance, double power, Direction Direction) {
-        drive(distance, power, Direction, MasqExternal.DEFAULT_TIMEOUT);
+    public void drive(int distance, double speed, Direction Direction) {
+        drive(distance, speed, Direction, MasqExternal.DEFAULT_TIMEOUT);
     }
-    public void drive (int distance, double power){
-        drive(distance, power, Direction.FORWARD);
+    public void drive (int distance, double speed){
+        drive(distance, speed, Direction.FORWARD);
     }
     public void drive(int distance) {drive(distance, 0.5);}
 
