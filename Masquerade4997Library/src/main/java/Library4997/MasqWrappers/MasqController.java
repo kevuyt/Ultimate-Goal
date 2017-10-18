@@ -20,7 +20,6 @@ public class MasqController implements Runnable{
         this.name = name;
         this.gamepad = g;
     }
-
     public boolean a() {return gamepad.a;}
     public boolean x() {return gamepad.x;}
     public boolean y() {return gamepad.y;}
@@ -124,6 +123,7 @@ public class MasqController implements Runnable{
     public void run() {
         boolean close = false;
         while (!close) {
+            System.out.println(aPrev);
             System.out.println(a());
             update();
             close = this.close;

@@ -83,17 +83,9 @@ public class MasqRobot implements PID_CONSTANTS {
         double targetAngle = imu.getHeading();
         int targetClicks = (int)(distance * CLICKS_PER_CM);
         int clicksRemaining;
-        double inchesRemaining;
-        double angularError = imu.adjustAngle(targetAngle - imu.getHeading());
-        double prevAngularError = angularError;
-        double angularIntegral = 0;
-        double angularDerivative;
-        double powerAdjustment;
-        double power;
-        double leftPower;
-        double rightPower;
-        double maxPower;
-        double dt;
+        double inchesRemaining, angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
+                prevAngularError = angularError, angularIntegral = 0,
+                angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, dt;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_CM;
