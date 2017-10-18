@@ -36,7 +36,7 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
             }
             if (controller1.aOnPress()) num++;
             if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
-            else if (controller1.leftTriggerPressed()) robot.lift.setPower(-1);
+            else if (controller1.leftTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
             else robot.lift.setPower(0);
             controller1.update();
             dash.create(num);
