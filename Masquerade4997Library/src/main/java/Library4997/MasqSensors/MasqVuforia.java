@@ -16,6 +16,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqExternal.MasqSensor;
@@ -53,7 +55,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         Facing(int[] value) {this.value = value;}
     }
     public MasqVuforia(String t1, String t2, String t3, String asset) {
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
@@ -71,7 +73,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         numTargets = 3;
     }
     public MasqVuforia(String t1, String t2, String asset)  {
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
@@ -86,7 +88,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         numTargets = 2;
     }
     public MasqVuforia(String t1, String asset) {
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
