@@ -18,6 +18,7 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqCRServo;
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
@@ -41,7 +42,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqMotor lift;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
-    public MasqCRServo jewelArm;
+    public MasqServo jewelArm;
     public MasqServoSystem glyphSystem;
     HardwareMap hardwareMap;
     private DashBoard dash;
@@ -53,7 +54,7 @@ public class MasqRobot implements PID_CONSTANTS {
         glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        jewelArm = new MasqCRServo("jewelArm", hardwareMap);
+        jewelArm = new MasqServo("jewelArm", hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();

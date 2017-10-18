@@ -13,7 +13,7 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         int num = 0;
-        boolean glyphOpenState = true;
+        boolean glyphOpenState = true, jewelArmIn = true;
         robot.lift.setPositionLimits(-500, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
         while (!opModeIsActive()){
             dash.create(robot.imu.getHeading());
@@ -32,6 +32,15 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
             } if (controller1.aOnPress() && !glyphOpenState) {
                 glyphOpenState = true;
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
+                controller1.update();
+            }
+            if (controller1.bOnPress() && jewelArmIn) {
+                jewelArmIn = false;
+                robot.jewelArm.setPosition(JEWEL_OUT);
+                controller1.update();
+            } if (controller1.bOnPress() && !jewelArmIn) {
+                jewelArmIn = true;
+                robot.jewelArm.setPosition(JEWEL_IN);
                 controller1.update();
             }
             if (controller1.aOnPress()) num++;
