@@ -74,9 +74,7 @@ public class MasqRobot implements PID_CONSTANTS {
         Targets(String value) {this.value = value;}
     }
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
-    public boolean opModeIsActive() {
-        return masqLinearOpMode.opModeIsActive();
-    }
+    public boolean opModeIsActive() {return masqLinearOpMode.opModeIsActive();}
     public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
