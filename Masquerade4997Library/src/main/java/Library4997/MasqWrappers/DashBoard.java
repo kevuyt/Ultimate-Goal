@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import Library4997.MasqExternal.MasqExceptions.DashBoardException;
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 
@@ -36,12 +35,10 @@ public class DashBoard implements Runnable{
         telemetry.addData(string, data);
     }
     public void create(final MasqHardware hardware) {
-        if (hardware.getDash() != null) {
-            dashLength = hardware.getDash().length;
-            for (int i = 0; i < dashLength; i++) {
-                telemetry.addData(hardware.getName(), hardware.getDash()[i]);
-            }
-        } else throwException(hardware);
+        dashLength = hardware.getDash().length;
+        for (int i = 0; i < dashLength; i++) {
+            telemetry.addData(hardware.getName(), hardware.getDash()[i]);
+        }
     }
 
     public void createSticky(String string){
@@ -88,13 +85,6 @@ public class DashBoard implements Runnable{
     }
     private void update () {
         telemetry.update();
-    }
-    private void throwException(MasqHardware hardware){
-        try {
-            throw new DashBoardException(hardware);
-        } catch (DashBoardException e) {
-            e.printStackTrace();
-        }
     }
 
     public void run() {
