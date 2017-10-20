@@ -28,15 +28,12 @@ public class DashBoard implements Runnable{
 
     public void create(String string) {
         telemetry.addLine(string);
-        update();
     }
     public void create(Object data) {
         telemetry.addLine(data.toString());
-        update();
     }
     public void create(String string, Object data) {
         telemetry.addData(string, data);
-        update();
     }
     public void create(final MasqHardware hardware) {
         if (hardware.getDash() != null) {
@@ -45,7 +42,6 @@ public class DashBoard implements Runnable{
                 telemetry.addData(hardware.getName(), hardware.getDash()[i]);
             }
         } else throwException(hardware);
-        update();
     }
 
     public void createSticky(String string){
@@ -107,6 +103,7 @@ public class DashBoard implements Runnable{
             update();
             close = this.close;
             MasqExternal.sleep(100);
+            telemetry.clearAll();
         }
     }
     public void close() {close = true;}

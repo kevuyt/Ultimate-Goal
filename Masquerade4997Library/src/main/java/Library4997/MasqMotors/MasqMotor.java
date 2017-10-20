@@ -3,6 +3,7 @@ package Library4997.MasqMotors;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqExternal.Direction;
@@ -18,6 +19,9 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double prevPos= 0;
     private double previousTime = 0;
     private double destination = 0;
+    private double intergral = 0;
+    private double derivitive = 0;
+    private double previousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection;
@@ -118,6 +122,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         tChange = tChange / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
+        rate = (rate * 60) / MasqExternal.NEVEREST_40_TICKS_PER_ROTATION;
         if (rate != 0) return rate;
         else {
             prevRate = rate;
@@ -126,6 +131,19 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public String getName() {
         return nameMotor;
+    }
+    private double findPower(double power){
+        double error, setRPM, currentRPM, motorPower;
+        double tChange = System.nanoTime() - previousTime;
+        tChange /= 1e9;
+        setRPM = MasqExternal.NEVEREST_40_RPM * power;
+        currentRPM = getRate();
+        error = setRPM - currentRPM;
+        intergral += error * tChange;
+        derivitive = (error - previousError) / tChange;
+        motorPower = (error * MasqExternal.KP.MOTOR) + (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR);
+        previousError = error;
+        return motorPower;
     }
 
     public String[] getDash() {
