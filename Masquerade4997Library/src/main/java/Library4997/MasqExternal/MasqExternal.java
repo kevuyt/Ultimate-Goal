@@ -1,5 +1,7 @@
 package Library4997.MasqExternal;
 
+import Library4997.MasqExternal.MasqAnnotations.MasqLinearOpModeClass;
+
 /**
  * Created by Archish on 10/16/17.
  */
