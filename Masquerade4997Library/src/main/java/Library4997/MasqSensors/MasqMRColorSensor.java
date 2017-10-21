@@ -7,9 +7,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqExternal.MasqSensor;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
 public class MasqMRColorSensor implements MasqSensor, MasqHardware {
-    private com.qualcomm.robotcore.hardware.ColorSensor colorSensor;
+    private ColorSensor colorSensor;
     private String nameColorSensor;
     float[] hsvValues;
     public MasqMRColorSensor(String name, HardwareMap hardwareMap){
