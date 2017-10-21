@@ -41,7 +41,7 @@ public class MasqRobot implements PID_CONSTANTS {
         return instance;
     }
     public MasqTankDrive driveTrain;
-    public MasqMotor lift;
+    public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArm;
@@ -59,6 +59,7 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArm = new MasqServo("jewelArm", this.hardwareMap);
         jewelColor = new MasqMRColorSensor("jewelColor", this.hardwareMap);
+        relicLift = new MasqMotor("relicLift", this.hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();
