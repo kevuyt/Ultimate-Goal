@@ -63,6 +63,12 @@ public class MasqMRColorSensor implements MasqSensor, MasqHardware {
         Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
         return hsvValues[0];
     }
+    public boolean isBlueV2(){
+        //MUST BE CALLED AT DESTINATION.
+        double diffrence = blue() - red();
+        if (diffrence> 0) return true;
+        else return false;
+    }
 
     @Override
     public String getName() {
