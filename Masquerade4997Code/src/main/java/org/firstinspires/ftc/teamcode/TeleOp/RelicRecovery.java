@@ -36,11 +36,11 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
                 jewelArmIn = false;
                 robot.jewelArm.setPosition(JEWEL_OUT);
                 controller1.update();
-            } if (controller1.bOnPress() && !jewelArmIn) {
+            } else if (controller1.bOnPress() && !jewelArmIn) {
                 jewelArmIn = true;
                 robot.jewelArm.setPosition(JEWEL_IN);
                 controller1.update();
-            }
+            } else robot.jewelArm.setPosition(JEWEL_OUT);
             if (controller1.aOnPress()) num++;
             if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
             else if (controller1.leftTriggerPressed()) robot.lift.setPower(LIFT_DOWN);

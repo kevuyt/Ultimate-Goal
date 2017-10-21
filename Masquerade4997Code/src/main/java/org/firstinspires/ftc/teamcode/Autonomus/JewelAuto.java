@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import Library4997.MasqExternal.Direction;
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -19,11 +20,10 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.sleep(robot.getDelay());
-        while (opModeIsActive()) {
-            if (robot.jewelColor.isBlue()) {
-                dash.create("BLUE");
-            } else dash.create("RED");
-            dash.update();
-        }
+        robot.jewelArm.setPosition(JEWEL_OUT);
+        MasqExternal.sleep(100);
+        if (robot.jewelColor.isBlue()) robot.drive(90, POWER_OPTIMAL, Direction.FORWARD);
+        else robot.drive(90, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.jewelArm.setPosition(JEWEL_IN);
     }
 }
