@@ -14,7 +14,7 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
         robot.mapHardware(hardwareMap);
         int num = 0;
         boolean glyphOpenState = true, jewelArmIn = true;
-        //robot.lift.setPositionLimits(-500, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
+        robot.lift.setPositionLimits(790, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
         while (!opModeIsActive()){
             dash.create(num);
             dash.create(controller1.a());
