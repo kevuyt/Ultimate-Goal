@@ -83,7 +83,7 @@ public class DashBoard implements Runnable{
     public void setNewLast() {
         telemetry.log().setDisplayOrder(Telemetry.Log.DisplayOrder.OLDEST_FIRST);
     }
-    private void update () {
+    public void update() {
         telemetry.update();
     }
 

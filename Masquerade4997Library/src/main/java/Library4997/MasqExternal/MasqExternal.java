@@ -1,7 +1,5 @@
 package Library4997.MasqExternal;
 
-import Library4997.MasqExternal.MasqAnnotations.MasqLinearOpModeClass;
-
 /**
  * Created by Archish on 10/16/17.
  */
@@ -19,9 +17,7 @@ public class MasqExternal {
 
     public static final int DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 3;
-
-    public static final double ODS_WHITE = 0.7,
-            ODS_BLACK = 0.3;
+    public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
             "CfEwQhnuuB1hOh//uL2LnHYMViBgZtdjDGvmWvDvgKaonymopd0Y62ls2ZJfHhJ3fZYhF57Ce6ZepRI" +
             "FOumys4J4DssG83OT+DJUjUCG6ruZ88AYjxNzi+vhkTCxHVULQxLJCSQ7boG0t36RWIEmVwxXIHVI" +
