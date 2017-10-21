@@ -31,36 +31,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
-public class MasqRobot implements PID_CONSTANTS {
+public abstract class MasqRobot implements PID_CONSTANTS {
     private static MasqLinearOpMode masqLinearOpMode;
     public MasqRobot (MasqLinearOpMode linearOpMode) {this.masqLinearOpMode = linearOpMode;}
     public MasqRobot () {}
-    private static MasqRobot instance;
-    public static MasqRobot getInstance (MasqLinearOpMode linearOpModeInstance) {
-        if (instance==null) instance = new MasqRobot(linearOpModeInstance);
-        return instance;
-    }
     public MasqTankDrive driveTrain;
-    public MasqMotor lift;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
-    public MasqServo jewelArm;
-    public MasqServoSystem glyphSystem;
-    public MasqMRColorSensor jewelColor;
-    HardwareMap hardwareMap;
-    private DashBoard dash;
-    public void mapHardware(HardwareMap hardwareMap){
-        this.hardwareMap = hardwareMap;
-        dash = DashBoard.getDash();
-        lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
-        driveTrain = new MasqTankDrive("leftFront", "leftBack", "rightFront", "rightBack", this.hardwareMap);
-        glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, this.hardwareMap);
-        imu = new MasqAdafruitIMU("imu", this.hardwareMap);
-        voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        jewelArm = new MasqServo("jewelArm", this.hardwareMap);
-        jewelColor = new MasqMRColorSensor("jewelColor", this.hardwareMap);
-    }
-
+    public abstract void mapHardware();
     private MasqClock timeoutClock = new MasqClock();
     public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
     public double angleLeftCover = 0;
@@ -111,9 +89,9 @@ public class MasqRobot implements PID_CONSTANTS {
                 rightPower /= maxPower;
             }
             driveTrain.setPower(leftPower, rightPower);
-            dash.create("LEFT POWER: ",leftPower);
-            dash.create("RIGHT POWER: ",rightPower);
-            dash.create("ERROR: ",angularError);
+            DashBoard.getDash().create("LEFT POWER: ",leftPower);
+            DashBoard.getDash().create("RIGHT POWER: ",rightPower);
+            DashBoard.getDash().create("ERROR: ",angularError);
         } while (opModeIsActive() && (inchesRemaining > 0.5 || Math.abs(angularError) > 0.5) && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         driveTrain.stopDriving();
         sleep(sleepTime);
@@ -172,9 +150,9 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
-            dash.create("TargetAngle", targetAngle);
-            dash.create("Heading", imuVAL);
-            dash.create("AngleLeftToCover", currentError);
+            DashBoard.getDash().create("TargetAngle", targetAngle);
+            DashBoard.getDash().create("Heading", imuVAL);
+            DashBoard.getDash().create("AngleLeftToCover", currentError);
         }
         driveTrain.setPower(0,0);
         sleep(sleepTime);
@@ -204,8 +182,8 @@ public class MasqRobot implements PID_CONSTANTS {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            dash.create("Heading", heading);
-            dash.create("Blue Val", colorSensor.colorNumber());
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("Blue Val", colorSensor.colorNumber());
         }
         driveTrain.stopDriving();
     }
@@ -225,8 +203,8 @@ public class MasqRobot implements PID_CONSTANTS {
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            dash.create("Heading", heading);
-            dash.create("red Val", colorSensor.colorNumber());
+            DashBoard.getDash().create("Heading", heading);
+            DashBoard.getDash().create("red Val", colorSensor.colorNumber());
         }
         driveTrain.stopDriving();
     }
@@ -246,7 +224,7 @@ public class MasqRobot implements PID_CONSTANTS {
             newPower = newPower - (errorKP * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
-            dash.create("is Stopped", sensor.stop());
+            DashBoard.getDash().create("is Stopped", sensor.stop());
         }
         driveTrain.stopDriving();
     }

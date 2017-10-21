@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.Robots.MainBot;
+
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -10,8 +12,9 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "JewelAuto", group = "Autonomus")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
+    private MainBot robot;
     public void runLinearOpMode() throws InterruptedException {
-        robot.mapHardware(hardwareMap);
+        robot = new MainBot(super.hardwareMap);
         while (!opModeIsActive()) {
             //dash.create(robot.imu);
             dash.create(robot.jewelColor);
