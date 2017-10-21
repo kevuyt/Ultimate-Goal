@@ -72,9 +72,9 @@ public class MasqMRColorSensor implements MasqSensor, MasqHardware {
     @Override
     public String[] getDash() {
         return new String[]{
-                "Detect White" + isWhite(),
-                "Detect Red" + isRed(),
-                "Detect Blue" + isBlue()
+                "Detect White: " + isWhite(),
+                "Detect Red: " + isRed(),
+                "Detect Blue: " + isBlue()
         };
     }
 
