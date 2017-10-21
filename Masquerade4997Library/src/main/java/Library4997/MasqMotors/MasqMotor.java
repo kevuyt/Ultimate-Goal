@@ -144,7 +144,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             error = setRPM - currentRPM;
             intergral += error * tChange;
             derivitive = (error - previousError) / tChange;
-            motorPower = (error * MasqExternal.KP.MOTOR) + (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR);
+            motorPower = -(error * MasqExternal.KP.MOTOR) - (intergral * MasqExternal.KI.MOTOR) - (derivitive * MasqExternal.KD.MOTOR);
             previousError = error;
             return motorPower;
         }

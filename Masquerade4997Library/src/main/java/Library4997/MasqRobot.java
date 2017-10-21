@@ -46,6 +46,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArm;
     public MasqServoSystem glyphSystem;
+    //TODO GET MasqColorSensorV2 up.
     public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
     private DashBoard dash;
@@ -54,6 +55,7 @@ public class MasqRobot implements PID_CONSTANTS {
         dash = DashBoard.getDash();
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
+        driveTrain.setClosedLoop(false);
         glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);

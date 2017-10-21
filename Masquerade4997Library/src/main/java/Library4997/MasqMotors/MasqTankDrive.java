@@ -51,6 +51,10 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
     }
+    public void setClosedLoop(boolean closedLoop){
+        leftDrive.setClosedLoop(closedLoop);
+        rightDrive.setClosedLoop(closedLoop);
+    }
 
     public void runToPosition(Direction direction, double speed, double timeOut) {
         MasqClock timeoutTimer = new MasqClock();
