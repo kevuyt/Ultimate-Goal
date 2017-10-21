@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import Library4997.MasqExternal.MasqAnnotations.MasqRobotClass;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqRobot;
@@ -16,7 +17,7 @@ import Library4997.MasqServos.MasqServoSystem;
 /**
  * Created by Archish on 10/21/17.
  */
-
+@MasqRobotClass(id = "MainBot")
 public class MainBot extends MasqRobot {
     public MasqTankDrive driveTrain;
     public MasqMotor lift;
