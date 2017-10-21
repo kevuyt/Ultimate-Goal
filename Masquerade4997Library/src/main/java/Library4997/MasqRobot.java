@@ -55,7 +55,7 @@ public class MasqRobot implements PID_CONSTANTS {
         dash = DashBoard.getDash();
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
-        driveTrain.setClosedLoop(false);
+        driveTrain.runWithoutEncoders();
         glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
@@ -272,18 +272,18 @@ public class MasqRobot implements PID_CONSTANTS {
         if(left > 1.0) {
             left /= left;
             right /= left;
-            driveTrain.setPowerLeft(-left);
-            driveTrain.setPowerRight(-right);
+            driveTrain.setPowerLeft(left);
+            driveTrain.setPowerRight(right);
         }
         else if (right > 1.0) {
             left /= right;
             right /= right;
-            driveTrain.setPowerLeft(-left);
-            driveTrain.setPowerRight(-right);
+            driveTrain.setPowerLeft(left);
+            driveTrain.setPowerRight(right);
         }
         else {
-            driveTrain.setPowerLeft(-left);
-            driveTrain.setPowerRight(-right);
+            driveTrain.setPowerLeft(left);
+            driveTrain.setPowerRight(right);
         }
         voltageSensor.update();
 
