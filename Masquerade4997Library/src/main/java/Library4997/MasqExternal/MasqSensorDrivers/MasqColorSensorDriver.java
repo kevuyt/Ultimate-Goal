@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.TypeConversion;
 /**
  * Created by Archish on 10/7/17.
  */
-@I2cSensor(name = "MasqueradeColorSensor", description = "I2C Sensor that supports color number", xmlTag = "MasqColorSensorV3")
+@I2cSensor(name = "MasqColorSensor", description = "I2C Sensor that supports color number", xmlTag = "MasqColorSensor")
 public class MasqColorSensorDriver extends I2cDeviceSynchDevice<I2cDeviceSynch> implements HardwareDevice {
     private static final int
             READ_WINDOW_START = 0x04,
