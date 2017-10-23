@@ -5,11 +5,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.MainBot;
 
 import Library4997.MasqExternal.Direction;
+import Library4997.MasqExternal.MasqAnnotations.MasqLinearOpModeClass;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Archish on 10/5/17.
  */
+@MasqLinearOpModeClass(robotId = "MainBot")
 @Autonomous(name = "JewelAuto", group = "Autonomus")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
     private MainBot robot;

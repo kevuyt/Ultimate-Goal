@@ -5,4 +5,5 @@ package Library4997.MasqExternal.MasqAnnotations;
  */
 
 public @interface MasqOpModeClass {
+    String id() default "";
 }
