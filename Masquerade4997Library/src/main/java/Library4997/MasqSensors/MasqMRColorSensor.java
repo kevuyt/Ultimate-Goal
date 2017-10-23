@@ -35,12 +35,8 @@ public class MasqMRColorSensor implements MasqSensor, MasqHardware {
         Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
         return (hsvValues[0] > 1) && (hsvValues[0] < 1);
     }
-    public void setActiveMode () {
-        colorSensor.enableLed(true);
-    }
-    public void setPassiveMode () {
-        colorSensor.enableLed(true);
-    }
+    public void setActiveMode () {colorSensor.enableLed(true);}
+    public void setPassiveMode () {colorSensor.enableLed(true);}
     public int red(){
         int redVal = colorSensor.red();
         return redVal;

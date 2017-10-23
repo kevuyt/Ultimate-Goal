@@ -24,6 +24,7 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
     public void stopLinearOpMode(){
         dash.create("OpModeOver");
+        dash.update();
         dash.close();
         controller1.close();
         controller2.close();

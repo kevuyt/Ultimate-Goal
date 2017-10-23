@@ -35,8 +35,8 @@ public class MasqOpenCV {
         this.asset = asset;
     }
     public int[] rbg (){
-        int[] rbgreturn = new int[]{0};
-        return rbgreturn;
+        int[] rbgReturn = new int[]{0};
+        return rbgReturn;
     }
     public boolean isSeen(String target){return true;}
     public String getTargetSeen(){

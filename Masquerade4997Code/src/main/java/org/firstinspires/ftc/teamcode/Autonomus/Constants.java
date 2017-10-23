@@ -4,7 +4,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
  * Constants in autonomous
  */
 
-public interface Constants {
+public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constants {
     double POWER_LOW = 0.3,
            POWER_OPTIMAL = 0.5,
            POWER_HIGH = 0.7;

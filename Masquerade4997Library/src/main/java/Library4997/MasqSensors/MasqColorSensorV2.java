@@ -1,5 +1,6 @@
 package Library4997.MasqSensors;
 
+import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.configuration.I2cSensor;
 

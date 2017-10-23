@@ -14,11 +14,11 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
         robot.mapHardware(hardwareMap);
         int num = 0;
         boolean glyphOpenState = true, jewelArmIn = true;
-        robot.lift.setPositionLimits(-500, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
-        dash.startUpdate();
+        robot.lift.setPositionLimits(790, LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION);
         while (!opModeIsActive()){
             dash.create(num);
             dash.create(controller1.a());
+            dash.update();
         }
         waitForStart();
         while (opModeIsActive()){
@@ -36,11 +36,11 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
                 jewelArmIn = false;
                 robot.jewelArm.setPosition(JEWEL_OUT);
                 controller1.update();
-            } if (controller1.bOnPress() && !jewelArmIn) {
+            } else if (controller1.bOnPress() && !jewelArmIn) {
                 jewelArmIn = true;
                 robot.jewelArm.setPosition(JEWEL_IN);
                 controller1.update();
-            }
+            } else robot.jewelArm.setPosition(JEWEL_OUT);
             if (controller1.aOnPress()) num++;
             if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
             else if (controller1.leftTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
@@ -50,6 +50,7 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
             dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
             dash.create("LIFT POSITION", robot.lift.getCurrentPosition());
+            dash.update();
         }
     }
 }

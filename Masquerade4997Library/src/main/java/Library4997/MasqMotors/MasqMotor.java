@@ -16,6 +16,7 @@ import Library4997.MasqSensors.MasqLimitSwitch;
 public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
+    private boolean closedLoop = true;
     private double prevPos= 0;
     private double previousTime = 0;
     private double destination = 0;
@@ -132,18 +133,22 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public String getName() {
         return nameMotor;
     }
+    public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
     private double findPower(double power){
-        double error, setRPM, currentRPM, motorPower;
-        double tChange = System.nanoTime() - previousTime;
-        tChange /= 1e9;
-        setRPM = MasqExternal.NEVEREST_40_RPM * power;
-        currentRPM = getRate();
-        error = setRPM - currentRPM;
-        intergral += error * tChange;
-        derivitive = (error - previousError) / tChange;
-        motorPower = (error * MasqExternal.KP.MOTOR) + (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR);
-        previousError = error;
-        return motorPower;
+        if (closedLoop) {
+            double error, setRPM, currentRPM, motorPower;
+            double tChange = System.nanoTime() - previousTime;
+            tChange /= 1e9;
+            setRPM = MasqExternal.NEVEREST_40_RPM * power;
+            currentRPM = getRate();
+            error = setRPM - currentRPM;
+            intergral += error * tChange;
+            derivitive = (error - previousError) / tChange;
+            motorPower = power + ((error * MasqExternal.KP.MOTOR) + (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR));
+            previousError = error;
+            return motorPower;
+        }
+        else return power;
     }
 
     public String[] getDash() {

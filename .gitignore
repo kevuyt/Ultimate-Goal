@@ -25,6 +25,7 @@ Thumbs.db
 
 
 .idea
+.gradle
 .idea/fileTemplates/
 FtcRobotController/build/generated/assets/
 FtcRobotController/build/generated/res/
@@ -239,3 +240,7 @@ Masquerade4997Library/build/intermediates/transforms/
 Masquerade4997Library/build/tmp/
 Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/aapt-temp/
 Masquerade4997Library/build/intermediates/res/merged/debug/mipmap-xxhdpi-v4/
+FtcRobotController/build/intermediates/incremental/packageReleaseResources/merged.dir/
+Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/merged.dir/
+build/android-profile/profile-2017-10-21-14-57-15-857.rawproto
+build/android-profile/profile-2017-10-21-15-23-37-748.rawproto
