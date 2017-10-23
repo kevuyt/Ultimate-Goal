@@ -23,7 +23,7 @@ Thumbs.db
 
 
 
-
+.idea/workspace.xml
 .idea
 .gradle
 .idea/fileTemplates/
@@ -244,3 +244,7 @@ FtcRobotController/build/intermediates/incremental/packageReleaseResources/merge
 Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/merged.dir/
 build/android-profile/profile-2017-10-21-14-57-15-857.rawproto
 build/android-profile/profile-2017-10-21-15-23-37-748.rawproto
+Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto_BACKUP_67014.java
+Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto_BASE_67014.java
+Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto_LOCAL_67014.java
+Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto_REMOTE_67014.java
