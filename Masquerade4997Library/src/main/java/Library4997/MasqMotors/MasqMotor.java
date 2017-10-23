@@ -20,12 +20,14 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double prevPos= 0;
     private double previousTime = 0;
     private double destination = 0;
+    private double currentMax;
+    private double currentZero;
     private double intergral = 0;
     private double derivitive = 0;
     private double previousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
     private double minPosition, maxPosition;
-    private boolean limitDetection, positionDetection;
+    private boolean limitDetection, positionDetection, halfDetection;
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
         limitDetection = positionDetection = false;
@@ -53,6 +55,11 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         positionDetection = true;
         return this;
     }
+    public MasqMotor setHalfLimits(MasqLimitSwitch min, double max){
+        maxPosition = max;
+        minLim = min; halfDetection = true;
+        return this;
+    }
     public MasqMotor setPositionLimit (double min) {
         minPosition = min;
         positionDetection = true;
@@ -78,6 +85,13 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
                 motorPower = 0;
             else if (motor.getCurrentPosition() < minPosition && power < 0)
                 motorPower = 0;
+        } else if (halfDetection) {
+            if (minLim.isPressed()) {
+                currentZero = motor.getCurrentPosition();
+                currentMax = currentZero + maxPosition;
+            }
+            if (minLim != null && minLim.isPressed() && power < 0) motorPower = 0;
+            else if (motor.getCurrentPosition() > currentMax && power > 0) motorPower = 0;
         }
         motor.setPower(motorPower);
     }
