@@ -100,7 +100,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         } else if (halfDetectionMax) {
             if (maxLim.isPressed()) {
                 currentZero = motor.getCurrentPosition();
-                currentMin = currentZero + maxPosition;
+                currentMin = currentZero - minPosition;
             }
             if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
             else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
