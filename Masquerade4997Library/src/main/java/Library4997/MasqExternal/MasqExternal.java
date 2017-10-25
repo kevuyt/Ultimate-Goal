@@ -28,14 +28,18 @@ public class MasqExternal {
         try {Thread.sleep(sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
+    public static void sleep (double sleep) {
+        try {Thread.sleep((long) sleep);}
+        catch (InterruptedException e) {e.printStackTrace();}
+    }
     public class KP {
-        public static final double TURN = +0.005;
+        public static final double TURN = +0.01;
         public static final double DRIVE = +0.03;
         public static final double TELEOP = +0.1;
         public static final double MOTOR = +0.005;
     }
     public class KI {
-        public static final double TURN = +0.0002;
+        public static final double TURN = +0.002;
         public static final double DRIVE = +0.0;
         public static final double TELEOP = +0.0;
         public static final double MOTOR = +0.0001;

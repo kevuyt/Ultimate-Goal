@@ -15,15 +15,18 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
             //dash.create(robot.imu);
-            dash.create(robot.jewelColor);
+            //dash.create(robot.jewelColor);
+            dash.create("Status: Initialized");
             dash.update();
         }
         waitForStart();
-        robot.sleep(robot.getDelay());
-        robot.jewelArm.setPosition(JEWEL_OUT);
+        MasqExternal.sleep(robot.getDelay());
+        robot.turn(90, Direction.LEFT);
         MasqExternal.sleep(100);
-        if (robot.jewelColor.isBlue()) robot.drive(90, POWER_OPTIMAL, Direction.FORWARD);
-        else robot.drive(90, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.jewelArm.setPosition(JEWEL_IN);
+        robot.turn(90, Direction.RIGHT);
+        MasqExternal.sleep(100);
+        robot.turn(90, Direction.LEFT);
+        MasqExternal.sleep(100);
+        robot.turn(90, Direction.RIGHT);
     }
 }

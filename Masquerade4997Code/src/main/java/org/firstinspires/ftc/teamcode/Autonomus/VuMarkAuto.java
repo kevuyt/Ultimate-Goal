@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -15,6 +16,9 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
             dash.create(robot.imu);
         }
         waitForStart();
-        robot.sleep(robot.getDelay());
+        MasqExternal.sleep(robot.getDelay());
+        robot.drive(100);
+        MasqExternal.sleep(100);
+        robot.drive(100);
     }
 }
