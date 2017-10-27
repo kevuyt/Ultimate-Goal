@@ -77,7 +77,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public void setPower (double power) {
         double motorPower = findPower(power);
-        if (limitDetection) {
+        /*if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
                     maxLim != null && maxLim.isPressed() && power > 0)
                 motorPower = 0;
@@ -104,7 +104,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             }
             if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
             else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
-        }
+        }*/
         motor.setPower(motorPower);
     }
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
