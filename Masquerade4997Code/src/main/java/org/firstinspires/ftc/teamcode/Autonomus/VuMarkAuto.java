@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -12,14 +13,29 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        //robot.vuforia.init();
-        while (opModeIsActive()) {
-            dash.create(robot.vuforia);
+        robot.vuforia.initVuMark(hardwareMap);
+        while (!opModeIsActive()) {
+            dash.create(">>> Press Play to Begin The Op Mode.");
+            dash.update();
         }
         waitForStart();
-        MasqExternal.sleep(robot.getDelay());
-        robot.drive(100);
-        MasqExternal.sleep(100);
-        robot.drive(100);
+        robot.vuforia.activateVuMark();
+        while (robot.vuforia.getVuMark() == "UNKNOWN") {}
+        String vuMark = robot.vuforia.getVuMark();
+        switch (vuMark){
+            case "LEFT":
+                robot.drive(50, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.turn(90, Direction.RIGHT);
+                robot.drive(10);
+                robot.glyphSystem.setPosition(GLYPH_OPENED);
+                robot.drive(10);
+                break;
+            case "RIGHT":
+                break;
+            case "CENTER":
+                break;
+            default:
+                break;
+        }
     }
 }
