@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Hardware-release-">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/2c09207a8f44533cd02581f8bf29788c2a2c5837/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/2c09207a8f44533cd02581f8bf29788c2a2c5837/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/73fec12704d710e21102fa1a9c8b31b14129dc1d/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/73fec12704d710e21102fa1a9c8b31b14129dc1d/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

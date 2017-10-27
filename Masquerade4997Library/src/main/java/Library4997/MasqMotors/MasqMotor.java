@@ -74,6 +74,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void resetEncoder() {
         zeroEncoderPosition = motor.getCurrentPosition();
         currentPosition = 0;
+
     }
     public void setPower (double power) {
         double motorPower = findPower(power);
