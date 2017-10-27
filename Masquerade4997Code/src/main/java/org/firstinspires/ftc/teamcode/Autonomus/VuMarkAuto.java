@@ -11,20 +11,20 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "VuMarkAuto", group = "Autonomus")
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
+    private boolean close = false;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuMark(hardwareMap);
-        while (!opModeIsActive()) {
-            dash.create(">>> Press Play to Begin The Op Mode.");
-            dash.update();
-        }
+        dash.create(">>> Press Play to Begin The Op Mode.");
+        dash.update();
         waitForStart();
         robot.vuforia.activateVuMark();
         while (robot.vuforia.getVuMark() == "UNKNOWN") {}
         String vuMark = robot.vuforia.getVuMark();
+        robot.jewelArm.setPosition(JEWEL_IN);
         switch (vuMark){
             case "LEFT":
-                robot.drive(50, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.drive(50, POWER_LOW, Direction.BACKWARD);
                 robot.turn(90, Direction.RIGHT);
                 robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
@@ -37,5 +37,8 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
             default:
                 break;
         }
+        close = true;
     }
+
+
 }

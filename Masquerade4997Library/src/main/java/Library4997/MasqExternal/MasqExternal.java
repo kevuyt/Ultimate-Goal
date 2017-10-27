@@ -34,7 +34,7 @@ public class MasqExternal {
     }
     public class KP {
         public static final double TURN = +0.01;
-        public static final double DRIVE = +0.03;
+        public static final double DRIVE = +0.01;
         public static final double TELEOP = +0.1;
         public static final double MOTOR = +0.005;
     }
