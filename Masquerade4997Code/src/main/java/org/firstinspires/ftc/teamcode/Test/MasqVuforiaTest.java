@@ -12,21 +12,12 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.vuforia.init();
-        while (!opModeIsActive()){
-            dash.create(robot.vuforia.getTrackable());
-        }
+        robot.vuforia.initVuMark(hardwareMap);
         waitForStart();
-        while (opModeIsActive()) {
-
+        robot.vuforia.activateVuMark();
+        while (opModeIsActive()){
+            dash.create(robot.vuforia.getVuMark());
+            dash.update();
         }
-    }
-    @Override
-    public void stopLinearOpMode(){
-        dash.create("OpModeOver");
-        dash.update();
-        dash.close();
-        controller1.close();
-        controller2.close();
     }
 }

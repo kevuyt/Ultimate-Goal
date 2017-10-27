@@ -12,8 +12,9 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        while (!opModeIsActive()) {
-            dash.create(robot.imu);
+        //robot.vuforia.init();
+        while (opModeIsActive()) {
+            dash.create(robot.vuforia);
         }
         waitForStart();
         MasqExternal.sleep(robot.getDelay());

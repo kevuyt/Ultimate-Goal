@@ -15,11 +15,8 @@ import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
-import Library4997.MasqSensors.MasqColorSensorV2;
-import Library4997.MasqSensors.MasqMRColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
-import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
@@ -44,7 +41,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
     public MasqVoltageSensor voltageSensor;
-    public MasqServo jewelArm;
+    public MasqServo jewelArm, relicGripper;
     public MasqServoSystem glyphSystem;
     //TODO GET MasqColorSensorV2 up.
     //public MasqMRColorSensor jewelColor;
@@ -62,11 +59,12 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArm = new MasqServo("jewelArm", this.hardwareMap);
         //jewelColor = new MasqMRColorSensor("jewelColor", this.hardwareMap);
+        relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();
-    public MasqVuforia vuforia = new MasqVuforia("RelicRecovery", "RelicVuMark");
+    public MasqVuforia vuforia = new MasqVuforia();
     public double angleLeftCover = 0;
     private double color = 1;
 
