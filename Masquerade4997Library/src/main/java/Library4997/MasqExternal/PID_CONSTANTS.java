@@ -18,7 +18,7 @@ public interface PID_CONSTANTS {
     double TICKS_PER_ROTATION = 1120;
     double wheelDiameter = 4;
     double cmToInches = 2.54;
-    double gearRatio = .5;
-    double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(TICKS_PER_ROTATION * gearRatio);
+    double gearRatio = 2;
+    double CLICKS_PER_INCH = ((TICKS_PER_ROTATION / (wheelDiameter * cmToInches)) / Math.PI) / gearRatio;
 }
 

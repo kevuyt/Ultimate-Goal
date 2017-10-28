@@ -94,7 +94,7 @@ public class MasqRobot implements PID_CONSTANTS {
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = DIRECTION.value * speed * inchesRemaining * -MasqExternal.KP.DRIVE;
+            power = DIRECTION.value * speed * inchesRemaining * -MasqExternal.KP.DRIVE_ENCODER;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
@@ -102,7 +102,7 @@ public class MasqRobot implements PID_CONSTANTS {
             angularIntegral = angularIntegral + angularError * timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
-            powerAdjustment = (.2 * power + .01) * angularError + MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
+            powerAdjustment = (MasqExternal.KP.DRIVE_ANGULAR * power + .01) * angularError + MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             powerAdjustment *= DIRECTION.value;
             leftPower = power - powerAdjustment;
@@ -245,7 +245,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double newPower = power;
             double heading = imu.getHeading();
             double error = targetAngle - heading;
-            double errorKP = error * KP_STRAIGHT;
+            double errorKP = error * -KP_STRAIGHT;
             newPower = newPower - (errorKP * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
@@ -373,7 +373,7 @@ public class MasqRobot implements PID_CONSTANTS {
         return dScale;
     }
     public void initalizeServos() {
-        glyphSystem.setPosition(0);
+        glyphSystem.setPosition(1);
         jewelArm.setPosition(0);
     }
 }

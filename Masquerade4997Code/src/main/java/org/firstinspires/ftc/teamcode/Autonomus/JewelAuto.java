@@ -9,7 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 10/5/17.
  */
-@Autonomous(name = "JewelAuto", group = "Autonomus")
+@Autonomous(name = "DRIVE_ENCODER PID TEST", group = "Autonomus")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
@@ -20,13 +20,6 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        MasqExternal.sleep(robot.getDelay());
-        robot.turn(90, Direction.LEFT);
-        MasqExternal.sleep(100);
-        robot.turn(90, Direction.RIGHT);
-        MasqExternal.sleep(100);
-        robot.turn(90, Direction.LEFT);
-        MasqExternal.sleep(100);
-        robot.turn(90, Direction.RIGHT);
+        robot.drive(100);
     }
 }
