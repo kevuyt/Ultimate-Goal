@@ -118,13 +118,13 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public void runToPosition(Direction direction, double speed){
         resetEncoder();
-        int targetClicks = (int)(destination * CLICKS_PER_CM);
+        int targetClicks = (int)(destination * CLICKS_PER_INCH);
         int clicksRemaining;
         double inchesRemaining;
         double power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / CLICKS_PER_CM;
+            inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
             power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power);
         } while (opModeIsActive() && inchesRemaining > 0.5);
