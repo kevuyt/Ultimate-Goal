@@ -11,44 +11,45 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "VuMarkAuto", group = "Autonomus")
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
-    private boolean close = false;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuMark(hardwareMap);
         dash.create(">>> Press Play to Begin The Op Mode.");
         dash.update();
+        robot.initalizeServos();
         waitForStart();
         robot.vuforia.activateVuMark();
         while (robot.vuforia.getVuMark() == "UNKNOWN") {}
         String vuMark = robot.vuforia.getVuMark();
-        robot.jewelArm.setPosition(JEWEL_IN);
         switch (vuMark){
-            case "LEFT":
+            case "LEFT" :
                 robot.drive((int) DISTANCE_TO_LEFT_BOX, POWER_LOW, Direction.BACKWARD);
                 robot.turn(90, Direction.RIGHT);
                 robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(10);
                 break;
-            case "RIGHT":
+            case "RIGHT" :
                 robot.drive((int) DISTANCE_TO_RIGHT_BOX, POWER_LOW, Direction.BACKWARD);
                 robot.turn(90, Direction.RIGHT);
                 robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(10);
                 break;
-            case "CENTER":
+            case "CENTER" :
                 robot.drive((int) DISTANCE_TO_CENTER_BOX, POWER_LOW, Direction.BACKWARD);
                 robot.turn(90, Direction.RIGHT);
                 robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(10);
                 break;
-            default:
-                break;
+            default: break;
         }
-        close = true;
     }
-
+    @Override
+    public void stopLinearOpMode () {
+        robot.jewelArm.setPosition(JEWEL_IN);
+        robot.glyphSystem.setPosition(GLYPH_OPENED);
+    }
 
 }

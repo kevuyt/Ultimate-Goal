@@ -7,13 +7,11 @@ package Library4997.MasqExternal;
 public class MasqExternal {
 
     public static final double MAX_RATE = 160;
-    public static final double TICKS_PER_ROTATION = 1120;
+    public static final double NEVERREST_40_RPM = 160;
+    public static final double NEVERREST_40_TICKS_PER_ROTATION = 1120;
     public static final double wheelDiameter = 4;
-    public static final double cmToInches = 2.54;
-    public static final double gearRatio = 1;
-    public static final double CLICKS_PER_CM = ((TICKS_PER_ROTATION / (wheelDiameter * cmToInches)) / Math.PI) / gearRatio;
-    public static final int NEVEREST_40_RPM = 160;
-    public static final int NEVEREST_40_TICKS_PER_ROTATION = 1120;
+    public static final double gearRatio = .5;
+    double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(NEVERREST_40_TICKS_PER_ROTATION * gearRatio);
 
     public static final int DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 3;

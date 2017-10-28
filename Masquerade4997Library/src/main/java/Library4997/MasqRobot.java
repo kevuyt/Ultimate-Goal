@@ -372,4 +372,8 @@ public class MasqRobot implements PID_CONSTANTS {
         else {dScale = scaleArray[index];}
         return dScale;
     }
+    public void initalizeServos() {
+        glyphSystem.setPosition(0);
+        jewelArm.setPosition(0);
+    }
 }
