@@ -12,29 +12,45 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "VuMarkAuto", group = "Autonomus")
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
     Direction direction;
+    boolean red;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuMark(hardwareMap);
         direction = Direction.BACKWARD;
         robot.initalizeServos();
         while (!opModeIsActive()) {
-            /*if (controller1.aOnPress() && direction != Direction.BACKWARD) {
+            if (controller1.aOnPress() && direction != Direction.BACKWARD && !red) {
                 dash.clear();
-                dash.create("THIS WILL GO BACKWARD");
+                dash.create("THIS WILL GO BACKWARD, AND IS RED");
+                red = true;
                 direction = Direction.BACKWARD;
                 controller1.update();
             }
-            else if (controller1.aOnPress() && direction != Direction.FORWARD) {
+            else if (controller1.aOnPress() && direction != Direction.BACKWARD && red) {
                 dash.clear();
-                dash.create("THIS WILL GO FOREWORD");
+                dash.create("THIS WILL GO BACKWARD, AND IS BLUE");
+                red = false;
+                direction = Direction.FORWARD;
+                controller1.update();
+            } else if (controller1.aOnPress() && direction != Direction.FORWARD && !red) {
+                dash.clear();
+                dash.create("THIS WILL GO FOREWORD, AND IS RED");
+                red = true;
+                direction = Direction.FORWARD;
+                controller1.update();
+            } else if (controller1.aOnPress() && direction != Direction.FORWARD && red) {
+                dash.clear();
+                dash.create("THIS WILL GO FOREWORD, AND IS BLUE");
+                red = false;
                 direction = Direction.FORWARD;
                 controller1.update();
             }
-            controller1.update();*/
+            controller1.update();
             dash.create(INIT_MESSAGE);
             dash.update();
         }
         waitForStart();
+        int addedDistance = runJewel();
         robot.vuforia.activateVuMark();
         while (robot.vuforia.getVuMark() == "UNKNOWN") {
             dash.create(robot.vuforia.getVuMark());
@@ -45,7 +61,7 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         dash.update();
         switch (vuMark){
             case "LEFT" :
-                robot.drive(80, 0.5, Direction.BACKWARD);
+                robot.drive(80 + addedDistance, 0.5, Direction.BACKWARD);
                 robot.turn(90, Direction.RIGHT);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(20);
@@ -66,6 +82,30 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
                 break;
             default: break;
         }
+    }
+    public int runJewel () {
+        int addedDistance;
+        robot.jewelArm.setPosition(JEWEL_OUT);
+        MasqExternal.sleep(100);
+        if (red) {
+            if (robot.jewelColor.isRed()) {
+                robot.drive(-10);
+                addedDistance = -10;
+            } else {
+                robot.drive(10);
+                addedDistance = 10;
+            }
+        } else {
+            if (robot.jewelColor.isBlue()) {
+                robot.drive(-10);
+                addedDistance = -10;
+            }
+            else {
+                robot.drive(10);
+                addedDistance = 10;
+            }
+        }
+        return addedDistance;
     }
     @Override
     public void stopLinearOpMode () {
