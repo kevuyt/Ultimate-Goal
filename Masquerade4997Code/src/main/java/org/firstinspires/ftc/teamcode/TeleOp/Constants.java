@@ -15,6 +15,6 @@ public interface Constants {
            LIFT_UP = 1;
     double JEWEL_IN = 0,
            JEWEL_OUT = 0.5;
-    double CLAW_CLOSED = 0,
-           CLAW_OPENED = 1;
+    double CLAW_CLOSED = 0.3,
+           CLAW_OPENED = 0.7;
 }

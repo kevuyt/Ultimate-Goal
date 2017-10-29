@@ -15,6 +15,8 @@ import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
+import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqServos.MasqServo;
@@ -40,6 +42,9 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqTankDrive driveTrain;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
+    public MasqLimitSwitch liftSwitch;
+    public MasqREVColorSensor jewelColor;
+    public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArm, relicGripper;
     public MasqServoSystem glyphSystem;
@@ -53,12 +58,14 @@ public class MasqRobot implements PID_CONSTANTS {
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
         driveTrain.setClosedLoop(false);
+        relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
         //driveTrain.runWithoutEncoders();
+        liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
         glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArm = new MasqServo("jewelArm", this.hardwareMap);
-        //jewelColor = new MasqMRColorSensor("jewelColor", this.hardwareMap);
+        jewelColor = new MasqREVColorSensor("jewelColor", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
     }
