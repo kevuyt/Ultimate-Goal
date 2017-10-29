@@ -118,14 +118,14 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public void runToPosition(Direction direction, double speed){
         resetEncoder();
-        int targetClicks = (int)(destination * CLICKS_PER_CM);
+        int targetClicks = (int)(destination * CLICKS_PER_INCH);
         int clicksRemaining;
         double inchesRemaining;
         double power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / CLICKS_PER_CM;
-            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
+            power = direction.value * speed * inchesRemaining * MasqExternal.KP.DRIVE_ENCODER;
             setPower(power);
         } while (opModeIsActive() && inchesRemaining > 0.5);
         setPower(0);
@@ -150,7 +150,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         tChange = tChange / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
-        rate = (rate * 60) / MasqExternal.NEVEREST_40_TICKS_PER_ROTATION;
+        rate = (rate * 60) / MasqExternal.NEVERREST_40_TICKS_PER_ROTATION;
         if (rate != 0) return rate;
         else {
             prevRate = rate;
@@ -166,7 +166,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             double error, setRPM, currentRPM, motorPower;
             double tChange = System.nanoTime() - previousTime;
             tChange /= 1e9;
-            setRPM = MasqExternal.NEVEREST_40_RPM * power;
+            setRPM = MasqExternal.NEVERREST_40_RPM * power;
             currentRPM = getRate();
             error = setRPM - currentRPM;
             intergral += error * tChange;

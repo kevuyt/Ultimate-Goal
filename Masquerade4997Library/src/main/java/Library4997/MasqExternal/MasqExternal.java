@@ -7,13 +7,11 @@ package Library4997.MasqExternal;
 public class MasqExternal {
 
     public static final double MAX_RATE = 160;
-    public static final double TICKS_PER_ROTATION = 1120;
+    public static final double NEVERREST_40_RPM = 160;
+    public static final double NEVERREST_40_TICKS_PER_ROTATION = 1120;
     public static final double wheelDiameter = 4;
-    public static final double cmToInches = 2.54;
-    public static final double gearRatio = 1;
-    public static final double CLICKS_PER_CM = ((TICKS_PER_ROTATION / (wheelDiameter * cmToInches)) / Math.PI) / gearRatio;
-    public static final int NEVEREST_40_RPM = 160;
-    public static final int NEVEREST_40_TICKS_PER_ROTATION = 1120;
+    public static final double gearRatio = .5;
+    double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(NEVERREST_40_TICKS_PER_ROTATION * gearRatio);
 
     public static final int DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 3;
@@ -28,14 +26,19 @@ public class MasqExternal {
         try {Thread.sleep(sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
+    public static void sleep (double sleep) {
+        try {Thread.sleep((long) sleep);}
+        catch (InterruptedException e) {e.printStackTrace();}
+    }
     public class KP {
-        public static final double TURN = +0.005;
-        public static final double DRIVE = +0.03;
+        public static final double TURN = +0.007;
+        public static final double DRIVE_ENCODER = +0.04;
+        public static final double DRIVE_ANGULAR = +0.002;
         public static final double TELEOP = +0.1;
         public static final double MOTOR = +0.005;
     }
     public class KI {
-        public static final double TURN = +0.0002;
+        public static final double TURN = +0.002;
         public static final double DRIVE = +0.0;
         public static final double TELEOP = +0.0;
         public static final double MOTOR = +0.0001;

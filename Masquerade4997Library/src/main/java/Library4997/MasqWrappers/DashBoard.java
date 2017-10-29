@@ -86,7 +86,7 @@ public class DashBoard implements Runnable{
     public void update() {
         telemetry.update();
     }
-
+    public void clear(){telemetry.clearAll();}
     public void run() {
         boolean close = false;
         while (!close) {

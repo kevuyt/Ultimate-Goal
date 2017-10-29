@@ -2,6 +2,9 @@ package Library4997.MasqSensors;
 
 
 import com.qualcomm.ftcrobotcontroller.R.id;
+import com.qualcomm.robotcore.hardware.HardwareDevice;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -9,6 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
+import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
@@ -29,6 +33,8 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     private VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(id.cameraMonitorViewId);
     private VuforiaLocalizer vuforia;
     private VuforiaTrackables vuforiaTrackables;
+    private VuforiaTrackable relicTemplate;
+    private VuforiaTrackables relicTrackables;
     private VuforiaTrackable trackOne, trackTwo, trackThree;
     private int numTargets = 0;
     private OpenGLMatrix locationOne, locationTwo, locationThree,
@@ -99,6 +105,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         allTrackables.addAll(vuforiaTrackables);
         numTargets = 1;
     }
+    public MasqVuforia(){}
     public void init(){
         locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
         locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
@@ -128,6 +135,24 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     }
     private void loadVuMark (VuforiaTrackable trackable){vuMark = RelicRecoveryVuMark.from(trackable);}
     public String getTrackable() {return String.valueOf(vuMark);}
+    public void initVuMark(HardwareMap hardwareMap) {
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
+        relicTemplate = relicTrackables.get(0);
+        relicTemplate.setName("relicVuMarkTemplate");
+    }
+    public void activateVuMark(){
+        relicTrackables.activate();
+    }
+    public String getVuMark () {
+        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+        if (vuMark != RelicRecoveryVuMark.UNKNOWN) return String.format("%s", vuMark);
+        else return "UNKNOWN";
+    }
     private void setOrientationOne(int u, int v, int w){u1 = u; v1 = v; w1 = w;}
     private void setOrientationTwo(int u, int v, int w){u2 = u; v2 = v; w2 = w;}
     private void setOrientationThree(int u, int v, int w){u3 = u; v3 = v; w3 = w;}
@@ -170,7 +195,10 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         return isSeen(track.value);
     }
     @Override
-    public boolean stop() {return isSeen(targetOne);}
+    public boolean stop() {
+        if (getVuMark() == "UNKNOWN") return true;
+        else return false;
+    }
     @Override
     public String getName() {return "VUFORIA";}
     public String[] getDash() {
