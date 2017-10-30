@@ -37,17 +37,11 @@ public class MasqColorSensorDriver extends I2cDeviceSynchDevice<I2cDeviceSynch> 
             redMinThreshold = 10, redMaxThreshold = 12,
             whiteMinThreshold = 14, whiteMaxThreshold = 16;
 
-    public void write(int reg, int value) {
-        deviceClient.write(reg, TypeConversion.shortToByteArray((short) value));
-    }
+    public void write(int reg, int value) {deviceClient.write(reg, TypeConversion.shortToByteArray((short) value));}
 
-    public short read(int reg) {
-        return TypeConversion.byteArrayToShort(deviceClient.read(reg, 2));
-    }
+    public short read(int reg) {return TypeConversion.byteArrayToShort(deviceClient.read(reg, 2));}
 
-    private MasqColorSensorDriver(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {
-        super(i2cDeviceSynch, deviceClientIsOwned);
-    }
+    private MasqColorSensorDriver(I2cDeviceSynch i2cDeviceSynch, boolean deviceClientIsOwned) {super(i2cDeviceSynch, deviceClientIsOwned);}
 
     private MasqColorSensorDriver(I2cDeviceSynch deviceClient, int read) {
         super(deviceClient, true);
@@ -61,9 +55,7 @@ public class MasqColorSensorDriver extends I2cDeviceSynchDevice<I2cDeviceSynch> 
         I2cDeviceSynch.ReadWindow readWindow = new I2cDeviceSynch.ReadWindow(READ_WINDOW_START, READ_WINDOW_LENGTH, I2cDeviceSynch.ReadMode.REPEAT);
         this.deviceClient.setReadWindow(readWindow);
     }
-    public void setEngage () {
-        engage();
-    }
+    public void setEngage () {engage();}
 
     public int colorNumber() {return read(COLOR_NUMBER_REGISTER);}
     public void setActiveMode() {write(COMMAND_REGISTER, ACTIVE_MODE_COMMAND);}
