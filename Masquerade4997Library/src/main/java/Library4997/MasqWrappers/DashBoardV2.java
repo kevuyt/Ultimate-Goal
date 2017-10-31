@@ -11,25 +11,24 @@ import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 
 /**
- * This is a telemetry wrapper class.
- * It provides additional functionality such as stickied messages.
- * It supports multiple types of inputs, including MasqHardware objects.
+ * Created by Archish on 10/31/17.
  */
 
-public class DashBoard implements Runnable {
+public class DashBoardV2{
+    public List<Telemetry.Item> items = new ArrayList<>();
     private int dashLength;
     private Telemetry telemetry;
     private boolean close = false;
-    public DashBoard(Telemetry telemetry){
+    public DashBoardV2(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
     }
 
-    public static DashBoard getDash(){return instance;}
-    public static DashBoard instance;
+    public static DashBoardV2 getDash(){return instance;}
+    public static DashBoardV2 instance;
 
     public void create(String string) {
-        telemetry.addLine(string);
+        items.add(telemetry.addData(string,""));
     }
     public void create(Object data) {
         telemetry.addLine(data.toString());
@@ -90,20 +89,6 @@ public class DashBoard implements Runnable {
         telemetry.update();
     }
     public void clear(){telemetry.clearAll();}
-    public void run() {
-        boolean close = false;
-        while (!close) {
-            update();
-            close = this.close;
-            MasqExternal.sleep(100);
-            telemetry.clearAll();
-        }
-    }
-    public void close() {
-        telemetry.clearAll();
-        close = true;
-    }
-    public void startUpdate (){new Thread(this).start();}
     public void setController(final MasqController masqController1, final MasqController masqController2) {
         Runnable updateCont1 = new Runnable() {
             @Override
@@ -127,7 +112,6 @@ public class DashBoard implements Runnable {
         telemetry.addAction(updateCont2);
         telemetry.addAction(update);
     }
-
 
 
 }

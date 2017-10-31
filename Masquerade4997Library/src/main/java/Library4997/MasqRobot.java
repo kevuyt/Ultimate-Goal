@@ -352,6 +352,8 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
+    public void waitForVuMark() {while (vuforia.getVuMark() == "UNKNOWN"){}}
+
     public void sleep(int time) {
         try {
             Thread.sleep((long) time);

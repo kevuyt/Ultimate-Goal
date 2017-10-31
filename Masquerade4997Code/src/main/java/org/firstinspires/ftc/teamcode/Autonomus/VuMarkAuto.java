@@ -50,12 +50,9 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        int addedDistance = runJewel();
+        int addedDistance = 0;
         robot.vuforia.activateVuMark();
-        while (robot.vuforia.getVuMark() == "UNKNOWN") {
-            dash.create(robot.vuforia.getVuMark());
-            dash.update();
-        }
+        robot.waitForVuMark();
         String vuMark = robot.vuforia.getVuMark();
         dash.create(vuMark);
         dash.update();

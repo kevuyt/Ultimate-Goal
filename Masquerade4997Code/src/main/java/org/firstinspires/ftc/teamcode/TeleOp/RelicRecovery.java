@@ -71,6 +71,7 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
             dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
             dash.create("LIFT POSITION", robot.lift.getCurrentPosition());
             dash.create("RELIC LIFT POSITION", robot.relicLift.getCurrentPosition());
+            dash.create("CURRENT POSITION: ",robot.relicAdjuster.getPosition());
             dash.update();
         }
     }

@@ -48,6 +48,9 @@ public class MasqServo implements MasqHardware{
         if (limDetection) return  limMin.isPressed() || limMax.isPressed();
         else return false;
     }
+    public double getPosition () {
+        return servo.getPosition();
+    }
     public void setMax(double max){this.max = max;}
     public void setMin(double min){this.min = min;}
     public void scaleRange (double min, double max) {servo.scaleRange(min,max);}
