@@ -8,19 +8,7 @@
         "source": "/Users/Archish/.android/build-cache/4e343b2fab3da4d500ffda6fddc19f9631f92878/output/res/menu/main_menu.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/debug/menu/menu_server.xml",
-        "source": "/Users/Archish/.android/build-cache/98e0107ce85ff6e2f1a26f6438b4626b846f4046/output/res/menu/menu_server.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/menu/ftc_robot_controller.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/menu/ftc_robot_controller.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/debug/menu/ftc_robot_controller.xml",
-        "source": "/Users/Archish/Documents/Projects/MasqLibTest/FtcRobotController/build/intermediates/bundles/default/res/menu/ftc_robot_controller.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLibTest/Masquerade4997Library/build/intermediates/res/merged/debug/menu/main_menu.xml",
-        "source": "/Users/Archish/.android/build-cache/b318fd9e3b80d3863322508ad5e96f054d67b2fb/output/res/menu/main_menu.xml"
     }
 ]

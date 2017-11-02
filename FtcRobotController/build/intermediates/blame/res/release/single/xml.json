@@ -4,40 +4,8 @@
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/xml/device_filter.xml"
     },
     {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/rev_scoot.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/rev_scoot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/advanced_rc_settings.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/advanced_rc_settings.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/k9usbbot.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/k9usbbot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/pushbotsens.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/pushbotsens.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/xml/squarebot.xml",
         "source": "/Users/Archish/.android/build-cache/e26bde7491dd23acca24b2241e1fe4f11e5fe8dc/output/res/xml/squarebot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/app_settings.xml",
-        "source": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/src/main/res/xml/app_settings.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/k9legacybot.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/k9legacybot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/maxmodules.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/maxmodules.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/squarebot.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/squarebot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/xml/advanced_rc_settings.xml",
@@ -66,14 +34,6 @@
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/xml/pushbotsens.xml",
         "source": "/Users/Archish/.android/build-cache/e26bde7491dd23acca24b2241e1fe4f11e5fe8dc/output/res/xml/pushbotsens.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/pushbot.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/xml/pushbot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/release/xml/device_filter.xml",
-        "source": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/src/main/res/xml/device_filter.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/xml/app_settings.xml",

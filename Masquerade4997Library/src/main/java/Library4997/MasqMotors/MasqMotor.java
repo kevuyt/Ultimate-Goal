@@ -1,6 +1,7 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqExternal.MasqExternal;
@@ -9,6 +10,7 @@ import Library4997.MasqRobot;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqWrappers.DashBoard;
 
 /**
  * This is a custom motor that includes stall detection and telemetry

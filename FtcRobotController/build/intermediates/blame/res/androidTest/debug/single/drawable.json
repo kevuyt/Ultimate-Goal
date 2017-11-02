@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/feedback_shape_orange.xml",
-        "source": "/Users/Archish/.android/build-cache/4126ee4f684831abbdf7cb666cbdb04e812f8162/output/res/drawable/feedback_shape_orange.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/icon_menu.png",
         "source": "/Users/Archish/.android/build-cache/4e343b2fab3da4d500ffda6fddc19f9631f92878/output/res/drawable/icon_menu.png"
     },
@@ -12,16 +8,8 @@
         "source": "/Users/Archish/.android/build-cache/e26bde7491dd23acca24b2241e1fe4f11e5fe8dc/output/res/drawable/button_shape.xml"
     },
     {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/button_shape.xml",
-        "source": "/Users/Archish/.android/build-cache/a936f9be0f1b43188650aa97f86419d707875af3/output/res/drawable/button_shape.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/icon_robotcontroller.png",
         "source": "/Users/Archish/.android/build-cache/4e343b2fab3da4d500ffda6fddc19f9631f92878/output/res/drawable/icon_robotcontroller.png"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/icon_robotcontroller.png",
-        "source": "/Users/Archish/.android/build-cache/19f645c4f45212583aadfcd77befb8a257b96b85/output/res/drawable/icon_robotcontroller.png"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/feedback_shape_orange.xml",
@@ -30,13 +18,5 @@
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/black_border.xml",
         "source": "/Users/Archish/.android/build-cache/6ab14e8e3c12fad02271e5a50252fa66cc3f244a/output/res/drawable/black_border.xml"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/icon_menu.png",
-        "source": "/Users/Archish/.android/build-cache/19f645c4f45212583aadfcd77befb8a257b96b85/output/res/drawable/icon_menu.png"
-    },
-    {
-        "merged": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable/black_border.xml",
-        "source": "/Users/Archish/.android/build-cache/64abf0e6e54e6ed306d9dbb01f1aed1f878df46b/output/res/drawable/black_border.xml"
     }
 ]

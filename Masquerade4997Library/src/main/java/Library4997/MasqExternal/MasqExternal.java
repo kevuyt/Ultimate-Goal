@@ -31,23 +31,23 @@ public class MasqExternal {
         catch (InterruptedException e) {e.printStackTrace();}
     }
     public class KP {
-        public static final double TURN = +0.007;
-        public static final double DRIVE_ENCODER = +0.04;
+        public static final double TURN = +0.01;
+        public static final double DRIVE_ENCODER = +0.05;
         public static final double DRIVE_ANGULAR = +0.002;
-        public static final double TELEOP = +0.1;
-        public static final double MOTOR = +0.005;
+        public static final double TELEOP = +0.05;
+        public static final double MOTOR = +0.0;
     }
     public class KI {
         public static final double TURN = +0.002;
         public static final double DRIVE = +0.0;
         public static final double TELEOP = +0.0;
-        public static final double MOTOR = +0.0001;
+        public static final double MOTOR = +0.000;
     }
     public class KD {
         public static final double TURN = +0.0;
         public static final double DRIVE = +0.0;
         public static final double TELEOP = +0.0;
-        public static final double MOTOR = +0.0;
+        public static final double MOTOR = +0.00;
     }
     public class ID {
         public static final double TURN = +0.0;

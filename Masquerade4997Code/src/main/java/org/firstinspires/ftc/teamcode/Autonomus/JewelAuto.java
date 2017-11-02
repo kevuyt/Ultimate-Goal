@@ -11,15 +11,61 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "DRIVE_ENCODER PID TEST", group = "Autonomus")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
+    Direction direction;
+    boolean red;
     public void runLinearOpMode() throws InterruptedException {
+        direction = Direction.BACKWARD;
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            //dash.create(robot.imu);
-            //dash.create(robot.jewelColor);
-            dash.create("Status: Initialized");
-            dash.update();
+            while (!opModeIsActive()) {
+                if (controller1.aOnPress() && direction != Direction.BACKWARD && !red) {
+                    dash.clear();
+                    dash.create("THIS WILL GO BACKWARD, AND IS RED");
+                    red = true;
+                    direction = Direction.BACKWARD;
+                    controller1.update();
+                }
+                else if (controller1.aOnPress() && direction != Direction.BACKWARD && red) {
+                    dash.clear();
+                    dash.create("THIS WILL GO BACKWARD, AND IS BLUE");
+                    red = false;
+                    direction = Direction.FORWARD;
+                    controller1.update();
+                } else if (controller1.aOnPress() && direction != Direction.FORWARD && !red) {
+                    dash.clear();
+                    dash.create("THIS WILL GO FOREWORD, AND IS RED");
+                    red = true;
+                    direction = Direction.FORWARD;
+                    controller1.update();
+                } else if (controller1.aOnPress() && direction != Direction.FORWARD && red) {
+                    dash.clear();
+                    dash.create("THIS WILL GO FOREWORD, AND IS BLUE");
+                    red = false;
+                    direction = Direction.FORWARD;
+                    controller1.update();
+                }
+                controller1.update();
+                //dash.create(INIT_MESSAGE);
+                dash.update();
+            }
         }
         waitForStart();
-        robot.drive(100);
+        robot.jewelArm.setPosition(JEWEL_OUT);
+        MasqExternal.sleep(100);
+        if (red) {
+            if (robot.jewelColor.isRed()) {
+                robot.drive(-30);
+            } else {
+                robot.drive(30);
+            }
+        } else {
+            if (robot.jewelColor.isBlue()) {
+                robot.drive(-30);
+            }
+            else {
+                robot.drive(30);
+            }
+        }
+        robot.jewelArm.setPosition(JEWEL_IN);
     }
 }

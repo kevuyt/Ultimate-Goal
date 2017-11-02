@@ -57,7 +57,7 @@ public class MasqRobot implements PID_CONSTANTS {
         dash = DashBoard.getDash();
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
-        driveTrain.setClosedLoop(false);
+        driveTrain.setClosedLoop(true);
         relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
         //driveTrain.runWithoutEncoders();
         liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
@@ -274,8 +274,8 @@ public class MasqRobot implements PID_CONSTANTS {
         double rightRate = driveTrain.rightDrive.getRate() / MAX_RATE;
         double leftError =  left - leftRate;
         double rightError = right + rightRate;
-        left =  left - ((leftError * KP_TELE));
-        right =  right - ((rightError * KP_TELE));
+        left =  left - ((leftError * MasqExternal.KP.TELEOP));
+        right =  right - ((rightError * MasqExternal.KP.TELEOP));
         if(left > 1.0) {
             left /= left;
             right /= left;

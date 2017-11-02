@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Oct 27 19:46:39 EDT 2017
+#Thu Nov 02 16:55:41 EDT 2017
 20.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 143.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 439.set=ASSET
@@ -204,7 +204,7 @@
 352.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcTouchSensor.png
 180.set=ASSET
 197.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
-91.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/feedback.xml
+91.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/analog_outputs.xml
 368.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 215.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/StonesAndChips.dat
 405.set=ASSET
@@ -520,7 +520,7 @@
 251.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcGyroSensor.png
 422.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/java/js/mode-markdown.js
 17.set=ASSET
-284.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo_list.xml
+284.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/button_list.xml
 438.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 296.set=ASSET
 15.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/js/URI.min.js
@@ -774,7 +774,7 @@
 351.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/css/java/onbotjava.less
 170.set=ANDROID_RESOURCE
 196.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
-90.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/analog_outputs.xml
+90.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/feedback.xml
 367.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 214.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorKLNavxMicro
 99.set=ASSET
@@ -1091,7 +1091,7 @@
 363.set=ASSET
 250.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_generic_settings.xml
 421.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/LexerActionExecutor.js
-283.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/button_list.xml
+283.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo_list.xml
 437.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 286.set=ASSET
 164.set=ASSET
