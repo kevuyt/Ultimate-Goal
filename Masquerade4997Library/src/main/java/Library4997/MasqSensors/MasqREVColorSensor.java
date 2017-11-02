@@ -71,6 +71,8 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
     public String[] getDash() {
         return new String[] {
                 name,
+                "Detect Blue: ", Boolean.toString(isBlue()),
+                "Detect Red: ", Boolean.toString(isRed()),
                 "Green" + getGreen(),
                 "Blue" + getBlue(),
                 "Red" + getRed(),

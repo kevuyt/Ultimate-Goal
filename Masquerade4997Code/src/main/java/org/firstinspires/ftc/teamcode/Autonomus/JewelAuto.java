@@ -9,7 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 10/5/17.
  */
-@Autonomous(name = "DRIVE_ENCODER PID TEST", group = "Autonomus")
+@Autonomous(name = "Jewel Auto", group = "Autonomus")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
     Direction direction;
     boolean red;
@@ -17,7 +17,6 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
         direction = Direction.BACKWARD;
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            while (!opModeIsActive()) {
                 if (controller1.aOnPress() && direction != Direction.BACKWARD && !red) {
                     dash.clear();
                     dash.create("THIS WILL GO BACKWARD, AND IS RED");
@@ -48,11 +47,10 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
                 //dash.create(INIT_MESSAGE);
                 dash.update();
             }
-        }
         waitForStart();
         robot.jewelArm.setPosition(JEWEL_OUT);
-        MasqExternal.sleep(100);
-        if (red) {
+        MasqExternal.sleep(10000);
+        if (!red) {
             if (robot.jewelColor.isRed()) {
                 robot.drive(-30);
             } else {
@@ -67,5 +65,6 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
             }
         }
         robot.jewelArm.setPosition(JEWEL_IN);
+        MasqExternal.sleep(10000);
     }
 }

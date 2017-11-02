@@ -11,38 +11,39 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "VuMarkAuto", group = "Autonomus")
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
-    Direction direction;
+    Direction directionTurn, directionDrive;
     boolean red;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuMark(hardwareMap);
-        direction = Direction.BACKWARD;
+        directionDrive = Direction.BACKWARD;
+        directionTurn = Direction.RIGHT;
         robot.initalizeServos();
         while (!opModeIsActive()) {
-            if (controller1.aOnPress() && direction != Direction.BACKWARD && !red) {
+            if (controller1.aOnPress() && directionDrive != Direction.BACKWARD && !red) {
                 dash.clear();
                 dash.create("THIS WILL GO BACKWARD, AND IS RED");
                 red = true;
-                direction = Direction.BACKWARD;
+                directionDrive = Direction.BACKWARD;
                 controller1.update();
             }
-            else if (controller1.aOnPress() && direction != Direction.BACKWARD && red) {
+            else if (controller1.aOnPress() && directionDrive != Direction.BACKWARD && red) {
                 dash.clear();
                 dash.create("THIS WILL GO BACKWARD, AND IS BLUE");
                 red = false;
-                direction = Direction.FORWARD;
+                directionDrive = Direction.FORWARD;
                 controller1.update();
-            } else if (controller1.aOnPress() && direction != Direction.FORWARD && !red) {
+            } else if (controller1.aOnPress() && directionDrive != Direction.FORWARD && !red) {
                 dash.clear();
                 dash.create("THIS WILL GO FOREWORD, AND IS RED");
                 red = true;
-                direction = Direction.FORWARD;
+                directionDrive = Direction.FORWARD;
                 controller1.update();
-            } else if (controller1.aOnPress() && direction != Direction.FORWARD && red) {
+            } else if (controller1.aOnPress() && directionDrive != Direction.FORWARD && red) {
                 dash.clear();
                 dash.create("THIS WILL GO FOREWORD, AND IS BLUE");
                 red = false;
-                direction = Direction.FORWARD;
+                directionDrive = Direction.FORWARD;
                 controller1.update();
             }
             controller1.update();
@@ -50,7 +51,7 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        int addedDistance = runJewel();
+        int addedDistance = 0;
         robot.vuforia.activateVuMark();
         robot.waitForVuMark();
         String vuMark = robot.vuforia.getVuMark();
@@ -58,21 +59,21 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         dash.update();
         switch (vuMark){
             case "LEFT" :
-                robot.drive(80 + addedDistance, 0.5, direction);
-                robot.turn(90, direction);
+                robot.drive(80 + addedDistance, 0.5, directionDrive);
+                robot.turn(90, directionTurn);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(20);
                 break;
             case "RIGHT" :
-                robot.drive((int) DISTANCE_TO_RIGHT_BOX, POWER_LOW, direction);
-                robot.turn(90, direction);
+                robot.drive((int) DISTANCE_TO_RIGHT_BOX, POWER_LOW, directionDrive);
+                robot.turn(90, directionTurn);
                 robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(10);
                 break;
             case "CENTER" :
-                robot.drive((int) DISTANCE_TO_CENTER_BOX, POWER_LOW, direction);
-                robot.turn(90, direction);
+                robot.drive((int) DISTANCE_TO_CENTER_BOX, POWER_LOW, directionDrive);
+                robot.turn(90, directionTurn);
                 robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(10);
