@@ -13,7 +13,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class JewelAuto extends MasqLinearOpMode implements Constants {
     boolean red;
     public void runLinearOpMode() throws InterruptedException {
-        direction = Direction.BACKWARD;
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
                 if (controller1.aOnPress() && !red) {
