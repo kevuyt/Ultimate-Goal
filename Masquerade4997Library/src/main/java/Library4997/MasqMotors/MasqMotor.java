@@ -18,6 +18,7 @@ import Library4997.MasqWrappers.DashBoard;
 public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
+    private int direction = 1;
     private boolean closedLoop = true;
     private double prevPos= 0;
     private double previousTime = 0;
@@ -38,6 +39,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
+        if (direction == DcMotor.Direction.REVERSE) this.direction = 1;
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
@@ -173,7 +175,8 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             error = setRPM - currentRPM;
             intergral += error * tChange;
             derivitive = (error - previousError) / tChange;
-            motorPower = power - ((error * MasqExternal.KP.MOTOR) + (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR));
+            motorPower = (power) - (direction * ((error * MasqExternal.KP.MOTOR) +
+                    (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR)));
             previousError = error;
             return motorPower;
         }

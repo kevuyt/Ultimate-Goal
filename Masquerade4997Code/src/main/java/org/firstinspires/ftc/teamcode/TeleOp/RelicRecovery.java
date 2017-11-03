@@ -33,11 +33,11 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 controller1.update();
             }
-            if (controller2.bOnPress() && jewelArmIn) {
+            if (controller2.bOnPress() && jewelArmIn && !controller1.start()) {
                 jewelArmIn = false;
                 robot.jewelArm.setPosition(JEWEL_OUT);
                 controller2.update();
-            } else if (controller2.bOnPress() && !jewelArmIn) {
+            } else if (controller2.bOnPress() && !jewelArmIn &&!controller1.start()) {
                 jewelArmIn = true;
                 robot.jewelArm.setPosition(JEWEL_IN);
                 controller2.update();

@@ -59,24 +59,22 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         dash.update();
         switch (vuMark){
             case "LEFT" :
-                robot.drive(80 + addedDistance, 0.5, directionDrive);
+                robot.drive(80 + addedDistance, POWER_OPTIMAL, directionDrive);
                 robot.turn(90, directionTurn);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(20);
                 break;
             case "RIGHT" :
-                robot.drive((int) DISTANCE_TO_RIGHT_BOX, POWER_LOW, directionDrive);
+                robot.drive(120, POWER_LOW, directionDrive);
                 robot.turn(90, directionTurn);
-                robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
-                robot.drive(10);
+                robot.drive(20);
                 break;
             case "CENTER" :
-                robot.drive((int) DISTANCE_TO_CENTER_BOX, POWER_LOW, directionDrive);
+                robot.drive(100, POWER_LOW, directionDrive);
                 robot.turn(90, directionTurn);
-                robot.drive(10);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
-                robot.drive(10);
+                robot.drive(20);
                 break;
             default: break;
         }

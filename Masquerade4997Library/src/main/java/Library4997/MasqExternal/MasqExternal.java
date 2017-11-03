@@ -6,7 +6,6 @@ package Library4997.MasqExternal;
 
 public class MasqExternal {
 
-    public static final double MAX_RATE = 160;
     public static final double NEVERREST_40_RPM = 160;
     public static final double NEVERREST_40_TICKS_PER_ROTATION = 1120;
     public static final double wheelDiameter = 4;
@@ -31,11 +30,11 @@ public class MasqExternal {
         catch (InterruptedException e) {e.printStackTrace();}
     }
     public class KP {
-        public static final double TURN = +0.01;
+        public static final double TURN = +0.03;
         public static final double DRIVE_ENCODER = +0.05;
         public static final double DRIVE_ANGULAR = +0.002;
-        public static final double TELEOP = +0.02;
-        public static final double MOTOR = +0.0;
+        public static final double TELEOP = +0.002;
+        public static final double MOTOR = +0.002;
     }
     public class KI {
         public static final double TURN = +0.002;

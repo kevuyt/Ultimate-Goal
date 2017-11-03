@@ -344,8 +344,8 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor.update();
     }
 
-    public int getDelta (double inital, Direction direction) {
-        return (int) (inital- (imu.getHeading() * direction.value));
+    public int getDelta (double initial, Direction direction) {
+        return (int) (initial- (imu.getHeading() * direction.value));
     }
     public double getVoltage() {
         return voltageSensor.getVoltage();
