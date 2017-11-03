@@ -11,36 +11,21 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "Jewel Auto", group = "Autonomus")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
-    Direction direction;
     boolean red;
     public void runLinearOpMode() throws InterruptedException {
         direction = Direction.BACKWARD;
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-                if (controller1.aOnPress() && direction != Direction.BACKWARD && !red) {
+                if (controller1.aOnPress() && !red) {
                     dash.clear();
-                    dash.create("THIS WILL GO BACKWARD, AND IS RED");
+                    dash.create("THIS IS RED");
                     red = true;
-                    direction = Direction.BACKWARD;
                     controller1.update();
                 }
-                else if (controller1.aOnPress() && direction != Direction.BACKWARD && red) {
+                else if (controller1.aOnPress() && red) {
                     dash.clear();
-                    dash.create("THIS WILL GO BACKWARD, AND IS BLUE");
+                    dash.create("THIS IS BLUE");
                     red = false;
-                    direction = Direction.FORWARD;
-                    controller1.update();
-                } else if (controller1.aOnPress() && direction != Direction.FORWARD && !red) {
-                    dash.clear();
-                    dash.create("THIS WILL GO FOREWORD, AND IS RED");
-                    red = true;
-                    direction = Direction.FORWARD;
-                    controller1.update();
-                } else if (controller1.aOnPress() && direction != Direction.FORWARD && red) {
-                    dash.clear();
-                    dash.create("THIS WILL GO FOREWORD, AND IS BLUE");
-                    red = false;
-                    direction = Direction.FORWARD;
                     controller1.update();
                 }
                 controller1.update();
