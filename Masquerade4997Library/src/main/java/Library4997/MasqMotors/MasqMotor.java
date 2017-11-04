@@ -23,6 +23,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double prevPos= 0;
     private double previousTime = 0;
     private double destination = 0;
+    private double currentPower;
     private double currentMax, currentMin;
     private double currentZero;
     private double intergral = 0;
@@ -110,6 +111,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
             else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
         }
+        currentPower = motorPower;
         motor.setPower(motorPower);
     }
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
@@ -144,9 +146,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         currentPosition = motor.getCurrentPosition() - zeroEncoderPosition;
         return currentPosition;
     }
-    public double getPower() {
-        return motor.getPower();
-    }
+    public double getPower() {return currentPower;}
     public double getRate () {
         double deltaPosition = getCurrentPosition() - prevPos;
         double tChange = System.nanoTime() - previousTime;

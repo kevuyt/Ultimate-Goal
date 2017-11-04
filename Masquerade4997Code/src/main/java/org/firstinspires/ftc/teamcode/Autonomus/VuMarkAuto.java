@@ -55,7 +55,7 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         waitForStart();
         int addedDistance = runJewel();
         robot.vuforia.activateVuMark();
-        robot.stop(robot.vuforia, POWER_LOW, directionDrive);
+        robot.stop(robot.vuforia, POWER_OPTIMAL, directionDrive);
         String vuMark = robot.vuforia.getVuMark();
         dash.create(vuMark);
         dash.update();
@@ -88,19 +88,19 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         MasqExternal.sleep(5000);
         if (!red) {
             if (robot.jewelColor.isRed()) {
-                robot.drive(-30);
-                distance = -30;
+                robot.drive(-20);
+                distance = -20;
             } else {
-                robot.drive(30);
-                distance = 30;
+                robot.drive(20);
+                distance = 20;
             }
         } else {
             if (robot.jewelColor.isBlue()) {
-                robot.drive(-30);
-                distance = -30;
+                robot.drive(-20);
+                distance = -20;
             } else {
-                robot.drive(30);
-                distance = 30;
+                robot.drive(20);
+                distance = 32;
             }
         }
         robot.jewelArm.setPosition(JEWEL_IN);
