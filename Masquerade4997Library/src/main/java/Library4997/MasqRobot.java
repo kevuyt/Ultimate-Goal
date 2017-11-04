@@ -178,8 +178,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double dervitivekd = dervitive * kd;
             newPower = (errorkp + integralki + dervitivekd);
             newPower *= color;
-            if (newPower >= 1) {newPower /= newPower;}
-            else if (newPower <= 1) {newPower /= -newPower;}
+            if (newPower >= 1) {newPower /= Math.abs(newPower);}
             driveTrain.setPower(newPower, -newPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
