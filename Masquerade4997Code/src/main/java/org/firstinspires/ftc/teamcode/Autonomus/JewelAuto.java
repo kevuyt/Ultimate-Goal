@@ -39,11 +39,14 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
             if (robot.jewelColor.isRed()) {
                 robot.drive(-30);
                 robot.jewelArm.setPosition(JEWEL_IN);//V2
-                robot.turn(40, Direction.RIGHT); //V2
+                robot.turn(90, Direction.LEFT); //V2
+                robot.turn(60, Direction.LEFT);
                 robot.drive(90);
             } else {
                 robot.turn(40, Direction.RIGHT);
                 robot.jewelArm.setPosition(JEWEL_IN);
+                robot.turn(90, Direction.LEFT); //V2
+                robot.turn(60, Direction.LEFT);
                 robot.drive(90);
             }
         } else {
