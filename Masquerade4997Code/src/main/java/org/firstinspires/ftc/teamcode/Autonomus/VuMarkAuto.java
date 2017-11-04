@@ -11,14 +11,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "VuMarkAuto", group = "Autonomus")
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
-    Direction directionTurn, directionDrive;
+    Direction directionTurnOne, directionTurnTwo, directionDrive;
     int distance = 10;
     boolean red;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuMark(hardwareMap);
         directionDrive = Direction.BACKWARD;
-        directionTurn = Direction.RIGHT;
+        directionTurnOne = Direction.RIGHT;
         robot.initalizeServos();
         while (!opModeIsActive()) {
             if (controller1.aOnPress() && directionDrive != Direction.BACKWARD && !red) {
@@ -26,6 +26,8 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
                 dash.create("THIS WILL GO BACKWARD, AND IS RED");
                 red = true;
                 directionDrive = Direction.BACKWARD;
+                directionTurnOne = Direction.RIGHT;
+                directionTurnTwo = Direction.RIGHT;
                 controller1.update();
             }
             else if (controller1.aOnPress() && directionDrive != Direction.BACKWARD && red) {
@@ -60,20 +62,20 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         switch (vuMark){
             case "LEFT" :
                 robot.drive(80 + addedDistance, POWER_OPTIMAL, directionDrive);
-                robot.turn(90, directionTurn);
+                robot.turn(90, directionTurnOne);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(20);
                 break;
             case "RIGHT" :
-                robot.turn(20, Direction.LEFT);
-                robot.drive(120, POWER_LOW, directionDrive);
-                robot.turn(110, Direction.RIGHT);
+                robot.turn(30, directionTurnTwo);
+                robot.drive(100, POWER_LOW, directionDrive);
+                robot.turn(75, directionTurnOne);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
-                robot.drive(20);
+                robot.drive(40);
                 break;
             case "CENTER" :
                 robot.drive(100, POWER_LOW, directionDrive);
-                robot.turn(90, directionTurn);
+                robot.turn(90, directionTurnOne);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(20);
                 break;
