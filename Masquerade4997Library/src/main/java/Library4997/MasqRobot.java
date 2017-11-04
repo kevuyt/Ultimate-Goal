@@ -155,6 +155,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
+        driveTrain.setClosedLoop(false);
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
         double currentError = 1;

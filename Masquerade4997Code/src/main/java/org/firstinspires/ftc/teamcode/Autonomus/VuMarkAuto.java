@@ -12,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "VuMarkAuto", group = "Autonomus")
 public class VuMarkAuto extends MasqLinearOpMode implements Constants {
     Direction directionTurn, directionDrive;
+    int distance = 10;
     boolean red;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
@@ -47,11 +48,10 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
                 controller1.update();
             }
             controller1.update();
-            //dash.create(INIT_MESSAGE);
             dash.update();
         }
         waitForStart();
-        int addedDistance = 0;
+        int addedDistance = runJewel();
         robot.vuforia.activateVuMark();
         robot.waitForVuMark();
         String vuMark = robot.vuforia.getVuMark();
@@ -65,8 +65,9 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
                 robot.drive(20);
                 break;
             case "RIGHT" :
+                robot.turn(20, Direction.LEFT);
                 robot.drive(120, POWER_LOW, directionDrive);
-                robot.turn(90, directionTurn);
+                robot.turn(110, Direction.RIGHT);
                 robot.glyphSystem.setPosition(GLYPH_OPENED);
                 robot.drive(20);
                 break;
@@ -85,20 +86,20 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         MasqExternal.sleep(100);
         if (red) {
             if (robot.jewelColor.isRed()) {
-                robot.drive(-30);
-                addedDistance = -30;
+                robot.drive(-distance);
+                addedDistance = -distance;
             } else {
-                robot.drive(30);
-                addedDistance = 30;
+                robot.drive(distance);
+                addedDistance = distance;
             }
         } else {
             if (robot.jewelColor.isBlue()) {
-                robot.drive(-30);
-                addedDistance = -30;
+                robot.drive(-distance);
+                addedDistance = -distance;
             }
             else {
-                robot.drive(30);
-                addedDistance = 30;
+                robot.drive(distance);
+                addedDistance = distance;
             }
         }
         robot.jewelArm.setPosition(JEWEL_IN);
