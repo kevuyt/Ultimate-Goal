@@ -9,15 +9,16 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 9/7/17.
  */
 @Autonomous(name = "TEST: VUFORIA", group = "Auto")
-@Disabled
 public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.vuforia.initVuMark(hardwareMap);
+        robot.vuforia.initVuforia(hardwareMap);
+        dash.create(">>> Press Play");
+        dash.update();
         waitForStart();
         robot.vuforia.activateVuMark();
-        while (opModeIsActive()){
+        while (opModeIsActive()) {
             dash.create(robot.vuforia.getVuMark());
             dash.update();
         }
