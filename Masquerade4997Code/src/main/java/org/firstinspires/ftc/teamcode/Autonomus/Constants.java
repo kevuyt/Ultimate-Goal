@@ -5,7 +5,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
  */
 
 public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constants {
-    double POWER_LOW = 0.2,
+    double POWER_LOW = 0.3,
            POWER_OPTIMAL = 0.5,
            POWER_HIGH = 0.7;
     double SLEEPTIME_HIGH = 1000,

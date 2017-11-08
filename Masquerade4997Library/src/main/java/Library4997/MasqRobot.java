@@ -19,6 +19,7 @@ import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforia;
+import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
@@ -71,7 +72,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
 
     private MasqClock timeoutClock = new MasqClock();
-    public MasqVuforia vuforia = new MasqVuforia();
+    public MasqVuforiaBeta vuforia = new MasqVuforiaBeta();
     public double angleLeftCover = 0;
     private double color = 1;
 
@@ -101,7 +102,7 @@ public class MasqRobot implements PID_CONSTANTS {
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = DIRECTION.value * speed * inchesRemaining * -MasqExternal.KP.DRIVE_ENCODER;
+            power = DIRECTION.value * speed * inchesRemaining * MasqExternal.KP.DRIVE_ENCODER;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
@@ -172,7 +173,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double imuVAL = imu.getHeading();
             currentError = imu.adjustAngle(targetAngle - imuVAL);
             integral += currentError * MasqExternal.ID.TURN;
-            double errorkp = currentError * kp;
+            double errorkp = currentError * -kp;
             double integralki = integral * ki * tChange;
             double dervitive = (currentError - prevError) / tChange;
             double dervitivekd = dervitive * kd;
@@ -277,7 +278,6 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create("ERROR: ",angularError);
         } while (opModeIsActive() && sensor.stop());
         driveTrain.stopDriving();
-        driveTrain.stopDriving();
     }
     public void stop (MasqSensor sensor, double power){
         stop(sensor, power, Direction.BACKWARD);
@@ -295,6 +295,8 @@ public class MasqRobot implements PID_CONSTANTS {
         double rightError = right + rightRate;
         left =  left - ((leftError * MasqExternal.KP.TELEOP));
         right =  right - ((rightError * MasqExternal.KP.TELEOP));
+        left *= -1;
+        right *= -1;
         if (c.rightBumper()) {
             left /= 2;
             right /=2;
@@ -375,7 +377,12 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
-    public void waitForVuMark() {while (vuforia.getVuMark() == "UNKNOWN"){}}
+    public void waitForVuMark() {
+        while (vuforia.getVuMark().toLowerCase().contains("u")){
+            dash.create(vuforia.getVuMark());
+            dash.update();
+        }
+    }
 
     public void sleep(int time) {
         try {

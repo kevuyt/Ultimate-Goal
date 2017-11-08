@@ -16,7 +16,7 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
     boolean red;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.vuforia.initVuMark(hardwareMap);
+        robot.vuforia.initVuforia(hardwareMap);
         directionDrive = Direction.BACKWARD;
         directionTurnOne = Direction.RIGHT;
         robot.initalizeServos();
@@ -55,55 +55,56 @@ public class VuMarkAuto extends MasqLinearOpMode implements Constants {
         waitForStart();
         int addedDistance = runJewel();
         robot.vuforia.activateVuMark();
-        robot.stop(robot.vuforia, POWER_OPTIMAL, directionDrive);
         String vuMark = robot.vuforia.getVuMark();
         dash.create(vuMark);
         dash.update();
-        switch (vuMark){
-            case "LEFT" :
-                robot.drive(80 + addedDistance, POWER_OPTIMAL, directionDrive);
-                robot.turn(90, directionTurnOne);
-                robot.glyphSystem.setPosition(GLYPH_OPENED);
-                robot.drive(20);
-                break;
-            case "RIGHT" :
-                robot.turn(30, directionTurnTwo);
-                robot.drive(100, POWER_LOW, directionDrive);
-                robot.turn(75, directionTurnOne);
-                robot.glyphSystem.setPosition(GLYPH_OPENED);
-                robot.drive(40);
-                break;
-            case "CENTER" :
-                robot.drive(100, POWER_LOW, directionDrive);
-                robot.turn(90, directionTurnOne);
-                robot.glyphSystem.setPosition(GLYPH_OPENED);
-                robot.drive(20);
-                break;
-            default: break;
-        }
+//        //switch (vuMark){
+//            case "LEFT" :
+//                robot.drive(80 + addedDistance, POWER_OPTIMAL, directionDrive);
+//                robot.turn(90, directionTurnOne);
+//                robot.glyphSystem.setPosition(GLYPH_OPENED);
+//                robot.drive(20);
+//                break;
+//            case "RIGHT" :
+//                robot.turn(30, directionTurnTwo);
+//                robot.drive(100, POWER_LOW, directionDrive);
+//                robot.turn(75, directionTurnOne);
+//                robot.glyphSystem.setPosition(GLYPH_OPENED);
+//                robot.drive(40);
+//                break;
+//            case "CENTER" :
+//                robot.drive(100, POWER_LOW, directionDrive);
+//                robot.turn(90, directionTurnOne);
+//                robot.glyphSystem.setPosition(GLYPH_OPENED);
+//                robot.drive(20);
+//                break;
+//            default: break;
+//        }
     }
     public int runJewel () {
         int addedDistance = 0;
         robot.jewelArm.setPosition(JEWEL_OUT);
-        MasqExternal.sleep(5000);
+        MasqExternal.sleep(2000);
+        boolean wentBackWord = false;
         if (!red) {
             if (robot.jewelColor.isRed()) {
                 robot.drive(-20);
                 distance = -20;
+                wentBackWord = true;
             } else {
-                robot.drive(20);
-                distance = 20;
+                robot.stop(robot.vuforia, POWER_LOW, directionDrive);
             }
         } else {
             if (robot.jewelColor.isBlue()) {
                 robot.drive(-20);
                 distance = -20;
+                wentBackWord = true;
             } else {
-                robot.drive(20);
-                distance = 32;
+                robot.stop(robot.vuforia, POWER_LOW, directionDrive);
             }
         }
         robot.jewelArm.setPosition(JEWEL_IN);
+        if (wentBackWord) robot.stop(robot.vuforia, POWER_LOW, directionDrive);
         return addedDistance;
     }
     @Override

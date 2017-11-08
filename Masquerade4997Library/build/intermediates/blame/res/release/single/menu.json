@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/menu/menu_server.xml",
+        "source": "/Users/Archish/.android/build-cache/a81f0f4a5dec3cc8533cd72499349fa11797b34b/output/res/menu/menu_server.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/menu/ftc_robot_controller.xml",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/menu/ftc_robot_controller.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/menu/main_menu.xml",
+        "source": "/Users/Archish/.android/build-cache/448af4dcc15b00c5f4fe58889eca5f7133094d65/output/res/menu/main_menu.xml"
+    }
+]
