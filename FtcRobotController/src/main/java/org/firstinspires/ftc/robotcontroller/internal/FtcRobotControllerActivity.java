@@ -38,10 +38,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiManager;
@@ -54,12 +52,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.blocks.ftcrobotcontroller.BlocksActivity;
 import com.google.blocks.ftcrobotcontroller.ProgrammingModeActivity;
@@ -114,14 +109,12 @@ import org.firstinspires.ftc.robotcore.internal.webserver.RobotControllerWebInfo
 import org.firstinspires.ftc.robotcore.internal.webserver.WebServer;
 import org.firstinspires.inspection.RcInspectionActivity;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @SuppressWarnings("WeakerAccess")
-public class FtcRobotControllerActivity extends Activity {
+public class FtcRobotControllerActivity extends Activity
+  {
   public static final String TAG = "RCActivity";
   public String getTag() { return TAG; }
 
@@ -141,14 +134,12 @@ public class FtcRobotControllerActivity extends Activity {
   protected StartResult prefRemoterStartResult = new StartResult();
   protected PreferencesHelper preferencesHelper;
   protected final SharedPreferencesListener sharedPreferencesListener = new SharedPreferencesListener();
+
   protected ImageButton buttonMenu;
   protected TextView textDeviceName;
   protected TextView textNetworkConnectionStatus;
   protected TextView textRobotStatus;
   protected TextView[] textGamepad = new TextView[NUM_GAMEPADS];
-  private EditText delayText;
-  private Button setDelay;
-  private static double delay;
   protected TextView textOpMode;
   protected TextView textErrorMessage;
   protected ImmersiveMode immersion;
@@ -225,6 +216,7 @@ public class FtcRobotControllerActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    RobotLog.onApplicationStart();  // robustify against onCreate() following onDestroy() but using the same app instance, which apparently does happen
     RobotLog.vv(TAG, "onCreate()");
     ThemedActivity.appAppThemeToActivity(getTag(), this); // do this way instead of inherit to help AppInventor
 
@@ -289,8 +281,6 @@ public class FtcRobotControllerActivity extends Activity {
     textErrorMessage = (TextView) findViewById(R.id.textErrorMessage);
     textGamepad[0] = (TextView) findViewById(R.id.textGamepad1);
     textGamepad[1] = (TextView) findViewById(R.id.textGamepad2);
-    delayText = (EditText) findViewById(R.id.delayText);
-    textErrorMessage.setTextColor(Color.RED);
     immersion = new ImmersiveMode(getWindow().getDecorView());
     dimmer = new Dimmer(this);
     dimmer.longBright();
@@ -315,16 +305,6 @@ public class FtcRobotControllerActivity extends Activity {
     ServiceController.startService(FtcRobotControllerWatchdogService.class);
     bindToService();
     logPackageVersions();
-    delayText.setText("0");
-    setDelay = (Button) findViewById(R.id.setDelay);
-    setDelay.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        delay = Double.parseDouble(String.valueOf(delayText.getText()));
-        Toast.makeText(getApplicationContext(), "Your delay is: " + delayText.getText() + "s",
-                Toast.LENGTH_LONG).show();
-      }
-    });
   }
 
   protected UpdateUI createUpdateUI() {
@@ -622,7 +602,6 @@ public class FtcRobotControllerActivity extends Activity {
   }
 
   protected void hittingMenuButtonBrightensScreen() {
-
     ActionBar actionBar = getActionBar();
     if (actionBar != null) {
       actionBar.addOnMenuVisibilityListener(new ActionBar.OnMenuVisibilityListener() {
@@ -642,14 +621,5 @@ public class FtcRobotControllerActivity extends Activity {
         ThemedActivity.restartForAppThemeChange(getTag(), getString(R.string.appThemeChangeRestartNotifyRC));
       }
     }
-  }
-  public static double getDelay(){
-    return delay;
-  }
-  public FileOutputStream getFileOutput(String s) throws FileNotFoundException {
-    return openFileOutput(s, 1);
-  }
-  public FileInputStream getFileInput(String s) throws FileNotFoundException {
-    return openFileInput(s);
   }
 }

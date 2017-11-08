@@ -95,6 +95,7 @@ public class SensorREVColorDistance extends LinearOpMode {
         // to amplify/attentuate the measured values.
         final double SCALE_FACTOR = 255;
 
+        // get a reference to the RelativeLayout so we can change the background
         // color of the Robot Controller app to match the hue detected by the RGB sensor.
         int relativeLayoutId = hardwareMap.appContext.getResources().getIdentifier("RelativeLayout", "id", hardwareMap.appContext.getPackageName());
         final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(relativeLayoutId);
