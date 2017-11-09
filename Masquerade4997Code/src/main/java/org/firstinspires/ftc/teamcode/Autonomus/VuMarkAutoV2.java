@@ -7,35 +7,37 @@ import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
- * Created by Archish on 10/5/17.
+ * Created by Archish on 11/9/17.
  */
-@Autonomous(name = "Jewel Auto", group = "Autonomus")
-public class JewelAuto extends MasqLinearOpMode implements Constants {
-    boolean red;
-    public void runLinearOpMode() throws InterruptedException {
+@Autonomous(name = "VuMarkAutoV2", group = "Autonomus")
+public class VuMarkAutoV2 extends MasqLinearOpMode implements Constants {
+    private boolean blue;
+    public void runLinearOpMode()throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        while (!opModeIsActive()) {
-            if (controller1.aOnPress() && !red) {
-                 dash.clear();
-                 dash.create("THIS IS RED");
-                 red = true;
-                 controller1.update();
+        while(!opModeIsActive()) {
+            dash.create(robot.vuforia.getVuMark());
+            if (controller1.aOnPress() && !blue) {
+                dash.clear();
+                dash.create("THIS IS RED");
+                blue = true;
+                controller1.update();
             }
-            else if (controller1.aOnPress() && red) {
-                 dash.clear();
-                 dash.create("THIS IS BLUE");
-                 red = false;
-                 controller1.update();
+            else if (controller1.aOnPress() && blue) {
+                dash.clear();
+                dash.create("THIS IS BLUE");
+                blue = false;
+                controller1.update();
             }
             controller1.update();
-                //dash.create(INIT_MESSAGE);
             dash.update();
         }
         waitForStart();
-        robot.jewelArm.setPosition(JEWEL_OUT);
-        MasqExternal.sleep(2000);
-        robot.glyphSystem.setPosition(GLYPH_CLOSED);
-        if (!red) {
+        robot.sleep(robot.getDelay());
+        runJewel();
+
+    }
+    public void runJewel () {
+        if (blue) {
             if (robot.jewelColor.isRed()) {
                 robot.drive(-30);
                 robot.jewelArm.setPosition(JEWEL_IN);//V2
@@ -59,8 +61,14 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
                 robot.drive(90);
             }
         }
-        robot.glyphSystem.setPosition(GLYPH_OPENED);
-        robot.jewelArm.setPosition(JEWEL_IN);
-        MasqExternal.sleep(10000);
     }
-}
+    public void runVuMark(String vuMark) {
+        if (isCenter(vuMark)){
+
+        }
+
+    }
+    public final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}
+    public final boolean isLeft(String vuMark) {return vuMark.toLowerCase().contains("l");}
+    public final boolean isRight(String vuMark) {return vuMark.toLowerCase().contains("g");}
+ }

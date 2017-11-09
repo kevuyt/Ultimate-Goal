@@ -29,6 +29,12 @@ public class MasqExternal {
         try {Thread.sleep((long) sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
+    public class VuMark {
+        public final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}
+        public final boolean isLeft(String vuMark) {return vuMark.toLowerCase().contains("l");}
+        public final boolean isRight(String vuMark) {return vuMark.toLowerCase().contains("g");}
+        public final boolean isUnknown(String vuMark) {return vuMark.toLowerCase().contains("u");}
+    }
     public class KP {
         public static final double TURN = +0.01;
         public static final double DRIVE_ENCODER = +0.05;
