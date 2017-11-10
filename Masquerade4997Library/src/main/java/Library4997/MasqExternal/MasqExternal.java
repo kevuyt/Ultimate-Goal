@@ -1,5 +1,8 @@
 package Library4997.MasqExternal;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 /**
  * Created by Archish on 10/16/17.
  */
@@ -33,7 +36,7 @@ public class MasqExternal {
         public static final double TURN = +0.02;
         public static final double DRIVE_ENCODER = +0.05;
         public static final double DRIVE_ANGULAR = +0.002;
-        public static final double TELEOP = +0.002;
+        public static final double TELEOP = +0.02;
         public static final double MOTOR = +0.002;
     }
     public class KI {

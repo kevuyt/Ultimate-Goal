@@ -286,6 +286,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void stop (MasqSensor sensor){stop(sensor, 0.5);}
 
     public void NFS(MasqController c) {
+        //driveTrain.setClosedLoop(false);
         float move = c.leftStickY();
         float turn = c.rightStickX();
         double left = move - turn;

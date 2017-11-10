@@ -30,21 +30,21 @@ public class RedVuMark extends MasqLinearOpMode implements Constants {
         robot.jewelArm.setPosition(JEWEL_OUT);
         MasqExternal.sleep(2000);
         if (robot.jewelColor.isBlue()) {
-            robot.turn(30, Direction.RIGHT);
-            addedAngle = 30;
+            robot.turn(10, Direction.RIGHT);
+            addedAngle = 10;
         }
         else {
-            robot.turn(30, Direction.LEFT);
-            addedAngle = -30;
+            robot.turn(10, Direction.LEFT);
+            addedAngle = -10;
         }
         robot.jewelArm.setPosition(JEWEL_IN);
         return addedAngle;
     }
     public void runVuMark(String vuMark, int addedDistance) {
         if (MasqExternal.VuMark.isCenter(vuMark)){robot.turn(20 + addedDistance, Direction.LEFT);}
-        else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(30 + addedDistance, Direction.LEFT);}
+        else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(20 + addedDistance, Direction.LEFT);}
         else if (MasqExternal.VuMark.isRight(vuMark)){robot.turn(10 + addedDistance, Direction.LEFT);}
-        robot.drive(90, POWER_LOW);
+        robot.drive(80, POWER_LOW);
     }
 
  }
