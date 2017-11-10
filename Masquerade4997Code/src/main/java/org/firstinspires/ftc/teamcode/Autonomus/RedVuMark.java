@@ -31,12 +31,12 @@ public class RedVuMark extends MasqLinearOpMode implements Constants {
         robot.jewelArm.setPosition(JEWEL_OUT);
         MasqExternal.sleep(2000);
         if (robot.jewelColor.isBlue()) {
-            robot.turn(10, Direction.RIGHT);
-            addedAngle = 10;
+            robot.turn(20, Direction.RIGHT);
+            addedAngle = 20;
         }
         else {
-            robot.turn(10, Direction.LEFT);
-            addedAngle = -10;
+            robot.turn(20, Direction.LEFT);
+            addedAngle = -20;
         }
         robot.jewelArm.setPosition(JEWEL_IN);
         return addedAngle;

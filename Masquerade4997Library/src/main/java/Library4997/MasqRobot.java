@@ -18,7 +18,6 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
-import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
@@ -106,7 +105,7 @@ public class MasqRobot implements PID_CONSTANTS {
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
             angularError = imu.adjustAngle(targetAngle - imu.getHeading());
-            angularIntegral = angularIntegral + angularError * timeChange;
+            angularIntegral = (angularIntegral + angularError) * timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
             powerAdjustment = (MasqExternal.KP.DRIVE_ANGULAR * power + .01) * angularError + MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
@@ -155,7 +154,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
-        driveTrain.setClosedLoop(false);
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = 0.5;
         double currentError = 1;
@@ -370,7 +368,9 @@ public class MasqRobot implements PID_CONSTANTS {
     public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
     public void waitForVuMark() {
-        while (MasqExternal.VuMark.isUnKnown(vuforia.getVuMark())){
+        timeoutClock.reset();
+        while (MasqExternal.VuMark.isUnKnown(vuforia.getVuMark()) &&
+                !timeoutClock.elapsedTime(5, MasqClock.Resolution.SECONDS)){
             dash.create(vuforia.getVuMark());
             dash.update();
         }
@@ -381,9 +381,9 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.setKp(MasqExternal.KD.MOTOR_TELEOP);
     }
     public void initializeAutonomus(){
-        driveTrain.setKp(MasqExternal.KP.MOTOR_AUTONOMUS);
-        driveTrain.setKi(MasqExternal.KI.MOTOR_AUTONOMUS);
-        driveTrain.setKp(MasqExternal.KD.MOTOR_AUTONOMUS);
+        driveTrain.setKp(MasqExternal.KP.MOTOR_AUTONOMOUS);
+        driveTrain.setKi(MasqExternal.KI.MOTOR_AUTONOMOUS);
+        driveTrain.setKp(MasqExternal.KD.MOTOR_AUTONOMOUS);
     }
     public void sleep(int time) {
         try {
