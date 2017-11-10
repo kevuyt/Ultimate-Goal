@@ -14,6 +14,7 @@ public class RedVuMark extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuforia(hardwareMap);
+        robot.initializeAutonomus();
         dash.create(INIT_MESSAGE);
         dash.update();
         waitForStart();

@@ -22,7 +22,7 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.initTeleop();
+        robot.initializeTeleop();
         while (opModeIsActive()){
             robot.NFS(controller1);
             if (controller1.aOnPress() && glyphOpenState) {

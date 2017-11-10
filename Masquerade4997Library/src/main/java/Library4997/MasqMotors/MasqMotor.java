@@ -19,7 +19,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
     private int direction = 1;
-    private double kp = 0, ki = 0, kd = 0;
+    private double kp = 0.004, ki = 0, kd = 0;
     private boolean closedLoop = true;
     private double prevPos= 0;
     private double previousTime = 0;

@@ -375,12 +375,12 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.update();
         }
     }
-    public void initTeleop(){
+    public void initializeTeleop(){
         driveTrain.setKp(MasqExternal.KP.MOTOR_TELEOP);
         driveTrain.setKi(MasqExternal.KI.MOTOR_TELEOP);
         driveTrain.setKp(MasqExternal.KD.MOTOR_TELEOP);
     }
-    public void initAutonomus(){
+    public void initializeAutonomus(){
         driveTrain.setKp(MasqExternal.KP.MOTOR_AUTONOMUS);
         driveTrain.setKi(MasqExternal.KI.MOTOR_AUTONOMUS);
         driveTrain.setKp(MasqExternal.KD.MOTOR_AUTONOMUS);
