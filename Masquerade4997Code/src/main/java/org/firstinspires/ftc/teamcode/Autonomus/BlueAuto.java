@@ -32,19 +32,20 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         MasqExternal.sleep(2000);
         if (robot.jewelColor.isBlue()) {
             robot.turn(20, Direction.LEFT);
-            addedAngle = -20;
+            addedAngle = 20;
         }
         else {
             robot.turn(20, Direction.RIGHT);
-            addedAngle = 20;
+            addedAngle = -20;
         }
         robot.jewelArm.setPosition(JEWEL_IN);
         return addedAngle;
     }
     public void runVuMark(String vuMark, int addedDistance) {
-        if (MasqExternal.VuMark.isCenter(vuMark)){robot.turn(30 + addedDistance, Direction.RIGHT);}
-        else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(10 + addedDistance, Direction.RIGHT);}
-        else if (MasqExternal.VuMark.isRight(vuMark)){robot.turn(45 + addedDistance, Direction.RIGHT);}
+        robot.turn(90, Direction.LEFT);
+        if (MasqExternal.VuMark.isCenter(vuMark)){robot.turn(90 - (30 + addedDistance), Direction.RIGHT);}
+        else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(90 - (10 + addedDistance), Direction.RIGHT);}
+        else if (MasqExternal.VuMark.isRight(vuMark)){robot.turn(90 - (45 + addedDistance), Direction.RIGHT);}
         robot.drive(80, POWER_LOW, Direction.BACKWARD);
     }
 }
