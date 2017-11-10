@@ -184,29 +184,12 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         else return power;
     }
 
-    public double getKp() {
-        return kp;
-    }
-
-    public void setKp(double kp) {
-        this.kp = kp;
-    }
-
-    public double getKi() {
-        return ki;
-    }
-
-    public void setKi(double ki) {
-        this.ki = ki;
-    }
-
-    public double getKd() {
-        return kd;
-    }
-
-    public void setKd(double kd) {
-        this.kd = kd;
-    }
+    public double getKp() {return kp;}
+    public void setKp(double kp) {this.kp = kp;}
+    public double getKi() {return ki;}
+    public void setKi(double ki) {this.ki = ki;}
+    public double getKd() {return kd;}
+    public void setKd(double kd) {this.kd = kd;}
     public String[] getDash() {
         return new String[] {"Current Position" + Double.toString(getCurrentPosition())};
     }
