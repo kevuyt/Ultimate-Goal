@@ -29,14 +29,8 @@ public class MasqExternal {
         try {Thread.sleep((long) sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
-    public class VuMark {
-        public final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}
-        public final boolean isLeft(String vuMark) {return vuMark.toLowerCase().contains("l");}
-        public final boolean isRight(String vuMark) {return vuMark.toLowerCase().contains("g");}
-        public final boolean isUnknown(String vuMark) {return vuMark.toLowerCase().contains("u");}
-    }
     public class KP {
-        public static final double TURN = +0.01;
+        public static final double TURN = +0.02;
         public static final double DRIVE_ENCODER = +0.05;
         public static final double DRIVE_ANGULAR = +0.002;
         public static final double TELEOP = +0.002;
@@ -59,5 +53,11 @@ public class MasqExternal {
         public static final double DRIVE = +0.0;
         public static final double TELEOP = +0.0;
         public static final double MOTOR = +0.0;
+    }
+    public static class VuMark {
+        public static final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}
+        public static final boolean isLeft(String vuMark) {return vuMark.toLowerCase().contains("l");}
+        public static final boolean isRight(String vuMark) {return vuMark.toLowerCase().contains("g");}
+        public static final boolean isUnKnown (String vuMark) {return vuMark.toLowerCase().contains("u");}
     }
 }

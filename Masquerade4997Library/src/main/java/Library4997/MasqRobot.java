@@ -49,6 +49,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArm, relicGripper;
     public MasqServoSystem glyphSystem;
+    public MasqVuforiaBeta vuforia;
     //TODO GET MasqColorSensorV2 up.
     //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
@@ -56,6 +57,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
+        vuforia = new MasqVuforiaBeta();
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
         driveTrain.setClosedLoop(true);
@@ -72,7 +74,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
 
     private MasqClock timeoutClock = new MasqClock();
-    public MasqVuforiaBeta vuforia = new MasqVuforiaBeta();
     public double angleLeftCover = 0;
     private double color = 1;
 
@@ -378,7 +379,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
     public void waitForVuMark() {
-        while (vuforia.getVuMark().toLowerCase().contains("u")){
+        while (MasqExternal.VuMark.isUnKnown(vuforia.getVuMark())){
             dash.create(vuforia.getVuMark());
             dash.update();
         }

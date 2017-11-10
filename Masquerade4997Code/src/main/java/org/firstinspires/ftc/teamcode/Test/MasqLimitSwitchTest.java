@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -8,6 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 10/29/17.
  */
 @Autonomous(name = "Color Sensor Test", group = "Autonomus")
+@Disabled
 public class MasqLimitSwitchTest extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {

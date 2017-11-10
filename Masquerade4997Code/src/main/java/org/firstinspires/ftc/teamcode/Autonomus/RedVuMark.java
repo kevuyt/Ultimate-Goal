@@ -11,48 +11,40 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "RED VUMARK", group = "Autonomus")
 public class RedVuMark extends MasqLinearOpMode implements Constants {
-    private boolean blue;
-    public void runLinearOpMode()throws InterruptedException {
+    public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuforia(hardwareMap);
-        while(!opModeIsActive()) {
-            dash.create(INIT_MESSAGE);
-            dash.update();
-        }
+        dash.create(INIT_MESSAGE);
+        dash.update();
         waitForStart();
-        robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
         robot.waitForVuMark();
         String vuMark = robot.vuforia.getVuMark();
-        runVuMark(vuMark, runJewel());
+        dash.create(vuMark);
+        dash.update();
+        int addedAngle = runJewel();
+        runVuMark(vuMark, addedAngle);
     }
     public int runJewel () {
-        int addedAngle = 0;
-        if (blue) {
-            if (robot.jewelColor.isRed()) {
-                robot.turn(30, Direction.RIGHT);
-            } else {
-                robot.turn(30, Direction.LEFT);
-            }
-        } else {
-            if (robot.jewelColor.isBlue()) {
-                robot.turn(30, Direction.RIGHT);
-                addedAngle = -30;
-            }
-            else {
-                robot.turn(30, Direction.LEFT);
-                addedAngle = 30;
-            }
+        int addedAngle;
+        robot.jewelArm.setPosition(JEWEL_OUT);
+        MasqExternal.sleep(2000);
+        if (robot.jewelColor.isBlue()) {
+            robot.turn(30, Direction.RIGHT);
+            addedAngle = 30;
         }
+        else {
+            robot.turn(30, Direction.LEFT);
+            addedAngle = -30;
+        }
+        robot.jewelArm.setPosition(JEWEL_IN);
         return addedAngle;
     }
     public void runVuMark(String vuMark, int addedDistance) {
-        if (isCenter(vuMark)){
-
-        }
-
+        if (MasqExternal.VuMark.isCenter(vuMark)){robot.turn(20 + addedDistance, Direction.LEFT);}
+        else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(30 + addedDistance, Direction.LEFT);}
+        else if (MasqExternal.VuMark.isRight(vuMark)){robot.turn(10 + addedDistance, Direction.LEFT);}
+        robot.drive(90, POWER_LOW);
     }
-    public final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}
-    public final boolean isLeft(String vuMark) {return vuMark.toLowerCase().contains("l");}
-    public final boolean isRight(String vuMark) {return vuMark.toLowerCase().contains("g");}
+
  }

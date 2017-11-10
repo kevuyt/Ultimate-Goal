@@ -1,11 +1,11 @@
 [
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/pushbotsens.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/pushbotsens.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/k9usbbot.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/k9usbbot.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/k9usbbot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/device_filter.xml",
@@ -13,23 +13,23 @@
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/k9legacybot.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/k9legacybot.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/k9legacybot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/maxmodules.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/maxmodules.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/maxmodules.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/rev_scoot.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/rev_scoot.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/rev_scoot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/squarebot.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/squarebot.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/squarebot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/pushbot.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/pushbot.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/pushbot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/app_settings.xml",
@@ -37,6 +37,6 @@
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/xml/advanced_rc_settings.xml",
-        "source": "/Users/Archish/.android/build-cache/bcfab86033ef68a9e217248a61660a1e3acb11f6/output/res/xml/advanced_rc_settings.xml"
+        "source": "/Users/Archish/.android/build-cache/ee229a244881534e6ed2eadca0e6261aa6fde2b8/output/res/xml/advanced_rc_settings.xml"
     }
 ]
