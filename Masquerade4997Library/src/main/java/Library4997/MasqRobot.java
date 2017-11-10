@@ -72,8 +72,6 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelColor = new MasqREVColorSensor("jewelColor", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
-        rightBottom.setMax(0.4);
-        rightBottom.setMin(0.1);
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -291,11 +289,11 @@ public class MasqRobot implements PID_CONSTANTS {
         float turn = c.rightStickX();
         double left = move - turn;
         double right = move + turn;
-        left *= -1;
-        right *= -1;
-        if (c.rightBumper()) {
+        left *= -.6;
+        right *= -.6;
+        if (c.leftBumper()) {
             left /= 2;
-            right /=2;
+            right /= 2;
         }
         if(left > 1.0) {
             left /= left;

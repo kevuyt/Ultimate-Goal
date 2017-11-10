@@ -16,7 +16,7 @@ public class MasqServo implements MasqHardware{
     private String nameServo;
     MasqClock clock = new MasqClock();
     private double targetPosition;
-    private double max, min;
+    private double max = 1, min = 0;
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
     public MasqServo(String name, HardwareMap hardwareMap) {
