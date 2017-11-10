@@ -36,22 +36,26 @@ public class MasqExternal {
         public static final double TURN = +0.02;
         public static final double DRIVE_ENCODER = +0.05;
         public static final double DRIVE_ANGULAR = +0.002;
-        public static final double MOTOR = +0.008;
+        public static final double MOTOR_TELEOP = +0.003;
+        public static final double MOTOR_AUTONOMUS = +0.006;
     }
     public class KI {
         public static final double TURN = +0.002;
         public static final double DRIVE = +0.0;
-        public static final double MOTOR = +0.000;
+        public static final double MOTOR_TELEOP = +0.000;
+        public static final double MOTOR_AUTONOMUS = +0.00;
     }
     public class KD {
         public static final double TURN = +0.0;
         public static final double DRIVE = +0.0;
-        public static final double MOTOR = +0.00;
+        public static final double MOTOR_TELEOP = +0.00;
+        public static final double MOTOR_AUTONOMUS = +0.00;
     }
     public class ID {
         public static final double TURN = +0.0;
         public static final double DRIVE = +0.0;
-        public static final double MOTOR = +0.0;
+        public static final double MOTOR_TELEOP = +0.0;
+        public static final double MOTOR_AUTONOMUS = +0.00;
     }
     public static class VuMark {
         public static final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}

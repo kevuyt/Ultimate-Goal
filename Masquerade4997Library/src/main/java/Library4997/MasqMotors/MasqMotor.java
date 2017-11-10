@@ -19,6 +19,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
     private int direction = 1;
+    private double kp = 0, ki = 0, kd = 0;
     private boolean closedLoop = true;
     private double prevPos= 0;
     private double previousTime = 0;
@@ -175,14 +176,37 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             error = setRPM - currentRPM;
             intergral += error * tChange;
             derivitive = (error - previousError) / tChange;
-            motorPower = (power) + (direction * ((error * MasqExternal.KP.MOTOR) +
-                    (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR)));
+            motorPower = (power) + (direction * ((error * kp) +
+                    (intergral * ki) + (derivitive * kd)));
             previousError = error;
             return motorPower;
         }
         else return power;
     }
 
+    public double getKp() {
+        return kp;
+    }
+
+    public void setKp(double kp) {
+        this.kp = kp;
+    }
+
+    public double getKi() {
+        return ki;
+    }
+
+    public void setKi(double ki) {
+        this.ki = ki;
+    }
+
+    public double getKd() {
+        return kd;
+    }
+
+    public void setKd(double kd) {
+        this.kd = kd;
+    }
     public String[] getDash() {
         return new String[] {"Current Position" + Double.toString(getCurrentPosition())};
     }

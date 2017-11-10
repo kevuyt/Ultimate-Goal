@@ -36,6 +36,18 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         leftDrive.setPower(power);
         rightDrive.setPower(power);
     }
+    public void setKp(double kp){
+        leftDrive.setKp(kp);
+        rightDrive.setKp(kp);
+    }
+    public void setKi(double ki){
+        leftDrive.setKi(ki);
+        rightDrive.setKi(ki);
+    }
+    public void setKd(double kd){
+        leftDrive.setKd(kd);
+        rightDrive.setKd(kd);
+    }
     public void setPowerLeft (double power) {
         leftDrive.setPower(power);
     }

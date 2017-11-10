@@ -60,9 +60,7 @@ public class MasqRobot implements PID_CONSTANTS {
         vuforia = new MasqVuforiaBeta();
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
-        driveTrain.setClosedLoop(true);
         relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
-        //driveTrain.runWithoutEncoders();
         liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
         glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
@@ -284,9 +282,7 @@ public class MasqRobot implements PID_CONSTANTS {
         stop(sensor, power, Direction.BACKWARD);
     }
     public void stop (MasqSensor sensor){stop(sensor, 0.5);}
-
     public void NFS(MasqController c) {
-        //driveTrain.setClosedLoop(false);
         float move = c.leftStickY();
         float turn = c.rightStickX();
         double left = move - turn;
@@ -379,7 +375,16 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.update();
         }
     }
-
+    public void initTeleop(){
+        driveTrain.setKp(MasqExternal.KP.MOTOR_TELEOP);
+        driveTrain.setKi(MasqExternal.KI.MOTOR_TELEOP);
+        driveTrain.setKp(MasqExternal.KD.MOTOR_TELEOP);
+    }
+    public void initAutonomus(){
+        driveTrain.setKp(MasqExternal.KP.MOTOR_AUTONOMUS);
+        driveTrain.setKi(MasqExternal.KI.MOTOR_AUTONOMUS);
+        driveTrain.setKp(MasqExternal.KD.MOTOR_AUTONOMUS);
+    }
     public void sleep(int time) {
         try {
             Thread.sleep((long) time);
@@ -407,7 +412,7 @@ public class MasqRobot implements PID_CONSTANTS {
         else {dScale = scaleArray[index];}
         return dScale;
     }
-    public void initalizeServos() {
+    public void initializeServos() {
         glyphSystem.setPosition(1);
         jewelArm.setPosition(0);
     }
