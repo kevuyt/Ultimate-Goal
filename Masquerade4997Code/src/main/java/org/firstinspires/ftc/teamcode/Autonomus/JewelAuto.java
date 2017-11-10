@@ -35,7 +35,7 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.jewelArm.setPosition(JEWEL_OUT);
         MasqExternal.sleep(2000);
-        robot.glyphSystem.setPosition(GLYPH_CLOSED);
+        robot.glyphSystemBottom.setPosition(GLYPH_CLOSED);
         if (!red) {
             if (robot.jewelColor.isRed()) {
                 robot.drive(-30);
@@ -61,7 +61,7 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
                 robot.drive(90);
             }
         }
-        robot.glyphSystem.setPosition(GLYPH_OPENED);
+        robot.glyphSystemBottom.setPosition(GLYPH_OPENED);
         robot.jewelArm.setPosition(JEWEL_IN);
         MasqExternal.sleep(10000);
     }

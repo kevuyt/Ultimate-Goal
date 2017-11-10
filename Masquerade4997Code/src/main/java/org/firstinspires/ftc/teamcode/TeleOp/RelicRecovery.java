@@ -14,7 +14,7 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        boolean glyphOpenState = true, jewelArmIn = true, clawClosed = true;
+        boolean glyphBottomOpenState = true, jewelArmIn = true, clawClosed = true, glyphTopOpenState = true;
         robot.lift.setPositionLimits(LIFT_MIN, LIFT_MAX);
         robot.initializeServos();
         while (!opModeIsActive()){
@@ -25,13 +25,24 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
         robot.initializeTeleop();
         while (opModeIsActive()){
             robot.NFS(controller1);
-            if (controller1.aOnPress() && glyphOpenState) {
-                glyphOpenState = false;
-                robot.glyphSystem.setPosition(GLYPH_CLOSED);
+            if (controller1.aOnPress() && glyphBottomOpenState) {
+                glyphBottomOpenState = false;
+                robot.glyphSystemBottom.setPosition(GLYPH_CLOSED);
                 controller1.update();
-            } if (controller1.aOnPress() && !glyphOpenState) {
-                glyphOpenState = true;
-                robot.glyphSystem.setPosition(GLYPH_OPENED);
+            }
+            if (controller1.aOnPress() && !glyphBottomOpenState) {
+                glyphBottomOpenState = true;
+                robot.glyphSystemBottom.setPosition(GLYPH_OPENED);
+                controller1.update();
+            }
+            if (controller1.bOnPress() && glyphTopOpenState) {
+                glyphTopOpenState = false;
+                robot.glyphSystemTop.setPosition(GLYPH_CLOSED);
+                controller1.update();
+            }
+            if (controller1.bOnPress() && !glyphTopOpenState) {
+                glyphTopOpenState = true;
+                robot.glyphSystemTop.setPosition(GLYPH_OPENED);
                 controller1.update();
             }
             if (controller2.bOnPress() && jewelArmIn && !controller1.start()) {
@@ -52,14 +63,9 @@ public class RelicRecovery extends MasqLinearOpMode implements Constants {
                 robot.relicGripper.setPosition(CLAW_CLOSED);
                 controller2.update();
             }
-            if (controller2.x()) {
-                currentAdjusterPosition += increment;
-                robot.relicAdjuster.setPosition(currentAdjusterPosition);
-            }
-            if (controller2.y()) {
-                currentAdjusterPosition -= increment;
-                robot.relicAdjuster.setPosition(currentAdjusterPosition);
-            }
+            if (controller2.x()) currentAdjusterPosition += increment;
+            if (controller2.y()) currentAdjusterPosition -= increment;
+            robot.relicAdjuster.setPosition(currentAdjusterPosition);
             if (controller1.rightTriggerPressed()) robot.lift.setPower(controller1.rightTrigger());
             else if (controller1.leftTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
             else robot.lift.setPower(0);

@@ -99,13 +99,13 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         return this;
     }
     public double getRate(){
-        double i = 1;
+        double i = 0;
         double rate = 0;
         for (MasqMotor masqMotor: motors){
-            rate += masqMotor.getRate() / i;
+            rate += masqMotor.getRate();
             i++;
         }
-        return rate;
+        return rate/i;
     }
     public void stopDriving() {
         setPower(0);

@@ -45,9 +45,10 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqLimitSwitch liftSwitch;
     public MasqREVColorSensor jewelColor;
     public MasqServo relicAdjuster;
+    private MasqServo rightBottom, leftBottom;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArm, relicGripper;
-    public MasqServoSystem glyphSystem;
+    public MasqServoSystem glyphSystemBottom, glyphSystemTop;
     public MasqVuforiaBeta vuforia;
     //TODO GET MasqColorSensorV2 up.
     //public MasqMRColorSensor jewelColor;
@@ -61,13 +62,18 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain = new MasqTankDrive(this.hardwareMap);
         relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
         liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
-        glyphSystem = new MasqServoSystem("letGlyph", Servo.Direction.FORWARD, "rightGlyph", Servo.Direction.REVERSE, this.hardwareMap);
+        rightBottom = new MasqServo("rightGlyphBottom", Servo.Direction.REVERSE, this.hardwareMap);
+        leftBottom = new MasqServo("leftGlyphBottom", Servo.Direction.FORWARD, this.hardwareMap);
+        glyphSystemTop = new MasqServoSystem("leftGlyphTop", Servo.Direction.FORWARD, "rightGlyphTop", Servo.Direction.REVERSE, this.hardwareMap);
+        glyphSystemBottom = new MasqServoSystem(leftBottom, rightBottom);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArm = new MasqServo("jewelArm", this.hardwareMap);
         jewelColor = new MasqREVColorSensor("jewelColor", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
+        rightBottom.setMax(0.4);
+        rightBottom.setMin(0.1);
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -413,7 +419,7 @@ public class MasqRobot implements PID_CONSTANTS {
         return dScale;
     }
     public void initializeServos() {
-        glyphSystem.setPosition(1);
+        glyphSystemBottom.setPosition(1);
         jewelArm.setPosition(0);
     }
 }

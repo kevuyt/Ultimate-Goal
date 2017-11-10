@@ -7,7 +7,7 @@ public interface Constants {
     int LIFT_MAX_ROTATIONS = 10;
     int TICKS_PER_ROTATION = 1120;
     int LIFT_MIN = 0,
-        LIFT_MAX = 10 * TICKS_PER_ROTATION;
+        LIFT_MAX = LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION;
     String INIT_MESSAGE = ">>> Press Play to Start.";
     double GLYPH_CLOSED = 1,
            GLYPH_OPENED = 0;

@@ -19,7 +19,7 @@ public class MasqServo implements MasqHardware{
     private double max, min;
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
-    public MasqServo(String name, HardwareMap hardwareMap){
+    public MasqServo(String name, HardwareMap hardwareMap) {
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
     }
@@ -30,6 +30,7 @@ public class MasqServo implements MasqHardware{
     }
     public void setPosition (double position) {
         targetPosition = position;
+        position = ((max - min) * position) + min;
         servo.setPosition(position);
     }
     public void setPositionV2 (double position) {
