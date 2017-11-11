@@ -14,7 +14,7 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
     boolean red;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.initializeAutonomus();
+        robot.initializeAutonomous();
         while (!opModeIsActive()) {
             if (controller1.aOnPress() && !red) {
                  dash.clear();

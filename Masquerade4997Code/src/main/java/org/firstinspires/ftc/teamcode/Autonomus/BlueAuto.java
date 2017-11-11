@@ -14,10 +14,11 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuforia(hardwareMap);
-        robot.initializeAutonomus();
+        robot.initializeAutonomous();
         dash.create(INIT_MESSAGE);
         dash.update();
         waitForStart();
+        robot.initializeServos();
         robot.vuforia.activateVuMark();
         robot.waitForVuMark();
         String vuMark = robot.vuforia.getVuMark();
@@ -25,6 +26,7 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         dash.update();
         runJewel();
         robot.driveTrain.setKp(0.01);
+        robot.driveTrain.setClosedLoop(false);
         runVuMark(vuMark);
     }
     public void runJewel () {
@@ -46,12 +48,14 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         if (MasqExternal.VuMark.isCenter(vuMark)){
             robot.drive(70, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
+            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
             robot.glyphSystemBottom.setPosition(1);
             robot.drive(20);
         }
         else if (MasqExternal.VuMark.isLeft(vuMark)){
             robot.drive(60, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
+            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
             robot.glyphSystemBottom.setPosition(1);
             robot.drive(20);
         }
@@ -59,14 +63,16 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
             robot.drive(90, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
             robot.glyphSystemBottom.setPosition(1);
+            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
             robot.drive(20);
         }
         else {
-            robot.drive(90, POWER_LOW, Direction.BACKWARD);
+            robot.drive(70, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
+            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
             robot.glyphSystemBottom.setPosition(1);
             robot.drive(20);
         }
-        robot.drive(50, POWER_LOW, Direction.FORWARD);
+        robot.drive(50, POWER_LOW, Direction.BACKWARD);
     }
 }

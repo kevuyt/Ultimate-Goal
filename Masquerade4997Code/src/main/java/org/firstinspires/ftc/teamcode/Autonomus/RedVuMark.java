@@ -14,10 +14,11 @@ public class RedVuMark extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuforia(hardwareMap);
-        robot.initializeAutonomus();
+        robot.initializeAutonomous();
         dash.create(INIT_MESSAGE);
         dash.update();
         waitForStart();
+        robot.initializeServos();
         robot.vuforia.activateVuMark();
         robot.waitForVuMark();
         String vuMark = robot.vuforia.getVuMark();
@@ -46,7 +47,7 @@ public class RedVuMark extends MasqLinearOpMode implements Constants {
         else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(40 + addedDistance, Direction.LEFT);}
         else if (MasqExternal.VuMark.isRight(vuMark)){robot.turn(10 + addedDistance, Direction.LEFT);}
         else robot.turn(40 + addedDistance, Direction.LEFT);
-        robot.drive(80, POWER_LOW);
+        robot.drive(90, POWER_LOW);
     }
 
  }

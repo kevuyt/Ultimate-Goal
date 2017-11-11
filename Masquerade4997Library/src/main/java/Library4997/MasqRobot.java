@@ -433,8 +433,7 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.setKi(MasqExternal.KI.MOTOR_TELEOP);
         driveTrain.setKp(MasqExternal.KD.MOTOR_TELEOP);
     }
-    public void initializeAutonomus(){
-        initializeServos();
+    public void initializeAutonomous(){
         driveTrain.setKp(MasqExternal.KP.MOTOR_AUTONOMOUS);
         driveTrain.setKi(MasqExternal.KI.MOTOR_AUTONOMOUS);
         driveTrain.setKp(MasqExternal.KD.MOTOR_AUTONOMOUS);
