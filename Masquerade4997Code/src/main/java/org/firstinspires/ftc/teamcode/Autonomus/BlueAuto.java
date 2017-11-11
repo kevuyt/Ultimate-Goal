@@ -23,29 +23,50 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         String vuMark = robot.vuforia.getVuMark();
         dash.create(vuMark);
         dash.update();
-        int addedAngle = runJewel();
-        runVuMark(vuMark, addedAngle);
+        runJewel();
+        robot.driveTrain.setKp(0.01);
+        runVuMark(vuMark);
     }
-    public int runJewel () {
-        int addedAngle;
+    public void runJewel () {
         robot.jewelArm.setPosition(JEWEL_OUT);
         MasqExternal.sleep(2000);
         if (robot.jewelColor.isBlue()) {
             robot.turn(20, Direction.LEFT);
-            addedAngle = 20;
+            robot.jewelArm.setPosition(JEWEL_IN);
+            robot.turn(20, Direction.RIGHT);
         }
         else {
             robot.turn(20, Direction.RIGHT);
-            addedAngle = -20;
+            robot.jewelArm.setPosition(JEWEL_IN);
+            robot.turn(20, Direction.LEFT);
         }
-        robot.jewelArm.setPosition(JEWEL_IN);
-        return addedAngle;
     }
-    public void runVuMark(String vuMark, int addedDistance) {
-        robot.turn(90, Direction.LEFT);
-        if (MasqExternal.VuMark.isCenter(vuMark)){robot.turn(90 - (30 + addedDistance), Direction.RIGHT);}
-        else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(90 - (10 + addedDistance), Direction.RIGHT);}
-        else if (MasqExternal.VuMark.isRight(vuMark)){robot.turn(90 - (45 + addedDistance), Direction.RIGHT);}
-        robot.drive(80, POWER_LOW, Direction.BACKWARD);
+
+    public void runVuMark(String vuMark) {
+        if (MasqExternal.VuMark.isCenter(vuMark)){
+            robot.drive(70, POWER_LOW, Direction.BACKWARD);
+            robot.turn(90, Direction.RIGHT);
+            robot.glyphSystemBottom.setPosition(1);
+            robot.drive(20);
+        }
+        else if (MasqExternal.VuMark.isLeft(vuMark)){
+            robot.drive(60, POWER_LOW, Direction.BACKWARD);
+            robot.turn(90, Direction.RIGHT);
+            robot.glyphSystemBottom.setPosition(1);
+            robot.drive(20);
+        }
+        else if (MasqExternal.VuMark.isRight(vuMark)){
+            robot.drive(90, POWER_LOW, Direction.BACKWARD);
+            robot.turn(90, Direction.RIGHT);
+            robot.glyphSystemBottom.setPosition(1);
+            robot.drive(20);
+        }
+        else {
+            robot.drive(90, POWER_LOW, Direction.BACKWARD);
+            robot.turn(90, Direction.RIGHT);
+            robot.glyphSystemBottom.setPosition(1);
+            robot.drive(20);
+        }
+        robot.drive(50, POWER_LOW, Direction.FORWARD);
     }
 }

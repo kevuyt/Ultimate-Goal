@@ -33,7 +33,7 @@ public class MasqExternal {
         catch (InterruptedException e) {e.printStackTrace();}
     }
     public class KP {
-        public static final double TURN = +0.025;
+        public static final double TURN = +0.02;
         public static final double DRIVE_ENCODER = +0.05;
         public static final double DRIVE_ANGULAR = +0.002;
         public static final double MOTOR_TELEOP = +0.004;

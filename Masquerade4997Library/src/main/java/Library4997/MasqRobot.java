@@ -434,6 +434,7 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.setKp(MasqExternal.KD.MOTOR_TELEOP);
     }
     public void initializeAutonomus(){
+        initializeServos();
         driveTrain.setKp(MasqExternal.KP.MOTOR_AUTONOMOUS);
         driveTrain.setKi(MasqExternal.KI.MOTOR_AUTONOMOUS);
         driveTrain.setKp(MasqExternal.KD.MOTOR_AUTONOMOUS);
@@ -466,7 +467,8 @@ public class MasqRobot implements PID_CONSTANTS {
         return dScale;
     }
     public void initializeServos() {
-        glyphSystemBottom.setPosition(1);
+        glyphSystemTop.setPosition(1);
+        glyphSystemBottom.setPosition(0);
         jewelArm.setPosition(0);
     }
 }

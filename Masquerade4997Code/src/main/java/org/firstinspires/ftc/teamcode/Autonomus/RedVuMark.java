@@ -45,6 +45,7 @@ public class RedVuMark extends MasqLinearOpMode implements Constants {
         if (MasqExternal.VuMark.isCenter(vuMark)){robot.turn(40 + addedDistance, Direction.LEFT);}
         else if (MasqExternal.VuMark.isLeft(vuMark)){robot.turn(40 + addedDistance, Direction.LEFT);}
         else if (MasqExternal.VuMark.isRight(vuMark)){robot.turn(10 + addedDistance, Direction.LEFT);}
+        else robot.turn(40 + addedDistance, Direction.LEFT);
         robot.drive(80, POWER_LOW);
     }
 

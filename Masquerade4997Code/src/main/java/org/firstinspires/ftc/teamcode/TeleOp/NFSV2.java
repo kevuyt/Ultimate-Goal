@@ -46,8 +46,8 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
                 controller1.update();
             }
             if (controller1.xOnPress()) {
-                robot.glyphSystemTop.setPosition(0.5);
-                robot.glyphSystemBottom.setPosition(0.5);
+                robot.glyphSystemTop.setPosition(0.6);
+                robot.glyphSystemBottom.setPosition(0.4);
                 controller1.update();
             }
             if (controller2.xOnPress() && jewelArmIn) {
