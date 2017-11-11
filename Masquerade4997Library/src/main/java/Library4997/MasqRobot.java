@@ -10,6 +10,7 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqSensor;
 import Library4997.MasqExternal.PID_CONSTANTS;
+import Library4997.MasqExternal.Strafe;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -136,9 +137,57 @@ public class MasqRobot implements PID_CONSTANTS {
     public void drive(int distance, double speed, Direction Direction) {
         drive(distance, speed, Direction, MasqExternal.DEFAULT_TIMEOUT);
     }
-    public void drive (int distance, double speed){
-        drive(distance, speed, Direction.FORWARD);
+    public void drive(int distance, double speed, Strafe strafe, double timeOut, int sleepTime) {
+        MasqClock timeoutTimer = new MasqClock();
+        MasqClock loopTimer = new MasqClock();
+        driveTrain.resetEncoders();
+        double targetAngle = imu.getHeading();
+        int targetClicks = (int)(distance * CLICKS_PER_INCH);
+        int clicksRemaining;
+        double inchesRemaining, angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
+                prevAngularError = angularError, angularIntegral = 0,
+                angularDerivative, powerAdjustmentLeft, powerAdjustmentRight, powerLeft, powerRight, leftPower, rightPower, maxPower, timeChange;
+        do {
+            clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
+            inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
+            powerLeft = strafe.value[0] * speed * inchesRemaining * MasqExternal.KP.DRIVE_ENCODER;
+            powerRight = strafe.value[1] * speed * inchesRemaining * MasqExternal.KP.DRIVE_ENCODER;
+            powerLeft = Range.clip(powerLeft, -1.0, +1.0);
+            powerRight = Range.clip(powerRight, -1.0, +1.0);
+            timeChange = loopTimer.milliseconds();
+            loopTimer.reset();
+            angularError = imu.adjustAngle(targetAngle - imu.getHeading());
+            angularIntegral = (angularIntegral + angularError) * timeChange;
+            angularDerivative = (angularError - prevAngularError) / timeChange;
+            prevAngularError = angularError;
+            powerAdjustmentLeft = (MasqExternal.KP.DRIVE_ANGULAR * powerLeft + .01) * angularError + MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
+            powerAdjustmentLeft = Range.clip(powerAdjustmentLeft, -1.0, +1.0);
+            powerAdjustmentLeft *= strafe.value[0];
+            powerAdjustmentRight = (MasqExternal.KP.DRIVE_ANGULAR * powerRight + .01) * angularError + MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
+            powerAdjustmentRight = Range.clip(powerAdjustmentRight, -1.0, +1.0);
+            powerAdjustmentRight *= strafe.value[1];
+            leftPower = powerLeft - powerAdjustmentLeft;
+            rightPower = powerRight + powerAdjustmentRight;
+            maxPower = Math.max(Math.abs(leftPower), Math.abs(rightPower));
+            if (maxPower > 1.0) {
+                leftPower /= maxPower;
+                rightPower /= maxPower;
+            }
+            driveTrain.setPower(leftPower, rightPower);
+            dash.create("LEFT POWER: ",leftPower);
+            dash.create("RIGHT POWER: ",rightPower);
+            dash.create("ERROR: ",angularError);
+        } while (opModeIsActive() && (inchesRemaining > 0.5 || Math.abs(angularError) > 0.5) && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+        driveTrain.stopDriving();
+        sleep(sleepTime);
     }
+    public void drive(int distance, double speed, Strafe strafe, double timeOut) {
+        drive(distance, speed, strafe, timeOut, MasqExternal.DEFAULT_SLEEP_TIME);
+    }
+    public void drive(int distance, double speed, Strafe strafe) {
+        drive(distance, speed, strafe, MasqExternal.DEFAULT_TIMEOUT);
+    }
+    public void drive (int distance, double speed){drive(distance, speed, Direction.FORWARD);}
     public void drive(int distance) {drive(distance, 0.5);}
 
     public void runToPosition(int distance, Direction direction, double speed, double timeOut, int sleepTime) {
