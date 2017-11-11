@@ -19,6 +19,8 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         dash.update();
         waitForStart();
         robot.initializeServos();
+        robot.lift.setDistance(75);
+        robot.lift.runToPosition(Direction.FORWARD, POWER_LOW);
         robot.vuforia.activateVuMark();
         robot.waitForVuMark();
         String vuMark = robot.vuforia.getVuMark();

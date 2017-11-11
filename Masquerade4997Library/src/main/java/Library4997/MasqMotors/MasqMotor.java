@@ -9,6 +9,7 @@ import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqWrappers.DashBoard;
 
@@ -33,6 +34,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
+    private MasqClock timeoutTimer = new MasqClock();
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
         limitDetection = positionDetection = false;
@@ -124,6 +126,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return MasqRobot.getInstance(null).opModeIsActive();
     }
     public void runToPosition(Direction direction, double speed){
+        timeoutTimer.reset();
         resetEncoder();
         int targetClicks = (int)(destination * CLICKS_PER_INCH);
         int clicksRemaining;
@@ -134,7 +137,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
             power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power);
-        } while (opModeIsActive() && inchesRemaining > 0.5);
+        } while (opModeIsActive() && inchesRemaining > 0.5 && timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
         setPower(0);
     }
     boolean isBusy () {
