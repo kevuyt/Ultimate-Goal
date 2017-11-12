@@ -12,6 +12,7 @@ import Library4997.MasqExternal.MasqSensor;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqTankDrive;
+import Library4997.MasqOpenCV.MasqOpenCV;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
@@ -54,10 +55,12 @@ public class MasqRobot implements PID_CONSTANTS {
     //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
     private DashBoard dash;
+    public MasqOpenCV openCV;
     public void mapHardware(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
+        openCV = new MasqOpenCV();
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
         relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);

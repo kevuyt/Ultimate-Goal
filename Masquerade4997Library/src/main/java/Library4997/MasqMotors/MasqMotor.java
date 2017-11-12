@@ -1,7 +1,6 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqExternal.MasqExternal;
@@ -11,7 +10,6 @@ import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqWrappers.DashBoard;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -22,16 +20,16 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private int direction = 1;
     private double kp = 0.004, ki = 0, kd = 0;
     private boolean closedLoop = true;
-    private double prevPos= 0;
+    private double prevPos = 0;
     private double previousTime = 0;
     private double destination = 0;
     private double currentPower;
     private double currentMax, currentMin;
     private double currentZero;
-    private double intergral = 0;
-    private double derivitive = 0;
+    private double integral = 0;
+    private double derivative = 0;
     private double previousError = 0;
-    private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
+    private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqClock timeoutTimer = new MasqClock();
@@ -135,7 +133,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            power = direction.value[0] * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power);
         } while (opModeIsActive() && inchesRemaining > 0.5 && timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
         setPower(0);
@@ -177,10 +175,10 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             setRPM = MasqExternal.NEVERREST_40_RPM * power;
             currentRPM = getRate();
             error = setRPM - currentRPM;
-            intergral += error * tChange;
-            derivitive = (error - previousError) / tChange;
+            integral += error * tChange;
+            derivative = (error - previousError) / tChange;
             motorPower = (power) + (direction * ((error * kp) +
-                    (intergral * ki) + (derivitive * kd)));
+                    (integral * ki) + (derivative * kd)));
             previousError = error;
             return motorPower;
         }

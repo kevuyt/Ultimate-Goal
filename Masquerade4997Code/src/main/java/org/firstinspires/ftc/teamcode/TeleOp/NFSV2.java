@@ -50,6 +50,8 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
                 robot.glyphSystemBottom.setPosition(0.4);
                 controller1.update();
             }
+            if (controller2.start()) increment = 0.005;
+            else increment = 0.05;
             if (controller2.xOnPress() && jewelArmIn) {
                 jewelArmIn = false;
                 robot.jewelArm.setPosition(JEWEL_OUT);
