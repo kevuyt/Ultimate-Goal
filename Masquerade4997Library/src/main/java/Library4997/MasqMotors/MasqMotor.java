@@ -8,6 +8,7 @@ import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**
@@ -16,16 +17,22 @@ import Library4997.MasqSensors.MasqLimitSwitch;
 public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
     private String nameMotor;
+    private int direction = 1;
+    private double kp = 0.004, ki = 0, kd = 0;
     private boolean closedLoop = true;
-    private double prevPos= 0;
+    private double prevPos = 0;
     private double previousTime = 0;
     private double destination = 0;
-    private double intergral = 0;
-    private double derivitive = 0;
+    private double currentPower;
+    private double currentMax, currentMin;
+    private double currentZero;
+    private double integral = 0;
+    private double derivative = 0;
     private double previousError = 0;
-    private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
+    private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
-    private boolean limitDetection, positionDetection;
+    private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
+    private MasqClock timeoutTimer = new MasqClock();
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
         limitDetection = positionDetection = false;
@@ -34,6 +41,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
+        if (direction == DcMotor.Direction.REVERSE) this.direction = 1;
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
@@ -53,6 +61,16 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         positionDetection = true;
         return this;
     }
+    public MasqMotor setHalfLimits(MasqLimitSwitch min, double max){
+        maxPosition = max;
+        minLim = min; halfDetectionMin = true;
+        return this;
+    }
+    public MasqMotor setHalfLimits(double min, MasqLimitSwitch max){
+        minPosition = min;
+        maxLim = max; halfDetectionMax = true;
+        return this;
+    }
     public MasqMotor setPositionLimit (double min) {
         minPosition = min;
         positionDetection = true;
@@ -62,6 +80,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void resetEncoder() {
         zeroEncoderPosition = motor.getCurrentPosition();
         currentPosition = 0;
+
     }
     public void setPower (double power) {
         double motorPower = findPower(power);
@@ -78,7 +97,22 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
                 motorPower = 0;
             else if (motor.getCurrentPosition() < minPosition && power < 0)
                 motorPower = 0;
+        } else if (halfDetectionMin) {
+            if (minLim.isPressed()) {
+                currentZero = motor.getCurrentPosition();
+                currentMax = currentZero + maxPosition;
+            }
+            if (minLim != null && minLim.isPressed() && power < 0) motorPower = 0;
+            else if (motor.getCurrentPosition() > currentMax && power > 0) motorPower = 0;
+        } else if (halfDetectionMax) {
+            if (maxLim.isPressed()) {
+                currentZero = motor.getCurrentPosition();
+                currentMin = currentZero - minPosition;
+            }
+            if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
+            else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
         }
+        currentPower = motorPower;
         motor.setPower(motorPower);
     }
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
@@ -90,17 +124,18 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return MasqRobot.getInstance(null).opModeIsActive();
     }
     public void runToPosition(Direction direction, double speed){
+        timeoutTimer.reset();
         resetEncoder();
-        int targetClicks = (int)(destination * CLICKS_PER_CM);
+        int targetClicks = (int)(destination * CLICKS_PER_INCH);
         int clicksRemaining;
         double inchesRemaining;
         double power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / CLICKS_PER_CM;
-            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
+            power = direction.value[0] * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power);
-        } while (opModeIsActive() && inchesRemaining > 0.5);
+        } while (opModeIsActive() && inchesRemaining > 0.5 && timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
         setPower(0);
     }
     boolean isBusy () {
@@ -113,9 +148,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         currentPosition = motor.getCurrentPosition() - zeroEncoderPosition;
         return currentPosition;
     }
-    public double getPower() {
-        return motor.getPower();
-    }
+    public double getPower() {return currentPower;}
     public double getRate () {
         double deltaPosition = getCurrentPosition() - prevPos;
         double tChange = System.nanoTime() - previousTime;
@@ -123,7 +156,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         tChange = tChange / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
-        rate = (rate * 60) / MasqExternal.NEVEREST_40_TICKS_PER_ROTATION;
+        rate = (rate * 60) / MasqExternal.NEVERREST_40_TICKS_PER_ROTATION;
         if (rate != 0) return rate;
         else {
             prevRate = rate;
@@ -139,18 +172,25 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             double error, setRPM, currentRPM, motorPower;
             double tChange = System.nanoTime() - previousTime;
             tChange /= 1e9;
-            setRPM = MasqExternal.NEVEREST_40_RPM * power;
+            setRPM = MasqExternal.NEVERREST_40_RPM * power;
             currentRPM = getRate();
             error = setRPM - currentRPM;
-            intergral += error * tChange;
-            derivitive = (error - previousError) / tChange;
-            motorPower = power + ((error * MasqExternal.KP.MOTOR) + (intergral * MasqExternal.KI.MOTOR) + (derivitive * MasqExternal.KD.MOTOR));
+            integral += error * tChange;
+            derivative = (error - previousError) / tChange;
+            motorPower = (power) + (direction * ((error * kp) +
+                    (integral * ki) + (derivative * kd)));
             previousError = error;
             return motorPower;
         }
         else return power;
     }
 
+    public double getKp() {return kp;}
+    public void setKp(double kp) {this.kp = kp;}
+    public double getKi() {return ki;}
+    public void setKi(double ki) {this.ki = ki;}
+    public double getKd() {return kd;}
+    public void setKd(double kd) {this.kd = kd;}
     public String[] getDash() {
         return new String[] {"Current Position" + Double.toString(getCurrentPosition())};
     }

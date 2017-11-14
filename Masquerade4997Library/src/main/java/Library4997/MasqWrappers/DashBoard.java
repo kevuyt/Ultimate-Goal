@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 
@@ -13,7 +16,7 @@ import Library4997.MasqExternal.MasqHardware;
  * It supports multiple types of inputs, including MasqHardware objects.
  */
 
-public class DashBoard implements Runnable{
+public class DashBoard implements Runnable {
     private int dashLength;
     private Telemetry telemetry;
     private boolean close = false;
@@ -86,7 +89,7 @@ public class DashBoard implements Runnable{
     public void update() {
         telemetry.update();
     }
-
+    public void clear(){telemetry.clearAll();}
     public void run() {
         boolean close = false;
         while (!close) {
@@ -96,7 +99,35 @@ public class DashBoard implements Runnable{
             telemetry.clearAll();
         }
     }
-    public void close() {close = true;}
+    public void close() {
+        telemetry.clearAll();
+        close = true;
+    }
     public void startUpdate (){new Thread(this).start();}
+    public void setController(final MasqController masqController1, final MasqController masqController2) {
+        Runnable updateCont1 = new Runnable() {
+            @Override
+            public void run() {
+                masqController1.update();
+            }
+        };
+        Runnable updateCont2 = new Runnable() {
+            @Override
+            public void run() {
+                masqController2.update();
+            }
+        };
+        Runnable update = new Runnable() {
+            @Override
+            public void run() {
+                telemetry.update();
+            }
+        };
+        telemetry.addAction(updateCont1);
+        telemetry.addAction(updateCont2);
+        telemetry.addAction(update);
+    }
+
+
 
 }

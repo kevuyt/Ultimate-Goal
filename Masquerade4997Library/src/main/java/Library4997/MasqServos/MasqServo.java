@@ -16,10 +16,10 @@ public class MasqServo implements MasqHardware{
     private String nameServo;
     MasqClock clock = new MasqClock();
     private double targetPosition;
-    private double max, min;
+    private double max = 1, min = 0;
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
-    public MasqServo(String name, HardwareMap hardwareMap){
+    public MasqServo(String name, HardwareMap hardwareMap) {
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
     }
@@ -30,6 +30,7 @@ public class MasqServo implements MasqHardware{
     }
     public void setPosition (double position) {
         targetPosition = position;
+        position = ((max - min) * position) + min;
         servo.setPosition(position);
     }
     public void setPositionV2 (double position) {
@@ -47,6 +48,9 @@ public class MasqServo implements MasqHardware{
     private boolean limPressed () {
         if (limDetection) return  limMin.isPressed() || limMax.isPressed();
         else return false;
+    }
+    public double getPosition () {
+        return servo.getPosition();
     }
     public void setMax(double max){this.max = max;}
     public void setMin(double min){this.min = min;}

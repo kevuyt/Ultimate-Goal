@@ -79,6 +79,8 @@ public class MasqController implements Runnable{
     public float leftTrigger() {return gamepad.left_trigger;}
     public float rightTrigger() {return gamepad.right_trigger;}
 
+    public boolean start() {return gamepad.start;}
+
     public synchronized void update(){
         aPrev = gamepad.a;
         bPrev = gamepad.b;

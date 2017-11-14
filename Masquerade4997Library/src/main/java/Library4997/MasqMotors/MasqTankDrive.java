@@ -21,8 +21,8 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap);
     }
     public MasqTankDrive(HardwareMap hardwareMap){
-        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.FORWARD, "leftBack", DcMotor.Direction.FORWARD, "LEFTDRIVE", hardwareMap);
-        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.REVERSE, "rightBack", DcMotor.Direction.REVERSE, "RIGHTDRIVE", hardwareMap);
+        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap);
+        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap);
     }
     public void resetEncoders () {
         leftDrive.resetEncoder();
@@ -35,6 +35,18 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     public void setPower(double power){
         leftDrive.setPower(power);
         rightDrive.setPower(power);
+    }
+    public void setKp(double kp){
+        leftDrive.setKp(kp);
+        rightDrive.setKp(kp);
+    }
+    public void setKi(double ki){
+        leftDrive.setKi(ki);
+        rightDrive.setKi(ki);
+    }
+    public void setKd(double kd){
+        leftDrive.setKd(kd);
+        rightDrive.setKd(kd);
     }
     public void setPowerLeft (double power) {
         leftDrive.setPower(power);
@@ -59,13 +71,13 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     public void runToPosition(Direction direction, double speed, double timeOut) {
         MasqClock timeoutTimer = new MasqClock();
         resetEncoders();
-        int targetClicks = (int)(destination * CLICKS_PER_CM);
+        int targetClicks = (int)(destination * CLICKS_PER_INCH);
         int clicksRemaining;
         double inchesRemaining;
         double power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / CLICKS_PER_CM;
+            inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
             power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power, -power);
         }

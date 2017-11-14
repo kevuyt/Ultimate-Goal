@@ -12,33 +12,7 @@
                     "endOffset": 187
                 },
                 "from": {
-                    "file": "/Users/Archish/.android/build-cache/07cebb1ca37fdb156ebe2f7010fd270adc2ad115/output/res/values-v11/values-v11.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endLine": 4,
-                        "endColumn": 12,
-                        "endOffset": 187
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/Archish/Desktop/ftc_app-master/FtcRobotController/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endLine": 4,
-                    "endColumn": 12,
-                    "endOffset": 187
-                },
-                "from": {
-                    "file": "/Users/Archish/.android/build-cache/4126ee4f684831abbdf7cb666cbdb04e812f8162/output/res/values-v11/values-v11.xml",
+                    "file": "/Users/Archish/.android/build-cache/4e5260cb536784d342f6f3ced04f83e39c080a8e/output/res/values-v11/values-v11.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

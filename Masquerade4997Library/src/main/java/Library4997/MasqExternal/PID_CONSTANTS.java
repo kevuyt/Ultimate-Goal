@@ -14,11 +14,11 @@ public interface PID_CONSTANTS {
             KD_STRAIGHT = 0;
     double  KP_TELE = 0.1,
             KI_TELE = 0;
-    double MAX_RATE = 3100;
+    double MAX_RATE = 160;
     double TICKS_PER_ROTATION = 1120;
     double wheelDiameter = 4;
     double cmToInches = 2.54;
-    double gearRatio = 1;
-    double CLICKS_PER_CM = ((TICKS_PER_ROTATION / (wheelDiameter * cmToInches)) / Math.PI) / gearRatio;
+    double gearRatio = 2;
+    double CLICKS_PER_INCH = ((TICKS_PER_ROTATION / (wheelDiameter * cmToInches)) / Math.PI) / gearRatio;
 }
 

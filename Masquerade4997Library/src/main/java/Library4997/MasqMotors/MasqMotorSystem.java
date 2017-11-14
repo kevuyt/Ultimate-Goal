@@ -57,6 +57,18 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
             masqMotor.resetEncoder();
         return this;
     }
+    public MasqMotorSystem setKp(double kp){
+        for (MasqMotor masqMotor: motors) masqMotor.setKp(kp);
+        return this;
+    }
+    public MasqMotorSystem setKi(double ki){
+        for (MasqMotor masqMotor: motors) masqMotor.setKi(ki);
+        return this;
+    }
+    public MasqMotorSystem setKd(double kd){
+        for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
+        return this;
+    }
     public void setPower (double power) {
         for (MasqMotor masqMotor : motors)
             masqMotor.setPower(power);
@@ -87,13 +99,13 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         return this;
     }
     public double getRate(){
-        double i = 1;
+        double i = 0;
         double rate = 0;
         for (MasqMotor masqMotor: motors){
-            rate += masqMotor.getRate() / i;
+            rate += masqMotor.getRate();
             i++;
         }
-        return rate;
+        return rate/i;
     }
     public void stopDriving() {
         setPower(0);
