@@ -78,7 +78,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            power = direction.value[0] * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power, -power);
         }
         while (opModeIsActive() && inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
