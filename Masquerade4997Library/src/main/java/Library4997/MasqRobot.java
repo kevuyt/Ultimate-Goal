@@ -334,38 +334,29 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor.update();
 
     }
-    public void MECH(MasqController c){
-        double angle;
-        double x = c.leftStickX();
-        double y = -c.leftStickY();
-        if (x != 0) {angle = Math.atan(y/x);}
-        else {angle = 0;}
-        if (x < 0 && y > 0) {angle = angle + Math.PI;}
-        else if (x < 0 && y <= 0) {angle = angle + Math.PI;}
-        else if (x > 0 && y < 0) {angle = angle + (2*Math.PI);}
-        else if (x == 0 && y > 0 ) {angle = Math.PI/2;}
-        else if (x == 0 && y < 0 ) {angle = (3 * Math.PI) / 2;}
+    public void MECH(MasqController c) {
+        double x = -c.leftStickY();
+        double y = c.leftStickX();
+        double angle = Math.atan2(y, x);
+        double adjustedAngle = angle + Math.PI/4;
+        double multiplier = 1;
         double speedMagnitude = Math.hypot(x, y);
-        double frontLeft = -(Math.sin(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
-        double backLeft = -(Math.cos(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
-        double frontRight = (Math.cos(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
-        double backRight = (Math.sin(angle + (Math.PI/4))) * speedMagnitude + c.rightStickX();
-
-        double driveScaleFactor = Math.abs(Math.max(
-                Math.max(frontLeft, frontRight),
-                Math.max(backLeft, backRight)))
-                != 0 ? Math.abs(Math.max(
-                Math.max(frontLeft, frontRight),
-                Math.max(backLeft, backRight))) : 1
-        ;
-        frontLeft /= driveScaleFactor;
-        frontRight /= driveScaleFactor;
-        backLeft /= driveScaleFactor;
-        backRight /= driveScaleFactor;
-        driveTrain.leftDrive.motor1.setPower(frontLeft);
-        driveTrain.leftDrive.motor2.setPower(backLeft);
-        driveTrain.rightDrive.motor1.setPower(frontRight);
-        driveTrain.rightDrive.motor2.setPower(backRight);
+        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
+        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
+        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX()* multiplier;
+        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
+        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
+        if (max > 1) {
+            leftFront /= max;
+            leftBack /= max;
+            rightFront /= max;
+            rightBack /= max;
+        }
+        dash.create("LEFT FRONT: ", leftFront);
+        dash.create("LEFT BACK: ", leftBack);
+        dash.create("RIGHT FRONT: ", rightFront);
+        dash.create("RIGHT BACK: ", rightBack);
+        dash.update();
     }
     public void TANK(MasqController c){
         double left = c.leftStickX();
@@ -424,16 +415,14 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
-    private double scaleInput(double d)  {
-        double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
-                0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };
-        int index = (int) (d * 16.0);
-        index = Math.abs(index);
-        if (index > 16) {index = 16;}
-        double dScale;
-        if (d < 0) {dScale = -scaleArray[index];}
-        else {dScale = scaleArray[index];}
-        return dScale;
+    private void normalizeSpeeds (double[] speeds) {
+        double maxSpeed = 0;
+        for (int i = 0; i < speeds.length; i++) maxSpeed = Math.max(maxSpeed, Math.abs(speeds[i]));
+        if (maxSpeed > 1) {
+            for (int i = 0; i < speeds.length; i++) {
+                speeds[i] /= maxSpeed;
+            }
+        }
     }
     public void initializeServos() {
         glyphSystemTop.setPosition(1);
