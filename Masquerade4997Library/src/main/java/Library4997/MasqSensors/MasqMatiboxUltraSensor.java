@@ -11,8 +11,8 @@ import Library4997.MasqExternal.MasqSensor;
  */
 
 public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
-        private AnalogInput ds;
-        private String nameDS;
+    private AnalogInput ds;
+    private String nameDS;
     private int stopThresh = 30;
     public MasqMatiboxUltraSensor(String name, HardwareMap hardwareMap){
             this.nameDS = name;

@@ -17,6 +17,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqSensors.MasqMatiboxUltraSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
@@ -51,6 +52,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServo jewelArm, relicGripper;
     public MasqServoSystem glyphSystemBottom, glyphSystemTop;
     public MasqVuforiaBeta vuforia;
+    public MasqMatiboxUltraSensor matiboxUltraSensor;
     //TODO GET MasqColorSensorV2 up.
     //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
@@ -61,6 +63,7 @@ public class MasqRobot implements PID_CONSTANTS {
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
         openCV = new MasqOpenCV();
+        matiboxUltraSensor = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
         relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
@@ -75,6 +78,10 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelColor = new MasqREVColorSensor("jewelColor", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
+    }
+    public void mapMotors(HardwareMap hardwareMap) {
+        this.hardwareMap = hardwareMap;
+        driveTrain = new MasqTankDrive(this.hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -329,8 +336,8 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void MECH(MasqController c){
         double angle;
-        double x = c.leftStickY();
-        double y = -c.leftStickX();
+        double x = c.leftStickX();
+        double y = -c.leftStickY();
         if (x != 0) {angle = Math.atan(y/x);}
         else {angle = 0;}
         if (x < 0 && y > 0) {angle = angle + Math.PI;}
@@ -359,7 +366,6 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.leftDrive.motor2.setPower(backLeft);
         driveTrain.rightDrive.motor1.setPower(frontRight);
         driveTrain.rightDrive.motor2.setPower(backRight);
-        voltageSensor.update();
     }
     public void TANK(MasqController c){
         double left = c.leftStickX();
