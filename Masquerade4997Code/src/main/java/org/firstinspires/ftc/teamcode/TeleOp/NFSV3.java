@@ -20,9 +20,6 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
         waitForStart();
         while (opModeIsActive()){
             robot.MECH(controller1);
-            dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
-            dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
-            dash.update();
         }
     }
 }

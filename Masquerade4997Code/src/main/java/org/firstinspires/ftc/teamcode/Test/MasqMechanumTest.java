@@ -16,7 +16,7 @@ public class MasqMechanumTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            robot.MECHV2(controller1);
+            robot.MECH(controller1);
         }
         waitForStart();
         robot.sleep(robot.getDelay());

@@ -81,6 +81,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void mapMotors(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
+        dash = DashBoard.getDash();
         driveTrain = new MasqTankDrive(this.hardwareMap);
     }
 
@@ -341,10 +342,10 @@ public class MasqRobot implements PID_CONSTANTS {
         double adjustedAngle = angle + Math.PI/4;
         double multiplier = 1;
         double speedMagnitude = Math.hypot(x, y);
-        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
-        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
-        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX()* multiplier;
-        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
+        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
+        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
+        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX()* multiplier;
+        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
         double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
         if (max > 1) {
             leftFront /= max;
@@ -352,6 +353,10 @@ public class MasqRobot implements PID_CONSTANTS {
             rightFront /= max;
             rightBack /= max;
         }
+        driveTrain.leftDrive.motor1.setPower(leftFront);
+        driveTrain.leftDrive.motor2.setPower(leftBack);
+        driveTrain.rightDrive.motor1.setPower(rightFront);
+        driveTrain.rightDrive.motor2.setPower(rightBack);
         dash.create("LEFT FRONT: ", leftFront);
         dash.create("LEFT BACK: ", leftBack);
         dash.create("RIGHT FRONT: ", rightFront);
