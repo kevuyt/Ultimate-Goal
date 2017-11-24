@@ -336,7 +336,6 @@ public class MasqRobot implements PID_CONSTANTS {
 
     }
     public void MECH(MasqController c) {
-        driveTrain.setClosedLoop(true);
         double x = -c.leftStickY();
         double y = c.leftStickX();
         double angle = Math.atan2(y, x);
