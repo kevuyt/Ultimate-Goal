@@ -91,13 +91,6 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             else robot.relicLift.setPower(0);
             controller1.update();
             controller2.update();
-//            dash.create(robot.matiboxUltraSensor);
-//            dash.create("LEFT",robot.driveTrain.leftDrive.getRate());
-//            dash.create("RIGHT", robot.driveTrain.rightDrive.getRate());
-//            dash.create("LIFT POSITION", robot.lift.getCurrentPosition());
-//            dash.create("RELIC LIFT POSITION", robot.relicLift.getCurrentPosition());
-//            dash.create("CURRENT POSITION: ",robot.relicAdjuster.getPosition());
-//            dash.update();
         }
     }
 }

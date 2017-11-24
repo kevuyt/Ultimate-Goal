@@ -12,8 +12,9 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MasqMotorTest", group = "Autonomus")
 public class MasqMotorTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
+        robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(robot.imu);
+            dash.create(INIT_MESSAGE);
             dash.update();
         }
         waitForStart();
@@ -22,6 +23,7 @@ public class MasqMotorTest extends MasqLinearOpMode implements Constants {
             robot.driveTrain.setPower(0.5);
             dash.create("Power: ", robot.driveTrain.getPower());
             dash.create(robot.driveTrain);
+            dash.update();
         }
     }
 }

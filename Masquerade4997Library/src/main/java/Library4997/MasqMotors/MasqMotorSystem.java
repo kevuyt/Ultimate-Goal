@@ -67,7 +67,12 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         return this;
     }
     public double getPower() {
-        return currentPower;
+        double num = 0, sum = 0;
+        for (MasqMotor masqMotor: motors) {
+            sum = sum + masqMotor.currentPower;
+            num++;
+        }
+        return sum/num;
     }
     public MasqMotorSystem setKd(double kd){
         for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);

@@ -23,7 +23,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double prevPos = 0;
     private double previousTime = 0;
     private double destination = 0;
-    private double currentPower;
+    public double currentPower;
     private double currentMax, currentMin;
     private double currentZero;
     private double integral = 0;
