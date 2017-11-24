@@ -13,8 +13,10 @@ public interface Constants {
            GLYPH_OPENED = 0;
     double LIFT_DOWN = -1,
            LIFT_UP = 1;
-    double JEWEL_IN = 0,
-           JEWEL_OUT = 0.6;
+    double JEWEL_BLUE_IN = 0,
+           JEWEL_BLUE_OUT = 0.6,
+           JEWEL_RED_IN = 0.6,
+           JEWEL_RED_OUT = 0;
     double CLAW_CLOSED = 0.3,
            CLAW_OPENED = 0.7;
 }

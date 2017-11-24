@@ -15,7 +15,7 @@ public class MasqLimitSwitchTest extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()){
-            dash.create(robot.jewelColor);
+            dash.create(robot.jewelColorRed);
             dash.create(robot.imu);
             dash.update();
         }
