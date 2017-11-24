@@ -24,6 +24,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.initializeTeleop();
         while (opModeIsActive()){
+            robot.driveTrain.setClosedLoop(true);
             robot.MECH(controller1);
             if (controller1.aOnPress() && glyphBottomOpenState) {
                 glyphBottomOpenState = false;
@@ -54,11 +55,20 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             else increment = 0.05;
             if (controller2.xOnPress() && jewelArmIn) {
                 jewelArmIn = false;
-                robot.jewelArm.setPosition(JEWEL_OUT);
+                robot.jewelArmRed.setPosition(JEWEL_OUT);
                 controller2.update();
             } else if (controller2.xOnPress() && !jewelArmIn) {
                 jewelArmIn = true;
-                robot.jewelArm.setPosition(JEWEL_IN);
+                robot.jewelArmRed.setPosition(JEWEL_IN);
+                controller2.update();
+            }
+            if (controller2.bOnPress() && jewelArmIn) {
+                jewelArmIn = false;
+                robot.jewelArmBlue.setPosition(JEWEL_OUT);
+                controller2.update();
+            } else if (controller2.bOnPress() && !jewelArmIn) {
+                jewelArmIn = true;
+                robot.jewelArmBlue.setPosition(JEWEL_IN);
                 controller2.update();
             }
             if (controller2.aOnPress() && clawClosed) {

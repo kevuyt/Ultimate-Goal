@@ -45,11 +45,11 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
     public MasqLimitSwitch liftSwitch;
-    public MasqREVColorSensor jewelColor;
+    public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public MasqServo relicAdjuster;
     private MasqServo rightBottom, leftBottom;
     public MasqVoltageSensor voltageSensor;
-    public MasqServo jewelArm, relicGripper;
+    public MasqServo jewelArmBlue, jewelArmRed, stonePusher, relicGripper;
     public MasqServoSystem glyphSystemBottom, glyphSystemTop;
     public MasqVuforiaBeta vuforia;
     public MasqMatiboxUltraSensor matiboxUltraSensor;
@@ -74,8 +74,11 @@ public class MasqRobot implements PID_CONSTANTS {
         glyphSystemBottom = new MasqServoSystem(leftBottom, rightBottom);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        jewelArm = new MasqServo("jewelArm", this.hardwareMap);
-        jewelColor = new MasqREVColorSensor("jewelColor", this.hardwareMap);
+        jewelArmBlue = new MasqServo("jewelArmBlue", this.hardwareMap);
+        jewelArmRed = new MasqServo("jewelArmRed", this.hardwareMap);
+        stonePusher = new MasqServo("stonePusher", this.hardwareMap);
+        jewelColorRed = new MasqREVColorSensor("jewelColorRed", this.hardwareMap);
+        jewelColorBlue = new MasqREVColorSensor("jewelColorBlue", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
     }
@@ -340,7 +343,7 @@ public class MasqRobot implements PID_CONSTANTS {
         double y = c.leftStickX();
         double angle = Math.atan2(y, x);
         double adjustedAngle = angle + Math.PI/4;
-        double multiplier = 1;
+        double multiplier = 1.4;
         double speedMagnitude = Math.hypot(x, y);
         double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
         double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
@@ -436,6 +439,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void initializeServos() {
         glyphSystemTop.setPosition(1);
         glyphSystemBottom.setPosition(0);
-        jewelArm.setPosition(0);
+        jewelArmBlue.setPosition(0);
+        jewelArmRed.setPosition(0);
     }
 }
