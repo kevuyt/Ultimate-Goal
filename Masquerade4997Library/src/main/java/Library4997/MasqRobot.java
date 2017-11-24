@@ -336,6 +336,7 @@ public class MasqRobot implements PID_CONSTANTS {
 
     }
     public void MECH(MasqController c) {
+        driveTrain.setClosedLoop(true);
         double x = -c.leftStickY();
         double y = c.leftStickX();
         double angle = Math.atan2(y, x);
@@ -361,6 +362,10 @@ public class MasqRobot implements PID_CONSTANTS {
         dash.create("LEFT BACK: ", leftBack);
         dash.create("RIGHT FRONT: ", rightFront);
         dash.create("RIGHT BACK: ", rightBack);
+        dash.create("LEFT FRONT POWER: ", driveTrain.leftDrive.motor1.getRate());
+        dash.create("LEFT BACK POWER: ", driveTrain.leftDrive.motor2.getRate());
+        dash.create("RIGHT FRONT POWER: ", driveTrain.rightDrive.motor1.getRate());
+        dash.create("RIGHT BACK POWER: ", driveTrain.rightDrive.motor2.getRate());
         dash.update();
     }
     public void TANK(MasqController c){
