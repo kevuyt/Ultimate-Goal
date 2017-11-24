@@ -48,6 +48,12 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         leftDrive.setKd(kd);
         rightDrive.setKd(kd);
     }
+    public double getRate() {
+        return (leftDrive.getRate() + rightDrive.getRate())/2;
+    }
+    public double getPower() {
+        return (leftDrive.getPower() + rightDrive.getPower()) /2;
+    }
     public void setPowerLeft (double power) {
         leftDrive.setPower(power);
     }
@@ -78,7 +84,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = direction.value[0] * speed * inchesRemaining * KP_STRAIGHT;
+            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
             setPower(power, -power);
         }
         while (opModeIsActive() && inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
@@ -104,6 +110,6 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         return "DRIVETRAIN";
     }
     public String[] getDash() {
-        return new String[]{ "Current Position"+ getCurrentPosition()};
+        return new String[]{ "Rate "+ getRate()};
     }
 }

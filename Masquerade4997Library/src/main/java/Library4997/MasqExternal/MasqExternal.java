@@ -18,7 +18,8 @@ public class MasqExternal {
     public static final int DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 3;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
-    public static final String VUFORIA_KEY = "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
+    public static final String VUFORIA_KEY =
+            "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
             "CfEwQhnuuB1hOh//uL2LnHYMViBgZtdjDGvmWvDvgKaonymopd0Y62ls2ZJfHhJ3fZYhF57Ce6ZepRI" +
             "FOumys4J4DssG83OT+DJUjUCG6ruZ88AYjxNzi+vhkTCxHVULQxLJCSQ7boG0t36RWIEmVwxXIHVI" +
             "3xbVeXwQL7vgm/0KmGW/KJFOuI2+wl1IDJdzDQHfavEA8FFkYTlnp/chHMbLu//BaqXprFHZ6OLh" +
@@ -36,7 +37,7 @@ public class MasqExternal {
         public static final double TURN = +0.02;
         public static final double DRIVE_ENCODER = +0.05;
         public static final double DRIVE_ANGULAR = +0.002;
-        public static final double MOTOR_TELEOP = +0.00;
+        public static final double MOTOR_TELEOP = +0.0;
         public static final double MOTOR_AUTONOMOUS = +0.006;
     }
     public class KI {
