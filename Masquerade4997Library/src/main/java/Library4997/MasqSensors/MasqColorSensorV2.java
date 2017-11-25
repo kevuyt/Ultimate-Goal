@@ -77,19 +77,21 @@ public class MasqColorSensorV2 implements MasqHardware {
 
     public String color () {
         int value = colorNumber();
-        if (value == 1) return "PURPLE, 1";
-        else if (value == 2) return "DARK BLUE, 2";
-        else if (value == 3) return "LIGHT BLUE, 3";
-        else if (value == 4) return "GREEN BLUE, 4";
-        else if (value == 5) return "GREEN, 5";
-        else if (value == 6) return "GREEN YELLOW, 6";
-        else if (value == 7) return "YELLOW, 7";
-        else if (value == 8) return "YELLOW, 8";
-        else if (value == 9) return "ORANGE YELLOW, 9";
-        else if (value == 10) return "ORANGE, 10";
-        else if (value == 11) return "RED, 11";
-        else if (value == 12) return "PINK, 12";
-        return "UNKNOWN";
+        String colorString;
+        if (value == 1) colorString =  "PURPLE";
+        else if (value == 2)  colorString = "DARK BLUE";
+        else if (value == 3)  colorString = "LIGHT BLUE";
+        else if (value == 4)  colorString = "GREEN BLUE";
+        else if (value == 5)  colorString = "GREEN";
+        else if (value == 6)  colorString = "GREEN YELLOW";
+        else if (value == 7)  colorString = "YELLOW";
+        else if (value == 8)  colorString = "YELLOW";
+        else if (value == 9)  colorString = "ORANGE YELLOW";
+        else if (value == 10)  colorString = "ORANGE";
+        else if (value == 11)  colorString = "RED";
+        else if (value == 12)  colorString = "PINK";
+        else colorString = "UNKNOWN";
+        return colorString + ", " + value;
     }
 
     public String getName() {
