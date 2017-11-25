@@ -14,7 +14,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        boolean glyphBottomOpenState = true, jewelArmIn = true, clawClosed = true, glyphTopOpenState = true;
+        boolean glyphBottomOpenState = true, jewelArmIn = true, clawClosed = true, glyphTopOpenState = true, stonePusherState = false;
         robot.lift.setPositionLimits(LIFT_MIN, LIFT_MAX);
         robot.initializeServos();
         while (!opModeIsActive()){
@@ -26,6 +26,16 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()){
             robot.driveTrain.setClosedLoop(true);
             robot.MECH(controller1);
+            if (controller1.leftTriggerPressed() && stonePusherState) {
+                stonePusherState = true;
+                robot.stonePusher.setPosition(STONE_PUSHER_DOWN);
+                controller2.update();
+            }
+            if (controller1.leftTriggerPressed() && !stonePusherState) {
+                stonePusherState = true;
+                robot.stonePusher.setPosition(STONE_PUSHER_UP);
+                controller2.update();
+            }
             if (controller1.aOnPress() && glyphBottomOpenState) {
                 glyphBottomOpenState = false;
                 robot.glyphSystemBottom.setPosition(GLYPH_CLOSED);
@@ -51,8 +61,6 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 robot.glyphSystemBottom.setPosition(0.4);
                 controller1.update();
             }
-            if (controller2.start()) increment = 0.005;
-            else increment = 0.05;
             if (controller2.xOnPress() && jewelArmIn) {
                 jewelArmIn = false;
                 robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
