@@ -21,6 +21,7 @@ import Library4997.MasqSensors.MasqMatiboxUltraSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
+import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
@@ -46,7 +47,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMU imu;
     public MasqLimitSwitch liftSwitch;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
-    public MasqServo relicAdjuster;
+    public MasqCRServo relicAdjuster;
     private MasqServo rightBottom, leftBottom;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, stonePusher, relicGripper;
@@ -66,7 +67,7 @@ public class MasqRobot implements PID_CONSTANTS {
         matiboxUltraSensor = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
-        relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
+        relicAdjuster = new MasqCRServo("relicAdjuster", this.hardwareMap);
         liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
         rightBottom = new MasqServo("rightGlyphBottom", Servo.Direction.REVERSE, this.hardwareMap);
         leftBottom = new MasqServo("leftGlyphBottom", Servo.Direction.FORWARD, this.hardwareMap);
@@ -428,6 +429,7 @@ public class MasqRobot implements PID_CONSTANTS {
         glyphSystemTop.setPosition(1);
         glyphSystemBottom.setPosition(0);
         jewelArmBlue.setPosition(0);
-        jewelArmRed.setPosition(0);
+        jewelArmRed.setPosition(0.6);
+        stonePusher.setPosition(0);
     }
 }

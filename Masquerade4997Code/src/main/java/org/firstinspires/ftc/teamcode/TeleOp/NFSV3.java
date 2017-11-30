@@ -14,8 +14,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        boolean glyphBottomOpenState = true, jewelArmIn = true, clawClosed = true, glyphTopOpenState = true, stonePusherState = false;
-        robot.lift.setPositionLimits(LIFT_MIN, LIFT_MAX);
+        boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true, stonePusherState = true;
         robot.initializeServos();
         while (!opModeIsActive()){
             dash.create(INIT_MESSAGE);
@@ -27,7 +26,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             robot.driveTrain.setClosedLoop(true);
             robot.MECH(controller1);
             if (controller1.leftTriggerPressed() && stonePusherState) {
-                stonePusherState = true;
+                stonePusherState = false;
                 robot.stonePusher.setPosition(STONE_PUSHER_DOWN);
                 controller2.update();
             }
@@ -61,21 +60,21 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 robot.glyphSystemBottom.setPosition(0.4);
                 controller1.update();
             }
-            if (controller2.xOnPress() && jewelArmIn) {
-                jewelArmIn = false;
+            if (controller2.xOnPress() && jewelArmInRed) {
+                jewelArmInRed = false;
                 robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
                 controller2.update();
-            } else if (controller2.xOnPress() && !jewelArmIn) {
-                jewelArmIn = true;
+            } else if (controller2.xOnPress() && !jewelArmInRed) {
+                jewelArmInRed = true;
                 robot.jewelArmRed.setPosition(JEWEL_RED_IN);
                 controller2.update();
             }
-            if (controller2.bOnPress() && jewelArmIn) {
-                jewelArmIn = false;
+            if (controller2.bOnPress() && jewelArmInBlue) {
+                jewelArmInBlue = false;
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
                 controller2.update();
-            } else if (controller2.bOnPress() && !jewelArmIn) {
-                jewelArmIn = true;
+            } else if (controller2.bOnPress() && !jewelArmInBlue) {
+                jewelArmInBlue = true;
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
                 controller2.update();
             }
@@ -88,9 +87,9 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 robot.relicGripper.setPosition(CLAW_CLOSED);
                 controller2.update();
             }
-            if (controller2.leftBumper()) currentAdjusterPosition += increment;
-            if (controller2.leftTriggerPressed()) currentAdjusterPosition -= increment;
-            robot.relicAdjuster.setPosition(currentAdjusterPosition);
+            if (controller2.leftBumper()) robot.relicAdjuster.setPower(0.5);
+            else if (controller2.leftTriggerPressed()) robot.relicAdjuster.setPower(-0.5);
+            else robot.relicAdjuster.setPower(0);
             if (controller1.rightBumper()) robot.lift.setPower(LIFT_UP);
             else if (controller1.rightTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
             else robot.lift.setPower(0);

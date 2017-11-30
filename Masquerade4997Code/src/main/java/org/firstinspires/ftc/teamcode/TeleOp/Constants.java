@@ -9,8 +9,8 @@ public interface Constants {
     int LIFT_MIN = 0,
         LIFT_MAX = LIFT_MAX_ROTATIONS * TICKS_PER_ROTATION;
     String INIT_MESSAGE = ">>> Press Play to Start.";
-    double STONE_PUSHER_DOWN = 1,
-           STONE_PUSHER_UP = 0;
+    double STONE_PUSHER_DOWN = 0,
+           STONE_PUSHER_UP = 0.7;
     double GLYPH_CLOSED = 1,
            GLYPH_OPENED = 0;
     double LIFT_DOWN = -1,

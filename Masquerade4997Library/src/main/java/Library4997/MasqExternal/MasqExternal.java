@@ -1,14 +1,20 @@
 package Library4997.MasqExternal;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
+
+import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Archish on 10/16/17.
  */
 
 public class MasqExternal {
-
+    public MasqLinearOpMode linearOpMode;
     public static final double NEVERREST_40_RPM = 160;
     public static final double NEVERREST_40_TICKS_PER_ROTATION = 1120;
     public static final double wheelDiameter = 4;
@@ -32,6 +38,18 @@ public class MasqExternal {
     public static void sleep (double sleep) {
         try {Thread.sleep((long) sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
+    }
+    public void setLinearOpMode(MasqLinearOpMode linearOpMode) {
+        this.linearOpMode = linearOpMode;
+    }
+    public Telemetry getTelemetry() {
+        return this.linearOpMode.telemetry;
+    }
+    public boolean opModeIsActive() {
+        return this.linearOpMode.opModeIsActive();
+    }
+    public HardwareMap getHardwareMap () {
+        return this.linearOpMode.hardwareMap;
     }
     public class KP {
         public static final double TURN = +0.02;

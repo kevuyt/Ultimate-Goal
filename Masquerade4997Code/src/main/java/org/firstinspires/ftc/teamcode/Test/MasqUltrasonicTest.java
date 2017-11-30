@@ -12,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MasqUltrasonicTest", group = "Autonomus")
 public class MasqUltrasonicTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
+        robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
             dash.create(robot.matiboxUltraSensor);
             dash.update();
