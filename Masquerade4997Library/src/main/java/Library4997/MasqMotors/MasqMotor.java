@@ -20,15 +20,20 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private int direction = 1;
     private double kp = 0.004, ki = 0, kd = 0;
     private boolean closedLoop = true;
+    private boolean holdPositionMode = false;
+    private double targetPosition = 0;
     private double prevPos = 0;
     private double previousTime = 0;
     private double destination = 0;
     public double currentPower;
     private double currentMax, currentMin;
     private double currentZero;
-    private double integral = 0;
-    private double derivative = 0;
-    private double previousError = 0;
+    private double holdItergral = 0;
+    private double holdDerivitive = 0;
+    private double holdPreviousError = 0;
+    private double rpmIntegral = 0;
+    private double rpmDerivative = 0;
+    private double rpmPreviousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
@@ -81,6 +86,13 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         zeroEncoderPosition = motor.getCurrentPosition();
         currentPosition = 0;
 
+    }
+    public void setLazy() {
+        holdPositionMode = false;
+    }
+    public void setStrong() {
+        holdPositionMode = true;
+        targetPosition = getCurrentPosition();
     }
     public void setPower (double power) {
         double motorPower = findPower(power);
@@ -168,6 +180,15 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     }
     public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
     private double findPower(double power){
+        if (holdPositionMode) {
+            double tChange = (System.nanoTime() - previousTime) / 1e9;
+            double error = targetPosition - getCurrentPosition();
+            holdItergral += error * tChange;
+            holdDerivitive = (error - holdPreviousError) / tChange;
+            power = (direction * ((error * kp) +
+                    (rpmIntegral * ki) + (rpmDerivative * kd)));
+            holdPreviousError = error;
+        }
         if (closedLoop) {
             double error, setRPM, currentRPM, motorPower;
             double tChange = System.nanoTime() - previousTime;
@@ -175,11 +196,11 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             setRPM = MasqExternal.NEVERREST_40_RPM * power;
             currentRPM = getRate();
             error = setRPM - currentRPM;
-            integral += error * tChange;
-            derivative = (error - previousError) / tChange;
+            rpmIntegral += error * tChange;
+            rpmDerivative = (error - rpmPreviousError) / tChange;
             motorPower = (power) + (direction * ((error * kp) +
-                    (integral * ki) + (derivative * kd)));
-            previousError = error;
+                    (rpmIntegral * ki) + (rpmDerivative * kd)));
+            rpmPreviousError = error;
             return motorPower;
         }
         else return power;

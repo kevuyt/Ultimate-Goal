@@ -151,7 +151,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void drive(int distance, double speed, Direction strafe) {
         drive(distance, speed, strafe, MasqExternal.DEFAULT_TIMEOUT);
     }
-    public void drive (int distance, double speed){drive(distance, speed, Direction.FORWARD);}
+    public void drive(int distance, double speed){drive(distance, speed, Direction.FORWARD);}
     public void drive(int distance) {drive(distance, 0.5);}
 
     public void runToPosition(int distance, Direction direction, double speed, double timeOut, int sleepTime) {
@@ -416,15 +416,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
-    private void normalizeSpeeds (double[] speeds) {
-        double maxSpeed = 0;
-        for (int i = 0; i < speeds.length; i++) maxSpeed = Math.max(maxSpeed, Math.abs(speeds[i]));
-        if (maxSpeed > 1) {
-            for (int i = 0; i < speeds.length; i++) {
-                speeds[i] /= maxSpeed;
-            }
-        }
-    }
     public void initializeServos() {
         glyphSystemTop.setPosition(1);
         glyphSystemBottom.setPosition(0);
