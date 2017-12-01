@@ -186,7 +186,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             holdItergral += error * tChange;
             holdDerivitive = (error - holdPreviousError) / tChange;
             power = (direction * ((error * kp) +
-                    (rpmIntegral * ki) + (rpmDerivative * kd)));
+                    (holdItergral * ki) + (holdDerivitive * kd)));
             holdPreviousError = error;
         }
         if (closedLoop) {
