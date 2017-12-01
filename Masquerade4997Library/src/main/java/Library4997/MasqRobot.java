@@ -46,6 +46,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
     public MasqLimitSwitch liftSwitch;
+    public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public MasqCRServo relicAdjuster;
     private MasqServo rightBottom, leftBottom;
@@ -64,6 +65,8 @@ public class MasqRobot implements PID_CONSTANTS {
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
         openCV = new MasqOpenCV();
+        blueRotator = new MasqServo("blueRotator", this.hardwareMap);
+        redRotator = new MasqServo("redRotator", this.hardwareMap);
         matiboxUltraSensor = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
@@ -82,11 +85,6 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelColorBlue = new MasqREVColorSensor("jewelColorBlue", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
-    }
-    public void mapMotors(HardwareMap hardwareMap) {
-        this.hardwareMap = hardwareMap;
-        dash = DashBoard.getDash();
-        driveTrain = new MasqTankDrive(this.hardwareMap);
     }
 
     private MasqClock timeoutClock = new MasqClock();
