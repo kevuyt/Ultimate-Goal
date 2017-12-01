@@ -9,8 +9,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "NFSV3", group = "Autonomus")
 public class NFSV3 extends MasqLinearOpMode implements Constants {
-    double currentAdjusterPosition = 0;
-    double increment = 0.05;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
@@ -64,7 +62,8 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 jewelArmInRed = false;
                 robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
                 controller2.update();
-            } else if (controller2.xOnPress() && !jewelArmInRed) {
+            }
+            else if (controller2.xOnPress() && !jewelArmInRed) {
                 jewelArmInRed = true;
                 robot.jewelArmRed.setPosition(JEWEL_RED_IN);
                 controller2.update();
@@ -73,7 +72,8 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 jewelArmInBlue = false;
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
                 controller2.update();
-            } else if (controller2.bOnPress() && !jewelArmInBlue) {
+            }
+            else if (controller2.bOnPress() && !jewelArmInBlue) {
                 jewelArmInBlue = true;
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
                 controller2.update();
@@ -82,7 +82,8 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 clawClosed = false;
                 robot.relicGripper.setPosition(CLAW_OPENED);
                 controller2.update();
-            } else if (controller2.aOnPress() && !clawClosed) {
+            }
+            else if (controller2.aOnPress() && !clawClosed) {
                 clawClosed = true;
                 robot.relicGripper.setPosition(CLAW_CLOSED);
                 controller2.update();
@@ -90,9 +91,18 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             if (controller2.leftBumper()) robot.relicAdjuster.setPower(0.5);
             else if (controller2.leftTriggerPressed()) robot.relicAdjuster.setPower(-0.5);
             else robot.relicAdjuster.setPower(0);
-            if (controller1.rightBumper()) robot.lift.setPower(LIFT_UP);
-            else if (controller1.rightTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
-            else robot.lift.setPower(0);
+            if (controller1.rightBumper()) {
+                robot.lift.setPower(LIFT_UP);
+                robot.lift.setLazy();
+            }
+            else if (controller1.rightTriggerPressed()) {
+                robot.lift.setPower(LIFT_DOWN);
+                robot.lift.setLazy();
+            }
+            else {
+                robot.lift.setPower(0);
+                robot.lift.setStrong();
+            }
             if (controller2.rightBumper()) robot.relicLift.setPower(LIFT_UP);
             else if (controller2.rightTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
             else robot.relicLift.setPower(0);
