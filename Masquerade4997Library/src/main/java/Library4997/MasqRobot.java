@@ -387,6 +387,8 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create(vuforia.getVuMark());
             dash.update();
         }
+        dash.create(vuforia.getVuMark());
+        dash.update();
     }
     public void initializeTeleop(){
         driveTrain.setKp(MasqExternal.KP.MOTOR_TELEOP);
@@ -419,6 +421,6 @@ public class MasqRobot implements PID_CONSTANTS {
         glyphSystemBottom.setPosition(0);
         jewelArmBlue.setPosition(0);
         jewelArmRed.setPosition(0.6);
-        stonePusher.setPosition(0);
+        stonePusher.setPosition(1);
     }
 }

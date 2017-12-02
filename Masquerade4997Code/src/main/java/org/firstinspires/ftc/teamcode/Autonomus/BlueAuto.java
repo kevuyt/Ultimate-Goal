@@ -50,14 +50,14 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         if (MasqExternal.VuMark.isCenter(vuMark)){
             robot.drive(70, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
-            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
+            robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
             robot.glyphSystemBottom.setPosition(1);
             robot.drive(20);
         }
         else if (MasqExternal.VuMark.isLeft(vuMark)){
             robot.drive(60, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
-            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
+            robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
             robot.glyphSystemBottom.setPosition(1);
             robot.drive(20);
         }
@@ -65,13 +65,13 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
             robot.drive(90, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
             robot.glyphSystemBottom.setPosition(1);
-            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
+            robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
             robot.drive(20);
         }
         else {
             robot.drive(70, POWER_LOW, Direction.BACKWARD);
             robot.turn(90, Direction.RIGHT);
-            robot.glyphSystemTop.setPosition(GLYPH_OPENED);
+            robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
             robot.glyphSystemBottom.setPosition(1);
             robot.drive(20);
         }

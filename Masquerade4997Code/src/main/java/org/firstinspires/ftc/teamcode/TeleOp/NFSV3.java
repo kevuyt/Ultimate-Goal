@@ -35,22 +35,22 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             }
             if (controller1.aOnPress() && glyphBottomOpenState) {
                 glyphBottomOpenState = false;
-                robot.glyphSystemBottom.setPosition(GLYPH_CLOSED);
+                robot.glyphSystemBottom.setPosition(GLYPH_TOP_CLOSED);
                 controller1.update();
             }
             if (controller1.aOnPress() && !glyphBottomOpenState) {
                 glyphBottomOpenState = true;
-                robot.glyphSystemBottom.setPosition(GLYPH_OPENED);
+                robot.glyphSystemBottom.setPosition(GLYPH_TOP_OPENED);
                 controller1.update();
             }
             if (controller1.bOnPress() && glyphTopOpenState) {
                 glyphTopOpenState = false;
-                robot.glyphSystemTop.setPosition(GLYPH_CLOSED);
+                robot.glyphSystemTop.setPosition(GLYPH_TOP_CLOSED);
                 controller1.update();
             }
             if (controller1.bOnPress() && !glyphTopOpenState) {
                 glyphTopOpenState = true;
-                robot.glyphSystemTop.setPosition(GLYPH_OPENED);
+                robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
                 controller1.update();
             }
             if (controller1.xOnPress()) {

@@ -36,6 +36,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double rpmPreviousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
+    private boolean servoMode;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqClock timeoutTimer = new MasqClock();
     private MasqLimitSwitch minLim, maxLim = null;
