@@ -125,11 +125,11 @@ public class MasqRobot implements PID_CONSTANTS {
             angularIntegral = (angularIntegral + angularError) * timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
-            powerAdjustment = (MasqExternal.KP.DRIVE_ANGULAR * power + .01) * angularError + MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
+            powerAdjustment = (MasqExternal.KP.DRIVE_ANGULAR * power + .01) * angularError + (MasqExternal.KI.DRIVE * angularIntegral) + (MasqExternal.KD.DRIVE * angularDerivative);
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             powerAdjustment *= DIRECTION.value;
-            leftPower = power - powerAdjustment;
-            rightPower = power + powerAdjustment;
+            leftPower = power + powerAdjustment;
+            rightPower = power - powerAdjustment;
             maxPower = Math.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
@@ -185,7 +185,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double imuVAL = imu.getHeading();
             currentError = imu.adjustAngle(targetAngle - imuVAL);
             integral += currentError * MasqExternal.ID.TURN;
-            double errorkp = currentError * -kp;
+            double errorkp = currentError * kp;
             double integralki = integral * ki * tChange;
             double dervitive = (currentError - prevError) / tChange;
             double dervitivekd = dervitive * kd;

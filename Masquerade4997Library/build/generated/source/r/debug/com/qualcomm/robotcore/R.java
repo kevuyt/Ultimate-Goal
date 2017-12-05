@@ -125,13 +125,13 @@ public final class R {
         public static int feedback_shape_orange = 0x7f020002;
     }
     public static final class id {
-        public static int colorSwatch = 0x7f0c006d;
-        public static int feedback = 0x7f0c0073;
-        public static int feedbackOKButton = 0x7f0c0076;
-        public static int feedbackText0 = 0x7f0c0074;
-        public static int feedbackText1 = 0x7f0c0075;
-        public static int loadingIndicator = 0x7f0c00a0;
-        public static int loadingIndicatorOverlay = 0x7f0c009f;
+        public static int colorSwatch = 0x7f0c006f;
+        public static int feedback = 0x7f0c0075;
+        public static int feedbackOKButton = 0x7f0c0078;
+        public static int feedbackText0 = 0x7f0c0076;
+        public static int feedbackText1 = 0x7f0c0077;
+        public static int loadingIndicator = 0x7f0c00a2;
+        public static int loadingIndicatorOverlay = 0x7f0c00a1;
     }
     public static final class layout {
         public static int color_list_preference_line_item = 0x7f030017;

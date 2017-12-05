@@ -30,6 +30,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/Archish/Documents/Projects/MasqLib/MasqOpenCV/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e1d5cfdb78b8a8201a0f22fc7ca14d95dffb3e18">
+        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_87c8773a7c85cf1fa79361856a4e71d9fcbb31ca.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/Archish/.android/build-cache/a7db752487d7065a7ba2edd239ce7a7c8fbe1088/output/jars/libs/gson-2.8.0.jar"
         jumboMode="false"
         optimize="true"
@@ -45,15 +54,6 @@
         revision="25.0.0"
         sha1="7558c70f3b0b473ca494059b37f16ca880ac43fd">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_0598430537f9c5b8f6d8f38a02c7d8c03650e382.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/MasqOpenCV/build/intermediates/bundles/default/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e1d5cfdb78b8a8201a0f22fc7ca14d95dffb3e18">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_87c8773a7c85cf1fa79361856a4e71d9fcbb31ca.jar" />
     </item>
     <item
         is-multidex="false"
@@ -106,7 +106,7 @@
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="64c5036e31acb1895a82052dbd4b39b7b12a8969">
+        sha1="f7dec3e10f9c3ff8f7b2f321383b83498ed03a0e">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" />
     </item>
     <item

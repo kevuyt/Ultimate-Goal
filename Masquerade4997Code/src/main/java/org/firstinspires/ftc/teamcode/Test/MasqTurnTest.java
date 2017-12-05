@@ -20,18 +20,7 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.sleep(robot.getDelay());
-        int counter  = 0;
-        while (counter < 16) {
-            robot.turn(30, Direction.LEFT);
-            counter++;
-        }
-        while (counter < 8) {
-            robot.turn(45, Direction.LEFT);
-            counter++;
-        }
-        while (counter < 4) {
-            robot.turn(90, Direction.LEFT);
-            counter++;
-        }
+        robot.drive(490);
+
     }
 }
