@@ -19,6 +19,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private String nameMotor;
     private int direction = 1;
     private double kp = 0.004, ki = 0, kd = 0;
+    private double holdKp = 0.0002;
     private boolean closedLoop = true;
     private boolean holdPositionMode = false;
     private double targetPosition = 0;
@@ -186,7 +187,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             double error = targetPosition - getCurrentPosition();
             holdItergral += error * tChange;
             holdDerivitive = (error - holdPreviousError) / tChange;
-            power = (direction * ((error * kp) +
+            power = (direction * ((error * holdKp) +
                     (holdItergral * ki) + (holdDerivitive * kd)));
             holdPreviousError = error;
         }
