@@ -24,6 +24,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private boolean holdPositionMode = false;
     private double targetPosition = 0;
     private double prevPos = 0;
+    private double encoderCounts = MasqExternal.NEVERREST_40_TICKS_PER_ROTATION;
     private double previousTime = 0;
     private double destination = 0;
     public double currentPower;
@@ -37,7 +38,6 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double rpmPreviousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
-    private boolean servoMode;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqClock timeoutTimer = new MasqClock();
     private MasqLimitSwitch minLim, maxLim = null;
@@ -170,7 +170,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         tChange = tChange / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
-        rate = (rate * 60) / MasqExternal.NEVERREST_40_TICKS_PER_ROTATION;
+        rate = (rate * 60) / encoderCounts;
         if (rate != 0) return rate;
         else {
             prevRate = rate;
@@ -206,6 +206,10 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             return motorPower;
         }
         else return power;
+    }
+
+    public void setEncoderCounts(double encoderCounts) {
+        this.encoderCounts = encoderCounts;
     }
 
     public double getKp() {return kp;}

@@ -72,9 +72,9 @@ public class MasqExternal {
     }
     public class ID {
         public static final double TURN = +1.0;
-        public static final double DRIVE = +0.0;
-        public static final double MOTOR_TELEOP = +0.0;
-        public static final double MOTOR_AUTONOMOUS = +0.00;
+        public static final double DRIVE = +1.0;
+        public static final double MOTOR_TELEOP = +1.0;
+        public static final double MOTOR_AUTONOMOUS = +1.00;
     }
     public static class VuMark {
         public static final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}

@@ -94,6 +94,10 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
     }
+    public void setEncoderCounts(double counts) {
+        leftDrive.setEncoderCounts(counts);
+        rightDrive.setEncoderCounts(counts);
+    }
     public void stopDriving() {
         setPower(0,0);
     }
