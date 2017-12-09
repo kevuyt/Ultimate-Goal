@@ -13,6 +13,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true, stonePusherState = true;
+        boolean midOpen = false;
         robot.initializeServos();
         while (!opModeIsActive()){
             dash.create(INIT_MESSAGE);
@@ -35,21 +36,25 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             }
             if (controller1.aOnPress() && glyphBottomOpenState) {
                 glyphBottomOpenState = false;
+                midOpen = false;
                 robot.glyphSystemBottom.setPosition(GLYPH_TOP_CLOSED);
                 controller1.update();
             }
             if (controller1.aOnPress() && !glyphBottomOpenState) {
                 glyphBottomOpenState = true;
+                midOpen = false;
                 robot.glyphSystemBottom.setPosition(GLYPH_TOP_OPENED);
                 controller1.update();
             }
             if (controller1.bOnPress() && glyphTopOpenState) {
                 glyphTopOpenState = false;
+                midOpen = false;
                 robot.glyphSystemTop.setPosition(GLYPH_TOP_CLOSED);
                 controller1.update();
             }
             if (controller1.bOnPress() && !glyphTopOpenState) {
                 glyphTopOpenState = true;
+                midOpen = false;
                 robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
                 controller1.update();
             }
@@ -58,8 +63,11 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 robot.glyphSystemBottom.setPosition(0.4);
                 glyphBottomOpenState = false;
                 glyphTopOpenState = true;
+                midOpen = true;
                 controller1.update();
             }
+            if (midOpen) robot.bottomIntake.setPower(1);
+            else robot.bottomIntake.setPower(2);
             if (controller2.xOnPress() && jewelArmInRed) {
                 jewelArmInRed = false;
                 robot.jewelArmRed.setPosition(JEWEL_RED_OUT);

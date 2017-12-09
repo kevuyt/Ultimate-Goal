@@ -1,5 +1,6 @@
 package Library4997;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -22,6 +23,7 @@ import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqCRServo;
+import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
@@ -46,6 +48,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
     public MasqLimitSwitch liftSwitch;
+    public MasqCRServoSystem bottomIntake;
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public MasqCRServo relicAdjuster;
@@ -70,6 +73,7 @@ public class MasqRobot implements PID_CONSTANTS {
         matiboxUltraSensor = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
+        bottomIntake = new MasqCRServoSystem("leftBottomIntake", CRServo.Direction.FORWARD, "rightBottomIntake", CRServo.Direction.REVERSE, this.hardwareMap);
         relicAdjuster = new MasqCRServo("relicAdjuster", this.hardwareMap);
         liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
         rightBottom = new MasqServo("rightGlyphBottom", Servo.Direction.REVERSE, this.hardwareMap);
