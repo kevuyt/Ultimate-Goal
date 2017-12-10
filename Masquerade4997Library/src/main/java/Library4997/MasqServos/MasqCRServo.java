@@ -31,6 +31,11 @@ public class MasqCRServo implements MasqHardware{
         limitDetection = true;
         return this;
     }
+    public MasqCRServo setLimit(MasqLimitSwitch min) {
+        this.min = min;
+        limitDetection = true;
+        return this;
+    }
     public void setPower (double power) {
         if (!limitDetection) servo.setPower(power);
         else {

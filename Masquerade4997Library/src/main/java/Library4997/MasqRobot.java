@@ -12,6 +12,7 @@ import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqSensor;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqOpenCV.MasqOpenCV;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -20,6 +21,7 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqMatiboxUltraSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
+import Library4997.MasqSensors.MasqTouchSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqCRServo;
@@ -54,7 +56,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqCRServo relicAdjuster;
     private MasqServo rightBottom, leftBottom;
     public MasqVoltageSensor voltageSensor;
-    public MasqServo jewelArmBlue, jewelArmRed, stonePusher, relicGripper;
+    public MasqLimitSwitch bottomLimit;
+    public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqServoSystem glyphSystemBottom, glyphSystemTop;
     public MasqVuforiaBeta vuforia;
     public MasqMatiboxUltraSensor matiboxUltraSensor;
@@ -70,6 +73,7 @@ public class MasqRobot implements PID_CONSTANTS {
         openCV = new MasqOpenCV();
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
+        bottomLimit = new MasqLimitSwitch("bottomLimit", this.hardwareMap);
         matiboxUltraSensor = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
@@ -84,11 +88,11 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArmBlue = new MasqServo("jewelArmBlue", this.hardwareMap);
         jewelArmRed = new MasqServo("jewelArmRed", this.hardwareMap);
-        stonePusher = new MasqServo("stonePusher", this.hardwareMap);
         jewelColorRed = new MasqREVColorSensor("jewelColorRed", this.hardwareMap);
         jewelColorBlue = new MasqREVColorSensor("jewelColorBlue", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
+        createLimits();
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -425,6 +429,8 @@ public class MasqRobot implements PID_CONSTANTS {
         glyphSystemBottom.setPosition(0);
         jewelArmBlue.setPosition(0);
         jewelArmRed.setPosition(0.6);
-        stonePusher.setPosition(1);
+    }
+    public void createLimits () {
+        bottomIntake.setLimit(bottomLimit);
     }
 }

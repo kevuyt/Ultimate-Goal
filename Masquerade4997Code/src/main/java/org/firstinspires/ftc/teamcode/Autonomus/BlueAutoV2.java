@@ -24,7 +24,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
         String vuMark = readVuMark();
-        //runJewel();
+        runJewel();
         robot.driveTrain.setClosedLoop(false);
         runVuMark(vuMark);
     }
@@ -44,12 +44,9 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         return robot.vuforia.getVuMark();
     }
     public void runVuMark(String vuMark) {
-        if (MasqExternal.VuMark.isCenter(vuMark))
-            robot.drive(90, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark))
-            robot.drive(180, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark))
-            robot.drive(225, POWER_OPTIMAL, Direction.FORWARD);
+        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(90, POWER_OPTIMAL, Direction.FORWARD);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(180, POWER_OPTIMAL, Direction.FORWARD);
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(250, POWER_OPTIMAL, Direction.FORWARD);
         robot.turn(90, Direction.LEFT);
         robot.drive(30);
         robot.glyphSystemBottom.setPosition(GLYPH_BLTTOM_OPENED);
