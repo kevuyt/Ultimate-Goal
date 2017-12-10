@@ -13,9 +13,11 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true;
+        int bottomIntakePower = 0;
         robot.initializeServos();
         while (!opModeIsActive()){
             dash.create(INIT_MESSAGE);
+            dash.create(robot.bottomLimit.getState());
             dash.update();
         }
         waitForStart();
@@ -25,12 +27,15 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             robot.MECH(controller1);
             if (controller1.aOnPress() && glyphBottomOpenState) {
                 glyphBottomOpenState = false;
-                robot.glyphSystemBottom.setPosition(GLYPH_TOP_CLOSED);
+                robot.bottomIntake.setPower(0);
+                robot.glyphSystemBottom.setPosition(GLYPH_BLTTOM_OPENED);
                 controller1.update();
             }
             if (controller1.aOnPress() && !glyphBottomOpenState) {
                 glyphBottomOpenState = true;
-                robot.glyphSystemBottom.setPosition(GLYPH_TOP_OPENED);
+                robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
+                robot.bottomIntake.setPower(-1);
+                bottomIntakePower = -1;
                 controller1.update();
             }
             if (controller1.bOnPress() && glyphTopOpenState) {
@@ -48,6 +53,8 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 robot.glyphSystemBottom.setPosition(0.4);
                 glyphBottomOpenState = false;
                 glyphTopOpenState = true;
+                bottomIntakePower = 1;
+                robot.bottomIntake.setPower(1);
                 controller1.update();
             }
             if (controller2.xOnPress() && jewelArmInRed) {
@@ -95,11 +102,13 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 robot.lift.setPower(0);
                 robot.lift.setStrong();
             }
+            if (robot.bottomLimit.getState() && bottomIntakePower < 0) robot.bottomIntake.setPower(0);
             if (controller2.rightBumper()) robot.relicLift.setPower(LIFT_UP);
             else if (controller2.rightTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
             else robot.relicLift.setPower(0);
             controller1.update();
             controller2.update();
+            robot.sleep(20);
         }
     }
     

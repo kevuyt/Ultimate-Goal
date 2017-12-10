@@ -49,7 +49,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqTankDrive driveTrain;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
-    public MasqLimitSwitch liftSwitch;
     public MasqCRServoSystem bottomIntake;
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
@@ -79,7 +78,6 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain = new MasqTankDrive(this.hardwareMap);
         bottomIntake = new MasqCRServoSystem("leftBottomIntake", CRServo.Direction.FORWARD, "rightBottomIntake", CRServo.Direction.REVERSE, this.hardwareMap);
         relicAdjuster = new MasqCRServo("relicAdjuster", this.hardwareMap);
-        liftSwitch = new MasqLimitSwitch("liftSwitch", this.hardwareMap);
         rightBottom = new MasqServo("rightGlyphBottom", Servo.Direction.REVERSE, this.hardwareMap);
         leftBottom = new MasqServo("leftGlyphBottom", Servo.Direction.FORWARD, this.hardwareMap);
         glyphSystemTop = new MasqServoSystem("leftGlyphTop", Servo.Direction.FORWARD, "rightGlyphTop", Servo.Direction.REVERSE, this.hardwareMap);
@@ -431,6 +429,6 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelArmRed.setPosition(0.6);
     }
     public void createLimits () {
-        bottomIntake.setLimit(bottomLimit);
+        //bottomIntake.setLimit(bottomLimit);
     }
 }

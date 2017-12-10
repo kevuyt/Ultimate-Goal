@@ -14,7 +14,7 @@ public interface Constants {
     double GLYPH_TOP_CLOSED = 1,
            GLYPH_TOP_OPENED = 0,
            GLYPH_BOTTOM_CLOSED = 0,
-           GLYPH_BLTTOM_OPENED = 1;
+           GLYPH_BLTTOM_OPENED = 0.8;
     double LIFT_DOWN = -1,
            LIFT_UP = 1;
     double JEWEL_BLUE_IN = 0.3,
