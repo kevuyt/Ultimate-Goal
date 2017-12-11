@@ -181,6 +181,17 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return nameMotor;
     }
     public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
+    public void doHold () {
+        if (holdPositionMode) {
+            double tChange = (System.nanoTime() - previousTime) / 1e9;
+            double error = targetPosition - getCurrentPosition();
+            holdItergral += error * tChange;
+            holdDerivitive = (error - holdPreviousError) / tChange;
+            motor.setPower(direction * ((error * holdKp) +
+                    (holdItergral * ki) + (holdDerivitive * kd)));
+            holdPreviousError = error;
+        }
+    }
     private double findPower(double power){
         if (holdPositionMode) {
             double tChange = (System.nanoTime() - previousTime) / 1e9;

@@ -55,7 +55,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqCRServo relicAdjuster;
     private MasqServo rightBottom, leftBottom;
     public MasqVoltageSensor voltageSensor;
-    public MasqLimitSwitch bottomLimit;
+    public MasqLimitSwitch bottomLimit, topLimit;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqServoSystem glyphSystemBottom, glyphSystemTop;
     public MasqVuforiaBeta vuforia;
@@ -70,6 +70,7 @@ public class MasqRobot implements PID_CONSTANTS {
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
         openCV = new MasqOpenCV();
+        topLimit = new MasqLimitSwitch("topLimit", this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
         bottomLimit = new MasqLimitSwitch("bottomLimit", this.hardwareMap);
