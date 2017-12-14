@@ -12,13 +12,13 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "NFSV4", group = "Autonomus")
 public class NFSV4 extends MasqLinearOpMode implements Constants {
-    double setBottomSystemPosition;
     @Override
      public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true;
         boolean topLimit, bottomLimit;
         int bottomIntakePower = 0;
+        int glyphCount = 0;
         robot.initializeServos();
         while (!opModeIsActive()){
             dash.create(INIT_MESSAGE);
@@ -109,17 +109,11 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
                 robot.lift.setPower(0);
                 robot.lift.setStrong();
             }
-            if (bottomLimit && bottomIntakePower < 0 && !topLimit) {
+            if (bottomLimit && bottomIntakePower < 0) {
+                glyphCount ++;
                 robot.bottomIntake.setPower(0);
                 robot.glyphSystemTop.setPosition(GLYPH_TOP_CLOSED);
-                robot.glyphSystemBottom.setPosition(GLYPH_TOP_OPENED);
-                robot.lift.setDistance(200);
-                robot.lift.runToPosition(Direction.FORWARD, .7);
-            }
-            if (bottomLimit && topLimit) {
-                robot.bottomIntake.setPower(0);
-                robot.glyphSystemTop.setPosition(GLYPH_TOP_CLOSED);
-                robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
+                if (glyphCount % 2 == 1) robot.glyphSystemBottom.setPosition(GLYPH_TOP_OPENED);
                 robot.lift.setDistance(200);
                 robot.lift.runToPosition(Direction.FORWARD, .7);
             }
