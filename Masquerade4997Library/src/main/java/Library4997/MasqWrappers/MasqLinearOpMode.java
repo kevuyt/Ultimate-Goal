@@ -27,4 +27,13 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     }
     public abstract void runLinearOpMode() throws InterruptedException;
     public void stopLinearOpMode() {}
+    public void runSimultaneously(Runnable r1, Runnable r2) throws InterruptedException {
+        Thread t1 = new Thread(r1);
+        Thread t2 = new Thread(r2);
+        t1.start();
+        t2.start();
+        while (opModeIsActive() && (t1.isAlive() || t2.isAlive())) {
+            idle();
+        }
+    }
 }
