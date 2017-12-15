@@ -56,6 +56,19 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
     }
     public void runMultiGlyph() {
         robot.turn(180, Direction.LEFT);
-        robot.drive(90);
+        robot.bottomIntake.setPower(-1);
+        robot.stop(robot.bottomLimit);
+        moveToTop(true);
+        robot.bottomIntake.setPower(-1);
+        robot.stop(robot.bottomLimit);
+        moveToTop(false);
     }
+    public void moveToTop(boolean doTop) {
+        robot.bottomIntake.setPower(0);
+        robot.glyphSystemTop.setPosition(GLYPH_TOP_CLOSED);
+        if (doTop)robot.glyphSystemBottom.setPosition(GLYPH_TOP_OPENED);
+        robot.lift.setDistance(200);
+        robot.lift.runToPosition(Direction.FORWARD, .7);
+    }
+
 }
