@@ -12,8 +12,9 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true;
+        boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true, relicLiftSlow;
         int bottomIntakePower = 0;
+        double relicLiftPower;
         robot.initializeServos();
         while (!opModeIsActive()){
             dash.create(INIT_MESSAGE);
@@ -25,6 +26,8 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()){
             robot.driveTrain.setClosedLoop(true);
             robot.MECH(controller1);
+            if (controller2.y()) relicLiftSlow = true;
+            else relicLiftSlow = false;
             if (controller1.aOnPress() && glyphBottomOpenState) {
                 glyphBottomOpenState = false;
                 robot.bottomIntake.setPower(0);
@@ -33,7 +36,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             }
             if (controller1.aOnPress() && !glyphBottomOpenState) {
                 glyphBottomOpenState = true;
-                robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
+                robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_INTAKE);
                 robot.bottomIntake.setPower(-1);
                 bottomIntakePower = -1;
                 controller1.update();
@@ -50,7 +53,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
             }
             if (controller1.xOnPress()) {
                 robot.glyphSystemTop.setPosition(0.6);
-                robot.glyphSystemBottom.setPosition(0.4);
+                robot.glyphSystemBottom.setPosition(0.8);
                 glyphBottomOpenState = false;
                 glyphTopOpenState = true;
                 bottomIntakePower = 1;
@@ -102,8 +105,13 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 robot.lift.setPower(0);
                 robot.lift.setStrong();
             }
-            if (robot.bottomLimit.getState() && bottomIntakePower < 0) robot.bottomIntake.setPower(0);
-            if (controller2.rightBumper()) robot.relicLift.setPower(LIFT_UP);
+            if (robot.bottomLimit.getState() && bottomIntakePower < 0) {
+                robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
+                robot.bottomIntake.setPower(0);
+            }
+            if (controller2.rightBumper()) {
+                robot.relicLift.setPower(LIFT_UP/2);
+            }
             else if (controller2.rightTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
             else robot.relicLift.setPower(0);
             controller1.update();

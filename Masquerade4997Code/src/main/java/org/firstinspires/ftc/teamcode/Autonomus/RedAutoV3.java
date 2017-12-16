@@ -25,20 +25,19 @@ public class RedAutoV3 extends MasqLinearOpMode implements Constants {
         robot.vuforia.activateVuMark();
         String vuMark = readVuMark();
         runJewel();
+        robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
         robot.driveTrain.setClosedLoop(false);
         runVuMark(vuMark);
         //runMultiGlyph();
     }
     public void runJewel() {
         robot.jewelArmRed.setPosition(JEWEL_BLUE_OUT);
-        robot.sleep(500);
+        robot.sleep(1500);
         if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(COLOR_SEEN);
         else robot.redRotator.setPosition(COLOR_NOT_SEEN);
-        robot.sleep(100);
-        robot.redRotator.setPosition(ROTATOR_CENTER);
-        robot.sleep(100);
-        robot.jewelArmRed.setPosition(JEWEL_BLUE_IN);
-        robot.sleep(100);
+        robot.sleep(1500);
+        robot.jewelArmRed.setPosition(JEWEL_RED_IN);
+        robot.sleep(1500);
     }
     public String readVuMark () {
         robot.waitForVuMark();
@@ -49,7 +48,7 @@ public class RedAutoV3 extends MasqLinearOpMode implements Constants {
         else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.FORWARD);
         else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
-        robot.turn(80, Direction.RIGHT);
+        robot.turn(70, Direction.RIGHT);
         robot.drive(60);
         robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_OPENED);
         robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);

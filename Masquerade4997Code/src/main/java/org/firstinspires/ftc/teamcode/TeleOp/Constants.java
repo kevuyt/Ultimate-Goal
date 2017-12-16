@@ -13,7 +13,8 @@ public interface Constants {
            STONE_PUSHER_UP = 0.7;
     double GLYPH_TOP_CLOSED = 1,
            GLYPH_TOP_OPENED = 0,
-           GLYPH_BOTTOM_CLOSED = .6,
+           GLYPH_BOTTOM_CLOSED = .55,
+           GLYPH_BOTTOM_INTAKE = .6,
            GLYPH_BOTTOM_OPENED = 1;
     double INTAKE = -1,
            OUTAKE = 1;

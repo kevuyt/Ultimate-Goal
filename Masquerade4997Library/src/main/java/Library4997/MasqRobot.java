@@ -350,6 +350,12 @@ public class MasqRobot implements PID_CONSTANTS {
             rightFront /= max;
             rightBack /= max;
         }
+        if (c.leftBumper()) {
+            leftFront /= 2;
+            leftBack /= 2;
+            rightFront /= 2;
+            rightBack /= 2;
+        }
         driveTrain.leftDrive.motor1.setPower(leftFront);
         driveTrain.leftDrive.motor2.setPower(leftBack);
         driveTrain.rightDrive.motor1.setPower(rightFront);
@@ -373,9 +379,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public int getDelta (double initial, Direction direction) {
         return (int) (initial- (imu.getHeading() * direction.value));
     }
-    public double getVoltage() {
-        return voltageSensor.getVoltage();
-    }
+    public double getVoltage() {return voltageSensor.getVoltage();}
     public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
     public void waitForVuMark() {
@@ -418,7 +422,7 @@ public class MasqRobot implements PID_CONSTANTS {
         glyphSystemTop.setPosition(0);
         glyphSystemBottom.setPosition(1);
         jewelArmBlue.setPosition(0);
-        jewelArmRed.setPosition(0.6);
+        jewelArmRed.setPosition(0);
     }
     public void createLimits () {
         //bottomIntake.setLimit(bottomLimit);

@@ -13,8 +13,9 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
     @Override
      public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        double relicLiftPower;
         boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true;
-        boolean  bottomLimit, topLimit, liftLimit, liftLimitPrressed = true;
+        boolean  bottomLimit, topLimit, liftLimit, relicLiftSlow;
         int glyphCount = 0;
         robot.initializeServos();
         while (!opModeIsActive()){
@@ -29,6 +30,8 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()){
             if (robot.glyphSystemTop.getPosition() == GLYPH_TOP_CLOSED) topLimit = true;
             else topLimit = false;
+            if (controller2.y()) relicLiftSlow = true;
+            else relicLiftSlow = false;
             liftLimit = robot.liftLimit.getState();
             bottomLimit = robot.bottomLimit.getState();
             robot.driveTrain.setClosedLoop(true);
@@ -97,7 +100,6 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftTriggerPressed()) robot.relicAdjuster.setPower(-0.5);
             else robot.relicAdjuster.setPower(0);
             if (controller1.rightBumper()) {
-                liftLimitPrressed = false;
                 robot.lift.setPower(LIFT_UP);
                 robot.lift.setLazy();
             }
@@ -124,7 +126,11 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
                 robot.bottomIntake.setPower(INTAKE);
             }
             //robot.lift.doHold();
-            if (controller2.rightBumper()) robot.relicLift.setPower(LIFT_UP);
+            if (controller2.rightBumper()) {
+                if (relicLiftSlow) relicLiftPower = LIFT_UP/2;
+                else relicLiftPower = LIFT_UP;
+                robot.relicLift.setPower(relicLiftPower);
+            }
             else if (controller2.rightTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
             else robot.relicLift.setPower(0);
             dash.create("Glyph Count: " + glyphCount);
