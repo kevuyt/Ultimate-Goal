@@ -54,7 +54,7 @@ public class NFSV3 extends MasqLinearOpMode implements Constants {
                 glyphBottomOpenState = false;
                 glyphTopOpenState = true;
                 bottomIntakePower = 1;
-                robot.bottomIntake.setPower(1);
+                robot.bottomIntake.setPower(0);
                 controller1.update();
             }
             if (controller2.xOnPress() && jewelArmInRed) {

@@ -119,12 +119,10 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
                 robot.glyphSystemTop.setPosition(GLYPH_TOP_CLOSED);
             }
             if (liftLimit) {
-                liftLimitPrressed = true;
                 robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
                 robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
                 robot.bottomIntake.setPower(INTAKE);
             }
-            if (liftLimitPrressed) robot.lift.setPower(0);
             //robot.lift.doHold();
             if (controller2.rightBumper()) robot.relicLift.setPower(LIFT_UP);
             else if (controller2.rightTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
