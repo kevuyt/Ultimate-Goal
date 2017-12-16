@@ -33,7 +33,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
         robot.sleep(1500);
         if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(COLOR_SEEN);
-        else robot.blueRotator.setPosition(COLOR_SEEN);
+        else robot.blueRotator.setPosition(COLOR_NOT_SEEN);
         robot.sleep(1500);
         robot.blueRotator.setPosition(ROTATOR_CENTER);
         robot.sleep(1500);
@@ -45,10 +45,10 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         return robot.vuforia.getVuMark();
     }
     public void runVuMark(String vuMark) {
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(90, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(250, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(275, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(250, POWER_OPTIMAL, Direction.FORWARD);
+        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(175, POWER_OPTIMAL, Direction.FORWARD);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.FORWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
         robot.turn(90, Direction.LEFT);
         robot.drive(30);
         robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_OPENED);
@@ -56,6 +56,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
     }
     public void runMultiGlyph() {
+        robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
         robot.turn(90, Direction.LEFT, 1);
         robot.turn(90, Direction.LEFT, 1);
         robot.bottomIntake.setPower(-1);

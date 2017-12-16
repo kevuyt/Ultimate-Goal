@@ -52,7 +52,7 @@ public class MasqExternal {
         return this.linearOpMode.hardwareMap;
     }
     public class KP {
-        public static final double TURN = +0.025;
+        public static final double TURN = +0.028;
         public static final double DRIVE_ENCODER = +0.1;
         public static final double DRIVE_ANGULAR = +0.02;
         public static final double MOTOR_TELEOP = +0;
@@ -65,7 +65,7 @@ public class MasqExternal {
         public static final double MOTOR_AUTONOMOUS = +0.00;
     }
     public class KD {
-        public static final double TURN = +0.0;
+        public static final double TURN = +0.0025;
         public static final double DRIVE = +0.0;
         public static final double MOTOR_TELEOP = +0.00296875;
         public static final double MOTOR_AUTONOMOUS = +0.00;

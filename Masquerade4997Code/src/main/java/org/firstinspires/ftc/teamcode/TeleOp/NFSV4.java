@@ -15,7 +15,6 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
         robot.mapHardware(hardwareMap);
         boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true;
         boolean  bottomLimit, topLimit;
-        int bottomIntakePower = 0;
         int glyphCount = 0;
         robot.initializeServos();
         while (!opModeIsActive()){
@@ -25,6 +24,7 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.initializeTeleop();
+        robot.lift.runUsingEncoder();
         while (opModeIsActive()){
             if (robot.glyphSystemTop.getPosition() == GLYPH_TOP_CLOSED) topLimit = true;
             else topLimit = false;
@@ -41,7 +41,6 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
                 glyphBottomOpenState = true;
                 robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
                 robot.bottomIntake.setPower(-1);
-                bottomIntakePower = -1;
                 controller1.update();
             }
             if (controller1.bOnPress() && glyphTopOpenState) {
