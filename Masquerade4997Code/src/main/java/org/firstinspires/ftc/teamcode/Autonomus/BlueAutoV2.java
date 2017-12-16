@@ -27,18 +27,18 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         runJewel();
         robot.driveTrain.setClosedLoop(false);
         runVuMark(vuMark);
-        runMultiGlyph();
+        //runMultiGlyph();
     }
     public void runJewel() {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
-        robot.sleep(500);
+        robot.sleep(1500);
         if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(COLOR_SEEN);
         else robot.blueRotator.setPosition(COLOR_NOT_SEEN);
-        robot.sleep(100);
+        robot.sleep(1500);
         robot.blueRotator.setPosition(ROTATOR_CENTER);
-        robot.sleep(100);
+        robot.sleep(1500);
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
-        robot.sleep(100);
+        robot.sleep(1500);
     }
     public String readVuMark () {
         robot.waitForVuMark();

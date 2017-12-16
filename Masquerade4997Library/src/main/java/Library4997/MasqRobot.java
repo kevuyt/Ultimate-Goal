@@ -415,8 +415,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
     public void initializeServos() {
-        glyphSystemTop.setPosition(1);
-        glyphSystemBottom.setPosition(0);
+        glyphSystemTop.setPosition(0);
+        glyphSystemBottom.setPosition(1);
         jewelArmBlue.setPosition(0);
         jewelArmRed.setPosition(0.6);
     }

@@ -37,28 +37,35 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
         if (!red) {
             robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
             if (robot.jewelColorBlue.isRed()) {
-                robot.drive(-30);
-                robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);//V2
-                robot.turn(90, Direction.LEFT); //V2
-                robot.turn(60, Direction.LEFT);
-                robot.drive(90);
-            } else {
-                robot.drive(60);
+                robot.drive(30);
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
+                robot.turn(30, Direction.RIGHT);
+                robot.drive(100);
+                robot.drive(-30);
+            }
+            else {
+                robot.drive(-30);
+                robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
+                robot.turn(30, Direction.RIGHT);
+                robot.drive(170);
+                robot.drive(-30);
             }
         }
         else {
             robot.jewelArmBlue.setPosition(JEWEL_RED_OUT);
             if (robot.jewelColorRed.isBlue()) {
+                robot.drive(30);
+                robot.jewelArmRed.setPosition(JEWEL_RED_IN);
+                robot.turn(30, Direction.LEFT);
+                robot.drive(100);
                 robot.drive(-30);
-                robot.jewelArmRed.setPosition(JEWEL_BLUE_IN);//V2
-                robot.turn(40, Direction.LEFT); //V2
-                robot.drive(90);
             }
             else {
-                robot.turn(40, Direction.LEFT);
-                robot.jewelArmRed.setPosition(JEWEL_BLUE_IN);
-                robot.drive(90);
+                robot.drive(-30);
+                robot.jewelArmBlue.setPosition(JEWEL_RED_IN);
+                robot.turn(30, Direction.LEFT);
+                robot.drive(170);
+                robot.drive(-30);
             }
         }
         robot.glyphSystemBottom.setPosition(GLYPH_TOP_OPENED);

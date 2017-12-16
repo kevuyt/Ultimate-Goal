@@ -9,6 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 10/29/17.
  */
 @Autonomous(name = "LimitSwitch Test", group = "Autonomus")
+@Disabled
 public class MasqLimitSwitchTest extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {

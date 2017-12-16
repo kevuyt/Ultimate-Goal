@@ -57,7 +57,7 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
             }
             if (controller1.xOnPress()) {
                 robot.glyphSystemTop.setPosition(0.6);
-                robot.glyphSystemBottom.setPosition(0.4);
+                robot.glyphSystemBottom.setPosition(0.8);
                 glyphBottomOpenState = false;
                 glyphTopOpenState = true;
                 robot.bottomIntake.setPower(0);
