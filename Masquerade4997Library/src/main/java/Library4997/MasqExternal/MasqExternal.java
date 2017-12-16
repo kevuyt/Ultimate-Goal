@@ -53,7 +53,7 @@ public class MasqExternal {
     }
     public class KP {
         public static final double TURN = +0.025;
-        public static final double DRIVE_ENCODER = +0.05;
+        public static final double DRIVE_ENCODER = +0.1;
         public static final double DRIVE_ANGULAR = +0.02;
         public static final double MOTOR_TELEOP = +0;
         public static final double MOTOR_AUTONOMOUS = +0.006;

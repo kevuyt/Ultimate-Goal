@@ -55,7 +55,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqCRServo relicAdjuster;
     private MasqServo rightBottom, leftBottom;
     public MasqVoltageSensor voltageSensor;
-    public MasqLimitSwitch bottomLimit, topLimit;
+    public MasqLimitSwitch bottomLimit;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqServoSystem glyphSystemBottom, glyphSystemTop;
     public MasqVuforiaBeta vuforia;
@@ -70,7 +70,6 @@ public class MasqRobot implements PID_CONSTANTS {
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
         openCV = new MasqOpenCV();
-        topLimit = new MasqLimitSwitch("topLimit", this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
         bottomLimit = new MasqLimitSwitch("bottomLimit", this.hardwareMap);
@@ -222,7 +221,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void turn(int angle, Direction DIRECTION, double timeout)  {
         turn(angle, DIRECTION, timeout, MasqExternal.DEFAULT_SLEEP_TIME);
     }
-    public void turn(int angle, Direction DIRECTION)  {turn(angle, DIRECTION, MasqExternal.DEFAULT_TIMEOUT);}
+    public void turn(int angle, Direction DIRECTION)  {turn(angle, DIRECTION, 1);}
 
     public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -354,15 +353,6 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.leftDrive.motor2.setPower(leftBack);
         driveTrain.rightDrive.motor1.setPower(rightFront);
         driveTrain.rightDrive.motor2.setPower(rightBack);
-        dash.create("LEFT FRONT: ", leftFront);
-        dash.create("LEFT BACK: ", leftBack);
-        dash.create("RIGHT FRONT: ", rightFront);
-        dash.create("RIGHT BACK: ", rightBack);
-        dash.create("LEFT FRONT POWER: ", driveTrain.leftDrive.motor1.getRate());
-        dash.create("LEFT BACK POWER: ", driveTrain.leftDrive.motor2.getRate());
-        dash.create("RIGHT FRONT POWER: ", driveTrain.rightDrive.motor1.getRate());
-        dash.create("RIGHT BACK POWER: ", driveTrain.rightDrive.motor2.getRate());
-        dash.update();
     }
     public void TANK(MasqController c){
         double left = c.leftStickX();

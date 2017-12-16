@@ -2,6 +2,7 @@ package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.Range;
 
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
@@ -138,19 +139,18 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return MasqRobot.getInstance(null).opModeIsActive();
     }
     public void runToPosition(Direction direction, double speed){
-        timeoutTimer.reset();
+        MasqClock timeoutTimer = new MasqClock();
         resetEncoder();
         int targetClicks = (int)(destination * CLICKS_PER_INCH);
         int clicksRemaining;
-        double inchesRemaining;
-        double power;
+        double inchesRemaining, power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            power = direction.value * speed * inchesRemaining * MasqExternal.KP.DRIVE_ENCODER;
+            power = Range.clip(power, -1.0, +1.0);
             setPower(power);
-        } while (opModeIsActive() && inchesRemaining > 0.5 && timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
-        setPower(0);
+        } while (inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
     }
     boolean isBusy () {
         return motor.isBusy();

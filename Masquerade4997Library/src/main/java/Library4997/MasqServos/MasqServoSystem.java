@@ -16,7 +16,7 @@ import Library4997.MasqSensors.MasqLimitSwitch;
 public class MasqServoSystem implements MasqHardware {
     private final MasqServo servo1, servo2, servo3, servo4;
     private final List<MasqServo> servos;
-
+    private double position;
     public MasqServoSystem(String name1, String name2, HardwareMap hardwareMap) {
         this( new MasqServo(name1, hardwareMap), new MasqServo(name2, hardwareMap) );
     }
@@ -68,13 +68,16 @@ public class MasqServoSystem implements MasqHardware {
         servos = Arrays.asList(servo1, servo2, servo3, servo4);
     }
 
-
+    public double getPosition() {
+        return position;
+    }
     public MasqServoSystem setLimits(MasqLimitSwitch min, MasqLimitSwitch max) {
         for (MasqServo s : servos) s.setLimits(min, max);
         return this;
     }
 
     public void setPosition(double position) {
+        this.position = position;
         for (MasqServo s : servos) s.setPosition(position);
     }
 

@@ -50,7 +50,7 @@ public class RedAutoV2 extends MasqLinearOpMode implements Constants {
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(250, POWER_OPTIMAL, Direction.FORWARD);
         robot.turn(90, Direction.RIGHT);
         robot.drive(30);
-        robot.glyphSystemBottom.setPosition(GLYPH_BLTTOM_OPENED);
+        robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_OPENED);
         robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
     }
