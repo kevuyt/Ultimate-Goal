@@ -14,7 +14,7 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
      public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         boolean glyphBottomOpenState = true, jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true, glyphTopOpenState = true;
-        boolean  bottomLimit, topLimit;
+        boolean  bottomLimit, topLimit, liftLimit, yPressed = false;
         int glyphCount = 0;
         robot.initializeServos();
         while (!opModeIsActive()){
@@ -28,6 +28,7 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()){
             if (robot.glyphSystemTop.getPosition() == GLYPH_TOP_CLOSED) topLimit = true;
             else topLimit = false;
+            liftLimit = robot.liftLimit.getState();
             bottomLimit = robot.bottomLimit.getState();
             robot.driveTrain.setClosedLoop(true);
             robot.MECH(controller1);
@@ -40,7 +41,7 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
             if (controller1.aOnPress() && !glyphBottomOpenState) {
                 glyphBottomOpenState = true;
                 robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
-                robot.bottomIntake.setPower(-1);
+                robot.bottomIntake.setPower(INTAKE);
                 controller1.update();
             }
             if (controller1.bOnPress() && glyphTopOpenState) {
@@ -114,6 +115,18 @@ public class NFSV4 extends MasqLinearOpMode implements Constants {
             if (bottomLimit && topLimit) {
                 robot.bottomIntake.setPower(0);
                 robot.glyphSystemTop.setPosition(GLYPH_TOP_CLOSED);
+            }
+            if (liftLimit) {
+                yPressed = false;
+                robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
+                robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
+                robot.bottomIntake.setPower(INTAKE);
+            }
+            if (controller1.y()) {
+                yPressed = true;
+            }
+            if (yPressed) {
+                robot.lift.setPower(LIFT_DOWN);
             }
             //robot.lift.doHold();
             if (controller2.rightBumper()) robot.relicLift.setPower(LIFT_UP);

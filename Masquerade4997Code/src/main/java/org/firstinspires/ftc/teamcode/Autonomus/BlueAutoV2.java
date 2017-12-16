@@ -31,14 +31,14 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
     }
     public void runJewel() {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
-        robot.sleep(1500);
+        robot.sleep(500);
         if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(COLOR_SEEN);
         else robot.blueRotator.setPosition(COLOR_NOT_SEEN);
-        robot.sleep(1500);
+        robot.sleep(100);
         robot.blueRotator.setPosition(ROTATOR_CENTER);
-        robot.sleep(1500);
+        robot.sleep(100);
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
-        robot.sleep(1500);
+        robot.sleep(100);
     }
     public String readVuMark () {
         robot.waitForVuMark();
@@ -49,11 +49,11 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.FORWARD);
         else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
-        robot.turn(90, Direction.LEFT);
-        robot.drive(30);
+        robot.turn(80, Direction.LEFT);
+        robot.drive(60);
         robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_OPENED);
         robot.glyphSystemTop.setPosition(GLYPH_TOP_OPENED);
-        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(60, POWER_OPTIMAL, Direction.BACKWARD);
     }
     public void runMultiGlyph() {
         robot.glyphSystemBottom.setPosition(GLYPH_BOTTOM_CLOSED);
@@ -61,10 +61,13 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.turn(90, Direction.LEFT, 1);
         robot.bottomIntake.setPower(-1);
         robot.stop(robot.bottomLimit);
-        moveToTop(true);
+        robot.turn(90, Direction.RIGHT, 1);
+        robot.turn(90, Direction.RIGHT, 1);
+        robot.drive(90);
+       /* moveToTop(true);
         robot.bottomIntake.setPower(-1);
         robot.stop(robot.bottomLimit);
-        moveToTop(false);
+        moveToTop(false);*/
     }
     public void moveToTop(boolean doTop) {
         robot.bottomIntake.setPower(0);
