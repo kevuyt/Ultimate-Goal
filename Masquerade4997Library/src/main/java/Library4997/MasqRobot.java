@@ -2,6 +2,7 @@ package Library4997;
 
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
@@ -47,7 +48,7 @@ public class MasqRobot implements PID_CONSTANTS {
         return instance;
     }
     public MasqTankDrive driveTrain;
-    public MasqMotor intake;
+    public MasqMotorSystem intake;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
     public MasqServo blueRotator, redRotator;
@@ -66,7 +67,7 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
-        intake = new MasqMotor("intake", this.hardwareMap);
+        intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.FORWARD, "rightIntake", DcMotor.Direction.REVERSE, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         openCV = new MasqOpenCV();
         flipper = new MasqServoSystem("flipLeft", Servo.Direction.FORWARD, "flipRight", Servo.Direction.REVERSE, this.hardwareMap);

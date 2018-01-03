@@ -10,17 +10,436 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV3.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV4.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqLimitSwitchTest.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqUltrasonicTest.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV1.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/Buildings.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/Buildings.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/CzechWolf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/FTC_2016-17.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/FTC_2016-17.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/FtcBlocks.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/FtcBlocksProjects.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/FtcSounds.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/RelicVuMark.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/RelicVuMark.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/RobotConfig.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/RobotConfigDescriptionGenerate.xslt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/RobotConfigTaxonomy.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/RobotConfigTaxonomy.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/StonesAndChips.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/StonesAndChips.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/TextureTeapotBrass.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/blockly_compressed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/blocks_compressed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/javascript_compressed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/1x1.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/click.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/click.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/click.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/delete.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/delete.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/delete.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/disconnect.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/disconnect.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/disconnect.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/handclosed.cur" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/handdelete.cur" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/handopen.cur" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/quote0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/quote1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/sprites.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/media/sprites.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blockly/msg/messages.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/acceleration.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/acceleration_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/analog_input.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/analog_output.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/android_accelerometer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/android_gyroscope.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/android_orientation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/android_sound_pool.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/android_text_to_speech.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/angular_velocity.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/bno055imu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/bno055imu_parameters.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/clipboard_util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/color.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/color_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/compass_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/cr_servo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/dbg_log.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/dc_motor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/digital_channel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/elapsed_time.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/elapsed_time2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/gamepad.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/gyro_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/hardware_util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/ir_seeker_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/led.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/light_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/linear_op_mode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/lynx_i2c_color_range_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/magnetic_flux.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/matrix_f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/misc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/mr_i2c_compass_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/mr_i2c_range_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/navigation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/open_gl_matrix.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/optical_distance_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/orientation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/position.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/project_util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/quaternion.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/range.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/BasicPOVDrive.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/BasicTankDrive.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/ConceptDeviceInteraction.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/ConceptSmoothServo.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/ConceptTextToSpeech.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/ConceptVuMarkDetection.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/SensorDigitalTouch.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/SensorIMU.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/SensorREVColorDistance.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/default.blk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/servo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/servo_controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/sound_util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/system.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/telemetry.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/temperature.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/toolbox_util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/touch_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/ultrasonic_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vars.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vector_f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/velocity.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/voltage_sensor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vuforia.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vuforia_localizer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vuforia_localizer_parameters.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vuforia_trackable.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vuforia_trackable_default_listener.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/blocks/vuforia_trackables.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/connection.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/FtcBlocks.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/FtcBlocksProjects.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/FtcSounds.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/SourceCodePro.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/base.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap-theme.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/bootstrap.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/connection.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/core.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/frame.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/help.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/java/onbotjava.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/css/manage.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/SourceCodePro.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/SourceCodeProExt.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/help.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcAccelerationSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcAnalogInput.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcAnalogOutput.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcCRServo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcColorSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcCompassSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcDcMotor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcDcMotorController.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcDeviceInterfaceModule.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcDigitalChannel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcElapsedTime.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcGamepad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcGyroSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcI2cDevice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcI2cDeviceReader.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcI2cDeviceSynch.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcIrSeekerSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcLED.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcLegacyModule.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcLightSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcLinearOpMode.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcOpMode.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcOpticalDistanceSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcPwmOutput.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcRobotController.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcServo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcServoController.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcTouchSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcTouchSensorMultiplexer.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcUltrasonicSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/images/ftcVoltageSensor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/Blocks-classes.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/FtcCommon-classes.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/Hardware-classes.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/Inspection-classes.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/RobotCore-classes.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/android.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/css/angular-resizable.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/css/jquery.contextmenu.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/css/main.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/css/perfect-scrollbar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/css/tether.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/css/tether.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/editor.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/ace.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/angular-messages.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/angular.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/BufferedTokenStream.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/CharStreams.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/CommonTokenFactory.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/CommonTokenStream.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/FileStream.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/InputStream.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/IntervalSet.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/LL1Analyzer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/Lexer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/Parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/ParserRuleContext.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/PredictionContext.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/Recognizer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/RuleContext.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/Token.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/Utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATN.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATNConfig.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATNConfigSet.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATNDeserializationOptions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATNDeserializer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATNSimulator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATNState.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ATNType.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/LexerATNSimulator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/LexerAction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/LexerActionExecutor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/ParserATNSimulator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/PredictionMode.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/SemanticContext.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/Transition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/dfa/DFA.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/dfa/DFASerializer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/dfa/DFAState.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/dfa/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/error/DiagnosticErrorListener.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/error/ErrorListener.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/error/ErrorStrategy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/error/Errors.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/error/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/polyfills/codepointat.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/polyfills/fromcodepoint.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/tree/Tree.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/tree/Trees.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/tree/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/bootstrap-tree.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/es5-shim.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/es6-shim.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/ext-language_tools.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/ext-spellcheck.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/ext-whitespace.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/flowtype.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/ftclangtools.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/java/JavaLexer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/java/JavaListener.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/java/JavaParser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/java/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/jquery.contextmenu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/jquery.position.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/keybinding-emacs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/keybinding-vim.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/mode-java.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/mode-markdown.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/mode-text.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/perfect-scrollbar.jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/polyfills.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/require.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/snippets/java.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/snippets/markdown.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/snippets/text.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/tether.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/theme-chaos.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/theme-chrome.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/theme-github.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/theme-monokai.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/theme-solarized-dark.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/theme-solarized-light.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/toe.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/ui-ace.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/worker-base.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/worker-java.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/js/worker-javascript.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/BasicOpMode_Iterative" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/BasicOpMode_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/BlankIterativeOpMode" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/BlankLinearOpMode" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptCompassCalibration" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptDIMAsIndicator" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptI2cAddressChange" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptNullOp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptRampMotorSpeed" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptRegisterOpModes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptScanServo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptTelemetry" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptVuMarkIdentification" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/ConceptVuforiaNavigation" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/HardwareK9bot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/HardwarePushbot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/HardwarePushbotMatrix" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/K9botTeleopTank_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/PushbotAutoDriveByEncoder_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/PushbotAutoDriveByGyro_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/PushbotAutoDriveByTime_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/PushbotAutoDriveToLine_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/PushbotTeleopPOV_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/PushbotTeleopTank_Iterative" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorAdafruitRGB" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorBNO055IMU" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorBNO055IMUCalibration" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorColor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorDIO" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorDigitalTouch" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorHTColor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorHTGyro" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorKLNavxMicro" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorLEGOLight" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorLEGOTouch" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorMRColor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorMRCompass" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorMRGyro" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorMRIrSeeker" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorMROpticalDistance" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorMRRangeSensor" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorREVColorDistance" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorREVLaserDistance" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/TemplateOpMode_Iterative" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/java/templates/TemplateOpMode_Linear" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/js/URI.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/js/jquery-3.1.1.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/js/less.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/js/npm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/js/util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/manage.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/android_accelerometer.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/android_gyroscope.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/android_orientation.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/android_sound_pool.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/android_text_to_speech.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/bno055imu_parameters.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/color.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/dbg_log.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/elapsed_time.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/gamepad.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/images.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/linear_op_mode.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/navigation.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/range.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/assets/debug/toolbox/telemetry.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/zip-cache/0C5AV04CaOU0KrSc42XFTSqELjU=" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/zip-cache/PxDkWihDhpdhEa5CjaNwvWS49v0=" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Analytics-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Blocks-release-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Blocks-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/FtcCommon-release-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/FtcCommon-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Hardware-release-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Hardware-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Inspection-release-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Inspection-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/ModernRobotics-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/README.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/RobotCore-release-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/RobotCore-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/Vuforia.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/WirelessP2p-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/armeabi-v7a/libVuforia.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/jniLibs/debug/ftc.debug.keystore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/Vuforia_3ede092937ff73cdfa79ae59234414690c25da14.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_0598430537f9c5b8f6d8f38a02c7d8c03650e382.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_12f736060cb58b5f31de7ec2575543552a9eec1e.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_149d0874d6d126ee064d36d7e78cca789e32012d.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_1a6322990b26cc237cf21c428ef9c7d1214307d6.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_75885149598fbb6b7ad176552e5ee57844ab11c4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_87c8773a7c85cf1fa79361856a4e71d9fcbb31ca.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_9d6625cd9272c960939cf8a9e6ac964f614517e7.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_b24b9f121af88611b5957c7ef8704ee8ed1a8d2d.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_e6bb75ec8bae3cfba0a2ae186b3c91973ae7465d.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_f45836b0084c797d6a5773ca632faf73484b6143.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/debug_0fbfee80bc3222da3a0eeab1dee8a3a13d3f0591.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-2.8.0_3cec0b0f7da6be8fd661325950289cda1e10ce58.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/gson-extras-0.2.1_73b97b80b0675bdaacab636859fbe25168ae4591.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/javac_3967da3ba20e134c4e4a9dd43b22cbe6bb338ffd.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/support-annotations-23.4.0_d50fdabd01be9b160705731c60885b404e467888.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi-v7a/libRobotCore.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi-v7a/libVuforia.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/apk/Masquerade4997Code-debug.apk" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-debug.aar" afterPath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-release.aar" afterPath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/build/outputs/aar/MasqOpenCV-debug.aar" afterPath="$PROJECT_DIR$/MasqOpenCV/build/outputs/aar/MasqOpenCV-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/build/outputs/aar/MasqOpenCV-release.aar" afterPath="$PROJECT_DIR$/MasqOpenCV/build/outputs/aar/MasqOpenCV-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/bundles/default/classes.jar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/bundles/default/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-debug.aar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" afterPath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" afterPath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" afterPath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV1.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/androidTest/debug/com/qualcomm/ftcrobotcontroller/R.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/androidTest/debug/com/qualcomm/ftcrobotcontroller/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/androidTest/debug/org/opencv/R.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/androidTest/debug/org/opencv/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/debug/com/qualcomm/ftcrobotcontroller/R.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/debug/com/qualcomm/ftcrobotcontroller/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/debug/org/opencv/R.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/generated/source/r/debug/org/opencv/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <list id="8d78c8f9-ba4f-4bbb-bbf4-13a676c4c2bf" name="New changelist" comment="" />
     <ignored path="MasqLib.iws" />
@@ -75,52 +494,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="71" column="113" selection-start-line="71" selection-start-column="113" selection-end-line="71" selection-end-column="113" />
-              <folding>
-                <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
-                <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
-                <element signature="method#runToPosition#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
-                <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
-                <element signature="method#runToPosition#3;class#MasqRobot#0" expanded="false" />
-                <element signature="method#turn#3;class#MasqRobot#0" expanded="false" />
-                <element signature="method#turn#4;class#MasqRobot#0" expanded="false" />
-                <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
-                <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
-                <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#getDelta#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#waitForVuMark#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#initializeTeleop#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#initializeAutonomous#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#sleep#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlueAutoV2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="method#readVuMark#0;class#BlueAutoV2#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RedVuMark.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedVuMark.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
+            <state relative-caret-position="672">
               <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
               <folding>
                 <element signature="method#runJewel#0;class#RedVuMark#0" expanded="false" />
@@ -130,21 +507,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NFSV1.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NFSV1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-879">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="312">
+              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,21 +519,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashBoard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java">
+      <file leaf-file-name="CreateRelativeBackground.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqOpenCV/CreateRelativeBackground.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="192">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JewelAuto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java">
+      <file leaf-file-name="MasqLiftPositionCheck.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqLiftPositionCheck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="192">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasqMotorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqMotorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasqServoTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqServoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasqTurnTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqTurnTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasqVuforiaTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqVuforiaTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -175,7 +582,7 @@
       <file leaf-file-name="RedAutoV2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
+            <state relative-caret-position="1056">
               <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
               <folding>
                 <element signature="method#readVuMark#0;class#RedAutoV2#0" expanded="false" />
@@ -187,21 +594,11 @@
       <file leaf-file-name="RedAutoV3.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
+            <state relative-caret-position="1152">
               <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding>
                 <element signature="method#readVuMark#0;class#RedAutoV3#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -4750,7 +5147,6 @@
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/MasqSensorDrivers/MasqColorSensorDriver.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqColorSensorV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqMatiboxUltraSensor.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqVuforiaTest.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqController.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqTankDrive.java" />
@@ -4778,6 +5174,7 @@
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV1.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqVuforiaTest.java" />
       </list>
     </option>
   </component>
@@ -4898,6 +5295,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Masquerade4997Code" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamcode" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqOpenCV" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -6144,13 +6567,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/Cryptobox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/Glyph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -6368,14 +6784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqLiftPositionCheck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqLimitSwitchTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -6384,42 +6792,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqMotorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqServoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqVuforiaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqUltrasonicTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqTurnTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -6476,45 +6852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="method#readVuMark#0;class#RedAutoV3#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedVuMark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
-          <folding>
-            <element signature="method#runJewel#0;class#RedVuMark#0" expanded="false" />
-            <element signature="method#runVuMark#0;class#RedVuMark#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-          <folding>
-            <element signature="method#readVuMark#0;class#RedAutoV2#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -6525,7 +6862,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
+        <state relative-caret-position="1224">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="method#readVuMark#0;class#BlueAutoV2#0" expanded="false" />
@@ -6533,13 +6870,100 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+          <folding>
+            <element signature="method#readVuMark#0;class#RedAutoV2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="method#readVuMark#0;class#RedAutoV3#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedVuMark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
+          <folding>
+            <element signature="method#runJewel#0;class#RedVuMark#0" expanded="false" />
+            <element signature="method#runVuMark#0;class#RedVuMark#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-879">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="312">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqOpenCV/CreateRelativeBackground.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqLiftPositionCheck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqMotorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqServoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqTurnTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqVuforiaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>

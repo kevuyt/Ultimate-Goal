@@ -9,6 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "NFSV1", group = "Autonomus")
 public class NFSV1 extends MasqLinearOpMode implements Constants {
     boolean jewelArmInRed = true, jewelArmInBlue = true, clawClosed = true;
+    double currentFlipPosition = 0, flipIncrement = 0.02;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
@@ -60,7 +61,9 @@ public class NFSV1 extends MasqLinearOpMode implements Constants {
             if (controller2.rightBumper()) robot.relicLift.setPower(LIFT_UP/2);
             else if (controller2.rightTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
             else robot.relicLift.setPower(0);
-            robot.flipper.setPosition(Math.abs(controller2.rightStickY()));
+            if (controller2.rightStickY() < 0) currentFlipPosition += flipIncrement;
+            if (controller2.rightStickY() > 0) currentFlipPosition -= flipIncrement;
+            robot.flipper.setPosition(currentFlipPosition);
             controller1.update();
             controller2.update();
             robot.sleep(50);
