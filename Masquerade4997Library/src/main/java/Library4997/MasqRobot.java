@@ -47,11 +47,12 @@ public class MasqRobot implements PID_CONSTANTS {
         return instance;
     }
     public MasqTankDrive driveTrain;
+    public MasqMotor intake;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
-    public MasqCRServoSystem bottomIntake;
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
+    public MasqServoSystem flipper;
     public MasqCRServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
@@ -65,13 +66,14 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
+        intake = new MasqMotor("intake", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         openCV = new MasqOpenCV();
+        flipper = new MasqServoSystem("flipLeft", Servo.Direction.FORWARD, "flipRight", Servo.Direction.REVERSE, this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
-        bottomIntake = new MasqCRServoSystem("leftBottomIntake", CRServo.Direction.FORWARD, "rightBottomIntake", CRServo.Direction.REVERSE, this.hardwareMap);
         relicAdjuster = new MasqCRServo("relicAdjuster", this.hardwareMap);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         jewelArmBlue = new MasqServo("jewelArmBlue", this.hardwareMap);
@@ -339,11 +341,11 @@ public class MasqRobot implements PID_CONSTANTS {
             rightFront /= max;
             rightBack /= max;
         }
-        if (c.leftBumper()) {
-            leftFront /= 2;
-            leftBack /= 2;
-            rightFront /= 2;
-            rightBack /= 2;
+        if (c.rightTriggerPressed()) {
+            leftFront /= 3;
+            leftBack /= 3;
+            rightFront /= 3;
+            rightBack /= 3;
         }
         driveTrain.leftDrive.motor1.setPower(leftFront);
         driveTrain.leftDrive.motor2.setPower(leftBack);

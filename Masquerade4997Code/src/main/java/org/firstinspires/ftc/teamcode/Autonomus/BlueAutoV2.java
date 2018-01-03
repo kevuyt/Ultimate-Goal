@@ -56,7 +56,6 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
     public void runMultiGlyph() {
         robot.turn(90, Direction.LEFT, 1);
         robot.turn(90, Direction.LEFT, 1);
-        robot.bottomIntake.setPower(-1);
         robot.turn(90, Direction.RIGHT, 1);
         robot.turn(90, Direction.RIGHT, 1);
         robot.drive(90);
