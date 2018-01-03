@@ -10,11 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" afterPath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" afterPath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" afterPath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" afterPath="$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
     </list>
     <list id="8d78c8f9-ba4f-4bbb-bbf4-13a676c4c2bf" name="New changelist" comment="" />
     <ignored path="MasqLib.iws" />
@@ -69,15 +72,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="51" column="41" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="41" />
+            <state relative-caret-position="-2541">
+              <caret line="67" column="62" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
               <folding>
-                <element signature="method#mapHardware#0;class#MasqRobot#0" expanded="false" />
-                <element signature="class#AllianceColor#0;class#MasqRobot#0" expanded="false" />
-                <element signature="class#Targets#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
@@ -85,15 +85,11 @@
                 <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
                 <element signature="method#runToPosition#3;class#MasqRobot#0" expanded="false" />
-                <element signature="method#turn#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#turn#3;class#MasqRobot#0" expanded="false" />
                 <element signature="method#turn#4;class#MasqRobot#0" expanded="false" />
-                <element signature="method#stopBlue#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
-                <element signature="method#stopRed#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#NFS#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#MECH#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#getDelta#0;class#MasqRobot#0" expanded="false" />
@@ -110,12 +106,10 @@
       <file leaf-file-name="BlueAutoV2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+            <state relative-caret-position="513">
+              <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
               <folding>
                 <element signature="method#readVuMark#0;class#BlueAutoV2#0" expanded="false" />
-                <element signature="method#moveToTop#0;class#BlueAutoV2#0" expanded="false" />
-                <marker date="1513448161000" expanded="true" signature="677:751" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -137,7 +131,6 @@
             <state relative-caret-position="672">
               <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="method#runJewel#0;class#RedVuMark#0" expanded="false" />
                 <element signature="method#runVuMark#0;class#RedVuMark#0" expanded="false" />
               </folding>
@@ -160,18 +153,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
               <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RedAutoV3.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RedAutoV3.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1152">
-              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            <state relative-caret-position="345">
+              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
               <folding>
                 <element signature="method#readVuMark#0;class#RedAutoV3#0" expanded="false" />
                 <element signature="method#moveToTop#0;class#RedAutoV3#0" expanded="false" />
@@ -183,10 +174,20 @@
       <file leaf-file-name="JewelAuto.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1128">
-              <caret line="51" column="73" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
+            <state relative-caret-position="921">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RedAutoV2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="method#readVuMark#0;class#RedAutoV2#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -4755,7 +4756,6 @@
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqServos/MasqCRServoSystem.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqTouchSensor.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqServos/MasqCRServo.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqLinearOpMode.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqLimitSwitch.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java" />
@@ -4767,13 +4767,14 @@
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqServoTest.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqUltrasonicTest.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqTurnTest.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV4.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSV3.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java" />
       </list>
     </option>
   </component>
@@ -4807,6 +4808,127 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Masquerade4997Library" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Library4997" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Masquerade4997Library" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Masquerade4997Code" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Masquerade4997Code" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamcode" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Masquerade4997Code" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teamcode" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Autonomus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Production">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Android Instrumentation Tests" />
+        <subPane subId="New changelist" />
+        <subPane subId="Changed Files" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Masquerade4997Library">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Default" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -4989,80 +5111,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Production">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Android Instrumentation Tests" />
-        <subPane subId="New changelist" />
-        <subPane subId="Changed Files" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Masquerade4997Library">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Default" />
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -5072,6 +5120,9 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -6304,22 +6355,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding>
-            <element signature="method#readVuMark#0;class#RedAutoV2#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedVuMark.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
           <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
           <folding>
-            <element signature="imports" expanded="false" />
             <element signature="method#runJewel#0;class#RedVuMark#0" expanded="false" />
             <element signature="method#runVuMark#0;class#RedVuMark#0" expanded="false" />
           </folding>
@@ -6331,27 +6371,6 @@
         <state relative-caret-position="552">
           <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1152">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding>
-            <element signature="method#readVuMark#0;class#RedAutoV3#0" expanded="false" />
-            <element signature="method#moveToTop#0;class#RedAutoV3#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1128">
-          <caret line="51" column="73" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -6367,9 +6386,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -6378,18 +6395,6 @@
         <state relative-caret-position="240">
           <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-          <folding>
-            <element signature="method#readVuMark#0;class#BlueAutoV2#0" expanded="false" />
-            <element signature="method#moveToTop#0;class#BlueAutoV2#0" expanded="false" />
-            <marker date="1513448161000" expanded="true" signature="677:751" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -6406,12 +6411,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="51" column="41" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="41" />
+        <state relative-caret-position="-2541">
+          <caret line="67" column="62" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
           <folding>
-            <element signature="method#mapHardware#0;class#MasqRobot#0" expanded="false" />
-            <element signature="class#AllianceColor#0;class#MasqRobot#0" expanded="false" />
-            <element signature="class#Targets#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
@@ -6419,15 +6421,11 @@
             <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
             <element signature="method#runToPosition#3;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turn#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#turn#3;class#MasqRobot#0" expanded="false" />
             <element signature="method#turn#4;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopBlue#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopRed#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#NFS#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#MECH#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#getDelta#0;class#MasqRobot#0" expanded="false" />
@@ -6436,6 +6434,45 @@
             <element signature="method#initializeAutonomous#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#sleep#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
+          <folding>
+            <element signature="method#readVuMark#0;class#BlueAutoV2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="921">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+          <folding>
+            <element signature="method#readVuMark#0;class#RedAutoV2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <folding>
+            <element signature="method#readVuMark#0;class#RedAutoV3#0" expanded="false" />
+            <element signature="method#moveToTop#0;class#RedAutoV3#0" expanded="false" />
           </folding>
         </state>
       </provider>

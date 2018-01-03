@@ -53,13 +53,9 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public MasqCRServo relicAdjuster;
-    private MasqServo rightBottom, leftBottom;
     public MasqVoltageSensor voltageSensor;
-    public MasqLimitSwitch bottomLimit, liftLimit;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
-    public MasqServoSystem glyphSystemBottom, glyphSystemTop;
     public MasqVuforiaBeta vuforia;
-    public MasqMatiboxUltraSensor matiboxUltraSensor;
     //TODO GET MasqColorSensorV2 up.
     //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
@@ -69,22 +65,15 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
+        voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         openCV = new MasqOpenCV();
-        liftLimit = new MasqLimitSwitch("liftLimit", this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
-        bottomLimit = new MasqLimitSwitch("bottomLimit", this.hardwareMap);
-        matiboxUltraSensor = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
         bottomIntake = new MasqCRServoSystem("leftBottomIntake", CRServo.Direction.FORWARD, "rightBottomIntake", CRServo.Direction.REVERSE, this.hardwareMap);
         relicAdjuster = new MasqCRServo("relicAdjuster", this.hardwareMap);
-        rightBottom = new MasqServo("rightGlyphBottom", Servo.Direction.REVERSE, this.hardwareMap);
-        leftBottom = new MasqServo("leftGlyphBottom", Servo.Direction.FORWARD, this.hardwareMap);
-        glyphSystemTop = new MasqServoSystem("leftGlyphTop", Servo.Direction.FORWARD, "rightGlyphTop", Servo.Direction.REVERSE, this.hardwareMap);
-        glyphSystemBottom = new MasqServoSystem(leftBottom, rightBottom);
         imu = new MasqAdafruitIMU("imu", this.hardwareMap);
-        voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         jewelArmBlue = new MasqServo("jewelArmBlue", this.hardwareMap);
         jewelArmRed = new MasqServo("jewelArmRed", this.hardwareMap);
         jewelColorRed = new MasqREVColorSensor("jewelColorRed", this.hardwareMap);
@@ -419,8 +408,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
     public void initializeServos() {
-        glyphSystemTop.setPosition(0);
-        glyphSystemBottom.setPosition(1);
         jewelArmBlue.setPosition(0);
         jewelArmRed.setPosition(0);
     }
