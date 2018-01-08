@@ -16,13 +16,13 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqExternal {
     public MasqLinearOpMode linearOpMode;
     public static final double NEVERREST_40_RPM = 160;
-    public static final double NEVERREST_40_TICKS_PER_ROTATION = 1120;
+    public static final double NEVERREST_40_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
     public static final double gearRatio = .5;
     double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(NEVERREST_40_TICKS_PER_ROTATION * gearRatio);
 
-    public static final int DEFAULT_SLEEP_TIME = 500;
-    public static final double DEFAULT_TIMEOUT = 5;
+    public static final int DEFAULT_SLEEP_TIME = 1000;
+    public static final double DEFAULT_TIMEOUT = 3;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY =
             "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
@@ -52,20 +52,20 @@ public class MasqExternal {
         return this.linearOpMode.hardwareMap;
     }
     public class KP {
-        public static final double TURN = +0.028;
+        public static final double TURN = +0.06;
         public static final double DRIVE_ENCODER = +0.1;
-        public static final double DRIVE_ANGULAR = +0.02;
+        public static final double DRIVE_ANGULAR = +0;
         public static final double MOTOR_TELEOP = +0;
         public static final double MOTOR_AUTONOMOUS = +0.006;
     }
     public class KI {
-        public static final double TURN = +0.0025;
+        public static final double TURN = +0.0000;
         public static final double DRIVE = +0.0;
         public static final double MOTOR_TELEOP = +0;
         public static final double MOTOR_AUTONOMOUS = +0.00;
     }
     public class KD {
-        public static final double TURN = +0.0025;
+        public static final double TURN = +0.0;
         public static final double DRIVE = +0.0;
         public static final double MOTOR_TELEOP = +0.00296875;
         public static final double MOTOR_AUTONOMOUS = +0.00;

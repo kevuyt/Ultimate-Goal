@@ -27,7 +27,6 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         runJewel();
         robot.driveTrain.setClosedLoop(false);
         runVuMark(vuMark);
-        //runMultiGlyph();
     }
     public void runJewel() {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
@@ -45,13 +44,16 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         return robot.vuforia.getVuMark();
     }
     public void runVuMark(String vuMark) {
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(175, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.FORWARD);
-        robot.turn(70, Direction.LEFT);
-        robot.drive(60);
-        robot.drive(60, POWER_OPTIMAL, Direction.BACKWARD);
+        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(175, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turn(90, Direction.LEFT);
+        robot.flipper.setPosition(0);
+        robot.sleep(500);
+        robot.drive(15, POWER_OPTIMAL, Direction.FORWARD);
+        robot.drive(15, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(15, POWER_OPTIMAL, Direction.FORWARD);
     }
     public void runMultiGlyph() {
         robot.turn(90, Direction.LEFT, 1);

@@ -1,6 +1,7 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
@@ -88,7 +89,6 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void resetEncoder() {
         zeroEncoderPosition = motor.getCurrentPosition();
         currentPosition = 0;
-
     }
     public void setLazy() {
         holdPositionMode = false;

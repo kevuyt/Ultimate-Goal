@@ -16,8 +16,10 @@ public interface Constants {
            GLYPH_BOTTOM_CLOSED = .55,
            GLYPH_BOTTOM_INTAKE = .6,
            GLYPH_BOTTOM_OPENED = 1;
-    double INTAKE = -1,
-           OUTAKE = 1;
+    double FLIPPER_OUT = 0,
+           FLIPPER_IN = 1;
+    double INTAKE = 1,
+           OUTAKE = -1;
     double LIFT_DOWN = -1,
            LIFT_UP = 1;
     double JEWEL_BLUE_IN = 0.3,
