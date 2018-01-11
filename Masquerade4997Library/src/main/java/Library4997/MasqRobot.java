@@ -345,10 +345,16 @@ public class MasqRobot implements PID_CONSTANTS {
             rightBack /= max;
         }
         if (c.leftTriggerPressed()) {
-            leftFront /= 3;
-            leftBack /= 3;
-            rightFront /= 3;
-            rightBack /= 3;
+            leftFront /= 2;
+            leftBack /= 2;
+            rightFront /= 2;
+            rightBack /= 2;
+        }
+        if (c.y()) {
+            leftFront /= 4;
+            leftBack /= 4;
+            rightFront /= 4;
+            rightBack /= 4;
         }
         driveTrain.leftDrive.motor1.setPower(leftFront);
         driveTrain.leftDrive.motor2.setPower(leftBack);

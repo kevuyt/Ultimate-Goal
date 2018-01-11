@@ -41,7 +41,7 @@ public class NFSV1 extends MasqLinearOpMode implements Constants {
             if (controller2.rightBumper()) robot.lift.setPower(LIFT_UP);
             else if (controller2.rightTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
             else robot.lift.setPower(0);
-            if (controller2.leftBumper()) robot.relicLift.setPower(LIFT_UP/2);
+            if (controller2.leftBumper()) robot.relicLift.setPower(LIFT_UP);
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
             else robot.relicLift.setPower(0);
             if (fliperFineMode) {

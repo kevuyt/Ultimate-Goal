@@ -16,6 +16,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.vuforia.initVuforia(hardwareMap);
         robot.initializeAutonomous();
         robot.initializeServos();
+        robot.flipper.setPosition(0.7);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
@@ -49,6 +50,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turn(90, Direction.LEFT);
+        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(0);
         robot.sleep(500);
         robot.drive(15, POWER_OPTIMAL, Direction.FORWARD);
