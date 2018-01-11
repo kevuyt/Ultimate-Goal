@@ -172,7 +172,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = .5;
-        double turnPower = .5;
+        double turnPower = .4;
         double currentError = imu.adjustAngle(targetAngle - imu.getHeading());
         double prevError = 0;
         double integral = 0;
@@ -345,16 +345,10 @@ public class MasqRobot implements PID_CONSTANTS {
             rightBack /= max;
         }
         if (c.leftTriggerPressed()) {
-            leftFront /= 2;
-            leftBack /= 2;
-            rightFront /= 2;
-            rightBack /= 2;
-        }
-        if (c.y()) {
-            leftFront /= 4;
-            leftBack /= 4;
-            rightFront /= 4;
-            rightBack /= 4;
+            leftFront /= 3;
+            leftBack /= 3;
+            rightFront /= 3;
+            rightBack /= 3;
         }
         driveTrain.leftDrive.motor1.setPower(leftFront);
         driveTrain.leftDrive.motor2.setPower(leftBack);

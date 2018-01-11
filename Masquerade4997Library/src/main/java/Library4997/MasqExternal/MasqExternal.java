@@ -22,7 +22,7 @@ public class MasqExternal {
     double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(NEVERREST_40_TICKS_PER_ROTATION * gearRatio);
 
     public static final int DEFAULT_SLEEP_TIME = 1000;
-    public static final double DEFAULT_TIMEOUT = 3;
+    public static final double DEFAULT_TIMEOUT = 4;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY =
             "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
@@ -53,7 +53,7 @@ public class MasqExternal {
     }
     public class KP {
         public static final double TURN = +0.06;
-        public static final double DRIVE_ENCODER = +0.1;
+        public static final double DRIVE_ENCODER = +0.15;
         public static final double DRIVE_ANGULAR = +0;
         public static final double MOTOR_TELEOP = +0;
         public static final double MOTOR_AUTONOMOUS = +0.006;

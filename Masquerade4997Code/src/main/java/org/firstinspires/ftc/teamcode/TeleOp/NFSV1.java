@@ -9,6 +9,7 @@ public class NFSV1 extends MasqLinearOpMode implements Constants {
     double currentFlipPosition = 0, flipIncrement = 0.05;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        robot.initializeTeleop();
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
@@ -54,8 +55,8 @@ public class NFSV1 extends MasqLinearOpMode implements Constants {
             else {
                 if (controller2.rightStickY() < -.5) robot.flipper.setPosition(0);
                 else if (controller2.rightStickY() > .5) robot.flipper.setPosition(1);
-                else if (controller2.rightStickX() > .5) robot.flipper.setPosition(.5);
-                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.5);
+                else if (controller2.rightStickX() > .5) robot.flipper.setPosition(.7);
+                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.7);
             }
             controller1.update();
             controller2.update();
