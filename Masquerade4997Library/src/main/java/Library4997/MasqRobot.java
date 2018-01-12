@@ -60,6 +60,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
+    private double acceptableDriveError = .5;
     //TODO GET MasqColorSensorV2 up.
     //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
@@ -106,6 +107,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     public static boolean opModeIsActive() {return masqLinearOpMode.opModeIsActive();}
     public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
+        driveTrain.setClosedLoop(false);
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -140,7 +142,7 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
-        } while (opModeIsActive() && (inchesRemaining > 0.5 || Math.abs(angularError) > 0.5) && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+        } while (opModeIsActive() && (inchesRemaining > acceptableDriveError || Math.abs(angularError) > 0.5) && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         driveTrain.stopDriving();
         sleep(sleepTime);
     }
@@ -170,6 +172,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
+        driveTrain.setClosedLoop(false);
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = .5;
         double turnPower = .4;
@@ -417,6 +420,9 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
+    public void setAcceptableDriveError(double acceptableDriveError) {
+        this.acceptableDriveError = acceptableDriveError;
+    }
     public void initializeServos() {
         jewelArmBlue.setPosition(0);
         jewelArmRed.setPosition(0);

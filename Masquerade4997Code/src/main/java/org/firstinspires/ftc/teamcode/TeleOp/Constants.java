@@ -27,5 +27,5 @@ public interface Constants {
            JEWEL_RED_IN = 0.3,
            JEWEL_RED_OUT = 1;
     double CLAW_CLOSED = 0.3,
-           CLAW_OPENED = 0.7;
+           CLAW_OPENED = 0.85;
 }

@@ -53,7 +53,7 @@ public class MasqExternal {
     }
     public class KP {
         public static final double TURN = +0.06;
-        public static final double DRIVE_ENCODER = +0.15;
+        public static final double DRIVE_ENCODER = +0.1;
         public static final double DRIVE_ANGULAR = +0;
         public static final double MOTOR_TELEOP = +0;
         public static final double MOTOR_AUTONOMOUS = +0.006;
@@ -67,7 +67,7 @@ public class MasqExternal {
     public class KD {
         public static final double TURN = +0.0;
         public static final double DRIVE = +0.0;
-        public static final double MOTOR_TELEOP = +0.00296875;
+        public static final double MOTOR_TELEOP = +0.002;
         public static final double MOTOR_AUTONOMOUS = +0.00;
     }
     public class ID {

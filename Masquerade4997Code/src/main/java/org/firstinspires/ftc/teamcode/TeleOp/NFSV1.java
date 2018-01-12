@@ -10,6 +10,7 @@ public class NFSV1 extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.initializeTeleop();
+        robot.relicLift.setClosedLoop(false);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
