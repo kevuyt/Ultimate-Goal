@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.MasqExternal;
@@ -10,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 12/16/17.
  */
 @Autonomous(name = "RedAutoV3", group = "Autonomus")
+@Disabled
 public class RedAutoV3 extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

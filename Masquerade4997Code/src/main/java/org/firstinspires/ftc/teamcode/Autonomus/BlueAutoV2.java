@@ -32,8 +32,8 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
     public void runJewel() {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
         robot.sleep(1500);
-        if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(COLOR_SEEN);
-        else robot.blueRotator.setPosition(COLOR_NOT_SEEN);
+        if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(COLOR_NOT_SEEN);
+        else robot.blueRotator.setPosition(COLOR_SEEN);
         robot.sleep(1500);
         robot.blueRotator.setPosition(ROTATOR_CENTER);
         robot.sleep(1500);
@@ -45,24 +45,16 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         return robot.vuforia.getVuMark();
     }
     public void runVuMark(String vuMark) {
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(175, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(200, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.turn(90, Direction.LEFT);
+        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(185, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(165, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(205, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(185, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turn(80, Direction.LEFT);
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(0);
         robot.sleep(500);
         robot.drive(15, POWER_OPTIMAL, Direction.FORWARD);
-        robot.drive(15, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.drive(15, POWER_OPTIMAL, Direction.FORWARD);
+        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(20, POWER_OPTIMAL, Direction.FORWARD);
     }
-    public void runMultiGlyph() {
-        robot.turn(90, Direction.LEFT, 1);
-        robot.turn(90, Direction.LEFT, 1);
-        robot.turn(90, Direction.RIGHT, 1);
-        robot.turn(90, Direction.RIGHT, 1);
-        robot.drive(90);
-    }
-
 }

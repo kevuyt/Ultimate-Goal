@@ -278,7 +278,8 @@ public class MasqRobot implements PID_CONSTANTS {
             angularIntegral = angularIntegral + angularError * timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
-            powerAdjustment = (MasqExternal.KP.DRIVE_ANGULAR * power + .01) * angularError + MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
+            powerAdjustment = (MasqExternal.KP.DRIVE_ANGULAR * power + .01) * angularError +
+                    MasqExternal.KI.DRIVE * angularIntegral + MasqExternal.KD.DRIVE * angularDerivative;
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             powerAdjustment *= Direction.value;
             leftPower = power - powerAdjustment;
@@ -337,8 +338,8 @@ public class MasqRobot implements PID_CONSTANTS {
         double multiplier = 1.4;
         double speedMagnitude = Math.hypot(x, y);
         double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
-        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
-        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX()* multiplier;
+        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX()  * multiplier;
+        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
         double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
         double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
         if (max > 1) {

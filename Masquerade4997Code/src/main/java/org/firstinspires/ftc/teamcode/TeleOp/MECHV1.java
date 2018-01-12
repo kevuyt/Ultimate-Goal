@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
-@TeleOp(name = "NFSV1", group = "Autonomus")
-public class NFSV1 extends MasqLinearOpMode implements Constants {
+@TeleOp(name = "MECHV1", group = "Autonomus")
+public class MECHV1 extends MasqLinearOpMode implements Constants {
     boolean clawClosed = true, fliperFineMode;
     double currentFlipPosition = 0, flipIncrement = 0.05;
     public void runLinearOpMode() throws InterruptedException {

@@ -11,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 12/8/17.
  */
 @Autonomous(name = "MasqServoTest", group = "Autonomus")
+@Disabled
 public class MasqServoTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
