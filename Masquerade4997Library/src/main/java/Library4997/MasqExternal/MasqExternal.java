@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 
 public class MasqExternal {
-    public MasqLinearOpMode linearOpMode;
+    public static MasqLinearOpMode linearOpMode;
     public static final double NEVERREST_40_RPM = 160;
     public static final double NEVERREST_40_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
@@ -42,11 +42,11 @@ public class MasqExternal {
     public void setLinearOpMode(MasqLinearOpMode linearOpMode) {
         this.linearOpMode = linearOpMode;
     }
-    public Telemetry getTelemetry() {
-        return this.linearOpMode.telemetry;
+    public static Telemetry getTelemetry() {
+        return linearOpMode.telemetry;
     }
-    public boolean opModeIsActive() {
-        return this.linearOpMode.opModeIsActive();
+    public static boolean opModeIsActive() {
+        return linearOpMode.opModeIsActive();
     }
     public HardwareMap getHardwareMap () {
         return this.linearOpMode.hardwareMap;
