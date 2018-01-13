@@ -34,8 +34,8 @@ public class RedAutoV2 extends MasqLinearOpMode implements Constants {
     public void runJewel() {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
         robot.sleep(1500);
-        if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(COLOR_SEEN);
-        else robot.blueRotator.setPosition(COLOR_SEEN);
+        if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(ROTATOR_RED_NOT_SEEN);
+        else robot.blueRotator.setPosition(ROTATOR_RED_NOT_SEEN);
         robot.sleep(1500);
         robot.blueRotator.setPosition(ROTATOR_CENTER);
         robot.sleep(1500);

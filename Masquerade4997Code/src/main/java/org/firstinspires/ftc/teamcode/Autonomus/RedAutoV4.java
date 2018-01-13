@@ -32,8 +32,8 @@ public class RedAutoV4 extends MasqLinearOpMode implements Constants {
     public void runJewel() {
         robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
         robot.sleep(1500);
-        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(COLOR_NOT_SEEN);
-        else robot.redRotator.setPosition(COLOR_SEEN);
+        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(ROTATOR_RED_SEEN);
+        else robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
         robot.sleep(1500);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         robot.sleep(1500);
@@ -45,12 +45,13 @@ public class RedAutoV4 extends MasqLinearOpMode implements Constants {
     public void runVuMark(String vuMark) {
         if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(185, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(165, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(205, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(185, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turn(80, Direction.RIGHT);
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(0);
         robot.sleep(500);
+        robot.setAcceptableDriveError(5);
         robot.drive(15, POWER_OPTIMAL, Direction.FORWARD);
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(20, POWER_OPTIMAL, Direction.FORWARD);
