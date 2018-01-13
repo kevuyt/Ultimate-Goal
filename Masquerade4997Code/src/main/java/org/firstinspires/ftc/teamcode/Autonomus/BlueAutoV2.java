@@ -31,12 +31,12 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
     }
     public void runJewel() {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
-        robot.sleep(1500);
+        robot.sleep(1000);
         if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(ROTATOR_BLUE_SEEN);
         else robot.blueRotator.setPosition(ROTATOR_BLUE_NOT_SEEN);
-        robot.sleep(1500);
+        robot.sleep(1000);
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
-        robot.sleep(1500);
+        robot.sleep(1000);
     }
     public String readVuMark () {
         robot.waitForVuMark();
@@ -47,7 +47,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(165, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(185, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.turn(85, Direction.LEFT);
+        robot.turn(80, Direction.LEFT);
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(0);
         robot.sleep(500);

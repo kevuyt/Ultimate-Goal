@@ -6,7 +6,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECHV1", group = "Autonomus")
 public class MECHV1 extends MasqLinearOpMode implements Constants {
     boolean clawClosed = true, fliperFineMode;
-    double currentFlipPosition = 0, flipIncrement = 0.05;
+    double currentFlipPosition = 0, flipIncrement = 0.05, currentRelicPower = LIFT_UP;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.initializeTeleop();
@@ -43,8 +43,10 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
             if (controller2.rightBumper()) robot.lift.setPower(LIFT_UP);
             else if (controller2.rightTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
             else robot.lift.setPower(0);
-            if (controller2.leftBumper()) robot.relicLift.setPower(LIFT_UP);
-            else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(LIFT_DOWN);}
+            if (controller2.x()) currentRelicPower = LIFT_UP / 3;
+            else currentRelicPower = LIFT_UP;
+            if (controller2.leftBumper()) robot.relicLift.setPower(currentRelicPower);
+            else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(-currentRelicPower);}
             else robot.relicLift.setPower(0);
             if (fliperFineMode) {
                 if (controller2.rightStickY() < 0) currentFlipPosition += flipIncrement;
@@ -57,7 +59,7 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
                 if (controller2.rightStickY() < -.5) robot.flipper.setPosition(0);
                 else if (controller2.rightStickY() > .5) robot.flipper.setPosition(1);
                 else if (controller2.rightStickX() > .5) robot.flipper.setPosition(.7);
-                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.7);
+                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.5);
             }
             controller1.update();
             controller2.update();
