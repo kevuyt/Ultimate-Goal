@@ -136,7 +136,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         destination = distance;
     }
     private boolean opModeIsActive() {
-        return MasqRobot.getInstance(null).opModeIsActive();
+        return MasqExternal.opModeIsActive();
     }
     public void runToPosition(Direction direction, double speed){
         MasqClock timeoutTimer = new MasqClock();

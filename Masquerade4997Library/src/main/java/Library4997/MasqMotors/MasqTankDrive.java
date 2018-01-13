@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
@@ -102,7 +103,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         setPower(0,0);
     }
     private boolean opModeIsActive() {
-        return MasqRobot.getInstance(null).opModeIsActive();
+        return MasqExternal.opModeIsActive();
     }
     public void zeroPowerBehavior(){
         rightDrive.breakMotors();

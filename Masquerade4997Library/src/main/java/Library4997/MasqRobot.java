@@ -41,14 +41,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public class MasqRobot implements PID_CONSTANTS {
-    private static MasqLinearOpMode masqLinearOpMode;
-    public MasqRobot (MasqLinearOpMode linearOpMode) {this.masqLinearOpMode = linearOpMode;}
     public MasqRobot () {}
-    private static MasqRobot instance;
-    public static MasqRobot getInstance (MasqLinearOpMode linearOpModeInstance) {
-        if (instance==null) instance = new MasqRobot(linearOpModeInstance);
-        return instance;
-    }
     public MasqTankDrive driveTrain;
     public MasqMotorSystem intake;
     public MasqMotor lift, relicLift;
@@ -105,7 +98,7 @@ public class MasqRobot implements PID_CONSTANTS {
         Targets(String value) {this.value = value;}
     }
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
-    public static boolean opModeIsActive() {return masqLinearOpMode.opModeIsActive();}
+    public static boolean opModeIsActive() {return MasqExternal.opModeIsActive();}
     public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
         driveTrain.setClosedLoop(false);
         MasqClock timeoutTimer = new MasqClock();

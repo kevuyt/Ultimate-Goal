@@ -39,8 +39,8 @@ public class MasqExternal {
         try {Thread.sleep((long) sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
-    public void setLinearOpMode(MasqLinearOpMode linearOpMode) {
-        this.linearOpMode = linearOpMode;
+    public static void setLinearOpMode(MasqLinearOpMode linearOpMode2) {
+        linearOpMode = linearOpMode2;
     }
     public static Telemetry getTelemetry() {
         return linearOpMode.telemetry;

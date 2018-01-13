@@ -19,7 +19,6 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.flipper.setPosition(0.7);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
-            dash.create(robot.jewelColorBlue);
             dash.update();
         }
         waitForStart();
