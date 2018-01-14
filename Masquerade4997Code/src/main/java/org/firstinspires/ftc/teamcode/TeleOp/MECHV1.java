@@ -23,8 +23,8 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else robot.intake.setPower(0);
-            if (controller2.leftStickY() < 0) robot.relicAdjuster.setPower(0.5);
-            else if (controller2.leftStickY() > 0) robot.relicAdjuster.setPower(-0.5);
+            if (controller2.leftStickY() < 0) robot.relicAdjuster.setPower(0.25);
+            else if (controller2.leftStickY() > 0) robot.relicAdjuster.setPower(-0.25);
             else robot.relicAdjuster.setPower(0);
             if (controller1.x()) {
                 robot.jewelArmRed.setPosition(JEWEL_RED_IN);
@@ -58,8 +58,8 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
             else {
                 if (controller2.rightStickY() < -.5) robot.flipper.setPosition(0);
                 else if (controller2.rightStickY() > .5) robot.flipper.setPosition(1);
-                else if (controller2.rightStickX() > .5) robot.flipper.setPosition(.7);
-                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.5);
+                else if (controller2.rightStickX() > .5) robot.flipper.setPosition(.5);
+                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.7);
             }
             controller1.update();
             controller2.update();

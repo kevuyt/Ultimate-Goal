@@ -43,14 +43,14 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         return robot.vuforia.getVuMark();
     }
     public void runVuMark(String vuMark) {
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(185, POWER_OPTIMAL, Direction.BACKWARD);
+        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(195, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(165, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(225, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(185, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(195, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turn(80, Direction.LEFT);
-        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(0);
         robot.sleep(500);
+        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(15, POWER_OPTIMAL, Direction.FORWARD);
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(20, POWER_OPTIMAL, Direction.FORWARD);
