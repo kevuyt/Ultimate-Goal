@@ -4,9 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -15,11 +12,11 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 public class MasqExternal {
     public static MasqLinearOpMode linearOpMode;
-    public static final double NEVERREST_40_RPM = 160;
-    public static final double NEVERREST_40_TICKS_PER_ROTATION = 537.6;
+    public static final double NEVERREST_ORBITAL_20_RPM = 340;
+    public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
     public static final double gearRatio = .5;
-    double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(NEVERREST_40_TICKS_PER_ROTATION * gearRatio);
+    double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(NEVERREST_ORBITAL_20_TICKS_PER_ROTATION * gearRatio);
 
     public static final int DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 3;

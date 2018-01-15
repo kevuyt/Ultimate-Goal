@@ -1,13 +1,11 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqRobot;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqSensors.MasqClock;
@@ -26,7 +24,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private boolean holdPositionMode = false;
     private double targetPosition = 0;
     private double prevPos = 0;
-    private double encoderCounts = MasqExternal.NEVERREST_40_TICKS_PER_ROTATION;
+    private double encoderCounts = MasqExternal.NEVERREST_ORBITAL_20_TICKS_PER_ROTATION;
     private double previousTime = 0;
     private double destination = 0;
     public double currentPower;
@@ -206,7 +204,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             double error, setRPM, currentRPM, motorPower;
             double tChange = System.nanoTime() - previousTime;
             tChange /= 1e9;
-            setRPM = MasqExternal.NEVERREST_40_RPM * power;
+            setRPM = MasqExternal.NEVERREST_ORBITAL_20_RPM * power;
             currentRPM = getRate();
             error = setRPM - currentRPM;
             rpmIntegral += error * tChange;
