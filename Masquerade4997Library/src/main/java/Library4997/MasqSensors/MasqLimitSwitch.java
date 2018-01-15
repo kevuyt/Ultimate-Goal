@@ -41,7 +41,9 @@ public class MasqLimitSwitch implements MasqHardware, MasqSensor {
         return logicalState;
     }
 
-    public boolean isPressed() {return getState();}
+    public boolean isPressed() {
+        return getState();
+    }
     public boolean pr() {
         boolean pressed = false, released = false;
         while (isPressed()) {
@@ -58,13 +60,14 @@ public class MasqLimitSwitch implements MasqHardware, MasqSensor {
         return released;
     }
     public String getName() {return name;}
-    public String[] getDash() {return new String[] {
-            "Is Pressed" + Boolean.toString(isPressed()),
-            "Pressed and Released" + Boolean.toString(pr()),
-            "Released" + Boolean.toString(isReleased())
+    public String[] getDash() {
+        return new String[] {
+            "Is Pressed: " + Boolean.toString(isPressed()),
+            "Pressed and Released: " + Boolean.toString(pr()),
+            "Released: " + Boolean.toString(isReleased())
         };
     }
     public boolean stop() {
-        return !isPressed();
+        return !getState();
     }
 }

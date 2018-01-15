@@ -15,6 +15,7 @@ public class MasqCRServo implements MasqHardware{
     private String nameCr_Servo;
     private MasqLimitSwitch min, max = null;
     private boolean limitDetection;
+    private boolean halfDetection;
     public MasqCRServo(String name, HardwareMap hardwareMap){
         this.nameCr_Servo = name;
         servo = hardwareMap.crservo.get(name);
@@ -31,14 +32,21 @@ public class MasqCRServo implements MasqHardware{
         limitDetection = true;
         return this;
     }
+    public MasqCRServo setLimit(MasqLimitSwitch min) {
+        this.min = min;
+        this.max = null;
+        limitDetection = false;
+        halfDetection = true;
+        return this;
+    }
     public void setPower (double power) {
-        if (!limitDetection) servo.setPower(power);
-        else {
-            if (min != null && min.isPressed() && power < 0 ||
-                    max != null && min.isPressed() && power > 0)
-                servo.setPower(power);
-            else servo.setPower(0);
+        double motorPower = power;
+        if (limitDetection) {
+            if (min != null && min.getState() && power < 0 ||
+                    max != null && max.getState() && power > 0)
+                motorPower = 0;
         }
+        servo.setPower(motorPower);
     }
     public void sleep (int time) throws InterruptedException {servo.wait(time);}
     public double getPower() {return servo.getPower();}

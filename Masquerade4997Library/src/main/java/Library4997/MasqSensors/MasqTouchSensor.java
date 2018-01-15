@@ -24,7 +24,7 @@ public class MasqTouchSensor implements MasqHardware, MasqSensor {
     }
     public String[] getDash() {
         return new String[]{
-                "IsPressed" + Boolean.toString(isPressed())
+                "Pressed: " + Boolean.toString(isPressed())
         };
     }
 

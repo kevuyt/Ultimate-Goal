@@ -36,11 +36,9 @@ public class MasqAdafruitIMU implements MasqHardware{
         double x = quatAngles.x;
         double y = quatAngles.y;
         double z = quatAngles.z;
-
         double roll = Math.atan2( 2*(w*x + y*z) , 1 - 2*(x*x + y*y) ) * 180.0 / Math.PI;
         double pitch = Math.asin( 2*(w*y - x*z) ) * 180.0 / Math.PI;
         double yaw = Math.atan2( 2*(w*z + x*y), 1 - 2*(y*y + z*z) ) * 180.0 / Math.PI;
-
         return new double[]{yaw, pitch, roll};
     }
     public double adjustAngle(double angle) {

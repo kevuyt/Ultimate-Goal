@@ -16,6 +16,7 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
     public MasqMotor motor1 , motor2, motor3;
     private List<MasqMotor> motors;
     private int numMotors;
+    private double currentPower = 0;
     private String systemName;
     public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction direction2, String systemName, HardwareMap hardwareMap) {
         this.systemName = systemName;
@@ -57,6 +58,10 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
             masqMotor.resetEncoder();
         return this;
     }
+    public MasqMotorSystem setEncoderCounts(double counts) {
+        for (MasqMotor masqMotor: motors) masqMotor.setEncoderCounts(counts);
+        return this;
+    }
     public MasqMotorSystem setKp(double kp){
         for (MasqMotor masqMotor: motors) masqMotor.setKp(kp);
         return this;
@@ -65,11 +70,20 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         for (MasqMotor masqMotor: motors) masqMotor.setKi(ki);
         return this;
     }
+    public double getPower() {
+        double num = 0, sum = 0;
+        for (MasqMotor masqMotor: motors) {
+            sum = sum + masqMotor.currentPower;
+            num++;
+        }
+        return sum/num;
+    }
     public MasqMotorSystem setKd(double kd){
         for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
         return this;
     }
     public void setPower (double power) {
+        currentPower = power;
         for (MasqMotor masqMotor : motors)
             masqMotor.setPower(power);
     }

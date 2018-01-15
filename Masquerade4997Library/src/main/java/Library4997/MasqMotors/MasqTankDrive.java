@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
@@ -48,6 +49,12 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         leftDrive.setKd(kd);
         rightDrive.setKd(kd);
     }
+    public double getRate() {
+        return (leftDrive.getRate() + rightDrive.getRate())/2;
+    }
+    public double getPower() {
+        return (leftDrive.getPower() + rightDrive.getPower()) /2;
+    }
     public void setPowerLeft (double power) {
         leftDrive.setPower(power);
     }
@@ -88,11 +95,15 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
     }
+    public void setEncoderCounts(double counts) {
+        leftDrive.setEncoderCounts(counts);
+        rightDrive.setEncoderCounts(counts);
+    }
     public void stopDriving() {
         setPower(0,0);
     }
     private boolean opModeIsActive() {
-        return MasqRobot.getInstance(null).opModeIsActive();
+        return MasqExternal.opModeIsActive();
     }
     public void zeroPowerBehavior(){
         rightDrive.breakMotors();
@@ -104,6 +115,6 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         return "DRIVETRAIN";
     }
     public String[] getDash() {
-        return new String[]{ "Current Position"+ getCurrentPosition()};
+        return new String[]{ "Rate "+ getRate()};
     }
 }

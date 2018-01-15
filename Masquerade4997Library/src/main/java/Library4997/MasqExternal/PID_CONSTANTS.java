@@ -15,7 +15,7 @@ public interface PID_CONSTANTS {
     double  KP_TELE = 0.1,
             KI_TELE = 0;
     double MAX_RATE = 160;
-    double TICKS_PER_ROTATION = 1120;
+    double TICKS_PER_ROTATION = 537.6;
     double wheelDiameter = 4;
     double cmToInches = 2.54;
     double gearRatio = 2;

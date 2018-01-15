@@ -5,10 +5,11 @@ package Library4997.MasqExternal;
  */
 
 public enum Direction {
-    FORWARD (+1.0),
-    BACKWARD (-1.0),
-    LEFT (+1.0),
-    RIGHT (-1.0);
+    //Number one is left, and two is right
+    FORWARD (+1),
+    BACKWARD (-1),
+    LEFT (+1),
+    RIGHT (-1);
     public final double value;
     Direction (double value) {this.value = value;}
 }

@@ -11,16 +11,15 @@ import Library4997.MasqExternal.MasqSensor;
  */
 
 public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
-        private AnalogInput ds;
-        private String nameDS;
+    private AnalogInput ds;
+    private String nameDS;
+    private int scale = 1;
     private int stopThresh = 30;
     public MasqMatiboxUltraSensor(String name, HardwareMap hardwareMap){
             this.nameDS = name;
             ds = hardwareMap.get(AnalogInput.class, name);
         }
-    public double getDistance() {
-            return ds.getVoltage();
-        }
+    public double getDistance() {return ds.getVoltage() * scale;}
     public void setStopThresh(int thresh) {
         stopThresh = thresh;
     }
@@ -29,7 +28,7 @@ public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
         }
     public String[] getDash() {
             return new String[]{
-                    "Distance" + Double.toString(getDistance())
+                    "Distance " + Double.toString(getDistance())
             };
     }
 

@@ -3,6 +3,7 @@ package Library4997.MasqMotors;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.Range;
 
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqHardware;
@@ -11,7 +12,6 @@ import Library4997.MasqExternal.Direction;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqWrappers.DashBoard;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -21,17 +21,24 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private String nameMotor;
     private int direction = 1;
     private double kp = 0.004, ki = 0, kd = 0;
+    private double holdKp = 0.0002;
     private boolean closedLoop = true;
-    private double prevPos= 0;
+    private boolean holdPositionMode = false;
+    private double targetPosition = 0;
+    private double prevPos = 0;
+    private double encoderCounts = MasqExternal.NEVERREST_40_TICKS_PER_ROTATION;
     private double previousTime = 0;
     private double destination = 0;
-    private double currentPower;
+    public double currentPower;
     private double currentMax, currentMin;
     private double currentZero;
-    private double intergral = 0;
-    private double derivitive = 0;
-    private double previousError = 0;
-    private double currentPosition = 0, zeroEncoderPosition = 0 , prevRate = 0;
+    private double holdItergral = 0;
+    private double holdDerivitive = 0;
+    private double holdPreviousError = 0;
+    private double rpmIntegral = 0;
+    private double rpmDerivative = 0;
+    private double rpmPreviousError = 0;
+    private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqClock timeoutTimer = new MasqClock();
@@ -82,7 +89,13 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void resetEncoder() {
         zeroEncoderPosition = motor.getCurrentPosition();
         currentPosition = 0;
-
+    }
+    public void setLazy() {
+        holdPositionMode = false;
+    }
+    public void setStrong() {
+        holdPositionMode = true;
+        targetPosition = getCurrentPosition();
     }
     public void setPower (double power) {
         double motorPower = findPower(power);
@@ -123,22 +136,21 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         destination = distance;
     }
     private boolean opModeIsActive() {
-        return MasqRobot.getInstance(null).opModeIsActive();
+        return MasqExternal.opModeIsActive();
     }
     public void runToPosition(Direction direction, double speed){
-        timeoutTimer.reset();
+        MasqClock timeoutTimer = new MasqClock();
         resetEncoder();
         int targetClicks = (int)(destination * CLICKS_PER_INCH);
         int clicksRemaining;
-        double inchesRemaining;
-        double power;
+        double inchesRemaining, power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            power = direction.value * speed * inchesRemaining * MasqExternal.KP.DRIVE_ENCODER;
+            power = Range.clip(power, -1.0, +1.0);
             setPower(power);
-        } while (opModeIsActive() && inchesRemaining > 0.5 && timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
-        setPower(0);
+        } while (inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
     }
     boolean isBusy () {
         return motor.isBusy();
@@ -158,7 +170,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         tChange = tChange / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
-        rate = (rate * 60) / MasqExternal.NEVERREST_40_TICKS_PER_ROTATION;
+        rate = (rate * 60) / encoderCounts;
         if (rate != 0) return rate;
         else {
             prevRate = rate;
@@ -169,7 +181,27 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return nameMotor;
     }
     public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
+    public void doHold () {
+        if (holdPositionMode) {
+            double tChange = (System.nanoTime() - previousTime) / 1e9;
+            double error = targetPosition - getCurrentPosition();
+            holdItergral += error * tChange;
+            holdDerivitive = (error - holdPreviousError) / tChange;
+            motor.setPower(direction * ((error * holdKp) +
+                    (holdItergral * ki) + (holdDerivitive * kd)));
+            holdPreviousError = error;
+        }
+    }
     private double findPower(double power){
+        if (holdPositionMode) {
+            double tChange = (System.nanoTime() - previousTime) / 1e9;
+            double error = targetPosition - getCurrentPosition();
+            holdItergral += error * tChange;
+            holdDerivitive = (error - holdPreviousError) / tChange;
+            power = (direction * ((error * holdKp) +
+                    (holdItergral * ki) + (holdDerivitive * kd)));
+            holdPreviousError = error;
+        }
         if (closedLoop) {
             double error, setRPM, currentRPM, motorPower;
             double tChange = System.nanoTime() - previousTime;
@@ -177,14 +209,18 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             setRPM = MasqExternal.NEVERREST_40_RPM * power;
             currentRPM = getRate();
             error = setRPM - currentRPM;
-            intergral += error * tChange;
-            derivitive = (error - previousError) / tChange;
+            rpmIntegral += error * tChange;
+            rpmDerivative = (error - rpmPreviousError) / tChange;
             motorPower = (power) + (direction * ((error * kp) +
-                    (intergral * ki) + (derivitive * kd)));
-            previousError = error;
+                    (rpmIntegral * ki) + (rpmDerivative * kd)));
+            rpmPreviousError = error;
             return motorPower;
         }
         else return power;
+    }
+
+    public void setEncoderCounts(double encoderCounts) {
+        this.encoderCounts = encoderCounts;
     }
 
     public double getKp() {return kp;}

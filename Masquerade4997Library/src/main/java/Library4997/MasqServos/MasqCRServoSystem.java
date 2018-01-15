@@ -74,6 +74,10 @@ public class MasqCRServoSystem implements MasqHardware {
         for (MasqCRServo s : servos) s.setLimits(min, max);
         return this;
     }
+    public MasqCRServoSystem setLimit(MasqLimitSwitch min) {
+        for (MasqCRServo s: servos) s.setLimit(min);
+        return this;
+    }
 
     public void setPower(double power) {
         for (MasqCRServo s : servos) s.setPower(power);

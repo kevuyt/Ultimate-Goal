@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Nov 10 17:09:34 EST 2017
+#Thu Jan 11 20:20:18 EST 2018
 20.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 143.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 439.set=ASSET
@@ -292,7 +292,7 @@
 446.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 376.set=ASSET
 122.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/matrix_devices.xml
-155.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_load.xml
+155.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/raw/nxtstartupsound.wav
 299.set=ASSET
 309.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 326.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_blocks.xml
@@ -523,7 +523,7 @@
 251.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcGyroSensor.png
 422.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blocks/samples/default.blk
 17.set=ASSET
-284.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/button_list.xml
+284.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo_list.xml
 438.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 296.set=ASSET
 15.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/js/URI.min.js
@@ -1084,7 +1084,7 @@
 447.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 386.set=ASSET
 123.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/blocks/elapsed_time2.js
-156.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/raw/nxtstartupsound.wav
+156.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/activity_load.xml
 327.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/fonts/glyphicons-halflings-regular.woff
 232.set=ASSET
 189.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/images/ftcAccelerationSensor.png
@@ -1299,7 +1299,7 @@ count=450
 252.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/xml/pushbotsens.xml
 423.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/java/js/antlr4/atn/LexerActionExecutor.js
 27.set=ASSET
-285.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/servo_list.xml
+285.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_/res/layout/button_list.xml
 439.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 16.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/fonts/glyphicons-halflings-regular.svg
 148.file=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug/java/templates/SensorHTGyro

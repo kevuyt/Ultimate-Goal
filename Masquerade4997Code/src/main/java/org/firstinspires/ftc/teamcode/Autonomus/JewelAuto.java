@@ -29,40 +29,45 @@ public class JewelAuto extends MasqLinearOpMode implements Constants {
                  controller1.update();
             }
             controller1.update();
-                //dash.create(INIT_MESSAGE);
             dash.update();
         }
         waitForStart();
-        robot.jewelArm.setPosition(JEWEL_OUT);
         MasqExternal.sleep(2000);
-        robot.glyphSystemBottom.setPosition(GLYPH_CLOSED);
         if (!red) {
-            if (robot.jewelColor.isRed()) {
+            robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
+            if (robot.jewelColorBlue.isRed()) {
+                robot.drive(30);
+                robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
+                robot.turn(30, Direction.RIGHT);
+                robot.drive(100);
                 robot.drive(-30);
-                robot.jewelArm.setPosition(JEWEL_IN);//V2
-                robot.turn(90, Direction.LEFT); //V2
-                robot.turn(60, Direction.LEFT);
-                robot.drive(90);
-            } else {
-                robot.drive(60);
-                robot.jewelArm.setPosition(JEWEL_IN);
+            }
+            else {
+                robot.drive(-30);
+                robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
+                robot.turn(30, Direction.RIGHT);
+                robot.drive(170);
+                robot.drive(-30);
             }
         }
         else {
-            if (robot.jewelColor.isBlue()) {
+            robot.jewelArmBlue.setPosition(JEWEL_RED_OUT);
+            if (robot.jewelColorRed.isBlue()) {
+                robot.drive(30);
+                robot.jewelArmRed.setPosition(JEWEL_RED_IN);
+                robot.turn(30, Direction.LEFT);
+                robot.drive(100);
                 robot.drive(-30);
-                robot.jewelArm.setPosition(JEWEL_IN);//V2
-                robot.turn(40, Direction.LEFT); //V2
-                robot.drive(90);
             }
             else {
-                robot.turn(40, Direction.LEFT);
-                robot.jewelArm.setPosition(JEWEL_IN);
-                robot.drive(90);
+                robot.drive(-30);
+                robot.jewelArmBlue.setPosition(JEWEL_RED_IN);
+                robot.turn(30, Direction.LEFT);
+                robot.drive(170);
+                robot.drive(-30);
             }
         }
-        robot.glyphSystemBottom.setPosition(GLYPH_OPENED);
-        robot.jewelArm.setPosition(JEWEL_IN);
+        robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
         MasqExternal.sleep(10000);
     }
 }
