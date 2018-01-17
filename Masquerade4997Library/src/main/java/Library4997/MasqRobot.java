@@ -114,7 +114,7 @@ public class MasqRobot implements PID_CONSTANTS {
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = DIRECTION.value * (clicksRemaining / targetClicks);
+            power = DIRECTION.value * (clicksRemaining / targetClicks) * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
@@ -132,7 +132,7 @@ public class MasqRobot implements PID_CONSTANTS {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
             }
-            driveTrain.setPower(leftPower * speed, rightPower * speed);
+            driveTrain.setPower(leftPower, rightPower);
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
