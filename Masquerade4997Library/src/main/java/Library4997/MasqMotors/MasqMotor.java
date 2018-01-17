@@ -145,7 +145,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
             inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * MasqExternal.KP.DRIVE_ENCODER;
+            power = direction.value * speed * (clicksRemaining / targetClicks);
             power = Range.clip(power, -1.0, +1.0);
             setPower(power);
         } while (inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
