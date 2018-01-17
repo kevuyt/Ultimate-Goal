@@ -106,14 +106,14 @@ public class MasqRobot implements PID_CONSTANTS {
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
         double targetAngle = imu.getHeading();
-        int targetClicks = (int)(distance * CLICKS_PER_INCH);
+        int targetClicks = (int)(distance * MasqExternal.CLICKS_PER_INCH);
         int clicksRemaining;
         double inchesRemaining, angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
                 angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
-            inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
+            inchesRemaining = clicksRemaining / MasqExternal.CLICKS_PER_INCH;
             power = DIRECTION.value * (clicksRemaining / targetClicks) * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
@@ -298,7 +298,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void strafe(int distance, Strafe direction, double speed, double timeOut, double sleepTime) {
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();
-        int targetClicks = (int)(distance * CLICKS_PER_INCH);
+        int targetClicks = (int)(distance * MasqExternal.CLICKS_PER_INCH);
         int clicksRemaining = targetClicks;
         double power, intergral = 0, deriviteve, timeChange, previousTime = 0, previousClicksRemaining = clicksRemaining;
         MasqClock timeoutTimer = new MasqClock();
