@@ -27,10 +27,10 @@ Thumbs.db
 .idea
 .gradle
 .idea/fileTemplates/
-FtcRobotController/FtcRobotController.iml
-Masquerade4997Code/Masquerade4997Code.iml
-MasqOpenCV/MasqOpenCV.iml
-Masquerade4997Library/Masquerade4997Library.iml
+# FtcRobotController/FtcRobotController.iml
+# Masquerade4997Code/Masquerade4997Code.iml
+# MasqOpenCV/MasqOpenCV.iml
+# Masquerade4997Library/Masquerade4997Library.iml
 FtcRobotController/build/generated/assets/
 FtcRobotController/build/generated/res/
 FtcRobotController/build/generated/source/aidl/
