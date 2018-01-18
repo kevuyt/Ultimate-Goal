@@ -1,8 +1,6 @@
 package Library4997;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
@@ -11,31 +9,25 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
 
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqSensor;
+import Library4997.MasqExternal.MasqSerializer;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqExternal.Strafe;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqOpenCV.MasqOpenCV;
-import Library4997.MasqSensors.MasqAdafruitIMU;
-import Library4997.MasqSensors.MasqAdafruitIMUSystem;
 import Library4997.MasqSensors.MasqAdafruitIMUv2;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
-import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqSensors.MasqMatiboxUltraSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
-import Library4997.MasqSensors.MasqTouchSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqCRServo;
-import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqController;
-import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
@@ -52,6 +44,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServoSystem flipper;
     public MasqCRServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
+    public MasqSerializer serializer;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
     private double acceptableDriveError = .5;
@@ -67,6 +60,7 @@ public class MasqRobot implements PID_CONSTANTS {
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         openCV = new MasqOpenCV();
+        serializer = new MasqSerializer();
         flipper = new MasqServoSystem("flipLeft", Servo.Direction.FORWARD, "flipRight", Servo.Direction.REVERSE, this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
@@ -101,6 +95,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     public static boolean opModeIsActive() {return MasqExternal.opModeIsActive();}
     public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
+        serializer.createFile(new String[]{"Clicks Remaining", "Power", "Angular Error", "Angular Intergral", "Angular Derivative", "Left Power", "Right Power", "Power Adjustment" }, "DRIVEPID");
         driveTrain.setClosedLoop(true);
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
@@ -133,10 +128,12 @@ public class MasqRobot implements PID_CONSTANTS {
                 rightPower /= maxPower;
             }
             driveTrain.setPower(leftPower, rightPower);
+            serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
         } while (opModeIsActive() && (inchesRemaining > acceptableDriveError || Math.abs(angularError) > 0.5) && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+        serializer.close();
         driveTrain.stopDriving();
         sleep(sleepTime);
     }
@@ -166,6 +163,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
+        serializer.createFile(new String[]{"Error", "Proprtional", "Intergral", "Derivitive", "Left Power", " Right Power"}, "TURNPID");
         driveTrain.setClosedLoop(false);
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = .5;
@@ -193,11 +191,13 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPower(-newPower * turnPower, newPower * turnPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
+            serializer.writeData(new Object[]{currentError, errorkp, integralki, dervitivekd, -newPower, newPower});
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", imu.getHeading());
             dash.create("AngleLeftToCover", currentError);
             dash.update();
         }
+        serializer.close();
         driveTrain.setPower(0,0);
         sleep(sleepTime);
     }
