@@ -257,7 +257,8 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stopRed (MasqColorSensor colorSensor){stopRed(colorSensor, 0.5);}
 
-    public void stop(MasqSensor sensor, double power, Direction Direction) {
+    public void stop(MasqSensor sensor, double power, Direction Direction, int amount) {
+        int currentTimes = 0;
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
         double targetAngle = imu.getHeading();
@@ -283,14 +284,16 @@ public class MasqRobot implements PID_CONSTANTS {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
             }
+            if (sensor.stop()) currentTimes++;
             driveTrain.setPower(leftPower, rightPower);
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
-        } while (opModeIsActive() && sensor.stop());
+        } while (opModeIsActive() && currentTimes < amount);
         driveTrain.stopDriving();
     }
-    public void stop (MasqSensor sensor, double power){
+    public void stop (MasqSensor sensor, double power, Direction direction) {stop(sensor, power, direction, 1);}
+    public void stop(MasqSensor sensor, double power){
         stop(sensor, power, Direction.BACKWARD);
     }
     public void stop (MasqSensor sensor){stop(sensor, 0.5);}
