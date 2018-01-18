@@ -222,7 +222,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double newPower = power;
             double heading = imu.getHeading();
             double error = targetAngle - heading;
-            double errorkp = error * KP_STRAIGHT;
+            double errorkp = error *  MasqExternal.KP.DRIVE_ANGULAR;
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);
@@ -243,7 +243,7 @@ public class MasqRobot implements PID_CONSTANTS {
             double newPower = power;
             double heading = imu.getHeading();
             double error = targetAngle - heading;
-            double errorkp = error * KP_STRAIGHT;
+            double errorkp = error * MasqExternal.KP.DRIVE_ANGULAR;
             newPower = newPower - (errorkp * Direction.value);
             driveTrain.setPowerLeft(newPower * Direction.value);
             driveTrain.setPowerRight(power * Direction.value);

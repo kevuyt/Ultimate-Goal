@@ -2,6 +2,7 @@ package Library4997.MasqExternal;
 /**
  * These are the constants used in PID
  */
+@Deprecated
 public interface PID_CONSTANTS {
     double
             KP_TURN = 0.005,

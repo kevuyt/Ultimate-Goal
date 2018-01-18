@@ -78,14 +78,14 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     public void runToPosition(Direction direction, double speed, double timeOut) {
         MasqClock timeoutTimer = new MasqClock();
         resetEncoders();
-        int targetClicks = (int)(destination * CLICKS_PER_INCH);
+        int targetClicks = (int)(destination * MasqExternal.CLICKS_PER_INCH);
         int clicksRemaining;
         double inchesRemaining;
         double power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * KP_STRAIGHT;
+            inchesRemaining = clicksRemaining / MasqExternal.CLICKS_PER_INCH;
+            power = direction.value * speed * inchesRemaining * MasqExternal.KP.DRIVE_ANGULAR;
             setPower(power, -power);
         }
         while (opModeIsActive() && inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
