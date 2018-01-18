@@ -73,7 +73,7 @@ public class MasqSerializer implements Runnable {
 
     public void createFile(String[] columnNames, String fileName) {
         try {
-            fileOutputStream = robotControllerActivity.getFileOutput(fileName);
+            fileOutputStream = robotControllerActivity.getFileOutput(fileName + ".txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
