@@ -257,15 +257,16 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stopRed (MasqColorSensor colorSensor){stopRed(colorSensor, 0.5);}
 
-    public void stop(MasqSensor sensor, double power, Direction Direction, int amount) {
+    public void stop(MasqSensor sensor, double speed, Direction Direction, int amount) {
         int currentTimes = 0;
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
         double targetAngle = imu.getHeading();
         double  angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
-                angularDerivative, powerAdjustment, leftPower, rightPower, maxPower, timeChange;
+                angularDerivative, powerAdjustment, leftPower, rightPower, maxPower, timeChange, power;
         do {
+            power = Direction.value * (1 - (currentTimes / amount)) * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
