@@ -99,14 +99,14 @@ public class MasqRobot implements PID_CONSTANTS {
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
         double targetAngle = imu.getHeading();
-        double targetClicks = (int)(distance * CLICKS_PER_INCH);
+        double targetClicks = (int)(distance * MasqExternal.CLICKS_PER_INCH);
         double clicksRemaining;
         double angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
                 angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
-            power = ((clicksRemaining / targetClicks)) * DIRECTION.value * speed;
+            power = ((clicksRemaining / targetClicks) * MasqExternal.KP.DRIVE_ENCODER) * DIRECTION.value * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();

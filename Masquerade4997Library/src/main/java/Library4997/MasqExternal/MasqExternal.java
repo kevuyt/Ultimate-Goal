@@ -15,8 +15,8 @@ public class MasqExternal {
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
-    public static final double gearRatio = .5;
-    public static final double CLICKS_PER_INCH = (Math.PI * wheelDiameter * NEVERREST_ORBITAL_20_TICKS_PER_ROTATION ) /  gearRatio;
+    public static final double gearRatio = 1;
+    public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
 
     public static final int DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 15;
