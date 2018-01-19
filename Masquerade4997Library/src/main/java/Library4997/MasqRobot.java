@@ -92,7 +92,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     public static boolean opModeIsActive() {return MasqExternal.opModeIsActive();}
-    public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
+    public void drive(int distance, double speed, Direction direction, double timeOut, int sleepTime) {
         //serializer.createFile(new String[]{"Clicks Remaining", "Power", "Angular Error", "Angular Intergral", "Angular Derivative", "Left Power", "Right Power", "Power Adjustment" }, "DRIVEPID");
         //driveTrain.setClosedLoop(true);
         MasqClock timeoutTimer = new MasqClock();
@@ -106,7 +106,7 @@ public class MasqRobot implements PID_CONSTANTS {
                 angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
-            power = ((clicksRemaining / targetClicks) * MasqExternal.KP.DRIVE_ENCODER) * DIRECTION.value * speed;
+            power = ((clicksRemaining / targetClicks) * MasqExternal.KP.DRIVE_ENCODER) * direction.value * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
@@ -116,7 +116,7 @@ public class MasqRobot implements PID_CONSTANTS {
             prevAngularError = angularError;
             powerAdjustment = (MasqExternal.KP.DRIVE_ANGULAR * power) * angularError + (MasqExternal.KI.DRIVE * angularIntegral) + (MasqExternal.KD.DRIVE * angularDerivative);
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
-            powerAdjustment *= DIRECTION.value;
+            powerAdjustment *= direction.value;
             leftPower = power - powerAdjustment;
             rightPower = power + powerAdjustment;
             maxPower = Math.max(Math.abs(leftPower), Math.abs(rightPower));
@@ -160,10 +160,10 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
-    public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
+    public void turn(int angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
         //serializer.createFile(new String[]{"Error", "Proprtional", "Intergral", "Derivitive", "Left Power", " Right Power"}, "TURNPID");
         driveTrain.setClosedLoop(false);
-        double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
+        double targetAngle = imu.adjustAngle(imu.getHeading() + (direction.value * angle));
         double acceptableError = .5;
         double turnPower = .4;
         double currentError = imu.adjustAngle(targetAngle - imu.getHeading());
