@@ -59,7 +59,7 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
 
     @Override
     public boolean stop() {
-        return false;
+        return getDistance(DistanceUnit.CM) > 13;
     }
 
     @Override

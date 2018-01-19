@@ -16,10 +16,10 @@ public class MasqExternal {
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
     public static final double gearRatio = .5;
-    public static final double CLICKS_PER_INCH = (Math.PI * wheelDiameter)/(NEVERREST_ORBITAL_20_TICKS_PER_ROTATION * gearRatio);
+    public static final double CLICKS_PER_INCH = (Math.PI * wheelDiameter * NEVERREST_ORBITAL_20_TICKS_PER_ROTATION ) /  gearRatio;
 
     public static final int DEFAULT_SLEEP_TIME = 500;
-    public static final double DEFAULT_TIMEOUT = 3;
+    public static final double DEFAULT_TIMEOUT = 15;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY =
             "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
@@ -36,8 +36,8 @@ public class MasqExternal {
         try {Thread.sleep((long) sleep);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
-    public static void setLinearOpMode(MasqLinearOpMode linearOpMode2) {
-        linearOpMode = linearOpMode2;
+    public static void setLinearOpMode(MasqLinearOpMode pLinearOpMode) {
+        linearOpMode = pLinearOpMode;
     }
     public static Telemetry getTelemetry() {
         return linearOpMode.telemetry;

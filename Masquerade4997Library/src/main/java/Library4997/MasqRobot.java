@@ -44,7 +44,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServoSystem flipper;
     public MasqCRServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
-    public MasqSerializer serializer;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
     private double acceptableDriveError = .5;
@@ -60,7 +59,6 @@ public class MasqRobot implements PID_CONSTANTS {
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         openCV = new MasqOpenCV();
-        serializer = new MasqSerializer();
         flipper = new MasqServoSystem("flipLeft", Servo.Direction.FORWARD, "flipRight", Servo.Direction.REVERSE, this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
@@ -95,21 +93,20 @@ public class MasqRobot implements PID_CONSTANTS {
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     public static boolean opModeIsActive() {return MasqExternal.opModeIsActive();}
     public void drive(int distance, double speed, Direction DIRECTION, double timeOut, int sleepTime) {
-        serializer.createFile(new String[]{"Clicks Remaining", "Power", "Angular Error", "Angular Intergral", "Angular Derivative", "Left Power", "Right Power", "Power Adjustment" }, "DRIVEPID");
-        driveTrain.setClosedLoop(true);
+        //serializer.createFile(new String[]{"Clicks Remaining", "Power", "Angular Error", "Angular Intergral", "Angular Derivative", "Left Power", "Right Power", "Power Adjustment" }, "DRIVEPID");
+        //driveTrain.setClosedLoop(true);
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
         double targetAngle = imu.getHeading();
-        int targetClicks = (int)(distance * MasqExternal.CLICKS_PER_INCH);
-        int clicksRemaining;
-        double inchesRemaining, angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
+        double targetClicks = (int)(distance * CLICKS_PER_INCH);
+        double clicksRemaining;
+        double angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
                 angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
-            inchesRemaining = clicksRemaining / MasqExternal.CLICKS_PER_INCH;
-            power = DIRECTION.value * (1 - (clicksRemaining / targetClicks)) * speed * MasqExternal.KP.DRIVE_ENCODER;
+            power = ((clicksRemaining / targetClicks)) * DIRECTION.value * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
@@ -128,12 +125,13 @@ public class MasqRobot implements PID_CONSTANTS {
                 rightPower /= maxPower;
             }
             driveTrain.setPower(leftPower, rightPower);
-            serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
+            //serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
-        } while (opModeIsActive() && (inchesRemaining > acceptableDriveError || Math.abs(angularError) > 0.5) && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
-        serializer.close();
+            dash.update();
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+        //serializer.close();
         driveTrain.stopDriving();
         sleep(sleepTime);
     }
@@ -163,7 +161,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
     public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki, double kd) {
-        serializer.createFile(new String[]{"Error", "Proprtional", "Intergral", "Derivitive", "Left Power", " Right Power"}, "TURNPID");
+        //serializer.createFile(new String[]{"Error", "Proprtional", "Intergral", "Derivitive", "Left Power", " Right Power"}, "TURNPID");
         driveTrain.setClosedLoop(false);
         double targetAngle = imu.adjustAngle(imu.getHeading() + (DIRECTION.value * angle));
         double acceptableError = .5;
@@ -191,13 +189,13 @@ public class MasqRobot implements PID_CONSTANTS {
             driveTrain.setPower(-newPower * turnPower, newPower * turnPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
-            serializer.writeData(new Object[]{currentError, errorkp, integralki, dervitivekd, -newPower, newPower});
+            //serializer.writeData(new Object[]{currentError, errorkp, integralki, dervitivekd, -newPower, newPower});
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", imu.getHeading());
             dash.create("AngleLeftToCover", currentError);
             dash.update();
         }
-        serializer.close();
+        //serializer.close();
         driveTrain.setPower(0,0);
         sleep(sleepTime);
     }

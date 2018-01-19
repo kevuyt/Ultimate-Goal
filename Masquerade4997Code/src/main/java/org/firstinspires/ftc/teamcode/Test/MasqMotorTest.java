@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.TeleOp.Constants;
 
+import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -20,12 +21,6 @@ public class MasqMotorTest extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.driveTrain.setClosedLoop(true);
-        while (opModeIsActive()) {
-            robot.driveTrain.setPower(0.5);
-            dash.create("Power: ", robot.driveTrain.getPower());
-            dash.create(robot.driveTrain);
-            dash.update();
-        }
+        robot.stop(robot.jewelColorBlue, 0.3, Direction.FORWARD, 1);
     }
 }

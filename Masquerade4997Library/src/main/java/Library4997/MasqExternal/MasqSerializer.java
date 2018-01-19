@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 
 public class MasqSerializer implements Runnable {
-    private FtcRobotControllerActivity robotControllerActivity = new FtcRobotControllerActivity();
+    private static FtcRobotControllerActivity robotControllerActivity = new FtcRobotControllerActivity();
     private FileOutputStream fileOutputStream;
     private OutputStreamWriter outputStreamWriter;
     private boolean close = false;

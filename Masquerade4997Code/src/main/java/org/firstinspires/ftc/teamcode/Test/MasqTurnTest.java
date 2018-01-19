@@ -12,7 +12,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 11/9/17.
  */
 @Autonomous(name = "MasqTurnTest", group = "Autonomus")
-@Disabled
 public class MasqTurnTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
@@ -22,7 +21,9 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.sleep(robot.getDelay());
-        robot.drive(48);
+        robot.drive(48, 0.1);
         robot.turn(90, Direction.LEFT);
+        robot.turn(90, Direction.RIGHT);
+        robot.drive(48, POWER_HIGH, Direction.BACKWARD);
     }
 }
