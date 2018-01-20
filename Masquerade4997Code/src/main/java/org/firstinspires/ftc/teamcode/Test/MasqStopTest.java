@@ -8,8 +8,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 11/24/17.
  */
-@TeleOp(name = "MasqMotorTest", group = "Autonomus")
-public class MasqMotorTest extends MasqLinearOpMode implements Constants {
+@TeleOp(name = "MasqStopTest", group = "Autonomus")
+public class MasqStopTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {

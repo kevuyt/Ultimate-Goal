@@ -7,10 +7,10 @@ import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
- * Created by Archish on 1/11/18.
+ * Created by Archish on 1/19/18.
  */
-@Autonomous(name = "RedAutoV4", group = "Autonomus")
-public class RedAutoV4 extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "RedAuto_RP", group = "Autonomus")
+public class RedAuto_RP extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuforia(hardwareMap);
@@ -32,8 +32,8 @@ public class RedAutoV4 extends MasqLinearOpMode implements Constants {
     public void runJewel() {
         robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
         robot.sleep(1500);
-        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(ROTATOR_RED_SEEN);
-        else robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
+        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
+        else robot.redRotator.setPosition(ROTATOR_RED_SEEN);
         robot.sleep(1500);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         robot.sleep(1500);
