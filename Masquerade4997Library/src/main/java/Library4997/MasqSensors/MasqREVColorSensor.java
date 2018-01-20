@@ -66,7 +66,6 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
     public String getName() {
         return name;
     }
-
     @Override
     public String[] getDash() {
         return new String[] {

@@ -46,7 +46,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
-    private double acceptableDriveError = .5;
     //TODO GET MasqColorSensorV2 up.
     //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
@@ -92,9 +91,9 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void setAllianceColor(AllianceColor allianceColor){this.color = allianceColor.color;}
     public static boolean opModeIsActive() {return MasqExternal.opModeIsActive();}
-    public void drive(int distance, double speed, Direction direction, double timeOut, int sleepTime) {
+    public void drive(double distance, double speed, Direction direction, double timeOut, int sleepTime) {
         //serializer.createFile(new String[]{"Clicks Remaining", "Power", "Angular Error", "Angular Intergral", "Angular Derivative", "Left Power", "Right Power", "Power Adjustment" }, "DRIVEPID");
-        //driveTrain.setClosedLoop(true);
+        driveTrain.setClosedLoop(true);
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -135,14 +134,14 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.stopDriving();
         sleep(sleepTime);
     }
-    public void drive(int distance, double speed, Direction strafe, double timeOut) {
+    public void drive(double distance, double speed, Direction strafe, double timeOut) {
         drive(distance, speed, strafe, timeOut, MasqExternal.DEFAULT_SLEEP_TIME);
     }
-    public void drive(int distance, double speed, Direction strafe) {
+    public void drive(double distance, double speed, Direction strafe) {
         drive(distance, speed, strafe, MasqExternal.DEFAULT_TIMEOUT);
     }
-    public void drive(int distance, double speed){drive(distance, speed, Direction.FORWARD);}
-    public void drive(int distance) {drive(distance, 0.5);}
+    public void drive(double distance, double speed){drive(distance, speed, Direction.FORWARD);}
+    public void drive(double distance) {drive(distance, 0.5);}
 
     public void runToPosition(int distance, Direction direction, double speed, double timeOut, int sleepTime) {
         driveTrain.setDistance(distance);
@@ -160,7 +159,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void runToPosition(int distance) {runToPosition(distance, Direction.FORWARD);}
 
-    public void turn(int angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
+    public void turn(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
         //serializer.createFile(new String[]{"Error", "Proprtional", "Intergral", "Derivitive", "Left Power", " Right Power"}, "TURNPID");
         driveTrain.setClosedLoop(false);
         double targetAngle = imu.adjustAngle(imu.getHeading() + (direction.value * angle));
@@ -199,19 +198,19 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.setPower(0,0);
         sleep(sleepTime);
     }
-    public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki) {
+    public void turn(double angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki) {
         turn(angle, DIRECTION, timeOut, sleepTime, kp, ki, MasqExternal.KD.TURN);
     }
-    public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime, double kp) {
+    public void turn(double angle, Direction DIRECTION, double timeOut, int sleepTime, double kp) {
         turn(angle, DIRECTION, timeOut, sleepTime, kp, MasqExternal.KI.TURN);
     }
-    public void turn(int angle, Direction DIRECTION, double timeOut, int sleepTime) {
+    public void turn(double angle, Direction DIRECTION, double timeOut, int sleepTime) {
         turn(angle, DIRECTION, timeOut, sleepTime, MasqExternal.KP.TURN);
     }
-    public void turn(int angle, Direction DIRECTION, double timeout)  {
+    public void turn(double angle, Direction DIRECTION, double timeout)  {
         turn(angle, DIRECTION, timeout, MasqExternal.DEFAULT_SLEEP_TIME);
     }
-    public void turn(int angle, Direction DIRECTION)  {turn(angle, DIRECTION, MasqExternal.DEFAULT_TIMEOUT);}
+    public void turn(double angle, Direction DIRECTION)  {turn(angle, DIRECTION, MasqExternal.DEFAULT_TIMEOUT);}
 
     public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -288,7 +287,8 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
-        } while (opModeIsActive() && currentTimes < amount);
+            dash.update();
+        } while (opModeIsActive() && sensor.stop());
         driveTrain.stopDriving();
     }
     public void stop (MasqSensor sensor, double power, Direction direction) {stop(sensor, power, direction, 1);}
@@ -418,7 +418,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void waitForVuMark() {
         timeoutClock.reset();
         while (MasqExternal.VuMark.isUnKnown(vuforia.getVuMark()) &&
-                !timeoutClock.elapsedTime(5, MasqClock.Resolution.SECONDS)){
+                !timeoutClock.elapsedTime(2, MasqClock.Resolution.SECONDS)){
             dash.create(vuforia.getVuMark());
             dash.update();
         }
@@ -451,9 +451,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
-    public void setAcceptableDriveError(double acceptableDriveError) {
-        this.acceptableDriveError = acceptableDriveError;
-    }
     public void initializeServos() {
         jewelArmBlue.setPosition(0);
         jewelArmRed.setPosition(0);

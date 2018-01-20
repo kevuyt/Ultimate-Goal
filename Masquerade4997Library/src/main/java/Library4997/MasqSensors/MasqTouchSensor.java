@@ -28,6 +28,7 @@ public class MasqTouchSensor implements MasqHardware, MasqSensor {
         };
     }
 
+
     public boolean stop() {
         return !isPressed();
     }
