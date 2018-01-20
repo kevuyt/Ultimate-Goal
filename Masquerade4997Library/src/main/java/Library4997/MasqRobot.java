@@ -19,6 +19,7 @@ import Library4997.MasqOpenCV.MasqOpenCV;
 import Library4997.MasqSensors.MasqAdafruitIMUv2;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
+import Library4997.MasqSensors.MasqMatiboxUltraSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
@@ -41,6 +42,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMUv2 imu;
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
+    public MasqMatiboxUltraSensor ultra;
     public MasqServoSystem flipper;
     public MasqCRServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
@@ -58,6 +60,7 @@ public class MasqRobot implements PID_CONSTANTS {
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         openCV = new MasqOpenCV();
+        ultra = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         flipper = new MasqServoSystem("flipLeft", Servo.Direction.FORWARD, "flipRight", Servo.Direction.REVERSE, this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
@@ -288,7 +291,7 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
             dash.update();
-        } while (opModeIsActive() && sensor.stop());
+        } while (opModeIsActive() && currentTimes < amount);
         driveTrain.stopDriving();
     }
     public void stop (MasqSensor sensor, double power, Direction direction) {stop(sensor, power, direction, 1);}
