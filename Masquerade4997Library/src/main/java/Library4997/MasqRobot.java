@@ -257,16 +257,16 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stopRed (MasqColorSensor colorSensor){stopRed(colorSensor, 0.5);}
 
-    public void stop(MasqSensor sensor, double speed, Direction Direction, int amount) {
-        int currentTimes = 0;
+    public void stop(MasqSensor sensor, double speed, Direction Direction) {
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
+        driveTrain.setClosedLoop(true);
         double targetAngle = imu.getHeading();
         double  angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
                 angularDerivative, powerAdjustment, leftPower, rightPower, maxPower, timeChange, power;
         do {
-            power = Direction.value * (1 - (currentTimes / amount)) * speed;
+            power = Direction.value * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
@@ -285,20 +285,18 @@ public class MasqRobot implements PID_CONSTANTS {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
             }
-            if (sensor.stop()) currentTimes++;
             driveTrain.setPower(leftPower, rightPower);
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ",angularError);
             dash.update();
-        } while (opModeIsActive() && currentTimes < amount);
+        } while (opModeIsActive() && sensor.stop());
         driveTrain.stopDriving();
     }
-    public void stop (MasqSensor sensor, double power, Direction direction) {stop(sensor, power, direction, 1);}
-    public void stop(MasqSensor sensor, double power){
-        stop(sensor, power, Direction.BACKWARD);
+    public void stop (MasqSensor sensor, double power) {stop(sensor, power, Direction.FORWARD);}
+    public void stop(MasqSensor sensor){
+        stop(sensor, 0.5);
     }
-    public void stop (MasqSensor sensor){stop(sensor, 0.5);}
 
     public void strafe(int distance, Strafe direction, double speed, double timeOut, double sleepTime) {
         driveTrain.setClosedLoop(true);

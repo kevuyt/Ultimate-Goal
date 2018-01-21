@@ -5,7 +5,6 @@ package Library4997.MasqExternal;
  */
 
 public enum Direction {
-    //Number one is left, and two is right
     FORWARD (+1),
     BACKWARD (-1),
     LEFT (+1),

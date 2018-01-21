@@ -139,16 +139,14 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void runToPosition(Direction direction, double speed){
         MasqClock timeoutTimer = new MasqClock();
         resetEncoder();
-        int targetClicks = (int)(destination * MasqExternal.CLICKS_PER_INCH);
-        int clicksRemaining;
-        double inchesRemaining, power;
+        double clicksRemaining;
+        double  power;
         do {
-            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / MasqExternal.CLICKS_PER_INCH;
-            power = direction.value * speed * ((clicksRemaining / targetClicks));
+            clicksRemaining = (destination - Math.abs(motor.getCurrentPosition()));
+            power = -direction.value * speed * ((clicksRemaining / destination));
             power = Range.clip(power, -1.0, +1.0);
             setPower(power);
-        } while (inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
+        } while (opModeIsActive() && Math.abs(clicksRemaining) > 1 && !timeoutTimer.elapsedTime(1, MasqClock.Resolution.SECONDS));
     }
     boolean isBusy () {
         return motor.isBusy();
