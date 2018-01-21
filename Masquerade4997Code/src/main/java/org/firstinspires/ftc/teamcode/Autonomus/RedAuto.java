@@ -46,8 +46,8 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         robot.stop(robot.ultra, POWER_LOW, Direction.BACKWARD);
         if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(24, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.FORWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark));
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(3, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turn(90, Direction.RIGHT);
         robot.flipper.setPosition(0);
         robot.sleep(1500);

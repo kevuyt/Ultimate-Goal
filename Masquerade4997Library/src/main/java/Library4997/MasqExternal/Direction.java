@@ -1,7 +1,7 @@
 package Library4997.MasqExternal;
 
 /**
- * This enum gives values to direction
+ * Gives a positive or negative multiplier associated to the needed motor spin direction of the associated direction.
  */
 
 public enum Direction {

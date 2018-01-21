@@ -1,10 +1,14 @@
 package Library4997.MasqExternal;
 
-/**
- * Created by Archish on 2/23/17.
- */
+
 
 public interface MasqHardware {
+    /**
+     * @return Returns the name of the hardware.
+     */
     String getName();
+    /**
+     * @return Returns an array of dashboard content.
+     */
     String[] getDash();
 }

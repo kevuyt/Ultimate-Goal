@@ -73,7 +73,7 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
     public double getPower() {
         double num = 0, sum = 0;
         for (MasqMotor masqMotor: motors) {
-            sum = sum + masqMotor.currentPower;
+            sum += masqMotor.currentPower;
             num++;
         }
         return sum/num;

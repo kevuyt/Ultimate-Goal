@@ -14,7 +14,7 @@ public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
     private AnalogInput ds;
     private String nameDS;
     private int scale = 225;
-    private double stopThresh = 47;
+    private double stopThresh = 60;
     public MasqMatiboxUltraSensor(String name, HardwareMap hardwareMap){
             this.nameDS = name;
             ds = hardwareMap.get(AnalogInput.class, name);
