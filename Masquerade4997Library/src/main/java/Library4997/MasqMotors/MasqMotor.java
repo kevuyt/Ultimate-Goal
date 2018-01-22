@@ -39,7 +39,6 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
-    private MasqClock timeoutTimer = new MasqClock();
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
         limitDetection = positionDetection = false;
