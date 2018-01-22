@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="ModernRobotics-release-">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/4c66078b6bb3f0b2b67c75fcca17c01bbd19f589/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/4c66078b6bb3f0b2b67c75fcca17c01bbd19f589/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/fd28323a63e55b5450bff80a9a6d2c45ba51b11c/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/fd28323a63e55b5450bff80a9a6d2c45ba51b11c/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
