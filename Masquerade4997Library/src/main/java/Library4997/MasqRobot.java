@@ -18,6 +18,7 @@ import Library4997.MasqSensors.MasqAdafruitIMUv2;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqMatiboxUltraSensor;
+import Library4997.MasqSensors.MasqOpenCV;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
@@ -35,6 +36,7 @@ import Library4997.MasqWrappers.MasqController;
 public class MasqRobot implements PID_CONSTANTS {
     public MasqRobot () {}
     public MasqTankDrive driveTrain;
+    public MasqOpenCV openCV;
     public MasqMotorSystem intake;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMUv2 imu;
@@ -52,6 +54,7 @@ public class MasqRobot implements PID_CONSTANTS {
     private DashBoard dash;
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
+        openCV = new MasqOpenCV(hardwareMap);
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
