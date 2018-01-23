@@ -7,12 +7,23 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 
 public class MasqOpenCV {
-    MasqCryptoboxDetector cryptoboxDetector;
-    public MasqOpenCV (HardwareMap hardwareMap) {
-        cryptoboxDetector = new MasqCryptoboxDetector(hardwareMap);
+    public enum Alliance {
+        BLUE, RED
     }
-
+    MasqCryptoboxDetector cryptoboxDetector;
+    MasqJewelDetector jewelDetector;
+    public MasqOpenCV (HardwareMap hardwareMap) {
+        cryptoboxDetector = new MasqCryptoboxDetector(hardwareMap, Alliance.RED);
+        jewelDetector = new MasqJewelDetector(hardwareMap);
+    }
+    public void setAlliance (Alliance alliance) {
+        cryptoboxDetector.setAlliance(alliance);
+    }
     public MasqCryptoboxDetector getCryptoboxDetector() {
         return cryptoboxDetector;
+    }
+
+    public MasqJewelDetector getJewelDetector() {
+        return jewelDetector;
     }
 }

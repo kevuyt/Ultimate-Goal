@@ -54,7 +54,7 @@ public class MasqRobot implements PID_CONSTANTS {
     private DashBoard dash;
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
-        openCV = new MasqOpenCV(hardwareMap);
+        openCV = new MasqOpenCV(this.hardwareMap);
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
