@@ -9,13 +9,11 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
 
 import Library4997.MasqExternal.MasqExternal;
 import Library4997.MasqExternal.MasqSensor;
-import Library4997.MasqExternal.MasqSerializer;
 import Library4997.MasqExternal.PID_CONSTANTS;
 import Library4997.MasqExternal.Strafe;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqMotors.MasqTankDrive;
-import Library4997.MasqOpenCV.MasqOpenCV;
 import Library4997.MasqSensors.MasqAdafruitIMUv2;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
@@ -52,14 +50,12 @@ public class MasqRobot implements PID_CONSTANTS {
     //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
     private DashBoard dash;
-    public MasqOpenCV openCV;
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        openCV = new MasqOpenCV();
         ultra = new MasqMatiboxUltraSensor("ultra", this.hardwareMap);
         flipper = new MasqServoSystem("flipLeft", Servo.Direction.FORWARD, "flipRight", Servo.Direction.REVERSE, this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
