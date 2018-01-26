@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 @TeleOp(name = "MECHV1", group = "Autonomus")
@@ -17,7 +19,7 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         while (opModeIsActive()) {
-            robot.MECH(controller1);
+            robot.MECH(controller1, Direction.FORWARD);
             if (controller2.a()) fliperFineMode = true;
             else fliperFineMode = false;
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
