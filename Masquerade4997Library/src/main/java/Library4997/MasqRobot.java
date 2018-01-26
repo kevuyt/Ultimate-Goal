@@ -360,7 +360,7 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor.update();
 
     }
-    public void MECH(MasqController c) {
+    public void MECH(MasqController c, Direction direction) {
         double x = -c.leftStickY();
         double y = c.leftStickX();
         double angle = Math.atan2(y, x);
@@ -384,10 +384,10 @@ public class MasqRobot implements PID_CONSTANTS {
             rightFront /= 3;
             rightBack /= 3;
         }
-        driveTrain.leftDrive.motor1.setPower(leftFront);
-        driveTrain.leftDrive.motor2.setPower(leftBack);
-        driveTrain.rightDrive.motor1.setPower(rightFront);
-        driveTrain.rightDrive.motor2.setPower(rightBack);
+        driveTrain.leftDrive.motor1.setPower(leftFront * direction.value);
+        driveTrain.leftDrive.motor2.setPower(leftBack  * direction.value);
+        driveTrain.rightDrive.motor1.setPower(rightFront  * direction.value);
+        driveTrain.rightDrive.motor2.setPower(rightBack  * direction.value);
         dash.create("FRONT LEFT: ", leftFront);
         dash.create("FRONT RIGHT: ", rightFront);
         dash.create("BACK RIGHT: ", rightBack);
