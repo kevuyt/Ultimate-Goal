@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
 
-import Library4997.MasqSensors.MasqOpenCV;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
