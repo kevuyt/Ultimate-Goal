@@ -83,15 +83,6 @@ public class MasqControllerv2 implements MasqHardware{
 
     public boolean start() {return gamepad.start;}
 
-    public void update(){
-        aPrev = gamepad.a;
-        bPrev = gamepad.b;
-        xPrev = gamepad.x;
-        yPrev = gamepad.y;
-        leftBumperPrev = gamepad.left_bumper;
-        rightBumperPrev = gamepad.right_bumper;
-    }
-
     public String getName() {return name;}
     public String[] getDash() {
         return new String[]{
@@ -145,5 +136,14 @@ public class MasqControllerv2 implements MasqHardware{
 
     public void setRightBumperToggle(int rightBumperToggle) {
         this.rightBumperToggle = rightBumperToggle;
+    }
+
+    public void update(){
+        aPrev = gamepad.a;
+        bPrev = gamepad.b;
+        xPrev = gamepad.x;
+        yPrev = gamepad.y;
+        leftBumperPrev = gamepad.left_bumper;
+        rightBumperPrev = gamepad.right_bumper;
     }
 }
