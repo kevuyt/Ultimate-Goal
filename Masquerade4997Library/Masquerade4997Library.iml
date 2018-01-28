@@ -103,6 +103,8 @@
     <orderEntry type="library" exported="" name="Blocks-release-" level="project" />
     <orderEntry type="library" exported="" name="Hardware-release-" level="project" />
     <orderEntry type="library" exported="" name="FtcCommon-release-" level="project" />
+    <orderEntry type="module" module-name="MasqCV" exported="" />
     <orderEntry type="module" module-name="FtcRobotController" exported="" />
+    <orderEntry type="module" module-name="openCVLibrary320" exported="" />
   </component>
 </module>
