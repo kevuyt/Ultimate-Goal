@@ -22,7 +22,6 @@ import Library4997.MasqSensors.MasqMatiboxUltraSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
-import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
@@ -42,7 +41,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public MasqMatiboxUltraSensor ultra;
     public MasqServoSystem flipper;
-    public MasqCRServo relicAdjuster;
+    public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
@@ -62,7 +61,7 @@ public class MasqRobot implements PID_CONSTANTS {
         redRotator = new MasqServo("redRotator", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
         driveTrain = new MasqTankDrive(this.hardwareMap);
-        relicAdjuster = new MasqCRServo("relicAdjuster", this.hardwareMap);
+        relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
         imu = new MasqAdafruitIMUv2("imuHubOne", this.hardwareMap);
         jewelArmBlue = new MasqServo("jewelArmBlue", this.hardwareMap);
         jewelArmRed = new MasqServo("jewelArmRed", this.hardwareMap);

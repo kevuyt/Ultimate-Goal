@@ -22,10 +22,10 @@ public interface Constants {
            OUTAKE = -1;
     double LIFT_DOWN = -1,
            LIFT_UP = 1;
-    double JEWEL_BLUE_IN = 0.26,
+    double JEWEL_BLUE_IN = 0.33,
            JEWEL_BLUE_OUT = .85,
            JEWEL_RED_IN = 0.39,
            JEWEL_RED_OUT = .94;
-    double CLAW_CLOSED = 0.3,
-           CLAW_OPENED = 0.85;
+    double CLAW_CLOSED = 0,
+           CLAW_OPENED = 1;
 }

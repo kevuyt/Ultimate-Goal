@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Jan 27 14:40:18 EST 2018
+#Sat Jan 27 17:46:11 EST 2018
 20.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/resources-debug.ap_
 143.base=/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/assets/debug
 439.set=ASSET

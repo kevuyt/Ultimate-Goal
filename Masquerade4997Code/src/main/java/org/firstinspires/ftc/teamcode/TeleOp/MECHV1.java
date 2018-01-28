@@ -25,9 +25,9 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else robot.intake.setPower(0);
-            if (controller2.leftStickY() < 0) robot.relicAdjuster.setPower(0.25);
-            else if (controller2.leftStickY() > 0) robot.relicAdjuster.setPower(-0.25);
-            else robot.relicAdjuster.setPower(0);
+            if (controller2.leftStickY() < 0) robot.relicAdjuster.setPosition(1);
+            else if (controller2.leftStickY() > 0) robot.relicAdjuster.setPosition(0);
+            else if (controller2.leftStickX() > 0 ) robot.relicAdjuster.setPosition(0.5);
             if (controller1.x()) {
                 robot.jewelArmRed.setPosition(JEWEL_RED_IN);
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
@@ -47,8 +47,8 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
             else robot.lift.setPower(0);
             if (controller2.x()) currentRelicPower = LIFT_UP / 3;
             else currentRelicPower = LIFT_UP;
-            if (controller2.leftBumper()) robot.relicLift.setPower(currentRelicPower);
-            else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(-currentRelicPower);}
+            if (controller2.leftBumper()) robot.relicLift.setPower(-currentRelicPower);
+            else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(currentRelicPower);}
             else robot.relicLift.setPower(0);
             if (fliperFineMode) {
                 if (controller2.rightStickY() < 0) currentFlipPosition += flipIncrement;
