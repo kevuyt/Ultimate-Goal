@@ -46,10 +46,10 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         double startAngle = robot.imu.getHeading();
         robot.drive(25, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(23, POWER_LOW, Direction.FORWARD);
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(18, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(26, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(18, POWER_OPTIMAL, Direction.BACKWARD);
+        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(DISTANCE_TO_CENTER_BOX, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(DISTANCE_TO_LEFT_BOX_RED, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(DISTANCE_TO_RIGHT_BOX_RED, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(DISTANCE_TO_CENTER_BOX, POWER_OPTIMAL, Direction.BACKWARD);
         double endAngle = robot.imu.getHeading();
         robot.turn(90 + (endAngle - startAngle), Direction.RIGHT);
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);

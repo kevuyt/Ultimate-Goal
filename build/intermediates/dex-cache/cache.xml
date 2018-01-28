@@ -7,7 +7,7 @@
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="95eddec254b0898b9c2ed549677fed7e17e4776d">
+        sha1="47b6fcf5212e4cd0a65b7f70eb2e4aedfdd235f1">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_f45836b0084c797d6a5773ca632faf73484b6143.jar" />
     </item>
     <item
@@ -48,15 +48,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/openCVLibrary320/build/intermediates/bundles/default/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="efbde2ee0261407accb75a3a589be7878d4b3ed1">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_42645cba388274a79f942a27f1d12bd7358aa2ca.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/Archish/.android/build-cache/059108baca3971f6d872877c0ca07cae09caa4aa/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -88,7 +79,7 @@
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="352df875b6071bf0e9259b8cf601b5bcc4c6f53f">
+        sha1="b2bf46353f654e49394f08d065b6ce173ec61c05">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" />
     </item>
     <item
@@ -126,15 +117,6 @@
         revision="25.0.0"
         sha1="1ce86a6340781abf3d876eba190efa34ae92d2f9">
         <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_d35fb6c9280d0db28382e970092b4cdb34ae2b11.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Archish/Documents/Projects/MasqLib/MasqCV/build/intermediates/bundles/default/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c0cc7d23aa2bf6e9c36f0db5cd58f61040811efe">
-        <dex dex="/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_762cbcee8aaebd63b1d4699a15864a068ed502b0.jar" />
     </item>
     <item
         is-multidex="false"

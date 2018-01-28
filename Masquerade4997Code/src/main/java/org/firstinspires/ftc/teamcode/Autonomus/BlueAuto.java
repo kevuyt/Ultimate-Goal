@@ -11,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "BlueAuto", group = "Autonomus")
 public class BlueAuto extends MasqLinearOpMode implements Constants {
+    double jewelHover = JEWEL_BLUE_OUT - .2;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuforia(hardwareMap);
@@ -47,11 +48,16 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         robot.drive(25, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(23, POWER_LOW, Direction.FORWARD);
         if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.blueRotator.setPosition(ROTATOR_BLUE_CENTER);
+        robot.jewelArmBlue.setPosition(jewelHover);
+        robot.stop(robot.jewelColorBlue, .2, Direction.BACKWARD);
+        robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
         double endAngle = robot.imu.getHeading();
-        robot.turn(90 - (endAngle - startAngle), Direction.LEFT);
+        //robot.drive(1, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turn(100 - (endAngle - startAngle), Direction.LEFT);
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(0.3);
         robot.sleep(1000);

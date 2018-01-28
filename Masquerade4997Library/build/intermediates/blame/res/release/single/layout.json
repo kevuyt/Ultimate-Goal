@@ -52,12 +52,12 @@
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/button_list.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/digital_device.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/digital_device.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/motor.xml",
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/motor.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/digital_device.xml",
+        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/digital_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/layout/activity_inspection.xml",
