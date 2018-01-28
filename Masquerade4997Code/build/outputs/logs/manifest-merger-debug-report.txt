@@ -19,14 +19,11 @@ MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents
 MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/AndroidManifest.xml:14:5-45:19
 MERGED from [:Inspection-release:] /Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/AndroidManifest.xml:19:5-30:19
 MERGED from [:Blocks-release:] /Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/AndroidManifest.xml:18:5-39:19
-MERGED from [MasqLib:MasqCV:unspecified] /Users/Archish/Documents/Projects/MasqLib/MasqCV/build/intermediates/bundles/default/AndroidManifest.xml:13:5-17:19
 MERGED from [:RobotCore-release:] /Users/Archish/.android/build-cache/9d3df6723ebd60e99e080ccf00a608cb19e4f307/output/AndroidManifest.xml:67:5-86:19
 MERGED from [:FtcCommon-release:] /Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/AndroidManifest.xml:22:5-222:19
 MERGED from [:Analytics-release:] /Users/Archish/.android/build-cache/059108baca3971f6d872877c0ca07cae09caa4aa/output/AndroidManifest.xml:19:5-24:19
 	android:label
 		ADDED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/AndroidManifest.xml:17:9-41
-	android:supportsRtl
-		ADDED from [MasqLib:MasqCV:unspecified] /Users/Archish/Documents/Projects/MasqLib/MasqCV/build/intermediates/bundles/default/AndroidManifest.xml:16:9-35
 	android:exported
 		ADDED from [:Analytics-release:] /Users/Archish/.android/build-cache/059108baca3971f6d872877c0ca07cae09caa4aa/output/AndroidManifest.xml:21:9-32
 	android:allowBackup
@@ -45,8 +42,6 @@ MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents
 MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/AndroidManifest.xml:8:5-10:41
 MERGED from [:Inspection-release:] /Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/AndroidManifest.xml:7:5-9:41
 MERGED from [:Blocks-release:] /Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/AndroidManifest.xml:7:5-9:41
-MERGED from [MasqLib:MasqCV:unspecified] /Users/Archish/Documents/Projects/MasqLib/MasqCV/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
-MERGED from [MasqLib:openCVLibrary320:unspecified] /Users/Archish/Documents/Projects/MasqLib/openCVLibrary320/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
 MERGED from [:RobotCore-release:] /Users/Archish/.android/build-cache/9d3df6723ebd60e99e080ccf00a608cb19e4f307/output/AndroidManifest.xml:7:5-9:41
 MERGED from [:Hardware-release:] /Users/Archish/.android/build-cache/2219d309948c8713002f83cc6d19e80a38611696/output/AndroidManifest.xml:7:5-9:41
 MERGED from [:FtcCommon-release:] /Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/AndroidManifest.xml:8:5-10:41
@@ -175,7 +170,6 @@ MERGED from [:Analytics-release:] /Users/Archish/.android/build-cache/059108baca
 		ADDED from [:Blocks-release:] /Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/AndroidManifest.xml:12:9-65
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from [:Blocks-release:] /Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/AndroidManifest.xml:14:5-16:35
-MERGED from [MasqLib:MasqCV:unspecified] /Users/Archish/Documents/Projects/MasqLib/MasqCV/build/intermediates/bundles/default/AndroidManifest.xml:11:5-80
 MERGED from [:RobotCore-release:] /Users/Archish/.android/build-cache/9d3df6723ebd60e99e080ccf00a608cb19e4f307/output/AndroidManifest.xml:30:5-32:35
 MERGED from [:FtcCommon-release:] /Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/AndroidManifest.xml:15:5-17:35
 	android:required
