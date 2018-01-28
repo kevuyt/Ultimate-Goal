@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" filepath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" />
       <module fileurl="file://$PROJECT_DIR$/MasqLib.iml" filepath="$PROJECT_DIR$/MasqLib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" filepath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" />
       <module fileurl="file://$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" filepath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" />
       <module fileurl="file://$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" filepath="$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" />
     </modules>

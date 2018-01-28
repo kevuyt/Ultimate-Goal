@@ -42,7 +42,6 @@ MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents
 MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/AndroidManifest.xml:8:5-10:41
 MERGED from [:Inspection-release:] /Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/AndroidManifest.xml:7:5-9:41
 MERGED from [:Blocks-release:] /Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/AndroidManifest.xml:7:5-9:41
-MERGED from [MasqLib:MasqOpenCV:unspecified] /Users/Archish/Documents/Projects/MasqLib/MasqOpenCV/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
 MERGED from [:RobotCore-release:] /Users/Archish/.android/build-cache/9d3df6723ebd60e99e080ccf00a608cb19e4f307/output/AndroidManifest.xml:7:5-9:41
 MERGED from [:Hardware-release:] /Users/Archish/.android/build-cache/2219d309948c8713002f83cc6d19e80a38611696/output/AndroidManifest.xml:7:5-9:41
 MERGED from [:FtcCommon-release:] /Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/AndroidManifest.xml:8:5-10:41

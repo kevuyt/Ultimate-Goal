@@ -10,23 +10,181 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/aidl/debug/org/opencv/engine/OpenCVEngineInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/aidl/release/org/opencv/engine/OpenCVEngineInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/buildConfig/androidTest/debug/org/opencv/test/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/buildConfig/debug/org/opencv/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/buildConfig/release/org/opencv/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/r/androidTest/debug/org/opencv/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/r/androidTest/debug/org/opencv/test/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/r/debug/org/opencv/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/generated/source/r/release/org/opencv/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/bundles/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/bundles/debug/R.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/bundles/debug/res/values/values.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/bundles/default/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/bundles/default/R.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/bundles/default/classes.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/bundles/default/res/values/values.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental-safeguard/release/tag.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/compileDebugAidl/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/compileReleaseAidl/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageReleaseResources/merged.dir/values/values.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/manifests/aapt/release/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/res/merged/androidTest/debug/values/values.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/intermediates/symbols/androidTest/debug/R.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/outputs/aar/MasqOpenCV-debug.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/build/outputs/aar/MasqOpenCV-release.aar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/lint.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/aidl/org/opencv/engine/OpenCVEngineInterface.aidl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/AsyncServiceHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/BaseLoaderCallback.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/CameraBridgeViewBase.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/FpsMeter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/InstallCallbackInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/JavaCameraView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/LoaderCallbackInterface.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/OpenCVLoader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/StaticHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/android/Utils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/calib3d/Calib3d.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/calib3d/StereoBM.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/calib3d/StereoMatcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/calib3d/StereoSGBM.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Algorithm.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Core.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/CvException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/CvType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/DMatch.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/KeyPoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Mat.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfByte.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfDMatch.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfDouble.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfFloat.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfFloat4.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfFloat6.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfInt.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfInt4.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfKeyPoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfPoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfPoint2f.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfPoint3.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfPoint3f.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/MatOfRect.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Point.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Point3.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Range.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Rect.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/RotatedRect.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Scalar.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/Size.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/core/TermCriteria.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/features2d/DescriptorExtractor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/features2d/DescriptorMatcher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/features2d/FeatureDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/features2d/Features2d.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/imgcodecs/Imgcodecs.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/imgproc/CLAHE.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/imgproc/Imgproc.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/imgproc/LineSegmentDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/imgproc/Subdiv2D.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/ANN_MLP.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/Boost.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/DTrees.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/EM.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/KNearest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/LogisticRegression.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/Ml.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/NormalBayesClassifier.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/RTrees.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/SVM.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/StatModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/ml/TrainData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/objdetect/BaseCascadeClassifier.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/objdetect/CascadeClassifier.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/objdetect/HOGDescriptor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/objdetect/Objdetect.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/AlignExposures.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/AlignMTB.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/CalibrateCRF.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/CalibrateDebevec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/CalibrateRobertson.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/MergeDebevec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/MergeExposures.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/MergeMertens.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/MergeRobertson.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/Photo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/Tonemap.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/TonemapDrago.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/TonemapDurand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/TonemapMantiuk.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/photo/TonemapReinhard.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/utils/Converters.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/video/BackgroundSubtractor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/video/BackgroundSubtractorKNN.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/video/BackgroundSubtractorMOG2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/video/DenseOpticalFlow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/video/DualTVL1OpticalFlow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/video/KalmanFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/video/Video.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/videoio/VideoCapture.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/java/org/opencv/videoio/Videoio.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqOpenCV/src/main/res/values/attrs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/ActivityViewDisplay.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/CameraViewDisplay.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/DogeCV.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/OpenCVPipeline.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/ViewDisplay.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/detectors/BlankDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/detectors/CryptoboxDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/detectors/GenericDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/detectors/GlyphDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/detectors/JewelDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/filters/DogeCVColorFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/filters/HSVColorFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/filters/LeviColorFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/math/Line.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/math/Lines.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/math/MathFTC.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/math/Points.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqCryptoboxDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqJewelDetector.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqOpenCV.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/debug_0fbfee80bc3222da3a0eeab1dee8a3a13d3f0591.jar" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/debug_0fbfee80bc3222da3a0eeab1dee8a3a13d3f0591.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/apk/Masquerade4997Code-debug.apk" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/apk/Masquerade4997Code-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/bundles/default/classes.jar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/bundles/default/classes.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" afterPath="$PROJECT_DIR$/MasqOpenCV/MasqOpenCV.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" afterPath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/packageDebug/file-input-save-data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV1.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" afterPath="$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build.gradle" afterPath="$PROJECT_DIR$/Masquerade4997Library/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
     </list>
     <list id="8d78c8f9-ba4f-4bbb-bbf4-13a676c4c2bf" name="New changelist" comment="" />
     <ignored path="MasqLib.iws" />
@@ -81,30 +239,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedAuto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MasqController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="1248">
               <caret line="80" column="93" selection-start-line="80" selection-start-column="93" selection-end-line="80" selection-end-column="93" />
               <folding />
             </state>
@@ -134,16 +272,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlueAuto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -154,11 +282,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="65" column="64" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="64" />
+            <state relative-caret-position="-1320">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#MasqRobot#0" expanded="false" />
@@ -202,10 +330,40 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PID_CONSTANTS.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/PID_CONSTANTS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MECHV1.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
+            <state relative-caret-position="576">
               <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="29" selection-end-column="89" />
               <folding />
             </state>
@@ -215,7 +373,7 @@
       <file leaf-file-name="MECHV2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="1248">
               <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
               <folding />
             </state>
@@ -277,10 +435,6 @@
               <ExternalProjectPojo>
                 <option name="name" value=":FtcRobotController" />
                 <option name="path" value="$PROJECT_DIR$/FtcRobotController" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":MasqOpenCV" />
-                <option name="path" value="$PROJECT_DIR$/MasqOpenCV" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
                 <option name="name" value=":Masquerade4997Code" />
@@ -3762,7 +3916,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="15075551396000" />
+        <entry key="$PROJECT_DIR$" value="13643761904000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -4743,8 +4897,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqOpenCV/CreateRelativeBackground.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqAdafruitIMUSystem.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/PID_CONSTANTS.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/TestAuto.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqAdafruitIMU.java" />
@@ -4768,7 +4920,6 @@
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/filters/LeviColorFilter.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/filters/HSVColorFilter.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/filters/DogeCVColorFilter.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/OpenCVPipeline.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/DogeCV.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/CameraViewDisplay.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/ActivityViewDisplay.java" />
@@ -4791,9 +4942,12 @@
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV1.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/OpenCVPipeline.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
+        <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/build.gradle" />
       </list>
     </option>
   </component>
@@ -4827,6 +4981,39 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -4893,239 +5080,6 @@
           </PATH>
         </subPane>
         <subPane subId="Default" />
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqWrappers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqServos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqSensors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqMotors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqExternal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Code" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Code" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teamcode" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Code" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teamcode" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeleOp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Code" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teamcode" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Autonomus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
       </pane>
     </panes>
   </component>
@@ -5987,7 +5941,7 @@
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.88764644" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.61874336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46880907" sideWeight="0.88764644" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09451796" sideWeight="0.88764644" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961479" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75803405" sideWeight="0.33226836" order="11" side_tool="true" content_ui="tabs" />
@@ -6096,16 +6050,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/OpenCVPipeline.java" />
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/ViewDisplay.java" />
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqIRSeeker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/DogeCV.java" />
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/CameraViewDisplay.java" />
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/filters/DogeCVColorFilter.java" />
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/math/Line.java" />
@@ -6123,7 +6067,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/detectors/JewelDetector.java" />
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqJewelDetector.java" />
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqColorSensorV2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -6156,7 +6099,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqOpenCV/CreateRelativeBackground.java" />
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqOpenCV.java" />
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqCryptoboxDetector.java" />
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqVuforiaBeta.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -6290,7 +6232,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
+        <state relative-caret-position="1272">
           <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
           <folding />
         </state>
@@ -6306,7 +6248,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
+        <state relative-caret-position="576">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="29" selection-end-column="89" />
           <folding />
         </state>
@@ -6314,7 +6256,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="1248">
           <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
           <folding />
         </state>
@@ -6333,7 +6275,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="1248">
           <caret line="80" column="93" selection-start-line="80" selection-start-column="93" selection-end-line="80" selection-end-column="93" />
           <folding />
         </state>
@@ -6347,10 +6289,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqOpenCV/OpenCVPipeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqOpenCV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/PID_CONSTANTS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqJewelDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="65" column="64" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="64" />
+        <state relative-caret-position="-1320">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#MasqRobot#0" expanded="false" />
@@ -6390,6 +6364,22 @@
             <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#createLimits#0;class#MasqRobot#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
