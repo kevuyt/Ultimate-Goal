@@ -126,7 +126,7 @@ public class MasqRobot implements PID_CONSTANTS {
             //serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
-            dash.create("ERROR: ",angularError);
+            dash.create("ERROR: ", clicksRemaining);
             dash.update();
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         //serializer.close();
@@ -449,8 +449,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public void sleep() {sleep(MasqExternal.DEFAULT_SLEEP_TIME);}
 
     public void initializeServos() {
-        jewelArmBlue.setPosition(0);
-        jewelArmRed.setPosition(0);
+        jewelArmBlue.setPosition(0.26);
+        jewelArmRed.setPosition(0.39);
     }
     public void createLimits () {
         //bottomIntake.setLimit(bottomLimit);

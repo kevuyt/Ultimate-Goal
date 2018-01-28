@@ -61,11 +61,11 @@ public class MECHV1 extends MasqLinearOpMode implements Constants {
                 if (controller2.rightStickY() < -.5) robot.flipper.setPosition(0);
                 else if (controller2.rightStickY() > .5) robot.flipper.setPosition(1);
                 else if (controller2.rightStickX() > .5) robot.flipper.setPosition(.5);
-                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.7);
+                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.65);
             }
             controller1.update();
             controller2.update();
-            robot.sleep(50);
+            robot.sleep(70);
         }
     }
 }

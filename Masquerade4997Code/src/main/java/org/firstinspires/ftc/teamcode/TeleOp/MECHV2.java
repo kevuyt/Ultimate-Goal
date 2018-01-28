@@ -69,7 +69,7 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             }
             controller1.update();
             controller2.update();
-            robot.sleep(50);
+            robot.sleep(70);
         }
     }
 }

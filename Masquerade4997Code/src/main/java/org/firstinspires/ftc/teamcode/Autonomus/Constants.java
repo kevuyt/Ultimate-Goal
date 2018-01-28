@@ -11,11 +11,12 @@ public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constan
     double SLEEPTIME_HIGH = 1000,
            SLEEPTIME_OPTIMAL = 500,
            SLEEPTIME_LOW = 250;
-    double ROTATOR_RED_NOT_SEEN = 1,
-           ROTATOR_RED_SEEN = 0.25,
-           ROTATOR_CENTER = .7;
-    double ROTATOR_BLUE_NOT_SEEN = .7,
-           ROTATOR_BLUE_SEEN = .2,
+    double ROTATOR_RED_NOT_SEEN = .82,
+           ROTATOR_RED_SEEN = 0.52,
+           ROTATOR_RED_CENTER = .73,
+           ROTATOR_BLUE_CENTER = .56;
+    double ROTATOR_BLUE_NOT_SEEN = .73,
+           ROTATOR_BLUE_SEEN = .33,
            ROTATOR_BLUE_INIT = 0.38;
     double CRYPTOBOX_SEPERATION_DISTANCE = 7.63; //this is in inches.
     double DISTANCE_TO_LEFT_BOX = 36 - (CRYPTOBOX_SEPERATION_DISTANCE / 2),

@@ -14,7 +14,7 @@ public class MasqController implements Runnable{
     private boolean close = false;
     private boolean
             aPrev = false, bPrev = false, xPrev = false, yPrev = false,
-            leftBumperPrev = false, rightBumperPrev = false;
+            leftBumperPrev = false, rightBumperPrev = false, rightTriggerPrev = false, leftTriggerPrev = false;
 
     public MasqController(Gamepad g, String name){
         this.name = name;
@@ -75,6 +75,10 @@ public class MasqController implements Runnable{
     public boolean rightTriggerPressed() {
         return rightTrigger() > 0;
     }
+    public boolean leftTriggerOnPress() {
+        return leftTriggerPressed() && !leftTriggerPrev;
+    }
+    public boolean rightTriggerOnPress() {return rightTriggerPressed() && !rightTriggerPrev;}
 
     public float leftTrigger() {return gamepad.left_trigger;}
     public float rightTrigger() {return gamepad.right_trigger;}
@@ -88,6 +92,8 @@ public class MasqController implements Runnable{
         yPrev = gamepad.y;
         leftBumperPrev = gamepad.left_bumper;
         rightBumperPrev = gamepad.right_bumper;
+        rightTriggerPrev = rightTriggerPressed();
+        leftTriggerPrev = leftTriggerPressed();
     }
 
     public String getName() {return name;}
