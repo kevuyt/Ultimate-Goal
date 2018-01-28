@@ -11,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "RedAuto", group = "Autonomus")
 public class RedAuto extends MasqLinearOpMode implements Constants {
+    double jewelHover = JEWEL_RED_OUT - .2;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.vuforia.initVuforia(hardwareMap);
@@ -46,10 +47,14 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         double startAngle = robot.imu.getHeading();
         robot.drive(25, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(23, POWER_LOW, Direction.FORWARD);
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(DISTANCE_TO_CENTER_BOX, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(DISTANCE_TO_LEFT_BOX_RED, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(DISTANCE_TO_RIGHT_BOX_RED, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(DISTANCE_TO_CENTER_BOX, POWER_OPTIMAL, Direction.BACKWARD);
+        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.redRotator.setPosition(ROTATOR_RED_CENTER);
+        robot.jewelArmRed.setPosition(jewelHover);
+        robot.stop(robot.jewelColorRed, .2, Direction.BACKWARD);
+        robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         double endAngle = robot.imu.getHeading();
         robot.turn(90 + (endAngle - startAngle), Direction.RIGHT);
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);

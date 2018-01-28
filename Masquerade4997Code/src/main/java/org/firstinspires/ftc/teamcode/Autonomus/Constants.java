@@ -12,8 +12,8 @@ public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constan
            SLEEPTIME_OPTIMAL = 500,
            SLEEPTIME_LOW = 250;
     double ROTATOR_RED_NOT_SEEN = .82,
-           ROTATOR_RED_SEEN = 0.52,
-           ROTATOR_RED_CENTER = .73,
+           ROTATOR_RED_SEEN = 0.73,
+           ROTATOR_RED_CENTER = .52,
            ROTATOR_BLUE_CENTER = .56;
     double ROTATOR_BLUE_NOT_SEEN = .73,
            ROTATOR_BLUE_OUT = .8,

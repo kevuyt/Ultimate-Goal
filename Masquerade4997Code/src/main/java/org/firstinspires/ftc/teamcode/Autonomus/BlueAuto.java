@@ -50,7 +50,7 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.blueRotator.setPosition(ROTATOR_BLUE_CENTER);
         robot.jewelArmBlue.setPosition(jewelHover);
         robot.stop(robot.jewelColorBlue, .2, Direction.BACKWARD);
