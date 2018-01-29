@@ -24,8 +24,10 @@ public interface Constants {
            LIFT_UP = 1;
     double JEWEL_BLUE_IN = 0.33,
            JEWEL_BLUE_OUT = .85,
+           JEWEL_BLUE_HOVER = JEWEL_BLUE_OUT - .2,
            JEWEL_RED_IN = 0.39,
-           JEWEL_RED_OUT = .94;
+           JEWEL_RED_OUT = .94,
+           JEWEL_RED_HOVER = JEWEL_RED_OUT - .2;
     double CLAW_CLOSED = 0,
            CLAW_OPENED = 1;
 }

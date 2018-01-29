@@ -14,21 +14,15 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqTurnTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        double columnCount = 0, firstOptoReading = robot.ods.rawLight(), OPTOSENSOR_DETECT_CRYPTOBOX_THRESHOLD = 1.395, TIME_BETWEEN_OPTOSENSOR_DETECTIONS = 1500, stopState = 0;
-        long startTime = System.nanoTime();
-        robot.blueRotator.setPosition(ROTATOR_BLUE_OUT);
-        robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
         while (!opModeIsActive()) {
             dash.create(robot.jewelColorBlue);
             dash.update();
         }
         waitForStart();
         robot.sleep(robot.getDelay());
-        robot.stop(robot.jewelColorBlue, .1, Direction.BACKWARD);
-        /*
         robot.drive(48, POWER_OPTIMAL);
         robot.turn(90, Direction.LEFT);
         robot.turn(90, Direction.RIGHT);
-        robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);*/
+        robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);
     }
 }

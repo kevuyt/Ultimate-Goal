@@ -23,7 +23,7 @@ public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constan
     double DISTANCE_TO_FISRT_SEPERATOR = 12;
     double DISTANCE_TO_RIGHT_BOX_RED = 8,
            DISTANCE_TO_LEFT_BOX_RED= 22,
-            DISTANCE_TO_CENTER_BOX = 10,
+           DISTANCE_TO_CENTER_BOX = 10,
            DISTANCE_TO_RIGHT_BOX_BLUE = DISTANCE_TO_LEFT_BOX_RED,
            DISTANCE_TO_LEFT_BOX_BLUE = DISTANCE_TO_RIGHT_BOX_RED;
     String LEFT = "LEFT",
