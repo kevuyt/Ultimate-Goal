@@ -9,7 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 10/5/17.
  */
-@Autonomous(name = "Jewel Auto", group = "Autonomus")
+@Autonomous(name = "Jewel Auto", group = "Group4")
 public class JewelAuto extends MasqLinearOpMode implements Constants {
     boolean red;
     public void runLinearOpMode() throws InterruptedException {

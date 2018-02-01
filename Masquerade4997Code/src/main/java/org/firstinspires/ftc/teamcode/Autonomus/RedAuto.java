@@ -55,7 +55,7 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         robot.stop(robot.jewelColorRed, .2, Direction.BACKWARD);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         double endAngle = robot.imu.getHeading();
-        robot.turn(100 + (endAngle - startAngle), Direction.RIGHT);
+        robot.turn(90 + (endAngle - startAngle), Direction.RIGHT);
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(0.3);
         robot.sleep(1000);

@@ -8,7 +8,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 1/26/18.
  */
-@TeleOp(name = "MECHV2", group = "Autonomus")
+@TeleOp(name = "MECHV2", group = "Group1")
 public class MECHV2 extends MasqLinearOpMode implements Constants {
     boolean clawClosed = true, fliperFineMode;
     double currentFlipPosition = 0, flipIncrement = 0.05, currentRelicPower = LIFT_UP;

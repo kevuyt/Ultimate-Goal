@@ -9,7 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 1/27/18.
  */
-@Autonomous(name = "BlueAutoF", group = "Autonomus")
+@Autonomous(name = "BlueAutoF", group = "Group2")
 public class BlueAutoF extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

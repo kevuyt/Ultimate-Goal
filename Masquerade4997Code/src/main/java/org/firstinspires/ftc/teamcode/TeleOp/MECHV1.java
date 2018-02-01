@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import Library4997.MasqExternal.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
-@TeleOp(name = "MECHV1", group = "Autonomus")
+@TeleOp(name = "MECHV1", group = "Group2")
 public class MECHV1 extends MasqLinearOpMode implements Constants {
     boolean clawClosed = true, fliperFineMode;
     double currentFlipPosition = 0, flipIncrement = 0.05, currentRelicPower = LIFT_UP;
