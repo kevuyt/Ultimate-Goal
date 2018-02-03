@@ -16,7 +16,8 @@ public class RedAutoF extends MasqLinearOpMode implements Constants {
         robot.vuforia.initVuforia(hardwareMap);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(0.7);
+        robot.flipLeft.setPosition(FLIPPER_MID_LEFT);
+        robot.flipLeft.setPosition(FLIPPER_MID_RIGHT);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
@@ -47,6 +48,14 @@ public class RedAutoF extends MasqLinearOpMode implements Constants {
         else if (MasqExternal.VuMark.isCenter(vuMark)) robot.turn(15, Direction.LEFT);
         else if (MasqExternal.VuMark.isRight(vuMark)) robot.turn(30, Direction.LEFT);
         else robot.turn(15, Direction.LEFT);
-        robot.drive(90);
+        robot.drive(90, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);
+        robot.flipLeft.setPosition(FLIPPER_OUT_RIGHT);
+        robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(5, POWER_LOW, Direction.FORWARD);
+        robot.drive(5, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(3, POWER_OPTIMAL, Direction.FORWARD);
+        robot.flipLeft.setPosition(FLIPPER_DOWN_LEFT);
+        robot.flipLeft.setPosition(FLIPPER_DOWN_RIGHT);
     }
 }

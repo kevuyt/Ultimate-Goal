@@ -22,7 +22,6 @@ import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqServo;
-import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
@@ -38,7 +37,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqAdafruitIMUv2 imu;
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
-    public MasqServoSystem flipper;
+    public MasqServo flipLeft, flipRight;
     public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
@@ -53,7 +52,8 @@ public class MasqRobot implements PID_CONSTANTS {
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        flipper = new MasqServoSystem("flipLeft", Servo.Direction.FORWARD, "flipRight", Servo.Direction.REVERSE, this.hardwareMap);
+        flipLeft = new MasqServo("flipLeft", Servo.Direction.FORWARD, this.hardwareMap);
+        flipRight = new MasqServo("flipRight", Servo.Direction.REVERSE, this.hardwareMap);
         blueRotator = new MasqServo("blueRotator", this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
@@ -124,7 +124,7 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ", clicksRemaining);
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
         //serializer.close();
         driveTrain.stopDriving();
         sleep(sleepTime);
@@ -133,7 +133,7 @@ public class MasqRobot implements PID_CONSTANTS {
         drive(distance, speed, strafe, timeOut, 0);
     }
     public void drive(double distance, double speed, Direction strafe) {
-        drive(distance, speed, strafe, 3.5);
+        drive(distance, speed, strafe, 3);
     }
     public void drive(double distance, double speed){drive(distance, speed, Direction.FORWARD);}
     public void drive(double distance) {drive(distance, 0.5);}

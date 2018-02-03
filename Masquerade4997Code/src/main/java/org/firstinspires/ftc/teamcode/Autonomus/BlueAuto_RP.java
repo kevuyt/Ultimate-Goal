@@ -16,7 +16,8 @@ public class BlueAuto_RP extends MasqLinearOpMode implements Constants {
         robot.vuforia.initVuforia(hardwareMap);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(0.7);
+        robot.flipLeft.setPosition(FLIPPER_MID_LEFT);
+        robot.flipRight.setPosition(FLIPPER_MID_LEFT);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
@@ -54,15 +55,17 @@ public class BlueAuto_RP extends MasqLinearOpMode implements Constants {
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_HOVER);
         robot.stop(robot.jewelColorBlue, .2, Direction.BACKWARD);
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
+        robot.sleep(1000);
         double endAngle = robot.imu.getHeading();
-        //robot.drive(1, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turn(100 - (endAngle - startAngle), Direction.LEFT);
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.flipper.setPosition(0.3);
+        robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);
+        robot.flipRight.setPosition(FLIPPER_OUT_RIGHT);
         robot.sleep(1000);
         robot.drive(10, POWER_LOW, Direction.FORWARD);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(3, POWER_OPTIMAL, Direction.FORWARD);
-        robot.flipper.setPosition(1);
+        robot.flipLeft.setPosition(FLIPPER_DOWN_LEFT);
+        robot.flipRight.setPosition(FLIPPER_DOWN_RIGHT);
     }
 }

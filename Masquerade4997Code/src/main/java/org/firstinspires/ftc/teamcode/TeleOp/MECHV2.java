@@ -21,6 +21,7 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
+        robot.relicAdjuster.setPosition(1);
         while (opModeIsActive()) {
             if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD);
             else robot.MECH(controller1, Direction.FORWARD);
@@ -32,6 +33,7 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             if (controller2.leftStickY() < 0) robot.relicAdjuster.setPosition(1);
             else if (controller2.leftStickY() > 0) robot.relicAdjuster.setPosition(0);
             else if (controller2.leftStickX() > 0 ) robot.relicAdjuster.setPosition(0.5);
+            else if (controller2.leftStickX() < 0 ) robot.relicAdjuster.setPosition(0.5);
             if (controller1.x()) {
                 robot.jewelArmRed.setPosition(JEWEL_RED_IN);
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
@@ -54,18 +56,21 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             if (controller2.leftBumper()) robot.relicLift.setPower(-currentRelicPower);
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(currentRelicPower);}
             else robot.relicLift.setPower(0);
-            if (fliperFineMode) {
-                if (controller2.rightStickY() < 0) currentFlipPosition += flipIncrement;
-                if (controller2.rightStickY() > 0) currentFlipPosition -= flipIncrement;
-                if (currentFlipPosition > 1) currentFlipPosition = 1;
-                if (currentFlipPosition < 0) currentFlipPosition = 0;
-                robot.flipper.setPosition(currentFlipPosition);
+            if (controller2.rightStickY() < -.5) {
+                robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);
+                robot.flipRight.setPosition(FLIPPER_OUT_RIGHT);
             }
-            else {
-                if (controller2.rightStickY() < -.5) robot.flipper.setPosition(0);
-                else if (controller2.rightStickY() > .5) robot.flipper.setPosition(1);
-                else if (controller2.rightStickX() > .5) robot.flipper.setPosition(.5);
-                else if (controller2.rightStickX() < -.5) robot.flipper.setPosition(.7);
+            else if (controller2.rightStickY() > .5) {
+                robot.flipLeft.setPosition(FLIPPER_DOWN_LEFT);
+                robot.flipRight.setPosition(FLIPPER_DOWN_RIGHT);
+            }
+            else if (controller2.rightStickX() > .5) {
+                robot.flipLeft.setPosition(FLIPPER_RIGHT_LEFT);
+                robot.flipRight.setPosition(FLIPPER_RIGHT_RIGHT);
+            }
+            else if (controller2.rightStickX() < -.5) {
+                robot.flipLeft.setPosition(FLIPPER_MID_LEFT);
+                robot.flipRight.setPosition(FLIPPER_MID_RIGHT);
             }
             controller1.update();
             controller2.update();
