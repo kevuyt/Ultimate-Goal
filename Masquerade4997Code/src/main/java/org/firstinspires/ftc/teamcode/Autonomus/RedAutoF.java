@@ -31,31 +31,34 @@ public class RedAutoF extends MasqLinearOpMode implements Constants {
         runVuMark(vuMark);
     }
     public void runJewel() {
-        robot.jewelArmBlue.setPosition(JEWEL_BLUE_OUT);
-        robot.sleep(1000);
-        if (robot.jewelColorBlue.isBlue()) robot.blueRotator.setPosition(ROTATOR_BLUE_SEEN);
-        else robot.blueRotator.setPosition(ROTATOR_BLUE_NOT_SEEN);
-        robot.sleep(1000);
-        robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
-        robot.sleep(1000);
+        robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
+        robot.sleep(1500);
+        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(ROTATOR_RED_SEEN);
+        else robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
+        robot.sleep(1500);
+        robot.jewelArmRed.setPosition(JEWEL_RED_IN);
+        robot.sleep(1500);
     }
     public String readVuMark () {
         robot.waitForVuMark();
         return robot.vuforia.getVuMark();
     }
     public void runVuMark (String vuMark) {
-        if (MasqExternal.VuMark.isRight(vuMark)) robot.turn(5, Direction.LEFT);
-        else if (MasqExternal.VuMark.isCenter(vuMark)) robot.turn(15, Direction.LEFT);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.turn(30, Direction.LEFT);
-        else robot.turn(15, Direction.LEFT);
+        robot.drive(25, POWER_LOW, Direction.BACKWARD);
+        robot.drive(23, POWER_LOW, Direction.FORWARD);
+        robot.drive(5, POWER_LOW, Direction.BACKWARD);
+        if (MasqExternal.VuMark.isRight(vuMark)) robot.turn(50, Direction.LEFT);
+        else if (MasqExternal.VuMark.isCenter(vuMark)) robot.turn(40, Direction.LEFT);
+        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.turn(25, Direction.LEFT);
+        else robot.turn(40, Direction.LEFT);
         robot.drive(90, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);
-        robot.flipLeft.setPosition(FLIPPER_OUT_RIGHT);
+        robot.flipRight.setPosition(FLIPPER_OUT_RIGHT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5, POWER_LOW, Direction.FORWARD);
         robot.drive(5, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(3, POWER_OPTIMAL, Direction.FORWARD);
         robot.flipLeft.setPosition(FLIPPER_DOWN_LEFT);
-        robot.flipLeft.setPosition(FLIPPER_DOWN_RIGHT);
+        robot.flipRight.setPosition(FLIPPER_DOWN_RIGHT);
     }
 }
