@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import Library4997.MasqExternal.Direction;
+import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECHV2", group = "Group1")
 public class MECHV2 extends MasqLinearOpMode implements Constants {
     boolean clawClosed = true, fliperFineMode;
-    double currentFlipPosition = 0, flipIncrement = 0.05, currentRelicPower = LIFT_UP;
+    double currentRelicPower = LIFT_UP;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.initializeTeleop();
@@ -51,10 +51,8 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             if (controller2.rightBumper()) robot.lift.setPower(LIFT_UP);
             else if (controller2.rightTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
             else robot.lift.setPower(0);
-            if (controller2.x()) currentRelicPower = LIFT_UP / 3;
-            else currentRelicPower = LIFT_UP;
             if (controller2.leftBumper()) robot.relicLift.setPower(-currentRelicPower);
-            else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(currentRelicPower);}
+            else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
             if (controller2.rightStickY() < -.5) {
                 robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);

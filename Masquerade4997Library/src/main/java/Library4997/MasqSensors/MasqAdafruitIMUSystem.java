@@ -2,7 +2,7 @@ package Library4997.MasqSensors;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqUtilities.MasqHardware;
 
 /**
  * Created by Archish on 1/7/18.

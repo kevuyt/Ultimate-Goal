@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.I2cDevice;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
-import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqUtilities.MasqHardware;
 
 
 /**

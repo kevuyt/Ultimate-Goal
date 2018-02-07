@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import Library4997.MasqExternal.Direction;
-import Library4997.MasqExternal.MasqExternal;
+import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -48,10 +48,10 @@ public class RedAuto_RP extends MasqLinearOpMode implements Constants {
         robot.drive(20, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(18, POWER_LOW, Direction.FORWARD);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD, 3);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(16, POWER_OPTIMAL, Direction.BACKWARD, 2);
-        else if (MasqExternal.VuMark.isRight(vuMark)) {robot.drive(2, POWER_OPTIMAL, Direction.BACKWARD, 2);}
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD, 3);
+        if (MasqUtils.VuMark.isCenter(vuMark)) robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD, 3);
+        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.drive(16, POWER_OPTIMAL, Direction.BACKWARD, 2);
+        else if (MasqUtils.VuMark.isRight(vuMark)) {robot.drive(2, POWER_OPTIMAL, Direction.BACKWARD, 2);}
+        else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD, 3);
         robot.jewelArmRed.setPosition(JEWEL_RED_HOVER);
         robot.stop(robot.jewelColorRed, .2, Direction.BACKWARD);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);

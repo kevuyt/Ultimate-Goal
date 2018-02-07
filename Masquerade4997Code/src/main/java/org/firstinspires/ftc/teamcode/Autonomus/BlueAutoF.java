@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import Library4997.MasqExternal.Direction;
-import Library4997.MasqExternal.MasqExternal;
+import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -47,9 +47,9 @@ public class BlueAutoF extends MasqLinearOpMode implements Constants {
         robot.drive(25, POWER_LOW, Direction.BACKWARD);
         robot.drive(23, POWER_LOW, Direction.FORWARD);
         robot.drive(5, POWER_LOW, Direction.BACKWARD);
-        if (MasqExternal.VuMark.isRight(vuMark)) robot.turn(40, Direction.RIGHT);
-        else if (MasqExternal.VuMark.isCenter(vuMark)) robot.turn(30, Direction.RIGHT);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.turn(15, Direction.RIGHT);
+        if (MasqUtils.VuMark.isRight(vuMark)) robot.turn(40, Direction.RIGHT);
+        else if (MasqUtils.VuMark.isCenter(vuMark)) robot.turn(30, Direction.RIGHT);
+        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.turn(15, Direction.RIGHT);
         else robot.turn(30, Direction.RIGHT);
         robot.drive(90, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);

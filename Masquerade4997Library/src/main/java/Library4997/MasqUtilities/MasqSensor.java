@@ -1,4 +1,4 @@
-package Library4997.MasqExternal;
+package Library4997.MasqUtilities;
 
 
 public interface MasqSensor {

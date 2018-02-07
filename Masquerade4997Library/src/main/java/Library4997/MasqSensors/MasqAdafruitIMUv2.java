@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import java.util.Locale;
 
-import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqUtilities.MasqHardware;
 
 /**
  * Created by Archish on 1/8/18.

@@ -2,8 +2,8 @@ package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import Library4997.MasqExternal.MasqAnnotations.MasqLinearOpModeClass;
-import Library4997.MasqExternal.MasqExternal;
+import Library4997.MasqUtilities.MasqAnnotations.MasqLinearOpModeClass;
+import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqRobot;
 
 /**
@@ -19,7 +19,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             robot = new MasqRobot();
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();
-            MasqExternal.setLinearOpMode(this);
+            MasqUtils.setLinearOpMode(this);
             controller1 = new MasqController(super.gamepad1, "controller1");
             controller2 = new MasqController(super.gamepad2, "controller2");
             runLinearOpMode();

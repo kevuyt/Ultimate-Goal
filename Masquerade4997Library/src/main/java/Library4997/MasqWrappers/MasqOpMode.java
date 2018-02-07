@@ -2,7 +2,7 @@ package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import Library4997.MasqExternal.MasqAnnotations.MasqOpModeClass;
+import Library4997.MasqUtilities.MasqAnnotations.MasqOpModeClass;
 import Library4997.MasqRobot;
 
 /**

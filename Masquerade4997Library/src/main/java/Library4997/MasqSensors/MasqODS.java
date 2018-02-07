@@ -3,9 +3,9 @@ package Library4997.MasqSensors;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
-import Library4997.MasqExternal.MasqExternal;
-import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqExternal.MasqSensor;
+import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqSensor;
 
 /**
  * Created by Archish on 10/28/16.
@@ -32,10 +32,10 @@ public class MasqODS implements MasqSensor, MasqHardware {
         return ods.getRawLightDetected();
     }
     public boolean isWhite () {
-        return lightDetected() <= MasqExternal.ODS_WHITE;
+        return lightDetected() <= MasqUtils.ODS_WHITE;
     }
     public boolean isBlack () {
-        return lightDetected() >= MasqExternal.ODS_BLACK;
+        return lightDetected() >= MasqUtils.ODS_BLACK;
     }
     public String getName() {
         return nameODSSensor;

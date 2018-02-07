@@ -1,15 +1,13 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqExternal.MasqExternal;
-import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqRobot;
+import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqExternal.Direction;
-import Library4997.MasqExternal.PID_CONSTANTS;
+import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.PID_CONSTANTS;
 
 /**
  * Created by Archish on 10/28/16.
@@ -78,14 +76,14 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     public void runToPosition(Direction direction, double speed, double timeOut) {
         MasqClock timeoutTimer = new MasqClock();
         resetEncoders();
-        int targetClicks = (int)(destination * MasqExternal.CLICKS_PER_INCH);
+        int targetClicks = (int)(destination * MasqUtils.CLICKS_PER_INCH);
         int clicksRemaining;
         double inchesRemaining;
         double power;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / MasqExternal.CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * MasqExternal.KP.DRIVE_ANGULAR;
+            inchesRemaining = clicksRemaining / MasqUtils.CLICKS_PER_INCH;
+            power = direction.value * speed * inchesRemaining * MasqUtils.KP.DRIVE_ANGULAR;
             setPower(power, -power);
         }
         while (opModeIsActive() && inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
@@ -103,7 +101,7 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         setPower(0,0);
     }
     private boolean opModeIsActive() {
-        return MasqExternal.opModeIsActive();
+        return MasqUtils.opModeIsActive();
     }
     public void zeroPowerBehavior(){
         rightDrive.breakMotors();

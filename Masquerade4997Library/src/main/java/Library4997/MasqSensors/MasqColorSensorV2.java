@@ -1,11 +1,9 @@
 package Library4997.MasqSensors;
 
-import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.configuration.I2cSensor;
 
-import Library4997.MasqExternal.MasqSensorDrivers.MasqColorSensorDriver;
-import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqUtilities.MasqSensorDrivers.MasqColorSensorDriver;
+import Library4997.MasqUtilities.MasqHardware;
 
 /**
  * Created by Archish on 10/7/17.

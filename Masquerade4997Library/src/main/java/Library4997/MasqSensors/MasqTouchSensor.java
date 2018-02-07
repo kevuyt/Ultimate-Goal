@@ -2,8 +2,8 @@ package Library4997.MasqSensors;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
-import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqExternal.MasqSensor;
+import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqSensor;
 
 public class MasqTouchSensor implements MasqHardware, MasqSensor {
     TouchSensor touchSensor;

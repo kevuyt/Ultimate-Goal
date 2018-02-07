@@ -4,10 +4,9 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**

@@ -5,8 +5,8 @@ import android.graphics.Color;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqExternal.MasqSensor;
+import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqSensor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 
 public class MasqMRColorSensor implements MasqSensor, MasqHardware {

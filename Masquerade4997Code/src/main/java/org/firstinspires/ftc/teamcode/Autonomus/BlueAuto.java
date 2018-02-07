@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import Library4997.MasqExternal.Direction;
-import Library4997.MasqExternal.MasqExternal;
+import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -48,10 +48,10 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         robot.drive(25, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(23, POWER_LOW, Direction.FORWARD);
         robot.blueRotator.setPosition(ROTATOR_BLUE_CENTER);
-        if (MasqExternal.VuMark.isCenter(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isLeft(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isRight(vuMark)) robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD);
-        else if (MasqExternal.VuMark.isUnKnown(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        if (MasqUtils.VuMark.isCenter(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqUtils.VuMark.isRight(vuMark)) robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD);
+        else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_HOVER);
         robot.stop(robot.jewelColorBlue, .2, Direction.BACKWARD);
         robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);

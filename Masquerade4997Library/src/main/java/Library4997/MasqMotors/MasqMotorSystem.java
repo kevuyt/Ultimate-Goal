@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqExternal.PID_CONSTANTS;
+import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.PID_CONSTANTS;
 
 /**
  * MasqMotorSystem That supports two or more motors and treats them as one

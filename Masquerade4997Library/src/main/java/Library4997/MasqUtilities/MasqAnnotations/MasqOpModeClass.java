@@ -1,4 +1,4 @@
-package Library4997.MasqExternal.MasqAnnotations;
+package Library4997.MasqUtilities.MasqAnnotations;
 
 /**
  * Created by Archish on 10/19/17.

@@ -4,11 +4,8 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import Library4997.MasqExternal.MasqExternal;
-import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqUtilities.MasqHardware;
 
 /**
  * This is a telemetry wrapper class.
@@ -95,7 +92,7 @@ public class DashBoard implements Runnable {
         while (!close) {
             update();
             close = this.close;
-            MasqExternal.sleep(100);
+            MasqUtils.sleep(100);
             telemetry.clearAll();
         }
     }

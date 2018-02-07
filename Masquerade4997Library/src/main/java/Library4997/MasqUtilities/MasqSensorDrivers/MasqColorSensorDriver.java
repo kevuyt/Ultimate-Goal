@@ -1,14 +1,10 @@
-package Library4997.MasqExternal.MasqSensorDrivers;
+package Library4997.MasqUtilities.MasqSensorDrivers;
 
-import com.qualcomm.robotcore.hardware.HardwareDevice;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynchDevice;
 import com.qualcomm.robotcore.hardware.configuration.I2cSensor;
 import com.qualcomm.robotcore.util.TypeConversion;
-
-import Library4997.MasqExternal.MasqHardware;
 
 /**
  * Created by Archish on 10/7/17.

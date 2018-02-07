@@ -3,8 +3,8 @@ package Library4997.MasqSensors;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqExternal.MasqHardware;
-import Library4997.MasqExternal.MasqSensor;
+import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqSensor;
 
 
 /**

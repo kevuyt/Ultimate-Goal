@@ -2,7 +2,6 @@ package Library4997.MasqSensors;
 
 
 import com.qualcomm.ftcrobotcontroller.R.id;
-import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -12,7 +11,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
-import org.firstinspires.ftc.robotcore.external.navigation.VuMarkInstanceId;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
@@ -21,10 +19,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqExternal.MasqExternal;
-import Library4997.MasqExternal.MasqHardware;
+import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqRobot;
-import Library4997.MasqExternal.MasqSensor;
+import Library4997.MasqUtilities.MasqSensor;
 
 /**
  * Created by Archish on 9/7/17.
@@ -61,7 +59,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         Facing(int[] value) {this.value = value;}
     }
     public MasqVuforia(String t1, String t2, String t3, String asset) {
-        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
+        parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
@@ -79,7 +77,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         numTargets = 3;
     }
     public MasqVuforia(String t1, String t2, String asset)  {
-        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
+        parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
@@ -94,7 +92,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         numTargets = 2;
     }
     public MasqVuforia(String t1, String asset) {
-        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
+        parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
@@ -138,7 +136,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     public void initVuMark(HardwareMap hardwareMap) {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
-        parameters.vuforiaLicenseKey = MasqExternal.VUFORIA_KEY;
+        parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");

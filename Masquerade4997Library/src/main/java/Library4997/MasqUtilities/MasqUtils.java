@@ -1,4 +1,4 @@
-package Library4997.MasqExternal;
+package Library4997.MasqUtilities;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 10/16/17.
  */
 
-public class MasqExternal {
+public class MasqUtils {
     public static MasqLinearOpMode linearOpMode;
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
