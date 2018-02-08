@@ -50,7 +50,7 @@ public class MasqUtils {
     }
     public class KP {
         public static final double TURN = +0.04;
-        public static final double DRIVE_ANGULAR = +0.095;
+        public static final double DRIVE_ANGULAR = +0.07;
         public static final double DRIVE_ENCODER = .7;
         public static final double MOTOR_TELEOP = +0;
         public static final double MOTOR_AUTONOMOUS = +0.006;

@@ -286,7 +286,7 @@ public class MasqRobot implements PID_CONSTANTS {
         } while (opModeIsActive() && sensor.stop());
         driveTrain.stopDriving();
     }
-    public void stop (MasqSensor sensor, double power) {stop(sensor, power, Direction.FORWARD);}
+    public void stop(MasqSensor sensor, double power) {stop(sensor, power, Direction.FORWARD);}
     public void stop(MasqSensor sensor){
         stop(sensor, 0.5);
     }
@@ -333,32 +333,23 @@ public class MasqRobot implements PID_CONSTANTS {
     }
 
     public void strafe(int distance, Strafe direction, double speed, double timeOut, double sleepTime) {
-        driveTrain.setClosedLoop(true);
+        driveTrain.setClosedLoop(false);
         driveTrain.resetEncoders();
-        int targetClicks = (int)(distance * MasqUtils.CLICKS_PER_INCH);
-        int clicksRemaining;
-        MasqClock loopTimer = new MasqClock();
-        double power, timeChange, angularIntegral = 0, angularDerivative, powerAdjustment, leftPower, rightPower, prevAngularError = 0, targetAngle = imu.getHeading();
-        double angularError;
+        double targetClicks =(distance * MasqUtils.CLICKS_PER_INCH);
+        double clicksRemaining;
+        double power;
         MasqClock timeoutTimer = new MasqClock();
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             power = (clicksRemaining / targetClicks) * speed;
-            timeChange = loopTimer.milliseconds();
-            loopTimer.reset();
-            angularError = imu.adjustAngle(targetAngle - imu.getHeading());
-            angularIntegral = (angularIntegral + angularError) * timeChange;
-            angularDerivative = (angularError - prevAngularError) / timeChange;
-            prevAngularError = angularError;
-            powerAdjustment = (MasqUtils.KP.DRIVE_ANGULAR * power) * angularError + (MasqUtils.KI.DRIVE * angularIntegral) + (MasqUtils.KD.DRIVE * angularDerivative);
-            powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
-            leftPower = power - powerAdjustment;
-            rightPower = power + powerAdjustment;
-            driveTrain.leftDrive.motor1.setPower(leftPower * direction.value[0]);
-            driveTrain.rightDrive.motor1.setPower(leftPower * direction.value[1]);
-            driveTrain.rightDrive.motor2.setPower(rightPower * direction.value[2]);
-            driveTrain.leftDrive.motor2.setPower(rightPower * direction.value[3]);
-        } while (opModeIsActive() && clicksRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+            driveTrain.leftDrive.motor1.setPower(power * direction.value[0]);
+            driveTrain.leftDrive.motor2.setPower(power * direction.value[3]);
+            driveTrain.rightDrive.motor1.setPower(power * direction.value[1]);
+            driveTrain.rightDrive.motor2.setPower(power * direction.value[2]);
+            dash.create("TARGET CLICKS: " + targetClicks);
+            dash.create("CLICKS REMAINING: " + clicksRemaining);
+            dash.update();
+        } while (opModeIsActive()  && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         sleep(sleepTime);
     }
     public void strafe(int distance, Strafe direction, double speed, double timeOut) {
