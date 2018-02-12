@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 10/16/17.
  */
 
-public class MasqUtils {
+public class MasqUtils implements API_KEYS{
     public static MasqLinearOpMode linearOpMode;
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
@@ -22,12 +22,7 @@ public class MasqUtils {
     public static final int DEFAULT_SLEEP_TIME = 0;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
-    public static final String VUFORIA_KEY =
-            "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
-            "CfEwQhnuuB1hOh//uL2LnHYMViBgZtdjDGvmWvDvgKaonymopd0Y62ls2ZJfHhJ3fZYhF57Ce6ZepRI" +
-            "FOumys4J4DssG83OT+DJUjUCG6ruZ88AYjxNzi+vhkTCxHVULQxLJCSQ7boG0t36RWIEmVwxXIHVI" +
-            "3xbVeXwQL7vgm/0KmGW/KJFOuI2+wl1IDJdzDQHfavEA8FFkYTlnp/chHMbLu//BaqXprFHZ6OLh" +
-            "OZoRWiFkg1N0zabreTxMNOYFP/rDNaYseXQVGGRSMHxF86kGs6LNHEO7qZZj/BU94zKpPMWyHYw29X477";
+    public static final String VUFORIA_KEY = API_KEYS.VUFORIA_KEY;
 
     public static void sleep (int sleep) {
         try {Thread.sleep(sleep);}
@@ -46,8 +41,8 @@ public class MasqUtils {
     public static boolean opModeIsActive() {
         return linearOpMode.opModeIsActive();
     }
-    public HardwareMap getHardwareMap () {
-        return this.linearOpMode.hardwareMap;
+    public HardwareMap getHardwareMap() {
+        return linearOpMode.hardwareMap;
     }
     public class KP {
         public static final double TURN = +0.04;

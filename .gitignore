@@ -31,6 +31,7 @@ Thumbs.db
 # Masquerade4997Code/Masquerade4997Code.iml
 # MasqOpenCV/MasqOpenCV.iml
 # Masquerade4997Library/Masquerade4997Library.iml
+Masquerade4997Library/src/main/java/Library4997/MasqUtilities/API_KEYS.java
 FtcRobotController/build/generated/assets/
 FtcRobotController/build/generated/res/
 FtcRobotController/build/generated/source/aidl/
@@ -160,3 +161,4 @@ FtcRobotController/build/intermediates/incremental/packageReleaseResources/merge
 Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/merged.dir/
 build/android-profile/profile-2017-10-21-14-57-15-857.rawproto
 build/android-profile/profile-2017-10-21-15-23-37-748.rawproto
+Masquerade4997Code/build/intermediates/incremental/packageDebug/

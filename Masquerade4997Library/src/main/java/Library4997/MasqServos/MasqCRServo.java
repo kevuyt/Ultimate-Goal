@@ -3,8 +3,8 @@ package Library4997.MasqServos;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqUtilities.MasqHardware;
 
 /**
  * Created by Archish on 11/4/16.
@@ -15,7 +15,6 @@ public class MasqCRServo implements MasqHardware{
     private String nameCr_Servo;
     private MasqLimitSwitch min, max = null;
     private boolean limitDetection;
-    private boolean halfDetection;
     public MasqCRServo(String name, HardwareMap hardwareMap){
         this.nameCr_Servo = name;
         servo = hardwareMap.crservo.get(name);
@@ -36,7 +35,6 @@ public class MasqCRServo implements MasqHardware{
         this.min = min;
         this.max = null;
         limitDetection = false;
-        halfDetection = true;
         return this;
     }
     public void setPower (double power) {

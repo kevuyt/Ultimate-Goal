@@ -25,7 +25,7 @@ public class Flipper implements MasqSubSystem {
     }
 
     public Flipper (HardwareMap hardwareMap) {
-        flipperLeft = new MasqServo("flipeft", hardwareMap);
+        flipperLeft = new MasqServo("flipLeft", hardwareMap);
         flipperRight = new MasqServo("flipRight", hardwareMap);
     }
 
