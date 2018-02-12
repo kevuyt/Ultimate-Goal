@@ -48,8 +48,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
-    //TODO GET MasqColorSensorV2 up.
-    //public MasqMRColorSensor jewelColor;
     HardwareMap hardwareMap;
     private DashBoard dash;
     public void mapHardware(HardwareMap hardwareMap) {
@@ -73,7 +71,6 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelColorBlue = new MasqREVColorSensor("jewelColorBlue", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
-        createLimits();
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -451,8 +448,5 @@ public class MasqRobot implements PID_CONSTANTS {
     public void initializeServos() {
         jewelArmBlue.setPosition(0.26);
         jewelArmRed.setPosition(0.39);
-    }
-    public void createLimits () {
-        //bottomIntake.setLimit(bottomLimit);
     }
 }
