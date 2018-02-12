@@ -4,6 +4,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
+
 import Library4997.MasqUtilities.MasqHardware;
 
 
@@ -11,7 +12,7 @@ import Library4997.MasqUtilities.MasqHardware;
  * Created by Archish on 10/28/16.
  */
 
-public class MasqAdafruitIMU implements MasqHardware{
+public class MasqAdafruitIMU implements MasqHardware {
     private final BNO055IMU imu;
     private final String name;
     private double zeroPos;

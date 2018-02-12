@@ -3,6 +3,7 @@ package Library4997.MasqSensors;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
@@ -12,11 +13,12 @@ import java.util.Locale;
 
 import Library4997.MasqUtilities.MasqHardware;
 
+
 /**
  * Created by Archish on 1/8/18.
  */
 
-public class MasqAdafruitIMUv2 implements MasqHardware{
+public class MasqAdafruitIMUv2 implements MasqHardware {
     BNO055IMU imu;
     Orientation angles;
     double zeroPos = 0;

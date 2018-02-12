@@ -28,12 +28,12 @@
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/motor.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/template_info.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/template_info.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/motor_controller_banner.xml",
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/motor_controller_banner.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/template_info.xml",
+        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/template_info.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout/simple_device.xml",

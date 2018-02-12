@@ -4,11 +4,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqUtilities.MasqHardware;
 
+
 /**
  * Created by Archish on 1/7/18.
  */
 
-public class MasqAdafruitIMUSystem implements MasqHardware{
+public class MasqAdafruitIMUSystem implements MasqHardware {
     private MasqAdafruitIMU imuHubOne;
     private MasqAdafruitIMU imuHubTwo;
     public MasqAdafruitIMUSystem (String hubOne, String hunTwo, HardwareMap hardwareMap) {

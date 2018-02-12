@@ -1,12 +1,10 @@
-package Library4997;
+package SubSystems4997;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
-
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
-
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqMotors.MasqTankDrive;
@@ -22,10 +20,10 @@ import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqSensor;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.PID_CONSTANTS;
-import Library4997.MasqUtilities.StopCondition;
 import Library4997.MasqUtilities.Strafe;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
+
 
 /**
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
@@ -292,47 +290,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stop(MasqSensor sensor, double power) {stop(sensor, power, Direction.FORWARD);}
     public void stop(MasqSensor sensor){
-        stop(sensor, 0.5);
-    }
-
-    public void stop(StopCondition stopCondition, double speed, Direction direction) {
-        MasqClock loopTimer = new MasqClock();
-        driveTrain.resetEncoders();
-        driveTrain.setClosedLoop(true);
-        double targetAngle = imu.getHeading();
-        double  angularError = imu.adjustAngle(targetAngle - imu.getHeading()),
-                prevAngularError = angularError, angularIntegral = 0,
-                angularDerivative, powerAdjustment, leftPower, rightPower, maxPower, timeChange, power;
-        do {
-            power = direction.value * speed;
-            power = Range.clip(power, -1.0, +1.0);
-            timeChange = loopTimer.milliseconds();
-            loopTimer.reset();
-            angularError = imu.adjustAngle(targetAngle - imu.getHeading());
-            angularIntegral = angularIntegral + angularError * timeChange;
-            angularDerivative = (angularError - prevAngularError) / timeChange;
-            prevAngularError = angularError;
-            powerAdjustment = (MasqUtils.KP.DRIVE_ANGULAR * power + .01) * angularError +
-                    MasqUtils.KI.DRIVE * angularIntegral + MasqUtils.KD.DRIVE * angularDerivative;
-            powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
-            powerAdjustment *= direction.value;
-            leftPower = power - powerAdjustment;
-            rightPower = power + powerAdjustment;
-            maxPower = Math.max(Math.abs(leftPower), Math.abs(rightPower));
-            if (maxPower > 1.0) {
-                leftPower /= maxPower;
-                rightPower /= maxPower;
-            }
-            driveTrain.setPower(leftPower, rightPower);
-            dash.create("LEFT POWER: ",leftPower);
-            dash.create("RIGHT POWER: ",rightPower);
-            dash.create("ERROR: ",angularError);
-            dash.update();
-        } while (opModeIsActive() && stopCondition.stop());
-        driveTrain.stopDriving();
-    }
-    public void stop(StopCondition sensor, double power) {stop(sensor, power, Direction.FORWARD);}
-    public void stop(StopCondition sensor){
         stop(sensor, 0.5);
     }
 

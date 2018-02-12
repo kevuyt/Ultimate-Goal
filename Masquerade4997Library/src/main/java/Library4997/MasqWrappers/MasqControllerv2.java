@@ -1,22 +1,24 @@
-package SubSystems4997.MasqWrappers;
+package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqUtilities.MasqHardware;
 
 /**
- * Created by Archish on 10/12/17.
+ * Created by Archish on 1/26/18.
  */
 
-public class MasqController implements Runnable{
+public class MasqControllerv2 implements MasqHardware{
     private String name;
     private Gamepad gamepad;
     private boolean close = false;
     private boolean
             aPrev = false, bPrev = false, xPrev = false, yPrev = false,
-            leftBumperPrev = false, rightBumperPrev = false, rightTriggerPrev = false, leftTriggerPrev = false;
+            leftBumperPrev = false, rightBumperPrev = false;
+    private int aToggle, bToggle, xToggle, yToggle, leftBumperToggle, rightBumperToggle,
+                aCurrentTogle, bCurrentToggle, xCurrentToggle, yCurrentToggle, leftBumperCurrentToggle, rightBumperCurrentToggle;
 
-    public MasqController(Gamepad g, String name){
+    public MasqControllerv2(Gamepad g, String name){
         this.name = name;
         this.gamepad = g;
     }
@@ -75,26 +77,11 @@ public class MasqController implements Runnable{
     public boolean rightTriggerPressed() {
         return rightTrigger() > 0;
     }
-    public boolean leftTriggerOnPress() {
-        return leftTriggerPressed() && !leftTriggerPrev;
-    }
-    public boolean rightTriggerOnPress() {return rightTriggerPressed() && !rightTriggerPrev;}
 
     public float leftTrigger() {return gamepad.left_trigger;}
     public float rightTrigger() {return gamepad.right_trigger;}
 
     public boolean start() {return gamepad.start;}
-
-    public synchronized void update(){
-        aPrev = gamepad.a;
-        bPrev = gamepad.b;
-        xPrev = gamepad.x;
-        yPrev = gamepad.y;
-        leftBumperPrev = gamepad.left_bumper;
-        rightBumperPrev = gamepad.right_bumper;
-        rightTriggerPrev = rightTriggerPressed();
-        leftTriggerPrev = leftTriggerPressed();
-    }
 
     public String getName() {return name;}
     public String[] getDash() {
@@ -127,17 +114,36 @@ public class MasqController implements Runnable{
         };
     }
 
-    @Override
-    public void run() {
-        boolean close = false;
-        while (!close) {
-            System.out.println(aPrev);
-            System.out.println(a());
-            update();
-            close = this.close;
-            MasqUtils.sleep(100);
-        }
+    public void setaToggle(int aToggle) {
+        this.aToggle = aToggle;
     }
-    public void close() {close = true;}
-    public void startUpdate (){new Thread(this).start();}
+
+    public void setbToggle(int bToggle) {
+        this.bToggle = bToggle;
+    }
+
+    public void setxToggle(int xToggle) {
+        this.xToggle = xToggle;
+    }
+
+    public void setyToggle(int yToggle) {
+        this.yToggle = yToggle;
+    }
+
+    public void setLeftBumperToggle(int leftBumperToggle) {
+        this.leftBumperToggle = leftBumperToggle;
+    }
+
+    public void setRightBumperToggle(int rightBumperToggle) {
+        this.rightBumperToggle = rightBumperToggle;
+    }
+
+    public void update(){
+        aPrev = gamepad.a;
+        bPrev = gamepad.b;
+        xPrev = gamepad.x;
+        yPrev = gamepad.y;
+        leftBumperPrev = gamepad.left_bumper;
+        rightBumperPrev = gamepad.right_bumper;
+    }
 }

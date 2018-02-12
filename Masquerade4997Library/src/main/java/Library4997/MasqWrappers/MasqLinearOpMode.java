@@ -1,8 +1,8 @@
-package SubSystems4997.MasqWrappers;
+package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import Library4997.MasqRobot;
+import SubSystems4997.MasqRobot;
 import Library4997.MasqUtilities.MasqAnnotations.MasqLinearOpModeClass;
 import Library4997.MasqUtilities.MasqUtils;
 
