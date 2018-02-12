@@ -21,7 +21,6 @@ import java.util.List;
 
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqRobot;
 import Library4997.MasqUtilities.MasqSensor;
 
 /**

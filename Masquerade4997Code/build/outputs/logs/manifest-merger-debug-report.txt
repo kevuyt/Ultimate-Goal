@@ -15,6 +15,7 @@ ADDED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main
 		INJECTED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml
 application
 ADDED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:11:5-19
+MERGED from [MasqLib:MasqueradeSubSystems:unspecified] /Users/Archish/Documents/Projects/MasqLib/MasqueradeSubSystems/build/intermediates/bundles/default/AndroidManifest.xml:15:5-20
 MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/bundles/default/AndroidManifest.xml:15:5-20
 MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/AndroidManifest.xml:14:5-45:19
 MERGED from [:Inspection-release:] /Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/AndroidManifest.xml:19:5-30:19
@@ -38,6 +39,7 @@ MERGED from [:Analytics-release:] /Users/Archish/.android/build-cache/059108baca
 		ADDED from [:RobotCore-release:] /Users/Archish/.android/build-cache/9d3df6723ebd60e99e080ccf00a608cb19e4f307/output/AndroidManifest.xml:67:18-97
 uses-sdk
 INJECTED from /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [MasqLib:MasqueradeSubSystems:unspecified] /Users/Archish/Documents/Projects/MasqLib/MasqueradeSubSystems/build/intermediates/bundles/default/AndroidManifest.xml:11:5-13:41
 MERGED from [MasqLib:Masquerade4997Library:unspecified] /Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/bundles/default/AndroidManifest.xml:11:5-13:41
 MERGED from [MasqLib:FtcRobotController:unspecified] /Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/AndroidManifest.xml:8:5-10:41
 MERGED from [:Inspection-release:] /Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/AndroidManifest.xml:7:5-9:41

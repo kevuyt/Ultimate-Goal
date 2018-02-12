@@ -1,6 +1,6 @@
 dependencies {
     compile project(':FtcRobotController')
-    compile project(':Masquerade4997Library')
+    compile project(':MasqueradeSubSystems')
     compile (name: 'RobotCore-release', ext: 'aar')
     compile (name: 'Hardware-release', ext: 'aar')
     compile (name: 'FtcCommon-release', ext: 'aar')
