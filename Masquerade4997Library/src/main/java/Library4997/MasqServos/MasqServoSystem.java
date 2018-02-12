@@ -15,6 +15,7 @@ import Library4997.MasqSensors.MasqLimitSwitch;
 
 public class MasqServoSystem implements MasqHardware {
     private final MasqServo servo1, servo2, servo3, servo4;
+    private int offset;
     private final List<MasqServo> servos;
     private double position;
     public MasqServoSystem(String name1, String name2, HardwareMap hardwareMap) {
@@ -76,9 +77,16 @@ public class MasqServoSystem implements MasqHardware {
         return this;
     }
 
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+
     public void setPosition(double position) {
         this.position = position;
-        for (MasqServo s : servos) s.setPosition(position);
+        int i = 0;
+        for (MasqServo s : servos) {
+            s.setPosition(position + (i * offset));
+        }
     }
 
     @Override

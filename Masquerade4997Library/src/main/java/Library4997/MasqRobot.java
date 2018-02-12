@@ -16,6 +16,7 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
+import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqSensor;
@@ -39,6 +40,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public MasqServo flipLeft, flipRight;
+    public MasqCRServo wheelOne, wheelTwo;
     public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
@@ -50,6 +52,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
+        wheelOne = new MasqCRServo("wheelOne", this.hardwareMap);
+        wheelTwo = new MasqCRServo("wheelTwo", this.hardwareMap);
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
