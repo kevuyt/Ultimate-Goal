@@ -22,18 +22,6 @@ public class MECHV3 extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.relicAdjuster.setPosition(1);
         while (opModeIsActive()) {
-            if (controller2.x()) {
-                robot.wheelOne.setPower(-.5);
-                robot.wheelTwo.setPower(.5);
-            }
-            else if (controller2.a()) {
-                robot.wheelOne.setPower(-.75);
-                robot.wheelTwo.setPower(.75);
-            }
-            else {
-                robot.wheelOne.setPower(0);
-                robot.wheelTwo.setPower(0);
-            }
             if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD);
             else robot.MECH(controller1, Direction.FORWARD);
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
@@ -47,12 +35,8 @@ public class MECHV3 extends MasqLinearOpMode implements Constants {
                 robot.jewelArmRed.setPosition(JEWEL_RED_IN);
                 robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
             }
-            if (controller2.b()) {
-                robot.relicGripper.setPosition(CLAW_OPENED);
-            }
-            else if (controller2.y()) {
-                robot.relicGripper.setPosition(CLAW_CLOSED);
-            }
+            if (controller2.b()) robot.relicGripper.setPosition(CLAW_OPENED);
+            else if (controller2.y()) robot.relicGripper.setPosition(CLAW_CLOSED);
             if (controller2.rightBumper()) robot.lift.setPower(LIFT_UP);
             else if (controller2.rightTriggerPressed()) robot.lift.setPower(LIFT_DOWN);
             else robot.lift.setPower(0);
@@ -60,6 +44,7 @@ public class MECHV3 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
             robot.flipper.DriverControl(controller2);
+            robot.intakeDeployer.DriverControl(controller1);
             controller1.update();
             controller2.update();
             robot.sleep(70);
