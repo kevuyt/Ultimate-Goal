@@ -96,6 +96,5 @@
     <orderEntry type="library" exported="" name="FtcCommon-release-" level="project" />
     <orderEntry type="module" module-name="Masquerade4997Library" exported="" />
     <orderEntry type="module" module-name="FtcRobotController" exported="" />
-    <orderEntry type="module" module-name="MasqueradeSubSystems" exported="" />
   </component>
 </module>

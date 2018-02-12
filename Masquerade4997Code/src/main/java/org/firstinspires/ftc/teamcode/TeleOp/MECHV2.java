@@ -54,22 +54,7 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             if (controller2.leftBumper()) robot.relicLift.setPower(-currentRelicPower);
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
-            if (controller2.rightStickY() < -.5) {
-                robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);
-                robot.flipRight.setPosition(FLIPPER_OUT_RIGHT);
-            }
-            else if (controller2.rightStickY() > .5) {
-                robot.flipLeft.setPosition(FLIPPER_DOWN_LEFT);
-                robot.flipRight.setPosition(FLIPPER_DOWN_RIGHT);
-            }
-            else if (controller2.rightStickX() > .5) {
-                robot.flipLeft.setPosition(FLIPPER_RIGHT_LEFT);
-                robot.flipRight.setPosition(FLIPPER_RIGHT_RIGHT);
-            }
-            else if (controller2.rightStickX() < -.5) {
-                robot.flipLeft.setPosition(FLIPPER_MID_LEFT);
-                robot.flipRight.setPosition(FLIPPER_MID_RIGHT);
-            }
+            robot.flipper.DriverControl(controller2);
             controller1.update();
             controller2.update();
             robot.sleep(70);

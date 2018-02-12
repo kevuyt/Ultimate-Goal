@@ -60,12 +60,12 @@
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/simple_device.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_fw_update.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/activity_ftc_lynx_fw_update.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/layout/lynx_module_configure_address_spin_item.xml",
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/lynx_module_configure_address_spin_item.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_fw_update.xml",
+        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/activity_ftc_lynx_fw_update.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/layout/activity_ftc_configuration.xml",

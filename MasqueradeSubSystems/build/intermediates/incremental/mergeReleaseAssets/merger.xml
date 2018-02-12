@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/Archish/Documents/Projects/MasqLib/MasqueradeSubSystems/src/main/assets"/><source path="/Users/Archish/Documents/Projects/MasqLib/MasqueradeSubSystems/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/Users/Archish/Documents/Projects/MasqLib/MasqueradeSubSystems/src/release/assets"/></dataSet></merger>

@@ -20,12 +20,12 @@
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/matrices.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/activity_programming_mode.xml",
-        "source": "/Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/res/layout/activity_programming_mode.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/activity_configure_from_template.xml",
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/activity_configure_from_template.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/activity_programming_mode.xml",
+        "source": "/Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/res/layout/activity_programming_mode.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/lynx_usb_device.xml",
@@ -44,12 +44,12 @@
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/digital_device.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/activity_program_and_manage.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/activity_program_and_manage.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/red_line.xml",
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/red_line.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/activity_program_and_manage.xml",
+        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/layout/activity_program_and_manage.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/layout/motor.xml",
