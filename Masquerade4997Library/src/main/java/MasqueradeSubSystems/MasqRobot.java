@@ -1,5 +1,6 @@
 package MasqueradeSubSystems;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
@@ -15,7 +16,7 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
-import Library4997.MasqServos.MasqCRServo;
+import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqSensor;
@@ -25,6 +26,7 @@ import Library4997.MasqUtilities.Strafe;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import MasqueradeSubSystems.SubSystems.Flipper;
+import MasqueradeSubSystems.SubSystems.IntakeDeployer;
 
 
 /**
@@ -40,7 +42,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public Flipper flipper;
-    public MasqCRServo wheelOne, wheelTwo;
+    public IntakeDeployer intakeDeployer;
+    public MasqCRServoSystem intakeExtender;
     public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
@@ -52,8 +55,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
-        wheelOne = new MasqCRServo("wheelOne", this.hardwareMap);
-        wheelTwo = new MasqCRServo("wheelTwo", this.hardwareMap);
+        intakeDeployer = new IntakeDeployer(this.hardwareMap);
+        intakeExtender = new MasqCRServoSystem("redExtender", CRServo.Direction.REVERSE, "blueExtender", CRServo.Direction.FORWARD, this.hardwareMap);
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);

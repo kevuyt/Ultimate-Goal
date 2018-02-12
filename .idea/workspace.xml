@@ -10,329 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Flipper.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/generated/source/r/debug/SubSystems4997/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/Masquerade4997Library.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/MasqueradeSubSystems.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build.release.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/buildConfig/androidTest/debug/SubSystems4997/test/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/buildConfig/debug/SubSystems4997/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/SubSystems4997/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/SubSystems4997/test/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/google/blocks/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/qualcomm/WirelessP2p/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/qualcomm/analyticsmodule/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/qualcomm/ftccommon/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/qualcomm/ftcrobotcontroller/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/qualcomm/hardware/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/qualcomm/modernrobotics/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/com/qualcomm/robotcore/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/org/firstinspires/inspection/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/androidTest/debug/team4997lib/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/SubSystems4997/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/google/blocks/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/qualcomm/WirelessP2p/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/qualcomm/analyticsmodule/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/qualcomm/ftccommon/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/qualcomm/ftcrobotcontroller/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/qualcomm/hardware/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/qualcomm/modernrobotics/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/com/qualcomm/robotcore/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/org/firstinspires/inspection/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/generated/source/r/debug/team4997lib/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/multi/values-sw720dp-land-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/multi/values-v11.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/multi/values-v14.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/multi/values-w820dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/drawable-mdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/menu.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/raw.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/androidTest/debug/single/xml.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/multi/values-sw720dp-land-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/multi/values-v11.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/multi/values-v14.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/multi/values.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/drawable.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/layout.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/menu.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/raw.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/blame/res/debug/single/xml.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/bundles/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/bundles/debug/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/bundles/default/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/compileDebugAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/compileReleaseAidl/dependency.store" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sw720dp-land-v13/values-sw720dp-land-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v11/values-v11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v14/values-v14.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw720dp-land-v13/values-sw720dp-land-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/manifests/aapt/debug/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/manifests/aapt/release/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/button_shape.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/icon_menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/icon_robotcontroller.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/masq.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable/black_border.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable/button_shape.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable/feedback_shape_orange.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable/icon_menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/drawable/icon_robotcontroller.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_about.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_blocks.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_config_wifi_direct.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_configure_from_template.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_configuration.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_controller.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_lynx_address_update.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_lynx_fw_update.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_wifi_channel_selector.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_ftc_wifi_remembered_groups.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_generic_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_inspection.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_load.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_program_and_manage.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_programming_mode.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_swap_usb_devices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/activity_view_logs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/analog_input_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/analog_inputs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/analog_output_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/analog_outputs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/banner_parent.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/button_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/color_list_preference_line_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/device_interface_module.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/digital_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/digital_device_lynx.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/digital_devices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/feedback.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/file_info.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/gray_line.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/header.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/i2c_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/i2cs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/info_button.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/item_list_parent.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/legacy.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/loading_indicator_overlay.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/lynx_module.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/lynx_module_configure_address.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/lynx_module_configure_address_spin_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/lynx_usb_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/matrices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/matrix_devices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/motor.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/motor_controller_banner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/motor_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/port_attached_row.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/pwm_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/pwms.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/red_line.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/servo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/servo_controller_banner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/servo_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/simple_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/layout/template_info.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/menu/ftc_robot_controller.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/menu/main_menu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/menu/menu_server.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/chimeconnect.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/chimedisconnect.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/color_fragment_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_fragment_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_vertex_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/errormessage.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/nxtstartupsound.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/simple_vertex_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/texture_fragment_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/texture_vertex_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/raw/warningmessage.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/values-sw720dp-land-v13/values-sw720dp-land-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/values-v11/values-v11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/values-v14/values-v14.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/values-w820dp-v13/values-w820dp-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/advanced_rc_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/app_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/device_filter.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/k9legacybot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/k9usbbot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/maxmodules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/pushbot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/pushbotsens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/rev_scoot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/androidTest/debug/xml/squarebot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_shape.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-mdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon_menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon_robotcontroller.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-xhdpi-v4/masq.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable/black_border.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable/button_shape.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable/feedback_shape_orange.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable/icon_menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/drawable/icon_robotcontroller.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_about.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_blocks.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_config_wifi_direct.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_configure_from_template.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_ftc_configuration.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_ftc_controller.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_address_update.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_ftc_lynx_fw_update.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_ftc_wifi_channel_selector.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_ftc_wifi_remembered_groups.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_generic_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_inspection.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_load.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_program_and_manage.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_programming_mode.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_swap_usb_devices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/activity_view_logs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/analog_input_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/analog_inputs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/analog_output_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/analog_outputs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/banner_parent.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/button_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/color_list_preference_line_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/device_interface_module.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/digital_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/digital_device_lynx.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/digital_devices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/feedback.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/file_info.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/gray_line.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/header.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/i2c_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/i2cs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/info_button.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/item_list_parent.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/legacy.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/loading_indicator_overlay.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/lynx_module.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/lynx_module_configure_address.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/lynx_module_configure_address_spin_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/lynx_usb_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/matrices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/matrix_devices.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/motor.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/motor_controller_banner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/motor_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/port_attached_row.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/pwm_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/pwms.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/red_line.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/servo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/servo_controller_banner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/servo_list.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/simple_device.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/layout/template_info.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/menu/ftc_robot_controller.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/menu/main_menu.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/menu/menu_server.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/chimeconnect.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/chimedisconnect.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/color_fragment_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/cube_mesh_fragment_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/cube_mesh_vertex_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/errormessage.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/nxtstartupsound.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/simple_vertex_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/texture_fragment_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/texture_vertex_shader.glsl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/raw/warningmessage.wav" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/values-sw720dp-land-v13/values-sw720dp-land-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/values-v11/values-v11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/values-v14/values-v14.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/values-w820dp-v13/values-w820dp-v13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/values/values.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/app_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/device_filter.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/k9legacybot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/k9usbbot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/maxmodules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/pushbot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/pushbotsens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/rev_scoot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/res/merged/debug/xml/squarebot.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/intermediates/symbols/androidTest/debug/R.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/outputs/aar/MasqueradeSubSystems-debug.aar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/build/outputs/aar/MasqueradeSubSystems-release.aar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/src/main/AndroidManifest.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MasqueradeSubSystems/src/main/java/SubSystems4997/MasqRobot.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/MasqRobot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-debug.aar" afterPath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-release.aar" afterPath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-debug.aar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeDeployer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeExtender.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystem.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/MasqSubSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" afterPath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" afterPath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build.release.gradle" afterPath="$PROJECT_DIR$/Masquerade4997Code/build.release.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto_RP.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto_RP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqLinearOpMode.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqLinearOpMode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqOpMode.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqOpMode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Flipper.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Flipper.java" />
     </list>
     <list id="8d78c8f9-ba4f-4bbb-bbf4-13a676c4c2bf" name="New changelist" comment="" />
     <ignored path="MasqLib.iws" />
@@ -425,134 +108,134 @@
     <favorites_list name="MasqLib" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.9">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Code/build.gradle">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MECHV3.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV3.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="251">
-                  <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="76" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BlueAuto.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-312">
-                  <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BlueAuto_RP.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto_RP.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/MasqRobot.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="600">
-                  <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SubSystem.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystem.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="288">
-                  <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Flipper.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="683">
-                  <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1560#1561#0" expanded="true" />
-                    <element signature="e#1592#1593#0" expanded="true" />
-                    <element signature="e#1655#1656#0" expanded="true" />
-                    <element signature="e#1684#1685#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MasqMotor.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-768">
-                  <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MECHV2.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="264">
-                  <caret line="22" column="33" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="RedAutoV2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="587">
+              <caret line="54" column="54" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RedAuto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="707">
+              <caret line="65" column="55" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RedAuto_RP.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto_RP.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="707">
+              <caret line="65" column="55" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MECHV3.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="718">
+              <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RedAutoF.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoF.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="707">
+              <caret line="59" column="55" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MECHV2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="696">
+              <caret line="32" column="63" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Flipper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="672">
+              <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1651#1652#0" expanded="true" />
+                <element signature="e#1719#1720#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntakeDeployer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeDeployer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#586#587#0" expanded="true" />
+                <element signature="e#620#621#0" expanded="true" />
+                <element signature="e#679#680#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntakeExtender.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeExtender.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="768">
+              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#739#740#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#831#832#0" expanded="true" />
+                <element signature="e#858#859#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasqSubSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/MasqSubSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -5485,25 +5168,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/MasqExternal.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV1.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqServoTest.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto_RP.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoF.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoF.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqExternal/StopCondition.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqStrafeTest.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqTankDrive.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqServos/MasqServoSystem.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV3.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqServos/MasqServo.java" />
         <option value="$PROJECT_DIR$/MasqueradeSubSystems/build.release.gradle" />
         <option value="$PROJECT_DIR$/MasqueradeSubSystems/src/main/AndroidManifest.xml" />
@@ -5535,7 +5206,19 @@
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto_RP.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystem.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV3.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoF.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto_RP.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoF.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Deployer.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/MasqSubSystem.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeExtender.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Flipper.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeDeployer.java" />
       </list>
     </option>
   </component>
@@ -5752,6 +5435,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="SubSystems" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Masquerade4997Library" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Library4997" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqWrappers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -6719,7 +6424,7 @@
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12665406" sideWeight="0.88764644" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.61874336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.036862005" sideWeight="0.88764644" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.88764644" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961479" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75803405" sideWeight="0.33226836" order="11" side_tool="true" content_ui="tabs" />
@@ -6828,46 +6533,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MasqueradeSubSystems/build.release.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MasqueradeSubSystems/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MasqueradeSubSystems/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqController.java" />
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqControllerv2.java" />
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqLinearOpMode.java" />
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqOpMode.java" />
     <entry file="file://$PROJECT_DIR$/MasqueradeSubSystems/src/main/java/SubSystems4997/MasqUtilities/StopCondition.java" />
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -6882,7 +6547,7 @@
         <state relative-caret-position="144">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6900,7 +6565,7 @@
         <state relative-caret-position="502">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="39" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6917,7 +6582,7 @@
         <state relative-caret-position="312">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6934,7 +6599,7 @@
         <state relative-caret-position="264">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6944,7 +6609,7 @@
         <state relative-caret-position="456">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6954,7 +6619,7 @@
         <state relative-caret-position="168">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6963,9 +6628,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -6990,17 +6653,6 @@
         <state relative-caret-position="192">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
-          <folding>
-            <element signature="e#806#807#0" expanded="true" />
-            <element signature="e#847#848#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -7144,14 +6796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -7162,8 +6806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="264">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -7184,43 +6828,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/MasqRobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
+        <state relative-caret-position="672">
           <caret line="59" column="15" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV3.java">
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="76" selection-end-column="13" />
+        <state relative-caret-position="563">
+          <caret line="54" column="56" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/JewelAuto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="65" column="55" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto_RP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="65" column="55" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="59" column="55" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="54" column="54" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/DashBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="32" column="63" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/MasqSubSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeExtender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#831#832#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/Flipper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+        <state relative-caret-position="672">
+          <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1560#1561#0" expanded="true" />
-            <element signature="e#1592#1593#0" expanded="true" />
-            <element signature="e#1655#1656#0" expanded="true" />
-            <element signature="e#1684#1685#0" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#1719#1720#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/MasqueradeSubSystems/SubSystems/IntakeDeployer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>

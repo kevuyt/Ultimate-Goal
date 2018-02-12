@@ -2,22 +2,18 @@ package MasqueradeSubSystems.SubSystems;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqWrappers.MasqController;
-import MasqueradeSubSystems.SubSystem;
+import MasqueradeSubSystems.MasqSubSystem;
 
 /**
  * Created by Archish on 2/12/18.
  */
 
-public class Flipper implements SubSystem {
+public class Flipper implements MasqSubSystem {
     private MasqServo flipperLeft;
     private MasqServo flipperRight;
-    private List<MasqHardware> hardware = new ArrayList<>();
 
     public enum Position {
         OUT (new double[]{.05, .13}),
@@ -31,8 +27,6 @@ public class Flipper implements SubSystem {
     public Flipper (HardwareMap hardwareMap) {
         flipperLeft = new MasqServo("flipeft", hardwareMap);
         flipperRight = new MasqServo("flipRight", hardwareMap);
-        hardware.add(flipperLeft);
-        hardware.add(flipperRight);
     }
 
     public void setPosition (Position position) {
@@ -62,7 +56,7 @@ public class Flipper implements SubSystem {
     }
 
     @Override
-    public List<MasqHardware> getComponents() {
-        return hardware;
+    public MasqHardware[] getComponents() {
+        return new MasqHardware[]{flipperRight, flipperLeft};
     }
 }
