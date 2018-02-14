@@ -12,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MasqServoTest", group = "Autonomus")
 public class MasqServoTest extends MasqLinearOpMode implements Constants {
     double jewelArmBluePosition = 0, jewelArmRedPosition = 0,
-           rotatorRed = 0, rotatorBlue = 0, adjuster = 0, flipperLeft = 0, flipperRight =0 ;
+           rotatorRed = 0, rotatorBlue = 0, adjuster = 0, flipperLeft = 0, flipperRight = 0, redAdjuster = 0;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
@@ -24,6 +24,14 @@ public class MasqServoTest extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()) {
             if  (controller2.bOnPress()) {
                 adjuster += 0.01;
+                controller2.update();
+            }
+            if (controller2.xOnPress()) {
+                redAdjuster += 0.01;
+                controller2.update();
+            }
+            if (controller2.yOnPress()) {
+                redAdjuster -= 0.01;
                 controller2.update();
             }
             if (controller2.aOnPress()) {
@@ -80,14 +88,14 @@ public class MasqServoTest extends MasqLinearOpMode implements Constants {
             }
             robot.blueRotator.setPosition(rotatorBlue);
             robot.redRotator.setPosition(rotatorRed);
+            robot.intakeDeployer.blueDeployer.setPosition(adjuster);
+            robot.intakeDeployer.redDeployer.setPosition(redAdjuster);
             robot.jewelArmRed.setPosition(jewelArmRedPosition);
             robot.jewelArmBlue.setPosition(jewelArmBluePosition);
-            robot.flipLeft.setPosition(flipperLeft);
-            robot.relicGripper.setPosition(adjuster);
-            robot.flipRight.setPosition(flipperRight);
             dash.create("FLIP RIGHT: ", flipperRight);
             dash.create("FLIP LEFT: ", flipperLeft);
-            dash.create("CLAW: ", adjuster);
+            dash.create("BLUE DEPLOYER: ", adjuster);
+            dash.create("RED DEPLOYER: ", redAdjuster);
             dash.create("JEWEL ARM RED: ", jewelArmRedPosition);
             dash.create("JEWEL ARM BLUE: ", jewelArmBluePosition);
             dash.create("REDR: ", rotatorRed);

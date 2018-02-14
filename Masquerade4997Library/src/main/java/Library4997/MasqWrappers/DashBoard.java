@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
-import MasqueradeSubSystems.MasqSubSystem;
+import SubSystems4997.MasqSubSystem;
 
 /**
  * This is a telemetry wrapper class.

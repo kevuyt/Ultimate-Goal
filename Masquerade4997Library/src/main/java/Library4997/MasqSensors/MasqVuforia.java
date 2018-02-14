@@ -185,12 +185,6 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         return lastLocation.formatAsTransform();
     }
     private boolean isSeen(String track){return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();}
-    public String position(MasqRobot.Targets target){
-        return position(target.value);
-    }
-    public boolean isSeen(MasqRobot.Targets track){
-        return isSeen(track.value);
-    }
     @Override
     public boolean stop() {
         if (getVuMark() == "UNKNOWN") return true;

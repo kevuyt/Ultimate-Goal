@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import Library4997.MasqUtilities.MasqAnnotations.MasqLinearOpModeClass;
 import Library4997.MasqUtilities.MasqUtils;
-import MasqueradeSubSystems.MasqRobot;
+import SubSystems4997.MasqRobot;
 
 
 /**

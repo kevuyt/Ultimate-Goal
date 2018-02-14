@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
-import MasqueradeSubSystems.SubSystems.Flipper;
+import SubSystems4997.SubSystems.Flipper;
 
 /**
  * Created by Archish on 1/11/18.
