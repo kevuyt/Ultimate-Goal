@@ -12,14 +12,14 @@ import SubSystems4997.MasqSubSystem;
  */
 
 public class Flipper implements MasqSubSystem {
-    private MasqServo flipperLeft;
-    private MasqServo flipperRight;
+    public MasqServo flipperLeft;
+    public MasqServo flipperRight;
 
     public enum Position {
-        OUT (new double[]{.05, .13}),
-        IN (new double[]{.62, .46}),
-        MID (new double[]{.5, .4}),
-        RIGHT(new double[]{.27, .27});
+        OUT (new double[]{1, 0}),
+        IN (new double[]{.45, .43}),
+        MID (new double[]{.61, .35}),
+        RIGHT(new double[]{.82, .21});
         public final double[] pos;
         Position (double[] pos) {this.pos = pos;}
     }

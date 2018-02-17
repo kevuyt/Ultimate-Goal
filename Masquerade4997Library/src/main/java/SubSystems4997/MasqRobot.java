@@ -1,6 +1,5 @@
 package SubSystems4997;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
@@ -16,7 +15,6 @@ import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
-import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqSensor;
@@ -43,7 +41,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public Flipper flipper;
     public IntakeDeployer intakeDeployer;
-    public MasqCRServoSystem intakeExtender;
     public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
@@ -54,7 +51,6 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         intakeDeployer = new IntakeDeployer(this.hardwareMap);
-        intakeExtender = new MasqCRServoSystem("redExtender", CRServo.Direction.REVERSE, "blueExtender", CRServo.Direction.FORWARD, this.hardwareMap);
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
@@ -71,6 +67,7 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelColorBlue = new MasqREVColorSensor("jewelColorBlue", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
+        lift.setClosedLoop(false);
     }
 
     private MasqClock timeoutClock = new MasqClock();
@@ -446,7 +443,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
 
     public void initializeServos() {
-        jewelArmBlue.setPosition(0.26);
+        jewelArmBlue.setPosition(0.6);
         jewelArmRed.setPosition(0.39);
     }
 }

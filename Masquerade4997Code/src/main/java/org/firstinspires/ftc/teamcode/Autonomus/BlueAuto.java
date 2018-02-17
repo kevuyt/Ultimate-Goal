@@ -5,8 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
-import SubSystems4997.SubSystems.Flipper;
-
+import SubSystems4997.SubSystems.Flipper.Position;
 
 /**
  * Created by Archish on 12/2/17.
@@ -18,7 +17,7 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         robot.vuforia.initVuforia(hardwareMap);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setPosition(Position.MID);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
@@ -61,11 +60,11 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         double endAngle = robot.imu.getHeading();
         robot.turn(100 - (endAngle - startAngle), Direction.LEFT);
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.flipper.setPosition(Flipper.Position.OUT);
+        robot.flipper.setPosition(Position.OUT);
         robot.sleep(1000);
         robot.drive(5, POWER_LOW, Direction.FORWARD);
         robot.drive(5, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(3, POWER_OPTIMAL, Direction.FORWARD);
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setPosition(Position.IN);
     }
 }
