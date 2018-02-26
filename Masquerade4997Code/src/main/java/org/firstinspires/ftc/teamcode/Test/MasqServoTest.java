@@ -88,8 +88,6 @@ public class MasqServoTest extends MasqLinearOpMode implements Constants {
             }
             robot.blueRotator.setPosition(rotatorBlue);
             robot.redRotator.setPosition(rotatorRed);
-            robot.intakeDeployer.blueDeployer.setPosition(adjuster);
-            robot.intakeDeployer.redDeployer.setPosition(redAdjuster);
             robot.flipper.flipperLeft.setPosition(flipperLeft);
             robot.flipper.flipperRight.setPosition(flipperRight);
             robot.jewelArmRed.setPosition(jewelArmRedPosition);

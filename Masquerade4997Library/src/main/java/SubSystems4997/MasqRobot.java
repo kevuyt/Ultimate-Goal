@@ -24,7 +24,6 @@ import Library4997.MasqUtilities.Strafe;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import SubSystems4997.SubSystems.Flipper;
-import SubSystems4997.SubSystems.IntakeDeployer;
 
 
 /**
@@ -40,7 +39,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public Flipper flipper;
-    public IntakeDeployer intakeDeployer;
+    public MasqREVColorSensor blockDetector;
     public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
@@ -50,7 +49,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
-        intakeDeployer = new IntakeDeployer(this.hardwareMap);
+        blockDetector = new MasqREVColorSensor("blockDetector", this.hardwareMap);
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);

@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 10/16/17.
  */
 
-public class MasqUtils implements API_KEYS{
+public class MasqUtils implements API_KEYS {
     public static MasqLinearOpMode linearOpMode;
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
@@ -20,7 +20,7 @@ public class MasqUtils implements API_KEYS{
     public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
 
     public static final int DEFAULT_SLEEP_TIME = 0;
-    public static final double DEFAULT_TIMEOUT = 2;
+    public static final double DEFAULT_TIMEOUT = 1.5;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = API_KEYS.VUFORIA_KEY;
 

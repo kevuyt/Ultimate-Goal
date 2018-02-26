@@ -24,15 +24,9 @@ public class MECHV3 extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()) {
             if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD);
             else robot.MECH(controller1, Direction.FORWARD);
-            if (controller1.rightBumper()) {
-                robot.intake.setPower(INTAKE);
-            }
-            else if (controller1.rightTriggerPressed()) {
-                robot.intake.setPower(OUTAKE);
-            }
-            else {
-                robot.intake.setPower(0);
-            }
+            if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
+            else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
+            else  robot.intake.setPower(0);
             if (controller2.leftStickY() < 0) robot.relicAdjuster.setPosition(1);
             else if (controller2.leftStickY() > 0) robot.relicAdjuster.setPosition(0);
             else if (controller2.leftStickX() > 0 ) robot.relicAdjuster.setPosition(0.5);
@@ -50,7 +44,6 @@ public class MECHV3 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
             robot.flipper.DriverControl(controller2);
-            robot.intakeDeployer.DriverControl(controller1);
             controller1.update();
             controller2.update();
             robot.sleep(70);
