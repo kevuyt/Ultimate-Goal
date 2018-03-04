@@ -8,7 +8,7 @@ import Library4997.MasqUtilities.MasqUtils;
  * Created by Archish on 10/12/17.
  */
 
-public class MasqController implements Runnable{
+public class MasqController extends Gamepad implements Runnable{
     private String name;
     private Gamepad gamepad;
     private boolean close = false;

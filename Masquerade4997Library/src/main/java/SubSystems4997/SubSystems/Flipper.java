@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqController;
 import SubSystems4997.MasqSubSystem;
 
@@ -17,9 +18,9 @@ public class Flipper implements MasqSubSystem {
 
     public enum Position {
         OUT (new double[]{1, 0}),
-        IN (new double[]{.45, .43}),
-        MID (new double[]{.61, .35}),
-        RIGHT(new double[]{.82, .21});
+        IN (new double[]{.47, .51}),
+        MID (new double[]{.61, .43}),
+        RIGHT(new double[]{.82, .29});
         public final double[] pos;
         Position (double[] pos) {this.pos = pos;}
     }
@@ -48,6 +49,14 @@ public class Flipper implements MasqSubSystem {
         else if (controller.rightStickX() < -.5) {
             setPosition(Position.MID);
         }
+    }
+    public void flip (double time) {
+        setPosition(Flipper.Position.MID);
+        setPosition(Flipper.Position.OUT);
+        MasqUtils.sleep(time * 1000);
+    }
+    public void flip () {
+        flip(2);
     }
 
     @Override

@@ -9,8 +9,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 12/8/17.
  */
-@TeleOp(name = "MasqServoTest", group = "Autonomus")
-public class MasqServoTest extends MasqLinearOpMode implements Constants {
+@TeleOp(name = "MasqServoProgrammer", group = "Autonomus")
+public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
     double jewelArmBluePosition = 0, jewelArmRedPosition = 0,
            rotatorRed = 0, rotatorBlue = 0, adjuster = 0, flipperLeft = 0, flipperRight = 0, redAdjuster = 0;
     public void runLinearOpMode() throws InterruptedException {

@@ -15,13 +15,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqSensor;
+import Library4997.MasqUtilities.MasqUtils;
 
 /**
  * Created by Archish on 9/7/17.
@@ -185,6 +186,7 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         return lastLocation.formatAsTransform();
     }
     private boolean isSeen(String track){return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();}
+
     @Override
     public boolean stop() {
         if (getVuMark() == "UNKNOWN") return true;

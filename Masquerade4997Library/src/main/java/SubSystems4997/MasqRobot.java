@@ -39,7 +39,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServo blueRotator, redRotator;
     public MasqREVColorSensor jewelColorRed, jewelColorBlue;
     public Flipper flipper;
-    public MasqREVColorSensor blockDetector;
     public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmBlue, jewelArmRed, relicGripper;
@@ -49,7 +48,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
-        blockDetector = new MasqREVColorSensor("blockDetector", this.hardwareMap);
         vuforia = new MasqVuforiaBeta();
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
@@ -357,10 +355,10 @@ public class MasqRobot implements PID_CONSTANTS {
         double adjustedAngle = angle + Math.PI/4;
         double multiplier = 1.4;
         double speedMagnitude = Math.hypot(x, y);
-        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier;
-        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX()  * multiplier;
-        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
-        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier;
+        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX() * multiplier * direction.value;
+        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) + c.rightStickX()  * multiplier * direction.value;
+        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier * direction.value;
+        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * multiplier) - c.rightStickX() * multiplier * direction.value;
         double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
         if (max > 1) {
             leftFront /= max;
@@ -400,7 +398,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
 
     public int getDelta (double initial, Direction direction) {
-        return (int) (initial- (imu.getHeading() * direction.value));
+        return (int) ((imu.getHeading() - (initial * direction.value) ));
     }
     public double getVoltage() {return voltageSensor.getVoltage();}
     public double getDelay() {return FtcRobotControllerActivity.getDelay();}

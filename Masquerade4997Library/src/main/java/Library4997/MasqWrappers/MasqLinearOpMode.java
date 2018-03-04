@@ -2,6 +2,7 @@ package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqAnnotations.MasqLinearOpModeClass;
 import Library4997.MasqUtilities.MasqUtils;
 import SubSystems4997.MasqRobot;
@@ -39,5 +40,22 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         while (opModeIsActive() && (t1.isAlive() || t2.isAlive())) {
             idle();
         }
+    }public void sleep(int time) {
+        try {
+            Thread.sleep((long) time);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+    public void sleep(double time) {
+        try {
+            Thread.sleep((long) time);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+    public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
+    public int getDelta (double initial, Direction direction) {
+        return (int) -((robot.imu.getHeading()) - (initial * direction.value));
     }
 }
