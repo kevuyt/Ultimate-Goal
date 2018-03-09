@@ -15,6 +15,7 @@ public class MECHV3 extends MasqLinearOpMode implements Constants {
         robot.mapHardware(hardwareMap);
         robot.initializeTeleop();
         robot.relicLift.setClosedLoop(false);
+        robot.driveTrain.setClosedLoop(false);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();

@@ -17,10 +17,10 @@ public class Flipper implements MasqSubSystem {
     public MasqServo flipperRight;
 
     public enum Position {
-        OUT (new double[]{1, 0}),
-        IN (new double[]{.47, .51}),
-        MID (new double[]{.61, .43}),
-        RIGHT(new double[]{.82, .29});
+        OUT (new double[]{.79, 0.16}),
+        IN (new double[]{.13, .83}),
+        MID (new double[]{.34, .62}),
+        RIGHT(new double[]{.61, .36});
         public final double[] pos;
         Position (double[] pos) {this.pos = pos;}
     }
@@ -37,18 +37,10 @@ public class Flipper implements MasqSubSystem {
 
     @Override
     public void DriverControl(MasqController controller) {
-        if (controller.rightStickY() < -.5) {
-            setPosition(Position.OUT);
-        }
-        else if (controller.rightStickY() > .5) {
-            setPosition(Position.IN);
-        }
-        else if (controller.rightStickX() > .5) {
-            setPosition(Position.RIGHT);
-        }
-        else if (controller.rightStickX() < -.5) {
-            setPosition(Position.MID);
-        }
+        if (controller.rightStickY() < -.5) setPosition(Position.OUT);
+        else if (controller.rightStickY() > .5) setPosition(Position.IN);
+        else if (controller.rightStickX() > .5) setPosition(Position.RIGHT);
+        else if (controller.rightStickX() < -.5) setPosition(Position.MID);
     }
     public void flip (double time) {
         setPosition(Flipper.Position.MID);

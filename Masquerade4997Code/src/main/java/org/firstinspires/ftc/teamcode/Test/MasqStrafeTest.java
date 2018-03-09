@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
 
-import Library4997.MasqUtilities.Strafe;
+import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -20,7 +20,9 @@ public class MasqStrafeTest extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         robot.sleep(robot.getDelay());
-        robot.strafe(48, Strafe.LEFT, POWER_HIGH);
-        robot.strafe(48, Strafe.RIGHT, POWER_HIGH);
+        robot.lift.setDistance(50);
+        robot.lift.runToPosition(Direction.BACKWARD, POWER_HIGH);
+        /*robot.strafe(48, Strafe.LEFT, POWER_HIGH);
+        robot.strafe(48, Strafe.RIGHT, POWER_HIGH);*/
     }
 }

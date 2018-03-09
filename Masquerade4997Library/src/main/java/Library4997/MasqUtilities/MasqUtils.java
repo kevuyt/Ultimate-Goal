@@ -20,7 +20,7 @@ public class MasqUtils implements API_KEYS {
     public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
 
     public static final int DEFAULT_SLEEP_TIME = 0;
-    public static final double DEFAULT_TIMEOUT = 1.5;
+    public static final double DEFAULT_TIMEOUT = 2;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = API_KEYS.VUFORIA_KEY;
 
@@ -45,7 +45,7 @@ public class MasqUtils implements API_KEYS {
         return linearOpMode.hardwareMap;
     }
     public class KP {
-        public static final double TURN = +0.06;
+        public static final double TURN = +0.08;
         public static final double DRIVE_ANGULAR = +0.0;
         public static final double DRIVE_ENCODER = .7;
         public static final double MOTOR_TELEOP = +0;

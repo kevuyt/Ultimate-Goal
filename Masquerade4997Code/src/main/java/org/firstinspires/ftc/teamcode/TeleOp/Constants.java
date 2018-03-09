@@ -29,7 +29,7 @@ public interface Constants {
     double LIFT_DOWN = -1,
            LIFT_UP = 1;
     double JEWEL_BLUE_IN = 0.6,
-           JEWEL_BLUE_OUT = .1,
+           JEWEL_BLUE_OUT = 0,
            JEWEL_BLUE_HOVER = .75,
            JEWEL_RED_IN = 0.39,
            JEWEL_RED_OUT = .94,

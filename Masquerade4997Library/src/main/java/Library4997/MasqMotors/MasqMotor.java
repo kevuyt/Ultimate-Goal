@@ -130,7 +130,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
-        destination = distance;
+        destination = distance * MasqUtils.CLICKS_PER_INCH;
     }
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();
@@ -142,7 +142,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         double  power;
         do {
             clicksRemaining = (destination - Math.abs(motor.getCurrentPosition()));
-            power = -direction.value * speed * ((clicksRemaining / destination));
+            power = -direction.value * speed * ((clicksRemaining / destination) * 1.3);
             power = Range.clip(power, -1.0, +1.0);
             setPower(power);
         } while (opModeIsActive() && Math.abs(clicksRemaining) > 1 && !timeoutTimer.elapsedTime(1, MasqClock.Resolution.SECONDS));

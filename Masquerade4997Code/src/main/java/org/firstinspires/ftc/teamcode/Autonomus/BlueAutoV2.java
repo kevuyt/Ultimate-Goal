@@ -33,7 +33,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants{
         robot.driveTrain.setClosedLoop(false);
         runVuMark(vuMark);
         if (MasqUtils.VuMark.isLeft(vuMark)) leftMulti();
-        else rightMulti();
+        else centerMulti();
     }
     public void runJewel() {
         robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
@@ -54,7 +54,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants{
         if (MasqUtils.VuMark.isCenter(vuMark)) robot.drive(23, POWER_OPTIMAL, Direction.BACKWARD, 3);
         else if (MasqUtils.VuMark.isLeft(vuMark)) robot.drive(8, POWER_OPTIMAL, Direction.BACKWARD, 2); //FINAL
         else if (MasqUtils.VuMark.isRight(vuMark)) {robot.drive(32, POWER_OPTIMAL, Direction.BACKWARD, 2);}
-        else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(32, POWER_OPTIMAL, Direction.BACKWARD, 3);
+        else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(23, POWER_OPTIMAL, Direction.BACKWARD, 3);
         robot.turn(60, Direction.LEFT);
         updateStart();
         robot.flipper.setPosition(Flipper.Position.OUT);
@@ -67,30 +67,44 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants{
         robot.drive(60);
     }
     public void leftMulti() {
-        robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.turn(39 + (endAngle() - startAngle), Direction.RIGHT);
-        robot.drive(40, POWER_HIGH, Direction.BACKWARD);
-        robot.flipper.flip();
-        robot.drive(5);
-        robot.drive(5, POWER_HIGH, Direction.BACKWARD);
-        updateStart();
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.drive(3);
+        robot.turnAbsolute(90, Direction.RIGHT);
         robot.intake.setPower(INTAKE);
         robot.drive(60);
-        robot.turn(15 + (startAngle-endAngle() ), Direction.LEFT);
-        robot.drive(30, POWER_HIGH, Direction.BACKWARD);
+        robot.drive(10, POWER_HIGH, Direction.BACKWARD);
+        robot.turn(30, Direction.LEFT);
+        robot.drive(30);
+        robot.turnAbsolute(90, Direction.LEFT);
+        robot.drive(10, POWER_HIGH, Direction.BACKWARD);
+        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.turnAbsolute(95, Direction.LEFT);
+        robot.lift.setDistance(20);
+        robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
+        robot.drive(45, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.flipper.flip(1);
+        robot.drive(5, POWER_LOW);
+        robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(10);
     }
     public void centerMulti() {
-        robot.drive(15, POWER_HIGH, Direction.BACKWARD);
-        robot.turn(10 + (endAngle() - startAngle), Direction.RIGHT);
+        robot.drive(3);
+        robot.turnAbsolute(90, Direction.LEFT);
+        robot.intake.setPower(INTAKE);
+        robot.drive(60);
         robot.drive(10, POWER_HIGH, Direction.BACKWARD);
-        robot.flipper.flip();
-        robot.drive(65, POWER_HIGH);
+        robot.turn(30, Direction.LEFT);
+        robot.drive(30);
+        robot.turnAbsolute(90, Direction.LEFT);
         robot.drive(10, POWER_HIGH, Direction.BACKWARD);
-        robot.turn(15, Direction.RIGHT);
         robot.flipper.setPosition(Flipper.Position.MID);
-        robot.flipper.setPosition(Flipper.Position.OUT);
-        robot.drive(40, POWER_HIGH, Direction.BACKWARD);
+        robot.turnAbsolute(95, Direction.LEFT);
+        robot.lift.setDistance(20);
+        robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
+        robot.drive(45, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.flipper.flip(1);
+        robot.drive(5, POWER_LOW);
+        robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(10);
     }
     public void rightMulti () {
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
