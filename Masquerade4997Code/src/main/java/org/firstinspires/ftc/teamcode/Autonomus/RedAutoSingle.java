@@ -10,7 +10,7 @@ import SubSystems4997.SubSystems.Flipper;
 /**
  * Created by Archish on 3/8/18.
  */
-@Autonomous(name = "RedAutoSingl", group = "Autonomus")
+@Autonomous(name = "RedAutoSingle", group = "A")
 public class RedAutoSingle extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
@@ -49,11 +49,11 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
     }
     public void runVuMark(String vuMark) {
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
-        if (MasqUtils.VuMark.isCenter(vuMark)) robot.drive(18, POWER_OPTIMAL, Direction.BACKWARD, 3);
+        if (MasqUtils.VuMark.isCenter(vuMark)) robot.drive(14, POWER_OPTIMAL, Direction.BACKWARD, 3);
         else if (MasqUtils.VuMark.isLeft(vuMark)) robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD, 2); //FINAL
-        else if (MasqUtils.VuMark.isRight(vuMark)) {robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD, 2);}
-        else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(18, POWER_OPTIMAL, Direction.BACKWARD, 3);
-        robot.turnAbsolute(70, Direction.RIGHT);
+        else if (MasqUtils.VuMark.isRight(vuMark)) {robot.drive(8, POWER_OPTIMAL, Direction.BACKWARD, 2);}
+        else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(14, POWER_OPTIMAL, Direction.BACKWARD, 3);
+        robot.turnAbsolute(60, Direction.RIGHT);
         robot.flipper.setPosition(Flipper.Position.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5);
@@ -64,12 +64,13 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnAbsolute(80, Direction.RIGHT);
         robot.flipper.setPosition(Flipper.Position.MID);
-        robot.sleep(1000);
-        robot.lift.setDistance(30);
-        robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
+        robot.intake.setPower(OUTAKE);
+        robot.sleep(500);
+        robot.lift.setDistance(20);
+        robot.lift.runToPosition(Direction.BACKWARD, POWER_HIGH);
         robot.drive(15, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.flip(1);
-        robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(3, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5);
         robot.flipper.setPosition(Flipper.Position.IN);
     }

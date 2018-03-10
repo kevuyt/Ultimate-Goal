@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
@@ -11,6 +12,7 @@ import SubSystems4997.SubSystems.Flipper;
  * Created by Archish on 2/25/18.
  */
 @Autonomous(name = "BlueAutoV2", group = "Autonomus")
+@Disabled
 public class BlueAutoV2 extends MasqLinearOpMode implements Constants{
     private double startAngle = 0;
     public void runLinearOpMode() throws InterruptedException {

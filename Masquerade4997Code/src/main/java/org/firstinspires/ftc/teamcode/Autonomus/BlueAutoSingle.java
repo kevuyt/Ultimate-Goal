@@ -10,7 +10,7 @@ import SubSystems4997.SubSystems.Flipper;
 /**
  * Created by Archish on 3/8/18.
  */
-@Autonomous(name = "BlueAutoSingle", group = "Autonomus")
+@Autonomous(name = "BlueAutoSingle", group = "A")
 public class BlueAutoSingle extends MasqLinearOpMode implements Constants {
     private double startAngle = 0;
     public void runLinearOpMode() throws InterruptedException {
@@ -64,14 +64,14 @@ public class BlueAutoSingle extends MasqLinearOpMode implements Constants {
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnAbsolute(80, Direction.RIGHT);
         robot.flipper.setPosition(Flipper.Position.MID);
+        robot.intake.setPower(OUTAKE);
         robot.sleep(1000);
-        robot.lift.setDistance(30);
+        robot.lift.setDistance(2);
         robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
         robot.drive(15, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.flip(1);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5);
         robot.flipper.setPosition(Flipper.Position.IN);
-
     }
 }

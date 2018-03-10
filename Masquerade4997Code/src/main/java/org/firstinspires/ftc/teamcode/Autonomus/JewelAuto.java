@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
@@ -10,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 10/5/17.
  */
 @Autonomous(name = "Jewel Auto", group = "Group4")
+@Disabled
 public class JewelAuto extends MasqLinearOpMode implements Constants {
     boolean red;
     public void runLinearOpMode() throws InterruptedException {

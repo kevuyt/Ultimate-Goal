@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
@@ -11,6 +12,7 @@ import SubSystems4997.SubSystems.Flipper.Position;
  * Created by Archish on 12/2/17.
  */
 @Autonomous(name = "BlueAuto", group = "Group1")
+@Disabled
 public class BlueAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

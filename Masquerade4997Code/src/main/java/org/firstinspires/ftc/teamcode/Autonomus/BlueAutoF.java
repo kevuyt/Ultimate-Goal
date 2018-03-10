@@ -10,7 +10,7 @@ import SubSystems4997.SubSystems.Flipper;
 /**
  * Created by Archish on 1/27/18.
  */
-@Autonomous(name = "BlueAutoF", group = "Group2")
+@Autonomous(name = "BlueAutoF", group = "B")
 public class BlueAutoF extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
