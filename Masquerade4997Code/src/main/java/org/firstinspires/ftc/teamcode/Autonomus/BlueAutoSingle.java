@@ -64,7 +64,6 @@ public class BlueAutoSingle extends MasqLinearOpMode implements Constants {
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnAbsolute(80, Direction.RIGHT);
         robot.flipper.setPosition(Flipper.Position.MID);
-        robot.intake.setPower(OUTAKE);
         robot.sleep(1000);
         robot.lift.setDistance(2);
         robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);

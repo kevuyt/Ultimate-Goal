@@ -64,7 +64,6 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnAbsolute(80, Direction.RIGHT);
         robot.flipper.setPosition(Flipper.Position.MID);
-        robot.intake.setPower(OUTAKE);
         robot.sleep(500);
         robot.lift.setDistance(20);
         robot.lift.runToPosition(Direction.BACKWARD, POWER_HIGH);
