@@ -441,7 +441,14 @@ public class MasqRobot implements PID_CONSTANTS {
         double x = c.leftStickX();
         double y = c.leftStickY();
         double sin = Math.sin(-imu.getHeading() * 0.0174553);
-        double cos = Math.cos(90);
+        double cos = Math.cos(-imu.getHeading() * 0.0174553);
+        double forward = x * sin + y * cos;
+        double right = x * cos + y * sin;
+        double clockWise = c.rightStickX();
+        driveTrain.leftDrive.motor1.setPower(forward + clockWise + right);
+        driveTrain.rightDrive.motor1.setPower(forward - clockWise - right);
+        driveTrain.leftDrive.motor2.setPower(forward + clockWise - right);
+        driveTrain.rightDrive.motor2.setPower(forward - clockWise + right);
     }
     public void TANK(MasqController c){
         double left = c.leftStickX();
