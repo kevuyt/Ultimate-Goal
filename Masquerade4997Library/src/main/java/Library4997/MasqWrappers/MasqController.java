@@ -80,8 +80,11 @@ public class MasqController extends Gamepad implements Runnable{
     }
     public boolean rightTriggerOnPress() {return rightTriggerPressed() && !rightTriggerPrev;}
 
-    public boolean isQuadrantOne (double x, double y) {
-        return (x <= 0 && y >= 0) || (x <=0 && y <= 0);
+    public double getLeftStickAngle () {
+        return Math.toDegrees(Math.atan2(-leftStickY(), leftStickX()));
+    }
+    public double getRightStickAngle () {
+        return Math.toDegrees(Math.atan2(-rightStickY(), rightStickX()));
     }
 
     public double getTan (double x, double y) {

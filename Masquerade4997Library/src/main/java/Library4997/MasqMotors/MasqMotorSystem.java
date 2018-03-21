@@ -116,7 +116,7 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         double i = 0;
         double rate = 0;
         for (MasqMotor masqMotor: motors){
-            rate += masqMotor.getRate();
+            rate += masqMotor.getVelocity();
             i++;
         }
         return rate/i;

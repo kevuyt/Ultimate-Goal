@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -8,6 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 2/7/18.
  */
 @TeleOp(name = "MECHV3", group = "Autonomus")
+@Disabled
 public class MECHV3 extends MasqLinearOpMode implements Constants {
     double currentRelicPower = LIFT_UP;
     double posifion = 0;

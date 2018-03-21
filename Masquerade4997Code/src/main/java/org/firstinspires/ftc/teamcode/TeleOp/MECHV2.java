@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import Library4997.MasqUtilities.Direction;
@@ -9,6 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 1/26/18.
  */
 @TeleOp(name = "MECHV2", group = "Group1")
+@Disabled
 public class MECHV2 extends MasqLinearOpMode implements Constants {
     boolean clawClosed = true, fliperFineMode;
     double currentRelicPower = LIFT_UP;

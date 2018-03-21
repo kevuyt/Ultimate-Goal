@@ -19,9 +19,8 @@ public class MasqStrafeTest extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.sleep(robot.getDelay());
-        robot.lift.setDistance(50);
-        robot.lift.runToPosition(Direction.BACKWARD, POWER_HIGH);
+        robot.go(12, 45, Direction.RIGHT);
+        robot.go(12, 45, Direction.LEFT);
         /*robot.strafe(48, Strafe.LEFT, POWER_HIGH);
         robot.strafe(48, Strafe.RIGHT, POWER_HIGH);*/
     }

@@ -28,8 +28,8 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.sleep(robot.getDelay());
         robot.drive(48, POWER_OPTIMAL);
-        robot.turn(90, Direction.LEFT);
-        robot.turn(90, Direction.RIGHT);
+        robot.turnRelative(90, Direction.LEFT);
+        robot.turnRelative(90, Direction.RIGHT);
         robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);
     }
 }

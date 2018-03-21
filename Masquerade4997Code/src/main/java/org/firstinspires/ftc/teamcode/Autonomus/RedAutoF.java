@@ -47,10 +47,10 @@ public class RedAutoF extends MasqLinearOpMode implements Constants {
         robot.drive(25, POWER_LOW, Direction.BACKWARD);
         robot.drive(23, POWER_LOW, Direction.FORWARD);
         robot.drive(5, POWER_LOW, Direction.BACKWARD);
-        if (MasqUtils.VuMark.isRight(vuMark)) robot.turn(50, Direction.LEFT);
-        else if (MasqUtils.VuMark.isCenter(vuMark)) robot.turn(40, Direction.LEFT);
-        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.turn(25, Direction.LEFT);
-        else robot.turn(40, Direction.LEFT);
+        if (MasqUtils.VuMark.isRight(vuMark)) robot.turnRelative(50, Direction.LEFT);
+        else if (MasqUtils.VuMark.isCenter(vuMark)) robot.turnRelative(40, Direction.LEFT);
+        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.turnRelative(25, Direction.LEFT);
+        else robot.turnRelative(40, Direction.LEFT);
         robot.drive(90, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(Flipper.Position.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);

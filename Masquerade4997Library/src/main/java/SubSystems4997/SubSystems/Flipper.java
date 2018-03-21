@@ -18,7 +18,7 @@ public class Flipper implements MasqSubSystem {
 
     public enum Position {
         OUT (new double[]{.79, 0.16}),
-        IN (new double[]{.13, .83}),
+        IN (new double[]{.24, .73}),
         MID (new double[]{.34, .62}),
         RIGHT(new double[]{.61, .36});
         public final double[] pos;

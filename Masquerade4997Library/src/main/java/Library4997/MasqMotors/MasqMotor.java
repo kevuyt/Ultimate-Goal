@@ -24,6 +24,9 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private boolean holdPositionMode = false;
     private double targetPosition = 0;
     private double prevPos = 0;
+    private double previousAcceleration = 0;
+    private double previousVel = 0;
+    private double previousVelTime = 0;
     private double encoderCounts = MasqUtils.NEVERREST_ORBITAL_20_TICKS_PER_ROTATION;
     private double previousTime = 0;
     private double destination = 0;
@@ -158,7 +161,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return currentPosition;
     }
     public double getPower() {return currentPower;}
-    public double getRate () {
+    public double getVelocity() {
         double deltaPosition = getCurrentPosition() - prevPos;
         double tChange = System.nanoTime() - previousTime;
         previousTime = System.nanoTime();
@@ -170,6 +173,19 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         else {
             prevRate = rate;
             return prevRate;
+        }
+    }
+    public double getAcceleration () {
+        double deltaVelocity = getVelocity() - previousVel;
+        double tChange = System.nanoTime() - previousVelTime;
+        previousVelTime = System.nanoTime();
+        tChange = tChange / 1e9;
+        previousVel = getVelocity();
+        double acceleration = deltaVelocity / tChange;
+        if (acceleration != 0) return acceleration;
+        else {
+            previousAcceleration = acceleration;
+            return previousAcceleration;
         }
     }
     public String getName() {
@@ -202,7 +218,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             double tChange = System.nanoTime() - previousTime;
             tChange /= 1e9;
             setRPM = MasqUtils.NEVERREST_ORBITAL_20_RPM * power;
-            currentRPM = getRate();
+            currentRPM = getVelocity();
             error = setRPM - currentRPM;
             rpmIntegral += error * tChange;
             rpmDerivative = (error - rpmPreviousError) / tChange;
@@ -225,7 +241,9 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public double getKd() {return kd;}
     public void setKd(double kd) {this.kd = kd;}
     public String[] getDash() {
-        return new String[] {"Current Position" + Double.toString(getCurrentPosition())};
+        return new String[] {"Current Position: " + Double.toString(getCurrentPosition()),
+                            "Velocity: " + Double.toString(getVelocity()),
+                            "Acceleration: " + Double.toString(getAcceleration())};
     }
 }
 

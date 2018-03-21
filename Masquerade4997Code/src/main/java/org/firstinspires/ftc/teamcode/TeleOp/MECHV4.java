@@ -24,8 +24,7 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.relicAdjuster.setPosition(1);
         while (opModeIsActive()) {
-            if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD);
-            else robot.MECH(controller1, Direction.FORWARD);
+            robot.MECH(controller1, Direction.FORWARD);
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else  robot.intake.setPower(0);
@@ -46,12 +45,6 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             if (controller2.leftBumper()) robot.relicLift.setPower(currentRelicPower);
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(-controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
-            dash.create("QUAD ONE: ", controller2.isQuadrantOne(controller2.leftStickX(), controller2.leftStickY()));
-            dash.create("TAN: ", controller2.getTan(controller2.leftStickX(), controller2.leftStickY()));
-            dash.create("POSITION: ", position);
-            dash.create("X: ", controller2.leftStickX());
-            dash.create("Y: ", controller2.leftStickY());
-            dash.update();
             robot.relicAdjuster.setPosition(position);
             robot.flipper.DriverControl(controller2);
             controller1.update();

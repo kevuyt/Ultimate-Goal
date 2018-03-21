@@ -1,9 +1,11 @@
 package Library4997.MasqUtilities;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 
@@ -13,12 +15,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 public class MasqUtils implements API_KEYS {
     public static MasqLinearOpMode linearOpMode;
+    private static MasqClock clock = new MasqClock();
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
     public static final double gearRatio = 1;
     public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
-
+    private static double integral = 0;
+    private static double prevError = 0;
     public static final int DEFAULT_SLEEP_TIME = 0;
     public static final double DEFAULT_TIMEOUT = 1.5;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
@@ -35,6 +39,15 @@ public class MasqUtils implements API_KEYS {
     public static void setLinearOpMode(MasqLinearOpMode pLinearOpMode) {
         linearOpMode = pLinearOpMode;
     }
+    public static double getControllerOutput(double kp, double ki, double kd, double error) {
+        double timeChange = clock.milliseconds();
+        clock.reset();
+        integral = (integral + error) * timeChange;
+        double derivative = (error - prevError) / timeChange;
+        prevError = error;
+        double out = (kp* error) + (ki * integral) + (kd * derivative);
+        return Range.clip(out, -1.0, +1.0);
+    }
     public static Telemetry getTelemetry() {
         return linearOpMode.telemetry;
     }
@@ -48,7 +61,7 @@ public class MasqUtils implements API_KEYS {
         public static final double TURN = +0.06;
         public static final double DRIVE_ANGULAR = +0.0;
         public static final double DRIVE_ENCODER = .7;
-        public static final double MOTOR_TELEOP = +0;
+        public static final double MOTOR_TELEOP = +0.1;
         public static final double MOTOR_AUTONOMOUS = +0.006;
     }
     public class KI {

@@ -50,12 +50,8 @@ public class RedAutoFV2 extends MasqLinearOpMode implements Constants {
     }
     public void runVuMark (String vuMark) {
         robot.drive(20, POWER_LOW, Direction.BACKWARD);
-        if (MasqUtils.VuMark.isRight(vuMark)) {
-            robot.turn(8, Direction.LEFT);
-        }
-        else if (MasqUtils.VuMark.isCenter(vuMark)) {
-            robot.turnAbsolute(20, Direction.LEFT);
-        }
+        if (MasqUtils.VuMark.isRight(vuMark)) robot.turnRelative(8, Direction.LEFT);
+        else if (MasqUtils.VuMark.isCenter(vuMark)) robot.turnAbsolute(20, Direction.LEFT);
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
             robot.strafe(3, Strafe.RIGHT);
             robot.turnAbsolute(30, Direction.LEFT);

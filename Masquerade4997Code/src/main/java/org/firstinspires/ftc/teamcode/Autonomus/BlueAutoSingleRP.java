@@ -49,10 +49,10 @@ public class BlueAutoSingleRP extends MasqLinearOpMode implements Constants {
         robot.drive(25, POWER_LOW, Direction.FORWARD);
         robot.drive(23, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5, POWER_OPTIMAL, Direction.FORWARD);
-        if (MasqUtils.VuMark.isRight(vuMark)) robot.turn(140, Direction.LEFT);
-        else if (MasqUtils.VuMark.isCenter(vuMark)) robot.turn(150, Direction.LEFT);
-        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.turn(165, Direction.LEFT);
-        else robot.turn(150, Direction.LEFT);
+        if (MasqUtils.VuMark.isRight(vuMark)) robot.turnRelative(140, Direction.LEFT);
+        else if (MasqUtils.VuMark.isCenter(vuMark)) robot.turnRelative(150, Direction.LEFT);
+        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.turnRelative(165, Direction.LEFT);
+        else robot.turnRelative(150, Direction.LEFT);
         robot.drive(40, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setPosition(Flipper.Position.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
