@@ -65,7 +65,7 @@ public class Flipper implements MasqSubSystem {
         else if (controller.rightStickX() < -.5) setPosition(Position.MID);
 
         if (controller.a()) setPosition(Grip.OUT);
-        else if (controller.b()) setPosition(Grip.CLAMP);
+        else if (controller.x()) setPosition(Grip.CLAMP);
     }
     public void flip (double time) {
         setPosition(Flipper.Position.MID);

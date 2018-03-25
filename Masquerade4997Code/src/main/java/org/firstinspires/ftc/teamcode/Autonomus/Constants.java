@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
+import Library4997.MasqUtilities.MasqPosition;
+
 /**
  * Constants in autonomous
  */
@@ -26,6 +28,7 @@ public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constan
            DISTANCE_TO_CENTER_BOX = 10,
            DISTANCE_TO_RIGHT_BOX_BLUE = DISTANCE_TO_LEFT_BOX_RED,
            DISTANCE_TO_LEFT_BOX_BLUE = DISTANCE_TO_RIGHT_BOX_RED;
+    MasqPosition blueCenter = new MasqPosition(3, 6, 9);
     String LEFT = "LEFT",
            RIGHT = "RIGHT",
            CENTER = "CENTER";

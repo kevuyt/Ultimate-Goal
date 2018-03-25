@@ -11,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECHV4", group = "Autonomus")
 public class MECHV4 extends MasqLinearOpMode implements Constants {
     double currentRelicPower = LIFT_UP;
+    boolean backWord = false;
     double position = 0;
     double pitch = 0;
     public void runLinearOpMode() throws InterruptedException {
@@ -22,9 +23,16 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.relicAdjuster.setPosition(1);
+        robot.relicAdjuster.setPosition(0);
         while (opModeIsActive()) {
-            robot.MECH(controller1, Direction.FORWARD);
+            if (controller1.leftBumperOnPress() && !backWord) {
+                robot.MECH(controller1, Direction.FORWARD);
+                backWord = true;
+            }
+            else if (controller1.leftBumperOnPress() && backWord) {
+                robot.MECH(controller1, Direction.FORWARD);
+                backWord = false;
+            }
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else  robot.intake.setPower(0);

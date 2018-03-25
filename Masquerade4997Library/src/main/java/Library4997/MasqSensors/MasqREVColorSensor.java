@@ -53,7 +53,8 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
     }
     public void setActive () {colorSensor.enableLed(true);}
     public void setPassive() {colorSensor.enableLed(false);}
-
+    public boolean isGrey () {return false;}
+    public boolean isBrown () {return false;}
     public boolean isBlue () {return getBlue() > getRed();}
     public boolean isRed () {return getRed() > getBlue();}
 
