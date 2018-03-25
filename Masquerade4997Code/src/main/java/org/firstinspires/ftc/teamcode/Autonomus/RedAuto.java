@@ -46,7 +46,7 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         return robot.vuforia.getVuMark();
     }
     public void runVuMark(String vuMark) {
-        double startAngle = robot.imu.getHeading();
+        double startAngle = robot.imu.getAbsoluteHeading();
         robot.drive(20, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(18, POWER_LOW, Direction.FORWARD);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
@@ -57,7 +57,7 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         robot.jewelArmRed.setPosition(JEWEL_RED_HOVER);
         robot.stop(robot.jewelColorRed, .2, Direction.BACKWARD);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
-        double endAngle = robot.imu.getHeading();
+        double endAngle = robot.imu.getAbsoluteHeading();
         robot.drive(1, POWER_LOW, Direction.BACKWARD, 1);
         robot.turnRelative(90 + (endAngle - startAngle), Direction.RIGHT);
         robot.flipper.setPosition(Flipper.Position.OUT);

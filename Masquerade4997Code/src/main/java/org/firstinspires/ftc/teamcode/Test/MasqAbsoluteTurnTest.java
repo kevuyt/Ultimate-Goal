@@ -15,7 +15,7 @@ public class MasqAbsoluteTurnTest extends MasqLinearOpMode implements Constants 
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(robot.imu.adjustAngle(robot.imu.getHeading()));
+            dash.create(robot.imu.adjustAngle(robot.imu.getAbsoluteHeading()));
             dash.update();
         }
         waitForStart();

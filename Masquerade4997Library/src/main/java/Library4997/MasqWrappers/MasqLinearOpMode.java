@@ -56,6 +56,6 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     }
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
     public int getDelta (double initial, Direction direction) {
-        return (int) -((robot.imu.getHeading()) - (initial * direction.value));
+        return (int) -((robot.imu.getAbsoluteHeading()) - (initial * direction.value));
     }
 }

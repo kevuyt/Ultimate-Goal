@@ -125,9 +125,9 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants{
 
     }
     public double endAngle () {
-        return robot.imu.getHeading();
+        return robot.imu.getAbsoluteHeading();
     }
     public void updateStart() {
-        startAngle = robot.imu.getHeading();
+        startAngle = robot.imu.getAbsoluteHeading();
     }
 }

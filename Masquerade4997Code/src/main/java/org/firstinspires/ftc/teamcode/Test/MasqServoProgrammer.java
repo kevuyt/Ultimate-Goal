@@ -86,16 +86,16 @@ public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
                 rotatorBlue -= 0.01;
                 controller1.update();
             }
-            robot.blueRotator.setPosition(rotatorBlue);
             robot.redRotator.setPosition(rotatorRed);
+            robot.flipper.gripTop.setPosition(adjuster);
+            robot.flipper.gripBottom.setPosition(redAdjuster);
             robot.flipper.flipperLeft.setPosition(flipperLeft);
             robot.flipper.flipperRight.setPosition(flipperRight);
             robot.jewelArmRed.setPosition(jewelArmRedPosition);
-            robot.jewelArmBlue.setPosition(jewelArmBluePosition);
             dash.create("FLIP RIGHT: ", flipperRight);
             dash.create("FLIP LEFT: ", flipperLeft);
-            dash.create("BLUE DEPLOYER: ", adjuster);
-            dash.create("RED DEPLOYER: ", redAdjuster);
+            dash.create("GRIP TOP: ", adjuster);
+            dash.create("GRIP BOTTOM: ", redAdjuster);
             dash.create("JEWEL ARM RED: ", jewelArmRedPosition);
             dash.create("JEWEL ARM BLUE: ", jewelArmBluePosition);
             dash.create("REDR: ", rotatorRed);

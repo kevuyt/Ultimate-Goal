@@ -39,15 +39,15 @@ public class MasqAdafruitIMU implements MasqHardware {
         while (angle <= -180) angle += 360;
         return angle;
     }
-    public double getHeading() {
+    public double getAbsoluteHeading() {
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         return formatAngle(angles.angleUnit, angles.firstAngle);
     }
-    public double getYaw () {
-        return getHeading() - zeroPos;
+    public double getRelativeYaw() {
+        return getAbsoluteHeading() - zeroPos;
     }
     public void reset(){
-        zeroPos = getHeading();
+        zeroPos = getAbsoluteHeading();
     }
     public double getPitch() {
         return formatAngle(angles.angleUnit, angles.thirdAngle);
@@ -67,7 +67,7 @@ public class MasqAdafruitIMU implements MasqHardware {
     }
     public String[] getDash() {
         return new String[]{
-                "Heading:" + Double.toString(getHeading()),
+                "Heading:" + Double.toString(getAbsoluteHeading()),
                 "Roll" + Double.toString(getRoll()),
                 "Pitch" + Double.toString(getPitch()),
         };
