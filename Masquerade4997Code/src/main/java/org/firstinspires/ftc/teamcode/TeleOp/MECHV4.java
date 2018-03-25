@@ -25,14 +25,7 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.relicAdjuster.setPosition(0);
         while (opModeIsActive()) {
-            if (controller1.leftBumperOnPress() && !backWord) {
-                robot.MECH(controller1, Direction.FORWARD);
-                backWord = true;
-            }
-            else if (controller1.leftBumperOnPress() && backWord) {
-                robot.MECH(controller1, Direction.FORWARD);
-                backWord = false;
-            }
+            robot.MECH(controller1, Direction.FORWARD);
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else  robot.intake.setPower(0);

@@ -10,26 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoRP.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/IntakeTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoRP.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/RedAuto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/ButtonValues.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/CodeSharer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/ControllerValues.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/GhostController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/GhostRecorder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/StickValues.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/DirectionV2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqPosition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/BlockDetector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoSingle.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/BlueAutoSingle.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoSingleRP.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/BlueAutoSingleRP.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/BlueAutoV2.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoF.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/RedAutoF.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoFV2.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/RedAutoFV2.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoSingle.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/RedAutoSingle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/classes_2fd534a3e0a56de7cc525cfb13dd3b1bfe74b2ef.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/debug_0fbfee80bc3222da3a0eeab1dee8a3a13d3f0591.jar" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/debug_0fbfee80bc3222da3a0eeab1dee8a3a13d3f0591.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" />
@@ -37,12 +17,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/bundles/default/classes.jar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/bundles/default/classes.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" afterPath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqStrafeTest.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqStrafeTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/Flipper.java" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/Flipper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
@@ -139,57 +118,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MasqStrafeTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqStrafeTest.java">
+      <file leaf-file-name="RedAuto.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Direction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/Direction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="12" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntakeTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/IntakeTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MasqLinearOpMode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqLinearOpMode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="910">
+              <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
               <folding>
-                <element signature="method#sleep#1;class#MasqLinearOpMode#0" expanded="false" />
-                <element signature="method#sleep#2;class#MasqLinearOpMode#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MECHV4.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-              <folding>
-                <element signature="method#doBalance#0;class#MECHV4#0" expanded="false" />
-                <marker date="1521992500000" expanded="true" signature="1400:1446" ph="{...}" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1454#1661#0" expanded="true" />
+                <element signature="e#1660#1661#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -198,8 +135,8 @@
       <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+            <state relative-caret-position="523">
+              <caret line="746" column="32" selection-start-line="746" selection-start-column="32" selection-end-line="746" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#MasqRobot#0" expanded="false" />
@@ -208,8 +145,12 @@
                 <element signature="method#Targets#0;class#Targets#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#setAllianceColor#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#opModeIsActive#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
-                <element signature="method#drive#3;class#MasqRobot#0" expanded="false" />
+                <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsolute#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsolute#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsolute#2;class#MasqRobot#0" expanded="false" />
                 <element signature="method#runToPosition#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
@@ -226,6 +167,9 @@
                 <element signature="method#turnAbsolute#2;class#MasqRobot#0" expanded="false" />
                 <element signature="method#turnAbsolute#3;class#MasqRobot#0" expanded="false" />
                 <element signature="method#turnAbsolute#4;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#2;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stopBlue#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stopBlue#2;class#MasqRobot#0" expanded="false" />
@@ -233,8 +177,8 @@
                 <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stopRed#2;class#MasqRobot#0" expanded="false" />
                 <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#stop#3;class#MasqRobot#0" expanded="false" />
-                <element signature="method#stop#4;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stop#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stop#2;class#MasqRobot#0" expanded="false" />
                 <element signature="method#strafe#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#strafe#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#strafe#2;class#MasqRobot#0" expanded="false" />
@@ -243,58 +187,51 @@
                 <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#getVoltage#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#getDelay#0;class#MasqRobot#0" expanded="false" />
-                <element signature="method#waitForVuMark#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#initializeAutonomous#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#sleep#0;class#MasqRobot#0" expanded="false" />
                 <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
                 <element signature="method#sleep#2;class#MasqRobot#0" expanded="false" />
-                <marker date="1522005637000" expanded="false" signature="6067:6161" ph="{...}" />
-                <marker date="1522005637000" expanded="true" signature="11838:13060" ph="{...}" />
-                <marker date="1522005637000" expanded="false" signature="17857:18376" ph="{...}" />
-                <marker date="1522005637000" expanded="false" signature="18878:19395" ph="{...}" />
+                <marker date="1522014233000" expanded="false" signature="6053:6147" ph="{...}" />
+                <marker date="1522014233000" expanded="true" signature="18413:19635" ph="{...}" />
+                <marker date="1522014233000" expanded="false" signature="27656:28175" ph="{...}" />
+                <marker date="1522014233000" expanded="false" signature="28677:29194" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DirectionV2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/DirectionV2.java">
+      <file leaf-file-name="MasqStrafeTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqStrafeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+            <state relative-caret-position="408">
+              <caret line="22" column="32" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasqOpMode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqOpMode.java">
+      <file leaf-file-name="MasqUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MECHV5.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV5.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+            <state relative-caret-position="867">
+              <caret line="61" column="56" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
               <folding>
-                <element signature="method#doBalance#0;class#MECHV5#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#getControllerOutput#0;class#MasqUtils#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Flipper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/Flipper.java">
+      <file leaf-file-name="MECHV4.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="406">
+              <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+              <folding>
+                <element signature="method#doBalance#0;class#MECHV4#0" expanded="false" />
+                <marker date="1522008234000" expanded="true" signature="1430:1476" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -4549,7 +4486,6 @@
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAuto_RP.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoSingleRP.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/BlueAutoV2.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto_RP.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoV3.java" />
@@ -4565,31 +4501,32 @@
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoFV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqEncoder.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqController.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqAdafruitIMU.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV3.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV5.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqTurnTest.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqServoProgrammer.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/BlockDetector.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqPosition.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/AutonomusSupers/BlueAutoSingle.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/ButtonValues.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/StickValues.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/ControllerValues.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/GhostRecorder.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqTeleOpRecoder/CodeSharer.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/Flipper.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/TeleOpPlayBack.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/TeleOpRecoder.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/IntakeTest.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/DirectionV2.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/Flipper.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqStrafeTest.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java" />
       </list>
     </option>
   </component>
@@ -4733,28 +4670,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MasqWrappers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Masquerade4997Library" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Library4997" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqUtilities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -5749,10 +5664,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.07880724" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.88764644" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.88764644" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.61874336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.92119277" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.92119277" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961479" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75803405" sideWeight="0.33226836" order="11" side_tool="true" content_ui="tabs" />
@@ -5861,13 +5776,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/API_KEYS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -5913,16 +5821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="61" column="56" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
@@ -5943,18 +5841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="36" selection-end-column="27" />
-          <folding>
-            <element signature="method#MasqREVColorSensor#0;class#MasqREVColorSensor#0" expanded="false" />
-            <element signature="method#getRed#0;class#MasqREVColorSensor#0" expanded="false" />
-            <element signature="method#getGreen#0;class#MasqREVColorSensor#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -6097,14 +5983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -6178,18 +6056,10 @@
         <state relative-caret-position="216">
           <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#273#274#0" expanded="false" />
+            <element signature="e#294#295#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/Flipper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -6246,17 +6116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-          <folding>
-            <element signature="method#doBalance#0;class#MECHV4#0" expanded="false" />
-            <marker date="1521992500000" expanded="true" signature="1400:1446" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/Direction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -6273,10 +6132,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/DirectionV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/SubSystems/Flipper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="77" column="33" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="33" />
+          <folding>
+            <element signature="method#MasqREVColorSensor#0;class#MasqREVColorSensor#0" expanded="false" />
+            <element signature="method#getRed#0;class#MasqREVColorSensor#0" expanded="false" />
+            <element signature="method#getGreen#0;class#MasqREVColorSensor#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqClock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding>
+            <element signature="method#doBalance#0;class#MECHV4#0" expanded="false" />
+            <marker date="1522008234000" expanded="true" signature="1430:1476" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/MasqUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="61" column="56" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getControllerOutput#0;class#MasqUtils#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+        <state relative-caret-position="523">
+          <caret line="746" column="32" selection-start-line="746" selection-start-column="32" selection-end-line="746" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#MasqRobot#0" expanded="false" />
@@ -6285,8 +6202,12 @@
             <element signature="method#Targets#0;class#Targets#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#setAllianceColor#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#opModeIsActive#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#drive#3;class#MasqRobot#0" expanded="false" />
+            <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsolute#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsolute#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsolute#2;class#MasqRobot#0" expanded="false" />
             <element signature="method#runToPosition#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
@@ -6303,6 +6224,9 @@
             <element signature="method#turnAbsolute#2;class#MasqRobot#0" expanded="false" />
             <element signature="method#turnAbsolute#3;class#MasqRobot#0" expanded="false" />
             <element signature="method#turnAbsolute#4;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#2;class#MasqRobot#0" expanded="false" />
             <element signature="method#stopBlue#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#stopBlue#2;class#MasqRobot#0" expanded="false" />
@@ -6310,8 +6234,8 @@
             <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#stopRed#2;class#MasqRobot#0" expanded="false" />
             <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stop#3;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stop#4;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stop#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stop#2;class#MasqRobot#0" expanded="false" />
             <element signature="method#strafe#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#strafe#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#strafe#2;class#MasqRobot#0" expanded="false" />
@@ -6320,32 +6244,35 @@
             <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#getVoltage#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#getDelay#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#waitForVuMark#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#initializeAutonomous#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#sleep#0;class#MasqRobot#0" expanded="false" />
             <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
             <element signature="method#sleep#2;class#MasqRobot#0" expanded="false" />
-            <marker date="1522005637000" expanded="false" signature="6067:6161" ph="{...}" />
-            <marker date="1522005637000" expanded="true" signature="11838:13060" ph="{...}" />
-            <marker date="1522005637000" expanded="false" signature="17857:18376" ph="{...}" />
-            <marker date="1522005637000" expanded="false" signature="18878:19395" ph="{...}" />
+            <marker date="1522014233000" expanded="false" signature="6053:6147" ph="{...}" />
+            <marker date="1522014233000" expanded="true" signature="18413:19635" ph="{...}" />
+            <marker date="1522014233000" expanded="false" signature="27656:28175" ph="{...}" />
+            <marker date="1522014233000" expanded="false" signature="28677:29194" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqUtilities/DirectionV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Test/MasqStrafeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state relative-caret-position="408">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAuto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1454#1661#0" expanded="true" />
+            <element signature="e#1660#1661#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

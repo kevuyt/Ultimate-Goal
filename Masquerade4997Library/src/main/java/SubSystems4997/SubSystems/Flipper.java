@@ -29,7 +29,7 @@ public class Flipper implements MasqSubSystem {
 
     public enum Grip {
         CLAMP(new double[]{.9, 0.2}),
-        OUT (new double[]{0.72, .3});
+        OUT (new double[]{0.72, .34});
         public final  double[] grip;
         Grip (double[] grip){this.grip = grip;}
     }
