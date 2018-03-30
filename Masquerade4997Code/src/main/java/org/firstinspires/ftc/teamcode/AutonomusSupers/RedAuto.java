@@ -69,4 +69,5 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         robot.drive(3, POWER_OPTIMAL, Direction.FORWARD);
         robot.flipper.setPosition(Flipper.Position.IN);
     }
+
 }

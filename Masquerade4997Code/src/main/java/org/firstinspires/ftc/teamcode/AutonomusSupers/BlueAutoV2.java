@@ -124,7 +124,6 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.turnRelative(20 + (endAngle() - startAngle), Direction.RIGHT);
         robot.drive(40, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.flip();
-
     }
     public double endAngle () {
         return robot.imu.getAbsoluteHeading();

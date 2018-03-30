@@ -41,7 +41,7 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         robot.driveAbsolute(new StopCondition() {
             @Override
             public boolean stop() {
-                return robot.doubleBlock.stop() || !clock.elapsedTime(1, MasqClock.Resolution.SECONDS);
+                return robot.doubleBlock.stop();
             }
         }, 60, -90, POWER_OPTIMAL, Direction.FORWARD);
         robot.flipper.setPosition(Grip.CLAMP);
