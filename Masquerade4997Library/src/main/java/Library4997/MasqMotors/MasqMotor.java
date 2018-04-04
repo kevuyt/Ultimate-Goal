@@ -41,6 +41,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double rpmPreviousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private double minPosition, maxPosition;
+    private MasqClock clock = new MasqClock();
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
@@ -187,6 +188,9 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             previousAcceleration = acceleration;
             return previousAcceleration;
         }
+    }
+    public boolean isStalled () {
+       return getVelocity() < 10;
     }
     public String getName() {
         return nameMotor;
