@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.StopCondition;
@@ -25,10 +23,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.initializeServos();
         robot.flipper.setPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
-            dash.create("Double NaN: ", (robot.doubleBlock.getDistance(DistanceUnit.CM) != robot.doubleBlock.getDistance(DistanceUnit.CM)));
-            dash.create("Distance Thresh: ", robot.doubleBlock.getDistance(DistanceUnit.CM) < 40);
-            dash.create("Double: ", robot.doubleBlock.stop());
-            dash.create("Double: ", robot.doubleBlock.getDistance(DistanceUnit.CM));
+            dash.create("initialized");
             dash.update();
         }
         waitForStart();
