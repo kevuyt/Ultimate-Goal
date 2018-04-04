@@ -20,7 +20,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
             dash.create("Initialized");
             dash.update();
@@ -56,16 +56,16 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         else if (MasqUtils.VuMark.isRight(vuMark)) {robot.drive(8, POWER_OPTIMAL, Direction.BACKWARD, 2);}
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(14, POWER_OPTIMAL, Direction.BACKWARD, 3);
         robot.turnAbsolute(60, Direction.RIGHT);
-        robot.flipper.setPosition(Flipper.Position.OUT);
+        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5);
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.intake.setPower(INTAKE);
         robot.turnAbsolute(90, Direction.RIGHT);
         robot.drive(35);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnAbsolute(80, Direction.RIGHT);
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         robot.sleep(500);
         robot.lift.setDistance(20);
         robot.lift.runToPosition(Direction.BACKWARD, POWER_HIGH);
@@ -73,7 +73,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.flipper.flip(1);
         robot.drive(3, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5);
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
     }
     public void centerMulti () {
 

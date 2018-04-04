@@ -20,7 +20,7 @@ public class RedAutoFV2 extends MasqLinearOpMode implements Constants {
         robot.vuforia.initVuforia(hardwareMap);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
@@ -62,12 +62,12 @@ public class RedAutoFV2 extends MasqLinearOpMode implements Constants {
             robot.strafe(3, Strafe.RIGHT);
             robot.turnAbsolute(30, Direction.LEFT);
         }
-        robot.flipper.setPosition(Flipper.Position.OUT);
+        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5, POWER_LOW, Direction.FORWARD);
         robot.drive(3, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(4, POWER_LOW, Direction.FORWARD);
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
     }
     public void centerMulti () {
         robot.turnAbsolute(0, Direction.RIGHT);

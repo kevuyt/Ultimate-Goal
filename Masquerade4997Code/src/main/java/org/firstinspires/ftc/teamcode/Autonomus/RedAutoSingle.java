@@ -21,7 +21,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
             dash.create("initialized");
             dash.update();
@@ -51,18 +51,18 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
     }
     public void runVuMark(String vuMark) {
         robot.intake.setPower(INTAKE);
-        robot.flipper.setPosition(Flipper.Grip.CLAMP);
+        robot.flipper.setGripperPosition(Flipper.Grip.CLAMP);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         if (MasqUtils.VuMark.isCenter(vuMark)) robot.drive(14, POWER_OPTIMAL, Direction.BACKWARD, 3);
         else if (MasqUtils.VuMark.isLeft(vuMark)) robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD, 2); //FINAL
         else if (MasqUtils.VuMark.isRight(vuMark)) {robot.drive(8, POWER_OPTIMAL, Direction.BACKWARD, 2);}
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(14, POWER_OPTIMAL, Direction.BACKWARD, 3);
         robot.turnAbsolute(60, Direction.RIGHT);
-        robot.flipper.setPosition(Flipper.Position.OUT);
-        robot.flipper.setPosition(Flipper.Grip.OUT);
+        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+        robot.flipper.setGripperPosition(Flipper.Grip.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5);
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnAbsolute(90, Direction.RIGHT);
         startTicks = robot.driveTrain.getCurrentPosition();
         robot.stop(new StopCondition() {
@@ -88,14 +88,14 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         }, new Runnable() {
             @Override
             public void run() {
-                robot.flipper.setPosition(Flipper.Grip.CLAMP);
-                robot.flipper.setPosition(Flipper.Position.OUT);
+                robot.flipper.setGripperPosition(Flipper.Grip.CLAMP);
+                robot.flipper.setFlipperPosition(Flipper.Position.OUT);
             }
         });
         robot.turnAbsolute(90, Direction.RIGHT);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.flipper.setPosition(Flipper.Position.OUT);
-        robot.flipper.setPosition(Flipper.Grip.OUT);
+        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+        robot.flipper.setGripperPosition(Flipper.Grip.OUT);
         robot.drive(3, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5);
     }

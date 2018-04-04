@@ -21,7 +21,7 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         robot.vuforia.initVuforia(hardwareMap);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
             dash.create(robot.imu);
             dash.update();
@@ -62,12 +62,12 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         double endAngle = robot.imu.getAbsoluteHeading();
         robot.drive(1, POWER_LOW, Direction.BACKWARD, 1);
         robot.turnRelative(90 + (endAngle - startAngle), Direction.RIGHT);
-        robot.flipper.setPosition(Flipper.Position.OUT);
+        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5, POWER_LOW, Direction.FORWARD);
         robot.drive(5, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(3, POWER_OPTIMAL, Direction.FORWARD);
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
     }
 
 }

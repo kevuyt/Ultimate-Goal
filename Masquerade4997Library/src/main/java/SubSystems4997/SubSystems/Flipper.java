@@ -41,12 +41,12 @@ public class Flipper implements MasqSubSystem {
         gripTop = new MasqServo("gripTop", hardwareMap);
     }
 
-    public void setPosition (Position position) {
+    public void setFlipperPosition(Position position) {
         flipperRight.setPosition(position.pos[0]);
         flipperLeft.setPosition(position.pos[1]);
     }
 
-    public void setPosition(Grip grip) {
+    public void setGripperPosition(Grip grip) {
         gripTop.setPosition(grip.grip[0]);
         gripBottom.setPosition(grip.grip[1]);
     }
@@ -55,21 +55,21 @@ public class Flipper implements MasqSubSystem {
     public void DriverControl(MasqController controller) {
         if (controller.rightStickY() < -.5) {
             overide = true;
-            setPosition(Position.OUT);
+            setFlipperPosition(Position.OUT);
         }
         else if (controller.rightStickY() > .5) {
             overide = false;
-            setPosition(Position.IN);
+            setFlipperPosition(Position.IN);
         }
-        else if (controller.rightStickX() > .5) setPosition(Position.RIGHT);
-        else if (controller.rightStickX() < -.5) setPosition(Position.MID);
+        else if (controller.rightStickX() > .5) setFlipperPosition(Position.RIGHT);
+        else if (controller.rightStickX() < -.5) setFlipperPosition(Position.MID);
 
-        if (controller.a()) setPosition(Grip.OUT);
-        else if (controller.x()) setPosition(Grip.CLAMP);
+        if (controller.a()) setGripperPosition(Grip.OUT);
+        else if (controller.x()) setGripperPosition(Grip.CLAMP);
     }
     public void flip (double time) {
-        setPosition(Flipper.Position.MID);
-        setPosition(Flipper.Position.OUT);
+        setFlipperPosition(Flipper.Position.MID);
+        setFlipperPosition(Flipper.Position.OUT);
         MasqUtils.sleep(time * 1000);
     }
     public void flip () {

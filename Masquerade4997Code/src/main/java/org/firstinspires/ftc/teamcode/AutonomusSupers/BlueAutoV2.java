@@ -22,7 +22,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.vuforia.initVuforia(hardwareMap);
         robot.initializeAutonomous();
         robot.initializeServos();
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
             dash.create("Initialized");
             dash.update();
@@ -61,10 +61,10 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.drive(23, POWER_OPTIMAL, Direction.BACKWARD, 3);
         robot.turnRelative(60, Direction.LEFT);
         updateStart();
-        robot.flipper.setPosition(Flipper.Position.OUT);
+        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(4, POWER_LOW, Direction.FORWARD);
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnRelative(30, Direction.LEFT);
         updateStart();
         robot.intake.setPower(INTAKE);
@@ -80,7 +80,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.drive(30);
         robot.turnAbsolute(90, Direction.LEFT);
         robot.drive(10, POWER_HIGH, Direction.BACKWARD);
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         robot.turnAbsolute(95, Direction.LEFT);
         robot.lift.setDistance(20);
         robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
@@ -100,7 +100,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.drive(30);
         robot.turnAbsolute(90, Direction.LEFT);
         robot.drive(10, POWER_HIGH, Direction.BACKWARD);
-        robot.flipper.setPosition(Flipper.Position.MID);
+        robot.flipper.setFlipperPosition(Flipper.Position.MID);
         robot.turnAbsolute(95, Direction.LEFT);
         robot.lift.setDistance(20);
         robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
@@ -118,7 +118,7 @@ public class BlueAutoV2 extends MasqLinearOpMode implements Constants {
         robot.drive(5);
         robot.drive(5, POWER_HIGH, Direction.BACKWARD);
         updateStart();
-        robot.flipper.setPosition(Flipper.Position.IN);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.drive(60);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnRelative(20 + (endAngle() - startAngle), Direction.RIGHT);
