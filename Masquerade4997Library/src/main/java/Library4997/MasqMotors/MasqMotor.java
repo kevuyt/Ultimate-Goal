@@ -4,12 +4,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.Direction;
-import Library4997.MasqUtilities.PID_CONSTANTS;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqUtilities.PID_CONSTANTS;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -43,7 +43,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware, Runnable {
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private HardwareMap hardwareMap;
     private MasqMotor threadObject;
-    private Runnable action;
+    private Runnable stallAction, unStalledAction;
     private double minPosition, maxPosition;
     private MasqClock clock = new MasqClock();
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
@@ -261,7 +261,10 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware, Runnable {
     }
 
     public void setStalledAction(Runnable action) {
-        this.action = action;
+        this.stallAction = action;
+    }
+    public void setUnStalledAction(Runnable action) {
+        unStalledAction = action;
     }
 
     public void enableStallDetection() {
@@ -272,7 +275,8 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware, Runnable {
         while (true) {
             stalled = isStalled();
             MasqUtils.sleep(100);
-            if (stalled) action.run();
+            if (stalled) stallAction.run();
+            else unStalledAction.run();
         }
     }
 }
