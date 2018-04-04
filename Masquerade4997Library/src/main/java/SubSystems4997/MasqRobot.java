@@ -73,7 +73,6 @@ public class MasqRobot implements PID_CONSTANTS {
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
         lift.setClosedLoop(false);
-        flipper.setBlockDetector(doubleBlock);
     }
 
     private MasqClock timeoutClock = new MasqClock();

@@ -2,7 +2,6 @@ package SubSystems4997.SubSystems;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
@@ -14,10 +13,9 @@ import SubSystems4997.MasqSubSystem;
  */
 
 public class Flipper implements MasqSubSystem {
+    // Stick control may seem weird because the y axis is flipped
     public MasqServo flipperLeft, gripBottom;
     public MasqServo flipperRight, gripTop;
-    private MasqREVColorSensor doubleBlock;
-    private boolean overide = false;
     public enum Position {
         OUT (new double[]{.77, 0.08}),
         IN (new double[]{.21, .63}),
@@ -54,11 +52,9 @@ public class Flipper implements MasqSubSystem {
     @Override
     public void DriverControl(MasqController controller) {
         if (controller.rightStickY() < -.5) {
-            overide = true;
             setFlipperPosition(Position.OUT);
         }
         else if (controller.rightStickY() > .5) {
-            overide = false;
             setFlipperPosition(Position.IN);
         }
         else if (controller.rightStickX() > .5) setFlipperPosition(Position.RIGHT);
@@ -76,9 +72,6 @@ public class Flipper implements MasqSubSystem {
         flip(2);
     }
 
-    public void setBlockDetector (MasqREVColorSensor doubleBlock) {
-        this.doubleBlock = doubleBlock;
-    }
 
     @Override
     public String getName() {
