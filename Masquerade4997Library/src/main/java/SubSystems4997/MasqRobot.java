@@ -37,6 +37,7 @@ import static android.R.attr.x;
 public class MasqRobot implements PID_CONSTANTS {
     public MasqRobot () {}
     public MasqTankDrive driveTrain;
+    public MasqREVColorSensor lineDetector;
     public MasqMotorSystem intake;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
@@ -55,6 +56,7 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
+        lineDetector = new MasqREVColorSensor("lineDetector", hardwareMap);
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         yWheel = new MasqEncoder(intake.motor1);
         doubleBlock = new MasqREVColorSensor("doubleBlock", hardwareMap);
@@ -369,8 +371,8 @@ public class MasqRobot implements PID_CONSTANTS {
     public void turnAbsolute(double angle, Direction DIRECTION)  {turnAbsolute(angle, DIRECTION, MasqUtils.DEFAULT_TIMEOUT);}
 
     public void go (int x, int y, int drivingAngle, Direction driveDirection, int rotation, Direction direction, double speed, int timeOut, int sleepTime) {
-        rotation *= -direction.value;
-        drivingAngle *= driveDirection.value;
+        rotation *= direction.value;
+        drivingAngle *= -driveDirection.value;
         driveTrain.setClosedLoop(true);
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
@@ -378,14 +380,14 @@ public class MasqRobot implements PID_CONSTANTS {
         double targetAngle = imu.adjustAngle((rotation));
         double targetClicks = (int)(x * MasqUtils.CLICKS_PER_INCH);
         double multiplier = 1.4;
-        double rotationMultiplier = .4;
+        double rotationMultiplier = .1;
         double clicksRemaining;
         double angularError = imu.adjustAngle(targetAngle - imu.getAbsoluteHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
                 angularDerivative, angularCorrectionPowerAdjustment, power, timeChange;
         do {
             loopTimer.reset();
-            drivingAngle = (int) (drivingAngle + imu.getAbsoluteHeading());
+            drivingAngle = (int) (drivingAngle - imu.getAbsoluteHeading());
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             power = ((clicksRemaining / targetClicks) * MasqUtils.KP.GO_ENCODER) * speed;
             power = Range.clip(power, -1.0, +1.0);
@@ -543,7 +545,7 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(3, MasqClock.Resolution.SECONDS) && stopCondition.stop());
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS) && stopCondition.stop());
         driveTrain.stopDriving();
     }
     public void stop(MasqSensor sensor, double speed, Direction Direction) {
@@ -648,7 +650,7 @@ public class MasqRobot implements PID_CONSTANTS {
         voltageSensor.update();
 
     }
-    public void MECH(MasqController c, Direction direction) {
+    public void MECH(MasqController c, Direction direction, boolean disabled) {
         double x = -c.leftStickY();
         double y = c.leftStickX();
         double xR = - c.rightStickX();
@@ -675,16 +677,22 @@ public class MasqRobot implements PID_CONSTANTS {
             rightFront /= 3;
             rightBack /= 3;
         }
+        if (disabled) {
+            leftBack = 0;
+            leftFront = 0;
+            rightBack = 0;
+            rightFront = 0;
+        }
         driveTrain.leftDrive.motor1.setPower(leftFront * direction.value);
         driveTrain.leftDrive.motor2.setPower(leftBack  * direction.value);
         driveTrain.rightDrive.motor1.setPower(rightFront  * direction.value);
         driveTrain.rightDrive.motor2.setPower(rightBack  * direction.value);
-        dash.create("ANGLE: ", Math.toDegrees(Math.atan2(y, x)));
+        /*dash.create("ANGLE: ", Math.toDegrees(Math.atan2(y, x)));
         dash.create("FRONT LEFT: ", leftFront);
         dash.create("FRONT RIGHT: ", rightFront);
         dash.create("BACK RIGHT: ", rightBack);
         dash.create("BACK LEFT: ", leftBack);
-        dash.update();
+        dash.update();*/
     }
     public void MECHV2(MasqController c, Direction direction) {
         double x = -c.leftStickY();

@@ -50,9 +50,11 @@ public class MasqAdafruitIMU implements MasqHardware {
         zeroPos = getAbsoluteHeading();
     }
     public double getPitch() {
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         return formatAngle(angles.angleUnit, angles.thirdAngle);
     }
     public double getRoll() {
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         return formatAngle(angles.angleUnit, angles.secondAngle);
     }
     Double formatAngle(AngleUnit angleUnit, double angle) {

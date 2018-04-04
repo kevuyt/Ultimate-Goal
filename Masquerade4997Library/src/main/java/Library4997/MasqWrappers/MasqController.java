@@ -59,7 +59,9 @@ public class MasqController extends Gamepad implements Runnable{
         return gamepad.right_bumper;
     }
 
-    public boolean leftBumperOnPress () {return leftBumper() && !leftBumperPrev;}
+    public boolean leftBumperOnPress () {
+        return leftBumper() && !leftBumperPrev;
+    }
     public boolean rightBumperOnPress () {return rightBumper() && !rightBumperPrev;}
 
     public boolean leftStickButton() {

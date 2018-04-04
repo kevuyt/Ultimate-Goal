@@ -25,8 +25,8 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.relicAdjuster.setPosition(1);
         while (opModeIsActive()) {
-            if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD);
-            else robot.MECH(controller1, Direction.FORWARD);
+            if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD, false);
+            else robot.MECH(controller1, Direction.FORWARD, false);
             if (controller2.a()) fliperFineMode = true;
             else fliperFineMode = false;
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);

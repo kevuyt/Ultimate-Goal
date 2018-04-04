@@ -14,18 +14,24 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
     boolean backWord = false;
     double position = 0;
     double pitch = 0;
+    boolean disabled = false;
+    boolean currentA = false, prevA = false;
+    Direction direction = Direction.FORWARD;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.initializeTeleop();
         robot.relicLift.setClosedLoop(false);
+        int count = 0;
         while (!opModeIsActive()) {
-            dash.create(robot.imu);
+            dash.create("Count: ", count);
             dash.update();
         }
         waitForStart();
+        double targetPitch = robot.imu.getPitch();
         robot.relicAdjuster.setPosition(0);
         while (opModeIsActive()) {
-            robot.MECH(controller1, Direction.FORWARD);
+            if (controller1.y()) direction = Direction.FORWARD;
+            if (controller1.b()) direction = Direction.BACKWARD;
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else  robot.intake.setPower(0);
@@ -33,8 +39,8 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftStickY() > 0.5) position = 0;
             else if (controller2.leftStickX() > 0.5) position = 0.5;
             else if (controller2.leftStickX() < -0.5) position = 0.5;
+            robot.relicAdjuster.setPosition(position);
             if (controller1.x()) {robot.jewelArmRed.setPosition(JEWEL_RED_IN);}
-            if (controller1.a()) pitch = robot.imu.getPitch();
             if (controller2.b()) robot.relicGripper.setPosition(CLAW_OPENED);
             else if (controller2.y()) robot.relicGripper.setPosition(CLAW_CLOSED);
             if (controller2.rightBumper()) robot.lift.setPower(LIFT_UP);
@@ -43,21 +49,19 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             if (controller2.leftBumper()) robot.relicLift.setPower(currentRelicPower);
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(-controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
-            robot.relicAdjuster.setPosition(position);
             robot.flipper.DriverControl(controller2);
+            if (!disabled) robot.MECH(controller1, direction, disabled);
+            disabled = controller1.a();
             controller1.update();
             controller2.update();
-            robot.sleep(70);
+            if (disabled) {
+                double scaledPowerGoal = 1 - Math.abs(robot.imu.getPitch() / targetPitch);
+                if (scaledPowerGoal < 0.3) robot.driveTrain.setPower(.3, .3);
+                else {
+                    scaledPowerGoal *= 0.3;
+                    robot.driveTrain.setPower(scaledPowerGoal, scaledPowerGoal);
+                }
+            }
         }
     }
-    public void doBalance() {
-        if (controller1.rightTriggerPressed()) {
-            robot.driveTrain.setPower(robot.imu.getPitch() / pitch);
-        }
-        else {
-            robot.driveTrain.setPower(0);
-        }
-    }
-
-
 }

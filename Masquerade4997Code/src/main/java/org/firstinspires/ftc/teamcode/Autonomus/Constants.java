@@ -7,7 +7,7 @@ import Library4997.MasqUtilities.MasqPosition;
  */
 
 public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constants {
-    double POWER_LOW = 0.3,
+    double POWER_LOW = 0.4,
            POWER_OPTIMAL = 0.6,
            POWER_HIGH = 1;
     double SLEEPTIME_HIGH = 1000,

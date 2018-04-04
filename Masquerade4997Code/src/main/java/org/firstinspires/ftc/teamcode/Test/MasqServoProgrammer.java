@@ -12,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MasqServoProgrammer", group = "Autonomus")
 public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
     double jewelArmBluePosition = 0, jewelArmRedPosition = 0,
+            wristPosition = 0,
            rotatorRed = 0, rotatorBlue = 0, adjuster = 0, flipperLeft = 0, flipperRight = 0, redAdjuster = 0;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
@@ -63,11 +64,11 @@ public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
                 controller1.update();
             }
             if (controller1.bOnPress()) {
-                jewelArmRedPosition += 0.01;
+                wristPosition += 0.01;
                 controller1.update();
             }
             if (controller1.yOnPress()) {
-                jewelArmRedPosition -= 0.01;
+                wristPosition -= 0.01;
                 controller1.update();
             }
             if (controller1.rightBumperOnPress()) {
@@ -91,7 +92,7 @@ public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
             robot.flipper.gripBottom.setPosition(redAdjuster);
             robot.flipper.flipperLeft.setPosition(flipperLeft);
             robot.flipper.flipperRight.setPosition(flipperRight);
-            robot.jewelArmRed.setPosition(jewelArmRedPosition);
+            robot.relicAdjuster.setPosition(jewelArmRedPosition);
             dash.create("FLIP RIGHT: ", flipperRight);
             dash.create("FLIP LEFT: ", flipperLeft);
             dash.create("GRIP TOP: ", adjuster);

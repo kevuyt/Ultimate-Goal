@@ -19,10 +19,10 @@ public class Flipper implements MasqSubSystem {
     private MasqREVColorSensor doubleBlock;
     private boolean overide = false;
     public enum Position {
-        OUT (new double[]{.79, 0.16}),
-        IN (new double[]{.24, .73}),
-        MID (new double[]{.34, .62}),
-        RIGHT(new double[]{.61, .36});
+        OUT (new double[]{.77, 0.08}),
+        IN (new double[]{.21, .63}),
+        MID (new double[]{.37, .47}),
+        RIGHT(new double[]{.61, .24});
         public final double[] pos;
         Position (double[] pos) {this.pos = pos;}
     }

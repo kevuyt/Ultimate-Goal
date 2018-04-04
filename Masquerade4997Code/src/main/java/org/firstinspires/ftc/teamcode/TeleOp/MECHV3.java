@@ -27,8 +27,8 @@ public class MECHV3 extends MasqLinearOpMode implements Constants {
         controller2.setJoystickDeadzone(.2f);
         robot.relicAdjuster.setPosition(1);
         while (opModeIsActive()) {
-            if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD);
-            else robot.MECH(controller1, Direction.FORWARD);
+            if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD, false);
+            else robot.MECH(controller1, Direction.FORWARD, false);
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else  robot.intake.setPower(0);
