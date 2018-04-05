@@ -7,7 +7,7 @@ import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.StopCondition;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 import SubSystems4997.SubSystems.Flipper.Position;
-import SubSystems4997.SubSystems.Flipper.Grip;
+import SubSystems4997.SubSystems.Gripper.Grip;
 
 ;
 

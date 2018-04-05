@@ -11,9 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "MasqServoProgrammer", group = "Autonomus")
 public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
-    double jewelArmBluePosition = 0, jewelArmRedPosition = 0,
-            wristPosition = 0,
-           rotatorRed = 0, rotatorBlue = 0, adjuster = 0, flipperLeft = 0, flipperRight = 0, redAdjuster = 0;
+    double rightFlipper, leftFlipper, bottomGripper, topGripper, relicGrabber, relicWrist;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
@@ -24,83 +22,65 @@ public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
         robot.sleep(robot.getDelay());
         while (opModeIsActive()) {
             if  (controller2.bOnPress()) {
-                adjuster += 0.01;
+                rightFlipper += 0.01;
                 controller2.update();
             }
             if (controller2.xOnPress()) {
-                redAdjuster += 0.01;
+                rightFlipper -= 0.01;
                 controller2.update();
             }
             if (controller2.yOnPress()) {
-                redAdjuster -= 0.01;
+                leftFlipper -= 0.01;
                 controller2.update();
             }
             if (controller2.aOnPress()) {
-                adjuster -= 0.01;
+                leftFlipper += 0.01;
                 controller2.update();
             }
             if (controller2.leftTriggerOnPress()) {
-                flipperLeft += 0.01;
+                bottomGripper += 0.01;
                 controller2.update();
             }
             if (controller2.leftBumperOnPress()) {
-                flipperLeft -= 0.01;
+                bottomGripper -= 0.01;
                 controller2.update();
             }
             if (controller2.rightTriggerOnPress()) {
-                flipperRight += 0.01;
+                topGripper += 0.01;
                 controller2.update();
             }
             if (controller2.rightBumperOnPress()) {
-                flipperRight -= 0.01;
+                topGripper -= 0.01;
                 controller2.update();
             }
             if (controller1.aOnPress()) {
-                jewelArmBluePosition += 0.01;
+                relicGrabber += 0.01;
                 controller1.update();
             }
             if (controller1.xOnPress()) {
-                jewelArmBluePosition -= 0.01;
+                relicGrabber -= 0.01;
                 controller1.update();
             }
             if (controller1.bOnPress()) {
-                wristPosition += 0.01;
+                relicWrist += 0.01;
                 controller1.update();
             }
             if (controller1.yOnPress()) {
-                wristPosition -= 0.01;
+                relicWrist -= 0.01;
                 controller1.update();
             }
-            if (controller1.rightBumperOnPress()) {
-                rotatorRed += 0.01;
-                controller1.update();
-            }
-            if (controller1.rightTriggerOnPress()) {
-                rotatorRed -= 0.01;
-                controller1.update();
-            }
-            if (controller1.leftBumperOnPress()) {
-                rotatorBlue += 0.01;
-                controller1.update();
-            }
-            if (controller1.leftTriggerOnPress()) {
-                rotatorBlue -= 0.01;
-                controller1.update();
-            }
-            robot.redRotator.setPosition(rotatorRed);
-            robot.flipper.gripTop.setPosition(adjuster);
-            robot.flipper.gripBottom.setPosition(redAdjuster);
-            robot.flipper.flipperLeft.setPosition(flipperLeft);
-            robot.flipper.flipperRight.setPosition(flipperRight);
-            robot.relicAdjuster.setPosition(jewelArmRedPosition);
-            dash.create("FLIP RIGHT: ", flipperRight);
-            dash.create("FLIP LEFT: ", flipperLeft);
-            dash.create("GRIP TOP: ", adjuster);
-            dash.create("GRIP BOTTOM: ", redAdjuster);
-            dash.create("JEWEL ARM RED: ", jewelArmRedPosition);
-            dash.create("JEWEL ARM BLUE: ", jewelArmBluePosition);
-            dash.create("REDR: ", rotatorRed);
-            dash.create("BLUER: ", rotatorBlue);
+            robot.gripper.gripTop.setPosition(topGripper);
+            robot.gripper.gripBottom.setPosition(bottomGripper);
+            robot.flipper.flipperLeft.setPosition(leftFlipper);
+            robot.flipper.flipperRight.setPosition(rightFlipper);
+            robot.relicAdjuster.setPosition(relicWrist);
+            robot.relicGripper.setPosition(relicGrabber);
+            dash.create("FLIP RIGHT (C2 X, B): ", rightFlipper);
+            dash.create("FLIP LEFT (C2 Y, A): ", leftFlipper);
+            dash.create("GRIP TOP: (C2 RT, RB)", topGripper);
+            dash.create("GRIP BOTTOM (C2 LT, LB) : ", bottomGripper);
+            dash.create("RELIC WRIST (C1 B, Y): ", relicWrist);
+            dash.create("RELIC GRABBER: (C1 A, X)", relicGrabber);
             dash.update();
             controller1.update();
             controller2.update();

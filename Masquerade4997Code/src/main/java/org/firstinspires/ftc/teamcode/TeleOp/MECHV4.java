@@ -10,12 +10,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "MECHV4", group = "Autonomus")
 public class MECHV4 extends MasqLinearOpMode implements Constants {
-    double currentRelicPower = LIFT_UP;
-    boolean backWord = false;
-    double position = 0;
-    double pitch = 0;
+    double currentRelicPower = LIFT_UP, position = 0;
     boolean disabled = false;
-    boolean currentA = false, prevA = false;
     Direction direction = Direction.FORWARD;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

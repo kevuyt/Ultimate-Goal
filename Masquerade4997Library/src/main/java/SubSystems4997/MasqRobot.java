@@ -26,6 +26,7 @@ import Library4997.MasqUtilities.Strafe;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import SubSystems4997.SubSystems.Flipper;
+import SubSystems4997.SubSystems.Gripper;
 
 import static android.R.attr.x;
 
@@ -44,6 +45,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqServo redRotator;
     public MasqREVColorSensor jewelColorRed;
     public Flipper flipper;
+    public Gripper gripper;
     public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqEncoder yWheel;
@@ -72,6 +74,7 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelColorRed = new MasqREVColorSensor("jewelColorRed", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
+        gripper = flipper.getGripper();
         lift.setClosedLoop(false);
     }
 

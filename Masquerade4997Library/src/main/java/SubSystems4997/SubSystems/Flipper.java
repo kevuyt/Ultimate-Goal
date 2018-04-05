@@ -7,6 +7,7 @@ import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqController;
 import SubSystems4997.MasqSubSystem;
+import SubSystems4997.SubSystems.Gripper.Grip;
 
 /**
  * Created by Archish on 2/12/18.
@@ -14,8 +15,8 @@ import SubSystems4997.MasqSubSystem;
 
 public class Flipper implements MasqSubSystem {
     // Stick control may seem weird because the y axis is flipped
-    public MasqServo flipperLeft, gripBottom;
-    public MasqServo flipperRight, gripTop;
+    public MasqServo flipperLeft, flipperRight;
+    private Gripper gripper;
     public enum Position {
         OUT (new double[]{.77, 0.08}),
         IN (new double[]{.21, .63}),
@@ -24,29 +25,15 @@ public class Flipper implements MasqSubSystem {
         public final double[] pos;
         Position (double[] pos) {this.pos = pos;}
     }
-
-    public enum Grip {
-        CLAMP(new double[]{.9, 0.2}),
-        OUT (new double[]{0.72, .34});
-        public final  double[] grip;
-        Grip (double[] grip){this.grip = grip;}
-    }
-
     public Flipper (HardwareMap hardwareMap) {
+        gripper = new Gripper(hardwareMap);
         flipperLeft = new MasqServo("flipLeft", hardwareMap);
         flipperRight = new MasqServo("flipRight", hardwareMap);
-        gripBottom = new MasqServo("gripBottom", hardwareMap);
-        gripTop = new MasqServo("gripTop", hardwareMap);
     }
 
     public void setFlipperPosition(Position position) {
         flipperRight.setPosition(position.pos[0]);
         flipperLeft.setPosition(position.pos[1]);
-    }
-
-    public void setGripperPosition(Grip grip) {
-        gripTop.setPosition(grip.grip[0]);
-        gripBottom.setPosition(grip.grip[1]);
     }
 
     @Override
@@ -60,8 +47,8 @@ public class Flipper implements MasqSubSystem {
         else if (controller.rightStickX() > .5) setFlipperPosition(Position.RIGHT);
         else if (controller.rightStickX() < -.5) setFlipperPosition(Position.MID);
 
-        if (controller.a()) setGripperPosition(Grip.OUT);
-        else if (controller.x()) setGripperPosition(Grip.CLAMP);
+        if (controller.a()) gripper.setGripperPosition(Grip.OUT);
+        else if (controller.x()) gripper.setGripperPosition(Grip.CLAMP);
     }
     public void flip (double time) {
         setFlipperPosition(Flipper.Position.MID);
@@ -70,6 +57,10 @@ public class Flipper implements MasqSubSystem {
     }
     public void flip () {
         flip(2);
+    }
+
+    public Gripper getGripper () {
+        return gripper;
     }
 
 
