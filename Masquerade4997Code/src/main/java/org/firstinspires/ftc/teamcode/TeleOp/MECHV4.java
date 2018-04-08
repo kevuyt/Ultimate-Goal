@@ -36,7 +36,7 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftStickX() > 0.5) position = 0.5;
             else if (controller2.leftStickX() < -0.5) position = 0.5;
             robot.relicAdjuster.setPosition(position);
-            if (controller1.x()) {robot.jewelArmRed.setPosition(JEWEL_RED_IN);}
+            if (controller1.x()) robot.jewelArmRed.setPosition(JEWEL_RED_IN);
             if (controller2.b()) robot.relicGripper.setPosition(CLAW_OPENED);
             else if (controller2.y()) robot.relicGripper.setPosition(CLAW_CLOSED);
             if (controller2.rightBumper()) robot.lift.setPower(LIFT_UP);

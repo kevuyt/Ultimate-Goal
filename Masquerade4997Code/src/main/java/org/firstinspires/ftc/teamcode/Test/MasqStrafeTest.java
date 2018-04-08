@@ -15,19 +15,21 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqStrafeTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+
         while (!opModeIsActive()) {
-            dash.create(robot.imu);
+            dash.create("Stalled: ", robot.intake.motor1.isStalled());
+            dash.create("Velocity: ", robot.intake.motor1.getVelocity());
             dash.update();
         }
         waitForStart();
-        robot.intake.setPower(INTAKE);
-        robot.stop(new StopCondition() {
-            @Override
-            public boolean stop() {
-                return robot.doubleBlock.stop();
-            }
-        }, 0, POWER_LOW, Direction.FORWARD);
-        //robot.go(12, 45, Direction.LEFT);
+        if (robot.doubleBlock.stop()) {
+            robot.go(new StopCondition() {
+                @Override
+                public boolean stop() {
+                    return robot.doubleBlock.stop();
+                }
+            }, 45, Direction.LEFT, 0, Direction.FORWARD);
+        }
         /*robot.strafe(48, Strafe.LEFT, POWER_HIGH);
         robot.strafe(48, Strafe.RIGHT, POWER_HIGH);*/
     }

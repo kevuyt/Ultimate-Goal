@@ -28,12 +28,12 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.sleep(robot.getDelay());
         robot.intake.setPower(INTAKE);
-        robot.flipper.setGripperPosition(Grip.CLAMP);
+        robot.gripper.setGripperPosition(Grip.CLAMP);
         robot.drive(28, POWER_LOW, Direction.BACKWARD);
         robot.flipper.flip(0);
         robot.turnAbsolute(45, Direction.RIGHT);
         robot.drive(5, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.flipper.setGripperPosition(Grip.OUT);
+        robot.gripper.setGripperPosition(Grip.OUT);
         robot.drive(5);
         robot.flipper.setFlipperPosition(Position.IN);
         robot.turnAbsolute(90, Direction.RIGHT);
@@ -44,7 +44,7 @@ public class RedAuto extends MasqLinearOpMode implements Constants {
                 return robot.doubleBlock.stop();
             }
         }, 60, -90, POWER_OPTIMAL, Direction.FORWARD);
-        robot.flipper.setGripperPosition(Grip.CLAMP);
+        robot.gripper.setGripperPosition(Grip.CLAMP);
         robot.flipper.flip(0);
         robot.driveAbsoluteAngle(30, -85, POWER_HIGH, Direction.BACKWARD);
     }

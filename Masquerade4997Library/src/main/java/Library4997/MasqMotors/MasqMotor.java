@@ -14,8 +14,9 @@ import Library4997.MasqUtilities.PID_CONSTANTS;
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class MasqMotor implements PID_CONSTANTS, MasqHardware, Runnable {
+public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
+    private boolean stallDetection = false;
     private String nameMotor;
     private int direction = 1;
     private double kp = 0.004, ki = 0, kd = 0;
@@ -41,21 +42,27 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware, Runnable {
     private double rpmDerivative = 0;
     private double rpmPreviousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
-    private HardwareMap hardwareMap;
-    private MasqMotor threadObject;
-    private Runnable stallAction, unStalledAction;
+    private Runnable stallAction = new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    }, unStalledAction = new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    };
     private double minPosition, maxPosition;
     private MasqClock clock = new MasqClock();
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
-        this.hardwareMap = hardwareMap;
         limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
-        this.hardwareMap = hardwareMap;
         limitDetection = positionDetection = false;
         if (direction == DcMotor.Direction.REVERSE) this.direction = 1;
         this.nameMotor = name;
@@ -196,7 +203,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware, Runnable {
         }
     }
     private boolean getStalled() {
-       return getVelocity() < 10;
+       return Math.abs(getVelocity()) < 10;
     }
     public String getName() {
         return nameMotor;
@@ -256,28 +263,36 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware, Runnable {
                             "Acceleration: " + Double.toString(getAcceleration())};
     }
 
-    public boolean isStalled() {
+    public synchronized boolean isStalled() {
         return stalled;
     }
 
     public void setStalledAction(Runnable action) {
-        this.stallAction = action;
+        stallAction = action;
     }
     public void setUnStalledAction(Runnable action) {
         unStalledAction = action;
     }
-
-    public void enableStallDetection() {
-        new MasqMotor(nameMotor, hardwareMap).run();
+    public void disableStallDetection() {
+        stallDetection = false;
     }
-    @Override
-    public void run() {
-        while (true) {
-            stalled = isStalled();
-            MasqUtils.sleep(100);
-            if (stalled) stallAction.run();
-            else unStalledAction.run();
-        }
+    public void enableStallDetection() {
+        stallDetection = true;
+        Runnable mainRunnable = new Runnable() {
+            @Override
+            public void run() {
+                while (opModeIsActive()) {
+                    stalled = getStalled();
+                    if (stallDetection) {
+                        if (stalled) stallAction.run();
+                        else unStalledAction.run();
+                    }
+                    MasqUtils.sleep(100);
+                }
+            }
+        };
+        Thread thread = new Thread(mainRunnable);
+        thread.start();
     }
 }
 

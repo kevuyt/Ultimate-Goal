@@ -60,7 +60,6 @@ public class MasqRobot implements PID_CONSTANTS {
         vuforia = new MasqVuforiaBeta();
         lineDetector = new MasqREVColorSensor("lineDetector", hardwareMap);
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
-        yWheel = new MasqEncoder(intake.motor1);
         doubleBlock = new MasqREVColorSensor("doubleBlock", hardwareMap);
         singleBlock = new MasqREVColorSensor("singleBlock", hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
@@ -74,6 +73,7 @@ public class MasqRobot implements PID_CONSTANTS {
         jewelColorRed = new MasqREVColorSensor("jewelColorRed", this.hardwareMap);
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
+        yWheel = new MasqEncoder(relicLift);
         gripper = flipper.getGripper();
         lift.setClosedLoop(false);
     }
@@ -470,7 +470,7 @@ public class MasqRobot implements PID_CONSTANTS {
         sleep(sleepTime);
     }
     public void go (StopCondition condition, int drivingAngle, Direction driveDirection, int rotation, Direction direction) {
-        go(x, 200, drivingAngle, driveDirection, rotation, direction, .5, 3, 1000);
+        go(condition, 200, drivingAngle, driveDirection, rotation, direction, .5, 3, 1000);
     }
 
     public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
