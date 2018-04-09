@@ -14,13 +14,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqStrafeTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        robot.yWheel.resetEncoder();
         while (!opModeIsActive()) {
-            dash.create(robot.imu);
+            dash.create("Position: ", robot.yWheel.getPosition());
+            dash.create("Velocity: ", robot.intake.motor1.getVelocity());
             dash.update();
         }
         waitForStart();
-        robot.sleep(robot.getDelay());
-        robot.strafe(48, Strafe.LEFT, POWER_HIGH);
-        robot.strafe(48, Strafe.RIGHT, POWER_HIGH);
+        robot.strafe(24, Strafe.LEFT);
+        robot.strafe(24, Strafe.RIGHT);
     }
 }

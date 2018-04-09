@@ -1,72 +1,75 @@
 package Library4997.MasqSensors;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.navigation.Quaternion;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+
+import java.util.Locale;
+
 import Library4997.MasqUtilities.MasqHardware;
 
 
 /**
- * Created by Archish on 10/28/16.
+ * Created by Archish on 1/8/18.
  */
 
-public class MasqAdafruitIMU implements MasqHardware{
-    private final BNO055IMU imu;
-    private final String name;
-    private double zeroPos;
+public class MasqAdafruitIMU implements MasqHardware {
+    BNO055IMU imu;
+    Orientation angles;
+    double zeroPos = 0;
     public MasqAdafruitIMU(String name, HardwareMap hardwareMap) {
-        this.name = name;
-        imu = hardwareMap.get(BNO055IMU.class, name);
-        setParameters();
-    }
-
-    private void setParameters() {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.useExternalCrystal = true;
-        parameters.angleUnit = com.qualcomm.hardware.bosch.BNO055IMU.AngleUnit.RADIANS;
-        parameters.pitchMode = com.qualcomm.hardware.bosch.BNO055IMU.PitchMode.WINDOWS;
-        parameters.loggingEnabled = true;
-        parameters.loggingTag = "IMU";
+        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
+        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters.calibrationDataFile = "BNO055IMUCalibration.json";
+        parameters.loggingEnabled      = true;
+        parameters.loggingTag          = "IMU";
+        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        imu = hardwareMap.get(BNO055IMU.class, name);
         imu.initialize(parameters);
-    }
-    private double[] getAngles() {
-        Quaternion quatAngles = imu.getQuaternionOrientation();
-        double w = quatAngles.w;
-        double x = quatAngles.x;
-        double y = quatAngles.y;
-        double z = quatAngles.z;
-        double roll = Math.atan2( 2*(w*x + y*z) , 1 - 2*(x*x + y*y) ) * 180.0 / Math.PI;
-        double pitch = Math.asin( 2*(w*y - x*z) ) * 180.0 / Math.PI;
-        double yaw = Math.atan2( 2*(w*z + x*y), 1 - 2*(y*y + z*z) ) * 180.0 / Math.PI;
-        return new double[]{yaw, pitch, roll};
+
     }
     public double adjustAngle(double angle) {
-        while (angle > 180)  angle -= 360;
+        while (angle > 180) angle -= 360;
         while (angle <= -180) angle += 360;
         return angle;
     }
-    public double getHeading() {
-        return getAngles()[0];
+    public double getAbsoluteHeading() {
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        return formatAngle(angles.angleUnit, angles.firstAngle);
     }
-    public double getYaw () {
-        return getHeading() - zeroPos;
+    public double getRelativeYaw() {
+        return getAbsoluteHeading() - zeroPos;
     }
     public void reset(){
-        zeroPos = getHeading();
+        zeroPos = getAbsoluteHeading();
     }
     public double getPitch() {
-        return getAngles()[1];
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        return formatAngle(angles.angleUnit, angles.thirdAngle);
     }
     public double getRoll() {
-        return getAngles()[2];
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        return formatAngle(angles.angleUnit, angles.secondAngle);
+    }
+    Double formatAngle(AngleUnit angleUnit, double angle) {
+        return Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle)));
+    }
+
+    String formatDegrees(double degrees){
+        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
     public String getName() {
-        return name;
+        return "IMU";
     }
     public String[] getDash() {
         return new String[]{
-                "Heading:" + Double.toString(getHeading()),
+                "Heading:" + Double.toString(getAbsoluteHeading()),
                 "Roll" + Double.toString(getRoll()),
                 "Pitch" + Double.toString(getPitch()),
         };

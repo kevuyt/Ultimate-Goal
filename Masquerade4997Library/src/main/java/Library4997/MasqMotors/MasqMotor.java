@@ -4,18 +4,19 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.Direction;
-import Library4997.MasqUtilities.PID_CONSTANTS;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqUtilities.PID_CONSTANTS;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
 public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private DcMotor motor;
+    private boolean stallDetection = false;
     private String nameMotor;
     private int direction = 1;
     private double kp = 0.004, ki = 0, kd = 0;
@@ -24,6 +25,10 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private boolean holdPositionMode = false;
     private double targetPosition = 0;
     private double prevPos = 0;
+    private double previousAcceleration = 0;
+    private boolean stalled = false;
+    private double previousVel = 0;
+    private double previousVelTime = 0;
     private double encoderCounts = MasqUtils.NEVERREST_ORBITAL_20_TICKS_PER_ROTATION;
     private double previousTime = 0;
     private double destination = 0;
@@ -37,7 +42,19 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     private double rpmDerivative = 0;
     private double rpmPreviousError = 0;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
+    private Runnable stallAction = new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    }, unStalledAction = new Runnable() {
+        @Override
+        public void run() {
+
+        }
+    };
     private double minPosition, maxPosition;
+    private MasqClock clock = new MasqClock();
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
@@ -130,7 +147,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
-        destination = distance;
+        destination = distance * MasqUtils.CLICKS_PER_INCH;
     }
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();
@@ -142,7 +159,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         double  power;
         do {
             clicksRemaining = (destination - Math.abs(motor.getCurrentPosition()));
-            power = -direction.value * speed * ((clicksRemaining / destination));
+            power = -direction.value * speed * ((clicksRemaining / destination) * 1.3);
             power = Range.clip(power, -1.0, +1.0);
             setPower(power);
         } while (opModeIsActive() && Math.abs(clicksRemaining) > 1 && !timeoutTimer.elapsedTime(1, MasqClock.Resolution.SECONDS));
@@ -158,7 +175,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         return currentPosition;
     }
     public double getPower() {return currentPower;}
-    public double getRate () {
+    public double getVelocity() {
         double deltaPosition = getCurrentPosition() - prevPos;
         double tChange = System.nanoTime() - previousTime;
         previousTime = System.nanoTime();
@@ -171,6 +188,22 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             prevRate = rate;
             return prevRate;
         }
+    }
+    public double getAcceleration () {
+        double deltaVelocity = getVelocity() - previousVel;
+        double tChange = System.nanoTime() - previousVelTime;
+        previousVelTime = System.nanoTime();
+        tChange = tChange / 1e9;
+        previousVel = getVelocity();
+        double acceleration = deltaVelocity / tChange;
+        if (acceleration != 0) return acceleration;
+        else {
+            previousAcceleration = acceleration;
+            return previousAcceleration;
+        }
+    }
+    private boolean getStalled() {
+       return Math.abs(getVelocity()) < 10;
     }
     public String getName() {
         return nameMotor;
@@ -202,7 +235,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             double tChange = System.nanoTime() - previousTime;
             tChange /= 1e9;
             setRPM = MasqUtils.NEVERREST_ORBITAL_20_RPM * power;
-            currentRPM = getRate();
+            currentRPM = getVelocity();
             error = setRPM - currentRPM;
             rpmIntegral += error * tChange;
             rpmDerivative = (error - rpmPreviousError) / tChange;
@@ -225,7 +258,41 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public double getKd() {return kd;}
     public void setKd(double kd) {this.kd = kd;}
     public String[] getDash() {
-        return new String[] {"Current Position" + Double.toString(getCurrentPosition())};
+        return new String[] {"Current Position: " + Double.toString(getCurrentPosition()),
+                            "Velocity: " + Double.toString(getVelocity()),
+                            "Acceleration: " + Double.toString(getAcceleration())};
+    }
+
+    public synchronized boolean isStalled() {
+        return stalled;
+    }
+
+    public void setStalledAction(Runnable action) {
+        stallAction = action;
+    }
+    public void setUnStalledAction(Runnable action) {
+        unStalledAction = action;
+    }
+    public void disableStallDetection() {
+        stallDetection = false;
+    }
+    public void enableStallDetection() {
+        stallDetection = true;
+        Runnable mainRunnable = new Runnable() {
+            @Override
+            public void run() {
+                while (opModeIsActive()) {
+                    stalled = getStalled();
+                    if (stallDetection) {
+                        if (stalled) stallAction.run();
+                        else unStalledAction.run();
+                    }
+                    MasqUtils.sleep(100);
+                }
+            }
+        };
+        Thread thread = new Thread(mainRunnable);
+        thread.start();
     }
 }
 

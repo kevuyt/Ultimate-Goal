@@ -1,6 +1,7 @@
 package Library4997.MasqSensors;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.vuforia.CameraDevice;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
@@ -8,9 +9,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqSensor;
+import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.DashBoard;
 
 /**
@@ -40,6 +41,10 @@ public class MasqVuforiaBeta implements MasqSensor, MasqHardware {
     public String getVuMark() {
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
         return String.format("%s", vuMark);
+    }
+
+    public void flash(boolean on) {
+        CameraDevice.getInstance().setFlashTorchMode(on);
     }
 
 

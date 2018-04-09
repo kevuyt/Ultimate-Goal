@@ -8,7 +8,7 @@ import Library4997.MasqUtilities.MasqUtils;
  * Created by Archish on 10/12/17.
  */
 
-public class MasqController implements Runnable{
+public class MasqController extends Gamepad implements Runnable{
     private String name;
     private Gamepad gamepad;
     private boolean close = false;
@@ -59,7 +59,9 @@ public class MasqController implements Runnable{
         return gamepad.right_bumper;
     }
 
-    public boolean leftBumperOnPress () {return leftBumper() && !leftBumperPrev;}
+    public boolean leftBumperOnPress () {
+        return leftBumper() && !leftBumperPrev;
+    }
     public boolean rightBumperOnPress () {return rightBumper() && !rightBumperPrev;}
 
     public boolean leftStickButton() {
@@ -79,6 +81,19 @@ public class MasqController implements Runnable{
         return leftTriggerPressed() && !leftTriggerPrev;
     }
     public boolean rightTriggerOnPress() {return rightTriggerPressed() && !rightTriggerPrev;}
+
+    public double getLeftStickAngle () {
+        return Math.toDegrees(Math.atan2(leftStickY(), -leftStickX()));
+    }
+    public double getRightStickAngle () {
+        return Math.toDegrees(Math.atan2(rightStickY(), -rightStickX()));
+    }
+
+    public double getTan (double x, double y) {
+        double tan = -y/x;
+        if (tan == Double.NEGATIVE_INFINITY || tan == Double.POSITIVE_INFINITY || tan != tan) tan = 0;
+        return tan;
+    }
 
     public float leftTrigger() {return gamepad.left_trigger;}
     public float rightTrigger() {return gamepad.right_trigger;}

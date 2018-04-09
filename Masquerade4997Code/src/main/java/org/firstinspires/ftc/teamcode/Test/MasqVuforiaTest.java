@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -9,7 +8,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 9/7/17.
  */
 @Autonomous(name = "TEST: VUFORIA", group = "Auto")
-@Disabled
 public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {

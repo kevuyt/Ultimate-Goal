@@ -4,8 +4,9 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqUtils;
+import SubSystems4997.MasqSubSystem;
 
 /**
  * This is a telemetry wrapper class.
@@ -40,6 +41,12 @@ public class DashBoard implements Runnable {
             telemetry.addData(hardware.getName(), hardware.getDash()[i]);
         }
     }
+    public void create(final MasqSubSystem subSystem) {
+        create(subSystem.getName());
+        for (MasqHardware hardware : subSystem.getComponents()) {
+            create(hardware.getDash());
+        }
+    }
 
     public void createSticky(String string){
         telemetry.log().add(string);
@@ -59,6 +66,11 @@ public class DashBoard implements Runnable {
             telemetry.log().add(hardware.getName(), hardware.getDash()[i]);
         }
         update();
+    }
+    public void createSticky(final MasqSubSystem subSystem) {
+        for (MasqHardware hardware : subSystem.getComponents()) {
+            createSticky(hardware.getDash());
+        }
     }
 
     public void log(String string){

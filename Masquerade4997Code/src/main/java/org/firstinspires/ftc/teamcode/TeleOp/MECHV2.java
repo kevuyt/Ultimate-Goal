@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import Library4997.MasqUtilities.Direction;
@@ -9,6 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 1/26/18.
  */
 @TeleOp(name = "MECHV2", group = "Group1")
+@Disabled
 public class MECHV2 extends MasqLinearOpMode implements Constants {
     boolean clawClosed = true, fliperFineMode;
     double currentRelicPower = LIFT_UP;
@@ -23,8 +25,8 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.relicAdjuster.setPosition(1);
         while (opModeIsActive()) {
-            if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD);
-            else robot.MECH(controller1, Direction.FORWARD);
+            if (controller1.leftBumper()) robot.MECH(controller1, Direction.BACKWARD, false);
+            else robot.MECH(controller1, Direction.FORWARD, false);
             if (controller2.a()) fliperFineMode = true;
             else fliperFineMode = false;
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
@@ -36,7 +38,6 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftStickX() < 0 ) robot.relicAdjuster.setPosition(0.5);
             if (controller1.x()) {
                 robot.jewelArmRed.setPosition(JEWEL_RED_IN);
-                robot.jewelArmBlue.setPosition(JEWEL_BLUE_IN);
             }
             if (controller2.bOnPress() && clawClosed) {
                 clawClosed = false;
@@ -54,22 +55,7 @@ public class MECHV2 extends MasqLinearOpMode implements Constants {
             if (controller2.leftBumper()) robot.relicLift.setPower(-currentRelicPower);
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
-            if (controller2.rightStickY() < -.5) {
-                robot.flipLeft.setPosition(FLIPPER_OUT_LEFT);
-                robot.flipRight.setPosition(FLIPPER_OUT_RIGHT);
-            }
-            else if (controller2.rightStickY() > .5) {
-                robot.flipLeft.setPosition(FLIPPER_DOWN_LEFT);
-                robot.flipRight.setPosition(FLIPPER_DOWN_RIGHT);
-            }
-            else if (controller2.rightStickX() > .5) {
-                robot.flipLeft.setPosition(FLIPPER_RIGHT_LEFT);
-                robot.flipRight.setPosition(FLIPPER_RIGHT_RIGHT);
-            }
-            else if (controller2.rightStickX() < -.5) {
-                robot.flipLeft.setPosition(FLIPPER_MID_LEFT);
-                robot.flipRight.setPosition(FLIPPER_MID_RIGHT);
-            }
+            robot.flipper.DriverControl(controller2);
             controller1.update();
             controller2.update();
             robot.sleep(70);

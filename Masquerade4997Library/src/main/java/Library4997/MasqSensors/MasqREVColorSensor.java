@@ -18,6 +18,7 @@ import Library4997.MasqUtilities.MasqSensor;
 public class MasqREVColorSensor implements MasqHardware, MasqSensor {
     private ColorSensor colorSensor;
     private DistanceSensor distanceSensor;
+    private int margin = 0;
     private String name;
     float hsvValues[] = {0F, 0F, 0F};
     final double SCALE_FACTOR = 255;
@@ -53,14 +54,18 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
     }
     public void setActive () {colorSensor.enableLed(true);}
     public void setPassive() {colorSensor.enableLed(false);}
-
-    public boolean isBlue () {return getBlue() > getRed();}
+    public boolean isGrey () {return false;}
+    public boolean isBrown () {return false;}
+    public boolean isBlue () {
+        return getBlue() > getRed() + margin;
+    }
     public boolean isRed () {return getRed() > getBlue();}
-
     @Override
     public boolean stop() {
-        return (getDistance(DistanceUnit.CM) > 6) || (getDistance(DistanceUnit.CM) != getDistance(DistanceUnit.CM));
+        return !(getDistance(DistanceUnit.CM) < 40);
     }
+
+    public void setMargin(int margin) {this.margin = margin;}
 
     @Override
     public String getName() {
@@ -75,7 +80,7 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
                 "Green" + getGreen(),
                 "Blue" + getBlue(),
                 "Red" + getRed(),
-                "Distance in CM" + getDistance(DistanceUnit.INCH)
+                "Distance in CM" + getDistance(DistanceUnit.CM)
         };
     }
 }

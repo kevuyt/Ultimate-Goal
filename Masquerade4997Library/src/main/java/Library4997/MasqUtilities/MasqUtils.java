@@ -1,32 +1,32 @@
 package Library4997.MasqUtilities;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
+
 
 /**
  * Created by Archish on 10/16/17.
  */
 
-public class MasqUtils {
+public class MasqUtils implements API_KEYS {
     public static MasqLinearOpMode linearOpMode;
+    private static MasqClock clock = new MasqClock();
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
     public static final double gearRatio = 1;
     public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
-
+    private static double integral = 0;
+    private static double prevError = 0;
     public static final int DEFAULT_SLEEP_TIME = 0;
-    public static final double DEFAULT_TIMEOUT = 2;
+    public static final double DEFAULT_TIMEOUT = 1;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
-    public static final String VUFORIA_KEY =
-            "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
-            "CfEwQhnuuB1hOh//uL2LnHYMViBgZtdjDGvmWvDvgKaonymopd0Y62ls2ZJfHhJ3fZYhF57Ce6ZepRI" +
-            "FOumys4J4DssG83OT+DJUjUCG6ruZ88AYjxNzi+vhkTCxHVULQxLJCSQ7boG0t36RWIEmVwxXIHVI" +
-            "3xbVeXwQL7vgm/0KmGW/KJFOuI2+wl1IDJdzDQHfavEA8FFkYTlnp/chHMbLu//BaqXprFHZ6OLh" +
-            "OZoRWiFkg1N0zabreTxMNOYFP/rDNaYseXQVGGRSMHxF86kGs6LNHEO7qZZj/BU94zKpPMWyHYw29X477";
+    public static final String VUFORIA_KEY = API_KEYS.VUFORIA_KEY;
 
     public static void sleep (int sleep) {
         try {Thread.sleep(sleep);}
@@ -39,21 +39,31 @@ public class MasqUtils {
     public static void setLinearOpMode(MasqLinearOpMode pLinearOpMode) {
         linearOpMode = pLinearOpMode;
     }
+    public static double getControllerOutput(double kp, double ki, double kd, double error) {
+        double timeChange = clock.milliseconds();
+        clock.reset();
+        integral = (integral + error) * timeChange;
+        double derivative = (error - prevError) / timeChange;
+        prevError = error;
+        double out = (kp* error) + (ki * integral) + (kd * derivative);
+        return Range.clip(out, -1.0, +1.0);
+    }
     public static Telemetry getTelemetry() {
         return linearOpMode.telemetry;
     }
     public static boolean opModeIsActive() {
         return linearOpMode.opModeIsActive();
     }
-    public HardwareMap getHardwareMap () {
-        return this.linearOpMode.hardwareMap;
+    public HardwareMap getHardwareMap() {
+        return linearOpMode.hardwareMap;
     }
     public class KP {
-        public static final double TURN = +0.04;
+        public static final double TURN = +0.06;
         public static final double DRIVE_ANGULAR = +0.07;
         public static final double DRIVE_ENCODER = .7;
-        public static final double MOTOR_TELEOP = +0;
-        public static final double MOTOR_AUTONOMOUS = +0.006;
+        public static final double GO_ENCODER = .9;
+        public static final double MOTOR_TELEOP = +0.1;
+        public static final double MOTOR_AUTONOMOUS = +0.06;
     }
     public class KI {
         public static final double TURN = +0.00;

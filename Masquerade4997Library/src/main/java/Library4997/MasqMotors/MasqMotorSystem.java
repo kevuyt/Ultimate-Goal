@@ -17,6 +17,7 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
     private List<MasqMotor> motors;
     private int numMotors;
     private double currentPower = 0;
+    private double slowDown = 0;
     private String systemName;
     public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction direction2, String systemName, HardwareMap hardwareMap) {
         this.systemName = systemName;
@@ -82,10 +83,15 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
         return this;
     }
+    public void setSlowDown(double slowDown) {this.slowDown = slowDown;}
     public void setPower (double power) {
         currentPower = power;
-        for (MasqMotor masqMotor : motors)
+        int index = 1;
+        for (MasqMotor masqMotor : motors){
+            if (index == 2) power -= slowDown;
             masqMotor.setPower(power);
+            index++;
+        }
     }
     public MasqMotorSystem setDistance(int distance){
         for (MasqMotor masqMotor: motors)
@@ -116,7 +122,7 @@ public class MasqMotorSystem implements PID_CONSTANTS, MasqHardware {
         double i = 0;
         double rate = 0;
         for (MasqMotor masqMotor: motors){
-            rate += masqMotor.getRate();
+            rate += masqMotor.getVelocity();
             i++;
         }
         return rate/i;

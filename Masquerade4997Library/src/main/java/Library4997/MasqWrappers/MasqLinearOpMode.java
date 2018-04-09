@@ -2,9 +2,11 @@ package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqAnnotations.MasqLinearOpModeClass;
 import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqRobot;
+import SubSystems4997.MasqRobot;
+
 
 /**
  * Custom Linear opMode
@@ -23,13 +25,14 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             controller1 = new MasqController(super.gamepad1, "controller1");
             controller2 = new MasqController(super.gamepad2, "controller2");
             runLinearOpMode();
-        } finally {
+        }
+        finally {
             stopLinearOpMode();
         }
     }
     public abstract void runLinearOpMode() throws InterruptedException;
     public void stopLinearOpMode() {}
-    public void runSimultaneously(Runnable r1, Runnable r2) throws InterruptedException {
+    public void runSimultaneously(Runnable r1, Runnable r2) {
         Thread t1 = new Thread(r1);
         Thread t2 = new Thread(r2);
         t1.start();
@@ -37,5 +40,23 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         while (opModeIsActive() && (t1.isAlive() || t2.isAlive())) {
             idle();
         }
+    }
+    public void sleep(int time) {
+        try {
+            Thread.sleep((long) time * 1000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+    public void sleep(double time) {
+        try {
+            Thread.sleep((long) time);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+    public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
+    public int getDelta (double initial, Direction direction) {
+        return (int) -((robot.imu.getAbsoluteHeading()) - (initial * direction.value));
     }
 }
