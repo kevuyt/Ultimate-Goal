@@ -29,14 +29,14 @@ public class MECHV5 extends MasqLinearOpMode implements Constants {
                 robot.intake.setPower(INTAKE);
             }
         });
+        robot.yWheel.resetEncoder();
         while (!opModeIsActive()) {
-            dash.create("YWheel: ", robot.yWheel.getPosition());
+            dash.create("YWheel: ", robot.yWheel.getInches());
+            dash.create("Inverted: ", -robot.yWheel.getPosition());
             dash.update();
         }
         waitForStart();
         robot.relicAdjuster.setPosition(0);
-        robot.intake.setPower(INTAKE);
-        robot.intake.motor1.enableStallDetection();
         while (opModeIsActive()) {
             if (controller1.y()) direction = Direction.FORWARD;
             if (controller1.b()) direction = Direction.BACKWARD;
@@ -45,6 +45,14 @@ public class MECHV5 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftStickX() > 0.5) position = 0.5;
             else if (controller2.leftStickX() < -0.5) position = 0.5;
             robot.relicAdjuster.setPosition(position);
+            if (controller1.rightBumper()) {
+                robot.intake.setPower(INTAKE);
+                robot.intake.motor1.enableStallDetection();
+            }
+            else {
+                robot.intake.setPower(0);
+                robot.intake.motor1.disableStallDetection();
+            }
             if (controller1.x()) robot.jewelArmRed.setPosition(JEWEL_RED_IN);
             if (controller2.b()) robot.relicGripper.setPosition(CLAW_OPENED);
             else if (controller2.y()) robot.relicGripper.setPosition(CLAW_CLOSED);

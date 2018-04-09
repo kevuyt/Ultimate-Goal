@@ -46,18 +46,9 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             else if (controller2.leftTriggerPressed()) {robot.relicLift.setPower(-controller2.leftTrigger());}
             else robot.relicLift.setPower(0);
             robot.flipper.DriverControl(controller2);
-            if (!disabled) robot.MECH(controller1, direction, disabled);
-            disabled = controller1.a();
-            controller1.update();
-            controller2.update();
-            if (disabled) {
-                double scaledPowerGoal = 1 - Math.abs(robot.imu.getPitch() / targetPitch);
-                if (scaledPowerGoal < 0.3) robot.driveTrain.setPower(.3, .3);
-                else {
-                    scaledPowerGoal *= 0.3;
-                    robot.driveTrain.setPower(scaledPowerGoal, scaledPowerGoal);
-                }
-            }
+            robot.MECH(controller1, direction, false);
+            dash.create("YWHeel: ", robot.yWheel.getInches());
+            dash.update();
         }
     }
 }

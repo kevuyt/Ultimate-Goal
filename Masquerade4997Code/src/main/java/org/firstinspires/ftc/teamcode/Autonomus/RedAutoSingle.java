@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.StopCondition;
+import Library4997.MasqUtilities.Strafe;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper.Grip;
@@ -12,7 +13,7 @@ import SubSystems4997.SubSystems.Gripper.Grip;
 /**
  * Created by Archish on 3/8/18.
  */
-@Autonomous(name = "RedAutoSingleV2", group = "A")
+@Autonomous(name = "RedAutoSingleV3", group = "A")
 public class RedAutoSingle extends MasqLinearOpMode implements Constants {
     double startTicks = 0, endTicks = 0;
     boolean secondCollection = false;
@@ -35,6 +36,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
                 robot.intake.setPower(INTAKE);
             }
         });
+        robot.gripper.setGripperPosition(Grip.CLAMP);
         robot.flipper.setFlipperPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
             dash.create("Stalled: ");
@@ -72,7 +74,6 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         if (MasqUtils.VuMark.isCenter(vuMark)) {
             robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD, 3);
             scoreRightFirstDump();
-            scoreLeftSecondDump();
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
             robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD, 2); //FINAL
@@ -83,7 +84,6 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
             robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD, 3);
             scoreRightFirstDump();
-            scoreLeftSecondDump();
         }
     }
     public void scoreRightFirstDump() {
@@ -94,7 +94,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.drive(5);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnAbsolute(90, Direction.RIGHT);
-        startTicks = robot.driveTrain.getCurrentPosition();
+        startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         robot.stop(new StopCondition() {
             @Override
             public boolean stop() {
@@ -108,118 +108,113 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
                 return robot.doubleBlock.stop();
             }
         }, -90, POWER_LOW, Direction.FORWARD);
+        endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         if (robot.doubleBlock.stop()) {
             secondCollection = true;
             robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-            robot.turnAbsolute(70, Direction.RIGHT);
-            robot.go(new StopCondition() {
-                @Override
-                public boolean stop() {
-                    return robot.doubleBlock.stop();
-                }
-            }, 45, Direction.LEFT, 0, Direction.FORWARD);
-        }
-        int heading = 85;
-        robot.turnAbsolute(heading, Direction.RIGHT);
-        endTicks = robot.driveTrain.getCurrentPosition();
-        super.runSimultaneously(new Runnable() {
-            @Override
-            public void run() {
-                if (!secondCollection) robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);
-                else robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);
-            }
-        }, new Runnable() {
-            @Override
-            public void run() {
-                robot.gripper.setGripperPosition(Grip.CLAMP);
-                robot.flipper.setFlipperPosition(Flipper.Position.OUT);
-                robot.sleep(2000);
-                robot.gripper.setGripperPosition(Grip.OUT);
-            }
-        });
-        robot.flipper.setFlipperPosition(Flipper.Position.IN);
-
-    }
-    public void scoreLeftFirstDump() {
-        robot.turnAbsolute(60, Direction.RIGHT);
-        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
-        robot.gripper.setGripperPosition(Grip.OUT);
-        robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.drive(5);
-        robot.flipper.setFlipperPosition(Flipper.Position.IN);
-        robot.turnAbsolute(90, Direction.RIGHT);
-        startTicks = robot.driveTrain.getCurrentPosition();
-        robot.stop(new StopCondition() {
-            @Override
-            public boolean stop() {
-                return robot.singleBlock.stop();
-            }
-        }, -90, POWER_LOW, Direction.FORWARD);
-        robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.stop(new StopCondition() {
-            @Override
-            public boolean stop() {
-                return robot.doubleBlock.stop();
-            }
-        }, -90, POWER_LOW, Direction.FORWARD);
-        if (robot.doubleBlock.stop()) {
-            secondCollection = true;
-            robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-            robot.turnAbsolute(70, Direction.RIGHT);
+            robot.strafe(12, Strafe.LEFT);
             robot.stop(new StopCondition() {
                 @Override
                 public boolean stop() {
                     return robot.doubleBlock.stop();
                 }
-            }, -70, POWER_LOW, Direction.FORWARD);
+            }, -90, POWER_LOW, Direction.FORWARD);
+            robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+            robot.strafe(12, Strafe.RIGHT);
+            robot.turnAbsolute(90, Direction.RIGHT);
         }
-        int heading = 110;
-        robot.turnAbsolute(heading, Direction.RIGHT);
-        endTicks = robot.driveTrain.getCurrentPosition();
         super.runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                if (!secondCollection) robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);
-                else robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);
+                if (secondCollection) {
+                    robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+                }
+                else {
+                    robot.turnAbsolute(85, Direction.RIGHT);
+                    robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+                }
             }
         }, new Runnable() {
             @Override
             public void run() {
                 robot.gripper.setGripperPosition(Grip.CLAMP);
                 robot.flipper.setFlipperPosition(Flipper.Position.OUT);
-                robot.sleep(2000);
+            }
+        });
+        super.runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.drive(10, POWER_OPTIMAL, Direction.FORWARD);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                robot.sleep(500);
                 robot.gripper.setGripperPosition(Grip.OUT);
             }
         });
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
-        /*robot.turnAbsolute(90, Direction.RIGHT);
-        robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
-        robot.gripper.setGripperPosition(Grip.OUT);
-        robot.drive(3, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.drive(5);*/
-    }
-    public void scoreLeftSecondDump() {
-        int heading = 85;
+        robot.strafe(20, Strafe.RIGHT);
         robot.stop(new StopCondition() {
             @Override
             public boolean stop() {
                 return robot.singleBlock.stop();
             }
-        }, -heading, POWER_LOW, Direction.FORWARD);
+        }, -90, POWER_LOW, Direction.FORWARD);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.turnAbsolute(120, Direction.RIGHT);
         robot.stop(new StopCondition() {
             @Override
             public boolean stop() {
                 return robot.doubleBlock.stop();
             }
-        }, -120, POWER_LOW, Direction.FORWARD);
-        /*robot.turnAbsolute(90, Direction.RIGHT);
-        robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
-        robot.gripper.setGripperPosition(Grip.OUT);
-        robot.drive(3, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.drive(5);*/
+        }, -90, POWER_LOW, Direction.FORWARD);
+        endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
+        if (robot.doubleBlock.stop()) {
+            secondCollection = true;
+            robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+            robot.strafe(12, Strafe.LEFT);
+            robot.stop(new StopCondition() {
+                @Override
+                public boolean stop() {
+                    return robot.doubleBlock.stop();
+                }
+            }, -90, POWER_LOW, Direction.FORWARD);
+            robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+            robot.strafe(12, Strafe.RIGHT);
+            robot.turnAbsolute(90, Direction.RIGHT);
+        }
+        super.runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                if (secondCollection) {
+                    robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+                }
+                else {
+                    robot.turnAbsolute(85, Direction.RIGHT);
+                    robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+                }
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                robot.gripper.setGripperPosition(Grip.CLAMP);
+                robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+            }
+        });
+        super.runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                robot.drive(5, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.drive(10, POWER_OPTIMAL, Direction.FORWARD);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                robot.sleep(500);
+                robot.gripper.setGripperPosition(Grip.OUT);
+            }
+        });
+
     }
 }
