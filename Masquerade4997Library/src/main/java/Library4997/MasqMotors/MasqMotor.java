@@ -258,9 +258,10 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public double getKd() {return kd;}
     public void setKd(double kd) {this.kd = kd;}
     public String[] getDash() {
-        return new String[] {"Current Position: " + Double.toString(getCurrentPosition()),
-                            "Velocity: " + Double.toString(getVelocity()),
-                            "Acceleration: " + Double.toString(getAcceleration())};
+        return new String[] {
+                "Current Position: " + Double.toString(getCurrentPosition()),
+                "Velocity: " + Double.toString(getVelocity()),
+                "Acceleration: " + Double.toString(getAcceleration())};
     }
 
     public synchronized boolean isStalled() {

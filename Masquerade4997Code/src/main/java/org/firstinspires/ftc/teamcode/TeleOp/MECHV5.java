@@ -50,8 +50,8 @@ public class MECHV5 extends MasqLinearOpMode implements Constants {
                 robot.intake.motor1.enableStallDetection();
             }
             else {
-                robot.intake.setPower(0);
                 robot.intake.motor1.disableStallDetection();
+                robot.intake.setPower(0);
             }
             if (controller1.x()) robot.jewelArmRed.setPosition(JEWEL_RED_IN);
             if (controller2.b()) robot.relicGripper.setPosition(CLAW_OPENED);
