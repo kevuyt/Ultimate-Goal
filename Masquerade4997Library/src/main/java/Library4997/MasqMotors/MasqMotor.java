@@ -54,7 +54,6 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         }
     };
     private double minPosition, maxPosition;
-    private MasqClock clock = new MasqClock();
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;
     public MasqMotor(String name, HardwareMap hardwareMap){
@@ -277,6 +276,8 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
     public void disableStallDetection() {
         stallDetection = false;
     }
+    public void setStallDetection(boolean bool) {stallDetection = bool;}
+    private boolean getStallDetection () {return stallDetection;}
     public void enableStallDetection() {
         stallDetection = true;
         Runnable mainRunnable = new Runnable() {
@@ -284,7 +285,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
             public void run() {
                 while (opModeIsActive()) {
                     stalled = getStalled();
-                    if (stallDetection) {
+                    if (getStallDetection()) {
                         if (stalled) stallAction.run();
                         else unStalledAction.run();
                     }
