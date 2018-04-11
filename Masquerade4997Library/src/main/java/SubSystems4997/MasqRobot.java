@@ -373,6 +373,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public void turnAbsolute(double angle, Direction DIRECTION)  {turnAbsolute(angle, DIRECTION, MasqUtils.DEFAULT_TIMEOUT);}
 
     public void go(double speed, int x, int y, double rotation, Direction rotationDirection) {
+        //Positive is LEFT
         driveTrain.setClosedLoop(false);
         double xClicks = (int)(x * MasqUtils.CLICKS_PER_INCH);
         double yClicks = (y * yWheel.getClicksPerInch());
@@ -694,7 +695,6 @@ public class MasqRobot implements PID_CONSTANTS {
 
     public void strafe(int distance, Strafe direction, double speed, double timeOut, double sleepTime) {
         yWheel.resetEncoder();
-        yWheel.resetEncoder();
         double targetClicks = (distance * yWheel.getClicksPerInch());
         double clicksRemaining;
         double power;
@@ -709,8 +709,9 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.create("Position: ", yWheel.getPosition());
             dash.create("TARGET CLICKS: " + targetClicks);
             dash.create("CLICKS REMAINING: " + clicksRemaining);
+            dash.create("POWER: ", power);
             dash.update();
-        } while (opModeIsActive()  && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+        } while (opModeIsActive()  && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
         sleep(sleepTime);
     }
     public void strafe(int distance, Strafe direction, double speed, double timeOut) {
@@ -722,8 +723,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public void strafe(int distance, Strafe direction) {
         strafe(distance, direction, 0.7);
     }
-
-
 
     public void NFS(MasqController c) {
         float move = c.leftStickY();
@@ -798,47 +797,6 @@ public class MasqRobot implements PID_CONSTANTS {
         dash.create("BACK RIGHT: ", rightBack);
         dash.create("BACK LEFT: ", leftBack);
         dash.update();*/
-    }
-    public void MECHV2(MasqController c, Direction direction) {
-        double x = -c.leftStickY();
-        double y = c.leftStickX();
-        double angle = Math.atan2(y, x);
-        double heading = -imu.getRelativeYaw();
-        double adjustedAngle = angle + Math.PI/4;
-        double speedMultiplier = 1.4;
-        double turnMultiplier = 1.4;
-        double targetAngle = imu.adjustAngle(c.getRightStickAngle());
-        double turnError = imu.adjustAngle(targetAngle - heading);
-        double turnPower = (turnError / targetAngle);
-        double speedMagnitude = Math.hypot(x, y);
-        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) + turnPower * turnMultiplier * direction.value;
-        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) + turnPower  * turnMultiplier * direction.value;
-        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - turnPower * turnMultiplier * direction.value;
-        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) - turnPower * turnMultiplier * direction.value;
-        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
-        if (max > 1) {
-            leftFront /= max;
-            leftBack /= max;
-            rightFront /= max;
-            rightBack /= max;
-        }
-        if (c.a()) imu.reset();
-        if (c.leftTriggerPressed()) {
-            leftFront /= 3;
-            leftBack /= 3;
-            rightFront /= 3;
-            rightBack /= 3;
-        }
-        driveTrain.leftDrive.motor1.setPower(leftFront * direction.value);
-        driveTrain.leftDrive.motor2.setPower(leftBack  * direction.value);
-        driveTrain.rightDrive.motor1.setPower(rightFront * direction.value);
-        driveTrain.rightDrive.motor2.setPower(rightBack  * direction.value);
-        dash.create("ANGLE: ", Math.toDegrees(Math.atan2(y, x)));
-        dash.create("FRONT LEFT: ", leftFront);
-        dash.create("FRONT RIGHT: ", rightFront);
-        dash.create("BACK RIGHT: ", rightBack);
-        dash.create("BACK LEFT: ", leftBack);
-        dash.update();
     }
     public void TANK(MasqController c){
         double left = c.leftStickX();

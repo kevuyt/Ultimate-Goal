@@ -21,8 +21,12 @@ public class MasqEncoder {
         return getPosition() / CPR;
     }
 
+    private double position() {
+        return motor.getCurrentPosition();
+    }
+
     public void resetEncoder() {
-        zeroPos = (int) getPosition();
+        zeroPos = (int) position();
         currentPosition = 0;
     }
 
