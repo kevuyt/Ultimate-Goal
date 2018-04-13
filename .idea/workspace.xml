@@ -155,16 +155,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MECHV2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/MECHV2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -185,15 +175,86 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RedAutoSingle.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RedAutoSingle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoSingle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
-              <caret line="134" column="48" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
+            <state relative-caret-position="358">
+              <caret line="124" column="23" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
               <folding>
                 <element signature="method#readVuMark#0;class#RedAutoSingle#0" expanded="false" />
                 <element signature="e#6495#6496#0" expanded="true" />
                 <element signature="e#6571#6572#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="722" column="16" selection-start-line="722" selection-start-column="16" selection-end-line="722" selection-end-column="16" />
+              <folding>
+                <element signature="docComment;class#MasqRobot#0" expanded="false" />
+                <element signature="method#AllianceColor#0;class#AllianceColor#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#Targets#0;class#Targets#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#setAllianceColor#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#opModeIsActive#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsolute#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsolute#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsolute#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsoluteAngle#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsoluteAngle#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#driveAbsoluteAngle#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#runToPosition#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#runToPosition#3;class#MasqRobot#0" expanded="false" />
+                <element signature="method#runToPosition#4;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnRelative#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnRelative#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnRelative#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnRelative#3;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnRelative#4;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnRelative#5;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnAbsolute#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnAbsolute#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnAbsolute#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnAbsolute#3;class#MasqRobot#0" expanded="false" />
+                <element signature="method#turnAbsolute#4;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#3;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#4;class#MasqRobot#0" expanded="false" />
+                <element signature="method#go#5;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stopBlue#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stopBlue#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stopRed#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stopRed#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stop#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#stop#2;class#MasqRobot#0" expanded="false" />
+                <element signature="method#strafe#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#strafe#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#strafe#2;class#MasqRobot#0" expanded="false" />
+                <element signature="e#41920#41921#0" expanded="true" />
+                <element signature="e#41968#41969#0" expanded="true" />
+                <element signature="method#NFS#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#MECH#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#getVoltage#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#getDelay#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#waitForVuMark#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#initializeAutonomous#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#sleep#0;class#MasqRobot#0" expanded="false" />
+                <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
+                <element signature="method#sleep#2;class#MasqRobot#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -5703,7 +5764,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1174" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.49574015" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.8913738" order="13" side_tool="false" content_ui="tabs" />
@@ -5714,7 +5775,7 @@
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.88764644" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.61874336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.92119277" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32986766" sideWeight="0.92119277" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961479" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75803405" sideWeight="0.33226836" order="11" side_tool="true" content_ui="tabs" />
@@ -5955,6 +6016,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -6029,79 +6091,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3144">
-          <caret line="722" column="16" selection-start-line="722" selection-start-column="16" selection-end-line="722" selection-end-column="16" />
-          <folding>
-            <element signature="docComment;class#MasqRobot#0" expanded="false" />
-            <element signature="method#AllianceColor#0;class#AllianceColor#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#Targets#0;class#Targets#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#setAllianceColor#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#opModeIsActive#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#driveAbsolute#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#driveAbsolute#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#driveAbsolute#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#driveAbsoluteAngle#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#driveAbsoluteAngle#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#driveAbsoluteAngle#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#runToPosition#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#runToPosition#3;class#MasqRobot#0" expanded="false" />
-            <element signature="method#runToPosition#4;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#3;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#4;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#5;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnAbsolute#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnAbsolute#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnAbsolute#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnAbsolute#3;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnAbsolute#4;class#MasqRobot#0" expanded="false" />
-            <element signature="method#go#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#go#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#go#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#go#3;class#MasqRobot#0" expanded="false" />
-            <element signature="method#go#4;class#MasqRobot#0" expanded="false" />
-            <element signature="method#go#5;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopBlue#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopBlue#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopRed#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stopRed#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stop#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#stop#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#strafe#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#strafe#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#strafe#2;class#MasqRobot#0" expanded="false" />
-            <element signature="e#41920#41921#0" expanded="true" />
-            <element signature="e#41968#41969#0" expanded="true" />
-            <element signature="method#NFS#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#MECH#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#getVoltage#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#getDelay#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#waitForVuMark#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#initializeAutonomous#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#sleep#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#sleep#2;class#MasqRobot#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqREVColorSensor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
+          <folding>
+            <element signature="e#2287#2288#0" expanded="false" />
+            <element signature="e#2346#2347#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -6313,12 +6310,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/RedAutoSingle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="134" column="48" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
+        <state relative-caret-position="358">
+          <caret line="124" column="23" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
           <folding>
             <element signature="method#readVuMark#0;class#RedAutoSingle#0" expanded="false" />
             <element signature="e#6495#6496#0" expanded="true" />
             <element signature="e#6571#6572#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="722" column="16" selection-start-line="722" selection-start-column="16" selection-end-line="722" selection-end-column="16" />
+          <folding>
+            <element signature="docComment;class#MasqRobot#0" expanded="false" />
+            <element signature="method#AllianceColor#0;class#AllianceColor#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#Targets#0;class#Targets#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#setAllianceColor#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#opModeIsActive#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#drive#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#drive#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsolute#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsolute#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsolute#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsoluteAngle#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsoluteAngle#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsoluteAngle#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#runToPosition#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#runToPosition#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#runToPosition#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#runToPosition#3;class#MasqRobot#0" expanded="false" />
+            <element signature="method#runToPosition#4;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#3;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#4;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#5;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnAbsolute#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnAbsolute#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnAbsolute#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnAbsolute#3;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnAbsolute#4;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#3;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#4;class#MasqRobot#0" expanded="false" />
+            <element signature="method#go#5;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stopBlue#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stopBlue#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stopBlue#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stopRed#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stopRed#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stopRed#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stop#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stop#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#stop#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#strafe#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#strafe#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#strafe#2;class#MasqRobot#0" expanded="false" />
+            <element signature="e#41920#41921#0" expanded="true" />
+            <element signature="e#41968#41969#0" expanded="true" />
+            <element signature="method#NFS#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#MECH#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#TANK#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#getVoltage#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#getDelay#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#waitForVuMark#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#initializeAutonomous#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#sleep#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#sleep#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#sleep#2;class#MasqRobot#0" expanded="false" />
           </folding>
         </state>
       </provider>
