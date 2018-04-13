@@ -36,8 +36,8 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
                 robot.intake.setPower(INTAKE);
             }
         });
-        robot.gripper.setGripperPosition(Grip.CLAMP);
-        robot.flipper.setFlipperPosition(Flipper.Position.MID);
+        //robot.gripper.setGripperPosition(Grip.CLAMP);
+        //robot.flipper.setFlipperPosition(Flipper.Position.MID);
         while (!opModeIsActive()) {
             dash.create("Double Block: ", robot.lineDetector.stop());
             dash.create("Line Block: ", robot.doubleBlock.stop());
@@ -70,7 +70,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
     }
     public void runVuMark(String vuMark) {
         robot.intake.setPower(INTAKE);
-        robot.gripper.setGripperPosition(Grip.CLAMP);
+        //robot.gripper.setGripperPosition(Grip.CLAMP);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         if (MasqUtils.VuMark.isCenter(vuMark)) {
             robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD, 3);
@@ -88,6 +88,14 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         }
     }
     public void scoreRightFirstDump() {
+        robot.turnAbsolute(90, Direction.RIGHT);
+        robot.stop(new StopCondition() {
+            @Override
+            public boolean stop() {
+                return secondBlock();
+            }
+        }, -90, POWER_LOW, Direction.FORWARD);
+        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnAbsolute(60, Direction.RIGHT);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.gripper.setGripperPosition(Grip.OUT);
@@ -106,24 +114,25 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.stop(new StopCondition() {
             @Override
             public boolean stop() {
-                return robot.doubleBlock.stop();
+                return secondBlock();
             }
         }, -90, POWER_LOW, Direction.FORWARD);
         endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         MasqUtils.sleep(750);
-        if (robot.doubleBlock.stop()) {
+        if (secondBlock()) {
             secondCollection = true;
             robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
             robot.strafe(12, Strafe.LEFT);
             robot.stop(new StopCondition() {
                 @Override
                 public boolean stop() {
-                    return robot.doubleBlock.stop();
+                    return secondBlock();
                 }
             }, -90, POWER_LOW, Direction.FORWARD);
             robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
             robot.strafe(12, Strafe.RIGHT);
         }
+        robot.turnAbsolute(90, Direction.RIGHT);
         super.runSimultaneously(new Runnable() {
             @Override
             public void run() {
@@ -154,5 +163,8 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         });
         robot.intake.setPower(INTAKE);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
+    }
+    boolean secondBlock () {
+        return robot.doubleBlock.stop() || robot.lineDetector.stop();
     }
 }
