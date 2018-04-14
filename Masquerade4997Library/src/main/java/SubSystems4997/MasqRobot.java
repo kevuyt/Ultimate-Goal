@@ -139,10 +139,10 @@ public class MasqRobot implements PID_CONSTANTS {
         sleep(sleepTime);
     }
     public void drive(double distance, double speed, Direction strafe, double timeOut) {
-        drive(distance, speed, strafe, timeOut, 0);
+        drive(distance, speed, strafe, timeOut, MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void drive(double distance, double speed, Direction strafe) {
-        drive(distance, speed, strafe, 3);
+        drive(distance, speed, strafe, MasqUtils.DEFAULT_TIMEOUT);
     }
     public void drive(double distance, double speed){drive(distance, speed, Direction.FORWARD);}
     public void drive(double distance) {drive(distance, 0.5);}
@@ -190,10 +190,10 @@ public class MasqRobot implements PID_CONSTANTS {
         sleep(sleepTime);
     }
     public void driveAbsolute(StopCondition stopCondition, double distance, int angle, double speed, Direction strafe, double timeOut) {
-        driveAbsolute(stopCondition, distance, angle, speed, strafe, timeOut, 0);
+        driveAbsolute(stopCondition, distance, angle, speed, strafe, timeOut, MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void driveAbsolute(StopCondition stopCondition, double distance, int angle, double speed, Direction strafe) {
-        driveAbsolute(stopCondition, distance, angle, speed, strafe, 1);
+        driveAbsolute(stopCondition, distance, angle, speed, strafe, MasqUtils.DEFAULT_TIMEOUT);
     }
     public void driveAbsolute(StopCondition stopCondition, double distance, int angle, double speed){driveAbsolute(stopCondition, distance, angle, speed, Direction.FORWARD);}
     public void driveAbsolute(StopCondition stopCondition, double distance, int angle) {driveAbsolute(stopCondition, distance, angle, 0.5);}
@@ -241,7 +241,7 @@ public class MasqRobot implements PID_CONSTANTS {
         sleep(sleepTime);
     }
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction strafe, double timeOut) {
-        driveAbsoluteAngle(distance, angle, speed, strafe, timeOut, 0);
+        driveAbsoluteAngle(distance, angle, speed, strafe, timeOut, MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction strafe) {
         driveAbsoluteAngle(distance, angle, speed, strafe, MasqUtils.DEFAULT_TIMEOUT);
