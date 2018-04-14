@@ -97,6 +97,25 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         leftDrive.setEncoderCounts(counts);
         rightDrive.setEncoderCounts(counts);
     }
+    public void setPowerAtAngle(double angle, double speed, double turnPower) {
+        angle = Math.toRadians(angle);
+        double adjustedAngle = angle + Math.PI/4;
+        double leftFront = (Math.sin(adjustedAngle) * speed * 1.4) - turnPower * .4;
+        double leftBack = (Math.cos(adjustedAngle) * speed * 1.4) - turnPower  * .4;
+        double rightFront = (Math.cos(adjustedAngle) * speed * 1.4) + turnPower * .4;
+        double rightBack = (Math.sin(adjustedAngle) * speed * 1.4) + turnPower * .4;
+        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
+        if (max > 1) {
+            leftFront /= max;
+            leftBack /= max;
+            rightFront /= max;
+            rightBack /= max;
+        }
+        leftDrive.motor1.setPower(leftFront);
+        leftDrive.motor2.setPower(leftBack);
+        rightDrive.motor1.setPower(rightFront);
+        rightDrive.motor2.setPower(rightBack);
+    }
     public void stopDriving() {
         setPower(0,0);
     }
@@ -108,6 +127,9 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     }
     public double getCurrentPosition() {
         return (leftDrive.getCurrentPosition() + rightDrive.getCurrentPosition())/2;
+    }
+    public double getAbsolutePositon () {
+        return (leftDrive.getAbsolutePosition() + rightDrive.getAbsolutePosition())/2;
     }
     public String getName() {
         return "DRIVETRAIN";

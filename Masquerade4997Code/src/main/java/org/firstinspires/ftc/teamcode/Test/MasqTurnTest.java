@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
 
-import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -14,17 +13,13 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqTurnTest extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-
-        robot.sleep(100);
+        robot.yWheel.resetEncoder();
+        robot.setYTarget((int) robot.yWheel.getPosition());
         while (!opModeIsActive()) {
-            dash.create("Hola ");
+            dash.create("Position: ", robot.yWheel.getPosition());
+            dash.create("Velocity: ", robot.intake.motor1.getVelocity());
             dash.update();
         }
         waitForStart();
-        robot.sleep(robot.getDelay());
-        robot.drive(48, POWER_OPTIMAL);
-        robot.turnRelative(90, Direction.LEFT);
-        robot.turnRelative(90, Direction.RIGHT);
-        robot.drive(48, POWER_OPTIMAL, Direction.BACKWARD);
     }
 }

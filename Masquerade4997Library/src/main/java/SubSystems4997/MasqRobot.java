@@ -53,6 +53,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqVuforiaBeta vuforia;
     public MasqREVColorSensor singleBlock, doubleBlock;
     HardwareMap hardwareMap;
+    private int yTarget;
     private DashBoard dash;
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
@@ -474,7 +475,6 @@ public class MasqRobot implements PID_CONSTANTS {
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS) && condition.stop());
     }
 
-
     public void go (int x, int drivingAngle, Direction driveDirection, int rotation, Direction direction, double speed, int timeOut, int sleepTime) {
         rotation *= direction.value;
         drivingAngle *= -driveDirection.value;
@@ -595,6 +595,23 @@ public class MasqRobot implements PID_CONSTANTS {
         stopBlue(colorSensor, power, Direction.BACKWARD);
     }
     public void stopBlue (MasqColorSensor colorSensor){stopBlue(colorSensor, 0.5);}
+
+    public void strafeToY (double speed) {
+        MasqClock clock = new MasqClock();
+        clock.reset();
+        if (yTarget < -yWheel.getPosition()) {
+            while ((yTarget < -yWheel.getPosition()) && opModeIsActive() && !clock.elapsedTime(.5, MasqClock.Resolution.SECONDS) && opModeIsActive()) {
+                driveTrain.setPowerAtAngle(-90, speed, 0);
+            }
+            driveTrain.stopDriving();
+        }
+        if (yTarget > -yWheel.getPosition()) {
+            while ((yTarget > -yWheel.getPosition()) && opModeIsActive() && !clock.elapsedTime(.5, MasqClock.Resolution.SECONDS)) {
+                driveTrain.setPowerAtAngle(90, speed, 0);
+            }
+            driveTrain.stopDriving();
+        }
+    }
 
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -811,6 +828,10 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.rightDrive.setPower(right - (rightError * MasqUtils.KP.MOTOR_TELEOP));
         driveTrain.leftDrive.setPower(left - (leftError *  MasqUtils.KP.MOTOR_TELEOP));
         voltageSensor.update();
+    }
+
+    public void setYTarget(double yTarget) {
+        this.yTarget = (int) yTarget;
     }
 
     public double getVoltage() {return voltageSensor.getVoltage();}

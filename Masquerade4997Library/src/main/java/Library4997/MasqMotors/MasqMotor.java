@@ -174,6 +174,9 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         currentPosition = motor.getCurrentPosition() - zeroEncoderPosition;
         return currentPosition;
     }
+    public double getAbsolutePosition () {
+        return motor.getCurrentPosition();
+    }
     public double getPower() {return currentPower;}
     public double getVelocity() {
         double deltaPosition = getCurrentPosition() - prevPos;

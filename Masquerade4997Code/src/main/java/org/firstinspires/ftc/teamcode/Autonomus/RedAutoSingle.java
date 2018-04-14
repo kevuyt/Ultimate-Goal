@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.StopCondition;
-import Library4997.MasqUtilities.Strafe;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper.Grip;
@@ -89,14 +88,18 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
     }
     public void scoreRightFirstDump() {
         robot.turnAbsolute(90, Direction.RIGHT);
+        robot.yWheel.resetEncoder();
+        robot.setYTarget(robot.yWheel.getPosition());
         robot.stop(new StopCondition() {
             @Override
             public boolean stop() {
                 return secondBlock();
             }
         }, -90, POWER_LOW, Direction.FORWARD);
+        robot.turnAbsolute(80, Direction.RIGHT);
+        robot.strafeToY(POWER_OPTIMAL);
         robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.turnAbsolute(60, Direction.RIGHT);
+        //robot.turnAbsolute(60, Direction.RIGHT);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.gripper.setGripperPosition(Grip.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
@@ -111,6 +114,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
             }
         }, -90, POWER_LOW, Direction.FORWARD);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turnAbsolute(110, Direction.RIGHT);
         robot.stop(new StopCondition() {
             @Override
             public boolean stop() {
@@ -122,22 +126,21 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         if (secondBlock()) {
             secondCollection = true;
             robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-            robot.strafe(12, Strafe.LEFT);
-            robot.stop(new StopCondition() {
-                @Override
-                public boolean stop() {
-                    return secondBlock();
-                }
-            }, -90, POWER_LOW, Direction.FORWARD);
-            robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-            robot.strafe(12, Strafe.RIGHT);
-        }
+            robot.turnAbsolute(130, Direction.RIGHT);
+            robot.drive(10, POWER_HIGH, Direction.FORWARD);
+            robot.drive(10, POWER_HIGH, Direction.BACKWARD);
+            robot.gripper.setGripperPosition(Grip.CLAMP);
+            robot.intake.setPower(OUTAKE);
+         }
         robot.turnAbsolute(90, Direction.RIGHT);
         super.runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                robot.turnAbsolute(90, Direction.RIGHT);
-                robot.drive(50, POWER_OPTIMAL, Direction.BACKWARD);
+                if (secondCollection) {
+                    robot.strafeToY(POWER_OPTIMAL);
+                    robot.drive(50, POWER_HIGH, Direction.BACKWARD);
+                }
+                robot.drive(45, POWER_HIGH, Direction.BACKWARD);
             }
         }, new Runnable() {
             @Override
@@ -159,10 +162,10 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
             public void run() {
                 robot.sleep(1000);
                 robot.gripper.setGripperPosition(Grip.OUT);
+                robot.flipper.setFlipperPosition(Flipper.Position.IN);
             }
         });
         robot.intake.setPower(INTAKE);
-        robot.flipper.setFlipperPosition(Flipper.Position.IN);
     }
     boolean secondBlock () {
         return robot.doubleBlock.stop() || robot.lineDetector.stop();
