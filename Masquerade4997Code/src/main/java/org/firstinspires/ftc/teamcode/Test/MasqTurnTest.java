@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
 
+import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -21,5 +22,7 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
+        robot.imu.reset();
+        robot.turnAbsolute(150, Direction.RIGHT);
     }
 }

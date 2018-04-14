@@ -10,6 +10,8 @@ public interface Constants extends org.firstinspires.ftc.teamcode.TeleOp.Constan
     double POWER_LOW = 0.4,
            POWER_OPTIMAL = 0.6,
            POWER_HIGH = 1;
+    double RED_ROTATOR_LIMIT = .22,
+           JEWEL_RED_LIMIT = .93;
     double SLEEPTIME_HIGH = 1000,
            SLEEPTIME_OPTIMAL = 500,
            SLEEPTIME_LOW = 250;

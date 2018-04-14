@@ -13,7 +13,7 @@ import SubSystems4997.SubSystems.Gripper.Grip;
 /**
  * Created by Archish on 3/8/18.
  */
-@Autonomous(name = "RedAutoSingleV2", group = "A")
+@Autonomous(name = "RedFour", group = "A")
 public class RedAutoSingle extends MasqLinearOpMode implements Constants {
     double startTicks = 0, endTicks = 0;
     boolean secondCollection = false;
