@@ -42,7 +42,7 @@ public class RedFront extends MasqLinearOpMode implements Constants {
         robot.vuforia.flash(true);
         robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
-        String vuMark = "Right";
+        String vuMark = readVuMark();
         runJewel();
         robot.vuforia.flash(false);
         robot.driveTrain.setClosedLoop(false);

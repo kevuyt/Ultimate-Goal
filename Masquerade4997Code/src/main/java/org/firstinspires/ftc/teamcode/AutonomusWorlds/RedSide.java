@@ -47,7 +47,7 @@ public class RedSide extends MasqLinearOpMode implements Constants {
         robot.vuforia.flash(true);
         robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
-        String vuMark = "Left";
+        String vuMark = readVuMark();
         runJewel();
         robot.vuforia.flash(false);
         robot.driveTrain.setClosedLoop(false);
@@ -71,7 +71,7 @@ public class RedSide extends MasqLinearOpMode implements Constants {
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         if (MasqUtils.VuMark.isCenter(vuMark)) {
             robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD, 3);
-            scoreRightFirstDump();
+            centerMulti();
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
             robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD, 3); //FINAL
@@ -79,14 +79,14 @@ public class RedSide extends MasqLinearOpMode implements Constants {
         }
         else if (MasqUtils.VuMark.isRight(vuMark)) {
             robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD, 2);
-            scoreLeftFirstDump();
+            rightMulti();
         }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
-            robot.drive(8, POWER_OPTIMAL, Direction.BACKWARD, 2);
-            scoreLeftFirstDump();
+            robot.drive(22, POWER_OPTIMAL, Direction.BACKWARD, 3);
+            centerMulti();
         }
     }
-    public void scoreRightFirstDump() {
+    public void centerMulti() {
         robot.turnAbsolute(90, Direction.RIGHT);
         robot.yWheel.resetEncoder();
         robot.setYTarget(robot.yWheel.getPosition());
@@ -98,11 +98,11 @@ public class RedSide extends MasqLinearOpMode implements Constants {
         }, -90, POWER_LOW, Direction.FORWARD);
         robot.turnAbsolute(80, Direction.RIGHT);
         robot.strafeToY(POWER_OPTIMAL);
-        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(40, POWER_OPTIMAL, Direction.BACKWARD);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.gripper.setGripperPosition(Grip.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.drive(5);
+        robot.drive(5, POWER_LOW);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnAbsolute(90, Direction.RIGHT);
         startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
@@ -129,17 +129,20 @@ public class RedSide extends MasqLinearOpMode implements Constants {
             robot.drive(10, POWER_HIGH, Direction.FORWARD);
             robot.drive(10, POWER_HIGH, Direction.BACKWARD);
             robot.gripper.setGripperPosition(Grip.CLAMP);
+            robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+            robot.turnAbsolute(110, Direction.RIGHT);
+            robot.drive(50, POWER_OPTIMAL, Direction.BACKWARD);
+            robot.gripper.setGripperPosition(Grip.OUT);
+            robot.sleep(250);
+            robot.drive(5, POWER_LOW);
             robot.intake.setPower(OUTAKE);
+            return;
         }
         robot.turnAbsolute(90, Direction.RIGHT);
         super.runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                if (secondCollection) {
-                    robot.strafeToY(POWER_OPTIMAL);
-                    robot.drive(50, POWER_HIGH, Direction.BACKWARD);
-                }
-                robot.drive(45, POWER_HIGH, Direction.BACKWARD);
+                robot.drive(45, POWER_OPTIMAL, Direction.BACKWARD);
             }
         }, new Runnable() {
             @Override
@@ -151,18 +154,18 @@ public class RedSide extends MasqLinearOpMode implements Constants {
         super.runSimultaneously(new Runnable() {
             @Override
             public void run() {
+                robot.gripper.setGripperPosition(Grip.CLAMP);
                 robot.turnRelative(20, Direction.LEFT);
                 MasqUtils.sleep(250);
-                robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-                robot.drive(10, POWER_OPTIMAL, Direction.FORWARD);
+                robot.drive(50, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.gripper.setGripperPosition(Grip.OUT);
+                robot.drive(10, POWER_LOW, Direction.FORWARD);
+                robot.flipper.setFlipperPosition(Flipper.Position.IN);
             }
         }, new Runnable() {
             @Override
             public void run() {
-                robot.sleep(1000);
-                robot.gripper.setGripperPosition(Grip.OUT);
-                robot.flipper.setFlipperPosition(Flipper.Position.IN);
-                robot.sleep(500);
+
             }
         });
         robot.intake.setPower(INTAKE);
@@ -186,7 +189,7 @@ public class RedSide extends MasqLinearOpMode implements Constants {
         robot.turnAbsolute(70, Direction.RIGHT);
         robot.gripper.setGripperPosition(Grip.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
-        robot.drive(5);
+        robot.drive(5, POWER_LOW);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnAbsolute(70, Direction.RIGHT);
         startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
@@ -237,25 +240,25 @@ public class RedSide extends MasqLinearOpMode implements Constants {
             public void run() {
                 MasqUtils.sleep(250);
                 robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-                robot.drive(10, POWER_OPTIMAL, Direction.FORWARD);
+                robot.drive(10, POWER_LOW, Direction.FORWARD);
+                robot.flipper.setFlipperPosition(Flipper.Position.IN);
             }
         }, new Runnable() {
             @Override
             public void run() {
                 robot.sleep(1000);
                 robot.gripper.setGripperPosition(Grip.OUT);
-                robot.flipper.setFlipperPosition(Flipper.Position.IN);
                 robot.sleep(500);
             }
         });
         robot.intake.setPower(INTAKE);
     }
-    public void scoreLeftFirstDump() {
+    public void rightMulti() {
         robot.turnAbsolute(60, Direction.RIGHT);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         robot.gripper.setGripperPosition(Grip.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD, .75);
-        robot.drive(5);
+        robot.drive(5, POWER_LOW);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.intake.motor1.setStallDetection(true);
         robot.intake.setPower(INTAKE);
@@ -308,14 +311,14 @@ public class RedSide extends MasqLinearOpMode implements Constants {
             @Override
             public void run() {
                 robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
-                robot.drive(10, POWER_OPTIMAL, Direction.FORWARD);
+                robot.drive(10, POWER_LOW, Direction.FORWARD);
+                robot.flipper.setFlipperPosition(Flipper.Position.IN);
             }
         }, new Runnable() {
             @Override
             public void run() {
                 robot.sleep(1000);
                 robot.gripper.setGripperPosition(Grip.OUT);
-                robot.flipper.setFlipperPosition(Flipper.Position.IN);
             }
         });
         robot.intake.setPower(INTAKE);
