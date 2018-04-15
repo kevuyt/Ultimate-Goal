@@ -7,7 +7,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 9/7/17.
  */
-@Autonomous(name = "TEST: VUFORIA", group = "Auto")
+@Autonomous(name = "TEST: VUFORIA", group = "T")
 public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {

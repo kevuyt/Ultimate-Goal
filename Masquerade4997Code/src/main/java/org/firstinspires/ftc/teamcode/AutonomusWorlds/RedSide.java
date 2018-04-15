@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Autonomus;
+package org.firstinspires.ftc.teamcode.AutonomusWorlds;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -13,8 +13,8 @@ import SubSystems4997.SubSystems.Gripper.Grip;
 /**
  * Created by Archish on 3/8/18.
  */
-@Autonomous(name = "RedFour", group = "A")
-public class RedAutoSingle extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "RedSide", group = "B")
+public class RedSide extends MasqLinearOpMode implements Constants {
     double startTicks = 0, endTicks = 0;
     boolean secondCollection = false;
     public void runLinearOpMode() throws InterruptedException {
@@ -47,7 +47,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
         robot.vuforia.flash(true);
         robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
-        String vuMark = readVuMark();
+        String vuMark = "Left";
         runJewel();
         robot.vuforia.flash(false);
         robot.driveTrain.setClosedLoop(false);
@@ -130,7 +130,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
             robot.drive(10, POWER_HIGH, Direction.BACKWARD);
             robot.gripper.setGripperPosition(Grip.CLAMP);
             robot.intake.setPower(OUTAKE);
-         }
+        }
         robot.turnAbsolute(90, Direction.RIGHT);
         super.runSimultaneously(new Runnable() {
             @Override

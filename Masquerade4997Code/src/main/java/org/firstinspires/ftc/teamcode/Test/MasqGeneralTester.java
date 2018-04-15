@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.Autonomus.Constants;
+import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 2/7/18.
  */
-@Autonomous(name = "MasqGeneralTester", group = "Autonomus")
+@Autonomous(name = "MasqGeneralTester", group = "T")
 public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

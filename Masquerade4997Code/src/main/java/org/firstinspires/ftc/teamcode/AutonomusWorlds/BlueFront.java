@@ -1,8 +1,6 @@
-package org.firstinspires.ftc.teamcode.Test;
+package org.firstinspires.ftc.teamcode.AutonomusWorlds;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
-import org.firstinspires.ftc.teamcode.Autonomus.Constants;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
@@ -12,12 +10,12 @@ import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper;
 
 /**
- * Created by Archish on 11/9/17.
+ * Created by Archish on 3/25/18.
  */
-@Autonomous(name = "CenterTest", group = "Autonomus")
-public class MasqTurnTest extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "BlueFront", group = "A")
+//TODO Fix right column angle.
+public class BlueFront extends MasqLinearOpMode implements Constants {
     double startTicks, endTicks;
-    boolean secondCollection;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.lineDetector.setMargin(20);
@@ -46,7 +44,7 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         robot.vuforia.flash(true);
         robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
-        String vuMark = "Center";
+        String vuMark = readVuMark();
         runJewel();
         robot.vuforia.flash(false);
         robot.driveTrain.setClosedLoop(false);
@@ -70,13 +68,14 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.drive(20);
         if (MasqUtils.VuMark.isCenter(vuMark)) {
-            heading = 140;
+            heading = 130;
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
-            heading = 160;
+            robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+            heading = 170;
         }
         else if (MasqUtils.VuMark.isRight(vuMark)) {
-            heading = 130;
+            heading = 150;
         }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
             heading = 140;
@@ -99,7 +98,8 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnRelative(180 - heading, Direction.LEFT);
         robot.imu.reset();
-        robot.go(10, 90, Direction.LEFT, 0, Direction.BACKWARD);
+        if (!MasqUtils.VuMark.isLeft(vuMark))
+            robot.go(10, 90, Direction.LEFT, 0, Direction.BACKWARD);
         robot.turnAbsolute(160, Direction.RIGHT);
         robot.intake.setPower(INTAKE);
         robot.intake.motor1.enableStallDetection();
@@ -119,7 +119,6 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
         if (robot.doubleBlock.stop()) {
-            robot.turnAbsolute(180, Direction.RIGHT);
             robot.stop(new StopCondition() {
                 @Override
                 public boolean stop() {
@@ -129,11 +128,23 @@ public class MasqTurnTest extends MasqLinearOpMode implements Constants {
         }
         endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         MasqUtils.sleep(750);
-        robot.turnAbsolute(170, Direction.RIGHT);
+        robot.turnAbsolute(165, Direction.RIGHT);
         robot.gripper.setGripperPosition(Gripper.Grip.CLAMP);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
-        robot.drive(130, POWER_OPTIMAL, Direction.BACKWARD, 4);
+        super.runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                robot.drive(130, POWER_OPTIMAL, Direction.BACKWARD, 4);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                robot.lift.setDistance(30);
+                robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
+            }
+        });
         robot.gripper.setGripperPosition(Gripper.Grip.OUT);
+        robot.sleep(500);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.drive(5);
     }

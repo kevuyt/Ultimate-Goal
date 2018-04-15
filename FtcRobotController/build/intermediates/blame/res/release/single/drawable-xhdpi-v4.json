@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/ic_launcher.png",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/masq.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/masq.png"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/ic_launcher.png",
+        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/drawable-xhdpi/ic_launcher.png"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable-xhdpi-v4/icon_robotcontroller.png",

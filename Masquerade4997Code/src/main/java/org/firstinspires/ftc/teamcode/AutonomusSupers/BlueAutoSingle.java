@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode.AutonomusSupers;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.Autonomus.Constants;
+import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
@@ -13,6 +14,7 @@ import SubSystems4997.SubSystems.Flipper;
  * Created by Archish on 3/8/18.
  */
 @Autonomous(name = "BlueAutoSingle", group = "A")
+@Disabled
 public class BlueAutoSingle extends MasqLinearOpMode implements Constants {
     private double startAngle = 0;
     public void runLinearOpMode() throws InterruptedException {

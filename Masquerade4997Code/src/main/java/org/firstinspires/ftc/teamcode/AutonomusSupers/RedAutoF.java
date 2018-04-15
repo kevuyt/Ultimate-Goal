@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode.AutonomusSupers;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.Autonomus.Constants;
+import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
@@ -13,6 +14,7 @@ import SubSystems4997.SubSystems.Flipper;
  * Created by Archish on 1/27/18.
  */
 @Autonomous(name = "RedAutoF", group = "B")
+@Disabled
 public class RedAutoF extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Autonomus;
+package org.firstinspires.ftc.teamcode.AutonomusWorlds;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -10,15 +10,13 @@ import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper;
 
 /**
- * Created by Archish on 3/25/18.
+ * Created by Archish on 4/14/18.
  */
-@Autonomous(name = "BlueAutoFV2", group = "Autonomus")
-//TODO Fix right column angle.
-public class BlueAutoFV2 extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "RedFront", group = "A")
+public class RedFront extends MasqLinearOpMode implements Constants {
     double startTicks, endTicks;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.lineDetector.setMargin(20);
         robot.vuforia.initVuforia(hardwareMap);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.initializeAutonomous();
@@ -44,7 +42,7 @@ public class BlueAutoFV2 extends MasqLinearOpMode implements Constants {
         robot.vuforia.flash(true);
         robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
-        String vuMark = readVuMark();
+        String vuMark = "Right";
         runJewel();
         robot.vuforia.flash(false);
         robot.driveTrain.setClosedLoop(false);
@@ -63,22 +61,22 @@ public class BlueAutoFV2 extends MasqLinearOpMode implements Constants {
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         robot.sleep(100);
     }
-    public void runVuMark(String vuMark) {
+    public void runVuMark(final String vuMark) {
         int heading = 0;
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
-        robot.drive(20);
+        robot.drive(20, POWER_OPTIMAL, Direction.BACKWARD);
         if (MasqUtils.VuMark.isCenter(vuMark)) {
-            heading = 130;
+            heading = 30;
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
-            robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
-            heading = 170;
+            heading = 10;
         }
         else if (MasqUtils.VuMark.isRight(vuMark)) {
-            heading = 150;
+            robot.go(5, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+            heading = -15;
         }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
-            heading = 140;
+            heading = 30;
         }
         robot.turnAbsolute(heading, Direction.LEFT, 4);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
@@ -96,11 +94,11 @@ public class BlueAutoFV2 extends MasqLinearOpMode implements Constants {
         });
         robot.drive(6, POWER_OPTIMAL, Direction.FORWARD);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
-        robot.turnRelative(180 - heading, Direction.LEFT);
-        robot.imu.reset();
-        if (!MasqUtils.VuMark.isLeft(vuMark))
-            robot.go(10, 90, Direction.LEFT, 0, Direction.BACKWARD);
-        robot.turnAbsolute(160, Direction.RIGHT);
+        if (!MasqUtils.VuMark.isRight(vuMark)) {
+            robot.turnAbsolute(0, Direction.LEFT);
+            robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+        }
+        robot.turnAbsolute(30, Direction.RIGHT);
         robot.intake.setPower(INTAKE);
         robot.intake.motor1.enableStallDetection();
         robot.stop(new StopCondition() {
@@ -128,7 +126,7 @@ public class BlueAutoFV2 extends MasqLinearOpMode implements Constants {
         }
         endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         MasqUtils.sleep(750);
-        robot.turnAbsolute(165, Direction.RIGHT);
+        robot.turnAbsolute(30, Direction.RIGHT);
         robot.gripper.setGripperPosition(Gripper.Grip.CLAMP);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         super.runSimultaneously(new Runnable() {
@@ -139,8 +137,10 @@ public class BlueAutoFV2 extends MasqLinearOpMode implements Constants {
         }, new Runnable() {
             @Override
             public void run() {
-                robot.lift.setDistance(30);
-                robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
+                if (MasqUtils.VuMark.isCenter(vuMark)) {
+                    robot.lift.setDistance(30);
+                    robot.lift.runToPosition(Direction.BACKWARD, POWER_OPTIMAL);
+                }
             }
         });
         robot.gripper.setGripperPosition(Gripper.Grip.OUT);
