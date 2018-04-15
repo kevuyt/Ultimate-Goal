@@ -75,7 +75,7 @@ public class RedSide extends MasqLinearOpMode implements Constants {
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
             robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD, 3); //FINAL
-            scoreRightFirstDump();
+            leftMulti();
         }
         else if (MasqUtils.VuMark.isRight(vuMark)) {
             robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD, 2);
@@ -152,6 +152,89 @@ public class RedSide extends MasqLinearOpMode implements Constants {
             @Override
             public void run() {
                 robot.turnRelative(20, Direction.LEFT);
+                MasqUtils.sleep(250);
+                robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.drive(10, POWER_OPTIMAL, Direction.FORWARD);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                robot.sleep(1000);
+                robot.gripper.setGripperPosition(Grip.OUT);
+                robot.flipper.setFlipperPosition(Flipper.Position.IN);
+                robot.sleep(500);
+            }
+        });
+        robot.intake.setPower(INTAKE);
+    }
+    public void leftMulti() {
+        robot.turnAbsolute(90, Direction.RIGHT);
+        robot.yWheel.resetEncoder();
+        robot.setYTarget(robot.yWheel.getPosition());
+        robot.stop(new StopCondition() {
+            @Override
+            public boolean stop() {
+                return secondBlock();
+            }
+        }, -90, POWER_LOW, Direction.FORWARD);
+        robot.turnAbsolute(80, Direction.RIGHT);
+        robot.strafeToY(POWER_OPTIMAL);
+        robot.gripper.setGripperPosition(Grip.CLAMP);
+        robot.sleep(250);
+        robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+        robot.drive(50, POWER_OPTIMAL, Direction.BACKWARD, 3);
+        robot.turnAbsolute(70, Direction.RIGHT);
+        robot.gripper.setGripperPosition(Grip.OUT);
+        robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(5);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
+        robot.turnAbsolute(70, Direction.RIGHT);
+        startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
+        robot.stop(new StopCondition() {
+            @Override
+            public boolean stop() {
+                return robot.singleBlock.stop();
+            }
+        }, -70, POWER_LOW, Direction.FORWARD);
+        robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turnAbsolute(80, Direction.RIGHT);
+        robot.stop(new StopCondition() {
+            @Override
+            public boolean stop() {
+                return secondBlock();
+            }
+        }, -70, POWER_LOW, Direction.FORWARD);
+        endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
+        MasqUtils.sleep(750);
+        if (secondBlock()) {
+            secondCollection = true;
+            robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+            robot.turnAbsolute(130, Direction.RIGHT);
+            robot.drive(10, POWER_HIGH, Direction.FORWARD);
+            robot.drive(10, POWER_HIGH, Direction.BACKWARD);
+            robot.gripper.setGripperPosition(Grip.CLAMP);
+            robot.intake.setPower(OUTAKE);
+        }
+        robot.turnAbsolute(80, Direction.RIGHT);
+        super.runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                if (secondCollection) {
+                    robot.strafeToY(POWER_OPTIMAL);
+                    robot.drive(50, POWER_HIGH, Direction.BACKWARD);
+                }
+                robot.drive(45, POWER_HIGH, Direction.BACKWARD);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                robot.gripper.setGripperPosition(Grip.CLAMP);
+                robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+            }
+        });
+        super.runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
                 MasqUtils.sleep(250);
                 robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
                 robot.drive(10, POWER_OPTIMAL, Direction.FORWARD);

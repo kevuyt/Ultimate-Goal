@@ -14,13 +14,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        robot.imu.invert();
         while (!opModeIsActive()) {
-            dash.create("Jewel Color Red: ", robot.jewelColorRed.stop());
+            dash.create("IMU ", robot.imu.getAbsoluteHeading());
             dash.update();
         }
         waitForStart();
-        robot.go(5, 90, Direction.RIGHT, 0, Direction.BACKWARD);
-        robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+        robot.turnAbsolute(90, Direction.LEFT);
+        robot.turnAbsolute(0, Direction.BACKWARD);
 
     }
 }
