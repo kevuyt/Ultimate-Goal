@@ -14,7 +14,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.imu.invert();
         while (!opModeIsActive()) {
             dash.create("IMU ", robot.imu.getAbsoluteHeading());
             dash.update();
