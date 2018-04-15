@@ -13,9 +13,9 @@ import SubSystems4997.SubSystems.Gripper;
  * Created by Archish on 3/25/18.
  */
 @Autonomous(name = "BlueAutoFV2", group = "Autonomus")
+//TODO Fix right column angle.
 public class BlueAuto extends MasqLinearOpMode implements Constants {
     double startTicks, endTicks;
-    boolean secondCollection;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         robot.lineDetector.setMargin(20);
@@ -44,7 +44,7 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         robot.vuforia.flash(true);
         robot.sleep(robot.getDelay());
         robot.vuforia.activateVuMark();
-        String vuMark = readVuMark();
+        String vuMark = "Right";
         runJewel();
         robot.vuforia.flash(false);
         robot.driveTrain.setClosedLoop(false);
@@ -67,9 +67,16 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         int heading = 0;
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.drive(20);
-        if (MasqUtils.VuMark.isCenter(vuMark)) {}
-        else if (MasqUtils.VuMark.isLeft(vuMark)) {}
-        else if (MasqUtils.VuMark.isRight(vuMark)) {}
+        if (MasqUtils.VuMark.isCenter(vuMark)) {
+            heading = 130;
+        }
+        else if (MasqUtils.VuMark.isLeft(vuMark)) {
+            heading = 150;
+        }
+        else if (MasqUtils.VuMark.isRight(vuMark)) {
+            robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+            heading = 170;
+        }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
             heading = 140;
         }
@@ -91,8 +98,8 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnRelative(180 - heading, Direction.LEFT);
         robot.imu.reset();
-        if (MasqUtils.VuMark.isUnKnown(vuMark)) robot.go(10, 90, Direction.LEFT, 0, Direction.BACKWARD);
-        else if (MasqUtils.VuMark.isLeft(vuMark)) robot.go(10, 90, Direction.LEFT, 0, Direction.BACKWARD);
+        if (!MasqUtils.VuMark.isRight(vuMark))
+            robot.go(10, 90, Direction.LEFT, 0, Direction.BACKWARD);
         robot.turnAbsolute(160, Direction.RIGHT);
         robot.intake.setPower(INTAKE);
         robot.intake.motor1.enableStallDetection();
@@ -101,7 +108,7 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
             public boolean stop() {
                 return robot.singleBlock.stop();
             }
-        }, POWER_OPTIMAL, Direction.FORWARD);
+        }, POWER_LOW, Direction.FORWARD);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
         robot.stop(new StopCondition() {
             @Override
@@ -121,11 +128,12 @@ public class BlueAuto extends MasqLinearOpMode implements Constants {
         }
         endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         MasqUtils.sleep(750);
-        robot.turnAbsolute(160, Direction.RIGHT);
+        robot.turnAbsolute(165, Direction.RIGHT);
         robot.gripper.setGripperPosition(Gripper.Grip.CLAMP);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
-        robot.drive(130, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.drive(130, POWER_OPTIMAL, Direction.BACKWARD, 4);
         robot.gripper.setGripperPosition(Gripper.Grip.OUT);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
+        robot.drive(5);
     }
 }

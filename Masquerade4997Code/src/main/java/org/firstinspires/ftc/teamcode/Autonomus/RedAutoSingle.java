@@ -162,6 +162,7 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
                 robot.sleep(1000);
                 robot.gripper.setGripperPosition(Grip.OUT);
                 robot.flipper.setFlipperPosition(Flipper.Position.IN);
+                robot.sleep(500);
             }
         });
         robot.intake.setPower(INTAKE);
@@ -246,6 +247,9 @@ public class RedAutoSingle extends MasqLinearOpMode implements Constants {
             robot.drive(20, POWER_OPTIMAL, Direction.BACKWARD);
             robot.drive(75);
         }
+        robot.gripper.setGripperPosition(Grip.OUT);
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
+        robot.sleep(500);
     }
     boolean secondBlock () {
         return robot.doubleBlock.stop();
