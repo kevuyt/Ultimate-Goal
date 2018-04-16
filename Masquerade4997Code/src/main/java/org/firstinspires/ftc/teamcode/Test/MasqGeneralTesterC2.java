@@ -2,19 +2,21 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
-
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.StopCondition;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
+import static org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants.POWER_OPTIMAL;
+
 /**
- * Created by Archish on 2/7/18.
+ * Created by Archish on 4/16/18.
  */
-@Autonomous(name = "MasqGeneralTester", group = "T")
-public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "MasqGeneralTesterC2: Red Line Stop", group = "T")
+public class MasqGeneralTesterC2 extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        robot.blueLineDetector.setActive();
+        robot.redLineDetector.setActive();
         robot.blueLineDetector.setMargin(20);
         robot.redLineDetector.setMargin(20);
         while (!opModeIsActive()) {
@@ -29,10 +31,9 @@ public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
         waitForStart();
         robot.stop(new StopCondition() {
             public boolean stop () {
-                return !robot.blueLineDetector.stop();
+                return !robot.redLineDetector.isRed();
             }
         }, (int) robot.imu.getAbsoluteHeading(), POWER_OPTIMAL, Direction.BACKWARD);
         robot.turnAbsolute(90, Direction.RIGHT);
-
     }
 }
