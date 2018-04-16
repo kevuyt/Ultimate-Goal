@@ -18,8 +18,12 @@ public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
         robot.blueLineDetector.setMargin(20);
         robot.redLineDetector.setMargin(20);
         while (!opModeIsActive()) {
+            dash.create("BLUE_SENSOR_BLUE ", robot.blueLineDetector.getBlue());
+            dash.create("BLUE_SENSOR_RED ", robot.blueLineDetector.getRed());
             dash.create("BLUE DETECTOR ", robot.blueLineDetector.isBlue());
-            dash.create("RED DETECTOR ", robot.redLineDetector.isRed());
+            dash.create("RED_SENSOR_BLUE ", robot.redLineDetector.getBlue());
+            dash.create("RED_SENSOR_RED ", robot.redLineDetector.getRed());
+            dash.create("RED DETECTOR ", robot.redLineDetector.isBlue());
             dash.update();
         }
         waitForStart();
