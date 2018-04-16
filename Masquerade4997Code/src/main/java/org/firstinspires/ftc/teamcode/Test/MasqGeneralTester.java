@@ -23,7 +23,7 @@ public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
             dash.create("BLUE DETECTOR ", robot.blueLineDetector.isBlue());
             dash.create("RED_SENSOR_BLUE ", robot.redLineDetector.getBlue());
             dash.create("RED_SENSOR_RED ", robot.redLineDetector.getRed());
-            dash.create("RED DETECTOR ", robot.redLineDetector.isBlue());
+            dash.create("RED DETECTOR ", robot.redLineDetector.isRed());
             dash.update();
         }
         waitForStart();
