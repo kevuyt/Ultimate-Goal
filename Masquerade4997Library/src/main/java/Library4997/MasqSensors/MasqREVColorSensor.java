@@ -59,7 +59,7 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
     public boolean isBlue () {
         return getBlue() > getRed() + margin;
     }
-    public boolean isRed () {return getRed() > getBlue();}
+    public boolean isRed () {return getRed() > getBlue() + margin;}
     @Override
     public boolean stop() {
         return !(getDistance(DistanceUnit.CM) < 40);

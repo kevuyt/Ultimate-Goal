@@ -48,7 +48,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqEncoder yWheel;
     public MasqServo jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
-    public MasqREVColorSensor singleBlock, doubleBlock;
+    public MasqREVColorSensor singleBlock, doubleBlock, redLineDetector, blueLineDetector;
     HardwareMap hardwareMap;
     private int yTarget;
     private DashBoard dash;
@@ -56,7 +56,8 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
-        lineDetector = new MasqREVColorSensor("lineDetector", hardwareMap);
+        blueLineDetector = new MasqREVColorSensor("blueLineDetector", hardwareMap);
+        redLineDetector = new MasqREVColorSensor("redLineDetector", hardwareMap);
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
         doubleBlock = new MasqREVColorSensor("doubleBlock", hardwareMap);
         singleBlock = new MasqREVColorSensor("singleBlock", hardwareMap);

@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
 
 import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.StopCondition;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -14,13 +15,20 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqGeneralTester extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        robot.blueLineDetector.setMargin(20);
+        robot.redLineDetector.setMargin(20);
         while (!opModeIsActive()) {
-            dash.create("IMU ", robot.imu.getAbsoluteHeading());
+            dash.create("BLUE DETECTOR ", robot.blueLineDetector.isBlue());
+            dash.create("RED DETECTOR ", robot.redLineDetector.isRed());
             dash.update();
         }
         waitForStart();
-        robot.turnAbsolute(90, Direction.LEFT);
-        robot.turnAbsolute(0, Direction.BACKWARD);
+        robot.stop(new StopCondition() {
+            public boolean stop () {
+                return !robot.blueLineDetector.stop();
+            }
+        }, (int) robot.imu.getAbsoluteHeading(), POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turnAbsolute(90, Direction.RIGHT);
 
     }
 }
