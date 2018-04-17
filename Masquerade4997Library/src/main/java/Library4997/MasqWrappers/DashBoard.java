@@ -14,10 +14,10 @@ import SubSystems4997.MasqSubSystem;
  * It supports multiple types of inputs, including MasqHardware objects.
  */
 
-public class DashBoard implements Runnable {
+public class DashBoard {
     private int dashLength;
     private Telemetry telemetry;
-    private boolean close = false;
+    private boolean open;
     public DashBoard(Telemetry telemetry){
         this.telemetry  = telemetry;
         instance = this;
@@ -98,45 +98,26 @@ public class DashBoard implements Runnable {
     public void update() {
         telemetry.update();
     }
-    public void clear(){telemetry.clearAll();}
-    public void run() {
-        boolean close = false;
-        while (!close) {
-            update();
-            close = this.close;
-            MasqUtils.sleep(100);
-            telemetry.clearAll();
-        }
-    }
-    public void close() {
+    public void clear(){
         telemetry.clearAll();
-        close = true;
     }
-    public void startUpdate (){new Thread(this).start();}
-    public void setController(final MasqController masqController1, final MasqController masqController2) {
-        Runnable updateCont1 = new Runnable() {
-            @Override
-            public void run() {
-                masqController1.update();
-            }
-        };
-        Runnable updateCont2 = new Runnable() {
-            @Override
-            public void run() {
-                masqController2.update();
-            }
-        };
-        Runnable update = new Runnable() {
-            @Override
-            public void run() {
-                telemetry.update();
-            }
-        };
-        telemetry.addAction(updateCont1);
-        telemetry.addAction(updateCont2);
-        telemetry.addAction(update);
+    public void close () {
+        open = false;
     }
-
-
-
+    public void open () {
+        open = true;
+    }
+    public void startUpdate (){
+        Runnable main = new Runnable() {
+            @Override
+            public void run() {
+                while (MasqUtils.opModeIsActive() && open) {
+                    update();
+                    MasqUtils.sleep(100);
+                }
+            }
+        };
+        Thread t = new Thread(main);
+        t.start();
+    }
 }
