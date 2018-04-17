@@ -56,8 +56,8 @@ public class BlueSide extends MasqLinearOpMode implements Constants{
     public void runJewel() {
         robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
         robot.sleep(1000);
-        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(ROTATOR_RED_SEEN);
-        else robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
+        if (robot.jewelColorRed.isBlue()) robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
+        else robot.redRotator.setPosition(ROTATOR_RED_SEEN);
         robot.sleep(250);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         robot.sleep(100);
