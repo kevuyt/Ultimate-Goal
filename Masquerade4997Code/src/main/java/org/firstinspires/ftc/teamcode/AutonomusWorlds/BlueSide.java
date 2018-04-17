@@ -14,7 +14,7 @@ import SubSystems4997.SubSystems.Gripper.Grip;
  * Created by Archish on 4/15/18.
  */
 @Autonomous(name = "BlueSide", group = "B")
-public class BlueSide extends MasqLinearOpMode implements Constants{
+public class BlueSide extends MasqLinearOpMode implements Constants {
     double startTicks = 0, endTicks = 0;
     boolean secondCollection = false;
     public void runLinearOpMode() throws InterruptedException {

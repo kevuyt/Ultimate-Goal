@@ -12,18 +12,20 @@ import static org.firstinspires.ftc.teamcode.TeleOp.Constants.JEWEL_RED_OUT;
 /**
  * Created by Archish on 4/16/18.
  */
-@Autonomous(name = "MasqGeneralTesterC5: TeleOp Toggle, Blue Jewel", group = "T")
+@Autonomous(name = "MasqGeneralTesterC5: TeleOp Toggle, Blue Jewel, Continuous t update", group = "T")
 public class MasqGeneralTesterC5 extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        boolean toggle = false;
+        dash.startUpdate();
         int count = 0;
         while (!opModeIsActive()) {
-            if (controller1.a()) toggle = true;
-            if (toggle) {
-                count++;
-                toggle = false;
+            boolean pressed = false, released = false;
+            if (controller1.a()) {
+                released = false;
+                pressed = true;
             }
+            if (!controller1.a()) released = true;
+            if (pressed && released) count++;
             dash.create("Count: ", count);
         }
         waitForStart();
