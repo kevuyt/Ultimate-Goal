@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
 
@@ -12,6 +13,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 2/7/18.
  */
 @Autonomous(name = "MasqGeneralTesterC1: Blue Line Stop", group = "T")
+@Disabled
 public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

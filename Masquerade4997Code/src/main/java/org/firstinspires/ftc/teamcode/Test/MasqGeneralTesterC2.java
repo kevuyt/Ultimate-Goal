@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.StopCondition;
@@ -10,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 4/16/18.
  */
 @Autonomous(name = "MasqGeneralTesterC2: Red Line Stop", group = "T")
+@Disabled
 public class MasqGeneralTesterC2 extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

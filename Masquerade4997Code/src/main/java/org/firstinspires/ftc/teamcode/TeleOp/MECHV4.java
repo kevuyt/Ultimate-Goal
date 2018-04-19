@@ -21,9 +21,8 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
         robot.doubleBlock.setPassive();
         robot.initializeTeleop();
         robot.relicLift.setClosedLoop(false);
-        int count = 0;
         while (!opModeIsActive()) {
-            dash.create("READY TO RUN: ", count);
+            dash.create("READY TO RUN: ", robot.jewelColorRed.getBlue());
             dash.update();
         }
         waitForStart();
@@ -34,8 +33,8 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             if (controller1.rightBumper()) robot.intake.setPower(INTAKE);
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else  robot.intake.setPower(0);
-            if (controller2.leftStickY() < -0.5) position = 1;
-            else if (controller2.leftStickY() > 0.5) position = 0;
+            if (controller2.leftStickY() < -0.5) position = 0;
+            else if (controller2.leftStickY() > 0.5) position = 1;
             else if (controller2.leftStickX() > 0.5) position = 0.5;
             else if (controller2.leftStickX() < -0.5) position = 0.5;
             robot.relicAdjuster.setPosition(position);

@@ -47,8 +47,8 @@ public class MECHV5 extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()) {
             if (controller1.y()) direction = Direction.FORWARD;
             if (controller1.b()) direction = Direction.BACKWARD;
-            if (controller2.leftStickY() < -0.5) position = 1;
-            else if (controller2.leftStickY() > 0.5) position = 0;
+            if (controller2.leftStickY() < -0.5) position = 0;
+            else if (controller2.leftStickY() > 0.5) position = 1;
             else if (controller2.leftStickX() > 0.5) position = 0.5;
             else if (controller2.leftStickX() < -0.5) position = 0.5;
             robot.relicAdjuster.setPosition(position);

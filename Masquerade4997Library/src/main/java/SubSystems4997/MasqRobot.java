@@ -42,7 +42,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqREVColorSensor jewelColorRed;
     public Flipper flipper;
     public Gripper gripper;
-    public MasqServo relicAdjuster, test123;
+    public MasqServo relicAdjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqEncoder yWheel;
     public MasqServo jewelArmRed, relicGripper;
@@ -55,7 +55,6 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
-        test123 = new MasqServo("test123", this.hardwareMap);
         blueLineDetector = new MasqREVColorSensor("blueLineDetector", this.hardwareMap);
         redLineDetector = new MasqREVColorSensor("redLineDetector", this.hardwareMap);
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
@@ -587,6 +586,7 @@ public class MasqRobot implements PID_CONSTANTS {
 
     public void strafeToY (double speed) {
         MasqClock clock = new MasqClock();
+        double clicksRemaining = 0;
         clock.reset();
         if (yTarget < -yWheel.getPosition()) {
             while ((yTarget < -yWheel.getPosition()) && opModeIsActive() && !clock.elapsedTime(.5, MasqClock.Resolution.SECONDS) && opModeIsActive()) {
@@ -623,7 +623,7 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stopRed (MasqColorSensor colorSensor){stopRed(colorSensor, 0.5);}
 
-    public void stop(StopCondition stopCondition, int angle, double speed, Direction direction) {
+    public void stop(StopCondition stopCondition, int angle, double speed, Direction direction, int timeOut) {
         driveTrain.setClosedLoop(true);
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
@@ -657,6 +657,9 @@ public class MasqRobot implements PID_CONSTANTS {
             dash.update();
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS) && stopCondition.stop());
         driveTrain.stopDriving();
+    }
+    public void stop (StopCondition stopCondition, int angle, double speed, Direction direction) {
+        stop(stopCondition, angle, speed, direction, 2);
     }
     public void stop(StopCondition sensor, double speed, Direction Direction) {
         MasqClock loopTimer = new MasqClock();
