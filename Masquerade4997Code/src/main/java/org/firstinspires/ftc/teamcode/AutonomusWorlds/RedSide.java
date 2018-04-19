@@ -19,7 +19,7 @@ public class RedSide extends MasqLinearOpMode implements Constants {
     boolean secondCollection = false;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.lineDetector.setMargin(20);
+        robot.redLineDetector.setMargin(20);
         robot.vuforia.initVuforia(hardwareMap);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.initializeAutonomous();
@@ -37,7 +37,6 @@ public class RedSide extends MasqLinearOpMode implements Constants {
             }
         });
         while (!opModeIsActive()) {
-            dash.create("Double Block: ", robot.lineDetector.stop());
             dash.create("Line Block: ", robot.doubleBlock.stop());
             dash.update();
         }
@@ -331,7 +330,7 @@ public class RedSide extends MasqLinearOpMode implements Constants {
             robot.turnAbsolute(80, Direction.RIGHT);
             robot.gripper.setGripperPosition(Grip.OUT);
             robot.drive(20, POWER_OPTIMAL, Direction.BACKWARD);
-            robot.drive(75);
+            robot.drive(5);
         }
         robot.gripper.setGripperPosition(Grip.OUT);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);

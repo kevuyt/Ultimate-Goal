@@ -16,6 +16,11 @@ public class MECHV5 extends MasqLinearOpMode implements Constants {
     Direction direction = Direction.FORWARD;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        robot.blueLineDetector.setPassive();
+        robot.redLineDetector.setPassive();
+        robot.jewelColorRed.setPassive();
+        robot.singleBlock.setPassive();
+        robot.doubleBlock.setPassive();
         robot.initializeTeleop();
         robot.relicLift.setClosedLoop(false);
         robot.intake.motor1.setStalledAction(new Runnable() {

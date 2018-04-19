@@ -37,7 +37,6 @@ public class RedSideV2 extends MasqLinearOpMode implements Constants {
             }
         });
         while (!opModeIsActive()) {
-            dash.create("Double Block: ", robot.lineDetector.stop());
             dash.create("Line Block: ", robot.doubleBlock.stop());
             dash.update();
         }

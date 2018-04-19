@@ -69,11 +69,11 @@ public class RedFront extends MasqLinearOpMode implements Constants {
             heading = 30;
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
-            heading = 10;
-        }
-        else if (MasqUtils.VuMark.isRight(vuMark)) {
             robot.go(5, 90, Direction.RIGHT, 0, Direction.BACKWARD);
             heading = -15;
+        }
+        else if (MasqUtils.VuMark.isRight(vuMark)) {
+            heading = 10;
         }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
             heading = 30;
@@ -94,7 +94,7 @@ public class RedFront extends MasqLinearOpMode implements Constants {
         });
         robot.drive(6, POWER_OPTIMAL, Direction.FORWARD);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
-        if (!MasqUtils.VuMark.isRight(vuMark)) {
+        if (!MasqUtils.VuMark.isLeft(vuMark)) {
             robot.turnAbsolute(0, Direction.LEFT);
             robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
         }

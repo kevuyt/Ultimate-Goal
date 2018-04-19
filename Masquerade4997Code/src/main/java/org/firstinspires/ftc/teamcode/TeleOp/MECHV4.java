@@ -11,19 +11,22 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECHV4", group = "Autonomus")
 public class MECHV4 extends MasqLinearOpMode implements Constants {
     double currentRelicPower = LIFT_UP, position = 1;
-    boolean disabled = false;
     Direction direction = Direction.FORWARD;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
+        robot.blueLineDetector.setPassive();
+        robot.redLineDetector.setPassive();
+        robot.jewelColorRed.setPassive();
+        robot.singleBlock.setPassive();
+        robot.doubleBlock.setPassive();
         robot.initializeTeleop();
         robot.relicLift.setClosedLoop(false);
         int count = 0;
         while (!opModeIsActive()) {
-            dash.create("Count: ", count);
+            dash.create("READY TO RUN: ", count);
             dash.update();
         }
         waitForStart();
-        double targetPitch = robot.imu.getPitch();
         robot.relicAdjuster.setPosition(0);
         while (opModeIsActive()) {
             if (controller1.y()) direction = Direction.FORWARD;
@@ -47,8 +50,6 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             else robot.relicLift.setPower(0);
             robot.flipper.DriverControl(controller2);
             robot.MECH(controller1, direction, false);
-            dash.create("YWHeel: ", robot.yWheel.getInches());
-            dash.update();
         }
     }
 }

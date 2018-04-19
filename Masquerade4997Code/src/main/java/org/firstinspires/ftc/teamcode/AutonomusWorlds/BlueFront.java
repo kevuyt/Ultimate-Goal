@@ -18,7 +18,6 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
     double startTicks, endTicks;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.lineDetector.setMargin(20);
         robot.vuforia.initVuforia(hardwareMap);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.initializeAutonomous();
@@ -78,7 +77,7 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
             heading = 150;
         }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
-            heading = 140;
+            heading = 130;
         }
         robot.turnAbsolute(heading, Direction.LEFT, 4);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
@@ -128,7 +127,7 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
         }
         endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         MasqUtils.sleep(750);
-        robot.turnAbsolute(165, Direction.RIGHT);
+        robot.turnAbsolute(175, Direction.RIGHT);
         robot.gripper.setGripperPosition(Gripper.Grip.CLAMP);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         super.runSimultaneously(new Runnable() {

@@ -33,7 +33,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
             public boolean stop () {
                 return !robot.blueLineDetector.isBlue();
             }
-        }, (int) robot.imu.getAbsoluteHeading(), POWER_OPTIMAL, Direction.BACKWARD);
+        }, (int) robot.imu.getAbsoluteHeading(), .15, Direction.FORWARD);
         robot.turnAbsolute(90, Direction.RIGHT);
     }
 }

@@ -19,7 +19,7 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
     boolean secondCollection = false;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.lineDetector.setMargin(20);
+        robot.blueLineDetector.setMargin(20);
         robot.vuforia.initVuforia(hardwareMap);
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.initializeAutonomous();
@@ -37,7 +37,6 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
             }
         });
         while (!opModeIsActive()) {
-            dash.create("Double Block: ", robot.lineDetector.stop());
             dash.create("Line Block: ", robot.doubleBlock.stop());
             dash.update();
         }
@@ -56,8 +55,8 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
     public void runJewel() {
         robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
         robot.sleep(1000);
-        if (robot.jewelColorRed.isBlue()) robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
-        else robot.redRotator.setPosition(ROTATOR_RED_SEEN);
+        if (robot.jewelColorRed.isBlue()) robot.redRotator.setPosition(ROTATOR_RED_SEEN);
+        else robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
         robot.sleep(250);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         robot.sleep(100);
@@ -74,12 +73,12 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
             scoreRightFirstDump();
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
-            robot.drive(30, POWER_OPTIMAL, Direction.FORWARD, 3); //FINAL
-            leftMulti();
-        }
-        else if (MasqUtils.VuMark.isRight(vuMark)) {
             robot.drive(10, POWER_OPTIMAL, Direction.FORWARD, 2);
             scoreLeftFirstDump();
+        }
+        else if (MasqUtils.VuMark.isRight(vuMark)) {
+            robot.drive(30, POWER_OPTIMAL, Direction.FORWARD, 3); //FINAL
+            leftMulti();
         }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
             robot.drive(22, POWER_OPTIMAL, Direction.FORWARD, 3);
@@ -96,15 +95,16 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
                 return secondBlock();
             }
         }, -90, POWER_LOW, Direction.FORWARD);
-        robot.turnAbsolute(80, Direction.RIGHT);
-        robot.strafeToY(POWER_OPTIMAL);
-        robot.drive(30, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turnAbsolute(90, Direction.RIGHT);
+        //robot.strafeToY(POWER_OPTIMAL);
+        robot.gripper.setGripperPosition(Grip.CLAMP);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+        robot.drive(40, POWER_OPTIMAL, Direction.BACKWARD, 3);
         robot.gripper.setGripperPosition(Grip.OUT);
         robot.drive(4, POWER_OPTIMAL, Direction.BACKWARD);
         robot.drive(5, POWER_LOW);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
-        robot.turnAbsolute(90, Direction.RIGHT);
+        robot.turnAbsolute(80, Direction.RIGHT);
         startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         robot.stop(new StopCondition() {
             @Override
@@ -137,9 +137,9 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
             public void run() {
                 if (secondCollection) {
                     robot.strafeToY(POWER_OPTIMAL);
-                    robot.drive(50, POWER_HIGH, Direction.BACKWARD);
+                    robot.drive(50, POWER_HIGH, Direction.BACKWARD, 3);
                 }
-                robot.drive(45, POWER_HIGH, Direction.BACKWARD);
+                robot.drive(45, POWER_HIGH, Direction.BACKWARD, 3);
             }
         }, new Runnable() {
             @Override
@@ -221,9 +221,9 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
             public void run() {
                 if (secondCollection) {
                     robot.strafeToY(POWER_OPTIMAL);
-                    robot.drive(50, POWER_HIGH, Direction.BACKWARD);
+                    robot.drive(50, POWER_HIGH, Direction.BACKWARD, 3);
                 }
-                robot.drive(45, POWER_HIGH, Direction.BACKWARD);
+                robot.drive(45, POWER_HIGH, Direction.BACKWARD, 3);
             }
         }, new Runnable() {
             @Override
@@ -293,9 +293,9 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
             @Override
             public void run() {
                 if (secondCollection) {
-                    robot.drive(50, POWER_HIGH, Direction.BACKWARD);
+                    robot.drive(50, POWER_HIGH, Direction.BACKWARD, 3);
                 }
-                robot.drive(45, POWER_HIGH, Direction.BACKWARD);
+                robot.drive(45, POWER_HIGH, Direction.BACKWARD, 3);
             }
         }, new Runnable() {
             @Override
@@ -328,7 +328,7 @@ public class BlueSide extends MasqLinearOpMode implements Constants {
             robot.turnAbsolute(80, Direction.RIGHT);
             robot.gripper.setGripperPosition(Grip.OUT);
             robot.drive(20, POWER_OPTIMAL, Direction.BACKWARD);
-            robot.drive(75);
+            robot.drive(5, 3);
         }
         robot.gripper.setGripperPosition(Grip.OUT);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);

@@ -6,8 +6,6 @@ import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.StopCondition;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
-import static org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants.POWER_OPTIMAL;
-
 /**
  * Created by Archish on 4/16/18.
  */
@@ -33,7 +31,7 @@ public class MasqGeneralTesterC2 extends MasqLinearOpMode {
             public boolean stop () {
                 return !robot.redLineDetector.isRed();
             }
-        }, (int) robot.imu.getAbsoluteHeading(), POWER_OPTIMAL, Direction.BACKWARD);
+        }, (int) robot.imu.getAbsoluteHeading(), .15, Direction.FORWARD);
         robot.turnAbsolute(90, Direction.RIGHT);
     }
 }

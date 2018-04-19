@@ -35,7 +35,6 @@ import SubSystems4997.SubSystems.Gripper;
 public class MasqRobot implements PID_CONSTANTS {
     public MasqRobot () {}
     public MasqTankDrive driveTrain;
-    public MasqREVColorSensor lineDetector;
     public MasqMotorSystem intake;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
@@ -43,7 +42,7 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqREVColorSensor jewelColorRed;
     public Flipper flipper;
     public Gripper gripper;
-    public MasqServo relicAdjuster;
+    public MasqServo relicAdjuster, test123;
     public MasqVoltageSensor voltageSensor;
     public MasqEncoder yWheel;
     public MasqServo jewelArmRed, relicGripper;
@@ -56,11 +55,12 @@ public class MasqRobot implements PID_CONSTANTS {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
         vuforia = new MasqVuforiaBeta();
-        blueLineDetector = new MasqREVColorSensor("blueLineDetector", hardwareMap);
-        redLineDetector = new MasqREVColorSensor("redLineDetector", hardwareMap);
+        test123 = new MasqServo("test123", this.hardwareMap);
+        blueLineDetector = new MasqREVColorSensor("blueLineDetector", this.hardwareMap);
+        redLineDetector = new MasqREVColorSensor("redLineDetector", this.hardwareMap);
         intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
-        doubleBlock = new MasqREVColorSensor("doubleBlock", hardwareMap);
-        singleBlock = new MasqREVColorSensor("singleBlock", hardwareMap);
+        doubleBlock = new MasqREVColorSensor("doubleBlock", this.hardwareMap);
+        singleBlock = new MasqREVColorSensor("singleBlock", this.hardwareMap);
         voltageSensor = new MasqVoltageSensor(this.hardwareMap);
         flipper = new Flipper(this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
