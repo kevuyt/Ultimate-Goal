@@ -797,10 +797,10 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.leftDrive.motor2.setPower(leftBack  * direction.value);
         driveTrain.rightDrive.motor1.setPower(rightFront  * direction.value);
         driveTrain.rightDrive.motor2.setPower(rightBack  * direction.value);
-        dash.create("FRONT LEFT: ", leftFront);
-        dash.create("FRONT RIGHT: ", rightFront);
-        dash.create("BACK RIGHT: ", rightBack);
-        dash.create("BACK LEFT: ", leftBack);
+        dash.create("FRONT LEFT: ", driveTrain.leftDrive.motor1.getVelocity());
+        dash.create("FRONT RIGHT: ", driveTrain.rightDrive.motor1.getVelocity());
+        dash.create("BACK RIGHT: ", driveTrain.rightDrive.motor2.getVelocity());
+        dash.create("BACK LEFT: ", driveTrain.leftDrive.motor2.getVelocity());
         dash.update();
     }
     public void TANK(MasqController c){

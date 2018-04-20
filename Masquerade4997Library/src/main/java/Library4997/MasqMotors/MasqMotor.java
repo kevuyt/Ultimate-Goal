@@ -206,7 +206,7 @@ public class MasqMotor implements PID_CONSTANTS, MasqHardware {
         }
     }
     private boolean getStalled() {
-       return Math.abs(getVelocity()) < 50;
+       return Math.abs(getVelocity()) < 10;
     }
     public String getName() {
         return nameMotor;
