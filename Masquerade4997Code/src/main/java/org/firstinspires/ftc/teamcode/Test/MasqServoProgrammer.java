@@ -15,7 +15,7 @@ import SubSystems4997.SubSystems.Gripper;
 public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
     double rightFlipper = Flipper.Position.IN.pos[0], leftFlipper = Flipper.Position.IN.pos[1],
             bottomGripper = Gripper.Grip.CLAMP.grip[0], topGripper = Gripper.Grip.CLAMP.grip[1],
-            relicGrabber, relicWrist,
+            relicGrabber = CLAW_CLOSED, relicWrist = 0,
            jewelRed, redRotator;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

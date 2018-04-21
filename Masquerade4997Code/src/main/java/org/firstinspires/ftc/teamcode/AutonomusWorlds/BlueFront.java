@@ -67,16 +67,18 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.drive(20);
         if (MasqUtils.VuMark.isCenter(vuMark)) {
+            robot.go(20, 90, Direction.LEFT, 0, Direction.BACKWARD);
             heading = 130;
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
-            robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
-            heading = 170;
-        }
-        else if (MasqUtils.VuMark.isRight(vuMark)) {
             heading = 150;
         }
+        else if (MasqUtils.VuMark.isRight(vuMark)) {
+            robot.go(40, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+            heading = 170;
+        }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
+            robot.go(20, 90, Direction.LEFT, 0, Direction.BACKWARD);
             heading = 130;
         }
         robot.turnAbsolute(heading, Direction.LEFT, 4);
@@ -84,7 +86,7 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
         super.runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.drive(8, POWER_OPTIMAL, Direction.BACKWARD);
             }
         }, new Runnable() {
             @Override
@@ -93,12 +95,12 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
                 robot.gripper.setGripperPosition(Gripper.Grip.OUT);
             }
         });
-        robot.drive(6, POWER_OPTIMAL, Direction.FORWARD);
+        robot.drive(8, POWER_OPTIMAL, Direction.FORWARD);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
         robot.turnRelative(180 - heading, Direction.LEFT);
         robot.imu.reset();
-        if (!MasqUtils.VuMark.isLeft(vuMark))
-            robot.go(10, 90, Direction.LEFT, 0, Direction.BACKWARD);
+        if (MasqUtils.VuMark.isLeft(vuMark)) robot.go(40, 90, Direction.LEFT, 0, Direction.BACKWARD);
+        else if (MasqUtils.VuMark.isCenter(vuMark)) robot.go(20, 90, Direction.LEFT, 0, Direction.BACKWARD);
         robot.turnAbsolute(160, Direction.RIGHT);
         robot.intake.setPower(INTAKE);
         robot.intake.motor1.enableStallDetection();
@@ -117,14 +119,6 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
         }, POWER_LOW, Direction.FORWARD);
         startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
-        if (robot.doubleBlock.stop()) {
-            robot.stop(new StopCondition() {
-                @Override
-                public boolean stop() {
-                    return robot.doubleBlock.stop();
-                }
-            }, POWER_LOW, Direction.FORWARD);
-        }
         endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         MasqUtils.sleep(750);
         robot.turnAbsolute(175, Direction.RIGHT);

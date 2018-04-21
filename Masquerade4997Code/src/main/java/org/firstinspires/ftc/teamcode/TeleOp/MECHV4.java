@@ -38,7 +38,7 @@ public class MECHV4 extends MasqLinearOpMode implements Constants {
             else if (controller1.rightTriggerPressed()) robot.intake.setPower(OUTAKE);
             else  robot.intake.setPower(0);
             if (controller2.leftStickY() < -0.5) position = 0;
-            else if (controller2.leftStickY() > 0.5) position = 1;
+            else if (controller2.leftStickY() > 0.5) position = .98;
             else if (controller2.leftStickX() > 0.5) position = 0.5;
             else if (controller2.leftStickX() < -0.5) position = 0.5;
             robot.relicAdjuster.setPosition(position);

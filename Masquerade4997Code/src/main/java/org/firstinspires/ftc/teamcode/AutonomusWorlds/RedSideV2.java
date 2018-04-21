@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.AutonomusWorlds;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
@@ -14,6 +15,7 @@ import SubSystems4997.SubSystems.Gripper.Grip;
  * Created by Archish on 3/8/18.
  */
 @Autonomous(name = "RedSideV2", group = "B")
+@Disabled
 public class RedSideV2 extends MasqLinearOpMode implements Constants {
     double startTicks = 0, endTicks = 0;
     boolean secondCollection = false;

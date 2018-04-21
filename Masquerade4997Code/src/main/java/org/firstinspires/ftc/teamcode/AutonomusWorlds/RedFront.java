@@ -55,8 +55,8 @@ public class RedFront extends MasqLinearOpMode implements Constants {
     public void runJewel() {
         robot.jewelArmRed.setPosition(JEWEL_RED_OUT);
         robot.sleep(1000);
-        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
-        else robot.redRotator.setPosition(ROTATOR_RED_SEEN);
+        if (robot.jewelColorRed.isRed()) robot.redRotator.setPosition(ROTATOR_RED_SEEN);
+        else robot.redRotator.setPosition(ROTATOR_RED_NOT_SEEN);
         robot.sleep(250);
         robot.jewelArmRed.setPosition(JEWEL_RED_IN);
         robot.sleep(100);
@@ -66,24 +66,26 @@ public class RedFront extends MasqLinearOpMode implements Constants {
         robot.redRotator.setPosition(ROTATOR_RED_CENTER);
         robot.drive(20, POWER_OPTIMAL, Direction.BACKWARD);
         if (MasqUtils.VuMark.isCenter(vuMark)) {
+            robot.go(20, 90, Direction.RIGHT, 0, Direction.BACKWARD);
             heading = 30;
         }
         else if (MasqUtils.VuMark.isLeft(vuMark)) {
-            robot.go(5, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+            robot.go(40, 90, Direction.RIGHT, 0, Direction.BACKWARD);
             heading = -15;
         }
         else if (MasqUtils.VuMark.isRight(vuMark)) {
             heading = 10;
         }
         else if (MasqUtils.VuMark.isUnKnown(vuMark)) {
+            robot.go(20, 90, Direction.RIGHT, 0, Direction.BACKWARD);
             heading = 30;
         }
-        robot.turnAbsolute(heading, Direction.LEFT, 4);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
+        robot.turnAbsolute(heading, Direction.LEFT);
         super.runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
+                robot.drive(8, POWER_OPTIMAL, Direction.BACKWARD);
             }
         }, new Runnable() {
             @Override
@@ -92,13 +94,18 @@ public class RedFront extends MasqLinearOpMode implements Constants {
                 robot.gripper.setGripperPosition(Gripper.Grip.OUT);
             }
         });
-        robot.drive(6, POWER_OPTIMAL, Direction.FORWARD);
+        robot.drive(8, POWER_OPTIMAL, Direction.FORWARD);
         robot.flipper.setFlipperPosition(Flipper.Position.IN);
-        if (!MasqUtils.VuMark.isLeft(vuMark)) {
+        if (MasqUtils.VuMark.isRight(vuMark)) {
             robot.turnAbsolute(0, Direction.LEFT);
-            robot.go(10, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+            robot.go(40, 90, Direction.RIGHT, 0, Direction.BACKWARD);
         }
-        robot.turnAbsolute(30, Direction.RIGHT);
+        if (MasqUtils.VuMark.isCenter(vuMark)) {
+            robot.turnAbsolute(0, Direction.LEFT);
+            robot.go(20, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+        }
+        robot.flipper.setFlipperPosition(Flipper.Position.IN);
+        robot.turnAbsolute(10, Direction.RIGHT);
         robot.intake.setPower(INTAKE);
         robot.intake.motor1.enableStallDetection();
         robot.stop(new StopCondition() {
@@ -108,6 +115,7 @@ public class RedFront extends MasqLinearOpMode implements Constants {
             }
         }, POWER_LOW, Direction.FORWARD);
         robot.drive(10, POWER_OPTIMAL, Direction.BACKWARD);
+        robot.turnAbsolute(0, Direction.LEFT);
         robot.stop(new StopCondition() {
             @Override
             public boolean stop() {
@@ -116,17 +124,9 @@ public class RedFront extends MasqLinearOpMode implements Constants {
         }, POWER_LOW, Direction.FORWARD);
         startTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         robot.drive(6, POWER_OPTIMAL, Direction.BACKWARD);
-        if (robot.doubleBlock.stop()) {
-            robot.stop(new StopCondition() {
-                @Override
-                public boolean stop() {
-                    return robot.doubleBlock.stop();
-                }
-            }, POWER_LOW, Direction.FORWARD);
-        }
         endTicks = Math.abs(robot.driveTrain.getCurrentPosition());
         MasqUtils.sleep(750);
-        robot.turnAbsolute(30, Direction.RIGHT);
+        robot.turnAbsolute(20, Direction.RIGHT);
         robot.gripper.setGripperPosition(Gripper.Grip.CLAMP);
         robot.flipper.setFlipperPosition(Flipper.Position.OUT);
         super.runSimultaneously(new Runnable() {

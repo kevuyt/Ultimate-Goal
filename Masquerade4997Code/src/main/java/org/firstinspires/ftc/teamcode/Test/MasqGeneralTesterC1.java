@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
 
+import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -39,18 +40,6 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.intake.motor1.enableStallDetection();
-        robot.intake.setPower(INTAKE);
-        robot.sleep(10000);
-        int i = 0;
-        while (i < 20) {
-            robot.intake.motor1.setStallDetection(false);
-            robot.intake.setPower(0);
-            i++;
-        }
-        robot.sleep(10000);
-        robot.intake.motor1.setStallDetection(true);
-        robot.intake.setPower(INTAKE);
-        robot.sleep(10000);
+        robot.go(5, 90, Direction.RIGHT, 0, Direction.BACKWARD);
     }
 }
