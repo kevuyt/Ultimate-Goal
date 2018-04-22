@@ -101,7 +101,7 @@ public class BlueFront extends MasqLinearOpMode implements Constants {
         robot.imu.reset();
         if (MasqUtils.VuMark.isLeft(vuMark)) robot.go(40, 90, Direction.LEFT, 0, Direction.BACKWARD);
         else if (MasqUtils.VuMark.isCenter(vuMark)) robot.go(20, 90, Direction.LEFT, 0, Direction.BACKWARD);
-        robot.turnAbsolute(160, Direction.RIGHT);
+        robot.turnAbsolute(175, Direction.RIGHT);
         robot.intake.setPower(INTAKE);
         robot.intake.motor1.enableStallDetection();
         robot.stop(new StopCondition() {
