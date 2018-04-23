@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 
 public class MasqMRColorSensor implements MasqSensor, MasqHardware {
     private ColorSensor colorSensor;

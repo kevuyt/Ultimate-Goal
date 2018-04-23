@@ -21,13 +21,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 import Library4997.MasqUtilities.MasqUtils;
 
 /**
  * Created by Archish on 9/7/17.
  */
-public class MasqVuforia implements MasqSensor, MasqHardware {
+public class MasqVuforia implements MasqHardware {
     private VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(id.cameraMonitorViewId);
     private VuforiaLocalizer vuforia;
     private VuforiaTrackables vuforiaTrackables;
@@ -103,7 +102,6 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
         allTrackables.addAll(vuforiaTrackables);
         numTargets = 1;
     }
-    public MasqVuforia(){}
     public void init(){
         locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
         locationTwo = createMatrix(x2, y2, z2, u2, v2, w2);
@@ -187,11 +185,6 @@ public class MasqVuforia implements MasqSensor, MasqHardware {
     }
     private boolean isSeen(String track){return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();}
 
-    @Override
-    public boolean stop() {
-        if (getVuMark() == "UNKNOWN") return true;
-        else return false;
-    }
     @Override
     public String getName() {return "VUFORIA";}
     public String[] getDash() {

@@ -4,14 +4,13 @@ import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 
 
 /**
  * Created by Archish on 2/28/17.
  */
 
-public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
+public class MasqMatiboxUltraSensor implements MasqHardware {
     private AnalogInput ds;
     private String nameDS;
     private int scale = 225;
@@ -31,10 +30,5 @@ public class MasqMatiboxUltraSensor implements MasqHardware, MasqSensor {
             return new String[]{
                     "Distance " + Double.toString(getDistance())
             };
-    }
-
-    @Override
-    public boolean stop() {
-        return getDistance() > stopThresh;
     }
 }

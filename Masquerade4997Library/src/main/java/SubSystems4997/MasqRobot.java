@@ -6,10 +6,10 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqEncoder;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
-import Library4997.MasqMotors.MasqTankDrive;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
@@ -19,9 +19,7 @@ import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqUtilities.PID_CONSTANTS;
 import Library4997.MasqUtilities.StopCondition;
-import Library4997.MasqUtilities.Strafe;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import SubSystems4997.SubSystems.Flipper;
@@ -32,9 +30,8 @@ import SubSystems4997.SubSystems.Gripper;
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
-public class MasqRobot implements PID_CONSTANTS {
-    public MasqRobot () {}
-    public MasqTankDrive driveTrain;
+public class MasqRobot {
+    public MasqMechanumDriveTrain driveTrain;
     public MasqMotorSystem intake;
     public MasqMotor lift, relicLift;
     public MasqAdafruitIMU imu;
@@ -49,7 +46,6 @@ public class MasqRobot implements PID_CONSTANTS {
     public MasqVuforiaBeta vuforia;
     public MasqREVColorSensor singleBlock, doubleBlock, redLineDetector, blueLineDetector;
     HardwareMap hardwareMap;
-    private int yTarget;
     private DashBoard dash;
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
@@ -64,7 +60,7 @@ public class MasqRobot implements PID_CONSTANTS {
         flipper = new Flipper(this.hardwareMap);
         redRotator = new MasqServo("redRotator", this.hardwareMap);
         lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
-        driveTrain = new MasqTankDrive(this.hardwareMap);
+        driveTrain = new MasqMechanumDriveTrain(this.hardwareMap);
         relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
         imu = new MasqAdafruitIMU("imuHubOne", this.hardwareMap);
         jewelArmRed = new MasqServo("jewelArmRed", this.hardwareMap);
@@ -503,24 +499,6 @@ public class MasqRobot implements PID_CONSTANTS {
     }
     public void stopBlue (MasqColorSensor colorSensor){stopBlue(colorSensor, 0.5);}
 
-    public void strafeToY (double speed) {
-        MasqClock clock = new MasqClock();
-        double clicksRemaining = 0;
-        clock.reset();
-        if (yTarget < -yWheel.getPosition()) {
-            while ((yTarget < -yWheel.getPosition()) && opModeIsActive() && !clock.elapsedTime(1, MasqClock.Resolution.SECONDS) && opModeIsActive()) {
-                driveTrain.setPowerAtAngle(-90, speed, 0);
-            }
-            driveTrain.stopDriving();
-        }
-        if (yTarget > -yWheel.getPosition()) {
-            while ((yTarget > -yWheel.getPosition()) && opModeIsActive() && !clock.elapsedTime(1, MasqClock.Resolution.SECONDS)) {
-                driveTrain.setPowerAtAngle(90, speed, 0);
-            }
-            driveTrain.stopDriving();
-        }
-    }
-
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = imu.getAbsoluteHeading();
@@ -622,33 +600,6 @@ public class MasqRobot implements PID_CONSTANTS {
         stop(sensor, 0.5);
     }
 
-    public void strafe(int distance, Strafe direction, double speed, double timeOut, double sleepTime) {
-        driveTrain.resetEncoders();
-        double targetClicks = (distance * MasqUtils.CLICKS_PER_INCH);
-        double power = speed;
-        MasqClock timeoutTimer = new MasqClock();
-        do {
-            driveTrain.leftDrive.motor1.setPower(power * direction.value[0]);
-            driveTrain.leftDrive.motor2.setPower(power * direction.value[3]);
-            driveTrain.rightDrive.motor1.setPower(power * direction.value[1]);
-            driveTrain.rightDrive.motor2.setPower(power * direction.value[2]);
-            dash.create("Position: ", yWheel.getPosition());
-            dash.create("TARGET CLICKS: " + targetClicks);
-            dash.create("POWER: ", power);
-            dash.update();
-        } while (opModeIsActive()  && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
-        sleep(sleepTime);
-    }
-    public void strafe(int distance, Strafe direction, double speed, double timeOut) {
-        strafe(distance, direction, speed, timeOut, MasqUtils.DEFAULT_SLEEP_TIME);
-    }
-    public void strafe(int distance, Strafe direction, double speed) {
-        strafe(distance, direction, speed, 3);
-    }
-    public void strafe(int distance, Strafe direction) {
-        strafe(distance, direction, 0.7);
-    }
-
     public void NFS(MasqController c) {
         float move = c.leftStickY();
         float turn = c.rightStickX();
@@ -735,10 +686,6 @@ public class MasqRobot implements PID_CONSTANTS {
         driveTrain.rightDrive.setPower(right - (rightError * MasqUtils.KP.MOTOR_TELEOP));
         driveTrain.leftDrive.setPower(left - (leftError *  MasqUtils.KP.MOTOR_TELEOP));
         voltageSensor.update();
-    }
-
-    public void setYTarget(double yTarget) {
-        this.yTarget = (int) yTarget;
     }
 
     public double getVoltage() {return voltageSensor.getVoltage();}

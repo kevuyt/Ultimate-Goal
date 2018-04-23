@@ -7,10 +7,9 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 
 
-public class MasqRangeSensor implements MasqHardware, MasqSensor {
+public class MasqRangeSensor implements MasqHardware {
 
     byte[] range1Cache;
 
@@ -46,9 +45,5 @@ public class MasqRangeSensor implements MasqHardware, MasqSensor {
         return new String[]{
                 "Raw Ultrasonic" + Double.toString(Ultrasonic())
         };
-    }
-
-    public boolean stop() {
-        return Ultrasonic() > stopThresh;
     }
 }

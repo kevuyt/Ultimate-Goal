@@ -9,13 +9,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 
 /**
  * Created by Archish on 10/29/17.
  */
 
-public class MasqREVColorSensor implements MasqHardware, MasqSensor {
+public class MasqREVColorSensor implements MasqHardware {
     private ColorSensor colorSensor;
     private DistanceSensor distanceSensor;
     private int margin = 0;
@@ -60,10 +59,6 @@ public class MasqREVColorSensor implements MasqHardware, MasqSensor {
         return getBlue() > getRed() + margin;
     }
     public boolean isRed () {return getRed() > getBlue() + margin;}
-    @Override
-    public boolean stop() {
-        return !(getDistance(DistanceUnit.CM) < 40);
-    }
 
     public void setMargin(int margin) {this.margin = margin;}
 

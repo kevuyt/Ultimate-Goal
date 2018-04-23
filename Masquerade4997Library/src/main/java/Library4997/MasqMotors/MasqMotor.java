@@ -9,7 +9,6 @@ import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqUtilities.PID_CONSTANTS;
 
 /**
  * This is a custom motor that includes stall detection and telemetry

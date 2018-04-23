@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 
 
 /**
@@ -13,7 +12,7 @@ import Library4997.MasqUtilities.MasqSensor;
  * To wire this you need a 1.5k ohm resistor that wires from the power to signal wires.
  */
 
-public class MasqLimitSwitch implements MasqHardware, MasqSensor {
+public class MasqLimitSwitch implements MasqHardware {
 
     private final DigitalChannel limitSwitch;
     private final String name;
@@ -66,8 +65,5 @@ public class MasqLimitSwitch implements MasqHardware, MasqSensor {
             "Pressed and Released: " + Boolean.toString(pr()),
             "Released: " + Boolean.toString(isReleased())
         };
-    }
-    public boolean stop() {
-        return !getState();
     }
 }

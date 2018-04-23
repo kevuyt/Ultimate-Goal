@@ -3,7 +3,6 @@ package Library4997.MasqWrappers;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import Library4997.MasqUtilities.Direction;
-import Library4997.MasqUtilities.MasqAnnotations.MasqLinearOpModeClass;
 import Library4997.MasqUtilities.MasqUtils;
 import SubSystems4997.MasqRobot;
 
@@ -11,7 +10,6 @@ import SubSystems4997.MasqRobot;
 /**
  * Custom Linear opMode
  */
-@MasqLinearOpModeClass
 public abstract class MasqLinearOpMode extends LinearOpMode {
     protected DashBoard dash;
     public MasqRobot robot;

@@ -10,15 +10,13 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqWrappers.DashBoard;
 
 /**
  * Created by Archish on 11/7/17.
  */
 
-public class MasqVuforiaBeta implements MasqSensor, MasqHardware {
+public class MasqVuforiaBeta implements MasqHardware {
     private VuforiaLocalizer vuforia;
     private VuforiaTrackables trackables;
     private VuforiaTrackable relicTemplate;
@@ -45,16 +43,6 @@ public class MasqVuforiaBeta implements MasqSensor, MasqHardware {
 
     public void flash(boolean on) {
         CameraDevice.getInstance().setFlashTorchMode(on);
-    }
-
-
-    @Override
-    public boolean stop() {
-        DashBoard.getDash().create(getVuMark());
-        System.out.println(getVuMark());
-        DashBoard.getDash().update();
-        if (getVuMark() == "LEFT" || getVuMark() == "RIGHT" || getVuMark() == "CENTER") return false;
-        else return true;
     }
 
     @Override

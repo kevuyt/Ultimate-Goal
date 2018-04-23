@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 import Library4997.MasqUtilities.MasqUtils;
 
 
@@ -12,7 +11,7 @@ import Library4997.MasqUtilities.MasqUtils;
  * Created by Archish on 10/28/16.
  */
 
-public class MasqODS implements MasqSensor, MasqHardware {
+public class MasqODS implements MasqHardware {
     private OpticalDistanceSensor ods;
     private String nameODSSensor;
 
@@ -48,10 +47,5 @@ public class MasqODS implements MasqSensor, MasqHardware {
                 "is Black:" + Boolean.toString(isBlack()),
                 "IS White:" + Boolean.toString(isWhite())
         };
-    }
-
-    @Override
-    public boolean stop() {
-        return !isWhite();
     }
 }

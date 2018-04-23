@@ -1,25 +1,23 @@
-package Library4997.MasqMotors;
+package Library4997.MasqDriveTrains;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqUtilities.Direction;
+import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqUtilities.PID_CONSTANTS;
 
 /**
- * Created by Archish on 10/28/16.
+ * Created by Archish on 4/23/18.
  */
-public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
+
+public class MasqMechanumDriveTrain implements MasqHardware {
     public MasqMotorSystem leftDrive, rightDrive = null;
-    private double destination = 0;
-    public MasqTankDrive(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
+    public MasqMechanumDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
         leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap);
         rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap);
     }
-    public MasqTankDrive(HardwareMap hardwareMap){
+    public MasqMechanumDriveTrain(HardwareMap hardwareMap){
         leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap);
         rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap);
     }
@@ -59,11 +57,6 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     public void setPowerRight (double power) {
         rightDrive.setPower(power);
     }
-    public void setDistance(int distance){
-        leftDrive.setDistance(distance);
-        rightDrive.setDistance(distance);
-        destination = distance;
-    }
     public void runUsingEncoder() {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
@@ -73,22 +66,6 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
         rightDrive.setClosedLoop(closedLoop);
     }
 
-    public void runToPosition(Direction direction, double speed, double timeOut) {
-        MasqClock timeoutTimer = new MasqClock();
-        resetEncoders();
-        int targetClicks = (int)(destination * MasqUtils.CLICKS_PER_INCH);
-        int clicksRemaining;
-        double inchesRemaining;
-        double power;
-        do {
-            clicksRemaining = (int) (targetClicks - Math.abs(getCurrentPosition()));
-            inchesRemaining = clicksRemaining / MasqUtils.CLICKS_PER_INCH;
-            power = direction.value * speed * inchesRemaining * MasqUtils.KP.DRIVE_ANGULAR;
-            setPower(power, -power);
-        }
-        while (opModeIsActive() && inchesRemaining > 0.5 && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
-        setPower(0);
-    }
     public void runWithoutEncoders() {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
@@ -131,10 +108,13 @@ public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
     public double getAbsolutePositon () {
         return (leftDrive.getAbsolutePosition() + rightDrive.getAbsolutePosition())/2;
     }
+    @Override
     public String getName() {
-        return "DRIVETRAIN";
+        return null;
     }
+
+    @Override
     public String[] getDash() {
-        return new String[]{ "Rate "+ getRate()};
+        return new String[0];
     }
 }

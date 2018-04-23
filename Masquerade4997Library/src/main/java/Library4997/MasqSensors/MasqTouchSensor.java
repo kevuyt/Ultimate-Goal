@@ -3,9 +3,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 import Library4997.MasqUtilities.MasqHardware;
-import Library4997.MasqUtilities.MasqSensor;
 
-public class MasqTouchSensor implements MasqHardware, MasqSensor {
+public class MasqTouchSensor implements MasqHardware {
     TouchSensor touchSensor;
     String nameTouchSensor;
     public MasqTouchSensor(String name, HardwareMap hardwareMap){
