@@ -77,10 +77,10 @@ public class MasqMechanumDriveTrain implements MasqHardware {
     public void setPowerAtAngle(double angle, double speed, double turnPower) {
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
-        double leftFront = (Math.sin(adjustedAngle) * speed * 1.4) - turnPower * .4;
-        double leftBack = (Math.cos(adjustedAngle) * speed * 1.4) - turnPower  * .4;
-        double rightFront = (Math.cos(adjustedAngle) * speed * 1.4) + turnPower * .4;
-        double rightBack = (Math.sin(adjustedAngle) * speed * 1.4) + turnPower * .4;
+        double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower  * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        double rightFront = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        double rightBack = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
         double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
         if (max > 1) {
             leftFront /= max;

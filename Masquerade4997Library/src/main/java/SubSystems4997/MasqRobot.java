@@ -673,6 +673,15 @@ public class MasqRobot {
         dash.create("BACK LEFT: ", driveTrain.leftDrive.motor2.getVelocity());
         dash.update();
     }
+    public void MECH(MasqController c, Direction direction) {
+        MECH(c, direction, false);
+    }
+    public void MECH(MasqController c, boolean disabled) {
+        MECH(c, Direction.FORWARD, disabled);
+    }
+    public void MECH(MasqController c) {
+        MECH(c, Direction.FORWARD, false);
+    }
     public void TANK(MasqController c){
         double left = c.leftStickX();
         double right = c.rightStickY();

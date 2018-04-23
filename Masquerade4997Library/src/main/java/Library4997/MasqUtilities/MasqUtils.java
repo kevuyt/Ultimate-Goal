@@ -19,6 +19,8 @@ public class MasqUtils implements API_KEYS {
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
     public static final double wheelDiameter = 4;
     public static final double gearRatio = 1;
+    public static final double MECH_DRIVE_MULTIPLIER = 1.4;
+    public static final double MECH_ROTATION_MULTIPLIER = 0.4;
     public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
     private static double integral = 0;
     private static double prevError = 0;
