@@ -6,11 +6,13 @@ package Library4997.MasqMotors;
 
 public class MasqEncoder {
     private MasqMotor motor;
-    int PPR = 1440, wheelDiameter = 3, gearRatio = 1;
+    double TPR = 0, wheelDiameter = 3, gearRatio = 1;
     int zeroPos = 0, currentPosition;
-    private double CPR = (PPR / (wheelDiameter * Math.PI)) * gearRatio;
-    public MasqEncoder (MasqMotor motor) {
+    private double CPR = (TPR / (wheelDiameter * Math.PI)) * gearRatio;
+    public MasqEncoder (MasqMotor motor, double ppr) {
         this.motor = motor;
+        this.TPR = ppr;
+        resetEncoder();
     }
     public double getPosition () {
         currentPosition = (int) (motor.getCurrentPosition() - zeroPos);
@@ -34,12 +36,12 @@ public class MasqEncoder {
         return CPR;
     }
 
-    public int getPPR() {
-        return PPR;
+    public double getTPR() {
+        return TPR;
     }
 
-    public void setPPR(int CPR) {
-        this.PPR = CPR;
+    public void setPPR(double PPR) {
+        this.TPR = PPR;
     }
 
     public MasqMotor getMotor() {
@@ -50,15 +52,15 @@ public class MasqEncoder {
         this.motor = motor;
     }
 
-    public int getWheelDiameter() {
+    public double getWheelDiameter() {
         return wheelDiameter;
     }
 
-    public void setWheelDiameter(int wheelDiameter) {
+    public void setWheelDiameter(double wheelDiameter) {
         this.wheelDiameter = wheelDiameter;
     }
 
-    public int getGearRatio() {
+    public double getGearRatio() {
         return gearRatio;
     }
 

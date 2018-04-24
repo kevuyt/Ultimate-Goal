@@ -17,6 +17,7 @@ public class MasqUtils implements API_KEYS {
     private static MasqClock clock = new MasqClock();
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
+    public static final double US_ERT_ENCODER_TICKS_PER_ROTATION = 1440;
     public static final double wheelDiameter = 4;
     public static final double gearRatio = 1;
     public static final double MECH_DRIVE_MULTIPLIER = 1.4;
