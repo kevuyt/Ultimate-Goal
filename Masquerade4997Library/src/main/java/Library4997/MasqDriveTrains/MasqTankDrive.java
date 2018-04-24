@@ -10,7 +10,7 @@ import Library4997.MasqUtilities.MasqUtils;
 /**
  * Created by Archish on 10/28/16.
  */
-public class MasqTankDrive implements PID_CONSTANTS, MasqHardware {
+public class MasqTankDrive implements MasqHardware {
     public MasqMotorSystem leftDrive, rightDrive = null;
     private double destination = 0;
     public MasqTankDrive(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {

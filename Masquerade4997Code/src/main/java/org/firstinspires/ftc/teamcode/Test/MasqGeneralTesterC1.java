@@ -2,9 +2,8 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
+import org.firstinspires.ftc.teamcode.Autonomus.Constants;
 
-import Library4997.MasqUtilities.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -14,22 +13,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
-        robot.intake.motor1.setStalledAction(new Runnable() {
-            @Override
-            public void run() {
-                robot.intake.setPower(OUTAKE);
-            }
-        });
-        robot.intake.motor1.setUnStalledAction(new Runnable() {
-            @Override
-            public void run() {
-                robot.intake.setPower(INTAKE);
-            }
-        });
-        robot.blueLineDetector.setActive();
-        robot.redLineDetector.setActive();
-        robot.blueLineDetector.setMargin(20);
-        robot.redLineDetector.setMargin(20);
         while (!opModeIsActive()) {
             dash.create("BLUE_SENSOR_BLUE ", robot.blueLineDetector.getBlue());
             dash.create("BLUE_SENSOR_RED ", robot.blueLineDetector.getRed());
@@ -40,6 +23,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.go(5, 90, Direction.RIGHT, 0, Direction.BACKWARD);
+        robot.go(5, 3, 0);
+        robot.go(0, 0, 0);
     }
 }

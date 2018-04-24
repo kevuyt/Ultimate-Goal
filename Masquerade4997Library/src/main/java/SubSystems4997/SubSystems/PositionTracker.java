@@ -5,12 +5,13 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqMotors.MasqEncoder;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqUtilities.MasqHardware;
 
 /**
  * Created by Archish on 4/22/18.
  */
 
-public class PositionTracker {
+public class PositionTracker implements MasqHardware {
     public MasqAdafruitIMU imu;
     public MasqEncoder yWheel, xWheel;
     private double xStart = 0, xEnd = 0, ignoreXTicks = 0;
@@ -45,5 +46,19 @@ public class PositionTracker {
         yEnd = getY();
         ignoreXTicks = ignoreXTicks + (xEnd - xStart);
         ignoreYTicks = ignoreYTicks + (yEnd - yStart);
+    }
+
+    @Override
+    public String getName() {
+        return "Position Tracker";
+    }
+
+    @Override
+    public String[] getDash() {
+        return new String[]{
+                "X "+ getX(),
+                "Y " + getY(),
+                "θ " + getRotation()
+        };
     }
 }

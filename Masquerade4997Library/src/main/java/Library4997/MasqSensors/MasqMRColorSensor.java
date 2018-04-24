@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqUtilities.MasqHardware;
 
-public class MasqMRColorSensor implements MasqSensor, MasqHardware {
+public class MasqMRColorSensor implements MasqHardware {
     private ColorSensor colorSensor;
     private String nameColorSensor;
     float[] hsvValues;
@@ -77,10 +77,5 @@ public class MasqMRColorSensor implements MasqSensor, MasqHardware {
                 "Detect Red: " + isRed(),
                 "Detect Blue: " + isBlue()
         };
-    }
-
-    @Override
-    public boolean stop() {
-        return false;
     }
 }

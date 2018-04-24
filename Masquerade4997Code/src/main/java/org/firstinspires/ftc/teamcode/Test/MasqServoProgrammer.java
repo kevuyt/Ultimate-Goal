@@ -2,11 +2,13 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.AutonomusWorlds.Constants;
+import org.firstinspires.ftc.teamcode.Autonomus.Constants;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper;
+
+import static org.firstinspires.ftc.teamcode.TeleOp.Constants.CLAW_CLOSED;
 
 /**
  * Created by Archish on 12/8/17.
@@ -20,7 +22,7 @@ public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(robot.imu);
+            dash.create(robot.positionTracker);
             dash.update();
         }
         waitForStart();

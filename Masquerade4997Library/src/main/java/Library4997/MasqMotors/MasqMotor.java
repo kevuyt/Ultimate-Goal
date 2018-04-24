@@ -13,7 +13,7 @@ import Library4997.MasqUtilities.MasqUtils;
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
-public class MasqMotor implements PID_CONSTANTS, MasqHardware {
+public class MasqMotor implements MasqHardware {
     private DcMotor motor;
     private boolean stallDetection = false;
     private String nameMotor;
