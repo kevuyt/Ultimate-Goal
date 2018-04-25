@@ -22,7 +22,7 @@ import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper;
-import SubSystems4997.SubSystems.PositionTracker;
+import Library4997.MasqSensors.MasqPositionTracker;
 
 
 /**
@@ -38,7 +38,7 @@ public class MasqRobot {
     public Flipper flipper;
     public Gripper gripper;
     public MasqServo relicAdjuster;
-    public PositionTracker positionTracker;
+    public MasqPositionTracker positionTracker;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
@@ -65,7 +65,7 @@ public class MasqRobot {
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
         gripper = flipper.getGripper();
-        positionTracker = new PositionTracker(hardwareMap, relicLift, MasqUtils.US_ERT_ENCODER_TICKS_PER_ROTATION,
+        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqUtils.US_ERT_ENCODER_TICKS_PER_ROTATION,
                 driveTrain.rightDrive.motor2, MasqUtils.NEVERREST_ORBITAL_20_TICKS_PER_ROTATION);
         lift.setClosedLoop(false);
     }
@@ -105,13 +105,11 @@ public class MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setPower(leftPower, rightPower);
-            //serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ", clicksRemaining);
             dash.update();
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
-        //serializer.close();
         driveTrain.stopDriving();
         sleep(sleepTime);
     }
@@ -286,21 +284,21 @@ public class MasqRobot {
 
     public void go(double x, double y, int rotation, double speed) {
         double targetHeading = positionTracker.imu.adjustAngle(rotation);
-        double xTargetClick = x * positionTracker.xWheel.getTPR();
-        double yTargetClicks = y * positionTracker.yWheel.getTPR();
-        double xClicksRemaining, yClicksRemaining;
-        double vectorTarget = Math.hypot(xTargetClick, yTargetClicks), vectorRemaining;
+        double xTarget = x - positionTracker.xWheel.getInches();
+        double yTarget = y - positionTracker.yWheel.getInches();
+        double xError, yError;
+        double vectorTarget = Math.hypot(xTarget, yTarget), vectorRemaining;
         double power;
         double angle;
         int rotationMultiplier = rotation / Math.abs(rotation);
         double timeChange, angularError, angularIntegral = 0, angularDerivative, powerAdjustment, prevAngularError = 0;
         MasqClock loopTimer = new MasqClock();
         do {
-            xClicksRemaining = xTargetClick - Math.abs(positionTracker.xWheel.getPosition());
-            yClicksRemaining = yTargetClicks - Math.abs(positionTracker.yWheel.getPosition());
-            angle = Math.toDegrees(Math.atan2(xClicksRemaining / positionTracker.xWheel.getClicksPerInch(), yClicksRemaining / positionTracker.yWheel.getClicksPerInch()));
-            vectorRemaining = Math.hypot(xClicksRemaining / positionTracker.xWheel.getClicksPerInch(), yClicksRemaining / positionTracker.yWheel.getClicksPerInch());
-            power = (vectorRemaining/vectorTarget) * speed * MasqUtils.KP.GO_ENCODER;
+            xError = xTarget - positionTracker.xWheel.getInches();
+            yError = yTarget - positionTracker.yWheel.getInches();
+            angle = Math.toDegrees(Math.atan2(xError, yError));
+            vectorRemaining = Math.hypot(xError, yError);
+            power = (vectorRemaining / vectorTarget) * speed * MasqUtils.KP.GO_ENCODER;
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
             angularError = positionTracker.imu.adjustAngle(targetHeading - positionTracker.getRotation());

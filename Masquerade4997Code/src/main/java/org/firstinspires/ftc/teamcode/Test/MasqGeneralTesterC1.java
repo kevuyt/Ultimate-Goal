@@ -23,7 +23,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.go(5, 3, 0);
+        robot.go(5, 5, 0);
         robot.go(0, 0, 0);
     }
 }

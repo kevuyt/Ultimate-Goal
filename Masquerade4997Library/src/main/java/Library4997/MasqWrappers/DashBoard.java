@@ -38,11 +38,10 @@ public class DashBoard {
     public void create(final MasqHardware hardware) {
         dashLength = hardware.getDash().length;
         for (int i = 0; i < dashLength; i++) {
-            telemetry.addData(hardware.getName(), hardware.getDash()[i]);
+            create(hardware.getName(), hardware.getDash()[i]);
         }
     }
     public void create(final MasqSubSystem subSystem) {
-        create(subSystem.getName());
         for (MasqHardware hardware : subSystem.getComponents()) {
             create(hardware.getDash());
         }
