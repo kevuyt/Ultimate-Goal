@@ -1,4 +1,7 @@
-package Library4997.MasqMotors;
+package Library4997.MasqSensors;
+
+import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqUtilities.MasqUtils;
 
 /**
  * Created by Archish on 3/14/18.
@@ -8,10 +11,17 @@ public class MasqEncoder {
     private MasqMotor motor;
     double TPR = 0, wheelDiameter = 3, gearRatio = 1;
     int zeroPos = 0, currentPosition;
-    private double CPR = (TPR / (wheelDiameter * Math.PI)) * gearRatio;
-    public MasqEncoder (MasqMotor motor, double ppr) {
+    private double CPI = (TPR / (wheelDiameter * Math.PI)) * gearRatio;
+    public enum Encoder {
+        ANDYMARK_STANDARD(MasqUtils.NEVERREST_ORBITAL_20_TICKS_PER_ROTATION),
+        ANDYMARK_317(1.0),
+        US_DIGITAL(MasqUtils.US_ERT_ENCODER_TICKS_PER_ROTATION);
+        public final double encoder;
+        Encoder (double encoder){this.encoder = encoder;}
+    }
+    public MasqEncoder (MasqMotor motor, Encoder type) {
         this.motor = motor;
-        this.TPR = ppr;
+        this.TPR = type.encoder;
         resetEncoder();
     }
     public double getPosition () {
@@ -20,7 +30,7 @@ public class MasqEncoder {
     }
 
     public double getInches () {
-        return getPosition() / CPR;
+        return getPosition() / CPI;
     }
 
     private double position() {
@@ -33,7 +43,7 @@ public class MasqEncoder {
     }
 
     public double getClicksPerInch() {
-        return CPR;
+        return CPI;
     }
 
     public double getTPR() {
@@ -66,5 +76,9 @@ public class MasqEncoder {
 
     public void setGearRatio(int gearRatio) {
         this.gearRatio = gearRatio;
+    }
+
+    public void setEncoderType (Encoder encoderType) {
+
     }
 }

@@ -11,6 +11,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
+import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
@@ -65,8 +66,10 @@ public class MasqRobot {
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
         gripper = flipper.getGripper();
-        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqUtils.US_ERT_ENCODER_TICKS_PER_ROTATION,
-                driveTrain.rightDrive.motor2, MasqUtils.NEVERREST_ORBITAL_20_TICKS_PER_ROTATION);
+        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqEncoder.Encoder.US_DIGITAL,
+                driveTrain.rightDrive.motor2, MasqEncoder.Encoder.ANDYMARK_STANDARD);
+        positionTracker.xWheel.setWheelDiameter(4);
+        positionTracker.resetSystem();
         lift.setClosedLoop(false);
     }
 
@@ -287,18 +290,18 @@ public class MasqRobot {
         double xTarget = x - positionTracker.xWheel.getInches();
         double yTarget = y - positionTracker.yWheel.getInches();
         double xError, yError;
-        double vectorTarget = Math.hypot(xTarget, yTarget), vectorRemaining;
+        double targetDistance = Math.hypot(xTarget, yTarget), distanceRemaining;
         double power;
         double angle;
-        int rotationMultiplier = rotation / Math.abs(rotation);
+        double rotationMultiplier = rotation / Math.abs(rotation);
         double timeChange, angularError, angularIntegral = 0, angularDerivative, powerAdjustment, prevAngularError = 0;
         MasqClock loopTimer = new MasqClock();
         do {
             xError = xTarget - positionTracker.xWheel.getInches();
             yError = yTarget - positionTracker.yWheel.getInches();
             angle = Math.toDegrees(Math.atan2(xError, yError));
-            vectorRemaining = Math.hypot(xError, yError);
-            power = (vectorRemaining / vectorTarget) * speed * MasqUtils.KP.GO_ENCODER;
+            distanceRemaining = Math.hypot(xError, yError);
+            power = (distanceRemaining / targetDistance) * speed * MasqUtils.KP.GO_ENCODER;
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
             angularError = positionTracker.imu.adjustAngle(targetHeading - positionTracker.getRotation());
@@ -309,7 +312,8 @@ public class MasqRobot {
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             powerAdjustment *= rotationMultiplier;
             driveTrain.setPowerAtAngle(angle, power, powerAdjustment);
-         } while (opModeIsActive() && vectorRemaining > 0.5);
+         } while (opModeIsActive() && distanceRemaining > 0.5);
+        driveTrain.stopDriving();
     }
     public void go(double x, double y, int rotation) {go(x, y, rotation, 0.7);}
 
