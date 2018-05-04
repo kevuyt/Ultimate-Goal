@@ -40,6 +40,7 @@ public class MasqMotor implements MasqHardware {
     private double rpmIntegral = 0;
     private double rpmDerivative = 0;
     private double rpmPreviousError = 0;
+    private int stalledRPMThreshold = 10;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private Runnable stallAction = new Runnable() {
         @Override
@@ -47,7 +48,7 @@ public class MasqMotor implements MasqHardware {
 
         }
     },
-            unStalledAction = new Runnable() {
+    unStalledAction = new Runnable() {
         @Override
         public void run() {
 
@@ -111,7 +112,7 @@ public class MasqMotor implements MasqHardware {
         targetPosition = getCurrentPosition();
     }
     public void setPower (double power) {
-        double motorPower = findPower(power);
+        double motorPower = doRateCorrection(power);
         if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
                     maxLim != null && maxLim.isPressed() && power > 0)
@@ -205,13 +206,13 @@ public class MasqMotor implements MasqHardware {
         }
     }
     private boolean getStalled() {
-       return Math.abs(getVelocity()) < 10;
+       return Math.abs(getVelocity()) < stalledRPMThreshold;
     }
     public String getName() {
         return nameMotor;
     }
     public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
-    private double findPower(double power){
+    private double doRateCorrection(double power){
         if (holdPositionMode) {
             double tChange = (System.nanoTime() - previousTime) / 1e9;
             double error = targetPosition - getCurrentPosition();
@@ -265,11 +266,17 @@ public class MasqMotor implements MasqHardware {
     public void setUnStalledAction(Runnable action) {
         unStalledAction = action;
     }
-    public void disableStallDetection() {
-        stallDetection = false;
-    }
     public void setStallDetection(boolean bool) {stallDetection = bool;}
     private boolean getStallDetection () {return stallDetection;}
+
+    public int getStalledRPMThreshold() {
+        return stalledRPMThreshold;
+    }
+
+    public void setStalledRPMThreshold(int stalledRPMThreshold) {
+        this.stalledRPMThreshold = stalledRPMThreshold;
+    }
+
     public void enableStallDetection() {
         stallDetection = true;
         Runnable mainRunnable = new Runnable() {

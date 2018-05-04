@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 
@@ -13,8 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 
 public class MasqUtils implements API_KEYS {
-    public static MasqLinearOpMode linearOpMode;
-    private static MasqClock clock = new MasqClock();
+    private static MasqLinearOpMode linearOpMode;
     public static final double NEVERREST_ORBITAL_20_RPM = 340;
     public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
     public static final double US_ERT_ENCODER_TICKS_PER_ROTATION = 1440;
@@ -23,8 +21,6 @@ public class MasqUtils implements API_KEYS {
     public static final double MECH_DRIVE_MULTIPLIER = 1.4;
     public static final double MECH_ROTATION_MULTIPLIER = 0.4;
     public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
-    private static double integral = 0;
-    private static double prevError = 0;
     public static final int DEFAULT_SLEEP_TIME = 0;
     public static final double DEFAULT_TIMEOUT = 1;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
@@ -75,6 +71,10 @@ public class MasqUtils implements API_KEYS {
         public static final double DRIVE = +1.0;
         public static final double MOTOR_TELEOP = +1.0;
         public static final double MOTOR_AUTONOMOUS = +1.00;
+    }
+    public double lowPass (double upperThresh, double value, double prev) {
+        if (value < upperThresh) return prev;
+        return value;
     }
     public static class VuMark {
         public static final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}
