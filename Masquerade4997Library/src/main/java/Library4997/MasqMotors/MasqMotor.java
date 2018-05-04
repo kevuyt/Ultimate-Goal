@@ -47,16 +47,18 @@ public class MasqMotor implements MasqHardware {
         public void run() {
 
         }
-    },
-    unStalledAction = new Runnable() {
+    }, unStalledAction = new Runnable() {
         @Override
         public void run() {
 
         }
     };
+
+
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;
+
     public MasqMotor(String name, HardwareMap hardwareMap){
         limitDetection = positionDetection = false;
         this.nameMotor = name;
@@ -69,6 +71,7 @@ public class MasqMotor implements MasqHardware {
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
     }
+
     public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
         maxLim = max; minLim = min;
         limitDetection = true;
@@ -99,18 +102,13 @@ public class MasqMotor implements MasqHardware {
         positionDetection = true;
         return this;
     }
+
     public void runWithoutEncoders () {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
     public void resetEncoder() {
         zeroEncoderPosition = motor.getCurrentPosition();
         currentPosition = 0;
     }
-    public void setLazy() {
-        holdPositionMode = false;
-    }
-    public void setStrong() {
-        holdPositionMode = true;
-        targetPosition = getCurrentPosition();
-    }
+
     public void setPower (double power) {
         double motorPower = doRateCorrection(power);
         if (limitDetection) {
@@ -144,14 +142,40 @@ public class MasqMotor implements MasqHardware {
         currentPower = motorPower;
         motor.setPower(motorPower);
     }
+    public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
+    private double doRateCorrection(double power){
+        if (holdPositionMode) {
+            double tChange = (System.nanoTime() - previousTime) / 1e9;
+            double error = targetPosition - getCurrentPosition();
+            holdItergral += error * tChange;
+            holdDerivitive = (error - holdPreviousError) / tChange;
+            power = (direction * ((error * holdKp) +
+                    (holdItergral * ki) + (holdDerivitive * kd)));
+            holdPreviousError = error;
+        }
+        if (closedLoop) {
+            double error, setRPM, currentRPM, motorPower;
+            double tChange = System.nanoTime() - previousTime;
+            tChange /= 1e9;
+            setRPM = MasqUtils.NEVERREST_ORBITAL_20_RPM * power;
+            currentRPM = getVelocity();
+            error = setRPM - currentRPM;
+            rpmIntegral += error * tChange;
+            rpmDerivative = (error - rpmPreviousError) / tChange;
+            motorPower = (power) + (direction * ((error * kp) +
+                    (rpmIntegral * ki) + (rpmDerivative * kd)));
+            rpmPreviousError = error;
+            return motorPower;
+        }
+        else return power;
+    }
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
         destination = distance * MasqUtils.CLICKS_PER_INCH;
     }
-    private boolean opModeIsActive() {
-        return MasqUtils.opModeIsActive();
-    }
+
+
     public void runToPosition(Direction direction, double speed){
         MasqClock timeoutTimer = new MasqClock();
         resetEncoder();
@@ -177,6 +201,7 @@ public class MasqMotor implements MasqHardware {
     public double getAbsolutePosition () {
         return motor.getCurrentPosition();
     }
+
     public double getPower() {return currentPower;}
     public double getVelocity() {
         double deltaPosition = getCurrentPosition() - prevPos;
@@ -205,61 +230,10 @@ public class MasqMotor implements MasqHardware {
             return previousAcceleration;
         }
     }
+
     private boolean getStalled() {
-       return Math.abs(getVelocity()) < stalledRPMThreshold;
+        return Math.abs(getVelocity()) < stalledRPMThreshold;
     }
-    public String getName() {
-        return nameMotor;
-    }
-    public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
-    private double doRateCorrection(double power){
-        if (holdPositionMode) {
-            double tChange = (System.nanoTime() - previousTime) / 1e9;
-            double error = targetPosition - getCurrentPosition();
-            holdItergral += error * tChange;
-            holdDerivitive = (error - holdPreviousError) / tChange;
-            power = (direction * ((error * holdKp) +
-                    (holdItergral * ki) + (holdDerivitive * kd)));
-            holdPreviousError = error;
-        }
-        if (closedLoop) {
-            double error, setRPM, currentRPM, motorPower;
-            double tChange = System.nanoTime() - previousTime;
-            tChange /= 1e9;
-            setRPM = MasqUtils.NEVERREST_ORBITAL_20_RPM * power;
-            currentRPM = getVelocity();
-            error = setRPM - currentRPM;
-            rpmIntegral += error * tChange;
-            rpmDerivative = (error - rpmPreviousError) / tChange;
-            motorPower = (power) + (direction * ((error * kp) +
-                    (rpmIntegral * ki) + (rpmDerivative * kd)));
-            rpmPreviousError = error;
-            return motorPower;
-        }
-        else return power;
-    }
-
-    public void setEncoderCounts(double encoderCounts) {
-        this.encoderCounts = encoderCounts;
-    }
-
-    public double getKp() {return kp;}
-    public void setKp(double kp) {this.kp = kp;}
-    public double getKi() {return ki;}
-    public void setKi(double ki) {this.ki = ki;}
-    public double getKd() {return kd;}
-    public void setKd(double kd) {this.kd = kd;}
-    public String[] getDash() {
-        return new String[] {
-                "Current Position: " + Double.toString(getCurrentPosition()),
-                "Velocity: " + Double.toString(getVelocity()),
-                "Acceleration: " + Double.toString(getAcceleration())};
-    }
-
-    public synchronized boolean isStalled() {
-        return stalled;
-    }
-
     public void setStalledAction(Runnable action) {
         stallAction = action;
     }
@@ -268,15 +242,15 @@ public class MasqMotor implements MasqHardware {
     }
     public void setStallDetection(boolean bool) {stallDetection = bool;}
     private boolean getStallDetection () {return stallDetection;}
-
+    public synchronized boolean isStalled() {
+        return stalled;
+    }
     public int getStalledRPMThreshold() {
         return stalledRPMThreshold;
     }
-
     public void setStalledRPMThreshold(int stalledRPMThreshold) {
         this.stalledRPMThreshold = stalledRPMThreshold;
     }
-
     public void enableStallDetection() {
         stallDetection = true;
         Runnable mainRunnable = new Runnable() {
@@ -294,6 +268,39 @@ public class MasqMotor implements MasqHardware {
         };
         Thread thread = new Thread(mainRunnable);
         thread.start();
+    }
+
+    public double getKp() {return kp;}
+    public void setKp(double kp) {this.kp = kp;}
+    public double getKi() {return ki;}
+    public void setKi(double ki) {this.ki = ki;}
+    public double getKd() {return kd;}
+    public void setKd(double kd) {this.kd = kd;}
+
+    private boolean opModeIsActive() {
+        return MasqUtils.opModeIsActive();
+    }
+
+    public void setLazy() {
+        holdPositionMode = false;
+    }
+    public void setStrong() {
+        holdPositionMode = true;
+        targetPosition = getCurrentPosition();
+    }
+
+    public void setEncoderCounts(double encoderCounts) {
+        this.encoderCounts = encoderCounts;
+    }
+
+    public String getName() {
+        return nameMotor;
+    }
+    public String[] getDash() {
+        return new String[] {
+                "Current Position: " + Double.toString(getCurrentPosition()),
+                "Velocity: " + Double.toString(getVelocity()),
+                "Acceleration: " + Double.toString(getAcceleration())};
     }
 }
 
