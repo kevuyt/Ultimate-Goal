@@ -94,6 +94,7 @@ public class DashBoard {
     public void setNewLast() {
         telemetry.log().setDisplayOrder(Telemetry.Log.DisplayOrder.OLDEST_FIRST);
     }
+
     public void update() {
         telemetry.update();
     }

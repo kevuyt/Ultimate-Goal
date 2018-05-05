@@ -11,15 +11,24 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "MasqGeneralTesterC1: Stall Detection Stop", group = "T")
 public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
+    String direction = "Straight";
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("BLUE_SENSOR_BLUE ", robot.blueLineDetector.getBlue());
-            dash.create("BLUE_SENSOR_RED ", robot.blueLineDetector.getRed());
-            dash.create("BLUE DETECTOR ", robot.blueLineDetector.isBlue());
-            dash.create("RED_SENSOR_BLUE ", robot.redLineDetector.getBlue());
-            dash.create("RED_SENSOR_RED ", robot.redLineDetector.getRed());
-            dash.create("RED DETECTOR ", robot.redLineDetector.isRed());
+            dash.create("                      ________________    ");
+            dash.create("                     /                \\  ");
+            dash.create("                    /                  \\ ");
+            dash.create("                   /                    \\ ");
+            dash.create("                   \\                    / ");
+            dash.create("                    \\                  / ");
+            dash.create("                     \\                / ");
+            dash.create("                      ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾   ");
+            dash.create("                             \\|/           ");
+            dash.create("                         |__|__|__|      ");
+            if (controller1.y()) direction = "Straight";
+            else if (controller1.x()) direction ="Left";
+            else if (controller1.b()) direction = "Right";
+            dash.create(direction);
             dash.update();
         }
         waitForStart();
