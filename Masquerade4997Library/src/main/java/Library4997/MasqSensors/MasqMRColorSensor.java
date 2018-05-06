@@ -18,14 +18,9 @@ public class MasqMRColorSensor implements MasqHardware {
     }
     public boolean isRed() {
         setPassiveMode();
-        hsvValues = new float[]{0F, 0F, 0F};
-        Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
         return (colorSensor.red() > 1) && (colorSensor.red() < 1);
     }
     public boolean isBlue() {
-        setPassiveMode();
-        hsvValues = new float[]{0F, 0F, 0F};
-        Color.RGBToHSV(colorSensor.red() * 8, colorSensor.green() * 8, colorSensor.blue() * 8, hsvValues);
         return (colorSensor.blue() > 1) && (colorSensor.blue() < 1);
     }
     public boolean isWhite() {
