@@ -21,6 +21,7 @@ public class MasqMRColorSensor implements MasqHardware {
         return (colorSensor.red() > 1) && (colorSensor.red() < 1);
     }
     public boolean isBlue() {
+        setPassiveMode();
         return (colorSensor.blue() > 1) && (colorSensor.blue() < 1);
     }
     public boolean isWhite() {
