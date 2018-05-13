@@ -88,10 +88,10 @@ public class MasqMechanumDriveTrain implements MasqHardware {
             rightFront /= max;
             rightBack /= max;
         }
-        leftDrive.motor1.setPower(leftFront);
-        leftDrive.motor2.setPower(leftBack);
-        rightDrive.motor1.setPower(rightFront);
-        rightDrive.motor2.setPower(rightBack);
+        leftDrive.motor1.setVelocity(leftFront);
+        leftDrive.motor2.setVelocity(leftBack);
+        rightDrive.motor1.setVelocity(rightFront);
+        rightDrive.motor2.setVelocity(rightBack);
     }
     public void stopDriving() {
         setPower(0,0);

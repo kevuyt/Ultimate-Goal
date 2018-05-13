@@ -480,10 +480,10 @@ public class MasqRobot {
             rightBack = 0;
             rightFront = 0;
         }
-        driveTrain.leftDrive.motor1.setPower(leftFront * direction.value);
-        driveTrain.leftDrive.motor2.setPower(leftBack  * direction.value);
-        driveTrain.rightDrive.motor1.setPower(rightFront  * direction.value);
-        driveTrain.rightDrive.motor2.setPower(rightBack  * direction.value);
+        driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value);
+        driveTrain.leftDrive.motor2.setVelocity(leftBack  * direction.value);
+        driveTrain.rightDrive.motor1.setVelocity(rightFront  * direction.value);
+        driveTrain.rightDrive.motor2.setVelocity(rightBack  * direction.value);
         dash.create("FRONT LEFT: ", driveTrain.leftDrive.motor1.getVelocity());
         dash.create("FRONT RIGHT: ", driveTrain.rightDrive.motor1.getVelocity());
         dash.create("BACK RIGHT: ", driveTrain.rightDrive.motor2.getVelocity());

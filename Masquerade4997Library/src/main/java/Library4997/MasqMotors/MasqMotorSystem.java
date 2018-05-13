@@ -88,7 +88,7 @@ public class MasqMotorSystem implements MasqHardware {
         int index = 1;
         for (MasqMotor masqMotor : motors){
             if (index == 2) power -= slowDown;
-            masqMotor.setPower(power);
+            masqMotor.setVelocity(power);
             index++;
         }
     }
