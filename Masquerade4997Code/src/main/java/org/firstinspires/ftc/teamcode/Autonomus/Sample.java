@@ -12,7 +12,7 @@ public class Sample extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(robot.imu);
+            dash.create(robot.positionTracker.imu);
             dash.update();
         }
         waitForStart();
