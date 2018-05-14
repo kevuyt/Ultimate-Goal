@@ -45,13 +45,15 @@ public class MasqMotor implements MasqHardware {
     private double rpmDerivative = 0;
     private double rpmPreviousError = 0;
     private int stalledRPMThreshold = 10;
+    private boolean stateControl;
     private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
     private Runnable stallAction = new Runnable() {
         @Override
         public void run() {
 
         }
-    }, unStalledAction = new Runnable() {
+    },
+            unStalledAction = new Runnable() {
         @Override
         public void run() {
 
@@ -139,7 +141,6 @@ public class MasqMotor implements MasqHardware {
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
-    public double getPower() {return currentPower;}
     public double getCurrentPosition() {
         currentPosition = motor.getCurrentPosition() - zeroEncoderPosition;
         return currentPosition;
@@ -282,6 +283,19 @@ public class MasqMotor implements MasqHardware {
         };
         Thread velocityThread = new Thread(velocityControl);
         velocityThread.start();
+    }
+    public void setControlStateUpdate (boolean velocityControlState) {this.stateControl = velocityControlState; }
+    public void startStateUpdate () {
+        setControlStateUpdate(true);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (opModeIsActive()) {
+                    if (stateControl) getJerk();
+                    MasqUtils.sleep(10);
+                }
+            }
+        }).start();
     }
 
     private boolean getStalled() {

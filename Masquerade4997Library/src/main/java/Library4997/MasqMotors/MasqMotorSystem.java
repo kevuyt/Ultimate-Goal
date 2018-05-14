@@ -82,15 +82,12 @@ public class MasqMotorSystem implements MasqHardware {
         for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
         return this;
     }
-    public void setSlowDown(double slowDown) {this.slowDown = slowDown;}
-    public void setPower (double power) {
+    public void setVelocity(double power) {
         currentPower = power;
-        int index = 1;
-        for (MasqMotor masqMotor : motors){
-            if (index == 2) power -= slowDown;
-            masqMotor.setVelocity(power);
-            index++;
-        }
+        for (MasqMotor masqMotor : motors)masqMotor.setVelocity(power);
+    }
+    public void setAcceleration (double target) {
+        for (MasqMotor masqMotor: motors) masqMotor.setAcceleration(target);
     }
     public MasqMotorSystem setDistance(int distance){
         for (MasqMotor masqMotor: motors)
@@ -117,7 +114,7 @@ public class MasqMotorSystem implements MasqHardware {
             masqMotor.setClosedLoop(closedLoop);
         return this;
     }
-    public double getRate(){
+    public double getVelocity(){
         double i = 0;
         double rate = 0;
         for (MasqMotor masqMotor: motors){
@@ -126,8 +123,17 @@ public class MasqMotorSystem implements MasqHardware {
         }
         return rate/i;
     }
+    public double getAcceleration () {
+        double i = 0;
+        double rate = 0;
+        for (MasqMotor masqMotor: motors){
+            rate += masqMotor.getAcceleration();
+            i++;
+        }
+        return rate/i;
+    }
     public void stopDriving() {
-        setPower(0);
+        setVelocity(0);
     }
     public static int convert(int TICKS) {
         return (int) ((TICKS * 35.1070765836));

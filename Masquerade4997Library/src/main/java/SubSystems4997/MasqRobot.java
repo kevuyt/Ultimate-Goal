@@ -436,15 +436,15 @@ public class MasqRobot {
     public void TANK(MasqController c){
         double left = c.leftStickX();
         double right = c.rightStickY();
-        double leftRate = driveTrain.leftDrive.getRate();
-        double rightRate = driveTrain.rightDrive.getRate();
+        double leftRate = driveTrain.leftDrive.getVelocity();
+        double rightRate = driveTrain.rightDrive.getVelocity();
         double maxRate = Math.max(Math.abs(leftRate/left), Math.abs(rightRate/right));
         leftRate /= maxRate;
         rightRate /= maxRate;
         double leftError =  left - leftRate;
         double rightError = right - rightRate;
-        driveTrain.rightDrive.setPower(right - (rightError * MasqUtils.KP.MOTOR_TELEOP));
-        driveTrain.leftDrive.setPower(left - (leftError *  MasqUtils.KP.MOTOR_TELEOP));
+        driveTrain.rightDrive.setVelocity(right - (rightError * MasqUtils.KP.MOTOR_TELEOP));
+        driveTrain.leftDrive.setVelocity(left - (leftError *  MasqUtils.KP.MOTOR_TELEOP));
         voltageSensor.update();
     }
     public void MECH(MasqController c, Direction direction, boolean disabled) {
