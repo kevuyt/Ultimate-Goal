@@ -39,7 +39,7 @@ public class MasqRobot {
     public Flipper flipper;
     public Gripper gripper;
     public MasqServo relicAdjuster;
-    public MasqPositionTracker positionTracker;
+    public static MasqPositionTracker positionTracker;
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;

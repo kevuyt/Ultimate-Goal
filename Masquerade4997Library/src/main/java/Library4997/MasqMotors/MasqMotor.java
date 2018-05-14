@@ -38,7 +38,9 @@ public class MasqMotor implements MasqHardware {
     private double currentZero;
     private double holdItergral = 0;
     private double holdDerivitive = 0;
+    private double previousJerk, prevAcceleration, previousAccelerationTime;
     private double holdPreviousError = 0;
+    private double previousAccelerationSetTime;
     private double rpmIntegral = 0;
     private double rpmDerivative = 0;
     private double rpmPreviousError = 0;
@@ -111,67 +113,7 @@ public class MasqMotor implements MasqHardware {
         currentPosition = 0;
     }
 
-    public void setVelocity(double power) {
-        targetPower = power;
-        double motorPower = calculateVelocityCorrection();
-        if (limitDetection) {
-            if (minLim != null && minLim.isPressed() && power < 0 ||
-                    maxLim != null && maxLim.isPressed() && power > 0)
-                motorPower = 0;
-            else if (minLim != null && minLim.isPressed()
-                    && power < 0 && maxLim == null)
-                motorPower = 0;
-        } else if (positionDetection) {
-            if ((motor.getCurrentPosition() < minPosition && power < 0) ||
-                    (motor.getCurrentPosition() > maxPosition && power > 0))
-                motorPower = 0;
-            else if (motor.getCurrentPosition() < minPosition && power < 0)
-                motorPower = 0;
-        } else if (halfDetectionMin) {
-            if (minLim.isPressed()) {
-                currentZero = motor.getCurrentPosition();
-                currentMax = currentZero + maxPosition;
-            }
-            if (minLim != null && minLim.isPressed() && power < 0) motorPower = 0;
-            else if (motor.getCurrentPosition() > currentMax && power > 0) motorPower = 0;
-        } else if (halfDetectionMax) {
-            if (maxLim.isPressed()) {
-                currentZero = motor.getCurrentPosition();
-                currentMin = currentZero - minPosition;
-            }
-            if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
-            else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
-        }
-        currentPower = motorPower;
-        motor.setPower(motorPower);
-    }
     public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
-    private double calculateVelocityCorrection(){
-        if (holdPositionMode) {
-            double tChange = (System.nanoTime() - previousTime) / 1e9;
-            double error = targetPosition - getCurrentPosition();
-            holdItergral += error * tChange;
-            holdDerivitive = (error - holdPreviousError) / tChange;
-            targetPower = (direction * ((error * holdKp) +
-                    (holdItergral * ki) + (holdDerivitive * kd)));
-            holdPreviousError = error;
-        }
-        if (closedLoop) {
-            double error, setRPM, currentRPM, motorPower;
-            double tChange = System.nanoTime() - previousTime;
-            tChange /= 1e9;
-            setRPM = MasqUtils.NEVERREST_ORBITAL_20_RPM * targetPower;
-            currentRPM = getVelocity();
-            error = setRPM - currentRPM;
-            rpmIntegral += error * tChange;
-            rpmDerivative = (error - rpmPreviousError) / tChange;
-            motorPower = (targetPower) + (direction * ((error * kp) +
-                    (rpmIntegral * ki) + (rpmDerivative * kd)));
-            rpmPreviousError = error;
-            return motorPower;
-        }
-        else return targetPower;
-    }
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
@@ -219,17 +161,110 @@ public class MasqMotor implements MasqHardware {
             return prevRate;
         }
     }
+    public void setVelocity(double power) {
+        targetPower = power;
+        double motorPower = calculateVelocityCorrection();
+        if (limitDetection) {
+            if (minLim != null && minLim.isPressed() && power < 0 ||
+                    maxLim != null && maxLim.isPressed() && power > 0)
+                motorPower = 0;
+            else if (minLim != null && minLim.isPressed()
+                    && power < 0 && maxLim == null)
+                motorPower = 0;
+        } else if (positionDetection) {
+            if ((motor.getCurrentPosition() < minPosition && power < 0) ||
+                    (motor.getCurrentPosition() > maxPosition && power > 0))
+                motorPower = 0;
+            else if (motor.getCurrentPosition() < minPosition && power < 0)
+                motorPower = 0;
+        } else if (halfDetectionMin) {
+            if (minLim.isPressed()) {
+                currentZero = motor.getCurrentPosition();
+                currentMax = currentZero + maxPosition;
+            }
+            if (minLim != null && minLim.isPressed() && power < 0) motorPower = 0;
+            else if (motor.getCurrentPosition() > currentMax && power > 0) motorPower = 0;
+        } else if (halfDetectionMax) {
+            if (maxLim.isPressed()) {
+                currentZero = motor.getCurrentPosition();
+                currentMin = currentZero - minPosition;
+            }
+            if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
+            else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
+        }
+        currentPower = motorPower;
+        motor.setPower(motorPower);
+    }
+    private double calculateVelocityCorrection(){
+        if (holdPositionMode) {
+            double tChange = (System.nanoTime() - previousTime) / 1e9;
+            double error = targetPosition - getCurrentPosition();
+            holdItergral += error * tChange;
+            holdDerivitive = (error - holdPreviousError) / tChange;
+            targetPower = (direction * ((error * holdKp) +
+                    (holdItergral * ki) + (holdDerivitive * kd)));
+            holdPreviousError = error;
+        }
+        if (closedLoop) {
+            double error, setRPM, currentRPM, motorPower;
+            double tChange = System.nanoTime() - previousTime;
+            tChange /= 1e9;
+            setRPM = MasqUtils.NEVERREST_ORBITAL_20_RPM * targetPower;
+            currentRPM = getVelocity();
+            error = setRPM - currentRPM;
+            rpmIntegral += error * tChange;
+            rpmDerivative = (error - rpmPreviousError) / tChange;
+            motorPower = (targetPower) + (direction * ((error * kp) +
+                    (rpmIntegral * ki) + (rpmDerivative * kd)));
+            rpmPreviousError = error;
+            return motorPower;
+        }
+        else return targetPower;
+    }
     public double getAcceleration () {
         double deltaVelocity = getVelocity() - previousVel;
         double tChange = System.nanoTime() - previousVelTime;
-        previousVelTime = System.nanoTime();
         tChange = tChange / 1e9;
         previousVel = getVelocity();
         double acceleration = deltaVelocity / tChange;
+        previousVelTime = System.nanoTime();
         if (acceleration != 0) return acceleration;
         else {
             previousAcceleration = acceleration;
             return previousAcceleration;
+        }
+    }
+    public void setAcceleration (double accelerationRPMM) {
+        double tChange = System.nanoTime() - previousAccelerationSetTime;
+        double currentRPM = getVelocity();
+        double newRPM = currentRPM + (accelerationRPMM * tChange);
+        setVelocity(calculateAccelerationCorrection(newRPM));
+        previousAccelerationSetTime = System.nanoTime();
+    }
+    public double calculateAccelerationCorrection (double targetAcceleration) {
+        double error, currentRPM, motorPower;
+        double tChange = System.nanoTime() - previousTime;
+        tChange /= 1e9;
+        currentRPM = getAcceleration();
+        error = targetAcceleration - currentRPM;
+        rpmIntegral += error * tChange;
+        rpmDerivative = (error - rpmPreviousError) / tChange;
+        motorPower = (targetPower) + (direction * ((error * kp) +
+                (rpmIntegral * ki) + (rpmDerivative * kd)));
+        rpmPreviousError = error;
+        return motorPower;
+    }
+    public double getJerk () {
+        double deltaAcceleration = getAcceleration() - prevAcceleration;
+        double tChange = System.nanoTime() - previousAccelerationTime;
+        tChange = tChange / 1e9;
+        prevAcceleration = getVelocity();
+        double jerk = deltaAcceleration / tChange;
+        previousAccelerationTime = System.nanoTime();
+        if (jerk != 0) return jerk;
+        else {
+            previousJerk = jerk;
+            return jerk;
         }
     }
     public void setVelocityControlState(boolean velocityControlState) {

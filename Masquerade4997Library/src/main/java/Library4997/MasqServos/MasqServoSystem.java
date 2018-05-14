@@ -19,21 +19,21 @@ public class MasqServoSystem implements MasqHardware {
     private final List<MasqServo> servos;
     private double position;
     public MasqServoSystem(String name1, String name2, HardwareMap hardwareMap) {
-        this( new MasqServo(name1, hardwareMap), new MasqServo(name2, hardwareMap) );
+        this(new MasqServo(name1, hardwareMap), new MasqServo(name2, hardwareMap));
     }
 
     public MasqServoSystem(String name1, String name2, String name3, HardwareMap hardwareMap) {
-        this( new MasqServo(name1, hardwareMap), new MasqServo(name2, hardwareMap), new MasqServo(name3, hardwareMap) );
+        this(new MasqServo(name1, hardwareMap), new MasqServo(name2, hardwareMap), new MasqServo(name3, hardwareMap));
     }
 
     public MasqServoSystem(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
-        this( new MasqServo(name1, hardwareMap), new MasqServo(name2, hardwareMap), new MasqServo(name3, hardwareMap), new MasqServo(name4, hardwareMap) );
+        this(new MasqServo(name1, hardwareMap), new MasqServo(name2, hardwareMap), new MasqServo(name3, hardwareMap), new MasqServo(name4, hardwareMap));
     }
 
     public MasqServoSystem(String name1, Servo.Direction direction1,
                              String name2, Servo.Direction direction2, HardwareMap hardwareMap) {
-        this( new MasqServo(name1, direction1, hardwareMap),
-                new MasqServo(name2, direction2, hardwareMap) );
+        this(new MasqServo(name1, direction1, hardwareMap),
+                new MasqServo(name2, direction2, hardwareMap));
     }
 
     public MasqServoSystem(String name1, Servo.Direction direction1,
@@ -48,10 +48,10 @@ public class MasqServoSystem implements MasqHardware {
                              String name2, Servo.Direction direction2,
                              String name3, Servo.Direction direction3,
                              String name4, Servo.Direction direction4, HardwareMap hardwareMap) {
-        this( new MasqServo(name1, direction1, hardwareMap),
+        this(new MasqServo(name1, direction1, hardwareMap),
                 new MasqServo(name2, direction2, hardwareMap),
                 new MasqServo(name3, direction3, hardwareMap),
-                new MasqServo(name4, direction4, hardwareMap) );
+                new MasqServo(name4, direction4, hardwareMap));
     }
 
     public MasqServoSystem(MasqServo one, MasqServo two) {

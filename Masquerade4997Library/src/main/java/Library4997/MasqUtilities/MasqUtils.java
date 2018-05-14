@@ -72,6 +72,11 @@ public class MasqUtils implements API_KEYS {
         public static final double MOTOR_TELEOP = +1.0;
         public static final double MOTOR_AUTONOMOUS = +1.00;
     }
+    public static double max(double... vals) {
+        double max = Double.MIN_VALUE;
+        for (double d: vals) if (max < d) max = d;
+        return max;
+    }
     public double lowPass (double upperThresh, double value, double prev) {
         if (value < upperThresh) return prev;
         return value;
