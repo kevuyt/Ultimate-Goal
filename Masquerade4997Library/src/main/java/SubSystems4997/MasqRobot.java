@@ -102,7 +102,7 @@ public class MasqRobot {
             powerAdjustment *= direction.value;
             leftPower = power - powerAdjustment;
             rightPower = power + powerAdjustment;
-            maxPower = Math.max(Math.abs(leftPower), Math.abs(rightPower));
+            maxPower = MasqUtils.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
@@ -151,7 +151,7 @@ public class MasqRobot {
             powerAdjustment *= direction.value;
             leftPower = power - powerAdjustment;
             rightPower = power + powerAdjustment;
-            maxPower = Math.max(Math.abs(leftPower), Math.abs(rightPower));
+            maxPower = MasqUtils.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
@@ -382,7 +382,7 @@ public class MasqRobot {
             powerAdjustment *= direction.value;
             leftPower = power - powerAdjustment;
             rightPower = power + powerAdjustment;
-            maxPower = Math.max(Math.abs(leftPower), Math.abs(rightPower));
+            maxPower = MasqUtils.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
@@ -438,7 +438,7 @@ public class MasqRobot {
         double right = c.rightStickY();
         double leftRate = driveTrain.leftDrive.getVelocity();
         double rightRate = driveTrain.rightDrive.getVelocity();
-        double maxRate = Math.max(Math.abs(leftRate/left), Math.abs(rightRate/right));
+        double maxRate = MasqUtils.max(Math.abs(leftRate/left), Math.abs(rightRate/right));
         leftRate /= maxRate;
         rightRate /= maxRate;
         double leftError =  left - leftRate;
@@ -461,7 +461,7 @@ public class MasqRobot {
         double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;
         double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
         double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
-        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
+        double max = MasqUtils.max(Math.abs(leftFront), Math.abs(leftBack), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
         if (max > 1) {
             leftFront /= max;
             leftBack /= max;

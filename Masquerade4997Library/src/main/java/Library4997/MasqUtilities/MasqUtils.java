@@ -77,6 +77,11 @@ public class MasqUtils implements API_KEYS {
         for (double d: vals) if (max < d) max = d;
         return max;
     }
+    public static double min(double... vals) {
+        double min = Double.MAX_VALUE;
+        for (double d: vals) if (min > d) min = d;
+        return min;
+    }
     public double lowPass (double upperThresh, double value, double prev) {
         if (value < upperThresh) return prev;
         return value;
