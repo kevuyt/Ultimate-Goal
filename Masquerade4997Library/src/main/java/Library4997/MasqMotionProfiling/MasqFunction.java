@@ -5,6 +5,5 @@ package Library4997.MasqMotionProfiling;
  */
 
 public interface MasqFunction {
-    int getX();
-    int getY();
+    double getY(double x);
 }
