@@ -40,6 +40,7 @@ public class MasqUtils implements API_KEYS {
     public static Telemetry getTelemetry() {
         return linearOpMode.telemetry;
     }
+    public static MasqLinearOpMode getLinearOpMode () {return linearOpMode;}
     public static boolean opModeIsActive() {
         return linearOpMode.opModeIsActive();
     }

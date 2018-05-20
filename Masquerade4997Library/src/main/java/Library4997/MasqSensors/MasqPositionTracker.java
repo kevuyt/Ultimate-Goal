@@ -15,17 +15,17 @@ public class MasqPositionTracker implements MasqHardware {
     private double xStart = 0, xEnd = 0, ignoreXTicks = 0;
     private double yStart = 0, yEnd = 0, ignoreYTicks = 0;
     HardwareMap hardwareMap;
-    public MasqPositionTracker(HardwareMap hardwareMap, MasqMotor yWheelMotor, MasqEncoder.Encoder yPPR, MasqMotor xWheelMotor, MasqEncoder.Encoder xPPR) {
+    public MasqPositionTracker(HardwareMap hardwareMap, MasqMotor yWheelMotor, MasqEncoder.MasqMotorModel yPPR, MasqMotor xWheelMotor, MasqEncoder.MasqMotorModel xPPR) {
         this.hardwareMap = hardwareMap;
         imu = new MasqAdafruitIMU("imuHubOne", this.hardwareMap);
         yWheel = new MasqEncoder(yWheelMotor, yPPR);
         xWheel = new MasqEncoder(xWheelMotor, xPPR);
     }
     public double getX () {
-        return xWheel.getPosition() - ignoreXTicks;
+        return xWheel.getRelativePosition() - ignoreXTicks;
     }
     public double getY () {
-        return yWheel.getPosition() - ignoreYTicks;
+        return yWheel.getRelativePosition() - ignoreYTicks;
     }
     public double getRotation () {
         return imu.getRelativeYaw();

@@ -38,7 +38,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -124,16 +123,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class FtcRobotControllerActivity extends Activity {
   public static final String TAG = "RCActivity";
   public String getTag() { return TAG; }
-
   private static final int REQUEST_CONFIG_WIFI_CHANNEL = 1;
   private static final int NUM_GAMEPADS = 2;
-
+  private static Bundle outputInstance;
   protected WifiManager.WifiLock wifiLock;
   protected RobotConfigFileManager cfgFileMgr;
 
   protected ProgrammingWebHandlers programmingWebHandlers;
   protected ProgrammingModeController programmingModeController;
-
+  private static FtcRobotControllerActivity instance;
   protected UpdateUI.Callback callback;
   protected Context context;
   protected Utility utility;
@@ -325,6 +323,7 @@ public class FtcRobotControllerActivity extends Activity {
                 Toast.LENGTH_LONG).show();
       }
     });
+    instance = this;
   }
 
   protected UpdateUI createUpdateUI() {
@@ -645,6 +644,9 @@ public class FtcRobotControllerActivity extends Activity {
   }
   public static double getDelay(){
     return delay;
+  }
+  public static Activity getMainActivity () {
+    return instance;
   }
   public FileOutputStream getFileOutput(String s) throws FileNotFoundException {
     return openFileOutput(s, MODE_WORLD_READABLE);

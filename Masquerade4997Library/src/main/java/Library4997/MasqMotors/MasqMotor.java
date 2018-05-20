@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
 import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqHardware;
@@ -23,6 +24,7 @@ public class MasqMotor implements MasqHardware {
     private double kp = 0.004, ki = 0, kd = 0;
     private double holdKp = 0.0002;
     private boolean closedLoop = true;
+    public MasqEncoder encoder;
     private boolean holdPositionMode = false;
     private double targetPosition = 0;
     private double prevPos = 0;
@@ -30,7 +32,6 @@ public class MasqMotor implements MasqHardware {
     private boolean stalled = false;
     private double previousVel = 0;
     private double previousVelTime = 0;
-    private double encoderCounts = MasqUtils.NEVERREST_ORBITAL_20_TICKS_PER_ROTATION;
     private double previousTime = 0;
     private double destination = 0;
     public double currentPower;
@@ -69,6 +70,7 @@ public class MasqMotor implements MasqHardware {
         limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
+        encoder = new MasqEncoder(this, MasqEncoder.MasqMotorModel.NEVEREST20);
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
@@ -76,6 +78,7 @@ public class MasqMotor implements MasqHardware {
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
+        encoder = new MasqEncoder(this, MasqEncoder.MasqMotorModel.NEVEREST20);
     }
 
     public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
@@ -111,8 +114,7 @@ public class MasqMotor implements MasqHardware {
 
     public void runWithoutEncoders () {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
     public void resetEncoder() {
-        zeroEncoderPosition = motor.getCurrentPosition();
-        currentPosition = 0;
+        encoder.resetEncoder();
     }
 
     public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
@@ -142,11 +144,10 @@ public class MasqMotor implements MasqHardware {
     }
 
     public double getCurrentPosition() {
-        currentPosition = motor.getCurrentPosition() - zeroEncoderPosition;
-        return currentPosition;
+        return encoder.getRelativePosition();
     }
     public double getAbsolutePosition () {
-        return motor.getCurrentPosition();
+        return encoder.getAbsolutePosition();
     }
     public double getVelocity() {
         double deltaPosition = getCurrentPosition() - prevPos;
@@ -155,7 +156,7 @@ public class MasqMotor implements MasqHardware {
         tChange = tChange / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
-        rate = (rate * 60) / encoderCounts;
+        rate = (rate * 60) / encoder.getClicksPerRotation();
         if (rate != 0) return rate;
         else {
             prevRate = rate;
@@ -348,16 +349,16 @@ public class MasqMotor implements MasqHardware {
         return MasqUtils.opModeIsActive();
     }
 
+    public void setMotorModel (MasqEncoder.MasqMotorModel model) {
+        encoder.setModel(model);
+    }
+
     public void setLazy() {
         holdPositionMode = false;
     }
     public void setStrong() {
         holdPositionMode = true;
         targetPosition = getCurrentPosition();
-    }
-
-    public void setEncoderCounts(double encoderCounts) {
-        this.encoderCounts = encoderCounts;
     }
 
     public String getName() {

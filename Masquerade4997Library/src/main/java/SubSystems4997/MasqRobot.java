@@ -66,8 +66,8 @@ public class MasqRobot {
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
         gripper = flipper.getGripper();
-        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqEncoder.Encoder.US_DIGITAL,
-                driveTrain.rightDrive.motor2, MasqEncoder.Encoder.ANDYMARK_STANDARD);
+        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqEncoder.MasqMotorModel.US_DIGITAL,
+                driveTrain.rightDrive.motor2, MasqEncoder.MasqMotorModel.NEVEREST20);
         positionTracker.xWheel.setWheelDiameter(4);
         positionTracker.resetSystem();
         lift.setClosedLoop(false);
@@ -461,7 +461,7 @@ public class MasqRobot {
         double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;
         double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
         double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
-        double max = MasqUtils.max(Math.abs(leftFront), Math.abs(leftBack), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
+        double max = MasqUtils.max(Math.abs(leftFront), Math.abs(leftBack), Math.abs(rightFront), Math.abs(rightBack));
         if (max > 1) {
             leftFront /= max;
             leftBack /= max;

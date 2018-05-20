@@ -14,10 +14,17 @@ public class MasqPIDController {
     private double error, current, target;
     private MasqClock clock = new MasqClock();
 
-    public MasqPIDController(int kp, int ki, int kd) {
+    public MasqPIDController(double kp, int ki, double kd) {
         this.kp = kp;
         this.ki = ki;
         this.kd = kd;
+    }
+    public MasqPIDController(double kp, double ki) {
+        this.kp = kp;
+        this.ki = ki;
+    }
+    public MasqPIDController(double kp) {
+        this.kp = kp;
     }
     public double getOutput (double current, double target) {
         this.target = target;
