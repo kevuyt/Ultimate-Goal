@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
@@ -21,7 +22,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public abstract class MasqRobot {
-    public MasqMechanumDriveTrain driveTrain;
+    public MasqDriveTrain driveTrain;
     public static MasqPositionTracker positionTracker;
     private DashBoard dash = DashBoard.getDash();
     public abstract void mapHardware(HardwareMap hardwareMap);
@@ -263,7 +264,7 @@ public abstract class MasqRobot {
             powerAdjustment = (MasqUtils.KP.DRIVE_ANGULAR * power) * angularError + (MasqUtils.KI.DRIVE * angularIntegral) + (MasqUtils.KD.DRIVE * angularDerivative);
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             powerAdjustment *= rotationMultiplier;
-            driveTrain.setPowerAtAngle(angle, power, powerAdjustment);
+            if (driveTrain instanceof MasqMechanumDriveTrain) setPowerAtAngle(angle, power, powerAdjustment);
          } while (opModeIsActive() && distanceRemaining > 0.5);
         driveTrain.stopDriving();
     }
@@ -476,4 +477,24 @@ public abstract class MasqRobot {
         }
     }
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
+
+    public void setPowerAtAngle(double angle, double speed, double turnPower) {
+        angle = Math.toRadians(angle);
+        double adjustedAngle = angle + Math.PI/4;
+        double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower  * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        double rightFront = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        double rightBack = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
+        if (max > 1) {
+            leftFront /= max;
+            leftBack /= max;
+            rightFront /= max;
+            rightBack /= max;
+        }
+        driveTrain.leftDrive.motor1.setVelocity(leftFront);
+        driveTrain.leftDrive.motor2.setVelocity(leftBack);
+        driveTrain.rightDrive.motor1.setVelocity(rightFront);
+        driveTrain.rightDrive.motor2.setVelocity(rightBack);
+    }
 }

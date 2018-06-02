@@ -20,25 +20,6 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     public MasqMechanumDriveTrain(HardwareMap hardwareMap) {
         super(hardwareMap);
     }
-    public void setPowerAtAngle(double angle, double speed, double turnPower) {
-        angle = Math.toRadians(angle);
-        double adjustedAngle = angle + Math.PI/4;
-        double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower  * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double rightFront = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double rightBack = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
-        if (max > 1) {
-            leftFront /= max;
-            leftBack /= max;
-            rightFront /= max;
-            rightBack /= max;
-        }
-        leftDrive.motor1.setVelocity(leftFront);
-        leftDrive.motor2.setVelocity(leftBack);
-        rightDrive.motor1.setVelocity(rightFront);
-        rightDrive.motor2.setVelocity(rightBack);
-    }
     public void setPower(double angle, double speed, double turnAngle) {
         double turnPower = turnController.getOutput(MasqRobot.positionTracker.getRotation(), turnAngle);
         angle = Math.toRadians(angle);
