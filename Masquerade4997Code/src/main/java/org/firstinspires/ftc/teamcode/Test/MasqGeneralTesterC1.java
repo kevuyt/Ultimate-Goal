@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Test;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
+import org.firstinspires.ftc.teamcode.Robots.Creed;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -11,20 +12,11 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "MasqGeneralTesterC1: Stall Detection Stop", group = "T")
 public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
+    private Creed creed = new Creed();
     String direction = "Straight";
     public void runLinearOpMode() throws InterruptedException {
-        robot.mapHardware(hardwareMap);
+        creed.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("                      ________________    ");
-            dash.create("                     /                \\  ");
-            dash.create("                    /                  \\ ");
-            dash.create("                   /                    \\ ");
-            dash.create("                   \\                    / ");
-            dash.create("                    \\                  / ");
-            dash.create("                     \\                / ");
-            dash.create("                      ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾   ");
-            dash.create("                             \\|/           ");
-            dash.create("                         |__|__|__|      ");
             if (controller1.y()) direction = "Straight";
             else if (controller1.x()) direction ="Left";
             else if (controller1.b()) direction = "Right";
@@ -32,7 +24,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.go(5, 0, 0);
-        robot.go(0, 0, 0);
+        creed.go(5, 0, 0);
+        creed.go(0, 0, 0);
     }
 }

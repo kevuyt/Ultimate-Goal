@@ -54,7 +54,7 @@ public class MasqMotor implements MasqHardware {
 
         }
     },
-            unStalledAction = new Runnable() {
+    unStalledAction = new Runnable() {
         @Override
         public void run() {
 
@@ -173,7 +173,8 @@ public class MasqMotor implements MasqHardware {
             else if (minLim != null && minLim.isPressed()
                     && power < 0 && maxLim == null)
                 motorPower = 0;
-        } else if (positionDetection) {
+        }
+        else if (positionDetection) {
             if ((motor.getCurrentPosition() < minPosition && power < 0) ||
                     (motor.getCurrentPosition() > maxPosition && power > 0))
                 motorPower = 0;
@@ -197,7 +198,7 @@ public class MasqMotor implements MasqHardware {
         currentPower = motorPower;
         motor.setPower(motorPower);
     }
-    private double calculateVelocityCorrection(){
+    private double calculateVelocityCorrection() {
         if (holdPositionMode) {
             double tChange = (System.nanoTime() - previousTime) / 1e9;
             double error = targetPosition - getCurrentPosition();

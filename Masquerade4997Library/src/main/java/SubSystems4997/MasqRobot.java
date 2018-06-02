@@ -1,78 +1,30 @@
 package SubSystems4997;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
-import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
-import Library4997.MasqSensors.MasqEncoder;
-import Library4997.MasqSensors.MasqREVColorSensor;
-import Library4997.MasqSensors.MasqVoltageSensor;
-import Library4997.MasqSensors.MasqVuforiaBeta;
-import Library4997.MasqServos.MasqServo;
+import Library4997.MasqSensors.MasqPositionTracker;
 import Library4997.MasqUtilities.Direction;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqUtilities.StopCondition;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
-import SubSystems4997.SubSystems.Flipper;
-import SubSystems4997.SubSystems.Gripper;
-import Library4997.MasqSensors.MasqPositionTracker;
 
 
 /**
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
  */
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
-public class MasqRobot {
+public abstract class MasqRobot {
     public MasqMechanumDriveTrain driveTrain;
-    public MasqMotorSystem intake;
-    public MasqMotor lift, relicLift;
-    public MasqServo redRotator;
-    public MasqREVColorSensor jewelColorRed;
-    public Flipper flipper;
-    public Gripper gripper;
-    public MasqServo relicAdjuster;
     public static MasqPositionTracker positionTracker;
-    public MasqVoltageSensor voltageSensor;
-    public MasqServo jewelArmRed, relicGripper;
-    public MasqVuforiaBeta vuforia;
-    public MasqREVColorSensor singleBlock, doubleBlock, redLineDetector, blueLineDetector;
-    HardwareMap hardwareMap;
-    private DashBoard dash;
-    public void mapHardware(HardwareMap hardwareMap) {
-        this.hardwareMap = hardwareMap;
-        dash = DashBoard.getDash();
-        vuforia = new MasqVuforiaBeta();
-        blueLineDetector = new MasqREVColorSensor("blueLineDetector", this.hardwareMap);
-        redLineDetector = new MasqREVColorSensor("redLineDetector", this.hardwareMap);
-        intake = new MasqMotorSystem("leftIntake", DcMotor.Direction.REVERSE, "rightIntake", DcMotor.Direction.FORWARD, "INTAKE", this.hardwareMap);
-        doubleBlock = new MasqREVColorSensor("doubleBlock", this.hardwareMap);
-        singleBlock = new MasqREVColorSensor("singleBlock", this.hardwareMap);
-        voltageSensor = new MasqVoltageSensor(this.hardwareMap);
-        flipper = new Flipper(this.hardwareMap);
-        redRotator = new MasqServo("redRotator", this.hardwareMap);
-        lift = new MasqMotor("lift", DcMotor.Direction.REVERSE, this.hardwareMap);
-        driveTrain = new MasqMechanumDriveTrain(this.hardwareMap);
-        relicAdjuster = new MasqServo("relicAdjuster", this.hardwareMap);
-        jewelArmRed = new MasqServo("jewelArmRed", this.hardwareMap);
-        jewelColorRed = new MasqREVColorSensor("jewelColorRed", this.hardwareMap);
-        relicGripper = new MasqServo("relicGripper", this.hardwareMap);
-        relicLift = new MasqMotor("relicLift", this.hardwareMap);
-        gripper = flipper.getGripper();
-        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqEncoder.MasqMotorModel.US_DIGITAL,
-                driveTrain.rightDrive.motor2, MasqEncoder.MasqMotorModel.NEVEREST20);
-        positionTracker.xWheel.setWheelDiameter(4);
-        positionTracker.resetSystem();
-        lift.setClosedLoop(false);
-    }
-
+    private DashBoard dash = DashBoard.getDash();
+    public abstract void mapHardware(HardwareMap hardwareMap);
     private MasqClock timeoutClock = new MasqClock();
     public double angleLeftCover = 0;
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
@@ -430,8 +382,6 @@ public class MasqRobot {
             driveTrain.setPowerLeft(left);
             driveTrain.setPowerRight(right);
         }
-        voltageSensor.update();
-
     }
     public void TANK(MasqController c){
         double left = c.leftStickX();
@@ -445,7 +395,6 @@ public class MasqRobot {
         double rightError = right - rightRate;
         driveTrain.rightDrive.setVelocity(right - (rightError * MasqUtils.KP.MOTOR_TELEOP));
         driveTrain.leftDrive.setVelocity(left - (leftError *  MasqUtils.KP.MOTOR_TELEOP));
-        voltageSensor.update();
     }
     public void MECH(MasqController c, Direction direction, boolean disabled) {
         double x = -c.leftStickY();
@@ -500,19 +449,8 @@ public class MasqRobot {
         MECH(c, Direction.FORWARD, false);
     }
 
-    public double getVoltage() {return voltageSensor.getVoltage();}
     public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
-    public void waitForVuMark() {
-        timeoutClock.reset();
-        while (MasqUtils.VuMark.isUnKnown(vuforia.getVuMark()) &&
-                !timeoutClock.elapsedTime(2, MasqClock.Resolution.SECONDS)){
-            dash.create(vuforia.getVuMark());
-            dash.update();
-        }
-        dash.create(vuforia.getVuMark());
-        dash.update();
-    }
     public void initializeTeleop(){
         driveTrain.setKp(MasqUtils.KP.MOTOR_TELEOP);
         driveTrain.setKi(MasqUtils.KI.MOTOR_TELEOP);

@@ -8,8 +8,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper;
 
-import static org.firstinspires.ftc.teamcode.TeleOp.Constants.CLAW_CLOSED;
-
 /**
  * Created by Archish on 12/8/17.
  */
@@ -17,7 +15,7 @@ import static org.firstinspires.ftc.teamcode.TeleOp.Constants.CLAW_CLOSED;
 public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
     double rightFlipper = Flipper.Position.IN.pos[0], leftFlipper = Flipper.Position.IN.pos[1],
             bottomGripper = Gripper.Grip.CLAMP.grip[0], topGripper = Gripper.Grip.CLAMP.grip[1],
-            relicGrabber = CLAW_CLOSED, relicWrist = 0,
+            relicGrabber = 0, relicWrist = 0,
            jewelRed, redRotator;
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

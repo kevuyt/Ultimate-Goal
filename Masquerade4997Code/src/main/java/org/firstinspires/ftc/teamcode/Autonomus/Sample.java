@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.Robots.Creed;
+
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -9,13 +11,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "Sample", group = "Autonomus")
 public class Sample extends MasqLinearOpMode implements Constants {
+    private Creed creed = new Creed();
     public void runLinearOpMode() throws InterruptedException {
-        robot.mapHardware(hardwareMap);
+        creed.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(robot.positionTracker.imu);
+            dash.create(creed.positionTracker.imu);
             dash.update();
         }
         waitForStart();
-        robot.sleep(robot.getDelay());
+        creed.sleep(robot.getDelay());
     }
 }

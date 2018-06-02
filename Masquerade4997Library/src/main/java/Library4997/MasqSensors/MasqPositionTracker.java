@@ -27,6 +27,12 @@ public class MasqPositionTracker implements MasqHardware {
     public double getY () {
         return yWheel.getRelativePosition() - ignoreYTicks;
     }
+    public double getXInches () {
+        return xWheel.getInches() - (ignoreXTicks * xWheel.getClicksPerInch());
+    }
+    public double getYInches () {
+        return yWheel.getInches() - (ignoreYTicks * yWheel.getClicksPerInch());
+    }
     public double getRotation () {
         return imu.getRelativeYaw();
     }

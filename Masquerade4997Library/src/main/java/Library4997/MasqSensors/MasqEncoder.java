@@ -70,6 +70,10 @@ public class MasqEncoder {
         return wheelDiameter;
     }
 
+    public double getClicksPerInch() {
+        return clicksPerInch;
+    }
+
     public void setWheelDiameter(double wheelDiameter) {
         this.wheelDiameter = wheelDiameter;
     }
