@@ -2,8 +2,9 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Robots.TestBot;
+import org.firstinspires.ftc.teamcode.Robots.Robot;
 
+import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -13,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 @TeleOp(name = "NFS", group = "NFS")
 public class NFS extends MasqLinearOpMode implements Constants {
-    private TestBot robot = new TestBot();
+    private Robot robot = new Robot();
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
@@ -22,7 +23,16 @@ public class NFS extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         while (opModeIsActive()) {
-            robot.NFS(controller1);
+            float move = controller1.leftStickY();
+            float turn = controller1.rightStickX();
+            double left = move - turn;
+            double right = move + turn;
+            if(MasqUtils.max(left, right) > 1) {
+                left /= left;
+                right /= left;
+            }
+            robot.leftMotor.setPower(-left);
+            robot.rightMotor.setPower(-right);
         }
     }
 }

@@ -8,6 +8,7 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqUtilities.Direction;
+import Library4997.MasqUtilities.MasqEncoderModel;
 import Library4997.MasqUtilities.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 
@@ -70,7 +71,7 @@ public class MasqMotor implements MasqHardware {
         limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
-        encoder = new MasqEncoder(this, MasqEncoder.MasqMotorModel.NEVEREST20);
+        encoder = new MasqEncoder(this, MasqEncoderModel.NEVEREST20);
     }
     public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
@@ -78,7 +79,7 @@ public class MasqMotor implements MasqHardware {
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
-        encoder = new MasqEncoder(this, MasqEncoder.MasqMotorModel.NEVEREST20);
+        encoder = new MasqEncoder(this, MasqEncoderModel.NEVEREST20);
     }
 
     public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
@@ -147,7 +148,7 @@ public class MasqMotor implements MasqHardware {
         return encoder.getRelativePosition();
     }
     public double getAbsolutePosition () {
-        return encoder.getAbsolutePosition();
+        return motor.getCurrentPosition();
     }
     public double getVelocity() {
         double deltaPosition = getCurrentPosition() - prevPos;
@@ -162,6 +163,9 @@ public class MasqMotor implements MasqHardware {
             prevRate = rate;
             return prevRate;
         }
+    }
+    public void setPower (double power) {
+        motor.setPower(power);
     }
     public void setVelocity(double power) {
         targetPower = power;
@@ -350,7 +354,7 @@ public class MasqMotor implements MasqHardware {
         return MasqUtils.opModeIsActive();
     }
 
-    public void setMotorModel (MasqEncoder.MasqMotorModel model) {
+    public void setMotorModel (MasqEncoderModel model) {
         encoder.setModel(model);
     }
 

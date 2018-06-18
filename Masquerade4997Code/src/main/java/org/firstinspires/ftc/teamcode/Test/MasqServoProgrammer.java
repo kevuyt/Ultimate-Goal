@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Test;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
+import org.firstinspires.ftc.teamcode.Robots.Creed;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 import SubSystems4997.SubSystems.Flipper;
@@ -13,6 +14,7 @@ import SubSystems4997.SubSystems.Gripper;
  */
 @TeleOp(name = "MasqServoProgrammer", group = "T")
 public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
+    private Creed robot = new Creed();
     double rightFlipper = Flipper.Position.IN.pos[0], leftFlipper = Flipper.Position.IN.pos[1],
             bottomGripper = Gripper.Grip.CLAMP.grip[0], topGripper = Gripper.Grip.CLAMP.grip[1],
             relicGrabber = 0, relicWrist = 0,

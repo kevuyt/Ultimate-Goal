@@ -6,12 +6,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
-import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqPositionTracker;
 import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqServo;
+import Library4997.MasqUtilities.MasqEncoderModel;
 import SubSystems4997.MasqRobot;
 import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper;
@@ -53,8 +53,8 @@ public class Creed extends MasqRobot {
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", this.hardwareMap);
         gripper = flipper.getGripper();
-        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqEncoder.MasqMotorModel.US_DIGITAL,
-                driveTrain.rightDrive.motor2, MasqEncoder.MasqMotorModel.NEVEREST20);
+        positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqEncoderModel.USDIGITAL_E4T,
+                driveTrain.rightDrive.motor2, MasqEncoderModel.NEVEREST20);
         positionTracker.xWheel.setWheelDiameter(4);
         positionTracker.resetSystem();
         lift.setClosedLoop(false);

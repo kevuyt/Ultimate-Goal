@@ -58,10 +58,6 @@ public class MasqMotorSystem implements MasqHardware {
             masqMotor.resetEncoder();
         return this;
     }
-    public MasqMotorSystem setEncoderCounts(double counts) {
-        for (MasqMotor masqMotor: motors) masqMotor.setEncoderCounts(counts);
-        return this;
-    }
     public MasqMotorSystem setKp(double kp){
         for (MasqMotor masqMotor: motors) masqMotor.setKp(kp);
         return this;
