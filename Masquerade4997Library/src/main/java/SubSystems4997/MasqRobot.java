@@ -462,20 +462,14 @@ public abstract class MasqRobot {
         driveTrain.setKi(MasqUtils.KI.MOTOR_AUTONOMOUS);
         driveTrain.setKp(MasqUtils.KD.MOTOR_AUTONOMOUS);
     }
-    public void sleep(int time) {
-        try {
-            Thread.sleep((long) time);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
     public void sleep(double time) {
         try {
-            Thread.sleep((long) time);
+            Thread.sleep((long) time * 1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
     }
+
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
 
     public void setPowerAtAngle(double angle, double speed, double turnPower) {

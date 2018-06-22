@@ -18,7 +18,7 @@ public class MasqPositionTracker implements MasqHardware {
     HardwareMap hardwareMap;
     public MasqPositionTracker(HardwareMap hardwareMap, MasqMotor yWheelMotor, MasqEncoderModel yPPR, MasqMotor xWheelMotor, MasqEncoderModel xPPR) {
         this.hardwareMap = hardwareMap;
-        imu = new MasqAdafruitIMU("imuHubOne", this.hardwareMap);
+        imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         yWheel = new MasqEncoder(yWheelMotor, yPPR);
         xWheel = new MasqEncoder(xWheelMotor, xPPR);
     }

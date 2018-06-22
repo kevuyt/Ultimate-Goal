@@ -19,20 +19,23 @@ public class NFS extends MasqLinearOpMode implements Constants {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
             dash.create("Init");
+            robot.yTranslator.setVelocity(1);
             dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {
+            float yTranslation = controller1.leftStickX();
             float move = controller1.leftStickY();
             float turn = controller1.rightStickX();
-            double left = move - turn;
-            double right = move + turn;
+            double left = move + turn;
+            double right = move - turn;
             if(MasqUtils.max(left, right) > 1) {
                 left /= left;
                 right /= left;
             }
             robot.leftMotor.setPower(-left);
             robot.rightMotor.setPower(-right);
+            //robot.yTranslator.setPower(yTranslation);
         }
     }
 }

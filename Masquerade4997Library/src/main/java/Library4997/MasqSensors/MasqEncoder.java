@@ -21,7 +21,7 @@ public class MasqEncoder {
 
     public double getRelativePosition() {
         currentPosition = (int) (getAbsolutePosition() - zeroPos);
-        return 0;
+        return currentPosition;
     }
 
     public double getInches () {
@@ -29,7 +29,7 @@ public class MasqEncoder {
     }
 
     public double getAbsolutePosition() {
-        return motor.getCurrentPosition();
+        return motor.getAbsolutePosition();
     }
 
     public void resetEncoder() {
