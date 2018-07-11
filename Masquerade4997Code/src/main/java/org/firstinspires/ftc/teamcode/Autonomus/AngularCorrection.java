@@ -11,17 +11,16 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 
-@Autonomous(name = "AngularCorrection", group = "Autonomus")
+@Autonomous(name = "Nandana", group = "Autonomus")
 public class AngularCorrection extends MasqLinearOpMode implements Constants {
     private Robot robot = new Robot();
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(robot.positionTracker.imu.getAbsoluteHeading());
             dash.create(robot.leftMotor.getCurrentPosition());
             dash.update();
         }
         waitForStart();
-        robot.drive(250, 0.7);
+        robot.drive(100, 1);
     }
 }

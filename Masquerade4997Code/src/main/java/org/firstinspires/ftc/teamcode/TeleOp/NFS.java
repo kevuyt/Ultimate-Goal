@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Robot;
 
-import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -18,24 +17,18 @@ public class NFS extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
+            robot.rightMotor.setPower(1);
             dash.create("Init");
-            robot.yTranslator.setVelocity(1);
             dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {
-            float yTranslation = controller1.leftStickX();
-            float move = controller1.leftStickY();
-            float turn = controller1.rightStickX();
-            double left = move + turn;
-            double right = move - turn;
-            if(MasqUtils.max(left, right) > 1) {
-                left /= left;
-                right /= left;
-            }
+            float move = -controller1.leftStickY();
+            float turn = -controller1.rightStickX();
+            double left = move - turn;
+            double right = -move + turn;
             robot.leftMotor.setPower(-left);
-            robot.rightMotor.setPower(-right);
-            //robot.yTranslator.setPower(yTranslation);
+            robot.rightMotor.setPower(right);
         }
     }
 }

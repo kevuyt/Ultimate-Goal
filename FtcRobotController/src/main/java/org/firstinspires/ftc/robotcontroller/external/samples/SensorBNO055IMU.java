@@ -32,7 +32,6 @@ package org.firstinspires.ftc.robotcontroller.external.samples;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.Func;
@@ -55,7 +54,6 @@ import java.util.Locale;
  * @see <a href="http://www.adafruit.com/products/2472">Adafruit IMU</a>
  */
 @Autonomous(name = "Sensor: BNO055 IMU", group = "Sensor")
-@Disabled
 public class SensorBNO055IMU extends LinearOpMode
     {
     //----------------------------------------------------------------------------------------------
@@ -166,6 +164,16 @@ public class SensorBNO055IMU extends LinearOpMode
                             Math.sqrt(gravity.xAccel*gravity.xAccel
                                     + gravity.yAccel*gravity.yAccel
                                     + gravity.zAccel*gravity.zAccel));
+                    }
+                })
+            .addData("xAccel", new Func<String>() {
+                @Override public String value () {
+                    return String.valueOf(imu.getAcceleration().xAccel);
+                }
+            })
+                .addData("yAccel", new Func<String>() {
+                    @Override public String value () {
+                        return String.valueOf(imu.getAcceleration().yAccel);
                     }
                 });
     }

@@ -4,7 +4,15 @@
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/drawable-hdpi-v4/button_shape.xml"
     },
     {
+        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_shape.xml",
+        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/drawable-hdpi-v4/button_shape.xml"
+    },
+    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-hdpi-v4/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-hdpi-v4/ic_launcher.png"
     }
 ]

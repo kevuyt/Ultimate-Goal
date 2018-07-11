@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Robot;
 
-import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -22,21 +21,8 @@ public class NFSv2 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        robot.leftMotor.setClosedLoop(true);
-        robot.rightMotor.setClosedLoop(true);
-        robot.leftMotor.setKp(0.01);
-        robot.rightMotor.setKp(0.01);
         while (opModeIsActive()) {
-            float move = controller1.leftStickY();
-            float turn = controller1.rightStickX();
-            double left = move + turn;
-            double right = move - turn;
-            if(MasqUtils.max(left, right) > 1) {
-                left /= left;
-                right /= left;
-            }
-            robot.leftMotor.setVelocity(-left);
-            robot.rightMotor.setVelocity(-right);
+
         }
     }
 }

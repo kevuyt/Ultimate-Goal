@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 4/23/18.
  */
 @Autonomous(name = "TimeBasedDriving", group = "Autonomus")
-public class TimeBasedDriving extends MasqLinearOpMode implements Constants {
+public class TimeBasedDriving extends MasqLinearOpMode {
     private Robot robot = new Robot();
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

@@ -24,5 +24,31 @@
                 }
             }
         ]
+    },
+    {
+        "outputFile": "/Users/Archish/Documents/CodeProjects/MasqLib/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v11/values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 4,
+                    "endColumn": 12,
+                    "endOffset": 187
+                },
+                "from": {
+                    "file": "/Users/Archish/.android/build-cache/e9cc685cb9efa75d213ba42c65f05072fa24403b/output/res/values-v11/values-v11.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 4,
+                        "endColumn": 12,
+                        "endOffset": 187
+                    }
+                }
+            }
+        ]
     }
 ]
