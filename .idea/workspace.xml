@@ -10,130 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="MasqDocs">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-debug.aar" afterPath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-release.aar" afterPath="$PROJECT_DIR$/FtcRobotController/build/outputs/aar/FtcRobotController-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/debug_0fbfee80bc3222da3a0eeab1dee8a3a13d3f0591.jar" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/pre-dexed/debug/debug_0fbfee80bc3222da3a0eeab1dee8a3a13d3f0591.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/apk/Masquerade4997Code-debug.apk" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/apk/Masquerade4997Code-debug.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-debug.aar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/outputs/aar/Masquerade4997Library-release.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Analytics_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Analytics_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Blocks_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Blocks_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/FtcCommon_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/FtcCommon_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Hardware_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Hardware_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Inspection_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Inspection_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/ModernRobotics_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/ModernRobotics_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/RobotCore_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/RobotCore_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/WirelessP2p_release_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/WirelessP2p_release_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" afterPath="$PROJECT_DIR$/FtcRobotController/FtcRobotController.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-sw720dp-land-v13.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-sw720dp-land-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-v11.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-v11.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-v14.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-v14.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-w820dp-v13.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values-w820dp-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/menu.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/menu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/raw.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/raw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/xml.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/androidTest/debug/single/xml.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-sw720dp-land-v13.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-sw720dp-land-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-v11.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-v11.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-v14.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-v14.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/menu.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/menu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/raw.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/raw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/xml.json" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/blame/res/debug/single/xml.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeDebugShaders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeReleaseAssets/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/mergeReleaseShaders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/FtcRobotController/build/intermediates/incremental/packageReleaseResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples/SensorBNO055IMU.java" afterPath="$PROJECT_DIR$/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples/SensorBNO055IMU.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" afterPath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-sw720dp-land-v13.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-sw720dp-land-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-v11.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-v11.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-v14.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-v14.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/menu.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/menu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/raw.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/raw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/xml.json" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/blame/res/debug/single/xml.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/AngularCorrection.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/AngularCorrection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/TimeBasedDriving.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Autonomus/TimeBasedDriving.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Robot.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Robot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFS.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSv2.java" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/TeleOp/NFSv2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-sw720dp-land-v13.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-sw720dp-land-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-v11.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-v11.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-v14.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-v14.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-w820dp-v13.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values-w820dp-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/layout.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/menu.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/menu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/raw.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/raw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/xml.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/androidTest/debug/single/xml.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-sw720dp-land-v13.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-sw720dp-land-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-v11.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-v11.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-v14.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-v14.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/multi/values.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/drawable.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/layout.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/menu.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/menu.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/raw.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/raw.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/xml.json" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/blame/res/debug/single/xml.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeDebugShaders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeReleaseAssets/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeReleaseShaders/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/mergeReleaseShaders/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/incremental/packageReleaseResources/merger.xml" />
     </list>
     <list id="8d78c8f9-ba4f-4bbb-bbf4-13a676c4c2bf" name="New changelist" comment="" />
     <ignored path="MasqLib.iws" />
@@ -267,10 +144,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MasqRobot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
+            <state relative-caret-position="384">
               <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -307,7 +184,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SensorBNO055IMU.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SensorBNO055IMU.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples/SensorBNO055IMU.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="384">
@@ -4673,52 +4550,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Production">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Android Instrumentation Tests" />
-        <subPane subId="New changelist" />
-        <subPane subId="Changed Files" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Masquerade4997Library">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Default" />
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MasqLib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -4904,6 +4735,52 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MasqLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Production">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Android Instrumentation Tests" />
+        <subPane subId="New changelist" />
+        <subPane subId="Changed Files" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Masquerade4997Library">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Default" />
+      </pane>
+      <pane id="Scratches">
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -5766,15 +5643,15 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956687" sideWeight="0.57348245" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956687" sideWeight="0.57507986" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956687" sideWeight="0.88764644" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32986766" sideWeight="0.61874336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901555" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956687" sideWeight="0.42651758" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956687" sideWeight="0.42492014" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961479" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.75803405" sideWeight="0.33226836" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18849841" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="777" y="89" width="366" height="1039" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18849841" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="777" y="89" width="366" height="1039" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11288605" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961479" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -6189,24 +6066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#driveAbsoluteAngle#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#0;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#1;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#2;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#3;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#4;class#MasqRobot#0" expanded="false" />
-            <element signature="method#turnRelative#5;class#MasqRobot#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqLinearOpMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -6255,6 +6114,24 @@
             <element signature="e#8272#8368#0" expanded="false" />
             <element signature="method#formatAngle#0;class#SensorBNO055IMU#0" expanded="false" />
             <element signature="method#formatDegrees#0;class#SensorBNO055IMU#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/SubSystems4997/MasqRobot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#drive#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#driveAbsoluteAngle#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#0;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#1;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#2;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#3;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#4;class#MasqRobot#0" expanded="false" />
+            <element signature="method#turnRelative#5;class#MasqRobot#0" expanded="false" />
           </folding>
         </state>
       </provider>

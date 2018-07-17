@@ -1,6 +1,7 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
@@ -124,7 +125,6 @@ public class MasqMotor implements MasqHardware {
         resetEncoder();
         destination = distance * MasqUtils.CLICKS_PER_INCH;
     }
-
     public void runToPosition(Direction direction, double speed){
         MasqClock timeoutTimer = new MasqClock();
         resetEncoder();
@@ -352,6 +352,12 @@ public class MasqMotor implements MasqHardware {
 
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();
+    }
+    public DcMotorController getController () {
+        return motor.getController();
+    }
+    public int getPortNumber () {
+        return motor.getPortNumber();
     }
 
     public void setMotorModel (MasqEncoderModel model) {
