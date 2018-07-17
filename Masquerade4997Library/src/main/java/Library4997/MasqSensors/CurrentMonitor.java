@@ -10,7 +10,7 @@ import com.qualcomm.hardware.lynx.LynxDcMotorController;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.hardware.lynx.commands.core.LynxGetADCCommand;
 import com.qualcomm.hardware.lynx.commands.core.LynxGetADCResponse;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.RobotLog;
 
 import java.lang.reflect.Method;
@@ -21,12 +21,12 @@ public class CurrentMonitor {
     LynxModule hubOne;
     LynxModule hubTwo;
 
-    public CurrentMonitor(LinearOpMode opMode, String hubOneName, String hubTwoName) {
-        hubOne = opMode.hardwareMap.get(LynxModule.class, hubOneName);
-        hubTwo = opMode.hardwareMap.get(LynxModule.class, hubTwoName);
+    public CurrentMonitor(HardwareMap hardwareMap, String hubOneName, String hubTwoName) {
+        hubOne = hardwareMap.get(LynxModule.class, hubOneName);
+        hubTwo = hardwareMap.get(LynxModule.class, hubTwoName);
     }
 
-    public CurrentMonitor(LinearOpMode opMode) {
+    public CurrentMonitor(HardwareMap opMode) {
         this(opMode, "Expansion Hub 1", "Expansion Hub 2");
     }
 
@@ -54,17 +54,13 @@ public class CurrentMonitor {
     }
 
     public double getADCValue(int whichHub, LynxGetADCCommand.Channel channel) {
-        LynxModule hub;
-        if (whichHub == 1)
-            return getADCValue(hubOne, channel);
-        else if (whichHub == 2)
-            return getADCValue(hubTwo, channel);
-        else
-            return 0;
+        if (whichHub == 1) return getADCValue(hubOne, channel);
+        else if (whichHub == 2) return getADCValue(hubTwo, channel);
+        else return 0;
     }
 
     private double getADCValue(LynxModule hub, LynxGetADCCommand.Channel channel) {
-        LynxGetADCCommand command = new LynxGetADCCommand(hub, LynxGetADCCommand.Channel.BATTERY_CURRENT, LynxGetADCCommand.Mode.ENGINEERING);
+        LynxGetADCCommand command = new LynxGetADCCommand(hub, channel, LynxGetADCCommand.Mode.ENGINEERING);
         try {
             LynxGetADCResponse response = command.sendReceive();
             return response.getValue();
