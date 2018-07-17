@@ -24,7 +24,6 @@ public class CurrentMonitor {
     public CurrentMonitor(LinearOpMode opMode, String hubOneName, String hubTwoName) {
         hubOne = opMode.hardwareMap.get(LynxModule.class, hubOneName);
         hubTwo = opMode.hardwareMap.get(LynxModule.class, hubTwoName);
-
     }
 
     public CurrentMonitor(LinearOpMode opMode) {
@@ -34,7 +33,6 @@ public class CurrentMonitor {
     public double getMotorCurrent(MasqMotor motor) {
         LynxDcMotorController controller = (LynxDcMotorController) motor.getController();
         LynxModule hub = null;
-        //This bafoonery is required since the method is protected, but none can stop me from the power which is current readings
         try {
             Method modMethod = LynxController.class.getDeclaredMethod("getModule");
             modMethod.setAccessible(true);
@@ -44,24 +42,15 @@ public class CurrentMonitor {
         } catch (Exception e) {
             RobotLog.ee("ADCMonitor", "failed to communicate with lynx module");
         }
-        if (hub == null)
-            return 0;
-
+        if (hub == null) return 0;
         LynxGetADCCommand.Channel channel;
         int motorPort = motor.getPortNumber();
-        if (motorPort == 0)
-            channel = LynxGetADCCommand.Channel.MOTOR0_CURRENT;
-        else if (motorPort == 1)
-            channel = LynxGetADCCommand.Channel.MOTOR1_CURRENT;
-        else if (motorPort == 2)
-            channel = LynxGetADCCommand.Channel.MOTOR2_CURRENT;
-        else if (motorPort == 3)
-            channel = LynxGetADCCommand.Channel.MOTOR3_CURRENT;
-        else
-            return 0;
-
+        if (motorPort == 0) channel = LynxGetADCCommand.Channel.MOTOR0_CURRENT;
+        else if (motorPort == 1) channel = LynxGetADCCommand.Channel.MOTOR1_CURRENT;
+        else if (motorPort == 2) channel = LynxGetADCCommand.Channel.MOTOR2_CURRENT;
+        else if (motorPort == 3) channel = LynxGetADCCommand.Channel.MOTOR3_CURRENT;
+        else return 0;
         return getADCValue(hub, channel);
-
     }
 
     public double getADCValue(int whichHub, LynxGetADCCommand.Channel channel) {
@@ -72,11 +61,9 @@ public class CurrentMonitor {
             return getADCValue(hubTwo, channel);
         else
             return 0;
-
     }
 
     private double getADCValue(LynxModule hub, LynxGetADCCommand.Channel channel) {
-
         LynxGetADCCommand command = new LynxGetADCCommand(hub, LynxGetADCCommand.Channel.BATTERY_CURRENT, LynxGetADCCommand.Mode.ENGINEERING);
         try {
             LynxGetADCResponse response = command.sendReceive();
