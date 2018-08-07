@@ -1,141 +1,101 @@
 package Library4997.MasqUtilities;
 
-import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.Writer;
 
-/**
- * Created by Archish on 10/15/17.
- */
+public class MasqSerializer {
+    private Writer writer;
+    private StringBuffer lineBuffer;
+    private long msBase;
+    private long nsBase;
 
-public class MasqSerializer implements Runnable {
-    private static FtcRobotControllerActivity robotControllerActivity = new FtcRobotControllerActivity();
-    private FileOutputStream fileOutputStream;
-    private OutputStreamWriter outputStreamWriter;
-    private boolean close = false;
-    private List<MasqHardware> hardwareList = new ArrayList<>(5);
-    private List<Object> objectList = new ArrayList<>();
-    private MasqHardware hardwareOne, hardwareTwo, hardwareThree, hardwareFour, hardwareFive;
-    public MasqSerializer(){}
-    public void startFileWriting(){
-        new Thread(this).start();
-    }
-    public void setHardwareTracking(MasqHardware hardwareOne){
-        this.hardwareOne = hardwareOne;
-        hardwareList = Arrays.asList(this.hardwareOne);
-    }
-    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo){
-        this.hardwareOne = hardwareOne;
-        this.hardwareTwo = hardwareTwo;
-        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo);
-    }
-    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo, MasqHardware hardwareThree){
-        this.hardwareOne = hardwareOne;
-        this.hardwareTwo = hardwareTwo;
-        this.hardwareThree = hardwareThree;
-        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo, this.hardwareThree);
-    }
-    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo, MasqHardware hardwareThree, MasqHardware hardwareFour){
-        this.hardwareOne = hardwareOne;
-        this.hardwareTwo = hardwareTwo;
-        this.hardwareThree = hardwareThree;
-        this.hardwareFour = hardwareFour;
-        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo, this.hardwareThree, this.hardwareFour);
-    }
-    public void setHardwareTracking(MasqHardware hardwareOne, MasqHardware hardwareTwo, MasqHardware hardwareThree, MasqHardware hardwareFour, MasqHardware hardwareFive){
-        this.hardwareOne = hardwareOne;
-        this.hardwareTwo = hardwareTwo;
-        this.hardwareThree = hardwareThree;
-        this.hardwareFour = hardwareFour;
-        this.hardwareFive = hardwareFive;
-        hardwareList = Arrays.asList(this.hardwareOne, this.hardwareTwo, this.hardwareThree, this.hardwareFour, this.hardwareFive);
-    }
-    private void createFiles(){
-        for (MasqHardware hardware: hardwareList){
-            try {
-                fileOutputStream = robotControllerActivity.getFileOutput(hardware.getName().replace(" ", "") + ".txt");
-                outputStreamWriter = new OutputStreamWriter(fileOutputStream);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void createFile(String[] columnNames, String fileName) {
+    public MasqSerializer (String fileName) {
+        String directoryPath    = "/sdcard/FIRST/DataLogger";
+        String filePath         = directoryPath + "/" + fileName + ".csv";
+        new File(directoryPath).mkdir();
         try {
-            fileOutputStream = robotControllerActivity.getFileOutput(fileName + ".txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        outputStreamWriter = new OutputStreamWriter(fileOutputStream);
-        for (String s : columnNames) {
-            try {
-                outputStreamWriter.write(s + "\t");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            outputStreamWriter.write("\n");
+            writer = new FileWriter(filePath);
+            lineBuffer = new StringBuffer(128);
         } catch (IOException e) {
-            e.printStackTrace();
         }
+        msBase = System.currentTimeMillis();
+        nsBase = System.nanoTime();
+        addField("sec");
+        addField("d ms");
     }
-    public void writeData(Object[] data) {
+
+    private void flushLineBuffer(){
+        long milliTime,nanoTime;
+
         try {
-            for (Object o : data) {
-                outputStreamWriter.write(o.toString() + "\t");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            lineBuffer.append('\n');
+            writer.write(lineBuffer.toString());
+            lineBuffer.setLength(0);
         }
-        try {
-            outputStreamWriter.write("\n");
-        } catch (IOException e) {
-            e.printStackTrace();
+        catch (IOException e){
         }
+        milliTime   = System.currentTimeMillis();
+        nanoTime    = System.nanoTime();
+        addField(String.format("%.3f",(milliTime - msBase) / 1.0E3));
+        addField(String.format("%.3f",(nanoTime - nsBase) / 1.0E6));
+        nsBase      = nanoTime;
     }
-    private void update(){
-        for (MasqHardware hardware: hardwareList) {
-            int dashLength = hardware.getDash().length;
-            for (int i = 0; i < dashLength; i++) {
-                try {outputStreamWriter.write(hardware.getName()+ hardware.getDash()[i]);}
-                catch (IOException e) {e.printStackTrace();}
-            }
+
+    public void closeDataLogger() {
+        try {
+            writer.close();
+        }
+        catch (IOException e) {
         }
     }
 
-    private String[] generateString() {
-        List<String> read = new ArrayList<>();
-        return (String[]) read.toArray();
+    public void addField(String s) {
+        if (lineBuffer.length()>0) {
+            lineBuffer.append(',');
+        }
+        lineBuffer.append(s);
     }
-    public String[] readFromFile(){
-        return generateString();
+
+    public void addField(char c) {
+        if (lineBuffer.length()>0) {
+            lineBuffer.append(',');
+        }
+        lineBuffer.append(c);
     }
+
+    public void addField(boolean b) {
+        addField(b ? '1' : '0');
+    }
+
+    public void addField(byte b) {
+        addField(Byte.toString(b));
+    }
+
+    public void addField(short s) {
+        addField(Short.toString(s));
+    }
+
+    public void addField(long l) {
+        addField(Long.toString(l));
+    }
+
+    public void addField(float f) {
+        addField(Float.toString(f));
+    }
+
+    public void addField(double d) {
+        addField(Double.toString(d));
+    }
+
+    public void newLine() {
+        flushLineBuffer();
+    }
+
     @Override
-    public void run() {
-        boolean close = false;
-        while (!close) {
-            update();
-            close = this.close;
-            sleep();
-        }
-    }
-    public void close() {
-        try {outputStreamWriter.flush();outputStreamWriter.close();}
-        catch (IOException e) {e.printStackTrace();}
-    }
-    private void sleep(){
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    protected void finalize() throws Throwable {
+        closeDataLogger();
+        super.finalize();
     }
 }

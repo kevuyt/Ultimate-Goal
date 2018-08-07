@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 
 /**

@@ -7,10 +7,10 @@ import com.qualcomm.robotcore.util.Range;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqSensors.MasqPositionTracker;
+import Library4997.MasqControlSystems.MasqPositionTracker;
 import Library4997.MasqSensors.MasqTouchSensor;
-import Library4997.MasqUtilities.Direction;
-import Library4997.MasqUtilities.MasqEncoderModel;
+import Library4997.MasqUtilities.MasqHelpers.Direction;
+import Library4997.MasqUtilities.MasqHelpers.MasqEncoderModel;
 import Library4997.MasqUtilities.MasqUtils;
 import SubSystems4997.MasqRobot;
 

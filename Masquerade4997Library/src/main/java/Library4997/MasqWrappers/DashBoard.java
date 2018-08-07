@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 import SubSystems4997.MasqSubSystem;
 

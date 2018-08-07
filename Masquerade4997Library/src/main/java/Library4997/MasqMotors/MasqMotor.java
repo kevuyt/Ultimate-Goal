@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.util.Range;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqUtilities.Direction;
-import Library4997.MasqUtilities.MasqEncoderModel;
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqHelpers.Direction;
+import Library4997.MasqUtilities.MasqHelpers.MasqEncoderModel;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 
 /**

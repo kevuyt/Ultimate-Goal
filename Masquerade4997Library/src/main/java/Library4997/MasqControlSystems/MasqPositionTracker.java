@@ -1,10 +1,12 @@
-package Library4997.MasqSensors;
+package Library4997.MasqControlSystems;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqUtilities.MasqEncoderModel;
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqSensors.MasqEncoder;
+import Library4997.MasqUtilities.MasqHelpers.MasqEncoderModel;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 
 /**
  * Created by Archish on 4/22/18.

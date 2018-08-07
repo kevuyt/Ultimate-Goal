@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqMotors.MasqMotorSystem;
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 
 /**

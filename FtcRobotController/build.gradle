@@ -24,5 +24,4 @@ repositories {
         dirs '../libs'
     }
 }
-
 apply from: 'build.release.gradle'

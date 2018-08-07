@@ -9,10 +9,10 @@ import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
-import Library4997.MasqSensors.MasqPositionTracker;
-import Library4997.MasqUtilities.Direction;
+import Library4997.MasqControlSystems.MasqPositionTracker;
+import Library4997.MasqUtilities.MasqHelpers.Direction;
 import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqUtilities.StopCondition;
+import Library4997.MasqUtilities.MasqHelpers.StopCondition;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
@@ -98,7 +98,6 @@ public abstract class MasqRobot {
             angularError = positionTracker.imu.adjustAngle(targetAngle - positionTracker.getRotation());
             angularIntegral = (angularIntegral + angularError) * timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
-            prevAngularError = angularError;
             powerAdjustment = (MasqUtils.KP.DRIVE_ANGULAR * power) * angularError + (MasqUtils.KI.DRIVE * angularIntegral) + (MasqUtils.KD.DRIVE * angularDerivative);
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             powerAdjustment *= direction.value;
@@ -115,6 +114,7 @@ public abstract class MasqRobot {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ", clicksRemaining);
             dash.update();
+            prevAngularError = angularError;
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && ((clicksRemaining / targetClicks) > 0.05));
         //serializer.close();
         driveTrain.stopDriving();

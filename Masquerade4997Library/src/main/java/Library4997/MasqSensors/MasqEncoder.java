@@ -1,7 +1,7 @@
 package Library4997.MasqSensors;
 
 import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqUtilities.MasqEncoderModel;
+import Library4997.MasqUtilities.MasqHelpers.MasqEncoderModel;
 
 /**
  * Created by Archish on 3/14/18.

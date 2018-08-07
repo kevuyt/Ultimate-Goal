@@ -2,7 +2,7 @@ package Library4997.MasqSensors;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 
 public class MasqTouchSensor implements MasqHardware {
     DigitalChannel touchSensor;

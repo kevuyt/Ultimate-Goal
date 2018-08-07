@@ -3,7 +3,7 @@ package SubSystems4997.SubSystems;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqServos.MasqServo;
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 import Library4997.MasqWrappers.MasqController;
 import SubSystems4997.MasqSubSystem;

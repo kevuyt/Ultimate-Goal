@@ -1,4 +1,4 @@
-package Library4997.MasqUtilities;
+package Library4997.MasqUtilities.MasqHelpers;
 
 /**
  * Created by Archish on 3/11/18.

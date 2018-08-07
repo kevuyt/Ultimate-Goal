@@ -1,6 +1,6 @@
 package SubSystems4997;
 
-import Library4997.MasqUtilities.MasqHardware;
+import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 import Library4997.MasqWrappers.MasqController;
 
 /**

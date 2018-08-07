@@ -17,16 +17,16 @@ import java.lang.reflect.Method;
 
 import Library4997.MasqMotors.MasqMotor;
 
-public class CurrentMonitor {
+public class MasqCurrentMonitor {
     LynxModule hubOne;
     LynxModule hubTwo;
 
-    public CurrentMonitor(HardwareMap hardwareMap, String hubOneName, String hubTwoName) {
+    public MasqCurrentMonitor(HardwareMap hardwareMap, String hubOneName, String hubTwoName) {
         hubOne = hardwareMap.get(LynxModule.class, hubOneName);
         hubTwo = hardwareMap.get(LynxModule.class, hubTwoName);
     }
 
-    public CurrentMonitor(HardwareMap opMode) {
+    public MasqCurrentMonitor(HardwareMap opMode) {
         this(opMode, "Expansion Hub 1", "Expansion Hub 2");
     }
 
