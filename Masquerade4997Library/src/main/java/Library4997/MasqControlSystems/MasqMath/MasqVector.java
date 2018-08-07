@@ -6,8 +6,8 @@ package Library4997.MasqControlSystems.MasqMath;
  */
 
 public class MasqVector {
-    double direction;
-    double magnitude;
+    private double direction;
+    private double magnitude;
     public MasqVector(double direction, double magnitude) {
         this.direction = direction;
         this.magnitude = magnitude;

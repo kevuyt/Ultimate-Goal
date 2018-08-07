@@ -7,12 +7,9 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
 import Library4997.MasqUtilities.MasqUtils;
 
-/**
- * Created by Archish on 10/28/16.
- */
+
 public class MasqDriveTrain implements MasqHardware {
     public MasqMotorSystem leftDrive, rightDrive = null;
-    private double destination = 0;
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
         leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap);
         rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap);

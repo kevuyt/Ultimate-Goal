@@ -7,9 +7,6 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqUtilities.MasqUtils;
 import SubSystems4997.MasqRobot;
 
-/**
- * Created by Archish on 4/23/18.
- */
 
 public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardware {
     MasqPIDController turnController = new MasqPIDController(MasqUtils.KP.TURN);
