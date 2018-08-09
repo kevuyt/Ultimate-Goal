@@ -10,9 +10,9 @@ import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqControlSystems.MasqPositionTracker;
-import Library4997.MasqUtilities.MasqHelpers.Direction;
-import Library4997.MasqUtilities.MasqUtils;
-import Library4997.MasqUtilities.MasqHelpers.StopCondition;
+import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 

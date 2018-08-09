@@ -3,7 +3,7 @@ package Library4997.MasqServos;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import com.qualcomm.robotcore.hardware.Servo;
-import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
 

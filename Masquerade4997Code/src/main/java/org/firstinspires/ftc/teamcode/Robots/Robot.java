@@ -9,9 +9,9 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqControlSystems.MasqPositionTracker;
 import Library4997.MasqSensors.MasqTouchSensor;
-import Library4997.MasqUtilities.MasqHelpers.Direction;
-import Library4997.MasqUtilities.MasqHelpers.MasqEncoderModel;
-import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqHelpers.MasqEncoderModel;
+import Library4997.MasqResources.MasqUtils;
 import SubSystems4997.MasqRobot;
 
 /**

@@ -2,7 +2,7 @@ package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqResources.MasqUtils;
 
 /**
  * Created by Archish on 10/12/17.

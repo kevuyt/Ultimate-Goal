@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import java.util.Locale;
 
-import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
 
 
 /**

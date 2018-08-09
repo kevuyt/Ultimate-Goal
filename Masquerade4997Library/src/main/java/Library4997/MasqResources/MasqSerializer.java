@@ -1,4 +1,4 @@
-package Library4997.MasqUtilities;
+package Library4997.MasqResources;
 
 import java.io.File;
 import java.io.FileWriter;

@@ -11,7 +11,7 @@ import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqSensors.MasqVuforiaBeta;
 import Library4997.MasqServos.MasqServo;
-import Library4997.MasqUtilities.MasqHelpers.MasqEncoderModel;
+import Library4997.MasqResources.MasqHelpers.MasqEncoderModel;
 import SubSystems4997.MasqRobot;
 import SubSystems4997.SubSystems.Flipper;
 import SubSystems4997.SubSystems.Gripper;

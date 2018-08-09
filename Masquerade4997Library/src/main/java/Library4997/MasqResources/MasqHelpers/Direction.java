@@ -1,4 +1,4 @@
-package Library4997.MasqUtilities.MasqHelpers;
+package Library4997.MasqResources.MasqHelpers;
 
 /**
  * Gives a positive or negative multiplier associated to the needed motor spin direction of the associated direction.

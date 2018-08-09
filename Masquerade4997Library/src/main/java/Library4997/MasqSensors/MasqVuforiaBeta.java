@@ -9,8 +9,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-import Library4997.MasqUtilities.MasqHelpers.MasqHardware;
-import Library4997.MasqUtilities.MasqUtils;
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqUtils;
 
 /**
  * Created by Archish on 11/7/17.

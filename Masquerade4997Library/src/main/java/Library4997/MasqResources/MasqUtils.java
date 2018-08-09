@@ -1,10 +1,10 @@
-package Library4997.MasqUtilities;
+package Library4997.MasqResources;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import Library4997.MasqUtilities.MasqHelpers.API_KEYS;
+import Library4997.MasqResources.MasqHelpers.API_KEYS;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 
