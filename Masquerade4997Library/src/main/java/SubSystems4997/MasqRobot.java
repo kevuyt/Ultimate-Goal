@@ -430,7 +430,6 @@ public abstract class MasqRobot {
         dash.create("FRONT RIGHT: ", driveTrain.rightDrive.motor1.getVelocity());
         dash.create("BACK RIGHT: ", driveTrain.rightDrive.motor2.getVelocity());
         dash.create("BACK LEFT: ", driveTrain.leftDrive.motor2.getVelocity());
-        dash.update();
     }
     public void MECH(MasqController c, Direction direction) {
         MECH(c, direction, false);

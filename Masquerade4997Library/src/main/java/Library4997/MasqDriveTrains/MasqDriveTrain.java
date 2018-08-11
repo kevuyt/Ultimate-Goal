@@ -19,8 +19,8 @@ public class MasqDriveTrain implements MasqHardware {
         rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap);
     }
     public void resetEncoders () {
-        leftDrive.resetEncoder();
-        rightDrive.resetEncoder();
+        leftDrive.resetEncoders();
+        rightDrive.resetEncoders();
     }
     public void setPower (double leftPower, double rightPower) {
         leftDrive.setVelocity(leftPower);

@@ -63,7 +63,6 @@ public class MasqMotor implements MasqHardware {
         }
     };
 
-
     private double minPosition, maxPosition;
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;

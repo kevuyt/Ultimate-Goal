@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
@@ -33,6 +34,7 @@ public class Creed extends MasqRobot {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
+    public MasqTracker tracker;
     public MasqREVColorSensor singleBlock, doubleBlock, redLineDetector, blueLineDetector;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap) {
@@ -61,6 +63,7 @@ public class Creed extends MasqRobot {
         positionTracker.addLeftWheel(MasqEncoderModel.NEVEREST40, driveTrain.leftDrive.motor1);
         positionTracker.addLeftWheel(MasqEncoderModel.NEVEREST40, driveTrain.rightDrive.motor1);
         positionTracker.resetSystem();
+        tracker = new MasqTracker(driveTrain.leftDrive, driveTrain.rightDrive, positionTracker.imu);
         lift.setClosedLoop(false);
     }
 

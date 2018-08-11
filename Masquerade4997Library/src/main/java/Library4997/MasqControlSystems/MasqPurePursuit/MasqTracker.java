@@ -1,7 +1,7 @@
 package Library4997.MasqControlSystems.MasqPurePursuit;
 
-import Library4997.MasqControlSystems.MasqPositionTracker;
-import SubSystems4997.MasqRobot;
+import Library4997.MasqMotors.MasqMotorSystem;
+import Library4997.MasqSensors.MasqAdafruitIMU;
 
 /**
  * Created by Archishmaan Peyyety on 8/9/18.
@@ -9,15 +9,37 @@ import SubSystems4997.MasqRobot;
  */
 
 public class MasqTracker {
-    private MasqPositionTracker positionTracker;
-    private double deltaX, deltaY, deltaGlobalHeading, trackWidth;
-    private double globalX, globalY;
+    private MasqMotorSystem lSystem, rSystem;
+    private MasqAdafruitIMU imu;
+    private double deltaY, prevY = 0, heading;
+    private double globalX = 0, globalY = 0;
 
-
-    public MasqTracker () {
-        if (MasqRobot.positionTracker != null) positionTracker = MasqRobot.positionTracker;
+    public MasqTracker (MasqMotorSystem lSystem, MasqMotorSystem rSystem, MasqAdafruitIMU imu) {
+        this.imu = imu;
+        this.lSystem = lSystem;
+        this.rSystem = rSystem;
+        this.lSystem.resetEncoders();
+        this.rSystem.resetEncoders();
     }
 
+
+    public double getLeftInches () {
+        return lSystem.getCurrentPosition() /
+                lSystem.motor1.getEncoder().getClicksPerInch();
+    }
+
+    public double getRightInches () {
+        return rSystem.getCurrentPosition() /
+                rSystem.motor1.getEncoder().getClicksPerInch();
+    }
+
+    public double getRelativeYInches() {
+        return (getLeftInches() + getRightInches()) / 2;
+    }
+
+    public double getHeading () {
+        return imu.getAbsoluteHeading();
+    }
 
     public double getGlobalX () {
         return globalX;
@@ -27,15 +49,11 @@ public class MasqTracker {
         return globalY;
     }
 
-    public double getTrackWidth() {
-        return trackWidth;
-    }
-
-    public void setTrackWidth(double trackWidth) {
-        this.trackWidth = trackWidth;
-    }
-
     public void updateSystem () {
-
+        deltaY = getRelativeYInches() - prevY;
+        heading = getHeading();
+        globalX += Math.sin(Math.toRadians(heading)) * deltaY;
+        globalY += Math.cos(Math.toRadians(heading)) * deltaY;
+        prevY = getRelativeYInches();
     }
 }
