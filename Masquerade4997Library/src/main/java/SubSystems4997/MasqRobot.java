@@ -5,14 +5,14 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import Library4997.MasqControlSystems.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
+import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqHelpers.StopCondition;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqColorSensor;
-import Library4997.MasqControlSystems.MasqPositionTracker;
-import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
@@ -24,7 +24,7 @@ import Library4997.MasqWrappers.MasqController;
 public abstract class MasqRobot {
     public MasqDriveTrain driveTrain;
     public static MasqPositionTracker positionTracker;
-    private DashBoard dash = DashBoard.getDash();
+    public DashBoard dash;
     public abstract void mapHardware(HardwareMap hardwareMap);
     private MasqClock timeoutClock = new MasqClock();
     public double angleLeftCover = 0;
@@ -130,8 +130,6 @@ public abstract class MasqRobot {
     public void driveAbsoluteAngle(double distance, int angle) {driveAbsoluteAngle(distance, angle, 0.5);}
 
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
-
-
         driveTrain.setClosedLoop(false);
         double targetAngle = positionTracker.imu.adjustAngle(positionTracker.getRotation()) + (direction.value * angle);
         double acceptableError = .5;
@@ -183,8 +181,6 @@ public abstract class MasqRobot {
         turnRelative(angle, DIRECTION, MasqUtils.DEFAULT_TIMEOUT);}
 
     public void turnAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
-
-
         driveTrain.setClosedLoop(false);
         double targetAngle = positionTracker.imu.adjustAngle((direction.value * angle));
         double acceptableError = .5;
@@ -398,6 +394,8 @@ public abstract class MasqRobot {
         driveTrain.leftDrive.setVelocity(left - (leftError *  MasqUtils.KP.MOTOR_TELEOP));
     }
     public void MECH(MasqController c, Direction direction, boolean disabled) {
+        int disable = 1;
+        if (disabled) disable = 0;
         double x = -c.leftStickY();
         double y = c.leftStickX();
         double xR = - c.rightStickX();
@@ -424,16 +422,10 @@ public abstract class MasqRobot {
             rightFront /= 3;
             rightBack /= 3;
         }
-        if (disabled) {
-            leftBack = 0;
-            leftFront = 0;
-            rightBack = 0;
-            rightFront = 0;
-        }
-        driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value);
-        driveTrain.leftDrive.motor2.setVelocity(leftBack  * direction.value);
-        driveTrain.rightDrive.motor1.setVelocity(rightFront  * direction.value);
-        driveTrain.rightDrive.motor2.setVelocity(rightBack  * direction.value);
+        driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value * disable);
+        driveTrain.leftDrive.motor2.setVelocity(leftBack  * direction.value * disable);
+        driveTrain.rightDrive.motor1.setVelocity(rightFront * direction.value * disable);
+        driveTrain.rightDrive.motor2.setVelocity(rightBack * direction.value * disable);
         dash.create("FRONT LEFT: ", driveTrain.leftDrive.motor1.getVelocity());
         dash.create("FRONT RIGHT: ", driveTrain.rightDrive.motor1.getVelocity());
         dash.create("BACK RIGHT: ", driveTrain.rightDrive.motor2.getVelocity());

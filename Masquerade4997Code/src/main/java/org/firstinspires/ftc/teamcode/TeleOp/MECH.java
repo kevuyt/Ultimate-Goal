@@ -1,9 +1,7 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
 import org.firstinspires.ftc.teamcode.Robots.Creed;
-
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -15,7 +13,7 @@ public class MECH extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         creed.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("Init");
+            dash.create(creed.driveTrain.leftDrive.motor1.getEncoder().getModel().CPR());
             dash.update();
         }
         waitForStart();

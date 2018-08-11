@@ -11,6 +11,7 @@ import SubSystems4997.MasqRobot;
 public class MasqTracker {
     private MasqPositionTracker positionTracker;
     private double deltaX, deltaY, deltaGlobalHeading, trackWidth;
+    private double globalX, globalY;
 
 
     public MasqTracker () {
@@ -19,11 +20,11 @@ public class MasqTracker {
 
 
     public double getGlobalX () {
-        return 0;
+        return globalX;
     }
 
     public double getGlobalY () {
-        return 0;
+        return globalY;
     }
 
     public double getTrackWidth() {

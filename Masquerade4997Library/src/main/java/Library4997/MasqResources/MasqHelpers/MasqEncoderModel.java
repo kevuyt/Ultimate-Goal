@@ -6,9 +6,8 @@ package Library4997.MasqResources.MasqHelpers;
 
 public enum  MasqEncoderModel {
         NEVEREST20, NEVEREST40, NEVEREST60, USDIGITAL_E4T;
-        public double CPR;
-        public double DEFAULT_CPR = 0;
-        public double CPR(MasqEncoderModel motorModel) {
+        public static double DEFAULT_CPR = 0;
+        public static double CPR(MasqEncoderModel motorModel) {
             switch (motorModel){
                 case NEVEREST20:
                     return 537.6;
@@ -21,9 +20,11 @@ public enum  MasqEncoderModel {
             }
             return DEFAULT_CPR;
         }
-        public int RPM;
-        public int DEFAULT_RPM = 0;
-        public int RPM(MasqEncoderModel motorModel) {
+        public double CPR () {
+            return CPR(this);
+        }
+        public static int DEFAULT_RPM = 0;
+        public static int RPM(MasqEncoderModel motorModel) {
             switch (motorModel) {
                 case NEVEREST20:
                     return 340;
@@ -33,5 +34,8 @@ public enum  MasqEncoderModel {
                     return 105;
             }
             return DEFAULT_RPM;
+        }
+        public int RPM () {
+            return RPM(this);
         }
 }

@@ -31,8 +31,8 @@ public class Robot extends MasqRobot {
         this.hardwareMap = hardwareMap;
         yTranslator = new MasqMotorSystem("y1", "y2", "y", this.hardwareMap);
         touchSensor = new MasqTouchSensor("touchSensor", this.hardwareMap);
-        leftMotor = new MasqMotor("leftMotor", DcMotor.Direction.REVERSE, this.hardwareMap);
-        rightMotor = new MasqMotor("rightMotor", DcMotor.Direction.FORWARD, this.hardwareMap);
+        leftMotor = new MasqMotor("leftMotor", MasqEncoderModel.NEVEREST20, DcMotor.Direction.REVERSE, this.hardwareMap);
+        rightMotor = new MasqMotor("rightMotor", MasqEncoderModel.NEVEREST20, DcMotor.Direction.FORWARD, this.hardwareMap);
         positionTracker = new MasqPositionTracker(this.hardwareMap, leftMotor, MasqEncoderModel.USDIGITAL_E4T,
                 rightMotor, MasqEncoderModel.NEVEREST20);
     }

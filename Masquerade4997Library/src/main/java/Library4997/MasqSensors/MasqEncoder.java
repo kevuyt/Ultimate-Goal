@@ -14,7 +14,7 @@ public class MasqEncoder {
     private double currentPosition, zeroPos;
     private double clicksPerInch;
     public MasqEncoder(MasqMotor motor, MasqEncoderModel model) {
-        clicksPerInch = (model.CPR / (wheelDiameter * Math.PI)) * gearRatio;
+        clicksPerInch = (model.CPR() / (wheelDiameter * Math.PI)) * gearRatio;
         this.model = model;
         this.motor = motor;
     }
@@ -50,10 +50,10 @@ public class MasqEncoder {
     }
 
     public double getRPM () {
-        return model.RPM;
+        return model.RPM();
     }
     public double getClicksPerRotation () {
-        return model.CPR;
+        return model.CPR();
     }
     public double getGearRatio() {
         return gearRatio;
@@ -65,5 +65,9 @@ public class MasqEncoder {
 
     public void setModel(MasqEncoderModel model) {
         this.model = model;
+    }
+
+    public MasqEncoderModel getModel() {
+        return model;
     }
 }

@@ -68,19 +68,19 @@ public class MasqMotor implements MasqHardware {
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;
 
-    public MasqMotor(String name, HardwareMap hardwareMap){
+    public MasqMotor(String name, MasqEncoderModel model, HardwareMap hardwareMap){
         limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
-        encoder = new MasqEncoder(this, MasqEncoderModel.NEVEREST20);
+        encoder = new MasqEncoder(this, model);
     }
-    public MasqMotor(String name, DcMotor.Direction direction, HardwareMap hardwareMap) {
+    public MasqMotor(String name, MasqEncoderModel model, DcMotor.Direction direction, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
         if (direction == DcMotor.Direction.REVERSE) this.direction = 1;
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
-        encoder = new MasqEncoder(this, MasqEncoderModel.NEVEREST20);
+        encoder = new MasqEncoder(this, model);
     }
 
     public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
@@ -184,14 +184,16 @@ public class MasqMotor implements MasqHardware {
                 motorPower = 0;
             else if (motor.getCurrentPosition() < minPosition && power < 0)
                 motorPower = 0;
-        } else if (halfDetectionMin) {
+        }
+        else if (halfDetectionMin) {
             if (minLim.isPressed()) {
                 currentZero = motor.getCurrentPosition();
                 currentMax = currentZero + maxPosition;
             }
             if (minLim != null && minLim.isPressed() && power < 0) motorPower = 0;
             else if (motor.getCurrentPosition() > currentMax && power > 0) motorPower = 0;
-        } else if (halfDetectionMax) {
+        }
+        else if (halfDetectionMax) {
             if (maxLim.isPressed()) {
                 currentZero = motor.getCurrentPosition();
                 currentMin = currentZero - minPosition;
@@ -341,6 +343,10 @@ public class MasqMotor implements MasqHardware {
         };
         Thread thread = new Thread(mainRunnable);
         thread.start();
+    }
+
+    public MasqEncoder getEncoder () {
+        return encoder;
     }
 
     public double getKp() {return kp;}

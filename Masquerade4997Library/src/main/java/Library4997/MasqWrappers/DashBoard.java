@@ -18,13 +18,15 @@ public class DashBoard {
     private int dashLength;
     private Telemetry telemetry;
     private boolean open;
+    private static DashBoard instance;
     public DashBoard(Telemetry telemetry){
-        this.telemetry  = telemetry;
+        this.telemetry = telemetry;
         instance = this;
     }
 
-    public static DashBoard getDash(){return instance;}
-    public static DashBoard instance;
+    public static DashBoard getDash() {
+        return instance;
+    }
 
     public void create(String string) {
         telemetry.addLine(string);
