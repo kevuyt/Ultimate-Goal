@@ -6,27 +6,31 @@ package Library4997.MasqControlSystems.MasqMath;
  */
 
 public class MasqVector {
-    private double direction;
-    private double magnitude;
-    public MasqVector(double direction, double magnitude) {
-        this.direction = direction;
-        this.magnitude = magnitude;
+    private double x;
+    private double y;
+    public MasqVector(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public double getDirection() {
-        return direction;
+    public double getX() {
+        return x;
     }
 
-    public void setDirection(double direction) {
-        this.direction = direction;
+    public void setX(double x) {
+        this.x = x;
     }
 
-    public double getMagnitude() {
-        return magnitude;
+    public double getY() {
+        return y;
     }
 
-    public void setMagnitude(double magnitude) {
-        this.magnitude = magnitude;
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public static MasqVector addVectors(MasqVector v1, MasqVector v2) {
+        return new MasqVector(v1.getX() + v2.getX(), v1.getY() + v2.getY());
     }
 
 }

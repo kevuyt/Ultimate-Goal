@@ -56,7 +56,10 @@ public class Creed extends MasqRobot {
         positionTracker = new MasqPositionTracker(hardwareMap, relicLift, MasqEncoderModel.USDIGITAL_E4T,
                 driveTrain.rightDrive.motor2, MasqEncoderModel.NEVEREST20);
         positionTracker.xWheel.setWheelDiameter(4);
+        positionTracker.addLeftWheel(MasqEncoderModel.NEVEREST40, driveTrain.leftDrive.motor1);
+        positionTracker.addLeftWheel(MasqEncoderModel.NEVEREST40, driveTrain.rightDrive.motor1);
         positionTracker.resetSystem();
         lift.setClosedLoop(false);
     }
+
 }

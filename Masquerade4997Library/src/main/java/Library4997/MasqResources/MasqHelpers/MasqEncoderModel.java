@@ -19,7 +19,7 @@ public enum  MasqEncoderModel {
                 case USDIGITAL_E4T:
                     return 1440;
             }
-            return 1000;
+            return DEFAULT_CPR;
         }
         public int RPM;
         public int DEFAULT_RPM = 0;

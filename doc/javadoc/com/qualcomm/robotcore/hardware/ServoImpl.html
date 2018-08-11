@@ -166,7 +166,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/ServoImpl.html#direction">direction</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/ServoImpl.html#x">x</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected double</code></td>
@@ -210,7 +210,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/ServoImpl.html#ServoImpl-com.qualcomm.robotcore.hardware.ServoController-int-com.qualcomm.robotcore.hardware.Servo.Direction-">ServoImpl</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/ServoController.html" title="interface in com.qualcomm.robotcore.hardware">ServoController</a>&nbsp;controller,
          int&nbsp;portNumber,
-         <a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;direction)</code>
+         <a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;x)</code>
 <div class="block">COnstructor</div>
 </td>
 </tr>
@@ -256,7 +256,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/ServoImpl.html#getDirection--">getDirection</a></span>()</code>
-<div class="block">Get the direction</div>
+<div class="block">Get the x</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -303,8 +303,8 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/ServoImpl.html#setDirection-com.qualcomm.robotcore.hardware.Servo.Direction-">setDirection</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;direction)</code>
-<div class="block">Set the direction</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/ServoImpl.html#setDirection-com.qualcomm.robotcore.hardware.Servo.Direction-">setDirection</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;x)</code>
+<div class="block">Set the x</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -353,13 +353,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 <pre>protected&nbsp;int portNumber</pre>
 </li>
 </ul>
-<a name="direction">
+<a name="x">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>direction</h4>
-<pre>protected&nbsp;<a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a> direction</pre>
+<h4>x</h4>
+<pre>protected&nbsp;<a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a> x</pre>
 </li>
 </ul>
 <a name="limitPositionMin">
@@ -412,13 +412,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 <h4>ServoImpl</h4>
 <pre>public&nbsp;ServoImpl(<a href="../../../../com/qualcomm/robotcore/hardware/ServoController.html" title="interface in com.qualcomm.robotcore.hardware">ServoController</a>&nbsp;controller,
                  int&nbsp;portNumber,
-                 <a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;direction)</pre>
+                 <a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;x)</pre>
 <div class="block">COnstructor</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>controller</code> - Servo controller that this servo is attached to</dd>
 <dd><code>portNumber</code> - physical port number on the servo controller</dd>
-<dd><code>direction</code> - FORWARD for normal operation, REVERSE to reverse operation</dd>
+<dd><code>x</code> - FORWARD for normal operation, REVERSE to reverse operation</dd>
 </dl>
 </li>
 </ul>
@@ -509,7 +509,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 <pre>public&nbsp;void&nbsp;resetDeviceConfigurationForOpMode()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html#resetDeviceConfigurationForOpMode--">HardwareDevice</a></code></span></div>
 <div class="block">Resets the device's configuration to that which is expected at the beginning of an OpMode.
- For example, motors will reset the their direction to 'forward'.</div>
+ For example, motors will reset the their x to 'forward'.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html#resetDeviceConfigurationForOpMode--">resetDeviceConfigurationForOpMode</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html" title="interface in com.qualcomm.robotcore.hardware">HardwareDevice</a></code></dd>
@@ -555,13 +555,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 <ul class="blockList">
 <li class="blockList">
 <h4>setDirection</h4>
-<pre>public&nbsp;void&nbsp;setDirection(<a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;direction)</pre>
-<div class="block">Set the direction</div>
+<pre>public&nbsp;void&nbsp;setDirection(<a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;x)</pre>
+<div class="block">Set the x</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/Servo.html#setDirection-com.qualcomm.robotcore.hardware.Servo.Direction-">setDirection</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" title="interface in com.qualcomm.robotcore.hardware">Servo</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>direction</code> - direction</dd>
+<dd><code>x</code> - x</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/Servo.html#getDirection--"><code>Servo.getDirection()</code></a>, 
 <a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware"><code>Servo.Direction</code></a></dd>
@@ -575,12 +575,12 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" titl
 <li class="blockList">
 <h4>getDirection</h4>
 <pre>public&nbsp;<a href="../../../../com/qualcomm/robotcore/hardware/Servo.Direction.html" title="enum in com.qualcomm.robotcore.hardware">Servo.Direction</a>&nbsp;getDirection()</pre>
-<div class="block">Get the direction</div>
+<div class="block">Get the x</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/Servo.html#getDirection--">getDirection</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/Servo.html" title="interface in com.qualcomm.robotcore.hardware">Servo</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>direction</dd>
+<dd>x</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/Servo.html#setDirection-com.qualcomm.robotcore.hardware.Servo.Direction-"><code>Servo.setDirection(Direction)</code></a></dd>
 </dl>

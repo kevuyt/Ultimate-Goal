@@ -130,7 +130,8 @@ public abstract class MasqRobot {
     public void driveAbsoluteAngle(double distance, int angle) {driveAbsoluteAngle(distance, angle, 0.5);}
 
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
-        positionTracker.startIgnoringRotation();
+
+
         driveTrain.setClosedLoop(false);
         double targetAngle = positionTracker.imu.adjustAngle(positionTracker.getRotation()) + (direction.value * angle);
         double acceptableError = .5;
@@ -165,7 +166,6 @@ public abstract class MasqRobot {
         }
         driveTrain.setPower(0,0);
         sleep(sleepTime);
-        positionTracker.endIgnoringRotation();
     }
     public void turnRelative(double angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki) {
         turnRelative(angle, DIRECTION, timeOut, sleepTime, kp, ki, MasqUtils.KD.TURN);
@@ -183,7 +183,8 @@ public abstract class MasqRobot {
         turnRelative(angle, DIRECTION, MasqUtils.DEFAULT_TIMEOUT);}
 
     public void turnAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
-        positionTracker.startIgnoringRotation();
+
+
         driveTrain.setClosedLoop(false);
         double targetAngle = positionTracker.imu.adjustAngle((direction.value * angle));
         double acceptableError = .5;
@@ -222,7 +223,6 @@ public abstract class MasqRobot {
         //serializer.close();
         driveTrain.setPower(0,0);
         sleep(sleepTime);
-        positionTracker.endIgnoringRotation();
     }
     public void turnAbsolute(double angle, Direction DIRECTION, double timeOut, int sleepTime, double kp, double ki) {
         turnAbsolute(angle, DIRECTION, timeOut, sleepTime, kp, ki, MasqUtils.KD.TURN);

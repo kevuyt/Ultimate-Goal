@@ -14,9 +14,7 @@ import Library4997.MasqResources.MasqHelpers.MasqHardware;
 
 public class MasqPositionTracker implements MasqHardware {
     public MasqAdafruitIMU imu;
-    public MasqEncoder yWheel, xWheel;
-    private double xStart = 0, xEnd = 0, ignoreXTicks = 0;
-    private double yStart = 0, yEnd = 0, ignoreYTicks = 0;
+    public MasqEncoder yWheel, xWheel, leftWheel, rightWheel;
     HardwareMap hardwareMap;
     public MasqPositionTracker(HardwareMap hardwareMap, MasqMotor yWheelMotor, MasqEncoderModel yPPR, MasqMotor xWheelMotor, MasqEncoderModel xPPR) {
         this.hardwareMap = hardwareMap;
@@ -24,17 +22,26 @@ public class MasqPositionTracker implements MasqHardware {
         yWheel = new MasqEncoder(yWheelMotor, yPPR);
         xWheel = new MasqEncoder(xWheelMotor, xPPR);
     }
+
+    public void addLeftWheel (MasqEncoderModel l, MasqMotor lw) {
+        leftWheel = new MasqEncoder(lw, l);
+    }
+
+    public void addRightWheel (MasqEncoderModel r, MasqMotor rw) {
+        rightWheel = new MasqEncoder(rw, r);
+    }
+
     public double getX () {
-        return xWheel.getRelativePosition() - ignoreXTicks;
+        return xWheel.getRelativePosition();
     }
     public double getY () {
-        return yWheel.getRelativePosition() - ignoreYTicks;
+        return yWheel.getRelativePosition();
     }
     public double getXInches () {
-        return xWheel.getInches() - (ignoreXTicks * xWheel.getClicksPerInch());
+        return xWheel.getInches();
     }
     public double getYInches () {
-        return yWheel.getInches() - (ignoreYTicks * yWheel.getClicksPerInch());
+        return yWheel.getInches();
     }
     public double getRotation () {
         return imu.getRelativeYaw();
@@ -44,17 +51,6 @@ public class MasqPositionTracker implements MasqHardware {
         yWheel.resetEncoder();
         imu.reset();
     }
-    public void startIgnoringRotation () {
-        xStart = getX();
-        yStart = getY();
-    }
-    public void endIgnoringRotation () {
-        xEnd = getX();
-        yEnd = getY();
-        ignoreXTicks = ignoreXTicks + (xEnd - xStart);
-        ignoreYTicks = ignoreYTicks + (yEnd - yStart);
-    }
-
     @Override
     public String getName() {
         return "Position Tracker";

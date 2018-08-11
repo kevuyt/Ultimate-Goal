@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 
 public class MasqTouchSensor implements MasqHardware {
-    DigitalChannel touchSensor;
-    String nameTouchSensor;
+    private DigitalChannel touchSensor;
+    private String nameTouchSensor;
     public MasqTouchSensor(String name, HardwareMap hardwareMap){
         this.nameTouchSensor = name;
         touchSensor = hardwareMap.digitalChannel.get(name);
