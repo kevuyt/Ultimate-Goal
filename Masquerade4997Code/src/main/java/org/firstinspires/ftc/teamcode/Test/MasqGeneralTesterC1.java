@@ -19,7 +19,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
         while (!opModeIsActive()) {
             dash.create("Left Inches: ", creed.tracker.getLeftInches());
             dash.create("Right Inches: ", creed.tracker.getRightInches());
-            dash.create("Y Inches: ", creed.tracker.getRelativeYInches());
+            dash.create("Y Inches: ", creed.tracker.getRawYInches());
             dash.create("Heading: ", creed.tracker.getHeading());
             dash.update();
         }
@@ -28,7 +28,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
             creed.MECH(controller1);
             dash.create("Left Inches: ", creed.tracker.getLeftInches());
             dash.create("Right Inches: ", creed.tracker.getRightInches());
-            dash.create("Y Inches: ", creed.tracker.getRelativeYInches());
+            dash.create("Y Inches: ", creed.tracker.getRawYInches());
             dash.create("Heading: ", creed.tracker.getHeading());
             dash.create("X: ", creed.tracker.getGlobalX());
             dash.create("Y: ", creed.tracker.getGlobalY());

@@ -35,7 +35,7 @@ public class MasqPositionTracker {
                 rSystem.motor1.getEncoder().getClicksPerInch();
     }
 
-    public double getRelativeYInches() {
+    public double getRawYInches() {
         return (getLeftInches() + getRightInches()) / 2;
     }
 
@@ -53,11 +53,11 @@ public class MasqPositionTracker {
 
     public void updateSystem () {
         double tChange = System.nanoTime() - previousTime;
-        deltaY = (getRelativeYInches() - prevY) / tChange;
+        deltaY = (getRawYInches() - prevY) / tChange;
         double heading = getHeading();
         globalX += (Math.sin(Math.toRadians(heading)) * deltaY) * tChange;
         globalY += (Math.cos(Math.toRadians(heading)) * deltaY) * tChange;
-        prevY = getRelativeYInches();
+        prevY = getRawYInches();
         previousTime = System.nanoTime();
     }
 }
