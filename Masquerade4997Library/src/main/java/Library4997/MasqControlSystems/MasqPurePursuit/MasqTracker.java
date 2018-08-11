@@ -49,6 +49,10 @@ public class MasqTracker {
         return globalY;
     }
 
+    public double getDeltaY() {
+        return deltaY;
+    }
+
     public void updateSystem () {
         deltaY = getRelativeYInches() - prevY;
         heading = getHeading();

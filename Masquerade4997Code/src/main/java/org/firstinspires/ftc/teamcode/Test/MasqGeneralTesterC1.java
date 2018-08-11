@@ -32,6 +32,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
             dash.create("Heading: ", creed.tracker.getHeading());
             dash.create("X: ", creed.tracker.getGlobalX());
             dash.create("Y: ", creed.tracker.getGlobalY());
+            dash.create("dY: ", creed.tracker.getDeltaY());
             creed.tracker.updateSystem();
             dash.update();
         }
