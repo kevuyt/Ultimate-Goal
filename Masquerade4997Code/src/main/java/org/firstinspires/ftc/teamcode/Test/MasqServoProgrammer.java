@@ -22,7 +22,7 @@ public class MasqServoProgrammer extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(robot.positionTracker);
+            dash.create("H");
             dash.update();
         }
         waitForStart();

@@ -12,6 +12,7 @@ public class MasqPositionTracker {
     private MasqMotorSystem lSystem, rSystem;
     public MasqAdafruitIMU imu;
     private double deltaY;
+    private double previousTime = 0;
     private double prevY = 0;
     private double globalX = 0, globalY = 0;
 
@@ -50,15 +51,13 @@ public class MasqPositionTracker {
         return globalY;
     }
 
-    public double getDeltaY() {
-        return deltaY;
-    }
-
     public void updateSystem () {
-        deltaY = getRelativeYInches() - prevY;
+        double tChange = System.nanoTime() - previousTime;
+        deltaY = (getRelativeYInches() - prevY) / tChange;
         double heading = getHeading();
-        globalX += Math.sin(Math.toRadians(heading)) * deltaY;
-        globalY += Math.cos(Math.toRadians(heading)) * deltaY;
+        globalX += (Math.sin(Math.toRadians(heading)) * deltaY) * tChange;
+        globalY += (Math.cos(Math.toRadians(heading)) * deltaY) * tChange;
         prevY = getRelativeYInches();
+        previousTime = System.nanoTime();
     }
 }
