@@ -18,6 +18,7 @@ public class MECH extends MasqLinearOpMode implements Constants {
     private double position = 1;
     private double currentRelicPower = LIFT_UP;
     public void runLinearOpMode() throws InterruptedException {
+        creed.mapHardware(hardwareMap);
         creed.blueLineDetector.setPassive();
         creed.redLineDetector.setPassive();
         creed.jewelColorRed.setPassive();
@@ -25,7 +26,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
         creed.doubleBlock.setPassive();
         creed.initializeTeleop();
         creed.relicLift.setClosedLoop(false);
-        creed.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
             dash.create(creed.driveTrain.leftDrive.motor1.getEncoder().getModel().CPR());
             dash.update();
