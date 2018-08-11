@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqTracker;
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
@@ -22,7 +22,7 @@ import Library4997.MasqWrappers.MasqController;
 //TODO make MasqRobot abstract to support multiple copies of a robot, for test bot, main bot, so forth
 public abstract class MasqRobot {
     public MasqDriveTrain driveTrain;
-    public static MasqTracker tracker;
+    public static MasqPositionTracker tracker;
     public DashBoard dash;
     public abstract void mapHardware(HardwareMap hardwareMap);
     private MasqClock timeoutClock = new MasqClock();

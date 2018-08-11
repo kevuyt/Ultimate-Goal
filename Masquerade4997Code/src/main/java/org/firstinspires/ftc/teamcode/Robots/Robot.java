@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqSensors.MasqClock;
@@ -32,8 +33,6 @@ public class Robot extends MasqRobot {
         touchSensor = new MasqTouchSensor("touchSensor", this.hardwareMap);
         leftMotor = new MasqMotor("leftMotor", MasqEncoderModel.NEVEREST20, DcMotor.Direction.REVERSE, this.hardwareMap);
         rightMotor = new MasqMotor("rightMotor", MasqEncoderModel.NEVEREST20, DcMotor.Direction.FORWARD, this.hardwareMap);
-        positionTracker = new MasqPositionTracker(this.hardwareMap, leftMotor, MasqEncoderModel.USDIGITAL_E4T,
-                rightMotor, MasqEncoderModel.NEVEREST20);
     }
 
     public void robotDrive (Direction direction, int distance, double speed) {

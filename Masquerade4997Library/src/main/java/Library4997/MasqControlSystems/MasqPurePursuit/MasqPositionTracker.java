@@ -8,13 +8,14 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
  * Project: MasqLib
  */
 
-public class MasqTracker {
+public class MasqPositionTracker {
     private MasqMotorSystem lSystem, rSystem;
     public MasqAdafruitIMU imu;
-    private double deltaY, prevY = 0, heading;
+    private double deltaY;
+    private double prevY = 0;
     private double globalX = 0, globalY = 0;
 
-    public MasqTracker (MasqMotorSystem lSystem, MasqMotorSystem rSystem, MasqAdafruitIMU imu) {
+    public MasqPositionTracker(MasqMotorSystem lSystem, MasqMotorSystem rSystem, MasqAdafruitIMU imu) {
         this.imu = imu;
         this.lSystem = lSystem;
         this.rSystem = rSystem;
@@ -55,7 +56,7 @@ public class MasqTracker {
 
     public void updateSystem () {
         deltaY = getRelativeYInches() - prevY;
-        heading = getHeading();
+        double heading = getHeading();
         globalX += Math.sin(Math.toRadians(heading)) * deltaY;
         globalY += Math.cos(Math.toRadians(heading)) * deltaY;
         prevY = getRelativeYInches();

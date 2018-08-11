@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqTracker;
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
@@ -34,13 +34,14 @@ public class Creed extends MasqRobot {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
-    public MasqTracker tracker;
+    public MasqPositionTracker tracker;
     public MasqAdafruitIMU imu;
     public MasqREVColorSensor singleBlock, doubleBlock, redLineDetector, blueLineDetector;
     HardwareMap hardwareMap;
     public void mapHardware(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
         dash = DashBoard.getDash();
+        imu = new MasqAdafruitIMU("imu", this.hardwareMap);
         vuforia = new MasqVuforiaBeta();
         blueLineDetector = new MasqREVColorSensor("blueLineDetector", this.hardwareMap);
         redLineDetector = new MasqREVColorSensor("redLineDetector", this.hardwareMap);
@@ -58,7 +59,7 @@ public class Creed extends MasqRobot {
         relicGripper = new MasqServo("relicGripper", this.hardwareMap);
         relicLift = new MasqMotor("relicLift", MasqEncoderModel.NEVEREST40, this.hardwareMap);
         gripper = flipper.getGripper();
-        tracker = new MasqTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
+        tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         lift.setClosedLoop(false);
     }
 
