@@ -10,7 +10,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
 
 public class MasqTracker {
     private MasqMotorSystem lSystem, rSystem;
-    private MasqAdafruitIMU imu;
+    public MasqAdafruitIMU imu;
     private double deltaY, prevY = 0, heading;
     private double globalX = 0, globalY = 0;
 
