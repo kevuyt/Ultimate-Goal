@@ -1,14 +1,14 @@
-package Library4997.MasqControlSystems.MasqMath;
+package Library4997.MasqControlSystems.MasqPurePursuit;
 
 /**
- * Created by Archishmaan Peyyety on 8/7/18.
+ * Created by Archishmaan Peyyety on 8/13/18.
  * Project: MasqLib
  */
 
-public class MasqVector {
+public class MasqPoint {
     private double x;
     private double y;
-    public MasqVector(double x, double y) {
+    public MasqPoint(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -28,9 +28,4 @@ public class MasqVector {
     public void setY(double y) {
         this.y = y;
     }
-
-    public static MasqVector addVectors(MasqVector v1, MasqVector v2) {
-        return new MasqVector(v1.getX() + v2.getX(), v1.getY() + v2.getY());
-    }
-
 }
