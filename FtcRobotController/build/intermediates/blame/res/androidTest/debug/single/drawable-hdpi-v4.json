@@ -1,11 +1,19 @@
 [
     {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/button_shape.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/drawable-hdpi-v4/button_shape.xml"
+    },
+    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/button_shape.xml",
         "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/drawable-hdpi-v4/button_shape.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/button_shape.xml",

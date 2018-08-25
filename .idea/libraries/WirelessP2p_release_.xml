@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="WirelessP2p-release-">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/725de38ebcb56fbe491c1e3b79233c56677a22b2/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/725de38ebcb56fbe491c1e3b79233c56677a22b2/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/8d8609338b4a4ab1e0d22381f61f2f25bd345caa/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/8d8609338b4a4ab1e0d22381f61f2f25bd345caa/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

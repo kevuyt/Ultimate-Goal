@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
@@ -244,8 +245,6 @@ public abstract class MasqRobot {
     }
     public void turnAbsolute(double angle, Direction DIRECTION)  {turnAbsolute(angle, DIRECTION, MasqUtils.DEFAULT_TIMEOUT);}
 
-
-
     public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
         double targetAngle = tracker.getHeading
@@ -290,7 +289,7 @@ public abstract class MasqRobot {
     public void stopRed (MasqColorSensor colorSensor, double power){
         stopRed(colorSensor, power, Direction.BACKWARD);
     }
-    public void stopRed (MasqColorSensor colorSensor){stopRed(colorSensor, 0.5);}
+    public void stopRed (MasqColorSensor colorSensor) {stopRed(colorSensor, 0.5);}
 
     public void stop(StopCondition stopCondition, double angle, double speed, Direction direction, double timeOut) {
         driveTrain.setClosedLoop(true);
@@ -337,6 +336,16 @@ public abstract class MasqRobot {
     public void stop(StopCondition sensor){
         stop(sensor, tracker.getHeading
                 ());
+    }
+
+    public void go(double x, double y) {
+        double basePower;
+        double leftAddition;
+        MasqVector currentLocation = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
+        double targetDeltaX = x - currentLocation.getX();
+        double targetDeltaY = y - currentLocation.getY();
+        double distanceMagnitude = Math.hypot(targetDeltaX, targetDeltaY);
+
     }
 
     public void NFS(MasqController c) {

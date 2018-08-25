@@ -5,10 +5,10 @@ package Library4997.MasqControlSystems.MasqPurePursuit;
  * Project: MasqLib
  */
 
-public class MasqPoint {
+public class MasqVector {
     private double x;
     private double y;
-    public MasqPoint(double x, double y) {
+    public MasqVector(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -27,5 +27,13 @@ public class MasqPoint {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public double getMagnitude () {
+        return Math.hypot(getX(), getY());
+    }
+
+    public double getDirection () {
+        return Math.atan2(getY(), getX());
     }
 }

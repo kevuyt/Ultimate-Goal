@@ -26,7 +26,7 @@ public class MasqMotor implements MasqHardware {
     private double kp = 0.004, ki = 0, kd = 0;
     private double holdKp = 0.0002;
     private boolean closedLoop = true;
-    public MasqEncoder encoder;
+    private MasqEncoder encoder;
     private boolean holdPositionMode = false;
     private double targetPosition = 0;
     private double prevPos = 0;
@@ -36,7 +36,7 @@ public class MasqMotor implements MasqHardware {
     private double previousVelTime = 0;
     private double previousTime = 0;
     private double destination = 0;
-    public double currentPower;
+    private double currentPower;
     private double currentMax, currentMin;
     private double currentZero;
     private double holdItergral = 0;
@@ -49,7 +49,7 @@ public class MasqMotor implements MasqHardware {
     private double rpmPreviousError = 0;
     private int stalledRPMThreshold = 10;
     private boolean stateControl;
-    private double currentPosition = 0, zeroEncoderPosition = 0, prevRate = 0;
+    private double prevRate = 0;
     private Runnable stallAction = new Runnable() {
         @Override
         public void run() {

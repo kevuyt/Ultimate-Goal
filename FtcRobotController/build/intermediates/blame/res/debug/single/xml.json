@@ -1,47 +1,51 @@
 [
     {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/rev_scoot.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/rev_scoot.xml"
+    },
+    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbot.xml",
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/pushbot.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/squarebot.xml",
-        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/squarebot.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/maxmodules.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/maxmodules.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/maxmodules.xml",
-        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/maxmodules.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/k9legacybot.xml",
-        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/k9legacybot.xml"
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbotsens.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
         "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/k9usbbot.xml"
     },
     {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/squarebot.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/squarebot.xml"
+    },
+    {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/app_settings.xml",
         "source": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/src/main/res/xml/app_settings.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/k9legacybot.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/k9legacybot.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbot.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/pushbot.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/advanced_rc_settings.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/app_settings.xml",
+        "source": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/res/xml/app_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbot.xml",
         "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/pushbot.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/rev_scoot.xml",
-        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/rev_scoot.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/device_filter.xml",
         "source": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/src/main/res/xml/device_filter.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/advanced_rc_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/k9legacybot.xml",
@@ -60,12 +64,52 @@
         "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/pushbotsens.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbotsens.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/pushbotsens.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/rev_scoot.xml",
         "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/rev_scoot.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/device_filter.xml",
+        "source": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/res/xml/device_filter.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
+        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/advanced_rc_settings.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/squarebot.xml",
+        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/squarebot.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/maxmodules.xml",
+        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/maxmodules.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/maxmodules.xml",
+        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/maxmodules.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/k9legacybot.xml",
+        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/k9legacybot.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/maxmodules.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/maxmodules.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/rev_scoot.xml",
+        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/rev_scoot.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
+        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/advanced_rc_settings.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/xml/k9usbbot.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/pushbotsens.xml",
+        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/k9usbbot.xml",
@@ -74,9 +118,5 @@
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/device_filter.xml",
         "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/xml/device_filter.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/debug/xml/advanced_rc_settings.xml",
-        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/xml/advanced_rc_settings.xml"
     }
 ]

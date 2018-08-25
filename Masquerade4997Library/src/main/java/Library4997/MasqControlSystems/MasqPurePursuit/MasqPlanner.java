@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public class MasqPlanner {
     private double lookaheadDistance = 5; // In Inches
-    private MasqPoint carrot, rabbit;
+    private MasqVector carrot, rabbit;
     private MasqPositionTracker positionTracker;
-    private ArrayList<MasqPoint> wayPoints;
-    public MasqPlanner(ArrayList<MasqPoint> wayPoints, MasqPositionTracker positionTracker) {
+    private ArrayList<MasqVector> wayPoints;
+    public MasqPlanner(ArrayList<MasqVector> wayPoints, MasqPositionTracker positionTracker) {
         this.wayPoints = wayPoints;
         this.positionTracker = positionTracker;
-        carrot = new MasqPoint(0, 0);
+        carrot = new MasqVector(0, 0);
     }
     public void getTravelHeading () {
         return;
