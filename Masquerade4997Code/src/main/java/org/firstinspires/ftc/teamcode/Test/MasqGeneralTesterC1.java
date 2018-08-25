@@ -25,7 +25,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         while (opModeIsActive()) {
-            creed.MECH(controller1);
+            creed.NFS(controller1);
             dash.create("Left Inches: ", creed.tracker.getLeftInches());
             dash.create("Right Inches: ", creed.tracker.getRightInches());
             dash.create("Y Inches: ", creed.tracker.getRawYInches());

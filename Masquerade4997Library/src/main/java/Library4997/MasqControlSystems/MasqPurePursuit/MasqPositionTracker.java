@@ -44,7 +44,7 @@ public class MasqPositionTracker {
     }
 
     public double getGlobalX () {
-        return globalX;
+        return -globalX;
     }
 
     public double getGlobalY () {

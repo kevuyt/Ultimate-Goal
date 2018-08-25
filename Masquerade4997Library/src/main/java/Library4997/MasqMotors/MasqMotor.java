@@ -344,6 +344,10 @@ public class MasqMotor implements MasqHardware {
         thread.start();
     }
 
+    public double getPower () {
+        return currentPower;
+    }
+
     public MasqEncoder getEncoder () {
         return encoder;
     }

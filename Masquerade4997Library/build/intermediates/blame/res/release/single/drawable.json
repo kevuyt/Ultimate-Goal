@@ -4,8 +4,20 @@
         "source": "/Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/res/drawable/icon_robotcontroller.png"
     },
     {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/button_shape.xml",
+        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/drawable/button_shape.xml"
+    },
+    {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/button_shape.xml",
         "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/drawable/button_shape.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/black_border.xml",
+        "source": "/Users/Archish/.android/build-cache/1e2161e97db56e75b470a8f34ebc11e6b5624591/output/res/drawable/black_border.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/icon_robotcontroller.png",
+        "source": "/Users/Archish/.android/build-cache/b002110038cbacf4c82c676d206ef032cdb08e96/output/res/drawable/icon_robotcontroller.png"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/black_border.xml",
@@ -14,6 +26,14 @@
     {
         "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/icon_robotcontroller.png",
         "source": "/Users/Archish/.android/build-cache/93bab9bb9ac6be49db3e77ae46e3d0978c8e7d89/output/res/drawable/icon_robotcontroller.png"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/feedback_shape_orange.xml",
+        "source": "/Users/Archish/.android/build-cache/c6cfb7d207d546058d5f8ce83c89e62b90ed0d01/output/res/drawable/feedback_shape_orange.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/icon_menu.png",
+        "source": "/Users/Archish/.android/build-cache/b002110038cbacf4c82c676d206ef032cdb08e96/output/res/drawable/icon_menu.png"
     },
     {
         "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/release/drawable/black_border.xml",

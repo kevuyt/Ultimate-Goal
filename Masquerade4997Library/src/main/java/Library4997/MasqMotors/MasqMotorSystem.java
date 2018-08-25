@@ -70,7 +70,7 @@ public class MasqMotorSystem implements MasqHardware {
     public double getPower() {
         double num = 0, sum = 0;
         for (MasqMotor masqMotor: motors) {
-            sum += masqMotor.currentPower;
+            sum += masqMotor.getPower();
             num++;
         }
         return sum/num;
