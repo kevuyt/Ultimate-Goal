@@ -36,4 +36,8 @@ public class MasqVector {
     public double getDirection () {
         return Math.atan2(getY(), getX());
     }
+
+    public MasqPoint getTerminalPoint() {
+        return new MasqPoint(getX(), getY());
+    }
 }

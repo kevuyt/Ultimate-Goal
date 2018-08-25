@@ -5,8 +5,9 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
@@ -22,7 +23,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 public abstract class MasqRobot {
     public MasqDriveTrain driveTrain;
-    public MasqPositionTracker tracker;
+    public static MasqPositionTracker tracker;
     public DashBoard dash;
     public abstract void mapHardware(HardwareMap hardwareMap);
     private MasqClock timeoutClock = new MasqClock();
@@ -253,7 +254,7 @@ public abstract class MasqRobot {
     public void stopBlue (MasqColorSensor colorSensor, double power){
         stopBlue(colorSensor, power, Direction.BACKWARD);
     }
-    public void stopBlue (MasqColorSensor colorSensor){stopBlue(colorSensor, 0.5);}
+    public void stopBlue (MasqColorSensor colorSensor) {stopBlue(colorSensor, 0.5);}
 
     public void stopRed(MasqColorSensor colorSensor, double power, Direction Direction) {
         driveTrain.runUsingEncoder();
@@ -321,37 +322,31 @@ public abstract class MasqRobot {
     }
 
     public void go(double x, double y) {
-        double basePower;
+        double basePower, angleAdjustment, yAdjustment;
         double leftPower, rightPower;
-        double angleAdjustment, yAdjustment;
-        MasqVector currentLocation = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-        double targetDeltaX = x - currentLocation.getX();
-        double targetDeltaY = y - currentLocation.getY();
-        double targetDistanceMagnitude = currentLocation.getMagnitude();
-        double targetAngle = currentLocation.getDirection();
-        double distanceMagnitude;
-        double angleError, angleIntegral = 0, angleDerivative,
-                prevAngularError = targetAngle - tracker.getHeading();
-        double yError, yIntegral, yDerivative;
-        double prevT = 0, tChange, currentT;
-        while (targetDistanceMagnitude > 0.1) {
-            currentT = System.nanoTime();
-            tChange = currentT - prevT;
-            tChange /= 1e9;
-            distanceMagnitude = Math.hypot(targetDeltaX, targetDeltaY);
-            basePower = distanceMagnitude / targetDistanceMagnitude;
-            angleError = targetAngle - tracker.getHeading();
-            angleIntegral += (angleError * tChange);
-            angleDerivative = (angleError - prevAngularError) / tChange;
-            angleAdjustment = (angleError * MasqUtils.KP.DRIVE_ANGULAR * basePower) +
-                    (angleIntegral * MasqUtils.KI.TURN) +
-                    (angleDerivative * MasqUtils.KD.DRIVE);
+        double yError, yIntegral = 0, yDeravitive, yAnglePrev = 0;
+        double angleError, angleIntegral = 0, angleDerivative, angleErrorPrev = 0;
+        double timeCurrent, timeChange, timePrev = 0;
+        MasqVector targetVector = new MasqVector(x, y);
+        MasqPoint currentPoint = new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY());
+        while (currentPoint.distanceToPoint(targetVector.getTerminalPoint()) > 0.1) {
+            timeCurrent = System.nanoTime();
+            timeChange = timeCurrent - timePrev;
+            timeChange /= 1e9;
+            basePower = currentPoint.distanceToPoint(targetVector.getTerminalPoint()) / targetVector.getMagnitude();
+            currentPoint.setX(tracker.getGlobalX());
+            currentPoint.setY(tracker.getGlobalY());
+            angleError = tracker.imu.adjustAngle(targetVector.getDirection() - tracker.getHeading());
+            angleIntegral += (angleError * timeChange);
+            angleDerivative = (angleError - angleErrorPrev) / timeChange;
+            angleAdjustment = (angleError * MasqUtils.KP.GO_ANGLE * basePower) +
+                    (angleIntegral * MasqUtils.KI.GO_ANGLE) + (angleDerivative * MasqUtils.KD.GO_ANGLE);
             leftPower = basePower - angleAdjustment;
             rightPower = basePower + angleAdjustment;
             driveTrain.setPower(leftPower, rightPower);
-            prevT = currentT;
-            prevAngularError = angleError;
             tracker.updateSystem();
+            timePrev = timeCurrent;
+            angleErrorPrev = angleError;
         }
     }
 
@@ -383,7 +378,7 @@ public abstract class MasqRobot {
             driveTrain.setPowerRight(right);
         }
     }
-    public void TANK(MasqController c){
+    public void TANK(MasqController c) {
         double left = c.leftStickX();
         double right = c.rightStickY();
         double leftRate = driveTrain.leftDrive.getVelocity();
@@ -465,24 +460,4 @@ public abstract class MasqRobot {
     }
 
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
-
-    public void setPowerAtAngle(double angle, double speed, double turnPower) {
-        angle = Math.toRadians(angle);
-        double adjustedAngle = angle + Math.PI/4;
-        double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower  * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double rightFront = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double rightBack = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
-        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
-        if (max > 1) {
-            leftFront /= max;
-            leftBack /= max;
-            rightFront /= max;
-            rightBack /= max;
-        }
-        driveTrain.leftDrive.motor1.setVelocity(leftFront);
-        driveTrain.leftDrive.motor2.setVelocity(leftBack);
-        driveTrain.rightDrive.motor1.setVelocity(rightFront);
-        driveTrain.rightDrive.motor2.setVelocity(rightBack);
-    }
 }

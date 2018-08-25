@@ -34,7 +34,6 @@ public class Creed extends MasqRobot {
     public MasqVoltageSensor voltageSensor;
     public MasqServo jewelArmRed, relicGripper;
     public MasqVuforiaBeta vuforia;
-    public MasqPositionTracker tracker;
     public MasqAdafruitIMU imu;
     public MasqREVColorSensor singleBlock, doubleBlock, redLineDetector, blueLineDetector;
     public void mapHardware(HardwareMap hardwareMap) {
