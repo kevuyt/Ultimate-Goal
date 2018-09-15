@@ -15,14 +15,6 @@ public class MasqVuforiaTest extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         thanos.mapHardware(hardwareMap);
-        thanos.vuforia.initVuforia(hardwareMap);
-        dash.create(">>> Press Play");
-        dash.update();
-        waitForStart();
-        thanos.vuforia.activateVuMark();
-        while (opModeIsActive()) {
-            dash.create(thanos.vuforia.getVuMark());
-            dash.update();
-        }
+
     }
 }

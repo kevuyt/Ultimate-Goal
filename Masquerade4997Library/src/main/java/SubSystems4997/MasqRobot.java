@@ -22,7 +22,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 public abstract class MasqRobot {
     public MasqDriveTrain driveTrain;
-    public static MasqPositionTracker tracker;
+    public MasqPositionTracker tracker;
     public DashBoard dash;
     public abstract void mapHardware(HardwareMap hardwareMap);
     private MasqClock timeoutClock = new MasqClock();

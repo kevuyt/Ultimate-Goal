@@ -23,6 +23,8 @@ public class NFS extends MasqLinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             thanos.NFS(controller1);
+            dash.create(thanos.tracker.getPosition());
+            dash.update();
         }
     }
 }

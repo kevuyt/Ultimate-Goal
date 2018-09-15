@@ -1,11 +1,13 @@
 package Library4997.MasqControlSystems.MasqPurePursuit;
 
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
+
 /**
  * Created by Archishmaan Peyyety on 8/13/18.
  * Project: MasqLib
  */
 
-public class MasqVector {
+public class MasqVector implements MasqHardware{
     private double x;
     private double y;
     public MasqVector(double x, double y) {
@@ -39,5 +41,19 @@ public class MasqVector {
 
     public double getDirection () {
         return Math.atan2(getY(), getX());
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String[] getDash() {
+        return new String[]{
+                "X: " + Double.toString(getX()),
+                "Y: " + Double.toString(getY()),
+                "Direction: " + Double.toString(getDirection())
+        };
     }
 }

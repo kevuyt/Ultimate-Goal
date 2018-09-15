@@ -51,6 +51,10 @@ public class MasqPositionTracker {
         return globalY;
     }
 
+    public MasqVector getPosition() {
+        return new MasqVector(getGlobalX(), getGlobalY());
+    }
+
     public void updateSystem () {
         double tChange = System.nanoTime() - previousTime;
         deltaY = (getRawYInches() - prevY) / tChange;
