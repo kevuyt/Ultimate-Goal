@@ -9,7 +9,7 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqHelpers.MasqEncoderModel;
+import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqUtils;
 
@@ -23,7 +23,7 @@ public class MasqMotor implements MasqHardware {
     private int direction = 1;
     private double targetPower;
     private boolean velocityControlState = false;
-    private double kp = 0.004, ki = 0, kd = 0;
+    private double kp = 0.1, ki = 0, kd = 0;
     private double holdKp = 0.0002;
     private boolean closedLoop = true;
     private MasqEncoder encoder;
@@ -67,13 +67,13 @@ public class MasqMotor implements MasqHardware {
     private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
     private MasqLimitSwitch minLim, maxLim = null;
 
-    public MasqMotor(String name, MasqEncoderModel model, HardwareMap hardwareMap){
+    public MasqMotor(String name, MasqMotorModel model, HardwareMap hardwareMap){
         limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
         encoder = new MasqEncoder(this, model);
     }
-    public MasqMotor(String name, MasqEncoderModel model, DcMotor.Direction direction, HardwareMap hardwareMap) {
+    public MasqMotor(String name, MasqMotorModel model, DcMotor.Direction direction, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
         if (direction == DcMotor.Direction.REVERSE) this.direction = 1;
         this.nameMotor = name;
@@ -87,7 +87,7 @@ public class MasqMotor implements MasqHardware {
         limitDetection = true;
         return this;
     }
-    public MasqMotor setLimit(MasqLimitSwitch min){
+    public MasqMotor setLimit(MasqLimitSwitch min) {
         minLim = min; maxLim = null;
         limitDetection = true;
         return this;
@@ -122,7 +122,7 @@ public class MasqMotor implements MasqHardware {
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
-        destination = distance * MasqUtils.CLICKS_PER_INCH;
+        destination = distance * encoder.getClicksPerInch();
     }
     public void runToPosition(Direction direction, double speed){
         MasqClock timeoutTimer = new MasqClock();
@@ -217,7 +217,7 @@ public class MasqMotor implements MasqHardware {
             double error, setRPM, currentRPM, motorPower;
             double tChange = System.nanoTime() - previousTime;
             tChange /= 1e9;
-            setRPM = MasqUtils.NEVERREST_ORBITAL_20_RPM * targetPower;
+            setRPM = encoder.getRPM() * targetPower;
             currentRPM = getVelocity();
             error = setRPM - currentRPM;
             rpmIntegral += error * tChange;
@@ -369,7 +369,7 @@ public class MasqMotor implements MasqHardware {
         return motor.getPortNumber();
     }
 
-    public void setMotorModel (MasqEncoderModel model) {
+    public void setMotorModel (MasqMotorModel model) {
         encoder.setModel(model);
     }
 

@@ -52,7 +52,7 @@ public class MasqPositionTracker {
     }
 
     public MasqVector getPosition() {
-        return new MasqVector(getGlobalX(), getGlobalY());
+        return new MasqVector(getGlobalX(), getGlobalY(), "Position Vector ");
     }
 
     public void updateSystem () {

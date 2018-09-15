@@ -1,19 +1,19 @@
 package Library4997.MasqSensors;
 
 import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqResources.MasqHelpers.MasqEncoderModel;
+import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 
 /**
  * Created by Archish on 3/14/18.
  */
 
 public class MasqEncoder {
-    private MasqEncoderModel model;
+    private MasqMotorModel model;
     private MasqMotor motor;
     private double wheelDiameter = 4, gearRatio = 1;
     private double currentPosition, zeroPos;
     private double clicksPerInch;
-    public MasqEncoder(MasqMotor motor, MasqEncoderModel model) {
+    public MasqEncoder(MasqMotor motor, MasqMotorModel model) {
         clicksPerInch = (model.CPR() / (wheelDiameter * Math.PI)) * gearRatio;
         this.model = model;
         this.motor = motor;
@@ -63,11 +63,11 @@ public class MasqEncoder {
         this.gearRatio = gearRatio;
     }
 
-    public void setModel(MasqEncoderModel model) {
+    public void setModel(MasqMotorModel model) {
         this.model = model;
     }
 
-    public MasqEncoderModel getModel() {
+    public MasqMotorModel getModel() {
         return model;
     }
 }

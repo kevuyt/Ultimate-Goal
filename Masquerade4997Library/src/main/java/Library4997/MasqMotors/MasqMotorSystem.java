@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqResources.MasqHelpers.MasqEncoderModel;
+import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 
 /**
@@ -19,18 +19,19 @@ public class MasqMotorSystem implements MasqHardware {
     private double currentPower = 0;
     private double slowDown = 0;
     private String systemName;
-    public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction direction2, String systemName, HardwareMap hardwareMap) {
+    private MasqMotorModel encoder = MasqMotorModel.REVHDHEX;
+    public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction direction2, String systemName, HardwareMap hardwareMap, MasqMotorModel encoder) {
         this.systemName = systemName;
-        motor1 = new MasqMotor(name1, MasqEncoderModel.NEVEREST20, direction, hardwareMap);
-        motor2 = new MasqMotor(name2, MasqEncoderModel.NEVEREST20, direction2, hardwareMap);
+        motor1 = new MasqMotor(name1, encoder, direction, hardwareMap);
+        motor2 = new MasqMotor(name2, encoder, direction2, hardwareMap);
         motor3 = null;
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
     }
-    public MasqMotorSystem(String name1, String name2, String systemName, HardwareMap hardwareMap) {
+    public MasqMotorSystem(String name1, String name2, String systemName, HardwareMap hardwareMap, MasqMotorModel encoder) {
         this.systemName = systemName;
-        motor1 = new MasqMotor(name1, MasqEncoderModel.NEVEREST20, DcMotor.Direction.FORWARD, hardwareMap);
-        motor2 = new MasqMotor(name2, MasqEncoderModel.NEVEREST20, DcMotor.Direction.FORWARD, hardwareMap);
+        motor1 = new MasqMotor(name1, encoder, DcMotor.Direction.FORWARD, hardwareMap);
+        motor2 = new MasqMotor(name2, encoder, DcMotor.Direction.FORWARD, hardwareMap);
         motor3 = null;
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
@@ -38,19 +39,19 @@ public class MasqMotorSystem implements MasqHardware {
     public MasqMotorSystem(String name1, DcMotor.Direction direction,
                            String name2, DcMotor.Direction direction2,
                            String name3, DcMotor.Direction direction3, String systemName,
-                            HardwareMap hardwareMap) {
+                           HardwareMap hardwareMap, MasqMotorModel encoder) {
         this.systemName = systemName;
-        motor1 = new MasqMotor(name1, MasqEncoderModel.NEVEREST20, direction, hardwareMap);
-        motor2 = new MasqMotor(name2, MasqEncoderModel.NEVEREST20, direction2, hardwareMap);
-        motor3 = new MasqMotor(name3, MasqEncoderModel.NEVEREST20, direction3, hardwareMap);
+        motor1 = new MasqMotor(name1, encoder, direction, hardwareMap);
+        motor2 = new MasqMotor(name2, encoder, direction2, hardwareMap);
+        motor3 = new MasqMotor(name3, encoder, direction3, hardwareMap);
         motors = Arrays.asList(motor1, motor2, motor3);
         numMotors = 3;
     }
-    public MasqMotorSystem(String name1, String name2, String name3, String systemName, HardwareMap hardwareMap) {
+    public MasqMotorSystem(String name1, String name2, String name3, String systemName, HardwareMap hardwareMap, MasqMotorModel encoder) {
         this.systemName = systemName;
-        motor1 = new MasqMotor(name1, MasqEncoderModel.NEVEREST20, DcMotor.Direction.FORWARD, hardwareMap);
-        motor2 = new MasqMotor(name2, MasqEncoderModel.NEVEREST20, DcMotor.Direction.FORWARD, hardwareMap);
-        motor3 = new MasqMotor(name3, MasqEncoderModel.NEVEREST20, DcMotor.Direction.FORWARD, hardwareMap);
+        motor1 = new MasqMotor(name1, encoder, DcMotor.Direction.FORWARD, hardwareMap);
+        motor2 = new MasqMotor(name2, encoder, DcMotor.Direction.FORWARD, hardwareMap);
+        motor3 = new MasqMotor(name3, encoder, DcMotor.Direction.FORWARD, hardwareMap);
         motors = Arrays.asList(motor1, motor2, motor3);
         numMotors = 3;
     }
@@ -153,6 +154,14 @@ public class MasqMotorSystem implements MasqHardware {
         int total = 0;
         for (MasqMotor m : motors) total += m.getAbsolutePosition();
         return total / numMotors;
+    }
+
+    public MasqMotorModel getEncoder() {
+        return encoder;
+    }
+
+    public void setEncoder(MasqMotorModel encoder) {
+        this.encoder = encoder;
     }
 
     public String getName() {

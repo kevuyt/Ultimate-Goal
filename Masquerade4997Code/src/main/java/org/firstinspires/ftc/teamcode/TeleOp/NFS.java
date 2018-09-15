@@ -16,14 +16,16 @@ public class NFS extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         thanos.mapHardware(hardwareMap);
+        thanos.initializeTeleop();
         while (!opModeIsActive()) {
-            dash.create("HELLO PENIS MAN");
+            dash.create("HELLO ");
             dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {
             thanos.NFS(controller1);
             dash.create(thanos.tracker.getPosition());
+            thanos.tracker.updateSystem();
             dash.update();
         }
     }

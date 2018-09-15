@@ -34,7 +34,7 @@ public abstract class MasqRobot {
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
         double targetAngle = tracker.getHeading();
-        double targetClicks = (int)(distance * MasqUtils.CLICKS_PER_INCH);
+        double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
         double clicksRemaining;
         double angularError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
@@ -82,7 +82,7 @@ public abstract class MasqRobot {
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
-        double targetClicks = (int)(distance * MasqUtils.CLICKS_PER_INCH);
+        double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
         double clicksRemaining;
         double angularError = tracker.imu.adjustAngle((double) angle - tracker.getHeading()),
                 prevAngularError = angularError, angularIntegral = 0,
@@ -349,7 +349,7 @@ public abstract class MasqRobot {
         }
     }
 
-    public void NFS(MasqController c) {
+    public void  NFS(MasqController c) {
         float move = c.leftStickY();
         float turn = c.rightStickX();
         double left = move - turn;

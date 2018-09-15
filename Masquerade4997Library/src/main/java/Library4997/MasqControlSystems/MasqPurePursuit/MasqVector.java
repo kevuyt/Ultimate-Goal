@@ -10,9 +10,17 @@ import Library4997.MasqResources.MasqHelpers.MasqHardware;
 public class MasqVector implements MasqHardware{
     private double x;
     private double y;
+    private String name;
+    public MasqVector(double x, double y, String name) {
+        this.x = x;
+        this.y = y;
+        this.name = name;
+    }
+
     public MasqVector(double x, double y) {
         this.x = x;
         this.y = y;
+        this.name = name;
     }
 
     public double getX() {
@@ -45,7 +53,7 @@ public class MasqVector implements MasqHardware{
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override

@@ -14,14 +14,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 public class MasqUtils implements API_KEYS {
     private static MasqLinearOpMode linearOpMode;
-    public static final double NEVERREST_ORBITAL_20_RPM = 340;
-    public static final double NEVERREST_ORBITAL_20_TICKS_PER_ROTATION = 537.6;
-    public static final double US_ERT_ENCODER_TICKS_PER_ROTATION = 1440;
-    public static final double wheelDiameter = 4;
-    public static final double gearRatio = 1;
     public static final double MECH_DRIVE_MULTIPLIER = 1.4;
     public static final double MECH_ROTATION_MULTIPLIER = 0.4;
-    public static final double CLICKS_PER_INCH = (NEVERREST_ORBITAL_20_TICKS_PER_ROTATION / (wheelDiameter * Math.PI)) * gearRatio;
     public static final int DEFAULT_SLEEP_TIME = 0;
     public static final double DEFAULT_TIMEOUT = 1;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
@@ -41,7 +35,9 @@ public class MasqUtils implements API_KEYS {
     public static Telemetry getTelemetry() {
         return linearOpMode.telemetry;
     }
-    public static MasqLinearOpMode getLinearOpMode () {return linearOpMode;}
+    public static MasqLinearOpMode getLinearOpMode () {
+        return linearOpMode;
+    }
     public static boolean opModeIsActive() {
         return linearOpMode.opModeIsActive();
     }
@@ -53,13 +49,11 @@ public class MasqUtils implements API_KEYS {
         public static final double DRIVE_ANGULAR = +0.05;
         public static final double DRIVE_ENCODER = .7;
         public static final double GO_ANGLE = .1;
-        public static final double GO_Y = .1;
-        public static final double MOTOR_TELEOP = +0.1;
+        public static final double MOTOR_TELEOP = +0.7;
         public static final double MOTOR_AUTONOMOUS = +0.06;
     }
     public class KI {
         public static final double GO_ANGLE = .1;
-        public static final double GO_Y = .1;
         public static final double TURN = +0.00;
         public static final double DRIVE = +0.0;
         public static final double MOTOR_TELEOP = +0;
@@ -67,10 +61,9 @@ public class MasqUtils implements API_KEYS {
     }
     public class KD {
         public static final double GO_ANGLE = .1;
-        public static final double GO_Y = .1;
         public static final double TURN = +0.0;
         public static final double DRIVE = +0.0;
-        public static final double MOTOR_TELEOP = +0.001;
+        public static final double MOTOR_TELEOP = +0.00;
         public static final double MOTOR_AUTONOMOUS = +0.00;
     }
     public class ID {
