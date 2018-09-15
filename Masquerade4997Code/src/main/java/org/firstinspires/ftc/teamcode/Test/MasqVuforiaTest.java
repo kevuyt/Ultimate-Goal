@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.Robots.Creed;
+import org.firstinspires.ftc.teamcode.Robots.Thanos;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -11,17 +11,17 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "TEST: VUFORIA", group = "T")
 public class MasqVuforiaTest extends MasqLinearOpMode {
-    private Creed creed = new Creed();
+    private Thanos thanos = new Thanos();
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        creed.mapHardware(hardwareMap);
-        creed.vuforia.initVuforia(hardwareMap);
+        thanos.mapHardware(hardwareMap);
+        thanos.vuforia.initVuforia(hardwareMap);
         dash.create(">>> Press Play");
         dash.update();
         waitForStart();
-        creed.vuforia.activateVuMark();
+        thanos.vuforia.activateVuMark();
         while (opModeIsActive()) {
-            dash.create(creed.vuforia.getVuMark());
+            dash.create(thanos.vuforia.getVuMark());
             dash.update();
         }
     }

@@ -33,11 +33,11 @@ public class MasqVector {
         return Math.hypot(getX(), getY());
     }
 
-    public double getDirection () {
-        return Math.atan2(getY(), getX());
+    public double distanceToVector(MasqVector point) {
+        return Math.hypot(point.getX() - getX(), point.getY() - getY());
     }
 
-    public MasqPoint getTerminalPoint() {
-        return new MasqPoint(getX(), getY());
+    public double getDirection () {
+        return Math.atan2(getY(), getX());
     }
 }

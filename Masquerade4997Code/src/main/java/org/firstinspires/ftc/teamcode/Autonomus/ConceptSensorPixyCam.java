@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Autonomus;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 
@@ -8,6 +9,7 @@ import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
  * Project: MasqLib
  * Wiring instruction: https://www.reddit.com/r/FTC/comments/6zv7pc/how_to_use_pixy_over_i2c_with_the_rev_expansion/
  */
+@Autonomous(name = "PIXY_TEST", group = "test")
 
 public class ConceptSensorPixyCam extends LinearOpMode {
     I2cDeviceSynch pixyCam;

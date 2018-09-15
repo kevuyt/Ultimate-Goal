@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
@@ -328,12 +327,12 @@ public abstract class MasqRobot {
         double angleError, angleIntegral = 0, angleDerivative, angleErrorPrev = 0;
         double timeCurrent, timeChange, timePrev = 0;
         MasqVector targetVector = new MasqVector(x, y);
-        MasqPoint currentPoint = new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY());
-        while (currentPoint.distanceToPoint(targetVector.getTerminalPoint()) > 0.1) {
+        MasqVector currentPoint = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
+        while (currentPoint.distanceToVector(targetVector) > 0.1) {
             timeCurrent = System.nanoTime();
             timeChange = timeCurrent - timePrev;
             timeChange /= 1e9;
-            basePower = currentPoint.distanceToPoint(targetVector.getTerminalPoint()) / targetVector.getMagnitude();
+            basePower = currentPoint.distanceToVector(targetVector) / targetVector.getMagnitude();
             currentPoint.setX(tracker.getGlobalX());
             currentPoint.setY(tracker.getGlobalY());
             angleError = tracker.imu.adjustAngle(targetVector.getDirection() - tracker.getHeading());

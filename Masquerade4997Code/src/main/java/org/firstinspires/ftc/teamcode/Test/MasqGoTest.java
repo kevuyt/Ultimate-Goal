@@ -8,7 +8,7 @@ package org.firstinspires.ftc.teamcode.Test;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
-import org.firstinspires.ftc.teamcode.Robots.Creed;
+import org.firstinspires.ftc.teamcode.Robots.Thanos;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -17,14 +17,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "MasqGoTest", group = "T")
 public class MasqGoTest extends MasqLinearOpMode implements Constants {
-    private Creed creed = new Creed();
+    private Thanos thanos = new Thanos();
     public void runLinearOpMode() throws InterruptedException {
-        creed.mapHardware(hardwareMap);
+        thanos.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(creed.tracker.getGlobalX());
+            dash.create(thanos.tracker.getGlobalX());
             dash.update();
         }
         waitForStart();
-        creed.go(20, 20);
+        thanos.go(20, 20);
     }
 }
