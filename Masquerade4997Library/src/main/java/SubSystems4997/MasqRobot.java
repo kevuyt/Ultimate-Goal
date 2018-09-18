@@ -29,7 +29,6 @@ public abstract class MasqRobot {
     public double angleLeftCover = 0;
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
     public void drive(double distance, double speed, Direction direction, double timeOut, int sleepTime) {
-        driveTrain.setClosedLoop(true);
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -78,7 +77,7 @@ public abstract class MasqRobot {
     public void drive(double distance) {drive(distance, 0.5);}
 
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction direction, double timeOut, int sleepTime) {
-        driveTrain.setClosedLoop(true);
+
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -128,7 +127,6 @@ public abstract class MasqRobot {
     public void driveAbsoluteAngle(double distance, int angle) {driveAbsoluteAngle(distance, angle, 0.5);}
 
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
-        driveTrain.setClosedLoop(false);
         double targetAngle = tracker.imu.adjustAngle(tracker.getHeading()) + (direction.value * angle);
         double acceptableError = .5;
         double turnPower = .4;
@@ -179,7 +177,6 @@ public abstract class MasqRobot {
         turnRelative(angle, DIRECTION, MasqUtils.DEFAULT_TIMEOUT);}
 
     public void turnAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
-        driveTrain.setClosedLoop(false);
         double targetAngle = tracker.imu.adjustAngle((direction.value * angle));
         double acceptableError = .5;
         double turnPower = .4;
@@ -277,7 +274,7 @@ public abstract class MasqRobot {
     public void stopRed (MasqColorSensor colorSensor) {stopRed(colorSensor, 0.5);}
 
     public void stop(StopCondition stopCondition, double angle, double speed, Direction direction, double timeOut) {
-        driveTrain.setClosedLoop(true);
+
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -349,7 +346,7 @@ public abstract class MasqRobot {
         }
     }
 
-    public void  NFS(MasqController c) {
+    public void NFS(MasqController c) {
         float move = c.leftStickY();
         float turn = c.rightStickX();
         double left = move - turn;
@@ -363,19 +360,13 @@ public abstract class MasqRobot {
         if(left > 1.0) {
             left /= left;
             right /= left;
-            driveTrain.setPowerLeft(left);
-            driveTrain.setPowerRight(right);
         }
         else if (right > 1.0) {
             left /= right;
             right /= right;
-            driveTrain.setPowerLeft(left);
-            driveTrain.setPowerRight(right);
         }
-        else {
-            driveTrain.setPowerLeft(left);
-            driveTrain.setPowerRight(right);
-        }
+        driveTrain.setPowerLeft(left);
+        driveTrain.setPowerRight(right);
     }
     public void TANK(MasqController c) {
         double left = c.leftStickX();
@@ -443,12 +434,12 @@ public abstract class MasqRobot {
     public void initializeTeleop(){
         driveTrain.setKp(MasqUtils.KP.MOTOR_TELEOP);
         driveTrain.setKi(MasqUtils.KI.MOTOR_TELEOP);
-        driveTrain.setKp(MasqUtils.KD.MOTOR_TELEOP);
+        driveTrain.setKd(MasqUtils.KD.MOTOR_TELEOP);
     }
     public void initializeAutonomous(){
         driveTrain.setKp(MasqUtils.KP.MOTOR_AUTONOMOUS);
         driveTrain.setKi(MasqUtils.KI.MOTOR_AUTONOMOUS);
-        driveTrain.setKp(MasqUtils.KD.MOTOR_AUTONOMOUS);
+        driveTrain.setKd(MasqUtils.KD.MOTOR_AUTONOMOUS);
     }
     public void sleep(double time) {
         try {

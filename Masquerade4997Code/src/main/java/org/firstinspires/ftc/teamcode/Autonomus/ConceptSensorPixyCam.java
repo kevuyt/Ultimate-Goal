@@ -22,12 +22,15 @@ public class ConceptSensorPixyCam extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         pixyCam = hardwareMap.i2cDeviceSynch.get("pixy");
-
+        while (!opModeIsActive()) {
+            telemetry.addLine("HOLA");
+            telemetry.update();
+        }
         waitForStart();
 
         while(opModeIsActive()){
             pixyCam.engage();
-            pixyData = pixyCam.read(0x51, 5);
+            pixyData = pixyCam.read(0x54, 5);
 
             x = pixyData[1];
             y = pixyData[2];

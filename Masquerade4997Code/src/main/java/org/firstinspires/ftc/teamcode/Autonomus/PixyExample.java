@@ -39,7 +39,10 @@ public class PixyExample extends LinearOpMode {
 
         //required to "turn on" the device
         pixy.engage();
-
+        while (!opModeIsActive()) {
+            telemetry.addLine("HOLA");
+            telemetry.update();
+        }
         waitForStart();
 
         while(opModeIsActive()) {

@@ -5,13 +5,13 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
+import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqUtils;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -24,10 +24,7 @@ public class MasqMotor implements MasqHardware {
     private double targetPower;
     private boolean velocityControlState = false;
     private double kp = 0.1, ki = 0, kd = 0;
-    private double holdKp = 0.0002;
-    private boolean closedLoop = true;
     private MasqEncoder encoder;
-    private boolean holdPositionMode = false;
     private double targetPosition = 0;
     private double prevPos = 0;
     private double previousAcceleration = 0;
@@ -36,13 +33,10 @@ public class MasqMotor implements MasqHardware {
     private double previousVelTime = 0;
     private double previousTime = 0;
     private double destination = 0;
-    private double currentPower;
+    private double motorPower;
     private double currentMax, currentMin;
     private double currentZero;
-    private double holdItergral = 0;
-    private double holdDerivitive = 0;
     private double previousJerk, prevAcceleration, previousAccelerationTime;
-    private double holdPreviousError = 0;
     private double previousAccelerationSetTime;
     private double rpmIntegral = 0;
     private double rpmDerivative = 0;
@@ -64,7 +58,12 @@ public class MasqMotor implements MasqHardware {
     };
 
     private double minPosition, maxPosition;
-    private boolean limitDetection, positionDetection, halfDetectionMin, halfDetectionMax;
+    private boolean
+            limitDetection = false,
+            positionDetection = false,
+            halfDetectionMin = false,
+            halfDetectionMax = false,
+            closedLoop = false;
     private MasqLimitSwitch minLim, maxLim = null;
 
     public MasqMotor(String name, MasqMotorModel model, HardwareMap hardwareMap){
@@ -118,7 +117,6 @@ public class MasqMotor implements MasqHardware {
         encoder.resetEncoder();
     }
 
-    public void setClosedLoop(boolean closedLoop) {this.closedLoop = closedLoop;}
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
@@ -168,7 +166,7 @@ public class MasqMotor implements MasqHardware {
     }
     public void setVelocity(double power) {
         targetPower = power;
-        double motorPower = calculateVelocityCorrection();
+        motorPower = calculateVelocityCorrection();
         if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
                     maxLim != null && maxLim.isPressed() && power > 0)
@@ -200,34 +198,23 @@ public class MasqMotor implements MasqHardware {
             if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
             else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
         }
-        currentPower = motorPower;
         motor.setPower(motorPower);
     }
     private double calculateVelocityCorrection() {
-        if (holdPositionMode) {
-            double tChange = (System.nanoTime() - previousTime) / 1e9;
-            double error = targetPosition - getCurrentPosition();
-            holdItergral += error * tChange;
-            holdDerivitive = (error - holdPreviousError) / tChange;
-            targetPower = (direction * ((error * holdKp) +
-                    (holdItergral * ki) + (holdDerivitive * kd)));
-            holdPreviousError = error;
-        }
-        if (closedLoop) {
-            double error, setRPM, currentRPM, motorPower;
-            double tChange = System.nanoTime() - previousTime;
-            tChange /= 1e9;
-            setRPM = encoder.getRPM() * targetPower;
-            currentRPM = getVelocity();
-            error = setRPM - currentRPM;
-            rpmIntegral += error * tChange;
-            rpmDerivative = (error - rpmPreviousError) / tChange;
-            motorPower = (targetPower) + (direction * ((error * kp) +
-                    (rpmIntegral * ki) + (rpmDerivative * kd)));
-            rpmPreviousError = error;
-            return motorPower;
-        }
-        else return targetPower;
+        closedLoop = true;
+        double error, setRPM, currentRPM, tChange;
+        tChange = System.nanoTime() - previousTime;
+        tChange /= 1e9;
+        setRPM = encoder.getRPM() * targetPower;
+        currentRPM = getVelocity();
+        error = setRPM - currentRPM;
+        rpmIntegral += error * tChange;
+        rpmDerivative = (error - rpmPreviousError) / tChange;
+        double power = (targetPower) + (direction * ((error * kp) +
+                (rpmIntegral * ki) + (rpmDerivative * kd)));
+        rpmPreviousError = error;
+        previousTime = System.nanoTime();
+        return power;
     }
     public double getAcceleration () {
         double deltaVelocity = getVelocity() - previousVel;
@@ -345,7 +332,7 @@ public class MasqMotor implements MasqHardware {
     }
 
     public double getPower () {
-        return currentPower;
+        return motorPower;
     }
 
     public MasqEncoder getEncoder () {
@@ -353,7 +340,9 @@ public class MasqMotor implements MasqHardware {
     }
 
     public double getKp() {return kp;}
-    public void setKp(double kp) {this.kp = kp;}
+    public void setKp(double kp) {
+        this.kp = kp;
+    }
     public double getKi() {return ki;}
     public void setKi(double ki) {this.ki = ki;}
     public double getKd() {return kd;}
@@ -373,12 +362,8 @@ public class MasqMotor implements MasqHardware {
         encoder.setModel(model);
     }
 
-    public void setLazy() {
-        holdPositionMode = false;
-    }
-    public void setStrong() {
-        holdPositionMode = true;
-        targetPosition = getCurrentPosition();
+    public boolean isClosedLoop() {
+        return closedLoop;
     }
 
     public String getName() {

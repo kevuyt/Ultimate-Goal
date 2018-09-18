@@ -2,6 +2,7 @@ package Library4997.MasqControlSystems.MasqPID;
 
 import com.qualcomm.robotcore.util.Range;
 
+import Library4997.MasqControlSystems.MasqIntegrator;
 import Library4997.MasqSensors.MasqClock;
 
 /**
@@ -9,8 +10,9 @@ import Library4997.MasqSensors.MasqClock;
  */
 
 public class MasqPIDController {
+    private MasqIntegrator integrator;
     private double kp = 0, ki = 0, kd = 0, prevError = 0, prevD = 0;
-    private double integral, deriv, timeChange = 0;
+    private double deriv, timeChange = 0;
     private double error, current, target;
     private MasqClock clock = new MasqClock();
 
@@ -32,12 +34,11 @@ public class MasqPIDController {
         error = this.target - this.current;
         timeChange = clock.milliseconds();
         clock.reset();
-        integral += error * timeChange;
         deriv = (error - prevError) / timeChange;
         if (deriv < .001) deriv = prevD;
         prevError = error;
         prevD = deriv;
-        return Range.clip((error * kp) + (ki * integral) + (kd * deriv), -1, 1);
+        return Range.clip((error * kp) + (ki * integrator.getIntegral(error)) + (kd * deriv), -1, 1);
     }
 
     public double getKp() {

@@ -82,7 +82,7 @@ public class MasqMotorSystem implements MasqHardware {
     }
     public void setVelocity(double power) {
         currentPower = power;
-        for (MasqMotor masqMotor : motors)masqMotor.setVelocity(power);
+        for (MasqMotor masqMotor : motors) masqMotor.setVelocity(power);
     }
     public void setPower(double power) {
         for (MasqMotor masqMotor : motors)masqMotor.setPower(power);
@@ -108,11 +108,6 @@ public class MasqMotorSystem implements MasqHardware {
     public MasqMotorSystem runWithoutEncoders() {
         for (MasqMotor masqMotor: motors)
             masqMotor.runWithoutEncoders();
-        return this;
-    }
-    public MasqMotorSystem setClosedLoop (boolean closedLoop){
-        for (MasqMotor masqMotor: motors)
-            masqMotor.setClosedLoop(closedLoop);
         return this;
     }
     public double getVelocity(){

@@ -12,9 +12,12 @@ public class MasqPositionTracker {
     private MasqMotorSystem lSystem, rSystem;
     public MasqAdafruitIMU imu;
     private double deltaY;
+    private double xAddition, yAddition;
+    private double prevXAddition = 0, prevYAddition = 0;
     private double previousTime = 0;
     private double prevY = 0;
     private double globalX = 0, globalY = 0;
+    private double x, y;
 
     public MasqPositionTracker(MasqMotorSystem lSystem, MasqMotorSystem rSystem, MasqAdafruitIMU imu) {
         this.imu = imu;
@@ -63,5 +66,18 @@ public class MasqPositionTracker {
         globalY += (Math.cos(Math.toRadians(heading)) * deltaY) * tChange;
         prevY = getRawYInches();
         previousTime = System.nanoTime();
+    }
+    public void updateSystemV2 () {
+        double tChange = System.nanoTime() - previousTime;
+        deltaY = (getRawYInches() - prevY) / tChange;
+        double heading = getHeading();
+        xAddition = (Math.sin(Math.toRadians(heading)) * deltaY);
+        yAddition = (Math.cos(Math.toRadians(heading)) * deltaY);
+        globalX += tChange * (prevXAddition + (0.5 * (xAddition - prevXAddition)));
+        globalY += tChange * (prevYAddition + (0.5 * (yAddition - prevYAddition)));
+        prevY = getRawYInches();
+        previousTime = System.nanoTime();
+        prevXAddition = xAddition;
+        prevYAddition = yAddition;
     }
 }

@@ -13,12 +13,12 @@ import Library4997.MasqSensors.MasqEncoder;
 public class MasqDriveTrain implements MasqHardware {
     public MasqMotorSystem leftDrive, rightDrive = null;
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
-        leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, MasqMotorModel.NEVEREST20);
-        rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, MasqMotorModel.NEVEREST20);
+        leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
+        rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
     }
     public MasqDriveTrain(HardwareMap hardwareMap){
-        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, MasqMotorModel.NEVEREST20);
-        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, MasqMotorModel.NEVEREST20);
+        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
+        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
     }
 
     public void resetEncoders () {
@@ -51,10 +51,6 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
     }
-    public void setClosedLoop(boolean closedLoop){
-        leftDrive.setClosedLoop(closedLoop);
-        rightDrive.setClosedLoop(closedLoop);
-    }
     public void runWithoutEncoders() {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
@@ -79,11 +75,11 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.setKp(kp);
         rightDrive.setKp(kp);
     }
-    public void setKi(double ki){
+    public void setKi(double ki) {
         leftDrive.setKi(ki);
         rightDrive.setKi(ki);
     }
-    public void setKd(double kd){
+    public void setKd(double kd) {
         leftDrive.setKd(kd);
         rightDrive.setKd(kd);
     }
