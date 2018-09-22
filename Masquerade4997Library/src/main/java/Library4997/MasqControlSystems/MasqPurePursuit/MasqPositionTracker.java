@@ -1,6 +1,7 @@
 package Library4997.MasqControlSystems.MasqPurePursuit;
 
 import Library4997.MasqMotors.MasqMotorSystem;
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 
 /**
@@ -8,7 +9,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
  * Project: MasqLib
  */
 
-public class MasqPositionTracker {
+public class MasqPositionTracker implements MasqHardware{
     private MasqMotorSystem lSystem, rSystem;
     public MasqAdafruitIMU imu;
     private double deltaY;
@@ -17,6 +18,7 @@ public class MasqPositionTracker {
     private double previousTime = 0;
     private double prevY = 0;
     private double globalX = 0, globalY = 0;
+    private double anglularVelocity;
     private double x, y;
 
     public MasqPositionTracker(MasqMotorSystem lSystem, MasqMotorSystem rSystem, MasqAdafruitIMU imu) {
@@ -79,5 +81,18 @@ public class MasqPositionTracker {
         previousTime = System.nanoTime();
         prevXAddition = xAddition;
         prevYAddition = yAddition;
+    }
+
+    @Override
+    public String getName() {
+        return "Tracker";
+    }
+
+    @Override
+    public String[] getDash() {
+        return new String[] {
+                "X: " + Double.toString(getGlobalX()),
+                "Y: " + Double.toString(getGlobalY())
+        };
     }
 }

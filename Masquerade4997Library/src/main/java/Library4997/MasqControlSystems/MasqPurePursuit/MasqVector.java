@@ -20,7 +20,6 @@ public class MasqVector implements MasqHardware{
     public MasqVector(double x, double y) {
         this.x = x;
         this.y = y;
-        this.name = name;
     }
 
     public double getX() {
@@ -41,6 +40,14 @@ public class MasqVector implements MasqHardware{
 
     public double getMagnitude () {
         return Math.hypot(getX(), getY());
+    }
+
+    public double dotProduct(MasqVector v) {
+        return (this.getX() * v.getX()) + (this.getY() * getY());
+    }
+
+    public double angle(MasqVector v) {
+        return (dotProduct(v)) / (v.getMagnitude() * this.getMagnitude());
     }
 
     public double distanceToVector(MasqVector point) {
