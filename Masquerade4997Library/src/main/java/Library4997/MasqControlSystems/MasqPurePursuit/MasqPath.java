@@ -9,18 +9,19 @@ import java.util.List;
 
 public class MasqPath {
     private double lookAheadDistance = 5;
-    private MasqVector carrot, rabbit;
+    private MasqVector carrot =
+            new MasqVector(0, 0, "carrot"),
+            rabbit;
     private MasqPositionTracker positionTracker;
     private List<MasqVector> wayPoints;
-    private MasqVector currentWayPoint;
+    private MasqVector currentGoal;
     public MasqPath(List<MasqVector> wayPoints, MasqPositionTracker positionTracker) {
         this.wayPoints = wayPoints;
         this.positionTracker = positionTracker;
-        rabbit = new MasqVector(this.positionTracker.getGlobalX(), this.positionTracker.getGlobalY());
-        wayPoints.add(0, rabbit);
-        currentWayPoint = wayPoints.get(0);
+        rabbit = wayPoints.get(0);
+        currentGoal = wayPoints.get(0);
     }
     private void getOrientationError () {
-        return;
+        carrot = new MasqVector(0, 0);
     }
 }
