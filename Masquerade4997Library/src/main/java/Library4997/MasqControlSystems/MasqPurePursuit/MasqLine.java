@@ -7,8 +7,10 @@ package Library4997.MasqControlSystems.MasqPurePursuit;
 
 public class MasqLine {
     private double m, b;
-    public MasqLine () {
-
+    public MasqLine () {}
+    public MasqLine(double m) {
+        this.m = m;
+        b = 0;
     }
     public MasqLine(double m, double b) {
         this.m = m;

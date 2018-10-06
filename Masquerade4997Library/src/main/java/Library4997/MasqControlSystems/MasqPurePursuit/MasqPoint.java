@@ -28,4 +28,12 @@ public class MasqPoint {
     public void setY(double y) {
         this.y = y;
     }
+    public boolean equals(MasqPoint point) {
+        double x = Math.abs(getX());
+        double y = Math.abs(getY());
+        double x1 = Math.abs(point.getX());
+        double y1 = Math.abs(point.getY());
+        if ((x - x1) < 0.1 && (y - y1) < 0.1) return true;
+        else return false;
+    }
 }

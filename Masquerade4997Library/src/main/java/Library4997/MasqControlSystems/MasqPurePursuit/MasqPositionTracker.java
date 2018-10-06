@@ -56,8 +56,8 @@ public class MasqPositionTracker implements MasqHardware{
         return globalY;
     }
 
-    public MasqVector getPosition() {
-        return new MasqVector(getGlobalX(), getGlobalY(), "Position Vector ");
+    public MasqPoint getPosition() {
+        return new MasqPoint(getGlobalX(), getGlobalY());
     }
 
     public void updateSystem () {

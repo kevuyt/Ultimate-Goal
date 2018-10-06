@@ -16,6 +16,8 @@ public class MasqPath {
     private MasqPoint end = new MasqPoint(1,3);
     private MasqPoint cp = new MasqPoint(1, 1);
     private MasqPoint goalPoint;
+    private MasqPoint prevLocation = new MasqPoint(0, 0);
+    private MasqLine goalLine, positionLine;
     private MasqLine perpendicularLine = new MasqLine();
     private MasqLine travelLine = new MasqLine();
     public MasqPath (List<MasqPoint> wayPoints, double lookAheadDistance) {
@@ -51,7 +53,21 @@ public class MasqPath {
         rootTwo = MasqUtils.min(getQuad(a, b, c)[0], getQuad(a, b, c)[1]);
         if (((start.getX() - end.getX())) > 0) goalPoint = new MasqPoint(rootTwo, travelLine.getY(rootTwo));
         else goalPoint = new MasqPoint(rootOne, travelLine.getY(rootOne));
+        prevLocation = cp;
     }
+    public double getOrientationError () {
+        goalLine = new MasqLine((goalPoint.getY() - cp.getY()) / (goalPoint.getX() - cp.getX()));
+        positionLine = new MasqLine((cp.getY() - prevLocation.getY()) / (cp.getX() - prevLocation.getX()));
+        return Math.toDegrees(Math.atan((goalLine.getM() - positionLine.getM()) / (1 + (goalLine.getM() * positionLine.getM()))));
+    }
+    public void updatePath(MasqPoint start, MasqPoint end) {
+        this.start = start;
+        this.end = end;
+    }
+    public List<MasqPoint> getWayPoints() {
+        return wayPoints;
+    }
+
     public double[] getQuad(double a, double b, double c) {
         double rootOne, rootTwo;
         rootOne = -(b + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a);
