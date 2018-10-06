@@ -30,13 +30,20 @@ public class NFS extends MasqLinearOpMode {
             thanos.NFS(controller1);
             if (controller1.rightStickY() > 0) adjusterPosition += adjusterIncrement;
             else if (controller1.rightStickY() < 0) adjusterPosition -= adjusterIncrement;
+
             if (adjusterPosition > adjusterMax) adjusterPosition = adjusterMax;
             else if (adjusterPosition < adjusterMin) adjusterPosition = adjusterMin;
-            thanos.adjuster.setPosition(adjusterPosition);
-            thanos.lift.setPower(controller2.leftStickY());
-            if (controller2.leftBumper()) thanos.collector.setPower(1);
-            else if (controller2.leftBumper()) thanos.collector.setPower(-1);
+
+            if (controller2.leftBumper()) thanos.collector.setPower(.5);
+            else if (controller2.rightBumper()) thanos.collector.setPower(-.5);
             else thanos.collector.setPower(0);
+
+            if (controller2.leftTriggerOnPress()) thanos.rotator.setPower(.3);
+            else if (controller2.rightTriggerOnPress()) thanos.rotator.setPower(-.3);
+            else thanos.rotator.setVelocity(0);
+
+            thanos.adjuster.setPosition(adjusterPosition);
+            thanos.lift.setVelocity(controller2.leftStickY());
             dash.create(thanos.tracker.getPosition());
             thanos.update();
         }

@@ -1174,6 +1174,8 @@ containing a value of this type.
         public static final int pushbotsens=0x7f040007;
         public static final int rev_scoot=0x7f040008;
         public static final int squarebot=0x7f040009;
+        public static final int thanos_v0=0x7f04000a;
+        public static final int thanos_v1=0x7f04000b;
     }
     public static final class styleable {
         /** Attributes that can be used with a ColorListPreference.

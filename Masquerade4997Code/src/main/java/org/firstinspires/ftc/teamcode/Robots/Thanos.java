@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
@@ -23,6 +24,8 @@ public class Thanos extends MasqRobot {
     public MasqAdafruitIMU imu;
     public MasqMotorSystem rotator;
     public MasqMotor lift;
+    public MasqServo hangLatch;
+    public MasqServo dumper;
     public MasqCRServo collector;
     public MasqServo adjuster;
     public MasqPixy pixy;
@@ -32,8 +35,10 @@ public class Thanos extends MasqRobot {
         driveTrain = new MasqDriveTrain(hardwareMap);
         tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         pixy = new MasqPixy(hardwareMap);
-        rotator = new MasqMotorSystem("rotatorOne", "rotatorTwo", "rotator", hardwareMap, MasqMotorModel.NEVEREST40);
-        lift = new MasqMotor("left", MasqMotorModel.ORBITAL20, hardwareMap);
+        rotator = new MasqMotorSystem("rotatorOne", DcMotor.Direction.FORWARD,"rotatorTwo",DcMotor.Direction.REVERSE, "rotator", hardwareMap, MasqMotorModel.NEVEREST40);
+        lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, hardwareMap);
+        hangLatch = new MasqServo("hangLatch", hardwareMap);
+        dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServo("collector", hardwareMap);
         adjuster = new MasqServo("adjuster", hardwareMap);
     }
