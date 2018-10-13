@@ -25,6 +25,6 @@ public class MasqGoTest extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        thanos.go(20, 20);
+        //thanos.go(20, 20);
     }
 }

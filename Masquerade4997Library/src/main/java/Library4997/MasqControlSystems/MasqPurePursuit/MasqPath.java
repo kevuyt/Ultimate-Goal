@@ -55,7 +55,7 @@ public class MasqPath {
         else goalPoint = new MasqPoint(rootOne, travelLine.getY(rootOne));
         prevLocation = cp;
     }
-    public double getOrientationError () {
+    public double getOrientationGoal() {
         goalLine = new MasqLine((goalPoint.getY() - cp.getY()) / (goalPoint.getX() - cp.getX()));
         positionLine = new MasqLine((cp.getY() - prevLocation.getY()) / (cp.getX() - prevLocation.getX()));
         return Math.toDegrees(Math.atan((goalLine.getM() - positionLine.getM()) / (1 + (goalLine.getM() * positionLine.getM()))));

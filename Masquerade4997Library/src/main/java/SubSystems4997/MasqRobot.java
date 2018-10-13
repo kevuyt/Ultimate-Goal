@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import Library4997.MasqControlSystems.MasqIntegrator;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPath;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
@@ -25,6 +26,7 @@ public abstract class MasqRobot {
     public MasqDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
+    private MasqIntegrator pathOrientationError = new MasqIntegrator();
     public abstract void mapHardware(HardwareMap hardwareMap);
     private MasqClock timeoutClock = new MasqClock();
     public double angleLeftCover = 0;
@@ -191,7 +193,6 @@ public abstract class MasqRobot {
         while (opModeIsActive() && (tracker.imu.adjustAngle(Math.abs(currentError)) > acceptableError)
                 && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
-            previousTime = System.nanoTime();
             tChange = tChange / 1e9;
             currentError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
             integral += currentError * tChange;
@@ -211,6 +212,7 @@ public abstract class MasqRobot {
             dash.create("Heading", tracker.getHeading());
             dash.create("AngleLeftToCover", currentError);
             dash.update();
+            previousTime = System.nanoTime();
         }
         //serializer.close();
         driveTrain.setPower(0,0);
@@ -309,7 +311,7 @@ public abstract class MasqRobot {
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && stopCondition.stop());
         driveTrain.stopDriving();
     }
-    public void stop (StopCondition stopCondition, double angle, double speed, Direction direction) {
+    public void stop(StopCondition stopCondition, double angle, double speed, Direction direction) {
         stop(stopCondition, angle, speed, direction, MasqUtils.DEFAULT_TIMEOUT);
     }
     public void stop(StopCondition sensor, double angle, double power) {stop(sensor, angle, power, Direction.FORWARD);}
@@ -318,14 +320,27 @@ public abstract class MasqRobot {
         stop(sensor, tracker.getHeading());
     }
 
-    public void executePath (MasqPath path) {
+    public void executePath (MasqPath path, Direction dir, double baseSpeed) {
+        double direction = dir.value;
+        double correction;
+        double prevError = 0;
+        double tChange, prevTime = 0;
+        double error, integral, deriv;
         int wayPointIndex = 0;
         for (MasqPoint point : path.getWayPoints()) {
             while (!point.equals(path.getGoalPoint())) {
-
+                tChange = System.nanoTime() - prevTime;
+                tChange = tChange/1e9;
+                error = path.getOrientationGoal() - tracker.imu.getAbsoluteHeading();
+                integral = pathOrientationError.getIntegral(error);
+                deriv = (error - prevError) / tChange;
+                correction = (error * MasqUtils.KP.PATH) + (integral * MasqUtils.KI.PATH) + (deriv * MasqUtils.KD.PATH);
+                driveTrain.setPower((baseSpeed + correction) * direction, baseSpeed * direction);
+                path.updateSystem(tracker.getPosition());
+                prevTime = System.nanoTime();
             }
             wayPointIndex++;
-            path.updatePath(tracker.getPosition(), path.getWayPoints().get(wayPointIndex));
+            path.updatePath(path.getWayPoints().get(wayPointIndex - 1), path.getWayPoints().get(wayPointIndex));
         }
     }
 

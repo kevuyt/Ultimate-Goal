@@ -38,8 +38,8 @@ public class NFS extends MasqLinearOpMode {
             else if (controller2.rightBumper()) thanos.collector.setPower(-.5);
             else thanos.collector.setPower(0);
 
-            if (controller2.leftTriggerOnPress()) thanos.rotator.setPower(.3);
-            else if (controller2.rightTriggerOnPress()) thanos.rotator.setPower(-.3);
+            if (controller2.leftTriggerOnPress()) thanos.rotator.setPower(.8);
+            else if (controller2.rightTriggerOnPress()) thanos.rotator.setPower(-.8);
             else thanos.rotator.setVelocity(0);
 
             thanos.adjuster.setPosition(adjusterPosition);
