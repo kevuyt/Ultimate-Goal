@@ -338,6 +338,7 @@ public abstract class MasqRobot {
                 driveTrain.setPower((baseSpeed + correction) * direction, baseSpeed * direction);
                 path.updateSystem(tracker.getPosition());
                 prevTime = System.nanoTime();
+                tracker.updateSystemV2();
             }
             wayPointIndex++;
             path.updatePath(path.getWayPoints().get(wayPointIndex - 1), path.getWayPoints().get(wayPointIndex));

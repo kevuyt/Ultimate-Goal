@@ -3,16 +3,16 @@ package org.firstinspires.ftc.teamcode.Test;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
-import org.firstinspires.ftc.teamcode.Robots.Thanos;
+import org.firstinspires.ftc.teamcode.Robots.TestBot;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Archish on 2/7/18.
  */
-@TeleOp(name = "MasqGeneralTesterC1", group = "T")
+@TeleOp(name = "PositionTest", group = "T")
 public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
-    private Thanos thanos = new Thanos();
+    private TestBot thanos = new TestBot();
     public void runLinearOpMode() throws InterruptedException {
         thanos.mapHardware(hardwareMap);
         thanos.initializeTeleop();
@@ -26,6 +26,7 @@ public class MasqGeneralTesterC1 extends MasqLinearOpMode implements Constants {
         waitForStart();
         while (opModeIsActive()) {
             thanos.NFS(controller1);
+            dash.create("Left1 Inches: ", thanos.driveTrain.leftDrive.motor1.getEncoder().getInches());
             dash.create("Left Inches: ", thanos.tracker.getLeftInches());
             dash.create("Right Inches: ", thanos.tracker.getRightInches());
             dash.create("Y Inches: ", thanos.tracker.getRawYInches());

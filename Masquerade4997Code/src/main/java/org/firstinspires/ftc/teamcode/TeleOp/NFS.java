@@ -28,8 +28,8 @@ public class NFS extends MasqLinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             thanos.NFS(controller1);
-            if (controller1.rightStickY() > 0) adjusterPosition += adjusterIncrement;
-            else if (controller1.rightStickY() < 0) adjusterPosition -= adjusterIncrement;
+            if (controller2.rightStickY() > 0) adjusterPosition += adjusterIncrement;
+            else if (controller2.rightStickY() < 0) adjusterPosition -= adjusterIncrement;
 
             if (adjusterPosition > adjusterMax) adjusterPosition = adjusterMax;
             else if (adjusterPosition < adjusterMin) adjusterPosition = adjusterMin;

@@ -80,6 +80,14 @@ public class MasqMotorSystem implements MasqHardware {
         for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
         return this;
     }
+    public double getInches () {
+        double num = 0, sum = 0;
+        for (MasqMotor masqMotor : motors) {
+            sum += masqMotor.getEncoder().getInches();
+            num++;
+        }
+        return sum/num;
+    }
     public void setVelocity(double power) {
         currentPower = power;
         for (MasqMotor masqMotor : motors) masqMotor.setVelocity(power);

@@ -31,13 +31,11 @@ public class MasqPositionTracker implements MasqHardware{
 
 
     public double getLeftInches () {
-        return lSystem.getCurrentPosition() /
-                lSystem.motor1.getEncoder().getClicksPerInch();
+        return lSystem.getInches();
     }
 
     public double getRightInches () {
-        return rSystem.getCurrentPosition() /
-                rSystem.motor1.getEncoder().getClicksPerInch();
+        return rSystem.getInches();
     }
 
     public double getRawYInches() {
@@ -77,7 +75,7 @@ public class MasqPositionTracker implements MasqHardware{
         yAddition = (Math.cos(Math.toRadians(heading)) * deltaY);
         globalX += tChange * (prevXAddition + (0.5 * (xAddition - prevXAddition)));
         globalY += tChange * (prevYAddition + (0.5 * (yAddition - prevYAddition)));
-        prevY = getRawYInches();
+        prevY = deltaY;
         previousTime = System.nanoTime();
         prevXAddition = xAddition;
         prevYAddition = yAddition;

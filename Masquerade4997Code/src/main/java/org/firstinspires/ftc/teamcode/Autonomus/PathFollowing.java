@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.Robots.Thanos;
+import org.firstinspires.ftc.teamcode.Robots.TestBot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "PathFollowing", group = "test")
 public class PathFollowing extends MasqLinearOpMode {
-    Thanos robot = new Thanos();
+    TestBot robot = new TestBot();
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);

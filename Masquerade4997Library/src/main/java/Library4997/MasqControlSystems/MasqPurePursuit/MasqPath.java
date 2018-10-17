@@ -23,8 +23,8 @@ public class MasqPath {
     public MasqPath (List<MasqPoint> wayPoints, double lookAheadDistance) {
         this.lookAheadDistance = lookAheadDistance;
         this.wayPoints = wayPoints;
-        start = wayPoints.get(1);
-        end = wayPoints.get(2);
+        start = wayPoints.get(0);
+        end = wayPoints.get(1);
     }
     public MasqPoint getGoalPoint () {
         return goalPoint;

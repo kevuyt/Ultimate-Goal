@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/FtcRobotController" />
             <option value="$PROJECT_DIR$/Masquerade4997Code" />
             <option value="$PROJECT_DIR$/Masquerade4997Library" />
-            <option value="$PROJECT_DIR$/OpenCV" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
