@@ -10,13 +10,13 @@ import Library4997.MasqSensors.MasqClock;
  */
 
 public class MasqPIDController {
-    private MasqIntegrator integrator;
+    private MasqIntegrator integrator = new MasqIntegrator();
     private double kp = 0, ki = 0, kd = 0, prevError = 0, prevD = 0;
     private double deriv, timeChange = 0;
     private double error, current, target;
     private MasqClock clock = new MasqClock();
 
-    public MasqPIDController(double kp, int ki, double kd) {
+    public MasqPIDController(double kp, double ki, double kd) {
         this.kp = kp;
         this.ki = ki;
         this.kd = kd;

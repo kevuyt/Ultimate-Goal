@@ -167,6 +167,7 @@ public class MasqMotor implements MasqHardware {
     public void setVelocity(double power) {
         targetPower = power;
         motorPower = calculateVelocityCorrection();
+        if (!closedLoop) motorPower = targetPower;
         if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
                     maxLim != null && maxLim.isPressed() && power > 0)
@@ -329,6 +330,10 @@ public class MasqMotor implements MasqHardware {
         };
         Thread thread = new Thread(mainRunnable);
         thread.start();
+    }
+
+    public void setClosedLoop(boolean closedLoop) {
+        this.closedLoop = closedLoop;
     }
 
     public double getPower () {

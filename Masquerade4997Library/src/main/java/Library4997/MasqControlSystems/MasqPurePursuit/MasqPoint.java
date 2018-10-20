@@ -1,11 +1,13 @@
 package Library4997.MasqControlSystems.MasqPurePursuit;
 
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
+
 /**
  * Created by Archishmaan Peyyety on 10/6/18.
  * Project: MasqLib
  */
 
-public class MasqPoint {
+public class MasqPoint implements MasqHardware {
     private double x, y;
 
     public MasqPoint(double x, double y) {
@@ -35,5 +37,18 @@ public class MasqPoint {
         double y1 = Math.abs(point.getY());
         if ((x - x1) < 0.1 && (y - y1) < 0.1) return true;
         else return false;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String[] getDash() {
+        return new String[]{
+          "X: " + Double.toString(getX()),
+                "Y: " + Double.toString(getY())
+        };
     }
 }

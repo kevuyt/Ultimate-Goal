@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.Robots.Thanos;
+import org.firstinspires.ftc.teamcode.Robots.Falcon;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -23,7 +23,7 @@ Bytes    16-bit word    Description
 */
 @Autonomous(name = "PIXY", group = "test")
 public class RobotPixy extends MasqLinearOpMode {
-    Thanos robot = new Thanos();
+    Falcon robot = new Falcon();
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {

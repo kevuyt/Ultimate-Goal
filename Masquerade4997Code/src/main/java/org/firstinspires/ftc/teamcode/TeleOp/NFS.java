@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Robots.Thanos;
+import org.firstinspires.ftc.teamcode.Robots.Falcon;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -12,40 +12,38 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "ThnaosNFSv1", group = "NFS")
 public class NFS extends MasqLinearOpMode {
-    private Thanos thanos = new Thanos();
+    private Falcon falcon = new Falcon();
     private double adjusterPosition = 0;
     private double adjusterMax = 1;
     private double adjusterMin = 0;
     private double adjusterIncrement = 0.05;
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        thanos.mapHardware(hardwareMap);
-        thanos.initializeTeleop();
+        falcon.mapHardware(hardwareMap);
+        falcon.initializeTeleop();
         while (!opModeIsActive()) {
             dash.create("HELLO ");
             dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {
-            thanos.NFS(controller1);
+            falcon.NFS(controller1);
             if (controller2.rightStickY() > 0) adjusterPosition += adjusterIncrement;
             else if (controller2.rightStickY() < 0) adjusterPosition -= adjusterIncrement;
 
             if (adjusterPosition > adjusterMax) adjusterPosition = adjusterMax;
             else if (adjusterPosition < adjusterMin) adjusterPosition = adjusterMin;
 
-            if (controller2.leftBumper()) thanos.collector.setPower(.5);
-            else if (controller2.rightBumper()) thanos.collector.setPower(-.5);
-            else thanos.collector.setPower(0);
+            if (controller2.leftBumper()) falcon.collector.setPower(.5);
+            else if (controller2.rightBumper()) falcon.collector.setPower(-.5);
+            else falcon.collector.setPower(0);
 
-            if (controller2.leftTriggerOnPress()) thanos.rotator.setPower(.8);
-            else if (controller2.rightTriggerOnPress()) thanos.rotator.setPower(-.8);
-            else thanos.rotator.setVelocity(0);
-
-            thanos.adjuster.setPosition(adjusterPosition);
-            thanos.lift.setVelocity(controller2.leftStickY());
-            dash.create(thanos.tracker.getPosition());
-            thanos.update();
+            falcon.rotator.DriverControl(controller1);
+            falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
+            //falcon.adjuster.setPosition(adjusterPosition);
+            falcon.lift.setPower(controller2.leftStickY());
+            dash.create(falcon.tracker.getPosition());
+            //falcon.update();
         }
     }
 }

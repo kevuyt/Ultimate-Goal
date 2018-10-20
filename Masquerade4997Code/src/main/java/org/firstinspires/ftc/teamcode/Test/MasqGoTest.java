@@ -8,23 +8,28 @@ package org.firstinspires.ftc.teamcode.Test;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
-import org.firstinspires.ftc.teamcode.Robots.Thanos;
+import org.firstinspires.ftc.teamcode.Robots.Falcon;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Archish on 2/7/18.
  */
-@Autonomous(name = "MasqGoTest", group = "T")
+@Autonomous(name = "MasqMotorTesting", group = "T")
 public class MasqGoTest extends MasqLinearOpMode implements Constants {
-    private Thanos thanos = new Thanos();
+    private Falcon falcon = new Falcon();
     public void runLinearOpMode() throws InterruptedException {
-        thanos.mapHardware(hardwareMap);
+        falcon.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create(thanos.tracker.getGlobalX());
+            dash.create(falcon.tracker.getGlobalX());
             dash.update();
         }
         waitForStart();
-        //thanos.go(20, 20);
+        while (opModeIsActive()) {
+            dash.create("Position: ", falcon.driveTrain.leftDrive.getAbsolutePosition());
+            dash.create("Velocity: ", falcon.driveTrain.leftDrive.getVelocity());
+            dash.create("Acceleration: ", falcon.driveTrain.leftDrive.getAcceleration());
+            falcon.driveTrain.leftDrive.setPower(0.7);
+        }
     }
 }
