@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
-import org.firstinspires.ftc.teamcode.Robots.Falcon;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 

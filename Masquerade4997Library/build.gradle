@@ -24,5 +24,6 @@ repositories {
 apply from: 'build.release.gradle'
 
 dependencies {
-    compile project(':openCVLibrary343')
+    compile project(':DogeCV')
+    compile project(':openCVLibrary3')
 }

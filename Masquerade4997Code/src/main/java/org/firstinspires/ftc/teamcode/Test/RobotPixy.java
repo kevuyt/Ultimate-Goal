@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.Robots.Falcon;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -23,7 +22,6 @@ Bytes    16-bit word    Description
         12, 13   y              height of object
 */
 @Autonomous(name = "PIXY1", group = "test")
-@Disabled
 public class RobotPixy extends MasqLinearOpMode {
     Falcon robot = new Falcon();
     public void runLinearOpMode() throws InterruptedException {

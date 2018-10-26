@@ -7,7 +7,7 @@ import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqWrappers.DashBoard;
-import SubSystems4997.MasqRobot;
+import Library4997.MasqRobot;
 
 /**
  * Created by Archishmaan Peyyety on 10/13/18.

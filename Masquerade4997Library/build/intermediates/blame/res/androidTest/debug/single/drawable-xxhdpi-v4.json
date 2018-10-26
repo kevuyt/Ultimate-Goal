@@ -1,13 +1,5 @@
 [
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_launcher.png",
-        "source": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-xxhdpi-v4/ic_launcher.png"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_launcher.png",
-        "source": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-xxhdpi-v4/ic_launcher.png"
-    },
-    {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/ic_launcher.png",
         "source": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/bundles/default/res/drawable-xxhdpi-v4/ic_launcher.png"
     }

@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Robots.Falcon;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 

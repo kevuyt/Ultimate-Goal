@@ -1,39 +1,11 @@
 [
     {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/feedback_shape_orange.xml",
-        "source": "/Users/Archish/.android/build-cache/9d3df6723ebd60e99e080ccf00a608cb19e4f307/output/res/drawable/feedback_shape_orange.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/icon_robotcontroller.png",
-        "source": "/Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/res/drawable/icon_robotcontroller.png"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/black_border.xml",
-        "source": "/Users/Archish/.android/build-cache/60e394180e09a97b2c4ba832b155ec6653459ac6/output/res/drawable/black_border.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/button_shape.xml",
-        "source": "/Users/Archish/.android/build-cache/c5882a0ad1ec271e8538cb24a7671a20b73e5f77/output/res/drawable/button_shape.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/icon_robotcontroller.png",
         "source": "/Users/Archish/.android/build-cache/b002110038cbacf4c82c676d206ef032cdb08e96/output/res/drawable/icon_robotcontroller.png"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/button_shape.xml",
         "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/drawable/button_shape.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/feedback_shape_orange.xml",
-        "source": "/Users/Archish/.android/build-cache/e9cc685cb9efa75d213ba42c65f05072fa24403b/output/res/drawable/feedback_shape_orange.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/icon_menu.png",
-        "source": "/Users/Archish/.android/build-cache/93bab9bb9ac6be49db3e77ae46e3d0978c8e7d89/output/res/drawable/icon_menu.png"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/button_shape.xml",
-        "source": "/Users/Archish/.android/build-cache/a7c1511313ab618834326974c295a0018e9ef908/output/res/drawable/button_shape.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/icon_menu.png",
@@ -46,17 +18,5 @@
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/black_border.xml",
         "source": "/Users/Archish/.android/build-cache/1e2161e97db56e75b470a8f34ebc11e6b5624591/output/res/drawable/black_border.xml"
-    },
-    {
-        "merged": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/icon_robotcontroller.png",
-        "source": "/Users/Archish/.android/build-cache/93bab9bb9ac6be49db3e77ae46e3d0978c8e7d89/output/res/drawable/icon_robotcontroller.png"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/icon_menu.png",
-        "source": "/Users/Archish/.android/build-cache/b6b3d7c3156e15d7b2c8a70d3288dbcabaab314f/output/res/drawable/icon_menu.png"
-    },
-    {
-        "merged": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/res/merged/release/drawable/black_border.xml",
-        "source": "/Users/Archish/.android/build-cache/111cfdc2f49e977ccaa224fc503bca61f61cb510/output/res/drawable/black_border.xml"
     }
 ]

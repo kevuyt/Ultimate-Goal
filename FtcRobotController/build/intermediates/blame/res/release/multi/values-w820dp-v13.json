@@ -22,53 +22,5 @@
                 }
             }
         ]
-    },
-    {
-        "outputFile": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 57,
-                    "endOffset": 108
-                },
-                "from": {
-                    "file": "/Users/Archish/Documents/CodeProjects/MasqLib/FtcRobotController/src/main/res/values-w820dp/dimens.xml",
-                    "position": {
-                        "startLine": 37,
-                        "startColumn": 4,
-                        "startOffset": 1940,
-                        "endColumn": 57,
-                        "endOffset": 1993
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 57,
-                    "endOffset": 108
-                },
-                "from": {
-                    "file": "/Users/Archish/Documents/Projects/MasqLib/FtcRobotController/src/main/res/values-w820dp/dimens.xml",
-                    "position": {
-                        "startLine": 37,
-                        "startColumn": 4,
-                        "startOffset": 1940,
-                        "endColumn": 57,
-                        "endOffset": 1993
-                    }
-                }
-            }
-        ]
     }
 ]
