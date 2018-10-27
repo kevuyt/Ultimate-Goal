@@ -17,7 +17,10 @@ public class NFS extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
+        falcon.goldAlignDetector.disable();
         falcon.initializeTeleop();
+        falcon.lift.resetEncoder();
+        falcon.driveTrain.setClosedLoop(true);
         falcon.endHang.setPosition(END_HANG_OUT);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
@@ -30,8 +33,8 @@ public class NFS extends MasqLinearOpMode implements Constants {
             if (controller2.rightStickY() > 0) adjusterPosition = ADJUSTER_IN;
             else if (controller2.rightStickY() < 0) adjusterPosition = ADJUSTER_OUT;
 
-            if (controller2.a()) falcon.dumper.setPosition(DUMPER_IN);
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
+            else falcon.dumper.setPosition(DUMPER_IN);
 
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.rightBumper()) falcon.collector.setPower(-.5);
@@ -49,11 +52,10 @@ public class NFS extends MasqLinearOpMode implements Constants {
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
 
             //Dash
-            dash.create(falcon.tracker.getPosition());
-            dash.create(falcon.lift.getCurrentPosition());
-            dash.create(falcon.rotator.getBasePower());
-            dash.create(falcon.rotator.getRawPower());
-            dash.create(controller1.leftBumper());
+            dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
+            dash.create("Rotator Goal Power: ", falcon.rotator.getBasePower());
+            dash.create("Rotator Power After PID: ", falcon.rotator.getRawPower());
+            dash.create("Rotator Angle: ", falcon.rotator.getAngle());
             dash.update();
         }
     }

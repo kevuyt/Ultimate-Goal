@@ -123,6 +123,14 @@ public class MasqMotorSystem implements MasqHardware {
             masqMotor.runWithoutEncoders();
         return this;
     }
+    public double getAngle () {
+        double sum = 0, num = 0;
+        for (MasqMotor masqMotor: motors) {
+            sum += masqMotor.getAngle();
+            num++;
+        }
+        return sum/num;
+    }
     public double getVelocity(){
         double i = 0;
         double rate = 0;
@@ -140,12 +148,6 @@ public class MasqMotorSystem implements MasqHardware {
             i++;
         }
         return rate/i;
-    }
-    public void stopDriving() {
-        setVelocity(0);
-    }
-    public static int convert(int TICKS) {
-        return (int) ((TICKS * 35.1070765836));
     }
     public boolean isBusy() {
         boolean isBusy = false;

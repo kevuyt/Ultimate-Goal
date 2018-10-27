@@ -26,7 +26,7 @@ public class MasqRotator implements MasqSubSystem {
     }
     @Override
     public void DriverControl(MasqController controller) {
-        basePower = (0.0002 * -liftPosition) + 0.35;
+        basePower = (0.0001 * -liftPosition) + 0.25;
         if (controller.leftTriggerPressed()) rotator.setPower(basePower);
         else if (controller.rightTriggerPressed()) rotator.setPower(-0.1);
 
@@ -49,6 +49,10 @@ public class MasqRotator implements MasqSubSystem {
 
     public double getRawPower () {
         return rotator.getPower();
+    }
+
+    public double getAngle() {
+        return rotator.getAngle();
     }
 
     @Override

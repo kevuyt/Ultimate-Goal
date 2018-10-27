@@ -10,8 +10,8 @@ public interface Constants {
     double ADJUSTER_OUT = 1;
     double ADJUSTER_IN = 0;
 
-    double DUMPER_OUT = 0.84;
-    double DUMPER_IN = 1;
+    double DUMPER_IN = 0.84;
+    double DUMPER_OUT = 0.2;
 
     double AUTON_HANG_IN = 0.4;
     double AUTON_HANG_OUT = 1;
