@@ -11,18 +11,19 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "NFS", group = "NFS")
-public class NFS extends MasqLinearOpMode {
+public class NFS extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private double adjusterPosition = 0;
     private double adjusterMax = 1;
     private double adjusterMin = 0;
     private double dumperMin = 0.84;
     private double dumperMax = 0.2;
-    private double adjusterIncrement = 0.05;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         falcon.initializeTeleop();
+        falcon.endHang.setPosition(END_HANG_OUT);
+        falcon.dumper.setPosition(dumperMin);
         while (!opModeIsActive()) {
             dash.create("HELLO ");
             dash.update();
@@ -40,13 +41,22 @@ public class NFS extends MasqLinearOpMode {
             else if (controller1.rightBumper()) falcon.collector.setPower(-.5);
             else falcon.collector.setPower(0);
 
+            if (controller1.y()) falcon.endSpool.setPower(1);
+            else falcon.endSpool.setPower(0);
+
+            if (controller1.b()) falcon.endHang.setPosition(END_HANG_IN);
+            else if (controller1.x()) falcon.endHang.setPosition(END_HANG_OUT);
+            //Set Power
             falcon.lift.setPower(controller2.leftStickY());
             falcon.adjuster.setPosition(adjusterPosition);
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
+
+            //Dash
             dash.create(falcon.tracker.getPosition());
             dash.create(falcon.lift.getCurrentPosition());
             dash.create(falcon.rotator.getBasePower());
+            dash.create(falcon.rotator.getRawPower());
             dash.update();
         }
     }

@@ -71,7 +71,7 @@ public class MasqMotorSystem implements MasqHardware {
     public double getPower() {
         double num = 0, sum = 0;
         for (MasqMotor masqMotor: motors) {
-            sum += masqMotor.getPower();
+            sum += Math.abs(masqMotor.getPower());
             num++;
         }
         return sum/num;
@@ -94,6 +94,11 @@ public class MasqMotorSystem implements MasqHardware {
     }
     public void setPower(double power) {
         for (MasqMotor masqMotor : motors)masqMotor.setPower(power);
+    }
+    public void setClosedLoop (boolean closedLoop) {
+        for (MasqMotor masqMotor : motors) {
+            masqMotor.setClosedLoop(closedLoop);
+        }
     }
     public void setAcceleration (double target) {
         for (MasqMotor masqMotor: motors) masqMotor.setAcceleration(target);

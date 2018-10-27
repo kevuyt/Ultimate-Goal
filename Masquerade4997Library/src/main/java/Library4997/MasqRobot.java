@@ -11,6 +11,7 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqHelpers.ErrorStopCondition;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
@@ -77,6 +78,7 @@ public abstract class MasqRobot {
         drive(distance, speed, strafe, MasqUtils.DEFAULT_TIMEOUT);
     }
     public void drive(double distance, double speed){drive(distance, speed, Direction.FORWARD);}
+    public void drive(double distance, Direction direction) {drive(distance, 0.5, direction);}
     public void drive(double distance) {drive(distance, 0.5);}
 
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction direction, double timeOut, int sleepTime) {
@@ -140,6 +142,7 @@ public abstract class MasqRobot {
         double newPower;
         double previousTime = 0;
         timeoutClock.reset();
+        driveTrain.setClosedLoop(false);
         while (opModeIsActive() && (tracker.imu.adjustAngle(Math.abs(currentError)) > acceptableError)
                 && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
@@ -159,6 +162,8 @@ public abstract class MasqRobot {
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", tracker.getHeading());
             dash.create("AngleLeftToCover", currentError);
+            dash.create("Power: ", newPower);
+            dash.create("Raw Power: ", driveTrain.getPower());
             dash.update();
         }
         driveTrain.setPower(0,0);
@@ -277,7 +282,6 @@ public abstract class MasqRobot {
     public void stopRed (MasqColorSensor colorSensor) {stopRed(colorSensor, 0.5);}
 
     public void stop(StopCondition stopCondition, double angle, double speed, Direction direction, double timeOut) {
-
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -318,6 +322,53 @@ public abstract class MasqRobot {
     public void stop(StopCondition stopCondition, double angle) {stop(stopCondition, angle, 0.5);}
     public void stop(StopCondition sensor){
         stop(sensor, tracker.getHeading());
+    }
+
+    public void turnStop(ErrorStopCondition errorStopCondition, Direction direction) {
+        double acceptableError = 10;
+        double turnPower = .4;
+        double currentError = errorStopCondition.error();
+        double prevError = 0;
+        double integral = 0;
+        double derivative;
+        double newPower;
+        double previousTime = 0;
+        timeoutClock.reset();
+        driveTrain.setClosedLoop(false);
+        while (opModeIsActive() && (tracker.imu.adjustAngle(Math.abs(currentError)) > acceptableError)
+                && !timeoutClock.elapsedTime(MasqUtils.DEFAULT_SLEEP_TIME, MasqClock.Resolution.SECONDS)) {
+            double tChange = System.nanoTime() - previousTime;
+            previousTime = System.nanoTime();
+            tChange = tChange / 1e9;
+            currentError = errorStopCondition.error();
+            integral += currentError * tChange;
+            derivative = (currentError - prevError) / tChange;
+            double errorkp = currentError * MasqUtils.KP.TURN;
+            double integralki = integral * MasqUtils.KP.TURN;
+            double dervitivekd = derivative * MasqUtils.KP.TURN;
+            newPower = (errorkp + integralki + dervitivekd);
+            if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
+            driveTrain.setPower(-newPower * turnPower * direction.value, newPower * turnPower * direction.value);
+            prevError = currentError;
+            this.angleLeftCover = currentError;
+            dash.create("Heading", tracker.getHeading());
+            dash.create("AngleLeftToCover", currentError);
+            dash.create("Power: ", newPower);
+            dash.create("Raw Power: ", driveTrain.getPower());
+            dash.update();
+        }
+        driveTrain.setPower(0, 0);
+    }
+    public void turnStop(StopCondition stopCondition, double speed, Direction direction) {
+        driveTrain.setClosedLoop(false);
+        while (opModeIsActive() && !stopCondition.stop()
+                && !timeoutClock.elapsedTime(MasqUtils.DEFAULT_SLEEP_TIME, MasqClock.Resolution.SECONDS)) {
+            driveTrain.setPower(-speed * direction.value, speed * direction.value);
+            dash.create("Heading", tracker.getHeading());
+            dash.create("Raw Power: ", driveTrain.getPower());
+            dash.update();
+        }
+        driveTrain.setPower(0, 0);
     }
 
     public void executePath (MasqPath path, Direction dir, double baseSpeed) {

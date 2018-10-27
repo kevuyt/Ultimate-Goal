@@ -202,7 +202,6 @@ public class MasqMotor implements MasqHardware {
         motor.setPower(motorPower);
     }
     private double calculateVelocityCorrection() {
-        closedLoop = true;
         double error, setRPM, currentRPM, tChange;
         tChange = System.nanoTime() - previousTime;
         tChange /= 1e9;

@@ -76,6 +76,11 @@ public class MasqDriveTrain implements MasqHardware {
         return (leftDrive.getAbsolutePosition() + rightDrive.getAbsolutePosition())/2;
     }
 
+    public void setClosedLoop (boolean closedLoop) {
+        leftDrive.setClosedLoop(closedLoop);
+        rightDrive.setClosedLoop(closedLoop);
+    }
+
     public void setKp(double kp){
         leftDrive.setKp(kp);
         rightDrive.setKp(kp);

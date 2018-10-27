@@ -34,10 +34,10 @@ public class RobotPixy extends MasqLinearOpMode {
         int x= 0;
         while(opModeIsActive()) {
             robot.NFS(controller1);
-            for (byte b : robot.pixy.getOut()) {
-                dash.create("Byte: " + Integer.toString(x), b);
-                x++;
-            }
+            //for (byte b : robot.pixy.getOut()) {
+                //dash.create("Byte: " + Integer.toString(x), b);
+                //++;
+            //}
             x = 0;
             dash.create("Current X: ", robot.tracker.getGlobalX());
             dash.create("Current Y: ", robot.tracker.getGlobalY());
