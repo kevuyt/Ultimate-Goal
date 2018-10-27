@@ -14,18 +14,17 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "MainAutoV1", group = "NFS")
 public class MainAutoV1 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    private double hangMin = 1, hangMax = 0.4;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
-        falcon.hangLatch.setPosition(hangMax);
+        falcon.hangLatch.setPosition(AUTON_HANG_IN);
         while (!opModeIsActive()) {
             dash.create(falcon.imu.getAbsoluteHeading());
             dash.update();
         }
         waitForStart();
-        falcon.hangLatch.setPosition(hangMin);
+        falcon.hangLatch.setPosition(AUTON_HANG_OUT);
         falcon.sleep(1);
         falcon.imu.reset();
         double startAngle = falcon.imu.getRelativeYaw();
