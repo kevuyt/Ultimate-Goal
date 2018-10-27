@@ -6,4 +6,10 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 public interface Constants {
     double END_HANG_OUT = 0.46;
     double END_HANG_IN = .26;
+
+    double ADJUSTER_OUT = 1;
+    double ADJUSTER_IN = 0;
+
+    double DUMPER_OUT = 0.84;
+    double DUMPER_IN = 1;
 }

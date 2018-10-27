@@ -14,16 +14,12 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class NFS extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private double adjusterPosition = 0;
-    private double adjusterMax = 1;
-    private double adjusterMin = 0;
-    private double dumperMin = 0.84;
-    private double dumperMax = 0.2;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         falcon.initializeTeleop();
         falcon.endHang.setPosition(END_HANG_OUT);
-        falcon.dumper.setPosition(dumperMin);
+        falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
             dash.create("HELLO ");
             dash.update();
@@ -31,11 +27,11 @@ public class NFS extends MasqLinearOpMode implements Constants {
         waitForStart();
         while (opModeIsActive()) {
             falcon.NFS(controller1);
-            if (controller2.rightStickY() > 0) adjusterPosition = adjusterMax;
-            else if (controller2.rightStickY() < 0) adjusterPosition = adjusterMin;
+            if (controller2.rightStickY() > 0) adjusterPosition = ADJUSTER_IN;
+            else if (controller2.rightStickY() < 0) adjusterPosition = ADJUSTER_OUT;
 
-            if (controller2.a()) falcon.dumper.setPosition(dumperMax);
-            if (controller2.b()) falcon.dumper.setPosition(dumperMin);
+            if (controller2.a()) falcon.dumper.setPosition(DUMPER_IN);
+            if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
 
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.rightBumper()) falcon.collector.setPower(-.5);
@@ -57,6 +53,7 @@ public class NFS extends MasqLinearOpMode implements Constants {
             dash.create(falcon.lift.getCurrentPosition());
             dash.create(falcon.rotator.getBasePower());
             dash.create(falcon.rotator.getRawPower());
+            dash.create(controller1.leftBumper());
             dash.update();
         }
     }

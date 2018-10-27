@@ -161,6 +161,9 @@ public class MasqMotor implements MasqHardware {
             return prevRate;
         }
     }
+    public double getAngle () {
+        return (360 * (encoder.getAbsolutePosition() % encoder.getClicksPerInch())) / encoder.getClicksPerRotation();
+    }
     public void setPower (double power) {
         motor.setPower(power);
     }

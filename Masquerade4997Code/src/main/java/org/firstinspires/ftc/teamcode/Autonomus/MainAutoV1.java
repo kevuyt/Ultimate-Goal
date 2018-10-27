@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "MainAutoV1", group = "NFS")
 public class MainAutoV1 extends MasqLinearOpMode {
     private Falcon falcon = new Falcon();
-    private double hangMin = 1, hangMax = 0.54;
+    private double hangMin = 1, hangMax = 0.4;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);

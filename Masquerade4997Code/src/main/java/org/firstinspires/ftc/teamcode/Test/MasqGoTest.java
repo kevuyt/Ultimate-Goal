@@ -26,11 +26,5 @@ public class MasqGoTest extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         falcon.drive(20);
-        while (opModeIsActive()) {
-            dash.create("Position: ", falcon.driveTrain.leftDrive.getAbsolutePosition());
-            dash.create("Velocity: ", falcon.driveTrain.leftDrive.getVelocity());
-            dash.create("Acceleration: ", falcon.driveTrain.leftDrive.getAcceleration());
-            falcon.driveTrain.leftDrive.setPower(0.7);
-        }
     }
 }
