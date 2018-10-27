@@ -12,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @Autonomous(name = "MainAutoV1", group = "NFS")
-public class MainAutoV1 extends MasqLinearOpMode {
+public class MainAutoV1 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private double hangMin = 1, hangMax = 0.4;
     @Override
