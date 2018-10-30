@@ -19,6 +19,7 @@ public class MainAutoV1 extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
         falcon.hangLatch.setPosition(AUTON_HANG_IN);
+        falcon.adjuster.setPosition(ADJUSTER_OUT);
         while (!opModeIsActive()) {
             dash.create(falcon.imu.getAbsoluteHeading());
             dash.update();
@@ -32,21 +33,34 @@ public class MainAutoV1 extends MasqLinearOpMode implements Constants {
         falcon.turnTillGold(0.5, Direction.LEFT);
         double endAngle = falcon.imu.getRelativeYaw();
         double dHeading = endAngle - startAngle;
-        falcon.turnRelative(30, Direction.RIGHT);
-        if (dHeading < 60) {
-            falcon.drive(20, 0.8, Direction.BACKWARD);
-            falcon.turnRelative(30, Direction.LEFT);
-            falcon.drive(20, 0.8, Direction.BACKWARD);
-        }
-        else if (dHeading >= 60 && dHeading < 145) {
-            falcon.drive(30, 0.8, Direction.BACKWARD);
-        }
-        else if (dHeading >= 1458) {
-            falcon.drive(20, 0.8, Direction.BACKWARD);
-            falcon.turnRelative(30, Direction.RIGHT);
-            falcon.drive(20, 0.8, Direction.BACKWARD);
-        }
-        falcon.goldAlignDetector.disable();
+        if (dHeading > 135) falcon.turnRelative(20, Direction.RIGHT);
+        else falcon.turnRelative(30, Direction.RIGHT);
 
+        if (dHeading < 100) {
+            dash.create("Right");
+            dash.update();
+            falcon.drive(25, 0.8, Direction.BACKWARD);
+            falcon.turnRelative(110, Direction.RIGHT, 3);
+            falcon.drive(10);
+        }
+        else if (dHeading >= 100 && dHeading < 137) {
+            dash.create("Center");
+            dash.update();
+            falcon.drive(20, 0.8, Direction.BACKWARD);
+            falcon.turnRelative(170, Direction.LEFT, 3);
+        }
+        else if (dHeading >= 137) {
+            dash.create("Left");
+            dash.update();
+            falcon.drive(20, 0.8, Direction.BACKWARD);
+            falcon.turnRelative(90, Direction.LEFT, 3);
+            falcon.drive(10);
+        }
+        falcon.collector.setPower(-.5);
+        sleep(5);
+    }
+    @Override
+    public void stopLinearOpMode() {
+        falcon.goldAlignDetector.disable();
     }
 }

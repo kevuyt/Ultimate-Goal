@@ -55,7 +55,7 @@ public class Falcon extends MasqRobot {
         goldAlignDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
         goldAlignDetector.useDefaults();
         // Optional Tuning
-        goldAlignDetector.alignSize = 100; // How wide (in pixels) is the range in which the gold object will be aligned. (Represented by green bars in the preview)
+        goldAlignDetector.alignSize = 200; // How wide (in pixels) is the range in which the gold object will be aligned. (Represented by green bars in the preview)
         goldAlignDetector.alignPosOffset = 0; // How far from center frame to offset this alignment zone.
         goldAlignDetector.downscale = 0.4; // How much to downscale the input frames
         goldAlignDetector.areaScoringMethod = DogeCV.AreaScoringMethod.MAX_AREA; // Can also be PERFECT_AREA

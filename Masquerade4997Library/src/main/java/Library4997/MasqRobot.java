@@ -210,7 +210,6 @@ public abstract class MasqRobot {
             driveTrain.setPower(-newPower * turnPower, newPower * turnPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
-            //serializer.writeData(new Object[]{currentError, errorkp, integralki, dervitivekd, -newPower, newPower});
             dash.create("LEFT POWER: ", -newPower );
             dash.create("RIGHT POWER: " ,newPower);
             dash.create("TargetAngle", targetAngle);
@@ -401,8 +400,8 @@ public abstract class MasqRobot {
         float turn = c.rightStickX();
         double left = move - turn;
         double right = move + turn;
-        left *= -.6;
-        right *= -.6;
+        left *= -.8;
+        right *= -.8;
         if (c.leftBumper()) {
             left /= 2;
             right /= 2;
