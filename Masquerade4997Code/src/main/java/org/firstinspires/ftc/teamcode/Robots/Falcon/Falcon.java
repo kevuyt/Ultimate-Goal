@@ -15,6 +15,7 @@ import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
@@ -34,6 +35,7 @@ public class Falcon extends MasqRobot {
     public MasqServo adjuster;
     public MasqServo endHang;
     public MasqMotor endSpool;
+    public MasqClock clock;
     public GoldAlignDetector goldAlignDetector;
     public void mapHardware(HardwareMap hardwareMap) {
         dash = DashBoard.getDash();
@@ -49,25 +51,27 @@ public class Falcon extends MasqRobot {
         endHang = new MasqServo("endHang", hardwareMap);
         endSpool = new MasqMotor("endSpool", MasqMotorModel.NEVEREST60, hardwareMap);
         goldAlignDetector = new GoldAlignDetector();
+        lift.setClosedLoop(true);
         startOpenCV(hardwareMap);
     }
     private void startOpenCV (HardwareMap hardwareMap) {
         goldAlignDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
         goldAlignDetector.useDefaults();
-        // Optional Tuning
-        goldAlignDetector.alignSize = 200; // How wide (in pixels) is the range in which the gold object will be aligned. (Represented by green bars in the preview)
-        goldAlignDetector.alignPosOffset = 0; // How far from center frame to offset this alignment zone.
-        goldAlignDetector.downscale = 0.4; // How much to downscale the input frames
-        goldAlignDetector.areaScoringMethod = DogeCV.AreaScoringMethod.MAX_AREA; // Can also be PERFECT_AREA
-        //falcon.goldAlignDetector.perfectAreaScorer.perfectArea = 10000; // if using PERFECT_AREA scoring
+        goldAlignDetector.alignSize = 200;
+        goldAlignDetector.alignPosOffset = 0;
+        goldAlignDetector.downscale = 0.4;
+        goldAlignDetector.areaScoringMethod = DogeCV.AreaScoringMethod.MAX_AREA;
         goldAlignDetector.maxAreaScorer.weight = 0.005;
         goldAlignDetector.ratioScorer.weight = 5;
         goldAlignDetector.ratioScorer.perfectRatio = 1.0;
         goldAlignDetector.enable();
     }
     public void turnTillGold (double speed, Direction direction) {
-        while (opModeIsActive() && !goldAlignDetector.getAligned()) {
+        clock = new MasqClock();
+        while (opModeIsActive() && !goldAlignDetector.getAligned() && imu.getRelativeYaw() <= 165) {
             driveTrain.setPower(-speed * direction.value, speed * direction.value);
+            dash.create(imu.getRelativeYaw());
+            dash.update();
         }
         driveTrain.setPower(0, 0);
     }

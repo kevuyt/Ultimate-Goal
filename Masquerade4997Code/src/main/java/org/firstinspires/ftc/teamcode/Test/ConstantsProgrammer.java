@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 public class ConstantsProgrammer extends MasqLinearOpMode {
     private Falcon falcon = new Falcon();
-    private double hangLatch = 0, adjuster = 0, endHang = 0, basePower = 0;
+    private double hangLatch = 0, adjuster = 0, endHang = 0;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
@@ -43,24 +43,16 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             if (controller1.leftTriggerOnPress()) {
                 endHang -= 0.01;
             }
-            if (controller1.leftBumperOnPress()) {
-                basePower += 0.01;
-            }
-            if (controller1.rightBumperOnPress()) {
-                basePower -= 0.01;
-            }
             controller1.update();
             falcon.lift.setPower(controller2.leftStickY());
             falcon.hangLatch.setPosition(hangLatch);
             falcon.adjuster.setPosition(adjuster);
             falcon.endHang.setPosition(endHang);
-            falcon.rotator.setBasePower(basePower);
             //falcon.rotator.DriverControl(controller1);
             dash.create("Hang Latch (A+,B-)", falcon.hangLatch.getPosition());
             dash.create("Adjuster (X+,Y-)", falcon.adjuster.getPosition());
             dash.create("End Hang (RT+,LT-)", falcon.endHang.getPosition());
-            dash.create("BASE (LB+, RB-)", falcon.rotator.getBasePower());
-            dash.create("Lift POsition: ", falcon.lift.getCurrentPosition());
+            dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
             dash.update();
         }
 

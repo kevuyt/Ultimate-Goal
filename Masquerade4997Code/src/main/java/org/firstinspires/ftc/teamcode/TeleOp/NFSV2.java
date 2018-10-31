@@ -56,8 +56,8 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
 
             //Dash
-            dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
-            dash.create("Rotator Goal Power: ", falcon.rotator.getBasePower());
+            dash.create("Lift Position: ", falcon.rotator.getPosition());
+            //dash.create("Rotator Goal Power: ", falcon.rotator.getBasePower());
             dash.create("Rotator Power After PID: ", falcon.rotator.getRawPower());
             dash.create("Rotator Angle: ", falcon.rotator.getAngle());
             dash.update();

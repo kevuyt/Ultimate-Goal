@@ -3,7 +3,6 @@ package Library4997.MasqWrappers;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqRobot;
 
 
 /**
@@ -11,7 +10,6 @@ import Library4997.MasqRobot;
  */
 public abstract class MasqLinearOpMode extends LinearOpMode {
     protected DashBoard dash;
-    public MasqRobot robot;
     protected MasqController controller1, controller2;
     public final void runOpMode() throws InterruptedException {
         try {

@@ -218,7 +218,6 @@ public abstract class MasqRobot {
             dash.update();
             previousTime = System.nanoTime();
         }
-        //serializer.close();
         driveTrain.setPower(0,0);
         sleep(sleepTime);
     }
