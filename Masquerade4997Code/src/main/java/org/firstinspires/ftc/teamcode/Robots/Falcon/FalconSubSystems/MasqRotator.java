@@ -19,7 +19,9 @@ public class MasqRotator implements MasqSubSystem {
     public MasqMotorSystem rotator;
     private double targetPosition;
     private double basePower = 0.3;
+    private double baseDownPower = 0.1;
     private double rotatorPower = basePower;
+    private double downPower = -0.1;
     private double liftPosition = 0;
     private MasqPIDController output = new MasqPIDController(0.007, 0.0, 0.00);
     public MasqRotator (HardwareMap hardwareMap) {
@@ -30,8 +32,9 @@ public class MasqRotator implements MasqSubSystem {
     @Override
     public void DriverControl(MasqController controller) {
         rotatorPower = (0.0001 * -liftPosition) + basePower;
+        downPower = (0.001 * Math.abs(rotator.getCurrentPosition())) + baseDownPower;
         if (controller.leftTriggerPressed()) rotator.setPower(rotatorPower);
-        else if (controller.rightTriggerPressed()) rotator.setPower(-0.1);
+        else if (controller.rightTriggerPressed()) rotator.setPower(-downPower);
 
         if (controller.rightTrigger() > 0 || controller.leftTrigger() > 0) targetPosition = rotator.getCurrentPosition();
         else {

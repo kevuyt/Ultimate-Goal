@@ -32,8 +32,7 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             if (controller1.a()) falcon.adjuster.setPosition(ADJUSTER_OUT);
             else if (controller1.y()) falcon.adjuster.setPosition(ADJUSTER_IN);
 
-            if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
-            else falcon.dumper.setPosition(DUMPER_IN);
+
 
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
@@ -43,14 +42,14 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             else if (controller1.rightTriggerPressed()) falcon.lift.setPower(1);
             else falcon.lift.setPower(0);
 
-            if (controller2.y()) falcon.endSpool.setPower(1);
+            if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
+            else falcon.dumper.setPosition(DUMPER_IN);
+
+            if (controller2.a()) falcon.endSpool.setPower(1);
             else falcon.endSpool.setPower(0);
 
-            if (controller2.b()) falcon.endHang.setPosition(END_HANG_IN);
+            if (controller2.y()) falcon.endHang.setPosition(END_HANG_IN);
             else if (controller2.x()) falcon.endHang.setPosition(END_HANG_OUT);
-
-            if (controller1.dPadUp()) falcon.endSpool.setPower(1);
-            else falcon.endSpool.setPower(0);
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
