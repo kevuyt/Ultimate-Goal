@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "MainAutoV1", group = "NFS")
 public class MainAutoV1 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    private double rightBound = 95, centerBound = 125, majorBound = 165;
+    private double rightBound = 95, centerBound = 125, majorBound = 170;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
@@ -30,42 +30,57 @@ public class MainAutoV1 extends MasqLinearOpMode implements Constants {
         falcon.sleep(1);
         falcon.imu.reset();
         double startAngle = falcon.imu.getRelativeYaw();
-        falcon.turnRelative(45, Direction.LEFT);
-        falcon.turnTillGold(0.5, Direction.LEFT);
+        falcon.turnRelative(60, Direction.LEFT);
+        falcon.turnTillGold(0.3, Direction.LEFT);
         double endAngle = falcon.imu.getRelativeYaw();
         double dHeading = endAngle - startAngle;
         dash.create(dHeading);
         dash.update();
-        if (dHeading > centerBound) falcon.turnRelative(20, Direction.RIGHT);
-        else falcon.turnRelative(30, Direction.RIGHT);
+
+        /*if (dHeading > centerBound) falcon.turnRelative(20, Direction.RIGHT);
+        else falcon.turnRelative(30, Direction.RIGHT);*/
+
 
         if (dHeading < rightBound) {
+            falcon.turnRelative(20, Direction.RIGHT);
             dash.create("Right");
             dash.update();
             falcon.drive(25, 0.8, Direction.BACKWARD);
             falcon.turnRelative(110, Direction.RIGHT, 3);
             falcon.drive(10);
+            falcon.collector.setPower(-.5);
+            sleep(5);
+            falcon.drive(60, Direction.BACKWARD);
         }
         else if (dHeading >= rightBound && dHeading < centerBound) {
+            falcon.turnRelative(30, Direction.RIGHT);
             dash.create("Center");
             dash.update();
-            falcon.drive(20, 0.8, Direction.BACKWARD);
+            falcon.drive(25, 0.8, Direction.BACKWARD);
             falcon.turnRelative(170, Direction.LEFT, 3);
+            falcon.collector.setPower(-.5);
+            sleep(5);
         }
         else if (dHeading >= centerBound && dHeading <= majorBound) {
+            falcon.turnRelative(10, Direction.RIGHT);
             dash.create("Left");
             dash.update();
-            falcon.drive(20, 0.8, Direction.BACKWARD);
-            falcon.turnRelative(90, Direction.LEFT, 3);
+            falcon.drive(25, 0.8, Direction.BACKWARD);
+            falcon.turnRelative(110, Direction.LEFT, 3);
             falcon.drive(10);
+            falcon.collector.setPower(-.5);
+            sleep(5);
+            falcon.drive(60, Direction.BACKWARD);
         }
         else if (dHeading >= majorBound) {
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(20, 0.8, Direction.BACKWARD);
+            falcon.drive(25, 0.8, Direction.BACKWARD);
             falcon.turnRelative(170, Direction.LEFT, 3);
+            falcon.collector.setPower(-.5);
+            sleep(5);
         }
-        falcon.collector.setPower(-.5);
-        sleep(5);
+
+
     }
     @Override
     public void stopLinearOpMode() {

@@ -43,7 +43,7 @@ public class MasqPositionTracker implements MasqHardware{
     }
 
     public double getHeading () {
-        return imu.getAbsoluteHeading();
+        return imu.getRelativeYaw();
     }
 
     public double getGlobalX () {
