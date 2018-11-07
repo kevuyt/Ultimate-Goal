@@ -30,13 +30,18 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.resetEncoders();
         rightDrive.resetEncoders();
     }
-    public void setPower (double leftPower, double rightPower) {
+    public void setVelocity(double leftPower, double rightPower) {
         leftDrive.setVelocity(leftPower);
         rightDrive.setVelocity(rightPower);
     }
-    public void setPower(double power){
+    public void setVelocity(double power){
         leftDrive.setVelocity(power);
         rightDrive.setVelocity(power);
+    }
+
+    public void setPower(double power) {
+        leftDrive.setPower(power);
+        rightDrive.setPower(power);
     }
 
 
@@ -61,7 +66,7 @@ public class MasqDriveTrain implements MasqHardware {
         rightDrive.runUsingEncoder();
     }
     public void stopDriving() {
-        setPower(0,0);
+        setVelocity(0,0);
     }
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();

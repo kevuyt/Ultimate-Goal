@@ -9,7 +9,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
  * Project: MasqLib
  */
 
-public class MasqPositionTracker implements MasqHardware{
+public class MasqPositionTracker implements MasqHardware {
     private MasqMotorSystem lSystem, rSystem;
     public MasqAdafruitIMU imu;
     private double deltaY;
@@ -18,8 +18,6 @@ public class MasqPositionTracker implements MasqHardware{
     private double previousTime = 0;
     private double prevY = 0;
     private double globalX = 0, globalY = 0;
-    private double anglularVelocity;
-    private double x, y;
 
     public MasqPositionTracker(MasqMotorSystem lSystem, MasqMotorSystem rSystem, MasqAdafruitIMU imu) {
         this.imu = imu;
@@ -52,6 +50,12 @@ public class MasqPositionTracker implements MasqHardware{
 
     public double getGlobalY () {
         return globalY;
+    }
+
+    public void reset() {
+        imu.reset();
+        lSystem.resetEncoders();
+        rSystem.resetEncoders();
     }
 
     public MasqPoint getPosition() {

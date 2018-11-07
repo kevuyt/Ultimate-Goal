@@ -69,11 +69,11 @@ public class Falcon extends MasqRobot {
     public void turnTillGold (double speed, Direction direction) {
         clock = new MasqClock();
         while (opModeIsActive() && !goldAlignDetector.getAligned() && imu.getRelativeYaw() <= 165) {
-            driveTrain.setPower(-speed * direction.value, speed * direction.value);
+            driveTrain.setVelocity(-speed * direction.value, speed * direction.value);
             dash.create(imu.getRelativeYaw());
             dash.update();
         }
-        driveTrain.setPower(0, 0);
+        driveTrain.setVelocity(0, 0);
     }
     public void update () {
         dash.update();

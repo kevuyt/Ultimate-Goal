@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 10/20/18.
  * Project: MasqLib
  */
-@TeleOp(name = "ConstantsProgrammer", group = "NFS")
+@TeleOp(name = "ConstantsProgrammer", group = "Tank")
 
 public class ConstantsProgrammer extends MasqLinearOpMode {
     private Falcon falcon = new Falcon();

@@ -30,12 +30,24 @@ public class MasqVector implements MasqHardware{
         this.x = x;
     }
 
+    public MasqPoint toPoint() {
+        return new MasqPoint(getX(), getY());
+    }
+
     public double getY() {
         return y;
     }
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public MasqVector unitVector () {
+        return new MasqVector(getX()/getMagnitude(), getY()/getMagnitude());
+    }
+
+    public MasqVector multiply(double scalar) {
+        return new MasqVector(getX() * scalar, getY() * scalar);
     }
 
     public double getMagnitude () {

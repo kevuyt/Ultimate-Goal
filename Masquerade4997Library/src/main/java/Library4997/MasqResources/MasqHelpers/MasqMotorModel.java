@@ -12,13 +12,13 @@ public enum MasqMotorModel {
                 case ORBITAL20:
                     return 537.6;
                 case NEVEREST40:
-                    return 1120/2;
+                    return 1120;
                 case NEVEREST60:
                     return 1680;
                 case USDIGITAL_E4T:
                     return 1440;
                 case REVHDHEX:
-                    return 2240;
+                    return 1120;
             }
             return DEFAULT_CPR;
         }

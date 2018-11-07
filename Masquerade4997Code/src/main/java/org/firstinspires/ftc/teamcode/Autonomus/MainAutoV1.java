@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 10/20/18.
  * Project: MasqLib
  */
-@Autonomous(name = "MainAutoV1", group = "NFS")
+@Autonomous(name = "MainAutoV1", group = "Tank")
 public class MainAutoV1 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private double rightBound = 95, centerBound = 125, majorBound = 170;
@@ -34,43 +34,39 @@ public class MainAutoV1 extends MasqLinearOpMode implements Constants {
         falcon.turnTillGold(0.3, Direction.LEFT);
         double endAngle = falcon.imu.getRelativeYaw();
         double dHeading = endAngle - startAngle;
-        dash.create(dHeading);
-        dash.update();
-
-        /*if (dHeading > centerBound) falcon.turnRelative(20, Direction.RIGHT);
-        else falcon.turnRelative(30, Direction.RIGHT);*/
-
-
         if (dHeading < rightBound) {
-            falcon.turnRelative(20, Direction.RIGHT);
+            falcon.turnAbsolute(55, Direction.LEFT);
             dash.create("Right");
             dash.update();
-            falcon.drive(25, 0.8, Direction.BACKWARD);
-            falcon.turnRelative(110, Direction.RIGHT, 3);
-            falcon.drive(10);
+            falcon.drive(45, 0.8, Direction.BACKWARD);
+            falcon.turnAbsolute(-45, Direction.LEFT, 3);
+            falcon.drive(20);
             falcon.collector.setPower(-.5);
             sleep(5);
-            falcon.drive(60, Direction.BACKWARD);
+            falcon.drive(80, Direction.BACKWARD, 3);
         }
         else if (dHeading >= rightBound && dHeading < centerBound) {
-            falcon.turnRelative(30, Direction.RIGHT);
+            falcon.turnAbsolute(87, Direction.LEFT);
             dash.create("Center");
             dash.update();
-            falcon.drive(25, 0.8, Direction.BACKWARD);
+            falcon.drive(55, 0.8, Direction.BACKWARD);
             falcon.turnRelative(170, Direction.LEFT, 3);
             falcon.collector.setPower(-.5);
             sleep(5);
+            falcon.turnAbsolute(-35, Direction.LEFT, 3);
+            falcon.drive(100, Direction.BACKWARD, 4);
+
         }
         else if (dHeading >= centerBound && dHeading <= majorBound) {
-            falcon.turnRelative(10, Direction.RIGHT);
+            falcon.turnAbsolute(125, Direction.LEFT);
             dash.create("Left");
             dash.update();
-            falcon.drive(25, 0.8, Direction.BACKWARD);
-            falcon.turnRelative(110, Direction.LEFT, 3);
-            falcon.drive(10);
+            falcon.drive(45, 0.8, Direction.BACKWARD);
+            falcon.turnAbsolute(-135, Direction.LEFT, 3);
+            falcon.drive(20);
             falcon.collector.setPower(-.5);
             sleep(5);
-            falcon.drive(60, Direction.BACKWARD);
+            falcon.drive(80, Direction.BACKWARD, 3);
         }
         else if (dHeading >= majorBound) {
             falcon.turnAbsolute(90, Direction.LEFT);

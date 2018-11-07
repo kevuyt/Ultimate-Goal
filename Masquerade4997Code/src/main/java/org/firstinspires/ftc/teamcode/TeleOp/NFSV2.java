@@ -10,9 +10,10 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 10/27/18.
  * Project: MasqLib
  */
-@TeleOp(name = "NFSV2", group = "NFS")
+@TeleOp(name = "NFS", group = "Tank")
 public class NFSV2 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
+    private boolean mode = true;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
@@ -32,8 +33,6 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             if (controller1.a()) falcon.adjuster.setPosition(ADJUSTER_OUT);
             else if (controller1.y()) falcon.adjuster.setPosition(ADJUSTER_IN);
 
-
-
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
             else falcon.collector.setPower(0);
@@ -48,18 +47,29 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             if (controller2.a()) falcon.endSpool.setPower(1);
             else falcon.endSpool.setPower(0);
 
-            if (controller2.y()) falcon.endHang.setPosition(END_HANG_IN);
-            else if (controller2.x()) falcon.endHang.setPosition(END_HANG_OUT);
+            if (controller1.dPadUp()) {
+                falcon.endHang.setPosition(END_HANG_IN);
+                falcon.driveTrain.setPower(0.3);
+                sleep(1);
+                falcon.driveTrain.setPower(0);
+                falcon.endHang.setPosition(END_HANG_OUT);
+                falcon.endSpool.setPower(1);
+                sleep(10);
+            }
+
+            if (controller2.x()) falcon.endHang.setPosition(END_HANG_IN);
+            else falcon.endHang.setPosition(END_HANG_OUT);
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
 
             //Dash
+            dash.create("Mode: ", mode);
             dash.create("Lift Position: ", falcon.rotator.getPosition());
-            //dash.create("Rotator Goal Power: ", falcon.rotator.getBasePower());
             dash.create("Rotator Power After PID: ", falcon.rotator.getRawPower());
             dash.create("Rotator Angle: ", falcon.rotator.getAngle());
             dash.update();
+            controller1.update();
         }
     }
 }

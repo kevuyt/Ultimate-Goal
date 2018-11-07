@@ -39,6 +39,10 @@ public class MasqPoint implements MasqHardware {
         else return false;
     }
 
+    public MasqVector toVector() {
+        return new MasqVector(getX(), getY());
+    }
+
     @Override
     public String getName() {
         return null;

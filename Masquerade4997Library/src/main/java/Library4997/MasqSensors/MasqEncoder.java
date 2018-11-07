@@ -25,7 +25,7 @@ public class MasqEncoder {
     }
 
     public double getInches () {
-        return ((Math.PI * wheelDiameter * getAbsolutePosition()) / getClicksPerRotation()) * gearRatio;
+        return ((Math.PI * wheelDiameter * getRelativePosition()) / getClicksPerRotation()) * gearRatio;
     }
 
     public double getAbsolutePosition() {
