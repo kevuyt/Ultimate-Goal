@@ -3,9 +3,9 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon;
 import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
@@ -28,7 +28,7 @@ import Library4997.MasqWrappers.DashBoard;
 public class Falcon extends MasqRobot {
     public MasqAdafruitIMU imu;
     public MasqRotator rotator;
-    public MasqMotor lift;
+    public MasqElevator lift;
     public MasqServo hangLatch;
     public MasqServo dumper;
     public MasqCRServo collector;
@@ -43,7 +43,7 @@ public class Falcon extends MasqRobot {
         driveTrain = new MasqDriveTrain(hardwareMap);
         tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         rotator = new MasqRotator(hardwareMap);
-        lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, DcMotor.Direction.REVERSE, hardwareMap);
+        lift = new MasqElevator(hardwareMap);
         hangLatch = new MasqServo("hangLatch", hardwareMap);
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServo("collector", hardwareMap);
@@ -51,7 +51,6 @@ public class Falcon extends MasqRobot {
         endHang = new MasqServo("endHang", hardwareMap);
         endSpool = new MasqMotor("endSpool", MasqMotorModel.NEVEREST60, hardwareMap);
         goldAlignDetector = new GoldAlignDetector();
-        lift.setClosedLoop(true);
         startOpenCV(hardwareMap);
     }
     private void startOpenCV (HardwareMap hardwareMap) {

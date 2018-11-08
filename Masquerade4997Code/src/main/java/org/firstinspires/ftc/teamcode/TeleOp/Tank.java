@@ -18,7 +18,6 @@ public class Tank extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.goldAlignDetector.disable();
         falcon.initializeTeleop();
-        falcon.lift.resetEncoder();
         falcon.driveTrain.setClosedLoop(true);
         falcon.endHang.setPosition(END_HANG_OUT);
         falcon.dumper.setPosition(DUMPER_IN);
@@ -36,9 +35,6 @@ public class Tank extends MasqLinearOpMode implements Constants {
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
             else falcon.collector.setPower(0);
 
-            if (controller1.rightBumper()) falcon.lift.setPower(-1);
-            else if (controller1.rightTriggerPressed()) falcon.lift.setPower(1);
-            else falcon.lift.setPower(0);
 
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);

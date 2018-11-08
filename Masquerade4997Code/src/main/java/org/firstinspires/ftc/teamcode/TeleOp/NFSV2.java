@@ -19,7 +19,6 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.goldAlignDetector.disable();
         falcon.initializeTeleop();
-        falcon.lift.resetEncoder();
         falcon.driveTrain.setClosedLoop(true);
         falcon.endHang.setPosition(END_HANG_OUT);
         falcon.dumper.setPosition(DUMPER_IN);
@@ -37,10 +36,6 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
             else falcon.collector.setPower(0);
 
-            if (controller1.rightBumper()) falcon.lift.setPower(-1);
-            else if (controller1.rightTriggerPressed()) falcon.lift.setPower(1);
-            else falcon.lift.setPower(0);
-
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);
 
@@ -57,17 +52,18 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
                 sleep(10);
             }
 
-            if (controller2.x()) falcon.endHang.setPosition(END_HANG_IN);
-            else falcon.endHang.setPosition(END_HANG_OUT);
+            if (controller2.x()) falcon.endHang.setPosition(END_HANG_OUT);
+            else falcon.endHang.setPosition(END_HANG_IN);
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
 
+            falcon.lift.DriverControl(controller1);
+
             //Dash
-            dash.create("Mode: ", mode);
-            dash.create("Lift Position: ", falcon.rotator.getPosition());
-            dash.create("Rotator Power After PID: ", falcon.rotator.getRawPower());
-            dash.create("Rotator Angle: ", falcon.rotator.getAngle());
+            dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
+            dash.create("Rotator Position: ", falcon.rotator.getPosition());
+            dash.create("KP: ", falcon.rotator.output.getKp());
             dash.update();
             controller1.update();
         }

@@ -18,7 +18,6 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
-        falcon.lift.setClosedLoop(false);
         while (!opModeIsActive()) {
             dash.create("HELLO ");
             dash.update();
@@ -44,7 +43,6 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
                 endHang -= 0.01;
             }
             controller1.update();
-            falcon.lift.setPower(controller2.leftStickY());
             falcon.hangLatch.setPosition(hangLatch);
             falcon.adjuster.setPosition(adjuster);
             falcon.endHang.setPosition(endHang);

@@ -331,6 +331,7 @@ public abstract class MasqRobot {
         double tChange, prevTime = 0;
         double error, integral, deriv;
         int wayPointIndex = 0;
+        driveTrain.setClosedLoop(false);
         path.updateSystem(tracker.getPosition());
         for (MasqPoint point : path.getWayPoints()) {
             while (!point.equals(tracker.getPosition()) && opModeIsActive()) {
