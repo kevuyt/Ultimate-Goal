@@ -55,7 +55,7 @@ public class MasqVector implements MasqHardware{
     }
 
     public double dotProduct(MasqVector v) {
-        return (this.getX() * v.getX()) + (this.getY() * getY());
+        return (this.getX() * v.getX()) + (this.getY() * v.getY());
     }
 
     public double angle(MasqVector v) {
@@ -67,7 +67,7 @@ public class MasqVector implements MasqHardware{
     }
 
     public double getDirection () {
-        return Math.atan2(getY(), getX());
+        return Math.toDegrees(Math.atan(getY() / getX()));
     }
 
     @Override

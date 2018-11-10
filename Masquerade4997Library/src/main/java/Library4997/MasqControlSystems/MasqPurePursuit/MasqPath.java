@@ -2,6 +2,8 @@ package Library4997.MasqControlSystems.MasqPurePursuit;
 
 import java.util.List;
 
+import Library4997.MasqWrappers.DashBoard;
+
 /**
  * Created by Archishmaan Peyyety on 8/11/18.
  * Project: MasqLib
@@ -24,8 +26,10 @@ public class MasqPath {
         carrot = unitVector.multiply(robotVector.dotProduct(end) + lookAheadDistance);
     }
     public double getOrientationError(double angle, MasqPoint robot) {
-        MasqVector directionVector = new MasqVector(Math.cos(angle), Math.sin(angle));
-        MasqVector robotCarrot = new MasqVector(robot.getX() - carrot.getX(), robot.getY() - carrot.getY());
+        MasqVector directionVector = new MasqVector(Math.sin(Math.toRadians(angle)), Math.cos(Math.toRadians(angle)), "direction");
+        MasqVector robotCarrot = new MasqVector(carrot.getX() - robot.getX(),  carrot.getY() - robot.getY(), "robot");
+        DashBoard.getDash().create(directionVector);
+        DashBoard.getDash().create(robotCarrot);
         return Math.toDegrees(Math.acos((directionVector.dotProduct(robotCarrot)) / robotCarrot.getMagnitude()));
     }
     public void updatePath(MasqPoint start, MasqPoint end) {
