@@ -341,7 +341,7 @@ public abstract class MasqRobot {
                 integral = pathOrientationError.getIntegral(error);
                 deriv = (error - prevError) / tChange;
                 correction = (error * MasqUtils.KP.PATH) + (integral * MasqUtils.KI.PATH) + (deriv * MasqUtils.KD.PATH);
-                //driveTrain.setPower((baseSpeed + correction) * direction, (baseSpeed) * direction);
+                driveTrain.setPower((baseSpeed + correction) * direction, baseSpeed * direction);
                 path.updateSystem(tracker.getPosition());
                 prevTime = System.nanoTime();
                 tracker.updateSystem();

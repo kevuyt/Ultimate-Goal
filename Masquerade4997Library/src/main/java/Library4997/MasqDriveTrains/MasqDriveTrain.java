@@ -43,6 +43,10 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.setPower(power);
         rightDrive.setPower(power);
     }
+    public void setPower(double power, double p2) {
+        leftDrive.setPower(power);
+        rightDrive.setPower(p2);
+    }
 
 
     public double getRate() {
