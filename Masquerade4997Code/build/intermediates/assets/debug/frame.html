@@ -166,12 +166,21 @@
 
     function navTo(page) {
         console.log("navigating to '" + page + "'");
+        makeButtonActive(findNavButtonForPage(page));
+        theIFrame.src = page;
+    }
+
+    function navToJavaFile(javaFileName) {
+        console.log("navigating to java file '" + javaFileName + "'");
+        makeButtonActive(document.getElementById('id_nav_onbotjava'));
+        theIFrame.src = URI_NAV_ONBOTJAVA + '?/src/' + javaFileName;
+    }
+
+    function makeButtonActive(button) {
         clearActiveFromNavButtons();
-        var button = findNavButtonForPage(page);
         if (button) {
             addClass(button, "active");
         }
-        theIFrame.src = page;
     }
 
     // Dismiss menu on click in 'collapsed' case

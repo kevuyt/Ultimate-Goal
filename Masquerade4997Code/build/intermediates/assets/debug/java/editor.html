@@ -219,7 +219,7 @@
                                        ng-model="newFile.file.name" required ng-pattern="/^[A-Z_$]([\w\d]+)$/">
                                 <div class="input-group-addon">.</div>
                                 <input type="text" name="fileExt" class="form-control" ng-model="newFile.file.ext"
-                                       style="width: 5em;" required ng-pattern="/^(java|txt|md)$/">
+                                       style="width: 5em;" required ng-pattern="/^(java|txt|md|properties|json)$/">
                             </div>
                             <div ng-messages="newFileForm.fileName.$error" ng-show="newFileForm.fileName.$touched">
                                 <p ng-message="required" class="help-block">A filename is required</p>
@@ -227,7 +227,7 @@
                             </div>
                             <div ng-messages="newFileForm.fileExt.$error" ng-show="newFileForm.fileExt.$touched" class="help-block">
                                 <p ng-message="required">A file extension is required.</p>
-                                <p ng-message="pattern">Valid file extensions are <code>java</code>, <code>txt</code>, and <code>md</code></p>
+                                <p ng-message="pattern">Valid file extensions are <code>java</code>, <code>txt</code>, <code>properties</code>, <code>json</code> and <code>md</code></p>
                             </div>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : (newFileForm.fileLocation.$invalid && !newFileForm.fileLocation.$pristine) }">
@@ -338,7 +338,7 @@
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : (settingsForm.tabSize.$invalid && !settingsForm.tabSize.$pristine) }">
                             <label for="settings-space-tab-input">Tab Size</label>
-                            <input type="number" id="settings-space-tab-input" placeholder="4" required name="tabSize"
+                            <input type="number" id="settings-space-tab-input" placeholder="4" required name="spacesToTab"
                                    ng-model="settings.spacesToTab" class="form-control">
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : (settingsForm.keybinding.$invalid && !settingsForm.keybinding.$pristine) }">
@@ -354,7 +354,7 @@
                             <label for="settings-autocomplete-enabled">Enable autocomplete</label>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error' : (settingsForm.autocompleteForceEnable.$invalid && !settingsForm.autocompleteForceEnable.$pristine) }">
-                            <input type="checkbox" id="settings-autocomplete-force-enable" name="autocompleteForceEnable" ng-model="settings.autocompleteForceEnable" ">
+                            <input type="checkbox" id="settings-autocomplete-force-enable" name="autocompleteForceEnabled" ng-model="settings.autocompleteForceEnabled">
                             <label for="settings-autocomplete-force-enable">Always enable autocomplete</label>
                         </div>
                         <div ng-show="isAutocompleteDisabledForPerformance()">
@@ -454,7 +454,6 @@
 </div>
 <div id="script-container">
     <!-- Normalize the JS engine to not break older browsers -->
-    <script src="/java/js/es5-shim.js"></script>
     <script src="/java/js/es6-shim.js"></script>
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/java/js/jquery.position.js"></script>

@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// linearOpModeIdentifier
+// linearOpModeIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // functionColor
@@ -27,7 +27,11 @@ Blockly.Blocks['linearOpMode_waitForStart'] = {
 };
 
 Blockly.JavaScript['linearOpMode_waitForStart'] = function(block) {
-  return linearOpModeIdentifier + '.waitForStart();\n';
+  return linearOpModeIdentifierForJavaScript + '.waitForStart();\n';
+};
+
+Blockly.FtcJava['linearOpMode_waitForStart'] = function(block) {
+  return 'waitForStart();\n';
 };
 
 Blockly.Blocks['linearOpMode_idle'] = {
@@ -46,7 +50,11 @@ Blockly.Blocks['linearOpMode_idle'] = {
 };
 
 Blockly.JavaScript['linearOpMode_idle'] = function(block) {
-  return linearOpModeIdentifier + '.idle();\n';
+  return linearOpModeIdentifierForJavaScript + '.idle();\n';
+};
+
+Blockly.FtcJava['linearOpMode_idle'] = function(block) {
+  return 'idle();\n';
 };
 
 Blockly.Blocks['linearOpMode_sleep'] = {
@@ -69,7 +77,13 @@ Blockly.Blocks['linearOpMode_sleep'] = {
 Blockly.JavaScript['linearOpMode_sleep'] = function(block) {
   var millis = Blockly.JavaScript.valueToCode(
       block, 'MILLISECONDS', Blockly.JavaScript.ORDER_NONE);
-  return linearOpModeIdentifier + '.sleep(' + millis + ');\n';
+  return linearOpModeIdentifierForJavaScript + '.sleep(' + millis + ');\n';
+};
+
+Blockly.FtcJava['linearOpMode_sleep'] = function(block) {
+  var millis = Blockly.FtcJava.valueToCode(
+      block, 'MILLISECONDS', Blockly.FtcJava.ORDER_NONE);
+  return 'sleep(' + millis + ');\n';
 };
 
 Blockly.Blocks['linearOpMode_sleep_Number'] = {
@@ -86,11 +100,20 @@ Blockly.Blocks['linearOpMode_sleep_Number'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Sleep for the given amount of milliseconds.');
+    this.getFtcJavaInputType = function(inputName) {
+      if (inputName == 'MILLISECONDS') {
+        return 'long';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['linearOpMode_sleep_Number'] =
     Blockly.JavaScript['linearOpMode_sleep'];
+
+Blockly.FtcJava['linearOpMode_sleep_Number'] =
+    Blockly.FtcJava['linearOpMode_sleep'];
 
 Blockly.Blocks['linearOpMode_opModeIsActive'] = {
   init: function() {
@@ -100,14 +123,19 @@ Blockly.Blocks['linearOpMode_opModeIsActive'] = {
         .appendField(createNonEditableField(currentProjectName))
         .appendField('.')
         .appendField(createNonEditableField('opModeIsActive'));
-    this.setTooltip('Return true if this opMode is active.');
     this.setColour(functionColor);
+    this.setTooltip('Return true if this opMode is active.');
   }
 };
 
 Blockly.JavaScript['linearOpMode_opModeIsActive'] = function(block) {
-  var code = linearOpModeIdentifier + '.opModeIsActive()';
+  var code = linearOpModeIdentifierForJavaScript + '.opModeIsActive()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['linearOpMode_opModeIsActive'] = function(block) {
+  var code = 'opModeIsActive()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['linearOpMode_isStarted'] = {
@@ -118,14 +146,19 @@ Blockly.Blocks['linearOpMode_isStarted'] = {
         .appendField(createNonEditableField(currentProjectName))
         .appendField('.')
         .appendField(createNonEditableField('isStarted'));
-    this.setTooltip('Return true if this opMode has been started.');
     this.setColour(functionColor);
+    this.setTooltip('Return true if this opMode has been started.');
   }
 };
 
 Blockly.JavaScript['linearOpMode_isStarted'] = function(block) {
-  var code = linearOpModeIdentifier + '.isStarted()';
+  var code = linearOpModeIdentifierForJavaScript + '.isStarted()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['linearOpMode_isStarted'] = function(block) {
+  var code = 'isStarted()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['linearOpMode_isStopRequested'] = {
@@ -136,14 +169,19 @@ Blockly.Blocks['linearOpMode_isStopRequested'] = {
         .appendField(createNonEditableField(currentProjectName))
         .appendField('.')
         .appendField(createNonEditableField('isStopRequested'));
-    this.setTooltip('Return true if stopping of this opMode has been requested.');
     this.setColour(functionColor);
+    this.setTooltip('Return true if stopping of this opMode has been requested.');
   }
 };
 
 Blockly.JavaScript['linearOpMode_isStopRequested'] = function(block) {
-  var code = linearOpModeIdentifier + '.isStopRequested()';
+  var code = linearOpModeIdentifierForJavaScript + '.isStopRequested()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['linearOpMode_isStopRequested'] = function(block) {
+  var code = 'isStopRequested()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['linearOpMode_getRuntime'] = {
@@ -154,14 +192,19 @@ Blockly.Blocks['linearOpMode_getRuntime'] = {
         .appendField(createNonEditableField(currentProjectName))
         .appendField('.')
         .appendField(createNonEditableField('getRuntime'));
-    this.setTooltip('Get the number of seconds this op mode has been running.');
     this.setColour(functionColor);
+    this.setTooltip('Returns the number of seconds this op mode has been running.');
   }
 };
 
 Blockly.JavaScript['linearOpMode_getRuntime'] = function(block) {
-  var code = linearOpModeIdentifier + '.getRuntime()';
+  var code = linearOpModeIdentifierForJavaScript + '.getRuntime()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['linearOpMode_getRuntime'] = function(block) {
+  var code = 'getRuntime()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['linearOpMode_getRuntime_Number'] = {
@@ -172,10 +215,16 @@ Blockly.Blocks['linearOpMode_getRuntime_Number'] = {
         .appendField(createNonEditableField(currentProjectName))
         .appendField('.')
         .appendField(createNonEditableField('getRuntime'));
-    this.setTooltip('Get the number of seconds this op mode has been running.');
     this.setColour(functionColor);
+    this.setTooltip('Returns the number of seconds this op mode has been running.');
+    this.getFtcJavaOutputType = function() {
+      return 'double';
+    };
   }
 };
 
 Blockly.JavaScript['linearOpMode_getRuntime_Number'] =
     Blockly.JavaScript['linearOpMode_getRuntime'];
+
+Blockly.FtcJava['linearOpMode_getRuntime_Number'] =
+    Blockly.FtcJava['linearOpMode_getRuntime'];

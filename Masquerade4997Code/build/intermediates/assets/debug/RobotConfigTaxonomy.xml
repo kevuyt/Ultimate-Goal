@@ -126,4 +126,16 @@
 		<Bus>aobus</Bus>
 		<BusDefault>analog output port</BusDefault>
 	</Sensor>
+	<Sensor>
+		<XmlTag>RevRoboticsCoreHexMotor</XmlTag>
+		<Description>a REV Robotics Core Hex Motor</Description>
+		<Bus>nobus</Bus>
+		<BusDefault>port</BusDefault>
+	</Sensor>
+	<Sensor>
+		<XmlTag>LynxEmbeddedIMU</XmlTag>
+		<Description>the internal IMU</Description>
+		<Bus>i2cbus</Bus>
+		<BusDefault>port</BusDefault>
+	</Sensor>
 </RobotConfigTaxonomy>

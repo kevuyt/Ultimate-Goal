@@ -35,6 +35,13 @@ Blockly.JavaScript['led_enableLed'] = function(block) {
   return identifier + '.enableLed(' + enable + ');\n';
 };
 
+Blockly.FtcJava['led_enableLed'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'LED');
+  var enable = Blockly.FtcJava.valueToCode(
+      block, 'ENABLE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.enable(' + enable + ');\n';
+};
+
 Blockly.Blocks['led_enableLed_Boolean'] = {
   init: function() {
     this.appendDummyInput()
@@ -55,6 +62,9 @@ Blockly.Blocks['led_enableLed_Boolean'] = {
 Blockly.JavaScript['led_enableLed_Boolean'] =
     Blockly.JavaScript['led_enableLed'];
 
+Blockly.FtcJava['led_enableLed_Boolean'] =
+    Blockly.FtcJava['led_enableLed'];
+
 Blockly.Blocks['led_isLightOn'] = {
   init: function() {
     this.setOutput(true, 'Boolean');
@@ -72,4 +82,10 @@ Blockly.JavaScript['led_isLightOn'] = function(block) {
   var identifier = block.getFieldValue('IDENTIFIER');
   var code = identifier + '.isLightOn()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['led_isLightOn'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'LED');
+  var code = identifier + '.isLightOn()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

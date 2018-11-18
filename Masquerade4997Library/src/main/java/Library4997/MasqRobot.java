@@ -3,8 +3,6 @@ package Library4997;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
-
 import Library4997.MasqControlSystems.MasqIntegrator;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPath;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
@@ -439,7 +437,7 @@ public abstract class MasqRobot {
         MECH(c, Direction.FORWARD, false);
     }
 
-    public double getDelay() {return FtcRobotControllerActivity.getDelay();}
+    //public double getDelay() {return FtcRobotControllerActivity.getDelay();}
 
     public void initializeTeleop(){
         driveTrain.setKp(MasqUtils.KP.MOTOR_TELEOP);

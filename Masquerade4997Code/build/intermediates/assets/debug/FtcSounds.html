@@ -405,11 +405,12 @@
 
   function renameSoundButtonClicked() {
     // Show modal dialog asking for sound name.
-    document.getElementById('newSoundName').value = '';
+    document.getElementById('newSoundName').value = sounds[checkedSounds[0]].name;
     document.getElementById('newSoundNameError').innerHTML = '';
     newSoundNameDialogMode = NEW_SOUND_NAME_DIALOG_MODE_RENAME_SOUND;
     document.getElementById('newSoundNameDialogTitle').innerHTML = 'Rename Selected Sound';
     document.getElementById('newSoundNameDialog').style.display = 'block';
+    document.getElementById('newSoundName').focus();
   }
 
   function renameSoundOk(oldSoundName, newSoundName) {
@@ -426,11 +427,12 @@
 
   function copySoundButtonClicked() {
     // Show modal dialog asking for sound name.
-    document.getElementById('newSoundName').value = '';
+    document.getElementById('newSoundName').value = sounds[checkedSounds[0]].name;
     document.getElementById('newSoundNameError').innerHTML = '';
     newSoundNameDialogMode = NEW_SOUND_NAME_DIALOG_MODE_COPY_SOUND;
     document.getElementById('newSoundNameDialogTitle').innerHTML = 'Copy Selected Sound';
     document.getElementById('newSoundNameDialog').style.display = 'block';
+    document.getElementById('newSoundName').focus();
   }
 
   function copySoundOk(oldSoundName, newSoundName) {

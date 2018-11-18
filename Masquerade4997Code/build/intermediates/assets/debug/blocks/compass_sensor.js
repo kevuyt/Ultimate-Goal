@@ -25,11 +25,12 @@ Blockly.Blocks['compassSensor_getProperty'] = {
         .appendField(createCompassSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Direction', 'Get the current direction, in degrees.'],
-        ['CalibrationFailed', 'Check to see whether calibration failed.'],
+        ['Direction', 'Returns the current direction, in degrees.'],
+        ['CalibrationFailed', 'Returns true if calibration failed.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -40,7 +41,6 @@ Blockly.Blocks['compassSensor_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -49,6 +49,23 @@ Blockly.JavaScript['compassSensor_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var code = identifier + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['compassSensor_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'CompassSensor');
+  var property = block.getFieldValue('PROP');
+  var code;
+  switch (property) {
+    case 'Direction':
+      code = identifier + '.get' + property + '()';
+      break;
+    case 'CalibrationFailed':
+      code = identifier + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property) + '()';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (compassSensor_getProperty).';
+  }
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['compassSensor_getProperty_Number'] = {
@@ -61,10 +78,11 @@ Blockly.Blocks['compassSensor_getProperty_Number'] = {
         .appendField(createCompassSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Direction', 'Get the current direction, in degrees.'],
+        ['Direction', 'Returns the current direction, in degrees.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -75,12 +93,23 @@ Blockly.Blocks['compassSensor_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'DIRECTION':
+          return 'double';
+        default:
+          throw 'Unexpected property ' + property + ' (compassSensor_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['compassSensor_getProperty_Number'] =
     Blockly.JavaScript['compassSensor_getProperty'];
+
+Blockly.FtcJava['compassSensor_getProperty_Number'] =
+    Blockly.FtcJava['compassSensor_getProperty'];
 
 
 Blockly.Blocks['compassSensor_getProperty_Boolean'] = {
@@ -93,10 +122,11 @@ Blockly.Blocks['compassSensor_getProperty_Boolean'] = {
         .appendField(createCompassSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['CalibrationFailed', 'Check to see whether calibration failed.'],
+        ['CalibrationFailed', 'Returns true if calibration failed.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -107,12 +137,14 @@ Blockly.Blocks['compassSensor_getProperty_Boolean'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['compassSensor_getProperty_Boolean'] =
     Blockly.JavaScript['compassSensor_getProperty'];
+
+Blockly.FtcJava['compassSensor_getProperty_Boolean'] =
+    Blockly.FtcJava['compassSensor_getProperty'];
 
 // Enums
 
@@ -127,11 +159,12 @@ Blockly.Blocks['compassSensor_enum_compassMode'] = {
         .appendField(createNonEditableField('CompassMode'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(COMPASS_MODE_CHOICES), 'COMPASS_MODE');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['MEASUREMENT_MODE', 'The compass mode for measurement.'],
-        ['CALIBRATION_MODE', 'The compass mode for calibration.'],
+        ['MEASUREMENT_MODE', 'The CompassMode value MEASUREMENT_MODE.'],
+        ['CALIBRATION_MODE', 'The CompassMode value CALIBRATION_MODE.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('COMPASS_MODE');
@@ -142,7 +175,6 @@ Blockly.Blocks['compassSensor_enum_compassMode'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -151,22 +183,29 @@ Blockly.JavaScript['compassSensor_enum_compassMode'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['compassSensor_enum_compassMode'] = function(block) {
+  var code = 'CompassSensor.CompassMode.' + block.getFieldValue('COMPASS_MODE');
+  Blockly.FtcJava.generateImport_('CompassSensor');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['compassSensor_typedEnum_compassMode'] = {
   init: function() {
     var COMPASS_MODE_CHOICES = [
         ['MEASUREMENT_MODE', 'MEASUREMENT_MODE'],
         ['CALIBRATION_MODE', 'CALIBRATION_MODE'],
     ];
-    this.setOutput(true, 'CompassMode');
+    this.setOutput(true, 'CompassSensor.CompassMode');
     this.appendDummyInput()
         .appendField(createNonEditableField('CompassMode'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(COMPASS_MODE_CHOICES), 'COMPASS_MODE');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['MEASUREMENT_MODE', 'The compass mode for measurement.'],
-        ['CALIBRATION_MODE', 'The compass mode for calibration.'],
+        ['MEASUREMENT_MODE', 'The CompassMode value MEASUREMENT_MODE.'],
+        ['CALIBRATION_MODE', 'The CompassMode value CALIBRATION_MODE.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('COMPASS_MODE');
@@ -177,12 +216,14 @@ Blockly.Blocks['compassSensor_typedEnum_compassMode'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['compassSensor_typedEnum_compassMode'] =
     Blockly.JavaScript['compassSensor_enum_compassMode'];
+
+Blockly.FtcJava['compassSensor_typedEnum_compassMode'] =
+    Blockly.FtcJava['compassSensor_enum_compassMode'];
 
 // Functions
 
@@ -210,6 +251,13 @@ Blockly.JavaScript['compassSensor_setMode'] = function(block) {
   return identifier + '.setMode(' + compassMode + ');\n';
 };
 
+Blockly.FtcJava['compassSensor_setMode'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'CompassSensor');
+  var compassMode = Blockly.FtcJava.valueToCode(
+      block, 'COMPASS_MODE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.setMode(' + compassMode + ');\n';
+};
+
 Blockly.Blocks['compassSensor_setMode_CompassMode'] = {
   init: function() {
     this.appendDummyInput()
@@ -217,7 +265,7 @@ Blockly.Blocks['compassSensor_setMode_CompassMode'] = {
         .appendField(createCompassSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(createNonEditableField('setMode'));
-    this.appendValueInput('COMPASS_MODE').setCheck('CompassMode')
+    this.appendValueInput('COMPASS_MODE').setCheck('CompassSensor.CompassMode')
         .appendField('compassMode')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true);
@@ -229,3 +277,6 @@ Blockly.Blocks['compassSensor_setMode_CompassMode'] = {
 
 Blockly.JavaScript['compassSensor_setMode_CompassMode'] =
     Blockly.JavaScript['compassSensor_setMode'];
+
+Blockly.FtcJava['compassSensor_setMode_CompassMode'] =
+    Blockly.FtcJava['compassSensor_setMode'];

@@ -1,23 +1,21 @@
-// this file has been modified to an !important to the color attributes due to an issue with Bootstrap and printing
-
 define("ace/theme/monokai",["require","exports","module","ace/lib/dom"], function(require, exports, module) {
 
 exports.isDark = true;
 exports.cssClass = "ace-monokai";
 exports.cssText = ".ace-monokai .ace_gutter {\
 background: #2F3129;\
-color: #8F908A !important;\
+color: #8F908A\
 }\
 .ace-monokai .ace_print-margin {\
 width: 1px;\
 background: #555651\
 }\
 .ace-monokai {\
-background-color: #272822;\
-color: #F8F8F2 !important;\
+background-color: #272822 !important;\
+color: #F8F8F2\
 }\
 .ace-monokai .ace_cursor {\
-color: #F8F8F0 !important;\
+color: #F8F8F0\
 }\
 .ace-monokai .ace_marker-layer .ace_selection {\
 background: #49483E\
@@ -42,69 +40,74 @@ background-color: #272727\
 border: 1px solid #49483E\
 }\
 .ace-monokai .ace_invisible {\
-color: #52524d !important;\
+color: #52524d\
 }\
 .ace-monokai .ace_entity.ace_name.ace_tag,\
 .ace-monokai .ace_keyword,\
 .ace-monokai .ace_meta.ace_tag,\
 .ace-monokai .ace_storage {\
-color: #F92672 !important;\
+color: #F92672\
 }\
 .ace-monokai .ace_punctuation,\
 .ace-monokai .ace_punctuation.ace_tag {\
-color: #fff !important;\
+color: #fff\
 }\
 .ace-monokai .ace_constant.ace_character,\
 .ace-monokai .ace_constant.ace_language,\
 .ace-monokai .ace_constant.ace_numeric,\
 .ace-monokai .ace_constant.ace_other {\
-color: #AE81FF !important;\
+color: #AE81FF\
 }\
 .ace-monokai .ace_invalid {\
-color: #F8F8F0; !important;\
+color: #F8F8F0 !important;\
 background-color: #F92672\
 }\
 .ace-monokai .ace_invalid.ace_deprecated {\
-color: #F8F8F0; !important;\
+color: #F8F8F0 !important;\
 background-color: #AE81FF\
 }\
 .ace-monokai .ace_support.ace_constant,\
 .ace-monokai .ace_support.ace_function {\
-color: #66D9EF !important;\
+color: #66D9EF\
 }\
 .ace-monokai .ace_fold {\
-background-color: #A6E22E;\
+background-color: #A6E22E !important;\
 border-color: #F8F8F2\
 }\
 .ace-monokai .ace_storage.ace_type,\
 .ace-monokai .ace_support.ace_class,\
 .ace-monokai .ace_support.ace_type {\
 font-style: italic;\
-color: #66D9EF !important;\
+color: #66D9EF\
 }\
 .ace-monokai .ace_entity.ace_name.ace_function,\
 .ace-monokai .ace_entity.ace_other,\
 .ace-monokai .ace_entity.ace_other.ace_attribute-name,\
 .ace-monokai .ace_variable {\
-color: #A6E22E !important;\
+color: #A6E22E\
 }\
 .ace-monokai .ace_variable.ace_parameter {\
 font-style: italic;\
-color: #FD971F !important;\
+color: #FD971F\
 }\
 .ace-monokai .ace_string {\
-color: #E6DB74 !important;\
+color: #E6DB74\
 }\
 .ace-monokai .ace_comment {\
-color: #75715E !important;\
+color: #75715E\
 }\
 .ace-monokai .ace_indent-guide {\
 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y\
-}\
-.ace_autocomplete .ace_line .ace_ {\
-color: #444;\
 }";
 
 var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);
 });
+                (function() {
+                    window.require(["ace/theme/monokai"], function(m) {
+                        if (typeof module == "object" && typeof exports == "object" && module) {
+                            module.exports = m;
+                        }
+                    });
+                })();
+            

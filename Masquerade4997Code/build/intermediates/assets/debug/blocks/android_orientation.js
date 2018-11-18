@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// androidOrientationIdentifier
+// androidOrientationIdentifierForJavaScript
 // The following are defined in vars.js:
 // getPropertyColor
 // functionColor
@@ -44,7 +44,15 @@ Blockly.JavaScript['androidOrientation_setProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var value = Blockly.JavaScript.valueToCode(
       block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
-  return androidOrientationIdentifier + '.set' + property + '(' + value + ');\n';
+  return androidOrientationIdentifierForJavaScript + '.set' + property + '(' + value + ');\n';
+};
+
+Blockly.FtcJava['androidOrientation_setProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidOrientation');
+  var property = block.getFieldValue('PROP');
+  var value = Blockly.FtcJava.valueToCode(
+      block, 'VALUE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.set' + property + '(' + value + ');\n';
 };
 
 Blockly.Blocks['androidOrientation_setProperty_AngleUnit'] = {
@@ -81,6 +89,9 @@ Blockly.Blocks['androidOrientation_setProperty_AngleUnit'] = {
 Blockly.JavaScript['androidOrientation_setProperty_AngleUnit'] =
     Blockly.JavaScript['androidOrientation_setProperty'];
 
+Blockly.FtcJava['androidOrientation_setProperty_AngleUnit'] =
+    Blockly.FtcJava['androidOrientation_setProperty'];
+
 Blockly.Blocks['androidOrientation_getProperty'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -96,14 +107,14 @@ Blockly.Blocks['androidOrientation_getProperty'] = {
         .appendField(createNonEditableField('AndroidOrientation'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['Azimuth', 'Returns the azimuth.'],
         ['Pitch', 'Returns the pitch.'],
         ['Roll', 'Returns the roll.'],
-        ['Angle',
-            'Returns the angle in which the orientation sensor is tilted, treating Roll as the x-coordinate and Pitch as the y-coordinate.'],
+        ['Angle', 'Returns the angle in which the orientation sensor is tilted, treating Roll as the x-coordinate and Pitch as the y-coordinate.'],
         ['Magnitude', 'Returns a number between 0 and 1, indicating how much the device is tilted.'],
         ['AngleUnit', 'Returns the AngleUnit being used.'],
     ];
@@ -116,14 +127,20 @@ Blockly.Blocks['androidOrientation_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidOrientation_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
-  var code = androidOrientationIdentifier + '.get' + property + '()';
+  var code = androidOrientationIdentifierForJavaScript + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidOrientation_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidOrientation');
+  var property = block.getFieldValue('PROP');
+  var code = identifier + '.get' + property + '()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidOrientation_getProperty_Number'] = {
@@ -140,14 +157,14 @@ Blockly.Blocks['androidOrientation_getProperty_Number'] = {
         .appendField(createNonEditableField('AndroidOrientation'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['Azimuth', 'Returns the azimuth.'],
         ['Pitch', 'Returns the pitch.'],
         ['Roll', 'Returns the roll.'],
-        ['Angle',
-            'Returns the angle in which the orientation sensor is tilted, treating Roll as the x-coordinate and Pitch as the y-coordinate.'],
+        ['Angle', 'Returns the angle in which the orientation sensor is tilted, treating Roll as the x-coordinate and Pitch as the y-coordinate.'],
         ['Magnitude', 'Returns a number between 0 and 1, indicating how much the device is tilted.'],
     ];
     this.setTooltip(function() {
@@ -159,12 +176,27 @@ Blockly.Blocks['androidOrientation_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'Azimuth':
+        case 'Pitch':
+        case 'Roll':
+        case 'Angle':
+        case 'Magnitude':
+          return 'double';
+        default:
+          throw 'Unexpected property ' + property + ' (androidOrientation_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['androidOrientation_getProperty_Number'] =
     Blockly.JavaScript['androidOrientation_getProperty'];
+
+Blockly.FtcJava['androidOrientation_getProperty_Number'] =
+    Blockly.FtcJava['androidOrientation_getProperty'];
 
 Blockly.Blocks['androidOrientation_getProperty_AngleUnit'] = {
   init: function() {
@@ -176,6 +208,7 @@ Blockly.Blocks['androidOrientation_getProperty_AngleUnit'] = {
         .appendField(createNonEditableField('AndroidOrientation'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -190,12 +223,14 @@ Blockly.Blocks['androidOrientation_getProperty_AngleUnit'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidOrientation_getProperty_AngleUnit'] =
     Blockly.JavaScript['androidOrientation_getProperty'];
+
+Blockly.FtcJava['androidOrientation_getProperty_AngleUnit'] =
+    Blockly.FtcJava['androidOrientation_getProperty'];
 
 // Functions
 
@@ -207,15 +242,20 @@ Blockly.Blocks['androidOrientation_isAvailable'] = {
         .appendField(createNonEditableField('AndroidOrientation'))
         .appendField('.')
         .appendField(createNonEditableField('isAvailable'));
-    this.setTooltip(
-        'Returns true if the Android device has a orientation.');
     this.setColour(functionColor);
+    this.setTooltip('Returns true if the Android device has the sensors required for orientation.');
   }
 };
 
 Blockly.JavaScript['androidOrientation_isAvailable'] = function(block) {
-  var code = androidOrientationIdentifier + '.isAvailable()';
+  var code = androidOrientationIdentifierForJavaScript + '.isAvailable()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidOrientation_isAvailable'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidOrientation');
+  var code = identifier + '.isAvailable()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidOrientation_startListening'] = {
@@ -228,13 +268,17 @@ Blockly.Blocks['androidOrientation_startListening'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Start listening to events from the Android orientation.');
+    this.setTooltip('Start listening to events from the Android sensors.');
   }
 };
 
 Blockly.JavaScript['androidOrientation_startListening'] = function(block) {
-  return androidOrientationIdentifier + '.startListening();\n';
+  return androidOrientationIdentifierForJavaScript + '.startListening();\n';
+};
+
+Blockly.FtcJava['androidOrientation_startListening'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidOrientation');
+  return identifier + '.startListening();\n';
 };
 
 Blockly.Blocks['androidOrientation_stopListening'] = {
@@ -247,11 +291,15 @@ Blockly.Blocks['androidOrientation_stopListening'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Stop listening to events from the Android orientation.');
+    this.setTooltip('Stop listening to events from the Android sensors.');
   }
 };
 
 Blockly.JavaScript['androidOrientation_stopListening'] = function(block) {
-  return androidOrientationIdentifier + '.stopListening();\n';
+  return androidOrientationIdentifierForJavaScript + '.stopListening();\n';
+};
+
+Blockly.FtcJava['androidOrientation_stopListening'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidOrientation');
+  return identifier + '.stopListening();\n';
 };

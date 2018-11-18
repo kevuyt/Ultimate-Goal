@@ -176,7 +176,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImpl.html#x">x</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImpl.html#direction">direction</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected MotorConfigurationType</code></td>
@@ -209,14 +209,14 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImpl.html#DcMotorImpl-com.qualcomm.robotcore.hardware.DcMotorController-int-com.qualcomm.robotcore.hardware.DcMotorSimple.Direction-">DcMotorImpl</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorController</a>&nbsp;controller,
            int&nbsp;portNumber,
-           <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;x)</code>
+           <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;direction)</code>
 <div class="block">Constructor</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImpl.html#DcMotorImpl-com.qualcomm.robotcore.hardware.DcMotorController-int-com.qualcomm.robotcore.hardware.DcMotorSimple.Direction-MotorConfigurationType-">DcMotorImpl</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorController</a>&nbsp;controller,
            int&nbsp;portNumber,
-           <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;x,
+           <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;direction,
            MotorConfigurationType&nbsp;motorType)</code>
 <div class="block">Constructor</div>
 </td>
@@ -277,7 +277,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImpl.html#getDirection--">getDirection</a></span>()</code>
-<div class="block">Get the x</div>
+<div class="block">Get the direction</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
@@ -364,8 +364,8 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImpl.html#setDirection-com.qualcomm.robotcore.hardware.DcMotorSimple.Direction-">setDirection</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;x)</code>
-<div class="block">Set the x</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImpl.html#setDirection-com.qualcomm.robotcore.hardware.DcMotorSimple.Direction-">setDirection</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;direction)</code>
+<div class="block">Set the direction</div>
 </td>
 </tr>
 <tr id="i24" class="altColor">
@@ -444,13 +444,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <pre>protected&nbsp;int portNumber</pre>
 </li>
 </ul>
-<a name="x">
+<a name="direction">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>x</h4>
-<pre>protected&nbsp;<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a> x</pre>
+<h4>direction</h4>
+<pre>protected&nbsp;<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a> direction</pre>
 </li>
 </ul>
 <a name="motorType">
@@ -494,13 +494,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <h4>DcMotorImpl</h4>
 <pre>public&nbsp;DcMotorImpl(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorController</a>&nbsp;controller,
                    int&nbsp;portNumber,
-                   <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;x)</pre>
+                   <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;direction)</pre>
 <div class="block">Constructor</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>controller</code> - DC motor controller this motor is attached to</dd>
 <dd><code>portNumber</code> - portNumber port number on the controller</dd>
-<dd><code>x</code> - x this motor should spin</dd>
+<dd><code>direction</code> - direction this motor should spin</dd>
 </dl>
 </li>
 </ul>
@@ -512,14 +512,14 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <h4>DcMotorImpl</h4>
 <pre>public&nbsp;DcMotorImpl(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorController</a>&nbsp;controller,
                    int&nbsp;portNumber,
-                   <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;x,
+                   <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;direction,
                    MotorConfigurationType&nbsp;motorType)</pre>
 <div class="block">Constructor</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>controller</code> - DC motor controller this motor is attached to</dd>
 <dd><code>portNumber</code> - portNumber port number on the controller</dd>
-<dd><code>x</code> - x this motor should spin</dd>
+<dd><code>direction</code> - direction this motor should spin</dd>
 <dd><code>motorType</code> - the type we know this motor to be</dd>
 </dl>
 </li>
@@ -611,7 +611,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <pre>public&nbsp;void&nbsp;resetDeviceConfigurationForOpMode()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html#resetDeviceConfigurationForOpMode--">HardwareDevice</a></code></span></div>
 <div class="block">Resets the device's configuration to that which is expected at the beginning of an OpMode.
- For example, motors will reset the their x to 'forward'.</div>
+ For example, motors will reset the their direction to 'forward'.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html#resetDeviceConfigurationForOpMode--">resetDeviceConfigurationForOpMode</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html" title="interface in com.qualcomm.robotcore.hardware">HardwareDevice</a></code></dd>
@@ -696,13 +696,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>setDirection</h4>
-<pre>public&nbsp;void&nbsp;setDirection(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;x)</pre>
-<div class="block">Set the x</div>
+<pre>public&nbsp;void&nbsp;setDirection(<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;direction)</pre>
+<div class="block">Set the direction</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.html#setDirection-com.qualcomm.robotcore.hardware.DcMotorSimple.Direction-">setDirection</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorSimple</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>x</code> - x</dd>
+<dd><code>direction</code> - direction</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.html#getDirection--"><code>DcMotorSimple.getDirection()</code></a></dd>
 </dl>
@@ -715,12 +715,12 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.html" ti
 <li class="blockList">
 <h4>getDirection</h4>
 <pre>public&nbsp;<a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.Direction.html" title="enum in com.qualcomm.robotcore.hardware">DcMotorSimple.Direction</a>&nbsp;getDirection()</pre>
-<div class="block">Get the x</div>
+<div class="block">Get the direction</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.html#getDirection--">getDirection</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorSimple</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>x</dd>
+<dd>direction</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorSimple.html#setDirection-com.qualcomm.robotcore.hardware.DcMotorSimple.Direction-"><code>DcMotorSimple.setDirection(Direction)</code></a></dd>
 </dl>

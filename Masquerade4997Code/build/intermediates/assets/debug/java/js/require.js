@@ -99,7 +99,7 @@
                 var anonFn = new Function("require", "exports", "module", source);
                 anonFn(require, exports, module);  // Call the Fn, Execute the module
             } catch (err) {
-                throw new Error("Error loading module " + url + ": " + err.stack);
+                throw new Error("Error loading module " + url + ": " + err);
             }
         }
         // Restore the relative path.

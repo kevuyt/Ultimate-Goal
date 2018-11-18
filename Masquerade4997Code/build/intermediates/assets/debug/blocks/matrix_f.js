@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// matrixFIdentifier
+// matrixFIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // getPropertyColor
@@ -25,11 +25,11 @@ Blockly.Blocks['matrixF_getProperty'] = {
         .appendField('matrix')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['NumRows', 'The number of rows in the given matrix.'],
-        ['NumCols', 'The number of columns in the given matrix.'],
+        ['NumRows', 'Returns the number of rows in the given matrix.'],
+        ['NumCols', 'Returns the number of columns in the given matrix.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -40,6 +40,13 @@ Blockly.Blocks['matrixF_getProperty'] = {
       }
       return '';
     });
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -47,8 +54,16 @@ Blockly.JavaScript['matrixF_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.get' + property + '(' + matrix + ')';
+  var code = matrixFIdentifierForJavaScript + '.get' + property + '(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = matrix + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property) + '()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_getProperty_Number'] = {
@@ -66,11 +81,11 @@ Blockly.Blocks['matrixF_getProperty_Number'] = {
         .appendField('matrix')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['NumRows', 'The number of rows in the given matrix.'],
-        ['NumCols', 'The number of columns in the given matrix.'],
+        ['NumRows', 'Returns the number of rows in the given matrix.'],
+        ['NumCols', 'Returns the number of columns in the given matrix.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -81,11 +96,24 @@ Blockly.Blocks['matrixF_getProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
+    this.getFtcJavaOutputType = function() {
+      return 'int';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_getProperty_Number'] =
-    Blockly.JavaScript['matrixF_getProperty']
+    Blockly.JavaScript['matrixF_getProperty'];
+
+Blockly.FtcJava['matrixF_getProperty_Number'] =
+    Blockly.FtcJava['matrixF_getProperty'];
 
 
 // Functions
@@ -115,6 +143,18 @@ Blockly.Blocks['matrixF_slice'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a matrix which is a submatrix of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+        case 'ROW':
+        case 'COL':
+        case 'NUM_ROWS':
+        case 'NUM_COLS':
+          return 'int';
+      }
+      return '';
+    };
   }
 };
 
@@ -129,9 +169,24 @@ Blockly.JavaScript['matrixF_slice'] = function(block) {
       block, 'NUM_ROWS', Blockly.JavaScript.ORDER_COMMA);
   var numCols = Blockly.JavaScript.valueToCode(
       block, 'NUM_COLS', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.slice(' + matrix + ', ' +
+  var code = matrixFIdentifierForJavaScript + '.slice(' + matrix + ', ' +
       row  + ', ' + col + ', ' + numRows + ', ' + numCols + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_slice'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var row = Blockly.FtcJava.valueToCode(
+      block, 'ROW', Blockly.FtcJava.ORDER_COMMA);
+  var col = Blockly.FtcJava.valueToCode(
+      block, 'COL', Blockly.FtcJava.ORDER_COMMA);
+  var numRows = Blockly.FtcJava.valueToCode(
+      block, 'NUM_ROWS', Blockly.FtcJava.ORDER_COMMA);
+  var numCols = Blockly.FtcJava.valueToCode(
+      block, 'NUM_COLS', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.slice(' + row  + ', ' + col + ', ' + numRows + ', ' + numCols + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_identityMatrix'] = {
@@ -143,19 +198,34 @@ Blockly.Blocks['matrixF_identityMatrix'] = {
         .appendField('.')
         .appendField(createNonEditableField('identityMatrix'));
     this.appendValueInput('DIM').setCheck('Number')
-        .appendField('dim')
+        .appendField('dimension')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Returns an identity matrix of the indicated dimension. ' +
+    this.setTooltip('Returns a matrix representing an identity matrix of the given dimension. ' +
         'An identity matrix is zero everywhere except on the diagonal, where it is one.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'DIM':
+          return 'int';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_identityMatrix'] = function(block) {
   var dim = Blockly.JavaScript.valueToCode(
       block, 'DIM', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.identityMatrix(' + dim + ')';
+  var code = matrixFIdentifierForJavaScript + '.identityMatrix(' + dim + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_identityMatrix'] = function(block) {
+  var dim = Blockly.FtcJava.valueToCode(
+      block, 'DIM', Blockly.FtcJava.ORDER_NONE);
+  var code = 'MatrixF.identityMatrix(' + dim + ')';
+  Blockly.FtcJava.generateImport_('MatrixF');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_diagonalMatrix'] = {
@@ -174,7 +244,16 @@ Blockly.Blocks['matrixF_diagonalMatrix'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a new matrix which is zero everywhere except ' +
-        'on the diagonal, where it has the indicated value.');
+        'on the diagonal, where it has the given scale value.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'DIM':
+          return 'int';
+        case 'SCALE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -183,8 +262,18 @@ Blockly.JavaScript['matrixF_diagonalMatrix'] = function(block) {
       block, 'DIM', Blockly.JavaScript.ORDER_COMMA);
   var scale = Blockly.JavaScript.valueToCode(
       block, 'SCALE', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.diagonalMatrix(' + dim + ', ' + scale + ')';
+  var code = matrixFIdentifierForJavaScript + '.diagonalMatrix(' + dim + ', ' + scale + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_diagonalMatrix'] = function(block) {
+  var dim = Blockly.FtcJava.valueToCode(
+      block, 'DIM', Blockly.FtcJava.ORDER_COMMA);
+  var scale = Blockly.FtcJava.valueToCode(
+      block, 'SCALE', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'MatrixF.diagonalMatrix(' + dim + ', ' + scale + ')';
+  Blockly.FtcJava.generateImport_('MatrixF');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_diagonalMatrix_withVector'] = {
@@ -200,15 +289,23 @@ Blockly.Blocks['matrixF_diagonalMatrix_withVector'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a new matrix which is zero everywhere, except ' +
-        'on the diagonal, where its values are taken from an indicated vector.');
+        'on the diagonal, where its values are taken from the given vector.');
   }
 };
 
 Blockly.JavaScript['matrixF_diagonalMatrix_withVector'] = function(block) {
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.diagonalMatrix_withVector(' + vector + ')';
+  var code = matrixFIdentifierForJavaScript + '.diagonalMatrix_withVector(' + vector + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_diagonalMatrix_withVector'] = function(block) {
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_NONE);
+  var code = 'MatrixF.diagonalMatrix(' + vector + ')';
+  Blockly.FtcJava.generateImport_('MatrixF');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_get'] = {
@@ -230,6 +327,19 @@ Blockly.Blocks['matrixF_get'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a particular element of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+        case 'ROW':
+        case 'COL':
+          return 'int';
+      }
+      return '';
+    };
+    this.getFtcJavaOutputType = function() {
+      return 'float';
+    };
   }
 };
 
@@ -240,8 +350,19 @@ Blockly.JavaScript['matrixF_get'] = function(block) {
       block, 'ROW', Blockly.JavaScript.ORDER_COMMA);
   var col = Blockly.JavaScript.valueToCode(
       block, 'COL', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.get(' + matrix + ', ' + row  + ', ' + col + ')';
+  var code = matrixFIdentifierForJavaScript + '.get(' + matrix + ', ' + row  + ', ' + col + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_get'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var row = Blockly.FtcJava.valueToCode(
+      block, 'ROW', Blockly.FtcJava.ORDER_COMMA);
+  var col = Blockly.FtcJava.valueToCode(
+      block, 'COL', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.get(' + row  + ', ' + col + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_put'] = {
@@ -267,6 +388,18 @@ Blockly.Blocks['matrixF_put'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates a particular element of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+        case 'ROW':
+        case 'COL':
+          return 'int';
+        case 'VALUE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -279,7 +412,19 @@ Blockly.JavaScript['matrixF_put'] = function(block) {
       block, 'COL', Blockly.JavaScript.ORDER_COMMA);
   var value = Blockly.JavaScript.valueToCode(
       block, 'VALUE', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.put(' + matrix + ', ' + row + ', ' + col + ', ' + value + ');\n';
+  return matrixFIdentifierForJavaScript + '.put(' + matrix + ', ' + row + ', ' + col + ', ' + value + ');\n';
+};
+
+Blockly.FtcJava['matrixF_put'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var row = Blockly.FtcJava.valueToCode(
+      block, 'ROW', Blockly.FtcJava.ORDER_COMMA);
+  var col = Blockly.FtcJava.valueToCode(
+      block, 'COL', Blockly.FtcJava.ORDER_COMMA);
+  var value = Blockly.FtcJava.valueToCode(
+      block, 'VALUE', Blockly.FtcJava.ORDER_COMMA);
+  return matrix + '.put(' + row + ', ' + col + ', ' + value + ');\n';
 };
 
 Blockly.Blocks['matrixF_getRow'] = {
@@ -298,6 +443,15 @@ Blockly.Blocks['matrixF_getRow'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a vector containing data of a particular row of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+        case 'ROW':
+          return 'int';
+      }
+      return '';
+    };
   }
 };
 
@@ -306,8 +460,17 @@ Blockly.JavaScript['matrixF_getRow'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var row = Blockly.JavaScript.valueToCode(
       block, 'ROW', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.getRow(' + matrix + ', ' + row + ')';
+  var code = matrixFIdentifierForJavaScript + '.getRow(' + matrix + ', ' + row + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_getRow'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var row = Blockly.FtcJava.valueToCode(
+      block, 'ROW', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.getRow(' + row + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_getColumn'] = {
@@ -326,6 +489,15 @@ Blockly.Blocks['matrixF_getColumn'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a vector containing data of a particular column of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+        case 'COL':
+          return 'int';
+      }
+      return '';
+    };
   }
 };
 
@@ -334,8 +506,17 @@ Blockly.JavaScript['matrixF_getColumn'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var col = Blockly.JavaScript.valueToCode(
       block, 'COL', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.getColumn(' + matrix + ', ' + col + ')';
+  var code = matrixFIdentifierForJavaScript + '.getColumn(' + matrix + ', ' + col + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_getColumn'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var col = Blockly.FtcJava.valueToCode(
+      block, 'COL', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.getColumn(' + col + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_toText'] = {
@@ -351,14 +532,28 @@ Blockly.Blocks['matrixF_toText'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a text representation of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_toText'] = function(block) {
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.toText(' + matrix + ')';
+  var code = matrixFIdentifierForJavaScript + '.toText(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_toText'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = matrix + '.toString()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_transform'] = {
@@ -377,7 +572,14 @@ Blockly.Blocks['matrixF_transform'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Transforms the given vector according to the given matrix interpreted as a ' +
-        'transformation matrix.');
+        'transformation matrix. Returns a vector.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -386,8 +588,17 @@ Blockly.JavaScript['matrixF_transform'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.transform(' + matrix + ', ' + vector + ')';
+  var code = matrixFIdentifierForJavaScript + '.transform(' + matrix + ', ' + vector + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_transform'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.transform(' + vector + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_formatAsTransform'] = {
@@ -403,14 +614,28 @@ Blockly.Blocks['matrixF_formatAsTransform'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a text representation of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_formatAsTransform'] = function(block) {
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.formatAsTransform(' + matrix + ')';
+  var code = matrixFIdentifierForJavaScript + '.formatAsTransform(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_formatAsTransform'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = matrix + '.formatAsTransform()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_formatAsTransform_withArgs'] = {
@@ -435,6 +660,13 @@ Blockly.Blocks['matrixF_formatAsTransform_withArgs'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a text representation of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -447,9 +679,22 @@ Blockly.JavaScript['matrixF_formatAsTransform_withArgs'] = function(block) {
       block, 'AXES_ORDER', Blockly.JavaScript.ORDER_COMMA);
   var angleUnit = Blockly.JavaScript.valueToCode(
       block, 'ANGLE_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.formatAsTransform_withArgs(' + matrix + ', ' +
+  var code = matrixFIdentifierForJavaScript + '.formatAsTransform_withArgs(' + matrix + ', ' +
       axesReference + ', ' + axesOrder + ', ' + angleUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_formatAsTransform_withArgs'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var axesReference = Blockly.FtcJava.valueToCode(
+      block, 'AXES_REFERENCE', Blockly.FtcJava.ORDER_COMMA);
+  var axesOrder = Blockly.FtcJava.valueToCode(
+      block, 'AXES_ORDER', Blockly.FtcJava.ORDER_COMMA);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.formatAsTransform(' + axesReference + ', ' + axesOrder + ', ' + angleUnit + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_transposed'] = {
@@ -464,15 +709,29 @@ Blockly.Blocks['matrixF_transposed'] = {
         .appendField('matrix')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Returns a matrix which is the transposition of the given matrix.');
+    this.setTooltip('Returns a matrix representing the transposition of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_transposed'] = function(block) {
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.transposed(' + matrix + ')';
+  var code = matrixFIdentifierForJavaScript + '.transposed(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_transposed'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = matrix + '.transposed()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_multiplied_withMatrix'] = {
@@ -490,7 +749,15 @@ Blockly.Blocks['matrixF_multiplied_withMatrix'] = {
         .appendField('matrix2')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Multiplies matrix1 by matrix2.');
+    this.setTooltip('Multiplies matrix1 by matrix2. Returns a matrix');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX1':
+        case 'MATRIX2':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -499,8 +766,17 @@ Blockly.JavaScript['matrixF_multiplied_withMatrix'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.multiplied_withMatrix(' + matrix1 + ', ' + matrix2 + ')';
+  var code = matrixFIdentifierForJavaScript + '.multiplied_withMatrix(' + matrix1 + ', ' + matrix2 + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_multiplied_withMatrix'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix1 + '.multiplied(' + matrix2 + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_multiplied_withScale'] = {
@@ -518,7 +794,16 @@ Blockly.Blocks['matrixF_multiplied_withScale'] = {
         .appendField('scale')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Multiplies the given matrix by the given scale.');
+    this.setTooltip('Multiplies the given matrix by the given scale. Returns a matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+        case 'SCALE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -527,8 +812,17 @@ Blockly.JavaScript['matrixF_multiplied_withScale'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var scale = Blockly.JavaScript.valueToCode(
       block, 'SCALE', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.multiplied_withScale(' + matrix + ', ' + scale + ')';
+  var code = matrixFIdentifierForJavaScript + '.multiplied_withScale(' + matrix + ', ' + scale + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_multiplied_withScale'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var scale = Blockly.FtcJava.valueToCode(
+      block, 'SCALE', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix + '.multiplied(' + scale + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_multiplied_withVector'] = {
@@ -546,7 +840,14 @@ Blockly.Blocks['matrixF_multiplied_withVector'] = {
         .appendField('vector')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Multiplies the given matrix by the given vector, considered as a column matrix.');
+    this.setTooltip('Multiplies the given matrix by the given vector, considered as a column matrix. Returns a vector.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -555,8 +856,17 @@ Blockly.JavaScript['matrixF_multiplied_withVector'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.multiplied_withVector(' + matrix + ', ' + vector + ')';
+  var code = matrixFIdentifierForJavaScript + '.multiplied_withVector(' + matrix + ', ' + vector + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_multiplied_withVector'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix + '.multiplied(' + vector + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_multiply_withMatrix'] = {
@@ -576,6 +886,14 @@ Blockly.Blocks['matrixF_multiply_withMatrix'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates matrix1 by multiplying it by matrix2.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX1':
+        case 'MATRIX2':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -584,7 +902,15 @@ Blockly.JavaScript['matrixF_multiply_withMatrix'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.multiply_withMatrix(' + matrix1 + ', ' + matrix2 + ');\n';
+  return matrixFIdentifierForJavaScript + '.multiply_withMatrix(' + matrix1 + ', ' + matrix2 + ');\n';
+};
+
+Blockly.FtcJava['matrixF_multiply_withMatrix'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  return matrix1 + '.multiply(' + matrix2 + ');\n';
 };
 
 Blockly.Blocks['matrixF_multiply_withScale'] = {
@@ -604,6 +930,15 @@ Blockly.Blocks['matrixF_multiply_withScale'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates the given matrix to be the product of itself and the given scale.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+        case 'SCALE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -612,7 +947,15 @@ Blockly.JavaScript['matrixF_multiply_withScale'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var scale = Blockly.JavaScript.valueToCode(
       block, 'SCALE', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.multiply_withScale(' + matrix + ', ' + scale + ');\n';
+  return matrixFIdentifierForJavaScript + '.multiply_withScale(' + matrix + ', ' + scale + ');\n';
+};
+
+Blockly.FtcJava['matrixF_multiply_withScale'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var scale = Blockly.FtcJava.valueToCode(
+      block, 'SCALE', Blockly.FtcJava.ORDER_NONE);
+  return matrix + '.multiply(' + scale + ');\n';
 };
 
 Blockly.Blocks['matrixF_multiply_withVector'] = {
@@ -632,6 +975,13 @@ Blockly.Blocks['matrixF_multiply_withVector'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates the given matrix to be the product of itself and the given vector.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -640,7 +990,15 @@ Blockly.JavaScript['matrixF_multiply_withVector'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.multiply_withVector(' + matrix + ', ' + vector + ');\n';
+  return matrixFIdentifierForJavaScript + '.multiply_withVector(' + matrix + ', ' + vector + ');\n';
+};
+
+Blockly.FtcJava['matrixF_multiply_withVector'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_NONE);
+  return matrix + '.multiply(' + vector + ');\n';
 };
 
 Blockly.Blocks['matrixF_toVector'] = {
@@ -657,14 +1015,28 @@ Blockly.Blocks['matrixF_toVector'] = {
     this.setColour(functionColor);
     this.setTooltip('If the given matrix is one-dimensional in one of its dimensions, ' +
         'returns a vector containing the data of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_toVector'] = function(block) {
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.toVector(' + matrix + ')';
+  var code = matrixFIdentifierForJavaScript + '.toVector(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_toVector'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = matrix + '.toVector()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_added_withMatrix'] = {
@@ -684,6 +1056,14 @@ Blockly.Blocks['matrixF_added_withMatrix'] = {
     this.setColour(functionColor);
     this.setTooltip('Returns a new matrix whose elements are the sum of the ' +
         'corresponding elements of matrix1 and matrix2.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX1':
+        case 'MATRIX2':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -692,8 +1072,17 @@ Blockly.JavaScript['matrixF_added_withMatrix'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.added_withMatrix(' + matrix1 + ', ' + matrix2 + ')';
+  var code = matrixFIdentifierForJavaScript + '.added_withMatrix(' + matrix1 + ', ' + matrix2 + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_added_withMatrix'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix1 + '.added(' + matrix2 + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_added_withVector'] = {
@@ -713,6 +1102,13 @@ Blockly.Blocks['matrixF_added_withVector'] = {
     this.setColour(functionColor);
     this.setTooltip('Returns a new matrix whose elements are the sum of the ' +
         'corresponding elements of the given matrix and the given vector.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -721,8 +1117,17 @@ Blockly.JavaScript['matrixF_added_withVector'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.added_withVector(' + matrix + ', ' + vector + ')';
+  var code = matrixFIdentifierForJavaScript + '.added_withVector(' + matrix + ', ' + vector + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_added_withVector'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix + '.added(' + vector + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_add_withMatrix'] = {
@@ -742,6 +1147,14 @@ Blockly.Blocks['matrixF_add_withMatrix'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates matrix1 to be the sum of itself and matrix2.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX1':
+        case 'MATRIX2':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -750,7 +1163,15 @@ Blockly.JavaScript['matrixF_add_withMatrix'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.add_withMatrix(' + matrix1 + ', ' + matrix2 + ');\n';
+  return matrixFIdentifierForJavaScript + '.add_withMatrix(' + matrix1 + ', ' + matrix2 + ');\n';
+};
+
+Blockly.FtcJava['matrixF_add_withMatrix'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  return matrix1 + '.add(' + matrix2 + ');\n';
 };
 
 Blockly.Blocks['matrixF_add_withVector'] = {
@@ -770,6 +1191,13 @@ Blockly.Blocks['matrixF_add_withVector'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates the given matrix to be the sum of itself and the given vector.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -778,7 +1206,15 @@ Blockly.JavaScript['matrixF_add_withVector'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.add_withVector(' + matrix + ', ' + vector + ');\n';
+  return matrixFIdentifierForJavaScript + '.add_withVector(' + matrix + ', ' + vector + ');\n';
+};
+
+Blockly.FtcJava['matrixF_add_withVector'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_NONE);
+  return matrix + '.add(' + vector + ');\n';
 };
 
 Blockly.Blocks['matrixF_subtracted_withMatrix'] = {
@@ -798,6 +1234,14 @@ Blockly.Blocks['matrixF_subtracted_withMatrix'] = {
     this.setColour(functionColor);
     this.setTooltip('Returns a new matrix whose elements are the difference of the ' +
         'corresponding elements of matrix1 and matrix2.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX1':
+        case 'MATRIX2':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -806,8 +1250,17 @@ Blockly.JavaScript['matrixF_subtracted_withMatrix'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.subtracted_withMatrix(' + matrix1 + ', ' + matrix2 + ')';
+  var code = matrixFIdentifierForJavaScript + '.subtracted_withMatrix(' + matrix1 + ', ' + matrix2 + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_subtracted_withMatrix'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix1 + '.subtracted(' + matrix2 + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_subtracted_withVector'] = {
@@ -827,6 +1280,13 @@ Blockly.Blocks['matrixF_subtracted_withVector'] = {
     this.setColour(functionColor);
     this.setTooltip('Returns a new matrix whose elements are the difference of the ' +
         'corresponding elements of the given matrix and the given vector.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -835,8 +1295,17 @@ Blockly.JavaScript['matrixF_subtracted_withVector'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_COMMA);
-  var code = matrixFIdentifier + '.subtracted_withVector(' + matrix + ', ' + vector + ')';
+  var code = matrixFIdentifierForJavaScript + '.subtracted_withVector(' + matrix + ', ' + vector + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_subtracted_withVector'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix + '.subtracted(' + vector + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_subtract_withMatrix'] = {
@@ -856,6 +1325,14 @@ Blockly.Blocks['matrixF_subtract_withMatrix'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates matrix1 to be the difference of itself and matrix2.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX1':
+        case 'MATRIX2':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -864,7 +1341,15 @@ Blockly.JavaScript['matrixF_subtract_withMatrix'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.subtract_withMatrix(' + matrix1 + ', ' + matrix2 + ');\n';
+  return matrixFIdentifierForJavaScript + '.subtract_withMatrix(' + matrix1 + ', ' + matrix2 + ');\n';
+};
+
+Blockly.FtcJava['matrixF_subtract_withMatrix'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  return matrix1 + '.subtract(' + matrix2 + ');\n';
 };
 
 Blockly.Blocks['matrixF_subtract_withVector'] = {
@@ -884,6 +1369,13 @@ Blockly.Blocks['matrixF_subtract_withVector'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Updates the given matrix to be the diference of itself and the given vector.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
@@ -892,7 +1384,15 @@ Blockly.JavaScript['matrixF_subtract_withVector'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var vector = Blockly.JavaScript.valueToCode(
       block, 'VECTOR', Blockly.JavaScript.ORDER_COMMA);
-  return matrixFIdentifier + '.subtract_withVector(' + matrix + ', ' + vector + ');\n';
+  return matrixFIdentifierForJavaScript + '.subtract_withVector(' + matrix + ', ' + vector + ');\n';
+};
+
+Blockly.FtcJava['matrixF_subtract_withVector'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var vector = Blockly.FtcJava.valueToCode(
+      block, 'VECTOR', Blockly.FtcJava.ORDER_NONE);
+  return matrix + '.subtract(' + vector + ');\n';
 };
 
 Blockly.Blocks['matrixF_getTranslation'] = {
@@ -908,15 +1408,29 @@ Blockly.Blocks['matrixF_getTranslation'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Assumes that the given matrix is non-perspective transformation matrix. ' +
-        'Returns the translation component of the transformation.');
+        'Returns a vector representing the translation component of the transformation.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_getTranslation'] = function(block) {
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.getTranslation(' + matrix + ')';
+  var code = matrixFIdentifierForJavaScript + '.getTranslation(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_getTranslation'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = matrix + '.getTranslation()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['matrixF_inverted'] = {
@@ -931,13 +1445,27 @@ Blockly.Blocks['matrixF_inverted'] = {
         .appendField('matrix')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Returns a matrix which is the matrix-multiplication inverse of the given matrix.');
+    this.setTooltip('Returns a matrix representing the matrix-multiplication inverse of the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['matrixF_inverted'] = function(block) {
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = matrixFIdentifier + '.inverted(' + matrix + ')';
+  var code = matrixFIdentifierForJavaScript + '.inverted(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['matrixF_inverted'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = matrix + '.inverted()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

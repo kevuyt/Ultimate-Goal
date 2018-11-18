@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// vuforiaLocalizerIdentifier
+// vuforiaLocalizerIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // functionColor
@@ -19,16 +19,23 @@ Blockly.Blocks['vuforiaLocalizer_create'] = {
         .appendField('vuforiaLocalizerParameters')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Create a new VuforiaLocalizer object with the given VuforiaLocalizer.Parameters.');
+    this.setTooltip('Creates a new VuforiaLocalizer object with the given VuforiaLocalizer.Parameters.');
   }
 };
 
 Blockly.JavaScript['vuforiaLocalizer_create'] = function(block) {
   var vuforiaLocalizerParameters = Blockly.JavaScript.valueToCode(
       block, 'VUFORIA_LOCALIZER_PARAMETERS', Blockly.JavaScript.ORDER_NONE);
-  var code = vuforiaLocalizerIdentifier + '.create(' + vuforiaLocalizerParameters + ')';
+  var code = vuforiaLocalizerIdentifierForJavaScript + '.create(' + vuforiaLocalizerParameters + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['vuforiaLocalizer_create'] = function(block) {
+  var vuforiaLocalizerParameters = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_LOCALIZER_PARAMETERS', Blockly.FtcJava.ORDER_NONE);
+  var code = 'ClassFactory.createVuforiaLocalizer(' + vuforiaLocalizerParameters + ')';
+  Blockly.FtcJava.generateImport_('ClassFactory');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['vuforiaLocalizer_loadTrackablesFromAsset'] = {
@@ -46,12 +53,9 @@ Blockly.Blocks['vuforiaLocalizer_loadTrackablesFromAsset'] = {
         .appendField('assetName')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Loads a Vuforia dataset from the indicated application asset, which must be ' +
-        'of type .XML. The corresponding .DAT asset must be a sibling. Note that this operation ' +
-        'can be extremely lengthy, possibly taking a few seconds to execute. Loading datasets ' +
-        'from an asset you stored in your application APK is the recommended approach to ' +
-        'packaging datasets so they always travel along with your code. Returns a ' +
-        'VuforiaTrackables object.');
+    this.setTooltip('Loads a Vuforia dataset from the .XML asset with the given name. The ' +
+        'corresponding .DAT asset must also be present. Note that this operation can take a few ' +
+        'seconds to execute. Returns a VuforiaTrackables object.');
   }
 };
 
@@ -60,8 +64,17 @@ Blockly.JavaScript['vuforiaLocalizer_loadTrackablesFromAsset'] = function(block)
       block, 'VUFORIA_LOCALIZER', Blockly.JavaScript.ORDER_COMMA);
   var assetName = Blockly.JavaScript.valueToCode(
       block, 'ASSET_NAME', Blockly.JavaScript.ORDER_COMMA);
-  var code = vuforiaLocalizerIdentifier + '.loadTrackablesFromAsset(' + vuforiaLocalizer + ', ' + assetName + ')';
+  var code = vuforiaLocalizerIdentifierForJavaScript + '.loadTrackablesFromAsset(' + vuforiaLocalizer + ', ' + assetName + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['vuforiaLocalizer_loadTrackablesFromAsset'] = function(block) {
+  var vuforiaLocalizer = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_LOCALIZER', Blockly.FtcJava.ORDER_MEMBER);
+  var assetName = Blockly.FtcJava.valueToCode(
+      block, 'ASSET_NAME', Blockly.FtcJava.ORDER_NONE);
+  var code = vuforiaLocalizer + '.loadTrackablesFromAsset(' + assetName + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['vuforiaLocalizer_loadTrackablesFromFile'] = {
@@ -79,10 +92,9 @@ Blockly.Blocks['vuforiaLocalizer_loadTrackablesFromFile'] = {
         .appendField('absoluteFileName')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Loads a Vuforia dataset from the indicated file, which must be a .XML file ' +
-        'and contain the full file path. The corresponding .DAT file must be a sibling file in ' +
-        'the same directory. Note that this operation can be extremely lengthy, possibly taking ' +
-        'a few seconds to execute. Returns a VuforiaTrackables object.');
+    this.setTooltip('Loads a Vuforia dataset from the .XML file with the given absolute file ' +
+        'name. The corresponding .DAT file must also be present. Note that this operation can ' +
+        'take a few seconds to execute. Returns a VuforiaTrackables object.');
   }
 };
 
@@ -91,6 +103,15 @@ Blockly.JavaScript['vuforiaLocalizer_loadTrackablesFromFile'] = function(block) 
       block, 'VUFORIA_LOCALIZER', Blockly.JavaScript.ORDER_COMMA);
   var absoluteFileName = Blockly.JavaScript.valueToCode(
       block, 'ABSOLUTE_FILE_NAME', Blockly.JavaScript.ORDER_COMMA);
-  var code = vuforiaLocalizerIdentifier + '.loadTrackablesFromFile(' + vuforiaLocalizer + ', ' + absoluteFileName + ')';
+  var code = vuforiaLocalizerIdentifierForJavaScript + '.loadTrackablesFromFile(' + vuforiaLocalizer + ', ' + absoluteFileName + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['vuforiaLocalizer_loadTrackablesFromFile'] = function(block) {
+  var vuforiaLocalizer = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_LOCALIZER', Blockly.FtcJava.ORDER_MEMBER);
+  var absoluteFileName = Blockly.FtcJava.valueToCode(
+      block, 'ABSOLUTE_FILE_NAME', Blockly.FtcJava.ORDER_NONE);
+  var code = vuforiaLocalizer + '.loadTrackablesFromFile(' + absoluteFileName + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

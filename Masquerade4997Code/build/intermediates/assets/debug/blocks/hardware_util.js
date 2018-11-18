@@ -3,7 +3,7 @@
  * @author lizlooney@google.com (Liz Looney)
  */
 
-// TODO(lizlooney): This file is misnamed. It includes utilities not related to hardware.
+// Note: This file is misnamed. It includes some utilities not related to hardware.
 
 /**
  * Fetches the JavaScript code related to the hardware in the active configuration and calls the
@@ -13,7 +13,7 @@ function fetchJavaScriptForHardware(callback) {
   if (typeof blocksIO !== 'undefined') {
     // html/js is within the WebView component within the Android app.
     fetchJavaScriptForHardwareViaBlocksIO(callback);
-  } else if (window.location.protocol === 'http:') {
+  } else if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
     // html/js is in a browser, loaded as an http:// URL.
     fetchJavaScriptForHardwareViaHttp(callback);
   }
@@ -23,7 +23,7 @@ function fetchJavaScriptForHardware(callback) {
  * Sends a ping request and calls the callback.
  */
 function sendPing(name, callback) {
-  if (window.location.protocol === 'http:') {
+  if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
     // html/js is in a browser, loaded as an http:// URL.
     sendPingViaHttp(name, callback);
   } else {

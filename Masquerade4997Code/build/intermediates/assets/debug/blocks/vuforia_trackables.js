@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// vuforiaTrackablesIdentifier
+// vuforiaTrackablesIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // getPropertyColor
@@ -29,7 +29,7 @@ Blockly.Blocks['vuforiaTrackables_getProperty'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Size', 'Returns the size of the given VuforiaTrackables.'],
+        ['Size', 'Returns the number of VuforiaTrackable objects in the given VuforiaTrackables.'],
         ['Name', 'Returns the user-specified name for the given VuforiaTrackables.'],
         ['Localizer', 'Returns the VuforiaLocalizer which manages the given VuforiaTrackables.'],
     ];
@@ -49,8 +49,27 @@ Blockly.JavaScript['vuforiaTrackables_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var vuforiaTrackables = Blockly.JavaScript.valueToCode(
       block, 'VUFORIA_TRACKABLES', Blockly.JavaScript.ORDER_NONE);
-  var code = vuforiaTrackablesIdentifier + '.get' + property + '(' + vuforiaTrackables + ')';
+  var code = vuforiaTrackablesIdentifierForJavaScript + '.get' + property + '(' + vuforiaTrackables + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['vuforiaTrackables_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  var vuforiaTrackables = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLES', Blockly.FtcJava.ORDER_MEMBER);
+  var code;
+  switch (property) {
+    case 'Size':
+      code = vuforiaTrackables + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property) + '()';
+      break;
+    case 'Name':
+    case 'Localizer':
+      code = vuforiaTrackables + '.get' + property + '()';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (vuforiaTrackables_getProperty).';
+  }
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['vuforiaTrackables_getProperty_Number'] = {
@@ -67,10 +86,10 @@ Blockly.Blocks['vuforiaTrackables_getProperty_Number'] = {
         .appendField('vuforiaTrackables')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Size', 'Returns the size of the given VuforiaTrackables.'],
+        ['Size', 'Returns the number of VuforiaTrackable objects in the given VuforiaTrackables.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -81,11 +100,23 @@ Blockly.Blocks['vuforiaTrackables_getProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'Size':
+          return 'int';
+        default:
+          throw 'Unexpected property ' + property + ' (vuforiaTrackables_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['vuforiaTrackables_getProperty_Number'] =
     Blockly.JavaScript['vuforiaTrackables_getProperty'];
+
+Blockly.FtcJava['vuforiaTrackables_getProperty_Number'] =
+    Blockly.FtcJava['vuforiaTrackables_getProperty'];
 
 Blockly.Blocks['vuforiaTrackables_getProperty_String'] = {
   init: function() {
@@ -121,6 +152,9 @@ Blockly.Blocks['vuforiaTrackables_getProperty_String'] = {
 Blockly.JavaScript['vuforiaTrackables_getProperty_String'] =
     Blockly.JavaScript['vuforiaTrackables_getProperty'];
 
+Blockly.FtcJava['vuforiaTrackables_getProperty_String'] =
+    Blockly.FtcJava['vuforiaTrackables_getProperty'];
+
 Blockly.Blocks['vuforiaTrackables_getProperty_VuforiaLocalizer'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -155,6 +189,9 @@ Blockly.Blocks['vuforiaTrackables_getProperty_VuforiaLocalizer'] = {
 Blockly.JavaScript['vuforiaTrackables_getProperty_VuforiaLocalizer'] =
     Blockly.JavaScript['vuforiaTrackables_getProperty'];
 
+Blockly.FtcJava['vuforiaTrackables_getProperty_VuforiaLocalizer'] =
+    Blockly.FtcJava['vuforiaTrackables_getProperty'];
+
 // Functions
 
 Blockly.Blocks['vuforiaTrackables_get'] = {
@@ -173,6 +210,13 @@ Blockly.Blocks['vuforiaTrackables_get'] = {
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
     this.setTooltip('Returns a particular VuforiaTrackable of the given VuforiaTrackables.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'INDEX':
+          return 'int';
+      }
+      return '';
+    };
   }
 };
 
@@ -181,8 +225,17 @@ Blockly.JavaScript['vuforiaTrackables_get'] = function(block) {
       block, 'VUFORIA_TRACKABLES', Blockly.JavaScript.ORDER_COMMA);
   var index = Blockly.JavaScript.valueToCode(
       block, 'INDEX', Blockly.JavaScript.ORDER_COMMA);
-  var code = vuforiaTrackablesIdentifier + '.get(' + vuforiaTrackables + ', ' + index + ')';
+  var code = vuforiaTrackablesIdentifierForJavaScript + '.get(' + vuforiaTrackables + ', ' + index + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['vuforiaTrackables_get'] = function(block) {
+  var vuforiaTrackables = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLES', Blockly.FtcJava.ORDER_MEMBER);
+  var index = Blockly.FtcJava.valueToCode(
+      block, 'INDEX', Blockly.FtcJava.ORDER_NONE);
+  var code = vuforiaTrackables + '.get(' + index + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['vuforiaTrackables_setName'] = {
@@ -211,7 +264,15 @@ Blockly.JavaScript['vuforiaTrackables_setName'] = function(block) {
       block, 'VUFORIA_TRACKABLES', Blockly.JavaScript.ORDER_COMMA);
   var name = Blockly.JavaScript.valueToCode(
       block, 'NAME', Blockly.JavaScript.ORDER_COMMA);
-  return vuforiaTrackablesIdentifier + '.setName(' + vuforiaTrackables + ', ' + name + ');\n';
+  return vuforiaTrackablesIdentifierForJavaScript + '.setName(' + vuforiaTrackables + ', ' + name + ');\n';
+};
+
+Blockly.FtcJava['vuforiaTrackables_setName'] = function(block) {
+  var vuforiaTrackables = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLES', Blockly.FtcJava.ORDER_MEMBER);
+  var name = Blockly.FtcJava.valueToCode(
+      block, 'NAME', Blockly.FtcJava.ORDER_NONE);
+  return vuforiaTrackables + '.setName(' + name + ');\n';
 };
 
 Blockly.Blocks['vuforiaTrackables_activate'] = {
@@ -235,7 +296,13 @@ Blockly.Blocks['vuforiaTrackables_activate'] = {
 Blockly.JavaScript['vuforiaTrackables_activate'] = function(block) {
   var vuforiaTrackables = Blockly.JavaScript.valueToCode(
       block, 'VUFORIA_TRACKABLES', Blockly.JavaScript.ORDER_NONE);
-  return vuforiaTrackablesIdentifier + '.activate(' + vuforiaTrackables + ');\n';
+  return vuforiaTrackablesIdentifierForJavaScript + '.activate(' + vuforiaTrackables + ');\n';
+};
+
+Blockly.FtcJava['vuforiaTrackables_activate'] = function(block) {
+  var vuforiaTrackables = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLES', Blockly.FtcJava.ORDER_MEMBER);
+  return vuforiaTrackables + '.activate();\n';
 };
 
 Blockly.Blocks['vuforiaTrackables_deactivate'] = {
@@ -259,5 +326,11 @@ Blockly.Blocks['vuforiaTrackables_deactivate'] = {
 Blockly.JavaScript['vuforiaTrackables_deactivate'] = function(block) {
   var vuforiaTrackables = Blockly.JavaScript.valueToCode(
       block, 'VUFORIA_TRACKABLES', Blockly.JavaScript.ORDER_NONE);
-  return vuforiaTrackablesIdentifier + '.deactivate(' + vuforiaTrackables + ');\n';
+  return vuforiaTrackablesIdentifierForJavaScript + '.deactivate(' + vuforiaTrackables + ');\n';
+};
+
+Blockly.FtcJava['vuforiaTrackables_deactivate'] = function(block) {
+  var vuforiaTrackables = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLES', Blockly.FtcJava.ORDER_MEMBER);
+  return vuforiaTrackables + '.deactivate();\n';
 };

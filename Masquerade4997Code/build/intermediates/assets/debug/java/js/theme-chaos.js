@@ -28,7 +28,7 @@ right: 0;\
 background: #1D1D1D;\
 }\
 .ace-chaos {\
-background-color: #161616;\
+background-color: #161616 !important;\
 color: #E6E1DC !important;\
 }\
 .ace-chaos .ace_cursor {\
@@ -52,62 +52,62 @@ border: 1px solid #FCE94F;\
 background: #333;\
 }\
 .ace-chaos .ace_gutter-active-line {\
-background-color: #222;\
+background-color: #222 !important;\
 }\
 .ace-chaos .ace_invisible {\
 color: #404040 !important;\
 }\
 .ace-chaos .ace_keyword {\
-color:#00698F !important;\
+color:#00698F;\
 }\
 .ace-chaos .ace_keyword.ace_operator {\
-color:#FF308F !important;\
+color:#FF308F;\
 }\
 .ace-chaos .ace_constant {\
-color:#1EDAFB !important;\
+color:#1EDAFB;\
 }\
 .ace-chaos .ace_constant.ace_language {\
-color:#FDC251 !important;\
+color:#FDC251;\
 }\
 .ace-chaos .ace_constant.ace_library {\
-color:#8DFF0A !important;\
+color:#8DFF0A;\
 }\
 .ace-chaos .ace_constant.ace_numeric {\
-color:#58C554 !important;\
+color:#58C554;\
 }\
 .ace-chaos .ace_invalid {\
-color:#FFFFFF !important;\
+color:#FFFFFF;\
 background-color:#990000;\
 }\
 .ace-chaos .ace_invalid.ace_deprecated {\
-color:#FFFFFF !important;\
+color:#FFFFFF;\
 background-color:#990000;\
 }\
 .ace-chaos .ace_support {\
 color: #999 !important;\
 }\
 .ace-chaos .ace_support.ace_function {\
-color:#00AEEF !important;\
+color:#00AEEF;\
 }\
 .ace-chaos .ace_function {\
-color:#00AEEF !important;\
+color:#00AEEF;\
 }\
 .ace-chaos .ace_string {\
-color:#58C554 !important;\
+color:#58C554;\
 }\
 .ace-chaos .ace_comment {\
-color:#555 !important;\
+color:#555;\
 font-style:italic;\
 padding-bottom: 0px;\
 }\
 .ace-chaos .ace_variable {\
-color:#997744 !important;\
+color:#997744;\
 }\
 .ace-chaos .ace_meta.ace_tag {\
-color:#BE53E6 !important;\
+color:#BE53E6;\
 }\
 .ace-chaos .ace_entity.ace_other.ace_attribute-name {\
-color:#FFFF89 !important;\
+color:#FFFF89;\
 }\
 .ace-chaos .ace_markup.ace_underline {\
 text-decoration: underline;\
@@ -154,3 +154,11 @@ var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);
 
 });
+                (function() {
+                    window.require(["ace/theme/chaos"], function(m) {
+                        if (typeof module == "object" && typeof exports == "object" && module) {
+                            module.exports = m;
+                        }
+                    });
+                })();
+            

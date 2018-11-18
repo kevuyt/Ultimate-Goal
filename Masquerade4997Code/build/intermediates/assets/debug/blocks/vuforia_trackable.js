@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// vuforiaTrackableIdentifier
+// vuforiaTrackableIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // getPropertyColor
@@ -31,11 +31,11 @@ Blockly.Blocks['vuforiaTrackable_getProperty'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Location', 'Returns the location of the given VuforiaTrackable in the FTC field ' +
-            'coordinate system, as an OpenGLMatrix object.'],
+        ['Location', 'Returns a matrix representing the location of the given VuforiaTrackable ' +
+            'in the FTC field coordinate system.'],
         ['UserData', 'Retreives user data previously associated with the given ' +
             'VuforableTrackable.'],
-        ['Trackables', 'Returns the VuforiaTrackables of which the given VuforiaTrackable is a member.'],
+        ['Trackables', 'Returns the VuforiaTrackables object of which the given VuforiaTrackable is a member.'],
         ['Name', 'Returns the user-specified name for the given VuforiaTrackable.'],
         ['Listener', 'Returns the VuforiaTrackableDefaultListener associated with the given VuforiaTrackable.'],
     ];
@@ -55,8 +55,28 @@ Blockly.JavaScript['vuforiaTrackable_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var vuforiaTrackable = Blockly.JavaScript.valueToCode(
       block, 'VUFORIA_TRACKABLE', Blockly.JavaScript.ORDER_NONE);
-  var code = vuforiaTrackableIdentifier + '.get' + property + '(' + vuforiaTrackable + ')';
+  var code = vuforiaTrackableIdentifierForJavaScript + '.get' + property + '(' + vuforiaTrackable + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['vuforiaTrackable_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  var vuforiaTrackable = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLE', Blockly.FtcJava.ORDER_MEMBER);
+  var code;
+  var order;
+  switch (property) {
+    case 'Listener':
+      Blockly.FtcJava.generateImport_('VuforiaTrackableDefaultListener');
+      code = '((VuforiaTrackableDefaultListener) ' + vuforiaTrackable + '.get' + property + '())';
+      order = Blockly.FtcJava.ORDER_NONE;
+      break;
+    default:
+      code = vuforiaTrackable + '.get' + property + '()';
+      order = Blockly.FtcJava.ORDER_FUNCTION_CALL;
+      break;
+  }
+  return [code, order];
 };
 
 Blockly.Blocks['vuforiaTrackable_getProperty_OpenGLMatrix'] = {
@@ -76,8 +96,8 @@ Blockly.Blocks['vuforiaTrackable_getProperty_OpenGLMatrix'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Location', 'Returns the location of the given VuforiaTrackable in the FTC field ' +
-            'coordinate system, as an OpenGLMatrix object.'],
+        ['Location', 'Returns a matrix representing the location of the given VuforiaTrackable ' +
+            'in the FTC field coordinate system.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -93,6 +113,9 @@ Blockly.Blocks['vuforiaTrackable_getProperty_OpenGLMatrix'] = {
 
 Blockly.JavaScript['vuforiaTrackable_getProperty_OpenGLMatrix'] =
     Blockly.JavaScript['vuforiaTrackable_getProperty'];
+
+Blockly.FtcJava['vuforiaTrackable_getProperty_OpenGLMatrix'] =
+    Blockly.FtcJava['vuforiaTrackable_getProperty'];
 
 Blockly.Blocks['vuforiaTrackable_getProperty_Object'] = {
   init: function() {
@@ -129,6 +152,9 @@ Blockly.Blocks['vuforiaTrackable_getProperty_Object'] = {
 Blockly.JavaScript['vuforiaTrackable_getProperty_Object'] =
     Blockly.JavaScript['vuforiaTrackable_getProperty'];
 
+Blockly.FtcJava['vuforiaTrackable_getProperty_Object'] =
+    Blockly.FtcJava['vuforiaTrackable_getProperty'];
+
 Blockly.Blocks['vuforiaTrackable_getProperty_VuforiaTrackables'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -146,7 +172,7 @@ Blockly.Blocks['vuforiaTrackable_getProperty_VuforiaTrackables'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Trackables', 'Returns the VuforiaTrackables of which the given VuforiaTrackable is a member.'],
+        ['Trackables', 'Returns the VuforiaTrackables object of which the given VuforiaTrackable is a member.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -162,6 +188,9 @@ Blockly.Blocks['vuforiaTrackable_getProperty_VuforiaTrackables'] = {
 
 Blockly.JavaScript['vuforiaTrackable_getProperty_VuforiaTrackables'] =
     Blockly.JavaScript['vuforiaTrackable_getProperty'];
+
+Blockly.FtcJava['vuforiaTrackable_getProperty_VuforiaTrackables'] =
+    Blockly.FtcJava['vuforiaTrackable_getProperty'];
 
 Blockly.Blocks['vuforiaTrackable_getProperty_String'] = {
   init: function() {
@@ -197,6 +226,9 @@ Blockly.Blocks['vuforiaTrackable_getProperty_String'] = {
 Blockly.JavaScript['vuforiaTrackable_getProperty_String'] =
     Blockly.JavaScript['vuforiaTrackable_getProperty'];
 
+Blockly.FtcJava['vuforiaTrackable_getProperty_String'] =
+    Blockly.FtcJava['vuforiaTrackable_getProperty'];
+
 Blockly.Blocks['vuforiaTrackable_getProperty_VuforiaTrackableDefaultListener'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -231,6 +263,9 @@ Blockly.Blocks['vuforiaTrackable_getProperty_VuforiaTrackableDefaultListener'] =
 Blockly.JavaScript['vuforiaTrackable_getProperty_VuforiaTrackableDefaultListener'] =
     Blockly.JavaScript['vuforiaTrackable_getProperty'];
 
+Blockly.FtcJava['vuforiaTrackable_getProperty_VuforiaTrackableDefaultListener'] =
+    Blockly.FtcJava['vuforiaTrackable_getProperty'];
+
 // Functions
 
 Blockly.Blocks['vuforiaTrackable_setLocation'] = {
@@ -259,7 +294,15 @@ Blockly.JavaScript['vuforiaTrackable_setLocation'] = function(block) {
       block, 'VUFORIA_TRACKABLE', Blockly.JavaScript.ORDER_COMMA);
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
-  return vuforiaTrackableIdentifier + '.setLocation(' + vuforiaTrackable + ', ' + matrix + ');\n';
+  return vuforiaTrackableIdentifierForJavaScript + '.setLocation(' + vuforiaTrackable + ', ' + matrix + ');\n';
+};
+
+Blockly.FtcJava['vuforiaTrackable_setLocation'] = function(block) {
+  var vuforiaTrackable = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLE', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_NONE);
+  return vuforiaTrackable + '.setLocation(' + matrix + ');\n';
 };
 
 Blockly.Blocks['vuforiaTrackable_setUserData'] = {
@@ -287,7 +330,15 @@ Blockly.JavaScript['vuforiaTrackable_setUserData'] = function(block) {
       block, 'VUFORIA_TRACKABLE', Blockly.JavaScript.ORDER_COMMA);
   var userData = Blockly.JavaScript.valueToCode(
       block, 'USER_DATA', Blockly.JavaScript.ORDER_COMMA);
-  return vuforiaTrackableIdentifier + '.setUserData(' + vuforiaTrackable + ', ' + userData + ');\n';
+  return vuforiaTrackableIdentifierForJavaScript + '.setUserData(' + vuforiaTrackable + ', ' + userData + ');\n';
+};
+
+Blockly.FtcJava['vuforiaTrackable_setUserData'] = function(block) {
+  var vuforiaTrackable = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLE', Blockly.FtcJava.ORDER_MEMBER);
+  var userData = Blockly.FtcJava.valueToCode(
+      block, 'USER_DATA', Blockly.FtcJava.ORDER_NONE);
+  return vuforiaTrackable + '.setUserData(' + userData + ');\n';
 };
 
 Blockly.Blocks['vuforiaTrackable_setName'] = {
@@ -316,5 +367,13 @@ Blockly.JavaScript['vuforiaTrackable_setName'] = function(block) {
       block, 'VUFORIA_TRACKABLE', Blockly.JavaScript.ORDER_COMMA);
   var name = Blockly.JavaScript.valueToCode(
       block, 'NAME', Blockly.JavaScript.ORDER_COMMA);
-  return vuforiaTrackableIdentifier + '.setName(' + vuforiaTrackable + ', ' + name + ');\n';
+  return vuforiaTrackableIdentifierForJavaScript + '.setName(' + vuforiaTrackable + ', ' + name + ');\n';
+};
+
+Blockly.FtcJava['vuforiaTrackable_setName'] = function(block) {
+  var vuforiaTrackable = Blockly.FtcJava.valueToCode(
+      block, 'VUFORIA_TRACKABLE', Blockly.FtcJava.ORDER_MEMBER);
+  var name = Blockly.FtcJava.valueToCode(
+      block, 'NAME', Blockly.FtcJava.ORDER_NONE);
+  return vuforiaTrackable + '.setName(' + name + ');\n';
 };

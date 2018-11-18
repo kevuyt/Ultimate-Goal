@@ -29,15 +29,16 @@ Blockly.Blocks['gyroSensor_setProperty'] = {
         .appendField('to');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setColour(setPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['HeadingMode', 'The heading mode. ' +
+        ['HeadingMode', 'Sets the heading mode. ' +
             'Valid values are HeadingMode_CARTESIAN or HeadingMode_CARDINAL. ' +
             'Not all gyro sensors support this feature.'],
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress7Bit', 'Sets the 7 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress8Bit', 'Sets the 8 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
     ];
     this.setTooltip(function() {
@@ -49,7 +50,6 @@ Blockly.Blocks['gyroSensor_setProperty'] = {
       }
       return '';
     });
-    this.setColour(setPropertyColor);
   }
 };
 
@@ -61,12 +61,42 @@ Blockly.JavaScript['gyroSensor_setProperty'] = function(block) {
   return identifier + '.set' + property + '(' + value + ');\n';
 };
 
+Blockly.FtcJava['gyroSensor_setProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  var property = block.getFieldValue('PROP');
+  var value = Blockly.FtcJava.valueToCode(
+      block, 'VALUE', Blockly.FtcJava.ORDER_NONE);
+  var code;
+  switch (property) {
+    case 'HeadingMode':
+      // This java code will throw ClassCastException if the GyroSensor is not a ModernRoboticsI2cGyro.
+      Blockly.FtcJava.generateImport_('ModernRoboticsI2cGyro');
+      code = '((ModernRoboticsI2cGyro) ' + identifier + ').setHeadingMode(' + value + ');\n';
+      break;
+    case 'I2cAddress7Bit':
+      // This java code will throw ClassCastException if the GyroSensor is not an I2cAddrConfig.
+      Blockly.FtcJava.generateImport_('I2cAddrConfig');
+      Blockly.FtcJava.generateImport_('I2cAddr');
+      code = '((I2cAddrConfig) ' + identifier + ').setI2cAddress(I2cAddr.create7bit(' + value + '));\n';
+      break;
+    case 'I2cAddress8Bit':
+      // This java code will throw ClassCastException if the GyroSensor is not an I2cAddrConfig.
+      Blockly.FtcJava.generateImport_('I2cAddrConfig');
+      Blockly.FtcJava.generateImport_('I2cAddr');
+      code = '((I2cAddrConfig) ' + identifier + ').setI2cAddress(I2cAddr.create8bit(' + value + '));\n';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (gyroSensor_setProperty).';
+  }
+  return code;
+};
+
 Blockly.Blocks['gyroSensor_setProperty_HeadingMode'] = {
   init: function() {
     var PROPERTY_CHOICES = [
         ['HeadingMode', 'HeadingMode'],
     ];
-    this.appendValueInput('VALUE').setCheck('HeadingMode')
+    this.appendValueInput('VALUE').setCheck('ModernRoboticsI2cGyro.HeadingMode')
         .appendField('set')
         .appendField(createGyroSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
@@ -74,10 +104,11 @@ Blockly.Blocks['gyroSensor_setProperty_HeadingMode'] = {
         .appendField('to');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setColour(setPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['HeadingMode', 'The heading mode. ' +
+        ['HeadingMode', 'Sets the heading mode. ' +
             'Valid values are HeadingMode_CARTESIAN or HeadingMode_CARDINAL. ' +
             'Not all gyro sensors support this feature.'],
     ];
@@ -90,12 +121,14 @@ Blockly.Blocks['gyroSensor_setProperty_HeadingMode'] = {
       }
       return '';
     });
-    this.setColour(setPropertyColor);
   }
 };
 
 Blockly.JavaScript['gyroSensor_setProperty_HeadingMode'] =
     Blockly.JavaScript['gyroSensor_setProperty'];
+
+Blockly.FtcJava['gyroSensor_setProperty_HeadingMode'] =
+    Blockly.FtcJava['gyroSensor_setProperty'];
 
 Blockly.Blocks['gyroSensor_setProperty_Number'] = {
   init: function() {
@@ -111,12 +144,13 @@ Blockly.Blocks['gyroSensor_setProperty_Number'] = {
         .appendField('to');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(setPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress7Bit', 'Sets the 7 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress8Bit', 'Sets the 8 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
     ];
     this.setTooltip(function() {
@@ -128,12 +162,27 @@ Blockly.Blocks['gyroSensor_setProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(setPropertyColor);
+    this.getFtcJavaInputType = function(inputName) {
+      if (inputName == 'VALUE') {
+        var property = thisBlock.getFieldValue('PROP');
+        switch (property) {
+          case 'I2cAddress7Bit':
+          case 'I2cAddress8Bit':
+            return 'int';
+          default:
+            throw 'Unexpected property ' + property + ' (gyroSensor_setProperty_Number getArgumentType).';
+        }
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['gyroSensor_setProperty_Number'] =
     Blockly.JavaScript['gyroSensor_setProperty'];
+
+Blockly.FtcJava['gyroSensor_setProperty_Number'] =
+    Blockly.FtcJava['gyroSensor_setProperty'];
 
 /*
  * Deprecated. See gyroSensor_getProperty_HeadingMode and gyroSensor_getProperty_Number
@@ -155,27 +204,27 @@ Blockly.Blocks['gyroSensor_getProperty'] = {
         .appendField(createGyroSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Heading', 'The integrated Z axis as a cartesian or cardinal heading, ' +
-            'as a numeric value between 0 and 360. ' +
+        ['Heading', 'Returns a numeric value between 0 and 360 representing the integrated Z ' +
+            'axis as a cartesian or cardinal heading. ' +
             'Not all gyro sensors support this feature.'],
-        ['HeadingMode', 'The heading mode. ' +
-            'Value is either HeadingMode_CARTESIAN or HeadingMode_CARDINAL. ' +
+        ['HeadingMode', 'Returns the heading mode: HEADING_CARTESIAN or HEADING_CARDINAL. ' +
             'Not all gyro sensors support this feature.'],
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress7Bit', 'Returns the 7 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress8Bit', 'Returns the 8 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
-        ['RawX', 'The gyro sensor\'s raw X value. ' +
+        ['RawX', 'Returns the gyro sensor\'s raw X value. ' +
             'Not all gyro sensors support this feature.'],
-        ['RawY', 'The gyro sensor\'s raw Y value. ' +
+        ['RawY', 'Returns the gyro sensor\'s raw Y value. ' +
             'Not all gyro sensors support this feature.'],
-        ['RawZ', 'The gyro sensor\'s raw Z value. ' +
+        ['RawZ', 'Returns the gyro sensor\'s raw Z value. ' +
             'Not all gyro sensors support this feature.'],
-        ['RotationFraction', 'The current fractional rotation of this gyro. ' +
-            'The value is between 0.0 and 1.0. ' +
+        ['RotationFraction', 'Returns a numeric value between 0.0 and 1.0 representing the ' +
+            'current fractional rotation of the gyro sensor. ' +
             'Not all gyro sensors support this feature'],
     ];
     this.setTooltip(function() {
@@ -187,7 +236,6 @@ Blockly.Blocks['gyroSensor_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -198,21 +246,57 @@ Blockly.JavaScript['gyroSensor_getProperty'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+Blockly.FtcJava['gyroSensor_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  var property = block.getFieldValue('PROP');
+  var code;
+  switch (property) {
+    case 'Heading':
+    case 'RotationFraction':
+      code = identifier + '.get' + property + '()';
+      break;
+    case 'HeadingMode':
+    case 'IntegratedZValue':
+      // This java code will throw ClassCastException if the GyroSensor is not a ModernRoboticsI2cGyro.
+      Blockly.FtcJava.generateImport_('ModernRoboticsI2cGyro');
+      code = '((ModernRoboticsI2cGyro) ' + identifier + ').get' + property + '()';
+      break;
+    case 'I2cAddress7Bit':
+      // This java code will throw ClassCastException if the GyroSensor is not an I2cAddressableDevice.
+      Blockly.FtcJava.generateImport_('I2cAddressableDevice');
+      code = '((I2cAddressableDevice) ' + identifier + ').getI2cAddress().get7Bit()';
+      break;
+    case 'I2cAddress8Bit':
+      // This java code will throw ClassCastException if the GyroSensor is not an I2cAddressableDevice.
+      Blockly.FtcJava.generateImport_('I2cAddressableDevice');
+      code = '((I2cAddressableDevice) ' + identifier + ').getI2cAddress().get8Bit()';
+      break;
+    case 'RawX':
+    case 'RawY':
+    case 'RawZ':
+      code = identifier + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property) + '()';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (gyroSensor_getProperty).';
+  }
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+};
+
 Blockly.Blocks['gyroSensor_getProperty_HeadingMode'] = {
   init: function() {
     var PROPERTY_CHOICES = [
         ['HeadingMode', 'HeadingMode'],
     ];
-    this.setOutput(true, 'HeadingMode');
+    this.setOutput(true, 'ModernRoboticsI2cGyro.HeadingMode');
     this.appendDummyInput()
         .appendField(createGyroSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['HeadingMode', 'The heading mode. ' +
-            'Value is either HeadingMode_CARTESIAN or HeadingMode_CARDINAL. ' +
+        ['HeadingMode', 'Returns the heading mode: HEADING_CARTESIAN or HEADING_CARDINAL. ' +
             'Not all gyro sensors support this feature.'],
     ];
     this.setTooltip(function() {
@@ -224,12 +308,14 @@ Blockly.Blocks['gyroSensor_getProperty_HeadingMode'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['gyroSensor_getProperty_HeadingMode'] =
     Blockly.JavaScript['gyroSensor_getProperty'];
+
+Blockly.FtcJava['gyroSensor_getProperty_HeadingMode'] =
+    Blockly.FtcJava['gyroSensor_getProperty'];
 
 Blockly.Blocks['gyroSensor_getProperty_Number'] = {
   init: function() {
@@ -248,26 +334,27 @@ Blockly.Blocks['gyroSensor_getProperty_Number'] = {
         .appendField(createGyroSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Heading', 'The integrated Z axis as a cartesian or cardinal heading, ' +
-            'as a numeric value between 0 and 360. ' +
+        ['Heading', 'Returns a numeric value between 0 and 360 representing the integrated Z ' +
+            'axis as a cartesian or cardinal heading. ' +
             'Not all gyro sensors support this feature.'],
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress7Bit', 'Returns the 7 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the gyro sensor. ' +
+        ['I2cAddress8Bit', 'Returns the 8 bit I2C address of the gyro sensor. ' +
             'Not all gyro sensors support this feature.'],
-        ['IntegratedZValue', 'The gyro sensor\'s integrated Z value. ' +
+        ['IntegratedZValue', 'Returns the gyro sensor\'s integrated Z value. ' +
             'Not all gyro sensors support this feature.'],
-        ['RawX', 'The gyro sensor\'s raw X value. ' +
+        ['RawX', 'Returns the gyro sensor\'s raw X value. ' +
             'Not all gyro sensors support this feature.'],
-        ['RawY', 'The gyro sensor\'s raw Y value. ' +
+        ['RawY', 'Returns the gyro sensor\'s raw Y value. ' +
             'Not all gyro sensors support this feature.'],
-        ['RawZ', 'The gyro sensor\'s raw Z value. ' +
+        ['RawZ', 'Returns the gyro sensor\'s raw Z value. ' +
             'Not all gyro sensors support this feature.'],
-        ['RotationFraction', 'The current fractional rotation of this gyro. ' +
-            'The value is between 0.0 and 1.0. ' +
+        ['RotationFraction', 'Returns a numeric value between 0.0 and 1.0 representing the ' +
+            'current fractional rotation of the gyro sensor. ' +
             'Not all gyro sensors support this feature'],
     ];
     this.setTooltip(function() {
@@ -279,12 +366,31 @@ Blockly.Blocks['gyroSensor_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'Heading':
+        case 'I2cAddress7Bit':
+        case 'I2cAddress8Bit':
+        case 'IntegratedZValue':
+        case 'RawX':
+        case 'RawY':
+        case 'RawZ':
+          return 'int';
+        case 'RotationFraction':
+          return 'double';
+        default:
+          throw 'Unexpected property ' + property + ' (gyroSensor_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['gyroSensor_getProperty_Number'] =
     Blockly.JavaScript['gyroSensor_getProperty'];
+
+Blockly.FtcJava['gyroSensor_getProperty_Number'] =
+    Blockly.FtcJava['gyroSensor_getProperty'];
 
 Blockly.Blocks['gyroSensor_getProperty_Array'] = {
   init: function() {
@@ -297,12 +403,13 @@ Blockly.Blocks['gyroSensor_getProperty_Array'] = {
         .appendField(createGyroSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['AngularOrientationAxes', 'Returns a list of the axes on which the gyroscope measures ' +
+        ['AngularOrientationAxes', 'Returns a List of the axes on which the gyroscope measures ' +
             'angular orientation. Not all gyro sensors support this feature.'],
-        ['AngularVelocityAxes', 'Returns a list of the axes on which the gyroscope measures ' +
+        ['AngularVelocityAxes', 'Returns a List of the axes on which the gyroscope measures ' +
             'angular velocity. Some gyroscopes measure angular velocity on all three axes ' +
             '(X, Y, & Z) while others measure on only a subset, typically the Z axis. This block ' +
             'allows you to determine what information is usefully returned through the ' +
@@ -317,7 +424,6 @@ Blockly.Blocks['gyroSensor_getProperty_Array'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -326,6 +432,31 @@ Blockly.JavaScript['gyroSensor_getProperty_Array'] = function(block) {
   var property = block.getFieldValue('PROP');
   var code = 'JSON.parse(' + identifier + '.get' + property + '())';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['gyroSensor_getProperty_Array'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  var property = block.getFieldValue('PROP');
+  var code;
+  switch (property) {
+    case 'AngularOrientationAxes':
+      // This java code will throw ClassCastException if the GyroSensor is not an OrientationSensor.
+      Blockly.FtcJava.generateImport_('ArrayList');
+      Blockly.FtcJava.generateImport_('Axis');
+      Blockly.FtcJava.generateImport_('OrientationSensor');
+      code = 'new ArrayList<Axis>(((OrientationSensor) ' + identifier + ').get' + property + '())';
+      break;
+    case 'AngularVelocityAxes':
+      // This java code will throw ClassCastException if the GyroSensor is not a Gyroscope.
+      Blockly.FtcJava.generateImport_('ArrayList');
+      Blockly.FtcJava.generateImport_('Axis');
+      Blockly.FtcJava.generateImport_('Gyroscope');
+      code = 'new ArrayList<Axis>(((Gyroscope) ' + identifier + ').get' + property + '())';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (gyroSensor_getProperty_array).';
+  }
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 // Enums
@@ -344,6 +475,7 @@ Blockly.Blocks['gyroSensor_enum_headingMode'] = {
         .appendField(createNonEditableField('HeadingMode'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(HEADING_MODE_CHOICES), 'HEADING_MODE');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -359,7 +491,6 @@ Blockly.Blocks['gyroSensor_enum_headingMode'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -368,17 +499,24 @@ Blockly.JavaScript['gyroSensor_enum_headingMode'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['gyroSensor_enum_headingMode'] = function(block) {
+  var code = 'ModernRoboticsI2cGyro.HeadingMode.' + block.getFieldValue('HEADING_MODE');
+  Blockly.FtcJava.generateImport_('ModernRoboticsI2cGyro');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['gyroSensor_typedEnum_headingMode'] = {
   init: function() {
     var HEADING_MODE_CHOICES = [
         ['HEADING_CARTESIAN', 'HEADING_CARTESIAN'],
         ['HEADING_CARDINAL', 'HEADING_CARDINAL'],
     ];
-    this.setOutput(true, 'HeadingMode');
+    this.setOutput(true, 'ModernRoboticsI2cGyro.HeadingMode');
     this.appendDummyInput()
         .appendField(createNonEditableField('HeadingMode'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(HEADING_MODE_CHOICES), 'HEADING_MODE');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -394,15 +532,14 @@ Blockly.Blocks['gyroSensor_typedEnum_headingMode'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['gyroSensor_typedEnum_headingMode'] =
     Blockly.JavaScript['gyroSensor_enum_headingMode'];
 
-// TODO(lizlooney): Should we provide constants for MIN_I2C_ADDRESS_7_BIT, MAX_I2C_ADDRESS_7_BIT,
-// MIN_I2C_ADDRESS_8_BIT, and MAX_I2C_ADDRESS_8_BIT? If so, where do they belong?
+Blockly.FtcJava['gyroSensor_typedEnum_headingMode'] =
+    Blockly.FtcJava['gyroSensor_enum_headingMode'];
 
 // Functions
 
@@ -427,6 +564,11 @@ Blockly.JavaScript['gyroSensor_calibrate'] = function(block) {
   return identifier + '.calibrate();\n';
 };
 
+Blockly.FtcJava['gyroSensor_calibrate'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  return identifier + '.calibrate();\n';
+};
+
 Blockly.Blocks['gyroSensor_isCalibrating'] = {
   init: function() {
     this.setOutput(true, 'Boolean');
@@ -436,7 +578,7 @@ Blockly.Blocks['gyroSensor_isCalibrating'] = {
         .appendField('.')
         .appendField(createNonEditableField('isCalibrating'));
     this.setColour(functionColor);
-    this.setTooltip('Is the gyro performing a calibration operation? ' +
+    this.setTooltip('Returns true if the gyro is performing a calibration operation. ' +
         'Not all gyro sensors support this feature.');
   }
 };
@@ -445,6 +587,12 @@ Blockly.JavaScript['gyroSensor_isCalibrating'] = function(block) {
   var identifier = block.getFieldValue('IDENTIFIER');
   var code = identifier + '.isCalibrating()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['gyroSensor_isCalibrating'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  var code = identifier + '.isCalibrating()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['gyroSensor_resetZAxisIntegrator'] = {
@@ -467,6 +615,11 @@ Blockly.JavaScript['gyroSensor_resetZAxisIntegrator'] = function(block) {
   return identifier + '.resetZAxisIntegrator();\n';
 };
 
+Blockly.FtcJava['gyroSensor_resetZAxisIntegrator'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  return identifier + '.resetZAxisIntegrator();\n';
+};
+
 Blockly.Blocks['gyroSensor_getAngularVelocity'] = {
   init: function() {
     this.setOutput(true, 'AngularVelocity');
@@ -479,7 +632,7 @@ Blockly.Blocks['gyroSensor_getAngularVelocity'] = {
         .appendField('angleUnit')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Returns the angular rotation rate across all the axes measured by the gyro. ' +
+    this.setTooltip('Returns an AngularVelocity object representing the angular rotation rate across all the axes measured by the gyro. ' +
         'Axes on which angular velocity is not measured are reported as zero.');
   }
 };
@@ -490,6 +643,16 @@ Blockly.JavaScript['gyroSensor_getAngularVelocity'] = function(block) {
       block, 'ANGLE_UNIT', Blockly.JavaScript.ORDER_NONE);
   var code = identifier + '.getAngularVelocity(' + angleUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['gyroSensor_getAngularVelocity'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_NONE);
+  // This java code will throw ClassCastException if the GyroSensor is not a Gyroscope.
+  Blockly.FtcJava.generateImport_('Gyroscope');
+  var code = '((Gyroscope) ' + identifier + ').getAngularVelocity(' + angleUnit + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['gyroSensor_getAngularOrientation'] = {
@@ -510,7 +673,7 @@ Blockly.Blocks['gyroSensor_getAngularOrientation'] = {
         .appendField('angleUnit')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Returns the absolute orientation of the sensor as a set three angles. ' +
+    this.setTooltip('Returns an Orienation object representing the absolute orientation of the sensor as a set three angles. ' +
         'Axes on which absolute orientation is not measured are reported as zero.');
   }
 };
@@ -525,4 +688,18 @@ Blockly.JavaScript['gyroSensor_getAngularOrientation'] = function(block) {
       block, 'ANGLE_UNIT', Blockly.JavaScript.ORDER_COMMA);
   var code = identifier + '.getAngularOrientation(' + axesReference + ', ' + axesOrder + ', ' + angleUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['gyroSensor_getAngularOrientation'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'GyroSensor');
+  var axesReference = Blockly.FtcJava.valueToCode(
+      block, 'AXES_REFERENCE', Blockly.FtcJava.ORDER_COMMA);
+  var axesOrder = Blockly.FtcJava.valueToCode(
+      block, 'AXES_ORDER', Blockly.FtcJava.ORDER_COMMA);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  // This java code will throw ClassCastException if the GyroSensor is not a OrientationSensor.
+  Blockly.FtcJava.generateImport_('OrientationSensor');
+  var code = '((OrientationSensor) ' + identifier + ').getAngularOrientation(' + axesReference + ', ' + axesOrder + ', ' + angleUnit + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

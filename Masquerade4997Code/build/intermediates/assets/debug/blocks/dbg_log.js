@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// dbgLogIdentifier
+// dbgLogIdentifierForJavaScript
 // The following are defined in vars.js:
 // functionColor
 
@@ -30,7 +30,14 @@ Blockly.Blocks['dbgLog_msg'] = {
 Blockly.JavaScript['dbgLog_msg'] = function(block) {
   var message = Blockly.JavaScript.valueToCode(
       block, 'MESSAGE', Blockly.JavaScript.ORDER_COMMA);
-  return dbgLogIdentifier + '.msg(' + message + ');\n';
+  return dbgLogIdentifierForJavaScript + '.msg(' + message + ');\n';
+};
+
+Blockly.FtcJava['dbgLog_msg'] = function(block) {
+  var message = Blockly.FtcJava.valueToCode(
+      block, 'MESSAGE', Blockly.FtcJava.ORDER_COMMA);
+  Blockly.FtcJava.generateImport_('RobotLog');
+  return 'RobotLog.ii("DbgLog", ' + message + ');\n';
 };
 
 Blockly.Blocks['dbgLog_error'] = {
@@ -53,5 +60,12 @@ Blockly.Blocks['dbgLog_error'] = {
 Blockly.JavaScript['dbgLog_error'] = function(block) {
   var message = Blockly.JavaScript.valueToCode(
       block, 'MESSAGE', Blockly.JavaScript.ORDER_COMMA);
-  return dbgLogIdentifier + '.error(' + message + ');\n';
+  return dbgLogIdentifierForJavaScript + '.error(' + message + ');\n';
+};
+
+Blockly.FtcJava['dbgLog_error'] = function(block) {
+  var message = Blockly.FtcJava.valueToCode(
+      block, 'MESSAGE', Blockly.FtcJava.ORDER_COMMA);
+  Blockly.FtcJava.generateImport_('RobotLog');
+  return 'RobotLog.ee("DbgLog", ' + message + ');\n';
 };

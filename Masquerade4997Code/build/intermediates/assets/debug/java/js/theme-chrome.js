@@ -1,5 +1,3 @@
-// this file has been modified to an !important to the color attributes due to an issue with Bootstrap and printing
-
 define("ace/theme/chrome",["require","exports","module","ace/lib/dom"], function(require, exports, module) {
 
 exports.isDark = false;
@@ -14,7 +12,7 @@ width: 1px;\
 background: #e8e8e8;\
 }\
 .ace-chrome {\
-background-color: #FFFFFF;\
+background-color: #FFFFFF !important;\
 color: black !important;\
 }\
 .ace-chrome .ace_cursor {\
@@ -33,7 +31,7 @@ color: rgb(88, 92, 246) !important;\
 color: rgb(6, 150, 14) !important;\
 }\
 .ace-chrome .ace_invalid {\
-background-color: rgb(153, 0, 0);\
+background-color: rgb(153, 0, 0) !important;\
 color: white !important;\
 }\
 .ace-chrome .ace_fold {\
@@ -128,3 +126,11 @@ background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZ
 var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);
 });
+                (function() {
+                    window.require(["ace/theme/chrome"], function(m) {
+                        if (typeof module == "object" && typeof exports == "object" && module) {
+                            module.exports = m;
+                        }
+                    });
+                })();
+            

@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// temperatureIdentifier
+// temperatureIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // getPropertyColor
@@ -29,9 +29,9 @@ Blockly.Blocks['temperature_getProperty'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['TempUnit', 'The TempUnit of the given Temperature object.'],
-        ['Temperature', 'The Temperature of the given Temperature object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given Temperature object.'],
+        ['TempUnit', 'Returns the TempUnit of the given Temperature object.'],
+        ['Temperature', 'Returns the Temperature of the given Temperature object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given Temperature object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -49,8 +49,27 @@ Blockly.JavaScript['temperature_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var temperature = Blockly.JavaScript.valueToCode(
       block, 'TEMPERATURE', Blockly.JavaScript.ORDER_NONE);
-  var code = temperatureIdentifier + '.get' + property + '(' + temperature + ')';
+  var code = temperatureIdentifierForJavaScript + '.get' + property + '(' + temperature + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['temperature_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  var temperature = Blockly.FtcJava.valueToCode(
+      block, 'TEMPERATURE', Blockly.FtcJava.ORDER_MEMBER);
+  var code;
+  switch (property) {
+    case 'TempUnit':
+      code = temperature + '.unit';
+      break;
+    case 'Temperature':
+    case 'AcquisitionTime':
+      code = temperature + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property);
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (temperature_getProperty).';
+  }
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };
 
 Blockly.Blocks['temperature_getProperty_TempUnit'] = {
@@ -70,7 +89,7 @@ Blockly.Blocks['temperature_getProperty_TempUnit'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['TempUnit', 'The TempUnit of the given Temperature object.'],
+        ['TempUnit', 'Returns the TempUnit of the given Temperature object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -87,6 +106,9 @@ Blockly.Blocks['temperature_getProperty_TempUnit'] = {
 Blockly.JavaScript['temperature_getProperty_TempUnit'] =
     Blockly.JavaScript['temperature_getProperty'];
 
+Blockly.FtcJava['temperature_getProperty_TempUnit'] =
+    Blockly.FtcJava['temperature_getProperty'];
+
 Blockly.Blocks['temperature_getProperty_Number'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -102,11 +124,11 @@ Blockly.Blocks['temperature_getProperty_Number'] = {
         .appendField('temperature')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Temperature', 'The Temperature of the given Temperature object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given Temperature object.'],
+        ['Temperature', 'Returns the Temperature of the given Temperature object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given Temperature object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -117,11 +139,25 @@ Blockly.Blocks['temperature_getProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'Temperature':
+          return 'double';
+        case 'AcquisitionTime':
+          return 'long';
+        default:
+          throw 'Unexpected property ' + property + ' (temperature_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['temperature_getProperty_Number'] =
     Blockly.JavaScript['temperature_getProperty'];
+
+Blockly.FtcJava['temperature_getProperty_Number'] =
+    Blockly.FtcJava['temperature_getProperty'];
 
 // Functions
 
@@ -132,13 +168,19 @@ Blockly.Blocks['temperature_create'] = {
         .appendField('new')
         .appendField(createNonEditableField('Temperature'));
     this.setColour(functionColor);
-    this.setTooltip('Create a new Temperature object.');
+    this.setTooltip('Creates a new Temperature object.');
   }
 };
 
 Blockly.JavaScript['temperature_create'] = function(block) {
-  var code = temperatureIdentifier + '.create()';
+  var code = temperatureIdentifierForJavaScript + '.create()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['temperature_create'] = function(block) {
+  var code = 'new Temperature()';
+  Blockly.FtcJava.generateImport_('Temperature');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['temperature_create_withArgs'] = {
@@ -157,7 +199,16 @@ Blockly.Blocks['temperature_create_withArgs'] = {
         .appendField('acquisitionTime')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new Temperature object.');
+    this.setTooltip('Creates a new Temperature object.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'TEMPERATURE':
+          return 'double';
+        case 'ACQUISITION_TIME':
+          return 'long';
+      }
+      return '';
+    };
   }
 };
 
@@ -168,9 +219,21 @@ Blockly.JavaScript['temperature_create_withArgs'] = function(block) {
       block, 'TEMPERATURE', Blockly.JavaScript.ORDER_COMMA);
   var acquisitionTime = Blockly.JavaScript.valueToCode(
       block, 'ACQUISITION_TIME', Blockly.JavaScript.ORDER_COMMA);
-  var code = temperatureIdentifier + '.create_withArgs(' + tempUnit + ', ' + temperature + ', ' +
+  var code = temperatureIdentifierForJavaScript + '.create_withArgs(' + tempUnit + ', ' + temperature + ', ' +
       acquisitionTime + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['temperature_create_withArgs'] = function(block) {
+  var tempUnit = Blockly.FtcJava.valueToCode(
+      block, 'TEMP_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var temperature = Blockly.FtcJava.valueToCode(
+      block, 'TEMPERATURE', Blockly.FtcJava.ORDER_COMMA);
+  var acquisitionTime = Blockly.FtcJava.valueToCode(
+      block, 'ACQUISITION_TIME', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'new Temperature(' + tempUnit + ', ' + temperature + ', ' + acquisitionTime + ')';
+  Blockly.FtcJava.generateImport_('Temperature');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['temperature_toTempUnit'] = {
@@ -198,6 +261,15 @@ Blockly.JavaScript['temperature_toTempUnit'] = function(block) {
       block, 'TEMPERATURE', Blockly.JavaScript.ORDER_COMMA);
   var tempUnit = Blockly.JavaScript.valueToCode(
       block, 'TEMP_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  var code = temperatureIdentifier + '.toTempUnit(' + temperature + ', ' + tempUnit + ')';
+  var code = temperatureIdentifierForJavaScript + '.toTempUnit(' + temperature + ', ' + tempUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['temperature_toTempUnit'] = function(block) {
+  var temperature = Blockly.FtcJava.valueToCode(
+      block, 'TEMPERATURE', Blockly.FtcJava.ORDER_MEMBER);
+  var tempUnit = Blockly.FtcJava.valueToCode(
+      block, 'TEMP_UNIT', Blockly.FtcJava.ORDER_NONE);
+  var code = temperature + '.toUnit(' + tempUnit + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

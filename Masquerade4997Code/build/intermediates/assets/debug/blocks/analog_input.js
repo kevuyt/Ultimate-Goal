@@ -19,6 +19,7 @@ Blockly.Blocks['analogInput_getProperty'] = {
         .appendField(createAnalogInputDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -34,7 +35,6 @@ Blockly.Blocks['analogInput_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -43,6 +43,13 @@ Blockly.JavaScript['analogInput_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var code = identifier + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['analogInput_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'AnalogInput');
+  var property = block.getFieldValue('PROP');
+  var code = identifier + '.get' + property + '()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['analogInput_getProperty_Number'] = {
@@ -56,7 +63,8 @@ Blockly.Blocks['analogInput_getProperty_Number'] = {
         .appendField(createAnalogInputDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['Voltage', 'Returns the current voltage of this analog input.'],
@@ -71,9 +79,21 @@ Blockly.Blocks['analogInput_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'Voltage':
+        case 'MaxVoltage':
+          return 'double';
+        default:
+          throw 'Unexpected property ' + property + ' (analogInput_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['analogInput_getProperty_Number'] =
     Blockly.JavaScript['analogInput_getProperty'];
+
+Blockly.FtcJava['analogInput_getProperty_Number'] =
+    Blockly.FtcJava['analogInput_getProperty'];

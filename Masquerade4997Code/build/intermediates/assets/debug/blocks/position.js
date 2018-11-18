@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// positionIdentifier
+// positionIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // getPropertyColor
@@ -31,11 +31,11 @@ Blockly.Blocks['position_getProperty'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['DistanceUnit', 'The DistanceUnit of the given Position object.'],
-        ['X', 'The X of the given Position object.'],
-        ['Y', 'The Y of the given Position object.'],
-        ['Z', 'The Z of the given Position object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given Position object.'],
+        ['DistanceUnit', 'Returns the DistanceUnit of the given Position object.'],
+        ['X', 'Returns the X of the given Position object.'],
+        ['Y', 'Returns the Y of the given Position object.'],
+        ['Z', 'Returns the Z of the given Position object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given Position object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -53,8 +53,29 @@ Blockly.JavaScript['position_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var position = Blockly.JavaScript.valueToCode(
       block, 'POSITION', Blockly.JavaScript.ORDER_NONE);
-  var code = positionIdentifier + '.get' + property + '(' + position + ')';
+  var code = positionIdentifierForJavaScript + '.get' + property + '(' + position + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['position_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  var position = Blockly.FtcJava.valueToCode(
+      block, 'POSITION', Blockly.FtcJava.ORDER_MEMBER);
+  var code;
+  switch (property) {
+    case 'DistanceUnit':
+      code = position + '.unit';
+      break;
+    case 'X':
+    case 'Y':
+    case 'Z':
+    case 'AcquisitionTime':
+      code = position + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property);
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (position_getProperty).';
+  }
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };
 
 Blockly.Blocks['position_getProperty_DistanceUnit'] = {
@@ -74,7 +95,7 @@ Blockly.Blocks['position_getProperty_DistanceUnit'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['DistanceUnit', 'The DistanceUnit of the given Position object.'],
+        ['DistanceUnit', 'Returns the DistanceUnit of the given Position object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -90,6 +111,9 @@ Blockly.Blocks['position_getProperty_DistanceUnit'] = {
 
 Blockly.JavaScript['position_getProperty_DistanceUnit'] =
     Blockly.JavaScript['position_getProperty'];
+
+Blockly.FtcJava['position_getProperty_DistanceUnit'] =
+    Blockly.FtcJava['position_getProperty'];
 
 Blockly.Blocks['position_getProperty_Number'] = {
   init: function() {
@@ -108,13 +132,13 @@ Blockly.Blocks['position_getProperty_Number'] = {
         .appendField('position')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['X', 'The X of the given Position object.'],
-        ['Y', 'The Y of the given Position object.'],
-        ['Z', 'The Z of the given Position object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given Position object.'],
+        ['X', 'Returns the X of the given Position object.'],
+        ['Y', 'Returns the Y of the given Position object.'],
+        ['Z', 'Returns the Z of the given Position object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given Position object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -125,11 +149,27 @@ Blockly.Blocks['position_getProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'X':
+        case 'Y':
+        case 'Z':
+          return 'double';
+        case 'AcquisitionTime':
+          return 'long';
+        default:
+          throw 'Unexpected property ' + property + ' (position_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['position_getProperty_Number'] =
     Blockly.JavaScript['position_getProperty'];
+
+Blockly.FtcJava['position_getProperty_Number'] =
+    Blockly.FtcJava['position_getProperty'];
 
 // Functions
 
@@ -140,13 +180,19 @@ Blockly.Blocks['position_create'] = {
         .appendField('new')
         .appendField(createNonEditableField('Position'));
     this.setColour(functionColor);
-    this.setTooltip('Create a new Position object.');
+    this.setTooltip('Creates a new Position object.');
   }
 };
 
 Blockly.JavaScript['position_create'] = function(block) {
-  var code = positionIdentifier + '.create()';
+  var code = positionIdentifierForJavaScript + '.create()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['position_create'] = function(block) {
+  var code = 'new Position()';
+  Blockly.FtcJava.generateImport_('Position');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['position_create_withArgs'] = {
@@ -171,7 +217,18 @@ Blockly.Blocks['position_create_withArgs'] = {
         .appendField('acquisitionTime')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new Position object.');
+    this.setTooltip('Creates a new Position object.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'X':
+        case 'Y':
+        case 'Z':
+          return 'double';
+        case 'ACQUISITION_TIME':
+          return 'long';
+      }
+      return '';
+    };
   }
 };
 
@@ -186,9 +243,26 @@ Blockly.JavaScript['position_create_withArgs'] = function(block) {
       block, 'Z', Blockly.JavaScript.ORDER_COMMA);
   var acquisitionTime = Blockly.JavaScript.valueToCode(
       block, 'ACQUISITION_TIME', Blockly.JavaScript.ORDER_COMMA);
-  var code = positionIdentifier + '.create_withArgs(' + distanceUnit + ', ' + x + ', ' +
+  var code = positionIdentifierForJavaScript + '.create_withArgs(' + distanceUnit + ', ' + x + ', ' +
       y + ', ' + z + ', ' + acquisitionTime + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['position_create_withArgs'] = function(block) {
+  var distanceUnit = Blockly.FtcJava.valueToCode(
+      block, 'DISTANCE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var x = Blockly.FtcJava.valueToCode(
+      block, 'X', Blockly.FtcJava.ORDER_COMMA);
+  var y = Blockly.FtcJava.valueToCode(
+      block, 'Y', Blockly.FtcJava.ORDER_COMMA);
+  var z = Blockly.FtcJava.valueToCode(
+      block, 'Z', Blockly.FtcJava.ORDER_COMMA);
+  var acquisitionTime = Blockly.FtcJava.valueToCode(
+      block, 'ACQUISITION_TIME', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'new Position(' + distanceUnit + ', ' + x + ', ' + y + ', ' + z + ', ' +
+      acquisitionTime + ')';
+  Blockly.FtcJava.generateImport_('Position');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['position_toDistanceUnit'] = {
@@ -216,8 +290,17 @@ Blockly.JavaScript['position_toDistanceUnit'] = function(block) {
       block, 'POSITION', Blockly.JavaScript.ORDER_COMMA);
   var distanceUnit = Blockly.JavaScript.valueToCode(
       block, 'DISTANCE_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  var code = positionIdentifier + '.toDistanceUnit(' + position + ', ' + distanceUnit + ')';
+  var code = positionIdentifierForJavaScript + '.toDistanceUnit(' + position + ', ' + distanceUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['position_toDistanceUnit'] = function(block) {
+  var position = Blockly.FtcJava.valueToCode(
+      block, 'POSITION', Blockly.FtcJava.ORDER_MEMBER);
+  var distanceUnit = Blockly.FtcJava.valueToCode(
+      block, 'DISTANCE_UNIT', Blockly.FtcJava.ORDER_NONE);
+  var code = position + '.toUnit(' + distanceUnit + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['position_toText'] = {
@@ -239,6 +322,13 @@ Blockly.Blocks['position_toText'] = {
 Blockly.JavaScript['position_toText'] = function(block) {
   var position = Blockly.JavaScript.valueToCode(
       block, 'POSITION', Blockly.JavaScript.ORDER_NONE);
-  var code = positionIdentifier + '.toText(' + position + ')';
+  var code = positionIdentifierForJavaScript + '.toText(' + position + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['position_toText'] = function(block) {
+  var position = Blockly.FtcJava.valueToCode(
+      block, 'POSITION', Blockly.FtcJava.ORDER_MEMBER);
+  var code = position + '.toString()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

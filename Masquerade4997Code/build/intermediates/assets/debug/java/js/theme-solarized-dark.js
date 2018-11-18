@@ -4,23 +4,23 @@ exports.isDark = true;
 exports.cssClass = "ace-solarized-dark";
 exports.cssText = ".ace-solarized-dark .ace_gutter {\
 background: #01313f;\
-color: #d0edf7 !important;\
+color: #d0edf7\
 }\
 .ace-solarized-dark .ace_print-margin {\
 width: 1px;\
 background: #33555E\
 }\
 .ace-solarized-dark {\
-background-color: #002B36;\
-color: #93A1A1 !important;\
+background-color: #002B36 !important;\
+color: #93A1A1\
 }\
 .ace-solarized-dark .ace_entity.ace_other.ace_attribute-name,\
 .ace-solarized-dark .ace_storage {\
-color: #93A1A1 !important;\
+color: #93A1A1\
 }\
 .ace-solarized-dark .ace_cursor,\
 .ace-solarized-dark .ace_string.ace_regexp {\
-color: #D30102 !important;\
+color: #D30102\
 }\
 .ace-solarized-dark .ace_marker-layer .ace_active-line,\
 .ace-solarized-dark .ace_marker-layer .ace_selection {\
@@ -43,26 +43,26 @@ background-color: #0d3440\
 border: 1px solid #073642\
 }\
 .ace-solarized-dark .ace_invisible {\
-color: rgba(147, 161, 161, 0.50) !important;\
+color: rgba(147, 161, 161, 0.50)\
 }\
 .ace-solarized-dark .ace_keyword,\
 .ace-solarized-dark .ace_meta,\
 .ace-solarized-dark .ace_support.ace_class,\
 .ace-solarized-dark .ace_support.ace_type {\
-color: #859900 !important;\
+color: #859900\
 }\
 .ace-solarized-dark .ace_constant.ace_character,\
 .ace-solarized-dark .ace_constant.ace_other {\
-color: #CB4B16 !important;\
+color: #CB4B16\
 }\
 .ace-solarized-dark .ace_constant.ace_language {\
-color: #B58900 !important;\
+color: #B58900\
 }\
 .ace-solarized-dark .ace_constant.ace_numeric {\
-color: #D33682 !important;\
+color: #D33682\
 }\
 .ace-solarized-dark .ace_fold {\
-background-color: #268BD2;\
+background-color: #268BD2 !important;\
 border-color: #93A1A1\
 }\
 .ace-solarized-dark .ace_entity.ace_name.ace_function,\
@@ -70,14 +70,14 @@ border-color: #93A1A1\
 .ace-solarized-dark .ace_support.ace_function,\
 .ace-solarized-dark .ace_variable,\
 .ace-solarized-dark .ace_variable.ace_language {\
-color: #268BD2 !important;\
+color: #268BD2\
 }\
 .ace-solarized-dark .ace_string {\
-color: #2AA198 !important;\
+color: #2AA198\
 }\
 .ace-solarized-dark .ace_comment {\
 font-style: italic;\
-color: #657B83 !important;\
+color: #657B83\
 }\
 .ace-solarized-dark .ace_indent-guide {\
 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNg0Db1ZVCxc/sPAAd4AlUHlLenAAAAAElFTkSuQmCC) right repeat-y\
@@ -86,3 +86,11 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgb
 var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);
 });
+                (function() {
+                    window.require(["ace/theme/solarized_dark"], function(m) {
+                        if (typeof module == "object" && typeof exports == "object" && module) {
+                            module.exports = m;
+                        }
+                    });
+                })();
+            

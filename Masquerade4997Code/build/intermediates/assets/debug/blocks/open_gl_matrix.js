@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// openGLMatrixIdentifier
+// openGLMatrixIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // functionColor
@@ -16,13 +16,19 @@ Blockly.Blocks['openGLMatrix_create'] = {
         .appendField('new')
         .appendField(createNonEditableField('OpenGLMatrix'));
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object.');
+    this.setTooltip('Creates a new OpenGLMatrix object.');
   }
 };
 
 Blockly.JavaScript['openGLMatrix_create'] = function(block) {
-  var code = openGLMatrixIdentifier + '.create()';
+  var code = openGLMatrixIdentifierForJavaScript + '.create()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_create'] = function(block) {
+  var code = 'new OpenGLMatrix()';
+  Blockly.FtcJava.generateImport_('OpenGLMatrix');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['openGLMatrix_create_withMatrixF'] = {
@@ -35,15 +41,30 @@ Blockly.Blocks['openGLMatrix_create_withMatrixF'] = {
         .appendField('matrix')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object whose values are initialized from the given matrix.');
+    this.setTooltip('Creates a new OpenGLMatrix object whose values are initialized from the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'MATRIX':
+          return 'MatrixF';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['openGLMatrix_create_withMatrixF'] = function(block) {
   var matrix = Blockly.JavaScript.valueToCode(
       block, 'MATRIX', Blockly.JavaScript.ORDER_NONE);
-  var code = openGLMatrixIdentifier + '.create_withMatrixF(' + matrix + ')';
+  var code = openGLMatrixIdentifierForJavaScript + '.create_withMatrixF(' + matrix + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_create_withMatrixF'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_NONE);
+  var code = 'new OpenGLMatrix(' + matrix + ')';
+  Blockly.FtcJava.generateImport_('OpenGLMatrix');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['openGLMatrix_rotation'] = {
@@ -70,8 +91,18 @@ Blockly.Blocks['openGLMatrix_rotation'] = {
         .appendField('dz')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object for rotation by the indicated angle around ' +
-        'the indicated vector.');
+    this.setTooltip('Creates a new OpenGLMatrix object for rotation by the given angle around ' +
+        'the vector (dx, dy, dz).');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'ANGLE':
+        case 'DX':
+        case 'DY':
+        case 'DZ':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -86,9 +117,26 @@ Blockly.JavaScript['openGLMatrix_rotation'] = function(block) {
       block, 'DY', Blockly.JavaScript.ORDER_COMMA);
   var dz = Blockly.JavaScript.valueToCode(
       block, 'DZ', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.rotation(' + angleUnit + ', ' + angle + ', ' +
+  var code = openGLMatrixIdentifierForJavaScript + '.rotation(' + angleUnit + ', ' + angle + ', ' +
       dx + ', ' + dy + ', ' + dz + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_rotation'] = function(block) {
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var angle = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var dx = Blockly.FtcJava.valueToCode(
+      block, 'DX', Blockly.FtcJava.ORDER_COMMA);
+  var dy = Blockly.FtcJava.valueToCode(
+      block, 'DY', Blockly.FtcJava.ORDER_COMMA);
+  var dz = Blockly.FtcJava.valueToCode(
+      block, 'DZ', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'OpenGLMatrix.rotation(' + angleUnit + ', ' + angle + ', ' +
+      dx + ', ' + dy + ', ' + dz + ')';
+  Blockly.FtcJava.generateImport_('OpenGLMatrix');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_rotation_withAxesArgs'] = {
@@ -118,8 +166,17 @@ Blockly.Blocks['openGLMatrix_rotation_withAxesArgs'] = {
         .appendField('thirdAngle')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object for a rotation specified by three ' +
+    this.setTooltip('Creates a new OpenGLMatrix object for a rotation specified by three ' +
         'successive rotation angles.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'FIRST_ANGLE':
+        case 'SECOND_ANGLE':
+        case 'THIRD_ANGLE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -136,10 +193,30 @@ Blockly.JavaScript['openGLMatrix_rotation_withAxesArgs'] = function(block) {
       block, 'SECOND_ANGLE', Blockly.JavaScript.ORDER_COMMA);
   var thirdAngle = Blockly.JavaScript.valueToCode(
       block, 'THIRD_ANGLE', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.rotation_withAxesArgs(' + axesReference + ', ' +
+  var code = openGLMatrixIdentifierForJavaScript + '.rotation_withAxesArgs(' + axesReference + ', ' +
       axesOrder + ', ' + angleUnit + ', ' + firstAngle + ', ' + secondAngle + ', ' +
       thirdAngle + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_rotation_withAxesArgs'] = function(block) {
+  var axesReference = Blockly.FtcJava.valueToCode(
+      block, 'AXES_REFERENCE', Blockly.FtcJava.ORDER_COMMA);
+  var axesOrder = Blockly.FtcJava.valueToCode(
+      block, 'AXES_ORDER', Blockly.FtcJava.ORDER_COMMA);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var firstAngle = Blockly.FtcJava.valueToCode(
+      block, 'FIRST_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var secondAngle = Blockly.FtcJava.valueToCode(
+      block, 'SECOND_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var thirdAngle = Blockly.FtcJava.valueToCode(
+      block, 'THIRD_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'OpenGLMatrix.rotation(' + axesReference + ', ' +
+      axesOrder + ', ' + angleUnit + ', ' + firstAngle + ', ' + secondAngle + ', ' +
+      thirdAngle + ')';
+  Blockly.FtcJava.generateImport_('OpenGLMatrix');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_translation'] = {
@@ -160,7 +237,16 @@ Blockly.Blocks['openGLMatrix_translation'] = {
         .appendField('dz')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object for translation.');
+    this.setTooltip('Creates a new OpenGLMatrix object for translation.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'DX':
+        case 'DY':
+        case 'DZ':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -171,8 +257,20 @@ Blockly.JavaScript['openGLMatrix_translation'] = function(block) {
       block, 'DY', Blockly.JavaScript.ORDER_COMMA);
   var dz = Blockly.JavaScript.valueToCode(
       block, 'DZ', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.translation(' + dx + ', ' + dy + ', ' + dz + ')';
+  var code = openGLMatrixIdentifierForJavaScript + '.translation(' + dx + ', ' + dy + ', ' + dz + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_translation'] = function(block) {
+  var dx = Blockly.FtcJava.valueToCode(
+      block, 'DX', Blockly.FtcJava.ORDER_COMMA);
+  var dy = Blockly.FtcJava.valueToCode(
+      block, 'DY', Blockly.FtcJava.ORDER_COMMA);
+  var dz = Blockly.FtcJava.valueToCode(
+      block, 'DZ', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'OpenGLMatrix.translation(' + dx + ', ' + dy + ', ' + dz + ')';
+  Blockly.FtcJava.generateImport_('OpenGLMatrix');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_identityMatrix'] = {
@@ -184,14 +282,20 @@ Blockly.Blocks['openGLMatrix_identityMatrix'] = {
         .appendField('.')
         .appendField(createNonEditableField('identityMatrix'));
     this.setColour(functionColor);
-    this.setTooltip('Returns an identity matrix. ' +
+    this.setTooltip('Returns an OpenGLMatrix representing an identity matrix. ' +
         'An identity matrix is zero everywhere except on the diagonal, where it is one.');
   }
 };
 
 Blockly.JavaScript['openGLMatrix_identityMatrix'] = function(block) {
-  var code = openGLMatrixIdentifier + '.identityMatrix()';
+  var code = openGLMatrixIdentifierForJavaScript + '.identityMatrix()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_identityMatrix'] = function(block) {
+  var code = 'OpenGLMatrix.identityMatrix()';
+  Blockly.FtcJava.generateImport_('OpenGLMatrix');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_scale_with3'] = {
@@ -217,6 +321,15 @@ Blockly.Blocks['openGLMatrix_scale_with3'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Scales the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'SCALE_X':
+        case 'SCALE_Y':
+        case 'SCALE_Z':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -229,8 +342,20 @@ Blockly.JavaScript['openGLMatrix_scale_with3'] = function(block) {
       block, 'SCALE_Y', Blockly.JavaScript.ORDER_COMMA);
   var scaleZ = Blockly.JavaScript.valueToCode(
       block, 'SCALE_Z', Blockly.JavaScript.ORDER_COMMA);
-  return openGLMatrixIdentifier + '.scale_with3(' + matrix + ', ' +
+  return openGLMatrixIdentifierForJavaScript + '.scale_with3(' + matrix + ', ' +
       scaleX + ', ' + scaleY + ', ' + scaleZ + ');\n';
+};
+
+Blockly.FtcJava['openGLMatrix_scale_with3'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var scaleX = Blockly.FtcJava.valueToCode(
+      block, 'SCALE_X', Blockly.FtcJava.ORDER_COMMA);
+  var scaleY = Blockly.FtcJava.valueToCode(
+      block, 'SCALE_Y', Blockly.FtcJava.ORDER_COMMA);
+  var scaleZ = Blockly.FtcJava.valueToCode(
+      block, 'SCALE_Z', Blockly.FtcJava.ORDER_COMMA);
+  return matrix + '.scale(' +  scaleX + ', ' + scaleY + ', ' + scaleZ + ');\n';
 };
 
 Blockly.Blocks['openGLMatrix_scale_with1'] = {
@@ -250,6 +375,13 @@ Blockly.Blocks['openGLMatrix_scale_with1'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Scales the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'SCALE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -258,7 +390,15 @@ Blockly.JavaScript['openGLMatrix_scale_with1'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var scale = Blockly.JavaScript.valueToCode(
       block, 'SCALE', Blockly.JavaScript.ORDER_COMMA);
-  return openGLMatrixIdentifier + '.scale_with1(' + matrix + ', ' + scale + ');\n';
+  return openGLMatrixIdentifierForJavaScript + '.scale_with1(' + matrix + ', ' + scale + ');\n';
+};
+
+Blockly.FtcJava['openGLMatrix_scale_with1'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var scale = Blockly.FtcJava.valueToCode(
+      block, 'SCALE', Blockly.FtcJava.ORDER_NONE);
+  return matrix + '.scale(' + scale + ');\n';
 };
 
 Blockly.Blocks['openGLMatrix_translate'] = {
@@ -284,6 +424,15 @@ Blockly.Blocks['openGLMatrix_translate'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Translates the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'DX':
+        case 'DY':
+        case 'DZ':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -296,8 +445,20 @@ Blockly.JavaScript['openGLMatrix_translate'] = function(block) {
       block, 'DY', Blockly.JavaScript.ORDER_COMMA);
   var dz = Blockly.JavaScript.valueToCode(
       block, 'DZ', Blockly.JavaScript.ORDER_COMMA);
-  return openGLMatrixIdentifier + '.translate(' + matrix + ', ' +
+  return openGLMatrixIdentifierForJavaScript + '.translate(' + matrix + ', ' +
       dx + ', ' + dy + ', ' + dz + ');\n';
+};
+
+Blockly.FtcJava['openGLMatrix_translate'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var dx = Blockly.FtcJava.valueToCode(
+      block, 'DX', Blockly.FtcJava.ORDER_COMMA);
+  var dy = Blockly.FtcJava.valueToCode(
+      block, 'DY', Blockly.FtcJava.ORDER_COMMA);
+  var dz = Blockly.FtcJava.valueToCode(
+      block, 'DZ', Blockly.FtcJava.ORDER_COMMA);
+  return matrix + '.translate(' + dx + ', ' + dy + ', ' + dz + ');\n';
 };
 
 Blockly.Blocks['openGLMatrix_rotate'] = {
@@ -329,6 +490,16 @@ Blockly.Blocks['openGLMatrix_rotate'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Rotates the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'ANGLE':
+        case 'DX':
+        case 'DY':
+        case 'DZ':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -345,7 +516,24 @@ Blockly.JavaScript['openGLMatrix_rotate'] = function(block) {
       block, 'DY', Blockly.JavaScript.ORDER_COMMA);
   var dz = Blockly.JavaScript.valueToCode(
       block, 'DZ', Blockly.JavaScript.ORDER_COMMA);
-  return openGLMatrixIdentifier + '.rotate(' + matrix + ', ' + angleUnit + ', ' + angle + ', ' +
+  return openGLMatrixIdentifierForJavaScript + '.rotate(' + matrix + ', ' + angleUnit + ', ' + angle + ', ' +
+      dx + ', ' + dy + ', ' + dz + ');\n';
+};
+
+Blockly.FtcJava['openGLMatrix_rotate'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var angle = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var dx = Blockly.FtcJava.valueToCode(
+      block, 'DX', Blockly.FtcJava.ORDER_COMMA);
+  var dy = Blockly.FtcJava.valueToCode(
+      block, 'DY', Blockly.FtcJava.ORDER_COMMA);
+  var dz = Blockly.FtcJava.valueToCode(
+      block, 'DZ', Blockly.FtcJava.ORDER_COMMA);
+  return matrix + '.rotate(' + angleUnit + ', ' + angle + ', ' +
       dx + ', ' + dy + ', ' + dz + ');\n';
 };
 
@@ -381,6 +569,15 @@ Blockly.Blocks['openGLMatrix_rotate_withAxesArgs'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Rotates the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'FIRST_ANGLE':
+        case 'SECOND_ANGLE':
+        case 'THIRD_ANGLE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -399,7 +596,27 @@ Blockly.JavaScript['openGLMatrix_rotate_withAxesArgs'] = function(block) {
       block, 'SECOND_ANGLE', Blockly.JavaScript.ORDER_COMMA);
   var thirdAngle = Blockly.JavaScript.valueToCode(
       block, 'THIRD_ANGLE', Blockly.JavaScript.ORDER_COMMA);
-  return openGLMatrixIdentifier + '.rotate_withAxesArgs(' + matrix + ', ' + axesReference + ', ' +
+  return openGLMatrixIdentifierForJavaScript + '.rotate_withAxesArgs(' + matrix + ', ' + axesReference + ', ' +
+      axesOrder + ', ' + angleUnit + ', ' + firstAngle + ', ' + secondAngle + ', ' +
+      thirdAngle + ');\n';
+};
+
+Blockly.FtcJava['openGLMatrix_rotate_withAxesArgs'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var axesReference = Blockly.FtcJava.valueToCode(
+      block, 'AXES_REFERENCE', Blockly.FtcJava.ORDER_COMMA);
+  var axesOrder = Blockly.FtcJava.valueToCode(
+      block, 'AXES_ORDER', Blockly.FtcJava.ORDER_COMMA);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var firstAngle = Blockly.FtcJava.valueToCode(
+      block, 'FIRST_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var secondAngle = Blockly.FtcJava.valueToCode(
+      block, 'SECOND_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var thirdAngle = Blockly.FtcJava.valueToCode(
+      block, 'THIRD_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  return matrix + '.rotate(' + axesReference + ', ' +
       axesOrder + ', ' + angleUnit + ', ' + firstAngle + ', ' + secondAngle + ', ' +
       thirdAngle + ');\n';
 };
@@ -425,7 +642,16 @@ Blockly.Blocks['openGLMatrix_scaled_with3'] = {
         .appendField('scaleZ')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object by scaling the given matrix.');
+    this.setTooltip('Creates a new OpenGLMatrix object by scaling the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'SCALE_X':
+        case 'SCALE_Y':
+        case 'SCALE_Z':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -438,9 +664,22 @@ Blockly.JavaScript['openGLMatrix_scaled_with3'] = function(block) {
       block, 'SCALE_Y', Blockly.JavaScript.ORDER_COMMA);
   var scaleZ = Blockly.JavaScript.valueToCode(
       block, 'SCALE_Z', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.scaled_with3(' + matrix + ', ' +
+  var code = openGLMatrixIdentifierForJavaScript + '.scaled_with3(' + matrix + ', ' +
       scaleX + ', ' + scaleY + ', ' + scaleZ + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_scaled_with3'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var scaleX = Blockly.FtcJava.valueToCode(
+      block, 'SCALE_X', Blockly.FtcJava.ORDER_COMMA);
+  var scaleY = Blockly.FtcJava.valueToCode(
+      block, 'SCALE_Y', Blockly.FtcJava.ORDER_COMMA);
+  var scaleZ = Blockly.FtcJava.valueToCode(
+      block, 'SCALE_Z', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.scaled(' + scaleX + ', ' + scaleY + ', ' + scaleZ + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_scaled_with1'] = {
@@ -458,7 +697,14 @@ Blockly.Blocks['openGLMatrix_scaled_with1'] = {
         .appendField('scale')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object by scaling the given matrix.');
+    this.setTooltip('Creates a new OpenGLMatrix object by scaling the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'SCALE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -467,8 +713,17 @@ Blockly.JavaScript['openGLMatrix_scaled_with1'] = function(block) {
       block, 'MATRIX', Blockly.JavaScript.ORDER_COMMA);
   var scale = Blockly.JavaScript.valueToCode(
       block, 'SCALE', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.scaled_with1(' + matrix + ', ' + scale + ')';
+  var code = openGLMatrixIdentifierForJavaScript + '.scaled_with1(' + matrix + ', ' + scale + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_scaled_with1'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var scale = Blockly.FtcJava.valueToCode(
+      block, 'SCALE', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix + '.scaled(' + scale + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_translated'] = {
@@ -492,7 +747,16 @@ Blockly.Blocks['openGLMatrix_translated'] = {
         .appendField('dz')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object by translating the given matrix.');
+    this.setTooltip('Creates a new OpenGLMatrix object by translating the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'DX':
+        case 'DY':
+        case 'DZ':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -505,9 +769,22 @@ Blockly.JavaScript['openGLMatrix_translated'] = function(block) {
       block, 'DY', Blockly.JavaScript.ORDER_COMMA);
   var dz = Blockly.JavaScript.valueToCode(
       block, 'DZ', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.translated(' + matrix + ', ' +
+  var code = openGLMatrixIdentifierForJavaScript + '.translated(' + matrix + ', ' +
       dx + ', ' + dy + ', ' + dz + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_translated'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var dx = Blockly.FtcJava.valueToCode(
+      block, 'DX', Blockly.FtcJava.ORDER_COMMA);
+  var dy = Blockly.FtcJava.valueToCode(
+      block, 'DY', Blockly.FtcJava.ORDER_COMMA);
+  var dz = Blockly.FtcJava.valueToCode(
+      block, 'DZ', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.translated(' + dx + ', ' + dy + ', ' + dz + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_rotated'] = {
@@ -537,7 +814,17 @@ Blockly.Blocks['openGLMatrix_rotated'] = {
         .appendField('dz')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object by rotating the given matrix.');
+    this.setTooltip('Creates a new OpenGLMatrix object by rotating the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'ANGLE':
+        case 'DX':
+        case 'DY':
+        case 'DZ':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -554,9 +841,26 @@ Blockly.JavaScript['openGLMatrix_rotated'] = function(block) {
       block, 'DY', Blockly.JavaScript.ORDER_COMMA);
   var dz = Blockly.JavaScript.valueToCode(
       block, 'DZ', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.rotated(' + matrix + ', ' + angleUnit + ', ' +
+  var code = openGLMatrixIdentifierForJavaScript + '.rotated(' + matrix + ', ' + angleUnit + ', ' +
       angle + ', ' + dx + ', ' + dy + ', ' + dz + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_rotated'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var angle = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var dx = Blockly.FtcJava.valueToCode(
+      block, 'DX', Blockly.FtcJava.ORDER_COMMA);
+  var dy = Blockly.FtcJava.valueToCode(
+      block, 'DY', Blockly.FtcJava.ORDER_COMMA);
+  var dz = Blockly.FtcJava.valueToCode(
+      block, 'DZ', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.rotated(' + angleUnit + ', ' + angle + ', ' + dx + ', ' + dy + ', ' + dz + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_rotated_withAxesArgs'] = {
@@ -589,7 +893,16 @@ Blockly.Blocks['openGLMatrix_rotated_withAxesArgs'] = {
         .appendField('thirdAngle')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object by rotating the given matrix.');
+    this.setTooltip('Creates a new OpenGLMatrix object by rotating the given matrix.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'FIRST_ANGLE':
+        case 'SECOND_ANGLE':
+        case 'THIRD_ANGLE':
+          return 'float';
+      }
+      return '';
+    };
   }
 };
 
@@ -608,10 +921,31 @@ Blockly.JavaScript['openGLMatrix_rotated_withAxesArgs'] = function(block) {
       block, 'SECOND_ANGLE', Blockly.JavaScript.ORDER_COMMA);
   var thirdAngle = Blockly.JavaScript.valueToCode(
       block, 'THIRD_ANGLE', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.rotated_withAxesArgs(' + matrix + ', ' +
+  var code = openGLMatrixIdentifierForJavaScript + '.rotated_withAxesArgs(' + matrix + ', ' +
       axesReference + ', ' + axesOrder + ', ' + angleUnit + ', ' +
       firstAngle + ', ' + secondAngle + ', ' + thirdAngle + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_rotated_withAxesArgs'] = function(block) {
+  var matrix = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX', Blockly.FtcJava.ORDER_MEMBER);
+  var axesReference = Blockly.FtcJava.valueToCode(
+      block, 'AXES_REFERENCE', Blockly.FtcJava.ORDER_COMMA);
+  var axesOrder = Blockly.FtcJava.valueToCode(
+      block, 'AXES_ORDER', Blockly.FtcJava.ORDER_COMMA);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var firstAngle = Blockly.FtcJava.valueToCode(
+      block, 'FIRST_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var secondAngle = Blockly.FtcJava.valueToCode(
+      block, 'SECOND_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var thirdAngle = Blockly.FtcJava.valueToCode(
+      block, 'THIRD_ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var code = matrix + '.rotated(' +
+      axesReference + ', ' + axesOrder + ', ' + angleUnit + ', ' +
+      firstAngle + ', ' + secondAngle + ', ' + thirdAngle + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_multiplied'] = {
@@ -629,7 +963,7 @@ Blockly.Blocks['openGLMatrix_multiplied'] = {
         .appendField('matrix2')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new OpenGLMatrix object by multiplying matrix1 by matrix2.');
+    this.setTooltip('Creates a new OpenGLMatrix object by multiplying matrix1 by matrix2.');
   }
 };
 
@@ -638,8 +972,17 @@ Blockly.JavaScript['openGLMatrix_multiplied'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  var code = openGLMatrixIdentifier + '.multiplied(' + matrix1 + ', ' + matrix2 + ')';
+  var code = openGLMatrixIdentifierForJavaScript + '.multiplied(' + matrix1 + ', ' + matrix2 + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['openGLMatrix_multiplied'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  var code = matrix1 + '.multiplied(' + matrix2 + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['openGLMatrix_multiply'] = {
@@ -667,5 +1010,13 @@ Blockly.JavaScript['openGLMatrix_multiply'] = function(block) {
       block, 'MATRIX1', Blockly.JavaScript.ORDER_COMMA);
   var matrix2 = Blockly.JavaScript.valueToCode(
       block, 'MATRIX2', Blockly.JavaScript.ORDER_COMMA);
-  return openGLMatrixIdentifier + '.multiply(' + matrix1 + ', ' + matrix2 + ');\n';
+  return openGLMatrixIdentifierForJavaScript + '.multiply(' + matrix1 + ', ' + matrix2 + ');\n';
+};
+
+Blockly.FtcJava['openGLMatrix_multiply'] = function(block) {
+  var matrix1 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX1', Blockly.FtcJava.ORDER_MEMBER);
+  var matrix2 = Blockly.FtcJava.valueToCode(
+      block, 'MATRIX2', Blockly.FtcJava.ORDER_NONE);
+  return matrix1 + '.multiply(' + matrix2 + ');\n';
 };

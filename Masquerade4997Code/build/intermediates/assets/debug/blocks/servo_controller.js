@@ -20,11 +20,12 @@ Blockly.Blocks['servoController_getProperty'] = {
         .appendField(createServoControllerDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['PwmStatus', 'Returns the enablement status of the collective set of servos connected ' +
-            'to this controller.'],
+        ['PwmStatus', 'Returns the PwmStatus status of the set of servos connected to this ' +
+            'controller: ENABLED, DISABLED, or MIXED.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -35,7 +36,6 @@ Blockly.Blocks['servoController_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -46,21 +46,29 @@ Blockly.JavaScript['servoController_getProperty'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+Blockly.FtcJava['servoController_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ServoController');
+  var property = block.getFieldValue('PROP');
+  var code = identifier + '.get' + property + '()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+};
+
 Blockly.Blocks['servoController_getProperty_PwmStatus'] = {
   init: function() {
     var PROPERTY_CHOICES = [
         ['PwmStatus', 'PwmStatus'],
     ];
-    this.setOutput(true, 'PwmStatus');
+    this.setOutput(true, 'ServoController.PwmStatus');
     this.appendDummyInput()
         .appendField(createServoControllerDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['PwmStatus', 'Returns the enablement status of the collective set of servos connected ' +
-            'to this controller.'],
+        ['PwmStatus', 'Returns the PwmStatus status of the set of servos connected to this ' +
+            'controller: ENABLED, DISABLED, or MIXED.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -71,12 +79,14 @@ Blockly.Blocks['servoController_getProperty_PwmStatus'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['servoController_getProperty_PwmStatus'] =
     Blockly.JavaScript['servoController_getProperty'];
+
+Blockly.FtcJava['servoController_getProperty_PwmStatus'] =
+    Blockly.FtcJava['servoController_getProperty'];
 
 // Enums
 
@@ -92,6 +102,7 @@ Blockly.Blocks['servoController_enum_pwmStatus'] = {
         .appendField(createNonEditableField('PwmStatus'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PWM_STATUS_CHOICES), 'PWM_STATUS');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -108,13 +119,18 @@ Blockly.Blocks['servoController_enum_pwmStatus'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['servoController_enum_pwmStatus'] = function(block) {
   var code = '"' + block.getFieldValue('PWM_STATUS') + '"';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.FtcJava['servoController_enum_pwmStatus'] = function(block) {
+  var code = 'ServoController.PwmStatus.' + block.getFieldValue('PWM_STATUS');
+  Blockly.FtcJava.generateImport_('ServoController');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };
 
 Blockly.Blocks['servoController_typedEnum_pwmStatus'] = {
@@ -124,11 +140,12 @@ Blockly.Blocks['servoController_typedEnum_pwmStatus'] = {
         ['DISABLED', 'DISABLED'],
         ['MIXED', 'MIXED'],
     ];
-    this.setOutput(true, 'PwmStatus');
+    this.setOutput(true, 'ServoController.PwmStatus');
     this.appendDummyInput()
         .appendField(createNonEditableField('PwmStatus'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PWM_STATUS_CHOICES), 'PWM_STATUS');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -145,12 +162,14 @@ Blockly.Blocks['servoController_typedEnum_pwmStatus'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['servoController_typedEnum_pwmStatus'] =
     Blockly.JavaScript['servoController_enum_pwmStatus'];
+
+Blockly.FtcJava['servoController_typedEnum_pwmStatus'] =
+    Blockly.FtcJava['servoController_enum_pwmStatus'];
 
 // Functions
 
@@ -173,6 +192,11 @@ Blockly.JavaScript['servoController_pwmEnable'] = function(block) {
   return identifier + '.pwmEnable();\n';
 };
 
+Blockly.FtcJava['servoController_pwmEnable'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ServoController');
+  return identifier + '.pwmEnable();\n';
+};
+
 Blockly.Blocks['servoController_pwmDisable'] = {
   init: function() {
     this.appendDummyInput()
@@ -189,5 +213,10 @@ Blockly.Blocks['servoController_pwmDisable'] = {
 
 Blockly.JavaScript['servoController_pwmDisable'] = function(block) {
   var identifier = block.getFieldValue('IDENTIFIER');
+  return identifier + '.pwmDisable();\n';
+};
+
+Blockly.FtcJava['servoController_pwmDisable'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ServoController');
   return identifier + '.pwmDisable();\n';
 };

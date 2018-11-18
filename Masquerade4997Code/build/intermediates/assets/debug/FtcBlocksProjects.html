@@ -20,6 +20,7 @@
   <script type="text/javascript" src="blockly/msg/messages.js"></script>
   <script type="text/javascript" src="blockly/blocks_compressed.js"></script>
   <script type="text/javascript" src="blockly/javascript_compressed.js"></script>
+  <script type="text/javascript" src="ftcblockly/generators/ftcjava.js"></script>
 
   <script type="text/javascript" src="server"></script>
 
@@ -42,6 +43,7 @@
   <script type="text/javascript" src="blocks/dbg_log.js"></script>
   <script type="text/javascript" src="blocks/dc_motor.js"></script>
   <script type="text/javascript" src="blocks/digital_channel.js"></script>
+  <script type="text/javascript" src="blocks/distance_sensor.js"></script>
   <script type="text/javascript" src="blocks/elapsed_time.js"></script>
   <script type="text/javascript" src="blocks/elapsed_time2.js"></script>
   <script type="text/javascript" src="blocks/gamepad.js"></script>
@@ -61,15 +63,20 @@
   <script type="text/javascript" src="blocks/open_gl_matrix.js"></script>
   <script type="text/javascript" src="blocks/optical_distance_sensor.js"></script>
   <script type="text/javascript" src="blocks/orientation.js"></script>
+  <script type="text/javascript" src="blocks/pidf_coefficients.js"></script>
   <script type="text/javascript" src="blocks/position.js"></script>
   <script type="text/javascript" src="blocks/project_util.js"></script>
   <script type="text/javascript" src="blocks/quaternion.js"></script>
   <script type="text/javascript" src="blocks/range.js"></script>
+  <script type="text/javascript" src="blocks/rev_blinkin_led_driver.js"></script>
   <script type="text/javascript" src="blocks/servo.js"></script>
   <script type="text/javascript" src="blocks/servo_controller.js"></script>
   <script type="text/javascript" src="blocks/system.js"></script>
   <script type="text/javascript" src="blocks/telemetry.js"></script>
   <script type="text/javascript" src="blocks/temperature.js"></script>
+  <script type="text/javascript" src="blocks/tfod.js"></script>
+  <script type="text/javascript" src="blocks/tfod_recognition.js"></script>
+  <script type="text/javascript" src="blocks/tfod_rover_ruckus.js"></script>
   <script type="text/javascript" src="blocks/toolbox_util.js"></script>
   <script type="text/javascript" src="blocks/touch_sensor.js"></script>
   <script type="text/javascript" src="blocks/ultrasonic_sensor.js"></script>
@@ -80,6 +87,8 @@
   <script type="text/javascript" src="blocks/vuforia.js"></script>
   <script type="text/javascript" src="blocks/vuforia_localizer.js"></script>
   <script type="text/javascript" src="blocks/vuforia_localizer_parameters.js"></script>
+  <script type="text/javascript" src="blocks/vuforia_relic_recovery.js"></script>
+  <script type="text/javascript" src="blocks/vuforia_rover_ruckus.js"></script>
   <script type="text/javascript" src="blocks/vuforia_trackable.js"></script>
   <script type="text/javascript" src="blocks/vuforia_trackable_default_listener.js"></script>
   <script type="text/javascript" src="blocks/vuforia_trackables.js"></script>
@@ -190,7 +199,7 @@
 <script type="text/javascript">
   // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
   // function isValidProjectName
-  // function addReservedWordsForHardware
+  // function addReservedWordsForIdentifiersForJavaScript
   var projects = [];
   var checkedProjects = [];
   var sortByName = false;
@@ -229,7 +238,7 @@
     initializeProjects();
     initializeSamples();
   }
- 
+
   function initializeProjects() {
     projects = [];
     fetchProjects(function(jsonProjects, errorMessage) {
@@ -383,6 +392,7 @@
     document.getElementById('newProjectSamplesArea').style.visibility =
         (select.options.length > 1) ? 'visible' : 'hidden';
     document.getElementById('newProjectNameDialog').style.display = 'block';
+    document.getElementById('newProjectName').focus();
   }
 
   function cancelNewProjectNameDialog() {
@@ -509,8 +519,11 @@
     var jsFileContent = '';
     try {
       var workspace = new Blockly.Workspace();
+      // For consistency with previous versions, we explicitly set oneBasedIndex to true.
+      workspace.options.oneBasedIndex = true;
       Blockly.Xml.domToWorkspace(dom, workspace);
-      addReservedWordsForHardware();
+      Blockly.JavaScript.addReservedWords('callRunOpMode');
+      addReservedWordsForIdentifiersForJavaScript();
       jsFileContent = Blockly.JavaScript.workspaceToCode(workspace);
     } catch (e) {
       errorElement.innerHTML = 'Error: Could not generate code for blocks. ' + e;
@@ -534,12 +547,13 @@
 
   function renameProjectButtonClicked() {
     // Show modal dialog asking for project name.
-    document.getElementById('newProjectName').value = '';
+    document.getElementById('newProjectName').value = projects[checkedProjects[0]].name;
     document.getElementById('newProjectNameError').innerHTML = '';
     newProjectNameDialogMode = NEW_PROJECT_NAME_DIALOG_MODE_RENAME_PROJECT;
     document.getElementById('newProjectNameDialogTitle').innerHTML = 'Rename Selected Op Mode';
     document.getElementById('newProjectSamplesArea').style.visibility = 'hidden';
     document.getElementById('newProjectNameDialog').style.display = 'block';
+    document.getElementById('newProjectName').focus();
   }
 
   function renameProjectOk(oldProjectName, newProjectName) {
@@ -556,12 +570,13 @@
 
   function copyProjectButtonClicked() {
     // Show modal dialog asking for project name.
-    document.getElementById('newProjectName').value = '';
+    document.getElementById('newProjectName').value = projects[checkedProjects[0]].name;
     document.getElementById('newProjectNameError').innerHTML = '';
     newProjectNameDialogMode = NEW_PROJECT_NAME_DIALOG_MODE_COPY_PROJECT;
     document.getElementById('newProjectNameDialogTitle').innerHTML = 'Copy Selected Op Mode';
     document.getElementById('newProjectSamplesArea').style.visibility = 'hidden';
     document.getElementById('newProjectNameDialog').style.display = 'block';
+    document.getElementById('newProjectName').focus();
   }
 
   function copyProjectOk(oldProjectName, newProjectName) {

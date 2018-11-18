@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// magneticFluxIdentifier
+// magneticFluxIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // getPropertyColor
@@ -30,10 +30,10 @@ Blockly.Blocks['magneticFlux_getProperty'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['X', 'The X of the given MagneticFlux object.'],
-        ['Y', 'The Y of the given MagneticFlux object.'],
-        ['Z', 'The Z of the given MagneticFlux object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given MagneticFlux object.'],
+        ['X', 'Returns the X of the given MagneticFlux object.'],
+        ['Y', 'Returns the Y of the given MagneticFlux object.'],
+        ['Z', 'Returns the Z of the given MagneticFlux object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given MagneticFlux object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -51,8 +51,16 @@ Blockly.JavaScript['magneticFlux_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var magneticFlux = Blockly.JavaScript.valueToCode(
       block, 'MAGNETIC_FLUX', Blockly.JavaScript.ORDER_NONE);
-  var code = magneticFluxIdentifier + '.get' + property + '(' + magneticFlux + ')';
+  var code = magneticFluxIdentifierForJavaScript + '.get' + property + '(' + magneticFlux + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['magneticFlux_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  var magneticFlux = Blockly.FtcJava.valueToCode(
+      block, 'MAGNETIC_FLUX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = magneticFlux + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property);
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };
 
 Blockly.Blocks['magneticFlux_getProperty_Number'] = {
@@ -72,13 +80,13 @@ Blockly.Blocks['magneticFlux_getProperty_Number'] = {
         .appendField('magneticFlux')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['X', 'The X of the given MagneticFlux object.'],
-        ['Y', 'The Y of the given MagneticFlux object.'],
-        ['Z', 'The Z of the given MagneticFlux object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given MagneticFlux object.'],
+        ['X', 'Returns the X of the given MagneticFlux object.'],
+        ['Y', 'Returns the Y of the given MagneticFlux object.'],
+        ['Z', 'Returns the Z of the given MagneticFlux object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given MagneticFlux object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -89,11 +97,27 @@ Blockly.Blocks['magneticFlux_getProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'X':
+        case 'Y':
+        case 'Z':
+          return 'double';
+        case 'AcquisitionTime':
+          return 'long';
+        default:
+          throw 'Unexpected property ' + property + ' (magneticFlux_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['magneticFlux_getProperty_Number'] =
     Blockly.JavaScript['magneticFlux_getProperty'];
+
+Blockly.FtcJava['magneticFlux_getProperty_Number'] =
+    Blockly.FtcJava['magneticFlux_getProperty'];
 
 
 // Functions
@@ -105,13 +129,19 @@ Blockly.Blocks['magneticFlux_create'] = {
         .appendField('new')
         .appendField(createNonEditableField('MagneticFlux'));
     this.setColour(functionColor);
-    this.setTooltip('Create a new MagneticFlux object.');
+    this.setTooltip('Creates a new MagneticFlux object.');
   }
 };
 
 Blockly.JavaScript['magneticFlux_create'] = function(block) {
-  var code = magneticFluxIdentifier + '.create()';
+  var code = magneticFluxIdentifierForJavaScript + '.create()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['magneticFlux_create'] = function(block) {
+  var code = 'new MagneticFlux()';
+  Blockly.FtcJava.generateImport_('MagneticFlux');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['magneticFlux_create_withArgs'] = {
@@ -133,7 +163,18 @@ Blockly.Blocks['magneticFlux_create_withArgs'] = {
         .appendField('acquisitionTime')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new MagneticFlux object.');
+    this.setTooltip('Creates a new MagneticFlux object.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'X':
+        case 'Y':
+        case 'Z':
+          return 'double';
+        case 'ACQUISITION_TIME':
+          return 'long';
+      }
+      return '';
+    };
   }
 };
 
@@ -146,9 +187,23 @@ Blockly.JavaScript['magneticFlux_create_withArgs'] = function(block) {
       block, 'Z', Blockly.JavaScript.ORDER_COMMA);
   var acquisitionTime = Blockly.JavaScript.valueToCode(
       block, 'ACQUISITION_TIME', Blockly.JavaScript.ORDER_COMMA);
-  var code = magneticFluxIdentifier + '.create_withArgs(' + x + ', ' + y + ', ' + z + ', ' +
+  var code = magneticFluxIdentifierForJavaScript + '.create_withArgs(' + x + ', ' + y + ', ' + z + ', ' +
       acquisitionTime + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['magneticFlux_create_withArgs'] = function(block) {
+  var x = Blockly.FtcJava.valueToCode(
+      block, 'X', Blockly.FtcJava.ORDER_COMMA);
+  var y = Blockly.FtcJava.valueToCode(
+      block, 'Y', Blockly.FtcJava.ORDER_COMMA);
+  var z = Blockly.FtcJava.valueToCode(
+      block, 'Z', Blockly.FtcJava.ORDER_COMMA);
+  var acquisitionTime = Blockly.FtcJava.valueToCode(
+      block, 'ACQUISITION_TIME', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'new MagneticFlux(' + x + ', ' + y + ', ' + z + ', ' + acquisitionTime + ')';
+  Blockly.FtcJava.generateImport_('MagneticFlux');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['magneticFlux_toText'] = {
@@ -163,13 +218,20 @@ Blockly.Blocks['magneticFlux_toText'] = {
         .appendField('magneticFlux')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Returns a text representation of the given magneticFlux.');
+    this.setTooltip('Returns a text representation of the given MagneticFlux object.');
   }
 };
 
 Blockly.JavaScript['magneticFlux_toText'] = function(block) {
   var magneticFlux = Blockly.JavaScript.valueToCode(
       block, 'MAGNETIC_FLUX', Blockly.JavaScript.ORDER_NONE);
-  var code = magneticFluxIdentifier + '.toText(' + magneticFlux + ')';
+  var code = magneticFluxIdentifierForJavaScript + '.toText(' + magneticFlux + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['magneticFlux_toText'] = function(block) {
+  var magneticFlux = Blockly.FtcJava.valueToCode(
+      block, 'MAGNETIC_FLUX', Blockly.FtcJava.ORDER_MEMBER);
+  var code = magneticFlux + '.toString()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

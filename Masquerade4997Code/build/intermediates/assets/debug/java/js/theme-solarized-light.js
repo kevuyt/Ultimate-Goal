@@ -4,18 +4,18 @@ exports.isDark = false;
 exports.cssClass = "ace-solarized-light";
 exports.cssText = ".ace-solarized-light .ace_gutter {\
 background: #fbf1d3;\
-color: #333 !important;\
+color: #333\
 }\
 .ace-solarized-light .ace_print-margin {\
 width: 1px;\
 background: #e8e8e8\
 }\
 .ace-solarized-light {\
-background-color: #FDF6E3;\
-color: #586E75 !important;\
+background-color: #FDF6E3 !important;\
+color: #586E75\
 }\
 .ace-solarized-light .ace_cursor {\
-color: #000000 !important;\
+color: #000000\
 }\
 .ace-solarized-light .ace_marker-layer .ace_selection {\
 background: rgba(7, 54, 67, 0.09)\
@@ -40,26 +40,26 @@ background-color : #EDE5C1\
 border: 1px solid #073642\
 }\
 .ace-solarized-light .ace_invisible {\
-color: rgba(147, 161, 161, 0.50) !important;\
+color: rgba(147, 161, 161, 0.50)\
 }\
 .ace-solarized-light .ace_keyword,\
 .ace-solarized-light .ace_meta,\
 .ace-solarized-light .ace_support.ace_class,\
 .ace-solarized-light .ace_support.ace_type {\
-color: #859900 !important;\
+color: #859900\
 }\
 .ace-solarized-light .ace_constant.ace_character,\
 .ace-solarized-light .ace_constant.ace_other {\
-color: #CB4B16 !important;\
+color: #CB4B16\
 }\
 .ace-solarized-light .ace_constant.ace_language {\
-color: #B58900 !important;\
+color: #B58900\
 }\
 .ace-solarized-light .ace_constant.ace_numeric {\
-color: #D33682 !important;\
+color: #D33682\
 }\
 .ace-solarized-light .ace_fold {\
-background-color: #268BD2;\
+background-color: #268BD2 !important;\
 border-color: #586E75\
 }\
 .ace-solarized-light .ace_entity.ace_name.ace_function,\
@@ -67,20 +67,20 @@ border-color: #586E75\
 .ace-solarized-light .ace_support.ace_function,\
 .ace-solarized-light .ace_variable,\
 .ace-solarized-light .ace_variable.ace_language {\
-color: #268BD2 !important;\
+color: #268BD2\
 }\
 .ace-solarized-light .ace_storage {\
-color: #073642 !important;\
+color: #073642\
 }\
 .ace-solarized-light .ace_string {\
-color: #2AA198 !important;\
+color: #2AA198\
 }\
 .ace-solarized-light .ace_string.ace_regexp {\
-color: #D30102 !important;\
+color: #D30102\
 }\
 .ace-solarized-light .ace_comment,\
 .ace-solarized-light .ace_entity.ace_other.ace_attribute-name {\
-color: #93A1A1 !important;\
+color: #93A1A1\
 }\
 .ace-solarized-light .ace_indent-guide {\
 background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYHjy8NJ/AAjgA5fzQUmBAAAAAElFTkSuQmCC) right repeat-y\
@@ -89,3 +89,11 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgb
 var dom = require("../lib/dom");
 dom.importCssString(exports.cssText, exports.cssClass);
 });
+                (function() {
+                    window.require(["ace/theme/solarized_light"], function(m) {
+                        if (typeof module == "object" && typeof exports == "object" && module) {
+                            module.exports = m;
+                        }
+                    });
+                })();
+            

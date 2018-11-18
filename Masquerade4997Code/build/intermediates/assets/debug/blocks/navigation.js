@@ -4,7 +4,7 @@
  */
 
 // The following are defined in vars.js:
-// navigationIdentifier
+// navigationIdentifierForJavaScript
 // getPropertyColor
 // functionColor
 
@@ -46,11 +46,20 @@ Blockly.JavaScript['navigation_enum_angleUnit'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['navigation_enum_angleUnit'] = function(block) {
+  var code = 'AngleUnit.' + block.getFieldValue('ANGLE_UNIT');
+  Blockly.FtcJava.generateImport_('AngleUnit');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['navigation_typedEnum_angleUnit'] =
     Blockly.Blocks['navigation_enum_angleUnit'];
 
 Blockly.JavaScript['navigation_typedEnum_angleUnit'] =
     Blockly.JavaScript['navigation_enum_angleUnit'];
+
+Blockly.FtcJava['navigation_typedEnum_angleUnit'] =
+    Blockly.FtcJava['navigation_enum_angleUnit'];
 
 Blockly.Blocks['navigation_angleUnit_normalize'] = {
   init: function() {
@@ -69,6 +78,16 @@ Blockly.Blocks['navigation_angleUnit_normalize'] = {
     this.setColour(functionColor);
     this.setTooltip('Normalizes the given angle to the range of [-180,+180) ' +
         'degrees or [-\u03c0,+\u03c0) radians.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'ANGLE':
+          return 'double';
+      }
+      return '';
+    };
+    this.getFtcJavaOutputType = function() {
+      return 'double';
+    };
   }
 };
 
@@ -77,8 +96,18 @@ Blockly.JavaScript['navigation_angleUnit_normalize'] = function(block) {
       block, 'ANGLE', Blockly.JavaScript.ORDER_COMMA);
   var angleUnit = Blockly.JavaScript.valueToCode(
       block, 'ANGLE_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  var code = navigationIdentifier + '.angleUnit_normalize(' + angle + ', ' + angleUnit + ')';
+  var code = navigationIdentifierForJavaScript + '.angleUnit_normalize(' + angle + ', ' + angleUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['navigation_angleUnit_normalize'] = function(block) {
+  var angle = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE', Blockly.FtcJava.ORDER_NONE);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_MEMBER);
+  var code = angleUnit + '.normalize(' + angle + ')';
+  Blockly.FtcJava.generateImport_('AngleUnit');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['navigation_angleUnit_convert'] = {
@@ -103,6 +132,7 @@ Blockly.Blocks['navigation_angleUnit_convert'] = {
         .appendField('to')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['angleUnit', 'Converts the given angle and normalizes it to the range of [-180,+180) ' +
@@ -118,6 +148,16 @@ Blockly.Blocks['navigation_angleUnit_convert'] = {
       }
       return '';
     });
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'ANGLE':
+          return 'double';
+      }
+      return '';
+    };
+    this.getFtcJavaOutputType = function() {
+      return 'double';
+    };
   }
 };
 
@@ -129,9 +169,46 @@ Blockly.JavaScript['navigation_angleUnit_convert'] = function(block) {
       block, 'FROM_ANGLE_UNIT', Blockly.JavaScript.ORDER_COMMA);
   var toAngleUnit = Blockly.JavaScript.valueToCode(
       block, 'TO_ANGLE_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  var code = navigationIdentifier + '.' + angleUnitType + '_convert(' +
+  var code = navigationIdentifierForJavaScript + '.' + angleUnitType + '_convert(' +
       angle + ', ' + fromAngleUnit + ', ' + toAngleUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['navigation_angleUnit_convert'] = function(block) {
+  var angleUnitType = block.getFieldValue('ANGLE_UNIT_TYPE');
+  var toAngleUnit = Blockly.FtcJava.valueToCode(
+      block, 'TO_ANGLE_UNIT', Blockly.FtcJava.ORDER_MEMBER);
+  fromAngleUnit = Blockly.FtcJava.valueToCode(
+      block, 'FROM_ANGLE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var angle = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE', Blockly.FtcJava.ORDER_COMMA);
+  var fromAngleUnit;
+  var code;
+  switch (angleUnitType) {
+    case 'angleUnit':
+      code = toAngleUnit + '.fromUnit(' + fromAngleUnit + ', ' + angle + ')';
+      Blockly.FtcJava.generateImport_('AngleUnit');
+      break;
+    case 'unnormalizedAngleUnit':
+      if (toAngleUnit.startsWith('AngleUnit.')) {
+        toAngleUnit = 'Unnormalized' + toAngleUnit;
+      } else {
+        toAngleUnit += '.getUnnormalized()';
+      }
+      if (fromAngleUnit.startsWith('AngleUnit.')) {
+        fromAngleUnit = 'Unnormalized' + fromAngleUnit;
+      } else {
+        fromAngleUnit = Blockly.FtcJava.valueToCode(
+            block, 'FROM_ANGLE_UNIT', Blockly.FtcJava.ORDER_MEMBER) +
+            '.getUnnormalized()';
+      }
+      code = toAngleUnit + '.fromUnit(' + fromAngleUnit + ', ' + angle + ')';
+      Blockly.FtcJava.generateImport_('AngleUnit');
+      break;
+    default:
+      throw 'Unexpected AngleUnit type ' + angleUnitType + ' (navigation_angleUnit_convert).';
+  }
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 // AxesOrder
@@ -190,11 +267,20 @@ Blockly.JavaScript['navigation_enum_axesOrder'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['navigation_enum_axesOrder'] = function(block) {
+  var code = 'AxesOrder.' + block.getFieldValue('AXES_ORDER');
+  Blockly.FtcJava.generateImport_('AxesOrder');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['navigation_typedEnum_axesOrder'] =
     Blockly.Blocks['navigation_enum_axesOrder'];
 
 Blockly.JavaScript['navigation_typedEnum_axesOrder'] =
     Blockly.JavaScript['navigation_enum_axesOrder'];
+
+Blockly.FtcJava['navigation_typedEnum_axesOrder'] =
+    Blockly.FtcJava['navigation_enum_axesOrder'];
 
 // AxesReference
 Blockly.Blocks['navigation_enum_axesReference'] = {
@@ -232,11 +318,20 @@ Blockly.JavaScript['navigation_enum_axesReference'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['navigation_enum_axesReference'] = function(block) {
+  var code = 'AxesReference.' + block.getFieldValue('AXES_REFERENCE');
+  Blockly.FtcJava.generateImport_('AxesReference');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['navigation_typedEnum_axesReference'] =
     Blockly.Blocks['navigation_enum_axesReference'];
 
 Blockly.JavaScript['navigation_typedEnum_axesReference'] =
     Blockly.JavaScript['navigation_enum_axesReference'];
+
+Blockly.FtcJava['navigation_typedEnum_axesReference'] =
+    Blockly.FtcJava['navigation_enum_axesReference'];
 
 // CameraDirection
 Blockly.Blocks['navigation_enum_cameraDirection'] = {
@@ -245,7 +340,7 @@ Blockly.Blocks['navigation_enum_cameraDirection'] = {
         ['BACK', 'BACK'],
         ['FRONT', 'FRONT'],
     ];
-    this.setOutput(true, 'CameraDirection');
+    this.setOutput(true, 'VuforiaLocalizer.CameraDirection');
     this.appendDummyInput()
         .appendField(createNonEditableField('CameraDirection'))
         .appendField('.')
@@ -274,11 +369,45 @@ Blockly.JavaScript['navigation_enum_cameraDirection'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['navigation_enum_cameraDirection'] = function(block) {
+  var code = 'VuforiaLocalizer.CameraDirection.' + block.getFieldValue('CAMERA_DIRECTION');
+  Blockly.FtcJava.generateImport_('VuforiaLocalizer');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['navigation_typedEnum_cameraDirection'] =
     Blockly.Blocks['navigation_enum_cameraDirection'];
 
 Blockly.JavaScript['navigation_typedEnum_cameraDirection'] =
     Blockly.JavaScript['navigation_enum_cameraDirection'];
+
+Blockly.FtcJava['navigation_typedEnum_cameraDirection'] =
+    Blockly.FtcJava['navigation_enum_cameraDirection'];
+
+// WebcamName
+Blockly.Blocks['navigation_webcamName'] = {
+  init: function() {
+    this.setOutput(true, 'WebcamName');
+    this.appendDummyInput()
+        .appendField(createNonEditableField('webcam named'))
+        .appendField(createWebcamDeviceNameDropdown(), 'WEBCAM_NAME');
+    this.setColour(getPropertyColor);
+    this.setTooltip('A webcam.');
+  }
+};
+
+Blockly.JavaScript['navigation_webcamName'] = function(block) {
+  // For javascript, we generate the device name of the webcam as a string.
+  var code = '"' + block.getFieldValue('WEBCAM_NAME') + '"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.FtcJava['navigation_webcamName'] = function(block) {
+  // For java, we generate code to retrieved the WebcamName from the hardwareMap.
+  var code = 'hardwareMap.get(WebcamName.class, "' + block.getFieldValue('WEBCAM_NAME') + '")';
+  Blockly.FtcJava.generateImport_('WebcamName');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+};
 
 // CameraMonitorFeedback
 Blockly.Blocks['navigation_enum_cameraMonitorFeedback'] = {
@@ -290,7 +419,7 @@ Blockly.Blocks['navigation_enum_cameraMonitorFeedback'] = {
         ['TEAPOT', 'TEAPOT'],
         ['BUILDINGS', 'BUILDINGS'],
     ];
-    this.setOutput(true, 'CameraMonitorFeedback');
+    this.setOutput(true, 'VuforiaLocalizer.Parameters.CameraMonitorFeedback');
     this.appendDummyInput()
         .appendField(createNonEditableField('CameraMonitorFeedback'))
         .appendField('.')
@@ -322,11 +451,24 @@ Blockly.JavaScript['navigation_enum_cameraMonitorFeedback'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['navigation_enum_cameraMonitorFeedback'] = function(block) {
+  var cameraMonitorFeedback = block.getFieldValue('CAMERA_MONITOR_FEEDBACK');
+  if (cameraMonitorFeedback == 'DEFAULT') {
+    return ['null', Blockly.FtcJava.ORDER_ATOMIC];
+  }
+  var code = 'VuforiaLocalizer.Parameters.CameraMonitorFeedback.' + cameraMonitorFeedback;
+  Blockly.FtcJava.generateImport_('VuforiaLocalizer');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['navigation_typedEnum_cameraMonitorFeedback'] =
     Blockly.Blocks['navigation_enum_cameraMonitorFeedback'];
 
 Blockly.JavaScript['navigation_typedEnum_cameraMonitorFeedback'] =
     Blockly.JavaScript['navigation_enum_cameraMonitorFeedback'];
+
+Blockly.FtcJava['navigation_typedEnum_cameraMonitorFeedback'] =
+    Blockly.FtcJava['navigation_enum_cameraMonitorFeedback'];
 
 // DistanceUnit
 Blockly.Blocks['navigation_enum_distanceUnit'] = {
@@ -368,11 +510,20 @@ Blockly.JavaScript['navigation_enum_distanceUnit'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['navigation_enum_distanceUnit'] = function(block) {
+  var code = 'DistanceUnit.' + block.getFieldValue('DISTANCE_UNIT');
+  Blockly.FtcJava.generateImport_('DistanceUnit');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['navigation_typedEnum_distanceUnit'] =
     Blockly.Blocks['navigation_enum_distanceUnit'];
 
 Blockly.JavaScript['navigation_typedEnum_distanceUnit'] =
     Blockly.JavaScript['navigation_enum_distanceUnit'];
+
+Blockly.FtcJava['navigation_typedEnum_distanceUnit'] =
+    Blockly.FtcJava['navigation_enum_distanceUnit'];
 
 // TempUnit
 Blockly.Blocks['navigation_enum_tempUnit'] = {
@@ -412,11 +563,20 @@ Blockly.JavaScript['navigation_enum_tempUnit'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['navigation_enum_tempUnit'] = function(block) {
+  var code = 'TempUnit.' + block.getFieldValue('TEMP_UNIT');
+  Blockly.FtcJava.generateImport_('TempUnit');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['navigation_typedEnum_tempUnit'] =
     Blockly.Blocks['navigation_enum_tempUnit'];
 
 Blockly.JavaScript['navigation_typedEnum_tempUnit'] =
     Blockly.JavaScript['navigation_enum_tempUnit'];
+
+Blockly.FtcJava['navigation_typedEnum_tempUnit'] =
+    Blockly.FtcJava['navigation_enum_tempUnit'];
 
 // Axis
 Blockly.Blocks['navigation_typedEnum_axis'] = {
@@ -454,4 +614,10 @@ Blockly.Blocks['navigation_typedEnum_axis'] = {
 Blockly.JavaScript['navigation_typedEnum_axis'] = function(block) {
   var code = '"' + block.getFieldValue('AXIS') + '"';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.FtcJava['navigation_typedEnum_axis'] = function(block) {
+  var code = 'Axis.' + block.getFieldValue('AXIS');
+  Blockly.FtcJava.generateImport_('Axis');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };

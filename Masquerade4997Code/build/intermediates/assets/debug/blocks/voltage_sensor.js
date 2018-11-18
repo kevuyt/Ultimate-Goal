@@ -18,10 +18,11 @@ Blockly.Blocks['voltageSensor_getProperty'] = {
         .appendField(createVoltageSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Voltage', 'Get the voltage.'],
+        ['Voltage', 'Returns the voltage.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -32,7 +33,6 @@ Blockly.Blocks['voltageSensor_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -41,6 +41,13 @@ Blockly.JavaScript['voltageSensor_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var code = identifier + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['voltageSensor_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'VoltageSensor');
+  var property = block.getFieldValue('PROP');
+  var code = identifier + '.get' + property + '()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['voltageSensor_getProperty_Number'] = {
@@ -53,10 +60,11 @@ Blockly.Blocks['voltageSensor_getProperty_Number'] = {
         .appendField(createVoltageSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Voltage', 'Get the voltage.'],
+        ['Voltage', 'Returns the voltage.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -67,9 +75,20 @@ Blockly.Blocks['voltageSensor_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'voltage':
+          return 'double';
+        default:
+          throw 'Unexpected property ' + property + ' (voltageSensor_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['voltageSensor_getProperty_Number'] =
     Blockly.JavaScript['voltageSensor_getProperty'];
+
+Blockly.FtcJava['voltageSensor_getProperty_Number'] =
+    Blockly.FtcJava['voltageSensor_getProperty'];

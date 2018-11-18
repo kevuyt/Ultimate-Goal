@@ -1,13 +1,13 @@
 importScripts('worker-base.js');
 
 // load nodejs compatible require
-const ace_require = require;
-require = undefined;
-importScripts('require.js');
-const antlr4_require = require;
+ace_require = require;
+// require = undefined;
+// importScripts('require.js');
+// antlr4_require = require;
 require = ace_require;
 
-ace.define('ace/worker/java-worker',["require","exports","module","ace/lib/oop","ace/worker/mirror"], function(require, exports) {
+ace.define('ace/mode/java_worker',["require","exports","module","ace/lib/oop","ace/worker/mirror"], function(require, exports) {
     "use strict";
 
     const oop = require("ace/lib/oop");
@@ -26,11 +26,10 @@ ace.define('ace/worker/java-worker',["require","exports","module","ace/lib/oop",
         var antlr4, javaAntlr;
         var TerminalNode, TerminalNodeImpl, ClassDeclarationContext, PackageDeclarationContext, QualifiedNameContext, TypeTypeContext, TypeListContext, FormalParameterContext, FormalParameterListContext;
         try {
-            require = antlr4_require;
-            antlr4 = require('java/js/antlr4/index');
+            javaAntlr = require('java/java.js');
+            antlr4 = javaAntlr.antlr4;
             TerminalNode = antlr4.tree.Tree.TerminalNode;
             TerminalNodeImpl = antlr4.tree.Tree.TerminalNodeImpl;
-            javaAntlr = require('java/js/java/index');
             ClassDeclarationContext = javaAntlr.JavaParser.ClassDeclarationContext;
             PackageDeclarationContext = javaAntlr.JavaParser.PackageDeclarationContext;
             QualifiedNameContext = javaAntlr.JavaParser.QualifiedNameContext;
@@ -297,7 +296,7 @@ ace.define('ace/worker/java-worker',["require","exports","module","ace/lib/oop",
             return variableScopePicture;
         }
 
-        return function (input) {
+        return function inferErrorAnnotations(input) {
             const stream = antlr4.CharStreams.fromString(input);
             const lexer = new javaAntlr.JavaLexer(stream);
             const tokens = new antlr4.CommonTokenStream(lexer);
@@ -306,13 +305,18 @@ ace.define('ace/worker/java-worker',["require","exports","module","ace/lib/oop",
                 annotations: []
             };
             const listener = new AnnotatingErrorListener(parseResults.annotations);
+            parser.removeParseListeners();
             parser.removeErrorListeners();
             parser.addErrorListener(listener);
             const javaListener = new AceJavaListener();
             parser.addParseListener(javaListener);
 
             parser.buildParseTrees = true;
-            parser.compilationUnit();
+            try {
+                parser.compilationUnit();
+            } catch (e) {
+                // should already be logged via the results we are getting
+            }
             parseResults.imports = javaListener.imports;
             parseResults.typesRequired = javaListener.typesRequired;
             parseResults.tokens = javaListener.tokens;

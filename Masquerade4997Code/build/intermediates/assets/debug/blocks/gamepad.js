@@ -3,10 +3,17 @@
  * @author lizlooney@google.com (Liz Looney)
  */
 
-// The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// createGamepadDropdown
 // The following are defined in vars.js:
+// createFieldDropdown
 // getPropertyColor
+
+function createGamepadDropdown() {
+  var CHOICES = [
+      ['gamepad1', 'gamepad1'],
+      ['gamepad2', 'gamepad2'],
+      ];
+  return createFieldDropdown(CHOICES);
+}
 
 Blockly.Blocks['gamepad_getProperty'] = {
   init: function() {
@@ -39,31 +46,32 @@ Blockly.Blocks['gamepad_getProperty'] = {
         .appendField(createGamepadDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['A', 'The value of the A button: true if pressed, false otherwise.'],
-        ['AtRest', 'Are all analog sticks and triggers in their rest position? True or false.'],
-        ['B', 'The value of the B button: true if pressed, false otherwise.'],
-        ['Back', 'The value of the Back button: true if pressed, false otherwise.'],
-        ['DpadDown', 'The dpad down value: true if pressed, false otherwise.'],
-        ['DpadLeft', 'The dpad left value: true if pressed, false otherwise.'],
-        ['DpadRight', 'The dpad right value: true if pressed, false otherwise.'],
-        ['DpadUp', 'The dpad up value: true if pressed, false otherwise.'],
-        ['Guide', 'The value of the Guide button: true if pressed, false otherwise. The Guide button is often the large button in the middle of the controller.'],
-        ['LeftBumper', 'The left bumper value: true if pressed, false otherwise.'],
-        ['LeftStickButton', 'The value of the left stick button: true if pressed, false otherwise.'],
-        ['LeftStickX', 'The left analog stick horizontal axis value, as a numeric value between -1.0 and +1.0.'],
-        ['LeftStickY', 'The left analog stick vertical axis value, as a numeric value between -1.0 and +1.0.'],
-        ['LeftTrigger', 'The left trigger value, as a numeric value between 0.0 and +1.0.'],
-        ['RightBumper', 'The right bumper value: true if pressed, false otherwise.'],
-        ['RightStickButton', 'The value of the right stick button: true if pressed, false otherwise.'],
-        ['RightStickX', 'The right analog stick horizontal axis value, as a numeric value between -1.0 and +1.0.'],
-        ['RightStickY', 'The right analog stick vertical axis value, as a numeric value between -1.0 and +1.0.'],
-        ['RightTrigger', 'The right trigger value, as a numeric value between 0.0 and +1.0.'],
-        ['Start', 'The value of the Start button: true if pressed, false otherwise.'],
-        ['X', 'The value of the X button: true if pressed, false otherwise.'],
-        ['Y', 'The value of the Y button: true if pressed, false otherwise.'],
+        ['A', 'Returns true if the A button is pressed.'],
+        ['AtRest', 'Returns true if all analog sticks and triggers are in their rest position.'],
+        ['B', 'Returns true if the B button is pressed.'],
+        ['Back', 'Returns true if the Back button is pressed.'],
+        ['DpadDown', 'Returns true if the dpad down button is pressed.'],
+        ['DpadLeft', 'Returns true if the dpad left button is pressed.'],
+        ['DpadRight', 'Returns true if the dpad right button is pressed.'],
+        ['DpadUp', 'Returns true if the dpad up button is pressed.'],
+        ['Guide', 'Returns true if the Guide button is pressed. The Guide button is often the large button in the middle of the controller.'],
+        ['LeftBumper', 'Returns true if the left bumper is pressed.'],
+        ['LeftStickButton', 'Returns true if the left stick button is pressed.'],
+        ['LeftStickX', 'Returns a numeric value between -1.0 and +1.0 representing the left analog stick horizontal axis value.'],
+        ['LeftStickY', 'Returns a numeric value between -1.0 and +1.0 representing the left analog stick vertical axis value.'],
+        ['LeftTrigger', 'Returns a numeric value between 0.0 and +1.0 representing the left trigger value.'],
+        ['RightBumper', 'Returns true if the right bumper is pressed.'],
+        ['RightStickButton', 'Returns true if the right stick button is pressed.'],
+        ['RightStickX', 'Returns a numeric value between -1.0 and +1.0 representing the right analog stick horizontal axis value.'],
+        ['RightStickY', 'Returns a numeric value between -1.0 and +1.0 representing the right analog stick vertical axis value .'],
+        ['RightTrigger', 'Returns a numeric value between 0.0 and +1.0 representing the right trigger value.'],
+        ['Start', 'Returns true if the Start button is pressed.'],
+        ['X', 'Returns true if the X button is pressed.'],
+        ['Y', 'Returns true if the Y button is pressed.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -74,7 +82,6 @@ Blockly.Blocks['gamepad_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -83,6 +90,87 @@ Blockly.JavaScript['gamepad_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var code = identifier + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['gamepad_getProperty'] = function(block) {
+  var identifier = block.getFieldValue('IDENTIFIER');
+  var property = block.getFieldValue('PROP');
+  var code;
+  switch (property) {
+    case 'A':
+      code = 'a';
+      break;
+    case 'AtRest':
+      code = 'atRest()';
+      break;
+    case 'B':
+      code = 'b';
+      break;
+    case 'Back':
+      code = 'back';
+      break;
+    case 'DpadDown':
+      code = 'dpad_down';
+      break;
+    case 'DpadLeft':
+      code = 'dpad_left';
+      break;
+    case 'DpadRight':
+      code = 'dpad_right';
+      break;
+    case 'DpadUp':
+      code = 'dpad_up';
+      break;
+    case 'Guide':
+      code = 'guide';
+      break;
+    case 'LeftBumper':
+      code = 'left_bumper';
+      break;
+    case 'LeftStickButton':
+      code = 'left_stick_button';
+      break;
+    case 'LeftStickX':
+      code = 'left_stick_x';
+      break;
+    case 'LeftStickY':
+      code = 'left_stick_y';
+      break;
+    case 'LeftTrigger':
+      code = 'left_trigger';
+      break;
+    case 'RightBumper':
+      code = 'right_bumper';
+      break;
+    case 'RightStickButton':
+      code = 'right_stick_button';
+      break;
+    case 'RightStickX':
+      code = 'right_stick_x';
+      break;
+    case 'RightStickY':
+      code = 'right_stick_y';
+      break;
+    case 'RightTrigger':
+      code = 'right_trigger';
+      break;
+    case 'Start':
+      code = 'start';
+      break;
+    case 'X':
+      code = 'x';
+      break;
+    case 'Y':
+      code = 'y';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (gamepad_getProperty).';
+  }
+  var code = identifier + '.' + code;
+  if (code.endsWith(')')) { // atRest() is a method.
+    return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+  }
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };
 
 Blockly.Blocks['gamepad_getProperty_Boolean'] = {
@@ -110,25 +198,26 @@ Blockly.Blocks['gamepad_getProperty_Boolean'] = {
         .appendField(createGamepadDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['A', 'The value of the A button: true if pressed, false otherwise.'],
-        ['AtRest', 'Are all analog sticks and triggers in their rest position? True or false.'],
-        ['B', 'The value of the B button: true if pressed, false otherwise.'],
-        ['Back', 'The value of the Back button: true if pressed, false otherwise.'],
-        ['DpadDown', 'The dpad down value: true if pressed, false otherwise.'],
-        ['DpadLeft', 'The dpad left value: true if pressed, false otherwise.'],
-        ['DpadRight', 'The dpad right value: true if pressed, false otherwise.'],
-        ['DpadUp', 'The dpad up value: true if pressed, false otherwise.'],
-        ['Guide', 'The value of the Guide button: true if pressed, false otherwise. The Guide button is often the large button in the middle of the controller.'],
-        ['LeftBumper', 'The left bumper value: true if pressed, false otherwise.'],
-        ['LeftStickButton', 'The value of the left stick button: true if pressed, false otherwise.'],
-        ['RightBumper', 'The right bumper value: true if pressed, false otherwise.'],
-        ['RightStickButton', 'The value of the right stick button: true if pressed, false otherwise.'],
-        ['Start', 'The value of the Start button: true if pressed, false otherwise.'],
-        ['X', 'The value of the X button: true if pressed, false otherwise.'],
-        ['Y', 'The value of the Y button: true if pressed, false otherwise.'],
+        ['A', 'Returns true if the A button is pressed.'],
+        ['AtRest', 'Returns true if all analog sticks and triggers are in their rest position.'],
+        ['B', 'Returns true if the B button is pressed.'],
+        ['Back', 'Returns true if the Back button is pressed.'],
+        ['DpadDown', 'Returns true if the dpad down button is pressed.'],
+        ['DpadLeft', 'Returns true if the dpad left button is pressed.'],
+        ['DpadRight', 'Returns true if the dpad right button is pressed.'],
+        ['DpadUp', 'Returns true if the dpad up button is pressed.'],
+        ['Guide', 'Returns true if the Guide button is pressed. The Guide button is often the large button in the middle of the controller.'],
+        ['LeftBumper', 'Returns true if the left bumper is pressed.'],
+        ['LeftStickButton', 'Returns true if the left stick button is pressed.'],
+        ['RightBumper', 'Returns true if the right bumper is pressed.'],
+        ['RightStickButton', 'Returns true if the right stick button is pressed.'],
+        ['Start', 'Returns true if the Start button is pressed.'],
+        ['X', 'Returns true if the X button is pressed.'],
+        ['Y', 'Returns true if the Y button is pressed.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -139,12 +228,14 @@ Blockly.Blocks['gamepad_getProperty_Boolean'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['gamepad_getProperty_Boolean'] =
     Blockly.JavaScript['gamepad_getProperty'];
+
+Blockly.FtcJava['gamepad_getProperty_Boolean'] =
+    Blockly.FtcJava['gamepad_getProperty'];
 
 
 Blockly.Blocks['gamepad_getProperty_Number'] = {
@@ -162,15 +253,16 @@ Blockly.Blocks['gamepad_getProperty_Number'] = {
         .appendField(createGamepadDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['LeftStickX', 'The left analog stick horizontal axis value, as a numeric value between -1.0 and +1.0.'],
-        ['LeftStickY', 'The left analog stick vertical axis value, as a numeric value between -1.0 and +1.0.'],
-        ['LeftTrigger', 'The left trigger value, as a numeric value between 0.0 and +1.0.'],
-        ['RightStickX', 'The right analog stick horizontal axis value, as a numeric value between -1.0 and +1.0.'],
-        ['RightStickY', 'The right analog stick vertical axis value, as a numeric value between -1.0 and +1.0.'],
-        ['RightTrigger', 'The right trigger value, as a numeric value between 0.0 and +1.0.'],
+        ['LeftStickX', 'Returns a numeric value between -1.0 and +1.0 representing the left analog stick horizontal axis value.'],
+        ['LeftStickY', 'Returns a numeric value between -1.0 and +1.0 representing the left analog stick vertical axis value.'],
+        ['LeftTrigger', 'Returns a numeric value between 0.0 and +1.0 representing the left trigger value.'],
+        ['RightStickX', 'Returns a numeric value between -1.0 and +1.0 representing the right analog stick horizontal axis value.'],
+        ['RightStickY', 'Returns a numeric value between -1.0 and +1.0 representing the right analog stick vertical axis value .'],
+        ['RightTrigger', 'Returns a numeric value between 0.0 and +1.0 representing the right trigger value.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -181,9 +273,25 @@ Blockly.Blocks['gamepad_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'LeftStickX':
+        case 'LeftStickY':
+        case 'LeftTrigger':
+        case 'RightStickX':
+        case 'RightStickY':
+        case 'RightTrigger':
+          return 'float';
+        default:
+          throw 'Unexpected property ' + property + ' (gamepad_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['gamepad_getProperty_Number'] =
     Blockly.JavaScript['gamepad_getProperty'];
+
+Blockly.FtcJava['gamepad_getProperty_Number'] =
+    Blockly.FtcJava['gamepad_getProperty'];

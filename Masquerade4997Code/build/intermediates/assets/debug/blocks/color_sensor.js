@@ -28,12 +28,13 @@ Blockly.Blocks['colorSensor_setProperty'] = {
         .appendField('to');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setColour(setPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the color sensor. ' +
+        ['I2cAddress7Bit', 'Sets the 7 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the color sensor. ' +
+        ['I2cAddress8Bit', 'Sets the 8 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
     ];
     this.setTooltip(function() {
@@ -45,7 +46,6 @@ Blockly.Blocks['colorSensor_setProperty'] = {
       }
       return '';
     });
-    this.setColour(setPropertyColor);
   }
 };
 
@@ -55,6 +55,27 @@ Blockly.JavaScript['colorSensor_setProperty'] = function(block) {
   var value = Blockly.JavaScript.valueToCode(
       block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
   return identifier + '.set' + property + '(' + value + ');\n';
+};
+
+Blockly.FtcJava['colorSensor_setProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ColorSensor');
+  var property = block.getFieldValue('PROP');
+  var value = Blockly.FtcJava.valueToCode(
+      block, 'VALUE', Blockly.FtcJava.ORDER_NONE);
+  var code;
+  switch (property) {
+    case 'I2cAddress7Bit':
+      Blockly.FtcJava.generateImport_('I2cAddr');
+      code = identifier + '.setI2cAddress(I2cAddr.create7bit(' + value + '));\n';
+      break;
+    case 'I2cAddress8Bit':
+      Blockly.FtcJava.generateImport_('I2cAddr');
+      code = identifier + '.setI2cAddress(I2cAddr.create8bit(' + value + '));\n';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (colorSensor_setProperty).';
+  }
+  return code;
 };
 
 Blockly.Blocks['colorSensor_setProperty_Number'] = {
@@ -71,12 +92,13 @@ Blockly.Blocks['colorSensor_setProperty_Number'] = {
         .appendField('to');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(setPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the color sensor. ' +
+        ['I2cAddress7Bit', 'Sets the 7 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the color sensor. ' +
+        ['I2cAddress8Bit', 'Sets the 8 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
     ];
     this.setTooltip(function() {
@@ -88,12 +110,27 @@ Blockly.Blocks['colorSensor_setProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(setPropertyColor);
+    this.getFtcJavaInputType = function(inputName) {
+      if (inputName == 'VALUE') {
+        var property = thisBlock.getFieldValue('PROP');
+        switch (property) {
+          case 'I2cAddress7Bit':
+          case 'I2cAddress8Bit':
+            return 'int';
+          default:
+            throw 'Unexpected property ' + property + ' (colorSensor_setProperty_Number getArgumentType).';
+        }
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['colorSensor_setProperty_Number'] =
     Blockly.JavaScript['colorSensor_setProperty'];
+
+Blockly.FtcJava['colorSensor_setProperty_Number'] =
+    Blockly.FtcJava['colorSensor_setProperty'];
 
 /**
  * Deprecated. See colorSensor_getProperty_Number.
@@ -114,18 +151,19 @@ Blockly.Blocks['colorSensor_getProperty'] = {
         .appendField(createColorSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Alpha', 'The amount of light detected by the sensor.'],
-        ['Argb', 'The color detected by the sensor, as an ARGB value.'],
-        ['Blue', 'The amount of blue detected by the sensor.'],
-        ['Green', 'The amount of green detected by the sensor.'],
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the color sensor. ' +
+        ['Alpha', 'Returns the alpha component of the color detected by the color sensor.'],
+        ['Argb', 'Returns the color detected by the sensor, as an ARGB value.'],
+        ['Blue', 'Returns the blue component of the color detected by the color sensor.'],
+        ['Green', 'Returns the green component of the color detected by the color sensor.'],
+        ['I2cAddress7Bit', 'Returns the 7 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the color sensor. ' +
+        ['I2cAddress8Bit', 'Returns the 8 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
-        ['Red', 'The amount of red detected by the sensor.'],
+        ['Red', 'Returns the red component of the color detected by the color sensor.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -136,7 +174,6 @@ Blockly.Blocks['colorSensor_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -145,6 +182,30 @@ Blockly.JavaScript['colorSensor_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var code = identifier + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['colorSensor_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ColorSensor');
+  var property = block.getFieldValue('PROP');
+  var code;
+  switch (property) {
+    case 'Alpha':
+    case 'Argb':
+    case 'Blue':
+    case 'Green':
+    case 'Red':
+      code = identifier + '.' + Blockly.FtcJava.makeFirstLetterLowerCase_(property) + '()';
+      break;
+    case 'I2cAddress7Bit':
+      code = identifier + '.getI2cAddress().get7Bit()';
+      break;
+    case 'I2cAddress8Bit':
+      code = identifier + '.getI2cAddress().get8Bit()';
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (colorSensor_getProperty).';
+  }
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['colorSensor_getProperty_Number'] = {
@@ -163,18 +224,19 @@ Blockly.Blocks['colorSensor_getProperty_Number'] = {
         .appendField(createColorSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Alpha', 'The amount of light detected by the sensor.'],
-        ['Argb', 'The color detected by the sensor, as an ARGB value.'],
-        ['Blue', 'The amount of blue detected by the sensor.'],
-        ['Green', 'The amount of green detected by the sensor.'],
-        ['I2cAddress7Bit', 'The 7 bit I2C address of the color sensor. ' +
+        ['Alpha', 'Returns the alpha component of the color detected by the color sensor.'],
+        ['Argb', 'Returns the color detected by the sensor, as an ARGB value.'],
+        ['Blue', 'Returns the blue component of the color detected by the color sensor.'],
+        ['Green', 'Returns the green component of the color detected by the color sensor.'],
+        ['I2cAddress7Bit', 'Returns the 7 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address of the color sensor. ' +
+        ['I2cAddress8Bit', 'Returns the 8 bit I2C address of the color sensor. ' +
             'Not all color sensors support this feature.'],
-        ['Red', 'The amount of red detected by the sensor.'],
+        ['Red', 'Returns the red component of the color detected by the color sensor.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -185,16 +247,29 @@ Blockly.Blocks['colorSensor_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'Alpha':
+        case 'Argb':
+        case 'Blue':
+        case 'Green':
+        case 'I2cAddress7Bit':
+        case 'I2cAddress8Bit':
+        case 'Red':
+          return 'int';
+        default:
+          throw 'Unexpected property ' + property + ' (colorSensor_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['colorSensor_getProperty_Number'] =
     Blockly.JavaScript['colorSensor_getProperty'];
 
-
-// TODO(lizlooney): Should we provide constants for MIN_I2C_ADDRESS_7_BIT, MAX_I2C_ADDRESS_7_BIT,
-// MIN_I2C_ADDRESS_8_BIT, and MAX_I2C_ADDRESS_8_BIT? If so, where do they belong?
+Blockly.FtcJava['colorSensor_getProperty_Number'] =
+    Blockly.FtcJava['colorSensor_getProperty'];
 
 // Functions
 
@@ -225,6 +300,13 @@ Blockly.JavaScript['colorSensor_enableLed'] = function(block) {
   return identifier + '.enableLed(' + enable + ');\n';
 };
 
+Blockly.FtcJava['colorSensor_enableLed'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ColorSensor');
+  var enable = Blockly.FtcJava.valueToCode(
+      block, 'ENABLE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.enableLed(' + enable + ');\n';
+};
+
 Blockly.Blocks['colorSensor_enableLed_Boolean'] = {
   init: function() {
     this.appendDummyInput()
@@ -244,6 +326,9 @@ Blockly.Blocks['colorSensor_enableLed_Boolean'] = {
 
 Blockly.JavaScript['colorSensor_enableLed_Boolean'] =
     Blockly.JavaScript['colorSensor_enableLed'];
+
+Blockly.FtcJava['colorSensor_enableLed_Boolean'] =
+    Blockly.FtcJava['colorSensor_enableLed'];
 
 Blockly.Blocks['colorSensor_enableLight'] = {
   init: function() {
@@ -269,6 +354,14 @@ Blockly.JavaScript['colorSensor_enableLight'] = function(block) {
   return identifier + '.enableLight(' + enable + ');\n';
 };
 
+Blockly.FtcJava['colorSensor_enableLight'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ColorSensor');
+  var enable = Blockly.FtcJava.valueToCode(
+      block, 'ENABLE', Blockly.FtcJava.ORDER_NONE);
+  // This java code will throw ClassCastException if the ColorSensor is not a SwitchableLight.
+  Blockly.FtcJava.generateImport_('SwitchableLight');
+  return '((SwitchableLight) ' + identifier + ').enableLight(' + enable + ');\n';
+};
 
 Blockly.Blocks['colorSensor_isLightOn'] = {
   init: function() {
@@ -287,6 +380,14 @@ Blockly.JavaScript['colorSensor_isLightOn'] = function(block) {
   var identifier = block.getFieldValue('IDENTIFIER');
   var code = identifier + '.isLightOn()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['colorSensor_isLightOn'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ColorSensor');
+  // This java code will throw ClassCastException if the ColorSensor is not a Light.
+  Blockly.FtcJava.generateImport_('Light');
+  var code = '((Light) ' + identifier + ').isLightOn()';
+  return [code, Blockly.FtcJava.ORDER_LOGICAL_FUNCTION_CALL];
 };
 
 Blockly.Blocks['colorSensor_toText'] = {
@@ -308,16 +409,22 @@ Blockly.JavaScript['colorSensor_toText'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+Blockly.FtcJava['colorSensor_toText'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ColorSensor');
+  var code = identifier + '.toString()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+};
+
 Blockly.Blocks['colorSensor_getNormalizedColors'] = {
   init: function() {
-    this.setOutput(true, 'NormalizedColors');
+    this.setOutput(true, 'NormalizedRGBA');
     this.appendDummyInput()
         .appendField('call')
         .appendField(createColorSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(createNonEditableField('getNormalizedColors'));
     this.setColour(functionColor);
-    this.setTooltip('Returns the color detected by the sensor.');
+    this.setTooltip('Returns a NormalizedRGBA representing the color detected by the sensor.');
   }
 };
 
@@ -325,4 +432,12 @@ Blockly.JavaScript['colorSensor_getNormalizedColors'] = function(block) {
   var identifier = block.getFieldValue('IDENTIFIER');
   var code = 'JSON.parse(' + identifier + '.getNormalizedColors())';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['colorSensor_getNormalizedColors'] = function(block) {
+  // This java code will throw ClassCastException if the ColorSensor is not a NormalizedColorSensor.
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'ColorSensor');
+  Blockly.FtcJava.generateImport_('NormalizedColorSensor');
+  var code = '((NormalizedColorSensor) ' + identifier + ').getNormalizedColors()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };

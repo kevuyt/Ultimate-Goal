@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// androidGyroscopeIdentifier
+// androidGyroscopeIdentifierForJavaScript
 // The following are defined in vars.js:
 // getPropertyColor
 // functionColor
@@ -44,7 +44,15 @@ Blockly.JavaScript['androidGyroscope_setProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var value = Blockly.JavaScript.valueToCode(
       block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
-  return androidGyroscopeIdentifier + '.set' + property + '(' + value + ');\n';
+  return androidGyroscopeIdentifierForJavaScript + '.set' + property + '(' + value + ');\n';
+};
+
+Blockly.FtcJava['androidGyroscope_setProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidGyroscope');
+  var property = block.getFieldValue('PROP');
+  var value = Blockly.FtcJava.valueToCode(
+      block, 'VALUE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.set' + property + '(' + value + ');\n';
 };
 
 Blockly.Blocks['androidGyroscope_setProperty_AngleUnit'] = {
@@ -81,6 +89,9 @@ Blockly.Blocks['androidGyroscope_setProperty_AngleUnit'] = {
 Blockly.JavaScript['androidGyroscope_setProperty_AngleUnit'] =
     Blockly.JavaScript['androidGyroscope_setProperty'];
 
+Blockly.FtcJava['androidGyroscope_setProperty_AngleUnit'] =
+    Blockly.FtcJava['androidGyroscope_setProperty'];
+
 Blockly.Blocks['androidGyroscope_getProperty'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -95,14 +106,15 @@ Blockly.Blocks['androidGyroscope_getProperty'] = {
         .appendField(createNonEditableField('AndroidGyroscope'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['X', 'Returns the angular speed around the x-axis.'],
         ['Y', 'Returns the angular speed around the y-axis.'],
         ['Z', 'Returns the angular speed around the z-axis.'],
-        ['AngularVelocity',
-            'Returns an AngularVelocity object representing the rate of rotation around the device\'s local X, Y and Z axis.'],
+        ['AngularVelocity', 'Returns an AngularVelocity object representing the rate of rotation ' +
+            'around the device\'s local X, Y and Z axis.'],
         ['AngleUnit', 'Returns the AngleUnit being used.'],
     ];
     this.setTooltip(function() {
@@ -114,14 +126,20 @@ Blockly.Blocks['androidGyroscope_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidGyroscope_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
-  var code = androidGyroscopeIdentifier + '.get' + property + '()';
+  var code = androidGyroscopeIdentifierForJavaScript + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidGyroscope_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidGyroscope');
+  var property = block.getFieldValue('PROP');
+  var code = identifier + '.get' + property + '()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidGyroscope_getProperty_Number'] = {
@@ -136,7 +154,8 @@ Blockly.Blocks['androidGyroscope_getProperty_Number'] = {
         .appendField(createNonEditableField('AndroidGyroscope'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['X', 'Returns the angular speed around the x-axis.'],
@@ -152,12 +171,25 @@ Blockly.Blocks['androidGyroscope_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'X':
+        case 'Y':
+        case 'Z':
+          return 'float';
+        default:
+          throw 'Unexpected property ' + property + ' (androidGyroscope_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['androidGyroscope_getProperty_Number'] =
     Blockly.JavaScript['androidGyroscope_getProperty'];
+
+Blockly.FtcJava['androidGyroscope_getProperty_Number'] =
+    Blockly.FtcJava['androidGyroscope_getProperty'];
 
 Blockly.Blocks['androidGyroscope_getProperty_AngularVelocity'] = {
   init: function() {
@@ -169,11 +201,12 @@ Blockly.Blocks['androidGyroscope_getProperty_AngularVelocity'] = {
         .appendField(createNonEditableField('AndroidGyroscope'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['AngularVelocity',
-            'Returns an AngularVelocity object representing the rate of rotation around the device\'s local X, Y and Z axis.'],
+        ['AngularVelocity', 'Returns an AngularVelocity object representing the rate of rotation ' +
+            'around the device\'s local X, Y and Z axis.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -184,12 +217,14 @@ Blockly.Blocks['androidGyroscope_getProperty_AngularVelocity'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidGyroscope_getProperty_AngularVelocity'] =
     Blockly.JavaScript['androidGyroscope_getProperty'];
+
+Blockly.FtcJava['androidGyroscope_getProperty_AngularVelocity'] =
+    Blockly.FtcJava['androidGyroscope_getProperty'];
 
 Blockly.Blocks['androidGyroscope_getProperty_AngleUnit'] = {
   init: function() {
@@ -201,6 +236,7 @@ Blockly.Blocks['androidGyroscope_getProperty_AngleUnit'] = {
         .appendField(createNonEditableField('AndroidGyroscope'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -215,12 +251,14 @@ Blockly.Blocks['androidGyroscope_getProperty_AngleUnit'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidGyroscope_getProperty_AngleUnit'] =
     Blockly.JavaScript['androidGyroscope_getProperty'];
+
+Blockly.FtcJava['androidGyroscope_getProperty_AngleUnit'] =
+    Blockly.FtcJava['androidGyroscope_getProperty'];
 
 // Functions
 
@@ -232,15 +270,20 @@ Blockly.Blocks['androidGyroscope_isAvailable'] = {
         .appendField(createNonEditableField('AndroidGyroscope'))
         .appendField('.')
         .appendField(createNonEditableField('isAvailable'));
-    this.setTooltip(
-        'Returns true if the Android device has a gyroscope.');
     this.setColour(functionColor);
+    this.setTooltip('Returns true if the Android device has a gyroscope.');
   }
 };
 
 Blockly.JavaScript['androidGyroscope_isAvailable'] = function(block) {
-  var code = androidGyroscopeIdentifier + '.isAvailable()';
+  var code = androidGyroscopeIdentifierForJavaScript + '.isAvailable()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidGyroscope_isAvailable'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidGyroscope');
+  var code = identifier + '.isAvailable()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidGyroscope_startListening'] = {
@@ -253,13 +296,17 @@ Blockly.Blocks['androidGyroscope_startListening'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Start listening to events from the Android gyroscope.');
+    this.setTooltip('Start listening to events from the Android gyroscope.');
   }
 };
 
 Blockly.JavaScript['androidGyroscope_startListening'] = function(block) {
-  return androidGyroscopeIdentifier + '.startListening();\n';
+  return androidGyroscopeIdentifierForJavaScript + '.startListening();\n';
+};
+
+Blockly.FtcJava['androidGyroscope_startListening'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidGyroscope');
+  return identifier + '.startListening();\n';
 };
 
 Blockly.Blocks['androidGyroscope_stopListening'] = {
@@ -272,11 +319,15 @@ Blockly.Blocks['androidGyroscope_stopListening'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Stop listening to events from the Android gyroscope.');
+    this.setTooltip('Stop listening to events from the Android gyroscope.');
   }
 };
 
 Blockly.JavaScript['androidGyroscope_stopListening'] = function(block) {
-  return androidGyroscopeIdentifier + '.stopListening();\n';
+  return androidGyroscopeIdentifierForJavaScript + '.stopListening();\n';
+};
+
+Blockly.FtcJava['androidGyroscope_stopListening'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidGyroscope');
+  return identifier + '.stopListening();\n';
 };

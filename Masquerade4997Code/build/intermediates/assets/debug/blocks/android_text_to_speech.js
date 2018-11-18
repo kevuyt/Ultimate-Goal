@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// androidTextToSpeechIdentifier
+// androidTextToSpeechIdentifierForJavaScript
 // The following are defined in vars.js:
 // getPropertyColor
 // functionColor
@@ -24,7 +24,12 @@ Blockly.Blocks['androidTextToSpeech_initialize'] = {
 };
 
 Blockly.JavaScript['androidTextToSpeech_initialize'] = function(block) {
-  return androidTextToSpeechIdentifier + '.initialize();\n';
+  return androidTextToSpeechIdentifierForJavaScript + '.initialize();\n';
+};
+
+Blockly.FtcJava['androidTextToSpeech_initialize'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  return identifier + '.initialize();\n';
 };
 
 /*
@@ -43,12 +48,13 @@ Blockly.Blocks['androidTextToSpeech_getProperty'] = {
         .appendField(createNonEditableField('AndroidTextToSpeech'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Status', 'Returns the TextToSpeech initialization status.'],
-        ['LanguageCode', 'Returns the current language code.'],
-        ['CountryCode', 'Returns the current country code.'],
+        ['Status', 'Returns a text value representing the TextToSpeech initialization status.'],
+        ['LanguageCode', 'Returns a text value representing the current language code.'],
+        ['CountryCode', 'Returns a text value representing the current country code.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -59,14 +65,25 @@ Blockly.Blocks['androidTextToSpeech_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidTextToSpeech_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
-  var code = androidTextToSpeechIdentifier + '.get' + property + '()';
+  var code = androidTextToSpeechIdentifierForJavaScript + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidTextToSpeech_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  var property = block.getFieldValue('PROP');
+  var code = identifier;
+  if (property == 'IsSpeaking') {
+    code += '.isSpeaking()';
+  } else {
+    code += '.get' + property + '()';
+  }
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidTextToSpeech_getProperty_String'] = {
@@ -81,12 +98,13 @@ Blockly.Blocks['androidTextToSpeech_getProperty_String'] = {
         .appendField(createNonEditableField('AndroidTextToSpeech'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Status', 'Returns the TextToSpeech initialization status.'],
-        ['LanguageCode', 'Returns the current language code.'],
-        ['CountryCode', 'Returns the current country code.'],
+        ['Status', 'Returns a text value representing the TextToSpeech initialization status.'],
+        ['LanguageCode', 'Returns a text value representing the current language code.'],
+        ['CountryCode', 'Returns a text value representing the current country code.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -97,12 +115,14 @@ Blockly.Blocks['androidTextToSpeech_getProperty_String'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidTextToSpeech_getProperty_String'] =
     Blockly.JavaScript['androidTextToSpeech_getProperty'];
+
+Blockly.FtcJava['androidTextToSpeech_getProperty_String'] =
+    Blockly.FtcJava['androidTextToSpeech_getProperty'];
 
 Blockly.Blocks['androidTextToSpeech_getProperty_Boolean'] = {
   init: function() {
@@ -114,6 +134,7 @@ Blockly.Blocks['androidTextToSpeech_getProperty_Boolean'] = {
         .appendField(createNonEditableField('AndroidTextToSpeech'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -128,12 +149,14 @@ Blockly.Blocks['androidTextToSpeech_getProperty_Boolean'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidTextToSpeech_getProperty_Boolean'] =
     Blockly.JavaScript['androidTextToSpeech_getProperty'];
+
+Blockly.FtcJava['androidTextToSpeech_getProperty_Boolean'] =
+    Blockly.FtcJava['androidTextToSpeech_getProperty'];
 
 Blockly.Blocks['androidTextToSpeech_setProperty'] = {
   init: function() {
@@ -176,7 +199,15 @@ Blockly.JavaScript['androidTextToSpeech_setProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var value = Blockly.JavaScript.valueToCode(
       block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
-  return androidTextToSpeechIdentifier + '.set' + property + '(' + value + ');\n';
+  return androidTextToSpeechIdentifierForJavaScript + '.set' + property + '(' + value + ');\n';
+};
+
+Blockly.FtcJava['androidTextToSpeech_setProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  var property = block.getFieldValue('PROP');
+  var value = Blockly.FtcJava.valueToCode(
+      block, 'VALUE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.set' + property + '(' + value + ');\n';
 };
 
 Blockly.Blocks['androidTextToSpeech_setProperty_Number'] = {
@@ -194,7 +225,7 @@ Blockly.Blocks['androidTextToSpeech_setProperty_Number'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(setPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['Pitch', 'Sets the speech pitch. 1.0 is the normal pitch. Lower values will lower the ' +
@@ -213,11 +244,27 @@ Blockly.Blocks['androidTextToSpeech_setProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaInputType = function(inputName) {
+      if (inputName == 'VALUE') {
+        var property = thisBlock.getFieldValue('PROP');
+        switch (property) {
+          case 'Pitch':
+          case 'SpeechRate':
+            return 'float';
+          default:
+            throw 'Unexpected property ' + property + ' (androidTextToSpeech_setProperty_Number getArgumentType).';
+        }
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['androidTextToSpeech_setProperty_Number'] =
     Blockly.JavaScript['androidTextToSpeech_setProperty'];
+
+Blockly.FtcJava['androidTextToSpeech_setProperty_Number'] =
+    Blockly.FtcJava['androidTextToSpeech_setProperty'];
 
 Blockly.Blocks['androidTextToSpeech_isLanguageAvailable'] = {
   init: function() {
@@ -231,8 +278,7 @@ Blockly.Blocks['androidTextToSpeech_isLanguageAvailable'] = {
         .appendField('languageCode')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Returns true if the given language is supported. ' +
+    this.setTooltip('Returns true if the given language is supported. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length.');
   }
@@ -241,8 +287,16 @@ Blockly.Blocks['androidTextToSpeech_isLanguageAvailable'] = {
 Blockly.JavaScript['androidTextToSpeech_isLanguageAvailable'] = function(block) {
   var languageCode = Blockly.JavaScript.valueToCode(
       block, 'LANGUAGE_CODE', Blockly.JavaScript.ORDER_NONE);
-  var code = androidTextToSpeechIdentifier + '.isLanguageAvailable(' + languageCode + ')';
+  var code = androidTextToSpeechIdentifierForJavaScript + '.isLanguageAvailable(' + languageCode + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidTextToSpeech_isLanguageAvailable'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  var languageCode = Blockly.FtcJava.valueToCode(
+      block, 'LANGUAGE_CODE', Blockly.FtcJava.ORDER_NONE);
+  var code = identifier + '.isLanguageAvailable(' + languageCode + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidTextToSpeech_isLanguageAvailable_String'] = {
@@ -257,8 +311,7 @@ Blockly.Blocks['androidTextToSpeech_isLanguageAvailable_String'] = {
         .appendField('languageCode')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Returns true if the given language is supported. ' +
+    this.setTooltip('Returns true if the given language is supported. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length.');
   }
@@ -266,6 +319,9 @@ Blockly.Blocks['androidTextToSpeech_isLanguageAvailable_String'] = {
 
 Blockly.JavaScript['androidTextToSpeech_isLanguageAvailable_String'] =
     Blockly.JavaScript['androidTextToSpeech_isLanguageAvailable'];
+
+Blockly.FtcJava['androidTextToSpeech_isLanguageAvailable_String'] =
+    Blockly.FtcJava['androidTextToSpeech_isLanguageAvailable'];
 
 Blockly.Blocks['androidTextToSpeech_isLanguageAndCountryAvailable'] = {
   init: function() {
@@ -282,8 +338,7 @@ Blockly.Blocks['androidTextToSpeech_isLanguageAndCountryAvailable'] = {
         .appendField('countryCode')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Returns true if the given language is supported. ' +
+    this.setTooltip('Returns true if the given language is supported. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length. ' +
         'The countryCode must be an ISO 3166 alpha-2 country code or a UN M.49 numeric-3 area ' +
@@ -296,9 +351,20 @@ Blockly.JavaScript['androidTextToSpeech_isLanguageAndCountryAvailable'] = functi
       block, 'LANGUAGE_CODE', Blockly.JavaScript.ORDER_COMMA);
   var countryCode = Blockly.JavaScript.valueToCode(
       block, 'COUNTRY_CODE', Blockly.JavaScript.ORDER_COMMA);
-  var code = androidTextToSpeechIdentifier + '.isLanguageAndCountryAvailable(' +
+  var code = androidTextToSpeechIdentifierForJavaScript + '.isLanguageAndCountryAvailable(' +
       languageCode + ', ' + countryCode + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidTextToSpeech_isLanguageAndCountryAvailable'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  var languageCode = Blockly.FtcJava.valueToCode(
+      block, 'LANGUAGE_CODE', Blockly.FtcJava.ORDER_COMMA);
+  var countryCode = Blockly.FtcJava.valueToCode(
+      block, 'COUNTRY_CODE', Blockly.FtcJava.ORDER_COMMA);
+  var code = identifier + '.isLanguageAndCountryAvailable(' +
+      languageCode + ', ' + countryCode + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidTextToSpeech_isLanguageAndCountryAvailable_String'] = {
@@ -316,8 +382,7 @@ Blockly.Blocks['androidTextToSpeech_isLanguageAndCountryAvailable_String'] = {
         .appendField('countryCode')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Returns true if the given language is supported. ' +
+    this.setTooltip('Returns true if the given language is supported. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length. ' +
         'The countryCode must be an ISO 3166 alpha-2 country code or a UN M.49 numeric-3 area ' +
@@ -327,6 +392,9 @@ Blockly.Blocks['androidTextToSpeech_isLanguageAndCountryAvailable_String'] = {
 
 Blockly.JavaScript['androidTextToSpeech_isLanguageAndCountryAvailable_String'] =
     Blockly.JavaScript['androidTextToSpeech_isLanguageAndCountryAvailable'];
+
+Blockly.FtcJava['androidTextToSpeech_isLanguageAndCountryAvailable_String'] =
+    Blockly.FtcJava['androidTextToSpeech_isLanguageAndCountryAvailable'];
 
 Blockly.Blocks['androidTextToSpeech_setLanguage'] = {
   init: function() {
@@ -341,8 +409,7 @@ Blockly.Blocks['androidTextToSpeech_setLanguage'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Sets the language. ' +
+    this.setTooltip('Sets the language. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length.');
   }
@@ -351,7 +418,14 @@ Blockly.Blocks['androidTextToSpeech_setLanguage'] = {
 Blockly.JavaScript['androidTextToSpeech_setLanguage'] = function(block) {
   var languageCode = Blockly.JavaScript.valueToCode(
       block, 'LANGUAGE_CODE', Blockly.JavaScript.ORDER_NONE);
-  return androidTextToSpeechIdentifier + '.setLanguage(' + languageCode + ');\n';
+  return androidTextToSpeechIdentifierForJavaScript + '.setLanguage(' + languageCode + ');\n';
+};
+
+Blockly.FtcJava['androidTextToSpeech_setLanguage'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  var languageCode = Blockly.FtcJava.valueToCode(
+      block, 'LANGUAGE_CODE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.setLanguage(' + languageCode + ');\n';
 };
 
 Blockly.Blocks['androidTextToSpeech_setLanguage_String'] = {
@@ -367,8 +441,7 @@ Blockly.Blocks['androidTextToSpeech_setLanguage_String'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Sets the language. ' +
+    this.setTooltip('Sets the language. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length.');
   }
@@ -376,6 +449,9 @@ Blockly.Blocks['androidTextToSpeech_setLanguage_String'] = {
 
 Blockly.JavaScript['androidTextToSpeech_setLanguage_String'] =
     Blockly.JavaScript['androidTextToSpeech_setLanguage'];
+
+Blockly.FtcJava['androidTextToSpeech_setLanguage_String'] =
+    Blockly.FtcJava['androidTextToSpeech_setLanguage'];
 
 Blockly.Blocks['androidTextToSpeech_setLanguageAndCountry'] = {
   init: function() {
@@ -393,8 +469,7 @@ Blockly.Blocks['androidTextToSpeech_setLanguageAndCountry'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Sets the language and country. ' +
+    this.setTooltip('Sets the language and country. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length. ' +
         'The countryCode must be an ISO 3166 alpha-2 country code or a UN M.49 numeric-3 area ' +
@@ -407,7 +482,17 @@ Blockly.JavaScript['androidTextToSpeech_setLanguageAndCountry'] = function(block
       block, 'LANGUAGE_CODE', Blockly.JavaScript.ORDER_COMMA);
   var countryCode = Blockly.JavaScript.valueToCode(
       block, 'COUNTRY_CODE', Blockly.JavaScript.ORDER_COMMA);
-  return androidTextToSpeechIdentifier + '.setLanguageAndCountry(' +
+  return androidTextToSpeechIdentifierForJavaScript + '.setLanguageAndCountry(' +
+      languageCode + ', ' + countryCode + ');\n';
+};
+
+Blockly.FtcJava['androidTextToSpeech_setLanguageAndCountry'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  var languageCode = Blockly.FtcJava.valueToCode(
+      block, 'LANGUAGE_CODE', Blockly.FtcJava.ORDER_COMMA);
+  var countryCode = Blockly.FtcJava.valueToCode(
+      block, 'COUNTRY_CODE', Blockly.FtcJava.ORDER_COMMA);
+  return identifier + '.setLanguageAndCountry(' +
       languageCode + ', ' + countryCode + ');\n';
 };
 
@@ -427,8 +512,7 @@ Blockly.Blocks['androidTextToSpeech_setLanguageAndCountry_String'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Sets the language and country. ' +
+    this.setTooltip('Sets the language and country. ' +
         'The languageCode must be an ISO 639 alpha-2 or alpha-3 language code, or a language ' +
         'subtag up to 8 characters in length. ' +
         'The countryCode must be an ISO 3166 alpha-2 country code or a UN M.49 numeric-3 area ' +
@@ -438,6 +522,9 @@ Blockly.Blocks['androidTextToSpeech_setLanguageAndCountry_String'] = {
 
 Blockly.JavaScript['androidTextToSpeech_setLanguageAndCountry_String'] =
     Blockly.JavaScript['androidTextToSpeech_setLanguageAndCountry'];
+
+Blockly.FtcJava['androidTextToSpeech_setLanguageAndCountry_String'] =
+    Blockly.FtcJava['androidTextToSpeech_setLanguageAndCountry'];
 
 Blockly.Blocks['androidTextToSpeech_speak'] = {
   init: function() {
@@ -452,14 +539,21 @@ Blockly.Blocks['androidTextToSpeech_speak'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip('Speak the given text.');
+    this.setTooltip('Speaks the given text.');
   }
 };
 
 Blockly.JavaScript['androidTextToSpeech_speak'] = function(block) {
   var text = Blockly.JavaScript.valueToCode(
       block, 'TEXT', Blockly.JavaScript.ORDER_NONE);
-  return androidTextToSpeechIdentifier + '.speak(' + text + ');\n';
+  return androidTextToSpeechIdentifierForJavaScript + '.speak(' + text + ');\n';
+};
+
+Blockly.FtcJava['androidTextToSpeech_speak'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidTextToSpeech');
+  var text = Blockly.FtcJava.valueToCode(
+      block, 'TEXT', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.speak(' + text + ');\n';
 };
 
 Blockly.Blocks['androidTextToSpeech_speak_String'] = {
@@ -475,9 +569,12 @@ Blockly.Blocks['androidTextToSpeech_speak_String'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip('Speak the given text.');
+    this.setTooltip('Speaks the given text.');
   }
 };
 
 Blockly.JavaScript['androidTextToSpeech_speak_String'] =
     Blockly.JavaScript['androidTextToSpeech_speak'];
+
+Blockly.FtcJava['androidTextToSpeech_speak_String'] =
+    Blockly.FtcJava['androidTextToSpeech_speak'];

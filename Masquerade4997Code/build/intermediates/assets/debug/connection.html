@@ -37,7 +37,6 @@
 
                 var uaIsAndroid = rcInfo.ftcUserAgentCategory !== "OTHER";
 
-                document.getElementById("id_rc_name").innerHTML = rcInfo.deviceName;
                 document.getElementById("id_network_name").innerHTML = rcInfo.networkName;
                 document.getElementById("id_passphrase").innerHTML = rcInfo.passphrase;
                 document.getElementById("id_server_url").innerHTML = rcInfo.serverUrl;
@@ -116,7 +115,7 @@
 
 <div class="bordered-text-block">
 <h1>Robot Controller Connection Info</h1>
-<p class="web_server_banter">The <span id="id_span_connected">connected </span>robot controller, <span id="id_rc_name">(name)</span>, resides on the wireless network named:</p>
+<p class="web_server_banter">The <span id="id_span_connected">connected </span>robot controller resides on the wireless network named:</p>
 <p class="web_server_datum"><span id="id_network_name">(network)</span></p>
 
 <p class="web_server_banter">The passphrase for this network is:</p>

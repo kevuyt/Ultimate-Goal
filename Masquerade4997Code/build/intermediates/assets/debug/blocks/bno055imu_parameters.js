@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// bno055imuParametersIdentifier
+// bno055imuParametersIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // getPropertyColor
@@ -36,17 +36,16 @@ Blockly.Blocks['bno055imuParameters_getProperty'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['AccelUnit', 'The AccelUnit of the given parameters.'],
-        ['AccelerationIntegrationAlgorithm',
-            'The AccelerationIntegrationAlgorithm of the given parameters.'],
-        ['AngleUnit', 'The AngleUnit of the given parameters.'],
-        ['CalibrationDataFile', 'The calibration data file for the given parameters.'],
-        ['I2cAddress7Bit', 'The 7 bit I2C address.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address.'],
-        ['LoggingEnabled', 'True if logging is enabled in the given parameters, false otherwise.'],
-        ['LoggingTag', 'The logging tag of the given parameters.'],
-        ['SensorMode', 'The SensorMode of the given parameters.'],
-        ['TempUnit', 'The TempUnit of the given parameters.'],
+        ['AccelUnit', 'Returns the AccelUnit of the given IMU-BNO055.Parameters.'],
+        ['AccelerationIntegrationAlgorithm', 'Returns the AccelerationIntegrationAlgorithm of the given IMU-BNO055.Parameters.'],
+        ['AngleUnit', 'Returns the AngleUnit of the given IMU-BNO055.Parameters.'],
+        ['CalibrationDataFile', 'Returns the calibration data file for the given IMU-BNO055.Parameters.'],
+        ['I2cAddress7Bit', 'Returns the 7 bit I2C address of the given IMU-BNO055.Parameters.'],
+        ['I2cAddress8Bit', 'Returns the 8 bit I2C address of the given IMU-BNO055.Parameters.'],
+        ['LoggingEnabled', 'Returns true if logging is enabled in the given IMU-BNO055.Parameters, false otherwise.'],
+        ['LoggingTag', 'Returns the logging tag of the given IMU-BNO055.Parameters.'],
+        ['SensorMode', 'Returns the SensorMode of the given IMU-BNO055.Parameters.'],
+        ['TempUnit', 'Returns the TempUnit of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -64,9 +63,44 @@ Blockly.JavaScript['bno055imuParameters_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var bno055imuParameters = Blockly.JavaScript.valueToCode(
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_NONE);
-  var code = bno055imuParametersIdentifier + '.get' + property + '(' +
+  var code = bno055imuParametersIdentifierForJavaScript + '.get' + property + '(' +
       bno055imuParameters + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['bno055imuParameters_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var code;
+  switch (property) {
+    case 'AngleUnit':
+      code = bno055imuParameters + '.angleUnit.toAngleUnit()';
+      return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+    case 'I2cAddress7Bit':
+      code = bno055imuParameters + '.i2cAddr.get7Bit()';
+      return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+    case 'I2cAddress8Bit':
+      code = bno055imuParameters + '.i2cAddr.get8Bit()';
+      return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+    case 'TempUnit':
+      code = bno055imuParameters + '.temperatureUnit.toTempUnit()';
+      return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+    case 'SensorMode':
+      property = 'mode';
+      break;
+    case 'AccelUnit':
+    case 'AccelerationIntegrationAlgorithm':
+    case 'CalibrationDataFile':
+    case 'LoggingEnabled':
+    case 'LoggingTag':
+      property = Blockly.FtcJava.makeFirstLetterLowerCase_(property);
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (bno055imuParameters_getProperty).';
+  }
+  code = bno055imuParameters + '.' + property;
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };
 
 Blockly.Blocks['bno055imuParameters_getProperty_AccelUnit'] = {
@@ -74,7 +108,7 @@ Blockly.Blocks['bno055imuParameters_getProperty_AccelUnit'] = {
     var PROPERTY_CHOICES = [
         ['AccelUnit', 'AccelUnit'],
     ];
-    this.setOutput(true, 'AccelUnit');
+    this.setOutput(true, 'BNO055IMU.AccelUnit');
     this.appendDummyInput()
         .appendField(createNonEditableField('IMU-BNO055.Parameters'))
         .appendField('.')
@@ -86,7 +120,7 @@ Blockly.Blocks['bno055imuParameters_getProperty_AccelUnit'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['AccelUnit', 'The AccelUnit of the given parameters.'],
+        ['AccelUnit', 'Returns the AccelUnit of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -103,12 +137,15 @@ Blockly.Blocks['bno055imuParameters_getProperty_AccelUnit'] = {
 Blockly.JavaScript['bno055imuParameters_getProperty_AccelUnit'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
 
+Blockly.FtcJava['bno055imuParameters_getProperty_AccelUnit'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
+
 Blockly.Blocks['bno055imuParameters_getProperty_AccelerationIntegrationAlgorithm'] = {
   init: function() {
     var PROPERTY_CHOICES = [
         ['AccelerationIntegrationAlgorithm', 'AccelerationIntegrationAlgorithm'],
     ];
-    this.setOutput(true, 'AccelerationIntegrationAlgorithm');
+    this.setOutput(true, 'BNO055IMU.AccelerationIntegrator');
     this.appendDummyInput()
         .appendField(createNonEditableField('IMU-BNO055.Parameters'))
         .appendField('.')
@@ -120,8 +157,7 @@ Blockly.Blocks['bno055imuParameters_getProperty_AccelerationIntegrationAlgorithm
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['AccelerationIntegrationAlgorithm',
-            'The AccelerationIntegrationAlgorithm of the given parameters.'],
+        ['AccelerationIntegrationAlgorithm', 'Returns the AccelerationIntegrationAlgorithm of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -137,6 +173,9 @@ Blockly.Blocks['bno055imuParameters_getProperty_AccelerationIntegrationAlgorithm
 
 Blockly.JavaScript['bno055imuParameters_getProperty_AccelerationIntegrationAlgorithm'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
+
+Blockly.FtcJava['bno055imuParameters_getProperty_AccelerationIntegrationAlgorithm'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
 
 Blockly.Blocks['bno055imuParameters_getProperty_AngleUnit'] = {
   init: function() {
@@ -155,7 +194,7 @@ Blockly.Blocks['bno055imuParameters_getProperty_AngleUnit'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['AngleUnit', 'The AngleUnit of the given parameters.'],
+        ['AngleUnit', 'Returns the AngleUnit of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -171,6 +210,9 @@ Blockly.Blocks['bno055imuParameters_getProperty_AngleUnit'] = {
 
 Blockly.JavaScript['bno055imuParameters_getProperty_AngleUnit'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
+
+Blockly.FtcJava['bno055imuParameters_getProperty_AngleUnit'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
 
 Blockly.Blocks['bno055imuParameters_getProperty_String'] = {
   init: function() {
@@ -190,8 +232,8 @@ Blockly.Blocks['bno055imuParameters_getProperty_String'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['CalibrationDataFile', 'The calibration data file for the given parameters.'],
-        ['LoggingTag', 'The logging tag of the given parameters.'],
+        ['CalibrationDataFile', 'Returns the calibration data file for the given IMU-BNO055.Parameters.'],
+        ['LoggingTag', 'Returns the logging tag of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -208,6 +250,9 @@ Blockly.Blocks['bno055imuParameters_getProperty_String'] = {
 Blockly.JavaScript['bno055imuParameters_getProperty_String'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
 
+Blockly.FtcJava['bno055imuParameters_getProperty_String'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
+
 Blockly.Blocks['bno055imuParameters_getProperty_Number'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -223,11 +268,11 @@ Blockly.Blocks['bno055imuParameters_getProperty_Number'] = {
         .appendField('parameters')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['I2cAddress7Bit', 'The 7 bit I2C address.'],
-        ['I2cAddress8Bit', 'The 8 bit I2C address.'],
+        ['I2cAddress7Bit', 'Returns the 7 bit I2C address of the given IMU-BNO055.Parameters.'],
+        ['I2cAddress8Bit', 'Returns the 8 bit I2C address of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -238,11 +283,24 @@ Blockly.Blocks['bno055imuParameters_getProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'I2cAddress7Bit':
+        case 'I2cAddress8Bit':
+          return 'int';
+        default:
+          throw 'Unexpected property ' + property + ' (bno055imuParameters_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['bno055imuParameters_getProperty_Number'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
+
+Blockly.FtcJava['bno055imuParameters_getProperty_Number'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
 
 Blockly.Blocks['bno055imuParameters_getProperty_Boolean'] = {
   init: function() {
@@ -261,7 +319,7 @@ Blockly.Blocks['bno055imuParameters_getProperty_Boolean'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['LoggingEnabled', 'True if logging is enabled in the given parameters, false otherwise.'],
+        ['LoggingEnabled', 'Returns true if logging is enabled in the given IMU-BNO055.Parameters, false otherwise.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -278,12 +336,15 @@ Blockly.Blocks['bno055imuParameters_getProperty_Boolean'] = {
 Blockly.JavaScript['bno055imuParameters_getProperty_Boolean'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
 
+Blockly.FtcJava['bno055imuParameters_getProperty_Boolean'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
+
 Blockly.Blocks['bno055imuParameters_getProperty_SensorMode'] = {
   init: function() {
     var PROPERTY_CHOICES = [
         ['SensorMode', 'SensorMode'],
     ];
-    this.setOutput(true, 'SensorMode');
+    this.setOutput(true, 'BNO055IMU.SensorMode');
     this.appendDummyInput()
         .appendField(createNonEditableField('IMU-BNO055.Parameters'))
         .appendField('.')
@@ -295,7 +356,7 @@ Blockly.Blocks['bno055imuParameters_getProperty_SensorMode'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['SensorMode', 'The SensorMode of the given parameters.'],
+        ['SensorMode', 'Returns the SensorMode of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -311,6 +372,9 @@ Blockly.Blocks['bno055imuParameters_getProperty_SensorMode'] = {
 
 Blockly.JavaScript['bno055imuParameters_getProperty_SensorMode'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
+
+Blockly.FtcJava['bno055imuParameters_getProperty_SensorMode'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
 
 Blockly.Blocks['bno055imuParameters_getProperty_TempUnit'] = {
   init: function() {
@@ -329,7 +393,7 @@ Blockly.Blocks['bno055imuParameters_getProperty_TempUnit'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['TempUnit', 'The TempUnit of the given parameters.'],
+        ['TempUnit', 'Returns the TempUnit of the given IMU-BNO055.Parameters.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -346,6 +410,9 @@ Blockly.Blocks['bno055imuParameters_getProperty_TempUnit'] = {
 Blockly.JavaScript['bno055imuParameters_getProperty_TempUnit'] =
     Blockly.JavaScript['bno055imuParameters_getProperty'];
 
+Blockly.FtcJava['bno055imuParameters_getProperty_TempUnit'] =
+    Blockly.FtcJava['bno055imuParameters_getProperty'];
+
 // Functions
 
 Blockly.Blocks['bno055imuParameters_create'] = {
@@ -355,13 +422,19 @@ Blockly.Blocks['bno055imuParameters_create'] = {
         .appendField('new')
         .appendField(createNonEditableField('IMU-BNO055.Parameters'));
     this.setColour(functionColor);
-    this.setTooltip('Create a new parameters object.');
+    this.setTooltip('Creates a new IMU-BNO055.Parameters object.');
   }
 };
 
 Blockly.JavaScript['bno055imuParameters_create'] = function(block) {
-  var code = bno055imuParametersIdentifier + '.create()';
+  var code = bno055imuParametersIdentifierForJavaScript + '.create()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['bno055imuParameters_create'] = function(block) {
+  var code = 'new BNO055IMU.Parameters()';
+  Blockly.FtcJava.generateImport_('BNO055IMU');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['bno055imuParameters_setAccelUnit'] = {
@@ -374,7 +447,7 @@ Blockly.Blocks['bno055imuParameters_setAccelUnit'] = {
     this.appendValueInput('BNO055IMU_PARAMETERS').setCheck('BNO055IMU.Parameters')
         .appendField('parameters')
         .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput('ACCEL_UNIT').setCheck('AccelUnit')
+    this.appendValueInput('ACCEL_UNIT').setCheck('BNO055IMU.AccelUnit')
         .appendField('accelUnit')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true);
@@ -389,8 +462,16 @@ Blockly.JavaScript['bno055imuParameters_setAccelUnit'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var accelUnit = Blockly.JavaScript.valueToCode(
       block, 'ACCEL_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setAccelUnit(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setAccelUnit(' +
       bno055imuParameters + ', ' + accelUnit + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setAccelUnit'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var accelUnit = Blockly.FtcJava.valueToCode(
+      block, 'ACCEL_UNIT', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  return bno055imuParameters + '.accelUnit = ' + accelUnit + ';\n';
 };
 
 Blockly.Blocks['bno055imuParameters_setAccelerationIntegrationAlgorithm'] = {
@@ -403,7 +484,7 @@ Blockly.Blocks['bno055imuParameters_setAccelerationIntegrationAlgorithm'] = {
     this.appendValueInput('BNO055IMU_PARAMETERS').setCheck('BNO055IMU.Parameters')
         .appendField('parameters')
         .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput('ACCELERATION_INTEGRATION_ALGORITHM').setCheck('AccelerationIntegrationAlgorithm')
+    this.appendValueInput('ACCELERATION_INTEGRATION_ALGORITHM').setCheck('BNO055IMU.AccelerationIntegrator')
         .appendField('accelerationIntegrationAlgorithm')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true);
@@ -418,8 +499,17 @@ Blockly.JavaScript['bno055imuParameters_setAccelerationIntegrationAlgorithm'] = 
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var accelerationIntegrationAlgorithm = Blockly.JavaScript.valueToCode(
       block, 'ACCELERATION_INTEGRATION_ALGORITHM', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setAccelerationIntegrationAlgorithm(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setAccelerationIntegrationAlgorithm(' +
       bno055imuParameters + ', ' + accelerationIntegrationAlgorithm + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setAccelerationIntegrationAlgorithm'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var accelerationIntegrationAlgorithm = Blockly.FtcJava.valueToCode(
+      block, 'ACCELERATION_INTEGRATION_ALGORITHM', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  return bno055imuParameters + '.accelerationIntegrationAlgorithm = ' +
+      accelerationIntegrationAlgorithm + ';\n';
 };
 
 Blockly.Blocks['bno055imuParameters_setAngleUnit'] = {
@@ -447,8 +537,24 @@ Blockly.JavaScript['bno055imuParameters_setAngleUnit'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var angleUnit = Blockly.JavaScript.valueToCode(
       block, 'ANGLE_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setAngleUnit(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setAngleUnit(' +
       bno055imuParameters + ', ' + angleUnit + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setAngleUnit'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var angleUnit = Blockly.FtcJava.valueToCode(
+      block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  if (angleUnit.startsWith('AngleUnit.')) {
+    angleUnit = 'BNO055IMU.' + angleUnit;
+  } else {
+    angleUnit = Blockly.FtcJava.valueToCode(
+        block, 'ANGLE_UNIT', Blockly.FtcJava.ORDER_NONE);
+    angleUnit = 'BNO055IMU.AngleUnit.fromAngleUnit(' + angleUnit + ')';
+  }
+  Blockly.FtcJava.generateImport_('BNO055IMU');
+  return bno055imuParameters + '.angleUnit = ' + angleUnit + ';\n';
 };
 
 
@@ -477,8 +583,16 @@ Blockly.JavaScript['bno055imuParameters_setCalibrationDataFile'] = function(bloc
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var calibrationDataFile = Blockly.JavaScript.valueToCode(
       block, 'CALIBRATION_DATA_FILE', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setCalibrationDataFile(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setCalibrationDataFile(' +
       bno055imuParameters + ', ' + calibrationDataFile + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setCalibrationDataFile'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var calibrationDataFile = Blockly.FtcJava.valueToCode(
+      block, 'CALIBRATION_DATA_FILE', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  return bno055imuParameters + '.calibrationDataFile = ' + calibrationDataFile + ';\n';
 };
 
 Blockly.Blocks['bno055imuParameters_setI2cAddress7Bit'] = {
@@ -498,6 +612,13 @@ Blockly.Blocks['bno055imuParameters_setI2cAddress7Bit'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Sets the 7 bit I2C address.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'I2C_ADDRESS_7_BIT':
+          return 'int';
+      }
+      return '';
+    };
   }
 };
 
@@ -506,8 +627,17 @@ Blockly.JavaScript['bno055imuParameters_setI2cAddress7Bit'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var i2cAddress7Bit = Blockly.JavaScript.valueToCode(
       block, 'I2C_ADDRESS_7_BIT', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setI2cAddress7Bit(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setI2cAddress7Bit(' +
       bno055imuParameters + ', ' + i2cAddress7Bit + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setI2cAddress7Bit'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var i2cAddress7Bit = Blockly.FtcJava.valueToCode(
+      block, 'I2C_ADDRESS_7_BIT', Blockly.FtcJava.ORDER_NONE);
+  Blockly.FtcJava.generateImport_('I2cAddr');
+  return bno055imuParameters + '.i2cAddr = I2cAddr.create7bit(' + i2cAddress7Bit + ');\n';
 };
 
 Blockly.Blocks['bno055imuParameters_setI2cAddress8Bit'] = {
@@ -527,6 +657,13 @@ Blockly.Blocks['bno055imuParameters_setI2cAddress8Bit'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Sets the 8 bit I2C address.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'I2C_ADDRESS_8_BIT':
+          return 'int';
+      }
+      return '';
+    };
   }
 };
 
@@ -535,8 +672,17 @@ Blockly.JavaScript['bno055imuParameters_setI2cAddress8Bit'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var i2cAddress8Bit = Blockly.JavaScript.valueToCode(
       block, 'I2C_ADDRESS_8_BIT', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setI2cAddress8Bit(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setI2cAddress8Bit(' +
       bno055imuParameters + ', ' + i2cAddress8Bit + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setI2cAddress8Bit'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var i2cAddress8Bit = Blockly.FtcJava.valueToCode(
+      block, 'I2C_ADDRESS_8_BIT', Blockly.FtcJava.ORDER_NONE);
+  Blockly.FtcJava.generateImport_('I2cAddr');
+  return bno055imuParameters + '.i2cAddr = I2cAddr.create8bit(' + i2cAddress8Bit + ');\n';
 };
 
 Blockly.Blocks['bno055imuParameters_setLoggingEnabled'] = {
@@ -564,8 +710,16 @@ Blockly.JavaScript['bno055imuParameters_setLoggingEnabled'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var loggingEnabled = Blockly.JavaScript.valueToCode(
       block, 'LOGGING_ENABLED', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setLoggingEnabled(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setLoggingEnabled(' +
       bno055imuParameters + ', ' + loggingEnabled + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setLoggingEnabled'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var loggingEnabled = Blockly.FtcJava.valueToCode(
+      block, 'LOGGING_ENABLED', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  return bno055imuParameters + '.loggingEnabled = ' + loggingEnabled + ';\n';
 };
 
 Blockly.Blocks['bno055imuParameters_setLoggingTag'] = {
@@ -593,9 +747,18 @@ Blockly.JavaScript['bno055imuParameters_setLoggingTag'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var loggingTag = Blockly.JavaScript.valueToCode(
       block, 'LOGGING_TAG', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setLoggingTag(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setLoggingTag(' +
       bno055imuParameters + ', ' + loggingTag + ');\n';
 };
+
+Blockly.FtcJava['bno055imuParameters_setLoggingTag'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var loggingTag = Blockly.FtcJava.valueToCode(
+      block, 'LOGGING_TAG', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  return bno055imuParameters + '.loggingTag = ' + loggingTag + ';\n';
+};
+
 Blockly.Blocks['bno055imuParameters_setSensorMode'] = {
   init: function() {
     this.appendDummyInput()
@@ -606,7 +769,7 @@ Blockly.Blocks['bno055imuParameters_setSensorMode'] = {
     this.appendValueInput('BNO055IMU_PARAMETERS').setCheck('BNO055IMU.Parameters')
         .appendField('parameters')
         .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput('SENSOR_MODE').setCheck('SensorMode')
+    this.appendValueInput('SENSOR_MODE').setCheck('BNO055IMU.SensorMode')
         .appendField('sensorMode')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true);
@@ -621,8 +784,16 @@ Blockly.JavaScript['bno055imuParameters_setSensorMode'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var sensorMode = Blockly.JavaScript.valueToCode(
       block, 'SENSOR_MODE', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setSensorMode(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setSensorMode(' +
       bno055imuParameters + ', ' + sensorMode + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setSensorMode'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var sensorMode = Blockly.FtcJava.valueToCode(
+      block, 'SENSOR_MODE', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  return bno055imuParameters + '.mode = ' + sensorMode + ';\n';
 };
 
 Blockly.Blocks['bno055imuParameters_setTempUnit'] = {
@@ -650,8 +821,24 @@ Blockly.JavaScript['bno055imuParameters_setTempUnit'] = function(block) {
       block, 'BNO055IMU_PARAMETERS', Blockly.JavaScript.ORDER_COMMA);
   var tempUnit = Blockly.JavaScript.valueToCode(
       block, 'TEMP_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  return bno055imuParametersIdentifier + '.setTempUnit(' +
+  return bno055imuParametersIdentifierForJavaScript + '.setTempUnit(' +
       bno055imuParameters + ', ' + tempUnit + ');\n';
+};
+
+Blockly.FtcJava['bno055imuParameters_setTempUnit'] = function(block) {
+  var bno055imuParameters = Blockly.FtcJava.valueToCode(
+      block, 'BNO055IMU_PARAMETERS', Blockly.FtcJava.ORDER_MEMBER);
+  var tempUnit = Blockly.FtcJava.valueToCode(
+      block, 'TEMP_UNIT', Blockly.FtcJava.ORDER_ASSIGNMENT);
+  if (tempUnit.startsWith('TempUnit.')) {
+    tempUnit = 'BNO055IMU.' + tempUnit;
+  } else {
+    tempUnit = Blockly.FtcJava.valueToCode(
+        block, 'TEMP_UNIT', Blockly.FtcJava.ORDER_NONE);
+    tempUnit = 'BNO055IMU.TempUnit.fromTempUnit(' + tempUnit + ')';
+  }
+  Blockly.FtcJava.generateImport_('BNO055IMU');
+  return bno055imuParameters + '.temperatureUnit = ' + tempUnit + ';\n';
 };
 
 // Enums
@@ -667,6 +854,7 @@ Blockly.Blocks['bno055imuParameters_enum_accelUnit'] = {
         .appendField(createNonEditableField('AccelUnit'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(ACCEL_UNIT_CHOICES), 'ACCEL_UNIT');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -682,7 +870,6 @@ Blockly.Blocks['bno055imuParameters_enum_accelUnit'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -691,17 +878,24 @@ Blockly.JavaScript['bno055imuParameters_enum_accelUnit'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['bno055imuParameters_enum_accelUnit'] = function(block) {
+  var code = 'BNO055IMU.AccelUnit.' + block.getFieldValue('ACCEL_UNIT');
+  Blockly.FtcJava.generateImport_('BNO055IMU');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['bno055imuParameters_typedEnum_accelUnit'] = {
   init: function() {
     var ACCEL_UNIT_CHOICES = [
         ['METERS_PERSEC_PERSEC', 'METERS_PERSEC_PERSEC'],
         ['MILLI_EARTH_GRAVITY', 'MILLI_EARTH_GRAVITY'],
     ];
-    this.setOutput(true, 'AccelUnit');
+    this.setOutput(true, 'BNO055IMU.AccelUnit');
     this.appendDummyInput()
         .appendField(createNonEditableField('AccelUnit'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(ACCEL_UNIT_CHOICES), 'ACCEL_UNIT');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -717,12 +911,14 @@ Blockly.Blocks['bno055imuParameters_typedEnum_accelUnit'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['bno055imuParameters_typedEnum_accelUnit'] =
     Blockly.JavaScript['bno055imuParameters_enum_accelUnit'];
+
+Blockly.FtcJava['bno055imuParameters_typedEnum_accelUnit'] =
+    Blockly.FtcJava['bno055imuParameters_enum_accelUnit'];
 
 Blockly.Blocks['bno055imuParameters_enum_accelerationIntegrationAlgorithm'] = {
   init: function() {
@@ -730,7 +926,7 @@ Blockly.Blocks['bno055imuParameters_enum_accelerationIntegrationAlgorithm'] = {
         ['NAIVE', 'NAIVE'],
         ['JUST_LOGGING', 'JUST_LOGGING'],
     ];
-    this.setOutput(true, 'AccelerationIntegrationAlgorithm');
+    this.setOutput(true, 'BNO055IMU.AccelerationIntegrator');
     this.appendDummyInput()
         .appendField(createNonEditableField('AccelerationIntegrationAlgorithm'))
         .appendField('.')
@@ -740,11 +936,10 @@ Blockly.Blocks['bno055imuParameters_enum_accelerationIntegrationAlgorithm'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['NAIVE',
-            'Use a very naive acceleration integration algorithm that just does the basic physics.'],
-        ['JUST_LOGGING',
-            'Use an acceleration integration algorithm that doesn\'t actually integrate ' +
-            'accelerations, but merely reports them in the logcat log.'],
+        ['NAIVE', 'Specifies an acceleration integration algorithm that just does the basic ' +
+            'physics.'],
+        ['JUST_LOGGING', 'Specifies an acceleration integration algorithm that doesn\'t actually ' +
+            'integrate accelerations, but merely reports them in the logcat log.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('ACCELERATION_INTEGRATION_ALGORITHM');
@@ -763,11 +958,30 @@ Blockly.JavaScript['bno055imuParameters_enum_accelerationIntegrationAlgorithm'] 
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['bno055imuParameters_enum_accelerationIntegrationAlgorithm'] = function(block) {
+  var algorithm = block.getFieldValue('ACCELERATION_INTEGRATION_ALGORITHM');
+  var code;
+  switch (algorithm) {
+    case 'NAIVE':
+      code = 'null';
+      return [code, Blockly.FtcJava.ORDER_ATOMIC];
+    case 'JUST_LOGGING':
+      code = 'new JustLoggingAccelerationIntegrator()';
+      Blockly.FtcJava.generateImport_('JustLoggingAccelerationIntegrator');
+      return [code, Blockly.FtcJava.ORDER_NEW];
+    default:
+      throw 'Unexpected AccelerationIntegrationAlgorithm ' + algorithm + ' (bno055imuParameters_enum_accelerationIntegrationAlgorithm).';
+  }
+};
+
 Blockly.Blocks['bno055imuParameters_typedEnum_accelerationIntegrationAlgorithm'] =
     Blockly.Blocks['bno055imuParameters_enum_accelerationIntegrationAlgorithm'];
 
 Blockly.JavaScript['bno055imuParameters_typedEnum_accelerationIntegrationAlgorithm'] =
     Blockly.JavaScript['bno055imuParameters_enum_accelerationIntegrationAlgorithm'];
+
+Blockly.FtcJava['bno055imuParameters_typedEnum_accelerationIntegrationAlgorithm'] =
+    Blockly.FtcJava['bno055imuParameters_enum_accelerationIntegrationAlgorithm'];
 
 Blockly.Blocks['bno055imuParameters_enum_sensorMode'] = {
   init: function() {
@@ -785,7 +999,7 @@ Blockly.Blocks['bno055imuParameters_enum_sensorMode'] = {
         ['NDOF_FMC_OFF', 'NDOF_FMC_OFF'],
         ['NDOF', 'NDOF'],
     ];
-    this.setOutput(true, 'SensorMode');
+    this.setOutput(true, 'BNO055IMU.SensorMode');
     this.appendDummyInput()
         .appendField(createNonEditableField('SensorMode'))
         .appendField('.')
@@ -795,18 +1009,18 @@ Blockly.Blocks['bno055imuParameters_enum_sensorMode'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['ACCONLY', 'The BNO055 Operation Mode ACCONLY'],
-        ['MAGONLY', 'The BNO055 Operation Mode MAGONLY'],
-        ['GYRONLY', 'The BNO055 Operation Mode GYRONLY'],
-        ['ACCMAG', 'The BNO055 Operation Mode ACCMAG'],
-        ['ACCGYRO', 'The BNO055 Operation Mode ACCGYRO'],
-        ['MAGGYRO', 'The BNO055 Operation Mode MAGGYRO'],
-        ['AMG', 'The BNO055 Operation Mode AMG'],
-        ['IMU', 'The BNO055 Operation Mode IMU'],
-        ['COMPASS', 'The BNO055 Operation Mode COMPASS'],
-        ['M4G', 'The BNO055 Operation Mode M4G'],
-        ['NDOF_FMC_OFF', 'The BNO055 Operation Mode NDOF_FMC_OFF'],
-        ['NDOF', 'The BNO055 Operation Mode NDOF'],
+        ['ACCONLY', 'The IMU-BNO055 SensorMode value ACCONLY'],
+        ['MAGONLY', 'The IMU-BNO055 SensorMode value MAGONLY'],
+        ['GYRONLY', 'The IMU-BNO055 SensorMode value GYRONLY'],
+        ['ACCMAG', 'The IMU-BNO055 SensorMode value ACCMAG'],
+        ['ACCGYRO', 'The IMU-BNO055 SensorMode value ACCGYRO'],
+        ['MAGGYRO', 'The IMU-BNO055 SensorMode value MAGGYRO'],
+        ['AMG', 'The IMU-BNO055 SensorMode value AMG'],
+        ['IMU', 'The IMU-BNO055 SensorMode value IMU'],
+        ['COMPASS', 'The IMU-BNO055 SensorMode value COMPASS'],
+        ['M4G', 'The IMU-BNO055 SensorMode value M4G'],
+        ['NDOF_FMC_OFF', 'The IMU-BNO055 SensorMode value NDOF_FMC_OFF'],
+        ['NDOF', 'The IMU-BNO055 SensorMode value NDOF'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('SENSOR_MODE');
@@ -825,8 +1039,17 @@ Blockly.JavaScript['bno055imuParameters_enum_sensorMode'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.FtcJava['bno055imuParameters_enum_sensorMode'] = function(block) {
+  var code = 'BNO055IMU.SensorMode.' + block.getFieldValue('SENSOR_MODE');
+  Blockly.FtcJava.generateImport_('BNO055IMU');
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
+};
+
 Blockly.Blocks['bno055imuParameters_typedEnum_sensorMode'] =
     Blockly.Blocks['bno055imuParameters_enum_sensorMode'];
 
 Blockly.JavaScript['bno055imuParameters_typedEnum_sensorMode'] =
     Blockly.JavaScript['bno055imuParameters_enum_sensorMode'];
+
+Blockly.FtcJava['bno055imuParameters_typedEnum_sensorMode'] =
+    Blockly.FtcJava['bno055imuParameters_enum_sensorMode'];

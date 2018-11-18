@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// androidAccelerometerIdentifier
+// androidAccelerometerIdentifierForJavaScript
 // The following are defined in vars.js:
 // getPropertyColor
 // functionColor
@@ -44,7 +44,15 @@ Blockly.JavaScript['androidAccelerometer_setProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var value = Blockly.JavaScript.valueToCode(
       block, 'VALUE', Blockly.JavaScript.ORDER_NONE);
-  return androidAccelerometerIdentifier + '.set' + property + '(' + value + ');\n';
+  return androidAccelerometerIdentifierForJavaScript + '.set' + property + '(' + value + ');\n';
+};
+
+Blockly.FtcJava['androidAccelerometer_setProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidAccelerometer');
+  var property = block.getFieldValue('PROP');
+  var value = Blockly.FtcJava.valueToCode(
+      block, 'VALUE', Blockly.FtcJava.ORDER_NONE);
+  return identifier + '.set' + property + '(' + value + ');\n';
 };
 
 Blockly.Blocks['androidAccelerometer_setProperty_DistanceUnit'] = {
@@ -81,6 +89,9 @@ Blockly.Blocks['androidAccelerometer_setProperty_DistanceUnit'] = {
 Blockly.JavaScript['androidAccelerometer_setProperty_DistanceUnit'] =
     Blockly.JavaScript['androidAccelerometer_setProperty'];
 
+Blockly.FtcJava['androidAccelerometer_setProperty_DistanceUnit'] =
+    Blockly.FtcJava['androidAccelerometer_setProperty'];
+
 Blockly.Blocks['androidAccelerometer_getProperty'] = {
   init: function() {
     var PROPERTY_CHOICES = [
@@ -95,14 +106,14 @@ Blockly.Blocks['androidAccelerometer_getProperty'] = {
         .appendField(createNonEditableField('AndroidAccelerometer'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['X', 'Returns the acceleration in the x-axis.'],
-        ['Y', 'Returns the acceleration in the y-axis.'],
-        ['Z', 'Returns the acceleration in the z-axis.'],
-        ['Acceleration',
-            'Returns an Acceleration object representing acceleration in X, Y and Z axes.'],
+        ['X', 'Returns the numeric value of acceleration in the x-axis.'],
+        ['Y', 'Returns the numeric value of acceleration in the y-axis.'],
+        ['Z', 'Returns the numeric value of acceleration in the z-axis.'],
+        ['Acceleration', 'Returns an Acceleration object representing acceleration in X, Y and Z axes.'],
         ['DistanceUnit', 'Returns the DistanceUnit being used.'],
     ];
     this.setTooltip(function() {
@@ -114,14 +125,20 @@ Blockly.Blocks['androidAccelerometer_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidAccelerometer_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
-  var code = androidAccelerometerIdentifier + '.get' + property + '()';
+  var code = androidAccelerometerIdentifierForJavaScript + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidAccelerometer_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidAccelerometer');
+  var property = block.getFieldValue('PROP');
+  var code = identifier + '.get' + property + '()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidAccelerometer_getProperty_Number'] = {
@@ -136,12 +153,13 @@ Blockly.Blocks['androidAccelerometer_getProperty_Number'] = {
         .appendField(createNonEditableField('AndroidAccelerometer'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['X', 'Returns the acceleration in the x-axis.'],
-        ['Y', 'Returns the acceleration in the y-axis.'],
-        ['Z', 'Returns the acceleration in the z-axis.'],
+        ['X', 'Returns the numeric value of acceleration in the x-axis.'],
+        ['Y', 'Returns the numeric value of acceleration in the y-axis.'],
+        ['Z', 'Returns the numeric value of acceleration in the z-axis.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -152,12 +170,25 @@ Blockly.Blocks['androidAccelerometer_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'X':
+        case 'Y':
+        case 'Z':
+          return 'double';
+        default:
+          throw 'Unexpected property ' + property + ' (androidAccelerometer_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['androidAccelerometer_getProperty_Number'] =
     Blockly.JavaScript['androidAccelerometer_getProperty'];
+
+Blockly.FtcJava['androidAccelerometer_getProperty_Number'] =
+    Blockly.FtcJava['androidAccelerometer_getProperty'];
 
 Blockly.Blocks['androidAccelerometer_getProperty_Acceleration'] = {
   init: function() {
@@ -169,11 +200,11 @@ Blockly.Blocks['androidAccelerometer_getProperty_Acceleration'] = {
         .appendField(createNonEditableField('AndroidAccelerometer'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Acceleration',
-            'Returns an Acceleration object representing acceleration in X, Y and Z axes.'],
+        ['Acceleration', 'Returns an Acceleration object representing acceleration in X, Y and Z axes.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -184,12 +215,14 @@ Blockly.Blocks['androidAccelerometer_getProperty_Acceleration'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidAccelerometer_getProperty_Acceleration'] =
     Blockly.JavaScript['androidAccelerometer_getProperty'];
+
+Blockly.FtcJava['androidAccelerometer_getProperty_Acceleration'] =
+    Blockly.FtcJava['androidAccelerometer_getProperty'];
 
 Blockly.Blocks['androidAccelerometer_getProperty_DistanceUnit'] = {
   init: function() {
@@ -201,6 +234,7 @@ Blockly.Blocks['androidAccelerometer_getProperty_DistanceUnit'] = {
         .appendField(createNonEditableField('AndroidAccelerometer'))
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -215,12 +249,14 @@ Blockly.Blocks['androidAccelerometer_getProperty_DistanceUnit'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['androidAccelerometer_getProperty_DistanceUnit'] =
     Blockly.JavaScript['androidAccelerometer_getProperty'];
+
+Blockly.FtcJava['androidAccelerometer_getProperty_DistanceUnit'] =
+    Blockly.FtcJava['androidAccelerometer_getProperty'];
 
 // Functions
 
@@ -232,15 +268,20 @@ Blockly.Blocks['androidAccelerometer_isAvailable'] = {
         .appendField(createNonEditableField('AndroidAccelerometer'))
         .appendField('.')
         .appendField(createNonEditableField('isAvailable'));
-    this.setTooltip(
-        'Returns true if the Android device has a accelerometer.');
     this.setColour(functionColor);
+    this.setTooltip('Returns true if the Android device has an accelerometer.');
   }
 };
 
 Blockly.JavaScript['androidAccelerometer_isAvailable'] = function(block) {
-  var code = androidAccelerometerIdentifier + '.isAvailable()';
+  var code = androidAccelerometerIdentifierForJavaScript + '.isAvailable()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['androidAccelerometer_isAvailable'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidAccelerometer');
+  var code = identifier + '.isAvailable()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['androidAccelerometer_startListening'] = {
@@ -253,13 +294,17 @@ Blockly.Blocks['androidAccelerometer_startListening'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Start listening to events from the Android accelerometer.');
+    this.setTooltip('Start listening to events from the Android accelerometer.');
   }
 };
 
 Blockly.JavaScript['androidAccelerometer_startListening'] = function(block) {
-  return androidAccelerometerIdentifier + '.startListening();\n';
+  return androidAccelerometerIdentifierForJavaScript + '.startListening();\n';
+};
+
+Blockly.FtcJava['androidAccelerometer_startListening'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidAccelerometer');
+  return identifier + '.startListening();\n';
 };
 
 Blockly.Blocks['androidAccelerometer_stopListening'] = {
@@ -272,11 +317,15 @@ Blockly.Blocks['androidAccelerometer_stopListening'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip(
-        'Stop listening to events from the Android accelerometer.');
+    this.setTooltip('Stop listening to events from the Android accelerometer.');
   }
 };
 
 Blockly.JavaScript['androidAccelerometer_stopListening'] = function(block) {
-  return androidAccelerometerIdentifier + '.stopListening();\n';
+  return androidAccelerometerIdentifierForJavaScript + '.stopListening();\n';
+};
+
+Blockly.FtcJava['androidAccelerometer_stopListening'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, null, 'AndroidAccelerometer');
+  return identifier + '.stopListening();\n';
 };

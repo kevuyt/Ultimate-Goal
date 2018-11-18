@@ -34,11 +34,11 @@
 window.FtcLangTools = (function () {
     'use strict';
 
-    const Identifier = 'Identifier';
-    const DOT = 'DOT';
-    const LPAREN = 'LPAREN';
-    const RPAREN = 'RPAREN';
-    const COMMA = 'COMMA';
+    var Identifier = 'Identifier';
+    var DOT = 'DOT';
+    var LPAREN = 'LPAREN';
+    var RPAREN = 'RPAREN';
+    var COMMA = 'COMMA';
 
     var checkArgs = function (expr, name) {
         if (!expr) throw new Error(name + ' is not valid');
@@ -53,7 +53,7 @@ window.FtcLangTools = (function () {
             _findCompletionsFor: function (priorType, prefix, validCompletions) {
                 if (!(priorType !== null && typeof priorType !== 'undefined')) return;
 
-                const possibleFieldsForType = langTools.possibleFieldsForType(priorType);
+                var possibleFieldsForType = langTools.possibleFieldsForType(priorType);
                 for (var field in possibleFieldsForType) {
                     if (!possibleFieldsForType.hasOwnProperty(field)) continue;
                     if (field.indexOf(prefix) === 0) {
@@ -66,12 +66,12 @@ window.FtcLangTools = (function () {
                     }
                 }
 
-                const possibleMethodsForType = langTools.possibleMethodsForType(priorType);
+                var possibleMethodsForType = langTools.possibleMethodsForType(priorType);
                 for (var method in possibleMethodsForType) {
                     if (!possibleMethodsForType.hasOwnProperty(method)) continue;
                     if (method.indexOf(prefix) === 0) {
                         possibleMethodsForType[method].forEach(function (value) {
-                            const params = value.params.map(function (fullClass) {
+                            var params = value.params.map(function (fullClass) {
                                 return langTools.classNameFromFullClassName(fullClass).replace(/\$/g, '.');
                             }).join(', ');
                             var snippet = method + '(' + value.params.map(function (t, index) {
@@ -96,9 +96,9 @@ window.FtcLangTools = (function () {
                     return (t.indexOf(priorType.name + '$') === 0 || t.indexOf('$' + priorType.name + '$') > 0) &&
                         t.lastIndexOf('$' + prefix) === t.lastIndexOf('$');
                 }).forEach(function (value) {
-                    const start = value.lastIndexOf('$' + prefix);
+                    var start = value.lastIndexOf('$' + prefix);
                     var name = value.substr(start + 1);
-                    const nextSeparator = name.indexOf('$');
+                    var nextSeparator = name.indexOf('$');
                     name = name.substring(0, nextSeparator < 0 ? name.length : nextSeparator);
                     validCompletions.push({
                         name: name,
@@ -111,7 +111,7 @@ window.FtcLangTools = (function () {
             }, getCompletions: function (editor, session, pos, prefix, callback) {
                 try {
                     var timeStart = performance.now();
-                    const index = env.editor.session.getDocument().positionToIndex(pos, 0);
+                    var index = env.editor.session.getDocument().positionToIndex(pos, 0);
                     var currentVariables = langTools.validVariablesUnderIndex(index);
                     var currentToken = langTools.tokenUnderIndex(index);
                     // If nothing has changed, why are we being called? Return whatever we did last time
@@ -154,7 +154,7 @@ window.FtcLangTools = (function () {
                             }
                         });
 
-                        const possibleFieldsForType = langTools.possibleFieldsForType(langTools.thisType);
+                        var possibleFieldsForType = langTools.possibleFieldsForType(langTools.thisType);
                         for (field in possibleFieldsForType) {
                             if (!possibleFieldsForType.hasOwnProperty(field)) continue;
                             if (field.indexOf(prefix) !== 0 || completedFields.indexOf(field) >= 0) continue;
@@ -164,31 +164,31 @@ window.FtcLangTools = (function () {
                                 value: field, score: 900,
                                 meta: langTools.classNameFromFullClassName(possibleFieldsForType[field].type)
                             });
+                        }
 
-                            const possibleMethodsForType = langTools.possibleMethodsForType(langTools.thisType);
-                            for (method in possibleMethodsForType) {
-                                if (!possibleMethodsForType.hasOwnProperty(method)) continue;
-                                if (method.indexOf(prefix) === 0) {
-                                    possibleMethodsForType[method].forEach(function (value) {
-                                        const params = value.params.map(function (fullClass) {
-                                            return langTools.classNameFromFullClassName(fullClass).replace(/\$/g, '.');
-                                        }).join(', ');
-                                        var snippet = method + '(' + value.params.map(function (t, index) {
-                                            return '${' + (index + 1) + '}';
-                                        }).join(', ') + ')';
-                                        // Add a semicolon and go to the next line if it is not possible to add anything else to the statement
-                                        if (value.type === 'void') snippet += ';\n${' + value.params.length + 1 + '}';
-                                        validCompletions.push({
-                                            caption: method + '(' + params + ')',
-                                            snippet: snippet,
-                                            //value: method + '(' + (params.length === 0 ? ')' : ''),
-                                            name: method,
-                                            score: 800,
-                                            type: 'snippet',
-                                            meta: langTools.classNameFromFullClassName(value.type).replace(/\$/g, '.')
-                                        });
+                        var possibleMethodsForType = langTools.possibleMethodsForType(langTools.thisType);
+                        for (method in possibleMethodsForType) {
+                            if (!possibleMethodsForType.hasOwnProperty(method)) continue;
+                            if (method.indexOf(prefix) === 0) {
+                                possibleMethodsForType[method].forEach(function (value) {
+                                    var params = value.params.map(function (fullClass) {
+                                        return langTools.classNameFromFullClassName(fullClass).replace(/\$/g, '.');
+                                    }).join(', ');
+                                    var snippet = method + '(' + value.params.map(function (t, index) {
+                                        return '${' + (index + 1) + '}';
+                                    }).join(', ') + ')';
+                                    // Add a semicolon and go to the next line if it is not possible to add anything else to the statement
+                                    if (value.type === 'void') snippet += ';\n${' + value.params.length + 1 + '}';
+                                    validCompletions.push({
+                                        caption: method + '(' + params + ')',
+                                        snippet: snippet,
+                                        //value: method + '(' + (params.length === 0 ? ')' : ''),
+                                        name: method,
+                                        score: 800,
+                                        type: 'snippet',
+                                        meta: langTools.classNameFromFullClassName(value.type).replace(/\$/g, '.')
                                     });
-                                }
+                                });
                             }
                         }
 
@@ -201,7 +201,7 @@ window.FtcLangTools = (function () {
                         );
                     }
 
-                    const sortedCompletions = validCompletions.sort(function (lhs, rhs) {
+                    var sortedCompletions = validCompletions.sort(function (lhs, rhs) {
                         if (lhs.score === rhs.score) {
                             return (lhs.caption || lhs.value).localeCompare(rhs.caption || rhs.value);
                         }
@@ -215,9 +215,10 @@ window.FtcLangTools = (function () {
                     if (!firstRun) {
                         var timeToCompletion = performance.now() - timeStart;
                         firstRun = true;
-                        // timeToCompletion should be less than 50 ms, otherwise this editor is going to be unusably slow.
-                        // 50ms is roughly double the time this function should actually take
-                        if (!env.settings.get('autocompleteForceEnabled') && timeToCompletion > 50) {
+                        // todo: the time this function should actually take is < 25ms, after updating Ace the time > 50ms
+                        // timeToCompletion should be less than 100 ms, otherwise this editor is going to be unusably slow.
+                        // 100ms is roughly double the time this function should actually take
+                        if (!env.settings.get('autocompleteForceEnabled') && timeToCompletion > 100) {
                             langTools.autoCompleteDisabled = true;
                             langTools.autoCompleteDisabledReason = 'perf';
                             console.warn('Disabling OnBotJava autocomplete, due to performance reasons');
@@ -234,7 +235,8 @@ window.FtcLangTools = (function () {
         };
     };
 
-    function AutoImportTools() {}
+    function AutoImportTools() {
+    }
 
     AutoImportTools.prototype.classToPackageMap = {};
 
@@ -253,13 +255,6 @@ window.FtcLangTools = (function () {
                 instance.knownTypeIds.push(classOrInterfaceType);
                 instance.classToPackageMap[classOrInterfaceType].forEach(function (type) {
                     type.name = classOrInterfaceType;
-                    const subclassNameIndex = classOrInterfaceType.lastIndexOf($);
-                    if (subclassNameIndex >= 0) {
-                        // if (!Array.isArray(instance.classToPackageMap[classOrInterfaceType.substr(subclassNameIndex)]))
-                        //     instance.classToPackageMap[classOrInterfaceType.substr(subclassNameIndex)] = [];
-                        // instance.classToPackageMap[classOrInterfaceType.substr(subclassNameIndex)].push(type);
-                        // instance.packageName = type.packageName = classOrInterfaceType
-                    }
                 });
             }
         });
@@ -292,7 +287,7 @@ window.FtcLangTools = (function () {
 
     FtcLangTools.prototype.tokenUnderCursor = function (offset) {
         if (!offset) offset = 0;
-        const index = env.editor.session.getDocument().positionToIndex(env.editor.getCursorPosition(), 0) + offset;
+        var index = env.editor.session.getDocument().positionToIndex(env.editor.getCursorPosition(), 0) + offset;
         return this.tokenUnderIndex(index - 1);
     };
 
@@ -300,7 +295,7 @@ window.FtcLangTools = (function () {
         if (this.currentVariables === null) return [];
         if (!line) line = env.editor.session.getDocument().indexToPosition(index, 0).row;
         var currentVariables = this.currentVariables.variables;
-        const findScopeInIndex = function (currentScopes) {
+        var findScopeInIndex = function (currentScopes) {
             currentScopes.forEach(function (scope) {
                 if (scope.start < index && scope.stop >= index) {
                     currentVariables = currentVariables.concat(scope.variables);
@@ -316,7 +311,7 @@ window.FtcLangTools = (function () {
     FtcLangTools.prototype.validVariablesUnderCursor = function (offset) {
         if (!offset) offset = 0;
         var cursorPosition = env.editor.getCursorPosition();
-        const index = env.editor.session.getDocument().positionToIndex(cursorPosition, 0) + offset;
+        var index = env.editor.session.getDocument().positionToIndex(cursorPosition, 0) + offset;
         return this.validVariablesUnderIndex(index, cursorPosition.row + 1);
     };
 
@@ -354,10 +349,10 @@ window.FtcLangTools = (function () {
         if (token === null) return null;
         if (variables === null || typeof variables === 'undefined') variables = this.validVariablesForToken(token);
         if (this.isPartOfMethod(token)) {
-            const methodIdentifier = this.methodIdentifierFor(token);
-            const currentTokens = this.currentTokens;
-            const index = methodIdentifier.index;
-            const resolveAgainstThis = (currentTokens[index - 1].type === DOT && currentTokens[index - 2].type === 'THIS') || currentTokens[index - 1].type !== DOT;
+            var methodIdentifier = this.methodIdentifierFor(token);
+            var currentTokens = this.currentTokens;
+            var index = methodIdentifier.index;
+            var resolveAgainstThis = (currentTokens[index - 1].type === DOT && currentTokens[index - 2].type === 'THIS') || currentTokens[index - 1].type !== DOT;
             var prefixType;
             var possibleMethods;
             var method;
@@ -385,7 +380,7 @@ window.FtcLangTools = (function () {
                             if (typeString.indexOf('.') < 0) {
                                 typeId = this.typeForClassName(typeId);
                             } else {
-                                typeComps = typeId.split('.');
+                                var typeComps = typeId.split('.');
                                 var possibleTrys = typeComps.length;
                                 while (possibleTrys > 0 && (typeId === null || typeof typeId === 'undefined')) {
                                     var test = '';
@@ -441,20 +436,20 @@ window.FtcLangTools = (function () {
                 method = this.methodIdentifierFromMethodCallParts(methodCallParts, possibleMethods);
                 return this.typeFromFullPackageId(method.type);
             } else {
-                // return this.detectTypeForToken(methodIdentifier, variables);
                 return null;
             }
         } else if (token.type === Identifier) {
             if (this.currentTokens[token.index - 1].type === DOT) { // This should a field of a type
                 prefixType = this.detectTypeForToken(this.currentTokens[token.index - 2], variables);
                 // This is a field of the type found in prefixType, because we have verified that this is not a method, so what else can it be?
-                const instance = this;
+                var instance = this;
+                var field;
                 if (prefixType !== null && typeof prefixType !== 'undefined') {
-                    var field = this.possibleFieldsForType(prefixType)[token.text];
+                    field = this.possibleFieldsForType(prefixType)[token.text];
                     if (field) {
                         return this.typeFromFullPackageId(field.type);
                     } else {
-                        const possibleSubclasses = this.autoImport.knownTypeIds.filter(function (t) {
+                        var possibleSubclasses = this.autoImport.knownTypeIds.filter(function (t) {
                             return (t.indexOf(prefixType.name + '$') === 0 || t.indexOf('$' + prefixType.name + '$') > 0) &&
                                 t.lastIndexOf('$' + token.text) === t.lastIndexOf('$');
                         });
@@ -474,11 +469,11 @@ window.FtcLangTools = (function () {
 
                 var maxLevel = 0;
                 matchingVariables.forEach(function (variable) {
-                   if (variable.level > maxLevel) maxLevel = variable.level;
+                    if (variable.level > maxLevel) maxLevel = variable.level;
                 });
 
                 matchingVariables = matchingVariables.filter(function (variable) {
-                   return maxLevel === variable.level;
+                    return maxLevel === variable.level;
                 });
                 // There should only be one left with proper Java
                 if (matchingVariables.length > 0) {
@@ -490,7 +485,7 @@ window.FtcLangTools = (function () {
                     }
                 }
 
-                const field = this.possibleFieldsForType(this.thisType)[token.text];
+                field = this.possibleFieldsForType(this.thisType)[token.text];
                 if (field) {
                     return this.typeFromFullClassName(field.type);
                 }
@@ -510,8 +505,8 @@ window.FtcLangTools = (function () {
     };
 
     FtcLangTools.prototype.detectTypeUnderCursor = function () {
-        const variables = this.validVariablesUnderCursor();
-        const tokenUnderCursor = this.tokenUnderCursor();
+        var variables = this.validVariablesUnderCursor();
+        var tokenUnderCursor = this.tokenUnderCursor();
         return this.detectTypeForToken(tokenUnderCursor, variables);
     };
 
@@ -549,8 +544,8 @@ window.FtcLangTools = (function () {
     };
 
     FtcLangTools.prototype.isPartOfMethod = function (startToken) {
-        const index = startToken.index;
-        const currentTokens = this.currentTokens;
+        var index = startToken.index;
+        var currentTokens = this.currentTokens;
         var matching;
 
         if (startToken.type === Identifier) {
@@ -574,9 +569,11 @@ window.FtcLangTools = (function () {
             matching = this.findMatchingToken(currentTokens[index]);
             if (matching !== null) {
                 var matchedIndex = matching.index;
-                if (matchedIndex - 2 < 0) return false;
-                return currentTokens[matchedIndex - 1].type === Identifier && currentTokens[matchedIndex - 2].type === DOT;
+                if (matchedIndex - 2 < 0) {
+                    return false;
+                }
 
+                return currentTokens[matchedIndex - 1].type === Identifier && currentTokens[matchedIndex - 2].type === DOT;
             }
         }
 
@@ -597,8 +594,8 @@ window.FtcLangTools = (function () {
     };
 
     FtcLangTools.prototype._getPartsOfMethodCall = function (startToken) {
-        const index = startToken.index;
-        const currentTokens = this.currentTokens;
+        var index = startToken.index;
+        var currentTokens = this.currentTokens;
         var matching;
         var result = {
             identifier: null,
@@ -639,8 +636,9 @@ window.FtcLangTools = (function () {
     };
     FtcLangTools.prototype.getArgumentTypesFromMethod = function (methodCallLparen, methodCallRparen) {
         var paramTypes = [];
-        for (var i = methodCallLparen.index + 1; i < methodCallRparen.index && i < this.currentTokens.length; i++)  {
+        for (var i = methodCallLparen.index + 1; i < methodCallRparen.index && i < this.currentTokens.length; i++) {
             if (this.currentTokens[i + 1].type === COMMA || this.currentTokens[i + 1] === methodCallRparen) {
+                var token = this.currentTokens[i];
                 paramTypes.push(this.detectTypeForToken(token));
             }
         }
@@ -757,7 +755,7 @@ window.FtcLangTools = (function () {
                 importedClassPackagesNames[instance.classNameFromFullClassName(importClass)] = instance.packageNameFromFullClassName(importClass);
             });
 
-            const $index = className.indexOf('$');
+            var $index = className.indexOf('$');
             packageName = importedClassPackagesNames[$index >= 0 ? className.substr(0, $index) : className];
         }
 
@@ -766,7 +764,7 @@ window.FtcLangTools = (function () {
         }
 
         for (var i = 0; i < possibleTypes.length; i++) {
-            const possibleType = possibleTypes[i];
+            var possibleType = possibleTypes[i];
             if (possibleType.packageName === packageName) {
                 return possibleType;
             }
@@ -800,10 +798,6 @@ window.FtcLangTools = (function () {
     // an alias todo: remove
     FtcLangTools.prototype.typeFromFullClassName = FtcLangTools.prototype.typeFromFullPackageId;
 
-    FtcLangTools.prototype.possibleMethodsForClassName = function (className) {
-        return this.possibleMethodsForType(this.typeForClassName(className));
-    };
-
     FtcLangTools.prototype.possibleMethodsForType = function (type) {
         if (type !== this.thisType && this.cacheForType(type).methods) {
             return this.cacheForType(type).methods;
@@ -822,8 +816,8 @@ window.FtcLangTools = (function () {
 
         var addElementIfMissing = function (array1, element) {
             if (array1.filter(function (value) {
-                    return value === element;
-                }).length === 0) {
+                return value === element;
+            }).length === 0) {
                 array1.push(element);
             }
         };
@@ -864,14 +858,6 @@ window.FtcLangTools = (function () {
             this.cacheForType(type).methods = possibleMethods;
 
         return possibleMethods;
-    };
-
-    FtcLangTools.prototype.possibleMethodsOfSuperForType = function (type) {
-        return this.possibleMethodsForClassName(type.parentClass);
-    };
-
-    FtcLangTools.prototype.possibleFieldsForClassName = function (className) {
-        return this.possibleFieldsForType(this.typeForClassName(className));
     };
 
     FtcLangTools.prototype.possibleFieldsForType = function (type) {
@@ -917,10 +903,6 @@ window.FtcLangTools = (function () {
         return fields;
     };
 
-    FtcLangTools.prototype.possibleFieldsOfSuperForType = function (type) {
-        return this.possibleFieldsForClassName(type.parentClass);
-    };
-
     FtcLangTools.prototype.packageNameFromFullClassName = function (fullClassName) {
         if (this.isFullPackageName(fullClassName)) {
             return fullClassName.substring(0, fullClassName.lastIndexOf('.'));
@@ -964,7 +946,7 @@ window.FtcLangTools = (function () {
         checkArgs(methods, 'methods');
 
         var thisFields = {};
-        const instance = this;
+        var instance = this;
         this.currentVariables.variables.filter(function (variable) {
             return variable.decType === 'field';
         }).forEach(function (value) {
@@ -1007,10 +989,10 @@ window.FtcLangTools = (function () {
     };
 
     FtcLangTools.prototype.cacheForType = function (type) {
-        const key = this.fullClassNameFromType(type);
+        var key = this.fullClassNameFromType(type);
         if (this._cache.hasOwnProperty(key)) {
             if (typeof this._cache[key] !== 'object') {
-              this._cache[key] = {};
+                this._cache[key] = {};
             }
         } else {
             this._cache[key] = {};

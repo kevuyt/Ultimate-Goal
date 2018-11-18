@@ -2,27 +2,27 @@
 // build.gradle in FtcRobotController
 //
 apply plugin: 'com.android.library'
-
 android {
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 19
     }
 
-    compileSdkVersion 26
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 23
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
 }
-
 repositories {
-    google()
     flatDir {
         dirs '../libs'
     }
 }
 apply from: 'build.release.gradle'
+
+dependencies {
+    implementation files('/Users/Archish/Documents/CodeProjects/Android/MasqLib/libs/RobotCore-release-sources.jar')
+}

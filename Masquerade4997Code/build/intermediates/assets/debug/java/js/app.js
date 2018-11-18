@@ -34,6 +34,8 @@
     'use strict';
     angular.module('editor', ['ui.ace', 'ngMessages'])
         .controller('EditorController', ['$scope', function ($scope) {
+            var buildLogKey = 'obj-build-log';
+
             $scope.editorReady = false;
             $scope.editorTheme = env.editorTheme;
             $scope.newFile = {
@@ -85,7 +87,13 @@
             };
             $scope.settings = (function (settings) {
                 settings.implementedSettings.forEach(function (p1) {
-                    settings[p1] = env.settings.get(p1);
+                    var setting = env.settings.get(p1);
+                    var parsedSetting = Number.parseFloat(setting);
+                    if (!Number.isNaN(parsedSetting)) {
+                        setting = parsedSetting;
+                    }
+
+                    settings[p1] = setting;
                 });
 
                 return settings;
@@ -120,6 +128,10 @@
                     _editor.getSession().setMode("ace/mode/java");
                 } else if (ext === "groovy" || ext === "gradle") {
                     _editor.getSession().setMode("ace/mode/groovy");
+                } else if (ext === "properties") {
+                    _editor.getSession().setMode("ace/mode/properties");
+                } else if (ext === "json") {
+                    _editor.getSession().setMode("ace/mode/json");
                 }
             }
 
@@ -157,7 +169,7 @@
                     } else {
                         setupEditorWithData('// An unknown error occurred', true);
                     }
-                }).fail(function (jqxhr, status, error) {
+                }, "text").fail(function (jqxhr, status, error) {
                     setupEditorWithData('// An error occurred trying to fetch:\n' +
                         "\t// '" + url + "'\n" +
                         "\t//\n" +
@@ -183,8 +195,8 @@
                         }
                     } else {
                         configureEditorToDefaults();
-                        configureEditorLang(".md", _editor);
                         env.loadError = true;
+                        configureEditorLang('.md', _editor);
                     }
                 }
 
@@ -389,6 +401,13 @@
                 updateEditorToolboxDisabledStates();
 
                 $scope.code = $scope.editor.getValue();
+
+                var buildLog = localStorage.getItem(buildLogKey);
+                if (buildLog === null) {
+                    localStorage.setItem(buildLogKey, btoa($('#build-log-content').html()));
+                } else {
+                    $('#build-log-content').html(atob(buildLog));
+                }
             };
 
             function save() {
@@ -525,6 +544,8 @@
                                     } else {
                                         $buildContent.append('\nBuild <span class="error">FAILED!</span>');
                                     }
+
+                                    localStorage.setItem(buildLogKey, btoa($buildContent.html()));
                                 });
                             }).fail(function () {
                                 $buildContent.append("\nCould not access build system URL.\n" +

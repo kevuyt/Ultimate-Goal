@@ -7,27 +7,23 @@
 <!-- The package name here determines the package for your R class and your BuildConfig class -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qualcomm.ftcrobotcontroller"
-    android:versionCode="25"
-    android:versionName="3.5" >
+    android:versionCode="31"
+    android:versionName="4.3" >
 
     <uses-sdk
         android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera.flash" />
-
     <uses-permission
         android:name="android.permission.ACCESS_WIFI_STATE"
         android:required="true" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission
         android:name="android.permission.CHANGE_WIFI_STATE"
+        android:required="true" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
         android:required="true" />
     <uses-permission
         android:name="android.permission.CHANGE_NETWORK_STATE"
@@ -35,10 +31,6 @@
     <uses-permission
         android:name="android.permission.INTERNET"
         android:required="true" />
-    <uses-permission
-        android:name="android.permission.ACCESS_NETWORK_STATE"
-        android:required="true" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:required="true" />
@@ -48,8 +40,15 @@
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
         android:required="true" />
+    <!--
+       "Allows applications to access serial ports via the SerialManager.". So, uncertain we need,
+       as we don't use the SerialManager.
+    -->
     <uses-permission
         android:name="android.permission.SERIAL_PORT"
+        android:required="true" /> <!-- see AppUtil.setTimeZone() -->
+    <uses-permission
+        android:name="android.permission.SET_TIME_ZONE"
         android:required="true" />
     <!--
   Note: we suspect that this (android.permission.WAKE_LOCK) is no
@@ -59,24 +58,44 @@
     <uses-permission
         android:name="android.permission.WAKE_LOCK"
         android:required="true" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature android:name="android.hardware.usb.accessory" />
     <uses-feature android:glEsVersion="0x00020000" />
+    <!--
+        NOTE: Any application that requests the CAMERA permission but does not
+        declare any camera features with the <uses-feature> element will be
+        assumed to use all camera features (auto-focus and flash). Thus, the
+        application will not be compatible with devices that do not support
+        all camera features. We use <uses-feature> to declare only the
+        camera features that our application does need. For instance, if you
+        request the CAMERA permission, but you do not need auto-focus or
+        flash, then declare only the android.hardware.camera feature. The
+        other camera features that you do not request will no longer be
+        assumed as required.
+    -->
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:name="org.firstinspires.ftc.robotcore.internal.system.RobotApplication"
         android:allowBackup="true"
+        android:debuggable="true"
         android:exported="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppThemeRedRC" > <!-- The main robot controller activity -->
         <activity
             android:name="org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:screenOrientation="fullUser" >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
@@ -89,41 +108,28 @@
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
+            <meta-data
+                android:name="org.firstinspires.main.entry"
+                android:value="true" />
         </activity> <!-- The robot controller service in which most of the robot functionality is managed -->
         <service
             android:name="com.qualcomm.ftccommon.FtcRobotControllerService"
+            android:enabled="true" /> <!-- Service that keeps desktop folders up to date with respect to actual phone file system contents -->
+        <service
+            android:name="org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
             android:enabled="true" />
 
-        <activity
-            android:name="org.firstinspires.inspection.DsInspectionActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/inspection_activity" >
-        </activity>
-        <activity
-            android:name="org.firstinspires.inspection.RcInspectionActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/inspection_activity" >
-        </activity>
-        <activity
-            android:name="com.google.blocks.ftcrobotcontroller.ProgrammingModeActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/programming_mode_activity" >
-        </activity>
-        <activity
-            android:name="org.firstinspires.ftc.ftccommon.internal.ProgramAndManageActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/program_and_manage_activity" >
-        </activity>
-        <activity
-            android:name="com.google.blocks.ftcdriverstation.RemoteProgrammingModeActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/programming_mode_activity" >
-        </activity>
-        <activity
-            android:name="com.google.blocks.ftcrobotcontroller.BlocksActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/blocks_activity" >
-        </activity>
+        <meta-data
+            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
+            android:value="BOTH|1000" /> <!-- Service that provides build services for OnBotJava -->
+        <service
+            android:name="org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
+            android:enabled="true" />
+
+        <meta-data
+            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
+            android:value="RC|2000" />
+
         <activity
             android:name="com.qualcomm.ftccommon.FtcRobotControllerSettingsActivity"
             android:exported="true"
@@ -187,6 +193,10 @@
         <activity
             android:name="com.qualcomm.ftccommon.AboutActivity"
             android:label="@string/about_activity" >
+        </activity>
+        <activity
+            android:name="com.qualcomm.ftccommon.FtcAboutActivity"
+            android:label="@string/ftc_about_activity" >
         </activity>
         <activity
             android:name="com.qualcomm.ftccommon.configuration.EditSwapUsbDevices"
@@ -261,6 +271,12 @@
             android:windowSoftInputMode="stateHidden|adjustResize" >
         </activity>
         <activity
+            android:name="com.qualcomm.ftccommon.configuration.EditWebcamActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/edit_webcam_activity"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        <activity
             android:name="com.qualcomm.ftccommon.configuration.EditPWMDevicesActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/edit_pwm_devices_activity"
@@ -318,21 +334,38 @@
             android:name="org.firstinspires.ftc.ftccommon.internal.FtcRobotControllerWatchdogService"
             android:enabled="true" />
 
-        <uses-library android:name="android.test.runner" /> <!-- Service that keeps desktop folders up to date with respect to actual phone file system contents -->
-        <service
-            android:name="org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
-            android:enabled="true" />
+        <uses-library android:name="android.test.runner" />
 
-        <meta-data
-            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
-            android:value="BOTH|1000" /> <!-- Service that provides build services for OnBotJava -->
-        <service
-            android:name="org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
-            android:enabled="true" />
-
-        <meta-data
-            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
-            android:value="RC|2000" />
+        <activity
+            android:name="org.firstinspires.inspection.DsInspectionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/inspection_activity" >
+        </activity>
+        <activity
+            android:name="org.firstinspires.inspection.RcInspectionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/inspection_activity" >
+        </activity>
+        <activity
+            android:name="com.google.blocks.ftcrobotcontroller.ProgrammingModeActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/programming_mode_activity" >
+        </activity>
+        <activity
+            android:name="org.firstinspires.ftc.ftccommon.internal.ProgramAndManageActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/program_and_manage_activity" >
+        </activity>
+        <activity
+            android:name="com.google.blocks.ftcdriverstation.RemoteProgrammingModeActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/programming_mode_activity" >
+        </activity>
+        <activity
+            android:name="com.google.blocks.ftcrobotcontroller.BlocksActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/blocks_activity" >
+        </activity>
     </application>
 
 </manifest>

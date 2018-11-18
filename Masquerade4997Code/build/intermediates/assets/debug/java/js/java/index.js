@@ -1,3 +1,4 @@
-exports.JavaLexer = require('java/js/java/JavaLexer').JavaLexer;
-exports.JavaListener = require('java/js/java/JavaListener').JavaListener;
-exports.JavaParser = require('java/js/java/JavaParser').JavaParser;
+exports.antlr4 = require('../antlr4/index');
+exports.JavaLexer = require('./JavaLexer').JavaLexer;
+exports.JavaListener = require('./JavaListener').JavaListener;
+exports.JavaParser = require('./JavaParser').JavaParser;

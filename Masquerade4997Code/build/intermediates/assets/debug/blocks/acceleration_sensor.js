@@ -21,6 +21,7 @@ Blockly.Blocks['accelerationSensor_getProperty'] = {
         .appendField(createAccelerationSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
@@ -37,7 +38,6 @@ Blockly.Blocks['accelerationSensor_getProperty'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
@@ -46,6 +46,23 @@ Blockly.JavaScript['accelerationSensor_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var code = identifier + '.get' + property + '()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['accelerationSensor_getProperty'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'AccelerationSensor');
+  var property = block.getFieldValue('PROP');
+  switch (property) {
+    case 'Acceleration':
+      var code = identifier + '.get' + property + '()';
+      return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+    case 'XAccel':
+    case 'YAccel':
+    case 'ZAccel':
+      var code = identifier + '.getAcceleration().' + Blockly.FtcJava.makeFirstLetterLowerCase_(property);
+      return [code, Blockly.FtcJava.ORDER_MEMBER];
+    default:
+      throw 'Unexpected property ' + property + ' (accelerationSensor_getProperty).';
+  }
 };
 
 Blockly.Blocks['accelerationSensor_getProperty_Number'] = {
@@ -60,7 +77,8 @@ Blockly.Blocks['accelerationSensor_getProperty_Number'] = {
         .appendField(createAccelerationSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    this.setColour(getPropertyColor);
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
         ['XAccel', 'Returns the X Acceleration, in G\'s.'],
@@ -76,12 +94,25 @@ Blockly.Blocks['accelerationSensor_getProperty_Number'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'XAccel':
+        case 'YAccel':
+        case 'ZAccel':
+          return 'double';
+        default:
+          throw 'Unexpected property ' + property + ' (accelerationSensor_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['accelerationSensor_getProperty_Number'] =
     Blockly.JavaScript['accelerationSensor_getProperty'];
+
+Blockly.FtcJava['accelerationSensor_getProperty_Number'] =
+    Blockly.FtcJava['accelerationSensor_getProperty'];
 
 Blockly.Blocks['accelerationSensor_getProperty_Acceleration'] = {
   init: function() {
@@ -93,11 +124,12 @@ Blockly.Blocks['accelerationSensor_getProperty_Acceleration'] = {
         .appendField(createAccelerationSensorDropdown(), 'IDENTIFIER')
         .appendField('.')
         .appendField(new Blockly.FieldDropdown(PROPERTY_CHOICES), 'PROP');
+    this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['Acceleration',
-            'Returns an Acceleration object representing acceleration in X, Y and Z axes.'],
+        ['Acceleration', 'Returns an Acceleration object representing acceleration in X, Y and Z ' +
+            'axes.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -108,12 +140,14 @@ Blockly.Blocks['accelerationSensor_getProperty_Acceleration'] = {
       }
       return '';
     });
-    this.setColour(getPropertyColor);
   }
 };
 
 Blockly.JavaScript['accelerationSensor_getProperty_Acceleration'] =
     Blockly.JavaScript['accelerationSensor_getProperty'];
+
+Blockly.FtcJava['accelerationSensor_getProperty_Acceleration'] =
+    Blockly.FtcJava['accelerationSensor_getProperty'];
 
 Blockly.Blocks['accelerationSensor_toText'] = {
   init: function() {
@@ -132,5 +166,11 @@ Blockly.JavaScript['accelerationSensor_toText'] = function(block) {
   var identifier = block.getFieldValue('IDENTIFIER');
   var code = identifier + '.toText()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['accelerationSensor_toText'] = function(block) {
+  var identifier = Blockly.FtcJava.importDeclareAssign_(block, 'IDENTIFIER', 'AccelerationSensor');
+  var code = identifier + '.toString()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 

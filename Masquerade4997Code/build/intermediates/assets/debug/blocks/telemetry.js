@@ -4,7 +4,7 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// telemetryIdentifier
+// telemetryIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
 // functionColor
@@ -36,7 +36,15 @@ Blockly.JavaScript['telemetry_addNumericData'] = function(block) {
       block, 'KEY', Blockly.JavaScript.ORDER_COMMA);
   var number = Blockly.JavaScript.valueToCode(
       block, 'NUMBER', Blockly.JavaScript.ORDER_COMMA);
-  return telemetryIdentifier + '.addNumericData(' + key + ', ' + number + ');\n';
+  return telemetryIdentifierForJavaScript + '.addNumericData(' + key + ', ' + number + ');\n';
+};
+
+Blockly.FtcJava['telemetry_addNumericData'] = function(block) {
+  var key = Blockly.FtcJava.valueToCode(
+      block, 'KEY', Blockly.FtcJava.ORDER_COMMA);
+  var number = Blockly.FtcJava.valueToCode(
+      block, 'NUMBER', Blockly.FtcJava.ORDER_COMMA);
+  return 'telemetry.addData(' + key + ', ' + number + ');\n';
 };
 
 Blockly.Blocks['telemetry_addNumericData_Number'] = {
@@ -56,11 +64,21 @@ Blockly.Blocks['telemetry_addNumericData_Number'] = {
     this.setNextStatement(true);
     this.setColour(functionColor);
     this.setTooltip('Add a numeric data point.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'NUMBER':
+          return 'double';
+      }
+      return '';
+    };
   }
 };
 
 Blockly.JavaScript['telemetry_addNumericData_Number'] =
     Blockly.JavaScript['telemetry_addNumericData'];
+
+Blockly.FtcJava['telemetry_addNumericData_Number'] =
+    Blockly.FtcJava['telemetry_addNumericData'];
 
 Blockly.Blocks['telemetry_addTextData'] = {
   init: function() {
@@ -78,7 +96,7 @@ Blockly.Blocks['telemetry_addTextData'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip('Add a text data point.');
+    this.setTooltip('Add a data point.');
   }
 };
 
@@ -87,7 +105,15 @@ Blockly.JavaScript['telemetry_addTextData'] = function(block) {
       block, 'KEY', Blockly.JavaScript.ORDER_COMMA);
   var text = Blockly.JavaScript.valueToCode(
       block, 'TEXT', Blockly.JavaScript.ORDER_COMMA);
-  return telemetryIdentifier + '.addTextData(' + key + ', String(' + text + '));\n';
+  return 'telemetryAddTextData(' + key + ', ' + text + ');\n';
+};
+
+Blockly.FtcJava['telemetry_addTextData'] = function(block) {
+  var key = Blockly.FtcJava.valueToCode(
+      block, 'KEY', Blockly.FtcJava.ORDER_COMMA);
+  var text = Blockly.FtcJava.valueToCode(
+      block, 'TEXT', Blockly.FtcJava.ORDER_COMMA);
+  return 'telemetry.addData(' + key + ', ' + text + ');\n';
 };
 
 Blockly.Blocks['telemetry_addTextData_All'] = {
@@ -106,12 +132,15 @@ Blockly.Blocks['telemetry_addTextData_All'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(functionColor);
-    this.setTooltip('Add a text data point.');
+    this.setTooltip('Add a data point.');
   }
 };
 
 Blockly.JavaScript['telemetry_addTextData_All'] =
     Blockly.JavaScript['telemetry_addTextData'];
+
+Blockly.FtcJava['telemetry_addTextData_All'] =
+    Blockly.FtcJava['telemetry_addTextData'];
 
 Blockly.Blocks['telemetry_update'] = {
   init: function() {
@@ -128,5 +157,9 @@ Blockly.Blocks['telemetry_update'] = {
 };
 
 Blockly.JavaScript['telemetry_update'] = function(block) {
-  return telemetryIdentifier + '.update();\n';
+  return telemetryIdentifierForJavaScript + '.update();\n';
+};
+
+Blockly.FtcJava['telemetry_update'] = function(block) {
+  return 'telemetry.update();\n';
 };

@@ -4,13 +4,11 @@
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// accelerationIdentifier
+// accelerationIdentifierForJavaScript
 // The following are defined in vars.js:
 // createNonEditableField
-// getPropertyColor
 // functionColor
-
-// TODO(lizlooney) Acceleration.earthGravity constant?
+// getPropertyColor
 
 Blockly.Blocks['acceleration_getProperty'] = {
   init: function() {
@@ -33,11 +31,11 @@ Blockly.Blocks['acceleration_getProperty'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['DistanceUnit', 'The DistanceUnit of the given Acceleration object.'],
-        ['XAccel', 'The XAccel of the given Acceleration object.'],
-        ['YAccel', 'The YAccel of the given Acceleration object.'],
-        ['ZAccel', 'The ZAccel of the given Acceleration object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given Acceleration object.'],
+        ['DistanceUnit', 'Returns the DistanceUnit of the given Acceleration object.'],
+        ['XAccel', 'Returns the XAccel of the given Acceleration object.'],
+        ['YAccel', 'Returns the YAccel of the given Acceleration object.'],
+        ['ZAccel', 'Returns the ZAccel of the given Acceleration object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given Acceleration object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -55,8 +53,29 @@ Blockly.JavaScript['acceleration_getProperty'] = function(block) {
   var property = block.getFieldValue('PROP');
   var acceleration = Blockly.JavaScript.valueToCode(
       block, 'ACCELERATION', Blockly.JavaScript.ORDER_NONE);
-  var code = accelerationIdentifier + '.get' + property + '(' + acceleration + ')';
+  var code = accelerationIdentifierForJavaScript + '.get' + property + '(' + acceleration + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['acceleration_getProperty'] = function(block) {
+  var property = block.getFieldValue('PROP');
+  switch (property) {
+    case 'DistanceUnit':
+      property = 'unit';
+      break;
+    case 'XAccel':
+    case 'YAccel':
+    case 'ZAccel':
+    case 'AcquisitionTime':
+      property = Blockly.FtcJava.makeFirstLetterLowerCase_(property);
+      break;
+    default:
+      throw 'Unexpected property ' + property + ' (acceleration_getProperty).';
+  }
+  var acceleration = Blockly.FtcJava.valueToCode(
+      block, 'ACCELERATION', Blockly.FtcJava.ORDER_MEMBER);
+  var code = acceleration + '.' + property;
+  return [code, Blockly.FtcJava.ORDER_MEMBER];
 };
 
 Blockly.Blocks['acceleration_getProperty_DistanceUnit'] = {
@@ -76,7 +95,7 @@ Blockly.Blocks['acceleration_getProperty_DistanceUnit'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['DistanceUnit', 'The DistanceUnit of the given Acceleration object.'],
+        ['DistanceUnit', 'Returns the DistanceUnit of the given Acceleration object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -92,6 +111,9 @@ Blockly.Blocks['acceleration_getProperty_DistanceUnit'] = {
 
 Blockly.JavaScript['acceleration_getProperty_DistanceUnit'] =
     Blockly.JavaScript['acceleration_getProperty'];
+
+Blockly.FtcJava['acceleration_getProperty_DistanceUnit'] =
+    Blockly.FtcJava['acceleration_getProperty'];
 
 Blockly.Blocks['acceleration_getProperty_Number'] = {
   init: function() {
@@ -110,13 +132,13 @@ Blockly.Blocks['acceleration_getProperty_Number'] = {
         .appendField('acceleration')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(getPropertyColor);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+    // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     var TOOLTIPS = [
-        ['XAccel', 'The XAccel of the given Acceleration object.'],
-        ['YAccel', 'The YAccel of the given Acceleration object.'],
-        ['ZAccel', 'The ZAccel of the given Acceleration object.'],
-        ['AcquisitionTime', 'The AcquisitionTime of the given Acceleration object.'],
+        ['XAccel', 'Returns the XAccel of the given Acceleration object.'],
+        ['YAccel', 'Returns the YAccel of the given Acceleration object.'],
+        ['ZAccel', 'Returns the ZAccel of the given Acceleration object.'],
+        ['AcquisitionTime', 'Returns the AcquisitionTime of the given Acceleration object.'],
     ];
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('PROP');
@@ -127,11 +149,27 @@ Blockly.Blocks['acceleration_getProperty_Number'] = {
       }
       return '';
     });
+    this.getFtcJavaOutputType = function() {
+      var property = thisBlock.getFieldValue('PROP');
+      switch (property) {
+        case 'XAccel':
+        case 'YAccel':
+        case 'ZAccel':
+          return 'double';
+        case 'AcquisitionTime':
+          return 'long';
+        default:
+          throw 'Unexpected property ' + property + ' (acceleration_getProperty_Number getOutputType).';
+      }
+    };
   }
 };
 
 Blockly.JavaScript['acceleration_getProperty_Number'] =
     Blockly.JavaScript['acceleration_getProperty'];
+
+Blockly.FtcJava['acceleration_getProperty_Number'] =
+    Blockly.FtcJava['acceleration_getProperty'];
 
 // Functions
 
@@ -142,13 +180,19 @@ Blockly.Blocks['acceleration_create'] = {
         .appendField('new')
         .appendField(createNonEditableField('Acceleration'));
     this.setColour(functionColor);
-    this.setTooltip('Create a new Acceleration object.');
+    this.setTooltip('Creates a new Acceleration object.');
   }
 };
 
 Blockly.JavaScript['acceleration_create'] = function(block) {
-  var code = accelerationIdentifier + '.create()';
+  var code = accelerationIdentifierForJavaScript + '.create()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['acceleration_create'] = function(block) {
+  var code = 'new Acceleration()';
+  Blockly.FtcJava.generateImport_('Acceleration');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['acceleration_create_withArgs'] = {
@@ -173,7 +217,18 @@ Blockly.Blocks['acceleration_create_withArgs'] = {
         .appendField('acquisitionTime')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Create a new Acceleration object.');
+    this.setTooltip('Creates a new Acceleration object.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'X_ACCEL':
+        case 'Y_ACCEL':
+        case 'Z_ACCEL':
+          return 'double';
+        case 'ACQUISITION_TIME':
+          return 'long';
+      }
+      return '';
+    };
   }
 };
 
@@ -188,9 +243,26 @@ Blockly.JavaScript['acceleration_create_withArgs'] = function(block) {
       block, 'Z_ACCEL', Blockly.JavaScript.ORDER_COMMA);
   var acquisitionTime = Blockly.JavaScript.valueToCode(
       block, 'ACQUISITION_TIME', Blockly.JavaScript.ORDER_COMMA);
-  var code = accelerationIdentifier + '.create_withArgs(' + distanceUnit + ', ' + xAccel + ', ' +
+  var code = accelerationIdentifierForJavaScript + '.create_withArgs(' + distanceUnit + ', ' + xAccel + ', ' +
       yAccel + ', ' + zAccel + ', ' + acquisitionTime + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['acceleration_create_withArgs'] = function(block) {
+  var distanceUnit = Blockly.FtcJava.valueToCode(
+      block, 'DISTANCE_UNIT', Blockly.FtcJava.ORDER_COMMA);
+  var xAccel = Blockly.FtcJava.valueToCode(
+      block, 'X_ACCEL', Blockly.FtcJava.ORDER_COMMA);
+  var yAccel = Blockly.FtcJava.valueToCode(
+      block, 'Y_ACCEL', Blockly.FtcJava.ORDER_COMMA);
+  var zAccel = Blockly.FtcJava.valueToCode(
+      block, 'Z_ACCEL', Blockly.FtcJava.ORDER_COMMA);
+  var acquisitionTime = Blockly.FtcJava.valueToCode(
+      block, 'ACQUISITION_TIME', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'new Acceleration(' + distanceUnit + ', ' + xAccel + ', ' + yAccel + ', ' + zAccel +
+      ', ' + acquisitionTime + ')';
+  Blockly.FtcJava.generateImport_('Acceleration');
+  return [code, Blockly.FtcJava.ORDER_NEW];
 };
 
 Blockly.Blocks['acceleration_fromGravity'] = {
@@ -214,8 +286,19 @@ Blockly.Blocks['acceleration_fromGravity'] = {
         .appendField('acquisitionTime')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.setColour(functionColor);
-    this.setTooltip('Returns a new Acceleration object constructed from measures in units of ' +
+    this.setTooltip('Returns a new Acceleration object created from measures in units of ' +
         'earth\'s gravity rather than explicit distance units.');
+    this.getFtcJavaInputType = function(inputName) {
+      switch (inputName) {
+        case 'GX':
+        case 'GY':
+        case 'GZ':
+          return 'double';
+        case 'ACQUISITION_TIME':
+          return 'long';
+      }
+      return '';
+    };
   }
 };
 
@@ -228,9 +311,23 @@ Blockly.JavaScript['acceleration_fromGravity'] = function(block) {
       block, 'GZ', Blockly.JavaScript.ORDER_COMMA);
   var acquisitionTime = Blockly.JavaScript.valueToCode(
       block, 'ACQUISITION_TIME', Blockly.JavaScript.ORDER_COMMA);
-  var code = accelerationIdentifier + '.fromGravity(' + gx + ', ' + gy + ', ' + gz + ', ' +
+  var code = accelerationIdentifierForJavaScript + '.fromGravity(' + gx + ', ' + gy + ', ' + gz + ', ' +
       acquisitionTime + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['acceleration_fromGravity'] = function(block) {
+  var gx = Blockly.FtcJava.valueToCode(
+      block, 'GX', Blockly.FtcJava.ORDER_COMMA);
+  var gy = Blockly.FtcJava.valueToCode(
+      block, 'GY', Blockly.FtcJava.ORDER_COMMA);
+  var gz = Blockly.FtcJava.valueToCode(
+      block, 'GZ', Blockly.FtcJava.ORDER_COMMA);
+  var acquisitionTime = Blockly.FtcJava.valueToCode(
+      block, 'ACQUISITION_TIME', Blockly.FtcJava.ORDER_COMMA);
+  var code = 'Acceleration.fromGravity(' + gx + ', ' + gy + ', ' + gz + ', ' + acquisitionTime + ')';
+  Blockly.FtcJava.generateImport_('Acceleration');
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['acceleration_toDistanceUnit'] = {
@@ -258,8 +355,17 @@ Blockly.JavaScript['acceleration_toDistanceUnit'] = function(block) {
       block, 'ACCELERATION', Blockly.JavaScript.ORDER_COMMA);
   var distanceUnit = Blockly.JavaScript.valueToCode(
       block, 'DISTANCE_UNIT', Blockly.JavaScript.ORDER_COMMA);
-  var code = accelerationIdentifier + '.toDistanceUnit(' + acceleration + ', ' + distanceUnit + ')';
+  var code = accelerationIdentifierForJavaScript + '.toDistanceUnit(' + acceleration + ', ' + distanceUnit + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.FtcJava['acceleration_toDistanceUnit'] = function(block) {
+  var acceleration = Blockly.FtcJava.valueToCode(
+      block, 'ACCELERATION', Blockly.FtcJava.ORDER_MEMBER);
+  var distanceUnit = Blockly.FtcJava.valueToCode(
+      block, 'DISTANCE_UNIT', Blockly.FtcJava.ORDER_NONE);
+  var code = acceleration + '.toUnit(' + distanceUnit + ')';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Blocks['acceleration_toText'] = {
@@ -281,7 +387,13 @@ Blockly.Blocks['acceleration_toText'] = {
 Blockly.JavaScript['acceleration_toText'] = function(block) {
   var acceleration = Blockly.JavaScript.valueToCode(
       block, 'ACCELERATION', Blockly.JavaScript.ORDER_NONE);
-  var code = accelerationIdentifier + '.toText(' + acceleration + ')';
+  var code = accelerationIdentifierForJavaScript + '.toText(' + acceleration + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+Blockly.FtcJava['acceleration_toText'] = function(block) {
+  var acceleration = Blockly.FtcJava.valueToCode(
+      block, 'ACCELERATION', Blockly.FtcJava.ORDER_MEMBER);
+  var code = acceleration + '.toString()';
+  return [code, Blockly.FtcJava.ORDER_FUNCTION_CALL];
+};
