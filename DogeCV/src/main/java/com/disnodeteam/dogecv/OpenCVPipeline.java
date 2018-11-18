@@ -3,7 +3,6 @@ package com.disnodeteam.dogecv;
 import android.app.Activity;
 import android.content.Context;
 import android.view.Surface;
-import android.view.View;
 
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
