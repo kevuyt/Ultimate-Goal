@@ -437,8 +437,6 @@ public abstract class MasqRobot {
         MECH(c, Direction.FORWARD, false);
     }
 
-    //public double getDelay() {return FtcRobotControllerActivity.getDelay();}
-
     public void initializeTeleop(){
         driveTrain.setKp(MasqUtils.KP.MOTOR_TELEOP);
         driveTrain.setKi(MasqUtils.KI.MOTOR_TELEOP);

@@ -20,10 +20,10 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class PathFollowing extends MasqLinearOpMode {
     TestBot robot = new TestBot();
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("Waiting");
+            dash.create(robot.tracker.getPosition());
             dash.update();
         }
         waitForStart();
