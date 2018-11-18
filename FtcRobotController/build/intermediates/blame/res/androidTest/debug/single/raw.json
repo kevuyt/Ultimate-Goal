@@ -1,46 +1,54 @@
 [
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_fragment_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/c6cfb7d207d546058d5f8ce83c89e62b90ed0d01/output/res/raw/cube_mesh_fragment_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/62e5ca9b42af3febf38bac9ae5fd08d013f8cf86/output/res/raw/cube_mesh_fragment_shader.glsl"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/silver.wav",
+        "source": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/raw/silver.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/errormessage.wav",
-        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/raw/errormessage.wav"
+        "source": "/Users/Archish/.android/build-cache/6bee08c2f4f6c94ec23c1ab7bf7443738a5b05d1/output/res/raw/errormessage.wav"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/gold.wav",
+        "source": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/bundles/debug/res/raw/gold.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/simple_vertex_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/c6cfb7d207d546058d5f8ce83c89e62b90ed0d01/output/res/raw/simple_vertex_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/62e5ca9b42af3febf38bac9ae5fd08d013f8cf86/output/res/raw/simple_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/texture_vertex_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/c6cfb7d207d546058d5f8ce83c89e62b90ed0d01/output/res/raw/texture_vertex_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/62e5ca9b42af3febf38bac9ae5fd08d013f8cf86/output/res/raw/texture_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/nxtstartupsound.wav",
-        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/raw/nxtstartupsound.wav"
+        "source": "/Users/Archish/.android/build-cache/6bee08c2f4f6c94ec23c1ab7bf7443738a5b05d1/output/res/raw/nxtstartupsound.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/warningmessage.wav",
-        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/raw/warningmessage.wav"
+        "source": "/Users/Archish/.android/build-cache/6bee08c2f4f6c94ec23c1ab7bf7443738a5b05d1/output/res/raw/warningmessage.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/chimeconnect.wav",
-        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/raw/chimeconnect.wav"
+        "source": "/Users/Archish/.android/build-cache/6bee08c2f4f6c94ec23c1ab7bf7443738a5b05d1/output/res/raw/chimeconnect.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/chimedisconnect.wav",
-        "source": "/Users/Archish/.android/build-cache/16ee887dafc1ebf6ef7f1d1c4ba4706ffe0261f4/output/res/raw/chimedisconnect.wav"
+        "source": "/Users/Archish/.android/build-cache/6bee08c2f4f6c94ec23c1ab7bf7443738a5b05d1/output/res/raw/chimedisconnect.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/cube_mesh_vertex_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/c6cfb7d207d546058d5f8ce83c89e62b90ed0d01/output/res/raw/cube_mesh_vertex_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/62e5ca9b42af3febf38bac9ae5fd08d013f8cf86/output/res/raw/cube_mesh_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/texture_fragment_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/c6cfb7d207d546058d5f8ce83c89e62b90ed0d01/output/res/raw/texture_fragment_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/62e5ca9b42af3febf38bac9ae5fd08d013f8cf86/output/res/raw/texture_fragment_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/res/merged/androidTest/debug/raw/color_fragment_shader.glsl",
-        "source": "/Users/Archish/.android/build-cache/c6cfb7d207d546058d5f8ce83c89e62b90ed0d01/output/res/raw/color_fragment_shader.glsl"
+        "source": "/Users/Archish/.android/build-cache/62e5ca9b42af3febf38bac9ae5fd08d013f8cf86/output/res/raw/color_fragment_shader.glsl"
     }
 ]

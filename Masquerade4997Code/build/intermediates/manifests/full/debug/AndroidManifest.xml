@@ -123,22 +123,7 @@
             android:name="com.google.blocks.ftcrobotcontroller.BlocksActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/blocks_activity" >
-        </activity> <!-- Service that keeps desktop folders up to date with respect to actual phone file system contents -->
-        <service
-            android:name="org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
-            android:enabled="true" />
-
-        <meta-data
-            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
-            android:value="BOTH|1000" /> <!-- Service that provides build services for OnBotJava -->
-        <service
-            android:name="org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
-            android:enabled="true" />
-
-        <meta-data
-            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
-            android:value="RC|2000" />
-
+        </activity>
         <activity
             android:name="com.qualcomm.ftccommon.FtcRobotControllerSettingsActivity"
             android:exported="true"
@@ -333,7 +318,21 @@
             android:name="org.firstinspires.ftc.ftccommon.internal.FtcRobotControllerWatchdogService"
             android:enabled="true" />
 
-        <uses-library android:name="android.test.runner" />
+        <uses-library android:name="android.test.runner" /> <!-- Service that keeps desktop folders up to date with respect to actual phone file system contents -->
+        <service
+            android:name="org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
+            android:enabled="true" />
+
+        <meta-data
+            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.files.MediaTransferProtocolMonitorService"
+            android:value="BOTH|1000" /> <!-- Service that provides build services for OnBotJava -->
+        <service
+            android:name="org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
+            android:enabled="true" />
+
+        <meta-data
+            android:name="autoStartService.org.firstinspires.ftc.robotcore.internal.opmode.OnBotJavaService"
+            android:value="RC|2000" />
     </application>
 
 </manifest>

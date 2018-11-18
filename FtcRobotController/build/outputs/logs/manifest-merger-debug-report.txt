@@ -1,0 +1,113 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:1-50:12
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:1-50:12
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:1-50:12
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:1-50:12
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:1-50:12
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:1-50:12
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:1-50:12
+	package
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:4:11-52
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:6:11-36
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:3:11-57
+	xmlns:android
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:5:11-35
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:8:3-79
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:8:20-76
+uses-permission#android.permission.CAMERA
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:9:3-63
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:9:20-60
+uses-permission#android.permission.FLASHLIGHT
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:10:3-66
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:10:20-64
+uses-feature#android.hardware.camera
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:11:3-58
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:11:17-55
+uses-feature#android.hardware.camera.autofocus
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:12:3-68
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:12:17-65
+uses-feature#android.hardware.camera.flash
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:13:3-64
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:13:17-61
+application
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:15:3-48:17
+	android:label
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:19:5-37
+	android:largeHeap
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:17:5-29
+	android:icon
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:18:5-41
+	android:allowBackup
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:16:5-31
+	android:theme
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:20:5-41
+activity#org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:23:5-41:16
+	android:label
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:26:7-39
+	android:launchMode
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:27:7-38
+	android:configChanges
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:25:7-53
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:24:7-95
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:29:7-32:23
+category#android.intent.category.LAUNCHER
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:30:9-69
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:30:19-66
+action#android.intent.action.MAIN
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:31:9-61
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:31:17-58
+intent-filter#action:name:android.hardware.usb.action.USB_DEVICE_ATTACHED
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:34:7-36:23
+action#android.hardware.usb.action.USB_DEVICE_ATTACHED
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:35:9-82
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:35:17-79
+meta-data#android.hardware.usb.action.USB_DEVICE_ATTACHED
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:38:7-40:49
+	android:resource
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:40:9-46
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:39:9-71
+service#com.qualcomm.ftccommon.FtcRobotControllerService
+ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:44:5-46:32
+	android:enabled
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:46:7-29
+	android:name
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml:45:7-70
+uses-sdk
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml
+		INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/src/main/AndroidManifest.xml

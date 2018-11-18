@@ -11,9 +11,12 @@
 // Include common definitions from above.
 apply from: '../build.common.gradle'
 android {
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '28.0.3'
 }
 dependencies {
-    compile project(':DogeCV')
+    implementation project(':DogeCV')
     compile project(':openCVLibrary3')
+}
+repositories {
+    google()
 }
