@@ -2,17 +2,20 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon;
 
 import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.DogeCV;
+import com.disnodeteam.dogecv.DogeForia;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
-import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
@@ -29,14 +32,13 @@ public class Falcon extends MasqRobot {
     public MasqAdafruitIMU imu;
     public MasqRotator rotator;
     public MasqElevator lift;
-    public MasqServo hangLatch;
     public MasqServo dumper;
     public MasqCRServo collector;
     public MasqServo adjuster;
-    public MasqServo endHang;
-    public MasqMotor endSpool;
     public MasqClock clock;
+    public MasqMotorSystem hangSystem;
     public GoldAlignDetector goldAlignDetector;
+    public DogeForia dogeForia;
     public void mapHardware(HardwareMap hardwareMap) {
         dash = DashBoard.getDash();
         imu = new MasqAdafruitIMU("imu", hardwareMap);
@@ -44,17 +46,15 @@ public class Falcon extends MasqRobot {
         tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         rotator = new MasqRotator(hardwareMap);
         lift = new MasqElevator(hardwareMap);
-        hangLatch = new MasqServo("hangLatch", hardwareMap);
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServo("collector", hardwareMap);
         adjuster = new MasqServo("adjuster", hardwareMap);
-        endHang = new MasqServo("endHang", hardwareMap);
-        endSpool = new MasqMotor("endSpool", MasqMotorModel.NEVEREST60, hardwareMap);
+        hangSystem = new MasqMotorSystem("hangOne", "hangTwo", "hang", hardwareMap, MasqMotorModel.NEVEREST40);
         goldAlignDetector = new GoldAlignDetector();
         startOpenCV(hardwareMap);
     }
     private void startOpenCV (HardwareMap hardwareMap) {
-        goldAlignDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
+        goldAlignDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance(), 0, true);
         goldAlignDetector.useDefaults();
         goldAlignDetector.alignSize = 200;
         goldAlignDetector.alignPosOffset = 0;
@@ -63,7 +63,16 @@ public class Falcon extends MasqRobot {
         goldAlignDetector.maxAreaScorer.weight = 0.005;
         goldAlignDetector.ratioScorer.weight = 5;
         goldAlignDetector.ratioScorer.perfectRatio = 1.0;
-        goldAlignDetector.enable();
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
+        parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
+        parameters.fillCameraMonitorViewParent = true;
+        parameters.cameraName = getWebCameName(hardwareMap, "Webcam 1");
+        dogeForia = new DogeForia(parameters);
+        dogeForia.enableConvertFrameToBitmap();
+        dogeForia.setDogeCVDetector(goldAlignDetector);
+        dogeForia.enableDogeCV();
+        dogeForia.showDebug();
+        dogeForia.start();
     }
     public void turnTillGold (double speed, Direction direction) {
         clock = new MasqClock();

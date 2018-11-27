@@ -5,9 +5,10 @@ package Library4997.MasqResources.MasqHelpers;
  */
 
 public interface API_KEYS {
-    String VUFORIA_KEY = "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
-                    "CfEwQhnuuB1hOh//uL2LnHYMViBgZtdjDGvmWvDvgKaonymopd0Y62ls2ZJfHhJ3fZYhF57Ce6ZepRI" +
-                    "FOumys4J4DssG83OT+DJUjUCG6ruZ88AYjxNzi+vhkTCxHVULQxLJCSQ7boG0t36RWIEmVwxXIHVI" +
-                    "3xbVeXwQL7vgm/0KmGW/KJFOuI2+wl1IDJdzDQHfavEA8FFkYTlnp/chHMbLu//BaqXprFHZ6OLh" +
-                    "OZoRWiFkg1N0zabreTxMNOYFP/rDNaYseXQVGGRSMHxF86kGs6LNHEO7qZZj/BU94zKpPMWyHYw29X477";
+    String VUFORIA_KEY = "AdNIpqT/////AAABmRY92VHmhUiEgOa20prf6D5ffrvpVVEVsg+0AIYD" +
+            "L5tdcT7Ni9kg6UBK4kxN7r7qiT1tFzTWxdl0SuT03M1RY20fXTMfA3LQpUSCl3UeyDmWbCA9ank922D" +
+            "Ds8MgBDXCGbUVgi1Q1GjKWF8KCQvLC2KO34OCs7MoMDYhHmzrPk/nGVs2iLgFhCOU8LG8FT3l9wsLd4" +
+            "4/s9uSHuQZwDy3nvpTUgRjjbnkIGglgH4K5O3cXHPfPzZ32WuIVj34umgX5mG/yfNWJJ7sFFi3v3eCm" +
+            "pX6WFg1iO/+5OZ0OVDXONxPPfI8HWJcVy+KhSk93XxQPnY54L4ThPJe1uAaNRKPcduH4r4A5DmQtGTr" +
+            "mph3rSBl";
 }

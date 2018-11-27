@@ -16,17 +16,15 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private double rightBound = 95, centerBound = 125, majorBound = 170;
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
-        falcon.hangLatch.setPosition(AUTON_HANG_IN);
         falcon.adjuster.setPosition(ADJUSTER_OUT);
         while (!opModeIsActive()) {
-            dash.create(falcon.imu.getAbsoluteHeading());
+            dash.create("H");
             dash.update();
         }
         waitForStart();
-        falcon.hangLatch.setPosition(AUTON_HANG_OUT);
         falcon.sleep(1);
         falcon.imu.reset();
         double startAngle = falcon.imu.getRelativeYaw();
@@ -79,8 +77,6 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             falcon.turnAbsolute(-35, Direction.LEFT, 3);
             falcon.drive(100, Direction.BACKWARD, 4);
         }
-
-
     }
     @Override
     public void stopLinearOpMode() {

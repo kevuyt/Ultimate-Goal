@@ -123,7 +123,7 @@ public class DogeForia extends VuforiaLocalizerImpl {
 
                 //height = <user-chosen width> * original height / original width
                 double adjustedHieght = displayView.getWidth() * outMat.height()/ outMat.width();
-                outputImage =  Bitmap.createScaledBitmap(bitmap,displayView.getWidth(), (int)adjustedHieght, false);
+                outputImage =  Bitmap.createScaledBitmap(bitmap, displayView.getWidth(), (int)adjustedHieght, false);
 
                 ((Activity)displayView.getContext()).runOnUiThread(new Runnable() {
                     @Override

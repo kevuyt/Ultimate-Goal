@@ -17,10 +17,10 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
-        falcon.goldAlignDetector.disable();
+        //falcon.dogeForia.stop();
         falcon.initializeTeleop();
+        falcon.hangSystem.setClosedLoop(true);
         falcon.driveTrain.setClosedLoop(true);
-        falcon.endHang.setPosition(END_HANG_OUT);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
             dash.create("HELLO ");
@@ -39,32 +39,17 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);
 
-            if (controller2.a()) falcon.endSpool.setPower(1);
-            if (controller2.dPadDown()) falcon.endSpool.setPower(-1);
-            else falcon.endSpool.setPower(0);
-
-            if (controller1.dPadUp()) {
-                falcon.endHang.setPosition(END_HANG_IN);
-                falcon.driveTrain.setPower(0.3);
-                sleep(1);
-                falcon.driveTrain.setPower(0);
-                falcon.endHang.setPosition(END_HANG_OUT);
-                falcon.endSpool.setPower(1);
-                sleep(10);
-            }
-
-            if (controller2.x()) falcon.endHang.setPosition(END_HANG_OUT);
-            else falcon.endHang.setPosition(END_HANG_IN);
-
+            if (controller2.leftStickY() > 0) falcon.hangSystem.setPower(-1);
+            else if (controller2.leftStickY() < 0) falcon.hangSystem.setPower(1);
+            else falcon.hangSystem.setPower(0);
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
 
             falcon.lift.DriverControl(controller1);
 
             //Dash
-            dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
-            dash.create("Rotator Position: ", falcon.rotator.getPosition());
-            dash.create("KP: ", falcon.rotator.output.getKp());
+            dash.create("Hang One", falcon.hangSystem.motor1.getPower());
+            dash.create("Hang Two", falcon.hangSystem.motor2.getPower());
             dash.update();
             controller1.update();
         }

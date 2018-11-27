@@ -19,14 +19,13 @@ public class KNOAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
-        falcon.hangLatch.setPosition(AUTON_HANG_IN);
         falcon.adjuster.setPosition(ADJUSTER_OUT);
         while (!opModeIsActive()) {
-            dash.create(falcon.imu.getAbsoluteHeading());
+            //dash.create(falcon.imu.getAbsoluteHeading());
+            dash.create("Hello");
             dash.update();
         }
         waitForStart();
-        falcon.hangLatch.setPosition(AUTON_HANG_OUT);
         falcon.sleep(1);
         falcon.imu.reset();
         double startAngle = falcon.imu.getRelativeYaw();
@@ -84,6 +83,6 @@ public class KNOAuto extends MasqLinearOpMode implements Constants {
     }
     @Override
     public void stopLinearOpMode() {
-        falcon.goldAlignDetector.disable();
+        //falcon.goldAlignDetector.disable();
     }
 }

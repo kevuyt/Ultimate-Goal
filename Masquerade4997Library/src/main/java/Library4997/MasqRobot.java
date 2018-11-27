@@ -3,6 +3,8 @@ package Library4997;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+
 import Library4997.MasqControlSystems.MasqIntegrator;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPath;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
@@ -390,6 +392,7 @@ public abstract class MasqRobot {
         driveTrain.leftDrive.setPower(left);
     }
     public void MECH(MasqController c, Direction direction, boolean disabled) {
+
         int disable = 1;
         if (disabled) disable = 0;
         double x = -c.leftStickY();
@@ -456,4 +459,7 @@ public abstract class MasqRobot {
     }
 
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
+    public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
+        return hardwareMap.get(WebcamName.class, name);
+    }
 }
