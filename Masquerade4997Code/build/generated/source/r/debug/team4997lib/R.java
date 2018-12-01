@@ -28,14 +28,12 @@ public final class R {
         public static final int backgroundMediumMedium = 0x7f020006;
         public static final int backgroundVeryDark = 0x7f020007;
         public static final int backgroundVeryVeryDark = 0x7f020008;
-        public static final int camera_id = 0x7f020009;
         public static final int colors = 0x7f02000a;
         public static final int feedbackBackground = 0x7f02000b;
         public static final int feedbackBorder = 0x7f02000c;
         public static final int feedbackShape = 0x7f02000d;
         public static final int lineBright = 0x7f02000e;
         public static final int lineLight = 0x7f02000f;
-        public static final int show_fps = 0x7f020010;
         public static final int textBright = 0x7f020011;
         public static final int textLight = 0x7f020012;
         public static final int textMedium = 0x7f020013;
@@ -156,11 +154,9 @@ public final class R {
         public static final int addButton = 0x7f06000d;
         public static final int addressListCaption = 0x7f06000e;
         public static final int airplaneMode = 0x7f06000f;
-        public static final int any = 0x7f060010;
         public static final int appsInstalled = 0x7f060011;
         public static final int appsStatus = 0x7f060012;
         public static final int attached_title = 0x7f060013;
-        public static final int back = 0x7f060014;
         public static final int backgroundDarkGrayHolder = 0x7f060015;
         public static final int backgroundLightHolder = 0x7f060016;
         public static final int backgroundMediumHolder = 0x7f060017;
@@ -213,7 +209,6 @@ public final class R {
         public static final int filename_editText = 0x7f060046;
         public static final int files_holder = 0x7f060047;
         public static final int fixButton = 0x7f060048;
-        public static final int front = 0x7f060049;
         public static final int groupList = 0x7f06004a;
         public static final int holds_buttons = 0x7f06004b;
         public static final int horizontalButtons = 0x7f06004c;
@@ -1060,9 +1055,6 @@ public final class R {
         public static final int OpModeDialogTextAppearance = 0x7f0b0014;
     }
     public static final class styleable {
-        public static final int[] CameraBridgeViewBase = { 0x7f020009, 0x7f020010 };
-        public static final int CameraBridgeViewBase_camera_id = 0;
-        public static final int CameraBridgeViewBase_show_fps = 1;
         public static final int[] ColorListPreference = { 0x7f02000a };
         public static final int ColorListPreference_colors = 0;
     }
