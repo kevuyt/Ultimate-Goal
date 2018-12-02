@@ -16,8 +16,8 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
     private boolean mode = true;
     @Override
     public void runLinearOpMode() throws InterruptedException {
+        falcon.setStartOpenCV(false);
         falcon.mapHardware(hardwareMap);
-        //falcon.dogeForia.stop();
         falcon.initializeTeleop();
         falcon.hangSystem.setClosedLoop(true);
         falcon.driveTrain.setClosedLoop(true);

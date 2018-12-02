@@ -43,9 +43,9 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
                 endHang -= 0.01;
             }
             controller1.update();
-            falcon.adjuster.setPosition(adjuster);
+            falcon.markerDump.setPosition(endHang);
             //falcon.rotator.DriverControl(controller1);
-            dash.create("Adjuster (X+,Y-)", falcon.adjuster.getPosition());
+            dash.create("Adjuster (RT+,LT-)", falcon.markerDump.getPosition());
             dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
             dash.update();
         }

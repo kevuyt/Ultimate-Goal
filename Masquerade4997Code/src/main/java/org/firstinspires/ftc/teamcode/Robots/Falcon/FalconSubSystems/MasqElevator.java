@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqSubSystem;
@@ -38,6 +39,9 @@ public class MasqElevator implements MasqSubSystem {
             lift.setPower(output.getOutput(currentPosition, targetPosition));
         }
         output.setKp(kp);
+    }
+    public void runToPosition (Direction direction,double position) {
+        lift.runToPosition(direction, position);
     }
 
     public double getCurrentPosition () {

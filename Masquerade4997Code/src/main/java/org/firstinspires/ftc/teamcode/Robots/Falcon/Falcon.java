@@ -34,11 +34,13 @@ public class Falcon extends MasqRobot {
     public MasqLimitSwitch limitTop, limitBottom;
     public MasqRotator rotator;
     public MasqElevator lift;
+    public MasqServo markerDump;
     public MasqServo dumper;
     public MasqCRServo collector;
     public MasqServo adjuster;
     public MasqClock clock;
     public MasqMotorSystem hangSystem;
+    private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
     public DogeForia dogeForia;
     public void mapHardware(HardwareMap hardwareMap) {
@@ -54,13 +56,23 @@ public class Falcon extends MasqRobot {
         collector = new MasqCRServo("collector", hardwareMap);
         adjuster = new MasqServo("adjuster", hardwareMap);
         hangSystem = new MasqMotorSystem("hangOne", "hangTwo", "hang", hardwareMap, MasqMotorModel.NEVEREST40);
-        goldAlignDetector = new GoldAlignDetector();
+        markerDump = new MasqServo("markerDump", hardwareMap);
         hangSystem.setClosedLoop(true);
         hangSystem.setKp(0.01);
         hangSystem.setLimits(limitBottom, limitTop);
-        startOpenCV(hardwareMap);
+        if (startOpenCV) startOpenCV(hardwareMap);
     }
+
+    public boolean isStartOpenCV() {
+        return startOpenCV;
+    }
+
+    public void setStartOpenCV(boolean startOpenCV) {
+        this.startOpenCV = startOpenCV;
+    }
+
     private void startOpenCV (HardwareMap hardwareMap) {
+        goldAlignDetector = new GoldAlignDetector();
         goldAlignDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance(), 0, true);
         goldAlignDetector.useDefaults();
         goldAlignDetector.alignSize = 200;
