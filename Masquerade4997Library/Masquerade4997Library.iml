@@ -113,8 +113,6 @@
     <orderEntry type="library" name="Gradle: Analytics-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: WirelessP2p-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: Hardware-release:@aar" level="project" />
-    <orderEntry type="module" module-name="DogeCV" />
-    <orderEntry type="module" module-name="openCVLibrary3" />
     <orderEntry type="module" module-name="FtcRobotController" />
   </component>
 </module>

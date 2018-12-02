@@ -8,6 +8,7 @@ import java.util.List;
 
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**
  * MasqMotorSystem That supports two or more motors and treats them as one
@@ -98,6 +99,11 @@ public class MasqMotorSystem implements MasqHardware {
     public void setClosedLoop (boolean closedLoop) {
         for (MasqMotor masqMotor : motors) {
             masqMotor.setClosedLoop(closedLoop);
+        }
+    }
+    public void setLimits (MasqLimitSwitch min, MasqLimitSwitch max) {
+        for (MasqMotor masqMotor : motors) {
+            masqMotor.setLimits(min, max);
         }
     }
     public void setAcceleration (double target) {

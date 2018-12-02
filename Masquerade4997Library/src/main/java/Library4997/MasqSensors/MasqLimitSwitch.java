@@ -41,7 +41,7 @@ public class MasqLimitSwitch implements MasqHardware {
     }
 
     public boolean isPressed() {
-        return getState();
+        return !getState();
     }
     public boolean pr() {
         boolean pressed = false, released = false;

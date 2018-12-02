@@ -19,6 +19,7 @@ import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
@@ -30,6 +31,7 @@ import Library4997.MasqWrappers.DashBoard;
 
 public class Falcon extends MasqRobot {
     public MasqAdafruitIMU imu;
+    public MasqLimitSwitch limitTop, limitBottom;
     public MasqRotator rotator;
     public MasqElevator lift;
     public MasqServo dumper;
@@ -42,6 +44,8 @@ public class Falcon extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) {
         dash = DashBoard.getDash();
         imu = new MasqAdafruitIMU("imu", hardwareMap);
+        limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
+        limitTop = new MasqLimitSwitch("limitTop", hardwareMap);
         driveTrain = new MasqDriveTrain(hardwareMap);
         tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         rotator = new MasqRotator(hardwareMap);
@@ -51,6 +55,9 @@ public class Falcon extends MasqRobot {
         adjuster = new MasqServo("adjuster", hardwareMap);
         hangSystem = new MasqMotorSystem("hangOne", "hangTwo", "hang", hardwareMap, MasqMotorModel.NEVEREST40);
         goldAlignDetector = new GoldAlignDetector();
+        hangSystem.setClosedLoop(true);
+        hangSystem.setKp(0.01);
+        hangSystem.setLimits(limitBottom, limitTop);
         startOpenCV(hardwareMap);
     }
     private void startOpenCV (HardwareMap hardwareMap) {

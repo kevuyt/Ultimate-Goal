@@ -23,7 +23,7 @@ import Library4997.MasqWrappers.MasqController;
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
  */
 public abstract class MasqRobot {
-    //
+    // Hola
     public MasqDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
@@ -451,9 +451,9 @@ public abstract class MasqRobot {
         driveTrain.setKi(MasqUtils.KI.MOTOR_AUTONOMOUS);
         driveTrain.setKd(MasqUtils.KD.MOTOR_AUTONOMOUS);
     }
-    public void sleep(double time) {
+    public void sleep(double timeSeconds) {
         try {
-            Thread.sleep((long) time * 1000);
+            Thread.sleep((long) timeSeconds * 1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
