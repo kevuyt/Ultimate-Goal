@@ -55,7 +55,7 @@ public class Falcon extends MasqRobot {
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServo("collector", hardwareMap);
         adjuster = new MasqServo("adjuster", hardwareMap);
-        hangSystem = new MasqMotorSystem("hangOne", "hangTwo", "hang", hardwareMap, MasqMotorModel.NEVEREST40);
+        hangSystem = new MasqMotorSystem("hangOne", "hangTwo", "hang", hardwareMap, MasqMotorModel.ORBITAL20);
         markerDump = new MasqServo("markerDump", hardwareMap);
         hangSystem.setClosedLoop(true);
         hangSystem.setKp(0.01);

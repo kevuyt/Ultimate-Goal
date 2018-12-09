@@ -81,10 +81,9 @@ public class MasqMotor implements MasqHardware {
         encoder = new MasqEncoder(this, model);
     }
 
-    public MasqMotor setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
+    public void setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
         maxLim = max; minLim = min;
         limitDetection = true;
-        return this;
     }
     public MasqMotor setLimit(MasqLimitSwitch min) {
         minLim = min; maxLim = null;

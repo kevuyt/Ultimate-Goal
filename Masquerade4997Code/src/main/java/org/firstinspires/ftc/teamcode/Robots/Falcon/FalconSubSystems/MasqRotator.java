@@ -18,8 +18,8 @@ import Library4997.MasqWrappers.MasqController;
 public class MasqRotator implements MasqSubSystem {
     public MasqMotor rotator;
     private double targetPosition;
-    private double basePower = 0.7;
-    private double baseDownPower = 0.5;
+    private double basePower = 0.85;
+    private double baseDownPower = 0.75;
     private double rotatorPower = basePower;
     private double downPower = -0.1;
     private double liftPosition = 0;

@@ -134,7 +134,7 @@ public abstract class MasqRobot {
     public void driveAbsoluteAngle(double distance, int angle, double speed){driveAbsoluteAngle(distance, angle, speed, Direction.FORWARD);}
     public void driveAbsoluteAngle(double distance, int angle) {driveAbsoluteAngle(distance, angle, 0.5);}
 
-    public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
+    public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd, boolean left, boolean right) {
         double targetAngle = tracker.imu.adjustAngle(tracker.getHeading()) + (direction.value * angle);
         double acceptableError = .5;
         double turnPower = .4;
@@ -143,6 +143,7 @@ public abstract class MasqRobot {
         double integral = 0;
         double derivative;
         double newPower;
+        double leftPower = 0, rightPower = 0;
         double previousTime = 0;
         timeoutClock.reset();
         driveTrain.setClosedLoop(false);
@@ -159,7 +160,9 @@ public abstract class MasqRobot {
             double dervitivekd = derivative * kd;
             newPower = (errorkp + integralki + dervitivekd);
             if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
-            driveTrain.setVelocity(-newPower * turnPower, newPower * turnPower);
+            if (left) leftPower = -newPower * turnPower;
+            if (right) rightPower = newPower * turnPower;
+            driveTrain.setVelocity(leftPower, rightPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
             dash.create("TargetAngle", targetAngle);
@@ -173,7 +176,7 @@ public abstract class MasqRobot {
         sleep(sleepTime);
     }
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki) {
-        turnRelative(angle, direction, timeOut, sleepTime, kp, ki, MasqUtils.KD.TURN);
+        turnRelative(angle, direction, timeOut, sleepTime, kp, ki, MasqUtils.KD.TURN, true, true);
     }
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp) {
         turnRelative(angle, direction, timeOut, sleepTime, kp, MasqUtils.KI.TURN);
@@ -185,7 +188,12 @@ public abstract class MasqRobot {
         turnRelative(angle, direction, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void turnRelative(double angle, Direction direction)  {
-        turnRelative(angle, direction, MasqUtils.DEFAULT_TIMEOUT);}
+        turnRelative(angle, direction, MasqUtils.DEFAULT_TIMEOUT);
+    }
+    public void turnRelative(double angle, Direction direction, boolean left, boolean right)  {
+        turnRelative(angle, direction, MasqUtils.DEFAULT_TIMEOUT, MasqUtils.DEFAULT_SLEEP_TIME,
+                MasqUtils.KP.TURN, MasqUtils.KI.TURN, MasqUtils.KD.TURN, left, right);
+    }
 
     public void turnAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
         double targetAngle = tracker.imu.adjustAngle((direction.value * angle));
