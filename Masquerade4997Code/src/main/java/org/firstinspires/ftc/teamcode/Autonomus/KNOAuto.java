@@ -30,7 +30,7 @@ public class KNOAuto extends MasqLinearOpMode implements Constants {
         falcon.imu.reset();
         double startAngle = falcon.imu.getRelativeYaw();
         falcon.turnRelative(60, Direction.LEFT);
-        falcon.turnTillGold(0.3, Direction.LEFT);
+        //falcon.turnTillGold(0.3, Direction.LEFT);
         double endAngle = falcon.imu.getRelativeYaw();
         double dHeading = endAngle - startAngle;
         if (dHeading < rightBound) {

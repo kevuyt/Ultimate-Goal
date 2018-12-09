@@ -13,7 +13,6 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqMotors.MasqMotorSystem;
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
@@ -62,11 +61,6 @@ public class Falcon extends MasqRobot {
         hangSystem.setLimits(limitBottom, limitTop);
         if (startOpenCV) startOpenCV(hardwareMap);
     }
-
-    public boolean isStartOpenCV() {
-        return startOpenCV;
-    }
-
     public void setStartOpenCV(boolean startOpenCV) {
         this.startOpenCV = startOpenCV;
     }
@@ -93,17 +87,8 @@ public class Falcon extends MasqRobot {
         dogeForia.showDebug();
         dogeForia.start();
     }
-    public void turnTillGold (double speed, Direction direction) {
-        clock = new MasqClock();
-        while (opModeIsActive() && !goldAlignDetector.getAligned() && imu.getRelativeYaw() <= 165) {
-            driveTrain.setVelocity(-speed * direction.value, speed * direction.value);
-            dash.create(imu.getRelativeYaw());
-            dash.update();
-        }
-        driveTrain.setVelocity(0, 0);
-    }
     public void update () {
         dash.update();
-        tracker.updateSystemV2();
+        tracker.updateSystem();
     }
 }

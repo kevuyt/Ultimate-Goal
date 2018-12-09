@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -14,7 +15,11 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "DepotSideAuto", group = "Tank")
 public class DepotSideAuto extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    private double rightBound = 95, centerBound = 125, majorBound = 170;
+    enum BlockPlacement {
+        LEFT,
+        RIGHT,
+        CENTER,
+    }
     @Override
     public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
@@ -25,61 +30,48 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.sleep(1);
-        falcon.imu.reset();
-        double startAngle = falcon.imu.getRelativeYaw();
-        falcon.turnRelative(60, Direction.LEFT);
-        falcon.turnTillGold(0.3, Direction.LEFT);
-        double endAngle = falcon.imu.getRelativeYaw();
-        double dHeading = endAngle - startAngle;
-        if (dHeading < rightBound) {
-            falcon.turnAbsolute(55, Direction.LEFT);
-            dash.create("Right");
-            dash.update();
-            falcon.drive(45, 0.8, Direction.BACKWARD);
-            falcon.turnAbsolute(-45, Direction.LEFT, 3);
+        while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
+        falcon.hangSystem.setPower(0);
+        BlockPlacement blockPlacement = getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
+        falcon.drive(5);
+        if (blockPlacement == BlockPlacement.RIGHT) {
+            falcon.turnAbsolute(40, Direction.RIGHT);
+            falcon.drive(45, 0.8, Direction.FORWARD);
+            falcon.turnRelative(90, Direction.LEFT, 3);
             falcon.drive(20);
-            falcon.collector.setPower(-.5);
-            sleep(5);
+            falcon.markerDump.setPosition(0);
+            sleep(1);
             falcon.drive(80, Direction.BACKWARD, 3);
         }
-        else if (dHeading >= rightBound && dHeading < centerBound) {
-            falcon.turnAbsolute(87, Direction.LEFT);
-            dash.create("Center");
-            dash.update();
-            falcon.drive(55, 0.8, Direction.BACKWARD);
-            falcon.turnRelative(170, Direction.LEFT, 3);
-            falcon.collector.setPower(-.5);
-            sleep(5);
-            falcon.turnAbsolute(-35, Direction.LEFT, 3);
+        else if (blockPlacement == BlockPlacement.CENTER) {
+            falcon.drive(55, 0.8, Direction.FORWARD);
+            falcon.turnAbsolute(55, Direction.RIGHT, 3);
+            falcon.markerDump.setPosition(0);
+            sleep(1);
             falcon.drive(100, Direction.BACKWARD, 4);
-
         }
-        else if (dHeading >= centerBound && dHeading <= majorBound) {
-            falcon.turnAbsolute(120, Direction.LEFT);
-            dash.create("Left");
-            dash.update();
-            falcon.drive(45, 0.8, Direction.BACKWARD);
-            falcon.turnAbsolute(-140, Direction.LEFT, 3);
+        else if (blockPlacement == BlockPlacement.LEFT) {
+            falcon.turnAbsolute(40, Direction.LEFT);
+            falcon.drive(40, 0.8, Direction.FORWARD);
+            falcon.turnRelative(90, Direction.RIGHT, 3);
             falcon.drive(20);
-            falcon.collector.setPower(-.5);
-            sleep(5);
+            falcon.markerDump.setPosition(0);
+            sleep(1);
             falcon.drive(80, Direction.BACKWARD, 3);
-        }
-        else if (dHeading >= majorBound) {
-            falcon.turnAbsolute(87, Direction.RIGHT);
-            dash.create("Center");
-            dash.update();
-            falcon.drive(55, 0.8, Direction.BACKWARD);
-            falcon.turnRelative(170, Direction.LEFT, 3);
-            falcon.collector.setPower(-.5);
-            sleep(5);
-            falcon.turnAbsolute(-35, Direction.LEFT, 3);
-            falcon.drive(100, Direction.BACKWARD, 4);
         }
     }
     @Override
     public void stopLinearOpMode() {
         falcon.goldAlignDetector.disable();
+    }
+
+    public BlockPlacement getBlockPlacement (int block) {
+        MasqClock clock = new MasqClock();
+        boolean seen = true;
+        while (!clock.elapsedTime(1, MasqClock.Resolution.SECONDS) && falcon.goldAlignDetector.isFound()) {}
+        if (clock.seconds() < 1) seen = false;
+        if (!seen) return BlockPlacement.LEFT;
+        else if (block < 200) return BlockPlacement.CENTER;
+        else return BlockPlacement.RIGHT;
     }
 }
