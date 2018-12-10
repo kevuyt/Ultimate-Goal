@@ -9,7 +9,7 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
- * Created by Archishmaan Peyyety on 12/1/18.
+ * Created by Archishmaan Peyyety on 12/10/18.
  * Project: MasqLib
  */
 @Autonomous(name = "CraterSideAuto", group = "Autonomus")
@@ -37,29 +37,24 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             falcon.drive(20);
             falcon.drive(5, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(50, Direction.FORWARD, 3);
+            falcon.drive(50);
             falcon.turnAbsolute(132, Direction.LEFT);
-            falcon.drive(55);
+            falcon.drive(30);
             falcon.markerDump.setPosition(0);
             sleep(1);
-            falcon.turnAbsolute(-90, Direction.LEFT, 3);
-            falcon.drive(30);
-            falcon.drive(30, Direction.BACKWARD);
-            falcon.turnAbsolute(-140, Direction.LEFT);
-            falcon.drive(100, Direction.FORWARD, 5);
+            falcon.drive(100, Direction.BACKWARD, 5);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(25);
             falcon.drive(5, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(35);
+            falcon.drive(45);
             falcon.turnAbsolute(132, Direction.LEFT);
-            falcon.drive(55);
+            falcon.drive(50);
             falcon.markerDump.setPosition(0);
             sleep(1);
-            falcon.turnAbsolute(-130, Direction.LEFT);
-            falcon.drive(100, Direction.FORWARD, 5);
+            falcon.drive(100, Direction.BACKWARD, 5);
         }
         else {
             falcon.turnAbsolute(-35, Direction.LEFT);
