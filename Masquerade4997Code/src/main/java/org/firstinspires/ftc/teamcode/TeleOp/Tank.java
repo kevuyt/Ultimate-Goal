@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
@@ -11,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "TANK", group = "Tank")
+@Disabled
 public class Tank extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     @Override

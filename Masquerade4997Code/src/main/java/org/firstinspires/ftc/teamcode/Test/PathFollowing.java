@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.TestBot;
 
@@ -17,6 +18,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @Autonomous(name = "PathFollowing", group = "test")
+@Disabled
 public class PathFollowing extends MasqLinearOpMode {
     TestBot robot = new TestBot();
     @Override

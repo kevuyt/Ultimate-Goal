@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Autonomus.Constants;
@@ -11,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archish on 2/7/18.
  */
 @TeleOp(name = "PositionTest", group = "T")
+@Disabled
 public class MasqPositionTest extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     public void runLinearOpMode() throws InterruptedException {

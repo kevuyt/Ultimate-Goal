@@ -35,37 +35,40 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
             falcon.drive(20);
-            falcon.drive(5, Direction.BACKWARD);
+            falcon.drive(7, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
             falcon.drive(50);
-            falcon.turnAbsolute(132, Direction.LEFT);
+            falcon.turnAbsolute(130, Direction.LEFT);
             falcon.drive(30);
             falcon.markerDump.setPosition(0);
             sleep(1);
+            falcon.turnAbsolute(140, Direction.LEFT);
             falcon.drive(100, Direction.BACKWARD, 5);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(25);
-            falcon.drive(5, Direction.BACKWARD);
+            falcon.drive(7, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
             falcon.drive(45);
-            falcon.turnAbsolute(132, Direction.LEFT);
+            falcon.turnAbsolute(130, Direction.LEFT);
             falcon.drive(50);
             falcon.markerDump.setPosition(0);
             sleep(1);
+            falcon.turnAbsolute(140, Direction.LEFT);
             falcon.drive(100, Direction.BACKWARD, 5);
         }
         else {
             falcon.turnAbsolute(-35, Direction.LEFT);
             falcon.drive(25);
-            falcon.drive(5, Direction.BACKWARD);
+            falcon.drive(8, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
             falcon.drive(50);
-            falcon.turnAbsolute(140, Direction.LEFT);
+            falcon.turnAbsolute(130, Direction.LEFT);
             falcon.drive(50);
             falcon.markerDump.setPosition(0);
             sleep(1);
+            falcon.turnAbsolute(140, Direction.LEFT);
             falcon.drive(100, Direction.BACKWARD, 5);
         }
         falcon.dogeForia.stop();

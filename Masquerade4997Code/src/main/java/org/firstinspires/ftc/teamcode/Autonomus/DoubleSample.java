@@ -64,13 +64,14 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         else {
             falcon.turnAbsolute(-35, Direction.LEFT);
             falcon.drive(25);
-            falcon.drive(5, Direction.BACKWARD);
+            falcon.drive(8, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
             falcon.drive(50);
-            falcon.turnAbsolute(140, Direction.LEFT);
+            falcon.turnAbsolute(130, Direction.LEFT);
             falcon.drive(50);
             falcon.markerDump.setPosition(0);
             sleep(1);
+            falcon.turnAbsolute(140, Direction.LEFT);
             falcon.drive(100, Direction.BACKWARD, 5);
         }
         falcon.dogeForia.stop();
