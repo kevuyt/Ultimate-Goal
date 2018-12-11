@@ -36,10 +36,10 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         if (blockPlacement == BlockPlacement.CENTER) {
             falcon.drive(20);
             falcon.drive(7, Direction.BACKWARD);
-            falcon.turnAbsolute(90, Direction.LEFT);
+            falcon.turnAbsolute(80, Direction.LEFT);
             falcon.drive(50);
             falcon.turnAbsolute(130, Direction.LEFT);
-            falcon.drive(30);
+            falcon.drive(45);
             falcon.markerDump.setPosition(0);
             sleep(1);
             falcon.turnAbsolute(140, Direction.LEFT);
@@ -49,7 +49,7 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(25);
             falcon.drive(7, Direction.BACKWARD);
-            falcon.turnAbsolute(90, Direction.LEFT);
+            falcon.turnAbsolute(80, Direction.LEFT);
             falcon.drive(45);
             falcon.turnAbsolute(130, Direction.LEFT);
             falcon.drive(50);
@@ -62,7 +62,7 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             falcon.turnAbsolute(-35, Direction.LEFT);
             falcon.drive(25);
             falcon.drive(8, Direction.BACKWARD);
-            falcon.turnAbsolute(90, Direction.LEFT);
+            falcon.turnAbsolute(80, Direction.LEFT);
             falcon.drive(50);
             falcon.turnAbsolute(130, Direction.LEFT);
             falcon.drive(50);

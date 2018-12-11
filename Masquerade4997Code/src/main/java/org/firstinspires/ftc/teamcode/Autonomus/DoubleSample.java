@@ -35,44 +35,45 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
             falcon.drive(20);
-            falcon.drive(5, Direction.BACKWARD);
+            falcon.drive(7, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(50, Direction.FORWARD, 3);
-            falcon.turnAbsolute(132, Direction.LEFT);
             falcon.drive(55);
-            falcon.markerDump.setPosition(0);
-            sleep(1);
-            falcon.turnAbsolute(-90, Direction.LEFT, 3);
+            falcon.turnAbsolute(135, Direction.LEFT);
+            falcon.drive(45);
+            falcon.turnAbsolute(-90, Direction.LEFT);
             falcon.drive(30);
             falcon.drive(30, Direction.BACKWARD);
-            falcon.turnAbsolute(-140, Direction.LEFT);
-            falcon.drive(100, Direction.FORWARD, 5);
+            falcon.turnAbsolute(135, Direction.LEFT);
+            falcon.drive(100, Direction.BACKWARD);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(25);
-            falcon.drive(5, Direction.BACKWARD);
+            falcon.drive(7, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(35);
-            falcon.turnAbsolute(132, Direction.LEFT);
-            falcon.drive(55);
+            falcon.drive(45);
+            falcon.turnAbsolute(135, Direction.LEFT);
+            falcon.drive(45);
             falcon.markerDump.setPosition(0);
-            sleep(1);
+            falcon.sleep(1);
+            // Decrease is more inward.
             falcon.turnAbsolute(-130, Direction.LEFT);
             falcon.drive(100, Direction.FORWARD, 5);
         }
         else {
-            falcon.turnAbsolute(-35, Direction.LEFT);
+            falcon.turnAbsolute(40, Direction.RIGHT);
             falcon.drive(25);
-            falcon.drive(8, Direction.BACKWARD);
+            falcon.drive(7, Direction.BACKWARD);
+            falcon.turnAbsolute(87, Direction.LEFT);
+            falcon.drive(55);
+            falcon.turnAbsolute(145, Direction.LEFT);
+            falcon.drive(55);
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(50);
-            falcon.turnAbsolute(130, Direction.LEFT);
-            falcon.drive(50);
             falcon.markerDump.setPosition(0);
-            sleep(1);
-            falcon.turnAbsolute(140, Direction.LEFT);
-            falcon.drive(100, Direction.BACKWARD, 5);
+            falcon.sleep(1);
+            falcon.turnAbsolute(145, Direction.LEFT);
+            // Decrease is more inward.
+            falcon.drive(100, Direction.BACKWARD);
         }
         falcon.dogeForia.stop();
     }
