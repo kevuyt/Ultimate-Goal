@@ -19,6 +19,7 @@ import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqSensors.MasqDistanceSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
@@ -31,6 +32,7 @@ import Library4997.MasqWrappers.DashBoard;
 
 public class Falcon extends MasqRobot {
     public MasqAdafruitIMU imu;
+    public MasqDistanceSensor distance;
     public MasqLimitSwitch limitTop, limitBottom;
     public MasqRotator rotator;
     public MasqElevator lift;
@@ -45,6 +47,7 @@ public class Falcon extends MasqRobot {
     public DogeForia dogeForia;
     public void mapHardware(HardwareMap hardwareMap) {
         dash = DashBoard.getDash();
+        distance = new MasqDistanceSensor("distance", hardwareMap);
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
         limitTop = new MasqLimitSwitch("limitTop", hardwareMap);

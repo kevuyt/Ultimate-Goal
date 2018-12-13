@@ -327,10 +327,15 @@ public abstract class MasqRobot {
     public void stop(StopCondition stopCondition, double angle, double speed, Direction direction) {
         stop(stopCondition, angle, speed, direction, MasqUtils.DEFAULT_TIMEOUT);
     }
-    public void stop(StopCondition sensor, double angle, double power) {stop(sensor, angle, power, Direction.FORWARD);}
+    public void stop(StopCondition sensor, double angle, double power) {
+        stop(sensor, angle, power, Direction.FORWARD);
+    }
     public void stop(StopCondition stopCondition, double angle) {stop(stopCondition, angle, 0.5);}
     public void stop(StopCondition sensor){
         stop(sensor, tracker.getHeading());
+    }
+    public void stop(StopCondition stopCondition, int timeout) {
+        stop(stopCondition, tracker.getHeading(), 0.5, Direction.FORWARD, timeout);
     }
 
     public void executePath (MasqPath path, Direction dir, double baseSpeed) {

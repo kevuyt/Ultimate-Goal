@@ -2,9 +2,11 @@ package org.firstinspires.ftc.teamcode.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -35,42 +37,40 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
             falcon.drive(20);
-            falcon.drive(7, Direction.BACKWARD);
+            falcon.drive(5, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(55);
-            falcon.turnAbsolute(135, Direction.LEFT);
-            falcon.drive(45);
-            falcon.turnAbsolute(-90, Direction.LEFT);
+            driveToWall(10);
+            falcon.turnAbsolute(137, Direction.LEFT);
+            driveToWall(10);
+            falcon.turnAbsolute(-90, Direction.LEFT, 5);
             falcon.drive(30);
             falcon.drive(30, Direction.BACKWARD);
-            falcon.turnAbsolute(135, Direction.LEFT);
+            falcon.turnAbsolute(132, Direction.LEFT, 3);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(25);
-            falcon.drive(7, Direction.BACKWARD);
+            falcon.drive(5, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
-            falcon.drive(45);
+            driveToWall(10);
             falcon.turnAbsolute(135, Direction.LEFT);
-            falcon.drive(45);
+            driveToWall(10);
             falcon.markerDump.setPosition(0);
             falcon.sleep(1);
             // Decrease is more inward.
-//            falcon.turnTillGold(0.3, Direction.LEFT);
-//            falcon.turnRelative(30, Direction.RIGHT);
-            falcon.turnAbsolute(-130, Direction.LEFT);
+            falcon.turnAbsolute(-120, Direction.LEFT, 5);
             falcon.drive(40);
             falcon.drive(40, Direction.BACKWARD);
-            falcon.turnAbsolute(135, Direction.LEFT);
+            falcon.turnAbsolute(132, Direction.LEFT);
         }
         else {
             falcon.turnAbsolute(40, Direction.RIGHT);
             falcon.drive(25);
-            falcon.drive(7, Direction.BACKWARD);
-            falcon.turnAbsolute(87, Direction.LEFT);
-            falcon.drive(55);
-            falcon.turnAbsolute(145, Direction.LEFT);
-            falcon.drive(55);
+            falcon.drive(10, Direction.BACKWARD);
+            falcon.turnAbsolute(90, Direction.LEFT);
+            driveToWall(10);
+            falcon.turnAbsolute(150, Direction.LEFT);
+            driveToWall(10);
             falcon.turnAbsolute(90, Direction.LEFT);
             falcon.markerDump.setPosition(0);
             falcon.sleep(1);
@@ -101,5 +101,13 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         if (!seen) return BlockPlacement.LEFT;
         else if (block < 200) return BlockPlacement.CENTER;
         else return BlockPlacement.RIGHT;
+    }
+    public void driveToWall (final double distance) {
+        falcon.stop(new StopCondition() {
+            @Override
+            public boolean stop() {
+                return falcon.distance.distance(DistanceUnit.INCH) > distance;
+            }
+        }, 15);
     }
 }
