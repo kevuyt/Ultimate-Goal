@@ -47,7 +47,7 @@ public class MasqUtils implements API_KEYS {
     public class KP {
         public static final double TURN = +0.05;
         public static final double DRIVE_ANGULAR = +0.08;
-        public static final double DRIVE_ENCODER = 3;
+        public static final double DRIVE_ENCODER = 3.5;
         public static final double PATH = .01;
         public static final double MOTOR_TELEOP = +0.005;
         public static final double MOTOR_AUTONOMOUS = +0.001;
@@ -56,7 +56,7 @@ public class MasqUtils implements API_KEYS {
         public static final double PATH = .0;
         public static final double TURN = +0.00;
         public static final double DRIVE = +0.0;
-        public static final double MOTOR_TELEOP = +0.0001;
+        public static final double MOTOR_TELEOP = +0.0005;
         public static final double MOTOR_AUTONOMOUS = +0.00;
     }
     public class KD {
@@ -85,11 +85,5 @@ public class MasqUtils implements API_KEYS {
     public double lowPass (double upperThresh, double value, double prev) {
         if (value < upperThresh) return prev;
         return value;
-    }
-    public static class VuMark {
-        public static final boolean isCenter(String vuMark) {return vuMark.toLowerCase().contains("c");}
-        public static final boolean isLeft(String vuMark) {return vuMark.toLowerCase().contains("l");}
-        public static final boolean isRight(String vuMark) {return vuMark.toLowerCase().contains("g");}
-        public static final boolean isUnKnown (String vuMark) {return vuMark.toLowerCase().contains("u");}
     }
 }

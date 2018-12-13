@@ -44,7 +44,6 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             falcon.drive(30);
             falcon.drive(30, Direction.BACKWARD);
             falcon.turnAbsolute(135, Direction.LEFT);
-            falcon.drive(100, Direction.BACKWARD);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
@@ -57,8 +56,12 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             falcon.markerDump.setPosition(0);
             falcon.sleep(1);
             // Decrease is more inward.
+//            falcon.turnTillGold(0.3, Direction.LEFT);
+//            falcon.turnRelative(30, Direction.RIGHT);
             falcon.turnAbsolute(-130, Direction.LEFT);
-            falcon.drive(100, Direction.FORWARD, 5);
+            falcon.drive(40);
+            falcon.drive(40, Direction.BACKWARD);
+            falcon.turnAbsolute(135, Direction.LEFT);
         }
         else {
             falcon.turnAbsolute(40, Direction.RIGHT);
@@ -73,8 +76,21 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             falcon.sleep(1);
             falcon.turnAbsolute(145, Direction.LEFT);
             // Decrease is more inward.
-            falcon.drive(100, Direction.BACKWARD);
         }
+        runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                falcon.drive(100, Direction.BACKWARD, 5);
+
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                while (!falcon.limitBottom.isPressed() && opModeIsActive())
+                    falcon.hangSystem.setVelocity(HANG_DOWN);
+                falcon.hangSystem.setPower(0);
+            }
+        });
         falcon.dogeForia.stop();
     }
     public BlockPlacement getBlockPlacement (int block) {

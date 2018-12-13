@@ -13,6 +13,7 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqMotors.MasqMotorSystem;
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
@@ -90,5 +91,14 @@ public class Falcon extends MasqRobot {
     public void update () {
         dash.update();
         tracker.updateSystem();
+    }
+    public void turnTillGold (double speed, Direction direction) {
+        clock = new MasqClock();
+        while (opModeIsActive() && !goldAlignDetector.getAligned() && imu.getRelativeYaw() <= 165) {
+            driveTrain.setVelocity(-speed * direction.value, speed * direction.value);
+            dash.create(imu.getRelativeYaw());
+            dash.update();
+        }
+        driveTrain.setVelocity(0, 0);
     }
 }
