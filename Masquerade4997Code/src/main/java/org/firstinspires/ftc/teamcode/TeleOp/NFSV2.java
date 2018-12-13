@@ -39,9 +39,10 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);
 
-            if (controller2.leftStickY() > 0) falcon.hangSystem.setPower(-1);
-            else if (controller2.leftStickY() < 0) falcon.hangSystem.setPower(1);
+            if (controller2.leftStickY() > 0 && !falcon.limitBottom.isPressed()) falcon.hangSystem.setPower(-1);
+            else if (controller2.leftStickY() < 0 && !falcon.limitTop.isPressed()) falcon.hangSystem.setPower(1);
             else falcon.hangSystem.setPower(0);
+
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
 
