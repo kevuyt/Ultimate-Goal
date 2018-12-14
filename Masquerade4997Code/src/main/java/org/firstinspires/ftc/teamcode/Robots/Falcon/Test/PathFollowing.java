@@ -1,9 +1,9 @@
-package org.firstinspires.ftc.teamcode.Test;
+package org.firstinspires.ftc.teamcode.Robots.Falcon.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.Robots.TestBot;
+import org.firstinspires.ftc.teamcode.Robots.TestBot.TestBot;
 
 import java.util.ArrayList;
 import java.util.List;

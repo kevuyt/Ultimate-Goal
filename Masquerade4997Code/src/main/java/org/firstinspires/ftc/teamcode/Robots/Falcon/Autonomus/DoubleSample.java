@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Autonomus;
+package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -17,11 +17,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "DoubleSample", group = "Autonomus")
 public class DoubleSample extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
-    enum BlockPlacement {
-        LEFT,
-        RIGHT,
-        CENTER,
-    }
+    enum BlockPlacement {LEFT, RIGHT, CENTER}
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         falcon.hangSystem.motor1.enableStallDetection();

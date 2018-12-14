@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Autonomus;
+package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -9,11 +9,11 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
- * Created by Archishmaan Peyyety on 12/13/18.
+ * Created by Archishmaan Peyyety on 12/10/18.
  * Project: MasqLib
  */
-@Autonomous(name = "CraterSideAutoV2", group = "Autonomus")
-public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "CraterSideAuto", group = "Autonomus")
+public class CraterSideAuto extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
     enum BlockPlacement {
         LEFT,

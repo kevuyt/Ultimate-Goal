@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Test;
+package org.firstinspires.ftc.teamcode.Robots.Falcon.Test;
 
 /**
  * Created by Archishmaan Peyyety on 8/25/18.
@@ -7,7 +7,7 @@ package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.Autonomus.Constants;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus.Constants;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
