@@ -49,7 +49,7 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             falcon.lift.DriverControl(controller1);
 
             //Dash
-            dash.create("Hang One", falcon.hangSystem.motor1.getPower());
+            dash.create("Hang One", falcon.rotator.rotator.getAngle());
             dash.create("Hang Two", falcon.hangSystem.motor2.getPower());
             dash.update();
             controller1.update();

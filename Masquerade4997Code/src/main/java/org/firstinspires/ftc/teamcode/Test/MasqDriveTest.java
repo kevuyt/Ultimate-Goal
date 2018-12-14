@@ -26,9 +26,6 @@ public class MasqDriveTest extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.turnAbsolute(90, Direction.RIGHT);
-        falcon.turnRelative(90, Direction.RIGHT);
-        falcon.turnRelative(90, Direction.RIGHT);
-        falcon.turnRelative(90, Direction.RIGHT);
+        falcon.lift.runToPosition(Direction.BACKWARD, 2000);
     }
 }

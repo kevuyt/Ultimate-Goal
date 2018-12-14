@@ -43,6 +43,11 @@ public class DashBoard {
             create(hardware.getName(), hardware.getDash()[i]);
         }
     }
+    public void create(MasqHardware... hardwares) {
+        for (MasqHardware hardware : hardwares) {
+            create(hardware);
+        }
+    }
     public void create(final MasqSubSystem subSystem) {
         for (MasqHardware hardware : subSystem.getComponents()) {
             create(hardware.getDash());

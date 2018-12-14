@@ -128,7 +128,7 @@ public class MasqMotor implements MasqHardware {
         double  power;
         do {
             clicksRemaining = (destination - Math.abs(motor.getCurrentPosition()));
-            power = -direction.value * speed * ((clicksRemaining / destination) * 1.3);
+            power = direction.value * speed * ((clicksRemaining / destination) * 1.3);
             power = Range.clip(power, -1.0, +1.0);
             setVelocity(power);
         } while (opModeIsActive() && Math.abs(clicksRemaining) > 1 && !timeoutTimer.elapsedTime(1, MasqClock.Resolution.SECONDS));
@@ -161,7 +161,7 @@ public class MasqMotor implements MasqHardware {
         }
     }
     public double getAngle () {
-        return (360 * (encoder.getAbsolutePosition() % encoder.getClicksPerInch())) / encoder.getClicksPerRotation();
+        return (motor.getCurrentPosition() * encoder.getClicksPerRotation()) / 360;
     }
     public void setPower (double power) {
         motor.setPower(power);

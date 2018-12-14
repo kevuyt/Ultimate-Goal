@@ -8,6 +8,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSubSystem;
 import Library4997.MasqWrappers.MasqController;
 
@@ -40,8 +41,15 @@ public class MasqElevator implements MasqSubSystem {
         }
         output.setKp(kp);
     }
-    public void runToPosition (Direction direction,double position) {
-        lift.runToPosition(direction, position);
+    public void runToPosition (Direction direction, double position) {
+        lift.resetEncoder();
+        MasqClock clock = new MasqClock();
+        while (lift.getCurrentPosition() < position &&
+                !clock.elapsedTime(2, MasqClock.Resolution.SECONDS)) {
+            double rawPower = 1 - (lift.getCurrentPosition() / position);
+            lift.setPower(rawPower * direction.value);
+        }
+        lift.setPower(0);
     }
 
     public double getCurrentPosition () {

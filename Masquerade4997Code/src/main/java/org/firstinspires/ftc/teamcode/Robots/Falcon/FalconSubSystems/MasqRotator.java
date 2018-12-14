@@ -53,6 +53,10 @@ public class MasqRotator implements MasqSubSystem {
         this.liftPosition = liftPosition;
     }
 
+    public void setAngle () {
+
+    }
+
     public double getPosition() {
         return rotator.getCurrentPosition();
     }
