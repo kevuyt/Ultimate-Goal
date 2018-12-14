@@ -15,6 +15,7 @@ import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqResources.MasqPIDPackage;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -65,6 +66,12 @@ public class Falcon extends MasqRobot {
         hangSystem.setLimits(limitBottom, limitTop);
         if (startOpenCV) startOpenCV(hardwareMap);
     }
+
+    @Override
+    public MasqPIDPackage pidPackage() {
+        return new MasqPIDPackage();
+    }
+
     public void setStartOpenCV(boolean startOpenCV) {
         this.startOpenCV = startOpenCV;
     }
