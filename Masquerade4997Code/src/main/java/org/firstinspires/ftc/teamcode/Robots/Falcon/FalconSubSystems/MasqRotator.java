@@ -24,8 +24,9 @@ import Library4997.MasqWrappers.MasqController;
 public class MasqRotator implements MasqSubSystem, Runnable {
     public MasqMotor rotator;
     private double targetPosition;
-    private boolean movementAllowed = true;
+    //private boolean movementAllowed = true;
     private AtomicBoolean close = new AtomicBoolean(false);
+    private AtomicBoolean movementAllowed = new AtomicBoolean(true);
     private double basePower = 0.9;
     private double kp_kp = 5;
     private double baseDownPower = 0.9;
@@ -81,7 +82,7 @@ public class MasqRotator implements MasqSubSystem, Runnable {
     }
 
     public void setAngle (double angle, Direction direction) {
-        movementAllowed = true;
+        movementAllowed.set(true);
         MasqClock clock = new MasqClock();
         double angleRemaining = Math.abs(angle - Math.abs(getAngle()));
         while (angleRemaining > 5 && MasqRobot.opModeIsActive()
@@ -93,7 +94,7 @@ public class MasqRotator implements MasqSubSystem, Runnable {
             DashBoard.getDash().update();
         }
         rotator.setPower(0);
-        movementAllowed = false;
+        movementAllowed.set(false);
     }
 
     @Override
@@ -102,7 +103,7 @@ public class MasqRotator implements MasqSubSystem, Runnable {
     }
 
     public void setMovementAllowed(boolean movementAllowed) {
-        this.movementAllowed = movementAllowed;
+        this.movementAllowed.set(movementAllowed);
     }
 
     @Override
@@ -117,7 +118,7 @@ public class MasqRotator implements MasqSubSystem, Runnable {
             kp = (1e-6 * -liftPosition) + 0.001;
             ki = 0.0;
             kd = 0.0;
-            if (movementAllowed) targetPosition = rotator.getCurrentPosition();
+            if (movementAllowed.get()) targetPosition = rotator.getCurrentPosition();
             else {
                 double currentPosition = rotator.getCurrentPosition();
                 rotator.setPower(output.getOutput(currentPosition, targetPosition));

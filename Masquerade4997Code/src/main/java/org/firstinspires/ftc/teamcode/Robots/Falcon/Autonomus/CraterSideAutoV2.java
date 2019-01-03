@@ -79,23 +79,36 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
             @Override
             public void run() {
                 while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setPower(-1);
+                while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setPower(1);
             }
         }, new Runnable() {
             @Override
             public void run() {
                 falcon.lift.runToPosition(Direction.BACKWARD, 2000);
-                falcon.rotator.setAngle(46, Direction.BACKWARD);
+                falcon.rotator.setAngle(26, Direction.BACKWARD);
                 falcon.rotator.setMovementAllowed(true);
                 sleep(1);
             }
         });
         falcon.collector.setPower(0.5);
         falcon.lift.runToPosition(Direction.BACKWARD, 4000);
-        sleep(.5);
+        sleep(1);
         falcon.lift.runToPosition(Direction.FORWARD, 2000);
         falcon.drive(20);
-        falcon.rotator.setAngle(30, Direction.FORWARD);
+        falcon.rotator.setAngle(0, Direction.FORWARD);
         falcon.turnAbsolute(falcon.getRotatorCoordinates(x, y)[0], Direction.LEFT);
+        falcon.lift.runToPosition(Direction.BACKWARD, 5000);
+        falcon.rotator.setMovementAllowed(true);
+        falcon.collector.setPower(.5);
+        falcon.rotator.setAngle(20, Direction.FORWARD);
+        falcon.lift.runToPosition(Direction.FORWARD, 2000);
+        falcon.turnAbsolute(0, Direction.LEFT);
+        falcon.drive(20, Direction.BACKWARD);
+        falcon.turnAbsolute(30, Direction.RIGHT);
+        falcon.rotator.setAngle(80, Direction.FORWARD);
+        falcon.rotator.setMovementAllowed(true);
+        falcon.lift.runToPosition(Direction.BACKWARD, 4000);
+
     }
     @Override
     public void stopLinearOpMode () {

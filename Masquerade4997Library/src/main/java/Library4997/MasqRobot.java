@@ -87,7 +87,6 @@ public abstract class MasqRobot {
     public void drive(double distance) {drive(distance, 0.5);}
 
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction direction, double timeOut, int sleepTime) {
-
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
