@@ -140,7 +140,6 @@ public abstract class MasqRobot {
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd, boolean left, boolean right) {
         double targetAngle = tracker.imu.adjustAngle(tracker.getHeading()) + (direction.value * angle);
         double acceptableError = .5;
-        double turnPower = .4;
         double currentError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
         double prevError = 0;
         double integral = 0;
@@ -163,8 +162,8 @@ public abstract class MasqRobot {
             double dervitivekd = derivative * kd;
             newPower = (errorkp + integralki + dervitivekd);
             if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
-            if (left) leftPower = -newPower * turnPower;
-            if (right) rightPower = newPower * turnPower;
+            if (left) leftPower = -newPower;
+            if (right) rightPower = newPower;
             driveTrain.setVelocity(leftPower, rightPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
@@ -201,7 +200,6 @@ public abstract class MasqRobot {
     public void turnAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
         double targetAngle = tracker.imu.adjustAngle((direction.value * angle));
         double acceptableError = .5;
-        double turnPower = .4;
         double currentError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
         double prevError = 0;
         double integral = 0;
@@ -221,7 +219,7 @@ public abstract class MasqRobot {
             double dervitivekd = derivative * kd;
             newPower = (errorkp + integralki + dervitivekd);
             if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
-            driveTrain.setVelocity(-newPower * turnPower, newPower * turnPower);
+            driveTrain.setVelocity(-newPower, newPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
             dash.create("KP: ", kp);

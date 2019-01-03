@@ -70,6 +70,7 @@ public class Falcon extends MasqRobot {
     public MasqPIDPackage pidPackage() {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
         pidPackage.setKpMotorTeleOp(0.003);
+        pidPackage.setKpMotorAuto(0.0005);
         return pidPackage;
     }
     public void setStartOpenCV(boolean startOpenCV) {

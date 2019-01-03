@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.Direction;
@@ -11,6 +13,7 @@ import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSubSystem;
+import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
 /**
@@ -18,9 +21,11 @@ import Library4997.MasqWrappers.MasqController;
  * Project: MasqLib
  */
 
-public class MasqRotator implements MasqSubSystem {
+public class MasqRotator implements MasqSubSystem, Runnable {
     public MasqMotor rotator;
     private double targetPosition;
+    private boolean movementAllowed = true;
+    private AtomicBoolean close = new AtomicBoolean(false);
     private double basePower = 0.9;
     private double kp_kp = 5;
     private double baseDownPower = 0.9;
@@ -34,6 +39,7 @@ public class MasqRotator implements MasqSubSystem {
         rotator.setClosedLoop(true);
         rotator.resetEncoder();
     }
+
     @Override
     public void DriverControl(MasqController controller) {
         kp = (1e-6 * -liftPosition) + 0.001;
@@ -57,15 +63,6 @@ public class MasqRotator implements MasqSubSystem {
         this.liftPosition = liftPosition;
     }
 
-    public void setAngle (double angle, Direction direction) {
-
-    }
-
-    public void setPower (Direction direction, double time) {
-        MasqClock clock = new MasqClock();
-        while (MasqRobot.opModeIsActive() && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS))
-            rotator.setPower(1 * direction.value);
-    }
 
     public double getPosition() {
         return rotator.getCurrentPosition();
@@ -76,8 +73,27 @@ public class MasqRotator implements MasqSubSystem {
     }
 
     public double getAngle() {
-        double angle =  (rotator.getCurrentPosition() * rotator.getEncoder().getClicksPerRotation()) / 360;
-        return angle / 170;
+        double angle =  (rotator.getCurrentPosition() *
+                rotator.getEncoder().getClicksPerRotation()) / 360;
+        angle /= 170;
+        if (angle < 0) angle = -angle;
+        return angle;
+    }
+
+    public void setAngle (double angle, Direction direction) {
+        movementAllowed = true;
+        MasqClock clock = new MasqClock();
+        double angleRemaining = Math.abs(angle - Math.abs(getAngle()));
+        while (angleRemaining > 5 && MasqRobot.opModeIsActive()
+                && !clock.elapsedTime(1, MasqClock.Resolution.SECONDS)) {
+            angleRemaining = Math.abs(angle - Math.abs(getAngle()));
+            double rawPower = angleRemaining / angle;
+            rotator.setPower(rawPower * direction.value * 2.7);
+            DashBoard.getDash().create(angleRemaining);
+            DashBoard.getDash().update();
+        }
+        rotator.setPower(0);
+        movementAllowed = false;
     }
 
     @Override
@@ -85,8 +101,34 @@ public class MasqRotator implements MasqSubSystem {
         return null;
     }
 
+    public void setMovementAllowed(boolean movementAllowed) {
+        this.movementAllowed = movementAllowed;
+    }
+
     @Override
     public MasqHardware[] getComponents() {
         return new MasqHardware[0];
+    }
+
+    @Override
+    public void run() {
+        close.set(true);
+        while (close.get()) {
+            kp = (1e-6 * -liftPosition) + 0.001;
+            ki = 0.0;
+            kd = 0.0;
+            if (movementAllowed) targetPosition = rotator.getCurrentPosition();
+            else {
+                double currentPosition = rotator.getCurrentPosition();
+                rotator.setPower(output.getOutput(currentPosition, targetPosition));
+            }
+            output.setKp(kp);
+            output.setKi(ki);
+            output.setKd(kd);
+        }
+    }
+    public void close() {close.set(false);}
+    public void startHoldThread () {
+        new Thread(this).start();
     }
 }

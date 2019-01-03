@@ -21,9 +21,9 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
         CENTER,
     }
     double x = 0, y = 0;
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
-        falcon.hangSystem.motor1.enableStallDetection();
+        falcon.rotator.startHoldThread();
         while (!opModeIsActive()) {
             if (controller1.xOnPress()) x += 0.1;
             if (controller1.yOnPress()) y += 0.1;
@@ -35,12 +35,8 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
         waitForStart();
         BlockPlacement blockPlacement =
                 getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        falcon.hangSystem.setPower(0);
         sleep(1);
-        falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) processCenter();
-        /*else if (blockPlacement == BlockPlacement.LEFT) processLeft();
-        else processRight();*/
         falcon.dogeForia.stop();
     }
     public BlockPlacement getBlockPlacement (int block) {
@@ -82,32 +78,27 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
         runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                while (!falcon.limitBottom.isPressed()) falcon.hangSystem.setPower(-1);
+                while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setPower(-1);
             }
         }, new Runnable() {
             @Override
             public void run() {
-                falcon.collector.setPower(.5);
-                falcon.lift.runToPosition(Direction.BACKWARD, 1000);
+                falcon.lift.runToPosition(Direction.BACKWARD, 2000);
+                falcon.rotator.setAngle(46, Direction.BACKWARD);
+                falcon.rotator.setMovementAllowed(true);
                 sleep(1);
             }
         });
-        runSimultaneously(new Runnable() {
-            @Override
-            public void run() {
-                falcon.drive(5);
-                while (!falcon.limitTop.isPressed()) falcon.hangSystem.setPower(1);
-                falcon.drive(5, Direction.BACKWARD);
-            }
-        }, new Runnable() {
-            @Override
-            public void run() {
-                falcon.rotator.setPower(Direction.FORWARD, 1);
-                falcon.lift.runToPosition(Direction.BACKWARD, 1000);
-                falcon.turnAbsolute(-30, Direction.LEFT);
-                falcon.dumper.setPosition(DUMPER_OUT);
-                sleep(2);
-            }
-        });
+        falcon.collector.setPower(0.5);
+        falcon.lift.runToPosition(Direction.BACKWARD, 4000);
+        sleep(.5);
+        falcon.lift.runToPosition(Direction.FORWARD, 2000);
+        falcon.drive(20);
+        falcon.rotator.setAngle(30, Direction.FORWARD);
+        falcon.turnAbsolute(falcon.getRotatorCoordinates(x, y)[0], Direction.LEFT);
+    }
+    @Override
+    public void stopLinearOpMode () {
+        falcon.rotator.close();
     }
 }
