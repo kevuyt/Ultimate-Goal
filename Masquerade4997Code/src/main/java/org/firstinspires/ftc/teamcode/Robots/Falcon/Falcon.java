@@ -5,12 +5,11 @@ import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.DogeForia;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
-
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.Direction;
@@ -71,11 +70,9 @@ public class Falcon extends MasqRobot {
     public MasqPIDPackage pidPackage() {
         return new MasqPIDPackage();
     }
-
     public void setStartOpenCV(boolean startOpenCV) {
         this.startOpenCV = startOpenCV;
     }
-
     private void startOpenCV (HardwareMap hardwareMap) {
         goldAlignDetector = new GoldAlignDetector();
         goldAlignDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance(), 0, true);
@@ -110,5 +107,15 @@ public class Falcon extends MasqRobot {
             dash.update();
         }
         driveTrain.setVelocity(0, 0);
+    }
+
+    public double[] getRotatorCoordinates (double x, double y) {
+        MasqVector currentPoint = new MasqVector(4, 4);
+        MasqVector dest = new MasqVector(x, y);
+        double angle = dest.angle(currentPoint);
+        if (x < y) angle = -angle;
+        return new double[]{
+            angle, dest.distanceToVector(currentPoint)
+        };
     }
 }

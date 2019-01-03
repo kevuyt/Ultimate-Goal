@@ -224,7 +224,7 @@ public abstract class MasqRobot {
             driveTrain.setVelocity(-newPower * turnPower, newPower * turnPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
-            dash.create("LEFT POWER: ", -newPower );
+            dash.create("KP: ", kp);
             dash.create("RIGHT POWER: " ,newPower);
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", tracker.getHeading());

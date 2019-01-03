@@ -30,14 +30,14 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
+        BlockPlacement blockPlacement = getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
         while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
         falcon.hangSystem.setPower(0);
-        BlockPlacement blockPlacement = getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.RIGHT) {
             falcon.turnAbsolute(40, Direction.RIGHT);
             falcon.drive(45, 0.8, Direction.FORWARD);
-            falcon.turnRelative(90, Direction.LEFT, 3);
+            falcon.turnRelative(100, Direction.LEFT, 3);
             falcon.drive(20);
             falcon.markerDump.setPosition(0);
             sleep(1);
@@ -53,7 +53,7 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(40, 0.8, Direction.FORWARD);
-            falcon.turnRelative(90, Direction.RIGHT, 3);
+            falcon.turnRelative(100, Direction.RIGHT, 3);
             falcon.drive(20);
             falcon.markerDump.setPosition(0);
             sleep(1);
