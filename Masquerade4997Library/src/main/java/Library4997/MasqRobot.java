@@ -303,8 +303,7 @@ public abstract class MasqRobot {
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
-            angularError = tracker.imu.adjustAngle(angle - tracker.getHeading
-                    ());
+            angularError = tracker.imu.adjustAngle(angle - tracker.getHeading());
             angularIntegral = (angularIntegral + angularError) * timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;

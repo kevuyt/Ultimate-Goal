@@ -26,12 +26,15 @@ public class PathFollowing extends MasqLinearOpMode {
         robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
             dash.create(robot.tracker.getPosition());
+            robot.tracker.updateSystem();
             dash.update();
         }
         waitForStart();
         List<MasqPoint> wayPoints = new ArrayList<>();
         wayPoints.add(robot.tracker.getPosition());
-        wayPoints.add(new MasqPoint(wayPoints.get(0).getX(), wayPoints.get(0).getY() + 10));
+        //wayPoints.add(new MasqPoint(0,2));
+        wayPoints.add(new MasqPoint(4, -4));
+        //wayPoints.add(new MasqPoint(3, -11));
         robot.executePath(new MasqPath(wayPoints, 5), Direction.FORWARD, 0.6);
     }
 }

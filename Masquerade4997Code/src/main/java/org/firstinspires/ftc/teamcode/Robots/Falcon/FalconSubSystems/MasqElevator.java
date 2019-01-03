@@ -8,6 +8,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSubSystem;
 import Library4997.MasqWrappers.MasqController;
@@ -24,7 +25,7 @@ public class MasqElevator implements MasqSubSystem {
 
     private MasqPIDController output = new MasqPIDController(0.005, 0, 0.001);
     public MasqElevator (HardwareMap hardwareMap) {
-        lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, DcMotor.Direction.REVERSE, hardwareMap);
+        lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, DcMotor.Direction.FORWARD, hardwareMap);
         lift.resetEncoder();
     }
 
@@ -45,7 +46,7 @@ public class MasqElevator implements MasqSubSystem {
         lift.resetEncoder();
         MasqClock clock = new MasqClock();
         while (lift.getCurrentPosition() < position &&
-                !clock.elapsedTime(2, MasqClock.Resolution.SECONDS)) {
+                !clock.elapsedTime(2, MasqClock.Resolution.SECONDS) && MasqRobot.opModeIsActive()) {
             double rawPower = 1 - (lift.getCurrentPosition() / position);
             lift.setPower(rawPower * direction.value);
         }

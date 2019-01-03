@@ -51,7 +51,7 @@ public class Falcon extends MasqRobot {
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
         limitTop = new MasqLimitSwitch("limitTop", hardwareMap);
-        driveTrain = new MasqDriveTrain(hardwareMap);
+        driveTrain = new MasqDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
         tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         rotator = new MasqRotator(hardwareMap);
         lift = new MasqElevator(hardwareMap);
@@ -68,7 +68,9 @@ public class Falcon extends MasqRobot {
 
     @Override
     public MasqPIDPackage pidPackage() {
-        return new MasqPIDPackage();
+        MasqPIDPackage pidPackage = new MasqPIDPackage();
+        pidPackage.setKpMotorTeleOp(0.003);
+        return pidPackage;
     }
     public void setStartOpenCV(boolean startOpenCV) {
         this.startOpenCV = startOpenCV;
