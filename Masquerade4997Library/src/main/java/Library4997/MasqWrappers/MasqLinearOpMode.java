@@ -2,6 +2,9 @@ package Library4997.MasqWrappers;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Library4997.MasqResources.MasqUtils;
 
 
@@ -33,6 +36,19 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         t2.start();
         while (opModeIsActive() && (t1.isAlive() || t2.isAlive())) {
             idle();
+        }
+    }
+    public void runSimultaneously(Runnable... runnables) {
+        List<Thread> threads = new ArrayList<>();
+        int i = 0;
+        for (Runnable runnable : runnables) {
+            threads.add(new Thread(runnable));
+            threads.get(i).start();
+            i++;
+        }
+        boolean alive = true;
+        while (opModeIsActive() && alive) {
+            for(Thread t : threads) alive = !t.isAlive();
         }
     }
     public void sleep(int timeSeconds) {

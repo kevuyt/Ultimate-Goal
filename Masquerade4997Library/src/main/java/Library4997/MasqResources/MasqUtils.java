@@ -47,7 +47,7 @@ public class MasqUtils implements API_KEYS {
     public class KP {
         public static final double TURN = +0.02;
         public static final double DRIVE_ANGULAR = +0.08;
-        public static final double DRIVE_ENCODER = 3.5;
+        public static final double DRIVE_ENCODER = 2.5;
         public static final double PATH = .01;
         public static final double MOTOR_TELEOP = +0.005;
         public static final double MOTOR_AUTONOMOUS = +0.001;

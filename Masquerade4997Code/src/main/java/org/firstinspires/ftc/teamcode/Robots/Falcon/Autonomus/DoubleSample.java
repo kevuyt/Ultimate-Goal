@@ -4,10 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -17,7 +17,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "DoubleSample", group = "Autonomus")
 public class DoubleSample extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
-    enum BlockPlacement {LEFT, RIGHT, CENTER}
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         falcon.hangSystem.motor1.enableStallDetection();
@@ -27,7 +26,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        BlockPlacement blockPlacement = getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
+        BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
         while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
         falcon.hangSystem.setPower(0);
         falcon.drive(5);
@@ -89,15 +88,6 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             }
         });
         falcon.dogeForia.stop();
-    }
-    public BlockPlacement getBlockPlacement (int block) {
-        MasqClock clock = new MasqClock();
-        boolean seen = true;
-        while (!clock.elapsedTime(1, MasqClock.Resolution.SECONDS) && falcon.goldAlignDetector.isFound()) {}
-        if (clock.seconds() < 1) seen = false;
-        if (!seen) return BlockPlacement.LEFT;
-        else if (block < 200) return BlockPlacement.CENTER;
-        else return BlockPlacement.RIGHT;
     }
     public void driveToWall (final double distance, int timeout) {
         falcon.stop(new StopCondition() {

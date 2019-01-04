@@ -3,9 +3,9 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -15,11 +15,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "DepotSideAuto", group = "Tank")
 public class DepotSideAuto extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    enum BlockPlacement {
-        LEFT,
-        RIGHT,
-        CENTER,
-    }
     @Override
     public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
@@ -30,7 +25,7 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        BlockPlacement blockPlacement = getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
+        BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
         while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
         falcon.hangSystem.setPower(0);
         falcon.drive(5);
@@ -65,13 +60,4 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
         falcon.goldAlignDetector.disable();
     }
 
-    public BlockPlacement getBlockPlacement (int block) {
-        MasqClock clock = new MasqClock();
-        boolean seen = true;
-        while (!clock.elapsedTime(1, MasqClock.Resolution.SECONDS) && falcon.goldAlignDetector.isFound()) {}
-        if (clock.seconds() < 1) seen = false;
-        if (!seen) return BlockPlacement.LEFT;
-        else if (block < 200) return BlockPlacement.CENTER;
-        else return BlockPlacement.RIGHT;
-    }
 }

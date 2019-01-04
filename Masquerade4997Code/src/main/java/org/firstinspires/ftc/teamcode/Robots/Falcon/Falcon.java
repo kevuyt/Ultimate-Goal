@@ -5,9 +5,12 @@ import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.DogeForia;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
+
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
@@ -65,7 +68,6 @@ public class Falcon extends MasqRobot {
         hangSystem.setLimits(limitBottom, limitTop);
         if (startOpenCV) startOpenCV(hardwareMap);
     }
-
     @Override
     public MasqPIDPackage pidPackage() {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
@@ -112,6 +114,10 @@ public class Falcon extends MasqRobot {
         driveTrain.setVelocity(0, 0);
     }
 
+    public void shake(int repetition, int degree) {
+
+    }
+
     public double[] getRotatorCoordinates (double x, double y) {
         MasqVector currentPoint = new MasqVector(4, 4);
         MasqVector dest = new MasqVector(x, y);
@@ -120,5 +126,14 @@ public class Falcon extends MasqRobot {
         return new double[]{
             angle, dest.distanceToVector(currentPoint)
         };
+    }
+    public BlockPlacement getBlockPlacement (int block) {
+        MasqClock clock = new MasqClock();
+        boolean seen = true;
+        while (!clock.elapsedTime(1, MasqClock.Resolution.SECONDS) && goldAlignDetector.isFound()) {}
+        if (clock.seconds() < 1) seen = false;
+        if (!seen) return BlockPlacement.RIGHT;
+        else if (block > 200) return BlockPlacement.CENTER;
+        else return BlockPlacement.LEFT;
     }
 }

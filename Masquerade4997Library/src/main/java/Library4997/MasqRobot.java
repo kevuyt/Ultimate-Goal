@@ -370,11 +370,11 @@ public abstract class MasqRobot {
 
     public void NFS(MasqController c) {
         float move = c.leftStickY();
-        float turn = c.rightStickX() * 0.7f;
+        float turn = c.rightStickX();
         double left = move - turn;
         double right = move + turn;
-        left *= -.8;
-        right *= -.8;
+        left *= -1;
+        right *= -1;
         if (c.leftBumper()) {
             left /= 2;
             right /= 2;

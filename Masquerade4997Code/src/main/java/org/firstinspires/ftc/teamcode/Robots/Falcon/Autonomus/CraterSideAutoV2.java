@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -33,20 +32,11 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
             dash.create("Y: " + y);
         }
         waitForStart();
-        BlockPlacement blockPlacement =
+        /*BlockPlacement blockPlacement =
                 getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        sleep(1);
-        if (blockPlacement == BlockPlacement.CENTER) processCenter();
+        //if (blockPlacement == BlockPlacement.CENTER)*/
+            processCenter();
         falcon.dogeForia.stop();
-    }
-    public BlockPlacement getBlockPlacement (int block) {
-        MasqClock clock = new MasqClock();
-        boolean seen = true;
-        while (!clock.elapsedTime(1, MasqClock.Resolution.SECONDS) && falcon.goldAlignDetector.isFound()) {}
-        if (clock.seconds() < 1) seen = false;
-        if (!seen) return BlockPlacement.LEFT;
-        else if (block < 200) return BlockPlacement.CENTER;
-        else return BlockPlacement.RIGHT;
     }
     public void processRight () {
         falcon.turnAbsolute(-35, Direction.LEFT);
@@ -78,37 +68,38 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
         runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setPower(-1);
-                while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setPower(1);
+                //while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setPower(-1);
+                //while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setPower(1);
             }
         }, new Runnable() {
             @Override
             public void run() {
-                falcon.lift.runToPosition(Direction.BACKWARD, 2000);
-                falcon.rotator.setAngle(26, Direction.BACKWARD);
+                falcon.lift.runToPosition(Direction.OUT, 2000);
+                falcon.rotator.setAngle(20, Direction.BACKWARD);
                 falcon.rotator.setMovementAllowed(true);
+                falcon.collector.setPower(0.5);
+                sleep(.5);
+                falcon.lift.runToPosition(Direction.OUT, 4000);
                 sleep(1);
             }
         });
-        falcon.collector.setPower(0.5);
-        falcon.lift.runToPosition(Direction.BACKWARD, 4000);
-        sleep(1);
-        falcon.lift.runToPosition(Direction.FORWARD, 2000);
-        falcon.drive(20);
-        falcon.rotator.setAngle(0, Direction.FORWARD);
-        falcon.turnAbsolute(falcon.getRotatorCoordinates(x, y)[0], Direction.LEFT);
-        falcon.lift.runToPosition(Direction.BACKWARD, 5000);
-        falcon.rotator.setMovementAllowed(true);
-        falcon.collector.setPower(.5);
-        falcon.rotator.setAngle(20, Direction.FORWARD);
-        falcon.lift.runToPosition(Direction.FORWARD, 2000);
-        falcon.turnAbsolute(0, Direction.LEFT);
-        falcon.drive(20, Direction.BACKWARD);
-        falcon.turnAbsolute(30, Direction.RIGHT);
-        falcon.rotator.setAngle(80, Direction.FORWARD);
-        falcon.rotator.setMovementAllowed(true);
-        falcon.lift.runToPosition(Direction.BACKWARD, 4000);
-
+        falcon.rotator.setAngle(0, Direction.UP);
+        runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                falcon.drive(15);
+                falcon.turnAbsolute(falcon.getRotatorCoordinates(x, y)[0], Direction.LEFT);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                falcon.lift.runToPosition(Direction.OUT, 4000);
+            }
+        });
+        falcon.rotator.setAngle(20, Direction.DOWN);
+//        falcon.rotator.setMovementAllowed(true);
+//        sleep(1);
+//        falcon.rotator.setAngle(0, Direction.UP);
     }
     @Override
     public void stopLinearOpMode () {
