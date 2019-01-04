@@ -73,6 +73,7 @@ public class Falcon extends MasqRobot {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
         pidPackage.setKpMotorTeleOp(0.003);
         pidPackage.setKpMotorAuto(0.0005);
+        pidPackage.setKpTurn(0.025);
         return pidPackage;
     }
     public void setStartOpenCV(boolean startOpenCV) {
@@ -114,17 +115,25 @@ public class Falcon extends MasqRobot {
         driveTrain.setVelocity(0, 0);
     }
 
-    public void shake(int repetition, int degree) {
-
+    public void shake(int repetition, int degree, double power) {
+        for (int i = 0; i < repetition / 2; i++) {
+            while (imu.getRelativeYaw() < degree) {
+                driveTrain.setPower(-power, power);
+            }
+            while (imu.getRelativeYaw() > -degree) {
+                driveTrain.setPower(power, -power);
+            }
+        }
+        driveTrain.setPower(0);
     }
 
     public double[] getRotatorCoordinates (double x, double y) {
         MasqVector currentPoint = new MasqVector(4, 4);
         MasqVector dest = new MasqVector(x, y);
-        double angle = dest.angle(currentPoint);
+        double angle = Math.toDegrees(Math.acos(dest.angle(currentPoint)));
         if (x < y) angle = -angle;
         return new double[]{
-            angle, dest.distanceToVector(currentPoint)
+                angle, dest.distanceToVector(currentPoint)
         };
     }
     public BlockPlacement getBlockPlacement (int block) {

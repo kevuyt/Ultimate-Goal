@@ -84,11 +84,13 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
             }
         });
         falcon.rotator.setAngle(0, Direction.UP);
+        falcon.lift.runToPosition(Direction.IN, 3000);
         runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                falcon.drive(15);
-                falcon.turnAbsolute(falcon.getRotatorCoordinates(x, y)[0], Direction.LEFT);
+                falcon.drive(10);
+                if (x < 1) falcon.turnRelative(30, Direction.RIGHT);
+                if (x >= 1) falcon.turnRelative(30, Direction.LEFT);
             }
         }, new Runnable() {
             @Override
@@ -96,11 +98,27 @@ public class CraterSideAutoV2 extends MasqLinearOpMode implements Constants {
                 falcon.lift.runToPosition(Direction.OUT, 4000);
             }
         });
-        falcon.rotator.setAngle(20, Direction.DOWN);
-//        falcon.rotator.setMovementAllowed(true);
-//        sleep(1);
-//        falcon.rotator.setAngle(0, Direction.UP);
+        falcon.rotator.setAngle(26, Direction.DOWN);
+        falcon.rotator.setMovementAllowed(true);
+        runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                falcon.shake(4, 5, .5);
+                falcon.collector.setPower(0);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                falcon.lift.runToPosition(Direction.OUT, 5000);
+            }
+        });
+        falcon.rotator.setAngle(60, Direction.UP);
+        falcon.lift.runToPosition(Direction.IN, 3000);
+        if (falcon.tracker.getHeading() < 0)
+            falcon.turnAbsolute(0, Direction.LEFT);
+        else falcon.turnAbsolute(0, Direction.RIGHT);
     }
+
     @Override
     public void stopLinearOpMode () {
         falcon.rotator.close();
