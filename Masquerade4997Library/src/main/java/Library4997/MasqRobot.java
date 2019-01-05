@@ -117,8 +117,8 @@ public abstract class MasqRobot {
             }
             driveTrain.setVelocity(leftPower, rightPower);
             //serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
-            dash.create("LEFT POWER: ",leftPower);
-            dash.create("RIGHT POWER: ",rightPower);
+            dash.create("LEFT POWER: ", leftPower);
+            dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
             dash.update();
             prevAngularError = angularError;
