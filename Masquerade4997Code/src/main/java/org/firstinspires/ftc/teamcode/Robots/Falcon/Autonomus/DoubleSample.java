@@ -36,7 +36,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             falcon.turnAbsolute(90, Direction.LEFT);
             driveToWall(10, 4);
             falcon.turnAbsolute(137, Direction.LEFT);
-            driveToWall(10);
+            driveToWall(15);
             falcon.turnAbsolute(-90, Direction.LEFT, 5);
             falcon.drive(30);
             falcon.drive(30, Direction.BACKWARD);
@@ -51,7 +51,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             falcon.turnAbsolute(90, Direction.LEFT);
             driveToWall(10, 4);
             falcon.turnAbsolute(135, Direction.LEFT);
-            driveToWall(10);
+            driveToWall(15);
             // Decrease is more inward.
             falcon.turnAbsolute(-120, Direction.LEFT, 5);
             falcon.drive(40);
@@ -67,7 +67,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
             falcon.turnAbsolute(90, Direction.LEFT);
             driveToWall(10, 4);
             falcon.turnAbsolute(150, Direction.LEFT);
-            driveToWall(10);
+            driveToWall(15);
             falcon.turnAbsolute(90, Direction.LEFT);
             falcon.markerDump.setPosition(0);
             falcon.sleep(1);

@@ -34,7 +34,7 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             falcon.drive(7, Direction.BACKWARD);
             falcon.turnAbsolute(80, Direction.LEFT);
             falcon.drive(50);
-            falcon.turnAbsolute(130, Direction.LEFT);
+            falcon.turnAbsolute(137, Direction.LEFT);
             falcon.drive(45);
             falcon.markerDump.setPosition(0);
             sleep(1);
@@ -47,7 +47,7 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             falcon.drive(7, Direction.BACKWARD);
             falcon.turnAbsolute(80, Direction.LEFT);
             falcon.drive(45);
-            falcon.turnAbsolute(130, Direction.LEFT);
+            falcon.turnAbsolute(137, Direction.LEFT);
             falcon.drive(50);
             falcon.markerDump.setPosition(0);
             sleep(1);
@@ -55,16 +55,16 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             falcon.drive(100, Direction.BACKWARD, 5);
         }
         else {
-            falcon.turnAbsolute(-35, Direction.LEFT);
+            falcon.turnAbsolute(-45, Direction.LEFT);
             falcon.drive(25);
             falcon.drive(8, Direction.BACKWARD);
-            falcon.turnAbsolute(80, Direction.LEFT);
+            falcon.turnAbsolute(90, Direction.LEFT);
             falcon.drive(50);
-            falcon.turnAbsolute(130, Direction.LEFT);
+            falcon.turnAbsolute(137, Direction.LEFT);
             falcon.drive(50);
             falcon.markerDump.setPosition(0);
             sleep(1);
-            falcon.turnAbsolute(140, Direction.LEFT);
+            falcon.turnAbsolute(155, Direction.LEFT);
             falcon.drive(100, Direction.BACKWARD, 5);
         }
         falcon.dogeForia.stop();

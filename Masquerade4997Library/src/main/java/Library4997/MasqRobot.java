@@ -218,7 +218,7 @@ public abstract class MasqRobot {
             double dervitivekd = derivative * kd;
             newPower = (errorkp + integralki + dervitivekd);
             if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
-            driveTrain.setVelocity(-newPower, newPower);
+            driveTrain.setVelocity(-newPower * .5, newPower * .5);
             prevError = currentError;
             this.angleLeftCover = currentError;
             dash.create("KP: ", kp);
@@ -371,6 +371,7 @@ public abstract class MasqRobot {
     public void NFS(MasqController c) {
         float move = c.leftStickY();
         float turn = c.rightStickX();
+        turn *=.9;
         double left = move - turn;
         double right = move + turn;
         left *= -1;
