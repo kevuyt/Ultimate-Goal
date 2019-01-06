@@ -21,8 +21,6 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
         falcon.driveTrain.setClosedLoop(true);
-        falcon.hangSystem.motor1.enableStallDetection();
-        falcon.rotator.startHoldThread();
         while (!opModeIsActive()) {
             dash.create("Hello");
             dash.create(falcon.imu);
@@ -32,58 +30,43 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
         while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
         falcon.hangSystem.setPower(0);
+        sleep(1);
+        falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
-            falcon.drive(20);
+            falcon.drive(23);
             falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(90, Direction.LEFT);
-            driveToWall(10, 4);
-            falcon.turnAbsolute(140, Direction.LEFT);
+            falcon.turnAbsolute(80, Direction.LEFT);
             driveToWall(10);
-            falcon.turnAbsolute(-90, Direction.LEFT, 5);
+            falcon.turnAbsolute(130, Direction.LEFT);
+            driveToWall(10);
+            falcon.turnAbsolute(-100, Direction.LEFT);
             falcon.drive(30);
             falcon.drive(30, Direction.BACKWARD);
+            falcon.turnAbsolute(-45, Direction.LEFT);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
-            falcon.drive(3);
-            falcon.turnAbsolute(40, Direction.LEFT);
-            falcon.drive(25);
+            falcon.turnAbsolute(30, Direction.LEFT);
+            falcon.drive(28);
             falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(90, Direction.LEFT);
-            driveToWall(10, 4);
-            falcon.turnAbsolute(140, Direction.LEFT);
+            falcon.turnAbsolute(80, Direction.LEFT);
             driveToWall(10);
-            falcon.turnAbsolute(-120, Direction.LEFT, 5);
-            falcon.drive(40);
-            falcon.drive(40, Direction.BACKWARD);
+            falcon.turnAbsolute(130, Direction.LEFT);
+            driveToWall(10);
+            falcon.turnAbsolute(-130, Direction.LEFT);
+            falcon.drive(30);
+            falcon.drive(30, Direction.BACKWARD);
+            falcon.turnAbsolute(-45, Direction.LEFT);
         }
         else {
-            falcon.drive(3);
-            falcon.turnAbsolute(40, Direction.RIGHT);
-            falcon.drive(25);
-            falcon.drive(10, Direction.BACKWARD);
-            falcon.turnAbsolute(90, Direction.LEFT);
-            driveToWall(10, 4);
-            falcon.turnAbsolute(150, Direction.LEFT);
+            falcon.turnAbsolute(-30, Direction.LEFT);
+            falcon.drive(28);
+            falcon.drive(5, Direction.BACKWARD);
+            falcon.turnAbsolute(80, Direction.LEFT);
             driveToWall(10);
-            falcon.turnAbsolute(90, Direction.LEFT);
+            falcon.turnAbsolute(140, Direction.LEFT);
+            driveToWall(10);
+            falcon.turnAbsolute(-30, Direction.LEFT);
         }
-        falcon.turnAbsolute(-30, Direction.LEFT, 3);
-        falcon.markerDump.setPosition(0);
-        falcon.sleep(1);
-
-        runSimultaneously(new Runnable() {
-            @Override
-            public void run() {
-                falcon.drive(50,Direction.FORWARD,5);
-
-            }
-        }, new Runnable() {
-            @Override
-            public void run() {
-                falcon.lift.runToPosition(Direction.OUT, 6000);
-                falcon.rotator.setAngle(26, Direction.DOWN);
-            }
-        });
         falcon.dogeForia.stop();
     }
     public void driveToWall (final double distance, int timeout) {
@@ -96,9 +79,5 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
     }
     public void driveToWall(final double di) {
         driveToWall(di, 5);
-    }
-    @Override
-    public void stopLinearOpMode() {
-        falcon.rotator.close();
     }
 }

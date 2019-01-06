@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
@@ -11,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @Autonomous(name = "BringLiftDown", group = "Autonomus")
+@Disabled
 public class BringLiftDown extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
 

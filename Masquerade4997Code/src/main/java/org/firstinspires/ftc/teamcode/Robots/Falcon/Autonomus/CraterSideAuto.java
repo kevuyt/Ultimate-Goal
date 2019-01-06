@@ -21,7 +21,6 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
         falcon.driveTrain.setClosedLoop(true);
-        falcon.hangSystem.motor1.enableStallDetection();
         while (!opModeIsActive()) {
             dash.create("Hello");
             dash.create(falcon.imu);
