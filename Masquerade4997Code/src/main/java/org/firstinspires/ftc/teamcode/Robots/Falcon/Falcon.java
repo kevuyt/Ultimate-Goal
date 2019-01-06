@@ -5,10 +5,12 @@ import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.DogeForia;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
+
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
@@ -22,6 +24,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqDistanceSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqServos.MasqCRServo;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
@@ -41,12 +44,14 @@ public class Falcon extends MasqRobot {
     public MasqServo dumper;
     public MasqCRServo collector;
     public MasqServo adjuster;
+    public MasqVoltageSensor voltageSensor;
     public MasqClock clock;
     public MasqMotorSystem hangSystem;
     private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
     public DogeForia dogeForia;
     public void mapHardware(HardwareMap hardwareMap) {
+        voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
         distance = new MasqDistanceSensor("distance", hardwareMap);
         imu = new MasqAdafruitIMU("imu", hardwareMap);
@@ -70,7 +75,7 @@ public class Falcon extends MasqRobot {
     public MasqPIDPackage pidPackage() {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
         pidPackage.setKpMotorTeleOp(0.002);
-        pidPackage.setKpMotorAuto(0.0005);
+        pidPackage.setKpMotorAuto(0.002);
         pidPackage.setKpTurn(0.015);
         pidPackage.setKpDriveEncoder(1.5);
         pidPackage.setKpDriveAngular(0.015);
@@ -144,5 +149,15 @@ public class Falcon extends MasqRobot {
         if (!seen) return BlockPlacement.RIGHT;
         else if (block > 200) return BlockPlacement.CENTER;
         else return BlockPlacement.LEFT;
+    }
+
+    @Override
+    public void setTurnFunction(Runnable turnFunction) {
+        turnFunction = new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        };
     }
 }

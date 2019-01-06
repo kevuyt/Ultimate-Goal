@@ -19,6 +19,8 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
+        falcon.initializeAutonomous();
+        falcon.driveTrain.setClosedLoop(true);
         falcon.hangSystem.motor1.enableStallDetection();
         falcon.rotator.startHoldThread();
         while (!opModeIsActive()) {
@@ -43,9 +45,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.drive(3);
-            falcon.pidPackage().setKpTurn(0.03);
             falcon.turnAbsolute(40, Direction.LEFT);
-            falcon.pidPackage().setKpTurn(0.0);
             falcon.drive(25);
             falcon.drive(5, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
@@ -58,9 +58,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         }
         else {
             falcon.drive(3);
-            falcon.pidPackage().setKpTurn(0.02);
             falcon.turnAbsolute(40, Direction.RIGHT);
-            falcon.pidPackage().setKpTurn(0.015);
             falcon.drive(25);
             falcon.drive(10, Direction.BACKWARD);
             falcon.turnAbsolute(90, Direction.LEFT);
