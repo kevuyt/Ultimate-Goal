@@ -5,12 +5,10 @@ import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.DogeForia;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
-
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
@@ -71,11 +69,11 @@ public class Falcon extends MasqRobot {
     @Override
     public MasqPIDPackage pidPackage() {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
-        pidPackage.setKpMotorTeleOp(0.002 );
+        pidPackage.setKpMotorTeleOp(0.002);
         pidPackage.setKpMotorAuto(0.0005);
-        pidPackage.setKpTurn(0.025);
+        pidPackage.setKpTurn(0.015);
         pidPackage.setKpDriveEncoder(1.5);
-        pidPackage.setKpDriveAngular(0.005);
+        pidPackage.setKpDriveAngular(0.015);
         return pidPackage;
     }
     public void setStartOpenCV(boolean startOpenCV) {

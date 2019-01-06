@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus.Constants;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -21,16 +20,11 @@ public class MasqDriveTest extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
-        double x = 0 , y = 0;
         while (!opModeIsActive()) {
             dash.create("G");
             dash.update();
         }
         waitForStart();
-        falcon.turnAbsolute(90, Direction.RIGHT);
-        falcon.turnAbsolute(30, Direction.LEFT);
-        falcon.turnAbsolute(0, Direction.LEFT);
-        falcon.turnAbsolute(30, Direction.LEFT);
-        falcon.turnAbsolute(150, Direction.LEFT);
+        falcon.drive(50);
     }
 }

@@ -26,6 +26,7 @@ import Library4997.MasqWrappers.MasqController;
 public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap);
     public abstract MasqPIDPackage pidPackage();
+    private Runnable turnFunction, driveFunction;
     public MasqDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
@@ -65,6 +66,7 @@ public abstract class MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
+            driveFunction.run();
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("ERROR: ", clicksRemaining);
@@ -116,6 +118,7 @@ public abstract class MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
+            driveFunction.run();
             //serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
             dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
@@ -166,6 +169,7 @@ public abstract class MasqRobot {
             driveTrain.setVelocity(leftPower, rightPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
+            turnFunction.run();
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", tracker.getHeading());
             dash.create("AngleLeftToCover", currentError);
@@ -221,6 +225,7 @@ public abstract class MasqRobot {
             driveTrain.setVelocity(-newPower * .5, newPower * .5);
             prevError = currentError;
             this.angleLeftCover = currentError;
+            turnFunction.run();
             dash.create("KP: ", kp);
             dash.create("RIGHT POWER: " ,newPower);
             dash.create("TargetAngle", targetAngle);
@@ -474,5 +479,21 @@ public abstract class MasqRobot {
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
     public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
         return hardwareMap.get(WebcamName.class, name);
+    }
+
+    public Runnable getTurnFunction() {
+        return turnFunction;
+    }
+
+    public void setTurnFunction(Runnable turnFunction) {
+        this.turnFunction = turnFunction;
+    }
+
+    public Runnable getDriveFunction() {
+        return driveFunction;
+    }
+
+    public void setDriveFunction(Runnable driveFunction) {
+        this.driveFunction = driveFunction;
     }
 }
