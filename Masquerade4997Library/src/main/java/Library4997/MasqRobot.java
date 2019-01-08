@@ -29,17 +29,18 @@ public abstract class MasqRobot {
     private Runnable
        turnFunction
             = new Runnable() {
-        @Override
-        public void run() {
+                @Override
+                public void run() {
 
-        }
-    }, driveFunction
+                }
+            },
+       driveFunction
             = new Runnable() {
-        @Override
-        public void run() {
+                @Override
+                public void run() {
 
-        }
-    };
+                }
+            };
     public MasqDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
