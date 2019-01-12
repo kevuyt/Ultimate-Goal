@@ -60,12 +60,12 @@
         "source": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/packaged_res/debug/xml/app_settings.xml"
     },
     {
-        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_rev_scoot.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/rev_scoot.xml"
-    },
-    {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_servo_list.xml.flat",
         "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/servo_list.xml"
+    },
+    {
+        "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_rev_scoot.xml.flat",
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/rev_scoot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_i2cs.xml.flat",

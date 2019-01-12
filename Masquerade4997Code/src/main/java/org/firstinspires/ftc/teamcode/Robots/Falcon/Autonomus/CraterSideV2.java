@@ -17,8 +17,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "CraterSideAutoV2", group = "Autonomus")
 public class CraterSideV2 extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
-
-
     @Override
     public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
@@ -114,7 +112,6 @@ public class CraterSideV2 extends MasqLinearOpMode implements Constants {
             falcon.turnAbsolute(135, Direction.LEFT);
             driveToWall(10, 3);
             falcon.turnAbsolute(-90, Direction.LEFT, 5);
-
         }
         if (placement == BlockPlacement.CENTER) {
             driveToWall(10, 4);

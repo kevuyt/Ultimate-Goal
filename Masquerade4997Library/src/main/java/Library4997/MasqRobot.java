@@ -231,10 +231,10 @@ public abstract class MasqRobot {
             currentError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
             integral += currentError * tChange;
             derivative = (currentError - prevError) / tChange;
-            double errorkp = currentError * kp;
-            double integralki = integral * ki;
-            double dervitivekd = derivative * kd;
-            newPower = (errorkp + integralki + dervitivekd);
+            double p = currentError * kp;
+            double i = integral * ki;
+            double d = derivative * kd;
+            newPower = p + i + d;
             if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
             driveTrain.setVelocity(-newPower, newPower);
             prevError = currentError;
@@ -263,60 +263,64 @@ public abstract class MasqRobot {
     public void turnAbsolute(double angle, Direction direction, double timeout)  {
         turnAbsolute(angle, direction, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
     }
-    public void turnAbsolute(double angle, Direction direction)  {turnAbsolute(angle, direction, MasqUtils.DEFAULT_TIMEOUT);}
+    public void turnAbsolute(double angle, Direction direction)  {
+        turnAbsolute(angle, direction, MasqUtils.DEFAULT_TIMEOUT);
+    }
 
-
-    public void turnProportional(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd, boolean left, boolean right) {
-        double targetAngle = tracker.imu.adjustAngle(tracker.getHeading()) + (direction.value * angle);
+    public void turnPOMAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd) {
+        double targetAngle = tracker.imu.adjustAngle((direction.value * angle));
         double acceptableError = .5;
+        double startingAngle = tracker.imu.adjustAngle(tracker.getHeading());
         double currentError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
+        double prevError = 0;
+        double integral = 0;
+        double derivative;
         double newPower;
-        double leftPower = 0, rightPower = 0;
         double previousTime = 0;
         timeoutClock.reset();
-        driveTrain.setClosedLoop(false);
         while (opModeIsActive() && (tracker.imu.adjustAngle(Math.abs(currentError)) > acceptableError)
                 && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
-            previousTime = System.nanoTime();
+            double tChange = System.nanoTime() - previousTime;
+            tChange = tChange / 1e9;
             currentError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
-            newPower = currentError / targetAngle;
+            double currentAngle = tracker.imu.adjustAngle(tracker.getHeading());
+            integral += currentError * tChange;
+            derivative = (currentError - prevError) / tChange;
+            double p = kp * (currentAngle - startingAngle);
+            double i = integral * ki;
+            double d = derivative * kd;
+            newPower = p + i + d;
             if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
-            if (left) leftPower = -newPower;
-            if (right) rightPower = newPower;
-            driveTrain.setVelocity(leftPower, rightPower);
+            driveTrain.setVelocity(-newPower, newPower);
+            prevError = currentError;
             this.angleLeftCover = currentError;
-            turnFunction.run();
+            dash.create("KP: ", kp);
+            dash.create("KI: ", ki);
+            dash.create("RIGHT POWER: " , newPower);
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", tracker.getHeading());
             dash.create("AngleLeftToCover", currentError);
-            dash.create("Power: ", newPower);
-            dash.create("Raw Power: ", driveTrain.getPower());
             dash.update();
+            previousTime = System.nanoTime();
         }
         driveTrain.setVelocity(0,0);
         sleep(sleepTime);
     }
-    public void turnProportional(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki) {
-        turnRelative(angle, direction, timeOut, sleepTime, kp, ki, pidPackage().getKdTurn(), true, true);
+    public void turnPOMAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki) {
+        turnPOMAbsolute(angle, direction, timeOut, sleepTime, kp, ki, MasqUtils.KD.TURN_POM);
     }
-    public void turnProportional(double angle, Direction direction, double timeOut, int sleepTime, double kp) {
-        turnRelative(angle, direction, timeOut, sleepTime, kp, pidPackage().getKiTurn());
+    public void turnPOMAbsolute(double angle, Direction direction, double timeOut, int sleepTime, double kp) {
+        turnPOMAbsolute(angle, direction, timeOut, sleepTime, kp, MasqUtils.KI.TURN_POM);
     }
-    public void turnProportional(double angle, Direction direction, double timeOut, int sleepTime) {
-        turnRelative(angle, direction, timeOut, sleepTime,pidPackage().getKpTurn());
+    public void turnPOMAbsolute(double angle, Direction direction, double timeOut, int sleepTime) {
+        turnPOMAbsolute(angle, direction, timeOut, sleepTime, MasqUtils.KP.TURN_POM);
     }
-    public void turnProportional(double angle, Direction direction, double timeout) {
-        turnRelative(angle, direction, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
+    public void turnPOMAbsolute(double angle, Direction direction, double timeout)  {
+        turnPOMAbsolute(angle, direction, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
     }
-    public void turnProportional(double angle, Direction direction)  {
-        turnRelative(angle, direction, MasqUtils.DEFAULT_TIMEOUT);
+    public void turnPOMAbsolute(double angle, Direction direction)  {
+        turnPOMAbsolute(angle, direction, MasqUtils.DEFAULT_TIMEOUT);
     }
-    public void turnProportional(double angle, Direction direction, boolean left, boolean right)  {
-        turnRelative(angle, direction, MasqUtils.DEFAULT_TIMEOUT, MasqUtils.DEFAULT_SLEEP_TIME,
-                pidPackage().getKpTurn(), pidPackage().getKiTurn(), pidPackage().getKdTurn(), left, right);
-    }
-
-
 
 
     public void stopBlue(MasqColorSensor colorSensor, double power, Direction Direction) {
@@ -391,6 +395,7 @@ public abstract class MasqRobot {
             driveTrain.setVelocity(leftPower, rightPower);
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
+            dash.create("Angle Error", angularError);
             dash.update();
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && stopCondition.stop());
         driveTrain.stopDriving();
@@ -401,7 +406,9 @@ public abstract class MasqRobot {
     public void stop(StopCondition sensor, double angle, double power) {
         stop(sensor, angle, power, Direction.FORWARD);
     }
-    public void stop(StopCondition stopCondition, double angle) {stop(stopCondition, angle, 0.5);}
+    public void stop(StopCondition stopCondition, double angle) {
+        stop(stopCondition, angle, 0.5);
+    }
     public void stop(StopCondition sensor){
         stop(sensor, tracker.getHeading());
     }

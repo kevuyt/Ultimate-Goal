@@ -8,6 +8,7 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -17,7 +18,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "CraterSideAuto", group = "Autonomus")
 public class CraterSideAuto extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
-    public void runLinearOpMode() throws InterruptedException {
+    private int wallTurn = 125;
+    public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
         falcon.driveTrain.setClosedLoop(true);
@@ -28,48 +30,47 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
+        while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
         falcon.hangSystem.setPower(0);
         sleep(1);
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
-            falcon.drive(23);
-            falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(80, Direction.LEFT);
-            driveToWall(10);
-            falcon.turnAbsolute(130, Direction.LEFT);
-            falcon.drive(45);
-            falcon.markerDump.setPosition(0);
-            sleep(1);
-            falcon.turnAbsolute(140, Direction.LEFT);
-            falcon.drive(100, Direction.BACKWARD, 5);
+            falcon.drive(25);
+            falcon.drive(7, Direction.BACKWARD);
+
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
-            falcon.turnAbsolute(30, Direction.LEFT);
+            falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(28);
-            falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(80, Direction.LEFT);
-            driveToWall(10);
-            falcon.turnAbsolute(130, Direction.LEFT);
-            falcon.drive(50);
-            falcon.markerDump.setPosition(0);
-            sleep(1);
-            falcon.turnAbsolute(140, Direction.LEFT);
-            falcon.drive(100, Direction.BACKWARD, 5);
+            falcon.drive(7, Direction.BACKWARD);
         }
         else {
-            falcon.turnAbsolute(-30, Direction.LEFT);
+            falcon.turnAbsolute(-40, Direction.LEFT);
             falcon.drive(28);
-            falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(80, Direction.LEFT);
-            driveToWall(10);
-            falcon.turnAbsolute(130, Direction.LEFT);
-            falcon.drive(50);
-            falcon.markerDump.setPosition(0);
-            sleep(1);
-            falcon.turnAbsolute(155, Direction.LEFT);
-            falcon.drive(100, Direction.BACKWARD, 5);
+            falcon.drive(7, Direction.BACKWARD);
         }
+        falcon.turnAbsolute(70, Direction.LEFT);
+        falcon.drive(30);
+        driveToWall(10);
+        falcon.turnAbsolute(wallTurn, Direction.LEFT);
+        falcon.drive(45);
+        falcon.turnAbsolute(145, Direction.LEFT);
+        falcon.markerDump.setPosition(0);
+        sleep(1);
+        final MasqClock clock = new MasqClock();
+        runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                falcon.drive(100, Direction.BACKWARD, 5);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                while (!falcon.limitTop.isPressed() && opModeIsActive() &&
+                        !clock.elapsedTime(4, MasqClock.Resolution.SECONDS))
+                    falcon.hangSystem.setVelocity(HANG_DOWN);
+            }
+        });
         falcon.dogeForia.stop();
     }
     public void driveToWall (final double distance, int timeout) {
@@ -82,5 +83,10 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
     }
     public void driveToWall(final double di) {
         driveToWall(di, 5);
+    }
+
+    @Override
+    public void stopLinearOpMode() {
+        falcon.dogeForia.stop();
     }
 }
