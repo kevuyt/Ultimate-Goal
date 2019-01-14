@@ -17,6 +17,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "DoubleSample", group = "Autonomus")
 public class DoubleSample extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
+    private int wallTurn = 130;
+    private int sampleTurn;
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
@@ -28,43 +30,47 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        while (!falcon.limitTop.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
+        while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
         falcon.hangSystem.setPower(0);
         sleep(1);
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
-            falcon.drive(23);
-            falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(80, Direction.LEFT);
-            driveToWall(10);
-            falcon.turnAbsolute(130, Direction.LEFT);
-            driveToWall(10);
+            falcon.drive(25);
+            falcon.drive(7, Direction.BACKWARD);
+            sampleTurn = 70;
+        }
+        else if (blockPlacement == BlockPlacement.LEFT) {
+            falcon.turnAbsolute(40, Direction.LEFT);
+            falcon.drive(28);
+            falcon.drive(7, Direction.BACKWARD);
+            sampleTurn = 80;
+        }
+        else {
+            falcon.turnAbsolute(-40, Direction.LEFT);
+            falcon.drive(28);
+            falcon.drive(7, Direction.BACKWARD);
+            sampleTurn = 70;
+        }
+        falcon.turnAbsolute(sampleTurn, Direction.LEFT);
+        falcon.drive(30);
+        driveToWall(10);
+        if (blockPlacement == BlockPlacement.RIGHT) falcon.drive(10, Direction.BACKWARD);
+        falcon.turnAbsolute(wallTurn, Direction.LEFT);
+        driveToWall(10);
+        falcon.markerDump.setPosition(0);
+        if (blockPlacement == BlockPlacement.CENTER) {
             falcon.turnAbsolute(-100, Direction.LEFT);
             falcon.drive(30);
             falcon.drive(30, Direction.BACKWARD);
             falcon.turnAbsolute(-45, Direction.LEFT);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
-            falcon.turnAbsolute(30, Direction.LEFT);
-            falcon.drive(28);
-            falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(80, Direction.LEFT);
-            driveToWall(10);
-            falcon.turnAbsolute(130, Direction.LEFT);
-            driveToWall(10);
             falcon.turnAbsolute(-130, Direction.LEFT);
             falcon.drive(30);
             falcon.drive(30, Direction.BACKWARD);
             falcon.turnAbsolute(-45, Direction.LEFT);
         }
         else {
-            falcon.turnAbsolute(-30, Direction.LEFT);
-            falcon.drive(28);
-            falcon.drive(5, Direction.BACKWARD);
-            falcon.turnAbsolute(80, Direction.LEFT);
-            driveToWall(10);
-            falcon.turnAbsolute(140, Direction.LEFT);
-            driveToWall(10);
             falcon.turnAbsolute(-30, Direction.LEFT);
         }
         falcon.dogeForia.stop();

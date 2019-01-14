@@ -160,7 +160,7 @@ public class DogeForia extends VuforiaLocalizerImpl {
                     e.printStackTrace();
                 }
             }else{
-                Log.w("DogeCV", "Frame is empty. Enabling AparnaCV: " + getFrameQueueCapacity());
+                //Log.w("DogeCV", "Frame is empty. Enabling AparnaCV: " + getFrameQueueCapacity());
             }
 
             /*

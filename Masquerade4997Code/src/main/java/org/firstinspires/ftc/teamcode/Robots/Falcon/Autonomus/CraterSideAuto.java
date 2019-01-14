@@ -1,11 +1,9 @@
 package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
-
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqSensors.MasqClock;
@@ -19,6 +17,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class CraterSideAuto extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
     private int wallTurn = 130;
+    private int sampleTurn;
     public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
@@ -37,19 +36,21 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         if (blockPlacement == BlockPlacement.CENTER) {
             falcon.drive(25);
             falcon.drive(7, Direction.BACKWARD);
-
+            sampleTurn = 70;
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(28);
             falcon.drive(7, Direction.BACKWARD);
+            sampleTurn = 80;
         }
         else {
             falcon.turnAbsolute(-40, Direction.LEFT);
             falcon.drive(28);
             falcon.drive(7, Direction.BACKWARD);
+            sampleTurn = 70;
         }
-        falcon.turnAbsolute(70, Direction.LEFT);
+        falcon.turnAbsolute(sampleTurn, Direction.LEFT);
         falcon.drive(30);
         driveToWall(10);
         falcon.turnAbsolute(wallTurn, Direction.LEFT);
@@ -71,7 +72,7 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
                     falcon.hangSystem.setVelocity(HANG_DOWN);
             }
         });
-        falcon.dogeForia.stop();
+        falcon.goldAlignDetector.disable();
     }
     public void driveToWall (final double distance, int timeout) {
         falcon.stop(new StopCondition() {
@@ -83,10 +84,5 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
     }
     public void driveToWall(final double di) {
         driveToWall(di, 5);
-    }
-
-    @Override
-    public void stopLinearOpMode() {
-        falcon.dogeForia.stop();
     }
 }

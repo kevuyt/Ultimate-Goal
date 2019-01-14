@@ -88,7 +88,7 @@ public class Falcon extends MasqRobot {
         goldAlignDetector = new GoldAlignDetector();
         goldAlignDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance(), 0, true);
         goldAlignDetector.useDefaults();
-        goldAlignDetector.alignSize = 200;
+        goldAlignDetector.alignSize = 100;
         goldAlignDetector.alignPosOffset = 0;
         goldAlignDetector.downscale = 0.4;
         goldAlignDetector.areaScoringMethod = DogeCV.AreaScoringMethod.MAX_AREA;

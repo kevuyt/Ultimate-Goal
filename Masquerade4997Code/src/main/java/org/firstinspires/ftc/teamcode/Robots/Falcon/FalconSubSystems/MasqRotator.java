@@ -24,7 +24,6 @@ import Library4997.MasqWrappers.MasqController;
 public class MasqRotator implements MasqSubSystem, Runnable {
     public MasqMotor rotator;
     private double targetPosition;
-    //private boolean movementAllowed = true;
     private AtomicBoolean close = new AtomicBoolean(false);
     private AtomicBoolean movementAllowed = new AtomicBoolean(true);
     private double basePower = 0.9;
@@ -34,7 +33,7 @@ public class MasqRotator implements MasqSubSystem, Runnable {
     private double downPower = -0.1;
     private double liftPosition = 0;
     private double kp = 0.01, ki, kd;
-    public MasqPIDController output = new MasqPIDController(0.01, 0.0, 0.00);
+    public MasqPIDController output = new MasqPIDController(0.03, 0.0, 0.00);
     public MasqRotator (HardwareMap hardwareMap) {
         rotator = new MasqMotor("rotator", MasqMotorModel.NEVEREST40, DcMotor.Direction.FORWARD, hardwareMap);
         rotator.setClosedLoop(true);
@@ -48,8 +47,8 @@ public class MasqRotator implements MasqSubSystem, Runnable {
         kd = 0.0;
         rotatorPower = (0.0001 * kp_kp * -liftPosition) + basePower;
         downPower = (0.001 * kp_kp * Math.abs(rotator.getCurrentPosition())) + baseDownPower;
-        if (controller.leftTriggerPressed()) rotator.setPower(rotatorPower);
-        else if (controller.rightTriggerPressed()) rotator.setPower(-downPower);
+        if (controller.leftTriggerPressed()) rotator.setPower(1);
+        else if (controller.rightTriggerPressed()) rotator.setPower(-1);
 
         if (controller.rightTrigger() > 0 || controller.leftTrigger() > 0) targetPosition = rotator.getCurrentPosition();
         else {
