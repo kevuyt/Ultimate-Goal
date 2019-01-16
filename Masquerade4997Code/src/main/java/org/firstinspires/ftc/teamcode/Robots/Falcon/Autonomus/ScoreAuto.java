@@ -36,19 +36,53 @@ public class ScoreAuto extends MasqLinearOpMode implements Constants {
         waitForStart();
         falcon.pidPackage().setKpTurn(0.03);
         setRotation();
-        BlockPlacement blockPlacement =
+        final BlockPlacement blockPlacement =
                 falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
         unHang();
-        falcon.drive(5);
-        if (blockPlacement == BlockPlacement.RIGHT) {
-            falcon.turnAbsolute(-leftRightTurn, Direction.LEFT);
-        }
-        else if (blockPlacement == BlockPlacement.LEFT) {
-            falcon.turnAbsolute(leftRightTurn, Direction.LEFT);
-        }
-        grabSampleOne();
-        falcon.turnAbsolute(position, Direction.LEFT);
-        grabSampleTwo();
+        runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                falcon.drive(5);
+                if (blockPlacement == BlockPlacement.RIGHT) {
+                    falcon.turnAbsolute(-leftRightTurn, Direction.LEFT);
+                    grabSampleOne();
+                    falcon.turnAbsolute(0, Direction.LEFT);
+                }
+                else if (blockPlacement == BlockPlacement.LEFT) {
+                    falcon.turnAbsolute(leftRightTurn, Direction.LEFT);
+                    grabSampleOne();
+                    falcon.turnAbsolute(0, Direction.RIGHT);
+                }
+                else grabSampleOne();
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                while (!falcon.limitTop.isPressed() && opModeIsActive())
+                    falcon.hangSystem.setVelocity(HANG_DOWN);
+                falcon.hangSystem.setPower(0);
+            }
+        });
+
+        falcon.turnAbsolute(40, Direction.RIGHT);
+        falcon.drive(5, Direction.BACKWARD);
+        falcon.rotator.setAngle(0, Direction.UP);
+        falcon.rotator.setAngle(60, Direction.UP);
+        falcon.lift.runToPosition(Direction.OUT, 4000);
+        falcon.dumper.setPosition(DUMPER_OUT);
+        sleep();
+        runSimultaneously(new Runnable() {
+            @Override
+            public void run() {
+                falcon.rotator.setAngle(40, Direction.DOWN);
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                falcon.lift.runToPosition(Direction.IN, 1000);
+            }
+        });
+
         falcon.dogeForia.stop();
     }
 
