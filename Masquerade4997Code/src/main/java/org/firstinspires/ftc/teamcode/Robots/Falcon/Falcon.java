@@ -143,12 +143,8 @@ public class Falcon extends MasqRobot {
         };
     }
     public BlockPlacement getBlockPlacement (int block) {
-        MasqClock clock = new MasqClock();
-        boolean seen = true;
-        while (!clock.elapsedTime(1, MasqClock.Resolution.SECONDS) && goldAlignDetector.isFound()) {}
-        if (clock.seconds() < 1) seen = false;
-        if (!seen) return BlockPlacement.RIGHT;
-        else if (block > 200) return BlockPlacement.CENTER;
+        if (!goldAlignDetector.isFound()) return BlockPlacement.RIGHT;
+        else if (block > 300) return BlockPlacement.CENTER;
         else return BlockPlacement.LEFT;
     }
 

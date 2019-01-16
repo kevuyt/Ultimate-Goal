@@ -5,7 +5,13 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.Resources;
  * Project: MasqLib
  */
 public enum BlockPlacement {
-    LEFT,
-    RIGHT,
-    CENTER,
+    LEFT("LEFT"),
+    RIGHT("RIGHT"),
+    CENTER("CENTER");
+    private String string;
+    BlockPlacement(String name){string = name;}
+    @Override
+    public String toString() {
+        return string;
+    }
 }
