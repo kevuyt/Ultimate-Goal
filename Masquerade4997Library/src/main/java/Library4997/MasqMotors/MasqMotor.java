@@ -17,6 +17,7 @@ import Library4997.MasqSensors.MasqLimitSwitch;
  * This is a custom motor that includes stall detection and telemetry
  */
 public class MasqMotor implements MasqHardware {
+    private double minPower = 0;
     private DcMotor motor;
     private boolean stallDetection = false;
     private String nameMotor;
@@ -201,6 +202,7 @@ public class MasqMotor implements MasqHardware {
             if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
             else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
         }
+        if (Math.abs(motorPower) < minPower && minPower != 0) motorPower = 0;
         motor.setPower(motorPower);
     }
     private double calculateVelocityCorrection() {
@@ -370,6 +372,14 @@ public class MasqMotor implements MasqHardware {
 
     public boolean isClosedLoop() {
         return closedLoop;
+    }
+
+    public double getMinPower() {
+        return minPower;
+    }
+
+    public void setMinPower(double minPower) {
+        this.minPower = minPower;
     }
 
     public String getName() {

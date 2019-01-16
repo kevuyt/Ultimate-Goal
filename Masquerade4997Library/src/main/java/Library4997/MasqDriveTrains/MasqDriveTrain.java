@@ -59,10 +59,10 @@ public class MasqDriveTrain implements MasqHardware {
     public double getPower() {
         return (leftDrive.getPower() + rightDrive.getPower()) /2;
     }
-    public void setPowerLeft (double power) {
+    public void setVelocityLeft(double power) {
         leftDrive.setVelocity(power);
     }
-    public void setPowerRight (double power) {
+    public void setVelocityRight(double power) {
         rightDrive.setVelocity(power);
     }
     public void runUsingEncoder() {

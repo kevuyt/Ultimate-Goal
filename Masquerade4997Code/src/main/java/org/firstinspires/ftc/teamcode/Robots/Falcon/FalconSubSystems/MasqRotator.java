@@ -80,12 +80,12 @@ public class MasqRotator implements MasqSubSystem, Runnable {
         return angle;
     }
 
-    public void setAngle (double angle, Direction direction) {
+    public void setAngle (double angle, Direction direction, double timeout) {
         movementAllowed.set(true);
         MasqClock clock = new MasqClock();
         double angleRemaining = Math.abs(angle - Math.abs(getAngle()));
         while (angleRemaining > 5 && MasqRobot.opModeIsActive()
-                && !clock.elapsedTime(3, MasqClock.Resolution.SECONDS)) {
+                && !clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             angleRemaining = Math.abs(angle - Math.abs(getAngle()));
             double rawPower = angleRemaining / angle;
             rotator.setPower(rawPower * direction.value * 2.7);
@@ -94,6 +94,9 @@ public class MasqRotator implements MasqSubSystem, Runnable {
         }
         rotator.setPower(0);
         movementAllowed.set(false);
+    }
+    public void setAngle(double angle, Direction direction) {
+        setAngle(angle, direction, 3);
     }
 
     @Override

@@ -13,7 +13,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "NFS", group = "Tank")
 public class NFSV2 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    private boolean mode = true;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.setStartOpenCV(false);
@@ -21,6 +20,8 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
         falcon.initializeTeleop();
         falcon.hangSystem.setClosedLoop(true);
         falcon.driveTrain.setClosedLoop(true);
+        falcon.driveTrain.leftDrive.setMinPower(.25);
+        falcon.driveTrain.rightDrive.setMinPower(.25);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
             dash.create("HELLO ");
@@ -47,10 +48,7 @@ public class NFSV2 extends MasqLinearOpMode implements Constants {
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
 
             falcon.lift.DriverControl(controller1);
-
-            //Dash
-            dash.create("Hang One", falcon.rotator.getAngle());
-            dash.create("Hang Two", falcon.hangSystem.motor2.getPower());
+            dash.create("Angle: ", falcon.rotator.getAngle());
             dash.update();
             controller1.update();
         }

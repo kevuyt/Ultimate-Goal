@@ -164,7 +164,6 @@ public abstract class MasqRobot {
         double leftPower = 0, rightPower = 0;
         double previousTime = 0;
         timeoutClock.reset();
-        //driveTrain.setClosedLoop(false);
         while (opModeIsActive() && (tracker.imu.adjustAngle(Math.abs(currentError)) > acceptableError)
                 && !timeoutClock.elapsedTime(timeOut, MasqClock.Resolution.SECONDS)) {
             double tChange = System.nanoTime() - previousTime;
@@ -332,8 +331,8 @@ public abstract class MasqRobot {
             double error = targetAngle - heading;
             double errorkp = error *  pidPackage().getKpDriveAngular();
             newPower = newPower - (errorkp * Direction.value);
-            driveTrain.setPowerLeft(newPower * Direction.value);
-            driveTrain.setPowerRight(power * Direction.value);
+            driveTrain.setVelocityLeft(newPower * Direction.value);
+            driveTrain.setVelocityRight(power * Direction.value);
             dash.create("Heading", heading);
             dash.create("Blue Val", colorSensor.colorNumber());
         }
@@ -353,8 +352,8 @@ public abstract class MasqRobot {
             double error = targetAngle - heading;
             double errorkp = error * pidPackage().getKpDriveAngular();
             newPower = newPower - (errorkp * Direction.value);
-            driveTrain.setPowerLeft(newPower * Direction.value);
-            driveTrain.setPowerRight(power * Direction.value);
+            driveTrain.setVelocityLeft(newPower * Direction.value);
+            driveTrain.setVelocityRight(power * Direction.value);
             dash.create("Heading", heading);
             dash.create("red Val", colorSensor.colorNumber());
         }
@@ -451,7 +450,6 @@ public abstract class MasqRobot {
     public void NFS(MasqController c) {
         float move = c.leftStickY();
         float turn = c.rightStickX();
-        turn *=.9;
         double left = move - turn;
         double right = move + turn;
         left *= -1;
@@ -468,8 +466,9 @@ public abstract class MasqRobot {
             left /= right;
             right /= right;
         }
-        driveTrain.setPowerLeft(left);
-        driveTrain.setPowerRight(right);
+        driveTrain.setVelocityLeft(left);
+        driveTrain.setVelocityRight(right);
+        //dash.create("POWER: ", driveTrain.getPower());
     }
     public void TANK(MasqController c) {
         double left = -c.leftStickY();

@@ -73,6 +73,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         else {
             falcon.turnAbsolute(-30, Direction.LEFT);
         }
+        falcon.drive(100, 0.7, Direction.FORWARD, 5);
         falcon.dogeForia.stop();
     }
     public void driveToWall (final double distance, int timeout) {

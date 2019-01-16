@@ -89,6 +89,9 @@ public class MasqMotorSystem implements MasqHardware {
         }
         return sum/num;
     }
+    public void setMinPower(double power) {
+        for (MasqMotor masqMotor : motors) masqMotor.setMinPower(power);
+    }
     public void setVelocity(double power) {
         currentPower = power;
         for (MasqMotor masqMotor : motors) masqMotor.setVelocity(power);

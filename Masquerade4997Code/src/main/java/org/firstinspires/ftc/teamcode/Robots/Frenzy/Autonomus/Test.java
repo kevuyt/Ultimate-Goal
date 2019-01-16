@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.Frenzy.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.Frenzy.Frenzy;
 
@@ -12,6 +13,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @Autonomous(name = "Test", group = "Tank")
+@Disabled
 public class Test extends MasqLinearOpMode {
     Frenzy frenzy = new Frenzy();
 
