@@ -8,6 +8,7 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -34,7 +35,7 @@ public class ScoreAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.pidPackage().setKpTurn(0.03);
+
         setRotation();
         final BlockPlacement blockPlacement =
                 falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
@@ -43,17 +44,9 @@ public class ScoreAuto extends MasqLinearOpMode implements Constants {
             @Override
             public void run() {
                 falcon.drive(5);
-                if (blockPlacement == BlockPlacement.RIGHT) {
-                    falcon.turnAbsolute(-leftRightTurn, Direction.LEFT);
-                    grabSampleOne();
-                    falcon.turnAbsolute(0, Direction.LEFT);
-                }
-                else if (blockPlacement == BlockPlacement.LEFT) {
-                    falcon.turnAbsolute(leftRightTurn, Direction.LEFT);
-                    grabSampleOne();
-                    falcon.turnAbsolute(0, Direction.RIGHT);
-                }
-                else grabSampleOne();
+                if (blockPlacement == BlockPlacement.RIGHT) falcon.turnAbsolute(-leftRightTurn, Direction.LEFT);
+                else if (blockPlacement == BlockPlacement.LEFT) falcon.turnAbsolute(leftRightTurn, Direction.LEFT);
+                grabSampleOne();
             }
         }, new Runnable() {
             @Override
@@ -63,18 +56,17 @@ public class ScoreAuto extends MasqLinearOpMode implements Constants {
                 falcon.hangSystem.setPower(0);
             }
         });
-
-        falcon.turnAbsolute(40, Direction.RIGHT);
+        falcon.turnAbsolute(20, Direction.RIGHT, MasqUtils.DEFAULT_TIMEOUT, MasqUtils.DEFAULT_SLEEP_TIME, 0.02);
         falcon.drive(5, Direction.BACKWARD);
         falcon.rotator.setAngle(0, Direction.UP);
         falcon.rotator.setAngle(60, Direction.UP);
-        falcon.lift.runToPosition(Direction.OUT, 4000);
+        falcon.lift.runToPosition(Direction.OUT, 5000);
         falcon.dumper.setPosition(DUMPER_OUT);
-        sleep();
+        sleep(2);
         runSimultaneously(new Runnable() {
             @Override
             public void run() {
-                falcon.rotator.setAngle(40, Direction.DOWN);
+                falcon.rotator.setAngle(20, Direction.DOWN);
             }
         }, new Runnable() {
             @Override

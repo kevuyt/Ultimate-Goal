@@ -7,7 +7,7 @@ public interface Constants {
     double END_HANG_OUT = 0.53;
     double END_HANG_IN = .26;
 
-    double ADJUSTER_OUT = 1;
+    double ADJUSTER_OUT = .8;
     double ADJUSTER_IN = 0;
 
     double DUMPER_IN = 0.84;

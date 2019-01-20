@@ -20,7 +20,6 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
-        falcon.adjuster.setPosition(ADJUSTER_OUT);
         while (!opModeIsActive()) {
             dash.create(falcon.goldAlignDetector.getXPosition());
             dash.create(falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition()).toString());
@@ -36,25 +35,28 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             falcon.drive(40, 0.8, Direction.FORWARD);
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(30);
-            falcon.markerDump.setPosition(0);
+            falcon.adjuster.setPosition(ADJUSTER_OUT);
             sleep(1);
+            falcon.adjuster.setPosition(ADJUSTER_IN);
             falcon.turnAbsolute(50, Direction.RIGHT);
             falcon.drive(100, Direction.BACKWARD, 3);
         }
         else if (blockPlacement == BlockPlacement.CENTER) {
             falcon.drive(50, 0.8, Direction.FORWARD);
-            falcon.turnAbsolute(60, Direction.RIGHT);
-            falcon.markerDump.setPosition(0);
+            falcon.turnAbsolute(70, Direction.RIGHT);
+            falcon.adjuster.setPosition(ADJUSTER_OUT);
             sleep(1);
+            falcon.adjuster.setPosition(ADJUSTER_IN);
             falcon.drive(100, Direction.BACKWARD, 4);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(50, Direction.LEFT);
             falcon.drive(40, 0.8, Direction.FORWARD);
-            falcon.turnAbsolute(60, Direction.RIGHT);
+            falcon.turnAbsolute(50, Direction.RIGHT);
             falcon.drive(20);
-            falcon.markerDump.setPosition(0);
+            falcon.adjuster.setPosition(ADJUSTER_OUT);
             sleep(1);
+            falcon.adjuster.setPosition(ADJUSTER_IN);
             falcon.drive(100, Direction.BACKWARD, 3);
         }
     }

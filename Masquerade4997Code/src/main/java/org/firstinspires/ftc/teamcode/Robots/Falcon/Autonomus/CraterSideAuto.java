@@ -34,29 +34,31 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         sleep(1);
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
-            falcon.drive(25);
-            falcon.drive(7, Direction.BACKWARD);
+            falcon.drive(18);
+            falcon.drive(10, Direction.BACKWARD);
             sampleTurn = 70;
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
-            falcon.drive(28);
-            falcon.drive(7, Direction.BACKWARD);
+            falcon.drive(20);
+            falcon.drive(10, Direction.BACKWARD);
             sampleTurn = 80;
+            wallTurn = 125;
         }
         else {
             falcon.turnAbsolute(-40, Direction.LEFT);
-            falcon.drive(28);
-            falcon.drive(7, Direction.BACKWARD);
-            sampleTurn = 70;
+            falcon.drive(20);
+            falcon.drive(10, Direction.BACKWARD);
+            sampleTurn = 75;
         }
         falcon.turnAbsolute(sampleTurn, Direction.LEFT);
         falcon.drive(30);
         driveToWall(10);
         falcon.turnAbsolute(wallTurn, Direction.LEFT);
+        falcon.adjuster.setPosition(ADJUSTER_OUT);
         falcon.drive(45);
         falcon.turnAbsolute(145, Direction.LEFT);
-        falcon.markerDump.setPosition(0);
+        falcon.adjuster.setPosition(ADJUSTER_IN);
         sleep(1);
         final MasqClock clock = new MasqClock();
         runSimultaneously(new Runnable() {

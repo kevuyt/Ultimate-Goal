@@ -35,40 +35,42 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         sleep(1);
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
-            falcon.drive(25);
-            falcon.drive(7, Direction.BACKWARD);
+            falcon.drive(20);
+            falcon.drive(10, Direction.BACKWARD);
             sampleTurn = 70;
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(40, Direction.LEFT);
-            falcon.drive(28);
-            falcon.drive(7, Direction.BACKWARD);
+            falcon.drive(20);
+            falcon.drive(10, Direction.BACKWARD);
             sampleTurn = 80;
+            wallTurn = 125;
         }
         else {
             falcon.turnAbsolute(-40, Direction.LEFT);
-            falcon.drive(28);
-            falcon.drive(7, Direction.BACKWARD);
-            sampleTurn = 70;
+            falcon.drive(20);
+            falcon.drive(10, Direction.BACKWARD);
+            sampleTurn = 75;
         }
         falcon.turnAbsolute(sampleTurn, Direction.LEFT);
         falcon.drive(30);
         driveToWall(10);
-        if (blockPlacement == BlockPlacement.RIGHT) falcon.drive(10, Direction.BACKWARD);
+        if (blockPlacement == BlockPlacement.RIGHT) falcon.drive(7, Direction.BACKWARD);
         falcon.turnAbsolute(wallTurn, Direction.LEFT);
+        falcon.adjuster.setPosition(ADJUSTER_OUT);
         driveToWall(10);
-        falcon.markerDump.setPosition(0);
+        falcon.adjuster.setPosition(ADJUSTER_IN);
         if (blockPlacement == BlockPlacement.CENTER) {
             falcon.turnAbsolute(-100, Direction.LEFT);
             falcon.drive(30);
-            falcon.drive(30, Direction.BACKWARD);
-            falcon.turnAbsolute(-45, Direction.LEFT);
+            falcon.drive(45, Direction.BACKWARD);
+            falcon.turnAbsolute(-40, Direction.LEFT);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
             falcon.turnAbsolute(-130, Direction.LEFT);
             falcon.drive(30);
-            falcon.drive(30, Direction.BACKWARD);
-            falcon.turnAbsolute(-45, Direction.LEFT);
+            falcon.drive(45, Direction.BACKWARD);
+            falcon.turnAbsolute(-40, Direction.LEFT);
         }
         else {
             falcon.turnAbsolute(-30, Direction.LEFT);
