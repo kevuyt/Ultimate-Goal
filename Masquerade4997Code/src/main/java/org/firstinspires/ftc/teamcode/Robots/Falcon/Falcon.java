@@ -152,13 +152,5 @@ public class Falcon extends MasqRobot {
         else return BlockPlacement.LEFT;
     }
 
-    @Override
-    public void setTurnFunction(Runnable turnFunction) {
-        turnFunction = new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        };
-    }
 }
