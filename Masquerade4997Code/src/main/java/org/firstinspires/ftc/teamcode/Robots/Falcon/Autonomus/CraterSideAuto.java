@@ -29,8 +29,8 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
-        falcon.hangSystem.setPower(0);
+        while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hang.setVelocity(HANG_UP);
+        falcon.hang.setPower(0);
         sleep(1);
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.CENTER) {
@@ -71,7 +71,7 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             public void run() {
                 while (!falcon.limitTop.isPressed() && opModeIsActive() &&
                         !clock.elapsedTime(4, MasqClock.Resolution.SECONDS))
-                    falcon.hangSystem.setVelocity(HANG_DOWN);
+                    falcon.hang.setVelocity(HANG_DOWN);
             }
         });
         falcon.goldAlignDetector.disable();

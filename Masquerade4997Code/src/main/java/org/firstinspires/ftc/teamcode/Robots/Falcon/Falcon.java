@@ -11,13 +11,13 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevato
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
+import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
-import Library4997.MasqMotors.MasqMotorSystem;
+import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
-import Library4997.MasqResources.MasqPIDPackage;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -46,7 +46,7 @@ public class Falcon extends MasqRobot {
     public MasqServo adjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqClock clock;
-    public MasqMotorSystem hangSystem;
+    public MasqMotor hang;
     private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
     public DogeForia dogeForia;
@@ -64,22 +64,26 @@ public class Falcon extends MasqRobot {
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServo("collector", hardwareMap);
         adjuster = new MasqServo("adjuster", hardwareMap);
-        hangSystem = new MasqMotorSystem("hangOne", "hangTwo", "hang", hardwareMap, MasqMotorModel.ORBITAL20);
+        hang = new MasqMotor("hang" ,MasqMotorModel.ORBITAL20, hardwareMap);
         markerDump = new MasqServo("markerDump", hardwareMap);
-        hangSystem.setClosedLoop(true);
-        hangSystem.setKp(0.01);
-        hangSystem.setLimits(limitBottom, limitTop);
+        hang.setClosedLoop(true);
+        hang.setKp(0.01);
+        hang.setLimits(limitBottom, limitTop);
         if (startOpenCV) startOpenCV(hardwareMap);
     }
     @Override
     public MasqPIDPackage pidPackage() {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
-        pidPackage.setKpMotorTeleOp(0.002);
-        pidPackage.setKdMotorTelOp(0.00000002);
-        pidPackage.setKpMotorAuto(0.002);
+        /*-------------------------------------------------*/
+        pidPackage.setKpMotorTeleOpLeft(0.002);
+        pidPackage.setKpMotorAutoLeft(0.002);
+        pidPackage.setKpMotorTeleOpRight(0.002);
+        pidPackage.setKpMotorAutoLeft(0.002);
+        /*-------------------------------------------------*/
         pidPackage.setKpTurn(0.01);
         pidPackage.setKpDriveEncoder(1.5);
         pidPackage.setKpDriveAngular(0.015);
+        /*-------------------------------------------------*/
         return pidPackage;
     }
     public void setStartOpenCV(boolean startOpenCV) {

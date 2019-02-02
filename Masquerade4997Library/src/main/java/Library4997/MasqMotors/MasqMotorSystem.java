@@ -56,6 +56,12 @@ public class MasqMotorSystem implements MasqHardware {
         motors = Arrays.asList(motor1, motor2, motor3);
         numMotors = 3;
     }
+    public MasqMotorSystem(String name1, String name2, MasqMotorModel encoder, HardwareMap hardwareMap) {
+        motor1 = new MasqMotor(name1, encoder, DcMotor.Direction.FORWARD, hardwareMap);
+        motor2 = new MasqMotor(name2, encoder, DcMotor.Direction.FORWARD, hardwareMap);
+        motors = Arrays.asList(motor1, motor2);
+        numMotors = 2;
+    }
     public MasqMotorSystem resetEncoders() {
         for (MasqMotor masqMotor : motors)
             masqMotor.resetEncoder();

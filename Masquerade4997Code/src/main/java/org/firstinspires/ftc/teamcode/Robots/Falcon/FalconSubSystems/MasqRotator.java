@@ -1,19 +1,14 @@
 package org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
-import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
-import Library4997.MasqRobot;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSubSystem;
-import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
 /**
@@ -22,7 +17,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 
 public class MasqRotator implements MasqSubSystem, Runnable {
-    public MasqMotor rotator;
+    public MasqMotorSystem rotator;
     private double targetPosition;
     private AtomicBoolean close = new AtomicBoolean(false);
     private AtomicBoolean movementAllowed = new AtomicBoolean(true);
@@ -35,9 +30,9 @@ public class MasqRotator implements MasqSubSystem, Runnable {
     private double kp = 0.01, ki, kd;
     public MasqPIDController output = new MasqPIDController(0.03, 0.0, 0.00);
     public MasqRotator (HardwareMap hardwareMap) {
-        rotator = new MasqMotor("rotator", MasqMotorModel.NEVEREST40, DcMotor.Direction.FORWARD, hardwareMap);
+        rotator = new MasqMotorSystem("rotator", "rotator2", MasqMotorModel.NEVEREST40, hardwareMap);
         rotator.setClosedLoop(true);
-        rotator.resetEncoder();
+        rotator.resetEncoders();
     }
 
     @Override
@@ -70,33 +65,6 @@ public class MasqRotator implements MasqSubSystem, Runnable {
 
     public double getRawPower () {
         return rotator.getPower();
-    }
-
-    public double getAngle() {
-        double angle =  (rotator.getCurrentPosition() *
-                rotator.getEncoder().getClicksPerRotation()) / 360;
-        angle /= 170;
-        if (angle < 0) angle = -angle;
-        return angle;
-    }
-
-    public void setAngle (double angle, Direction direction, double timeout) {
-        movementAllowed.set(true);
-        MasqClock clock = new MasqClock();
-        double angleRemaining = Math.abs(angle - Math.abs(getAngle()));
-        while (angleRemaining > 5 && MasqRobot.opModeIsActive()
-                && !clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
-            angleRemaining = Math.abs(angle - Math.abs(getAngle()));
-            double rawPower = angleRemaining / angle;
-            rotator.setPower(rawPower * direction.value * 2.7);
-            DashBoard.getDash().create(angleRemaining);
-            DashBoard.getDash().update();
-        }
-        rotator.setPower(0);
-        movementAllowed.set(false);
-    }
-    public void setAngle(double angle, Direction direction) {
-        setAngle(angle, direction, 3);
     }
 
     @Override

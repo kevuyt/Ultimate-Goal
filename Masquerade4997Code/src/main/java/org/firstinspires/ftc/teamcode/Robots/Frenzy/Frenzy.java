@@ -5,7 +5,7 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
-import Library4997.MasqResources.MasqPIDPackage;
+import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqServos.MasqCRServo;

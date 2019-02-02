@@ -27,8 +27,8 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hangSystem.setVelocity(HANG_UP);
-        falcon.hangSystem.setPower(0);
+        while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hang.setVelocity(HANG_UP);
+        falcon.hang.setPower(0);
         falcon.drive(5);
         if (blockPlacement == BlockPlacement.RIGHT) {
             falcon.turnAbsolute(50, Direction.RIGHT);
