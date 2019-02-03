@@ -16,7 +16,6 @@ public class BringLiftDown extends MasqLinearOpMode implements Constants {
 
     public void runLinearOpMode() throws InterruptedException {
         boring.mapHardware(hardwareMap);
-        boring.hang.motor1.enableStallDetection();
         while (!opModeIsActive()) {
             dash.create("Hello");
             dash.create(boring.imu);
