@@ -10,18 +10,18 @@ public class MasqPIDPackage {
     private double kpTurn, kiTurn, kdTurn,
                    kpDriveAngular, kiDriveAngular, kdDriveAngular,
                    kpDriveEncoder, kiDriveEncoder, kdDriveEncoder,
-                   kpMotorTeleOpLeft, kiMotorTeleOpLeft, kdMotorTelOpLeft,
+                   kpMotorTeleOpLeft, kiMotorTeleOpLeft, kdMotorTeleOpLeft,
                    kpMotorAutoLeft, kiMotorAutoLeft, kdMotorAutoLeft,
-                   kpMotorTeleOpRight, kiMotorTeleOpRight, kdMotorTelOpRight,
+                   kpMotorTeleOpRight, kiMotorTeleOpRight, kdMotorTeleOpRight,
                    kpMotorAutoRight, kiMotorAutoRight, kdMotorAutoRight;
 
 
     public MasqPIDPackage(double kpTurn, double kiTurn, double kdTurn,
                           double kpDriveAngular, double kiDriveAngular, double kdDriveAngular,
                           double kpDriveEncoder, double kiDriveEncoder, double kdDriveEncoder,
-                          double kpMotorTeleOpLeft, double kiMotorTeleOpLeft, double kdMotorTelOpLeft,
+                          double kpMotorTeleOpLeft, double kiMotorTeleOpLeft, double kdMotorTeleOpLeft,
                           double kpMotorAutoLeft, double kiMotorAutoLeft, double kdMotorAutoLeft,
-                          double kpMotorTeleOpRight, double kiMotorTeleOpRight, double kdMotorTelOpRight,
+                          double kpMotorTeleOpRight, double kiMotorTeleOpRight, double kdMotorTeleOpRight,
                           double kpMotorAutoRight, double kiMotorAutoRight, double kdMotorAutoRight) {
         this.kpTurn = kpTurn;
         this.kiTurn = kiTurn;
@@ -34,13 +34,13 @@ public class MasqPIDPackage {
         this.kdDriveEncoder = kdDriveEncoder;
         this.kpMotorTeleOpLeft = kpMotorTeleOpLeft;
         this.kiMotorTeleOpLeft = kiMotorTeleOpLeft;
-        this.kdMotorTelOpLeft = kdMotorTelOpLeft;
+        this.kdMotorTeleOpLeft = kdMotorTeleOpLeft;
         this.kpMotorAutoLeft = kpMotorAutoLeft;
         this.kiMotorAutoLeft = kiMotorAutoLeft;
         this.kdMotorAutoLeft = kdMotorAutoLeft;
         this.kpMotorTeleOpRight = kpMotorTeleOpRight;
         this.kiMotorTeleOpRight = kiMotorTeleOpRight;
-        this.kdMotorTelOpRight = kdMotorTelOpRight;
+        this.kdMotorTeleOpRight = kdMotorTeleOpRight;
         this.kpMotorAutoRight = kpMotorAutoRight;
         this.kiMotorAutoRight = kiMotorAutoRight;
         this.kdMotorAutoRight = kdMotorAutoRight;
@@ -58,13 +58,13 @@ public class MasqPIDPackage {
         this.kdDriveEncoder = 0;
         this.kpMotorTeleOpLeft = MasqUtils.KP.MOTOR_TELEOP;
         this.kiMotorTeleOpLeft = MasqUtils.KP.MOTOR_TELEOP;
-        this.kdMotorTelOpLeft = MasqUtils.KP.MOTOR_TELEOP;
+        this.kdMotorTeleOpLeft = MasqUtils.KP.MOTOR_TELEOP;
         this.kpMotorAutoLeft = MasqUtils.KP.MOTOR_AUTONOMOUS;
         this.kiMotorAutoLeft = MasqUtils.KP.MOTOR_AUTONOMOUS;
         this.kdMotorAutoLeft = MasqUtils.KP.MOTOR_AUTONOMOUS;
         this.kpMotorTeleOpRight = MasqUtils.KP.MOTOR_TELEOP;
         this.kiMotorTeleOpRight = MasqUtils.KP.MOTOR_TELEOP;
-        this.kdMotorTelOpRight = MasqUtils.KP.MOTOR_TELEOP;
+        this.kdMotorTeleOpRight = MasqUtils.KP.MOTOR_TELEOP;
         this.kpMotorAutoRight = MasqUtils.KP.MOTOR_AUTONOMOUS;
         this.kiMotorAutoRight = MasqUtils.KP.MOTOR_AUTONOMOUS;
         this.kdMotorAutoRight = MasqUtils.KP.MOTOR_AUTONOMOUS;
@@ -158,12 +158,12 @@ public class MasqPIDPackage {
         this.kiMotorTeleOpLeft = kiMotorTeleOpLeft;
     }
 
-    public double getKdMotorTelOpLeft() {
-        return kdMotorTelOpLeft;
+    public double getKdMotorTeleOpLeft() {
+        return kdMotorTeleOpLeft;
     }
 
-    public void setKdMotorTelOpLeft(double kdMotorTelOpLeft) {
-        this.kdMotorTelOpLeft = kdMotorTelOpLeft;
+    public void setKdMotorTeleOpLeft(double kdMotorTeleOpLeft) {
+        this.kdMotorTeleOpLeft = kdMotorTeleOpLeft;
     }
 
     public double getKpMotorAutoLeft() {
@@ -206,12 +206,12 @@ public class MasqPIDPackage {
         this.kiMotorTeleOpRight = kiMotorTeleOpRight;
     }
 
-    public double getKdMotorTelOpRight() {
-        return kdMotorTelOpRight;
+    public double getKdMotorTeleOpRight() {
+        return kdMotorTeleOpRight;
     }
 
-    public void setKdMotorTelOpRight(double kdMotorTelOpRight) {
-        this.kdMotorTelOpRight = kdMotorTelOpRight;
+    public void setKdMotorTeleOpRight(double kdMotorTeleOpRight) {
+        this.kdMotorTeleOpRight = kdMotorTeleOpRight;
     }
 
     public double getKpMotorAutoRight() {
