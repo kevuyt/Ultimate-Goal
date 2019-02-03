@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**
@@ -27,7 +27,7 @@ public class MasqMotorSystem implements MasqHardware {
         motor2 = new MasqMotor(name2, encoder, direction2, hardwareMap);
         motor3 = null;
         motors = Arrays.asList(motor1, motor2);
-        numMotors = 2;
+        numMotors = 2;//
     }
     public MasqMotorSystem(String name1, String name2, String systemName, HardwareMap hardwareMap, MasqMotorModel encoder) {
         this.systemName = systemName;
