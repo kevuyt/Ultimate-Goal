@@ -22,7 +22,6 @@ import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqSensors.MasqDistanceSensor;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqServos.MasqCRServo;
@@ -36,14 +35,12 @@ import Library4997.MasqWrappers.DashBoard;
 
 public class Falcon extends MasqRobot {
     public MasqAdafruitIMU imu;
-    public MasqDistanceSensor distance;
     public MasqLimitSwitch limitTop, limitBottom;
     public MasqRotator rotator;
     public MasqElevator lift;
     public MasqServo markerDump;
     public MasqServo dumper;
     public MasqCRServo collector;
-    public MasqServo adjuster;
     public MasqVoltageSensor voltageSensor;
     public MasqClock clock;
     public MasqMotor hang;
@@ -53,7 +50,6 @@ public class Falcon extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) {
         voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
-        distance = new MasqDistanceSensor("distance", hardwareMap);
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
         limitTop = new MasqLimitSwitch("limitTop", hardwareMap);
@@ -63,8 +59,7 @@ public class Falcon extends MasqRobot {
         lift = new MasqElevator(hardwareMap);
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServo("collector", hardwareMap);
-        adjuster = new MasqServo("adjuster", hardwareMap);
-        hang = new MasqMotor("hang" ,MasqMotorModel.ORBITAL20, hardwareMap);
+        hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
         markerDump = new MasqServo("markerDump", hardwareMap);
         hang.setClosedLoop(true);
         hang.setKp(0.01);
@@ -75,15 +70,24 @@ public class Falcon extends MasqRobot {
     public MasqPIDPackage pidPackage() {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
         /*-------------------------------------------------*/
-        pidPackage.setKpMotorTeleOpLeft(0.002);
-        pidPackage.setKpMotorAutoLeft(0.002);
-        pidPackage.setKpMotorTeleOpRight(0.002);
-        pidPackage.setKpMotorAutoLeft(0.002);
+        pidPackage.setKpMotorAutoLeft(0.0001);
+        pidPackage.setKpMotorAutoRight(0.0001);
+
+        pidPackage.setKpMotorTeleOpLeft(0.0001);
+        pidPackage.setKpMotorTeleOpRight(0.0001);
         /*-------------------------------------------------*/
         pidPackage.setKpTurn(0.01);
         pidPackage.setKpDriveEncoder(1.5);
         pidPackage.setKpDriveAngular(0.015);
         /*-------------------------------------------------*/
+        pidPackage.setKiMotorAutoLeft(0.0000);
+        pidPackage.setKiMotorAutoRight(0.0000);
+        pidPackage.setKiMotorTeleOpLeft(0.0000);
+        pidPackage.setKiMotorTeleOpRight(0.0000);
+        pidPackage.setKdMotorAutoLeft(0.0000);
+        pidPackage.setKdMotorAutoRight(0.0000);
+        pidPackage.setKdMotorTeleOpLeft(0.0000);
+        pidPackage.setKdMotorTeleOpRight(0.0000);
         return pidPackage;
     }
     public void setStartOpenCV(boolean startOpenCV) {
@@ -151,6 +155,5 @@ public class Falcon extends MasqRobot {
         else if (block > 300) return BlockPlacement.CENTER;
         else return BlockPlacement.LEFT;
     }
-
 
 }

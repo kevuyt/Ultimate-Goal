@@ -17,6 +17,7 @@ public class MasqMotorSystem implements MasqHardware {
     public MasqMotor motor1 , motor2, motor3;
     private List<MasqMotor> motors;
     private int numMotors;
+    double kp, ki, kd;
     private double currentPower = 0;
     private double slowDown = 0;
     private String systemName;
@@ -68,11 +69,18 @@ public class MasqMotorSystem implements MasqHardware {
         return this;
     }
     public MasqMotorSystem setKp(double kp){
+        this.kp = kp;
         for (MasqMotor masqMotor: motors) masqMotor.setKp(kp);
         return this;
     }
     public MasqMotorSystem setKi(double ki){
+        this.ki = ki;
         for (MasqMotor masqMotor: motors) masqMotor.setKi(ki);
+        return this;
+    }
+    public MasqMotorSystem setKd(double kd){
+        this.kd = kd;
+        for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
         return this;
     }
     public double getPower() {
@@ -82,10 +90,6 @@ public class MasqMotorSystem implements MasqHardware {
             num++;
         }
         return sum/num;
-    }
-    public MasqMotorSystem setKd(double kd){
-        for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
-        return this;
     }
     public double getInches () {
         double num = 0, sum = 0;
@@ -179,6 +183,18 @@ public class MasqMotorSystem implements MasqHardware {
         int total = 0;
         for (MasqMotor m : motors) total += m.getAbsolutePosition();
         return total / numMotors;
+    }
+
+    public double getKp() {
+        return kp;
+    }
+
+    public double getKi() {
+        return ki;
+    }
+
+    public double getKd() {
+        return kd;
     }
 
     public MasqMotorModel getEncoder() {

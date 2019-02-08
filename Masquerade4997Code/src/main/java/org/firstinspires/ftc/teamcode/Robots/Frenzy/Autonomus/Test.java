@@ -12,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 1/5/19.
  * Project: MasqLib
  */
-@Autonomous(name = "Test", group = "Tank")
+@Autonomous(name = "Test", group = "NFS")
 @Disabled
 public class Test extends MasqLinearOpMode {
     Frenzy frenzy = new Frenzy();

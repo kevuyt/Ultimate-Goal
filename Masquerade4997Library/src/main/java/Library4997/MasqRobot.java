@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
 import Library4997.MasqControlSystems.MasqIntegrator;
+import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPath;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
@@ -135,6 +136,19 @@ public abstract class MasqRobot {
     }
     public void driveAbsoluteAngle(double distance, int angle, double speed){driveAbsoluteAngle(distance, angle, speed, Direction.FORWARD);}
     public void driveAbsoluteAngle(double distance, int angle) {driveAbsoluteAngle(distance, angle, 0.5);}
+
+    public void driveProportional(double angle, Direction direction, double ratio) {
+        MasqPIDController controller = new MasqPIDController(0.1, 0, 0);
+        double out = controller.getOutput(tracker.imu.getRelativeYaw(), angle);
+        double rightRatio = 1, leftRatio = 1;
+        if (direction == Direction.LEFT) rightRatio = ratio;
+        else leftRatio = ratio;
+        while (opModeIsActive() && out > 0.1) {
+            out = controller.getOutput(tracker.imu.getRelativeYaw(), angle);
+            driveTrain.setPower(out * leftRatio, out * rightRatio);
+        }
+        driveTrain.setPower(0);
+    }
 
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd, boolean left, boolean right) {
         double targetAngle = tracker.imu.adjustAngle(tracker.getHeading()) + (direction.value * angle);
@@ -465,7 +479,6 @@ public abstract class MasqRobot {
         driveTrain.leftDrive.setPower(left);
     }
     public void MECH(MasqController c, Direction direction, boolean disabled) {
-
         int disable = 1;
         if (disabled) disable = 0;
         double x = -c.leftStickY();
@@ -517,6 +530,7 @@ public abstract class MasqRobot {
         driveTrain.leftDrive.setKp(pidPackage().getKpMotorTeleOpLeft());
         driveTrain.leftDrive.setKi(pidPackage().getKiMotorTeleOpLeft());
         driveTrain.leftDrive.setKd(pidPackage().getKdMotorTeleOpLeft());
+
         driveTrain.rightDrive.setKp(pidPackage().getKpMotorTeleOpRight());
         driveTrain.rightDrive.setKi(pidPackage().getKiMotorTeleOpRight());
         driveTrain.rightDrive.setKd(pidPackage().getKdMotorTeleOpRight());

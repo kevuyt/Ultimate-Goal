@@ -13,7 +13,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 10/20/18.
  * Project: MasqLib
  */
-@Autonomous(name = "DepotSideAuto", group = "Tank")
+@Autonomous(name = "DepotSideAuto", group = "NFS")
 public class DepotSideAuto extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     @Override
@@ -35,18 +35,14 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             falcon.drive(40, 0.8, Direction.FORWARD);
             falcon.turnAbsolute(40, Direction.LEFT);
             falcon.drive(30);
-            falcon.adjuster.setPosition(ADJUSTER_OUT);
             sleep(1);
-            falcon.adjuster.setPosition(ADJUSTER_IN);
             falcon.turnAbsolute(50, Direction.RIGHT);
             falcon.drive(100, Direction.BACKWARD, 3);
         }
         else if (blockPlacement == BlockPlacement.CENTER) {
             falcon.drive(50, 0.8, Direction.FORWARD);
             falcon.turnAbsolute(70, Direction.RIGHT);
-            falcon.adjuster.setPosition(ADJUSTER_OUT);
             sleep(1);
-            falcon.adjuster.setPosition(ADJUSTER_IN);
             falcon.drive(100, Direction.BACKWARD, 4);
         }
         else if (blockPlacement == BlockPlacement.LEFT) {
@@ -54,9 +50,7 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             falcon.drive(40, 0.8, Direction.FORWARD);
             falcon.turnAbsolute(50, Direction.RIGHT);
             falcon.drive(20);
-            falcon.adjuster.setPosition(ADJUSTER_OUT);
             sleep(1);
-            falcon.adjuster.setPosition(ADJUSTER_IN);
             falcon.drive(100, Direction.BACKWARD, 3);
         }
     }

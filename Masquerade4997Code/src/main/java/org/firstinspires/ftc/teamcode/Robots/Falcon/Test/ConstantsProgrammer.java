@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 10/20/18.
  * Project: MasqLib
  */
-@TeleOp(name = "ConstantsProgrammer", group = "Tank")
+@TeleOp(name = "ConstantsProgrammer", group = "NFS")
 public class ConstantsProgrammer extends MasqLinearOpMode {
     private Falcon falcon = new Falcon();
     private double hangLatch = 0, adjuster = 0, endHang = 0;
@@ -42,9 +42,7 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
                 endHang -= 0.01;
             }
             controller1.update();
-            falcon.adjuster.setPosition(adjuster);
             //falcon.rotator.DriverControl(controller1);
-            dash.create("Adjuster (RT+,LT-)", falcon.adjuster.getPosition());
             dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
             dash.update();
         }

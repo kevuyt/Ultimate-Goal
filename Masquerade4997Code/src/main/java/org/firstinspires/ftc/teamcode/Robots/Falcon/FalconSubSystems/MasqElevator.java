@@ -23,17 +23,17 @@ public class MasqElevator implements MasqSubSystem {
     private double targetPosition;
     private double kp;
 
-    private MasqPIDController output = new MasqPIDController(0.005, 0, 0.001);
+    private MasqPIDController output = new MasqPIDController(0.02, 0, 0);
     public MasqElevator (HardwareMap hardwareMap) {
-        lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, DcMotor.Direction.FORWARD, hardwareMap);
+        lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.FORWARD, hardwareMap);
         lift.resetEncoder();
     }
 
     @Override
     public void DriverControl(MasqController controller) {
         kp = (5e-7 * -lift.getCurrentPosition()) + 0.001;
-        if (controller.rightBumper()) lift.setPower(-1);
-        else if (controller.rightTriggerPressed()) lift.setPower(1);
+        if (controller.rightBumper()) lift.setPower(1);
+        else if (controller.rightTriggerPressed()) lift.setPower(-1);
 
         if (controller.rightBumper() || controller.rightTriggerPressed()) targetPosition = lift.getCurrentPosition();
         else {

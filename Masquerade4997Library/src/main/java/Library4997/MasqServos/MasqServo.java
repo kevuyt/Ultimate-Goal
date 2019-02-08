@@ -37,7 +37,7 @@ public class MasqServo implements MasqHardware{
         limMin = min; limMax = max;
         limDetection = true;
     }
-    private boolean limPressed () {
+    private boolean limitPressed () {
         if (limDetection) return  limMin.isPressed() || limMax.isPressed();
         else return false;
     }

@@ -21,16 +21,11 @@ public class MasqRotator implements MasqSubSystem, Runnable {
     private double targetPosition;
     private AtomicBoolean close = new AtomicBoolean(false);
     private AtomicBoolean movementAllowed = new AtomicBoolean(true);
-    private double basePower = 0.9;
-    private double kp_kp = 5;
-    private double baseDownPower = 0.9;
-    private double rotatorPower = basePower;
-    private double downPower = -0.1;
     private double liftPosition = 0;
     private double kp = 0.01, ki, kd;
     public MasqPIDController output = new MasqPIDController(0.03, 0.0, 0.00);
     public MasqRotator (HardwareMap hardwareMap) {
-        rotator = new MasqMotorSystem("rotator", "rotator2", MasqMotorModel.NEVEREST40, hardwareMap);
+        rotator = new MasqMotorSystem("rotator1", "rotator2", MasqMotorModel.NEVEREST60, hardwareMap);
         rotator.setClosedLoop(true);
         rotator.resetEncoders();
     }
@@ -40,8 +35,6 @@ public class MasqRotator implements MasqSubSystem, Runnable {
         kp = (1e-6 * -liftPosition) + 0.001;
         ki = 0.0;
         kd = 0.0;
-        rotatorPower = (0.0001 * kp_kp * -liftPosition) + basePower;
-        downPower = (0.001 * kp_kp * Math.abs(rotator.getCurrentPosition())) + baseDownPower;
         if (controller.leftTriggerPressed()) rotator.setPower(1);
         else if (controller.rightTriggerPressed()) rotator.setPower(-1);
 

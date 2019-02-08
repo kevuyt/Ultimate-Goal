@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
@@ -57,9 +56,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         driveToWall(10);
         if (blockPlacement == BlockPlacement.RIGHT) falcon.drive(7, Direction.BACKWARD);
         falcon.turnAbsolute(wallTurn, Direction.LEFT);
-        falcon.adjuster.setPosition(ADJUSTER_OUT);
         driveToWall(10);
-        falcon.adjuster.setPosition(ADJUSTER_IN);
         if (blockPlacement == BlockPlacement.CENTER) {
             falcon.turnAbsolute(-100, Direction.LEFT);
             falcon.drive(30);
@@ -82,7 +79,7 @@ public class DoubleSample extends MasqLinearOpMode implements Constants {
         falcon.stop(new StopCondition() {
             @Override
             public boolean stop() {
-                return falcon.distance.distance(DistanceUnit.INCH) > distance;
+                return false;// falcon.distance.distance(DistanceUnit.INCH) > distance;
             }
         }, timeout);
     }

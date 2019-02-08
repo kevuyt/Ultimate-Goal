@@ -1,9 +1,10 @@
 package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
+
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqSensors.MasqClock;
@@ -55,10 +56,8 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         falcon.drive(30);
         driveToWall(10);
         falcon.turnAbsolute(wallTurn, Direction.LEFT);
-        falcon.adjuster.setPosition(ADJUSTER_OUT);
         falcon.drive(45);
         falcon.turnAbsolute(145, Direction.LEFT);
-        falcon.adjuster.setPosition(ADJUSTER_IN);
         sleep(1);
         final MasqClock clock = new MasqClock();
         runSimultaneously(new Runnable() {
@@ -80,7 +79,7 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         falcon.stop(new StopCondition() {
             @Override
             public boolean stop() {
-                return falcon.distance.distance(DistanceUnit.INCH) > distance;
+                return false; //falcon.distance.distance(DistanceUnit.INCH) > distance;
             }
         }, timeout);
     }

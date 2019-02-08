@@ -67,7 +67,7 @@ public class MasqMotor implements MasqHardware {
             closedLoop = false;
     private MasqLimitSwitch minLim, maxLim = null;
 
-    public MasqMotor(String name, MasqMotorModel model, HardwareMap hardwareMap){
+    public MasqMotor(String name, MasqMotorModel model, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
         this.nameMotor = name;
         motor = hardwareMap.get(DcMotor.class, name);
@@ -352,9 +352,13 @@ public class MasqMotor implements MasqHardware {
         this.kp = kp;
     }
     public double getKi() {return ki;}
-    public void setKi(double ki) {this.ki = ki;}
+    public void setKi(double ki) {
+        this.ki = ki;
+    }
     public double getKd() {return kd;}
-    public void setKd(double kd) {this.kd = kd;}
+    public void setKd(double kd) {
+        this.kd = kd;
+    }
 
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();
