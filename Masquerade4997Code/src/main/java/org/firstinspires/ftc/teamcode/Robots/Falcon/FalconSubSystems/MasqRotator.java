@@ -40,8 +40,10 @@ public class MasqRotator implements MasqSubSystem, Runnable {
 
         if (controller.rightTrigger() > 0 || controller.leftTrigger() > 0) targetPosition = rotator.getCurrentPosition();
         else {
-            double currentPosition = rotator.getCurrentPosition();
-            rotator.setPower(output.getOutput(currentPosition, targetPosition));
+            rotator.setPower(0);
+            rotator.setBreakMode();
+            /*double currentPosition = rotator.getCurrentPosition();
+            rotator.setPower(output.getOutput(currentPosition, targetPosition));*/
         }
         output.setKp(kp);
         output.setKi(ki);

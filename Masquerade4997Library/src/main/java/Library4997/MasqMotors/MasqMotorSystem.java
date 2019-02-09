@@ -63,6 +63,10 @@ public class MasqMotorSystem implements MasqHardware {
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
     }
+    public void setBreakMode() {
+        for (MasqMotor masqMotor : motors)
+            masqMotor.setBreakMode();
+    }
     public MasqMotorSystem resetEncoders() {
         for (MasqMotor masqMotor : motors)
             masqMotor.resetEncoder();

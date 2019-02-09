@@ -17,6 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d8b3b5b-94cb-4707-ab7a-f016bba43558" name="Default" comment="ideas">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DogeCV/DogeCV.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DogeCV/DogeCV.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/Masquerade4997Code.iml" afterDir="false" />
@@ -25,75 +26,25 @@
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/19.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/19.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/20.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/20.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/21.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/21.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/BringLiftDown.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/BringLiftDown.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto$3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto$3.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DepotSideAuto.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DepotSideAuto.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DoubleSample$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DoubleSample$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DoubleSample.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DoubleSample.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$4.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$5.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$6.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$7.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$8.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto$9.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/ScoreAuto.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/NFSV2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/Tank.dex" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS$4.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS$5.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS$6.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS$BlockPlacement.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/CraterSideAutoV2_DIS.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Frenzy/Autonomus/Test.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Frenzy/Autonomus/Test.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Frenzy/Frenzy.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/Frenzy/Frenzy.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/TestBot/TestBot.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/37/org/firstinspires/ftc/teamcode/Robots/TestBot/TestBot.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexBuilder/debug/__content__.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexMerger/debug/0/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexMerger/debug/0/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexMerger/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/intermediates/transforms/dexMerger/debug/__content__.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/apk/debug/Masquerade4997Code-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/build/outputs/apk/debug/Masquerade4997Code-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DepotSideAuto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DepotSideAuto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DoubleSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DoubleSample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/NFSV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/MECH.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/NFS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Frenzy/Autonomus/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Frenzy/Autonomus/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/Masquerade4997Library.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqControlSystems/MasqPID/MasqPIDController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqControlSystems/MasqPID/MasqPIDController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqControlSystems/MasqPurePursuit/MasqLine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqMotors/MasqMotor.class" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqMotors/MasqMotor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqMotors/MasqMotorSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqMotors/MasqMotorSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqResources/MasqPIDPackage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqResources/MasqUtils$KD.class" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqResources/MasqUtils$KD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqResources/MasqUtils$KI.class" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqResources/MasqUtils$KI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqRobot$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqRobot$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqRobot.class" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqRobot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqServos/MasqServo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/classes/debug/Library4997/MasqServos/MasqServo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/intermediate-jars/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/build/intermediates/intermediate-jars/debug/classes.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDPackage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/PIDCoeff.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPurePursuit/MasqLine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqResources/MasqUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqResources/MasqUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqServos/MasqServo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqServos/MasqServo.java" afterDir="false" />
     </list>
@@ -147,35 +98,36 @@
     <session id="-941269486">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="3" />
           <entry key="project.open.time.6" value="6" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="54" />
+          <entry key="java" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="54" />
+          <entry key="JAVA" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="java" value="1333" />
+          <entry key="java" value="1529" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1333" />
+          <entry key="JAVA" value="1529" />
           <entry key="PLAIN_TEXT" value="13" />
         </counts>
       </usages-collector>
@@ -185,90 +137,16 @@
     <favorites_list name="MasqLib" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="139" column="4" lean-forward="true" selection-start-line="139" selection-start-column="4" selection-end-line="150" selection-end-column="5" />
-              <folding>
-                <element signature="docComment;class#MasqRobot#0" />
-                <element signature="e#1415#1490#0" />
-                <element signature="e#1495#3922#0" />
-                <element signature="e#3927#4096#0" />
-                <element signature="e#4101#4242#0" />
-                <element signature="e#4247#4376#0" />
-                <element signature="e#4381#4473#0" />
-                <element signature="e#4478#4568#0" />
-                <element signature="e#4573#4631#0" />
-                <element signature="e#4637#7241#0" />
-                <element signature="e#7246#7459#0" />
-                <element signature="e#7464#7649#0" />
-                <element signature="e#7654#7790#0" />
-                <element signature="e#7795#7897#0" />
-                <element signature="e#7903#9944#0" />
-                <element signature="e#9949#10175#0" />
-                <element signature="e#10180#10379#0" />
-                <element signature="e#10384#10567#0" />
-                <element signature="e#10572#10734#0" />
-                <element signature="e#10739#10874#0" />
-                <element signature="e#10879#11180#0" />
-                <element signature="e#11186#12966#0" />
-                <element signature="e#12971#13185#0" />
-                <element signature="e#13190#13389#0" />
-                <element signature="e#13394#13578#0" />
-                <element signature="e#13583#13746#0" />
-                <element signature="e#13751#13886#0" />
-                <element signature="e#13892#15890#0" />
-                <element signature="e#15895#16112#0" />
-                <element signature="e#16117#16319#0" />
-                <element signature="e#16324#16511#0" />
-                <element signature="e#16516#16685#0" />
-                <element signature="e#16690#16831#0" />
-                <element signature="e#16838#17640#0" />
-                <element signature="e#17645#17774#0" />
-                <element signature="e#17779#17859#0" />
-                <element signature="e#17865#18664#0" />
-                <element signature="e#18669#18796#0" />
-                <element signature="e#18801#18879#0" />
-                <element signature="e#18885#20923#0" />
-                <element signature="e#20928#21111#0" />
-                <element signature="e#21116#21245#0" />
-                <element signature="e#21457#21607#0" />
-                <element signature="e#21613#23245#0" />
-                <element signature="e#23251#23894#0" />
-                <element signature="e#23899#24482#0" />
-                <element signature="e#24487#26617#0" />
-                <element signature="e#26927#27409#0" />
-                <element signature="e#27414#27887#0" />
-                <element signature="e#27892#28106#0" />
-                <element signature="e#28112#28170#0" />
-                <element signature="e#28175#28310#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-              <folding>
-                <element signature="e#807#808#0" expanded="true" />
-                <element signature="e#835#836#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="77" column="44" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="44" />
+            <state relative-caret-position="-125">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Falcon#0" />
+                <element signature="method#mapHardware#0;class#Falcon#0" />
+                <element signature="method#pidPackage#0;class#Falcon#0" />
                 <element signature="method#startOpenCV#0;class#Falcon#0" />
                 <element signature="method#update#0;class#Falcon#0" />
                 <element signature="method#turnTillGold#0;class#Falcon#0" />
@@ -281,31 +159,51 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+            <state relative-caret-position="495">
+              <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
               <folding>
-                <element signature="method#runToPosition#0;class#MasqElevator#0" />
+                <element signature="e#1980#1981#0" expanded="true" />
+                <element signature="e#2028#2029#0" expanded="true" />
+                <element signature="e#2064#2065#0" expanded="true" />
+                <element signature="e#2115#2116#0" expanded="true" />
+                <element signature="e#2151#2152#0" expanded="true" />
+                <element signature="e#2192#2193#0" expanded="true" />
+                <element signature="e#2237#2238#0" expanded="true" />
+                <element signature="e#2264#2265#0" expanded="true" />
+                <element signature="e#2443#2444#0" expanded="true" />
+                <element signature="e#2485#2486#0" expanded="true" />
+                <element signature="e#3134#3135#0" expanded="true" />
+                <element signature="e#3174#3175#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/NFS.java">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="548">
+              <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+              <folding>
+                <element signature="method#runToPosition#0;class#MasqElevator#0" />
+                <element signature="e#2214#2215#0" expanded="true" />
+                <element signature="e#2262#2263#0" expanded="true" />
+                <element signature="e#2307#2308#0" expanded="true" />
+                <element signature="e#2334#2335#0" expanded="true" />
+                <element signature="e#2393#2394#0" expanded="true" />
+                <element signature="e#2435#2436#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDPackage.java">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2190">
-              <caret line="196" column="16" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="16" />
+            <state relative-caret-position="-21">
+              <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -313,17 +211,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/MECH.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+            <state relative-caret-position="380">
+              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqDriveTrains/MasqDriveTrain.java">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="92" column="26" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
+            <state relative-caret-position="362">
+              <caret line="490" selection-start-line="490" selection-end-line="490" />
+              <folding>
+                <element signature="docComment;class#MasqRobot#0" />
+                <element signature="e#27555#27556#0" expanded="true" />
+                <element signature="e#27604#27605#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="16" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-137">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -331,8 +252,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1575">
-              <caret line="113" column="30" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+            <state relative-caret-position="392">
+              <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
               <folding>
                 <element signature="e#7011#7012#0" expanded="true" />
                 <element signature="e#7036#7037#0" expanded="true" />
@@ -348,9 +269,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3420">
-              <caret line="251" column="58" selection-start-line="251" selection-start-column="58" selection-end-line="251" selection-end-column="58" />
+            <state relative-caret-position="514">
+              <caret line="140" selection-start-line="140" selection-end-line="140" />
               <folding>
+                <element signature="e#5101#5102#0" expanded="true" />
                 <element signature="e#13114#13115#0" expanded="true" />
                 <element signature="e#13142#13143#0" expanded="true" />
                 <element signature="e#13216#13217#0" expanded="true" />
@@ -388,7 +310,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Masquerade4997Library" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="MotorV2Integration" />
@@ -6848,7 +6770,6 @@
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Leviathan/SubSystems/MasqElevator.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Leviathan/Leviathan.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/PathFollowing.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqWrappers/MasqLinearOpMode.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqResources/MasqHelpers/Direction.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAutoV2.java" />
@@ -6877,22 +6798,23 @@
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/PIDCoeff.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/BringLiftDown.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDPackage.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDController.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqServos/MasqServo.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DepotSideAuto.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/Tank.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/NFSV2.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/NFS.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/CraterSideAuto.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DoubleSample.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqResources/MasqUtils.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon.java" />
-        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/MECH.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDController.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.java" />
+        <option value="$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java" />
         <option value="$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java" />
       </list>
     </option>
@@ -6914,29 +6836,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Masquerade4997Library" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Masquerade4997Library" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Masquerade4997Library" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="Library4997" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -6954,6 +6853,67 @@
               <item name="FtcRobotController" type="616d4139:PackageViewModuleNode" />
               <item name="org.firstinspires" type="1f31426a:PackageElementNode" />
               <item name="ftc.robotcontroller" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="Robots" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="Robots" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Falcon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="Robots" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Falcon" type="462c0819:PsiDirectoryNode" />
+              <item name="Autonomus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="Robots" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Falcon" type="462c0819:PsiDirectoryNode" />
+              <item name="FalconSubSystems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="Robots" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Falcon" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MasqLib" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Masquerade4997Code" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="Robots" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Falcon" type="462c0819:PsiDirectoryNode" />
+              <item name="TeleOp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -7015,6 +6975,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -7386,13 +7347,6 @@
       <option name="presentableId" value="Default" />
       <updated>1499637730129</updated>
     </task>
-    <task id="LOCAL-00082" summary="Added Masq Vuforia test">
-      <created>1504812023908</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1504812023908</updated>
-    </task>
     <task id="LOCAL-00083" summary="Undated LICENCE">
       <created>1504812804892</created>
       <option name="number" value="00083" />
@@ -7729,7 +7683,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549152050031</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="ideas">
+      <created>1549661858380</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1549661858394</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TodoView">
@@ -7762,7 +7723,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49574015" weight="0.0" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.44781682" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.61608094" side_tool="true" weight="0.32986766" />
       <window_info anchor="bottom" id="Logcat" order="10" sideWeight="0.8690096" weight="0.0" />
       <window_info anchor="bottom" id="Android Monitor" order="11" sideWeight="0.88764644" weight="0.32956687" />
@@ -7866,13 +7827,6 @@
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Frenzy/Frenzy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-64">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqSensors/MasqCurrentMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-193">
@@ -8015,13 +7969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/internal/FtcOpModeRegister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -8081,24 +8028,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1316">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/DepotSideAuto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="718">
           <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" column="102" selection-start-line="27" selection-start-column="102" selection-end-line="27" selection-end-column="102" />
         </state>
       </provider>
     </entry>
@@ -8126,12 +8059,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java">
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+        <state relative-caret-position="696">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding>
-            <element signature="method#runToPosition#0;class#MasqElevator#0" />
+            <element signature="e#807#808#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -8145,29 +8079,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDPackage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2190">
+        <state relative-caret-position="985">
           <caret line="196" column="16" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/MECH.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqDriveTrains/MasqDriveTrain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
+        <state relative-caret-position="520">
           <caret line="92" column="26" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#5101#5102#0" expanded="true" />
+            <element signature="e#13114#13115#0" expanded="true" />
+            <element signature="e#13142#13143#0" expanded="true" />
+            <element signature="e#13216#13217#0" expanded="true" />
+            <element signature="e#13244#13245#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="16" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/TeleOp/MECH.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqElevator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+          <folding>
+            <element signature="method#runToPosition#0;class#MasqElevator#0" />
+            <element signature="e#2214#2215#0" expanded="true" />
+            <element signature="e#2262#2263#0" expanded="true" />
+            <element signature="e#2307#2308#0" expanded="true" />
+            <element signature="e#2334#2335#0" expanded="true" />
+            <element signature="e#2393#2394#0" expanded="true" />
+            <element signature="e#2435#2436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Test/ConstantsProgrammer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="490" selection-start-line="490" selection-end-line="490" />
+          <folding>
+            <element signature="docComment;class#MasqRobot#0" />
+            <element signature="e#27555#27556#0" expanded="true" />
+            <element signature="e#27604#27605#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotorSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="113" column="30" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="30" />
+        <state relative-caret-position="392">
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
           <folding>
             <element signature="e#7011#7012#0" expanded="true" />
             <element signature="e#7036#7037#0" expanded="true" />
@@ -8179,103 +8169,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqMotors/MasqMotor.java">
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Autonomus/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3420">
-          <caret line="251" column="58" selection-start-line="251" selection-start-column="58" selection-end-line="251" selection-end-column="58" />
+        <state relative-caret-position="-137">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/FalconSubSystems/MasqRotator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
           <folding>
-            <element signature="e#13114#13115#0" expanded="true" />
-            <element signature="e#13142#13143#0" expanded="true" />
-            <element signature="e#13216#13217#0" expanded="true" />
-            <element signature="e#13244#13245#0" expanded="true" />
+            <element signature="e#1980#1981#0" expanded="true" />
+            <element signature="e#2028#2029#0" expanded="true" />
+            <element signature="e#2064#2065#0" expanded="true" />
+            <element signature="e#2115#2116#0" expanded="true" />
+            <element signature="e#2151#2152#0" expanded="true" />
+            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2237#2238#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#2443#2444#0" expanded="true" />
+            <element signature="e#2485#2486#0" expanded="true" />
+            <element signature="e#3134#3135#0" expanded="true" />
+            <element signature="e#3174#3175#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Masquerade4997Code/src/main/java/org/firstinspires/ftc/teamcode/Robots/Falcon/Falcon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="77" column="44" selection-start-line="77" selection-start-column="44" selection-end-line="77" selection-end-column="44" />
+        <state relative-caret-position="-125">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Falcon#0" />
+            <element signature="method#mapHardware#0;class#Falcon#0" />
+            <element signature="method#pidPackage#0;class#Falcon#0" />
             <element signature="method#startOpenCV#0;class#Falcon#0" />
             <element signature="method#update#0;class#Falcon#0" />
             <element signature="method#turnTillGold#0;class#Falcon#0" />
             <element signature="method#shake#0;class#Falcon#0" />
             <element signature="method#getRotatorCoordinates#0;class#Falcon#0" />
             <element signature="method#getBlockPlacement#0;class#Falcon#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqControlSystems/MasqPID/MasqPIDController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-          <folding>
-            <element signature="e#807#808#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Masquerade4997Library/src/main/java/Library4997/MasqRobot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="139" column="4" lean-forward="true" selection-start-line="139" selection-start-column="4" selection-end-line="150" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#MasqRobot#0" />
-            <element signature="e#1415#1490#0" />
-            <element signature="e#1495#3922#0" />
-            <element signature="e#3927#4096#0" />
-            <element signature="e#4101#4242#0" />
-            <element signature="e#4247#4376#0" />
-            <element signature="e#4381#4473#0" />
-            <element signature="e#4478#4568#0" />
-            <element signature="e#4573#4631#0" />
-            <element signature="e#4637#7241#0" />
-            <element signature="e#7246#7459#0" />
-            <element signature="e#7464#7649#0" />
-            <element signature="e#7654#7790#0" />
-            <element signature="e#7795#7897#0" />
-            <element signature="e#7903#9944#0" />
-            <element signature="e#9949#10175#0" />
-            <element signature="e#10180#10379#0" />
-            <element signature="e#10384#10567#0" />
-            <element signature="e#10572#10734#0" />
-            <element signature="e#10739#10874#0" />
-            <element signature="e#10879#11180#0" />
-            <element signature="e#11186#12966#0" />
-            <element signature="e#12971#13185#0" />
-            <element signature="e#13190#13389#0" />
-            <element signature="e#13394#13578#0" />
-            <element signature="e#13583#13746#0" />
-            <element signature="e#13751#13886#0" />
-            <element signature="e#13892#15890#0" />
-            <element signature="e#15895#16112#0" />
-            <element signature="e#16117#16319#0" />
-            <element signature="e#16324#16511#0" />
-            <element signature="e#16516#16685#0" />
-            <element signature="e#16690#16831#0" />
-            <element signature="e#16838#17640#0" />
-            <element signature="e#17645#17774#0" />
-            <element signature="e#17779#17859#0" />
-            <element signature="e#17865#18664#0" />
-            <element signature="e#18669#18796#0" />
-            <element signature="e#18801#18879#0" />
-            <element signature="e#18885#20923#0" />
-            <element signature="e#20928#21111#0" />
-            <element signature="e#21116#21245#0" />
-            <element signature="e#21457#21607#0" />
-            <element signature="e#21613#23245#0" />
-            <element signature="e#23251#23894#0" />
-            <element signature="e#23899#24482#0" />
-            <element signature="e#24487#26617#0" />
-            <element signature="e#26927#27409#0" />
-            <element signature="e#27414#27887#0" />
-            <element signature="e#27892#28106#0" />
-            <element signature="e#28112#28170#0" />
-            <element signature="e#28175#28310#0" />
           </folding>
         </state>
       </provider>

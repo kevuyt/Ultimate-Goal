@@ -13,7 +13,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "ConstantsProgrammer", group = "NFS")
 public class ConstantsProgrammer extends MasqLinearOpMode {
     private Falcon falcon = new Falcon();
-    private double hangLatch = 0, adjuster = 0, endHang = 0;
+    private double dumper = 0;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
@@ -23,27 +23,15 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
         }
         waitForStart();
         while (opModeIsActive()) {
-            if (controller1.aOnPress()) {
-                hangLatch += 0.01;
-            }
-            if (controller1.bOnPress()) {
-                hangLatch -= 0.01;
-            }
             if (controller1.xOnPress()) {
-                adjuster += 0.01;
+                dumper += 0.01;
             }
             if (controller1.yOnPress()) {
-                adjuster -= 0.01;
-            }
-            if (controller1.rightTriggerOnPress()) {
-                endHang += 0.01;
-            }
-            if (controller1.leftTriggerOnPress()) {
-                endHang -= 0.01;
+                dumper -= 0.01;
             }
             controller1.update();
-            //falcon.rotator.DriverControl(controller1);
-            dash.create("Lift Position: ", falcon.lift.getCurrentPosition());
+            falcon.dumper.setPosition(dumper);
+            dash.create("Dumper: ", falcon.dumper.getPosition());
             dash.update();
         }
 

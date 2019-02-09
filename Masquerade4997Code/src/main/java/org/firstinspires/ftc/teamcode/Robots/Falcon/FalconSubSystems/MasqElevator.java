@@ -32,13 +32,15 @@ public class MasqElevator implements MasqSubSystem {
     @Override
     public void DriverControl(MasqController controller) {
         kp = (5e-7 * -lift.getCurrentPosition()) + 0.001;
-        if (controller.rightBumper()) lift.setPower(1);
-        else if (controller.rightTriggerPressed()) lift.setPower(-1);
+        if (controller.rightBumper()) lift.setPower(-1);
+        else if (controller.rightTriggerPressed()) lift.setPower(1);
 
         if (controller.rightBumper() || controller.rightTriggerPressed()) targetPosition = lift.getCurrentPosition();
         else {
-            double currentPosition = lift.getCurrentPosition();
-            lift.setPower(output.getOutput(currentPosition, targetPosition));
+          /*  double currentPosition = lift.getCurrentPosition();
+            lift.setPower(output.getOutput(currentPosition, targetPosition)); */
+          lift.setPower(-0.2);
+          //lift.setBreakMode();
         }
         output.setKp(kp);
     }

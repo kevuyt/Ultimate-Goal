@@ -38,8 +38,7 @@ public class MasqPIDController {
         if (deriv < .001) deriv = prevD;
         prevError = error;
         prevD = deriv;
-        return Range.clip((error * kp) +
-                (ki * integrator.getIntegral(error)) +
+        return Range.clip((error * kp) + (ki * integrator.getIntegral(error)) +
                 (kd * deriv), -1, 1);
     }
 

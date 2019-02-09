@@ -488,7 +488,6 @@ public abstract class MasqRobot {
         double adjustedAngle = angle + Math.PI/4;
         double speedMultiplier = 1.4;
         double turnMultiplier = 1.4;
-        if (c.leftBumper()) xR = 0;
         double speedMagnitude = Math.hypot(x, y);
         double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) - xR * turnMultiplier * direction.value;
         double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;
