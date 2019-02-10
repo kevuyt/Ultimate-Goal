@@ -44,6 +44,7 @@ public class Falcon extends MasqRobot {
     public MasqVoltageSensor voltageSensor;
     public MasqClock clock;
     public MasqMotor hang;
+    public MasqLimitSwitch magSwitch;
     private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
     public DogeForia dogeForia;
@@ -51,9 +52,10 @@ public class Falcon extends MasqRobot {
         voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
         imu = new MasqAdafruitIMU("imu", hardwareMap);
+        magSwitch = new MasqLimitSwitch("magSwitch", hardwareMap);
         limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
         limitTop = new MasqLimitSwitch("limitTop", hardwareMap);
-        driveTrain = new MasqDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
+        driveTrain = new MasqDriveTrain(hardwareMap, MasqMotorModel.NEVEREST40);
         tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         rotator = new MasqRotator(hardwareMap);
         lift = new MasqElevator(hardwareMap);

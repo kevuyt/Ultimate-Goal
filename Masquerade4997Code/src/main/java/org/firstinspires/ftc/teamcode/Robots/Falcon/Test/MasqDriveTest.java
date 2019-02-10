@@ -6,19 +6,16 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.Test;
  */
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus.Constants;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Archish on 2/7/18.
  */
 @Autonomous(name = "MasqDriveTesting", group = "T")
-@Disabled
 public class MasqDriveTest extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     public void runLinearOpMode() throws InterruptedException {
@@ -27,11 +24,13 @@ public class MasqDriveTest extends MasqLinearOpMode implements Constants {
         falcon.initializeAutonomous();
         falcon.driveTrain.setClosedLoop(true);
         while (!opModeIsActive()) {
-            dash.create("lol");
+            dash.create(falcon.magSwitch.getSignalValue());
             dash.update();
         }
         waitForStart();
-        falcon.turnAbsolute(30, Direction.RIGHT);
-        sleep(1);
+        falcon.strafe(90, 10);
+        falcon.strafe(-90, 10);
+        falcon.strafe(0, 10);
+        falcon.strafe(180, 10);
     }
 }

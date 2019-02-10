@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
-import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
@@ -20,10 +18,9 @@ import Library4997.MasqWrappers.MasqController;
 
 public class MasqElevator implements MasqSubSystem {
     private MasqMotor lift;
-    private double targetPosition;
-    private double kp;
+    private boolean magSwitch;
+    private double scorePosition;
 
-    private MasqPIDController output = new MasqPIDController(0.02, 0, 0);
     public MasqElevator (HardwareMap hardwareMap) {
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.FORWARD, hardwareMap);
         lift.resetEncoder();
@@ -31,19 +28,21 @@ public class MasqElevator implements MasqSubSystem {
 
     @Override
     public void DriverControl(MasqController controller) {
-        kp = (5e-7 * -lift.getCurrentPosition()) + 0.001;
         if (controller.rightBumper()) lift.setPower(-1);
         else if (controller.rightTriggerPressed()) lift.setPower(1);
+        else lift.setPower(-0.2);
 
-        if (controller.rightBumper() || controller.rightTriggerPressed()) targetPosition = lift.getCurrentPosition();
-        else {
-          /*  double currentPosition = lift.getCurrentPosition();
-            lift.setPower(output.getOutput(currentPosition, targetPosition)); */
-          lift.setPower(-0.2);
-          //lift.setBreakMode();
-        }
-        output.setKp(kp);
+        if (magSwitch) lift.resetEncoder();
     }
+
+    public boolean isMagSwitch() {
+        return magSwitch;
+    }
+
+    public void setMagSwitch(boolean magSwitch) {
+        this.magSwitch = magSwitch;
+    }
+
     public void runToPosition (Direction direction, double position) {
         double ticksRemaining = Math.abs(position - Math.abs(lift.getCurrentPosition()));
         while (ticksRemaining > 200 && MasqRobot.opModeIsActive()) {

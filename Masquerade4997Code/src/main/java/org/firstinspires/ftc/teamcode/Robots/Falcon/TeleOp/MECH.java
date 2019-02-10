@@ -1,8 +1,13 @@
 package org.firstinspires.ftc.teamcode.Robots.Falcon.TeleOp;
+
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -11,6 +16,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "MECH", group = "NFS")
 public class MECH extends MasqLinearOpMode implements Constants {
+    private boolean prevB = false;
+    private List<Double> times = new ArrayList<>();
     private Falcon falcon = new Falcon();
     @Override
     public void runLinearOpMode()  {
@@ -21,12 +28,17 @@ public class MECH extends MasqLinearOpMode implements Constants {
         falcon.driveTrain.setClosedLoop(true);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
-            dash.create("HELLO ");
+            dash.create(falcon.magSwitch.getState());
             dash.update();
         }
         waitForStart();
+        MasqClock masqClock = new MasqClock();
         while (opModeIsActive()) {
             falcon.MECH(controller1);
+            if (controller2.b() && !prevB) {
+                times.add(masqClock.seconds());
+                masqClock.reset();
+            }
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
             else falcon.collector.setPower(0);
@@ -40,11 +52,16 @@ public class MECH extends MasqLinearOpMode implements Constants {
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
+            falcon.lift.setMagSwitch(falcon.magSwitch.getState());
             falcon.lift.DriverControl(controller1);
-            dash.create("Top: ", falcon.limitTop.isPressed());
-            dash.create("Left: ", falcon.limitBottom.isPressed());
+            int lapNum = 0;
+            for (double d: times) {
+                dash.create(lapNum + ": " + d);
+                lapNum++;
+            }
             dash.update();
             controller1.update();
+            prevB = controller2.b();
         }
     }
 }

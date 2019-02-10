@@ -13,13 +13,11 @@ import Library4997.MasqResources.MasqHelpers.MasqHardware;
  */
 
 public class MasqLimitSwitch implements MasqHardware {
-
     private final DigitalChannel limitSwitch;
     private final String name;
 
     private boolean signalValue;
     private boolean logicalState;
-
 
     public MasqLimitSwitch(String name, HardwareMap hardwareMap) {
         this.name = name;

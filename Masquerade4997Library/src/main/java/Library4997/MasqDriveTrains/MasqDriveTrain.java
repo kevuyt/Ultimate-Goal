@@ -85,6 +85,9 @@ public class MasqDriveTrain implements MasqHardware {
     public double getCurrentPosition() {
         return (leftDrive.getCurrentPosition() + rightDrive.getCurrentPosition())/2;
     }
+    public double getPositiveCurrentPosition() {
+        return (Math.abs(leftDrive.getCurrentPosition()) + Math.abs(rightDrive.getCurrentPosition())) / 2;
+    }
     public double getAbsolutePositon () {
         return (leftDrive.getAbsolutePosition() + rightDrive.getAbsolutePosition())/2;
     }
