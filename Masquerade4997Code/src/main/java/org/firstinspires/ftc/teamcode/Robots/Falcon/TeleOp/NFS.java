@@ -40,7 +40,6 @@ public class NFS extends MasqLinearOpMode implements Constants {
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
-            falcon.lift.DriverControl(controller1);
             dash.update();
             controller1.update();
         }

@@ -17,6 +17,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECH", group = "NFS")
 public class MECH extends MasqLinearOpMode implements Constants {
     private boolean prevB = false;
+    private double scorePosition = 3000;
     private List<Double> times = new ArrayList<>();
     private Falcon falcon = new Falcon();
     @Override
@@ -35,10 +36,31 @@ public class MECH extends MasqLinearOpMode implements Constants {
         MasqClock masqClock = new MasqClock();
         while (opModeIsActive()) {
             falcon.MECH(controller1);
+
+            if (falcon.magSwitch.getState()) {
+                falcon.lift.resetEncoder();
+                scorePosition = falcon.lift.getCurrentPosition();
+            }
             if (controller2.b() && !prevB) {
                 times.add(masqClock.seconds());
                 masqClock.reset();
             }
+
+            if (controller1.rightBumper()) falcon.lift.setPower(1);
+            else if (controller1.rightTriggerPressed()) falcon.lift.setPower(-1);
+            else falcon.lift.setPower(0.2);
+
+            if (controller2.leftTriggerPressed() &&
+                    falcon.lift.getCurrentPosition() < scorePosition
+                    && !falcon.magSwitch.getState()) {
+                falcon.lift.setPower(1);
+            }
+            if (controller2.leftTriggerPressed() &&
+                    falcon.lift.getCurrentPosition() > scorePosition
+                    && !falcon.magSwitch.getState()) {
+                falcon.lift.setPower(-1);
+            }
+
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
             else falcon.collector.setPower(0);
@@ -52,8 +74,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
-            falcon.lift.setMagSwitch(falcon.magSwitch.getState());
-            falcon.lift.DriverControl(controller1);
             int lapNum = 0;
             for (double d: times) {
                 dash.create(lapNum + ": " + d);
