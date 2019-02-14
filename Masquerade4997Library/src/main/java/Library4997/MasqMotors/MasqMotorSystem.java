@@ -154,6 +154,15 @@ public class MasqMotorSystem implements MasqHardware {
         }
         return sum/num;
     }
+    public double getAveragePositivePosition() {
+        double sum = 0;
+        double num = 1;
+        for (MasqMotor motor : motors) {
+            sum += Math.abs(motor.getCurrentPosition());
+            num++;
+        }
+        return sum/num;
+    }
     public double getVelocity(){
         double i = 0;
         double rate = 0;

@@ -28,9 +28,6 @@ public class MasqDriveTest extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.strafe(90, 10);
-        falcon.strafe(-90, 10);
-        falcon.strafe(0, 10);
-        falcon.strafe(180, 10);
+        falcon.strafe(-120, 10);
     }
 }

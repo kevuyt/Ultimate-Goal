@@ -132,7 +132,7 @@ public class MasqMotor implements MasqHardware {
             power = direction.value * speed * ((clicksRemaining / destination) * 1.3);
             power = Range.clip(power, -1.0, +1.0);
             setVelocity(power);
-        } while (opModeIsActive() && Math.abs(clicksRemaining) > 1 && !timeoutTimer.elapsedTime(1, MasqClock.Resolution.SECONDS));
+        } while (opModeIsActive() && Math.abs(clicksRemaining) > 1 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
     }
     boolean isBusy () {
         return motor.isBusy();

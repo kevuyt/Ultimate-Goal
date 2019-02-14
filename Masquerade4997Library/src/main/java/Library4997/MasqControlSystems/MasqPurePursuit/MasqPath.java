@@ -1,5 +1,6 @@
 package Library4997.MasqControlSystems.MasqPurePursuit;
 
+import java.util.Arrays;
 import java.util.List;
 
 import Library4997.MasqWrappers.DashBoard;
@@ -19,6 +20,12 @@ public class MasqPath {
         this.wayPoints = wayPoints;
         end = new MasqVector(wayPoints.get(1).getX() - wayPoints.get(0).getX(),
                 wayPoints.get(1).getY() - wayPoints.get(0).getY());
+    }
+    public MasqPath (double lookAheadDistance, MasqPoint... wayPoints) {
+        this.lookAheadDistance = lookAheadDistance;
+        this.wayPoints = Arrays.asList(wayPoints);
+        end = new MasqVector(wayPoints[1].getX() - wayPoints[0].getX(),
+                wayPoints[1].getY() - wayPoints[0].getY());
     }
     public void updateSystem (MasqPoint robot) {
         MasqVector robotVector = robot.toVector();
