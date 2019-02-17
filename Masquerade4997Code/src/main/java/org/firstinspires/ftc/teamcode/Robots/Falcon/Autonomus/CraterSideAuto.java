@@ -1,10 +1,11 @@
 package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
+
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -14,6 +15,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "CraterSideAuto", group = "Autonomus")
 public class CraterSideAuto extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
+    BlockPlacement blockPlacement;
     private int wallTurn = 130;
     private int sampleTurn;
     public void runLinearOpMode() {
@@ -21,30 +23,32 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
         falcon.driveTrain.setClosedLoop(true);
+        falcon.hang.setBreakMode();
         while (!opModeIsActive()) {
             dash.create("Hello");
             dash.create(falcon.imu);
             dash.update();
         }
         waitForStart();
-        //BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        BlockPlacement blockPlacement = BlockPlacement.LEFT;
+        //grabBlock();
+        BlockPlacement blockPlacement = BlockPlacement.CENTER;
+        unHang();
         falcon.drive(2);
         if (blockPlacement == BlockPlacement.CENTER) travelCenter();
         else if (blockPlacement == BlockPlacement.LEFT) travelLeft();
         else travelRight();
-        scoreSetup();
-        score();
+        //scoreSetup();
+        //score();
         //falcon.goldAlignDetector.disable();
     }
     public void travelCenter() {
-        falcon.strafe(-100, 25);
+        falcon.strafe(-90, 25);
         falcon.strafe(90, 10);
         falcon.setEncoderPID(false);
         falcon.driveAbsoluteAngle(35, 0, 0.8);
         falcon.driveProportional(35,0.1, Direction.LEFT);
         falcon.drive(20);
-        falcon.drive(20, Direction.BACKWARD);
+        falcon.drive(18, Direction.BACKWARD);
         falcon.driveProportional(0, 0.1, Direction.LEFT);
     }
     public void travelLeft() {
@@ -78,14 +82,15 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             @Override
             public void run() {
                 falcon.collector.setPower(.5);
-                falcon.lift.setDistance(6000);
+                falcon.lift.setDistance(2000);
+                falcon.lift.runToPosition(Direction.OUT, 1);
+                falcon.rotator.rotator.unBreakMotors();
+                falcon.lift.setDistance(2000);
                 falcon.lift.runToPosition(Direction.OUT, 1);
                 falcon.lift.setBreakMode();
+                falcon.rotator.rotator.setPower(0);
             }
         });
-        falcon.rotator.rotator.setPower(-1);
-        sleep(1);
-        falcon.rotator.rotator.setPower(0);
         sleep(2);
         falcon.collector.setPower(0);
     }
@@ -100,28 +105,20 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         }, new Runnable() {
             @Override
             public void run() {
-                falcon.lift.setDistance(2000);
-                falcon.lift.runToPosition(Direction.IN, 1);
-                falcon.lift.setBreakMode();
-            }
-        }, new Runnable() {
-            @Override
-            public void run() {
                 falcon.drive(10, Direction.BACKWARD);
             }
         });
-
+        falcon.dumper.setPosition(DUMPER_OUT);
+        sleep(1);
     }
 
-    public void driveToWall (final double distance, int timeout) {
-        falcon.stop(new StopCondition() {
-            @Override
-            public boolean stop() {
-                return false; //falcon.distance.distance(DistanceUnit.INCH) > distance;
-            }
-        }, timeout);
+    public void unHang() {
+        falcon.hang.unBreakMode();
+        while (!falcon.limitBottom.isPressed() && opModeIsActive())
+            falcon.hang.setVelocity(HANG_UP);
+        falcon.hang.setPower(0);
     }
-    public void driveToWall(final double di) {
-        driveToWall(di, 5);
+    public void grabBlock() {
+        blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
     }
 }

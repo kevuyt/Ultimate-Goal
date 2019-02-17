@@ -35,10 +35,10 @@ public class MasqRotator implements MasqSubSystem, Runnable {
         kp = (1e-6 * -liftPosition) + 0.001;
         ki = 0.0;
         kd = 0.0;
-        if (controller.leftTriggerPressed()) rotator.setPower(1);
+        if (controller.rightBumper()) rotator.setPower(1);
         else if (controller.rightTriggerPressed()) rotator.setPower(-1);
 
-        if (controller.rightTrigger() > 0 || controller.leftTrigger() > 0) targetPosition = rotator.getCurrentPosition();
+        if (controller.rightTrigger() > 0 || controller.rightBumper()) targetPosition = rotator.getCurrentPosition();
         else {
             rotator.setPower(0);
             rotator.setBreakMode();

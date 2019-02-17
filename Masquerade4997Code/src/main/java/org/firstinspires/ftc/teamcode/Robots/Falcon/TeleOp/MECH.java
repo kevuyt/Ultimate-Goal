@@ -17,7 +17,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECH", group = "NFS")
 public class MECH extends MasqLinearOpMode implements Constants {
     private boolean prevB = false;
-    private double scorePosition = 3000;
     private List<Double> times = new ArrayList<>();
     private Falcon falcon = new Falcon();
     @Override
@@ -42,8 +41,8 @@ public class MECH extends MasqLinearOpMode implements Constants {
                 masqClock.reset();
             }
 
-            if (controller1.rightBumper()) falcon.lift.setPower(1);
-            else if (controller1.rightTriggerPressed()) falcon.lift.setPower(-1);
+            if (controller1.rightBumper()) falcon.lift.setPower(-1);
+            else if (controller1.rightTriggerPressed()) falcon.lift.setPower(1);
             else {
                 falcon.lift.setPower(0);
                 falcon.lift.setBreakMode();
@@ -58,7 +57,10 @@ public class MECH extends MasqLinearOpMode implements Constants {
 
             if (controller2.leftStickY() < 0 && !falcon.limitTop.isPressed()) falcon.hang.setPower(-1);
             else if (controller2.leftStickY() > 0 && !falcon.limitBottom.isPressed()) falcon.hang.setPower(1);
-            else falcon.hang.setPower(0);
+            else {
+                falcon.hang.setPower(0);
+                falcon.hang.setBreakMode();
+            }
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());

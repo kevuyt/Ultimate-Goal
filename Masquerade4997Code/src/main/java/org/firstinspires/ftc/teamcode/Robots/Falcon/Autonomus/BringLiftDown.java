@@ -12,18 +12,18 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "BringLiftDown", group = "Autonomus")
 public class BringLiftDown extends MasqLinearOpMode implements Constants {
-    Falcon boring = new Falcon();
+    Falcon falcon = new Falcon();
 
     public void runLinearOpMode() throws InterruptedException {
-        boring.mapHardware(hardwareMap);
+        falcon.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
             dash.create("Hello");
-            dash.create(boring.imu);
+            dash.create(falcon.imu);
             dash.update();
         }
         waitForStart();
-        while (!boring.limitTop.isPressed() && opModeIsActive())
-            boring.hang.setVelocity(HANG_DOWN);
-        boring.hang.setPower(0);
+        while (!falcon.limitTop.isPressed() && opModeIsActive())
+            falcon.hang.setVelocity(HANG_DOWN);
+        falcon.hang.setPower(0);
     }
 }

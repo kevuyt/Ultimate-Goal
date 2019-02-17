@@ -141,6 +141,11 @@ public class MasqMotorSystem implements MasqHardware {
             masqMotor.setBreakMode();
         return this;
     }
+    public MasqMotorSystem unBreakMotors(){
+        for (MasqMotor masqMotor: motors)
+            masqMotor.unBreakMode();
+        return this;
+    }
     public MasqMotorSystem runWithoutEncoders() {
         for (MasqMotor masqMotor: motors)
             masqMotor.runWithoutEncoders();

@@ -143,6 +143,9 @@ public class MasqMotor implements MasqHardware {
     public void setBreakMode () {
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
+    public void unBreakMode () {
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+    }
 
     public double getCurrentPosition() {
         return encoder.getRelativePosition();
