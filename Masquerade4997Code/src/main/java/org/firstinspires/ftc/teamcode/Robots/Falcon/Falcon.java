@@ -78,7 +78,7 @@ public class Falcon extends MasqRobot {
         pidPackage.setKpMotorTeleOpLeft(0.0001);
         pidPackage.setKpMotorTeleOpRight(0.0001);
         /*-------------------------------------------------*/
-        pidPackage.setKpTurn(0.01);
+        pidPackage.setKpTurn(0.02);
         pidPackage.setKpDriveEncoder(1.5);
         pidPackage.setKpDriveAngular(0.015);
         /*-------------------------------------------------*/

@@ -12,6 +12,7 @@ import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqWrappers.DashBoard;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -120,7 +121,7 @@ public class MasqMotor implements MasqHardware {
     public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
     public void setDistance (double distance) {
         resetEncoder();
-        destination = distance * encoder.getClicksPerInch();
+        destination = distance;
     }
     public void runToPosition(Direction direction, double speed){
         MasqClock timeoutTimer = new MasqClock();
@@ -129,10 +130,12 @@ public class MasqMotor implements MasqHardware {
         double  power;
         do {
             clicksRemaining = (destination - Math.abs(motor.getCurrentPosition()));
-            power = direction.value * speed * ((clicksRemaining / destination) * 1.3);
+            power = direction.value * speed;
             power = Range.clip(power, -1.0, +1.0);
             setVelocity(power);
-        } while (opModeIsActive() && Math.abs(clicksRemaining) > 1 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
+            DashBoard.getDash().create("CLICK: ", clicksRemaining);
+            DashBoard.getDash().update();
+        } while (opModeIsActive() && Math.abs(clicksRemaining) > 200 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
     }
     boolean isBusy () {
         return motor.isBusy();

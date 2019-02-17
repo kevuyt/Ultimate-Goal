@@ -37,10 +37,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()) {
             falcon.MECH(controller1);
 
-            if (falcon.magSwitch.getState()) {
-                falcon.lift.resetEncoder();
-                scorePosition = falcon.lift.getCurrentPosition();
-            }
             if (controller2.b() && !prevB) {
                 times.add(masqClock.seconds());
                 masqClock.reset();
@@ -48,17 +44,9 @@ public class MECH extends MasqLinearOpMode implements Constants {
 
             if (controller1.rightBumper()) falcon.lift.setPower(1);
             else if (controller1.rightTriggerPressed()) falcon.lift.setPower(-1);
-            else falcon.lift.setPower(0.2);
-
-            if (controller2.leftTriggerPressed() &&
-                    falcon.lift.getCurrentPosition() < scorePosition
-                    && !falcon.magSwitch.getState()) {
-                falcon.lift.setPower(1);
-            }
-            if (controller2.leftTriggerPressed() &&
-                    falcon.lift.getCurrentPosition() > scorePosition
-                    && !falcon.magSwitch.getState()) {
-                falcon.lift.setPower(-1);
+            else {
+                falcon.lift.setPower(0);
+                falcon.lift.setBreakMode();
             }
 
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
@@ -74,11 +62,13 @@ public class MECH extends MasqLinearOpMode implements Constants {
 
             falcon.rotator.DriverControl(controller2);
             falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
-            int lapNum = 0;
+            /*int lapNum = 0;
             for (double d: times) {
                 dash.create(lapNum + ": " + d);
                 lapNum++;
-            }
+            }*/
+            dash.create("1: ", falcon.driveTrain.leftDrive.motor1.getCurrentPosition());
+            dash.create("2: ", falcon.driveTrain.leftDrive.motor2.getCurrentPosition());
             dash.update();
             controller1.update();
             prevB = controller2.b();

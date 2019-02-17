@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -26,33 +25,24 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        while (!falcon.limitBottom.isPressed() && opModeIsActive()) falcon.hang.setVelocity(HANG_UP);
-        falcon.hang.setPower(0);
-        falcon.drive(5);
-        if (blockPlacement == BlockPlacement.RIGHT) {
-            falcon.turnAbsolute(50, Direction.RIGHT);
-            falcon.drive(40, 0.8, Direction.FORWARD);
-            falcon.turnAbsolute(40, Direction.LEFT);
-            falcon.drive(30);
-            sleep(1);
-            falcon.turnAbsolute(50, Direction.RIGHT);
-            falcon.drive(100, Direction.BACKWARD, 3);
-        }
-        else if (blockPlacement == BlockPlacement.CENTER) {
-            falcon.drive(50, 0.8, Direction.FORWARD);
-            falcon.turnAbsolute(70, Direction.RIGHT);
-            sleep(1);
-            falcon.drive(100, Direction.BACKWARD, 4);
-        }
-        else if (blockPlacement == BlockPlacement.LEFT) {
-            falcon.turnAbsolute(50, Direction.LEFT);
-            falcon.drive(40, 0.8, Direction.FORWARD);
-            falcon.turnAbsolute(50, Direction.RIGHT);
-            falcon.drive(20);
-            sleep(1);
-            falcon.drive(100, Direction.BACKWARD, 3);
-        }
+        //BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
+        BlockPlacement blockPlacement = BlockPlacement.RIGHT;
+        falcon.drive(2);
+        if (blockPlacement == BlockPlacement.CENTER) travelCenter();
+        else if (blockPlacement == BlockPlacement.LEFT) travelLeft();
+        else travelRight();
+    }
+    public void travelCenter() {
+        falcon.strafe(-100, 25);
+        falcon.strafe(80, 10);
+    }
+    public void travelLeft() {
+        falcon.strafe(-60, 20);
+        falcon.strafe(110, 10);
+    }
+    public void travelRight() {
+        falcon.strafe(-130, 22);
+        falcon.strafe(50, 5);
     }
     @Override
     public void stopLinearOpMode() {

@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus.Constants;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -28,6 +29,9 @@ public class MasqDriveTest extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.strafe(-120, 10);
+        falcon.rotator.rotator.setPower(0);
+        falcon.rotator.rotator.setBreakMode();
+        falcon.lift.setDistance(3000);
+        falcon.lift.runToPosition(Direction.OUT, 0.8);
     }
 }

@@ -62,6 +62,10 @@ public class MasqRotator implements MasqSubSystem, Runnable {
         return rotator.getPower();
     }
 
+    public double getAngle() {
+        return 0;
+    }
+
     @Override
     public String getName() {
         return null;

@@ -46,9 +46,10 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             threads.get(i).start();
             i++;
         }
-        boolean alive = true;
-        while (opModeIsActive() && alive) {
-            for(Thread t : threads) alive = !t.isAlive();
+        int count = 0;
+        while (opModeIsActive() && count < i) {
+            count = 0;
+            for(Thread t : threads) if (!t.isAlive()) count++;
         }
     }
     public void sleep(int timeSeconds) {
