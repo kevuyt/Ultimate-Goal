@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -22,27 +23,38 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
         while (!opModeIsActive()) {
             dash.create(falcon.goldAlignDetector.getXPosition());
             dash.create(falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition()).toString());
+            dash.create("LIFT: ", falcon.lift.getCurrentPosition());
             dash.update();
         }
         waitForStart();
-        //BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
-        BlockPlacement blockPlacement = BlockPlacement.RIGHT;
+        BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
+        //BlockPlacement blockPlacement = BlockPlacement.RIGHT;
         falcon.drive(2);
         if (blockPlacement == BlockPlacement.CENTER) travelCenter();
         else if (blockPlacement == BlockPlacement.LEFT) travelLeft();
         else travelRight();
+        falcon.turnAbsolute(90, Direction.RIGHT);
+        falcon.rotator.rotator.setBreakMode();
+        dropMarker();
     }
     public void travelCenter() {
-        falcon.strafe(-100, 25);
-        falcon.strafe(80, 10);
+        falcon.strafe(-90, 20);
+        falcon.strafe(90, 10);
     }
     public void travelLeft() {
-        falcon.strafe(-60, 20);
-        falcon.strafe(110, 10);
+        falcon.strafe(-70, 22);
+        falcon.strafe(110, 11);
     }
     public void travelRight() {
         falcon.strafe(-130, 22);
-        falcon.strafe(50, 5);
+        falcon.strafe(50, 15);
+    }
+    public void dropMarker() {
+        falcon.lift.runToPosition(80, 1);
+        falcon.collector.setPower(.5);
+        sleep();
+        falcon.collector.setPower(-.5);
+        falcon.lift.runToPosition(-80, 1);
     }
     @Override
     public void stopLinearOpMode() {

@@ -35,7 +35,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
         MasqClock masqClock = new MasqClock();
         while (opModeIsActive()) {
             falcon.MECH(controller1);
-
             if (controller2.b() && !prevB) {
                 times.add(masqClock.seconds());
                 masqClock.reset();

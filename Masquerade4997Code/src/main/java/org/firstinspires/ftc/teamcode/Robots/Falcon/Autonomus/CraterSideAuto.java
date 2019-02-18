@@ -25,14 +25,15 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         falcon.driveTrain.setClosedLoop(true);
         falcon.hang.setBreakMode();
         while (!opModeIsActive()) {
-            dash.create("Hello");
+            dash.create(falcon.goldAlignDetector.getXPosition());
+            dash.create(falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition()).toString());
+            dash.update();
             dash.create(falcon.imu);
             dash.update();
         }
         waitForStart();
-        //grabBlock();
-        BlockPlacement blockPlacement = BlockPlacement.CENTER;
-        unHang();
+        grabBlock();
+        //unHang();
         falcon.drive(2);
         if (blockPlacement == BlockPlacement.CENTER) travelCenter();
         else if (blockPlacement == BlockPlacement.LEFT) travelLeft();
@@ -42,31 +43,31 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
         //falcon.goldAlignDetector.disable();
     }
     public void travelCenter() {
-        falcon.strafe(-90, 25);
-        falcon.strafe(90, 10);
+        falcon.strafe(-90, 20);
+        falcon.strafe(90, 7);
         falcon.setEncoderPID(false);
         falcon.driveAbsoluteAngle(35, 0, 0.8);
         falcon.driveProportional(35,0.1, Direction.LEFT);
-        falcon.drive(20);
-        falcon.drive(18, Direction.BACKWARD);
+        falcon.drive(25);
+        falcon.drive(23, Direction.BACKWARD);
         falcon.driveProportional(0, 0.1, Direction.LEFT);
     }
     public void travelLeft() {
-        falcon.strafe(-100, 25);
+        falcon.strafe(-60, 20);
         falcon.setEncoderPID(false);
-        falcon.driveProportional(40,0.3, Direction.LEFT);
+        falcon.driveProportional(40,0.2, Direction.LEFT);
         falcon.drive(40);
         falcon.drive(35, Direction.BACKWARD);
         falcon.driveProportional(0, 0.1, Direction.LEFT);
     }
     public void travelRight() {
-        falcon.strafe(-120, 25);
-        falcon.strafe(70, 10);
+        falcon.strafe(-120, 22);
+        falcon.strafe(60, 10);
         falcon.setEncoderPID(false);
-        falcon.driveAbsoluteAngle(35, 0, 0.8);
-        falcon.driveProportional(35,0.1, Direction.LEFT);
-        falcon.drive(20);
-        falcon.drive(20, Direction.BACKWARD);
+        falcon.driveAbsoluteAngle(40, 0, 0.8);
+        falcon.driveProportional(35,0.3, Direction.LEFT);
+        falcon.driveAbsoluteAngle(15, 45);
+        falcon.drive(15, Direction.BACKWARD);
         falcon.driveProportional(0, 0.1, Direction.LEFT);
     }
     public void scoreSetup() {
@@ -83,10 +84,10 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
             public void run() {
                 falcon.collector.setPower(.5);
                 falcon.lift.setDistance(2000);
-                falcon.lift.runToPosition(Direction.OUT, 1);
+                //falcon.lift.runToPosition(Direction.OUT, 1);
                 falcon.rotator.rotator.unBreakMotors();
                 falcon.lift.setDistance(2000);
-                falcon.lift.runToPosition(Direction.OUT, 1);
+                //falcon.lift.runToPosition(Direction.OUT, 1);
                 falcon.lift.setBreakMode();
                 falcon.rotator.rotator.setPower(0);
             }
@@ -114,8 +115,8 @@ public class CraterSideAuto extends MasqLinearOpMode implements Constants {
 
     public void unHang() {
         falcon.hang.unBreakMode();
-        while (!falcon.limitBottom.isPressed() && opModeIsActive())
-            falcon.hang.setVelocity(HANG_UP);
+        while (!falcon.limitTop.isPressed() && opModeIsActive())
+            falcon.hang.setVelocity(HANG_DOWN);
         falcon.hang.setPower(0);
     }
     public void grabBlock() {

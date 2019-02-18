@@ -153,9 +153,9 @@ public class Falcon extends MasqRobot {
         };
     }
     public BlockPlacement getBlockPlacement (int block) {
-        if (!goldAlignDetector.isFound()) return BlockPlacement.RIGHT;
+        if (!goldAlignDetector.isFound()) return BlockPlacement.LEFT;
         else if (block > 300) return BlockPlacement.CENTER;
-        else return BlockPlacement.LEFT;
+        else return BlockPlacement.RIGHT;
     }
 
 }

@@ -3,16 +3,13 @@ package Library4997.MasqMotors;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqWrappers.DashBoard;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -123,19 +120,19 @@ public class MasqMotor implements MasqHardware {
         resetEncoder();
         destination = distance;
     }
-    public void runToPosition(Direction direction, double speed){
-        MasqClock timeoutTimer = new MasqClock();
+    public void runToPosition(int inches, double speed){
+        MasqClock clock = new MasqClock();
         resetEncoder();
-        double clicksRemaining;
-        double  power;
-        do {
-            clicksRemaining = (destination - Math.abs(motor.getCurrentPosition()));
-            power = direction.value * speed;
-            power = Range.clip(power, -1.0, +1.0);
-            setVelocity(power);
-            DashBoard.getDash().create("CLICK: ", clicksRemaining);
-            DashBoard.getDash().update();
-        } while (opModeIsActive() && Math.abs(clicksRemaining) > 200 && !timeoutTimer.elapsedTime(2, MasqClock.Resolution.SECONDS));
+        double clicks = -inches * encoder.getClicksPerInch();
+        motor.setTargetPosition((int) clicks);
+        motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        setVelocity(speed);
+        while (opModeIsActive() && motor.isBusy() &&
+                !clock.elapsedTime(5, MasqClock.Resolution.SECONDS)) {
+
+        }
+        setVelocity(0);
+        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
     boolean isBusy () {
         return motor.isBusy();
