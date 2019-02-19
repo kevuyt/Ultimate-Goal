@@ -126,7 +126,7 @@ public abstract class MasqRobot {
             dash.create("ERROR: ", clicksRemaining);
             dash.update();
             prevAngularError = angularError;
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && ((clicksRemaining / targetClicks) > 0.05));
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && ((clicksRemaining / targetClicks) > 0.1));
         //serializer.close();
         driveTrain.stopDriving();
         sleep(sleepTime);
@@ -151,7 +151,7 @@ public abstract class MasqRobot {
         double rightRatio = 1, leftRatio = 1;
         if (direction == Direction.RIGHT) rightRatio = ratio;
         else leftRatio = ratio;
-        while (opModeIsActive() && Math.abs(out) > 0.1 && !clock.elapsedTime(3, MasqClock.Resolution.SECONDS)) {
+        while (opModeIsActive() && Math.abs(out) > 0.1 && !clock.elapsedTime(1, MasqClock.Resolution.SECONDS)) {
             out = controller.getOutput(tracker.imu.getAbsoluteHeading(), angle);
             driveTrain.setVelocity(out * leftRatio, out * rightRatio);
             dash.create("OUT: ", out);
@@ -160,7 +160,7 @@ public abstract class MasqRobot {
         //driveTrain.setVelocity(0);
     }
     public void driveProportional(double angle, double ratio, Direction direction) {
-        driveProportional(angle, ratio, direction, 0.05);
+        driveProportional(angle, ratio, direction, 0.03);
     }
 
     public void turnRelative(double angle, Direction direction, double timeOut, int sleepTime, double kp, double ki, double kd, boolean left, boolean right) {
@@ -431,10 +431,12 @@ public abstract class MasqRobot {
         angle = Math.toRadians(angle);
         MasqClock clock = new MasqClock();
         double adjustedAngle = angle + Math.PI/4;
-        double leftFront = (Math.sin(adjustedAngle) * 1.4);
-        double leftBack = (Math.cos(adjustedAngle) * 1.4);
-        double rightFront = (Math.cos(adjustedAngle) * 1.4);
-        double rightBack = (Math.sin(adjustedAngle) * 1.4);
+        double leftFront = (Math.sin(adjustedAngle) * 1.1);
+        double leftBack = (Math.cos(adjustedAngle) * 1.1);
+        double rightFront = (Math.cos(adjustedAngle) * 1.1);
+        double rightBack = (Math.sin(adjustedAngle) * 1.1);
+        double targetAngle = tracker.getHeading();
+        double angularError;
         double max = MasqUtils.max(Math.abs(leftFront), Math.abs(leftBack), Math.abs(rightFront), Math.abs(rightBack));
         if (max > 1) {
             leftFront /= max;
@@ -445,14 +447,14 @@ public abstract class MasqRobot {
         while (opModeIsActive() && out > 0.1 && !clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             out = Math.abs(driveTrain.leftDrive.getAveragePositivePosition()) / (distance * driveTrain.getEncoder().getClicksPerInch());
             out = 1 - out;
-            driveTrain.leftDrive.motor1.setVelocity(leftFront);
-            driveTrain.leftDrive.motor2.setVelocity(leftBack);
-            driveTrain.rightDrive.motor1.setVelocity(rightFront);
-            driveTrain.rightDrive.motor2.setVelocity(rightBack);
+            angularError = tracker.getHeading() - targetAngle;
+            angularError *= 0.01;
+            driveTrain.leftDrive.motor1.setVelocity(leftFront - ((leftFront / Math.abs(leftFront)) * angularError));
+            driveTrain.leftDrive.motor2.setVelocity(leftBack - ((leftBack / Math.abs(leftBack)) * angularError));
+            driveTrain.rightDrive.motor1.setVelocity(rightFront + ((rightFront / Math.abs(rightFront)) * angularError));
+            driveTrain.rightDrive.motor2.setVelocity(rightBack + ((rightBack / Math.abs(rightBack)) * angularError));
             dash.create("OUT: ", out);
-            dash.create("POS: ", driveTrain.leftDrive.getAveragePositivePosition());
-            dash.create("1: ", driveTrain.leftDrive.motor1.getAbsolutePosition());
-            dash.create("2: ", driveTrain.leftDrive.motor2.getAbsolutePosition());
+            dash.create("Angular Error: ", angularError);
             dash.update();
         }
         driveTrain.setVelocity(0);
@@ -538,7 +540,7 @@ public abstract class MasqRobot {
         double angle = Math.atan2(y, x);
         double adjustedAngle = angle + Math.PI/4;
         double speedMultiplier = 1.4;
-        double turnMultiplier = 1;
+        double turnMultiplier = 1.4;
         double speedMagnitude = Math.hypot(x, y);
         double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) - xR * turnMultiplier * direction.value;
         double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;

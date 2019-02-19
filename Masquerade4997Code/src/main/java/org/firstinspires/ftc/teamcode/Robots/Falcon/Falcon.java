@@ -13,7 +13,6 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqVector;
 import Library4997.MasqDriveTrains.MasqDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.Direction;
@@ -55,7 +54,7 @@ public class Falcon extends MasqRobot {
         magSwitch = new MasqLimitSwitch("magSwitch", hardwareMap);
         limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
         limitTop = new MasqLimitSwitch("limitTop", hardwareMap);
-        driveTrain = new MasqDriveTrain(hardwareMap, MasqMotorModel.NEVEREST40);
+        driveTrain = new MasqDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
         tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
         rotator = new MasqRotator(hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
@@ -63,6 +62,7 @@ public class Falcon extends MasqRobot {
         collector = new MasqCRServo("collector", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
         markerDump = new MasqServo("markerDump", hardwareMap);
+        lift.resetEncoder();
         hang.setClosedLoop(true);
         hang.setKp(0.01);
         hang.setLimits(limitBottom, limitTop);
@@ -78,8 +78,8 @@ public class Falcon extends MasqRobot {
         pidPackage.setKpMotorTeleOpLeft(0.0001);
         pidPackage.setKpMotorTeleOpRight(0.0001);
         /*-------------------------------------------------*/
-        pidPackage.setKpTurn(0.02);
-        pidPackage.setKpDriveEncoder(1.5);
+        pidPackage.setKpTurn(0.015);
+        pidPackage.setKpDriveEncoder(2);
         pidPackage.setKpDriveAngular(0.015);
         /*-------------------------------------------------*/
         pidPackage.setKiMotorAutoLeft(0.0000);
@@ -143,18 +143,9 @@ public class Falcon extends MasqRobot {
         driveTrain.setPower(0);
     }
 
-    public double[] getRotatorCoordinates (double x, double y) {
-        MasqVector currentPoint = new MasqVector(4, 4);
-        MasqVector dest = new MasqVector(x, y);
-        double angle = Math.toDegrees(Math.acos(dest.angle(currentPoint)));
-        if (x < y) angle = -angle;
-        return new double[]{
-                angle, dest.distanceToVector(currentPoint)
-        };
-    }
     public BlockPlacement getBlockPlacement (int block) {
         if (!goldAlignDetector.isFound()) return BlockPlacement.LEFT;
-        else if (block > 300) return BlockPlacement.CENTER;
+        else if (block > 150) return BlockPlacement.CENTER;
         else return BlockPlacement.RIGHT;
     }
 

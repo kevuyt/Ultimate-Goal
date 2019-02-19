@@ -43,7 +43,7 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
     }
     public void travelLeft() {
         falcon.strafe(-70, 22);
-        falcon.strafe(110, 11);
+        falcon.strafe(80, 11);
     }
     public void travelRight() {
         falcon.strafe(-130, 22);

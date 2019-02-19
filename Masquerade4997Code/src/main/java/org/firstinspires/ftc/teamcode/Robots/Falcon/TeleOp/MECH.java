@@ -25,6 +25,7 @@ public class MECH extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.initializeTeleop();
         falcon.hang.setClosedLoop(true);
+        falcon.rotator.setLimitSwitch(falcon.magSwitch);
         falcon.driveTrain.setClosedLoop(true);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
@@ -62,12 +63,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
             }
 
             falcon.rotator.DriverControl(controller2);
-            falcon.rotator.setLiftPosition(falcon.lift.getCurrentPosition());
-            /*int lapNum = 0;
-            for (double d: times) {
-                dash.create(lapNum + ": " + d);
-                lapNum++;
-            }*/
             dash.create("1: ", falcon.driveTrain.leftDrive.motor1.getCurrentPosition());
             dash.create("2: ", falcon.driveTrain.leftDrive.motor2.getCurrentPosition());
             dash.update();
