@@ -43,7 +43,7 @@ public class Falcon extends MasqRobot {
     public MasqVoltageSensor voltageSensor;
     public MasqClock clock;
     public MasqMotor hang;
-    public MasqLimitSwitch magSwitch;
+    public MasqLimitSwitch rotateTopLimit, rotateDownLimit;
     private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
     public DogeForia dogeForia;
@@ -51,7 +51,8 @@ public class Falcon extends MasqRobot {
         voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
         imu = new MasqAdafruitIMU("imu", hardwareMap);
-        magSwitch = new MasqLimitSwitch("magSwitch", hardwareMap);
+        rotateTopLimit = new MasqLimitSwitch("rotateTopLimit", hardwareMap);
+        rotateDownLimit = new MasqLimitSwitch("rotateDownLimit", hardwareMap);
         limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
         limitTop = new MasqLimitSwitch("limitTop", hardwareMap);
         driveTrain = new MasqDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
@@ -62,6 +63,7 @@ public class Falcon extends MasqRobot {
         collector = new MasqCRServo("collector", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
         markerDump = new MasqServo("markerDump", hardwareMap);
+        driveTrain.resetEncoders();
         lift.resetEncoder();
         hang.setClosedLoop(true);
         hang.setKp(0.01);
@@ -78,8 +80,8 @@ public class Falcon extends MasqRobot {
         pidPackage.setKpMotorTeleOpLeft(0.0001);
         pidPackage.setKpMotorTeleOpRight(0.0001);
         /*-------------------------------------------------*/
-        pidPackage.setKpTurn(0.015);
-        pidPackage.setKpDriveEncoder(2);
+        pidPackage.setKpTurn(0.01);
+        pidPackage.setKpDriveEncoder(1.5);
         pidPackage.setKpDriveAngular(0.015);
         /*-------------------------------------------------*/
         pidPackage.setKiMotorAutoLeft(0.0000);
@@ -144,8 +146,8 @@ public class Falcon extends MasqRobot {
     }
 
     public BlockPlacement getBlockPlacement (int block) {
-        if (!goldAlignDetector.isFound()) return BlockPlacement.LEFT;
-        else if (block > 150) return BlockPlacement.CENTER;
+        if (block > 450) return BlockPlacement.LEFT;
+        else if (block > 250) return BlockPlacement.CENTER;
         else return BlockPlacement.RIGHT;
     }
 

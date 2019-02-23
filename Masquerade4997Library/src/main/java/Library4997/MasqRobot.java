@@ -68,8 +68,8 @@ public abstract class MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
-            dash.create("LEFT POWER: ",leftPower);
-            dash.create("RIGHT POWER: ",rightPower);
+            dash.create("LEFT POWER: ", leftPower);
+            dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
             dash.update();
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
@@ -157,7 +157,7 @@ public abstract class MasqRobot {
             dash.create("OUT: ", out);
             dash.update();
         }
-        //driveTrain.setVelocity(0);
+        driveTrain.setVelocity(0);
     }
     public void driveProportional(double angle, double ratio, Direction direction) {
         driveProportional(angle, ratio, direction, 0.03);
@@ -423,7 +423,7 @@ public abstract class MasqRobot {
         stop(stopCondition, tracker.getHeading(), 0.5, Direction.FORWARD, timeout);
     }
 
-    public void strafe(double angle, double distance, double timeout) {
+    public void strafe(double angle, double distance, double timeout, double absAngle, double speed) {
         angle = -angle;
         double out;
         driveTrain.resetEncoders();
@@ -431,11 +431,10 @@ public abstract class MasqRobot {
         angle = Math.toRadians(angle);
         MasqClock clock = new MasqClock();
         double adjustedAngle = angle + Math.PI/4;
-        double leftFront = (Math.sin(adjustedAngle) * 1.1);
-        double leftBack = (Math.cos(adjustedAngle) * 1.1);
-        double rightFront = (Math.cos(adjustedAngle) * 1.1);
-        double rightBack = (Math.sin(adjustedAngle) * 1.1);
-        double targetAngle = tracker.getHeading();
+        double leftFront = (Math.sin(adjustedAngle)) * speed;
+        double leftBack = (Math.cos(adjustedAngle)) * speed;
+        double rightFront = (Math.cos(adjustedAngle)) * speed;
+        double rightBack = (Math.sin(adjustedAngle)) * speed;
         double angularError;
         double max = MasqUtils.max(Math.abs(leftFront), Math.abs(leftBack), Math.abs(rightFront), Math.abs(rightBack));
         if (max > 1) {
@@ -447,20 +446,29 @@ public abstract class MasqRobot {
         while (opModeIsActive() && out > 0.1 && !clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             out = Math.abs(driveTrain.leftDrive.getAveragePositivePosition()) / (distance * driveTrain.getEncoder().getClicksPerInch());
             out = 1 - out;
-            angularError = tracker.getHeading() - targetAngle;
-            angularError *= 0.01;
-            driveTrain.leftDrive.motor1.setVelocity(leftFront - ((leftFront / Math.abs(leftFront)) * angularError));
-            driveTrain.leftDrive.motor2.setVelocity(leftBack - ((leftBack / Math.abs(leftBack)) * angularError));
-            driveTrain.rightDrive.motor1.setVelocity(rightFront + ((rightFront / Math.abs(rightFront)) * angularError));
-            driveTrain.rightDrive.motor2.setVelocity(rightBack + ((rightBack / Math.abs(rightBack)) * angularError));
+            angularError = tracker.getHeading() - absAngle;
+            angularError *= 0;
+            driveTrain.leftDrive.motor1.setVelocity(leftFront + ((leftFront / Math.abs(leftFront)) * angularError));
+            driveTrain.leftDrive.motor2.setVelocity(leftBack + ((leftBack / Math.abs(leftBack)) * angularError));
+            driveTrain.rightDrive.motor1.setVelocity(rightFront - ((rightFront / Math.abs(rightFront)) * angularError));
+            driveTrain.rightDrive.motor2.setVelocity(rightBack - ((rightBack / Math.abs(rightBack)) * angularError));
             dash.create("OUT: ", out);
             dash.create("Angular Error: ", angularError);
             dash.update();
         }
         driveTrain.setVelocity(0);
     }
+    public void strafe(double angle, double distance, int absAngle) {
+        strafe(angle, distance, 4, absAngle, 1);
+    }
     public void strafe(double angle, double distance) {
-        strafe(angle, distance, 4);
+        strafe(angle, distance, 4, tracker.getHeading(), 1);
+    }
+    public void strafe(double angle, double distance, double speed) {
+        strafe(angle, distance, 4, tracker.getHeading(), speed);
+    }
+    public void strafe(double angle, double distance, int absAngle, double speed) {
+        strafe(angle, distance, 4, absAngle, speed);
     }
 
     public void executePath (MasqPath path, Direction dir, double baseSpeed) {

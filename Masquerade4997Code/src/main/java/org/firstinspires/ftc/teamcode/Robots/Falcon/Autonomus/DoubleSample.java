@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
@@ -14,6 +15,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @Autonomous(name = "DoubleSample", group = "Autonomus")
+@Disabled
 public class DoubleSample extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
     private int wallTurn = 130;

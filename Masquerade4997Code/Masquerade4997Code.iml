@@ -194,5 +194,13 @@
     <orderEntry type="module" module-name="openCVLibrary3" />
     <orderEntry type="module" module-name="Masquerade4997Library" />
     <orderEntry type="module" module-name="FtcRobotController" />
+    <orderEntry type="module" module-name="DogeCV" />
+    <orderEntry type="module" module-name="openCVLibrary3" />
+    <orderEntry type="module" module-name="Masquerade4997Library" />
+    <orderEntry type="module" module-name="FtcRobotController" />
+    <orderEntry type="module" module-name="DogeCV" />
+    <orderEntry type="module" module-name="openCVLibrary3" />
+    <orderEntry type="module" module-name="Masquerade4997Library" />
+    <orderEntry type="module" module-name="FtcRobotController" />
   </component>
 </module>

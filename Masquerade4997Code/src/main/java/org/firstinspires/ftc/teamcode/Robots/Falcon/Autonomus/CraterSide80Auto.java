@@ -6,6 +6,7 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -17,111 +18,70 @@ public class CraterSide80Auto extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
     BlockPlacement blockPlacement;
     public void runLinearOpMode() {
-         falcon.mapHardware(hardwareMap);
+        falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
-        falcon.driveTrain.setClosedLoop(true);
         falcon.hang.setBreakMode();
+        falcon.tracker.imu.reset();
+        falcon.hang.setPower(0);
         while (!opModeIsActive()) {
             dash.create(falcon.goldAlignDetector.getXPosition());
             dash.create(falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition()).toString());
-            dash.create(falcon.imu);
             dash.update();
         }
         waitForStart();
         grabBlock();
         falcon.rotator.rotator.setBreakMode();
-        //unHang();
+        unHang();
         falcon.drive(2);
         if (blockPlacement == BlockPlacement.CENTER) travelCenter();
         else if (blockPlacement == BlockPlacement.LEFT) travelLeft();
         else travelRight();
         falcon.driveTrain.setVelocity(0);
-        falcon.driveProportional(0, 0.1, Direction.LEFT);
-        falcon.drive(30, Direction.BACKWARD);
-        falcon.turnAbsolute(90, Direction.RIGHT);
-        falcon.lift.runToPosition(40, 1);
-        //scoreSetup();
-        //score();
-        //falcon.goldAlignDetector.disable();
+        falcon.turnRelative(90, Direction.RIGHT);
+        falcon.lift.runToPosition(80, 1);
+        falcon.goldAlignDetector.disable();
     }
     public void travelCenter() {
-        falcon.strafe(-90, 20);
-        falcon.strafe(90, 10);
+        falcon.strafe(-95, 17, 0, 0.6);
+        falcon.strafe(90, 5, 0, 0.6);
         falcon.driveAbsoluteAngle(30, 0);
-        falcon.driveProportional(45,0.1, Direction.LEFT);
+        falcon.driveProportional(40,0.15, Direction.LEFT);
         falcon.collector.setPower(-.5);
-        falcon.drive(15);
-        falcon.drive(15, Direction.BACKWARD);
+        falcon.drive(27);
+        falcon.drive(17, Direction.BACKWARD);
         falcon.collector.setPower(0);
         falcon.driveProportional(0, 0.1, Direction.LEFT);
     }
     public void travelLeft() {
-        falcon.strafe(-70, 20);
-        falcon.driveProportional(40,0.2, Direction.LEFT);
+        falcon.strafe(-90, 12, 0, 0.7);
+        falcon.drive(8);
+        falcon.strafe(-90, 8, 0, 0.7);
+        falcon.driveProportional(40,0.1, Direction.LEFT);
         falcon.collector.setPower(-.5);
-        falcon.drive(35);
-        falcon.drive(20, Direction.BACKWARD);
+        falcon.drive(37);
+        falcon.drive(13, Direction.BACKWARD);
         falcon.collector.setPower(0);
         falcon.driveProportional(0, 0.1, Direction.LEFT);
     }
     public void travelRight() {
-        falcon.strafe(-120, 20);
-        falcon.strafe(60, 7);
-        falcon.driveAbsoluteAngle(35, 0, 0.8);
-        falcon.driveProportional(45,0.1, Direction.LEFT);
+        falcon.strafe(-90, 9, 0, 0.8);
+        falcon.drive(15, Direction.BACKWARD);
+        falcon.strafe(-90, 10, 0, 0.8);
+        falcon.strafe(90, 8, 0, 0.8);
+        falcon.driveAbsoluteAngle(50, 0, 0.8);
+        falcon.driveProportional(40,0.1, Direction.LEFT);
         falcon.collector.setPower(-.5);
         falcon.drive(20);
-        falcon.drive(12, Direction.BACKWARD);
+        falcon.drive(15, Direction.BACKWARD);
         falcon.collector.setPower(0);
         falcon.driveProportional(0, 0.1, Direction.LEFT);
     }
-    public void scoreSetup() {
-        falcon.rotator.rotator.setPower(0);
-        falcon.rotator.rotator.setBreakMode();
-        falcon.driveAbsoluteAngle(20, 0, 0.8, Direction.BACKWARD);
-        runSimultaneously(new Runnable() {
-            @Override
-            public void run() {
-                falcon.turnAbsolute(90, Direction.RIGHT);
-            }
-        }, new Runnable() {
-            @Override
-            public void run() {
-                falcon.collector.setPower(.5);
-                falcon.lift.setDistance(2000);
-                //falcon.lift.runToPosition(Direction.OUT, 1);
-                falcon.rotator.rotator.unBreakMotors();
-                falcon.lift.setDistance(2000);
-                //falcon.lift.runToPosition(Direction.OUT, 1);
-                falcon.lift.setBreakMode();
-                falcon.rotator.rotator.setPower(0);
-            }
-        });
-        sleep(2);
-        falcon.collector.setPower(0);
-    }
-    public void score() {
-        runSimultaneously(new Runnable() {
-            @Override
-            public void run() {
-                falcon.rotator.rotator.setPower(Direction.UP.value * 1);
-                sleep(2);
-                falcon.rotator.rotator.setPower(0);
-            }
-        }, new Runnable() {
-            @Override
-            public void run() {
-                falcon.drive(10, Direction.BACKWARD);
-            }
-        });
-        falcon.dumper.setPosition(DUMPER_OUT);
-        sleep(1);
-    }
 
     public void unHang() {
+        MasqClock clock = new MasqClock();
         falcon.hang.unBreakMode();
-        while (!falcon.limitTop.isPressed() && opModeIsActive())
-            falcon.hang.setVelocity(HANG_DOWN);
+        while (opModeIsActive() && !falcon.limitTop.isPressed() && !clock.elapsedTime(3, MasqClock.Resolution.SECONDS))
+            falcon.hang.setPower(-1);
         falcon.hang.setPower(0);
     }
     public void grabBlock() {

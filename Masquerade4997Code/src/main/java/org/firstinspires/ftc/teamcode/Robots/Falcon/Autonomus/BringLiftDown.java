@@ -15,15 +15,16 @@ public class BringLiftDown extends MasqLinearOpMode implements Constants {
     Falcon falcon = new Falcon();
 
     public void runLinearOpMode() throws InterruptedException {
+        falcon.setStartOpenCV(false);
         falcon.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("Hello");
-            dash.create(falcon.imu);
+            dash.create(falcon.limitBottom.isPressed());
+            dash.create(falcon.limitTop.isPressed());
             dash.update();
         }
         waitForStart();
-        while (!falcon.limitTop.isPressed() && opModeIsActive())
-            falcon.hang.setVelocity(HANG_DOWN);
+        falcon.hang.unBreakMode();
+        while (opModeIsActive() && !falcon.limitBottom.isPressed()) falcon.hang.setPower(1);
         falcon.hang.setPower(0);
     }
 }

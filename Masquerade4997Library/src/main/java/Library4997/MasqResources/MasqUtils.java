@@ -17,7 +17,7 @@ public class MasqUtils implements API_KEYS {
     public static final double MECH_DRIVE_MULTIPLIER = 1.4;
     public static final double MECH_ROTATION_MULTIPLIER = 0.4;
     public static final int DEFAULT_SLEEP_TIME = 0;
-    public static final double DEFAULT_TIMEOUT = 3;
+    public static final double DEFAULT_TIMEOUT = 2;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = API_KEYS.VUFORIA_KEY;
 

@@ -24,7 +24,7 @@ public class MasqDriveTest extends MasqLinearOpMode implements Constants {
         falcon.initializeAutonomous();
         falcon.driveTrain.setClosedLoop(true);
         while (!opModeIsActive()) {
-            dash.create(falcon.magSwitch.getSignalValue());
+            dash.create(falcon.rotateTopLimit.getSignalValue());
             dash.update();
         }
         waitForStart();

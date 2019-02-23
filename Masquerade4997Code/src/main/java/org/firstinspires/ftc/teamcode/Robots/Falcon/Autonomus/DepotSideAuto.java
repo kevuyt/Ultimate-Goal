@@ -20,41 +20,78 @@ public class DepotSideAuto extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() {
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
+        falcon.hang.setBreakMode();
+        falcon.hang.setPower(0);
         while (!opModeIsActive()) {
             dash.create(falcon.goldAlignDetector.getXPosition());
             dash.create(falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition()).toString());
             dash.create("LIFT: ", falcon.lift.getCurrentPosition());
+            dash.create(falcon.driveTrain.leftDrive.motor1.getCurrentPosition());
+            dash.create(falcon.driveTrain.leftDrive.motor2.getCurrentPosition());
+            dash.create(falcon.driveTrain.rightDrive.motor1.getCurrentPosition());
+            dash.create(falcon.driveTrain.rightDrive.motor2.getCurrentPosition());
             dash.update();
         }
         waitForStart();
+        unHang();
         BlockPlacement blockPlacement = falcon.getBlockPlacement((int) falcon.goldAlignDetector.getXPosition());
         //BlockPlacement blockPlacement = BlockPlacement.RIGHT;
         falcon.drive(2);
         if (blockPlacement == BlockPlacement.CENTER) travelCenter();
         else if (blockPlacement == BlockPlacement.LEFT) travelLeft();
         else travelRight();
-        falcon.turnAbsolute(90, Direction.RIGHT);
-        falcon.rotator.rotator.setBreakMode();
-        dropMarker();
+
     }
     public void travelCenter() {
-        falcon.strafe(-90, 20);
-        falcon.strafe(90, 10);
+        falcon.strafe(-90, 25, 0, 0.6);
+        falcon.strafe(90, 10, 0, 0.6);
+        falcon.turnAbsolute(90, Direction.RIGHT);
+        falcon.rotator.rotator.setBreakMode();
+        falcon.rotator.rotator.setPower(0);
+        dropMarker();
+        falcon.turnAbsolute(0, Direction.LEFT);
+        falcon.drive(25);
+        falcon.turnAbsolute(40, Direction.LEFT);
+        falcon.lift.runToPosition(100, 1);
     }
     public void travelLeft() {
-        falcon.strafe(-70, 22);
-        falcon.strafe(80, 11);
+        falcon.strafe(-90, 12, 0, 0.7);
+        falcon.turnAbsolute(90, Direction.RIGHT);
+        falcon.rotator.rotator.setBreakMode();
+        falcon.rotator.rotator.setPower(0);
+        dropMarker();
+        falcon.turnAbsolute(0, Direction.LEFT);
+        falcon.drive(8);
+        falcon.strafe(-90, 15, 0, 0.7);
+        falcon.turnRelative(30, Direction.LEFT);
+        falcon.lift.runToPosition(100, 1);
+        falcon.drive(15);
     }
     public void travelRight() {
-        falcon.strafe(-130, 22);
-        falcon.strafe(50, 15);
+        falcon.strafe(-90, 12, 0, 0.7);
+        falcon.turnAbsolute(90, Direction.RIGHT);
+        falcon.rotator.rotator.setBreakMode();
+        falcon.rotator.rotator.setPower(0);
+        dropMarker();
+        falcon.turnAbsolute(0, Direction.LEFT);
+        falcon.drive(15, Direction.BACKWARD);
+        falcon.strafe(-90, 13, 0, 0.7);
+        falcon.strafe(90, 12, 0, 0.7);
+        falcon.drive(43);
+        falcon.turnRelative(30, Direction.LEFT);
+        falcon.lift.runToPosition(100, 1);
     }
     public void dropMarker() {
-        falcon.lift.runToPosition(80, 1);
-        falcon.collector.setPower(.5);
-        sleep();
+        falcon.lift.runToPosition(100, 1);
         falcon.collector.setPower(-.5);
-        falcon.lift.runToPosition(-80, 1);
+        sleep(3);
+        falcon.collector.setPower(0);
+        falcon.lift.runToPosition(-70, 1);
+    }
+    public void unHang() {
+        falcon.hang.unBreakMode();
+        while (opModeIsActive() && !falcon.limitTop.isPressed()) falcon.hang.setPower(-1);
+        falcon.hang.setPower(0);
     }
     @Override
     public void stopLinearOpMode() {
