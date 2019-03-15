@@ -21,7 +21,7 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     public MasqMechanumDriveTrain(HardwareMap hardwareMap){
         super(hardwareMap);
     }
-    public MasqMechanumDriveTrain(HardwareMap hardwareMap, A
+    public MasqMechanumDriveTrain(HardwareMap hardwareMap,
             MasqMotorModel motorModel){
         super(hardwareMap, motorModel);
     }
