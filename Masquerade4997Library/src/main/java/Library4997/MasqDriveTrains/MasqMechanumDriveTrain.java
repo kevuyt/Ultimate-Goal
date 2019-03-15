@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 
 
@@ -14,13 +15,19 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     public MasqMechanumDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
         super(name1, name2, name3, name4, hardwareMap);
     }
-
-    public MasqMechanumDriveTrain(HardwareMap hardwareMap) {
+    public MasqMechanumDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap, MasqMotorModel masqMotorModel) {
+        super(name1, name2, name3, name4, hardwareMap, masqMotorModel);
+    }
+    public MasqMechanumDriveTrain(HardwareMap hardwareMap){
         super(hardwareMap);
     }
+    public MasqMechanumDriveTrain(HardwareMap hardwareMap, A
+            MasqMotorModel motorModel){
+        super(hardwareMap, motorModel);
+    }
 
-    public void setPower(double angle, double speed, double turnAngle) {
-        double turnPower = turnController.getOutput(tracker.getHeading(), turnAngle);
+    public void setPowerMECH(double angle, double speed, double targetHeading, double output) {
+        double turnPower = turnController.getOutput(tracker.getHeading(), targetHeading);
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
@@ -34,10 +41,10 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
             rightFront /= max;
             rightBack /= max;
         }
-        leftDrive.motor1.setVelocity(leftFront);
-        leftDrive.motor2.setVelocity(leftBack);
-        rightDrive.motor1.setVelocity(rightFront);
-        rightDrive.motor2.setVelocity(rightBack);
+        leftDrive.motor1.setVelocity(leftFront - output);
+        leftDrive.motor2.setVelocity(leftBack - output);
+        rightDrive.motor1.setVelocity(rightFront + output);
+        rightDrive.motor2.setVelocity(rightBack + output);
     }
 
     public MasqPositionTracker getTracker() {

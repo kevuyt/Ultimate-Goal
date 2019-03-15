@@ -136,6 +136,7 @@ public class MasqMotor implements MasqHardware {
         return motor.isBusy();
     }
     public void setBreakMode () {
+        motor.setPower(0);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void unBreakMode () {

@@ -9,9 +9,8 @@ import Library4997.MasqControlSystems.MasqIntegrator;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPath;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqPoint;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
-import Library4997.MasqDriveTrains.MasqDriveTrain;
+import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqResources.MasqUtils;
@@ -28,7 +27,7 @@ public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap);
     public abstract MasqPIDPackage pidPackage();
     private boolean encoderPID = true;
-    public MasqDriveTrain driveTrain;
+    public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
     private MasqIntegrator pathOrientationError = new MasqIntegrator();
@@ -472,7 +471,7 @@ public abstract class MasqRobot {
     }
 
     public void executePath (MasqPath path, Direction dir, double baseSpeed) {
-        double direction = dir.value;
+       /* double direction = dir.value;
         double correction;
         double prevError = 0;
         double tChange, prevTime = 0;
@@ -489,7 +488,7 @@ public abstract class MasqRobot {
                 deriv = (error - prevError) / tChange;
                 correction = (error * MasqUtils.KP.PATH) + (integral * MasqUtils.KI.PATH) + (deriv * MasqUtils.KD.PATH);
                 driveTrain.setPower((baseSpeed + correction) * direction, baseSpeed * direction);
-                path.updateSystem(tracker.getPosition());
+                //path.updateSystem(tracker.getPosition());
                 prevTime = System.nanoTime();
                 tracker.updateSystem();
                 dash.create("Error: ", error);
@@ -500,7 +499,20 @@ public abstract class MasqRobot {
             wayPointIndex++;
             if (wayPointIndex < path.getWayPoints().size())
                 path.updatePath(path.getWayPoints().get(wayPointIndex - 1), path.getWayPoints().get(wayPointIndex));
-        }
+        }*/
+    }
+    public void gotoXY(double x, double y, double heading) {
+        /*MasqPIDController orientationController = new MasqPIDController(0.1, 0, 0);
+        MasqVector target = new MasqVector(x, y);
+        MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
+        MasqClock clock = new MasqClock();
+        while (!clock.elapsedTime(2, MasqClock.Resolution.SECONDS) && !target.equal(2, current)) {
+            double output = orientationController.getOutput(tracker.getHeading(), heading);
+            double angle = target.angleDeg(current);
+            driveTrain.setPowerMECH(angle, 0.7, heading, output);
+            current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
+            tracker.updateSystem()
+        }*/
     }
 
     public void NFS(MasqController c) {

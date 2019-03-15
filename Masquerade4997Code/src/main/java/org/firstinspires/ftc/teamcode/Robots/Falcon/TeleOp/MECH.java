@@ -4,10 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -17,7 +13,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECH", group = "NFS")
 public class MECH extends MasqLinearOpMode implements Constants {
     private boolean prevB = false;
-    private List<Double> times = new ArrayList<>();
     private Falcon falcon = new Falcon();
     @Override
     public void runLinearOpMode()  {
@@ -29,24 +24,15 @@ public class MECH extends MasqLinearOpMode implements Constants {
         falcon.driveTrain.setClosedLoop(true);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
-            dash.create(falcon.rotateTopLimit.getState());
+            dash.create("Hello");
             dash.update();
         }
         waitForStart();
-        MasqClock masqClock = new MasqClock();
         while (opModeIsActive()) {
             falcon.MECH(controller1);
-            if (controller2.b() && !prevB) {
-                times.add(masqClock.seconds());
-                masqClock.reset();
-            }
-
             if (controller1.rightBumper()) falcon.lift.setPower(-1);
             else if (controller1.rightTriggerPressed()) falcon.lift.setPower(1);
-            else {
-                falcon.lift.setPower(0);
-                falcon.lift.setBreakMode();
-            }
+            else falcon.lift.setBreakMode();
 
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
@@ -55,16 +41,12 @@ public class MECH extends MasqLinearOpMode implements Constants {
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);
 
-            if (controller2.leftStickY() < 0 && !falcon.limitTop.isPressed()) falcon.hang.setPower(-1);
-            else if (controller2.leftStickY() > 0 && !falcon.limitBottom.isPressed()) falcon.hang.setPower(1);
-            else {
-                falcon.hang.setPower(0);
-                falcon.hang.setBreakMode();
-            }
+            if (controller2.leftStickY() < 0) falcon.hang.setPower(-1);
+            else if (controller2.leftStickY() > 0) falcon.hang.setPower(1);
+            else falcon.hang.setBreakMode();
 
             falcon.rotator.DriverControl(controller2);
             dash.create(falcon.driveTrain.rightDrive.motor1.getAbsolutePosition());
-            //dash.create(falcon.driveTrain.leftDrive.motor2);
             dash.update();
             controller1.update();
             prevB = controller2.b();

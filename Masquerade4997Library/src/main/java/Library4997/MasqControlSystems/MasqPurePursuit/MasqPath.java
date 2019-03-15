@@ -3,6 +3,8 @@ package Library4997.MasqControlSystems.MasqPurePursuit;
 import java.util.Arrays;
 import java.util.List;
 
+import Library4997.MasqResources.MasqMath.MasqPoint;
+import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqWrappers.DashBoard;
 
 /**

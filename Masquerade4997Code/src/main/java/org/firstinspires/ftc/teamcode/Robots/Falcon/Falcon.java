@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
-import Library4997.MasqDriveTrains.MasqDriveTrain;
+import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
@@ -51,24 +51,20 @@ public class Falcon extends MasqRobot {
         voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
         imu = new MasqAdafruitIMU("imu", hardwareMap);
-        rotateTopLimit = new MasqLimitSwitch("rotateTopLimit", hardwareMap);
-        rotateDownLimit = new MasqLimitSwitch("rotateDownLimit", hardwareMap);
-        limitBottom = new MasqLimitSwitch("limitBottom", hardwareMap);
-        limitTop = new MasqLimitSwitch("limitTop", hardwareMap);
-        driveTrain = new MasqDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
-        tracker = new MasqPositionTracker(driveTrain.leftDrive, driveTrain.rightDrive, imu);
+        driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
+        tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1, imu);
         rotator = new MasqRotator(hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServo("collector", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
-        markerDump = new MasqServo("markerDump", hardwareMap);
         driveTrain.resetEncoders();
         lift.resetEncoder();
         hang.setClosedLoop(true);
         hang.setKp(0.01);
         hang.setLimits(limitBottom, limitTop);
         if (startOpenCV) startOpenCV(hardwareMap);
+        driveTrain.setTracker(tracker);
     }
     @Override
     public MasqPIDPackage pidPackage() {
