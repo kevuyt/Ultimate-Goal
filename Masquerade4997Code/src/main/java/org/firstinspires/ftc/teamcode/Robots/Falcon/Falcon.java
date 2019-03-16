@@ -23,7 +23,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSensors.MasqVoltageSensor;
-import Library4997.MasqServos.MasqCRServo;
+import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
@@ -39,7 +39,7 @@ public class Falcon extends MasqRobot {
     public MasqMotor lift;
     public MasqServo markerDump;
     public MasqServo dumper;
-    public MasqCRServo collector;
+    public MasqCRServoSystem collector;
     public MasqVoltageSensor voltageSensor;
     public MasqClock clock;
     public MasqMotor hang;
@@ -56,7 +56,7 @@ public class Falcon extends MasqRobot {
         rotator = new MasqRotator(hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
         dumper = new MasqServo("dumper", hardwareMap);
-        collector = new MasqCRServo("collector", hardwareMap);
+        collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
         driveTrain.resetEncoders();
         lift.resetEncoder();
