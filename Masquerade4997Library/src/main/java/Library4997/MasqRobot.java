@@ -24,7 +24,6 @@ import Library4997.MasqWrappers.MasqController;
 public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap);
     public abstract MasqPIDPackage pidPackage();
-    private boolean encoderPID = true;
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
@@ -46,7 +45,6 @@ public abstract class MasqRobot {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             power = ((clicksRemaining / targetClicks) * pidPackage().getKpDriveEncoder()) * direction.value * speed;
             power = Range.clip(power, -1.0, +1.0);
-            if (!encoderPID) power = 1 * direction.value;
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
             angularError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
@@ -99,7 +97,6 @@ public abstract class MasqRobot {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             power = ((clicksRemaining / targetClicks) * pidPackage().getKpDriveEncoder()) * direction.value * speed;
             power = Range.clip(power, -1.0, +1.0);
-            if (!encoderPID) power = 1 * direction.value;
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
             loopTimer.reset();
@@ -579,7 +576,7 @@ public abstract class MasqRobot {
             rightBack /= 3;
         }
         driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value * disable);
-        driveTrain.leftDrive.motor2.setVelocity(leftBack  * direction.value * disable);
+        driveTrain.leftDrive.motor2.setVelocity(leftBack * direction.value * disable);
         driveTrain.rightDrive.motor1.setVelocity(rightFront * direction.value * disable);
         driveTrain.rightDrive.motor2.setVelocity(rightBack * direction.value * disable);
     }
@@ -621,13 +618,5 @@ public abstract class MasqRobot {
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
     public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
         return hardwareMap.get(WebcamName.class, name);
-    }
-
-    public boolean isEncoderPID() {
-        return encoderPID;
-    }
-
-    public void setEncoderPID(boolean encoderPID) {
-        this.encoderPID = encoderPID;
     }
 }
