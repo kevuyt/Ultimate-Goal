@@ -2,9 +2,7 @@ package Library4997;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
-
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-
 import Library4997.MasqControlSystems.MasqIntegrator;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
@@ -103,6 +101,7 @@ public abstract class MasqRobot {
             power = Range.clip(power, -1.0, +1.0);
             if (!encoderPID) power = 1 * direction.value;
             timeChange = loopTimer.milliseconds();
+            loopTimer.reset();
             loopTimer.reset();
             angularError = tracker.imu.adjustAngle((double)angle - tracker.getHeading());
             angularIntegral = (angularIntegral + angularError) * timeChange;
@@ -296,7 +295,7 @@ public abstract class MasqRobot {
             double i = integral * ki;
             double d = derivative * kd;
             newPower = p + i + d;
-            if (Math.abs(newPower) >= 1) {newPower /= Math.abs(newPower);}
+            if (Math.abs(newPower) >= 1) newPower /= Math.abs(newPower);
             driveTrain.setVelocity(-newPower, newPower);
             prevError = currentError;
             this.angleLeftCover = currentError;
@@ -518,6 +517,7 @@ public abstract class MasqRobot {
     public void NFS(MasqController c) {
         float move = c.leftStickY();
         float turn = c.rightStickX();
+        turn = turn/2;
         double left = move - turn;
         double right = move + turn;
         left *= -1;
@@ -534,8 +534,7 @@ public abstract class MasqRobot {
             left /= right;
             right /= right;
         }
-        driveTrain.setVelocityLeft(left);
-        driveTrain.setVelocityRight(right);
+        driveTrain.setPower(left, right);
         //dash.create("POWER: ", driveTrain.getPower());
     }
     public void TANK(MasqController c) {

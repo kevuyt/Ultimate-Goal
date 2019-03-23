@@ -14,7 +14,7 @@ import Library4997.MasqSensors.MasqLimitSwitch;
  */
 
 public class MasqServoSystem implements MasqHardware {
-    private final MasqServo servo1, servo2, servo3, servo4;
+    public final MasqServo servo1, servo2, servo3, servo4;
     private int offset;
     private final List<MasqServo> servos;
     private double position;

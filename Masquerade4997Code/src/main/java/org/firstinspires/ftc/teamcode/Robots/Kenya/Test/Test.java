@@ -1,29 +1,33 @@
 package org.firstinspires.ftc.teamcode.Robots.Kenya.Test;
 
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.Kenya.Kenya;
 
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
- * Created by Archishmaan Peyyety on 3/15/19.
+ * Created by Archishmaan Peyyety on 3/21/19.
  * Project: MasqLib
  */
-@TeleOp(name = "Test", group = "NFS")
+@Autonomous(name = "Test", group = "Autonomus")
 public class Test extends MasqLinearOpMode {
-    private Kenya kenya;
-    @Override
+    Kenya robot = new Kenya();
     public void runLinearOpMode() throws InterruptedException {
-        kenya = new Kenya();
-        kenya.mapHardware(hardwareMap);
+
+        robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("Hola");
+            dash.create("hello");
             dash.update();
         }
         waitForStart();
-        while (opModeIsActive()) {
-            kenya.test.setPower(1);
+        int iterations = 0;
+        while (iterations < 4) {
+            robot.drive(3 * 12);
+            robot.turnRelative(90, Direction.RIGHT);
+            iterations = iterations + 1;
         }
+
     }
 }
