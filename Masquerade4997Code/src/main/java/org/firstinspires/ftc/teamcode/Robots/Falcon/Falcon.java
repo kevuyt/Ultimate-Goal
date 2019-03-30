@@ -4,10 +4,10 @@ import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.DogeForia;
 import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
@@ -36,8 +36,7 @@ public class Falcon extends MasqRobot {
     public MasqAdafruitIMU imu;
     public MasqLimitSwitch limitTop, limitBottom;
     public MasqRotator rotator;
-    public MasqMotor lift;
-    public MasqServo markerDump;
+    public MasqElevator lift;
     public MasqServo dumper;
     public MasqCRServoSystem collector;
     public MasqVoltageSensor voltageSensor;
@@ -52,17 +51,18 @@ public class Falcon extends MasqRobot {
         dash = DashBoard.getDash();
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
-        tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1, imu);
         rotator = new MasqRotator(hardwareMap);
-        lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
+        lift = new MasqElevator(hardwareMap);
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
+        rotateTopLimit = new MasqLimitSwitch("limitTop", hardwareMap);
+        rotateDownLimit = new MasqLimitSwitch("limitBottom", hardwareMap);
         driveTrain.resetEncoders();
-        lift.resetEncoder();
         hang.setClosedLoop(true);
         hang.setKp(0.01);
         hang.setLimits(limitBottom, limitTop);
+        tracker = new MasqPositionTracker(hang, rotator.rotator.motor1, imu);
         if (startOpenCV) startOpenCV(hardwareMap);
         driveTrain.setTracker(tracker);
     }

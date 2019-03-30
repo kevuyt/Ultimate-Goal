@@ -28,7 +28,7 @@ public class MasqPositionTracker implements MasqHardware {
 
     public void updateSystem () {
         double deltaXSystem = (xSystem.getCurrentPosition() - prevXSystem);
-        double deltaYSystem = (ySystem.getCurrentPosition() - prevYSystem);
+        double deltaYSystem = (-ySystem.getCurrentPosition() - prevYSystem);
         double heading = imu.getRelativeYaw();
         double ySystemXAddition = Math.sin(Math.toRadians(heading)) * deltaYSystem;
         double ySystemYAddition = Math.cos(Math.toRadians(heading)) * deltaYSystem;
@@ -36,7 +36,7 @@ public class MasqPositionTracker implements MasqHardware {
         double xSystemYAddition = Math.sin(Math.toRadians(heading)) * deltaXSystem;
         globalX += ySystemXAddition + xSystemXAddition;
         globalY += ySystemYAddition + xSystemYAddition;
-        prevYSystem = ySystem.getCurrentPosition();
+        prevYSystem = -ySystem.getCurrentPosition();
         prevXSystem = xSystem.getCurrentPosition();
     }
 

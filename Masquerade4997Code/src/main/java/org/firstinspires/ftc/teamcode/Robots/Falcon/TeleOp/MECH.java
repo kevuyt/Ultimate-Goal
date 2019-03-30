@@ -30,9 +30,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
         waitForStart();
         while (opModeIsActive()) {
             falcon.MECH(controller1);
-            if (controller1.rightBumper()) falcon.lift.setPower(-1);
-            else if (controller1.rightTriggerPressed()) falcon.lift.setPower(1);
-            else falcon.lift.setBreakMode();
 
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
@@ -41,12 +38,15 @@ public class MECH extends MasqLinearOpMode implements Constants {
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);
 
-            if (controller2.leftStickY() < 0) falcon.hang.setPower(-1);
-            else if (controller2.leftStickY() > 0) falcon.hang.setPower(1);
+            if (controller2.leftStickY() < 0 && falcon.rotateTopLimit.isPressed()) falcon.hang.setPower(-1);
+            else if (controller2.leftStickY() > 0 && falcon.rotateDownLimit.isPressed()) falcon.hang.setPower(1);
             else falcon.hang.setBreakMode();
 
             falcon.rotator.DriverControl(controller2);
-            dash.create(falcon.driveTrain.rightDrive.motor1.getAbsolutePosition());
+            falcon.lift.DriverControl(controller1);
+            falcon.tracker.updateSystem();
+            dash.create("X: ", falcon.tracker.getGlobalX());
+            dash.create("Y: ", falcon.tracker.getGlobalY());
             dash.update();
             controller1.update();
             prevB = controller2.b();
