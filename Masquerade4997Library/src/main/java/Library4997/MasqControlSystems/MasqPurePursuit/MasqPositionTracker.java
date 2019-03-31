@@ -41,11 +41,11 @@ public class MasqPositionTracker implements MasqHardware {
     }
 
     public double getGlobalX() {
-        return globalX;
+        return globalX * ((2 * Math.PI) / 360);
     }
 
     public double getGlobalY() {
-        return globalY;
+        return globalY * ((2 * Math.PI) / 360);
     }
 
     @Override
