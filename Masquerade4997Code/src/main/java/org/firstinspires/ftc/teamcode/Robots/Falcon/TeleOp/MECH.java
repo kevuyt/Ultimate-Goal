@@ -12,7 +12,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "MECH", group = "NFS")
 public class MECH extends MasqLinearOpMode implements Constants {
-    private boolean prevB = false;
     private Falcon falcon = new Falcon();
     @Override
     public void runLinearOpMode()  {
@@ -20,7 +19,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.initializeTeleop();
         falcon.hang.setClosedLoop(true);
-        falcon.rotator.setLimitSwitch(falcon.rotateTopLimit);
         falcon.driveTrain.setClosedLoop(true);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
@@ -47,9 +45,10 @@ public class MECH extends MasqLinearOpMode implements Constants {
             falcon.tracker.updateSystem();
             dash.create("X: ", falcon.tracker.getGlobalX());
             dash.create("Y: ", falcon.tracker.getGlobalY());
+            dash.create("H: ", falcon.tracker.getHeading());
+            dash.create("ADJ(H): ", falcon.tracker.imu.adjustAngle(falcon.tracker.getHeading()));
             dash.update();
             controller1.update();
-            prevB = controller2.b();
         }
     }
 }

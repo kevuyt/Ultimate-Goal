@@ -12,7 +12,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "MECH_AUTO", group = "NFS")
 public class MECH_AUTO extends MasqLinearOpMode implements Constants {
-    private boolean prevB = false;
     private Falcon falcon = new Falcon();
     @Override
     public void runLinearOpMode()  {
@@ -20,7 +19,6 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
         falcon.mapHardware(hardwareMap);
         falcon.initializeTeleop();
         falcon.hang.setClosedLoop(true);
-        falcon.rotator.setLimitSwitch(falcon.rotateTopLimit);
         falcon.driveTrain.setClosedLoop(true);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
@@ -46,7 +44,6 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
             dash.create(falcon.driveTrain.rightDrive.motor1.getAbsolutePosition());
             dash.update();
             controller1.update();
-            prevB = controller2.b();
         }
     }
 }
