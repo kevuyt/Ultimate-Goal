@@ -41,7 +41,12 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
             else falcon.hang.setBreakMode();
 
             falcon.rotator.DriverControl(controller2);
-            dash.create(falcon.driveTrain.rightDrive.motor1.getAbsolutePosition());
+            falcon.lift.DriverControl(controller1);
+            falcon.tracker.updateSystem();
+            dash.create("X: ", falcon.tracker.getGlobalX());
+            dash.create("Y: ", falcon.tracker.getGlobalY());
+            dash.create("H: ", falcon.tracker.getHeading());
+            dash.create("ADJ(H): ", falcon.tracker.imu.adjustAngle(falcon.tracker.getHeading()));
             dash.update();
             controller1.update();
         }
