@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -27,7 +28,7 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         while (opModeIsActive()) {
-            falcon.MECH(controller1);
+            falcon.MECH(controller1, Direction.FORWARD, true);
 
             if (controller1.leftBumper()) falcon.collector.setPower(.5);
             else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
