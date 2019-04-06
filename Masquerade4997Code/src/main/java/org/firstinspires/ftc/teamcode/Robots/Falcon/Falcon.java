@@ -22,6 +22,7 @@ import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqSensors.MasqREVColorSensor;
 import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
@@ -40,6 +41,7 @@ public class Falcon extends MasqRobot {
     public MasqServo dumper;
     public MasqCRServoSystem collector;
     public MasqVoltageSensor voltageSensor;
+    public MasqREVColorSensor block;
     public MasqClock clock;
     public MasqMotor hang;
     public MasqLimitSwitch rotateTopLimit, rotateDownLimit;
@@ -49,6 +51,7 @@ public class Falcon extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) {
         voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
+        block = new MasqREVColorSensor("block", hardwareMap);
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
         rotator = new MasqRotator(hardwareMap);

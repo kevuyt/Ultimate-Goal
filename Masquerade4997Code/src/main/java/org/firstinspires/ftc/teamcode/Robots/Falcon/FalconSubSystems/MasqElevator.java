@@ -16,8 +16,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 public class MasqElevator implements MasqSubSystem {
     private MasqMotor lift;
-    private static double rotatorMotion;
-    private MasqPIDController pidController = new MasqPIDController(0.005, 0, 0);
+    private MasqPIDController pidController = new MasqPIDController(0.005, 0, 0.0000001);
     private double targetPosition;
     public MasqElevator (HardwareMap hardwareMap) {
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
@@ -28,25 +27,33 @@ public class MasqElevator implements MasqSubSystem {
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
             targetPosition = lift.getCurrentPosition();
-            lift.setPower(-1);
+            lift.setVelocity(-1);
         }
         else if (controller.rightTriggerPressed()) {
             targetPosition = lift.getCurrentPosition();
-            lift.setPower(1);
+            lift.setVelocity(1);
         }
-        else if (rotatorMotion == 0) targetPosition = -1100;
-        else if (rotatorMotion == 1) targetPosition = -1200;
-        else if (rotatorMotion == 2 || (!controller.rightTriggerPressed() && !controller.rightBumper())) lift.setPower(pidController.getOutput(lift.getCurrentPosition(), targetPosition));
+        else if (Math.abs(lift.getCurrentPosition() - targetPosition) <= 200) {
+            lift.setVelocity(0);
+            lift.setBreakMode();
+        }
+        else lift.setVelocity(pidController.getOutput(lift.getCurrentPosition(), targetPosition));
         DashBoard.getDash().create("lift: ", lift.getCurrentPosition());
-    }
-
-    public static void setRotatorMotion(double rotatorMotion1) {
-        rotatorMotion = rotatorMotion1;
     }
 
     @Override
     public String getName() {
         return null;
+    }
+
+    public void setKp(double kp) {
+        pidController.setKp(kp);
+    }
+    public void setKi(double ki) {
+        pidController.setKi(ki);
+    }
+    public void setKd(double kd) {
+        pidController.setKd(kd);
     }
 
 

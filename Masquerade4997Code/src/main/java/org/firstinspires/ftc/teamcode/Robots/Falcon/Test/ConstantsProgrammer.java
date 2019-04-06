@@ -13,27 +13,36 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "ConstantsProgrammer", group = "NFS")
 public class ConstantsProgrammer extends MasqLinearOpMode {
     private Falcon falcon = new Falcon();
-    private double dumper = 0;
+    private double kp = 0.005, ki = 0, kd = 0;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         falcon.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("HELLO ");
+            dash.create("Hello");
             dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {
-            if (controller1.xOnPress()) {
-                dumper += 0.01;
-            }
-            if (controller1.yOnPress()) {
-                dumper -= 0.01;
-            }
+            if (controller1.xOnPress()) kp += 0.001;
+            if (controller1.yOnPress()) kp -= 0.001;
+
+            if (controller1.aOnPress()) ki += 0.001;
+            if (controller1.bOnPress()) ki -= 0.001;
+
+            if (controller1.leftTriggerOnPress()) kd += 0.0000001;
+            if (controller1.rightTriggerOnPress()) kd -= 0.0000001;
+
+            falcon.lift.setKp(kp);
+            falcon.lift.setKi(ki);
+            falcon.lift.setKd(kd);
+            falcon.lift.DriverControl(controller1);
+            falcon.rotator.DriverControl(controller2);
+            falcon.MECH(controller1);
             controller1.update();
-            falcon.dumper.setPosition(dumper);
-            dash.create("Dumper: ", falcon.dumper.getPosition());
+            dash.create("Kp (+X, -Y): ", kp);
+            dash.create("Ki (+A, -B):", ki);
+            dash.create("Kd (+LT, -RT): ", kd);
             dash.update();
         }
-
     }
 }

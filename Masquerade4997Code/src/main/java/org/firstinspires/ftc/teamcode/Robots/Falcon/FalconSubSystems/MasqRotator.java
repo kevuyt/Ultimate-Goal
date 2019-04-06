@@ -27,14 +27,11 @@ public class MasqRotator implements MasqSubSystem {
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
             rotator.setVelocity(-getProportionalPower(getAngle(), minPower));
-            MasqElevator.setRotatorMotion(0);
         }
         else if (controller.rightTriggerPressed()) {
             rotator.setVelocity(getProportionalPower(getAngle(), minPower));
-            MasqElevator.setRotatorMotion(1);
         }
         else {
-            MasqElevator.setRotatorMotion(2);
             rotator.setPower(0);
             rotator.setBreakMode();
         }
