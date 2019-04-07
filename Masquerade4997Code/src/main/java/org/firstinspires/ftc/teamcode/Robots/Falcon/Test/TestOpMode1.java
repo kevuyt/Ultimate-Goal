@@ -25,7 +25,5 @@ public class TestOpMode1 extends MasqLinearOpMode implements Constants {
         falcon.tracker.reset();
         falcon.gotoXY(22, 0, 0, 0.7);
         falcon.gotoXY(14, 0, 0, 0.7);
-        falcon.gotoXY(15, 32, 45, 0.7);
-        falcon.gotoXY(49, 63, 45, 0.7);
     }
 }

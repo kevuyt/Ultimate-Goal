@@ -26,10 +26,10 @@ public class MasqRotator implements MasqSubSystem {
     @Override
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
-            rotator.setVelocity(-getProportionalPower(getAngle(), minPower));
+            rotator.setVelocity(-1);
         }
         else if (controller.rightTriggerPressed()) {
-            rotator.setVelocity(getProportionalPower(getAngle(), minPower));
+            rotator.setVelocity(1);
         }
         else {
             rotator.setPower(0);

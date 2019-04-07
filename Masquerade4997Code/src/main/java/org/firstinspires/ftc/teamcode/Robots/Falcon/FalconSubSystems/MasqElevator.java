@@ -16,7 +16,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 public class MasqElevator implements MasqSubSystem {
     private MasqMotor lift;
-    private MasqPIDController pidController = new MasqPIDController(0.005, 0, 0.0000001);
+    private MasqPIDController pidController = new MasqPIDController(0.005, 0, 0.000005);
     private double targetPosition;
     public MasqElevator (HardwareMap hardwareMap) {
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
@@ -33,11 +33,15 @@ public class MasqElevator implements MasqSubSystem {
             targetPosition = lift.getCurrentPosition();
             lift.setVelocity(1);
         }
-        else if (Math.abs(lift.getCurrentPosition() - targetPosition) <= 200) {
+        /*else if (Math.abs(lift.getCurrentPosition() - targetPosition) <= 200) {
             lift.setVelocity(0);
             lift.setBreakMode();
+        }*/
+        else {
+            lift.setVelocity(0);
+            lift.setBreakMode();
+            //lift.setVelocity(pidController.getOutput(lift.getCurrentPosition(), targetPosition));
         }
-        else lift.setVelocity(pidController.getOutput(lift.getCurrentPosition(), targetPosition));
         DashBoard.getDash().create("lift: ", lift.getCurrentPosition());
     }
 

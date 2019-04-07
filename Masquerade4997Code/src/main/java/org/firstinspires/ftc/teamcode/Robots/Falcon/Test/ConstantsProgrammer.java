@@ -26,9 +26,6 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             if (controller1.xOnPress()) kp += 0.001;
             if (controller1.yOnPress()) kp -= 0.001;
 
-            if (controller1.aOnPress()) ki += 0.001;
-            if (controller1.bOnPress()) ki -= 0.001;
-
             if (controller1.leftTriggerOnPress()) kd += 0.0000001;
             if (controller1.rightTriggerOnPress()) kd -= 0.0000001;
 
@@ -40,7 +37,6 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             falcon.MECH(controller1);
             controller1.update();
             dash.create("Kp (+X, -Y): ", kp);
-            dash.create("Ki (+A, -B):", ki);
             dash.create("Kd (+LT, -RT): ", kd);
             dash.update();
         }

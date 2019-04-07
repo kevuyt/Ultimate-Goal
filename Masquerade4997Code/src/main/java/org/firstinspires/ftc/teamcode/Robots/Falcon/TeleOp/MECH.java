@@ -29,12 +29,21 @@ public class MECH extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()) {
             falcon.MECH(controller1);
 
-            if (controller1.leftBumper()) falcon.collector.setPower(.5);
-            else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
+            if (falcon.rotator.getAngle() > 45) falcon.setMechTurnDampner(0.5);
+            else falcon.setMechTurnDampner(1);
+
+            if (controller1.leftBumper()) falcon.collector.setPower(.7);
+            else if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.7);
             else falcon.collector.setPower(0);
 
-            if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
-            else falcon.dumper.setPosition(DUMPER_IN);
+            if (controller2.b()) {
+                falcon.dumper.setPosition(DUMPER_OUT);
+                falcon.collector.setPower(.7);
+            }
+            else {
+                falcon.dumper.setPosition(DUMPER_IN);
+                falcon.collector.setPower(0);
+            }
 
             if (controller2.leftStickY() < 0 && falcon.rotateTopLimit.isPressed()) falcon.hang.setPower(-1);
             else if (controller2.leftStickY() > 0 && falcon.rotateDownLimit.isPressed()) falcon.hang.setPower(1);
