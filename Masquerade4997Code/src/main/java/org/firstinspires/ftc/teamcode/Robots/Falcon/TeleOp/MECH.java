@@ -62,7 +62,7 @@ public class MECH extends MasqLinearOpMode implements Constants {
         MasqVector current = new MasqVector(falcon.tracker.getGlobalX(), falcon.tracker.getGlobalY());
         double targetInches = current.distanceToVector(targetPosition);
         if (opModeIsActive()) {
-            MasqVector deviation = current.deviation(targetPosition);
+            MasqVector deviation = current.displacement(targetPosition);
             double speed = deviation.getMagnitude() / targetInches;
             double pathAngle = 90 - Math.toDegrees(Math.atan2(deviation.getY(), deviation.getX()));
             falcon.driveTrain.setVelocityMECH(pathAngle + falcon.tracker.getHeading(), speed * 0.7, falcon.imu.getRelativeYaw());

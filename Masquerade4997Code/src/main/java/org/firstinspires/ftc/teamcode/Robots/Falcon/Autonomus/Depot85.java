@@ -14,10 +14,9 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "Depot85", group = "T")
 public class Depot85 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    private MasqPoint centerSample = new MasqPoint(22, 0, 90);
     private MasqPoint center = new MasqPoint(11, 0, -90);
-    private MasqPoint rightSample = new MasqPoint(19, 14, -90);
-    private MasqPoint leftSample = new MasqPoint(-14, 23, -90);
+    private MasqPoint rightSample = new MasqPoint(26, 238, -90);
+    private MasqPoint leftSample = new MasqPoint(27, -13, -90);
     private MasqPoint marker = new MasqPoint(35, 0);
     public void runLinearOpMode() throws InterruptedException {
         falcon.setStartOpenCV(false);
@@ -31,20 +30,22 @@ public class Depot85 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.lift.lift.setPower(1);
-        sleep(1);
-        falcon.lift.lift.setPower(0);
         falcon.tracker.reset();
-        BlockPlacement placement = BlockPlacement.CENTER;
+        BlockPlacement placement = BlockPlacement.RIGHT;
         if (placement == BlockPlacement.CENTER) {
-            falcon.gotoXY(center, -90);
-            falcon.gotoXY(marker, -90);
-            falcon.gotoXY(center, -90);
+            falcon.gotoXY(center);
+            falcon.gotoXY(marker, -90, 0.8);
+            falcon.gotoXY(5, 49, -125);
         }
         else if (placement == BlockPlacement.LEFT) {
+            falcon.gotoXY(leftSample, -90,0.5);
+            falcon.gotoXY(53, 4, -45);
+            falcon.gotoXY(5, 49, 45);
         }
         else if (placement == BlockPlacement.RIGHT) {
-
+            falcon.gotoXY(rightSample, -90,0.5);
+            falcon.gotoXY(53, 4, -135);
+            falcon.gotoXY(5, 49, -135);
         }
 
     }
