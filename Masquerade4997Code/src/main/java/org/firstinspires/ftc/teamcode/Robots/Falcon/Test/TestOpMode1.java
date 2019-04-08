@@ -5,9 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Autonomus.Constants;
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
-import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
 
-import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -17,9 +15,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Disabled
 public class TestOpMode1 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    private MasqPoint rightSample = new MasqPoint(23, -13);
-    private MasqPoint leftSample = new MasqPoint(23, 20);
-    private MasqPoint park = new MasqPoint(25, 25);
     public void runLinearOpMode() throws InterruptedException {
         falcon.setStartOpenCV(false);
         falcon.mapHardware(hardwareMap);
@@ -32,32 +27,6 @@ public class TestOpMode1 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.lift.lift.setPower(1);
-        sleep(1);
-        falcon.lift.lift.setPower(0);
-        falcon.tracker.reset();
-        BlockPlacement placement = BlockPlacement.RIGHT;
-        if (placement == BlockPlacement.CENTER) {
-            falcon.gotoXY(22, 0, 0);
-            falcon.gotoXY(14, 0, 0);
-            falcon.gotoXY(17, 36, 20, 1.3);
-            falcon.gotoXY(-7, 58, 45);
-            falcon.gotoXY(park, 45, 1.5);
-        }
-        else if (placement == BlockPlacement.LEFT) {
-            falcon.gotoXY(9, 0, 0, 0.7);
-            falcon.gotoXY(leftSample, 20, 0.8);
-            falcon.gotoXY(-1, 62, 45);
-            falcon.gotoXY(park, 45, 1.5);
-        }
-        else if (placement == BlockPlacement.RIGHT) {
-            falcon.gotoXY(9, 0, 0, 0.7);
-            falcon.gotoXY(rightSample, 0, 0.1);
-            falcon.gotoXY(13, -12, 0);
-            falcon.gotoXY(17, 36, 20, 1.3, 0.007);
-            falcon.gotoXY(-7, 58, 45);
-            falcon.gotoXY(park, 45, 1.5);
-        }
 
     }
 }

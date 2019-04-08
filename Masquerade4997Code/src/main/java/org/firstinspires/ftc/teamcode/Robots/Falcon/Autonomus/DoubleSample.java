@@ -11,8 +11,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 2/7/18.
  */
-@Autonomous(name = "Crater85", group = "T")
-public class Crater85 extends MasqLinearOpMode implements Constants {
+@Autonomous(name = "DoubleSample", group = "T")
+public class DoubleSample extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private MasqPoint rightSample = new MasqPoint(23, -13);
     private MasqPoint leftSample = new MasqPoint(23, 20);
@@ -37,13 +37,11 @@ public class Crater85 extends MasqLinearOpMode implements Constants {
             falcon.gotoXY(14, 0, 0);
             falcon.gotoXY(17, 36, 20, 1.3);
             falcon.gotoXY(-7, 58, 45);
-            falcon.gotoXY(park, 45, 1.5);
         }
         else if (placement == BlockPlacement.LEFT) {
             falcon.gotoXY(9, 0, 0, 0.7);
             falcon.gotoXY(leftSample, 20, 0.8);
             falcon.gotoXY(-1, 62, 45);
-            falcon.gotoXY(park, 45, 1.5);
         }
         else if (placement == BlockPlacement.RIGHT) {
             falcon.gotoXY(9, 0, 0, 0.7);
@@ -51,7 +49,6 @@ public class Crater85 extends MasqLinearOpMode implements Constants {
             falcon.gotoXY(13, -12, 0);
             falcon.gotoXY(17, 36, 20, 1.3, 0.007);
             falcon.gotoXY(-7, 58, 45);
-            falcon.gotoXY(park, 45, 1.5);
         }
 
     }

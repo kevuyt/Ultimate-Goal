@@ -21,7 +21,7 @@ public class Depot85 extends MasqLinearOpMode implements Constants {
     public void runLinearOpMode() throws InterruptedException {
         falcon.setStartOpenCV(false);
         falcon.mapHardware(hardwareMap);
-        falcon.initializeTeleop();
+        falcon.initializeAutonomous();
         falcon.lift.lift.setBreakMode();
         while (!opModeIsActive()) {
             dash.create("X: ", falcon.tracker.getGlobalX());
