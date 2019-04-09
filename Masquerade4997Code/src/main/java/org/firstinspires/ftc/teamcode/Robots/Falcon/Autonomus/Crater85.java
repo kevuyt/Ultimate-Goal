@@ -14,15 +14,17 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "Crater85", group = "T")
 public class Crater85 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
-    private MasqPoint rightSample = new MasqPoint(23, -13);
-    private MasqPoint leftSample = new MasqPoint(23, 20);
+    private MasqPoint rightSample = new MasqPoint(22, -20);
+    private MasqPoint leftSample = new MasqPoint(23, 9);
     private MasqPoint centerSample = new MasqPoint(22, 0, 0);
-    private MasqPoint park = new MasqPoint(25, 25);
+    private MasqPoint lineup = new MasqPoint(18, 35);
+    private MasqPoint park = new MasqPoint(31, 21);
     public void runLinearOpMode() throws InterruptedException {
         falcon.setStartOpenCV(false);
         falcon.mapHardware(hardwareMap);
         falcon.initializeAutonomous();
         falcon.lift.lift.setBreakMode();
+        falcon.driveTrain.setClosedLoop(true);
         while (!opModeIsActive()) {
             dash.create("X: ", falcon.tracker.getGlobalX());
             dash.create("Y: ", falcon.tracker.getGlobalY());
@@ -31,28 +33,27 @@ public class Crater85 extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         falcon.tracker.reset();
-        BlockPlacement placement = BlockPlacement.RIGHT;
+        BlockPlacement placement = BlockPlacement.CENTER;
         if (placement == BlockPlacement.CENTER) {
-            falcon.gotoXY(centerSample);
-            falcon.gotoXY(14, 0, 0);
-            falcon.gotoXY(17, 36, 20, 1.3);
+            falcon.gotoXY(centerSample, 0, 0.7);
+            falcon.gotoXY(14, 0, 0, 0.7);
+            falcon.gotoXY(lineup, 20, 0.9, 0.01);
             falcon.gotoXY(-7, 58, 45);
-            falcon.gotoXY(park, 45, 1.5);
+            falcon.gotoXY(park, 45);
         }
         else if (placement == BlockPlacement.LEFT) {
             falcon.gotoXY(9, 0, 0, 0.7);
             falcon.gotoXY(leftSample, 20, 0.8);
             falcon.gotoXY(-1, 62, 45);
-            falcon.gotoXY(park, 45, 1.5);
+            falcon.gotoXY(park, 45);
         }
         else if (placement == BlockPlacement.RIGHT) {
-            falcon.gotoXY(9, 0, 0, 0.7);
-            falcon.gotoXY(rightSample, 0, 0.1);
-            falcon.gotoXY(13, -12, 0);
-            falcon.gotoXY(17, 36, 20, 1.3, 0.007);
+            falcon.gotoXY(9, 0, 0, 0.9);
+            falcon.gotoXY(rightSample, 0, 0.5);
+            falcon.gotoXY(12, -16, 0, 0.5);
+            falcon.gotoXY(lineup, 20, 0.9, 0.007);
             falcon.gotoXY(-7, 58, 45);
-            falcon.gotoXY(park, 45, 1.5);
+            falcon.gotoXY(park, 45);
         }
-
     }
 }

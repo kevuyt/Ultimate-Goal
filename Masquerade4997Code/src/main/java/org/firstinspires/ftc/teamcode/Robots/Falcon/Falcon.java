@@ -73,8 +73,8 @@ public class Falcon extends MasqRobot {
     public MasqPIDPackage pidPackage() {
         MasqPIDPackage pidPackage = new MasqPIDPackage();
         /*-------------------------------------------------*/
-        pidPackage.setKpMotorAutoLeft(0.01);
-        pidPackage.setKpMotorAutoRight(0.01);
+        pidPackage.setKpMotorAutoLeft(0.001);
+        pidPackage.setKpMotorAutoRight(0.001);
 
         pidPackage.setKpMotorTeleOpLeft(0.0001);
         pidPackage.setKpMotorTeleOpRight(0.0001);
