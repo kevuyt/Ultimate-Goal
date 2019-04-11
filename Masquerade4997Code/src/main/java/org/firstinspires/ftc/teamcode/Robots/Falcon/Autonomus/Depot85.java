@@ -31,7 +31,7 @@ public class Depot85 extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         falcon.tracker.reset();
-        BlockPlacement placement = BlockPlacement.RIGHT;
+        BlockPlacement placement = BlockPlacement.CENTER;
         if (placement == BlockPlacement.CENTER) {
             falcon.gotoXY(center);
             falcon.gotoXY(marker, -90, 0.8);
