@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
-import Library4997.MasqResources.MasqMath.MasqVector;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -24,7 +22,10 @@ public class MECH extends MasqLinearOpMode implements Constants {
         falcon.driveTrain.setClosedLoop(true);
         falcon.dumper.setPosition(DUMPER_IN);
         while (!opModeIsActive()) {
-            dash.create("Hello");
+            falcon.tracker.updateSystem();
+            dash.create("X: ", falcon.tracker.getGlobalX());
+            dash.create("Y: ", falcon.tracker.getGlobalY());
+            dash.create("H: ", falcon.tracker.getHeading());
             dash.update();
         }
         waitForStart();
@@ -33,6 +34,8 @@ public class MECH extends MasqLinearOpMode implements Constants {
 
             if (falcon.rotator.getAngle() > 45) falcon.setMechTurnDampner(0.3);
             else falcon.setMechTurnDampner(1);
+
+            if (falcon.lift.lift.getAbsolutePosition() < -2000) falcon.setMechTurnDampner(0.3);
 
             if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
             else if (controller1.leftBumper() || controller2.b()) falcon.collector.setPower(.5);
@@ -51,23 +54,8 @@ public class MECH extends MasqLinearOpMode implements Constants {
             dash.create("X: ", falcon.tracker.getGlobalX());
             dash.create("Y: ", falcon.tracker.getGlobalY());
             dash.create("H: ", falcon.tracker.getHeading());
-            dash.create("ADJ(H): ", falcon.tracker.imu.adjustAngle(falcon.tracker.getHeading()));
             dash.update();
             controller1.update();
-        }
-    }
-    public void go() {
-        MasqClock clock = new MasqClock();
-        MasqVector targetPosition = new MasqVector(0,0);
-        MasqVector current = new MasqVector(falcon.tracker.getGlobalX(), falcon.tracker.getGlobalY());
-        double targetInches = current.distanceToVector(targetPosition);
-        if (opModeIsActive()) {
-            MasqVector deviation = current.displacement(targetPosition);
-            double speed = deviation.getMagnitude() / targetInches;
-            double pathAngle = 90 - Math.toDegrees(Math.atan2(deviation.getY(), deviation.getX()));
-            falcon.driveTrain.setVelocityMECH(pathAngle + falcon.tracker.getHeading(), speed * 0.7, falcon.imu.getRelativeYaw());
-            current = new MasqVector(falcon.tracker.getGlobalX(), falcon.tracker.getGlobalY());
-            falcon.tracker.updateSystem();
         }
     }
 }

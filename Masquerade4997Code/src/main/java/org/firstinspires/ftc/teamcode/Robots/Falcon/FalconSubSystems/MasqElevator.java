@@ -2,12 +2,12 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqSubSystem;
-import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
 /**
@@ -33,16 +33,10 @@ public class MasqElevator implements MasqSubSystem {
             targetPosition = lift.getCurrentPosition();
             lift.setVelocity(1);
         }
-        /*else if (Math.abs(lift.getCurrentPosition() - targetPosition) <= 200) {
-            lift.setVelocity(0);
-            lift.setBreakMode();
-        }*/
         else {
             lift.setVelocity(0);
             lift.setBreakMode();
-            //lift.setVelocity(pidController.getOutput(lift.getCurrentPosition(), targetPosition));
         }
-        DashBoard.getDash().create("lift: ", lift.getCurrentPosition());
     }
 
     @Override

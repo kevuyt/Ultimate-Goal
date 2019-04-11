@@ -2,11 +2,11 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqSubSystem;
-import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
 /**
@@ -35,9 +35,6 @@ public class MasqRotator implements MasqSubSystem {
             rotator.setPower(0);
             rotator.setBreakMode();
         }
-        DashBoard.getDash().create("theta: ", getAngle());
-        DashBoard.getDash().create("rot pos: ", rotator.motor2.getCurrentPosition());
-        DashBoard.getDash().create("power: ", getProportionalPower(getAngle(), minPower));
     }
 
     public double getAngle() {
