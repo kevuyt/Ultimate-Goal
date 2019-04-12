@@ -11,13 +11,13 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Archish on 2/7/18.
  */
-@Autonomous(name = "Crater85_0", group = "T")
+@Autonomous(name = "Crater85", group = "T")
 public class Crater85 extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private MasqPoint rightSample = new MasqPoint(22, -20);
     private MasqPoint leftSample = new MasqPoint(23, 9);
     private MasqPoint centerSample = new MasqPoint(24, 0, 0);
-    private MasqPoint lineup = new MasqPoint(20, 35);
+    private MasqPoint lineup = new MasqPoint(14, 39);
     private MasqPoint park = new MasqPoint(31, 21);
     public void runLinearOpMode() throws InterruptedException {
         falcon.setStartOpenCV(false);
@@ -32,13 +32,16 @@ public class Crater85 extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         falcon.tracker.reset();
+        falcon.setLookAheadDistance(5);
         BlockPlacement placement = BlockPlacement.CENTER;
         if (placement == BlockPlacement.CENTER) {
-            falcon.setLookAheadDistance(5);
-            falcon.gotoXY(centerSample, 0, 0.9);
+            falcon.gotoXY(centerSample, 0, 0.8);
+            falcon.setTimeout(1);
             falcon.gotoXY(14, 0, 0, 0.5);
-            falcon.gotoXY(lineup, 20, 0.7, 0.02);
-            falcon.gotoXY(-16, 64, 45);
+            falcon.setTimeout(3);
+            falcon.gotoXY(lineup, 40, 1, 0.02);
+            falcon.setTimeout(2);
+            falcon.gotoXY(-16, 66, 45, 1, 0.02);
             //falcon.gotoXY(park, 45, 0.9);
         }
         else if (placement == BlockPlacement.LEFT) {

@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Falcon.Falcon;
 
-import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -52,17 +51,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
             falcon.rotator.DriverControl(controller2);
             falcon.lift.DriverControl(controller1);
             falcon.tracker.updateSystem();
-            MasqVector target = new MasqVector(18, 35);
-            double l = 10;
-            MasqVector current = new MasqVector(falcon.tracker.getGlobalX(), falcon.tracker.getGlobalY());
-            MasqVector projection = current.projectOnTo(target);
-            double theta = Math.atan2(projection.getY(), projection.getX());
-            System.out.println(Math.toDegrees(theta));
-            MasqVector lookahead = new MasqVector(projection.getX() + (l * Math.cos(theta)), projection.getY() + (l * Math.sin(theta)));
-            if (lookahead.getMagnitude() > target.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
-            MasqVector lookaheadDisplacement = current.displacement(lookahead);
-            double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-            dash.create(pathAngle + falcon.tracker.getHeading());
             dash.create("X: ", falcon.tracker.getGlobalX());
             dash.create("Y: ", falcon.tracker.getGlobalY());
             dash.create("H: ", falcon.tracker.getHeading());

@@ -26,7 +26,8 @@ public class TestOpMode1 extends MasqLinearOpMode implements Constants {
             dash.update();
         }
         waitForStart();
-        falcon.path(0.001, lineup, marker);
+        falcon.setTimeout(5);
+        falcon.gotoXY(0, -50, -175, 1, 0.1);
 
     }
 }
