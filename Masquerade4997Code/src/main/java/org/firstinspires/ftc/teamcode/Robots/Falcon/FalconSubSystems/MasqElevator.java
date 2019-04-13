@@ -33,10 +33,11 @@ public class MasqElevator implements MasqSubSystem {
             targetPosition = lift.getCurrentPosition();
             lift.setVelocity(1);
         }
-        else {
-            lift.setVelocity(0);
-            lift.setBreakMode();
-        }
+        else lift.setVelocity(pidController.getOutput(lift.getCurrentPosition(), targetPosition));
+    }
+
+    public void setTargetPosition(double targetPosition) {
+        this.targetPosition = targetPosition;
     }
 
     @Override

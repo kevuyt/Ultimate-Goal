@@ -44,13 +44,15 @@ public class MECH extends MasqLinearOpMode implements Constants {
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);
 
-            if (controller2.leftStickY() < 0 && falcon.rotateTopLimit.isPressed()) falcon.hang.setPower(-1);
-            else if (controller2.leftStickY() > 0 && falcon.rotateDownLimit.isPressed()) falcon.hang.setPower(1);
+            if (controller2.leftStickY() < 0 && falcon.topLimit.isPressed()) falcon.hang.setPower(-1);
+            else if (controller2.leftStickY() > 0 && falcon.downLimit.isPressed()) falcon.hang.setPower(1);
             else falcon.hang.setBreakMode();
 
             falcon.rotator.DriverControl(controller2);
             falcon.lift.DriverControl(controller1);
             falcon.tracker.updateSystem();
+            dash.create("Top Limit: ", falcon.topLimit.getSignalValue());
+            dash.create("Bot Limit: ", falcon.downLimit.getSignalValue());
             dash.create("X: ", falcon.tracker.getGlobalX());
             dash.create("Y: ", falcon.tracker.getGlobalY());
             dash.create("H: ", falcon.tracker.getHeading());
