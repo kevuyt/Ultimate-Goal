@@ -15,6 +15,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class MECH_AUTO extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
     private String status = "";
+    private double maxSpeed = 0.7;
     double scoreExtension = -2000;
     double collectionExtension = -1500;
     private double targetHeading = 0;
@@ -38,7 +39,7 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         while (opModeIsActive()) {
-            /*if (falcon.rotator.getAngle() < 45) falcon.lift.setTargetPosition(collectionExtension);
+            if (falcon.rotator.getAngle() < 45) falcon.lift.setTargetPosition(collectionExtension);
             else falcon.lift.setTargetPosition(scoreExtension);
 
             if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
@@ -50,25 +51,15 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
 
             if (controller2.leftStickY() < 0 && !falcon.topLimit.isPressed()) falcon.hang.setPower(-1);
             else if (controller2.leftStickY() > 0 && !falcon.downLimit.isPressed()) falcon.hang.setPower(1);
-            else falcon.hang.setBreakMode();*/
+            else falcon.hang.setBreakMode();
 
-            if (controller1.a() && !prevA) {
-                initializePath();
-                status = "path init";
-            }
-            else if (controller1.a() && prevA) {
-                updateDrivetrainToPath();
-                status = "updating dt";
-            }
-
-            else {
-                falcon.MECH(controller1);
-                status = "mech";
-            }
+            if (controller1.a() && !prevA) initializePath();
+            else if (controller1.a() && prevA) updateDrivetrainToPath();
+            else falcon.MECH(controller1);
             prevA = controller1.a();
             current = new MasqVector(falcon.tracker.getGlobalX(), falcon.tracker.getGlobalY());
-            /*falcon.rotator.DriverControl(controller2);
-            falcon.lift.DriverControl(controller1);*/
+            falcon.rotator.DriverControl(controller2);
+            falcon.lift.DriverControl(controller1);
             falcon.tracker.updateSystem();
             dash.create("Status: ", status);
             dash.create("A: ", controller1.a());
@@ -92,7 +83,8 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
     }
     public void updateDrivetrainToPath() {
         MasqVector displacement = current.displacement(target);
-        double speed = (displacement.getMagnitude() / targetInches) * 0.5;
+        double speed = (displacement.getMagnitude() / targetInches) * maxSpeed;
+        if (speed > maxSpeed) speed = maxSpeed;
         double pathAngle = 90 - Math.toDegrees(Math.atan2(displacement.getY(), displacement.getX()));
         falcon.driveTrain.setPowerMECH(pathAngle + falcon.tracker.getHeading(), speed, targetHeading);
         dash.create("Speed: ", speed);

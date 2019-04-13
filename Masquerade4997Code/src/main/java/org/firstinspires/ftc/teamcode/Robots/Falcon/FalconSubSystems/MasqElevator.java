@@ -16,13 +16,14 @@ import Library4997.MasqWrappers.MasqController;
  */
 public class MasqElevator implements MasqSubSystem {
     public MasqMotor lift;
-    private MasqPIDController pidController = new MasqPIDController(0.005, 0, 0.000005);
+    private MasqPIDController pidController = new MasqPIDController(0.001, 0, 0.00001);
     private double targetPosition;
     public MasqElevator (HardwareMap hardwareMap) {
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
         lift.resetEncoder();
+        lift.setClosedLoop(true);
+        lift.setKp(0.001);
     }
-
     @Override
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
@@ -44,7 +45,6 @@ public class MasqElevator implements MasqSubSystem {
     public String getName() {
         return null;
     }
-
     public void setKp(double kp) {
         pidController.setKp(kp);
     }
@@ -54,8 +54,6 @@ public class MasqElevator implements MasqSubSystem {
     public void setKd(double kd) {
         pidController.setKd(kd);
     }
-
-
     @Override
     public MasqHardware[] getComponents() {
         return new MasqHardware[0];

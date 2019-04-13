@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
@@ -16,10 +17,12 @@ import Library4997.MasqWrappers.MasqController;
 
 public class MasqRotator implements MasqSubSystem {
     public MasqMotorSystem rotator;
-    private double minPower = 0.5;
+    double targetPosition = 0;
+    private MasqPIDController pidController = new MasqPIDController(0.001, 0, 0);
     public MasqRotator (HardwareMap hardwareMap) {
         rotator = new MasqMotorSystem("rotator1", DcMotor.Direction.FORWARD, "rotator2", DcMotor.Direction.REVERSE, MasqMotorModel.NEVERREST256, hardwareMap);
         rotator.setClosedLoop(true);
+        rotator.setKp(0.01);
         rotator.resetEncoders();
     }
 
@@ -27,14 +30,13 @@ public class MasqRotator implements MasqSubSystem {
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
             rotator.setVelocity(-1);
+            targetPosition = rotator.getCurrentPosition();
         }
         else if (controller.rightTriggerPressed()) {
             rotator.setVelocity(1);
+            targetPosition = rotator.getCurrentPosition();
         }
-        else {
-            rotator.setPower(0);
-            rotator.setBreakMode();
-        }
+        else rotator.setVelocity(pidController.getOutput(rotator.getCurrentPosition(), targetPosition));
     }
 
     public double getAngle() {
