@@ -22,12 +22,13 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
     private MasqVector target = new MasqVector(0, 0);
     private MasqVector current = new MasqVector(0, 0);
     MasqVector inital = new MasqVector(0, 0);
-    MasqVector pathDisplacment = inital.displacement(target);
+    MasqVector pathDisplacment = new MasqVector(0, 0);
     private boolean prevA = false;
     @Override
     public void runLinearOpMode()  {
         robotInit();
         current = new MasqVector(falcon.tracker.getGlobalX(), falcon.tracker.getGlobalY());
+        inital = new MasqVector(falcon.tracker.getGlobalX(), falcon.tracker.getGlobalY());
         while (!opModeIsActive()) {
             falcon.tracker.updateSystem();
             dash.create("X: ", falcon.tracker.getGlobalX());
