@@ -35,14 +35,14 @@ public class Crater85 extends MasqLinearOpMode implements Constants {
         falcon.setLookAheadDistance(5);
         BlockPlacement placement = BlockPlacement.CENTER;
         if (placement == BlockPlacement.CENTER) {
-            falcon.gotoXY(centerSample, 0, 0.8);
+            falcon.gotoXY(centerSample, 0);
             falcon.setTimeout(1);
-            falcon.gotoXY(14, 0, 0, 0.5);
+            falcon.gotoXY(14, 0, 0, 1.5);
             falcon.setTimeout(3);
-            falcon.gotoXY(lineup, 40, 1, 0.02);
-            falcon.setTimeout(2);
-            falcon.gotoXY(-16, 66, 45, 1, 0.02);
-            //falcon.gotoXY(park, 45, 0.9);
+            falcon.setLookAheadDistance(3);
+            falcon.gotoXY(lineup, 30, 0.6, 0.01);
+            falcon.gotoXY(-16, 66, 45, 0.7, 0.05);
+            falcon.gotoXY(park, 45, 0.7);
         }
         else if (placement == BlockPlacement.LEFT) {
             falcon.gotoXY(9, 0, 0, 0.7);

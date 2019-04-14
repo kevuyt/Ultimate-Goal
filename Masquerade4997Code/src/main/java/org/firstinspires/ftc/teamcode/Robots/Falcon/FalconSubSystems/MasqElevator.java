@@ -8,6 +8,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqSubSystem;
+import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
 /**
@@ -35,6 +36,8 @@ public class MasqElevator implements MasqSubSystem {
             lift.setVelocity(1);
         }
         else lift.setVelocity(pidController.getOutput(lift.getCurrentPosition(), targetPosition));
+
+        DashBoard.getDash().create("Lift Position: ", lift.getCurrentPosition());
     }
 
     public void setTargetPosition(double targetPosition) {

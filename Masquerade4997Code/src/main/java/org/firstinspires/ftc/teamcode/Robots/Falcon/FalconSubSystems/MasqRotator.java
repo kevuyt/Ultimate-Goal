@@ -8,6 +8,7 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqSubSystem;
+import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 
 /**
@@ -17,26 +18,32 @@ import Library4997.MasqWrappers.MasqController;
 
 public class MasqRotator implements MasqSubSystem {
     public MasqMotorSystem rotator;
-    double targetPosition = 0;
+    private double targetPosition = 0;
     private MasqPIDController pidController = new MasqPIDController(0.001, 0, 0);
     public MasqRotator (HardwareMap hardwareMap) {
         rotator = new MasqMotorSystem("rotator1", DcMotor.Direction.FORWARD, "rotator2", DcMotor.Direction.REVERSE, MasqMotorModel.NEVERREST256, hardwareMap);
-        rotator.setClosedLoop(true);
-        rotator.setKp(0.01);
         rotator.resetEncoders();
     }
 
     @Override
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
-            rotator.setVelocity(-1);
-            targetPosition = rotator.getCurrentPosition();
+            rotator.setPower(-1);
+            targetPosition = rotator.motor2.getCurrentPosition();
         }
         else if (controller.rightTriggerPressed()) {
-            rotator.setVelocity(1);
-            targetPosition = rotator.getCurrentPosition();
+            rotator.setPower(1);
+            targetPosition = rotator.motor2.getCurrentPosition();
         }
-        else rotator.setVelocity(pidController.getOutput(rotator.getCurrentPosition(), targetPosition));
+        else {
+            rotator.setPower(pidController.getOutput(rotator.motor2.getCurrentPosition(), targetPosition));
+        }
+
+        DashBoard.getDash().create("Rotator Position: ", rotator.motor2.getCurrentPosition());
+    }
+
+    public void setTargetPosition(double targetPosition) {
+        this.targetPosition = targetPosition;
     }
 
     public double getAngle() {

@@ -37,17 +37,19 @@ public class Falcon extends MasqRobot {
     public MasqRotator rotator;
     public MasqElevator lift;
     public MasqServo dumper;
+    public MasqLimitSwitch rotateTopSwitch;
     public MasqCRServoSystem collector;
     public MasqVoltageSensor voltageSensor;
     public MasqClock clock;
     public MasqMotor hang;
-    public MasqLimitSwitch topLimit, downLimit;
+    public MasqLimitSwitch hangTopSwitch, hangBottomSwitch;
     private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
     public DogeForia dogeForia;
     public void mapHardware(HardwareMap hardwareMap) {
         voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
+        rotateTopSwitch = new MasqLimitSwitch("rotTop", hardwareMap);
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
         rotator = new MasqRotator(hardwareMap);
@@ -55,12 +57,12 @@ public class Falcon extends MasqRobot {
         dumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
-        topLimit = new MasqLimitSwitch("limitTop", hardwareMap);
-        downLimit = new MasqLimitSwitch("limitBottom", hardwareMap);
+        hangTopSwitch = new MasqLimitSwitch("limitTop", hardwareMap);
+        hangBottomSwitch = new MasqLimitSwitch("limitBottom", hardwareMap);
         driveTrain.resetEncoders();
         hang.setClosedLoop(true);
         hang.setKp(0.01);
-        hang.setLimits(downLimit, topLimit);
+        hang.setLimits(hangBottomSwitch, hangTopSwitch);
         tracker = new MasqPositionTracker(hang, rotator.rotator.motor1, imu);
         if (startOpenCV) startOpenCV(hardwareMap);
         driveTrain.setTracker(tracker);

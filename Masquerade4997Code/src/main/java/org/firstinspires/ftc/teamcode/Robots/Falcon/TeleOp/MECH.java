@@ -13,6 +13,10 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECH", group = "NFS")
 public class MECH extends MasqLinearOpMode implements Constants {
     private Falcon falcon = new Falcon();
+    private double scoreExtension = -2800;
+    private double collectionExtension = -3500;
+    private double midRotation = -600;
+    private double prevRotatorPosition = 0;
     @Override
     public void runLinearOpMode()  {
         falcon.setStartOpenCV(false);
@@ -32,27 +36,33 @@ public class MECH extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()) {
             falcon.MECH(controller1);
 
+            if (falcon.rotator.rotator.motor2.getCurrentPosition() > midRotation
+                    && prevRotatorPosition < midRotation) falcon.lift.setTargetPosition(collectionExtension);
+            else if (falcon.rotator.rotator.motor2.getCurrentPosition() < midRotation
+                    && prevRotatorPosition > midRotation) falcon.lift.setTargetPosition(scoreExtension);
+
+
             if (falcon.rotator.getAngle() > 45) falcon.setMechTurnDampner(0.3);
             else falcon.setMechTurnDampner(1);
 
             if (falcon.lift.lift.getAbsolutePosition() < -2000) falcon.setMechTurnDampner(0.3);
 
-            if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
-            else if (controller1.leftBumper() || controller2.b()) falcon.collector.setPower(.5);
+            if (controller1.leftBumper()) falcon.collector.setPower(.5);
+            else if (controller1.leftTriggerPressed() || controller2.b()) falcon.collector.setPower(-.5);
             else falcon.collector.setPower(0);
+
+            prevRotatorPosition = falcon.rotator.rotator.motor2.getCurrentPosition();
 
             if (controller2.b()) falcon.dumper.setPosition(DUMPER_OUT);
             else falcon.dumper.setPosition(DUMPER_IN);
 
-            if (controller2.leftStickY() < 0 && falcon.topLimit.isPressed()) falcon.hang.setPower(-1);
-            else if (controller2.leftStickY() > 0 && falcon.downLimit.isPressed()) falcon.hang.setPower(1);
+            if (controller2.leftStickY() < 0 && falcon.hangTopSwitch.isPressed()) falcon.hang.setPower(-1);
+            else if (controller2.leftStickY() > 0 && falcon.hangBottomSwitch.isPressed()) falcon.hang.setPower(1);
             else falcon.hang.setBreakMode();
 
             falcon.rotator.DriverControl(controller2);
             falcon.lift.DriverControl(controller1);
             falcon.tracker.updateSystem();
-            dash.create("Top Limit: ", falcon.topLimit.getSignalValue());
-            dash.create("Bot Limit: ", falcon.downLimit.getSignalValue());
             dash.create("X: ", falcon.tracker.getGlobalX());
             dash.create("Y: ", falcon.tracker.getGlobalY());
             dash.create("H: ", falcon.tracker.getHeading());
