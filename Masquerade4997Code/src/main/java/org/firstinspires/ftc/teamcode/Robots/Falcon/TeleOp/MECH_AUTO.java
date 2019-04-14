@@ -70,7 +70,7 @@ public class MECH_AUTO extends MasqLinearOpMode implements Constants {
                 /*if (!falcon.rotateTopSwitch.isPressed() &&
                         falcon.rotator.rotator.motor2.getCurrentPosition() > scoreRotation)
                     falcon.rotator.rotator.setPower(-1);*/
-                falcon.rotator.setTargetPosition(scoreRotation);
+                falcon.rotator.setHoldPosition(scoreRotation);
                 updateDrivetrainToPath();
             }
             else falcon.MECH(controller1);

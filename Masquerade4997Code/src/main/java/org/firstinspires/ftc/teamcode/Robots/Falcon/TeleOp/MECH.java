@@ -46,7 +46,7 @@ public class MECH extends MasqLinearOpMode implements Constants {
             if (falcon.rotator.getAngle() > 45) falcon.setMechTurnDampner(0.3);
             else falcon.setMechTurnDampner(1);
 
-            if (falcon.lift.lift.getAbsolutePosition() < -2000) falcon.setMechTurnDampner(0.3);
+            if (falcon.lift.lift.getCurrentPosition() < -2000) falcon.setMechTurnDampner(0.3);
 
             if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
             else if (controller1.leftBumper() || controller2.b()) falcon.collector.setPower(.5);
@@ -64,9 +64,6 @@ public class MECH extends MasqLinearOpMode implements Constants {
             falcon.rotator.DriverControl(controller2);
             falcon.lift.DriverControl(controller1);
             falcon.tracker.updateSystem();
-            dash.create("X: ", falcon.tracker.getGlobalX());
-            dash.create("Y: ", falcon.tracker.getGlobalY());
-            dash.create("H: ", falcon.tracker.getHeading());
 
             dash.update();
             controller1.update();

@@ -20,40 +20,50 @@ import Library4997.MasqWrappers.MasqController;
 public class MasqRotator implements MasqSubSystem {
     private MasqLimitSwitch limitSwitch;
     public MasqMotorSystem rotator;
-    private double targetPosition = 0;
-    private MasqPIDController pidController = new MasqPIDController(0.001, 0, 0);
+    private double holdPosition = 0;
+    private double downRotationPosition = 380;
+    private MasqPIDController holdController = new MasqPIDController(0.001, 0, 0.0001);
+    private MasqPIDController downController = new MasqPIDController(0.000001, 0, 80);
+    private MasqPIDController upController = new MasqPIDController(0.001, 0.000001, 0);
     public MasqRotator (HardwareMap hardwareMap) {
         rotator = new MasqMotorSystem("rotator1", DcMotor.Direction.FORWARD, "rotator2", DcMotor.Direction.REVERSE, MasqMotorModel.NEVERREST256, hardwareMap);
+        rotator.setClosedLoop(true);
+        rotator.setKp(0.01);
         rotator.resetEncoders();
     }
 
     @Override
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
-            rotator.setPower(-1);
-            targetPosition = rotator.motor2.getCurrentPosition();
+            setVelocity(-0.8);
+            holdPosition = rotator.motor2.getCurrentPosition();
         }
         else if (controller.rightTriggerPressed()) {
-            rotator.setPower(1);
-            targetPosition = rotator.motor2.getCurrentPosition();
+            rotator.motor2.setPower(downController.getOutput(rotator.motor2.getCurrentPosition(), downRotationPosition));
+            holdPosition = rotator.motor2.getCurrentPosition();
         }
-        else if (controller.x() && !limitSwitch.isPressed()) {
-            rotator.setPower(-1);
-            targetPosition = rotator.motor2.getCurrentPosition();
+        else rotator.setPower(holdController.getOutput(rotator.motor2.getCurrentPosition(), holdPosition));
+        if (limitSwitch.isPressed()) {
+            downRotationPosition = 1500;
+            rotator.motor2.resetEncoder();
         }
-        else {
-            rotator.setPower(pidController.getOutput(rotator.motor2.getCurrentPosition(), targetPosition));
-        }
-
-        DashBoard.getDash().create("Rotator Position: ", rotator.motor2.getCurrentPosition());
+        DashBoard.getDash().create("Position: ", rotator.motor2.getCurrentPosition());
+        DashBoard.getDash().create("Power: ", rotator.motor2.getPower());
+        DashBoard.getDash().create("D: ", downController.getDeriv());
+        DashBoard.getDash().create("D*Kd: ", downController.getDeriv() * 80);
     }
 
-    public void setTargetPosition(double targetPosition) {
-        this.targetPosition = targetPosition;
+    public void setHoldPosition(double holdPosition) {
+        this.holdPosition = holdPosition;
     }
 
     public void setLimitSwitch(MasqLimitSwitch limitSwitch) {
         this.limitSwitch = limitSwitch;
+    }
+
+    public void setVelocity(double velocity) {
+        rotator.motor2.setVelocity(velocity);
+        rotator.motor1.setPower(rotator.motor2.getPower());
     }
 
     public double getAngle() {
