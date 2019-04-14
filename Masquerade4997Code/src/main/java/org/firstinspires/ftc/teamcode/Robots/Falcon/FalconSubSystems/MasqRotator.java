@@ -7,6 +7,7 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqSubSystem;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
@@ -17,6 +18,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 
 public class MasqRotator implements MasqSubSystem {
+    private MasqLimitSwitch limitSwitch;
     public MasqMotorSystem rotator;
     private double targetPosition = 0;
     private MasqPIDController pidController = new MasqPIDController(0.001, 0, 0);
@@ -35,6 +37,10 @@ public class MasqRotator implements MasqSubSystem {
             rotator.setPower(1);
             targetPosition = rotator.motor2.getCurrentPosition();
         }
+        else if (controller.x() && !limitSwitch.isPressed()) {
+            rotator.setPower(-1);
+            targetPosition = rotator.motor2.getCurrentPosition();
+        }
         else {
             rotator.setPower(pidController.getOutput(rotator.motor2.getCurrentPosition(), targetPosition));
         }
@@ -44,6 +50,10 @@ public class MasqRotator implements MasqSubSystem {
 
     public void setTargetPosition(double targetPosition) {
         this.targetPosition = targetPosition;
+    }
+
+    public void setLimitSwitch(MasqLimitSwitch limitSwitch) {
+        this.limitSwitch = limitSwitch;
     }
 
     public double getAngle() {

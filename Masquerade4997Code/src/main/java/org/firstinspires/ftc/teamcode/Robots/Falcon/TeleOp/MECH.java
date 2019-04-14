@@ -25,6 +25,7 @@ public class MECH extends MasqLinearOpMode implements Constants {
         falcon.hang.setClosedLoop(true);
         falcon.driveTrain.setClosedLoop(true);
         falcon.dumper.setPosition(DUMPER_IN);
+        falcon.rotator.setLimitSwitch(falcon.rotateTopSwitch);
         while (!opModeIsActive()) {
             falcon.tracker.updateSystem();
             dash.create("X: ", falcon.tracker.getGlobalX());
@@ -47,8 +48,8 @@ public class MECH extends MasqLinearOpMode implements Constants {
 
             if (falcon.lift.lift.getAbsolutePosition() < -2000) falcon.setMechTurnDampner(0.3);
 
-            if (controller1.leftBumper()) falcon.collector.setPower(.5);
-            else if (controller1.leftTriggerPressed() || controller2.b()) falcon.collector.setPower(-.5);
+            if (controller1.leftTriggerPressed()) falcon.collector.setPower(-.5);
+            else if (controller1.leftBumper() || controller2.b()) falcon.collector.setPower(.5);
             else falcon.collector.setPower(0);
 
             prevRotatorPosition = falcon.rotator.rotator.motor2.getCurrentPosition();
