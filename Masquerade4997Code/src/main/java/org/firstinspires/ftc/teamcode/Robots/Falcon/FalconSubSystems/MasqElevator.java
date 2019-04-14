@@ -17,7 +17,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 public class MasqElevator implements MasqSubSystem {
     public MasqMotor lift;
-    private MasqPIDController pidController = new MasqPIDController(0.001, 0, 0.00001);
+    private MasqPIDController pidController = new MasqPIDController(0.001, 0);
     private double targetPosition;
     public MasqElevator (HardwareMap hardwareMap) {
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);

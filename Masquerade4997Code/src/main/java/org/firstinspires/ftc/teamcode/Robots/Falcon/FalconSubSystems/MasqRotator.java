@@ -23,7 +23,7 @@ public class MasqRotator implements MasqSubSystem {
     private double holdPosition = 0;
     private double downRotationPosition = 380;
     private MasqPIDController holdController = new MasqPIDController(0.001, 0, 0.0001);
-    private MasqPIDController downController = new MasqPIDController(0.000001, 0, 80);
+    private MasqPIDController downController = new MasqPIDController(0.001, 0, -5);
     private MasqPIDController upController = new MasqPIDController(0.001, 0.000001, 0);
     public MasqRotator (HardwareMap hardwareMap) {
         rotator = new MasqMotorSystem("rotator1", DcMotor.Direction.FORWARD, "rotator2", DcMotor.Direction.REVERSE, MasqMotorModel.NEVERREST256, hardwareMap);
@@ -50,7 +50,7 @@ public class MasqRotator implements MasqSubSystem {
         DashBoard.getDash().create("Position: ", rotator.motor2.getCurrentPosition());
         DashBoard.getDash().create("Power: ", rotator.motor2.getPower());
         DashBoard.getDash().create("D: ", downController.getDeriv());
-        DashBoard.getDash().create("D*Kd: ", downController.getDeriv() * 80);
+        DashBoard.getDash().create("D*Kd: ", downController.getDeriv() * downController.getKd());
     }
 
     public void setHoldPosition(double holdPosition) {
