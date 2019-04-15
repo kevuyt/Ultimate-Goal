@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.Falcon;
+package org.firstinspires.ftc.teamcode.Robots.Reserection;
 
 import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.DogeCV;
@@ -7,22 +7,19 @@ import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqElevator;
-import org.firstinspires.ftc.teamcode.Robots.Falcon.FalconSubSystems.MasqRotator;
-import org.firstinspires.ftc.teamcode.Robots.Falcon.Resources.BlockPlacement;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqCollectionLift;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqScoreLift;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.Resources.BlockPlacement;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqSensors.MasqVoltageSensor;
 import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
@@ -32,40 +29,47 @@ import Library4997.MasqWrappers.DashBoard;
  * Project: MasqLib
  */
 
-public class Falcon extends MasqRobot {
+public class Resurrection extends MasqRobot {
+    /*---------------------Hardware-------------------------*/
     public MasqAdafruitIMU imu;
-    public MasqRotator rotator;
-    public MasqElevator lift;
-    public MasqServo dumper;
+    public MasqServo particleDumper, collectorDumper;
     public MasqLimitSwitch rotateTopSwitch;
     public MasqCRServoSystem collector;
-    public MasqVoltageSensor voltageSensor;
-    public MasqClock clock;
     public MasqMotor hang;
     public MasqLimitSwitch hangTopSwitch, hangBottomSwitch;
+    public MasqCollectionLift collectionLift;
+    public MasqScoreLift scoreLift;
+    public MasqMotor yWheel;
+    /*---------------------OPEN-CV---------------------------*/
     private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
     public DogeForia dogeForia;
     public void mapHardware(HardwareMap hardwareMap) {
-        voltageSensor = new MasqVoltageSensor(hardwareMap);
         dash = DashBoard.getDash();
-        rotateTopSwitch = new MasqLimitSwitch("rotTop", hardwareMap);
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
-        rotator = new MasqRotator(hardwareMap);
-        lift = new MasqElevator(hardwareMap);
-        dumper = new MasqServo("dumper", hardwareMap);
+
+
+        collectionLift = new MasqCollectionLift("colectLift", hardwareMap);
+        scoreLift = new MasqScoreLift("scoreLift", hardwareMap);
+
+        particleDumper = new MasqServo("particleDumper", hardwareMap);
+        collectorDumper = new MasqServo("collectorDumper", hardwareMap);
         collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
+
+        rotateTopSwitch = new MasqLimitSwitch("rotTop", hardwareMap);
         hangTopSwitch = new MasqLimitSwitch("limitTop", hardwareMap);
         hangBottomSwitch = new MasqLimitSwitch("limitBottom", hardwareMap);
-        driveTrain.resetEncoders();
+
+
+        yWheel = new MasqMotor("yWheel", MasqMotorModel.ORBITAL20, hardwareMap);
+        tracker = new MasqPositionTracker(hang, yWheel, imu);
+        if (startOpenCV) startOpenCV(hardwareMap);
         hang.setClosedLoop(true);
         hang.setKp(0.01);
-        hang.setLimits(hangBottomSwitch, hangTopSwitch);
-        tracker = new MasqPositionTracker(hang, rotator.rotator.motor1, imu);
-        if (startOpenCV) startOpenCV(hardwareMap);
         driveTrain.setTracker(tracker);
+        driveTrain.resetEncoders();
     }
     @Override
     public MasqPIDPackage pidPackage() {
@@ -115,31 +119,6 @@ public class Falcon extends MasqRobot {
         dogeForia.enableDogeCV();
         dogeForia.showDebug();
         dogeForia.start();
-    }
-    public void update () {
-        dash.update();
-        tracker.updateSystem();
-    }
-    public void turnTillGold (double speed, Direction direction) {
-        clock = new MasqClock();
-        while (opModeIsActive() && !goldAlignDetector.getAligned() && imu.getRelativeYaw() <= 165) {
-            driveTrain.setVelocity(-speed * direction.value, speed * direction.value);
-            dash.create(imu.getRelativeYaw());
-            dash.update();
-        }
-        driveTrain.setVelocity(0, 0);
-    }
-
-    public void shake(int repetition, int degree, double power) {
-        for (int i = 0; i < repetition / 2; i++) {
-            while (imu.getRelativeYaw() < degree) {
-                driveTrain.setPower(-power, power);
-            }
-            while (imu.getRelativeYaw() > -degree) {
-                driveTrain.setPower(power, -power);
-            }
-        }
-        driveTrain.setPower(0);
     }
 
     public BlockPlacement getBlockPlacement (int block) {
