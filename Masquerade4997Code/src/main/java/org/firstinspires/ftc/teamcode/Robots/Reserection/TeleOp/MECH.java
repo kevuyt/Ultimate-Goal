@@ -13,7 +13,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "MECH", group = "NFS")
 public class MECH extends MasqLinearOpMode implements Constants {
     private Resurrection resurrection = new Resurrection();
-    private boolean prevY = false, collectorIn = true;
     @Override
     public void runLinearOpMode()  {
         resurrection.setStartOpenCV(false);
@@ -33,32 +32,22 @@ public class MECH extends MasqLinearOpMode implements Constants {
         while (opModeIsActive()) {
             resurrection.MECH(controller1);
 
-            if (controller1.leftTriggerPressed()) resurrection.collector.setPower(-.5);
-            else if (controller1.leftBumper() || controller2.b()) resurrection.collector.setPower(.5);
+            if (controller1.leftTriggerPressed()) resurrection.collector.setPower(.5);
+            else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
-            if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
-            else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
-
-            if (controller1.y() && !prevY && collectorIn) {
-                resurrection.collectorDumper.setPosition(COLLECTOR_DUMPER_OUT);
-                collectorIn = false;
-            }
-            else if (controller1.y() && !prevY && !collectorIn) {
-                resurrection.collectorDumper.setPosition(COLLECTOR_DUMPER_IN);
-                collectorIn = true;
-            }
-
-            prevY = controller1.y();
+            if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
+            else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
 
             if (controller2.leftStickY() < 0 && resurrection.hangTopSwitch.isPressed()) resurrection.hang.setPower(-1);
             else if (controller2.leftStickY() > 0 && resurrection.hangBottomSwitch.isPressed()) resurrection.hang.setPower(1);
             else resurrection.hang.setBreakMode();
 
+            resurrection.collectorDumper.DriverControl(controller1);
             resurrection.collectionLift.DriverControl(controller1);
             resurrection.scoreLift.DriverControl(controller2);
-            resurrection.tracker.updateSystem();
 
+            resurrection.tracker.updateSystem();
             dash.update();
         }
     }

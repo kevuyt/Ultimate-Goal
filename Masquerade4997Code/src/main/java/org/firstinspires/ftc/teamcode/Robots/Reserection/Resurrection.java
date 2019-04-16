@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqCollectionLift;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqCollectorDumper;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqScoreLift;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resources.BlockPlacement;
 
@@ -32,7 +33,8 @@ import Library4997.MasqWrappers.DashBoard;
 public class Resurrection extends MasqRobot {
     /*---------------------Hardware-------------------------*/
     public MasqAdafruitIMU imu;
-    public MasqServo particleDumper, collectorDumper;
+    public MasqCollectorDumper collectorDumper;
+    public MasqServo particleDumper;
     public MasqLimitSwitch rotateTopSwitch;
     public MasqCRServoSystem collector;
     public MasqMotor hang;
@@ -50,11 +52,11 @@ public class Resurrection extends MasqRobot {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
 
 
-        collectionLift = new MasqCollectionLift("colectLift", hardwareMap);
+        collectionLift = new MasqCollectionLift("collectLift", hardwareMap);
         scoreLift = new MasqScoreLift("scoreLift", hardwareMap);
+        collectorDumper = new MasqCollectorDumper("collectorDumper", hardwareMap);
 
-        particleDumper = new MasqServo("particleDumper", hardwareMap);
-        collectorDumper = new MasqServo("collectorDumper", hardwareMap);
+        particleDumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
         hang = new MasqMotor("hang", MasqMotorModel.ORBITAL20, hardwareMap);
 
@@ -62,9 +64,7 @@ public class Resurrection extends MasqRobot {
         hangTopSwitch = new MasqLimitSwitch("limitTop", hardwareMap);
         hangBottomSwitch = new MasqLimitSwitch("limitBottom", hardwareMap);
 
-
-        yWheel = new MasqMotor("yWheel", MasqMotorModel.ORBITAL20, hardwareMap);
-        tracker = new MasqPositionTracker(hang, yWheel, imu);
+        tracker = new MasqPositionTracker(hang, collectionLift.lift, imu);
         if (startOpenCV) startOpenCV(hardwareMap);
         hang.setClosedLoop(true);
         hang.setKp(0.01);

@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqController;
  * Project: MasqLib
  */
 public class MasqCollectionLift implements MasqSubSystem {
-    private MasqMotor lift;
+    public MasqMotor lift;
     private MasqPIDController hold = new MasqPIDController(0.01, 0, 0);
     private double holdPosition = 0;
     public MasqCollectionLift(String name, HardwareMap hardwareMap) {
@@ -24,15 +24,15 @@ public class MasqCollectionLift implements MasqSubSystem {
 
     @Override
     public void DriverControl(MasqController controller) {
-        if (controller.leftBumper()) {
-            lift.setPower(1);
-            holdPosition = lift.getCurrentPosition();
-        }
-        else if (controller.leftTriggerPressed()) {
+        if (controller.rightBumper()) {
             lift.setPower(-1);
             holdPosition = lift.getCurrentPosition();
         }
-        else lift.setPower(hold.getOutput(lift.getCurrentPosition(), holdPosition));
+        else if (controller.rightTriggerPressed()) {
+            lift.setPower(1);
+            holdPosition = lift.getCurrentPosition();
+        }
+        else /*lift.setPower(hold.getOutput(lift.getCurrentPosition(), holdPosition));*/ lift.setPower(0);
     }
 
     @Override

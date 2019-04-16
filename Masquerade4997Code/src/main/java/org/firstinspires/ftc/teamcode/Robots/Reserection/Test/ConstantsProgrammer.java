@@ -12,14 +12,31 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "ConstantsProgrammer", group = "NFS")
 public class ConstantsProgrammer extends MasqLinearOpMode {
-    private Resurrection resurrection = new Resurrection();
+    private Resurrection falcon = new Resurrection();
+    private double dumper = 0;
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        resurrection.mapHardware(hardwareMap);
+        falcon.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("Hello");
+            dash.create("HELLO ");
             dash.update();
         }
         waitForStart();
+        while (opModeIsActive()) {
+            if (controller1.xOnPress()) {
+                dumper += 0.01;
+            }
+            if (controller1.yOnPress()) {
+                dumper -= 0.01;
+            }
+            controller1.update();
+            falcon.particleDumper.setPosition(dumper);
+
+            falcon.scoreLift.DriverControl(controller1);
+
+            dash.create("Dumper: ", falcon.particleDumper.getPosition());
+            dash.update();
+        }
+
     }
 }

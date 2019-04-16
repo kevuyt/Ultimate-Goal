@@ -31,7 +31,7 @@ public class MasqScoreLift implements MasqSubSystem {
             lift.setPower(-1);
             holdPosition = lift.getCurrentPosition();
         }
-        else lift.setPower(hold.getOutput(lift.getCurrentPosition(), holdPosition));
+        else /*lift.setPower(hold.getOutput(lift.getCurrentPosition(), holdPosition));*/ lift.setPower(0);
     }
 
     @Override

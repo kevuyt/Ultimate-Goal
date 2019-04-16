@@ -21,7 +21,6 @@ public class TestOpMode1 extends MasqLinearOpMode {
         resurrection.setStartOpenCV(false);
         resurrection.mapHardware(hardwareMap);
         resurrection.initializeTeleop();
-        resurrection.lift.lift.setBreakMode();
         while (!opModeIsActive()) {
             dash.create("X: ", resurrection.tracker.getGlobalX());
             dash.create("Y: ", resurrection.tracker.getGlobalY());
