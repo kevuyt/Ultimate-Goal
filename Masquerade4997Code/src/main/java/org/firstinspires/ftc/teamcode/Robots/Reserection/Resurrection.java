@@ -7,10 +7,9 @@ import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectionLift;
-import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper;
-import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqScoreLift;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resources.BlockPlacement;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectionLift;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqScoreLift;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
@@ -53,7 +52,7 @@ public class Resurrection extends MasqRobot {
 
         collectionLift = new MasqCollectionLift("collectLift", hardwareMap);
         scoreLift = new MasqScoreLift("scoreLift", hardwareMap);
-        collectorDumper = new MasqMotor("collectorDumper", hardwareMap);
+        collectorDumper = new MasqMotor("collectorDumper", MasqMotorModel.NEVEREST40, hardwareMap);
 
         particleDumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
