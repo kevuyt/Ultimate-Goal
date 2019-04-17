@@ -7,9 +7,9 @@ import com.disnodeteam.dogecv.detectors.roverrukus.GoldAlignDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqCollectionLift;
-import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqCollectorDumper;
-import org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems.MasqScoreLift;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectionLift;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqScoreLift;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resources.BlockPlacement;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
@@ -33,15 +33,14 @@ import Library4997.MasqWrappers.DashBoard;
 public class Resurrection extends MasqRobot {
     /*---------------------Hardware-------------------------*/
     public MasqAdafruitIMU imu;
-    public MasqCollectorDumper collectorDumper;
+    public MasqMotor collectorDumper;
     public MasqServo particleDumper;
     public MasqLimitSwitch rotateTopSwitch;
     public MasqCRServoSystem collector;
     public MasqMotor hang;
-    public MasqLimitSwitch hangTopSwitch, hangBottomSwitch;
+    public MasqLimitSwitch hangTopSwitch, hangBottomSwitch, collectionLiftSwitch, collectionDumpTopSwitch;
     public MasqCollectionLift collectionLift;
     public MasqScoreLift scoreLift;
-    public MasqMotor yWheel;
     /*---------------------OPEN-CV---------------------------*/
     private boolean startOpenCV = true;
     public GoldAlignDetector goldAlignDetector;
@@ -54,7 +53,7 @@ public class Resurrection extends MasqRobot {
 
         collectionLift = new MasqCollectionLift("collectLift", hardwareMap);
         scoreLift = new MasqScoreLift("scoreLift", hardwareMap);
-        collectorDumper = new MasqCollectorDumper("collectorDumper", hardwareMap);
+        collectorDumper = new MasqMotor("collectorDumper", hardwareMap);
 
         particleDumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
@@ -63,6 +62,8 @@ public class Resurrection extends MasqRobot {
         rotateTopSwitch = new MasqLimitSwitch("rotTop", hardwareMap);
         hangTopSwitch = new MasqLimitSwitch("limitTop", hardwareMap);
         hangBottomSwitch = new MasqLimitSwitch("limitBottom", hardwareMap);
+        collectionDumpTopSwitch = new MasqLimitSwitch("collectTop", hardwareMap);
+        collectionLiftSwitch = new MasqLimitSwitch("collectLiftSwitch", hardwareMap);
 
         tracker = new MasqPositionTracker(hang, collectionLift.lift, imu);
         if (startOpenCV) startOpenCV(hardwareMap);

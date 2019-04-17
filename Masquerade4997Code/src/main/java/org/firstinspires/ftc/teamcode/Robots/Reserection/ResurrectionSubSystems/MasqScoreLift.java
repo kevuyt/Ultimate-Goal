@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.Reserection.FalconSubSystems;
+package org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -13,23 +13,22 @@ import Library4997.MasqWrappers.MasqController;
  * Created by Archishmaan Peyyety on 4/14/19.
  * Project: MasqLib
  */
-public class MasqCollectionLift implements MasqSubSystem {
-    public MasqMotor lift;
+public class MasqScoreLift implements MasqSubSystem {
+    private MasqMotor lift;
     private MasqPIDController hold = new MasqPIDController(0.01, 0, 0);
     private double holdPosition = 0;
-    public MasqCollectionLift(String name, HardwareMap hardwareMap) {
+    public MasqScoreLift(String name, HardwareMap hardwareMap) {
         lift = new MasqMotor(name, MasqMotorModel.ORBITAL20, hardwareMap);
         lift.resetEncoder();
     }
-
     @Override
     public void DriverControl(MasqController controller) {
-        if (controller.rightBumper()) {
-            lift.setPower(-1);
+        if (controller.leftBumper()) {
+            lift.setPower(1);
             holdPosition = lift.getCurrentPosition();
         }
-        else if (controller.rightTriggerPressed()) {
-            lift.setPower(1);
+        else if (controller.leftTriggerPressed()) {
+            lift.setPower(-1);
             holdPosition = lift.getCurrentPosition();
         }
         else /*lift.setPower(hold.getOutput(lift.getCurrentPosition(), holdPosition));*/ lift.setPower(0);
