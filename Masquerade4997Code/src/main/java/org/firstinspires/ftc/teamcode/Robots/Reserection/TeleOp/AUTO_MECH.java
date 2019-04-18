@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.Reserection.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resurrection;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper.Positions;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -20,6 +21,7 @@ public class AUTO_MECH extends MasqLinearOpMode implements Constants {
         resurrection.initializeTeleop();
         resurrection.hang.setClosedLoop(true);
         resurrection.driveTrain.setClosedLoop(true);
+        resurrection.collectorDumper.startPositionThread();
         resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
         while (!opModeIsActive()) {
             dash.create("X: ", resurrection.tracker.getGlobalX());
@@ -36,8 +38,8 @@ public class AUTO_MECH extends MasqLinearOpMode implements Constants {
             else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
-            if (controller1.dPadUp()) resurrection.collectorDumper.setPower(.7);
-            else if (controller1.dPadDown()) resurrection.collectorDumper.setPower(-.7);
+            if (controller1.dPadUp()) resurrection.collectorDumper.setAutoPosition(Positions.TRANSFER.getPosition());
+            else if (controller1.dPadDown()) resurrection.collectorDumper.setAutoPosition(Positions.DOWN.getPosition());
             else resurrection.collectorDumper.setPower(0);
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);

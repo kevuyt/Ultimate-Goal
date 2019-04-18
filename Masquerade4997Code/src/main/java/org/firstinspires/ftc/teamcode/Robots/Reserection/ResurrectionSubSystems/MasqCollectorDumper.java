@@ -20,9 +20,9 @@ public class MasqCollectorDumper extends MasqMotor implements MasqSubSystem, Run
         TRANSFER(0),
         HORIZONTAL(1),
         DOWN(1);
-        private double d;
-        Positions(double d1){d = d1;}
-        public double getPosition() {return d;}
+        private int d;
+        Positions(int d1){d = d1;}
+        public int getPosition() {return d;}
     }
 
     private AtomicInteger autoPosition = new AtomicInteger(0);

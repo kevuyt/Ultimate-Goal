@@ -15,8 +15,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @Autonomous(name = "Crater60", group = "T")
 public class Crater60 extends MasqLinearOpMode {
     private Resurrection resurrection = new Resurrection();
-    private MasqPoint rightSample = new MasqPoint(22, -10);
-    private MasqPoint leftSample = new MasqPoint(23, 9);
+    private MasqPoint rightSample = new MasqPoint(22, -12);
+    private MasqPoint leftSample = new MasqPoint(23, 15);
     private MasqPoint centerSample = new MasqPoint(24, -3, 0);
     private MasqPoint lineup = new MasqPoint(14, 39);
     private MasqPoint park = new MasqPoint(31, 21);
@@ -50,34 +50,22 @@ public class Crater60 extends MasqLinearOpMode {
             resurrection.collectionLift.lift.setPower(-1);
             sleep(1);
             resurrection.collectionLift.lift.setPower(0);
-            /*resurrection.setTimeout(3);
-            resurrection.setLookAheadDistance(3);
-            resurrection.gotoXYPure(lineup, 30, 0.6, 0.01);
-            resurrection.gotoXYPure(-16, 66, 45, 0.7, 0.05);
-            resurrection.gotoXYPure(park, 45, 0.7);*/
         }
         else if (placement == BlockPlacement.RIGHT) {
             resurrection.gotoXYPure(9, 0, 0, 0.7);
-            resurrection.gotoXYPure(leftSample, 20, 0.8);
-            resurrection.gotoXYPure(14, 0, 0);
+            resurrection.gotoXYPure(leftSample, 20, 0.6);
             resurrection.turnAbsolute(90, Direction.RIGHT);
             resurrection.collectionLift.lift.setPower(-1);
             sleep(1);
             resurrection.collectionLift.lift.setPower(0);
-            //resurrection.gotoXYPure(-1, 62, 45);
-            //resurrection.gotoXYPure(park, 45);
         }
         else if (placement == BlockPlacement.LEFT) {
             resurrection.gotoXYPure(9, 0, 0, 0.9);
-            resurrection.gotoXYPure(rightSample, 0, 0.8);
+            resurrection.gotoXYPure(rightSample, 0, 0.6);
             resurrection.turnAbsolute(90, Direction.RIGHT);
             resurrection.collectionLift.lift.setPower(-1);
             sleep(1);
             resurrection.collectionLift.lift.setPower(0);
-            //resurrection.gotoXYPure(12, -16, 0, 0.5);
-            //resurrection.gotoXYPure(lineup, 20, 0.9, 0.007);
-            //resurrection.gotoXYPure(-7, 58, 45);
-            //resurrection.gotoXYPure(park, 45);
         }
     }
 }

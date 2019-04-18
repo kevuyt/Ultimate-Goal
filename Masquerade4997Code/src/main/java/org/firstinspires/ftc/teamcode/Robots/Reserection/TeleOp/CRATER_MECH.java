@@ -26,12 +26,14 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode()  {
         robotInit();
+        resurrection.collectorDumper.startPositionThread();
         current = new MasqVector(resurrection.tracker.getGlobalX(), resurrection.tracker.getGlobalY());
         while (!opModeIsActive()) {
             resurrection.tracker.updateSystem();
             dash.create("X: ", resurrection.tracker.getGlobalX());
             dash.create("Y: ", resurrection.tracker.getGlobalY());
             dash.create("H: ", resurrection.tracker.getHeading());
+            dash.create("Encoder thing: ", resurrection.collectorDumper.getCurrentPosition());
             dash.update();
         }
         waitForStart();
@@ -46,10 +48,11 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
                 scoreState = true;
                 resurrection.collectorDumper.setPower(.7);
             }
-            else if (controller1.dPadDown()) {
-                if (!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(-1);
-                resurrection.collectorDumper.setPower(-.7);
+            else if (controller1.dPadDown()) resurrection.collectorDumper.setPower(-.7);
+            else if (controller2.dPadUp()) {
+                resurrection.collectorDumper.setPower(.7);
             }
+            else if (controller2.dPadDown()) resurrection.collectorDumper.setPower(-.7);
             else resurrection.collectorDumper.setPower(0);
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
@@ -67,8 +70,6 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
                 scorePosition = new MasqVector(resurrection.tracker.getGlobalX(), resurrection.tracker.getGlobalY());
                 scoreHeading = resurrection.tracker.getHeading();
             }
-
-            if (controller2.x() && !resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(1);
 
             resurrection.collectionLift.DriverControl(controller1);
             resurrection.scoreLift.DriverControl(controller2);

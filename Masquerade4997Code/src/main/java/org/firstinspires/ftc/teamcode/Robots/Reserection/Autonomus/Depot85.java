@@ -31,8 +31,9 @@ public class Depot85 extends MasqLinearOpMode {
         }
         waitForStart();
         resurrection.tracker.reset();
-        BlockPlacement placement = BlockPlacement.RIGHT;
-        resurrection.drive(2, Direction.BACKWARD);
+        BlockPlacement placement = resurrection.getBlockPlacement((int) resurrection.goldAlignDetector.getXPosition());
+        resurrection.unHang();
+        resurrection.drive(3, Direction.BACKWARD);
         resurrection.setLookAheadDistance(5);
         if (placement == BlockPlacement.CENTER) {
             resurrection.gotoXY(marker, -90, 0.8);
