@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots.Reserection.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resurrection;
@@ -11,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "MECH", group = "NFS")
+@Disabled
 public class MECH extends MasqLinearOpMode implements Constants {
     private Resurrection resurrection = new Resurrection();
     @Override

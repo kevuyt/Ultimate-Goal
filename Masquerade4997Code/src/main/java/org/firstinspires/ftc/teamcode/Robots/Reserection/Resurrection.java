@@ -82,8 +82,8 @@ public class Resurrection extends MasqRobot {
         pidPackage.setKpMotorAutoLeft(0.001);
         pidPackage.setKpMotorAutoRight(0.001);
 
-        pidPackage.setKpMotorTeleOpLeft(0.0001);
-        pidPackage.setKpMotorTeleOpRight(0.0001);
+        pidPackage.setKpMotorTeleOpLeft(0.002);
+        pidPackage.setKpMotorTeleOpRight(0.002);
         /*-------------------------------------------------*/
         pidPackage.setKpTurn(0.01);
         pidPackage.setKpDriveEncoder(1.5);

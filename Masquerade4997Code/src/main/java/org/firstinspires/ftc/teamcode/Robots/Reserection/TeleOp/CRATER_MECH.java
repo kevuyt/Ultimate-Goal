@@ -18,9 +18,7 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
     private Resurrection resurrection = new Resurrection();
     private boolean scoreState = false;
 
-    private double holDump = 0;
     private MasqPIDController speedController = new MasqPIDController(0.05, 0.0, 0.00001);
-    private MasqPIDController holdDump = new MasqPIDController(0.002, 0, 0);
     private double maxAutoPositioningSpeed = 0.7;
 
     private MasqVector scorePosition = new MasqVector(0, 0);
@@ -60,9 +58,6 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
                 resurrection.collectorDumper.setPower(0);
                 resurrection.collectorDumper.setBreakMode();
             }
-
-            if (controller1.dPadDown() || controller1.dPadUp() || controller2.dPadUp() || controller2.dPadDown())
-                holDump = resurrection.collectorDumper.getCurrentPosition();
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
             else if (controller2.rightTriggerPressed() || controller2.rightBumper()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_PARALLEL);
