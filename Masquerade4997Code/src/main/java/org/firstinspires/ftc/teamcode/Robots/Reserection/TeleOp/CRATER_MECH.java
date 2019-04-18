@@ -17,18 +17,13 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
 
     private Resurrection resurrection = new Resurrection();
 
-    private boolean bOverride = true, aOverride = true;
-
     private MasqPIDController speedController = new MasqPIDController(0.03, 0.0, 0.00001);
-
     private double maxAutoPositioningSpeed = 0.7;
+
+    private boolean autonomusPositionState = false, automaticRetraction = false;
 
     private MasqVector scorePosition = new MasqVector(0, 0);
     private double scoreHeading = 0;
-
-    private MasqVector collectPosition = new MasqVector(0, 0);
-    private double collectHeading = 0;
-
     private MasqVector current = new MasqVector(0, 0);
     @Override
     public void runLinearOpMode()  {
@@ -43,39 +38,35 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         while (opModeIsActive()) {
-            resurrection.MECH(controller1);
-
             if (controller1.leftTriggerPressed()) resurrection.collector.setPower(.5);
             else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
-
-            if (controller1.x()) resurrection.collectorDumper.setPower(-1);
-            else if (controller1.y()) resurrection.collectorDumper.setPower(1);
-            else resurrection.collectorDumper.setPower(0);
+            if (controller1.dPadUp()) autonomusPositionState = true;
+            if (controller1.dPadLeft()) automaticRetraction = true;
+            if (controller1.rightBumper() || controller1.rightTriggerPressed()) automaticRetraction = false;
 
             resurrection.collectionLift.DriverControl(controller1);
+            resurrection.collectorDumper.DriverControl(controller1);
 
-            aOverride =
-                    controller1.leftTriggerPressed() || controller1.leftBumper()
-                    || controller1.rightBumper() || controller1.rightTriggerPressed()
-                    || controller1.x() || controller1.y();
-
-            if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
-            else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
+            if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
+            else if (controller2.rightBumper() || controller2.rightTriggerPressed())
+                resurrection.particleDumper.setPosition(PARTICLE_DUMPER_SCORE);
+            else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
 
             if (controller2.leftStickY() < 0 && resurrection.hangTopSwitch.isPressed()) resurrection.hang.setPower(-1);
             else if (controller2.leftStickY() > 0 && resurrection.hangBottomSwitch.isPressed()) resurrection.hang.setPower(1);
             else resurrection.hang.setBreakMode();
 
+            if (autonomusPositionState && !controller1.isJoysticksActive()) gotoScore();
+            else {
+                autonomusPositionState = false;
+                resurrection.MECH(controller1);
+            }
+
+            if (automaticRetraction &&!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(1);
+
             resurrection.scoreLift.DriverControl(controller2);
-
-            bOverride = controller2.b() || Math.abs(controller2.leftStickY()) > 0 || controller2.leftBumper()
-                    || controller2.leftTriggerPressed();
-
-            if (controller2.x() && !bOverride) automateScoring();
-
-            if (controller1.b() && !aOverride) gotoScore();
 
             resurrection.tracker.updateSystem();
             dash.update();
@@ -87,11 +78,7 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
         if (Math.abs(speed) > maxAutoPositioningSpeed) speed = maxAutoPositioningSpeed;
         double pathAngle = 90 - Math.toDegrees(Math.atan2(displacement.getY(), displacement.getX()));
         resurrection.driveTrain.setPowerMECH(pathAngle + resurrection.tracker.getHeading(), speed, scoreHeading);
-        if (!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(-1);
-        else if (!resurrection.collectionDumpTopSwitch.isPressed()) resurrection.collectorDumper.setPower(-1);
-    }
-    public void automateScoring() {
-
+        dash.create("speed: ", speed);
     }
     public void robotInit() {
         resurrection.setStartOpenCV(false);
@@ -99,6 +86,8 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
         resurrection.initializeTeleop();
         resurrection.hang.setClosedLoop(true);
         resurrection.driveTrain.setClosedLoop(true);
-        resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
+        resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
     }
+
+    //if (!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(1);
 }

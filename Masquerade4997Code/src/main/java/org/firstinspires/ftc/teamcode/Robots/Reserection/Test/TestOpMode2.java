@@ -24,6 +24,6 @@ public class TestOpMode2 extends MasqLinearOpMode {
         }
         waitForStart();
         resurrection.tracker.reset();
-        resurrection.gotoXY(0, -50, -5);
+        resurrection.gotoXYPure(0, -50, -5);
     }
 }

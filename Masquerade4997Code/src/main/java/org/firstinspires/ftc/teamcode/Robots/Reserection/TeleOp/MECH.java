@@ -20,7 +20,7 @@ public class MECH extends MasqLinearOpMode implements Constants {
         resurrection.initializeTeleop();
         resurrection.hang.setClosedLoop(true);
         resurrection.driveTrain.setClosedLoop(true);
-        resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
+        resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
         while (!opModeIsActive()) {
             dash.create("X: ", resurrection.tracker.getGlobalX());
             dash.create("Y: ", resurrection.tracker.getGlobalY());
@@ -36,18 +36,30 @@ public class MECH extends MasqLinearOpMode implements Constants {
             else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
+            if (controller1.dPadUp()) resurrection.collectorDumper.setPower(-.7);
+            else if (controller1.dPadDown()) {
+                if (!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(-1);
+                resurrection.collectorDumper.setPower(.7);
+            }
+            else resurrection.collectorDumper.setPower(0);
+
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
+            else if (controller2.rightBumper() || controller2.rightTriggerPressed()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_SCORE);
             else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
 
-            if (controller2.leftStickY() < 0 && resurrection.hangTopSwitch.isPressed()) resurrection.hang.setPower(-1);
-            else if (controller2.leftStickY() > 0 && resurrection.hangBottomSwitch.isPressed()) resurrection.hang.setPower(1);
+            if (controller2.leftStickY() < 0 && !resurrection.hangTopSwitch.getState()) resurrection.hang.setPower(-1);
+            else if (controller2.leftStickY() > 0 && !resurrection.hangBottomSwitch.getState()) resurrection.hang.setPower(1);
             else resurrection.hang.setBreakMode();
 
-            resurrection.collectorDumper.DriverControl(controller1);
             resurrection.collectionLift.DriverControl(controller1);
             resurrection.scoreLift.DriverControl(controller2);
 
             resurrection.tracker.updateSystem();
+            dash.create("2Y: ", controller2.leftStickY());
+            dash.create("X: ", resurrection.tracker.getGlobalX());
+            dash.create("Y: ", resurrection.tracker.getGlobalY());
+            dash.create("H: ", resurrection.tracker.getHeading());
+            dash.create("Vert Lift: ", resurrection.scoreLift.getCurrentPosition());
             dash.update();
         }
     }

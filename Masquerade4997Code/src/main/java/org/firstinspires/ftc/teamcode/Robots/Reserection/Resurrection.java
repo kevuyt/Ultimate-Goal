@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resources.BlockPlacement;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectionLift;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqScoreLift;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
@@ -32,7 +33,7 @@ import Library4997.MasqWrappers.DashBoard;
 public class Resurrection extends MasqRobot {
     /*---------------------Hardware-------------------------*/
     public MasqAdafruitIMU imu;
-    public MasqMotor collectorDumper;
+    public MasqCollectorDumper collectorDumper;
     public MasqServo particleDumper;
     public MasqLimitSwitch rotateTopSwitch;
     public MasqCRServoSystem collector;
@@ -52,7 +53,7 @@ public class Resurrection extends MasqRobot {
 
         collectionLift = new MasqCollectionLift("collectLift", hardwareMap);
         scoreLift = new MasqScoreLift("scoreLift", hardwareMap);
-        collectorDumper = new MasqMotor("collectorDumper", MasqMotorModel.NEVEREST40, hardwareMap);
+        collectorDumper = new MasqCollectorDumper("collectorDumper", hardwareMap);
 
         particleDumper = new MasqServo("dumper", hardwareMap);
         collector = new MasqCRServoSystem("collector", "collector2", hardwareMap);
@@ -61,9 +62,11 @@ public class Resurrection extends MasqRobot {
         rotateTopSwitch = new MasqLimitSwitch("rotTop", hardwareMap);
         hangTopSwitch = new MasqLimitSwitch("limitTop", hardwareMap);
         hangBottomSwitch = new MasqLimitSwitch("limitBottom", hardwareMap);
-        collectionDumpTopSwitch = new MasqLimitSwitch("collectTop", hardwareMap);
+        //collectionDumpTopSwitch = new MasqLimitSwitch("collectTop", hardwareMap);
         collectionLiftSwitch = new MasqLimitSwitch("collectLiftSwitch", hardwareMap);
 
+
+        collectionLift.setLiftSwitch(collectionLiftSwitch);
         tracker = new MasqPositionTracker(hang, collectionLift.lift, imu);
         if (startOpenCV) startOpenCV(hardwareMap);
         hang.setClosedLoop(true);
@@ -121,10 +124,14 @@ public class Resurrection extends MasqRobot {
         dogeForia.start();
     }
 
+    public void unHang() {
+        while (hangTopSwitch.isPressed()) hang.setPower(-1);
+    }
+
     public BlockPlacement getBlockPlacement (int block) {
-        if (block > 450) return BlockPlacement.LEFT;
+        if (block > 450) return BlockPlacement.RIGHT;
         else if (block > 250) return BlockPlacement.CENTER;
-        else return BlockPlacement.RIGHT;
+        else return BlockPlacement.LEFT;
     }
 
 }
