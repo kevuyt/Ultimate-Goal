@@ -14,13 +14,11 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "CRATER_MECH", group = "NFS")
 public class CRATER_MECH extends MasqLinearOpMode implements Constants {
-
     private Resurrection resurrection = new Resurrection();
+    private boolean scoreState = false;
 
     private MasqPIDController speedController = new MasqPIDController(0.03, 0.0, 0.00001);
     private double maxAutoPositioningSpeed = 0.7;
-
-    private boolean autonomusPositionState = false, automaticRetraction = false;
 
     private MasqVector scorePosition = new MasqVector(0, 0);
     private double scoreHeading = 0;
@@ -38,37 +36,51 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
         }
         waitForStart();
         while (opModeIsActive()) {
+            if (controller1.isJoysticksActive()) scoreState = false;
+
             if (controller1.leftTriggerPressed()) resurrection.collector.setPower(.5);
             else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
-            if (controller1.dPadUp()) autonomusPositionState = true;
-            if (controller1.dPadLeft()) automaticRetraction = true;
-            if (controller1.rightBumper() || controller1.rightTriggerPressed()) automaticRetraction = false;
+            if (controller1.dPadUp()) {
+                scoreState = true;
+                resurrection.collectorDumper.setPower(.7);
+            }
+            else if (controller1.dPadDown()) {
+                if (!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(-1);
+                resurrection.collectorDumper.setPower(-.7);
+            }
+            else resurrection.collectorDumper.setPower(0);
 
-            resurrection.collectionLift.DriverControl(controller1);
-            resurrection.collectorDumper.DriverControl(controller1);
+            if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
+            else if (controller2.rightTriggerPressed() || controller2.rightBumper()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_PARALLEL);
+            else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
 
-            if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
-            else if (controller2.rightBumper() || controller2.rightTriggerPressed())
-                resurrection.particleDumper.setPosition(PARTICLE_DUMPER_SCORE);
-            else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
-
-            if (controller2.leftStickY() < 0 && resurrection.hangTopSwitch.isPressed()) resurrection.hang.setPower(-1);
-            else if (controller2.leftStickY() > 0 && resurrection.hangBottomSwitch.isPressed()) resurrection.hang.setPower(1);
+            if (controller2.leftStickY() < 0 && !resurrection.hangTopSwitch.getState()) resurrection.hang.setPower(-1);
+            else if (controller2.leftStickY() > 0 && !resurrection.hangBottomSwitch.getState()) resurrection.hang.setPower(1);
             else resurrection.hang.setBreakMode();
 
-            if (autonomusPositionState && !controller1.isJoysticksActive()) gotoScore();
-            else {
-                autonomusPositionState = false;
-                resurrection.MECH(controller1);
+            if (scoreState) gotoScore();
+            else resurrection.MECH(controller1);
+
+            if (controller2.y()) {
+                scorePosition = new MasqVector(resurrection.tracker.getGlobalX(), resurrection.tracker.getGlobalY());
+                scoreHeading = resurrection.tracker.getHeading();
             }
 
-            if (automaticRetraction &&!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(1);
+            if (controller2.x() && !resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(1);
 
+            resurrection.collectionLift.DriverControl(controller1);
             resurrection.scoreLift.DriverControl(controller2);
 
+            current = new MasqVector(resurrection.tracker.getGlobalX(), resurrection.tracker.getGlobalY());
+
             resurrection.tracker.updateSystem();
+            dash.create("2Y: ", controller2.leftStickY());
+            dash.create("X: ", resurrection.tracker.getGlobalX());
+            dash.create("Y: ", resurrection.tracker.getGlobalY());
+            dash.create("H: ", resurrection.tracker.getHeading());
+            dash.create("Vert Lift: ", resurrection.scoreLift.getCurrentPosition());
             dash.update();
         }
     }

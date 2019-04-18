@@ -20,6 +20,7 @@ import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
 import Library4997.MasqServos.MasqCRServoSystem;
 import Library4997.MasqServos.MasqServo;
@@ -125,13 +126,14 @@ public class Resurrection extends MasqRobot {
     }
 
     public void unHang() {
-        while (hangTopSwitch.isPressed()) hang.setPower(-1);
+        MasqClock clock = new MasqClock();
+        while (!hangTopSwitch.getState() && !clock.elapsedTime(3, MasqClock.Resolution.SECONDS)) hang.setPower(-1);
     }
 
     public BlockPlacement getBlockPlacement (int block) {
-        if (block > 450) return BlockPlacement.RIGHT;
+        if (block > 450) return BlockPlacement.LEFT;
         else if (block > 250) return BlockPlacement.CENTER;
-        else return BlockPlacement.LEFT;
+        else return BlockPlacement.RIGHT;
     }
 
 }

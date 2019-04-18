@@ -1,7 +1,5 @@
 package com.disnodeteam.dogecv.detectors.roverrukus;
 
-import android.util.Log;
-
 import com.disnodeteam.dogecv.DogeCV;
 import com.disnodeteam.dogecv.detectors.DogeCVDetector;
 import com.disnodeteam.dogecv.filters.DogeCVColorFilter;
@@ -73,7 +71,7 @@ public class GoldAlignDetector extends DogeCVDetector {
 
         //Preprocess the working Mat (blur it then apply a yellow filter)
         Imgproc.GaussianBlur(workingMat,workingMat,new Size(5,5),0);
-        yellowFilter.process(workingMat.clone(),maskYellow);
+        yellowFilter.process(workingMat.clone(), maskYellow);
 
         //Find contours of the yellow mask and draw them to the display mat for viewing
 
@@ -109,7 +107,7 @@ public class GoldAlignDetector extends DogeCVDetector {
         if(bestRect != null){
             // Show chosen result
             Imgproc.rectangle(displayMat, bestRect.tl(), bestRect.br(), new Scalar(255,0,0),4);
-            Imgproc.putText(displayMat, "Chosen", bestRect.tl(),0,1,new Scalar(255,255,255));
+            Imgproc.putText(displayMat, "Chosen", bestRect.tl(),0,1, new Scalar(255,255,255));
 
             // Set align X pos
             xPos = bestRect.x + (bestRect.width / 2);

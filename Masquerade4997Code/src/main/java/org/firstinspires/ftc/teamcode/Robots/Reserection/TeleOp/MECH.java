@@ -36,15 +36,15 @@ public class MECH extends MasqLinearOpMode implements Constants {
             else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
-            if (controller1.dPadUp()) resurrection.collectorDumper.setPower(-.7);
+            if (controller1.dPadUp()) resurrection.collectorDumper.setPower(.7);
             else if (controller1.dPadDown()) {
                 if (!resurrection.collectionLiftSwitch.isPressed()) resurrection.collectionLift.lift.setPower(-1);
-                resurrection.collectorDumper.setPower(.7);
+                resurrection.collectorDumper.setPower(-.7);
             }
             else resurrection.collectorDumper.setPower(0);
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
-            else if (controller2.rightBumper() || controller2.rightTriggerPressed()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_SCORE);
+            else if (controller2.rightTriggerPressed()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_PARALLEL);
             else resurrection.particleDumper.setPosition(PARTICLE_DUMPER_IN);
 
             if (controller2.leftStickY() < 0 && !resurrection.hangTopSwitch.getState()) resurrection.hang.setPower(-1);

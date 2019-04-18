@@ -92,7 +92,7 @@ public class LeviColorFilter extends DogeCVColorFilter {
                 break;
             case YELLOW:
                 if(threshold == -1){
-                    threshold = 90;
+                    threshold = 70;
                 }
 
                 Imgproc.cvtColor(input, input, Imgproc.COLOR_RGB2YUV);
