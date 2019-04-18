@@ -38,9 +38,10 @@ public class AUTO_MECH extends MasqLinearOpMode implements Constants {
             else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
-            if (controller1.dPadUp()) resurrection.collectorDumper.setAutoPosition(Positions.TRANSFER.getPosition());
-            else if (controller1.dPadDown()) resurrection.collectorDumper.setAutoPosition(Positions.DOWN.getPosition());
-            else resurrection.collectorDumper.setPower(0);
+            if (controller1.dPadUp()) resurrection.collectorDumper.setAutoPosition(Positions.TRANSFER);
+            else if (controller1.dPadDown()) resurrection.collectorDumper.setAutoPosition(Positions.DOWN);
+            else if (controller1.dPadRight()) resurrection.collectorDumper.setAutoPosition(Positions.HORIZONTAL);
+            //else resurrection.collectorDumper.setPower(0);
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
             else if (controller2.rightTriggerPressed()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_PARALLEL);
@@ -59,6 +60,7 @@ public class AUTO_MECH extends MasqLinearOpMode implements Constants {
             dash.create("Y: ", resurrection.tracker.getGlobalY());
             dash.create("H: ", resurrection.tracker.getHeading());
             dash.create("Vert Lift: ", resurrection.scoreLift.getCurrentPosition());
+            dash.create("Pos: ", resurrection.collectorDumper.getTargetPosition());
             dash.update();
         }
     }

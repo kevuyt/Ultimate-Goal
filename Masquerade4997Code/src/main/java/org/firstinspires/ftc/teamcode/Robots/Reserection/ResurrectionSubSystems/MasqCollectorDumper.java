@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import java.util.concurrent.atomic.AtomicInteger;
+
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
@@ -18,8 +20,8 @@ public class MasqCollectorDumper extends MasqMotor implements MasqSubSystem, Run
 
     public enum Positions {
         TRANSFER(0),
-        HORIZONTAL(1),
-        DOWN(1);
+        HORIZONTAL(540),
+        DOWN(1130);
         private int d;
         Positions(int d1){d = d1;}
         public int getPosition() {return d;}
@@ -31,6 +33,13 @@ public class MasqCollectorDumper extends MasqMotor implements MasqSubSystem, Run
 
     public MasqCollectorDumper(String name, HardwareMap hardwareMap) {
         super(name, MasqMotorModel.NEVEREST60, hardwareMap);
+        resetEncoder();
+    }
+
+    @Override
+    public void setPower(double power) {
+        autoPosition.set((int) getCurrentPosition());
+        super.setPower(power);
     }
 
     @Override
@@ -46,8 +55,12 @@ public class MasqCollectorDumper extends MasqMotor implements MasqSubSystem, Run
         t.start();
     }
 
-    public void setAutoPosition(int pos) {
-        autoPosition.set(pos);
+    public void setAutoPosition(Positions p) {
+        autoPosition.set(p.getPosition());
+    }
+
+    public double getTargetPosition() {
+        return autoPosition.get();
     }
 
 
@@ -59,6 +72,6 @@ public class MasqCollectorDumper extends MasqMotor implements MasqSubSystem, Run
     @Override
     public void run() {
         while (MasqRobot.opModeIsActive())
-        setPower(collectionDumpHold.getOutput(getCurrentPosition(), autoPosition.get()));
+        super.setPower(collectionDumpHold.getOutput(getCurrentPosition(), autoPosition.get()));
     }
 }

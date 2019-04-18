@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqController;
  * Project: MasqLib
  */
 public class MasqScoreLift extends MasqMotor implements MasqSubSystem {
-    private MasqPIDController hold = new MasqPIDController(0.01, 0, 0);
+    private MasqPIDController hold = new MasqPIDController(0.008, 0, 0);
     private double holdPosition = 0;
     public MasqScoreLift(String name, HardwareMap hardwareMap) {
         super(name, MasqMotorModel.ORBITAL20, hardwareMap);
@@ -30,7 +30,7 @@ public class MasqScoreLift extends MasqMotor implements MasqSubSystem {
             setPower(-1);
             holdPosition = getCurrentPosition();
         }
-        else /*lift.setPower(hold.getOutput(lift.getCurrentPosition(), holdPosition));*/ setPower(0);
+        else setPower(hold.getOutput(getCurrentPosition(), holdPosition));
     }
 
     @Override

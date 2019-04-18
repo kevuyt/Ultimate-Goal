@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.Reserection.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resurrection;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqResources.MasqMath.MasqVector;
@@ -17,7 +18,9 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
     private Resurrection resurrection = new Resurrection();
     private boolean scoreState = false;
 
-    private MasqPIDController speedController = new MasqPIDController(0.03, 0.0, 0.00001);
+    private double holDump = 0;
+    private MasqPIDController speedController = new MasqPIDController(0.05, 0.0, 0.00001);
+    private MasqPIDController holdDump = new MasqPIDController(0.002, 0, 0);
     private double maxAutoPositioningSpeed = 0.7;
 
     private MasqVector scorePosition = new MasqVector(0, 0);
@@ -26,8 +29,10 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode()  {
         robotInit();
+        resurrection.driveTrain.setClosedLoop(true);
         resurrection.collectorDumper.startPositionThread();
         current = new MasqVector(resurrection.tracker.getGlobalX(), resurrection.tracker.getGlobalY());
+        resurrection.collectorDumper.setAutoPosition(MasqCollectorDumper.Positions.HORIZONTAL);
         while (!opModeIsActive()) {
             resurrection.tracker.updateSystem();
             dash.create("X: ", resurrection.tracker.getGlobalX());
@@ -46,14 +51,18 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
 
             if (controller1.dPadUp()) {
                 scoreState = true;
-                resurrection.collectorDumper.setPower(.7);
+                resurrection.collectorDumper.setPower(1);
             }
-            else if (controller1.dPadDown()) resurrection.collectorDumper.setPower(-.7);
-            else if (controller2.dPadUp()) {
-                resurrection.collectorDumper.setPower(.7);
+            else if (controller1.dPadDown()) resurrection.collectorDumper.setPower(-1);
+            else if (controller2.dPadUp()) resurrection.collectorDumper.setPower(1);
+            else if (controller2.dPadDown()) resurrection.collectorDumper.setPower(-1);
+            else {
+                resurrection.collectorDumper.setPower(0);
+                resurrection.collectorDumper.setBreakMode();
             }
-            else if (controller2.dPadDown()) resurrection.collectorDumper.setPower(-.7);
-            else resurrection.collectorDumper.setPower(0);
+
+            if (controller1.dPadDown() || controller1.dPadUp() || controller2.dPadUp() || controller2.dPadDown())
+                holDump = resurrection.collectorDumper.getCurrentPosition();
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
             else if (controller2.rightTriggerPressed() || controller2.rightBumper()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_PARALLEL);
@@ -66,7 +75,7 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
             if (scoreState) gotoScore();
             else resurrection.MECH(controller1);
 
-            if (controller2.y()) {
+            if (controller2.y() || controller1.x()) {
                 scorePosition = new MasqVector(resurrection.tracker.getGlobalX(), resurrection.tracker.getGlobalY());
                 scoreHeading = resurrection.tracker.getHeading();
             }
