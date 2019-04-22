@@ -27,12 +27,10 @@ public class MasqCollectionLift implements MasqSubSystem {
     @Override
     public void DriverControl(MasqController controller) {
         if (controller.rightBumper()) {
-            lift.setPower(-1);
-            holdPosition = lift.getCurrentPosition();
-        }
-        else if (controller.rightTriggerPressed() && !liftSwitch.isPressed()) {
             lift.setPower(1);
-            holdPosition = lift.getCurrentPosition();
+        }
+        else if (controller.rightTriggerPressed()) {
+            lift.setPower(-1);
         }
         else /*lift.setPower(hold.getOutput(lift.getCurrentPosition(), holdPosition));*/ lift.setPower(0);
     }

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.Reserection.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper.Positions;
 
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resurrection;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper;
@@ -27,6 +28,8 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
     @Override
     public void runLinearOpMode()  {
         robotInit();
+        MasqPIDController pidController = new MasqPIDController(0.0025, 0, 0.00001);
+        Positions p = Positions.TRANSFER;
         resurrection.driveTrain.setClosedLoop(true);
         resurrection.collectorDumper.startPositionThread();
         current = new MasqVector(resurrection.tracker.getGlobalX(), resurrection.tracker.getGlobalY());
@@ -49,15 +52,11 @@ public class CRATER_MECH extends MasqLinearOpMode implements Constants {
 
             if (controller1.dPadUp()) {
                 scoreState = true;
-                resurrection.collectorDumper.setPower(1);
+                p = Positions.TRANSFER;
             }
-            else if (controller1.dPadDown()) resurrection.collectorDumper.setPower(-1);
-            else if (controller2.dPadUp()) resurrection.collectorDumper.setPower(1);
-            else if (controller2.dPadDown()) resurrection.collectorDumper.setPower(-1);
-            else {
-                resurrection.collectorDumper.setPower(0);
-                resurrection.collectorDumper.setBreakMode();
-            }
+            else if (controller1.dPadDown()) p = Positions.DOWN;
+            else if (controller1.dPadRight()) p = Positions.HORIZONTAL;
+            resurrection.collectorDumper.setPower(pidController.getOutput(resurrection.collectorDumper.getCurrentPosition(), p.getPosition()));
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
             else if (controller2.rightTriggerPressed() || controller2.rightBumper()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_PARALLEL);

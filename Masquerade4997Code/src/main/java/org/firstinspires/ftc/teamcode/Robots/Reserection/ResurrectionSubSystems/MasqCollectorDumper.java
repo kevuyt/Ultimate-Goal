@@ -20,8 +20,9 @@ public class MasqCollectorDumper extends MasqMotor implements MasqSubSystem, Run
 
     public enum Positions {
         TRANSFER(0),
-        HORIZONTAL(540),
-        DOWN(1130);
+        HORIZONTAL(-800),
+        DOWN(-950),
+        COLLECT(-1200);
         private int d;
         Positions(int d1){d = d1;}
         public int getPosition() {return d;}

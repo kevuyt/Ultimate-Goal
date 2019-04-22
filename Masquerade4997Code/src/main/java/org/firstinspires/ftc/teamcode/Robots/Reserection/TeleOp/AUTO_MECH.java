@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.Resurrection;
 import org.firstinspires.ftc.teamcode.Robots.Reserection.ResurrectionSubSystems.MasqCollectorDumper.Positions;
 
+import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -18,6 +19,8 @@ public class AUTO_MECH extends MasqLinearOpMode implements Constants {
     private Resurrection resurrection = new Resurrection();
     @Override
     public void runLinearOpMode()  {
+        MasqPIDController pidController = new MasqPIDController(0.002, 0, 0);
+        Positions p = Positions.TRANSFER;
         resurrection.setStartOpenCV(false);
         resurrection.mapHardware(hardwareMap);
         resurrection.initializeTeleop();
@@ -40,10 +43,10 @@ public class AUTO_MECH extends MasqLinearOpMode implements Constants {
             else if (controller1.leftBumper()) resurrection.collector.setPower(-.5);
             else resurrection.collector.setPower(0);
 
-            if (controller1.dPadUp()) resurrection.collectorDumper.setAutoPosition(Positions.TRANSFER);
-            else if (controller1.dPadDown()) resurrection.collectorDumper.setAutoPosition(Positions.DOWN);
-            else if (controller1.dPadRight()) resurrection.collectorDumper.setAutoPosition(Positions.HORIZONTAL);
-            //else resurrection.collectorDumper.setPower(0);
+            if (controller1.dPadUp()) p = Positions.TRANSFER;
+            else if (controller1.dPadDown()) p = Positions.DOWN;
+            else if (controller1.dPadRight()) p = Positions.HORIZONTAL;
+            resurrection.collectorDumper.setPower(pidController.getOutput(resurrection.collectorDumper.getCurrentPosition(), p.getPosition()));
 
             if (controller2.b()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_OUT);
             else if (controller2.rightTriggerPressed()) resurrection.particleDumper.setPosition(PARTICLE_DUMPER_PARALLEL);

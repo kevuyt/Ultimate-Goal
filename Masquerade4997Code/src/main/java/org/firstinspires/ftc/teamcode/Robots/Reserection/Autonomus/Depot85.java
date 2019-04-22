@@ -16,16 +16,19 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 public class Depot85 extends MasqLinearOpMode {
     private Resurrection resurrection = new Resurrection();
     private MasqPoint center = new MasqPoint(11, 0, -90);
-    private MasqPoint rightSample = new MasqPoint(26, 18, -90);
-    private MasqPoint leftSample = new MasqPoint(27, -13, -90);
+    private MasqPoint rightSample = new MasqPoint(27, 20, -90);
+    private MasqPoint leftSample = new MasqPoint(27, -20, -90);
     private MasqPoint marker = new MasqPoint(44, 3);
     public void runLinearOpMode() throws InterruptedException {
-        resurrection.setStartOpenCV(false);
+        resurrection.setStartOpenCV(true);
         resurrection.mapHardware(hardwareMap);
         resurrection.initializeAutonomous();
         while (!opModeIsActive()) {
+            if (!resurrection.hangBottomSwitch.getState()) resurrection.hang.setPower(0.5);
+            else resurrection.hang.setBreakMode();
             dash.create("X: ", resurrection.tracker.getGlobalX());
             dash.create("Y: ", resurrection.tracker.getGlobalY());
+            dash.create("Dp: ", resurrection.getBlockPlacement((int)resurrection.goldAlignDetector.getXPosition()).toString());
             resurrection.tracker.updateSystem();
             dash.update();
         }
@@ -36,18 +39,17 @@ public class Depot85 extends MasqLinearOpMode {
         resurrection.drive(3, Direction.BACKWARD);
         resurrection.setLookAheadDistance(5);
         if (placement == BlockPlacement.CENTER) {
-            resurrection.gotoXY(marker, -90, 0.8);
-            resurrection.gotoXY(center, -90, 0.6);
-            resurrection.gotoXYPure(12, 42, 0, 0.6);
+            resurrection.gotoXY(marker, -90, 0.5);
+            resurrection.gotoXY(center, -90, 0.5);
+            resurrection.gotoXYPure(12, 42, 0, 0.5);
         }
         else if (placement == BlockPlacement.LEFT) {
-            resurrection.gotoXYPure(leftSample, -90,0.5);
-            resurrection.gotoXYPure(53, 4, -45, 0.5);
-            resurrection.turnRelative(90, Direction.RIGHT);
-            resurrection.gotoXYPure(12, 42, -135, 0.5);
+            resurrection.gotoXYPure(leftSample, 0,0.3, 0.02);
+            resurrection.gotoXY(9, 0, -90, 0.3);
+            resurrection.gotoXYPure(12, 42, 0, 0.3);
         }
         else if (placement == BlockPlacement.RIGHT) {
-            resurrection.gotoXYPure(rightSample, -90,0.5);
+            resurrection.gotoXYPure(rightSample, -90,0.7);
             resurrection.gotoXYPure(53, 4, -135, 0.5);
             resurrection.gotoXYPure(12, 42, -135, 0.5);
         }
