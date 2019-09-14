@@ -21,7 +21,7 @@ public class MasqMotorSystem implements MasqHardware {
     private double currentPower = 0;
     private double slowDown = 0;
     private String systemName;
-    private MasqMotorModel encoder = MasqMotorModel.REVHDHEX;
+    private MasqMotorModel encoder = MasqMotorModel.ORBITAL20;
     public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction direction2, String systemName, HardwareMap hardwareMap, MasqMotorModel encoder) {
         this.systemName = systemName;
         motor1 = new MasqMotor(name1, encoder, direction, hardwareMap);
@@ -63,9 +63,9 @@ public class MasqMotorSystem implements MasqHardware {
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
     }
-    public MasqMotorSystem(String name1,DcMotor.Direction d, String name2, DcMotor.Direction d1, MasqMotorModel encoder, HardwareMap hardwareMap) {
-        motor1 = new MasqMotor(name1, encoder, d, hardwareMap);
-        motor2 = new MasqMotor(name2, encoder, d1, hardwareMap);
+    public MasqMotorSystem(String name1,DcMotor.Direction d1, String name2, DcMotor.Direction d2, MasqMotorModel encoder, HardwareMap hardwareMap) {
+        motor1 = new MasqMotor(name1, encoder, d1, hardwareMap);
+        motor2 = new MasqMotor(name2, encoder, d2, hardwareMap);
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
     }

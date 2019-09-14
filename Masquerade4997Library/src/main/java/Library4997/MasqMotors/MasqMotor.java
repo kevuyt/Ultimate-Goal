@@ -17,14 +17,14 @@ import Library4997.MasqSensors.MasqLimitSwitch;
  */
 public class MasqMotor implements MasqHardware {
     private double minPower = 0;
-    private DcMotor motor;
+    public DcMotor motor;
     private boolean stallDetection = false;
     private String nameMotor;
     private int direction = 1;
     private double targetPower;
     private boolean velocityControlState = false;
     private double kp = 0.1, ki = 0, kd = 0;
-    private MasqEncoder encoder;
+    public MasqEncoder encoder;
     private double targetPosition = 0;
     private double prevPos = 0;
     private double previousAcceleration = 0;
@@ -32,7 +32,7 @@ public class MasqMotor implements MasqHardware {
     private double previousVel = 0;
     private double previousVelTime = 0;
     private double previousTime = 0;
-    private double destination = 0;
+    public double destination = 0;
     private double motorPower;
     private double currentMax, currentMin;
     private double currentZero;
@@ -74,7 +74,7 @@ public class MasqMotor implements MasqHardware {
     }
     public MasqMotor(String name, MasqMotorModel model, DcMotor.Direction direction, HardwareMap hardwareMap) {
         limitDetection = positionDetection = false;
-        if (direction == DcMotor.Direction.REVERSE) this.direction = 1;
+        if (direction == DcMotor.Direction.REVERSE) this.direction = -1;
         this.nameMotor = name;
         motor = hardwareMap.dcMotor.get(name);
         motor.setDirection(direction);
@@ -172,9 +172,9 @@ public class MasqMotor implements MasqHardware {
         motorPower = power;
         motor.setPower(power);
     }
-    public void setVelocity(double power) {
+    public double setVelocity(double power, double error, double tChange) {
         targetPower = power;
-        motorPower = calculateVelocityCorrection();
+        motorPower = calculateVelocityCorrection(error, tChange);
         if (!closedLoop) motorPower = targetPower;
         if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
@@ -209,14 +209,20 @@ public class MasqMotor implements MasqHardware {
         }
         if (Math.abs(motorPower) < minPower && minPower != 0) motorPower = 0;
         motor.setPower(motorPower);
+        return motor.getPower();
     }
-    private double calculateVelocityCorrection() {
-        double error, setRPM, currentRPM, tChange;
+
+    public double setVelocity(double power) {
+        return setVelocity(power, (encoder.getRPM() * targetPower) - getVelocity(), (System.nanoTime() - previousTime)/1e9);
+    }
+    //For testing purposes input parameters for error and time
+    public  double calculateVelocityCorrection(double error, double tChange) {
+        /*double error, setRPM, currentRPM, tChange;
         tChange = System.nanoTime() - previousTime;
         tChange /= 1e9;
         setRPM = encoder.getRPM() * targetPower;
         currentRPM = getVelocity();
-        error = setRPM - currentRPM;
+        error = setRPM - currentRPM;*/
         rpmIntegral += error * tChange;
         rpmDerivative = (error - rpmPreviousError) / tChange;
         double power = (targetPower) + (direction * ((error * kp) +
@@ -224,6 +230,9 @@ public class MasqMotor implements MasqHardware {
         rpmPreviousError = error;
         previousTime = System.nanoTime();
         return power;
+    }
+    private double calculateVelocityCorrection(){
+        return calculateVelocityCorrection((encoder.getRPM() * targetPower) - getVelocity(), (System.nanoTime() - previousTime)/1e9);
     }
     public double getAcceleration () {
         double deltaVelocity = getVelocity() - previousVel;

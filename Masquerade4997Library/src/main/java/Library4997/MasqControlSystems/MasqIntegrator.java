@@ -13,6 +13,7 @@ public class MasqIntegrator {
         double tChange = System.nanoTime() - prevTime;
         integral = tChange * (prev + (0.5 * (current - prev)));
         prev = current;
+        prevTime = System.nanoTime();
         return integral;
     }
 }
