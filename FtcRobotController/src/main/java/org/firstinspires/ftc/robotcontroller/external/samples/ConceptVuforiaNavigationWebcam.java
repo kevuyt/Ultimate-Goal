@@ -31,9 +31,9 @@ package org.firstinspires.ftc.robotcontroller.external.samples;
 
 import android.graphics.Bitmap;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.RobotLog;
 import com.qualcomm.robotcore.util.ThreadPool;
 import com.vuforia.Frame;
@@ -51,11 +51,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -144,12 +147,7 @@ public class ConceptVuforiaNavigationWebcam extends LinearOpMode {
          * Once you've obtained a license key, copy the string from the Vuforia web site
          * and paste it in to your code on the next line, between the double quotes.
          */
-        parameters.vuforiaLicenseKey = "AdNIpqT/////AAABmRY92VHmhUiEgOa20prf6D5ffrvpVVEVsg+0AIYD" +
-                "L5tdcT7Ni9kg6UBK4kxN7r7qiT1tFzTWxdl0SuT03M1RY20fXTMfA3LQpUSCl3UeyDmWbCA9ank922D" +
-                "Ds8MgBDXCGbUVgi1Q1GjKWF8KCQvLC2KO34OCs7MoMDYhHmzrPk/nGVs2iLgFhCOU8LG8FT3l9wsLd4" +
-                "4/s9uSHuQZwDy3nvpTUgRjjbnkIGglgH4K5O3cXHPfPzZ32WuIVj34umgX5mG/yfNWJJ7sFFi3v3eCm" +
-                "pX6WFg1iO/+5OZ0OVDXONxPPfI8HWJcVy+KhSk93XxQPnY54L4ThPJe1uAaNRKPcduH4r4A5DmQtGTr" +
-                "mph3rSBl";
+        parameters.vuforiaLicenseKey = " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
 
         /**
          * We also indicate which camera on the RC we wish to use.
@@ -180,7 +178,16 @@ public class ConceptVuforiaNavigationWebcam extends LinearOpMode {
          * example "StonesAndChips", datasets can be found in in this project in the
          * documentation directory.
          */
+        VuforiaTrackables stonesAndChips = vuforia.loadTrackablesFromAsset("StonesAndChips");
+        VuforiaTrackable redTarget = stonesAndChips.get(0);
+        redTarget.setName("RedTarget");  // Stones
 
+        VuforiaTrackable blueTarget  = stonesAndChips.get(1);
+        blueTarget.setName("BlueTarget");  // Chips
+
+        /** For convenience, gather together all the trackable objects in one easily-iterable collection */
+        List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
+        allTrackables.addAll(stonesAndChips);
 
         /**
          * We use units of mm here because that's the recommended units of measurement for the
@@ -250,7 +257,32 @@ public class ConceptVuforiaNavigationWebcam extends LinearOpMode {
          * - Then we rotate it  90 around the field's Z access to face it away from the audience.
          * - Finally, we translate it back along the X axis towards the red audience wall.
          */
+        OpenGLMatrix redTargetLocationOnField = OpenGLMatrix
+                /* Then we translate the target off to the RED WALL. Our translation here
+                is a negative translation in X.*/
+                .translation(-mmFTCFieldWidth/2, 0, 0)
+                .multiplied(Orientation.getRotationMatrix(
+                        /* First, in the fixed (field) coordinate system, we rotate 90deg in X, then 90 in Z */
+                        AxesReference.EXTRINSIC, AxesOrder.XZX,
+                        AngleUnit.DEGREES, 90, 90, 0));
+        redTarget.setLocationFtcFieldFromTarget(redTargetLocationOnField);
+        RobotLog.ii(TAG, "Red Target=%s", format(redTargetLocationOnField));
 
+       /*
+        * To place the Stones Target on the Blue Audience wall:
+        * - First we rotate it 90 around the field's X axis to flip it upright
+        * - Finally, we translate it along the Y axis towards the blue audience wall.
+        */
+        OpenGLMatrix blueTargetLocationOnField = OpenGLMatrix
+                /* Then we translate the target off to the Blue Audience wall.
+                Our translation here is a positive translation in Y.*/
+                .translation(0, mmFTCFieldWidth/2, 0)
+                .multiplied(Orientation.getRotationMatrix(
+                        /* First, in the fixed (field) coordinate system, we rotate 90deg in X */
+                        AxesReference.EXTRINSIC, AxesOrder.XZX,
+                        AngleUnit.DEGREES, 90, 0, 0));
+        blueTarget.setLocationFtcFieldFromTarget(blueTargetLocationOnField);
+        RobotLog.ii(TAG, "Blue Target=%s", format(blueTargetLocationOnField));
 
         /**
          * We also need to tell Vuforia where the <em>cameras</em> are relative to the robot.
@@ -323,6 +355,8 @@ public class ConceptVuforiaNavigationWebcam extends LinearOpMode {
          * listener is a {@link VuforiaTrackableDefaultListener} and can so safely cast because
          * we have not ourselves installed a listener of a different type.
          */
+        ((VuforiaTrackableDefaultListener)redTarget.getListener()).setCameraLocationOnRobot(parameters.cameraName, robotFromCamera);
+        ((VuforiaTrackableDefaultListener)blueTarget.getListener()).setCameraLocationOnRobot(parameters.cameraName, robotFromCamera);
 
         /**
          * A brief tutorial: here's how all the math is going to work:
@@ -349,6 +383,7 @@ public class ConceptVuforiaNavigationWebcam extends LinearOpMode {
         waitForStart();
 
         /** Start tracking the data sets we care about. */
+        stonesAndChips.activate();
 
         boolean buttonPressed = false;
         while (opModeIsActive()) {
@@ -358,7 +393,19 @@ public class ConceptVuforiaNavigationWebcam extends LinearOpMode {
                 }
             buttonPressed = gamepad1.a;
 
+            for (VuforiaTrackable trackable : allTrackables) {
+                /**
+                 * getUpdatedRobotLocation() will return null if no new information is available since
+                 * the last time that call was made, or if the trackable is not currently visible.
+                 * getRobotLocation() will return null if the trackable is not currently visible.
+                 */
+                telemetry.addData(trackable.getName(), ((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible() ? "Visible" : "Not Visible");    //
 
+                OpenGLMatrix robotLocationTransform = ((VuforiaTrackableDefaultListener)trackable.getListener()).getUpdatedRobotLocation();
+                if (robotLocationTransform != null) {
+                    lastLocation = robotLocationTransform;
+                }
+            }
             /**
              * Provide feedback as to where the robot was last located (if we know).
              */

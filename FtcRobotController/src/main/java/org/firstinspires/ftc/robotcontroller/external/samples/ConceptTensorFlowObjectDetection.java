@@ -32,14 +32,12 @@ package org.firstinspires.ftc.robotcontroller.external.samples;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
+import java.util.List;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection;
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
-
-import java.util.List;
+import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 
 /**
  * This 2018-2019 OpMode illustrates the basics of using the TensorFlow Object Detection API to
@@ -70,11 +68,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
      * Once you've obtained a license key, copy the string from the Vuforia web site
      * and paste it in to your code on the next line, between the double quotes.
      */
-    private static final String VUFORIA_KEY = "AQL5v9v/////AAAAGey79Q2fZ0i7tLgjrpd85rZwqcK1HlVOI6UUmT02C7slX9+x5Qq" +
-            "CfEwQhnuuB1hOh//uL2LnHYMViBgZtdjDGvmWvDvgKaonymopd0Y62ls2ZJfHhJ3fZYhF57Ce6ZepRI" +
-            "FOumys4J4DssG83OT+DJUjUCG6ruZ88AYjxNzi+vhkTCxHVULQxLJCSQ7boG0t36RWIEmVwxXIHVI" +
-            "3xbVeXwQL7vgm/0KmGW/KJFOuI2+wl1IDJdzDQHfavEA8FFkYTlnp/chHMbLu//BaqXprFHZ6OLh" +
-            "OZoRWiFkg1N0zabreTxMNOYFP/rDNaYseXQVGGRSMHxF86kGs6LNHEO7qZZj/BU94zKpPMWyHYw29X477";
+    private static final String VUFORIA_KEY = " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
 
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
@@ -83,7 +77,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
     private VuforiaLocalizer vuforia;
 
     /**
-     * {@link #tfod} is the variable we will use to store our instance of the Tensor Flow Object
+     * {@link #tfod} is the variable we will use to store our instance of the TensorFlow Object
      * Detection engine.
      */
     private TFObjectDetector tfod;
@@ -106,7 +100,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            /** Activate Tensor Flow Object Detection. */
+            /** Activate TensorFlow Object Detection. */
             if (tfod != null) {
                 tfod.activate();
             }
@@ -167,11 +161,11 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
         //  Instantiate the Vuforia engine
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
-        // Loading trackables is not necessary for the Tensor Flow Object Detection engine.
+        // Loading trackables is not necessary for the TensorFlow Object Detection engine.
     }
 
     /**
-     * Initialize the Tensor Flow Object Detection engine.
+     * Initialize the TensorFlow Object Detection engine.
      */
     private void initTfod() {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
