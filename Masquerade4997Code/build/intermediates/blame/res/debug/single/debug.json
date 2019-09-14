@@ -1,15 +1,15 @@
 [
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_ftc_lynx_fw_update.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_ftc_lynx_fw_update.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_ftc_lynx_fw_update.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_errormessage.wav.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/raw/errormessage.wav"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/raw/errormessage.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_configure_from_template.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_configure_from_template.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_configure_from_template.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-xhdpi-v4_icon_robotcontroller.png.flat",
@@ -17,43 +17,43 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_warningmessage.wav.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/raw/warningmessage.wav"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/raw/warningmessage.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_analog_output_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/analog_output_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/analog_output_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_legacy.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/legacy.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/legacy.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_pushbotsens.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/pushbotsens.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/pushbotsens.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_view_logs.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_view_logs.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_view_logs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_motor.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/motor.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/motor.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_ftc_about_activity_rc.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/ftc_about_activity_rc.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/ftc_about_activity_rc.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_fragment_wifi_mute.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/layout/fragment_wifi_mute.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/layout/fragment_wifi_mute.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable_button_shape.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/drawable/button_shape.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/drawable/button_shape.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_ftc_wifi_channel_selector.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_ftc_wifi_channel_selector.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_ftc_wifi_channel_selector.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_app_settings.xml.flat",
@@ -61,155 +61,155 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_servo_list.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/servo_list.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/servo_list.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_rev_scoot.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/rev_scoot.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/rev_scoot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_i2cs.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/i2cs.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/i2cs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_gray_line.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/gray_line.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/gray_line.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_ftc_wifi_remembered_groups.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_ftc_wifi_remembered_groups.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_ftc_wifi_remembered_groups.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_squarebot.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/squarebot.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/squarebot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable_black_border.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/2f3270a9ef2a0644a42aca2a81f59076/res/drawable/black_border.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/a89e5ed716f1eebc6802b14fd0f49161/res/drawable/black_border.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_digital_device_lynx.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/digital_device_lynx.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/digital_device_lynx.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_color_list_preference_line_item.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/layout/color_list_preference_line_item.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/layout/color_list_preference_line_item.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_lynx_module.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/lynx_module.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/lynx_module.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_file_info.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/file_info.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/file_info.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_chimeconnect.wav.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/raw/chimeconnect.wav"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/raw/chimeconnect.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_texture_vertex_shader.glsl.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/raw/texture_vertex_shader.glsl"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/raw/texture_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_banner_parent.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/banner_parent.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/banner_parent.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_i2c_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/i2c_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/i2c_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_info_button.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/info_button.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/info_button.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_button_list.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/button_list.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/button_list.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_pwms.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/pwms.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/pwms.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_header.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/header.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/header.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_cube_mesh_vertex_shader.glsl.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/raw/cube_mesh_vertex_shader.glsl"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/raw/cube_mesh_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_swap_usb_devices.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_swap_usb_devices.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_swap_usb_devices.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_simple_vertex_shader.glsl.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/raw/simple_vertex_shader.glsl"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/raw/simple_vertex_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_pwm_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/pwm_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/pwm_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_texture_fragment_shader.glsl.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/raw/texture_fragment_shader.glsl"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/raw/texture_fragment_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_ftc_configuration.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_ftc_configuration.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_ftc_configuration.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_servo_controller_banner.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/servo_controller_banner.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/servo_controller_banner.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_teamwebcamcalibrations.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/xml/teamwebcamcalibrations.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/xml/teamwebcamcalibrations.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_analog_inputs.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/analog_inputs.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/analog_inputs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_item_list_parent.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/item_list_parent.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/item_list_parent.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_servo.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/servo.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/servo.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_ftc_lynx_address_update.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_ftc_lynx_address_update.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_ftc_lynx_address_update.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_matrix_devices.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/matrix_devices.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/matrix_devices.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_load.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_load.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_load.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_program_and_manage.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_program_and_manage.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_program_and_manage.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_digital_devices.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/digital_devices.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/digital_devices.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_chimedisconnect.wav.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/raw/chimedisconnect.wav"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/raw/chimedisconnect.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_config_wifi_direct.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_config_wifi_direct.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_config_wifi_direct.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_k9legacybot.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/k9legacybot.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/k9legacybot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_gold.wav.flat",
@@ -217,47 +217,47 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_blocks.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/2f3270a9ef2a0644a42aca2a81f59076/res/layout/activity_blocks.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/a89e5ed716f1eebc6802b14fd0f49161/res/layout/activity_blocks.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_analog_outputs.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/analog_outputs.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/analog_outputs.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-hdpi-v4_button_shape.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/drawable-hdpi-v4/button_shape.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/drawable-hdpi-v4/button_shape.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_ftc_about_activity.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/ftc_about_activity.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/ftc_about_activity.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable_feedback_shape_orange.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/drawable/feedback_shape_orange.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/drawable/feedback_shape_orange.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_k9usbbot.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/k9usbbot.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/k9usbbot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable_icon_menu.png.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/e359c2bd356b0cd6c4f6f207afeb1a8f/res/drawable/icon_menu.png"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/f94df68b56a096f9e6eca52c6a4c415d/res/drawable/icon_menu.png"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_simple_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/simple_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/simple_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_red_line.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/red_line.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/red_line.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_lynx_usb_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/lynx_usb_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/lynx_usb_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_lynx_module_configure_address.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/lynx_module_configure_address.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/lynx_module_configure_address.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-xhdpi-v4_ic_launcher.png.flat",
@@ -265,43 +265,43 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_matrices.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/matrices.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/matrices.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_motor_controller_banner.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/motor_controller_banner.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/motor_controller_banner.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_maxmodules.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/maxmodules.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/maxmodules.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_digital_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/digital_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/digital_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable_icon_robotcontroller.png.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/e359c2bd356b0cd6c4f6f207afeb1a8f/res/drawable/icon_robotcontroller.png"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/f94df68b56a096f9e6eca52c6a4c415d/res/drawable/icon_robotcontroller.png"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_device_interface_module.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/device_interface_module.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/device_interface_module.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_webcam_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/webcam_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/webcam_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_loading_indicator_overlay.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/layout/loading_indicator_overlay.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/layout/loading_indicator_overlay.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_feedback.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/layout/feedback.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/layout/feedback.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_lynx_module_configure_address_spin_item.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/lynx_module_configure_address_spin_item.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/lynx_module_configure_address_spin_item.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-mdpi-v4_ic_launcher.png.flat",
@@ -309,7 +309,7 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/menu_main_menu.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/e359c2bd356b0cd6c4f6f207afeb1a8f/res/menu/main_menu.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/f94df68b56a096f9e6eca52c6a4c415d/res/menu/main_menu.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_device_filter.xml.flat",
@@ -317,11 +317,11 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_port_attached_row.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/port_attached_row.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/port_attached_row.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_cube_mesh_fragment_shader.glsl.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/raw/cube_mesh_fragment_shader.glsl"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/raw/cube_mesh_fragment_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-hdpi-v4_ic_launcher.png.flat",
@@ -329,15 +329,15 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_analog_input_device.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/analog_input_device.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/analog_input_device.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_generic_settings.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/activity_generic_settings.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/activity_generic_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/menu_menu_server.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/2f3270a9ef2a0644a42aca2a81f59076/res/menu/menu_server.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/a89e5ed716f1eebc6802b14fd0f49161/res/menu/menu_server.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/drawable-xhdpi-v4_icon_menu.png.flat",
@@ -353,7 +353,7 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_pushbot.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/pushbot.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/pushbot.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_silver.wav.flat",
@@ -365,38 +365,38 @@
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_format_convert.bc.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/raw/format_convert.bc"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/raw/format_convert.bc"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_template_info.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/template_info.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/template_info.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_builtinwebcamcalibrations.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/xml/builtinwebcamcalibrations.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/xml/builtinwebcamcalibrations.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_programming_mode.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/2f3270a9ef2a0644a42aca2a81f59076/res/layout/activity_programming_mode.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Blocks-release.aar/a89e5ed716f1eebc6802b14fd0f49161/res/layout/activity_programming_mode.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/xml_advanced_rc_settings.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/xml/advanced_rc_settings.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/xml/advanced_rc_settings.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_color_fragment_shader.glsl.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/a2ef87841464737402a632b06b85d0c3/res/raw/color_fragment_shader.glsl"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/3c4861a654bf9012362ef8388e8927d9/res/raw/color_fragment_shader.glsl"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/raw_nxtstartupsound.wav.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/raw/nxtstartupsound.wav"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/raw/nxtstartupsound.wav"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_motor_list.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/350bd017af1bf6080e883511be5b113d/res/layout/motor_list.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/FtcCommon-release.aar/22c0cd872e2edc853a6381c2c46002ef/res/layout/motor_list.xml"
     },
     {
         "merged": "/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/build/intermediates/res/merged/debug/layout_activity_inspection.xml.flat",
-        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/e359c2bd356b0cd6c4f6f207afeb1a8f/res/layout/activity_inspection.xml"
+        "source": "/Users/Archish/.gradle/caches/transforms-1/files-1.1/Inspection-release.aar/f94df68b56a096f9e6eca52c6a4c415d/res/layout/activity_inspection.xml"
     }
 ]

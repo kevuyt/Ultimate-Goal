@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Robots.Robot1.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import Library4997.MasqRobot;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -11,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "ConstantsProgrammer", group = "NFS")
 public class ConstantsProgrammer extends MasqLinearOpMode {
     private double dumper = 0;
+    MasqRobot robot;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         while (!opModeIsActive()) {
