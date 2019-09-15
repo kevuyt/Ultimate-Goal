@@ -28,6 +28,9 @@ public class Teleop extends MasqLinearOpMode {
             robot.Twister.setPosition(twisterPosition);
             if (controller1.bOnPress()) twisterPosition+= 0.1;
             robot.Intake.setPower(controller1.leftTrigger()-controller1.rightTrigger());
+            dash.create("Grabber Position: ", grabberPosition);
+            dash.create("Twister Position: ", twisterPosition);
+            dash.update();
         }
     }
 }
