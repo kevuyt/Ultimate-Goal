@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.Robots.Robot1.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Robots.Robot1.Bobot.BobotRobot;
+import org.firstinspires.ftc.teamcode.Robots.Robot1.Prototype.PrototypeRobot;
 
 import Library4997.MasqMotors.MasqMotor_Tests;
 import Library4997.MasqRobot;
@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "MotorTestsTeleop", group = "NFS")
 public class MotorTestsTeleop extends MasqLinearOpMode {
-    private MasqRobot robot = new BobotRobot();
+    private MasqRobot robot = new PrototypeRobot();
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.mapHardware(hardwareMap);
