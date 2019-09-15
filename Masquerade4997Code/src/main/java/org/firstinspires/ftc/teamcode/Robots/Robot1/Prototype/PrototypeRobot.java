@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.Robot1.Bobot;
+package org.firstinspires.ftc.teamcode.Robots.Robot1.Prototype;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -14,16 +14,16 @@ import Library4997.MasqServos.MasqServo;
  * Created by Archishmaan Peyyety on 2019-08-06.
  * Project: MasqLib
  */
-public class BobotRobot extends MasqRobot {
+public class PrototypeRobot extends MasqRobot {
 
     public MasqServo Grabber, Twister;
-    public MasqMotorSystem Gripper;
+    public MasqMotorSystem Intake;
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain("leftFront", "leftBack", "rightFront", "rightBack", hardwareMap);
         Grabber = new MasqServo("Yes", hardwareMap);
         Twister = new MasqServo("No", hardwareMap);
-        //Gripper = new MasqMotorSystem("gripperLeft", DcMotorSimple.Direction.FORWARD, "gripperRight", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX, hardwareMap);
+        Intake = new MasqMotorSystem("gripperLeft", DcMotorSimple.Direction.FORWARD, "gripperRight", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX, hardwareMap);
     }
 
     @Override
