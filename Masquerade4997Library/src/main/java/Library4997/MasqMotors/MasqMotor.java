@@ -150,27 +150,32 @@ public class MasqMotor implements MasqHardware {
     public double getAbsolutePosition () {
         return motor.getCurrentPosition();
     }
-    public double getVelocity() {
-        double deltaPosition = getCurrentPosition() - prevPos;
-        double tChange = System.nanoTime() - previousTime;
+    public double getVelocity(double deltaPosition, double tChange, double CPR) {
         previousTime = System.nanoTime();
         tChange = tChange / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
-        rate = (rate * 60) / encoder.getClicksPerRotation();
+        rate = (rate * 60) / CPR;
         if (rate != 0) return rate;
         else {
             prevRate = rate;
             return prevRate;
         }
     }
-    public double getAngle () {
-        return (motor.getCurrentPosition() * encoder.getClicksPerRotation()) / 360;
+    public double getVelocity() {
+        return getVelocity(getCurrentPosition() - prevPos,System.nanoTime() - previousTime,encoder.getClicksPerRotation());
     }
-    public void setPower (double power) {
+    public double getAngle (double currentPosition, double CPR) {
+        return (currentPosition * CPR) / 360;
+    }
+    public double getAngle() {
+        return getAngle(motor.getCurrentPosition(), encoder.getClicksPerRotation());
+    }
+    public double setPower (double power) {
         power = Range.clip(power, -1, 1);
         motorPower = power;
         motor.setPower(power);
+        return power;
     }
     public double setVelocity(double power, double error, double tChange) {
         targetPower = power;
@@ -234,9 +239,7 @@ public class MasqMotor implements MasqHardware {
     private double calculateVelocityCorrection(){
         return calculateVelocityCorrection((encoder.getRPM() * targetPower) - getVelocity(), (System.nanoTime() - previousTime)/1e9);
     }
-    public double getAcceleration () {
-        double deltaVelocity = getVelocity() - previousVel;
-        double tChange = System.nanoTime() - previousVelTime;
+    public double getAcceleration (double deltaVelocity, double tChange) {
         tChange = tChange / 1e9;
         previousVel = getVelocity();
         double acceleration = deltaVelocity / tChange;
@@ -246,6 +249,9 @@ public class MasqMotor implements MasqHardware {
             previousAcceleration = acceleration;
             return previousAcceleration;
         }
+    }
+    public double getAcceleration() {
+        return getAcceleration(getVelocity() - previousVel,System.nanoTime() - previousVelTime);
     }
     public void setAcceleration (double accelerationRPMM) {
         double tChange = System.nanoTime() - previousAccelerationSetTime;
