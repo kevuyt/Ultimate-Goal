@@ -11,18 +11,19 @@ import Library4997.MasqSensors.MasqEncoder;
 
 
 public class MasqDriveTrain implements MasqHardware {
-    public MasqMotorSystem leftDrive, rightDrive = null;
+    public MasqMotorSystem leftDrive, rightDrive;
+    private MasqMotorModel defaultModel = MasqMotorModel.ORBITAL20;
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
-        leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
-        rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
+        leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, defaultModel);
+        rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, defaultModel);
     }
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap, MasqMotorModel masqMotorModel) {
         leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, masqMotorModel);
         rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, masqMotorModel);
     }
     public MasqDriveTrain(HardwareMap hardwareMap){
-        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
-        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, MasqMotorModel.REVHDHEX);
+        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, defaultModel);
+        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, defaultModel);
     }
     public MasqDriveTrain(HardwareMap hardwareMap, MasqMotorModel motorModel){
         //FOLLOW DIRECTIONS OF THIS
@@ -108,9 +109,9 @@ public class MasqDriveTrain implements MasqHardware {
         rightDrive.setKd(kd);
     }
 
-    public MasqEncoder getEncoder () {
-        return leftDrive.motor1.getEncoder();
-    }
+    public void setDefaultModel(MasqMotorModel defaultModel) {this.defaultModel = defaultModel;}
+
+    public MasqEncoder getEncoder () {return leftDrive.motor1.getEncoder();}
 
     public String getName() {
         return "DRIVETRAIN";
@@ -118,8 +119,8 @@ public class MasqDriveTrain implements MasqHardware {
     public String[] getDash() {
         return new String[]{
                 "Rate "+ getRate(),
-                "Left Position: " + Double.toString(leftDrive.getAbsolutePosition()),
-                "Right Position: " + Double.toString(rightDrive.getAbsolutePosition()),
+                "Left Position: " + leftDrive.getAbsolutePosition(),
+                "Right Position: " + rightDrive.getAbsolutePosition(),
         };
     }
 }

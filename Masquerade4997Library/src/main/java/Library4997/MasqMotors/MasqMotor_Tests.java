@@ -49,19 +49,16 @@ public class MasqMotor_Tests implements Tests {
             throw new AssertionError("getAbsolutePositionTest Failed");
     }
     public static void getVelocityTest() {
-        if (!(masqMotor.getVelocity(10, 1e9, 5) == 120)) throw new AssertionError();
+        if (!(masqMotor.getVelocity(10, 1e9, 5) == 120)) throw new AssertionError("getVelocityTest Failed");
     }
     public static void getAngleTest() {
-        if (masqMotor.getAngle(30, 12) != 1) throw new AssertionError();
+        if (masqMotor.getAngle(30, 12) != 1) throw new AssertionError("getAngleTest Failed");
     }
     public static void setPowerTest() {
-        if (masqMotor.setPower(0.5) != 0.5) throw new AssertionError();
+        if (masqMotor.setPower(0.5) != 0.5) throw new AssertionError("setPowerTest Failed");
     }
     public static void setVelocityTest() {
-        if (masqMotor.setVelocity(0.5, 5, 100) != 1) throw new AssertionError();
-    }
-    public static void getAccelerationTest() {
-        if (masqMotor.getAcceleration(10, 1e9) != 10) throw new AssertionError();
+        if (masqMotor.setVelocity(0.5, 5, 100) != 1) throw new AssertionError("setVelocityTest Failed");
     }
 
     @Override
@@ -77,6 +74,6 @@ public class MasqMotor_Tests implements Tests {
         getAngleTest();
         setPowerTest();
         setVelocityTest();
-        getAccelerationTest();
+
     }
 }
