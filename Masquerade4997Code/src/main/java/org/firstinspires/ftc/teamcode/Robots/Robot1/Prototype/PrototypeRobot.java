@@ -16,8 +16,8 @@ import Library4997.MasqServos.MasqServo;
  */
 public class PrototypeRobot extends MasqRobot {
 
-    public MasqServo Grabber, Twister;
-    public MasqMotorSystem Intake;
+    MasqServo Grabber, Twister;
+    MasqMotorSystem Intake;
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain("leftFront", "leftBack", "rightFront", "rightBack", hardwareMap);

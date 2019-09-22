@@ -7,60 +7,67 @@ import Library4997.MasqWrappers.Tests;
 /**
  * Created by Keval Kataria on 8/21/2019
  */
-public class MasqMotor_Tests implements Tests {
-    static MasqMotor masqMotor;
-    public double velocity;
-    public MasqMotor_Tests(MasqMotor m){
-        masqMotor = m;
-    }
+ public class MasqMotor_Tests implements Tests {
+    private MasqMotor masqMotor;
+     public MasqMotor_Tests(MasqMotor masqMotor){this.masqMotor = masqMotor;}
 
 
-    public static void RunWithoutEncoderTest() {
+     private void RunWithoutEncoderTest() {
         masqMotor.runWithoutEncoders();
         if (masqMotor.motor.getMode() != DcMotor.RunMode.RUN_WITHOUT_ENCODER)
             throw new AssertionError("RunWithoutEncoderTest failed");
     }
-    public static void RunUsingEncoderTest() {
+     private void RunUsingEncoderTest() {
         masqMotor.runUsingEncoder();
         if (masqMotor.motor.getMode() != DcMotor.RunMode.RUN_USING_ENCODER)
             throw new AssertionError("RunUsingEncoderTest failed");
     }
-    public static void setDistanceTest() {
+     private void setDistanceTest() {
         masqMotor.setDistance(10);
         if (masqMotor.destination != 10) throw new AssertionError("setDistanceTest failed");
     }
-    public static void setBreakModeTest() {
+     private void setBreakModeTest() {
         masqMotor.setBreakMode();
         if (masqMotor.motor.getPower() != 0) throw new AssertionError("setBreakModeTest1 Failed");
         if (masqMotor.motor.getZeroPowerBehavior() != DcMotor.ZeroPowerBehavior.BRAKE)
             throw new AssertionError("setBreakModeTest2 Failed");
     }
-    public static void unBreakModeTest() {
+     private void unBreakModeTest() {
         masqMotor.unBreakMode();
         if (masqMotor.motor.getZeroPowerBehavior() != DcMotor.ZeroPowerBehavior.FLOAT)
             throw new AssertionError("unBreakModeTest Failed");
     }
-    public static void getCurrentPositionTest() {
+     private void getCurrentPositionTest() {
         if (masqMotor.getCurrentPosition() != masqMotor.encoder.getRelativePosition())
             throw new AssertionError("getCurrentPositionTest Failed");
     }
-    public static void getAbsolutePositionTest() {
+     private void getAbsolutePositionTest() {
         if (masqMotor.getAbsolutePosition() != masqMotor.motor.getCurrentPosition())
             throw new AssertionError("getAbsolutePositionTest Failed");
     }
-    public static void getVelocityTest() {
+     private void getVelocityTest() {
         if (!(masqMotor.getVelocity(10, 1e9, 5) == 120)) throw new AssertionError("getVelocityTest Failed");
     }
-    public static void getAngleTest() {
+     private void getAngleTest() {
         if (masqMotor.getAngle(30, 12) != 1) throw new AssertionError("getAngleTest Failed");
     }
-    public static void setPowerTest() {
+     private void setPowerTest() {
         if (masqMotor.setPower(0.5) != 0.5) throw new AssertionError("setPowerTest Failed");
     }
-    public static void setVelocityTest() {
+     private void setVelocityTest() {
         if (masqMotor.setVelocity(0.5, 5, 100) != 1) throw new AssertionError("setVelocityTest Failed");
     }
-
+     private void getStalledTest() {
+        masqMotor.setStalledRPMThreshold(1);
+        if (!masqMotor.getStalled(10, 1e9, 1200)) throw new AssertionError("getStalledTest failed");
+    }
+    private void enableStallDetectionTest(){
+        masqMotor.setStalledRPMThreshold(1);
+        masqMotor.setUnStalledAction(() -> {
+            throw new AssertionError("enableStallDetectionTest failed");
+        });
+        masqMotor.enableStallDetection(10,1e9,1200);
+    }
     @Override
     public void RunAll() {
         RunWithoutEncoderTest();
@@ -74,6 +81,7 @@ public class MasqMotor_Tests implements Tests {
         getAngleTest();
         setPowerTest();
         setVelocityTest();
-
+        getStalledTest();
+        enableStallDetectionTest();
     }
 }
