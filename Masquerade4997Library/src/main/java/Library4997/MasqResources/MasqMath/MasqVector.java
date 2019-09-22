@@ -95,9 +95,9 @@ public class MasqVector implements MasqHardware {
     @Override
     public String[] getDash() {
         return new String[]{
-                "X: " + Double.toString(getX()),
-                "Y: " + Double.toString(getY()),
-                "Direction: " + Double.toString(getDirection())
+                "X: " + getX(),
+                "Y: " + getY(),
+                "Direction: " + getDirection()
         };
     }
 }

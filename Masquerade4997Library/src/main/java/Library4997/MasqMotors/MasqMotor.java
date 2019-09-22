@@ -45,11 +45,8 @@ public class MasqMotor implements MasqHardware {
     private int stalledRPMThreshold = 10;
     private boolean stateControl;
     private double prevRate = 0;
-    private Runnable stallAction = new Runnable() {
-        @Override
-        public void run() {
+    private Runnable stallAction = () -> {
 
-        }
     },
     unStalledAction = new Runnable() {
         @Override
@@ -259,6 +256,11 @@ public class MasqMotor implements MasqHardware {
     }
     public void setControlStateUpdate (boolean velocityControlState) {this.stateControl = velocityControlState; }
 
+    //Use this one for testing
+    public boolean getStalled(double deltaPosition, double tChange, double CPR) {
+        return Math.abs(getVelocity(deltaPosition, tChange, CPR)) < stalledRPMThreshold;
+    }
+    //Use for normal use
     private boolean getStalled() {
         return Math.abs(getVelocity()) < stalledRPMThreshold;
     }
@@ -279,19 +281,33 @@ public class MasqMotor implements MasqHardware {
     public void setStalledRPMThreshold(int stalledRPMThreshold) {
         this.stalledRPMThreshold = stalledRPMThreshold;
     }
+    //For testing
+    public void enableStallDetection(double deltaPosition, double tChange, double CPR) {
+        setStallDetection(true);
+        Runnable mainRunnable = () -> {
+            while (opModeIsActive()) {
+                stalled = getStalled(deltaPosition, tChange, CPR);
+                if (getStallDetection()) {
+                    if (stalled) stallAction.run();
+                    else unStalledAction.run();
+                }
+                MasqUtils.sleep(100);
+            }
+        };
+        Thread thread = new Thread(mainRunnable);
+        thread.start();
+    }
+    //For normal use
     public void enableStallDetection() {
         setStallDetection(true);
-        Runnable mainRunnable = new Runnable() {
-            @Override
-            public void run() { while (opModeIsActive()) {
+        Runnable mainRunnable = () -> { while (opModeIsActive()) {
                     stalled = getStalled();
                     if (getStallDetection()) {
                         if (stalled) stallAction.run();
                         else unStalledAction.run();
                     }
                     MasqUtils.sleep(100);
-                }}
-        };
+                }};
         Thread thread = new Thread(mainRunnable);
         thread.start();
     }
