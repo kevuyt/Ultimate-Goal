@@ -18,6 +18,7 @@ dependencies {
     implementation project(':openCVLibrary3')
     implementation 'junit:junit:4.12'
 }
+
 repositories {
     google()
 }

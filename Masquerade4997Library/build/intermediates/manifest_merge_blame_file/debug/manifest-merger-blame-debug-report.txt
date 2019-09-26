@@ -11,7 +11,7 @@
 11    <uses-sdk
 12        android:minSdkVersion="19"
 12-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Library\src\main\AndroidManifest.xml
-13        android:targetSdkVersion="26" />
+13        android:targetSdkVersion="28" />
 13-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Library\src\main\AndroidManifest.xml
 14
 15    <application />

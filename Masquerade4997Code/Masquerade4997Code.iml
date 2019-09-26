@@ -25,7 +25,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/build/intermediates/javac/debug/classes" />
     <output-test url="file://$MODULE_DIR$/build/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
@@ -96,10 +96,6 @@
     <orderEntry type="library" name="Gradle: :FtcCommon-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: :Analytics-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: :WirelessP2p-release:@aar" level="project" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="Masquerade4997Library" />
-    <orderEntry type="module" module-name="Masquerade4997CV" />
-    <orderEntry type="module" module-name="openCVLibrary3" />
     <orderEntry type="module" module-name="FtcRobotController" />
     <orderEntry type="module" module-name="Masquerade4997Library" />
     <orderEntry type="module" module-name="Masquerade4997CV" />
