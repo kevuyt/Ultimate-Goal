@@ -3,6 +3,7 @@ package Library4997;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcore.external.Predicate;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
@@ -10,7 +11,6 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqHelpers.StopCondition;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
@@ -248,7 +248,7 @@ public abstract class MasqRobot {
         turnAbsolute(angle, direction, MasqUtils.DEFAULT_TIMEOUT);
     }
 
-    public void stop(StopCondition stopCondition, double angle, double speed, Direction direction, double timeOut) {
+    public void stop(Predicate<Boolean> stopCondtion, double angle, double speed, Direction direction, double timeOut) {
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -280,28 +280,28 @@ public abstract class MasqRobot {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("Angle Error", angularError);
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && stopCondition.stop());
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && stopCondtion.test());
         driveTrain.stopDriving();
     }
-    public void stop(StopCondition stopCondition, double angle, double speed, Direction direction) {
+    public void stop(Predicate<Boolean> stopCondition, double angle, double speed, Direction direction) {
         stop(stopCondition, angle, speed, direction, MasqUtils.DEFAULT_TIMEOUT);
     }
-    public void stop(StopCondition sensor, double angle, double power) {
+    public void stop(Predicate<Boolean> sensor, double angle, double power) {
         stop(sensor, angle, power, Direction.FORWARD);
     }
-    public void stop(StopCondition stopCondition, double angle) {
+    public void stop(Predicate<Boolean> stopCondition, double angle) {
         stop(stopCondition, angle, 0.5);
     }
-    public void stop(StopCondition sensor){
+    public void stop(Predicate<Boolean> sensor){
         stop(sensor, tracker.getHeading());
     }
-    public void stop(StopCondition stopCondition, int timeout) {
+    public void stop(Predicate<Boolean> stopCondition, int timeout) {
         stop(stopCondition, tracker.getHeading(), 0.5, Direction.FORWARD, timeout);
     }
 
     public void xyPath(double x, double y, double heading, double speedDampener, double kp) {
         // https://www.desmos.com/calculator/zbviad1hnz
-        double lookAheadDistance = 10;
+        double l = 10;
         MasqPIDController speedController = new MasqPIDController(0.04, 0, 0);
         driveTrain.setTurnKP(kp);
         MasqClock clock = new MasqClock();
@@ -318,8 +318,8 @@ public abstract class MasqRobot {
                     untransformedProjection.getY() + inital.getY());
             double theta = Math.atan2(pathDisplacment.getY(), pathDisplacment.getX());
             MasqVector lookahead = new MasqVector(
-                    projection.getX() + (lookAheadDistance * Math.cos(theta)),
-                    projection.getY() + (lookAheadDistance * Math.sin(theta)));
+                    projection.getX() + (l * Math.cos(theta)),
+                    projection.getY() + (l * Math.sin(theta)));
             if (inital.displacement(lookahead).getMagnitude() > pathDisplacment.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
             MasqVector lookaheadDisplacement = current.displacement(lookahead);
             double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
