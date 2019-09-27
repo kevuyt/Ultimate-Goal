@@ -355,7 +355,7 @@ public abstract class MasqRobot {
     public void gotoXY(double x, double y, double heading, double speedDampener, double kp) {
         MasqClock clock = new MasqClock();
         MasqVector target = new MasqVector(x, y);
-        double l = 10;
+        double lookAheadDistance = 10;
         driveTrain.setTurnKP(kp);
         MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         double targetInches = current.distanceToVector(target);
@@ -364,7 +364,7 @@ public abstract class MasqRobot {
             double speed = displacement.getMagnitude() / targetInches;
             MasqVector projection = current.projectOnTo(target);
             double theta = Math.atan2(projection.getY(), projection.getX());
-            MasqVector lookahead = new MasqVector(projection.getX() + (l * Math.cos(theta)), projection.getY() + (l * Math.sin(theta)));
+            MasqVector lookahead = new MasqVector(projection.getX() + (lookAheadDistance * Math.cos(theta)), projection.getY() + (lookAheadDistance * Math.sin(theta)));
             if (lookahead.getMagnitude() > target.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
             MasqVector lookaheadDisplacement = current.displacement(lookahead);
             double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
