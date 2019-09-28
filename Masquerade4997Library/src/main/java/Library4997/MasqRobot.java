@@ -29,6 +29,8 @@ public abstract class MasqRobot {
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
+    private double speedMultiplier = 1.4;
+    private double turnMultiplier = 1.4;
     private MasqClock timeoutClock = new MasqClock();
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
     public void drive(double distance, double speed, Direction direction, double timeOut, int sleepTime) {
@@ -280,7 +282,7 @@ public abstract class MasqRobot {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("Angle Error", angularError);
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && stopCondtion.test());
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
         driveTrain.stopDriving();
     }
     public void stop(Predicate<Boolean> stopCondition, double angle, double speed, Direction direction) {
@@ -426,22 +428,30 @@ public abstract class MasqRobot {
     public void MECH(MasqController c, Direction direction, boolean fieldCentric) {
         int disable = 0;
         if (fieldCentric) disable = 1;
+        double angle;
         double x = -c.leftStickY();
         double y = c.leftStickX();
-        double xR = - c.rightStickX();
-        double angle = Math.atan2(y, x) + (Math.toRadians(tracker.getHeading()) * disable);
+        double xR = c.rightStickX();
+        try {
+            angle = Math.atan2(y, x) + (Math.toRadians(tracker.getHeading()) * disable);
+        }catch (Exception e) {
+            angle = Math.atan2(y,x);
+        }
         double adjustedAngle = angle + Math.PI/4;
-        double speedMultiplier = 1.4;
-        double turnMultiplier = 1.4;
+
         double speedMagnitude = Math.hypot(x, y);
         if (c.rightStickButton()) {
             speedMultiplier *= 0.3;
             turnMultiplier *= 0.3;
         }
-        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) - xR * turnMultiplier * direction.value;
-        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;
-        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
-        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
+        if (c.leftStickButton()) {
+            speedMultiplier/= 0.3;
+            turnMultiplier/= 0.3;
+        }
+        double leftFront = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR * turnMultiplier * direction.value;
+        double leftBack = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;
+        double rightFront = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
+        double rightBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
         double max = MasqUtils.max(Math.abs(leftFront), Math.abs(leftBack), Math.abs(rightFront), Math.abs(rightBack));
         if (max > 1) {
             leftFront /= Math.abs(max);

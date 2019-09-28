@@ -63,8 +63,8 @@ public class MasqServo implements MasqHardware{
 
     public String[] getDash() {
         return new String[]{
-                "Current Position:" + Double.toString(servo.getPosition()),
-                "Stalled:" + Boolean.toString(isStalled(1))
+                "Current Position:" + servo.getPosition(),
+                "Stalled:" + isStalled(1)
         };
     }
 }
