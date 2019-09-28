@@ -68,10 +68,6 @@
         "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\01a061d219232ec409762fcca0704631\\FtcCommon-release\\res\\layout\\motor_controller_banner.xml"
     },
     {
-        "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout-v16_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\dd1cf78f22bdd94f550130b281f27c97\\support-compat-28.0.0\\res\\layout-v16\\notification_template_custom_big.xml"
-    },
-    {
         "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_banner_parent.xml.flat",
         "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\01a061d219232ec409762fcca0704631\\FtcCommon-release\\res\\layout\\banner_parent.xml"
     },
@@ -102,10 +98,6 @@
     {
         "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_matrix_devices.xml.flat",
         "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\01a061d219232ec409762fcca0704631\\FtcCommon-release\\res\\layout\\matrix_devices.xml"
-    },
-    {
-        "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\dd1cf78f22bdd94f550130b281f27c97\\support-compat-28.0.0\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_button_list.xml.flat",
@@ -288,10 +280,6 @@
         "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\01a061d219232ec409762fcca0704631\\FtcCommon-release\\res\\layout\\analog_input_device.xml"
     },
     {
-        "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_notification_action_tombstone.xml.flat",
-        "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\dd1cf78f22bdd94f550130b281f27c97\\support-compat-28.0.0\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
         "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\raw_chimedisconnect.wav.flat",
         "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\01a061d219232ec409762fcca0704631\\FtcCommon-release\\res\\raw\\chimedisconnect.wav"
     },
@@ -358,10 +346,6 @@
     {
         "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_activity_ftc_wifi_channel_selector.xml.flat",
         "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\01a061d219232ec409762fcca0704631\\FtcCommon-release\\res\\layout\\activity_ftc_wifi_channel_selector.xml"
-    },
-    {
-        "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
-        "source": "C:\\Users\\Keval Standard\\.gradle\\caches\\transforms-2\\files-2.1\\dd1cf78f22bdd94f550130b281f27c97\\support-compat-28.0.0\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\Keval Standard\\Documents\\GitHub\\Control\\Masquerade4997Code\\build\\intermediates\\res\\merged\\debug\\layout_motor.xml.flat",

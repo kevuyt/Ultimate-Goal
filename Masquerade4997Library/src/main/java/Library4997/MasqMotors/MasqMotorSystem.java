@@ -129,9 +129,7 @@ public class MasqMotorSystem implements MasqHardware {
             masqMotor.setLimits(min, max);
         }
     }
-    public void setAcceleration (double target) {
-        for (MasqMotor masqMotor: motors) masqMotor.setAcceleration(target);
-    }
+
     public MasqMotorSystem setDistance(int distance){
         for (MasqMotor masqMotor: motors)
             masqMotor.setDistance(distance);
@@ -179,15 +177,6 @@ public class MasqMotorSystem implements MasqHardware {
         double rate = 0;
         for (MasqMotor masqMotor: motors){
             rate += masqMotor.getVelocity();
-            i++;
-        }
-        return rate/i;
-    }
-    public double getAcceleration () {
-        double i = 0;
-        double rate = 0;
-        for (MasqMotor masqMotor: motors){
-            rate += masqMotor.getAcceleration();
             i++;
         }
         return rate/i;

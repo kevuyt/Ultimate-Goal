@@ -63,9 +63,9 @@ import Library4997.MasqWrappers.Tests;
     }
     private void enableStallDetectionTest(){
         masqMotor.setStalledRPMThreshold(1);
-        masqMotor.setUnStalledAction(() -> {
-            throw new AssertionError("enableStallDetectionTest failed");
-        });
+        masqMotor.setUnStalledAction(new Runnable() {
+            @Override
+            public void run() {throw new AssertionError("enableStallDetectionTest failed"); }});
         masqMotor.enableStallDetection(10,1e9,1200);
     }
     @Override

@@ -284,14 +284,17 @@ public class MasqMotor implements MasqHardware {
     //For testing
     public void enableStallDetection(double deltaPosition, double tChange, double CPR) {
         setStallDetection(true);
-        Runnable mainRunnable = () -> {
-            while (opModeIsActive()) {
-                stalled = getStalled(deltaPosition, tChange, CPR);
-                if (getStallDetection()) {
-                    if (stalled) stallAction.run();
-                    else unStalledAction.run();
+        Runnable mainRunnable = new Runnable() {
+            @Override
+            public void run() {
+                while (opModeIsActive()) {
+                    stalled = getStalled(deltaPosition, tChange, CPR);
+                    if (getStallDetection()) {
+                        if (stalled) stallAction.run();
+                        else unStalledAction.run();
+                    }
+                    MasqUtils.sleep(100);
                 }
-                MasqUtils.sleep(100);
             }
         };
         Thread thread = new Thread(mainRunnable);
