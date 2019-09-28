@@ -152,6 +152,7 @@
 85        <uses-library android:name="android.test.runner" />
 85-->C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3805502352433319443.xml:8:9-60
 85-->C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3805502352433319443.xml:8:23-57
+
 86        <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
 87        <meta-data
 87-->[__tested_artifact__::FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-24:33

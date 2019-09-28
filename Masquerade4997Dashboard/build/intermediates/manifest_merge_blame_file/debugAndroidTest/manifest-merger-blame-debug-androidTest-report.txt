@@ -142,6 +142,7 @@
 80-->[com.android.support:support-compat:28.0.0] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\dd1cf78f22bdd94f550130b281f27c97\support-compat-28.0.0\AndroidManifest.xml:22:18-91
 81        android:debuggable="true"
 81-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Dashboard\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger7027762966640894940.xml:7:18-43
+
 82        android:exported="true"
 82-->[:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\6488dcdf0b2447f511f7438d02142b6e\Analytics-release\AndroidManifest.xml:21:9-32
 83        android:icon="@drawable/ic_launcher"
