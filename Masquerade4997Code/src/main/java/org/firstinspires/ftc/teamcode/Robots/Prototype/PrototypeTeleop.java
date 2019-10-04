@@ -9,14 +9,12 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "PrototypeTeleop", group = "Prototype")
 public class PrototypeTeleop extends MasqLinearOpMode {
-    private double grabberPosition = 0;
-    private double twisterPosition = 0;
+    private PrototypeRobot robot = new PrototypeRobot();
     @Override
     public void runLinearOpMode() {
-        PrototypeRobot robot = new PrototypeRobot();
-
+        robot.mapHardware(hardwareMap);
         while(!opModeIsActive()) {
-            dash.create("Prepare the Massive Brain");
+            dash.create("Big Brain Time");
             dash.update();
         }
 
@@ -33,10 +31,10 @@ public class PrototypeTeleop extends MasqLinearOpMode {
             robot.lift.setPower(controller2.leftTrigger()-0.3*controller2.rightTrigger());
             if (controller2.a()) robot.blockRotater.setPosition(1);
             else robot.blockRotater.setPosition(0);
-            if (controller2.b()) robot.gripper.setPosition(1);
-            else robot.gripper.setPosition(0);
-            if (controller2.x()) robot.knocker.setPosition(1);
-            else robot.knocker.setPosition(0);
+            if (controller2.b()) robot.blockGrabber.setPosition(1);
+            else robot.blockGrabber.setPosition(0);
+            if (controller2.x()) robot.blockPusher.setPosition(1);
+            else robot.blockPusher.setPosition(0);
         }
     }
 }

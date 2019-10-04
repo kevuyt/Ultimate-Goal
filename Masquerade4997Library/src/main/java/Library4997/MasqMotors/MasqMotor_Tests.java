@@ -7,7 +7,7 @@ import Library4997.MasqWrappers.Tests;
 /**
  * Created by Keval Kataria on 8/21/2019
  */
- public class MasqMotor_Tests implements Tests {
+ public abstract class MasqMotor_Tests implements Tests {
     private MasqMotor masqMotor;
      public MasqMotor_Tests(MasqMotor masqMotor){this.masqMotor = masqMotor;}
 

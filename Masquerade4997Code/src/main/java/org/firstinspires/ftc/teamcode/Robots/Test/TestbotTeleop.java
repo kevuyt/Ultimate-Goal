@@ -9,11 +9,13 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "TestBotTeleop", group = "Test")
 public class TestbotTeleop extends MasqLinearOpMode {
+    TestRobot robot = new TestRobot();
     @Override
     public void runLinearOpMode() {
-        TestRobot robot = new TestRobot();
+        robot.mapHardware(hardwareMap);
         while (!opModeIsActive()) {
-            robot.mapHardware(hardwareMap);
+            dash.create("Big Brain Time");
+            dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {

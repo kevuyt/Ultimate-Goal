@@ -216,7 +216,7 @@ public class MasqMotor implements MasqHardware {
     }
 
     public double setVelocity(double power) {
-        return setVelocity(power, (encoder.getRPM() * targetPower) - getVelocity(), (System.nanoTime() - previousTime)/1e9);
+        return setVelocity(power, (encoder.getRPM() * power) - getVelocity(), (System.nanoTime() - previousTime)/1e9);
     }
     //For testing purposes input parameters for error and time
     public  double calculateVelocityCorrection(double error, double tChange) {
