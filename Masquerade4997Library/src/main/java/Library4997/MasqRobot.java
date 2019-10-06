@@ -17,6 +17,7 @@ import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
+import Library4997.MasqWrappers.MasqPredicate;
 
 
 /**
@@ -250,7 +251,7 @@ public abstract class MasqRobot {
         turnAbsolute(angle, direction, MasqUtils.DEFAULT_TIMEOUT);
     }
 
-    public void stop(Predicate<Boolean> stopCondtion, double angle, double speed, Direction direction, double timeOut) {
+    public void stop(MasqPredicate stopCondtion, double angle, double speed, Direction direction, double timeOut) {
         MasqClock timeoutTimer = new MasqClock();
         MasqClock loopTimer = new MasqClock();
         driveTrain.resetEncoders();
@@ -282,22 +283,22 @@ public abstract class MasqRobot {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("Angle Error", angularError);
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS));
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && stopCondtion.run());
         driveTrain.stopDriving();
     }
-    public void stop(Predicate<Boolean> stopCondition, double angle, double speed, Direction direction) {
+    public void stop(MasqPredicate stopCondition, double angle, double speed, Direction direction) {
         stop(stopCondition, angle, speed, direction, MasqUtils.DEFAULT_TIMEOUT);
     }
-    public void stop(Predicate<Boolean> sensor, double angle, double power) {
+    public void stop(MasqPredicate sensor, double angle, double power) {
         stop(sensor, angle, power, Direction.FORWARD);
     }
-    public void stop(Predicate<Boolean> stopCondition, double angle) {
+    public void stop(MasqPredicate stopCondition, double angle) {
         stop(stopCondition, angle, 0.5);
     }
-    public void stop(Predicate<Boolean> sensor){
+    public void stop(MasqPredicate sensor){
         stop(sensor, tracker.getHeading());
     }
-    public void stop(Predicate<Boolean> stopCondition, int timeout) {
+    public void stop(MasqPredicate stopCondition, int timeout) {
         stop(stopCondition, tracker.getHeading(), 0.5, Direction.FORWARD, timeout);
     }
 
@@ -431,7 +432,7 @@ public abstract class MasqRobot {
         double angle;
         double x = -c.leftStickY();
         double y = c.leftStickX();
-        double xR = c.rightStickX();
+        double xR = -c.rightStickX();
         try {
             angle = Math.atan2(y, x) + (Math.toRadians(tracker.getHeading()) * disable);
         }catch (Exception e) {
@@ -448,10 +449,10 @@ public abstract class MasqRobot {
             speedMultiplier/= 0.3;
             turnMultiplier/= 0.3;
         }
-        double leftFront = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR * turnMultiplier * direction.value;
-        double leftBack = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;
-        double rightFront = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
-        double rightBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
+        double leftFront = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) - xR * turnMultiplier * direction.value;
+        double leftBack = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) - xR  * turnMultiplier * direction.value;
+        double rightFront = (Math.cos(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
+        double rightBack = (Math.sin(adjustedAngle) * speedMagnitude * speedMultiplier) + xR * turnMultiplier * direction.value;
         double max = MasqUtils.max(Math.abs(leftFront), Math.abs(leftBack), Math.abs(rightFront), Math.abs(rightBack));
         if (max > 1) {
             leftFront /= Math.abs(max);

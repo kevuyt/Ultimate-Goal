@@ -25,8 +25,8 @@ public class PrototypeRobot extends MasqRobot {
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
         lift = new MasqMotor("lift",MasqMotorModel.ORBITAL20, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
-        intakeRight = new MasqMotor("intakeRight", MasqMotorModel.REVHDHEX, hardwareMap);
-        intakeLeft = new MasqMotor("intakeLeft", MasqMotorModel.REVHDHEX, hardwareMap);
+        intakeRight = new MasqMotor("intakeRight", MasqMotorModel.REVHDHEX40, hardwareMap);
+        intakeLeft = new MasqMotor("intakeLeft", MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
 
     }

@@ -22,6 +22,10 @@ public class MasqRobot_Tests implements Tests {
         }
     };
 
+    void driveTest() {
+        masqRobot.drive(1);
+    }
+
     @Override
     public void RunAll() {
 

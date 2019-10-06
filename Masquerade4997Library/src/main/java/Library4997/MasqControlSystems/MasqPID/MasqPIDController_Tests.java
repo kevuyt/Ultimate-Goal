@@ -1,5 +1,7 @@
 package Library4997.MasqControlSystems.MasqPID;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import Library4997.MasqWrappers.Tests;
 
 /**
@@ -15,5 +17,10 @@ public class MasqPIDController_Tests implements Tests {
     @Override
     public void RunAll() {
         getOutputTest();
+    }
+
+    @Override
+    public void RunAll(HardwareMap hardwareMap) {
+
     }
 }
