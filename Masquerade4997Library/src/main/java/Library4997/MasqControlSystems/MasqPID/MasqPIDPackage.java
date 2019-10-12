@@ -57,17 +57,17 @@ public class MasqPIDPackage {
         this.kiDriveEncoder = 0;
         this.kdDriveEncoder = 0;
         this.kpMotorTeleOpLeft = MasqUtils.KP.MOTOR_TELEOP;
-        this.kiMotorTeleOpLeft = MasqUtils.KP.MOTOR_TELEOP;
-        this.kdMotorTeleOpLeft = MasqUtils.KP.MOTOR_TELEOP;
+        this.kiMotorTeleOpLeft = MasqUtils.KI.MOTOR_TELEOP;
+        this.kdMotorTeleOpLeft = MasqUtils.KD.MOTOR_TELEOP;
         this.kpMotorAutoLeft = MasqUtils.KP.MOTOR_AUTONOMOUS;
-        this.kiMotorAutoLeft = MasqUtils.KP.MOTOR_AUTONOMOUS;
-        this.kdMotorAutoLeft = MasqUtils.KP.MOTOR_AUTONOMOUS;
+        this.kiMotorAutoLeft = MasqUtils.KI.MOTOR_AUTONOMOUS;
+        this.kdMotorAutoLeft = MasqUtils.KD.MOTOR_AUTONOMOUS;
         this.kpMotorTeleOpRight = MasqUtils.KP.MOTOR_TELEOP;
-        this.kiMotorTeleOpRight = MasqUtils.KP.MOTOR_TELEOP;
-        this.kdMotorTeleOpRight = MasqUtils.KP.MOTOR_TELEOP;
+        this.kiMotorTeleOpRight = MasqUtils.KI.MOTOR_TELEOP;
+        this.kdMotorTeleOpRight = MasqUtils.KD.MOTOR_TELEOP;
         this.kpMotorAutoRight = MasqUtils.KP.MOTOR_AUTONOMOUS;
-        this.kiMotorAutoRight = MasqUtils.KP.MOTOR_AUTONOMOUS;
-        this.kdMotorAutoRight = MasqUtils.KP.MOTOR_AUTONOMOUS;
+        this.kiMotorAutoRight = MasqUtils.KI.MOTOR_AUTONOMOUS;
+        this.kdMotorAutoRight = MasqUtils.KD.MOTOR_AUTONOMOUS;
     }
 
     public double getKpTurn() {

@@ -1,6 +1,7 @@
 package Library4997.MasqDriveTrains;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqMotors.MasqMotorSystem;
@@ -12,7 +13,7 @@ import Library4997.MasqSensors.MasqEncoder;
 
 public class MasqDriveTrain implements MasqHardware {
     public MasqMotorSystem leftDrive, rightDrive;
-    private MasqMotorModel defaultModel = MasqMotorModel.ORBITAL20;
+    private MasqMotorModel defaultModel = MasqMotorModel.REVHDHEX20;
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
         leftDrive = new MasqMotorSystem(name1, DcMotor.Direction.REVERSE, name2, DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, defaultModel);
         rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, defaultModel);
@@ -22,8 +23,8 @@ public class MasqDriveTrain implements MasqHardware {
         rightDrive = new MasqMotorSystem(name3, DcMotor.Direction.FORWARD, name4, DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, masqMotorModel);
     }
     public MasqDriveTrain(HardwareMap hardwareMap){
-        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, defaultModel);
-        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, defaultModel);
+        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.FORWARD, "leftBack", DcMotor.Direction.FORWARD, "LEFTDRIVE", hardwareMap, defaultModel);
+        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.REVERSE, "rightBack", DcMotor.Direction.REVERSE, "RIGHTDRIVE", hardwareMap, defaultModel);
     }
     public MasqDriveTrain(HardwareMap hardwareMap, MasqMotorModel motorModel){
         //FOLLOW DIRECTIONS OF THIS

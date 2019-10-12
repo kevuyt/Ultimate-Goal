@@ -177,8 +177,8 @@ public class MasqMotor implements MasqHardware {
     }
     public double setVelocity(double power, double error, double tChange) {
         targetPower = power;
-        motorPower = calculateVelocityCorrection(error, tChange);
-        if (!closedLoop) motorPower = targetPower;
+        motorPower = calculateVelocityCorrection(power, error, tChange);
+        if (!closedLoop) motorPower = power;
         if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
                     maxLim != null && maxLim.isPressed() && power > 0)
@@ -219,23 +219,14 @@ public class MasqMotor implements MasqHardware {
         return setVelocity(power, (encoder.getRPM() * power) - getVelocity(), (System.nanoTime() - previousTime)/1e9);
     }
     //For testing purposes input parameters for error and time
-    public  double calculateVelocityCorrection(double error, double tChange) {
-        /*double error, setRPM, currentRPM, tChange;
-        tChange = System.nanoTime() - previousTime;
-        tChange /= 1e9;
-        setRPM = encoder.getRPM() * targetPower;
-        currentRPM = getVelocity();
-        error = setRPM - currentRPM;*/
+    public  double calculateVelocityCorrection(double power, double error, double tChange) {
         rpmIntegral += error * tChange;
         rpmDerivative = (error - rpmPreviousError) / tChange;
-        double power = (targetPower) + (direction * ((error * kp) +
+        double motorPower = (power) + (direction * ((error * kp) +
                 (rpmIntegral * ki) + (rpmDerivative * kd)));
         rpmPreviousError = error;
         previousTime = System.nanoTime();
-        return power;
-    }
-    private double calculateVelocityCorrection(){
-        return calculateVelocityCorrection((encoder.getRPM() * targetPower) - getVelocity(), (System.nanoTime() - previousTime)/1e9);
+        return motorPower;
     }
 
     public void setVelocityControlState(boolean velocityControlState) {

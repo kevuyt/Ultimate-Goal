@@ -41,9 +41,8 @@ public abstract class MasqRobot {
         double targetAngle = tracker.getHeading();
         double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
         double clicksRemaining;
-        double angularError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading()),
-                prevAngularError = angularError, angularIntegral = 0,
-                angularDerivative, powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
+        double angularError, prevAngularError = 0, angularIntegral = 0, angularDerivative,
+                powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             power = ((clicksRemaining / targetClicks) * pidPackage().getKpDriveEncoder()) * direction.value * speed;

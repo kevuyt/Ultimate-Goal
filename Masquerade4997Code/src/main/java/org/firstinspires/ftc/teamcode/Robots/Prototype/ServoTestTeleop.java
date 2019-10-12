@@ -26,12 +26,12 @@ public class ServoTestTeleop extends MasqLinearOpMode {
         }
         waitForStart();
         while (opModeIsActive()) {
-            if (controller1.aOnPress()) blockGrabberPosition += 0.1;
-            if (controller1.bOnPress()) blockGrabberPosition -= 0.1;
-            if (controller1.xOnPress()) blockRotaterPosition += 0.1;
-            if (controller1.yOnPress()) blockRotaterPosition -= 0.1;
-            if (controller1.leftTriggerOnPress()) blockPusherPosition += 0.1;
-            if (controller1.rightTriggerOnPress()) blockPusherPosition -= 0.1;
+            if (controller1.a() && !(blockGrabberPosition > 1)) blockGrabberPosition += 0.1;
+            if (controller1.b() && !(blockGrabberPosition < 0)) blockGrabberPosition -= 0.1;
+            if (controller1.x() && !(blockRotaterPosition > 1)) blockRotaterPosition += 0.1;
+            if (controller1.y() && !(blockRotaterPosition < 1)) blockRotaterPosition -= 0.1;
+            if (controller1.leftTriggerPressed() && !(blockPusherPosition > 1)) blockPusherPosition += 0.1;
+            if (controller1.rightTriggerPressed() && !(blockPusherPosition < 1)) blockPusherPosition -= 0.1;
             robot.blockGrabber.setPosition(blockGrabberPosition);
             robot.blockRotater.setPosition(blockRotaterPosition);
             robot.blockPusher.setPosition(blockPusherPosition);

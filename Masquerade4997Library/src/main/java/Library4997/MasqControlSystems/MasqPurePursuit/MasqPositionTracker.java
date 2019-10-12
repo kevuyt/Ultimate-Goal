@@ -22,7 +22,6 @@ public class MasqPositionTracker implements MasqHardware {
         this.ySystem.resetEncoder();
         imu.reset();
     }
-
     public double getHeading () {
         return imu.getRelativeYaw();
     }

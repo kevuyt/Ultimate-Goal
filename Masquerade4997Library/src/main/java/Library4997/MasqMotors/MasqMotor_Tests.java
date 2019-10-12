@@ -1,13 +1,14 @@
 package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqWrappers.Tests;
 
 /**
  * Created by Keval Kataria on 8/21/2019
  */
- public abstract class MasqMotor_Tests implements Tests {
+ public class MasqMotor_Tests implements Tests {
     private MasqMotor masqMotor;
      public MasqMotor_Tests(MasqMotor masqMotor){this.masqMotor = masqMotor;}
 
@@ -63,9 +64,7 @@ import Library4997.MasqWrappers.Tests;
     }
     private void enableStallDetectionTest(){
         masqMotor.setStalledRPMThreshold(1);
-        masqMotor.setUnStalledAction(new Runnable() {
-            @Override
-            public void run() {throw new AssertionError("enableStallDetectionTest failed"); }});
+        masqMotor.setUnStalledAction(() -> {throw new AssertionError("enableStallDetectionTest failed"); });
         masqMotor.enableStallDetection(10,1e9,1200);
     }
     @Override
@@ -83,5 +82,10 @@ import Library4997.MasqWrappers.Tests;
         setVelocityTest();
         getStalledTest();
         enableStallDetectionTest();
+    }
+
+    @Override
+    public void RunAll(HardwareMap hardwareMap) {
+
     }
 }

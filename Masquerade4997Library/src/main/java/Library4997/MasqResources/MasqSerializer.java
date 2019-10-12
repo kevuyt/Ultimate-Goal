@@ -1,5 +1,7 @@
 package Library4997.MasqResources;
 
+import android.annotation.SuppressLint;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,7 +14,7 @@ public class MasqSerializer {
     private long nsBase;
 
     public MasqSerializer (String fileName) {
-        String directoryPath    = "/sdcard/FIRST/DataLogger";
+        @SuppressLint("SdCardPath") String directoryPath    = "/sdcard/FIRST/DataLogger";
         String filePath         = directoryPath + "/" + fileName + ".csv";
         new File(directoryPath).mkdir();
         try {
@@ -26,6 +28,7 @@ public class MasqSerializer {
         addField("d ms");
     }
 
+    @SuppressLint("DefaultLocale")
     private void flushLineBuffer(){
         long milliTime,nanoTime;
 
@@ -34,7 +37,7 @@ public class MasqSerializer {
             writer.write(lineBuffer.toString());
             lineBuffer.setLength(0);
         }
-        catch (IOException e){
+        catch (IOException ignored){
         }
         milliTime   = System.currentTimeMillis();
         nanoTime    = System.nanoTime();

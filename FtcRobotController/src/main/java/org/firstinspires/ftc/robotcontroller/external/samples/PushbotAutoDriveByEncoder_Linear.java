@@ -116,7 +116,7 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
         robot.rightClaw.setPosition(0.0);
         sleep(1000);     // pause for servos to move
 
-        telemetry.addData("Path", "Complete");
+        telemetry.addData("Path ", "Complete");
         telemetry.update();
     }
 

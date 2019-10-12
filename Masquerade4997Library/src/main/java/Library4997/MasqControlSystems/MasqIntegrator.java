@@ -7,15 +7,15 @@ package Library4997.MasqControlSystems;
 
 public class MasqIntegrator {
     private double prev = 0;
-    private double prevTime = 0;
+    private double prevTime = System.nanoTime();
+    private double integral = 0;
     public double getIntegral (double current, double tChange) {
-        double integral;
-        integral = tChange * (prev + (0.5 * (current - prev)));
+        integral += tChange * (0.5 * (current + prev));
         prev = current;
-        prevTime = System.nanoTime();
+        prevTime = System.nanoTime()/1e9;
         return integral;
     }
     public double getIntegral (double current) {
-        return getIntegral(current,System.nanoTime() - prevTime);
+        return getIntegral(current,System.nanoTime()/1e9 - prevTime);
     }
 }
