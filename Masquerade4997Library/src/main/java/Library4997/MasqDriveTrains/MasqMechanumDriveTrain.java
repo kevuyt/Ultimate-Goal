@@ -49,7 +49,7 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     }
 
     public void setPowerMECH(double angle, double speed, double targetHeading) {
-        double turnPower = turnController.getOutput(tracker.getHeading()- targetHeading);
+        double turnPower = turnController.getOutput(tracker.getHeading(), targetHeading);
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;

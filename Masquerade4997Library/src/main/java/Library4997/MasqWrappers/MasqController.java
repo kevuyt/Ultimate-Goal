@@ -3,6 +3,7 @@ package Library4997.MasqWrappers;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqServos.MasqServo;
 
 /**
  * Created by Archish on 10/12/17.
@@ -145,7 +146,20 @@ public class MasqController implements Runnable{
                 "D_RIGHT: " + dPadRight(),
         };
     }
-
+    public void toggle(boolean button, MasqServo servo, double prevPos, double... positions) {
+        if (servo.getPosition()  == prevPos && button) {
+            for (int i = 0; i <positions.length; i++) {
+                if (servo.getPosition() == positions[i] && i+1 < positions.length) servo.setPosition(positions[i+1]);
+                else if (servo.getPosition() == positions[i]) servo.setPosition(positions[0]);
+            }
+        }
+    }
+    public void toggle(boolean button, MasqServo servo, double prevPos) {
+        if (Math.abs(servo.getPosition() - prevPos) < 0.01 && button) {
+            if (Math.abs(servo.getPosition() - 0) < 0.01) servo.setPosition(1);
+            else if (Math.abs(servo.getPosition() - 1) < 0.01) servo.setPosition(0);
+        }
+    }
     @Override
     public void run() {
         boolean close = false;

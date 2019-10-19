@@ -1,6 +1,7 @@
 package Library4997.MasqControlSystems.MasqPurePursuit;
 
 import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 
@@ -10,16 +11,16 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
  */
 
 public class MasqPositionTracker implements MasqHardware {
-    private MasqMotor xSystem, ySystem;
+    private MasqMotorSystem xSystem, ySystem;
     public MasqAdafruitIMU imu;
     private double globalX, globalY, prevX = 0, prevY = 0;
 
-    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, MasqAdafruitIMU imu) {
+    public MasqPositionTracker(MasqMotorSystem xSystem, MasqMotorSystem ySystem, MasqAdafruitIMU imu) {
         this.imu = imu;
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        this.xSystem.resetEncoder();
-        this.ySystem.resetEncoder();
+        this.xSystem.resetEncoders();
+        this.ySystem.resetEncoders();
         imu.reset();
     }
     public double getHeading () {
@@ -39,8 +40,8 @@ public class MasqPositionTracker implements MasqHardware {
     }
 
     public void reset() {
-        xSystem.resetEncoder();
-        ySystem.resetEncoder();
+        xSystem.resetEncoders();
+        ySystem.resetEncoders();
         imu.reset();
     }
 

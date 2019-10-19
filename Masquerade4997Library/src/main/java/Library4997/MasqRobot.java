@@ -40,9 +40,9 @@ public abstract class MasqRobot {
         driveTrain.resetEncoders();
         double targetAngle = tracker.getHeading();
         double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
-        double clicksRemaining;
+        double clicksRemaining = 0;
         double angularError, prevAngularError = 0, angularIntegral = 0, angularDerivative,
-                powerAdjustment, power, leftPower, rightPower, maxPower, timeChange;
+                powerAdjustment, power, leftPower = 0, rightPower = 0, maxPower, timeChange;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             power = ((clicksRemaining / targetClicks) * pidPackage().getKpDriveEncoder()) * direction.value * speed;
@@ -50,7 +50,7 @@ public abstract class MasqRobot {
             timeChange = loopTimer.milliseconds();
             loopTimer.reset();
             angularError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
-            angularIntegral = (angularIntegral + angularError) * timeChange;
+            angularIntegral += angularError*timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
             powerAdjustment = (pidPackage().getKpDriveAngular() * power) * angularError + (pidPackage().getKiDriveAngular() * angularIntegral) +
@@ -160,10 +160,10 @@ public abstract class MasqRobot {
             currentError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
             integral += currentError * tChange;
             derivative = (currentError - prevError) / tChange;
-            double errorkp = currentError * kp;
-            double integralki = integral * ki;
-            double dervitivekd = derivative * kd;
-            newPower = (errorkp + integralki + dervitivekd);
+            double p = currentError * kp;
+            double i = integral * ki;
+            double d = derivative * kd;
+            newPower = (p + i + d);
             if (Math.abs(newPower) >= 1) newPower /= Math.abs(newPower);
             if (left) leftPower = -newPower;
             if (right) rightPower = newPower;

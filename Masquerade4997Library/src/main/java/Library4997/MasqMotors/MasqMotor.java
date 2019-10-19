@@ -24,12 +24,14 @@ public class MasqMotor implements MasqHardware {
     private double targetPower;
     private double targetAcceleration;
     private boolean velocityControlState = false;
+    public double error;
     private double kp = 0.1, ki = 0, kd = 0;
     public MasqEncoder encoder;
     private double targetPosition = 0;
     private double prevPos = 0;
     private double previousAcceleration = 0;
     private boolean stalled = false;
+    public double P, I, D;
     private double previousVel = 0;
     private double previousVelTime = 0;
     private double previousTime = 0;
@@ -39,8 +41,8 @@ public class MasqMotor implements MasqHardware {
     private double currentZero;
     private double previousJerk, prevAcceleration, previousAccelerationTime;
     private double previousAccelerationSetTime;
-    private double rpmIntegral = 0;
-    private double rpmDerivative = 0;
+    public double rpmIntegral = 0;
+    public double rpmDerivative = 0;
     private double rpmPreviousError = 0;
     private int stalledRPMThreshold = 10;
     private boolean stateControl;
@@ -157,7 +159,7 @@ public class MasqMotor implements MasqHardware {
         if (rate != 0) return rate;
         else {
             prevRate = rate;
-            return prevRate;
+            return rate;
         }
     }
     public double getVelocity() {
@@ -220,10 +222,13 @@ public class MasqMotor implements MasqHardware {
     }
     //For testing purposes input parameters for error and time
     public  double calculateVelocityCorrection(double power, double error, double tChange) {
+        this.error = error;
         rpmIntegral += error * tChange;
         rpmDerivative = (error - rpmPreviousError) / tChange;
-        double motorPower = (power) + (direction * ((error * kp) +
-                (rpmIntegral * ki) + (rpmDerivative * kd)));
+        P = error*kp;
+        I = rpmIntegral*ki;
+        D = rpmDerivative*kd;
+        double motorPower = (power) + (direction * (P + I + D));
         rpmPreviousError = error;
         previousTime = System.nanoTime();
         return motorPower;
@@ -234,12 +239,9 @@ public class MasqMotor implements MasqHardware {
     }
     public void startVelocityControl () {
         setVelocityControlState(true);
-        Runnable velocityControl = new Runnable() {
-            @Override
-            public void run() {
-                while (opModeIsActive() && velocityControlState) {
-                    setVelocity(targetPower);
-                }
+        Runnable velocityControl = () -> {
+            while (opModeIsActive() && velocityControlState) {
+                setVelocity(targetPower);
             }
         };
         Thread velocityThread = new Thread(velocityControl);
@@ -275,17 +277,14 @@ public class MasqMotor implements MasqHardware {
     //For testing
     public void enableStallDetection(double deltaPosition, double tChange, double CPR) {
         setStallDetection(true);
-        Runnable mainRunnable = new Runnable() {
-            @Override
-            public void run() {
-                while (opModeIsActive()) {
-                    stalled = getStalled(deltaPosition, tChange, CPR);
-                    if (getStallDetection()) {
-                        if (stalled) stallAction.run();
-                        else unStalledAction.run();
-                    }
-                    MasqUtils.sleep(100);
+        Runnable mainRunnable = () -> {
+            while (opModeIsActive()) {
+                stalled = getStalled(deltaPosition, tChange, CPR);
+                if (getStallDetection()) {
+                    if (stalled) stallAction.run();
+                    else unStalledAction.run();
                 }
+                MasqUtils.sleep(100);
             }
         };
         Thread thread = new Thread(mainRunnable);
@@ -366,4 +365,3 @@ public class MasqMotor implements MasqHardware {
                 "Velocity: " + getVelocity()};
     }
 }
-

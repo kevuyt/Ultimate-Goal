@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Robots.Prototype;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -19,7 +20,9 @@ public class PrototypeAutonomous extends MasqLinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            robot.drive(10);
+            robot.drive(30);
+            robot.turnAbsolute(90, Direction.LEFT);
+            //robot.driveTrain.
         }
     }
 }

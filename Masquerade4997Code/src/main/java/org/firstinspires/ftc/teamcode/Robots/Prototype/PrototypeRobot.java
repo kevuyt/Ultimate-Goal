@@ -22,7 +22,7 @@ public class PrototypeRobot extends MasqRobot {
     MasqServo blockGrabber, blockRotater, blockPusher;
     MasqMotor  lift;
     MasqMotorSystem intake;
-    //MasqAdafruitIMU imu;
+    private MasqAdafruitIMU imu;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -32,11 +32,11 @@ public class PrototypeRobot extends MasqRobot {
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
+        imu = new MasqAdafruitIMU("imu",hardwareMap);
+        tracker = new MasqPositionTracker(driveTrain.leftDrive,driveTrain.rightDrive, imu);
         blockPusher.scaleRange(0,0.5);
         blockGrabber.scaleRange(0,0.5);
-        blockRotater.scaleRange(0.05,0.65);
-        //imu = new MasqAdafruitIMU("imu",hardwareMap)
-        //tracker = new MasqPositionTracker(driveTrain.leftDrive,driveTrain.rightDrive, imu);
+        blockRotater.scaleRange(0,0.65);
     }
 
     @Override

@@ -13,10 +13,11 @@ public class PrototypeTeleop extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() {
         robot.mapHardware(hardwareMap);
+
         robot.blockGrabber.setPosition(1);
         double prevGrabber = 1;
-        robot.blockPusher.setPosition(0);
-        double prevPusher = 0;
+        robot.blockPusher.setPosition(1);
+        double prevPusher = 1;
         robot.blockRotater.setPosition(0);
         double prevRotater = 0;
 
@@ -26,8 +27,6 @@ public class PrototypeTeleop extends MasqLinearOpMode {
         }
 
         waitForStart();
-
-        robot.blockPusher.setPosition(1);
 
         while(opModeIsActive()) {
             robot.MECH(controller1);
@@ -40,20 +39,21 @@ public class PrototypeTeleop extends MasqLinearOpMode {
             else if (controller2.rightTriggerPressed()) robot.lift.setVelocity(-controller2.rightTrigger());
             else robot.lift.setVelocity(0);
 
-            if (controller2.aOnPress() && robot.blockRotater.getPosition() == prevRotater) {
+            if (controller2.aOnPress() && Math.abs(robot.blockRotater.getPosition() - prevRotater) < 0.1 && robot.lift.encoder.getInches() > 1) {
                 if (robot.blockRotater.getPosition() == 0) {
                     robot.blockRotater.setPosition(1);
                 }
-                else if (robot.blockRotater.getPosition() == 1) {
+                else if ((Math.abs(robot.blockRotater.getPosition() - 1) < 0.1)) {
                     robot.blockRotater.setPosition(0);
                 }
             }
 
             if (controller2.yOnPress() && robot.blockGrabber.getPosition() == prevGrabber) {
-                if (robot.blockGrabber.getPosition() == 1) {
-                    robot.blockGrabber.setPosition(0);
-                } else if (robot.blockGrabber.getPosition() == 0) {
+                if (robot.blockGrabber.getPosition() == 0) {
                     robot.blockGrabber.setPosition(1);
+                }
+                else if (robot.blockGrabber.getPosition() == 1) {
+                    robot.blockGrabber.setPosition(0);
                 }
             }
 
@@ -61,7 +61,7 @@ public class PrototypeTeleop extends MasqLinearOpMode {
                 if (robot.blockPusher.getPosition() == 1) {
                     robot.blockPusher.setPosition(0);
                 }
-                else if (robot.blockPusher.getPosition() == 0) {
+                else if (robot.blockPusher.getPosition() == 0){
                     robot.blockPusher.setPosition(1);
                 }
             }
@@ -69,10 +69,6 @@ public class PrototypeTeleop extends MasqLinearOpMode {
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();
             prevRotater = robot.blockRotater.getPosition();
-            dash.create("Grabber: ", prevGrabber);
-            dash.create("Pusher: ", prevPusher);
-            dash.create("Rotater: ", prevRotater);
-            dash.update();
             controller1.update();
             controller2.update();
         }

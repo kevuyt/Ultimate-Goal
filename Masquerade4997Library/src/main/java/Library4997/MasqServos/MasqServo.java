@@ -19,6 +19,7 @@ public class MasqServo implements MasqHardware{
     private double max = 1, min = 0;
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
+    private double adjustedPosition;
     public MasqServo(String name, HardwareMap hardwareMap) {
         this.nameServo = name;
         servo = hardwareMap.servo.get(name);
@@ -30,8 +31,8 @@ public class MasqServo implements MasqHardware{
     }
     public void setPosition (double position) {
         targetPosition = position;
-        position = ((max - min) * position) + min;
-        servo.setPosition(position);
+        adjustedPosition = ((max - min) * position) + min;
+        servo.setPosition(adjustedPosition);
     }
     public void setLimits (MasqLimitSwitch min, MasqLimitSwitch max){
         limMin = min; limMax = max;
@@ -44,18 +45,16 @@ public class MasqServo implements MasqHardware{
     public double getPosition () {
         return servo.getPosition();
     }
+    public double getRawPosition() {
+        return adjustedPosition;
+    }
     public void setMax(double max){this.max = max;}
     public void setMin(double min){this.min = min;}
-    public void scaleRange (double min, double max) {servo.scaleRange(min,max);}
+    public void scaleRange (double min, double max) {
+        servo.scaleRange(min,max);
+    }
     public void sleep (int time) throws InterruptedException {
         servo.wait(time);
-    }
-    public boolean isStalled(int time) {
-        boolean isStalled = false;
-        double prePos = servo.getPosition();
-        if ((servo.getPosition() == prePos && servo.getPosition() != targetPosition)
-                && !clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) isStalled = true;
-        return isStalled;
     }
     public String getName() {
         return nameServo;
@@ -63,8 +62,7 @@ public class MasqServo implements MasqHardware{
 
     public String[] getDash() {
         return new String[]{
-                "Current Position:" + servo.getPosition(),
-                "Stalled:" + isStalled(1)
+                "Current Position:" + servo.getPosition()
         };
     }
 }
