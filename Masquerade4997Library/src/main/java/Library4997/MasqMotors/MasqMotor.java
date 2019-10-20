@@ -50,13 +50,9 @@ public class MasqMotor implements MasqHardware {
     private Runnable stallAction = () -> {
 
     },
-    unStalledAction = new Runnable() {
-        @Override
-        public void run() {
+    unStalledAction = () -> {
 
-        }
     };
-
     private double minPosition, maxPosition;
     private boolean
             limitDetection,

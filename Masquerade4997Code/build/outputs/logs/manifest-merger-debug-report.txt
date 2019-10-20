@@ -6,7 +6,6 @@ INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Cod
 INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
 MERGED from [:Masquerade4997Library] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Library\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:1-17:12
 MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-65:12
-MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:RobotCore-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\2b32fa1e497dcfe86a4b716c9283e373\RobotCore-release\AndroidManifest.xml:2:1-108:12
 MERGED from [:Hardware-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\98ce20b69ec557c962e2308e7f1fec51\Hardware-release\AndroidManifest.xml:2:1-11:12
 MERGED from [:FtcCommon-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\22625de5b3d623e8f72128b66705febe\FtcCommon-release\AndroidManifest.xml:3:1-235:12
@@ -43,8 +42,6 @@ MERGED from [:Masquerade4997Library] C:\Users\Keval Standard\Documents\GitHub\Co
 MERGED from [:Masquerade4997Library] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Library\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-20
 MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-63:19
 MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-63:19
-MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-15:19
-MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-15:19
 MERGED from [:RobotCore-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\2b32fa1e497dcfe86a4b716c9283e373\RobotCore-release\AndroidManifest.xml:78:5-106:19
 MERGED from [:RobotCore-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\2b32fa1e497dcfe86a4b716c9283e373\RobotCore-release\AndroidManifest.xml:78:5-106:19
 MERGED from [:FtcCommon-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\22625de5b3d623e8f72128b66705febe\FtcCommon-release\AndroidManifest.xml:23:5-233:19
@@ -61,8 +58,6 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Keval Stan
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\ec51a15ecdd6ac6bc414bac2bbd5ef52\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\ccf94a4f227dfa4f17156620e28a8b98\support-compat-28.0.0\AndroidManifest.xml:22:18-91
-	android:supportsRtl
-		ADDED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:9-35
 	android:label
 		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-41
 	android:exported
@@ -85,8 +80,6 @@ MERGED from [:Masquerade4997Library] C:\Users\Keval Standard\Documents\GitHub\Co
 MERGED from [:Masquerade4997Library] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Library\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-13:41
 MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-10:41
 MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-10:41
-MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
-MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:RobotCore-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\2b32fa1e497dcfe86a4b716c9283e373\RobotCore-release\AndroidManifest.xml:7:5-9:41
 MERGED from [:RobotCore-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\2b32fa1e497dcfe86a4b716c9283e373\RobotCore-release\AndroidManifest.xml:7:5-9:41
 MERGED from [:Hardware-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\98ce20b69ec557c962e2308e7f1fec51\Hardware-release\AndroidManifest.xml:7:5-9:41

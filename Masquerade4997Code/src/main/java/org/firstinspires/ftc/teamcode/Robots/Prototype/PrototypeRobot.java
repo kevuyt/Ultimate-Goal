@@ -19,10 +19,9 @@ import Library4997.MasqServos.MasqServo;
  */
 public class PrototypeRobot extends MasqRobot {
 
-    MasqServo blockGrabber, blockRotater, blockPusher;
+    MasqServo blockGrabber, blockRotater, blockPusher, foundationHook;
     MasqMotor  lift;
     MasqMotorSystem intake;
-    private MasqAdafruitIMU imu;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -32,13 +31,19 @@ public class PrototypeRobot extends MasqRobot {
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
-        imu = new MasqAdafruitIMU("imu",hardwareMap);
+        MasqAdafruitIMU imu = new MasqAdafruitIMU("imu", hardwareMap);
         tracker = new MasqPositionTracker(driveTrain.leftDrive,driveTrain.rightDrive, imu);
+        foundationHook = new MasqServo("foundationHook", hardwareMap);
+
         blockPusher.scaleRange(0,0.5);
         blockGrabber.scaleRange(0,0.5);
-        blockRotater.scaleRange(0,0.65);
+        blockRotater.scaleRange(0,0.69);
+        foundationHook.scaleRange(0,1);
+
+        //driveTrain.rightDrive.motor2.setKp(0.005);
     }
 
     @Override
     public MasqPIDPackage pidPackage() {return new MasqPIDPackage();}
+
 }

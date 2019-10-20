@@ -160,6 +160,13 @@ public class MasqController implements Runnable{
             else if (Math.abs(servo.getPosition() - 1) < 0.01) servo.setPosition(0);
         }
     }
+    public void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {
+        toggle(button, servo, prePos);
+        if (button) {
+            Thread thread = new Thread(action);
+            thread.start();
+        }
+    }
     @Override
     public void run() {
         boolean close = false;

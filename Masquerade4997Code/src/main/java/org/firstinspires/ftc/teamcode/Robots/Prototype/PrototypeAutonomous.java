@@ -22,7 +22,7 @@ public class PrototypeAutonomous extends MasqLinearOpMode {
         while (opModeIsActive()) {
             robot.drive(30);
             robot.turnAbsolute(90, Direction.LEFT);
-            //robot.driveTrain.
+            robot.driveAbsoluteAngle(10,90);
         }
     }
 }
