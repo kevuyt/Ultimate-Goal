@@ -47,8 +47,11 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         rightDrive.motor1.setVelocity(rightFront);
         rightDrive.motor2.setVelocity(rightBack);
     }
+    public void setVelocityMECH(double angle, double speed) {
+        setVelocityMECH(angle, speed, tracker.getHeading());
+    }
 
-    public void setPowerMECH(double angle, double speed, double targetHeading) {
+    public void setPowerMECH(double angle, double speed, double targetHeading, double turnAdjustment) {
         double turnPower = turnController.getOutput(tracker.getHeading(), targetHeading);
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
@@ -56,6 +59,10 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower  * MasqUtils.MECH_ROTATION_MULTIPLIER;
         double rightFront = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
         double rightBack = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) + turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
+        leftFront -= turnAdjustment;
+        leftBack -= turnAdjustment;
+        rightBack += turnAdjustment;
+        rightBack += turnAdjustment;
         double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
         if (max > 1) {
             leftFront /= max;
@@ -68,6 +75,11 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         rightDrive.motor1.setPower(rightFront);
         rightDrive.motor2.setPower(rightBack);
     }
+
+    public void setPowerMECH(double angle, double speed, double targetHeading) {
+        setPowerMECH(angle,speed, targetHeading, 0);
+    }
+
     public void setTurnKP(double kp) {
         turnController.setKp(kp);
     }

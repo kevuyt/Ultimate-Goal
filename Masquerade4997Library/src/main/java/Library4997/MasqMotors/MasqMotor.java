@@ -224,7 +224,7 @@ public class MasqMotor implements MasqHardware {
         P = error*kp;
         I = rpmIntegral*ki;
         D = rpmDerivative*kd;
-        double motorPower = (power) + (direction * (P + I + D));
+        double motorPower = power + (P + I + D);
         rpmPreviousError = error;
         previousTime = System.nanoTime();
         return motorPower;

@@ -1,1 +1,1 @@
-include ':FtcRobotController', ':openCVLibrary3', /*':Masquerade4997CV'*/ ':Masquerade4997Dashboard', ':Masquerade4997Library', ':Masquerade4997Code', ':android_gradle_lib'
+include ':FtcRobotController', ':openCVLibrary3', /*':Masquerade4997CV',*/ ':Masquerade4997Dashboard', ':Masquerade4997Library', ':Masquerade4997Code'

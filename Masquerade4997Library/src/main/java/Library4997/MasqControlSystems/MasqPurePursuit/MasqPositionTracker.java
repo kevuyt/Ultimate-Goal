@@ -13,7 +13,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
 public class MasqPositionTracker implements MasqHardware {
     private MasqMotorSystem xSystem, ySystem;
     public MasqAdafruitIMU imu;
-    private double globalX, globalY, prevX = 0, prevY = 0;
+    private double globalX = 0, globalY = 0, prevX = 0, prevY = 0;
 
     public MasqPositionTracker(MasqMotorSystem xSystem, MasqMotorSystem ySystem, MasqAdafruitIMU imu) {
         this.imu = imu;

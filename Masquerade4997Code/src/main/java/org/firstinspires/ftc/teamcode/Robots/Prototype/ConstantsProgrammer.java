@@ -31,8 +31,8 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
         while (opModeIsActive()) {
             if (controller1.aOnPress()) blockGrabberPosition += 0.1;
             if (controller1.bOnPress()) blockGrabberPosition -= 0.1;
-            if (controller1.xOnPress()) blockRotaterPosition += 0.1;
-            if (controller1.yOnPress()) blockRotaterPosition -= 0.1;
+            if (controller1.xOnPress()) blockRotaterPosition += 0.01;
+            if (controller1.yOnPress()) blockRotaterPosition -= 0.01;
             if (controller1.leftTriggerOnPress()) blockPusherPosition += 0.1;
             if (controller1.rightTriggerOnPress()) blockPusherPosition -= 0.1;
 

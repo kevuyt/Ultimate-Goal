@@ -90,18 +90,12 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: :RobotCore-release-sources:@jar" level="project" />
     <orderEntry type="library" name="Gradle: :RobotCore-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: :Hardware-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: :FtcCommon-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: :Analytics-release:@aar" level="project" />
     <orderEntry type="library" name="Gradle: :WirelessP2p-release:@aar" level="project" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="FtcRobotController" />
     <orderEntry type="module" module-name="FtcRobotController" />
     <orderEntry type="module" module-name="FtcRobotController" />
     <orderEntry type="module" module-name="FtcRobotController" />

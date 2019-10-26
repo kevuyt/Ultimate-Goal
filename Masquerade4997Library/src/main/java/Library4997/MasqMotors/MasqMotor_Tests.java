@@ -41,6 +41,7 @@ import Library4997.MasqWrappers.Tests;
      private void getCurrentPositionTest() {
         if (masqMotor.getCurrentPosition() != masqMotor.encoder.getRelativePosition())
             throw new AssertionError("getCurrentPositionTest Failed");
+
     }
      private void getAbsolutePositionTest() {
         if (masqMotor.getAbsolutePosition() != masqMotor.motor.getCurrentPosition())
@@ -56,7 +57,9 @@ import Library4997.MasqWrappers.Tests;
         if (masqMotor.setPower(0.5) != 0.5) throw new AssertionError("setPowerTest Failed");
     }
      private void setVelocityTest() {
-        if (masqMotor.setVelocity(0.5, 5, 100) != 1) throw new AssertionError("setVelocityTest Failed");
+         masqMotor.setClosedLoop(true);
+        if (Math.abs(masqMotor.setVelocity(0.5, 5, 100) - 1) > 0.1) throw new AssertionError("setVelocityTest Failed");
+         masqMotor.setClosedLoop(false);
     }
      private void getStalledTest() {
         masqMotor.setStalledRPMThreshold(1);

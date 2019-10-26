@@ -30,9 +30,8 @@ public abstract class MasqRobot {
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
-    public double velocityMagnitude = 1;
-    public double speedMultiplier = 1.4;
-    public double turnMultiplier = 1.4;
+    public double speedMultiplier = 1;
+    public double turnMultiplier = 1;
     private MasqClock timeoutClock = new MasqClock();
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
     public void drive(double distance, double speed, Direction direction, double timeOut, int sleepTime) {
@@ -66,10 +65,10 @@ public abstract class MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
-            dash.create("LEFT POWER: ", leftPower);
+            /*dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
-            dash.update();
+            dash.update();*/
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
         driveTrain.stopDriving();
         sleep(sleepTime);
@@ -356,6 +355,32 @@ public abstract class MasqRobot {
         xyPath(p.getX(), p.getY(), p.getH());
     }
 
+    public void strafe (double distance, double angle) {
+        MasqClock timeoutTimer = new MasqClock();
+        MasqClock loopTimer = new MasqClock();
+        driveTrain.resetEncoders();
+        double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
+        double clicksRemaining;
+        double power, timeChange, angularError, angularDerivative, angularIntegral = 0, targetAngle = tracker.getHeading(), prevAngularError = 0, powerAdjustment = 0;
+        do {
+
+            clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
+            power = ((clicksRemaining / targetClicks) * pidPackage().getKpDriveEncoder()) * 0.5;
+            power = Range.clip(power, -1.0, +1.0);
+            timeChange = loopTimer.milliseconds();
+            loopTimer.reset();
+            angularError = tracker.imu.adjustAngle(targetAngle - tracker.getHeading());
+            angularIntegral += angularError*timeChange;
+            angularDerivative = (angularError - prevAngularError) / timeChange;
+            prevAngularError = angularError;
+            powerAdjustment = (pidPackage().getKpDriveAngular() * power) * angularError + (pidPackage().getKiDriveAngular() * angularIntegral) +
+                    (pidPackage().getKdDriveAngular() * angularDerivative);
+            driveTrain.setPowerMECH(angle,power, tracker.getHeading(), powerAdjustment);
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(30, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
+        driveTrain.stopDriving();
+        sleep(MasqUtils.DEFAULT_SLEEP_TIME);
+    }
+
     public void gotoXY(double x, double y, double heading, double speedDampener, double kp) {
         MasqClock clock = new MasqClock();
         MasqVector target = new MasqVector(x, y);
@@ -455,7 +480,7 @@ public abstract class MasqRobot {
             rightBack /= Math.abs(max);
         }
 
-        driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value * velocityMagnitude);
+        driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value);
         driveTrain.leftDrive.motor2.setVelocity(leftBack * direction.value);
         driveTrain.rightDrive.motor1.setVelocity(rightFront * direction.value);
         driveTrain.rightDrive.motor2.setVelocity(rightBack * direction.value);
@@ -497,14 +522,11 @@ public abstract class MasqRobot {
     public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
         return hardwareMap.get(WebcamName.class, name);
     }
-    public void setSpeedMultiplier(double speedMultiplier) {
-        this.speedMultiplier = speedMultiplier;
+    public void multiplySpeedMultiplier(double speedMultiplier) {
+        this.speedMultiplier *= speedMultiplier;
     }
 
-    public void setTurnMultiplier(double turnMultiplier) {
-        this.turnMultiplier = turnMultiplier;
-    }
-    public void setVelocityMagnitude(double velocityMagnitude) {
-        this.velocityMagnitude = velocityMagnitude;
+    public void multiplyTurnMultiplier(double turnMultiplier) {
+        this.turnMultiplier *= turnMultiplier;
     }
 }

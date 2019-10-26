@@ -28,6 +28,8 @@ public class MasqPIDController {
     public MasqPIDController(double kp) {
         this.kp = kp;
     }
+
+    //For testing
     public double getOutput (double error, double timeChange) {
         this.timeChange = timeChange;
         clock.reset();
@@ -38,6 +40,8 @@ public class MasqPIDController {
                 (ki * integrator.getIntegral(error, timeChange)) +
                 (kd * deriv), -1, 1);
     }
+
+    //For normal use
     public double getOutput (double error) {
         return getOutput(error,clock.milliseconds()/1e3);
     }

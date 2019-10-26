@@ -37,10 +37,11 @@ public class PrototypeRobot extends MasqRobot {
 
         blockPusher.scaleRange(0,0.5);
         blockGrabber.scaleRange(0,0.5);
-        blockRotater.scaleRange(0,0.69);
+        blockRotater.scaleRange(0.02,0.7);
         foundationHook.scaleRange(0,1);
 
-        //driveTrain.rightDrive.motor2.setKp(0.005);
+        lift.encoder.setWheelDiameter(1);
+
     }
 
     @Override

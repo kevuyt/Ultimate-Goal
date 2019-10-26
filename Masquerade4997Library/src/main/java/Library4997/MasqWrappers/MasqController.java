@@ -155,7 +155,7 @@ public class MasqController implements Runnable{
         }
     }
     public void toggle(boolean button, MasqServo servo, double prevPos) {
-        if (Math.abs(servo.getPosition() - prevPos) < 0.01 && button) {
+        if (MasqUtils.tolerance(servo.getPosition(), prevPos,0.01) && button) {
             if (Math.abs(servo.getPosition() - 0) < 0.01) servo.setPosition(1);
             else if (Math.abs(servo.getPosition() - 1) < 0.01) servo.setPosition(0);
         }
