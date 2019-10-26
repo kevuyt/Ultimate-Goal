@@ -156,8 +156,8 @@ public class MasqController implements Runnable{
     }
     public void toggle(boolean button, MasqServo servo, double prevPos) {
         if (MasqUtils.tolerance(servo.getPosition(), prevPos,0.01) && button) {
-            if (Math.abs(servo.getPosition() - 0) < 0.01) servo.setPosition(1);
-            else if (Math.abs(servo.getPosition() - 1) < 0.01) servo.setPosition(0);
+            if (MasqUtils.tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
+            else if (MasqUtils.tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
         }
     }
     public void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {
@@ -166,6 +166,10 @@ public class MasqController implements Runnable{
             Thread thread = new Thread(action);
             thread.start();
         }
+    }
+    public void toggle (boolean button1, boolean button2, boolean prevButton1, boolean prevButton2, Runnable action1, Runnable action2) {
+        if (button1 && !prevButton1) new Thread(action1).start();
+        else if (button2 && !prevButton2) new Thread(action2).start();
     }
     @Override
     public void run() {

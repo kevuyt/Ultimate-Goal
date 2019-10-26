@@ -19,7 +19,7 @@ public class PrototypeTeleopv2 extends MasqLinearOpMode {
         double prevGrabber = 1;
 
         robot.blockPusher.setPosition(0);
-        double prevPusher = 0;
+        double prevPusher;
 
         robot.blockRotater.setPosition(0);
         double prevRotater = 0;
@@ -46,15 +46,17 @@ public class PrototypeTeleopv2 extends MasqLinearOpMode {
         robot.blockPusher.setPosition(1);
         prevPusher = 1;
 
+        boolean prevX = false;
+        boolean prevY = false;
+
         while(opModeIsActive()) {
-            if (controller1.xOnPress()) {
-                robot.multiplyTurnMultiplier(0.5);
+            controller1.toggle(controller1.x(), controller1.y(), prevX, prevY, () -> {
                 robot.multiplySpeedMultiplier(0.5);
-            }
-            else if (controller1.yOnPress()) {
-                robot.multiplyTurnMultiplier(2);
+                robot.multiplyTurnMultiplier(0.5);
+            }, () -> {
                 robot.multiplySpeedMultiplier(2);
-            }
+                robot.multiplyTurnMultiplier(2);
+            });
             robot.MECH(controller1);
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-0.8);
@@ -82,6 +84,9 @@ public class PrototypeTeleopv2 extends MasqLinearOpMode {
 
             controller1.update();
             controller2.update();
+
+            prevX = controller1.x();
+            prevY = controller1.y();
         }
     }
 }
