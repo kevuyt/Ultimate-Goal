@@ -12,7 +12,7 @@ public class TestbotTeleop extends MasqLinearOpMode {
     private TestRobot robot = new TestRobot();
     @Override
     public void runLinearOpMode() {
-        robot.mapHardware(hardwareMap);
+        robot.init(hardwareMap);
         robot.driveTrain.setClosedLoop(true);
         while (!opModeIsActive()) {
             dash.create("Big Brain Time");

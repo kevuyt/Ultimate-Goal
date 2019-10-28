@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.Robots.Prototype;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.OpenCV.DogeDetector;
+
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
@@ -22,9 +24,11 @@ public class PrototypeRobot extends MasqRobot {
     MasqServo blockGrabber, blockRotater, blockPusher, foundationHook;
     MasqMotor  lift;
     MasqMotorSystem intake;
+    DogeDetector detector;
+    private DogeDetector.SkystonePosition skystonePosition;
 
     @Override
-    public void mapHardware(HardwareMap hardwareMap) {
+    public void init(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap);
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, hardwareMap);
@@ -34,6 +38,7 @@ public class PrototypeRobot extends MasqRobot {
         MasqAdafruitIMU imu = new MasqAdafruitIMU("imu", hardwareMap);
         tracker = new MasqPositionTracker(driveTrain.leftDrive,driveTrain.rightDrive, imu);
         foundationHook = new MasqServo("foundationHook", hardwareMap);
+        detector = new DogeDetector(DogeDetector.Cam.WEBCAM, hardwareMap);
 
         blockPusher.scaleRange(0,0.5);
         blockGrabber.scaleRange(0,0.5);
@@ -47,4 +52,10 @@ public class PrototypeRobot extends MasqRobot {
     @Override
     public MasqPIDPackage pidPackage() {return new MasqPIDPackage();}
 
+    public void runStoneNotDetectedAuto(HardwareMap hardwareMap) {
+        skystonePosition = null;
+    }
+    public void runStoneLeft(HardwareMap hardwareMap) {}
+    public void runStoneMiddle(HardwareMap hardwareMap) {}
+    public void runStoneRight(HardwareMap hardwareMap) {}
 }

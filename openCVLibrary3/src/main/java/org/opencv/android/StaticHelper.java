@@ -31,7 +31,7 @@ class StaticHelper {
         }
         catch(UnsatisfiedLinkError e)
         {
-            Log.e(TAG, "OpenCV error: Cannot load info library for OpenCV");
+            Log.e(TAG, "org.firstinspires.ftc.teamcode.OpenCV error: Cannot load info library for org.firstinspires.ftc.teamcode.OpenCV");
         }
 
         Log.d(TAG, "Library list: \"" + libs + "\"");
@@ -76,7 +76,7 @@ class StaticHelper {
 
     private static boolean initOpenCVLibs(String Libs)
     {
-        Log.d(TAG, "Trying to init OpenCV libs");
+        Log.d(TAG, "Trying to init org.firstinspires.ftc.teamcode.OpenCV libs");
 
         boolean result = true;
 
@@ -98,7 +98,7 @@ class StaticHelper {
         return result;
     }
 
-    private static final String TAG = "OpenCV/StaticHelper";
+    private static final String TAG = "org.firstinspires.ftc.teamcode.OpenCV/StaticHelper";
 
     private static native String getLibraryList();
 }

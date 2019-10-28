@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
@@ -52,7 +51,7 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     }
 
     public void setPowerMECH(double angle, double speed, double targetHeading, double turnAdjustment) {
-        double turnPower = turnController.getOutput(tracker.getHeading(), targetHeading);
+        double turnPower = turnController.getOutput(tracker.getHeading() - targetHeading);
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;

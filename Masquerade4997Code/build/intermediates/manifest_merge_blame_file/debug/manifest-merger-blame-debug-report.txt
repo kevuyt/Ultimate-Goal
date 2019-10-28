@@ -143,7 +143,8 @@
 85-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-41
 86        android:largeHeap="true"
 86-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:9-33
-87        android:testOnly="true"
+87        android:supportsRtl="true"
+87-->[com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\046931cac211253969bbf1aec583a1f2\dogecv-2020.4-alpha\AndroidManifest.xml:14:9-35
 88        android:theme="@style/AppThemeRedRC" > <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
 88-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-45
 89        <meta-data

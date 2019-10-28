@@ -77,10 +77,10 @@ class AsyncServiceHelper
                 private LoaderCallbackInterface mUserAppCallback = Callback;
                 public String getPackageName()
                 {
-                    return "OpenCV Manager";
+                    return "org.firstinspires.ftc.teamcode.OpenCV Manager";
                 }
                 public void install() {
-                    Log.d(TAG, "Trying to install OpenCV Manager via Google Play");
+                    Log.d(TAG, "Trying to install org.firstinspires.ftc.teamcode.OpenCV Manager via Google Play");
 
                     boolean result = InstallServiceQuiet(AppContext);
                     if (result)
@@ -90,7 +90,7 @@ class AsyncServiceHelper
                     }
                     else
                     {
-                        Log.d(TAG, "OpenCV package was not installed!");
+                        Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV package was not installed!");
                         int Status = LoaderCallbackInterface.MARKET_ERROR;
                         Log.d(TAG, "Init finished with status " + Status);
                         Log.d(TAG, "Unbind from service");
@@ -101,7 +101,7 @@ class AsyncServiceHelper
 
                 public void cancel()
                 {
-                    Log.d(TAG, "OpenCV library installation was canceled");
+                    Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV library installation was canceled");
                     int Status = LoaderCallbackInterface.INSTALL_CANCELED;
                     Log.d(TAG, "Init finished with status " + Status);
                     Log.d(TAG, "Calling using callback");
@@ -123,7 +123,7 @@ class AsyncServiceHelper
                 private LoaderCallbackInterface mUserAppCallback = Callback;
                 public String getPackageName()
                 {
-                    return "OpenCV Manager";
+                    return "org.firstinspires.ftc.teamcode.OpenCV Manager";
                 }
                 public void install()
                 {
@@ -131,7 +131,7 @@ class AsyncServiceHelper
                 }
                 public void cancel()
                 {
-                    Log.d(TAG, "Waiting for OpenCV canceled by user");
+                    Log.d(TAG, "Waiting for org.firstinspires.ftc.teamcode.OpenCV canceled by user");
                     mServiceInstallationProgress = false;
                     int Status = LoaderCallbackInterface.INSTALL_CANCELED;
                     Log.d(TAG, "Init finished with status " + Status);
@@ -149,7 +149,7 @@ class AsyncServiceHelper
     }
 
     /**
-     *  URL of OpenCV Manager page on Google Play Market.
+     *  URL of org.firstinspires.ftc.teamcode.OpenCV Manager page on Google Play Market.
      */
     protected static final String OPEN_CV_SERVICE_URL = "market://details?id=org.opencv.engine";
 
@@ -161,7 +161,7 @@ class AsyncServiceHelper
             mEngineService = OpenCVEngineInterface.Stub.asInterface(service);
             if (null == mEngineService)
             {
-                Log.d(TAG, "OpenCV Manager Service connection fails. May be service was not installed?");
+                Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV Manager Service connection fails. May be service was not installed?");
                 InstallService(mAppContext, mUserAppCallback);
             }
             else
@@ -188,10 +188,10 @@ class AsyncServiceHelper
                             InstallCallbackInterface InstallQuery = new InstallCallbackInterface() {
                                 public String getPackageName()
                                 {
-                                    return "OpenCV library";
+                                    return "org.firstinspires.ftc.teamcode.OpenCV library";
                                 }
                                 public void install() {
-                                    Log.d(TAG, "Trying to install OpenCV lib via Google Play");
+                                    Log.d(TAG, "Trying to install org.firstinspires.ftc.teamcode.OpenCV lib via Google Play");
                                     try
                                     {
                                         if (mEngineService.installVersion(mOpenCVersion))
@@ -203,7 +203,7 @@ class AsyncServiceHelper
                                         }
                                         else
                                         {
-                                            Log.d(TAG, "OpenCV package was not installed!");
+                                            Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV package was not installed!");
                                             Log.d(TAG, "Init finished with status " + LoaderCallbackInterface.MARKET_ERROR);
                                             Log.d(TAG, "Unbind from service");
                                             mAppContext.unbindService(mServiceConnection);
@@ -220,7 +220,7 @@ class AsyncServiceHelper
                                     }
                                 }
                                 public void cancel() {
-                                    Log.d(TAG, "OpenCV library installation was canceled");
+                                    Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV library installation was canceled");
                                     Log.d(TAG, "Init finished with status " + LoaderCallbackInterface.INSTALL_CANCELED);
                                     Log.d(TAG, "Unbind from service");
                                     mAppContext.unbindService(mServiceConnection);
@@ -239,7 +239,7 @@ class AsyncServiceHelper
                             InstallCallbackInterface WaitQuery = new InstallCallbackInterface() {
                                 public String getPackageName()
                                 {
-                                    return "OpenCV library";
+                                    return "org.firstinspires.ftc.teamcode.OpenCV library";
                                 }
 
                                 public void install() {
@@ -247,7 +247,7 @@ class AsyncServiceHelper
                                 }
                                 public void cancel()
                                 {
-                                    Log.d(TAG, "OpenCV library installation was canceled");
+                                    Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV library installation was canceled");
                                     mLibraryInstallationProgress = false;
                                     Log.d(TAG, "Init finished with status " + LoaderCallbackInterface.INSTALL_CANCELED);
                                     Log.d(TAG, "Unbind from service");
@@ -261,7 +261,7 @@ class AsyncServiceHelper
                                     {
                                         if (!mEngineService.installVersion(mOpenCVersion))
                                         {
-                                            Log.d(TAG, "OpenCV package was not installed!");
+                                            Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV package was not installed!");
                                             Log.d(TAG, "Init finished with status " + LoaderCallbackInterface.MARKET_ERROR);
                                             Log.d(TAG, "Calling using callback");
                                             mUserAppCallback.onManagerConnected(LoaderCallbackInterface.MARKET_ERROR);
@@ -345,7 +345,7 @@ class AsyncServiceHelper
         try
         {
             System.load(AbsPath);
-            Log.d(TAG, "OpenCV libs init was ok!");
+            Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV libs init was ok!");
         }
         catch(UnsatisfiedLinkError e)
         {
@@ -359,7 +359,7 @@ class AsyncServiceHelper
 
     private boolean initOpenCVLibs(String Path, String Libs)
     {
-        Log.d(TAG, "Trying to init OpenCV libs");
+        Log.d(TAG, "Trying to init org.firstinspires.ftc.teamcode.OpenCV libs");
         if ((null != Path) && (Path.length() != 0))
         {
             boolean result = true;

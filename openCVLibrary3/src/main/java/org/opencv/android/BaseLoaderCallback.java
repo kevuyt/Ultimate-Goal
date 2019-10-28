@@ -20,17 +20,17 @@ public abstract class BaseLoaderCallback implements LoaderCallbackInterface {
     {
         switch (status)
         {
-            /** OpenCV initialization was successful. **/
+            /** org.firstinspires.ftc.teamcode.OpenCV initialization was successful. **/
             case LoaderCallbackInterface.SUCCESS:
             {
                 /** Application must override this method to handle successful library initialization. **/
             } break;
-            /** OpenCV loader can not start Google Play Market. **/
+            /** org.firstinspires.ftc.teamcode.OpenCV loader can not start Google Play Market. **/
             case LoaderCallbackInterface.MARKET_ERROR:
             {
                 Log.e(TAG, "Package installation failed!");
                 AlertDialog MarketErrorMessage = new AlertDialog.Builder(mAppContext).create();
-                MarketErrorMessage.setTitle("OpenCV Manager");
+                MarketErrorMessage.setTitle("org.firstinspires.ftc.teamcode.OpenCV Manager");
                 MarketErrorMessage.setMessage("Package installation failed!");
                 MarketErrorMessage.setCancelable(false); // This blocks the 'BACK' button
                 MarketErrorMessage.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new OnClickListener() {
@@ -43,16 +43,16 @@ public abstract class BaseLoaderCallback implements LoaderCallbackInterface {
             /** Package installation has been canceled. **/
             case LoaderCallbackInterface.INSTALL_CANCELED:
             {
-                Log.d(TAG, "OpenCV library installation was canceled by user");
+                Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV library installation was canceled by user");
                 finish();
             } break;
-            /** Application is incompatible with this version of OpenCV Manager. Possibly, a service update is required. **/
+            /** Application is incompatible with this version of org.firstinspires.ftc.teamcode.OpenCV Manager. Possibly, a service update is required. **/
             case LoaderCallbackInterface.INCOMPATIBLE_MANAGER_VERSION:
             {
-                Log.d(TAG, "OpenCV Manager Service is uncompatible with this app!");
+                Log.d(TAG, "org.firstinspires.ftc.teamcode.OpenCV Manager Service is uncompatible with this app!");
                 AlertDialog IncomatibilityMessage = new AlertDialog.Builder(mAppContext).create();
-                IncomatibilityMessage.setTitle("OpenCV Manager");
-                IncomatibilityMessage.setMessage("OpenCV Manager service is incompatible with this app. Try to update it via Google Play.");
+                IncomatibilityMessage.setTitle("org.firstinspires.ftc.teamcode.OpenCV Manager");
+                IncomatibilityMessage.setMessage("org.firstinspires.ftc.teamcode.OpenCV Manager service is incompatible with this app. Try to update it via Google Play.");
                 IncomatibilityMessage.setCancelable(false); // This blocks the 'BACK' button
                 IncomatibilityMessage.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -64,10 +64,10 @@ public abstract class BaseLoaderCallback implements LoaderCallbackInterface {
             /** Other status, i.e. INIT_FAILED. **/
             default:
             {
-                Log.e(TAG, "OpenCV loading failed!");
+                Log.e(TAG, "org.firstinspires.ftc.teamcode.OpenCV loading failed!");
                 AlertDialog InitFailedDialog = new AlertDialog.Builder(mAppContext).create();
-                InitFailedDialog.setTitle("OpenCV error");
-                InitFailedDialog.setMessage("OpenCV was not initialised correctly. Application will be shut down");
+                InitFailedDialog.setTitle("org.firstinspires.ftc.teamcode.OpenCV error");
+                InitFailedDialog.setMessage("org.firstinspires.ftc.teamcode.OpenCV was not initialised correctly. Application will be shut down");
                 InitFailedDialog.setCancelable(false); // This blocks the 'BACK' button
                 InitFailedDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new OnClickListener() {
 
@@ -112,7 +112,7 @@ public abstract class BaseLoaderCallback implements LoaderCallbackInterface {
             case InstallCallbackInterface.INSTALLATION_PROGRESS:
             {
                 AlertDialog WaitMessage = new AlertDialog.Builder(mAppContext).create();
-                WaitMessage.setTitle("OpenCV is not ready");
+                WaitMessage.setTitle("org.firstinspires.ftc.teamcode.OpenCV is not ready");
                 WaitMessage.setMessage("Installation is in progress. Wait or exit?");
                 WaitMessage.setCancelable(false); // This blocks the 'BACK' button
                 WaitMessage.setButton(AlertDialog.BUTTON_POSITIVE, "Wait", new OnClickListener() {

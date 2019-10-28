@@ -12,7 +12,7 @@ import Library4997.MasqWrappers.Tests;
 public class MasqRobot_Tests implements Tests {
     MasqRobot masqRobot = new MasqRobot() {
         @Override
-        public void mapHardware(HardwareMap hardwareMap) {
+        public void init(HardwareMap hardwareMap) {
             driveTrain = new MasqMechanumDriveTrain(hardwareMap);
         }
 

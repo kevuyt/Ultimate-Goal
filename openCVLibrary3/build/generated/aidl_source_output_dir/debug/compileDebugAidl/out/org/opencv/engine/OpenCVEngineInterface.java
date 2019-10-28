@@ -3,7 +3,7 @@
  */
 package org.opencv.engine;
 /**
-* Class provides a Java interface for OpenCV Engine Service. It's synchronous with native OpenCVEngine class.
+* Class provides a Java interface for org.firstinspires.ftc.teamcode.OpenCV Engine Service. It's synchronous with native OpenCVEngine class.
 */
 public interface OpenCVEngineInterface extends android.os.IInterface
 {
@@ -140,9 +140,9 @@ _data.recycle();
 return _result;
 }
 /**
-    * Tries to install defined version of OpenCV from Google Play Market.
-    * @param OpenCV version.
-    * @return Returns true if installation was successful or OpenCV package has been already installed.
+    * Tries to install defined version of org.firstinspires.ftc.teamcode.OpenCV from Google Play Market.
+    * @param org.firstinspires.ftc.teamcode.OpenCV version.
+    * @return Returns true if installation was successful or org.firstinspires.ftc.teamcode.OpenCV package has been already installed.
     */
 @Override public boolean installVersion(java.lang.String version) throws android.os.RemoteException
 {
@@ -189,9 +189,9 @@ static final int TRANSACTION_getLibraryList = (android.os.IBinder.FIRST_CALL_TRA
 public int getEngineVersion() throws android.os.RemoteException;
 public java.lang.String getLibPathByVersion(java.lang.String version) throws android.os.RemoteException;
 /**
-    * Tries to install defined version of OpenCV from Google Play Market.
-    * @param OpenCV version.
-    * @return Returns true if installation was successful or OpenCV package has been already installed.
+    * Tries to install defined version of org.firstinspires.ftc.teamcode.OpenCV from Google Play Market.
+    * @param org.firstinspires.ftc.teamcode.OpenCV version.
+    * @return Returns true if installation was successful or org.firstinspires.ftc.teamcode.OpenCV package has been already installed.
     */
 public boolean installVersion(java.lang.String version) throws android.os.RemoteException;
 public java.lang.String getLibraryList(java.lang.String version) throws android.os.RemoteException;

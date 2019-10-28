@@ -15,8 +15,8 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
     private double blockPusherPosition = 0;
 
     @Override
-    public void runLinearOpMode() {
-        robot.mapHardware(hardwareMap);
+    public void runLinearOpMode() throws InterruptedException{
+        robot.init(hardwareMap);
         robot.blockGrabber.setPosition(0);
         robot.blockPusher.setPosition(0);
         robot.blockRotater.setPosition(0);
