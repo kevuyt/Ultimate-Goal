@@ -38,7 +38,7 @@ public class PrototypeRobot extends MasqRobot {
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
-        imu = intializeIMU(hardwareMap);
+        imu = initializeIMU(hardwareMap);
         tracker = new MasqPositionTracker(lift, intake.motor1, imu); //Replace motors when odometry is incorporating
         foundationHook = new MasqServoSystem("rightGrabber", "leftGrabber", hardwareMap);
         detector = new DogeDetector(DogeDetector.Cam.WEBCAM, hardwareMap);
@@ -61,8 +61,8 @@ public class PrototypeRobot extends MasqRobot {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
-        foundationHook.servo1.setPosition(0);
-        foundationHook.servo2.setPosition(1);
+        foundationHook.servo1.setPosition(1);
+        foundationHook.servo2.setPosition(0);
         sideGrabber.setPosition(0);
     }
 
@@ -85,8 +85,9 @@ public class PrototypeRobot extends MasqRobot {
         //Collect and place on foundation third and sixth blocks
     }
 
-    public BNO055IMU intializeIMU(HardwareMap hardwareMap) {
+    public BNO055IMU initializeIMU(HardwareMap hardwareMap) {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.mode = BNO055IMU.SensorMode.IMU;
         parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
         parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         parameters.calibrationDataFile = "BNO055IMUCalibration.json";

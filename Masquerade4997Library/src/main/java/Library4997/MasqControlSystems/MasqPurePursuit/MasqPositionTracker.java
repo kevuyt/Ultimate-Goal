@@ -25,6 +25,7 @@ public class MasqPositionTracker implements MasqHardware {
     private double zeroPos = 0;
 
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, BNO055IMU imu) {
+        System.out.println(69);
         this.imu = imu;
         this.xSystem = xSystem;
         this.ySystem = ySystem;
@@ -59,13 +60,6 @@ public class MasqPositionTracker implements MasqHardware {
         return globalY * ((2 * Math.PI) / 1440);
     }
 
-
-
-    public double adjustAngle(double angle) {
-        while (angle > 180) angle -= 360;
-        while (angle <= -180) angle += 360;
-        return angle;
-    }
     public double getAbsoluteHeading() {
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         return formatAngle(angles.angleUnit, angles.firstAngle);

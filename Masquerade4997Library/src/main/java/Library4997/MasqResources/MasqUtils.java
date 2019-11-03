@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import java.util.List;
-
 import Library4997.MasqResources.MasqHelpers.API_KEYS;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -19,7 +17,7 @@ public class MasqUtils implements API_KEYS {
     public static final double MECH_DRIVE_MULTIPLIER = 1.4;
     public static final double MECH_ROTATION_MULTIPLIER = 0.4;
     public static final int DEFAULT_SLEEP_TIME = 1;
-    public static final double DEFAULT_TIMEOUT = 30;
+    public static final double DEFAULT_TIMEOUT = 2;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = API_KEYS.VUFORIA_KEY;
 
@@ -33,6 +31,12 @@ public class MasqUtils implements API_KEYS {
     }
     public static void setLinearOpMode(MasqLinearOpMode pLinearOpMode) {
         linearOpMode = pLinearOpMode;
+    }
+
+    public static double adjustAngle(double angle) {
+        while (angle > 180) angle -= 360;
+        while (angle <= -180) angle += 360;
+        return angle;
     }
 
     public static boolean tolerance(double value1, double value2, double tolerance) {
@@ -53,11 +57,11 @@ public class MasqUtils implements API_KEYS {
     public class KP {
         public static final double TURN = +0.025;
         public static final double TURN_POM = -0.1;
-        public static final double DRIVE_ANGULAR = +0.1;
+        public static final double DRIVE_ANGULAR = +0.001;
         public static final double DRIVE_ENCODER = 2.5;
         public static final double PATH = .01;
         public static final double MOTOR_TELEOP = +0.002;
-        public static final double MOTOR_AUTONOMOUS = +0.001;
+        public static final double MOTOR_AUTONOMOUS = +0.002;
     }
     public class KI {
         public static final double PATH = 0.0;
