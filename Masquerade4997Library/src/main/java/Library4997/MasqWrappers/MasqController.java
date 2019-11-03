@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqServos.MasqServo;
+import Library4997.MasqServos.MasqServoSystem;
 
 /**
  * Created by Archish on 10/12/17.
@@ -160,6 +161,11 @@ public class MasqController implements Runnable{
             else if (MasqUtils.tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
         }
     }
+    public void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
+        for (MasqServo servo : servoSystem.servos) {
+            toggle(button, servo, prevPos);
+        }
+    }
     public void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {
         toggle(button, servo, prePos);
         if (button) {
@@ -167,9 +173,11 @@ public class MasqController implements Runnable{
             thread.start();
         }
     }
-    public void toggle (boolean button1, boolean button2, boolean prevButton1, boolean prevButton2, Runnable action1, Runnable action2) {
-        if (button1 && !prevButton1) new Thread(action1).start();
-        else if (button2 && !prevButton2) new Thread(action2).start();
+    public void toggle (boolean button, double current, double prev, double value1, double value2, Runnable action1, Runnable action2) {
+        if (button && MasqUtils.tolerance(current, prev, 0.01))  {
+            if (current == value1) new Thread(action1).start();
+            else if (current == value2) new Thread (action2).start();
+        }
     }
     @Override
     public void run() {

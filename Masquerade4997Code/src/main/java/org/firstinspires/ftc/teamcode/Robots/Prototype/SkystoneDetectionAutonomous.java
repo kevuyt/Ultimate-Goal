@@ -21,24 +21,20 @@ public class SkystoneDetectionAutonomous extends MasqLinearOpMode {
 
         DogeDetector.SkystonePosition skystonePosition;
         while (!opModeIsActive()) {
-            dash.create("Stone Detected: ", robot.detector.isStoneDetected());
+            dash.create("Stone Detected: ", robot.detector.isDetected());
         }
 
         waitForStart();
 
-            if (!robot.detector.isStoneDetected()) robot.runStoneNotDetectedAuto(hardwareMap);
-            else {
-                skystonePosition = robot.detector.getStoneSkystonePosition();
+        if (!robot.detector.isDetected()) robot.runStoneLeft(hardwareMap);
+        else {
+            skystonePosition = robot.detector.getStoneSkystonePosition();
 
-                if (skystonePosition == null) robot.runStoneNotDetectedAuto(hardwareMap);
-                else if (skystonePosition == DogeDetector.SkystonePosition.LEFT) robot.runStoneLeft(hardwareMap);
-                else if (skystonePosition == DogeDetector.SkystonePosition.RIGHT) robot.runStoneRight(hardwareMap);
-                else if (skystonePosition == DogeDetector.SkystonePosition.MIDDLE) robot.runStoneMiddle(hardwareMap);
-                else robot.runStoneNotDetectedAuto(hardwareMap);
-            }
-
-
+            if (skystonePosition == null) robot.runStoneLeft(hardwareMap);
+            else if (skystonePosition == DogeDetector.SkystonePosition.LEFT) robot.runStoneLeft(hardwareMap);
+            else if (skystonePosition == DogeDetector.SkystonePosition.RIGHT) robot.runStoneRight(hardwareMap);
+            else if (skystonePosition == DogeDetector.SkystonePosition.MIDDLE) robot.runStoneMiddle(hardwareMap);
+            else robot.runStoneLeft(hardwareMap);
+        }
     }
-
-
 }

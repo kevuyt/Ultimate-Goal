@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Robots.Test;
 
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
@@ -17,7 +16,7 @@ public class TestRobot extends MasqRobot {
     @Override
     public void init(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
-        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.ORBITAL20,hardwareMap);
+        //intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.ORBITAL20,hardwareMap);
     }
 
     @Override

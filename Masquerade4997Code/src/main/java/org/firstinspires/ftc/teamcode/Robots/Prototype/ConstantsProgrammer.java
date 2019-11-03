@@ -22,7 +22,7 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
         robot.blockRotater.setPosition(0);
 
         while (!opModeIsActive()) {
-            dash.create("Creeper");
+            dash.create("Hello");
             dash.update();
         }
 

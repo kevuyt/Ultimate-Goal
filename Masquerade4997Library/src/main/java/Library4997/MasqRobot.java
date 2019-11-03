@@ -3,7 +3,6 @@ package Library4997;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.robotcore.external.Predicate;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
@@ -30,8 +29,8 @@ public abstract class MasqRobot {
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
-    public double speedMultiplier = 1;
-    public double turnMultiplier = 1;
+    public double speedMultiplier = 0.75;
+    public double turnMultiplier = 0.5;
     private MasqClock timeoutClock = new MasqClock();
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
 
@@ -522,12 +521,5 @@ public abstract class MasqRobot {
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
     public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
         return hardwareMap.get(WebcamName.class, name);
-    }
-    public void multiplySpeedMultiplier(double speedMultiplier) {
-        this.speedMultiplier *= speedMultiplier;
-    }
-
-    public void multiplyTurnMultiplier(double turnMultiplier) {
-        this.turnMultiplier *= turnMultiplier;
     }
 }

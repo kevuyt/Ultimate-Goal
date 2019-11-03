@@ -32,7 +32,7 @@ public class DogeDetector {
             phoneCamera.setPipeline(detector);
         }
         else if(cam.equals(Cam.WEBCAM)){
-            webcam = new OpenCvWebcam(hwMap.get(WebcamName.class, "webcam"), cameraMonitorViewId);
+            webcam = new OpenCvWebcam(hwMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
             detector = new SkystoneDetector();
             webcam.setPipeline(detector);
         }
@@ -72,9 +72,9 @@ public class DogeDetector {
 
     public SkystonePosition getStoneSkystonePosition(){
         double x = getStoneX();
-        if(x < 100) return SkystonePosition.LEFT;
-        else if(x >= 100 && x <= 150) return SkystonePosition.MIDDLE;
-        else if(x > 150) return SkystonePosition.RIGHT;
+        if(x < 160) return SkystonePosition.LEFT;
+        else if(x >= 160 && x <= 320) return SkystonePosition.MIDDLE;
+        else if(x > 320) return SkystonePosition.RIGHT;
         return null;
     }
 
@@ -94,8 +94,8 @@ public class DogeDetector {
         return detector.getScreenPosition().y;
     }
 
-    public boolean isStoneDetected(){
-        return detector.foundRectangle() != null;
+    public boolean isDetected(){
+        return detector.isDetected();
     }
 
 

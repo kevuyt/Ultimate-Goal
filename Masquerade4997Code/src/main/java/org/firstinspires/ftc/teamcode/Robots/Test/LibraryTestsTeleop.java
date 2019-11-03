@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.Test;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import Library4997.MasqControlSystems.MasqPID.MasqPIDController_Tests;
 import Library4997.MasqMotors.MasqMotor_Tests;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -27,17 +28,18 @@ public class LibraryTestsTeleop extends MasqLinearOpMode {
 
             }
         };
+        MasqPIDController_Tests pidControllerTests = new MasqPIDController_Tests();
         while (opModeIsActive()) {
             try {
                 masqMotorTests.RunAll();
+                pidControllerTests.RunAll();
 
             }
             catch (AssertionError error)  {
                 dash.create(error);
-                dash.update();
-
             }
         }
+        dash.update();
     }
 }
 

@@ -16,22 +16,21 @@ public class Mechanum extends MasqLinearOpMode {
 
         robot.init(hardwareMap);
 
-        robot.blockGrabber.setPosition(1);
-        double prevGrabber = 1;
 
-        robot.blockPusher.setPosition(0);
-        double prevPusher;
-
-        robot.blockRotater.setPosition(0);
-        double prevRotater = 0;
-
-        robot.foundationHook.setPosition(1);
-        double prevHook = 1;
 
         robot.initializeTeleop();
         robot.driveTrain.setClosedLoop(true);
         robot.lift.setClosedLoop(true);
         robot.lift.setKp(0.001);
+
+        robot.resetServos();
+
+        double prevGrabber = 1;
+        double prevPusher;
+        double prevRotater = 0;
+        double prevHook1 = 0;
+        double prevHook2 = 1;
+        double prevSide = 0;
 
         robot.driveTrain.resetEncoders();
 
@@ -47,17 +46,9 @@ public class Mechanum extends MasqLinearOpMode {
         robot.blockPusher.setPosition(1);
         prevPusher = 1;
 
-        boolean prevX = false;
-        boolean prevY = false;
+        double prevMultiplier = 1;
 
         while(opModeIsActive()) {
-            controller1.toggle(controller1.x(), controller1.y(), prevX, prevY, () -> {
-                robot.multiplySpeedMultiplier(0.5);
-                robot.multiplyTurnMultiplier(0.5);
-            }, () -> {
-                robot.multiplySpeedMultiplier(2);
-                robot.multiplyTurnMultiplier(2);
-            });
             robot.MECH(controller1);
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-0.8);
@@ -71,19 +62,21 @@ public class Mechanum extends MasqLinearOpMode {
             if (robot.lift.encoder.getInches() > 5) controller2.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             controller2.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             controller2.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
-            controller1.toggle(controller1.bOnPress(),robot.foundationHook, prevHook);
+            controller1.toggle(controller1.bOnPress(),robot.foundationHook.servo1, prevHook1);
+            controller1.toggle(controller1.bOnPress(), robot.foundationHook.servo2, prevHook2);
+            controller1.toggle(controller1.xOnPress(), robot.sideGrabber, prevSide);
 
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();
             prevRotater = robot.blockRotater.getPosition();
-            prevHook = robot.foundationHook.getPosition();
+            prevHook1 = robot.foundationHook.servo1.getPosition();
+            prevHook2 = robot.foundationHook.servo2.getPosition();
+            prevSide = robot.sideGrabber.getPosition();
+            prevMultiplier = robot.speedMultiplier;
 
             dash.create("Speed: ", robot.speedMultiplier);
             dash.create("Turn: ", robot.turnMultiplier);
             dash.update();
-
-            prevX = controller1.x();
-            prevY = controller1.y();
 
             controller1.update();
             controller2.update();
