@@ -16,7 +16,7 @@ public class MasqUtils implements API_KEYS {
     private static MasqLinearOpMode linearOpMode;
     public static final double MECH_DRIVE_MULTIPLIER = 1.4;
     public static final double MECH_ROTATION_MULTIPLIER = 0.4;
-    public static final int DEFAULT_SLEEP_TIME = 1;
+    public static final double DEFAULT_SLEEP_TIME = 0.5;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = API_KEYS.VUFORIA_KEY;
@@ -35,7 +35,7 @@ public class MasqUtils implements API_KEYS {
 
     public static double adjustAngle(double angle) {
         while (angle > 180) angle -= 360;
-        while (angle <= -180) angle += 360;
+        while (angle <= -180) angle = 360;
         return angle;
     }
 
@@ -55,35 +55,36 @@ public class MasqUtils implements API_KEYS {
         return linearOpMode.hardwareMap;
     }
     public class KP {
-        public static final double TURN = +0.025;
+        public static final double TURN = 0.025;
         public static final double TURN_POM = -0.1;
-        public static final double DRIVE_ANGULAR = +0.001;
+        public static final double DRIVE_ANGULAR = 0.001;
         public static final double DRIVE_ENCODER = 2.5;
+        public static final double STRAFE_ANGULAR = 0.005;
         public static final double PATH = .01;
-        public static final double MOTOR_TELEOP = +0.002;
-        public static final double MOTOR_AUTONOMOUS = +0.002;
+        public static final double MOTOR_TELEOP = 0.002;
+        public static final double MOTOR_AUTONOMOUS = 0.002;
     }
     public class KI {
         public static final double PATH = 0.0;
-        public static final double TURN = +0.0;
+        public static final double TURN = 0.0;
         public static final double TURN_POM = 0.000005;
-        public static final double DRIVE = +0.0;
-        public static final double MOTOR_TELEOP = +0.000;
-        public static final double MOTOR_AUTONOMOUS = +0.00;
+        public static final double DRIVE = 0.0;
+        public static final double MOTOR_TELEOP = 0.000;
+        public static final double MOTOR_AUTONOMOUS = 0.00;
     }
     public class KD {
         public static final double PATH = .0;
-        public static final double TURN = +0.0;
+        public static final double TURN = 0.0;
         public static final double TURN_POM = -0.00;
-        public static final double DRIVE = +0.0;
-        public static final double MOTOR_TELEOP = +0.000;
-        public static final double MOTOR_AUTONOMOUS = +0.00;
+        public static final double DRIVE = 0.0;
+        public static final double MOTOR_TELEOP = 0.000;
+        public static final double MOTOR_AUTONOMOUS = 0.00;
     }
     public class ID {
-        public static final double TURN = +1.0;
-        public static final double DRIVE = +1.0;
-        public static final double MOTOR_TELEOP = +1.0;
-        public static final double MOTOR_AUTONOMOUS = +1.00;
+        public static final double TURN = 1.0;
+        public static final double DRIVE = 1.0;
+        public static final double MOTOR_TELEOP = 1.0;
+        public static final double MOTOR_AUTONOMOUS = 1.00;
     }
     public static double max(double... vals) {
         double max = Double.MIN_VALUE;

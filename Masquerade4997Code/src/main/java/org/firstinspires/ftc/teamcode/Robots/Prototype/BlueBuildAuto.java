@@ -34,7 +34,7 @@ public class BlueBuildAuto extends MasqLinearOpMode {
         robot.drive(39);
         robot.turnAbsolute(5, Direction.LEFT);
         robot.lowerFoundationHook();
-        sleep(1);
+        sleep();
         robot.drive(57, 0.25 ,Direction.BACKWARD,3);
         robot.raiseFoundationHook();
         robot.drive(5, 0.25,Direction.BACKWARD, 1);

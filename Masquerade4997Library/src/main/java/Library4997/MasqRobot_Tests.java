@@ -2,7 +2,6 @@ package Library4997;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqWrappers.Tests;
 
@@ -14,11 +13,6 @@ public class MasqRobot_Tests implements Tests {
         @Override
         public void init(HardwareMap hardwareMap) {
             driveTrain = new MasqMechanumDriveTrain(hardwareMap);
-        }
-
-        @Override
-        public MasqPIDPackage pidPackage() {
-            return new MasqPIDPackage();
         }
     };
 

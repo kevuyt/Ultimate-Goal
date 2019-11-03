@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.Prototype;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.OpenCV.DogeDetector;
+import org.firstinspires.ftc.teamcode.SkystoneDetection.DogeDetector;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 

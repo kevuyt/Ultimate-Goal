@@ -5,9 +5,8 @@ import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.OpenCV.DogeDetector;
+import org.firstinspires.ftc.teamcode.SkystoneDetection.DogeDetector;
 
-import Library4997.MasqControlSystems.MasqPID.MasqPIDPackage;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
@@ -53,9 +52,6 @@ public class PrototypeRobot extends MasqRobot {
         lift.encoder.setWheelDiameter(1);
 
     }
-
-    @Override
-    public MasqPIDPackage pidPackage() {return new MasqPIDPackage();}
 
     public void resetServos() {
         blockPusher.setPosition(0);
