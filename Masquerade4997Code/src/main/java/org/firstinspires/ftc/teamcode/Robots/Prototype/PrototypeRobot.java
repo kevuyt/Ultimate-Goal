@@ -39,7 +39,7 @@ public class PrototypeRobot extends MasqRobot {
         imu = initializeIMU(imu, hardwareMap);
         tracker = new MasqPositionTracker(lift, intake.motor1, imu); //Replace motors when odometry is incorporating
         foundationHook = new MasqServoSystem("rightGrabber", "leftGrabber", hardwareMap);
-        detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
+        //detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap); KEVAL I COMMENTED THIS OUT
         sideGrabber = new MasqServo("sideGrabber", hardwareMap);
 
         blockPusher.scaleRange(0,0.5);

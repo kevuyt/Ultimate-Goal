@@ -263,8 +263,8 @@ public abstract class MasqRobot {
                 MasqUtils.KP.TURN, MasqUtils.KI.TURN, MasqUtils.KD.TURN, left, right);
     }
 
-    public void turnAbsolute(double angle, Direction direction, double timeOut, double sleepTime, double kp, double ki, double kd) {
-        double targetAngle = MasqUtils.adjustAngle((direction.value * angle));
+    public void turnAbsolute(double angle,  double timeOut, double sleepTime, double kp, double ki, double kd) {
+        double targetAngle = MasqUtils.adjustAngle(angle);
         double acceptableError = 2;
         double currentError = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
         double prevError = 0;
@@ -298,20 +298,20 @@ public abstract class MasqRobot {
         driveTrain.setVelocity(0,0);
         sleep(sleepTime);
     }
-    public void turnAbsolute(double angle, Direction direction, double timeOut, double sleepTime, double kp, double ki) {
-        turnAbsolute(angle, direction, timeOut, sleepTime, kp, ki, MasqUtils.KD.TURN);
+    public void turnAbsolute(double angle, double timeOut, double sleepTime, double kp, double ki) {
+        turnAbsolute(angle, timeOut, sleepTime, kp, ki, MasqUtils.KD.TURN);
     }
-    public void turnAbsolute(double angle, Direction direction, double timeOut, double sleepTime, double kp) {
-        turnAbsolute(angle, direction, timeOut, sleepTime, kp, MasqUtils.KI.TURN);
+    public void turnAbsolute(double angle, double timeOut, double sleepTime, double kp) {
+        turnAbsolute(angle, timeOut, sleepTime, kp, MasqUtils.KI.TURN);
     }
-    public void turnAbsolute(double angle, Direction direction, double timeOut, double sleepTime) {
-        turnAbsolute(angle, direction, timeOut, sleepTime, MasqUtils.KP.TURN);
+    public void turnAbsolute(double angle,  double timeOut, double sleepTime) {
+        turnAbsolute(angle, timeOut, sleepTime, MasqUtils.KP.TURN);
     }
-    public void turnAbsolute(double angle, Direction direction, double timeout)  {
-        turnAbsolute(angle, direction, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
+    public void turnAbsolute(double angle, double timeout)  {
+        turnAbsolute(angle, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
     }
-    public void turnAbsolute(double angle, Direction direction)  {
-        turnAbsolute(angle, direction, 0.5);
+    public void turnAbsolute(double angle)  {
+        turnAbsolute(angle, 0.5);
     }
 
     public void stop(MasqPredicate stopCondtion, double angle, double speed, Direction direction, double timeOut) {

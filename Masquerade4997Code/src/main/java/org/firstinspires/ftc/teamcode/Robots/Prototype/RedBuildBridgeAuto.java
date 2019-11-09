@@ -31,7 +31,7 @@ public class RedBuildBridgeAuto extends MasqLinearOpMode {
 
         robot.raiseFoundationHook();
         sleep();
-        robot.strafe(30, 90, 1.5);
+        robot.strafe(35, 90, 1.5);
         robot.turnAbsolute(5, Direction.RIGHT);
         robot.drive(35, 0.25);
         robot.lowerFoundationHook();
@@ -40,12 +40,12 @@ public class RedBuildBridgeAuto extends MasqLinearOpMode {
         robot.raiseFoundationHook();
         sleep();
         robot.drive(2,Direction.BACKWARD);
-        robot.strafe(52, -90, 2);
+        robot.strafe(60, -90, 2);
         robot.midFoundationHook();
         sleep();
         robot.turnAbsolute(5, Direction.LEFT);
-        robot.drive(30);
-        robot.strafe(39, -90,2);
+        robot.drive(33);
+        robot.strafe(45, -90,2);
         robot.turnAbsolute(5, Direction.LEFT);
 
     }

@@ -56,7 +56,7 @@ public class Mechanum extends MasqLinearOpMode {
             else robot.intake.setVelocity(0);
 
             if (controller2.rightTriggerPressed()) robot.lift.setVelocity(1);
-            else if (controller2.leftTriggerPressed() && robot.lift.encoder.getInches() > 1) robot.lift.setVelocity(-controller2.leftTrigger());
+            else if (controller2.leftTriggerPressed()) robot.lift.setVelocity(-controller2.leftTrigger());
             else robot.lift.setVelocity(0);
 
             if (robot.lift.encoder.getInches() > 24) controller2.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);

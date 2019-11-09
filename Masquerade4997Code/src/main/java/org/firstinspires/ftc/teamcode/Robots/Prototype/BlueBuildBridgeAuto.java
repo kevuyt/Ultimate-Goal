@@ -33,7 +33,7 @@ public class BlueBuildBridgeAuto extends MasqLinearOpMode {
         robot.blockPusher.setPosition(1);
         robot.strafe(40, Direction.LEFT, 1.5);
         robot.drive(42, 0.25);
-        robot.turnAbsolute(10,Direction.LEFT );
+        robot.turnAbsolute(0,Direction.LEFT );
         robot.lowerFoundationHook();
         sleep(1);
         robot.drive(55, 0.25 ,Direction.BACKWARD,3);
