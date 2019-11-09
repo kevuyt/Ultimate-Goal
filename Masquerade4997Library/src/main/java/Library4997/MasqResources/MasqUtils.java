@@ -55,10 +55,10 @@ public class MasqUtils implements API_KEYS {
         return linearOpMode.hardwareMap;
     }
     public class KP {
-        public static final double TURN = 0.025;
+        public static final double TURN = 0.015;
         public static final double TURN_POM = -0.1;
-        public static final double DRIVE_ANGULAR = 0.001;
-        public static final double DRIVE_ENCODER = 2.5;
+        public static final double DRIVE_ANGULAR = 0.005;
+        public static final double DRIVE_ENCODER = 3;
         public static final double STRAFE_ANGULAR = 0.005;
         public static final double PATH = .01;
         public static final double MOTOR_TELEOP = 0.002;

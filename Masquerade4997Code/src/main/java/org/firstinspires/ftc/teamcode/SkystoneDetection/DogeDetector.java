@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.SkystoneDetection;
 
-import com.disnodeteam.dogecv.detectors.skystone.SkystoneDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -9,6 +8,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvWebcam;
 
+import DogeCV.detectors.skystone.SkystoneDetector;
 import Library4997.MasqResources.MasqMath.MasqVector;
 /**
  * Created by Keval Kataria on 10/27/2019
@@ -16,7 +16,7 @@ import Library4997.MasqResources.MasqMath.MasqVector;
 public class DogeDetector {
     private OpenCvCamera phoneCamera;
     private OpenCvWebcam webcam;
-    private SkystoneDetector detector;
+    public SkystoneDetector skystoneDetector;
     private Cam cam;
 
     public enum Cam{
@@ -28,13 +28,13 @@ public class DogeDetector {
         int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());
         if(cam.equals(Cam.PHONE)){
             phoneCamera = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.FRONT, cameraMonitorViewId);
-            detector = new SkystoneDetector();
-            phoneCamera.setPipeline(detector);
+            skystoneDetector = new SkystoneDetector();
+            phoneCamera.setPipeline(skystoneDetector);
         }
         else if(cam.equals(Cam.WEBCAM)){
             webcam = new OpenCvWebcam(hwMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-            detector = new SkystoneDetector();
-            webcam.setPipeline(detector);
+            skystoneDetector = new SkystoneDetector();
+            webcam.setPipeline(skystoneDetector);
         }
     }
 
@@ -87,15 +87,15 @@ public class DogeDetector {
     }
 
     public double getStoneX(){
-        return detector.getScreenPosition().x;
+        return skystoneDetector.getScreenPosition().x;
     }
 
     public double getStoneY(){
-        return detector.getScreenPosition().y;
+        return skystoneDetector.getScreenPosition().y;
     }
 
     public boolean isDetected(){
-        return detector.isDetected();
+        return skystoneDetector.isDetected();
     }
 
 

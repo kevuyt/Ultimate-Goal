@@ -5,7 +5,6 @@
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
 // function isValidProjectName
-// function addReservedWordsForIdentifiersForJavaScript
 var projects = [];
 var checkedProjects = [];
 var sortByName = false;
@@ -68,15 +67,37 @@ function initializeSamples() {
     if (jsonSamples) {
       var samples = JSON.parse(jsonSamples);
       for (var i = 0; i < samples.length; i++) {
+        var sample = samples[i];
         var option = document.createElement('option');
-        option.innerHTML = samples[i];
-        option.value = samples[i];
+        option.innerHTML = sample.escapedName;
+        option.value = JSON.stringify(sample);
         select.appendChild(option);
       }
     } else {
       console.log(errorMessage);
     }
   });
+}
+
+function sampleSelected() {
+  var warnings = '';
+  var select = document.getElementById('newProjectSamplesSelect');
+  var jsonSample = select.options[select.selectedIndex].value;
+  if (jsonSample) {
+    var sample = JSON.parse(jsonSample);
+    if (sample.requestedCapabilities) {
+      var delimiter = '';
+      for (var i = 0; i < sample.requestedCapabilities.length; i++) {
+        var requestedCapability = sample.requestedCapabilities[i];
+        var warning = getCapabilityWarning(requestedCapability);
+        if (warning) {
+          warnings += delimiter + warning;
+          delimiter = '<br>';
+        }
+      }
+    }
+  }
+  document.getElementById('newProjectNameError').innerHTML = warnings;
 }
 
 function toggleSortByName() {
@@ -244,7 +265,11 @@ function okNewProjectNameDialog() {
 
 function newProjectOk(newProjectName) {
   var select = document.getElementById('newProjectSamplesSelect');
-  var sampleName = select.options[select.selectedIndex].value;
+  var jsonSample = select.options[select.selectedIndex].value;
+  var sampleName = jsonSample
+      ? JSON.parse(jsonSample).name
+      : "";
+
   // Create new project.
   newProject(newProjectName, sampleName, function(blkFileContent, errorMessage) {
     if (blkFileContent) {
@@ -330,8 +355,6 @@ function finishNewOrUploadProject(projectName, blkFileContent, errorElement, dia
     // For consistency with previous versions, we explicitly set oneBasedIndex to true.
     workspace.options.oneBasedIndex = true;
     Blockly.Xml.domToWorkspace(dom, workspace);
-    Blockly.JavaScript.addReservedWords('callRunOpMode');
-    addReservedWordsForIdentifiersForJavaScript();
     jsFileContent = Blockly.JavaScript.workspaceToCode(workspace);
   } catch (e) {
     errorElement.innerHTML = 'Error: Could not generate code for blocks. ' + e;

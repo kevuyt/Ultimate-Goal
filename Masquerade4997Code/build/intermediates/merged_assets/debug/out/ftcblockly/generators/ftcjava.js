@@ -30,6 +30,7 @@
 goog.provide('Blockly.FtcJava');
 
 goog.require('Blockly.Generator');
+goog.require('Blockly.utils.string');
 
 
 /**
@@ -41,101 +42,6 @@ Blockly.FtcJava = new Blockly.Generator('FtcJava');
 Blockly.FtcJava.INDENT_CONTINUE = '    ';
 
 Blockly.FtcJava.CLASS_SCOPE = '<class>';
-
-/**
- * List of illegal variable names.
- * This is not intended to be a security feature.  Blockly is 100% client-side,
- * so bypassing this list is trivial.  This is intended to prevent users from
- * accidentally clobbering a built-in object or function.
- * @private
- */
-Blockly.FtcJava.addReservedWords(
-    // Include all the classes that we could import (see generateImport_).
-    // android.graphics
-    'Color,' +
-    // com.qualcomm.ftccommon
-    'SoundPlayer,' +
-    // com.qualcomm.hardware.modernrobotics
-    'ModernRoboticsI2cCompassSensor,ModernRoboticsI2cGyro,ModernRoboticsI2cRangeSensor,' +
-    // com.qualcomm.hardware.bosch
-    'BNO055IMU,JustLoggingAccelerationIntegrator,' +
-    // com.qualcomm.hardware.rev
-    'RevBlinkinLedDriver', +
-    // com.qualcomm.robotcore.eventloop
-    'Autonomous,Disabled,LinearOpMode,TeleOp,' +
-    // com.qualcomm.robotcore.hardware
-    'AccelerationSensor,AnalogInput,AnalogOutput,CRServo,ColorSensor,CompassSensor,DcMotor,' +
-    'DcMotorEx,DcMotorSimple,DigitalChannel,DistanceSensor,GyroSensor,Gyroscope,I2cAddr,' +
-    'I2cAddrConfig,I2cAddressableDevice,IrSeekerSensor,LED,Light,LightSensor,MotorControlAlgorithm,' +
-    'NormalizedColorSensor,NormalizedRGBA,OpticalDistanceSensor,OrientationSensor,PIDCoefficients,' +
-    'PIDFCoefficients,PWMOutput,Servo,ServoController,SwitchableLight,TouchSensor,UltrasonicSensor,' +
-    'VoltageSensor,' +
-    // com.qualcomm.robotcore.util
-    'ElapsedTime,Range,ReadWriteFile,RobotLog,' +
-    // java.util
-    'ArrayList,Collections,List,' +
-    // org.firstinspires.ftc.robotcore.external
-    'ClassFactory,JavaUtil,' +
-    // org.firstinspires.ftc.robotcore.external.android
-    'AndroidAccelerometer,AndroidGyroscope,AndroidOrientation,AndroidSoundPool,' +
-    'AndroidTextToSpeech,' +
-    // org.firstinspires.ftc.robotcore.external.hardware.camera
-    'WebcamName,' +
-    // org.firstinspires.ftc.robotcore.external.matrices
-    'MatrixF,OpenGLMatrix,VectorF,' +
-    // org.firstinspires.ftc.robotcore.external.navigation
-    'Acceleration,AngleUnit,AngularVelocity,AxesOrder,AxesReference,Axis,DistanceUnit,' +
-    'MagneticFlux,Orientation,Position,Quaternion,RelicRecoveryVuMark,Temperature,TempUnit,' +
-    'UnnormalizedAngleUnit,Velocity,VuforiaBase,VuforiaLocalizer,VuforiaRelicRecovery,' +
-    'VuforiaRoverRuckus,VuforiaTrackable,VuforiaTrackableDefaultListener,VuforiaTrackables,' +
-    // org.firstinspires.ftc.robotcore.internal.system
-    'AppUtil,' +
-    // org.firstinspires.ftc.robotcore.external.tfod
-    'Recognition,TfodBase,TfodRoverRuckus,' +
-    // LinearOpMode members
-    'waitForStart,idle,sleep,opModeIsActive,isStarted,' +
-    'isStopRequested,init,init_loop,start,loop,stop,handleLoop,' +
-    'LinearOpModeHelper,internalPostInitLoop,internalPostLoop,' +
-    'waitOneFullHardwareCycle,waitForNextHardwareCycle,' +
-    'OpMode,gamepad1,gamepad2,telemetry,time,requestOpModeStop,getRuntime,' +
-    'resetStartTime,updateTelemetry,msStuckDetectInit,msStuckDetectInitLoop,' +
-    'msStuckDetectStart,msStuckDetectLoop,msStuckDetectStop,internalPreInit,' +
-    'internalOpModeServices,internalUpdateTelemetryNow,' +
-    // https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html
-    'abstract,assert,boolean,break,byte,case,catch,char,class,const,' +
-    'continue,default,do,double,else,enum,extends,final,finally,float,' +
-    'for,goto,if,implements,import,instanceof,int,interface,long,native,' +
-    'new,package,private,protected,public,return,short,static,strictfp,super,' +
-    'switch,synchronized,this,throw,throws,transient,try,void,volatile,while,' +
-    // java.lang.*
-    'AbstractMethodError,Appendable,ArithmeticException,' +
-    'ArrayIndexOutOfBoundsException,ArrayStoreException,AssertionError,' +
-    'AutoCloseable,Boolean,BootstrapMethodError,Byte,Character,' +
-    'Character.Subset,Character.UnicodeBlock,Character.UnicodeScript,' +
-    'CharSequence,Class,ClassCastException,ClassCircularityError,' +
-    'ClassFormatError,ClassLoader,ClassNotFoundException,ClassValue,' +
-    'Cloneable,CloneNotSupportedException,Comparable,Compiler,Deprecated,' +
-    'Double,Enum,Enum,EnumConstantNotPresentException,Error,Exception,' +
-    'ExceptionInInitializerError,Float,FunctionalInterface,' +
-    'IllegalAccessError,IllegalAccessException,IllegalArgumentException,' +
-    'IllegalMonitorStateException,IllegalStateException,' +
-    'IllegalThreadStateException,IncompatibleClassChangeError,' +
-    'IndexOutOfBoundsException,InheritableThreadLocal,InstantiationError,' +
-    'InstantiationException,Integer,InternalError,InterruptedException,' +
-    'Iterable,LinkageError,Long,Math,NegativeArraySizeException,' +
-    'NoClassDefFoundError,NoSuchFieldError,NoSuchFieldException,' +
-    'NoSuchMethodError,NoSuchMethodException,NullPointerException,Number,' +
-    'NumberFormatException,Object,OutOfMemoryError,Override,Package,' +
-    'Process,ProcessBuilder,ProcessBuilder.Redirect,' +
-    'ProcessBuilder.Redirect.Type,Readable,ReflectiveOperationException,' +
-    'Runnable,Runtime,RuntimeException,RuntimePermission,SafeVarargs,' +
-    'SecurityException,SecurityManager,Short,StackOverflowError,' +
-    'StackTraceElement,StrictMath,String,StringBuffer,StringBuilder,' +
-    'StringIndexOutOfBoundsException,SuppressWarnings,System,Thread,' +
-    'ThreadDeath,ThreadGroup,ThreadLocal,Thread.State,' +
-    'Thread.UncaughtExceptionHandler,Throwable,TypeNotPresentException,' +
-    'UnknownError,UnsatisfiedLinkError,UnsupportedClassVersionError,' +
-    'UnsupportedOperationException,VerifyError,VirtualMachineError,Void');
 
 /**
  * Order of operation ENUMs.
@@ -217,6 +123,7 @@ Blockly.FtcJava.init = function(workspace) {
   } else {
     Blockly.FtcJava.variableDB_.reset();
   }
+  Blockly.FtcJava.variableDB_.setVariableMap(workspace.getVariableMap());
 
   Blockly.FtcJava.variableDeclarationsByScope_ = Object.create(null);
 
@@ -332,7 +239,6 @@ Blockly.FtcJava.init = function(workspace) {
             // Skip procedure arguments.
             continue;
           }
-
 
           var functionName = Blockly.FtcJava.getFunctionName_(rootBlock);
           if (functionNames.indexOf(functionName) == -1) {
@@ -622,9 +528,28 @@ Blockly.FtcJava.getOutputType_ = function(block) {
     // If the block is a variable getter, see if we already know the type of that variable.
     if (block.type == 'variables_get') {
       var variableName = Blockly.FtcJava.getVariableName_(block);
+      // Maybe it's a variable.
       var variableType = Blockly.FtcJava.variableTypes_[variableName];
-      if (variableType != '') {
-        return variableType;
+      if (variableType != undefined) {
+        if (variableType != '') {
+          return variableType;
+        }
+      } else {
+        // Or, maybe it's an argument.
+        var rootBlock = block.getRootBlock();
+        if (Blockly.FtcJava.isFunctionDefinitionBlock_(rootBlock)) {
+          var functionName = Blockly.FtcJava.getFunctionName_(rootBlock);
+          var procedureArgumentNames = Blockly.FtcJava.procedureArgumentNames_[functionName];
+          var procedureArgumentTypes = Blockly.FtcJava.procedureArgumentTypes_[functionName];
+          for (var i = 0; i < procedureArgumentNames.length; i++) {
+            if (procedureArgumentNames[i] == variableName) {
+              var argumentType = procedureArgumentTypes[i];
+              if (argumentType != '') {
+                return argumentType;
+              }
+            }
+          }
+        }
       }
     }
 
@@ -820,6 +745,7 @@ Blockly.FtcJava.blockToCode = function(block) {
     return Blockly.Generator.prototype.blockToCode.call(this, block);
   } catch (e) {
     console.log('Sorry, FTC Blocks-to-Java has a bug! Unable to generate code for ' + block.type + '.');
+    console.log(e);
     var errorCode = '/* Sorry, FTC Blocks-to-Java has a bug! Unable to generate code for ' + block.type + '. */';
     var jsCode = Blockly.JavaScript.blockToCode(block);
     if (Array.isArray(jsCode)) {
@@ -987,7 +913,7 @@ Blockly.FtcJava.scrub_ = function(block, code) {
   if (!block.outputConnection || !block.outputConnection.targetConnection) {
     // Collect comment for this block.
     var comment = block.getCommentText();
-    comment = Blockly.utils.wrap(comment, Blockly.FtcJava.COMMENT_WRAP - 3);
+    comment = Blockly.utils.string.wrap(comment, Blockly.FtcJava.COMMENT_WRAP - 3);
     if (comment) {
       if (block.getProcedureDef) {
         // Use a comment block for function comments.
@@ -1120,7 +1046,7 @@ Blockly.FtcJava.generateImport_ = function(type) {
     type = type.substring(0, dot);
   }
   // NOTE(lizlooney): If you add a case to this switch, you should also add that type to
-  // Blockly.FtcJava.addReservedWords.
+  // HardwareUtil.buildReservedWordsForFtcJava.
   switch (type) {
     case 'Color':
       importCode = 'import android.graphics.' + type + ';';
@@ -1233,6 +1159,7 @@ Blockly.FtcJava.generateImport_ = function(type) {
     case 'VuforiaLocalizer':
     case 'VuforiaRelicRecovery':
     case 'VuforiaRoverRuckus':
+    case 'VuforiaSkyStone':
     case 'VuforiaTrackable':
     case 'VuforiaTrackableDefaultListener':
     case 'VuforiaTrackables':
@@ -1244,6 +1171,7 @@ Blockly.FtcJava.generateImport_ = function(type) {
     case 'Recognition':
     case 'TfodBase':
     case 'TfodRoverRuckus':
+    case 'TfodSkyStone':
       importCode = 'import org.firstinspires.ftc.robotcore.external.tfod.' + type + ';';
       break;
     default:
@@ -1306,6 +1234,13 @@ Blockly.FtcJava.importDeclareAssign_ = function(block, identifierFieldName, java
       rvalue = 'new ' + javaType + '()';
       needsToBeClosed = true;
       break;
+    case 'TfodSkyStone':
+      // tfodSkyStoneIdentifierForFtcJava is defined dynamically in
+      // HardwareUtil.fetchJavaScriptForHardware().
+      identifierForFtcJava = identifier = tfodSkyStoneIdentifierForFtcJava;
+      rvalue = 'new ' + javaType + '()';
+      needsToBeClosed = true;
+      break;
     case 'VuforiaRelicRecovery':
       // vuforiaRelicRecoveryIdentifierForFtcJava is defined dynamically in
       // HardwareUtil.fetchJavaScriptForHardware().
@@ -1320,17 +1255,39 @@ Blockly.FtcJava.importDeclareAssign_ = function(block, identifierFieldName, java
       rvalue = 'new ' + javaType + '()';
       needsToBeClosed = true;
       break;
+    case 'VuforiaSkyStone':
+      // vuforiaSkyStoneIdentifierForFtcJava is defined dynamically in
+      // HardwareUtil.fetchJavaScriptForHardware().
+      identifierForFtcJava = identifier = vuforiaSkyStoneIdentifierForFtcJava;
+      rvalue = 'new ' + javaType + '()';
+      needsToBeClosed = true;
+      break;
     default:
       if (!identifierFieldName) {
         throw 'Unexpected situation (identifierFieldName is \'' + identifierFieldName + '\').';
       }
       identifier = block.getFieldValue(identifierFieldName);
-      // getIdentifierForFtcJava is generated dynamically in
-      // HardwareUtil.fetchJavaScriptForHardware().
-      identifierForFtcJava = getIdentifierForFtcJava(identifier);
-      // getHardwareItemDeviceName is generated dynamically in
-      // HardwareUtil.fetchJavaScriptForHardware().
-      var hardwareName = getHardwareItemDeviceName(identifier);
+
+      try {
+        // getIdentifierForFtcJava is generated dynamically in
+        // HardwareUtil.fetchJavaScriptForHardware().
+        identifierForFtcJava = getIdentifierForFtcJava(identifier);
+      } catch (e) {
+        // getIdentifierForFtcJava throws an exception if the hardware device is missing.
+        // Use makeIdentifier (in vars.js) to generate a identifier;
+        identifierForFtcJava = makeIdentifier(identifier);
+      }
+
+      var hardwareName;
+      try {
+        // getHardwareItemDeviceName is generated dynamically in
+        // HardwareUtil.fetchJavaScriptForHardware().
+        hardwareName = getHardwareItemDeviceName(identifier);
+      } catch (e) {
+        // getHardwareItemDeviceName throws an exception if the hardware device is missing.
+        hardwareName = identifier;
+      }
+
       var deviceMappingName = Blockly.FtcJava.getDeviceMappingName_(javaType);
       if (deviceMappingName != null) {
         rvalue = 'hardwareMap.' + deviceMappingName + '.get("' + hardwareName + '")';

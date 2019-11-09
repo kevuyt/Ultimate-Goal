@@ -76,6 +76,7 @@
   <script type="text/javascript" src="blocks/tfod.js"></script>
   <script type="text/javascript" src="blocks/tfod_recognition.js"></script>
   <script type="text/javascript" src="blocks/tfod_rover_ruckus.js"></script>
+  <script type="text/javascript" src="blocks/tfod_sky_stone.js"></script>
   <script type="text/javascript" src="blocks/toolbox_util.js"></script>
   <script type="text/javascript" src="blocks/touch_sensor.js"></script>
   <script type="text/javascript" src="blocks/ultrasonic_sensor.js"></script>
@@ -88,6 +89,7 @@
   <script type="text/javascript" src="blocks/vuforia_localizer_parameters.js"></script>
   <script type="text/javascript" src="blocks/vuforia_relic_recovery.js"></script>
   <script type="text/javascript" src="blocks/vuforia_rover_ruckus.js"></script>
+  <script type="text/javascript" src="blocks/vuforia_sky_stone.js"></script>
   <script type="text/javascript" src="blocks/vuforia_trackable.js"></script>
   <script type="text/javascript" src="blocks/vuforia_trackable_default_listener.js"></script>
   <script type="text/javascript" src="blocks/vuforia_trackables.js"></script>
@@ -138,7 +140,7 @@
     <td class="blank_td" colspan="2"></td>
   </tr>
 </table>
-<div id="projectsTableScroll">
+<div id="projectsTableScroll" class="scrolling_table_container">
   <table id="projectsTable" width="100%">
     <tr class="header_tr">
       <td><input type="checkbox" id="checkbox_all" onclick="projectCheckAllChanged()"></td>
@@ -156,7 +158,7 @@
   <input type="text" id="newProjectName" style="width: 30ch"><br>
   <div id="newProjectSamplesArea"><br><br>
     Sample:
-    <select id="newProjectSamplesSelect" style="width: 30ch">
+    <select id="newProjectSamplesSelect" onchange="sampleSelected()" style="width: 30ch">
       <option value=""></option>
     </select><br>
   </div>

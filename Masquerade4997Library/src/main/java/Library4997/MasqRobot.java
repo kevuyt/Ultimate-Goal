@@ -1,5 +1,7 @@
 package Library4997;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
@@ -27,10 +29,24 @@ public abstract class MasqRobot {
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
-    public double speedMultiplier = 0.75;
-    public double turnMultiplier = 0.5;
+    public double speedMultiplier = 1;
+    public double turnMultiplier = 1;
     private MasqClock timeoutClock = new MasqClock();
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
+
+    public BNO055IMU initializeIMU(BNO055IMU imu, HardwareMap hardwareMap) {
+        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.mode = BNO055IMU.SensorMode.IMU;
+        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
+        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters.calibrationDataFile = "BNO055IMUCalibration.json";
+        parameters.loggingEnabled      = true;
+        parameters.loggingTag          = "IMU";
+        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
+        imu.initialize(parameters);
+        return imu;
+    }
 
     public void strafe (double distance, double angle, double timeout) {
         MasqClock timeoutTimer = new MasqClock();
@@ -49,12 +65,36 @@ public abstract class MasqRobot {
             angularIntegral += angularError*timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
-            powerAdjustment = (MasqUtils.KP.STRAFE_ANGULAR * power) * angularError + (MasqUtils.KI.DRIVE * angularIntegral) +
+            powerAdjustment = MasqUtils.KP.STRAFE_ANGULAR * angularError + (MasqUtils.KI.DRIVE * angularIntegral) +
                     (MasqUtils.KD.DRIVE * angularDerivative);
             driveTrain.setPowerMECH(angle, power, tracker.getHeading(), powerAdjustment);
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
         driveTrain.stopDriving();
         sleep(MasqUtils.DEFAULT_SLEEP_TIME);
+    }
+    public void strafe(double distance, Direction direction, double timeout) {
+        double angle;
+        switch (direction) {
+            case LEFT:
+                angle = -90;
+                break;
+            case FORWARD:
+                angle = 0;
+                break;
+            case RIGHT:
+                angle = 90;
+                break;
+            case BACKWARD:
+                angle = 180;
+                break;
+            default:
+                angle = 0;
+                break;
+        }
+        strafe(distance, angle, timeout);
+    }
+    public void strafe(double distance, Direction direction) {
+        strafe(distance, direction,1);
     }
 
     public void drive(double distance, double speed, Direction direction, double timeOut, double sleepTime) {
@@ -76,7 +116,7 @@ public abstract class MasqRobot {
             angularIntegral += angularError*timeChange;
             angularDerivative = (angularError - prevAngularError) / timeChange;
             prevAngularError = angularError;
-            powerAdjustment = (MasqUtils.KP.DRIVE_ANGULAR * power) * angularError + (MasqUtils.KI.DRIVE * angularIntegral) +
+            powerAdjustment = (MasqUtils.KP.DRIVE_ANGULAR * angularError) + (MasqUtils.KI.DRIVE * angularIntegral) +
                     (MasqUtils.KD.DRIVE * angularDerivative);
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             powerAdjustment *= direction.value;
@@ -103,7 +143,7 @@ public abstract class MasqRobot {
         drive(distance, speed, strafe, MasqUtils.DEFAULT_TIMEOUT);
     }
     public void drive(double distance, Direction direction, double timeout) {
-        drive(distance, 0.5, direction, timeout);
+        drive(distance, 1, direction, timeout);
     }
     public void drive(double distance, double speed){drive(distance, speed, Direction.FORWARD);}
     public void drive(double distance, Direction direction) {drive(distance, 0.5, direction);}
@@ -141,10 +181,10 @@ public abstract class MasqRobot {
             }
             driveTrain.setVelocity(leftPower, rightPower);
             //serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
-            dash.create("LEFT POWER: ", leftPower);
+           /* dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
-            dash.update();
+            dash.update();*/
             prevAngularError = angularError;
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && ((clicksRemaining / targetClicks) > 0.1));
         //serializer.close();
@@ -271,7 +311,7 @@ public abstract class MasqRobot {
         turnAbsolute(angle, direction, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void turnAbsolute(double angle, Direction direction)  {
-        turnAbsolute(angle, direction, MasqUtils.DEFAULT_TIMEOUT);
+        turnAbsolute(angle, direction, 0.5);
     }
 
     public void stop(MasqPredicate stopCondtion, double angle, double speed, Direction direction, double timeOut) {
@@ -513,5 +553,16 @@ public abstract class MasqRobot {
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
     public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
         return hardwareMap.get(WebcamName.class, name);
+    }
+
+    public void setMultipliers(double multiplier) {
+        speedMultiplier = multiplier;
+        turnMultiplier = multiplier;
+    }
+    public void setTurnMultiplier(double turnMultiplier) {
+        this.turnMultiplier = turnMultiplier;
+    }
+    public void setSpeedMultiplier(double speedMultiplier) {
+        this.speedMultiplier = speedMultiplier;
     }
 }

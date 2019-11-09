@@ -34,6 +34,7 @@ public class SkystoneDetector extends DogeCVDetector {
     // Results of the detector
     private Point screenPosition = new Point(); // Screen position of the mineral
     private Rect foundRect = new Rect(); // Found rect
+    int top, bottom, left, right;
 
     private Mat rawImage = new Mat();
     private Mat workingMat = new Mat();
@@ -57,6 +58,7 @@ public class SkystoneDetector extends DogeCVDetector {
 
     @Override
     public Mat process(Mat input) {
+        cropMat(input, top, bottom, left, right);
         input.copyTo(rawImage);
         input.copyTo(workingMat);
         input.copyTo(displayMat);
@@ -150,5 +152,19 @@ public class SkystoneDetector extends DogeCVDetector {
         if (areaScoringMethod == DogeCV.AreaScoringMethod.PERFECT_AREA){
             addScorer(perfectAreaScorer);
         }
+    }
+
+    public void setCropSettings(int top, int bottom, int left, int right) {
+        this.top = top;
+        this.bottom = bottom;
+        this.left = left;
+        this.right = right;
+    }
+
+    public Mat cropMat(Mat input, int top, int bottom, int left, int right) {
+
+        //Rect rect = new Rect(input.width()/2, input.height()/2, input.width(), input.height());
+         Rect rect = new Rect((input.width() + left - right)/2,(input.height() + top - bottom)/2,input.width() - right - left,input.height() - top - bottom);
+        return input.submat(rect);
     }
 }

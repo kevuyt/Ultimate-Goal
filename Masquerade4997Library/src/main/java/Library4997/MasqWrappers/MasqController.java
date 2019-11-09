@@ -147,14 +147,6 @@ public class MasqController implements Runnable{
                 "D_RIGHT: " + dPadRight(),
         };
     }
-    public void toggle(boolean button, MasqServo servo, double prevPos, double... positions) {
-        if (servo.getPosition()  == prevPos && button) {
-            for (int i = 0; i <positions.length; i++) {
-                if (servo.getPosition() == positions[i] && i+1 < positions.length) servo.setPosition(positions[i+1]);
-                else if (servo.getPosition() == positions[i]) servo.setPosition(positions[0]);
-            }
-        }
-    }
     public void toggle(boolean button, MasqServo servo, double prevPos) {
         if (MasqUtils.tolerance(servo.getPosition(), prevPos,0.01) && button) {
             if (MasqUtils.tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
@@ -164,6 +156,12 @@ public class MasqController implements Runnable{
     public void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
         for (MasqServo servo : servoSystem.servos) {
             toggle(button, servo, prevPos);
+        }
+    }
+    public void toggle(boolean button, MasqServo servo, double prevPos, double pos1, double pos2) {
+        if (MasqUtils.tolerance(servo.getPosition(), prevPos, 0.01) && button) {
+            if (MasqUtils.tolerance(servo.getPosition(), pos1, 0.01)) servo.setPosition(pos2);
+            else if (MasqUtils.tolerance(servo.getPosition(), pos2, 0.01)) servo.setPosition(pos1);
         }
     }
     public void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {

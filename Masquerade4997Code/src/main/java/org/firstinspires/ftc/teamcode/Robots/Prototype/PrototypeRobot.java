@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots.Prototype;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -37,10 +36,10 @@ public class PrototypeRobot extends MasqRobot {
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
-        imu = initializeIMU(hardwareMap);
+        imu = initializeIMU(imu, hardwareMap);
         tracker = new MasqPositionTracker(lift, intake.motor1, imu); //Replace motors when odometry is incorporating
         foundationHook = new MasqServoSystem("rightGrabber", "leftGrabber", hardwareMap);
-        detector = new DogeDetector(DogeDetector.Cam.WEBCAM, hardwareMap);
+        detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
         sideGrabber = new MasqServo("sideGrabber", hardwareMap);
 
         blockPusher.scaleRange(0,0.5);
@@ -57,8 +56,7 @@ public class PrototypeRobot extends MasqRobot {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
-        foundationHook.servo1.setPosition(1);
-        foundationHook.servo2.setPosition(0);
+        lowerFoundationHook();
         sideGrabber.setPosition(0);
     }
 
@@ -69,6 +67,10 @@ public class PrototypeRobot extends MasqRobot {
     public void raiseFoundationHook() {
         foundationHook.servo1.setPosition(0);
         foundationHook.servo2.setPosition(1);
+    }
+    public void midFoundationHook() {
+        foundationHook.servo1.setPosition(0.2);
+        foundationHook.servo2.setPosition(0.8);
     }
 
     public void runStoneLeft(HardwareMap hardwareMap) {
@@ -81,17 +83,5 @@ public class PrototypeRobot extends MasqRobot {
         //Collect and place on foundation third and sixth blocks
     }
 
-    public BNO055IMU initializeIMU(HardwareMap hardwareMap) {
-        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.mode = BNO055IMU.SensorMode.IMU;
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.calibrationDataFile = "BNO055IMUCalibration.json";
-        parameters.loggingEnabled      = true;
-        parameters.loggingTag          = "IMU";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
-        imu.initialize(parameters);
-        return imu;
-    }
+
 }

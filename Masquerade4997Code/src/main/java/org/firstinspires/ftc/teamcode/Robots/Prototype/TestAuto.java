@@ -24,6 +24,6 @@ public class TestAuto extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.drive(80);
+        robot.driveAbsoluteAngle(80,0);
     }
 }
