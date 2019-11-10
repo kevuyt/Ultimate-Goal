@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.Prototype;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -19,14 +19,14 @@ import Library4997.MasqServos.MasqServoSystem;
  * Created by Archishmaan Peyyety on 2019-08-06.
  * Project: MasqLib
  */
-public class PrototypeRobot extends MasqRobot {
+public class MarkOne extends MasqRobot {
 
-    MasqServo blockGrabber, blockRotater, blockPusher, sideGrabber;
-    MasqServoSystem foundationHook;
-    MasqMotor  lift;
-    MasqMotorSystem intake;
-    DogeDetector detector;
-    private BNO055IMU imu;
+    public MasqServo blockGrabber, blockRotater, blockPusher, sideGrabber;
+    public MasqServoSystem foundationHook;
+    public MasqMotor  lift;
+    public MasqMotorSystem intake;
+    public BNO055IMU imu;
+    public DogeDetector detector;
 
     @Override
     public void init(HardwareMap hardwareMap) {
