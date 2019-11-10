@@ -74,9 +74,9 @@ public class Utils {
     }
 
     /**
-     * Converts Android Bitmap to OpenCV Mat.
+     * Converts Android Bitmap to org.firstinspires.ftc.teamcode.OpenCV Mat.
      * <p>
-     * This function converts an Android Bitmap image to the OpenCV Mat.
+     * This function converts an Android Bitmap image to the org.firstinspires.ftc.teamcode.OpenCV Mat.
      * <br>'ARGB_8888' and 'RGB_565' input Bitmap formats are supported.
      * <br>The output Mat is always created of the same size as the input Bitmap and of the 'CV_8UC4' type,
      * it keeps the image in RGBA format.
@@ -104,9 +104,9 @@ public class Utils {
 
 
     /**
-     * Converts OpenCV Mat to Android Bitmap.
+     * Converts org.firstinspires.ftc.teamcode.OpenCV Mat to Android Bitmap.
      * <p>
-     * <br>This function converts an image in the OpenCV Mat representation to the Android Bitmap.
+     * <br>This function converts an image in the org.firstinspires.ftc.teamcode.OpenCV Mat representation to the Android Bitmap.
      * <br>The input Mat object has to be of the types 'CV_8UC1' (gray-scale), 'CV_8UC3' (RGB) or 'CV_8UC4' (RGBA).
      * <br>The output Bitmap object has to be of the same size as the input Mat and of the types 'ARGB_8888' or 'RGB_565'.
      * <br>This function throws an exception if the conversion fails.

@@ -37,6 +37,10 @@ public class DashBoard {
     public void create(String string, Object data) {
         telemetry.addData(string, data);
     }
+    public void create(String string, Object data1, Object data2) {
+        telemetry.addData(string, data1);
+        telemetry.addData(string, data2);
+    }
     public void create(final MasqHardware hardware) {
         dashLength = hardware.getDash().length;
         for (int i = 0; i < dashLength; i++) {
@@ -47,6 +51,9 @@ public class DashBoard {
         for (MasqHardware hardware : hardwares) {
             create(hardware);
         }
+    }
+    public void create(String string, String string2, Object... data) {
+        telemetry.addData(string, string2, data);
     }
     public void create(final MasqSubSystem subSystem) {
         for (MasqHardware hardware : subSystem.getComponents()) {

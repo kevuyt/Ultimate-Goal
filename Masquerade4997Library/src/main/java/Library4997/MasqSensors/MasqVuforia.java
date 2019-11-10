@@ -44,7 +44,7 @@ public class MasqVuforia implements MasqHardware {
             x1 = 0, x2 = 0, x3 = 0,
             y1 = 0, y2 = 0, y3 = 0,
             z1 = 0, z2 = 0,z3 = 0;
-    private List<VuforiaTrackable> trackables = new ArrayList<>();
+    private List<VuforiaTrackable> trackables;
     private List<VuforiaTrackable> allTrackables = new ArrayList<>();
     private String targetOne, targetTwo, targetThree;
     private float mmPerInch = 25.4f;

@@ -27,7 +27,7 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     }
 
     public void setVelocityMECH(double angle, double speed, double targetHeading) {
-        double turnPower = turnController.getOutput(tracker.getHeading(), targetHeading);
+        double turnPower = turnController.getOutput(tracker.getHeading()- targetHeading);
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
@@ -46,9 +46,37 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         rightDrive.motor1.setVelocity(rightFront);
         rightDrive.motor2.setVelocity(rightBack);
     }
+    public void setVelocityMECH(double angle, double speed) {
+        setVelocityMECH(angle, speed, tracker.getHeading());
+    }
+
+    public void setPowerMECH(double angle, double speed, double targetHeading, double turnAdjustment) {
+        angle = Math.toRadians(angle);
+        double adjustedAngle = angle + Math.PI/4;
+        double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER);
+        double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER);
+        double rightFront = (Math.cos(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER);
+        double rightBack = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER);
+        leftFront -= turnAdjustment;
+        leftBack -= turnAdjustment;
+        rightBack += turnAdjustment;
+        rightBack += turnAdjustment;
+        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
+        if (max > 1) {
+            leftFront /= max;
+            leftBack /= max;
+            rightFront /= max;
+            rightBack /= max;
+        }
+        leftDrive.motor1.setPower(leftFront);
+        leftDrive.motor2.setPower(leftBack);
+        rightDrive.motor1.setPower(rightFront);
+        rightDrive.motor2.setPower(rightBack);
+    }
+
 
     public void setPowerMECH(double angle, double speed, double targetHeading) {
-        double turnPower = turnController.getOutput(tracker.getHeading(), targetHeading);
+        double turnPower = turnController.getOutput(tracker.getHeading() - targetHeading);
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
@@ -67,6 +95,8 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         rightDrive.motor1.setPower(rightFront);
         rightDrive.motor2.setPower(rightBack);
     }
+
+
     public void setTurnKP(double kp) {
         turnController.setKp(kp);
     }

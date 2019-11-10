@@ -22,8 +22,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             controller1 = new MasqController(super.gamepad1, "controller1");
             controller2 = new MasqController(super.gamepad2, "controller2");
             runLinearOpMode();
-        }
-        finally {
+        } finally {
             stopLinearOpMode();
         }
     }

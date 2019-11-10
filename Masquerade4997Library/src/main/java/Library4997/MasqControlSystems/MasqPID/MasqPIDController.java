@@ -28,30 +28,23 @@ public class MasqPIDController {
     public MasqPIDController(double kp) {
         this.kp = kp;
     }
-    public double getOutput (double current, double target) {
-        this.target = target;
-        this.current = current;
-        error = this.target - this.current;
-        timeChange = clock.milliseconds();
+
+    //For testing
+    public double getOutput (double error, double timeChange) {
+        this.timeChange = timeChange;
         clock.reset();
         deriv = (error - prevError) / timeChange;
         prevError = error;
         prevD = deriv;
         return Range.clip((error * kp) +
-                (ki * integrator.getIntegral(error)) +
-                (kd * deriv), -1, 1);
-    }
-    public double getOutput (double error) {
-        timeChange = clock.milliseconds();
-        clock.reset();
-        deriv = (error - prevError) / timeChange;
-        prevError = error;
-        prevD = deriv;
-        return Range.clip((error * kp) +
-                (ki * integrator.getIntegral(error)) +
+                (ki * integrator.getIntegral(error, timeChange)) +
                 (kd * deriv), -1, 1);
     }
 
+    //For normal use
+    public double getOutput (double error) {
+        return getOutput(error,clock.milliseconds()/1e3);
+    }
     public double getKp() {
         return kp;
     }

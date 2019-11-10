@@ -5,8 +5,8 @@ package Library4997.MasqResources.MasqHelpers;
  */
 
 public enum MasqMotorModel {
-    ORBITAL20, NEVEREST40, NEVEREST60, USDIGITAL_E4T, REVHDHEX, NEVERREST_CLASSIC, NEVERREST256;
-        public static double DEFAULT_CPR = 2240;
+    ORBITAL20, NEVEREST40, NEVEREST60, USDIGITAL_E4T, REVHDHEX40, NEVERREST_CLASSIC, NEVERREST256, REVHDHEX20;
+        public static double DEFAULT_CPR = 537.6;
         public static double CPR(MasqMotorModel motorModel) {
             switch (motorModel){
                 case ORBITAL20:
@@ -17,12 +17,14 @@ public enum MasqMotorModel {
                     return 1680;
                 case USDIGITAL_E4T:
                     return 1440;
-                case REVHDHEX:
-                    return 1120;
                 case NEVERREST_CLASSIC:
-                    return 11200;
+                    return 6600;
                 case NEVERREST256:
                     return 4400;
+                case REVHDHEX40:
+                    return 2240;
+                case REVHDHEX20:
+                    return 560;
             }
             return DEFAULT_CPR;
         }
@@ -38,8 +40,12 @@ public enum MasqMotorModel {
                     return 160;
                 case NEVEREST60:
                     return 105;
-                case REVHDHEX:
+                case REVHDHEX40:
                     return 150;
+                case NEVERREST_CLASSIC:
+                    return 28;
+                case REVHDHEX20:
+                    return 300;
             }
             return DEFAULT_RPM;
         }
