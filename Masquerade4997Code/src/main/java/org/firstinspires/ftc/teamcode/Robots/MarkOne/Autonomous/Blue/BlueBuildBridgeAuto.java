@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Blue;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -10,8 +10,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/15/2019
  */
-@Autonomous(name = "RedBuildBridgeAuto", group = "Prototype")
-public class RedBuildBridgeAuto extends MasqLinearOpMode {
+@Autonomous(name = "BlueBuildBridgeAuto", group = "Prototype")
+public class BlueBuildBridgeAuto extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
     @Override
@@ -31,24 +31,22 @@ public class RedBuildBridgeAuto extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.raiseFoundationHook();
-        sleep();
-        robot.strafe(35, 90, 1.5);
+        robot.foundationHook.raise();
+        robot.blockPusher.setPosition(1);
+        robot.strafe(40, Direction.LEFT, 1.5);
+        robot.drive(42, 0.25);
         robot.turnAbsolute(0);
-        robot.drive(35, 0.25);
-        robot.lowerFoundationHook();
+        robot.foundationHook.lower();
+        sleep(1);
+        robot.drive(55, 0.25 ,Direction.BACKWARD,3);
+        robot.foundationHook.raise();
         sleep();
-        robot.drive(50, 0.25 ,Direction.BACKWARD,3);
-        robot.raiseFoundationHook();
-        sleep();
-        robot.drive(2,Direction.BACKWARD);
-        robot.strafe(60, -90, 2);
-        robot.midFoundationHook();
-        sleep();
+        robot.strafe(60, Direction.RIGHT, 2);
         robot.turnAbsolute(0);
-        robot.drive(33);
-        robot.strafe(45, -90,2);
-        robot.turnAbsolute(0);
+        robot.foundationHook.mid();
+        robot.drive(15, 0.25);
+        robot.turnAbsolute(90);
+        robot.drive(15, 0.25);
 
     }
 }

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Blue;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -10,8 +10,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/15/2019
  */
-@Autonomous(name = "RedBuildWallAuto", group = "Prototype")
-public class RedBuildWallAuto extends MasqLinearOpMode {
+@Autonomous(name = "BlueBuildWallAuto", group = "Prototype")
+public class BlueBuildWallAuto extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
     @Override
@@ -31,25 +31,21 @@ public class RedBuildWallAuto extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.raiseFoundationHook();
-        sleep();
-        robot.strafe(30, 90, 1.5);
-        robot.turnAbsolute(0);
-        robot.drive(35, 0.25);
-        robot.lowerFoundationHook();
-        sleep();
+        robot.foundationHook.raise();
+        robot.blockPusher.setPosition(1);
+        robot.strafe(25, Direction.LEFT, 1.5);
+        robot.drive(40, 0.25);
+        robot.foundationHook.lower();
+        sleep(1);
         robot.drive(50, 0.25 ,Direction.BACKWARD,3);
-        robot.raiseFoundationHook();
+        robot.foundationHook.raise();
         sleep();
-        robot.drive(5,Direction.BACKWARD);
-        robot.strafe(50, -90, 2);
-        robot.midFoundationHook();
+        robot.strafe(70, Direction.RIGHT, 2);
+        robot.foundationHook.mid();
+        robot.turnAbsolute(0);
+        robot.drive(1.5, Direction.BACKWARD);
         sleep();
+        robot.strafe(30, Direction.RIGHT,2);
         robot.turnAbsolute(0);
-        robot.drive(3,Direction.BACKWARD);
-        robot.strafe(35, -90,2);
-        robot.turnAbsolute(0);
-        robot.drive(1);
-
     }
 }
