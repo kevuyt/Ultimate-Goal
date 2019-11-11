@@ -40,10 +40,10 @@ public class BlueBuildWallAuto extends MasqLinearOpMode {
         sleep();
         robot.strafe(70, Direction.RIGHT, 2);
         robot.midFoundationHook();
-        robot.turnAbsolute(5, Direction.RIGHT);
+        robot.turnAbsolute(0);
         robot.drive(1.5, Direction.BACKWARD);
         sleep();
         robot.strafe(30, Direction.RIGHT,2);
-        robot.turnAbsolute(7, Direction.RIGHT);
+        robot.turnAbsolute(0);
     }
 }
