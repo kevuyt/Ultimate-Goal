@@ -78,15 +78,13 @@ public abstract class MasqRobot {
             case LEFT:
                 angle = -90;
                 break;
-            case FORWARD:
-                angle = 0;
-                break;
             case RIGHT:
                 angle = 90;
                 break;
             case BACKWARD:
                 angle = 180;
                 break;
+            case FORWARD:
             default:
                 angle = 0;
                 break;
