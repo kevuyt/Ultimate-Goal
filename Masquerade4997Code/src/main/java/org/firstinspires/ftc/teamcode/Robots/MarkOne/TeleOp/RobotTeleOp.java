@@ -1,15 +1,17 @@
-package org.firstinspires.ftc.teamcode.Robots.Prototype;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Keval Kataria on 9/14/2019
  */
-@TeleOp(name = "Mechanum", group = "Prototype")
-public class Mechanum extends MasqLinearOpMode {
-    private PrototypeRobot robot = new PrototypeRobot();
+@TeleOp(name = "RobotTeleOp", group = "Prototype")
+public class RobotTeleOp extends MasqLinearOpMode {
+    private MarkOne robot = new MarkOne();
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -40,7 +42,7 @@ public class Mechanum extends MasqLinearOpMode {
 
         robot.blockPusher.setPosition(1);
         prevPusher = 1;
-        robot.midFoundationHook();
+        robot.foundationHook.mid();
 
         while(opModeIsActive()) {
             robot.MECH(controller1);
@@ -62,9 +64,9 @@ public class Mechanum extends MasqLinearOpMode {
             if (robot.lift.encoder.getInches() > 24) controller2.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             controller2.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             controller2.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
-            if (controller1.b()) robot.lowerFoundationHook();
-            else if (controller1.x()) robot.raiseFoundationHook();
-            else robot.midFoundationHook();
+            if (controller1.b()) robot.foundationHook.lower();
+            else if (controller1.x()) robot.foundationHook.raise();
+            else robot.foundationHook.mid();
             controller1.toggle(controller1.xOnPress(), robot.sideGrabber, prevSide);
 
             prevGrabber = robot.blockGrabber.getPosition();

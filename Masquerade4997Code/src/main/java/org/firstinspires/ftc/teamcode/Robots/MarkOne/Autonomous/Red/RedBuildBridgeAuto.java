@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode.Robots.Prototype;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Red;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -10,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @Autonomous(name = "RedBuildBridgeAuto", group = "Prototype")
 public class RedBuildBridgeAuto extends MasqLinearOpMode {
-    private PrototypeRobot robot = new PrototypeRobot();
+    private MarkOne robot = new MarkOne();
 
     @Override
     public void runLinearOpMode() throws InterruptedException{
@@ -29,19 +31,19 @@ public class RedBuildBridgeAuto extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.raiseFoundationHook();
+        robot.foundationHook.raise();
         sleep();
         robot.strafe(35, 90, 1.5);
         robot.turnAbsolute(0);
         robot.drive(35, 0.25);
-        robot.lowerFoundationHook();
+        robot.foundationHook.lower();
         sleep();
         robot.drive(50, 0.25 ,Direction.BACKWARD,3);
-        robot.raiseFoundationHook();
+        robot.foundationHook.raise();
         sleep();
         robot.drive(2,Direction.BACKWARD);
         robot.strafe(60, -90, 2);
-        robot.midFoundationHook();
+        robot.foundationHook.mid();
         sleep();
         robot.turnAbsolute(0);
         robot.drive(33);

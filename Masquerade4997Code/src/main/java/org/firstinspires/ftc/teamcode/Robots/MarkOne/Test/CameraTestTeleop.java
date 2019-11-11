@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode.Robots.Prototype;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -10,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 @TeleOp(name = "CameraTestTeleop", group = "Prototype")
 public class CameraTestTeleop extends MasqLinearOpMode {
-    private PrototypeRobot robot = new PrototypeRobot();
+    private MarkOne robot = new MarkOne();
 
     @Override
     public void runLinearOpMode() throws InterruptedException {

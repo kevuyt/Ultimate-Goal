@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode.Robots.Prototype;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -9,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "ConstantsProgrammer", group= "Prototype")
 public class ConstantsProgrammer extends MasqLinearOpMode {
-    private PrototypeRobot robot = new PrototypeRobot();
+    private MarkOne robot = new MarkOne();
     private double blockGrabberPosition = 0;
     private double blockRotaterPosition = 0;
     private double blockPusherPosition = 0;
@@ -40,9 +42,9 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             robot.blockRotater.setPosition(blockRotaterPosition);
             robot.blockPusher.setPosition(blockPusherPosition);
 
-            dash.create("Grabber Position: ", blockGrabberPosition, robot.blockGrabber.getPosition());
-            dash.create("Rotater Position: ", blockRotaterPosition, robot.blockRotater.getPosition());
-            dash.create("Pusher Position: ", blockPusherPosition, robot.blockPusher.getPosition());
+            dash.create("Grabber Position: ", blockGrabberPosition);
+            dash.create("Rotater Position: ", blockRotaterPosition);
+            dash.create("Pusher Position: ", blockPusherPosition);
             dash.update();
 
             controller1.update();
