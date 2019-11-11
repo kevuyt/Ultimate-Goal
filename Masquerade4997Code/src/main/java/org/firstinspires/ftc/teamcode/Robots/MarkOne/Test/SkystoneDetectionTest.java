@@ -1,8 +1,9 @@
-package org.firstinspires.ftc.teamcode.Robots.Prototype;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 import org.firstinspires.ftc.teamcode.SkystoneDetection.DogeDetector;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -10,10 +11,10 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 10/27/2019
  */
-@Autonomous(name = "SkystoneDetectionAutonomous", group = "Prototype")
+@Autonomous(name = "SkystoneDetectionTest", group = "Prototype")
 @Disabled
-public class SkystoneDetectionAutonomous extends MasqLinearOpMode {
-    private PrototypeRobot robot = new PrototypeRobot();
+public class SkystoneDetectionTest extends MasqLinearOpMode {
+    private MarkOne robot = new MarkOne();
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
