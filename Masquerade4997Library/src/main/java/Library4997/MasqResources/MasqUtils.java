@@ -61,7 +61,7 @@ public class MasqUtils {
     public HardwareMap getHardwareMap() {
         return linearOpMode.hardwareMap;
     }
-    public class KP {
+    /*public class KP {
         public static final double TURN = 0.015;
         public static final double TURN_POM = -0.1;
         public static final double ANGLE = 0.005;
@@ -93,7 +93,7 @@ public class MasqUtils {
         public static final double DRIVE = 1.0;
         public static final double MOTOR_TELEOP = 1.0;
         public static final double MOTOR_AUTONOMOUS = 1.00;
-    }
+    }*/
     public static double max(double... vals) {
         double max = Double.MIN_VALUE;
         for (double d: vals) if (max < d) max = d;

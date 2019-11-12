@@ -16,13 +16,12 @@ public class BlueBuildBridgeAuto extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException{
-        robot.mapHardware(hardwareMap);
+        robot.init(hardwareMap);
         robot.initializeAutonomous();
         robot.driveTrain.setClosedLoop(true);
         robot.lift.setClosedLoop(true);
         robot.lift.setKp(0.001);
 
-        robot.resetServos();
         while(!opModeIsActive()) {
             dash.create("Hello");
             dash.update();

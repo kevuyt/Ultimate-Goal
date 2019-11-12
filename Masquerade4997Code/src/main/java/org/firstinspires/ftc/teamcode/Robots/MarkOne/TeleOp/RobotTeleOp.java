@@ -17,13 +17,11 @@ public class RobotTeleOp extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
 
-        robot.mapHardware(hardwareMap);
+        robot.init(hardwareMap);
         robot.initializeTeleop();
         robot.driveTrain.setClosedLoop(true);
         robot.lift.setClosedLoop(true);
         robot.lift.setKp(0.001);
-
-        robot.resetServos();
 
         double prevGrabber = 1;
         double prevPusher;

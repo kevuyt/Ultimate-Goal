@@ -18,4 +18,10 @@ public class TestRobot extends MasqRobot {
         //intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.ORBITAL20,hardwareMap);
     }
 
+    @Override
+    public void init(HardwareMap hardwareMap) {
+        mapHardware(hardwareMap);
+
+    }
+
 }

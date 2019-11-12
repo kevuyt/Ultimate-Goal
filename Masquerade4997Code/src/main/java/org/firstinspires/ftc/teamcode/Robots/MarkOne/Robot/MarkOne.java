@@ -6,13 +6,16 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
 import org.firstinspires.ftc.teamcode.SkystoneDetection.DogeDetector;
 
+import Library4997.MasqControlSystems.MasqPID.MasqPIDConstants;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqResources.MasqUtilsv2;
 import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
+import Library4997.MasqWrappers.DashBoard;
 
 /**
  * Created by Archishmaan Peyyety on 2019-08-06.
@@ -35,11 +38,26 @@ public class MarkOne extends MasqRobot {
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         tracker = new MasqPositionTracker(lift, intake.motor1); //Replace motors when odometry is incorporating
-        tracker.initializeIMU(hardwareMap);
         foundationHook = new MarkOneFoundationHook(hardwareMap);
+        dash = DashBoard.getDash();
         //detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
         //sideGrabber = new MasqServo("sideGrabber", hardwareMap);
 
+
+    }
+
+    @Override
+    public void init(HardwareMap hardwareMap) {
+        mapHardware(hardwareMap);
+        resetServos();
+        scaleServos();
+        tracker.initializeIMU(hardwareMap);
+        MasqUtilsv2.driveConstants = new MasqPIDConstants(3,0,0);
+        MasqUtilsv2.angleConstants = new MasqPIDConstants(0.005,0,0);
+        MasqUtilsv2.turnConstants = new MasqPIDConstants(0.015,0,0);
+    }
+
+    private void scaleServos() {
         blockPusher.scaleRange(0, 0.5);
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.7);
@@ -47,7 +65,7 @@ public class MarkOne extends MasqRobot {
         lift.encoder.setWheelDiameter(1);
     }
 
-    public void resetServos() {
+    private void resetServos() {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
