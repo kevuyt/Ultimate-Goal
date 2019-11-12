@@ -1,7 +1,6 @@
 package Library4997.MasqDriveTrains;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.ArrayList;
@@ -34,13 +33,12 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, motorModel);
         rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, motorModel);
     }
-    //public MasqDriveTrain(HardwareMap hardwareMap, MasqMotorModel)
-
 
     public void resetEncoders () {
         leftDrive.resetEncoders();
         rightDrive.resetEncoders();
     }
+
     public void setVelocity(double leftPower, double rightPower) {
         leftDrive.setVelocity(leftPower);
         rightDrive.setVelocity(rightPower);
@@ -54,9 +52,9 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.setPower(power);
         rightDrive.setPower(power);
     }
-    public void setPower(double power, double p2) {
-        leftDrive.setPower(power);
-        rightDrive.setPower(p2);
+    public void setPower(double leftPower, double rightPower) {
+        leftDrive.setPower(leftPower);
+        rightDrive.setPower(rightPower);
     }
 
 
@@ -81,7 +79,7 @@ public class MasqDriveTrain implements MasqHardware {
         rightDrive.runUsingEncoder();
     }
     public void stopDriving() {
-        setVelocity(0,0);
+        setVelocity(0);
     }
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();

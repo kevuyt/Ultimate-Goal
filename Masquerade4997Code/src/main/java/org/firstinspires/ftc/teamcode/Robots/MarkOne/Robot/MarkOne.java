@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -25,7 +24,6 @@ public class MarkOne extends MasqRobot {
     public MarkOneFoundationHook foundationHook;
     public MasqMotor  lift;
     public MasqMotorSystem intake;
-    public BNO055IMU imu;
     public DogeDetector detector;
 
     @Override
@@ -36,16 +34,16 @@ public class MarkOne extends MasqRobot {
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
-        imu = initializeIMU(imu, hardwareMap);
+        imu = initializeIMU(hardwareMap);
         tracker = new MasqPositionTracker(lift, intake.motor1, imu); //Replace motors when odometry is incorporating
         foundationHook = new MarkOneFoundationHook(hardwareMap);
-        //detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap); KEVAL I COMMENTED THIS OUT
-        sideGrabber = new MasqServo("sideGrabber", hardwareMap);
+        //detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
+        //sideGrabber = new MasqServo("sideGrabber", hardwareMap);
 
         blockPusher.scaleRange(0, 0.5);
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.7);
-        sideGrabber.scaleRange(0, 1);
+        //sideGrabber.scaleRange(0, 1);
         lift.encoder.setWheelDiameter(1);
     }
 

@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -17,8 +18,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
 
         robot.init(hardwareMap);
-
-        robot.initializeTeleop();
+        robot.setPIDConstantsTele();
         robot.driveTrain.setClosedLoop(true);
         robot.lift.setClosedLoop(true);
         robot.lift.setKp(0.001);
@@ -61,13 +61,11 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else if (controller2.leftTriggerPressed()) robot.lift.setVelocity(-controller2.leftTrigger());
             else robot.lift.setVelocity(0);
 
-            if (robot.lift.encoder.getInches() > 24) controller2.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
-            controller2.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
-            controller2.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
-            if (controller1.b()) robot.foundationHook.lower();
-            else if (controller1.x()) robot.foundationHook.raise();
-            else robot.foundationHook.mid();
-            controller1.toggle(controller1.xOnPress(), robot.sideGrabber, prevSide);
+            if (robot.lift.encoder.getInches() > 24) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
+            MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
+            MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
+            robot.foundationHook.DriverControl(controller1);
+            MasqUtils.toggle(controller2.rightBumper() || controller2.leftBumper(), robot.sideGrabber, prevSide);
 
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();

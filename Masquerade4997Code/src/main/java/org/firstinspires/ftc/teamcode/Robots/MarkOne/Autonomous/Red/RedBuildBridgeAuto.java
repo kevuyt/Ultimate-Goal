@@ -17,9 +17,8 @@ public class RedBuildBridgeAuto extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException{
         robot.init(hardwareMap);
-
+        robot.setPIDConstantsAuto();
         robot.driveTrain.setClosedLoop(true);
-        robot.initializeAutonomous();
         robot.lift.setClosedLoop(true);
         robot.lift.setKp(0.001);
 

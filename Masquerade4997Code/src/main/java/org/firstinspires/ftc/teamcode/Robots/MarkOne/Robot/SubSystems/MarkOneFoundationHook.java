@@ -21,7 +21,9 @@ public class MarkOneFoundationHook implements MasqSubSystem {
 
     @Override
     public void DriverControl(MasqController controller) {
-
+        if(controller.b()) lower();
+        else if (controller.x()) raise();
+        else mid();
     }
     public void lower() {
         foundationHook.servo1.setPosition(1);
