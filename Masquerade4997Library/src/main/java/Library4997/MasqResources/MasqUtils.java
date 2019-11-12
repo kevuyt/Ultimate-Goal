@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Library4997.MasqResources.MasqHelpers.API_KEYS;
+import Library4997.MasqServos.MasqServo;
+import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 
@@ -57,28 +59,29 @@ public class MasqUtils implements API_KEYS {
     public class KP {
         public static final double TURN = 0.015;
         public static final double TURN_POM = -0.1;
-        public static final double DRIVE_ANGULAR = 0.005;
-        public static final double DRIVE_ENCODER = 3;
-        public static final double STRAFE_ANGULAR = 0.005;
+        public static final double ANGLE = 0.005;
+        public static final double DRIVE = 3;
         public static final double PATH = .01;
-        public static final double MOTOR_TELEOP = 0.002;
-        public static final double MOTOR_AUTONOMOUS = 0.002;
+        public static final double VELOCITY_TELE = 0.002;
+        public static final double VELOCITY_AUTO = 0.002;
     }
     public class KI {
         public static final double PATH = 0.0;
         public static final double TURN = 0.0;
+        public static final double ANGLE = 0.000;
         public static final double TURN_POM = 0.000005;
         public static final double DRIVE = 0.0;
-        public static final double MOTOR_TELEOP = 0.000;
-        public static final double MOTOR_AUTONOMOUS = 0.00;
+        public static final double VELOCITY_TELE = 0.000;
+        public static final double VELOCITY_AUTO = 0.002;
     }
     public class KD {
         public static final double PATH = .0;
         public static final double TURN = 0.0;
+        public static final double ANGLE = 0.000;
         public static final double TURN_POM = -0.00;
         public static final double DRIVE = 0.0;
-        public static final double MOTOR_TELEOP = 0.000;
-        public static final double MOTOR_AUTONOMOUS = 0.00;
+        public static final double VELOCITY_TELE = 0.000;
+        public static final double VELOCITY_AUTO = 0.002;
     }
     public class ID {
         public static final double TURN = 1.0;
@@ -99,5 +102,35 @@ public class MasqUtils implements API_KEYS {
     public double lowPass (double upperThresh, double value, double prev) {
         if (value < upperThresh) return prev;
         return value;
+    }
+    public static void toggle(boolean button, MasqServo servo, double prevPos) {
+        if (MasqUtils.tolerance(servo.getPosition(), prevPos,0.01) && button) {
+            if (MasqUtils.tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
+            else if (MasqUtils.tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
+        }
+    }
+    public static void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
+        for (MasqServo servo : servoSystem.servos) {
+            toggle(button, servo, prevPos);
+        }
+    }
+    public static void toggle(boolean button, MasqServo servo, double prevPos, double pos1, double pos2) {
+        if (MasqUtils.tolerance(servo.getPosition(), prevPos, 0.01) && button) {
+            if (MasqUtils.tolerance(servo.getPosition(), pos1, 0.01)) servo.setPosition(pos2);
+            else if (MasqUtils.tolerance(servo.getPosition(), pos2, 0.01)) servo.setPosition(pos1);
+        }
+    }
+    public static void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {
+        toggle(button, servo, prePos);
+        if (button) {
+            Thread thread = new Thread(action);
+            thread.start();
+        }
+    }
+    public void toggle (boolean button, double current, double prev, double value1, double value2, Runnable action1, Runnable action2) {
+        if (button && MasqUtils.tolerance(current, prev, 0.01))  {
+            if (current == value1) new Thread(action1).start();
+            else if (current == value2) new Thread (action2).start();
+        }
     }
 }

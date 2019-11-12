@@ -17,7 +17,7 @@ public class MasqPath {
     private List<MasqPoint> wayPoints;
     private MasqVector end;
     private MasqVector carrot;
-    public MasqPath (List<MasqPoint> wayPoints, double lookAheadDistance) {
+    public MasqPath (double lookAheadDistance, List<MasqPoint> wayPoints) {
         this.lookAheadDistance = lookAheadDistance;
         this.wayPoints = wayPoints;
         end = new MasqVector(wayPoints.get(1).getX() - wayPoints.get(0).getX(),

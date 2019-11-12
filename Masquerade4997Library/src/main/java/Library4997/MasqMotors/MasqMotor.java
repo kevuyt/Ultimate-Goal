@@ -50,9 +50,9 @@ public class MasqMotor implements MasqHardware {
     private Runnable stallAction = () -> {
 
     },
-    unStalledAction = () -> {
+            unStalledAction = () -> {
 
-    };
+            };
     private double minPosition, maxPosition;
     private boolean
             limitDetection,
@@ -290,13 +290,13 @@ public class MasqMotor implements MasqHardware {
     public void enableStallDetection() {
         setStallDetection(true);
         Runnable mainRunnable = () -> { while (opModeIsActive()) {
-                    stalled = getStalled();
-                    if (getStallDetection()) {
-                        if (stalled) stallAction.run();
-                        else unStalledAction.run();
-                    }
-                    MasqUtils.sleep(100);
-                }};
+            stalled = getStalled();
+            if (getStallDetection()) {
+                if (stalled) stallAction.run();
+                else unStalledAction.run();
+            }
+            MasqUtils.sleep(100);
+        }};
         Thread thread = new Thread(mainRunnable);
         thread.start();
     }

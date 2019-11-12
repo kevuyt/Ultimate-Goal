@@ -190,7 +190,7 @@ public class MasqVuforia implements MasqHardware {
     public String[] getDash() {
         return new String[]{
                 getName() +
-                "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),
+                        "TargetOneSeen" + Boolean.toString(isSeen(targetOne)),
                 "TargetTwoSeen" + Boolean.toString(isSeen(targetTwo)),
                 "TargetThreeSeen" + Boolean.toString(isSeen(targetThree)),
                 "TargetOnePosition" + position(targetOne),

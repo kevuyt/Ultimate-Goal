@@ -17,7 +17,7 @@ public class MasqRobot_Tests implements Tests {
         @Override
         public void init(HardwareMap hardwareMap) {
             driveTrain = new MasqMechanumDriveTrain(hardwareMap);
-            imu = initializeIMU(imu, hardwareMap);
+            imu = initializeIMU(hardwareMap);
             tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1,imu);
         }
     };
