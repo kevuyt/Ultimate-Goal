@@ -1,12 +1,11 @@
 package Library4997.MasqResources;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDConstants;
-import Library4997.MasqResources.MasqHelpers.API_KEYS;
 
 /**
  * Created by Keval Kataria on 10/11/2019
  */
-public class MasqUtilsv2 implements API_KEYS {
+public class MasqUtilsv2 {
     private static  MasqPIDConstants turnConstants;
     private static MasqPIDConstants driveConstants;
     private static MasqPIDConstants velocityConstants;
