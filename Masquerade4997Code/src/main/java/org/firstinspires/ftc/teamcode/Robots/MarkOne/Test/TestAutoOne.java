@@ -15,7 +15,7 @@ public class TestAutoOne extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        robot.init(hardwareMap);
+        robot.mapHardware(hardwareMap);
         robot.initializeAutonomous();
         robot.driveTrain.setClosedLoop(true);
 

@@ -27,15 +27,15 @@ public class MarkOne extends MasqRobot {
     public DogeDetector detector;
 
     @Override
-    public void init(HardwareMap hardwareMap) {
+    public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap);
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
-        imu = initializeIMU(hardwareMap);
-        tracker = new MasqPositionTracker(lift, intake.motor1, imu); //Replace motors when odometry is incorporating
+        tracker = new MasqPositionTracker(lift, intake.motor1); //Replace motors when odometry is incorporating
+        tracker.initializeIMU(hardwareMap);
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         //detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
         //sideGrabber = new MasqServo("sideGrabber", hardwareMap);

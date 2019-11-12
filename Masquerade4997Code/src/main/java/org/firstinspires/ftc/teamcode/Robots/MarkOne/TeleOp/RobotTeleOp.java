@@ -17,8 +17,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
 
-        robot.init(hardwareMap);
-        robot.setPIDConstantsTele();
+        robot.mapHardware(hardwareMap);
+        robot.initializeTeleop();
         robot.driveTrain.setClosedLoop(true);
         robot.lift.setClosedLoop(true);
         robot.lift.setKp(0.001);
@@ -47,10 +47,10 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             robot.MECH(controller1);
 
-            if (controller1.rightBumper() || controller1.leftBumper()) robot.setMultipliers(0.5);
+            if (controller1.rightBumper() || controller1.leftBumper()) robot.setMultipliers(0.707);
             else {
-                robot.setSpeedMultiplier(1);
-                robot.setTurnMultiplier(0.8);
+                robot.setSpeedMultiplier(1.414);
+                robot.setTurnMultiplier(1.414);
             }
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-0.8);

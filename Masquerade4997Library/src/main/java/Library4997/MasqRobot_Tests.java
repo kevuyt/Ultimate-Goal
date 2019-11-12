@@ -15,7 +15,7 @@ public class MasqRobot_Tests implements Tests {
         BNO055IMU imu;
 
         @Override
-        public void init(HardwareMap hardwareMap) {
+        public void mapHardware(HardwareMap hardwareMap) {
             driveTrain = new MasqMechanumDriveTrain(hardwareMap);
             imu = initializeIMU(hardwareMap);
             tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1,imu);
@@ -33,7 +33,7 @@ public class MasqRobot_Tests implements Tests {
 
     @Override
     public void RunAll(HardwareMap hardwareMap) {
-        robot.init(hardwareMap);
+        robot.mapHardware(hardwareMap);
         driveTest();
     }
 }

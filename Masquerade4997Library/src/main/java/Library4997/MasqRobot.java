@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
+import Library4997.MasqControlSystems.MasqPID.MasqDrivePIDController;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
@@ -14,6 +15,7 @@ import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqResources.MasqUtilsv2;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
@@ -24,30 +26,18 @@ import Library4997.MasqWrappers.MasqPredicate;
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
  */
 public abstract class MasqRobot {
-    public abstract void init(HardwareMap hardwareMap);
+    public abstract void mapHardware(HardwareMap hardwareMap);
     private int timeout = 30;
     public BNO055IMU imu;
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
-    public double speedMultiplier = 1;
-    public double turnMultiplier = 1;
+    public double speedMultiplier = 1.414;
+    public double turnMultiplier = 1.414;
     private MasqClock timeoutClock = new MasqClock();
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
 
-    public BNO055IMU initializeIMU(HardwareMap hardwareMap) {
-        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.mode = BNO055IMU.SensorMode.IMU;
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.calibrationDataFile = "BNO055IMUCalibration.json";
-        parameters.loggingEnabled      = true;
-        parameters.loggingTag          = "IMU";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
-        imu.initialize(parameters);
-        return imu;
-    }
+
 
     public void strafe (double distance, double angle, double timeout) {
         MasqClock timeoutTimer = new MasqClock();
@@ -105,8 +95,10 @@ public abstract class MasqRobot {
         double clicksRemaining;
         double angularError, prevAngularError = 0, angularIntegral = 0, angularDerivative,
                 powerAdjustment, power, leftPower = 0, rightPower = 0, maxPower, timeChange;
+        MasqDrivePIDController driveController = new MasqDrivePIDController(MasqUtilsv2.driveConstants.kp);
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
+            clicksRemaining = driveController.getOutput(clicksRemaining/targetClicks);
             power = ((clicksRemaining / targetClicks) * MasqUtils.KP.DRIVE) * direction.value * speed;
             power = Range.clip(power, -1.0, +1.0);
             timeChange = loopTimer.milliseconds();
@@ -531,12 +523,12 @@ public abstract class MasqRobot {
         MECH(c, Direction.FORWARD, false);
     }
 
-    public void setPIDConstantsTele(){
+    public void initializeTeleop(){
         driveTrain.setKp(MasqUtils.KP.VELOCITY_TELE);
         driveTrain.setKi(MasqUtils.KI.VELOCITY_TELE);
         driveTrain.setKd(MasqUtils.KD.VELOCITY_TELE);
     }
-    public void setPIDConstantsAuto() {
+    public void initializeAutonomous() {
         driveTrain.setKp(MasqUtils.KP.VELOCITY_AUTO);
         driveTrain.setKi(MasqUtils.KI.VELOCITY_AUTO);
         driveTrain.setKd(MasqUtils.KD.VELOCITY_AUTO);

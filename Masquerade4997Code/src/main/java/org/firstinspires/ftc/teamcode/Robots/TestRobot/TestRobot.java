@@ -13,7 +13,7 @@ import Library4997.MasqRobot;
 public class TestRobot extends MasqRobot {
     public MasqMotorSystem intake;
     @Override
-    public void init(HardwareMap hardwareMap) {
+    public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, MasqMotorModel.ORBITAL20);
         //intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.ORBITAL20,hardwareMap);
     }

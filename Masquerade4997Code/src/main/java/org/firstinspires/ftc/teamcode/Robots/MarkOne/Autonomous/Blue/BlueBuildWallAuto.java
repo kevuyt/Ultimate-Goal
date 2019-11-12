@@ -16,8 +16,8 @@ public class BlueBuildWallAuto extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException{
-        robot.init(hardwareMap);
-        robot.setPIDConstantsAuto();
+        robot.mapHardware(hardwareMap);
+        robot.initializeAutonomous();
         robot.driveTrain.setClosedLoop(true);
         robot.lift.setClosedLoop(true);
         robot.lift.setKp(0.001);
