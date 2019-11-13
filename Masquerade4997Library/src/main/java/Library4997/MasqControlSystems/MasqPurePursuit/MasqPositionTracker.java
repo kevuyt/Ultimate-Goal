@@ -1,18 +1,12 @@
 package Library4997.MasqControlSystems.MasqPurePursuit;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-
-import java.util.Locale;
 
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqSensors.MasqAdafruitIMU;
 
 /**
  * Created by Archishmaan Peyyety on 8/9/18.
@@ -21,31 +15,30 @@ import Library4997.MasqResources.MasqHelpers.MasqHardware;
 
 public class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, ySystem;
-    public BNO055IMU imu;
+    public MasqAdafruitIMU imu;
     private double globalX = 0, globalY = 0, prevX = 0, prevY = 0;
     private Orientation angles;
     private double zeroPos = 0;
+    private String imuName;
 
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
+        imuName = "imu";
+        reset();
+    }
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, String imuName) {
+        this.xSystem = xSystem;
+        this.ySystem = ySystem;
+        this.imuName = imuName;
         reset();
     }
     public double getHeading () {
-        return getRelativeYaw();
+        return imu.getRelativeYaw();
     }
 
     public void initializeIMU(HardwareMap hardwareMap) {
-        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.mode = BNO055IMU.SensorMode.IMU;
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.calibrationDataFile = "BNO055IMUCalibration.json";
-        parameters.loggingEnabled      = true;
-        parameters.loggingTag          = "IMU";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
-        imu.initialize(parameters);
+        imu = new MasqAdafruitIMU(imuName, hardwareMap);
     }
     public void updateSystem () {
         double deltaX = (-xSystem.getCurrentPosition() - prevX);
@@ -73,40 +66,31 @@ public class MasqPositionTracker implements MasqHardware {
     }
 
     public double getAbsoluteHeading() {
-        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        return formatAngle(angles.angleUnit, angles.firstAngle);
+        return imu.getAbsoluteHeading();
     }
     public double getRelativeYaw() {
-        return getAbsoluteHeading() - zeroPos;
+        return imu.getRelativeYaw();
     }
     public void resetIMU(){
-        zeroPos = getAbsoluteHeading();
+        imu.reset();
     }
     public double getPitch() {
-        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        return formatAngle(angles.angleUnit, angles.thirdAngle);
+        return imu.getPitch();
     }
     public double getRoll() {
-        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        return formatAngle(angles.angleUnit, angles.secondAngle);
+        return imu.getRoll();
     }
 
     public double x () {
-        return imu.getPosition().x;
+        return imu.x();
     }
     public double y () {
-        return imu.getPosition().y;
+        return imu.y();
     }
     public double z () {
-        return imu.getPosition().z;
+        return imu.z();
     }
 
-    Double formatAngle(AngleUnit angleUnit, double angle) {
-        return Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle)));
-    }
-    String formatDegrees(double degrees){
-        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
-    }
 
     @Override
     public String getName() {

@@ -28,6 +28,11 @@ public class MasqPIDController {
     public MasqPIDController(double kp) {
         this.kp = kp;
     }
+    public MasqPIDController(MasqPIDConstants constants) {
+        kp = constants.kp;
+        ki = constants.ki;
+        kd = constants.kd;
+    }
 
     //For testing
     public double getOutput (double error, double timeChange) {

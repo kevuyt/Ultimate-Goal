@@ -9,9 +9,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-import java.util.Locale;
-
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+
+import static Library4997.MasqResources.MasqUtils.formatAngle;
 
 
 /**
@@ -24,6 +24,7 @@ public class MasqAdafruitIMU implements MasqHardware {
     double zeroPos = 0;
     public MasqAdafruitIMU(String name, HardwareMap hardwareMap) {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.mode = BNO055IMU.SensorMode.IMU;
         parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
         parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         parameters.calibrationDataFile = "BNO055IMUCalibration.json";
@@ -33,11 +34,6 @@ public class MasqAdafruitIMU implements MasqHardware {
         imu = hardwareMap.get(BNO055IMU.class, name);
         imu.initialize(parameters);
 
-    }
-    public double adjustAngle(double angle) {
-        while (angle > 180) angle -= 360;
-        while (angle <= -180) angle += 360;
-        return angle;
     }
     public double getAbsoluteHeading() {
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
@@ -68,12 +64,6 @@ public class MasqAdafruitIMU implements MasqHardware {
         return imu.getPosition().z;
     }
 
-    Double formatAngle(AngleUnit angleUnit, double angle) {
-        return Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle)));
-    }
-    String formatDegrees(double degrees){
-        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
-    }
     public String getName() {
         return "IMU";
     }

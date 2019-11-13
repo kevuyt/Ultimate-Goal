@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
 import org.firstinspires.ftc.teamcode.SkystoneDetection.DogeDetector;
 
-import Library4997.MasqControlSystems.MasqPID.MasqPIDConstants;
+import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
@@ -49,12 +49,13 @@ public class MarkOne extends MasqRobot {
     @Override
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
-        resetServos();
         scaleServos();
+        resetServos();
+        lift.encoder.setWheelDiameter(1);
         tracker.initializeIMU(hardwareMap);
-        MasqUtilsv2.driveConstants = new MasqPIDConstants(3,0,0);
-        MasqUtilsv2.angleConstants = new MasqPIDConstants(0.005,0,0);
-        MasqUtilsv2.turnConstants = new MasqPIDConstants(0.015,0,0);
+        MasqUtilsv2.driveController = new MasqPIDController(3,0,0);
+        MasqUtilsv2.angleController = new MasqPIDController(0.005,0,0);
+        MasqUtilsv2.turnController = new MasqPIDController(0.015,0,0);
     }
 
     private void scaleServos() {
@@ -62,7 +63,6 @@ public class MarkOne extends MasqRobot {
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.7);
         //sideGrabber.scaleRange(0, 1);
-        lift.encoder.setWheelDiameter(1);
     }
 
     private void resetServos() {

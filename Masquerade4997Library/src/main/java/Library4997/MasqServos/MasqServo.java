@@ -66,5 +66,3 @@ public class MasqServo implements MasqHardware{
         };
     }
 }
-
-

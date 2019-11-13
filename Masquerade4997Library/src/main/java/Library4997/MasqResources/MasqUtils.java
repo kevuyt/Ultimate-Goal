@@ -3,6 +3,9 @@ package Library4997.MasqResources;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
+import java.util.Locale;
 
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
@@ -109,9 +112,9 @@ public class MasqUtils {
         return value;
     }
     public static void toggle(boolean button, MasqServo servo, double prevPos) {
-        if (MasqUtils.tolerance(servo.getPosition(), prevPos,0.01) && button) {
-            if (MasqUtils.tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
-            else if (MasqUtils.tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
+        if (tolerance(servo.getPosition(), prevPos,0.01) && button) {
+            if (tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
+            else if (tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
         }
     }
     public static void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
@@ -120,9 +123,9 @@ public class MasqUtils {
         }
     }
     public static void toggle(boolean button, MasqServo servo, double prevPos, double pos1, double pos2) {
-        if (MasqUtils.tolerance(servo.getPosition(), prevPos, 0.01) && button) {
-            if (MasqUtils.tolerance(servo.getPosition(), pos1, 0.01)) servo.setPosition(pos2);
-            else if (MasqUtils.tolerance(servo.getPosition(), pos2, 0.01)) servo.setPosition(pos1);
+        if (tolerance(servo.getPosition(), prevPos, 0.01) && button) {
+            if (tolerance(servo.getPosition(), pos1, 0.01)) servo.setPosition(pos2);
+            else if (tolerance(servo.getPosition(), pos2, 0.01)) servo.setPosition(pos1);
         }
     }
     public static void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {
@@ -133,9 +136,21 @@ public class MasqUtils {
         }
     }
     public void toggle (boolean button, double current, double prev, double value1, double value2, Runnable action1, Runnable action2) {
-        if (button && MasqUtils.tolerance(current, prev, 0.01))  {
+        if (button && tolerance(current, prev, 0.01))  {
             if (current == value1) new Thread(action1).start();
             else if (current == value2) new Thread (action2).start();
         }
+    }
+    public void toggle(boolean button, MasqServo servo, double prevPos, double tolerance) {
+        if (button && tolerance(servo.getPosition(), prevPos, tolerance)) {
+            if (servo.getPosition() == 0) servo.setPosition(1);
+            else if (servo.getPosition() ==1) servo.setPosition(0);
+        }
+    }
+    public static Double formatAngle(AngleUnit angleUnit, double angle) {
+        return Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle)));
+    }
+    public static String formatDegrees(double degrees){
+        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
 }

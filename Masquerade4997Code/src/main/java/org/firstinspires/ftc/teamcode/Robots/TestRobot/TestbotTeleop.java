@@ -12,19 +12,19 @@ public class TestbotTeleop extends MasqLinearOpMode {
     private TestRobot robot = new TestRobot();
     @Override
     public void runLinearOpMode() {
-        robot.mapHardware(hardwareMap);
-        robot.initializeTeleop();
-        robot.driveTrain.setClosedLoop(true);
+        robot.init(hardwareMap);
+        //robot.initializeTeleop();
+        //robot.driveTrain.setClosedLoop(true);
         while (!opModeIsActive()) {
             dash.create("Big Brain Time");
             dash.update();
         }
         waitForStart();
         while (opModeIsActive()) {
-            robot.MECH(controller1);
-            if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-1);
+            //robot.MECH(controller1);
+            /*if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-1);
             else if (controller1.rightTriggerPressed()) robot.intake.setVelocity(-1);
-            else robot.intake.setVelocity(0);
+            else robot.intake.setVelocity(0);*/
 
             controller1.update();
         }
