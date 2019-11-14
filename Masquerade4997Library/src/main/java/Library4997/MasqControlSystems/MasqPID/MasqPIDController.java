@@ -44,7 +44,7 @@ public class MasqPIDController {
     public double getOutput (double error) {
         return getOutput(error,clock.milliseconds()/1e3);
     }
-    
+
     public double[] getConstants() {
         return new double[]{kp, ki, kd};
     }
