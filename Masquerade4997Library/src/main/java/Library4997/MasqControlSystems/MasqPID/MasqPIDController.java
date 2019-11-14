@@ -2,7 +2,7 @@ package Library4997.MasqControlSystems.MasqPID;
 
 import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqControlSystems.MasqIntegrator;
+import Library4997.MasqResources.MasqMath.MasqIntegrator;
 import Library4997.MasqSensors.MasqClock;
 
 /**

@@ -1,4 +1,4 @@
-package Library4997.MasqControlSystems;
+package Library4997.MasqResources.MasqMath;
 
 /**
  * Created by Archishmaan Peyyety on 9/17/18.
