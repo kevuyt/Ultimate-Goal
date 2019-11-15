@@ -31,11 +31,6 @@ public class MasqPIDController {
     public MasqPIDController(double kp) {
         this.kp = kp;
     }
-    public MasqPIDController(MasqPIDConstants constants) {
-        kp = constants.kp;
-        ki = constants.ki;
-        kd = constants.kd;
-    }
 
     //For testing
     public double getOutput (double error, double timeChange) {
@@ -58,6 +53,12 @@ public class MasqPIDController {
         return new double[]{kp, ki, kd};
     }
 
+    public void setConstants(int[] constants) {
+        this.kp = constants[0];
+        this.ki = constants[1];
+        this.kd = constants[2];
+    }
+
     public void setConstants(double kp, double ki, double kd) {
         this.kp = kp;
         this.ki = ki;
@@ -74,10 +75,6 @@ public class MasqPIDController {
 
     public void setKd(double kd) {
         this.kd = kd;
-    }
-
-    public MasqClock getClock() {
-        return clock;
     }
 
     public double getKp() {
