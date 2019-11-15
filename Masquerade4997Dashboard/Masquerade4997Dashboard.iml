@@ -98,5 +98,9 @@
     <orderEntry type="module" module-name="FtcRobotController" />
     <orderEntry type="module" module-name="FtcRobotController" />
     <orderEntry type="module" module-name="FtcRobotController" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="module" module-name="FtcRobotController" />
+>>>>>>> 0e46d6762a23bc02e9dd9c456ec4b914004c9760
   </component>
 </module>

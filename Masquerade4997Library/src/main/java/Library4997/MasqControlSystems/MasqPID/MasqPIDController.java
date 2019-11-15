@@ -2,7 +2,7 @@ package Library4997.MasqControlSystems.MasqPID;
 
 import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqControlSystems.MasqIntegrator;
+import Library4997.MasqResources.MasqMath.MasqIntegrator;
 import Library4997.MasqSensors.MasqClock;
 
 /**
@@ -13,7 +13,6 @@ public class MasqPIDController {
     private MasqIntegrator integrator = new MasqIntegrator();
     private double kp, ki = 0, kd = 0, prevError = 0, prevD = 0;
     private double deriv, timeChange = 0;
-    private double error, current, target;
     private MasqClock clock = new MasqClock();
 
     public MasqPIDController(double kp, double ki, double kd) {
@@ -50,16 +49,15 @@ public class MasqPIDController {
     public double getOutput (double error) {
         return getOutput(error,clock.milliseconds()/1e3);
     }
-    public double getKp() {
-        return kp;
+
+    public double[] getConstants() {
+        return new double[]{kp, ki, kd};
     }
 
-    public double getKi() {
-        return ki;
-    }
-
-    public double getKd() {
-        return kd;
+    public void setConstants(double kp, double ki, double kd) {
+        this.kp = kp;
+        this.ki = ki;
+        this.kd = kd;
     }
 
     public void setKp(double kp) {
@@ -72,34 +70,6 @@ public class MasqPIDController {
 
     public void setKd(double kd) {
         this.kd = kd;
-    }
-
-    public double getError() {
-        return error;
-    }
-
-    public double getCurrent() {
-        return current;
-    }
-
-    public double getTarget() {
-        return target;
-    }
-
-    public double getPrevError() {
-        return prevError;
-    }
-
-    public double getPrevD() {
-        return prevD;
-    }
-
-    public double getDeriv() {
-        return deriv;
-    }
-
-    public double getTimeChange() {
-        return timeChange;
     }
 
     public MasqClock getClock() {
