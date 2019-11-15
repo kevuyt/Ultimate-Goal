@@ -37,6 +37,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
         robot.blockPusher.setPosition(1);
         prevPusher = 1;
+
         robot.foundationHook.mid();
 
         while(opModeIsActive()) {
@@ -73,8 +74,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             controller1.update();
             controller2.update();
-
-
         }
     }
 }

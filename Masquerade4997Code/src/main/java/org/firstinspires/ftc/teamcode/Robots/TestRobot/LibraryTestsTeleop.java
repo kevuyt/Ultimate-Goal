@@ -19,6 +19,7 @@ public class LibraryTestsTeleop extends MasqLinearOpMode {
             dash.update();
         }
         waitForStart();
+
         //No Drivetrain on robot so can't run tests
         /*MasqMotor_Tests masqMotorTests = new MasqMotor_Tests(robot.driveTrain.leftDrive.motor1) {
             @Override
@@ -39,4 +40,3 @@ public class LibraryTestsTeleop extends MasqLinearOpMode {
         dash.update();*/
     }
 }
-

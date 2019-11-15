@@ -25,6 +25,7 @@ public class MarkOneFoundationHook implements MasqSubSystem {
         else if (controller.x()) raise();
         else mid();
     }
+
     public void lower() {
         foundationHook.servo1.setPosition(1);
         foundationHook.servo2.setPosition(0);
@@ -37,11 +38,11 @@ public class MarkOneFoundationHook implements MasqSubSystem {
         foundationHook.servo1.setPosition(0.2);
         foundationHook.servo2.setPosition(0.8);
     }
+
     @Override
     public String getName() {
         return "FoundatonHook";
     }
-
     @Override
     public MasqHardware[] getComponents() {
         return new MasqHardware[0];

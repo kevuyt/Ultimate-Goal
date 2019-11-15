@@ -84,6 +84,4 @@ public class MarkOne extends MasqRobot {
     public void runStoneRight(HardwareMap hardwareMap) {
         //Collect and place on foundation third and sixth blocks
     }
-
-
 }

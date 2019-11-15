@@ -79,17 +79,4 @@ public class MasqPIDController {
     public MasqClock getClock() {
         return clock;
     }
-
-    public double getKp() {
-        return kp;
-    }
-
-    public double getKi() {
-        return ki;
-    }
-
-    public double getKd() {
-        return kd;
-    }
-
 }

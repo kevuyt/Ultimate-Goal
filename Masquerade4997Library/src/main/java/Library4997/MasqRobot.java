@@ -199,13 +199,13 @@ public abstract class MasqRobot {
         sleep(sleepTime);
     }
     public void turnRelative(double angle, Direction direction, double timeOut, double sleepTime, double kp, double ki) {
-        turnRelative(angle, direction, timeOut, sleepTime, kp, ki, turnController.getKd(), true, true);
+        turnRelative(angle, direction, timeOut, sleepTime, kp, ki, turnController.getConstants()[2], true, true);
     }
     public void turnRelative(double angle, Direction direction, double timeOut, double sleepTime, double kp) {
-        turnRelative(angle, direction, timeOut, sleepTime, kp, turnController.getKi());
+        turnRelative(angle, direction, timeOut, sleepTime, kp, turnController.getConstants()[1]);
     }
     public void turnRelative(double angle, Direction direction, double timeOut, double sleepTime) {
-        turnRelative(angle, direction, timeOut, sleepTime, turnController.getKp());
+        turnRelative(angle, direction, timeOut, sleepTime, turnController.getConstants()[0]);
     }
     public void turnRelative(double angle, Direction direction, double timeout) {
         turnRelative(angle, direction, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
@@ -215,7 +215,7 @@ public abstract class MasqRobot {
     }
     public void turnRelative(double angle, Direction direction, boolean left, boolean right)  {
         turnRelative(angle, direction, MasqUtils.DEFAULT_TIMEOUT, MasqUtils.DEFAULT_SLEEP_TIME,
-                turnController.getKp(), turnController.getKi(), turnController.getKd(), left, right);
+                turnController.getConstants()[0], turnController.getConstants()[1], turnController.getConstants()[2], left, right);
     }
 
     public void turnAbsolute(double angle,  double timeOut, double sleepTime, double kp, double ki, double kd) {
@@ -242,13 +242,13 @@ public abstract class MasqRobot {
         sleep(sleepTime);
     }
     public void turnAbsolute(double angle, double timeOut, double sleepTime, double kp, double ki) {
-        turnAbsolute(angle, timeOut, sleepTime, kp, ki, turnController.getKd());
+        turnAbsolute(angle, timeOut, sleepTime, kp, ki, turnController.getConstants()[2]);
     }
     public void turnAbsolute(double angle, double timeOut, double sleepTime, double kp) {
-        turnAbsolute(angle, timeOut, sleepTime, kp, turnController.getKi());
+        turnAbsolute(angle, timeOut, sleepTime, kp, turnController.getConstants()[1]);
     }
     public void turnAbsolute(double angle,  double timeOut, double sleepTime) {
-        turnAbsolute(angle, timeOut, sleepTime, turnController.getKp());
+        turnAbsolute(angle, timeOut, sleepTime, turnController.getConstants()[0]);
     }
     public void turnAbsolute(double angle, double timeout)  {
         turnAbsolute(angle, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
@@ -467,14 +467,14 @@ public abstract class MasqRobot {
     }
 
     public void initializeTeleop(){
-        driveTrain.setKp(MasqUtilsv2.velocityTeleController.getKp());
-        driveTrain.setKi(MasqUtilsv2.velocityTeleController.getKi());
-        driveTrain.setKd(MasqUtilsv2.velocityTeleController.getKd());
+        driveTrain.setKp(MasqUtilsv2.velocityTeleController.getConstants()[0]);
+        driveTrain.setKi(MasqUtilsv2.velocityTeleController.getConstants()[1]);
+        driveTrain.setKd(MasqUtilsv2.velocityTeleController.getConstants()[2]);
     }
     public void initializeAutonomous() {
-        driveTrain.setKp(MasqUtilsv2.velocityAutoController.getKp());
-        driveTrain.setKi(MasqUtilsv2.velocityAutoController.getKi());
-        driveTrain.setKd(MasqUtilsv2.velocityAutoController.getKd());
+        driveTrain.setKp(MasqUtilsv2.velocityAutoController.getConstants()[0]);
+        driveTrain.setKi(MasqUtilsv2.velocityAutoController.getConstants()[1]);
+        driveTrain.setKd(MasqUtilsv2.velocityAutoController.getConstants()[2]);
     }
     public void setPIDConstants(double kp, double ki, double kd) {
         driveTrain.setKp(kp);
