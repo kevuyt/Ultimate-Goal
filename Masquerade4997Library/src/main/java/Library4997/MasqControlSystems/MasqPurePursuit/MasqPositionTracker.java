@@ -2,8 +2,6 @@ package Library4997.MasqControlSystems.MasqPurePursuit;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -17,9 +15,6 @@ public class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, ySystem;
     public MasqAdafruitIMU imu;
     private double globalX = 0, globalY = 0, prevX = 0, prevY = 0;
-    private Orientation angles;
-    private double zeroPos = 0;
-    private String imuName;
 
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
@@ -30,7 +25,6 @@ public class MasqPositionTracker implements MasqHardware {
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, String imuName, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        this.imuName = imuName;
         imu = new MasqAdafruitIMU(imuName, hardwareMap);
         reset();
     }
