@@ -3,8 +3,6 @@ package Library4997.MasqWrappers;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqServos.MasqServo;
-import Library4997.MasqServos.MasqServoSystem;
 
 /**
  * Created by Archish on 10/12/17.
@@ -147,36 +145,7 @@ public class MasqController implements Runnable{
                 "D_RIGHT: " + dPadRight(),
         };
     }
-    public void toggle(boolean button, MasqServo servo, double prevPos) {
-        if (MasqUtils.tolerance(servo.getPosition(), prevPos,0.01) && button) {
-            if (MasqUtils.tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
-            else if (MasqUtils.tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
-        }
-    }
-    public void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
-        for (MasqServo servo : servoSystem.servos) {
-            toggle(button, servo, prevPos);
-        }
-    }
-    public void toggle(boolean button, MasqServo servo, double prevPos, double pos1, double pos2) {
-        if (MasqUtils.tolerance(servo.getPosition(), prevPos, 0.01) && button) {
-            if (MasqUtils.tolerance(servo.getPosition(), pos1, 0.01)) servo.setPosition(pos2);
-            else if (MasqUtils.tolerance(servo.getPosition(), pos2, 0.01)) servo.setPosition(pos1);
-        }
-    }
-    public void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {
-        toggle(button, servo, prePos);
-        if (button) {
-            Thread thread = new Thread(action);
-            thread.start();
-        }
-    }
-    public void toggle (boolean button, double current, double prev, double value1, double value2, Runnable action1, Runnable action2) {
-        if (button && MasqUtils.tolerance(current, prev, 0.01))  {
-            if (current == value1) new Thread(action1).start();
-            else if (current == value2) new Thread (action2).start();
-        }
-    }
+
     @Override
     public void run() {
         boolean close = false;

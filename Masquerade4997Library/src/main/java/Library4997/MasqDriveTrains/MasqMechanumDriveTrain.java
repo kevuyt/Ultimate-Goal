@@ -96,11 +96,6 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         rightDrive.motor2.setPower(rightBack);
     }
 
-
-    public void setTurnKP(double kp) {
-        turnController.setKp(kp);
-    }
-
     public MasqPositionTracker getTracker() {
         return tracker;
     }

@@ -42,9 +42,9 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             robot.blockRotater.setPosition(blockRotaterPosition);
             robot.blockPusher.setPosition(blockPusherPosition);
 
-            dash.create("Grabber Position: ", blockGrabberPosition, robot.blockGrabber.getPosition());
-            dash.create("Rotater Position: ", blockRotaterPosition, robot.blockRotater.getPosition());
-            dash.create("Pusher Position: ", blockPusherPosition, robot.blockPusher.getPosition());
+            dash.create("Grabber Position: ", blockGrabberPosition);
+            dash.create("Rotater Position: ", blockRotaterPosition);
+            dash.create("Pusher Position: ", blockPusherPosition);
             dash.update();
 
             controller1.update();

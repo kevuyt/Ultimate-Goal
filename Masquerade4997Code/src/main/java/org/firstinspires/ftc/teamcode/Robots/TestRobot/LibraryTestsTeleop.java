@@ -1,10 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.TestRobot;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqControlSystems.MasqPID.MasqPIDController_Tests;
-import Library4997.MasqMotors.MasqMotor_Tests;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -22,7 +19,8 @@ public class LibraryTestsTeleop extends MasqLinearOpMode {
             dash.update();
         }
         waitForStart();
-        MasqMotor_Tests masqMotorTests = new MasqMotor_Tests(robot.driveTrain.leftDrive.motor1) {
+        //No Drivetrain on robot so can't run tests
+        /*MasqMotor_Tests masqMotorTests = new MasqMotor_Tests(robot.driveTrain.leftDrive.motor1) {
             @Override
             public void RunAll(HardwareMap hardwareMap) {
 
@@ -38,7 +36,7 @@ public class LibraryTestsTeleop extends MasqLinearOpMode {
                 dash.create(error);
             }
         }
-        dash.update();
+        dash.update();*/
     }
 }
 
