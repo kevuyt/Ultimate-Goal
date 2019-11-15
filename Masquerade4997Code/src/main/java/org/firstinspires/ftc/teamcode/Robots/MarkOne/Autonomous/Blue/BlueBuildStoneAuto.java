@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -28,7 +29,7 @@ public class BlueBuildStoneAuto extends MasqLinearOpMode {
 
         robot.foundationHook.raise();
         robot.blockPusher.setPosition(1);
-        robot.strafe(40, Direction.LEFT, 1.5);
+        robot.strafe(40, Strafe.LEFT, 1.5);
         robot.drive(42, 0.25);
         robot.turnAbsolute(-10);
         robot.foundationHook.lower();
@@ -36,7 +37,7 @@ public class BlueBuildStoneAuto extends MasqLinearOpMode {
         robot.drive(50, 0.25 ,Direction.BACKWARD,3);
         robot.foundationHook.raise();
         sleep();
-        robot.strafe(65, Direction.RIGHT, 2);
+        robot.strafe(65, Strafe.RIGHT, 2);
         robot.turnAbsolute(5);
         robot.foundationHook.mid();
         robot.drive(23.5);
@@ -53,7 +54,7 @@ public class BlueBuildStoneAuto extends MasqLinearOpMode {
         sleep();
         robot.intake.setVelocity(-1);
         robot.drive(30, Direction.BACKWARD);
-        robot.strafe(5, Direction.RIGHT);
+        robot.strafe(5, Strafe.RIGHT);
 
 
 
