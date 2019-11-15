@@ -13,15 +13,16 @@ import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqResources.MasqUtilsv2;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import Library4997.MasqWrappers.MasqPredicate;
 
-import static Library4997.MasqResources.MasqUtilsv2.angleController;
-import static Library4997.MasqResources.MasqUtilsv2.driveController;
-import static Library4997.MasqResources.MasqUtilsv2.turnController;
+import static Library4997.MasqResources.MasqUtils.angleController;
+import static Library4997.MasqResources.MasqUtils.driveController;
+import static Library4997.MasqResources.MasqUtils.turnController;
+import static Library4997.MasqResources.MasqUtils.velocityAutoController;
+import static Library4997.MasqResources.MasqUtils.velocityTeleController;
 
 
 /**
@@ -449,14 +450,14 @@ public abstract class MasqRobot {
     }
 
     public void initializeTeleop(){
-        driveTrain.setKp(MasqUtilsv2.velocityTeleController.getKp());
-        driveTrain.setKi(MasqUtilsv2.velocityTeleController.getKi());
-        driveTrain.setKd(MasqUtilsv2.velocityTeleController.getKd());
+        driveTrain.setKp(velocityTeleController.getKp());
+        driveTrain.setKi(velocityTeleController.getKi());
+        driveTrain.setKd(velocityTeleController.getKd());
     }
     public void initializeAutonomous() {
-        driveTrain.setKp(MasqUtilsv2.velocityAutoController.getKp());
-        driveTrain.setKi(MasqUtilsv2.velocityAutoController.getKi());
-        driveTrain.setKd(MasqUtilsv2.velocityAutoController.getKd());
+        driveTrain.setKp(velocityAutoController.getKp());
+        driveTrain.setKi(velocityAutoController.getKi());
+        driveTrain.setKd(velocityAutoController.getKd());
     }
     public void setPIDConstants(double kp, double ki, double kd) {
         driveTrain.setKp(kp);
