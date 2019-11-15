@@ -11,7 +11,11 @@ import Library4997.MasqSensors.MasqClock;
 
 public class MasqPIDController {
     private MasqIntegrator integrator = new MasqIntegrator();
-    private double kp, ki = 0, kd = 0, prevError = 0, prevD = 0;
+    private double kp;
+    private double ki = 0;
+    private double kd = 0;
+    private double prevError = 0;
+    private double prevD = 0;
     private double deriv, timeChange = 0;
     private MasqClock clock = new MasqClock();
 
@@ -75,4 +79,17 @@ public class MasqPIDController {
     public MasqClock getClock() {
         return clock;
     }
+
+    public double getKp() {
+        return kp;
+    }
+
+    public double getKi() {
+        return ki;
+    }
+
+    public double getKd() {
+        return kd;
+    }
+
 }
