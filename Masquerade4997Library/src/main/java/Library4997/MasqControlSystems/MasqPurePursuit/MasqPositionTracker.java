@@ -21,24 +21,21 @@ public class MasqPositionTracker implements MasqHardware {
     private double zeroPos = 0;
     private String imuName;
 
-    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem) {
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        imuName = "imu";
+        imu = new MasqAdafruitIMU("imu", hardwareMap);
         reset();
     }
-    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, String imuName) {
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, String imuName, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
         this.imuName = imuName;
+        imu = new MasqAdafruitIMU(imuName, hardwareMap);
         reset();
     }
     public double getHeading () {
         return imu.getRelativeYaw();
-    }
-
-    public void initializeIMU(HardwareMap hardwareMap) {
-        imu = new MasqAdafruitIMU(imuName, hardwareMap);
     }
     public void updateSystem () {
         double deltaX = (-xSystem.getCurrentPosition() - prevX);
@@ -100,7 +97,9 @@ public class MasqPositionTracker implements MasqHardware {
     @Override
     public String[] getDash() {
         return new String[] {
-
+            getName() +
+            "Globalx: " + globalX +
+            "Globaly: " + globalY
         };
     }
 }

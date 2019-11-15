@@ -37,7 +37,7 @@ public class MarkOne extends MasqRobot {
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
-        tracker = new MasqPositionTracker(lift, intake.motor1); //Replace motors when odometry is incorporating
+        tracker = new MasqPositionTracker(lift, intake.motor1, hardwareMap); //Replace motors when odometry is incorporating
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         dash = DashBoard.getDash();
         //detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
@@ -52,10 +52,12 @@ public class MarkOne extends MasqRobot {
         scaleServos();
         resetServos();
         lift.encoder.setWheelDiameter(1);
-        tracker.initializeIMU(hardwareMap);
         MasqUtilsv2.driveController = new MasqPIDController(3,0,0);
         MasqUtilsv2.angleController = new MasqPIDController(0.005,0,0);
         MasqUtilsv2.turnController = new MasqPIDController(0.015,0,0);
+        driveTrain.setClosedLoop(true);
+        lift.setClosedLoop(true);
+        lift.setKp(0.001);
     }
 
     private void scaleServos() {

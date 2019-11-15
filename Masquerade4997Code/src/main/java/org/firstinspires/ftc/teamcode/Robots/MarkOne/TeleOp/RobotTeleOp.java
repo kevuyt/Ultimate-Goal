@@ -19,9 +19,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
         robot.init(hardwareMap);
         robot.initializeTeleop();
-        robot.driveTrain.setClosedLoop(true);
-        robot.lift.setClosedLoop(true);
-        robot.lift.setKp(0.001);
 
         double prevGrabber = 1;
         double prevPusher;
@@ -62,8 +59,9 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if (robot.lift.encoder.getInches() > 24) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
-            robot.foundationHook.DriverControl(controller1);
             MasqUtils.toggle(controller2.rightBumper() || controller2.leftBumper(), robot.sideGrabber, prevSide);
+
+            robot.foundationHook.DriverControl(controller1);
 
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();

@@ -1,6 +1,5 @@
 package Library4997;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
@@ -11,14 +10,17 @@ import Library4997.MasqWrappers.Tests;
  * Created by Keval Kataria on 9/28/2019
  */
 public class MasqRobot_Tests implements Tests {
-    MasqRobot robot = new MasqRobot() {
-        BNO055IMU imu;
+    private MasqRobot robot = new MasqRobot() {
 
         @Override
         public void mapHardware(HardwareMap hardwareMap) {
             driveTrain = new MasqMechanumDriveTrain(hardwareMap);
-            imu = initializeIMU(hardwareMap);
-            tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1,imu);
+            tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1);
+        }
+
+        @Override
+        public void init(HardwareMap hardwareMap) {
+
         }
     };
 

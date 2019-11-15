@@ -39,8 +39,6 @@ public class MasqMotor implements MasqHardware {
     private double motorPower;
     private double currentMax, currentMin;
     private double currentZero;
-    private double previousJerk, prevAcceleration, previousAccelerationTime;
-    private double previousAccelerationSetTime;
     public double rpmIntegral = 0;
     public double rpmDerivative = 0;
     private double rpmPreviousError = 0;
