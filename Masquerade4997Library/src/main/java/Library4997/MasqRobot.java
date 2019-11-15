@@ -9,18 +9,20 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqResources.MasqUtilsv2;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import Library4997.MasqWrappers.MasqPredicate;
 
-import static Library4997.MasqResources.MasqUtilsv2.angleController;
-import static Library4997.MasqResources.MasqUtilsv2.driveController;
-import static Library4997.MasqResources.MasqUtilsv2.turnController;
+import static Library4997.MasqResources.MasqUtils.angleController;
+import static Library4997.MasqResources.MasqUtils.driveController;
+import static Library4997.MasqResources.MasqUtils.turnController;
+import static Library4997.MasqResources.MasqUtils.velocityAutoController;
+import static Library4997.MasqResources.MasqUtils.velocityTeleController;
 
 
 /**
@@ -54,32 +56,13 @@ public abstract class MasqRobot {
         driveTrain.stopDriving();
         sleep(MasqUtils.DEFAULT_SLEEP_TIME);
     }
-    public void strafe(double distance, double angle, double timeout) {
-        strafe(distance, angle, timeout,1);
+    public void strafe(double distance, Strafe angle, double timeout, double speed) {
+        strafe(distance, angle.value, timeout, speed);
     }
-    public void strafe(double distance, Direction direction, double timeout, double speed) {
-        double angle;
-        switch (direction) {
-            case LEFT:
-                angle = -90;
-                break;
-            case RIGHT:
-                angle = 90;
-                break;
-            case BACKWARD:
-                angle = 180;
-                break;
-            case FORWARD:
-            default:
-                angle = 0;
-                break;
-        }
-        strafe(distance, angle, timeout, speed);
+    public void strafe(double distance, Strafe angle, double timeout) {
+        strafe(distance, angle.value, timeout,0.7);
     }
-    public void strafe(double distance, Direction direction, double speed) {
-        strafe(distance, direction,1, speed);
-    }
-    public void strafe (double distance, Direction direction) {
+    public void strafe (double distance, Strafe direction) {
         strafe(distance, direction, 1);
     }
 
@@ -475,6 +458,16 @@ public abstract class MasqRobot {
         driveTrain.setKp(MasqUtilsv2.velocityAutoController.getConstants()[0]);
         driveTrain.setKi(MasqUtilsv2.velocityAutoController.getConstants()[1]);
         driveTrain.setKd(MasqUtilsv2.velocityAutoController.getConstants()[2]);
+=======
+        driveTrain.setKp(velocityTeleController.getKp());
+        driveTrain.setKi(velocityTeleController.getKi());
+        driveTrain.setKd(velocityTeleController.getKd());
+    }
+    public void initializeAutonomous() {
+        driveTrain.setKp(velocityAutoController.getKp());
+        driveTrain.setKi(velocityAutoController.getKi());
+        driveTrain.setKd(velocityAutoController.getKd());
+>>>>>>> 021bd150b96a828f5abcc7e5234ac2cd2a02705e
     }
     public void setPIDConstants(double kp, double ki, double kd) {
         driveTrain.setKp(kp);

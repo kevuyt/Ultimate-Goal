@@ -7,6 +7,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 import java.util.Locale;
 
+import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -30,6 +31,12 @@ public class MasqUtils {
             "6/iH7SwxefH4aDwv4aOG9amOB+pqD0AZeBzeuQzjl5gjwDVZNchs8muA" +
             "yAnqK/wrtoJ9gFWXlJ5wK1hzMnP3+pO+uJl3hU/3LF9tzsL60nZkxL0r" +
             "zD+fIy0fi8xx1LfysN2URrT82AtUQ2teoPQRFFsgVmYii/W6/1ZUJKcwH";
+
+    public static MasqPIDController turnController;
+    public static MasqPIDController driveController;
+    public static MasqPIDController velocityTeleController;
+    public static MasqPIDController velocityAutoController;
+    public static MasqPIDController angleController;
 
     public static void sleep (int milliSeconds) {
         try {Thread.sleep(milliSeconds);}
@@ -64,39 +71,7 @@ public class MasqUtils {
     public HardwareMap getHardwareMap() {
         return linearOpMode.hardwareMap;
     }
-    /*public class KP {
-        public static final double TURN = 0.015;
-        public static final double TURN_POM = -0.1;
-        public static final double ANGLE = 0.005;
-        public static final double DRIVE = 3;
-        public static final double PATH = .01;
-        public static final double VELOCITY_TELE = 0.002;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class KI {
-        public static final double PATH = 0.0;
-        public static final double TURN = 0.0;
-        public static final double ANGLE = 0.000;
-        public static final double TURN_POM = 0.000005;
-        public static final double DRIVE = 0.0;
-        public static final double VELOCITY_TELE = 0.000;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class KD {
-        public static final double PATH = .0;
-        public static final double TURN = 0.0;
-        public static final double ANGLE = 0.000;
-        public static final double TURN_POM = -0.00;
-        public static final double DRIVE = 0.0;
-        public static final double VELOCITY_TELE = 0.000;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class ID {
-        public static final double TURN = 1.0;
-        public static final double DRIVE = 1.0;
-        public static final double MOTOR_TELEOP = 1.0;
-        public static final double MOTOR_AUTONOMOUS = 1.00;
-    }*/
+
     public static double max(double... vals) {
         double max = Double.MIN_VALUE;
         for (double d: vals) if (max < d) max = d;
@@ -154,3 +129,38 @@ public class MasqUtils {
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
 }
+
+
+    /*public class KP {
+        public static final double TURN = 0.015;
+        public static final double TURN_POM = -0.1;
+        public static final double ANGLE = 0.005;
+        public static final double DRIVE = 3;
+        public static final double PATH = .01;
+        public static final double VELOCITY_TELE = 0.002;
+        public static final double VELOCITY_AUTO = 0.002;
+    }
+    public class KI {
+        public static final double PATH = 0.0;
+        public static final double TURN = 0.0;
+        public static final double ANGLE = 0.000;
+        public static final double TURN_POM = 0.000005;
+        public static final double DRIVE = 0.0;
+        public static final double VELOCITY_TELE = 0.000;
+        public static final double VELOCITY_AUTO = 0.002;
+    }
+    public class KD {
+        public static final double PATH = .0;
+        public static final double TURN = 0.0;
+        public static final double ANGLE = 0.000;
+        public static final double TURN_POM = -0.00;
+        public static final double DRIVE = 0.0;
+        public static final double VELOCITY_TELE = 0.000;
+        public static final double VELOCITY_AUTO = 0.002;
+    }
+    public class ID {
+        public static final double TURN = 1.0;
+        public static final double DRIVE = 1.0;
+        public static final double MOTOR_TELEOP = 1.0;
+        public static final double MOTOR_AUTONOMOUS = 1.00;
+    }*/

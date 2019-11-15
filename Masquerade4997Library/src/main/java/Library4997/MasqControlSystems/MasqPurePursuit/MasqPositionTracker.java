@@ -2,8 +2,6 @@ package Library4997.MasqControlSystems.MasqPurePursuit;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
@@ -17,9 +15,6 @@ public class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, ySystem;
     public MasqAdafruitIMU imu;
     private double globalX = 0, globalY = 0, prevX = 0, prevY = 0;
-    private Orientation angles;
-    private double zeroPos = 0;
-    private String imuName;
 
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
@@ -30,7 +25,6 @@ public class MasqPositionTracker implements MasqHardware {
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, String imuName, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        this.imuName = imuName;
         imu = new MasqAdafruitIMU(imuName, hardwareMap);
         reset();
     }
@@ -40,7 +34,7 @@ public class MasqPositionTracker implements MasqHardware {
     public void updateSystem () {
         double deltaX = (-xSystem.getCurrentPosition() - prevX);
         double deltaY = (-ySystem.getCurrentPosition() - prevY);
-        double heading = Math.toRadians(getRelativeYaw());
+        double heading = Math.toRadians(getHeading());
         double x = deltaX * Math.cos(heading) - deltaY * Math.sin(heading);
         double y = deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
         globalX += x;
@@ -52,7 +46,7 @@ public class MasqPositionTracker implements MasqHardware {
     public void reset() {
         xSystem.resetEncoder();
         ySystem.resetEncoder();
-        resetIMU();
+        imu.reset();
     }
 
     public double getGlobalX() {
@@ -61,33 +55,6 @@ public class MasqPositionTracker implements MasqHardware {
     public double getGlobalY() {
         return globalY * ((2 * Math.PI) / 1440);
     }
-
-    public double getAbsoluteHeading() {
-        return imu.getAbsoluteHeading();
-    }
-    public double getRelativeYaw() {
-        return imu.getRelativeYaw();
-    }
-    public void resetIMU(){
-        imu.reset();
-    }
-    public double getPitch() {
-        return imu.getPitch();
-    }
-    public double getRoll() {
-        return imu.getRoll();
-    }
-
-    public double x () {
-        return imu.x();
-    }
-    public double y () {
-        return imu.y();
-    }
-    public double z () {
-        return imu.z();
-    }
-
 
     @Override
     public String getName() {
