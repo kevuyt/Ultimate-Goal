@@ -16,7 +16,7 @@ public class CameraTestTeleop extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        robot.mapHardware(hardwareMap);
+        robot.init(hardwareMap);
         try {
             robot.detector.skystoneDetector.setCropSettings(0, 0, 0, 0);
         }catch (Exception e) {

@@ -17,7 +17,7 @@ public class SkystoneDetectionTest extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        robot.mapHardware(hardwareMap);
+        robot.init(hardwareMap);
         robot.detector.start();
 
         DogeDetector.SkystonePosition skystonePosition;

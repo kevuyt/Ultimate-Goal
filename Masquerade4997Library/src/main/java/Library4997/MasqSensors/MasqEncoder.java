@@ -14,7 +14,7 @@ public class MasqEncoder {
   private double currentPosition, zeroPos;
   private double clicksPerInch;
   public MasqEncoder(MasqMotor motor, MasqMotorModel model) {
-    clicksPerInch = (model.CPR() / (wheelDiameter * Math.PI)) * gearRatio;
+    clicksPerInch = (model.CPR() / (wheelDiameter * Math.PI));
     this.model = model;
     this.motor = motor;
   }
@@ -25,7 +25,7 @@ public class MasqEncoder {
   }
 
   public double getInches () {
-    return (getRelativePosition()/getClicksPerInch()) * gearRatio * gearRatio;
+    return (getRelativePosition()/getClicksPerInch()) * gearRatio;
   }
 
   public double getAbsolutePosition() {
@@ -42,7 +42,7 @@ public class MasqEncoder {
   }
 
   public double getClicksPerInch() {
-    return clicksPerInch;
+    return clicksPerInch * gearRatio;
   }
 
   public void setWheelDiameter(double wheelDiameter) {
