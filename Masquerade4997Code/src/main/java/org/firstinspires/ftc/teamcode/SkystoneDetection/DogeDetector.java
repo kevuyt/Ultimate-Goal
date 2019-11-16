@@ -98,7 +98,6 @@ public class DogeDetector {
         return skystoneDetector.isDetected();
     }
 
-
     public enum SkystonePosition {
         LEFT, MIDDLE, RIGHT
     }

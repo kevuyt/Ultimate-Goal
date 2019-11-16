@@ -22,5 +22,6 @@ android {
 
 dependencies {
     api 'org.openftc:easyopencv:1.2'
+    implementation project(path: ':Masquerade4997Library')
     //compileOnly 'org.openftc:robotcore-stock:5.1'
 }

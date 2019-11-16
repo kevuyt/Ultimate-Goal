@@ -450,24 +450,14 @@ public abstract class MasqRobot {
     }
 
     public void initializeTeleop(){
-        driveTrain.setKp(MasqUtilsv2.velocityTeleController.getConstants()[0]);
-        driveTrain.setKi(MasqUtilsv2.velocityTeleController.getConstants()[1]);
-        driveTrain.setKd(MasqUtilsv2.velocityTeleController.getConstants()[2]);
-    }
-    public void initializeAutonomous() {
-        driveTrain.setKp(MasqUtilsv2.velocityAutoController.getConstants()[0]);
-        driveTrain.setKi(MasqUtilsv2.velocityAutoController.getConstants()[1]);
-        driveTrain.setKd(MasqUtilsv2.velocityAutoController.getConstants()[2]);
-=======
-        driveTrain.setKp(velocityTeleController.getKp());
-        driveTrain.setKi(velocityTeleController.getKi());
-        driveTrain.setKd(velocityTeleController.getKd());
+        driveTrain.setKp(velocityTeleController.getConstants()[0]);
+        driveTrain.setKi(velocityTeleController.getConstants()[1]);
+        driveTrain.setKd(velocityTeleController.getConstants()[2]);
     }
     public void initializeAutonomous() {
         driveTrain.setKp(velocityAutoController.getKp());
         driveTrain.setKi(velocityAutoController.getKi());
         driveTrain.setKd(velocityAutoController.getKd());
->>>>>>> 021bd150b96a828f5abcc7e5234ac2cd2a02705e
     }
     public void setPIDConstants(double kp, double ki, double kd) {
         driveTrain.setKp(kp);

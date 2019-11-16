@@ -40,7 +40,7 @@ public class MarkOne extends MasqRobot {
         tracker = new MasqPositionTracker(lift, intake.motor1, hardwareMap); //Replace motors when odometry is incorporating
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         dash = DashBoard.getDash();
-        //detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
+        detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
         //sideGrabber = new MasqServo("sideGrabber", hardwareMap);
 
 

@@ -18,6 +18,8 @@ import DogeCV.filters.LeviColorFilter;
 import DogeCV.scoring.MaxAreaScorer;
 import DogeCV.scoring.PerfectAreaScorer;
 import DogeCV.scoring.RatioScorer;
+import Library4997.MasqWrappers.DashBoard;
+
 
 public class SkystoneDetector extends DogeCVDetector {
     public DogeCV.AreaScoringMethod areaScoringMethod = DogeCV.AreaScoringMethod.MAX_AREA; // Setting to decide to use MaxAreaScorer or PerfectAreaScorer
@@ -58,7 +60,7 @@ public class SkystoneDetector extends DogeCVDetector {
 
     @Override
     public Mat process(Mat input) {
-        cropMat(input, top, bottom, left, right);
+        input = cropMat(input, top, bottom, left, right);
         input.copyTo(rawImage);
         input.copyTo(workingMat);
         input.copyTo(displayMat);
@@ -161,10 +163,14 @@ public class SkystoneDetector extends DogeCVDetector {
         this.right = right;
     }
 
-    public Mat cropMat(Mat input, int top, int bottom, int left, int right) {
-
+    private Mat cropMat(Mat input, int top, int bottom, int left, int right) {
+        int x = (input.width() + left - right)/2, y = (input.height() + top - bottom)/2, width = input.width() - right - left, height = input.height() - top - bottom;
         //Rect rect = new Rect(input.width()/2, input.height()/2, input.width(), input.height());
-         Rect rect = new Rect((input.width() + left - right)/2,(input.height() + top - bottom)/2,input.width() - right - left,input.height() - top - bottom);
+         Rect rect = new Rect(x,y,width,height);
+        DashBoard.getDash().create(x);
+        DashBoard.getDash().create(y);
+        DashBoard.getDash().create(width);
+        DashBoard.getDash().create(height);
         return input.submat(rect);
     }
 }

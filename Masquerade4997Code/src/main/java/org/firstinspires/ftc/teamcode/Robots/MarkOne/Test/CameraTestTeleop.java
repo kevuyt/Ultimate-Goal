@@ -17,12 +17,10 @@ public class CameraTestTeleop extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        try {
-            robot.detector.skystoneDetector.setCropSettings(0, 0, 0, 0);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        robot.detector.skystoneDetector.setCropSettings(0, 0, 0, 0);
         robot.detector.start();
+
         while(!opModeIsActive()) {
                 dash.create("Stone Detected: ", robot.detector.isDetected());
                 dash.update();
@@ -30,10 +28,10 @@ public class CameraTestTeleop extends MasqLinearOpMode {
 
         waitForStart();
 
-        while(opModeIsActive()) {
+        /*while(opModeIsActive()) {
             if (robot.detector.isDetected()) dash.create(robot.detector.getStoneSkystonePosition());
             else dash.create("Not Detected");
             dash.update();
-        }
+        }*/
     }
 }

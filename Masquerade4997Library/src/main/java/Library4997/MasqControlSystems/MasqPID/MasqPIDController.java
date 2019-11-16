@@ -77,11 +77,9 @@ public class MasqPIDController {
         this.kd = kd;
     }
 
-<<<<<<< HEAD
     public MasqClock getClock() {
         return clock;
     }
-=======
     public double getKp() {
         return kp;
     }
@@ -94,5 +92,4 @@ public class MasqPIDController {
         return kd;
     }
 
->>>>>>> 021bd150b96a828f5abcc7e5234ac2cd2a02705e
 }

@@ -92,5 +92,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: org.openftc:easyopencv:1.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: org.openftc:opencv-repackaged:4.1.0-A@aar" level="project" />
+    <orderEntry type="module" module-name="Masquerade4997Library" />
   </component>
 </module>
