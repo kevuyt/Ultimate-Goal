@@ -1,27 +1,26 @@
+//
+// build.gradle in Masquerade4997Library
+//
 apply plugin: 'com.android.library'
-
 android {
-    compileSdkVersion 28
-    buildToolsVersion '29.0.1'
 
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
-dependencies {
-    api 'org.openftc:easyopencv:1.2'
-    implementation project(path: ':Masquerade4997Library')
-    //compileOnly 'org.openftc:robotcore-stock:5.1'
+repositories {
+    google()
+    flatDir {
+        dirs '../libs'
+    }
 }
+apply from: 'build.release.gradle'
+
