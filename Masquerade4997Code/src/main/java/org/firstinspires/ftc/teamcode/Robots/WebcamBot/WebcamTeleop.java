@@ -13,11 +13,15 @@ public class WebcamTeleop extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        while (!opModeIsActive() || opModeIsActive()) {
-            robot.init(hardwareMap);
-            robot.detector.start();
-            dash.create(robot.detector.getStoneSkystonePosition());
+        robot.init(hardwareMap);
+        while(!opModeIsActive()) {
+            dash.create("Hello");
             dash.update();
+        }
+        waitForStart();
+        robot.detector.start();
+        while (opModeIsActive()) {
+            sleep(0.1);
         }
     }
 }

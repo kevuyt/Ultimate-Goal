@@ -1,14 +1,8 @@
 package DogeCV.detectors.skystone;
 
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import DogeCV.DogeCV;
 import DogeCV.detectors.DogeCVDetector;
@@ -60,7 +54,7 @@ public class SkystoneDetector extends DogeCVDetector {
 
     @Override
     public Mat process(Mat input) {
-        input = cropMat(input, top, bottom, left, right);
+        /*input = cropMat(input, top, bottom, left, right);
         input.copyTo(rawImage);
         input.copyTo(workingMat);
         input.copyTo(displayMat);
@@ -139,7 +133,8 @@ public class SkystoneDetector extends DogeCVDetector {
             default: {
                 return displayMat;
             }
-        }
+        }*/
+        return input;
     }
 
     @Override
@@ -166,11 +161,14 @@ public class SkystoneDetector extends DogeCVDetector {
     private Mat cropMat(Mat input, int top, int bottom, int left, int right) {
         int x = (input.width() + left - right)/2, y = (input.height() + top - bottom)/2, width = input.width() - right - left, height = input.height() - top - bottom;
         //Rect rect = new Rect(input.width()/2, input.height()/2, input.width(), input.height());
-         Rect rect = new Rect(x,y,width,height);
+        Rect rect = new Rect(x,y,width,height);
+        DashBoard.getDash().clear();
         DashBoard.getDash().create(x);
         DashBoard.getDash().create(y);
         DashBoard.getDash().create(width);
         DashBoard.getDash().create(height);
+        DashBoard.getDash().update();
+
         return input.submat(rect);
     }
 }
