@@ -42,8 +42,6 @@ public class MarkOne extends MasqRobot {
         dash = DashBoard.getDash();
         detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
         //sideGrabber = new MasqServo("sideGrabber", hardwareMap);
-
-
     }
 
     @Override
