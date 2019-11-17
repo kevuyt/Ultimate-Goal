@@ -21,6 +21,7 @@ public class TestRobot extends MasqRobot {
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
         driveTrain.setClosedLoop(true);
+        setMultipliers(0.5);
     }
 
 }

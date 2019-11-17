@@ -30,7 +30,7 @@ public class SkystoneDetector extends DogeCVDetector {
     // Results of the detector
     private Point screenPosition = new Point(); // Screen position of the mineral
     private Rect foundRect = new Rect(); // Found rect
-    int top, bottom, left, right;
+    private int top, bottom, left, right;
 
     private Mat rawImage = new Mat();
     private Mat workingMat = new Mat();

@@ -57,17 +57,17 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else if (controller2.leftTriggerPressed()) robot.lift.setVelocity(-controller2.leftTrigger());
             else robot.lift.setVelocity(0);
 
-            if (robot.lift.encoder.getInches() > 24) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
+            if (Math.abs(robot.lift.encoder.getInches()) > 24) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
-            MasqUtils.toggle(controller2.rightBumper() || controller2.leftBumper(), robot.sideGrabber, prevSide);
+            //MasqUtils.toggle(controller2.rightBumper() || controller2.leftBumper(), robot.sideGrabber, prevSide);
 
             robot.foundationHook.DriverControl(controller1);
 
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();
             prevRotater = robot.blockRotater.getPosition();
-            prevSide = robot.sideGrabber.getPosition();
+            //prevSide = robot.sideGrabber.getPosition();
 
             dash.create("Lift Position: ", robot.lift.encoder.getInches());
             dash.update();

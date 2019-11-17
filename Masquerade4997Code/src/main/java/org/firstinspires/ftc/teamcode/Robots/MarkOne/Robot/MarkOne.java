@@ -23,7 +23,7 @@ import Library4997.MasqWrappers.DashBoard;
  */
 public class MarkOne extends MasqRobot {
 
-    public MasqServo blockGrabber, blockRotater, blockPusher, sideGrabber;
+    public MasqServo blockGrabber, blockRotater, blockPusher/*, sideGrabber*/;
     public MarkOneFoundationHook foundationHook;
     public MasqMotor  lift;
     public MasqMotorSystem intake;
@@ -52,9 +52,11 @@ public class MarkOne extends MasqRobot {
         scaleServos();
         resetServos();
         lift.encoder.setWheelDiameter(1);
-        MasqUtils.driveController = new MasqPIDController(3,0,0);
-        MasqUtils.angleController = new MasqPIDController(0.005,0,0);
+        MasqUtils.driveController = new MasqPIDController(0.005,0,0);
+        MasqUtils.angleController = new MasqPIDController(0.01,0,0);
         MasqUtils.turnController = new MasqPIDController(0.015,0,0);
+        MasqUtils.velocityTeleController = new MasqPIDController(0.002, 0, 0);
+        MasqUtils.velocityAutoController = new MasqPIDController(0.002, 0, 0);
         driveTrain.setClosedLoop(true);
         lift.setClosedLoop(true);
         lift.setKp(0.001);
@@ -72,7 +74,7 @@ public class MarkOne extends MasqRobot {
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
         foundationHook.lower();
-        sideGrabber.setPosition(0);
+        //sideGrabber.setPosition(0);
     }
 
     public void runStoneLeft(HardwareMap hardwareMap) {

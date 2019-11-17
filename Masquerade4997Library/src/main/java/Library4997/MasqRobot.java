@@ -32,38 +32,46 @@ public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap);
     public abstract void init(HardwareMap hardwareMap);
     public MasqMechanumDriveTrain driveTrain;
-    protected MasqPositionTracker tracker;
+    public MasqPositionTracker tracker;
     public DashBoard dash;
     private double speedMultiplier = 1.414;
     private double turnMultiplier = 1.414;
     private MasqClock timeoutClock = new MasqClock();
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
-    public void strafe(double distance, double angle, double timeout, double speed) {
+    public void strafe(double distance, double angle, double timeOut, double speed) {
         MasqClock timeoutTimer = new MasqClock();
         driveTrain.resetEncoders();
         double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
         double clicksRemaining;
-        double power, angularError, targetAngle = tracker.getHeading(), powerAdjustment = 0;
+        double power, angularError, targetAngle = tracker.getHeading(), powerAdjustment;
+        boolean bool;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
-            power = driveController.getOutput(clicksRemaining/targetClicks) * speed;
+            power = driveController.getOutput(clicksRemaining) * speed;
             power = Range.clip(power, -1.0, +1.0);
             angularError = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
             powerAdjustment = angleController.getOutput(MasqUtils.adjustAngle(angularError));
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
             driveTrain.setPowerMECH(angle, power, tracker.getHeading(), powerAdjustment);
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
+            dash.create("ERROR: ", clicksRemaining);
+            dash.create("HEADING: ", tracker.getHeading());
+            dash.update();
+            if(opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05) bool = true;
+            else bool = Math.abs(angularError) > 0.01;
+            //Only if the robot has reached its destination/Op Mode has stopped/Timed Out does it set this boolean
+            //It needs to keep running to correct itself even after this but cannot stop the driving just because the angle is correct
+        } while (bool);
         driveTrain.stopDriving();
         sleep(MasqUtils.DEFAULT_SLEEP_TIME);
     }
-    public void strafe(double distance, Strafe angle, double timeout, double speed) {
-        strafe(distance, angle.value, timeout, speed);
+    public void strafe(double distance, Strafe angle, double timeOut, double speed) {
+        strafe(distance, angle.value, timeOut, speed);
     }
-    public void strafe(double distance, Strafe angle, double timeout) {
-        strafe(distance, angle.value, timeout,0.7);
+    public void strafe(double distance, Strafe angle, double timeOut) {
+        strafe(distance, angle.value, timeOut,0.7);
     }
-    public void strafe (double distance, Strafe direction) {
-        strafe(distance, direction, 1);
+    public void strafe (double distance, Strafe angle) {
+        strafe(distance, angle, 1);
     }
 
     public void drive(double distance, double speed, Direction direction, double timeOut, double sleepTime) {
@@ -74,9 +82,10 @@ public abstract class MasqRobot {
         double clicksRemaining;
         double angularError,
                 powerAdjustment, power, leftPower, rightPower, maxPower;
+        boolean bool;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
-            power = driveController.getOutput(clicksRemaining/targetClicks) * speed;
+            power = driveController.getOutput(clicksRemaining) * speed;
             power = Range.clip(power, -1.0, +1.0);
             angularError = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
             powerAdjustment = angleController.getOutput(MasqUtils.adjustAngle(angularError));
@@ -92,8 +101,13 @@ public abstract class MasqRobot {
             dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
+            dash.create("HEADING: ", tracker.getHeading());
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05);
+            if(opModeIsActive() && !timeoutTimer.elapsedTime(timeOut, MasqClock.Resolution.SECONDS) && (clicksRemaining / targetClicks) > 0.05) bool = true;
+            else bool = Math.abs(angularError) > 0.01;
+            //Only if the robot has reached its destination/Op Mode has stopped/Timed Out does it set this boolean
+            //It needs to keep running to correct itself even after this but cannot stop the driving just because the angle is correct
+        } while (bool);
         driveTrain.stopDriving();
         sleep(sleepTime);
     }

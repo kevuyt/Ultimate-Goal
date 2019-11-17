@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
+import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -25,7 +26,9 @@ public class TestAutoOne extends MasqLinearOpMode {
         }
 
         waitForStart();
-
-        robot.driveAbsoluteAngle(80,0);
+        robot.foundationHook.raise();
+        robot.blockPusher.setPosition(1);
+        sleep(1);
+        robot.strafe(90, Strafe.FORWARD,500);
     }
 }
