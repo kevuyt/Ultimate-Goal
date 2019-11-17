@@ -71,7 +71,7 @@ public class DogeDetector {
     }
 
     public SkystonePosition getStoneSkystonePosition(){
-        double x = getStoneX();
+        double x = 0;
         if(x < 160) return SkystonePosition.LEFT;
         else if(x >= 160 && x <= 320) return SkystonePosition.MIDDLE;
         else if(x > 320) return SkystonePosition.RIGHT;
@@ -86,13 +86,6 @@ public class DogeDetector {
         return null;
     }
 
-    public double getStoneX(){
-        return skystoneDetector.getScreenPosition().x;
-    }
-
-    public double getStoneY(){
-        return skystoneDetector.getScreenPosition().y;
-    }
 
     public boolean isDetected(){
         return skystoneDetector.isDetected();
