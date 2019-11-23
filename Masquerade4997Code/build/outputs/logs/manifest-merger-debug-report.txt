@@ -13,6 +13,8 @@ MERGED from [:FtcCommon-release:] C:\Users\Keval Standard\.gradle\caches\transfo
 MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\4acba90664dfba2c2d7ca7871923e246\Analytics-release\AndroidManifest.xml:2:1-26:12
 MERGED from [:WirelessP2p-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\fda35a8a97c01d66ecfb9b40bb4413b0\WirelessP2p-release\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\9a354db4424c2f9280a589066b5a999d\dogecv-2020.4-alpha\AndroidManifest.xml:2:1-17:12
+MERGED from [:tfod-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\414afd222ead59dbee5074e4d00922a6\tfod-release\AndroidManifest.xml:2:1-11:12
+MERGED from [:tensorflow-lite-0.0.0-nightly:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\56b5a4c5a40c879e95beb17a7d8e7720\tensorflow-lite-0.0.0-nightly\AndroidManifest.xml:2:1-6:12
 MERGED from [:openCVLibrary3] C:\Users\Keval Standard\Documents\GitHub\Control\openCVLibrary3\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\14ecd1dde031719bd4e459f489c77d28\Inspection-release\AndroidManifest.xml:2:1-32:12
 MERGED from [:Blocks-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\aee480b31e91dce98689bfe5bbfd3a23\Blocks-release\AndroidManifest.xml:2:1-26:12
@@ -56,6 +58,8 @@ MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transfo
 MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\4acba90664dfba2c2d7ca7871923e246\Analytics-release\AndroidManifest.xml:19:5-24:19
 MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\9a354db4424c2f9280a589066b5a999d\dogecv-2020.4-alpha\AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\9a354db4424c2f9280a589066b5a999d\dogecv-2020.4-alpha\AndroidManifest.xml:11:5-15:19
+MERGED from [:tensorflow-lite-0.0.0-nightly:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\56b5a4c5a40c879e95beb17a7d8e7720\tensorflow-lite-0.0.0-nightly\AndroidManifest.xml:4:5-5:19
+MERGED from [:tensorflow-lite-0.0.0-nightly:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\56b5a4c5a40c879e95beb17a7d8e7720\tensorflow-lite-0.0.0-nightly\AndroidManifest.xml:4:5-5:19
 MERGED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\14ecd1dde031719bd4e459f489c77d28\Inspection-release\AndroidManifest.xml:19:5-30:19
 MERGED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\14ecd1dde031719bd4e459f489c77d28\Inspection-release\AndroidManifest.xml:19:5-30:19
 MERGED from [:Blocks-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\aee480b31e91dce98689bfe5bbfd3a23\Blocks-release\AndroidManifest.xml:18:5-24:19
@@ -104,6 +108,8 @@ MERGED from [:WirelessP2p-release:] C:\Users\Keval Standard\.gradle\caches\trans
 MERGED from [:WirelessP2p-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\fda35a8a97c01d66ecfb9b40bb4413b0\WirelessP2p-release\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\9a354db4424c2f9280a589066b5a999d\dogecv-2020.4-alpha\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\9a354db4424c2f9280a589066b5a999d\dogecv-2020.4-alpha\AndroidManifest.xml:7:5-9:41
+MERGED from [:tfod-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\414afd222ead59dbee5074e4d00922a6\tfod-release\AndroidManifest.xml:7:5-9:41
+MERGED from [:tfod-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\414afd222ead59dbee5074e4d00922a6\tfod-release\AndroidManifest.xml:7:5-9:41
 MERGED from [:openCVLibrary3] C:\Users\Keval Standard\Documents\GitHub\Control\openCVLibrary3\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:openCVLibrary3] C:\Users\Keval Standard\Documents\GitHub\Control\openCVLibrary3\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\14ecd1dde031719bd4e459f489c77d28\Inspection-release\AndroidManifest.xml:7:5-9:41
@@ -706,6 +712,8 @@ uses-library#android.test.runner
 ADDED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\4acba90664dfba2c2d7ca7871923e246\Analytics-release\AndroidManifest.xml:23:9-60
 	android:name
 		ADDED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\4acba90664dfba2c2d7ca7871923e246\Analytics-release\AndroidManifest.xml:23:23-57
+uses-permission#android.permission.READ_PHONE_STATE
+IMPLIED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12 reason: org.tensorflow.lite has a targetSdkVersion < 4
 uses-permission#android.permission.BLUETOOTH_ADMIN
 ADDED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\14ecd1dde031719bd4e459f489c77d28\Inspection-release\AndroidManifest.xml:12:5-74
 	android:name

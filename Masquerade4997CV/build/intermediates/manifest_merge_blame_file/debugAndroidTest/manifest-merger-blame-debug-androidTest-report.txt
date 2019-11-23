@@ -3,45 +3,24 @@
 3    package="DogeCV.test" >
 4
 5    <uses-sdk
-<<<<<<< HEAD
-5-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:5:5-74
+5-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:5:5-74
 6        android:minSdkVersion="19"
-6-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:5:15-41
+6-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:5:15-41
 7        android:targetSdkVersion="28" />
-7-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:5:42-71
+7-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:5:42-71
 8
 9    <instrumentation
-9-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:11:5-15:61
+9-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:11:5-15:61
 10        android:name="android.test.InstrumentationTestRunner"
-10-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:11:22-75
+10-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:11:22-75
 11        android:functionalTest="false"
-11-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:14:22-52
+11-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:14:22-52
 12        android:handleProfiling="false"
-12-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:13:22-53
+12-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:13:22-53
 13        android:label="Tests for DogeCV.test"
-13-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:15:22-59
+13-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:15:22-59
 14        android:targetPackage="DogeCV.test" />
-14-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:12:22-57
-=======
-5-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:5:5-74
-6        android:minSdkVersion="19"
-6-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:5:15-41
-7        android:targetSdkVersion="28" />
-7-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:5:42-71
-8
-9    <instrumentation
-9-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:11:5-15:61
-10        android:name="android.test.InstrumentationTestRunner"
-10-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:11:22-75
-11        android:functionalTest="false"
-11-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:14:22-52
-12        android:handleProfiling="false"
-12-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:13:22-53
-13        android:label="Tests for DogeCV.test"
-13-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:15:22-59
-14        android:targetPackage="DogeCV.test" />
-14-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:12:22-57
->>>>>>> origin/master
+14-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:12:22-57
 15
 16    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 16-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-81
@@ -154,11 +133,7 @@
 75-->[:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\14ecd1dde031719bd4e459f489c77d28\Inspection-release\AndroidManifest.xml:12:22-71
 76
 77    <application
-<<<<<<< HEAD
-77-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:7:5-9:19
-=======
-77-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:7:5-9:19
->>>>>>> origin/master
+77-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:7:5-9:19
 78        android:name="org.firstinspires.ftc.robotcore.internal.system.RobotApplication"
 78-->[:RobotCore-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\fa234a7adad7992a00584847078aeef6\RobotCore-release\AndroidManifest.xml:78:18-97
 79        android:allowBackup="true"
@@ -166,11 +141,7 @@
 80        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
 80-->[com.android.support:support-compat:28.0.0] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\f14724208b5bfeeef0d6bdefe649bca7\support-compat-28.0.0\AndroidManifest.xml:22:18-91
 81        android:debuggable="true"
-<<<<<<< HEAD
-81-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:7:18-43
-=======
-81-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:7:18-43
->>>>>>> origin/master
+81-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:7:18-43
 82        android:exported="true"
 82-->[:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\4acba90664dfba2c2d7ca7871923e246\Analytics-release\AndroidManifest.xml:21:9-32
 83        android:icon="@drawable/ic_launcher"
@@ -182,13 +153,8 @@
 86        android:theme="@style/AppThemeRedRC" >
 86-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-45
 87        <uses-library android:name="android.test.runner" />
-<<<<<<< HEAD
-87-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:8:9-60
-87-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger6016468554351625083.xml:8:23-57
-=======
-87-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:8:9-60
-87-->/Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger501942840087130217.xml:8:23-57
->>>>>>> origin/master
+87-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:8:9-60
+87-->C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger3265015482620687681.xml:8:23-57
 88        <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
 89        <meta-data
 89-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-24:33

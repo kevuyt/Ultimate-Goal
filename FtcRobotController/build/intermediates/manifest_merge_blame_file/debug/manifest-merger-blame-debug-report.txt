@@ -27,7 +27,6 @@
 18-->C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\src\main\AndroidManifest.xml:12:5-29
 19        android:theme="@style/AppThemeRedRC" >
 19-->C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\src\main\AndroidManifest.xml:15:5-41
-19-->C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\src\main\AndroidManifest.xml:15:5-41
 20
 21        <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
 22        <meta-data
