@@ -23,7 +23,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
         double prevGrabber = 1;
         double prevPusher;
         double prevRotater = 0;
-        double prevSide = 0;
 
         robot.driveTrain.resetEncoders();
 
@@ -46,7 +45,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if (controller1.rightBumper() || controller1.leftBumper()) robot.setMultipliers(0.707);
             else {
                 robot.setSpeedMultiplier(1.414);
-                robot.setTurnMultiplier(1.414);
+                robot.setTurnMultiplier(0.8);
             }
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-0.8);
@@ -68,9 +67,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
             prevPusher = robot.blockPusher.getPosition();
             prevRotater = robot.blockRotater.getPosition();
             //prevSide = robot.sideGrabber.getPosition();
-
-            dash.create("Lift Position: ", robot.lift.encoder.getInches());
-            dash.update();
 
             controller1.update();
             controller2.update();

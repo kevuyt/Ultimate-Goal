@@ -70,8 +70,12 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
      * Once you've obtained a license key, copy the string from the Vuforia web site
      * and paste it in to your code on the next line, between the double quotes.
      */
-    private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+    private static final String VUFORIA_KEY = "AR4QHCn/////AAABmRUvQXSunEz/r9ElVUmQKsKDML" +
+            "lMOzt4OlqKVwjdR0lOkPf7WdpNxSAWRUdDqK4adfeloPdLByCyBIm14XNF5jXfsGWuRbQAX+w4fU" +
+            "9z43ZnGy7z98CC2Q7b27e3g8ek8L1+0JY9mx2CKHnmddxXrd3qB5XjR+mAoEfa31mq5OEMW925OP" +
+            "puiXUJJoNcn1di36olt1yfjy50FuVbbZ4yh+pcgm64yiKEGK2tskQmK6KoCl50ynNnk/K7WZL7AhZ" +
+            "m0+NR4C70uvoyaZPs3Je9OU+KasgAEI759s/6ZaWw+kqd6Znjn1x4ejdZysHwPLeWKA5tE+PwrCN4P" +
+            "YBmAddy6KVrbdgZkdDW66KXMeNn2ir5";
 
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
@@ -120,14 +124,25 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
                       telemetry.addData("# Object Detected", updatedRecognitions.size());
                       // step through the list of recognitions and display boundary info.
                       int i = 0;
+                      SkystonePosition position = SkystonePosition.RIGHT;
                       for (Recognition recognition : updatedRecognitions) {
+                          if (recognition.getLabel().equals("Skystone")) {
+                              if (recognition.getLeft() < 250) {
+                                  position = SkystonePosition.LEFT;
+                              }
+                              else if (recognition.getLeft() > 250) {
+                                  position = SkystonePosition.MIDDLE;
+                              }
+                          }
                         telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
                         telemetry.addData(String.format("  left,top (%d)", i), "%.03f , %.03f",
                                 recognition.getLeft(), recognition.getTop());
                         telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
                                 recognition.getRight(), recognition.getBottom());
                       }
+                      telemetry.addData("Postion: ", position);
                       telemetry.update();
+
                     }
                 }
             }
@@ -137,7 +152,9 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
             tfod.shutdown();
         }
     }
-
+    public enum SkystonePosition {
+        LEFT, RIGHT, MIDDLE
+    }
     /**
      * Initialize the Vuforia localization engine.
      */
@@ -166,5 +183,6 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
        tfodParameters.minimumConfidence = 0.8;
        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABEL_FIRST_ELEMENT, LABEL_SECOND_ELEMENT);
+        tfod.setClippingMargins(50,75,50,200);
     }
 }

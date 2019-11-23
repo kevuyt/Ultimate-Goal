@@ -29,6 +29,6 @@ public class TestAutoOne extends MasqLinearOpMode {
         robot.foundationHook.raise();
         robot.blockPusher.setPosition(1);
         sleep(1);
-        robot.strafe(90, Strafe.FORWARD,500);
+        robot.strafe(90, Strafe.RIGHT,500);
     }
 }

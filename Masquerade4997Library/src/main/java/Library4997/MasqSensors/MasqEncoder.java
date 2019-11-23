@@ -12,7 +12,7 @@ public class MasqEncoder {
   private MasqMotor motor;
   private double wheelDiameter = 4, gearRatio = 1;
   private double currentPosition, zeroPos;
-  private double clicksPerInch;
+  private double    clicksPerInch;
   public MasqEncoder(MasqMotor motor, MasqMotorModel model) {
     clicksPerInch = (model.CPR() / (wheelDiameter * Math.PI));
     this.model = model;

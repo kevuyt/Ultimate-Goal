@@ -93,20 +93,16 @@ public class SensorBNO055IMU extends LinearOpMode
         imu.initialize(parameters);
 
         // Set up our telemetry dashboard
-        //composeTelemetry();
+        composeTelemetry();
 
         // Wait until we're told to go
         waitForStart();
 
         // Start the logging of measured acceleration
         imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
-        Orientation orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        double zero = Double.valueOf(formatAngle(orientation.angleUnit,orientation.firstAngle));
+
         // Loop and update the dashboard
         while (opModeIsActive()) {
-            orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-            telemetry.addData("Relative: ",Double.toString(Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(orientation.angleUnit,orientation.firstAngle))) - zero));
-            telemetry.addData("Absolute: ", formatAngle(orientation.angleUnit,orientation.firstAngle));
             telemetry.update();
         }
     }

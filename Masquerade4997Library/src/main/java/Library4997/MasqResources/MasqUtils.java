@@ -24,13 +24,11 @@ public class MasqUtils {
     public static final double DEFAULT_SLEEP_TIME = 0.5;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
-    public static final String VUFORIA_KEY = "AT47cqv/////AAABmfWDhjR9GUP+p3V+yVCiSZE6RH3" +
-            "KNyZpyijp6yi/cAQt+p5stWYPhiE0/oQ1v4HK9S6Y6JiCkmnWR5PN8rl" +
-            "xIgZXTZi5F3clx9w9LzsUfEhz2Ctt0E5a6Rss8uiHgZHEr+ZclXe4meX" +
-            "Tq0CPHfSlQNlWi6/KZJWnueUPLOkvMi48J9fPAp2xXrliVRQ3Zs0gWHj" +
-            "6/iH7SwxefH4aDwv4aOG9amOB+pqD0AZeBzeuQzjl5gjwDVZNchs8muA" +
-            "yAnqK/wrtoJ9gFWXlJ5wK1hzMnP3+pO+uJl3hU/3LF9tzsL60nZkxL0r" +
-            "zD+fIy0fi8xx1LfysN2URrT82AtUQ2teoPQRFFsgVmYii/W6/1ZUJKcwH";
+    public static final String VUFORIA_KEY = "Ac5sAIr/////AAABmeUEovYOek9pkuVkMLDtWVGIkr+aSwnxHoPcO" +
+            "Wo55EZxWMznvy9o+sR4uE8cUkHfJ2QywQNfK9SgCKSgjjRXD1lJvl3xiT0ddSjfE8JT9NMvGojoFG3nkaQP+Sq" +
+            "MGTgr25mUnTM3Y7v5kcetBEF1+vIcQL28SnoWDfGGMQ9Yt9IHo/W/72s5qWMCJLSS7/8X+Scybt98htjPVAOPI" +
+            "dcudmKVGUMIK5ajH8riMC/2i80n57oBV3YmEYFKq0kIl1/Yf0KP3Hre8pA2les4GgriDHZBmp/E/ixOo1H924+" +
+            "DrFzuLwkk7gs7kk4Jrdp1+jqrxPBJdr8MjYjtXjW+epFt1lcvIlP/4MK44iEH9AMQXYD9";
 
     public static MasqPIDController turnController;
     public static MasqPIDController driveController;
