@@ -11,12 +11,10 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import org.opencv.android.Utils;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
+import MasqCV.MasqCVUtils;
 
 import static Library4997.MasqResources.MasqUtils.VUFORIA_KEY;
 
@@ -59,6 +57,8 @@ public class WebcamTeleop extends MasqLinearOpMode {
 
         while(opModeIsActive()) {
             robot.detector.skystoneDetector.setInput(readFrame());
+            dash.create("Hello");
+            dash.update();
         }
     }
 
@@ -79,12 +79,9 @@ public class WebcamTeleop extends MasqLinearOpMode {
             }
         }
         Bitmap bm = Bitmap.createBitmap(rgb.getWidth(), rgb.getHeight(), Bitmap.Config.RGB_565);
-        bm.copyPixelsFromBuffer(rgb.getPixels());
-        Mat mat = new Mat(bm.getWidth(), bm.getHeight(), CvType.CV_8UC4);
-        Utils.bitmapToMat(bm, mat);
-        Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGB2BGR);
+        Mat m = MasqCVUtils.cvtBitmapMat(bm, rgb);
         frame.close();
-        return mat;
+        return m;
     }
 }
 
