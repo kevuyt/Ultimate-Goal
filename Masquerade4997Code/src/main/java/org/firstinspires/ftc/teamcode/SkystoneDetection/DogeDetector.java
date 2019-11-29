@@ -8,7 +8,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-import DogeCV.detectors.skystone.SkystoneDetector;
+import MasqCV.detectors.skystone.SkystoneDetector;
 import Library4997.MasqResources.MasqMath.MasqVector;
 /**
  * Created by Keval Kataria on 10/27/2019
