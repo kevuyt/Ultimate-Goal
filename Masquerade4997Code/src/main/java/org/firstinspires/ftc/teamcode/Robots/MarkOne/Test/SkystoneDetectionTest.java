@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
-import MasqCV.detectors.skystone.SkystoneDetector;
 
 /**
  * Created by Keval Kataria on 10/27/2019
@@ -21,7 +20,7 @@ public class SkystoneDetectionTest extends MasqLinearOpMode {
         robot.init(hardwareMap);
         robot.detector.start();
 
-        SkystoneDetector.SkystonePosition skystonePosition;
+        //SkystoneDetector.SkystonePosition skystonePosition;
         while (!opModeIsActive()) {
             dash.create("Stone Detected: ", robot.detector.isDetected());
         }

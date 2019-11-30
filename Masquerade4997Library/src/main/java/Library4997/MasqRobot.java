@@ -14,6 +14,7 @@ import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import Library4997.MasqWrappers.MasqPredicate;
@@ -34,8 +35,6 @@ public abstract class MasqRobot {
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
-    public double speedMultiplier = 1.414;
-    public double turnMultiplier = 1.414;
     private MasqClock timeoutClock = new MasqClock();
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
     public void strafe(double distance, double angle, double timeOut, double speed) {
@@ -420,7 +419,7 @@ public abstract class MasqRobot {
         driveTrain.rightDrive.setPower(right);
         driveTrain.leftDrive.setPower(left);
     }
-    public void MECH(MasqController c, Direction direction, boolean fieldCentric) {
+    public void MECH(MasqController c, Direction direction, boolean fieldCentric, double speedMultiplier, double turnMultiplier) {
         int disable = 0;
         if (fieldCentric) disable = 1;
 
@@ -454,13 +453,16 @@ public abstract class MasqRobot {
         driveTrain.rightDrive.motor2.setVelocity(rightBack * direction.value);
     }
     public void MECH(MasqController c, Direction direction) {
-        MECH(c, direction, false);
+        MECH(c, direction, false, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER);
     }
     public void MECH(MasqController c, boolean disabled) {
-        MECH(c, Direction.FORWARD, disabled);
+        MECH(c, Direction.FORWARD, disabled, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER);
     }
     public void MECH(MasqController c) {
-        MECH(c, Direction.FORWARD, false);
+        MECH(c, Direction.FORWARD, false, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER);
+    }
+    public void MECH(MasqController c, double speedMutliplier, double turnMultiplier) {
+        MECH(c, Direction.FORWARD, false, speedMutliplier, turnMultiplier);
     }
 
     public void initializeTeleop(){
@@ -489,16 +491,5 @@ public abstract class MasqRobot {
     public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
     public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
         return hardwareMap.get(WebcamName.class, name);
-    }
-
-    public void setMultipliers(double multiplier) {
-        speedMultiplier = multiplier;
-        turnMultiplier = multiplier;
-    }
-    public void setTurnMultiplier(double turnMultiplier) {
-        this.turnMultiplier = turnMultiplier;
-    }
-    public void setSpeedMultiplier(double speedMultiplier) {
-        this.speedMultiplier = speedMultiplier;
     }
 }
