@@ -16,36 +16,35 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
-
         robot.init(hardwareMap);
         robot.initializeTeleop();
 
         double prevGrabber = 1;
-        double prevPusher;
         double prevRotater = 0;
+        double prevCapper = 0;
 
         robot.driveTrain.resetEncoders();
 
-        while(!opModeIsActive()) {
-
-            dash.create("Hello ");
-            dash.update();
-        }
+        dash.create("Hello ");
+        dash.update();
 
         waitForStart();
 
         robot.blockPusher.setPosition(1);
-        prevPusher = 1;
+        double prevPusher = 1;
 
         robot.foundationHook.mid();
 
         while(opModeIsActive()) {
             robot.MECH(controller1);
 
-            if (controller1.rightBumper() || controller1.leftBumper()) robot.setMultipliers(0.707);
+            if (controller1.rightBumper() || controller1.leftBumper()) {
+                robot.setSpeedMultiplier(0.5);
+                robot.setTurnMultiplier(0.35);
+            }
             else {
-                robot.setSpeedMultiplier(1.414);
-                robot.setTurnMultiplier(0.8);
+                robot.setSpeedMultiplier(1);
+                robot.setTurnMultiplier(0.7);
             }
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-0.8);
@@ -56,15 +55,20 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else if (controller2.leftTriggerPressed()) robot.lift.setVelocity(-controller2.leftTrigger());
             else robot.lift.setVelocity(0);
 
-            if (Math.abs(robot.lift.encoder.getInches()) > 24) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
+            if (Math.abs(robot.lift.encoder.getInches()) > 10) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
+            MasqUtils.toggle(controller2.dPadUpOnPress(), robot.capper, prevCapper);
 
             robot.foundationHook.DriverControl(controller1);
 
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();
             prevRotater = robot.blockRotater.getPosition();
+            prevCapper = robot.capper.getPosition();
+
+            dash.create("Lift: ", robot.lift.encoder.getInches());
+            dash.update();
 
             controller1.update();
             controller2.update();

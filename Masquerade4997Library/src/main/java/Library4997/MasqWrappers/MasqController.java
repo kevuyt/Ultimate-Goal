@@ -14,7 +14,8 @@ public class MasqController implements Runnable{
     private boolean close = false;
     private boolean
             aPrev = false, bPrev = false, xPrev = false, yPrev = false,
-            leftBumperPrev = false, rightBumperPrev = false, rightTriggerPrev = false, leftTriggerPrev = false;
+            leftBumperPrev = false, rightBumperPrev = false, rightTriggerPrev = false,
+            leftTriggerPrev = false, dPadUpPrev = false, dPadDownPrev = false, dPadRightPrev = false, dPadLeftPrev = false;
 
     public MasqController(Gamepad g, String name){
         this.name = name;
@@ -51,6 +52,11 @@ public class MasqController implements Runnable{
     public boolean dPadRight() {
         return gamepad.dpad_right;
     }
+
+    public boolean dPadUpOnPress() {return dPadUp() && !dPadUpPrev;}
+    public boolean dPadDownOnPress() {return dPadUp() && !dPadDownPrev;}
+    public boolean dPadUpRightPress() {return dPadUp() && !dPadRightPrev;}
+    public boolean dPadUpLeftPress() {return dPadUp() && !dPadLeftPrev;}
 
     public boolean leftBumper() {
         return gamepad.left_bumper;
