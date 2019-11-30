@@ -56,7 +56,7 @@ public class WebcamTeleop extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            robot.detector.skystoneDetector.setInput(readFrame());
+          //  robot.detector.skystoneDetector.setInput(readFrame());
             dash.create("Hello");
             dash.update();
         }

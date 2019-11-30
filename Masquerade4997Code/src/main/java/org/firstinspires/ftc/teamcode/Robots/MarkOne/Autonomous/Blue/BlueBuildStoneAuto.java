@@ -20,10 +20,8 @@ public class BlueBuildStoneAuto extends MasqLinearOpMode {
         robot.init(hardwareMap);
         robot.initializeAutonomous();
 
-        //while(!opModeIsActive()) {
-            dash.create("Hello");
-            dash.update();
-        //}
+        dash.create("Hello");
+        dash.update();
 
         waitForStart();
 

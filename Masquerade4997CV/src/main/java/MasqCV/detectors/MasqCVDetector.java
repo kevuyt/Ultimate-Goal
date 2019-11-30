@@ -12,6 +12,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import java.util.ArrayList;
 import java.util.List;
 
+import Library4997.MasqWrappers.DashBoard;
 import MasqCV.scoring.MasqCVScorer;
 import MasqCV.MasqCV;
 
@@ -39,8 +40,8 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     protected enum Stage {
         FINAL_DISPLAY,
         THRESHOLD,
-        CONTOURS,
-        RAW_IMAGE
+        //CONTOURS,
+        //RAW_IMAGE
     }
 
     protected Stage stageToRenderToViewport = Stage.FINAL_DISPLAY;
@@ -110,5 +111,15 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
 
     public Size getSize() {
         return size;
+    }
+
+    public Mat cropMat(Mat input, Point tl, Point br)  {
+        if (!(tl == null || br == null || tl.x >= input.width() || tl.y >= input.height() || tl.x < 0 || tl.y < 0 || br.x > input.width() || br.y > input.height() || br.x <= 0 || br.y <= 0)) {
+            Imgproc.rectangle(input,new Point(tl.x, tl.y),new Point(br.x, br.y),new Scalar(0), -1);
+        }
+        else {
+            DashBoard.getDash().create("Cropping failed due to invalid cropping margins");
+        }
+        return input;
     }
 }

@@ -32,5 +32,4 @@ public class TestRobot extends MasqRobot {
         driveTrain.setClosedLoop(true);
         setMultipliers(0.5);
     }
-
 }

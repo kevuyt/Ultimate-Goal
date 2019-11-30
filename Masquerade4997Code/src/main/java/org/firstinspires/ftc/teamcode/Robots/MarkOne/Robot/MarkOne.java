@@ -23,7 +23,7 @@ import Library4997.MasqWrappers.DashBoard;
  */
 public class MarkOne extends MasqRobot {
 
-    public MasqServo blockGrabber, blockRotater, blockPusher/*, sideGrabber*/;
+    public MasqServo blockGrabber, blockRotater, blockPusher, capper;
     public MarkOneFoundationHook foundationHook;
     public MasqMotor  lift;
     public MasqMotorSystem intake;
@@ -33,15 +33,15 @@ public class MarkOne extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap);
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
-        lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, hardwareMap);
+        lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
+        capper = new MasqServo("capper", hardwareMap);
         tracker = new MasqPositionTracker(lift, intake.motor1, hardwareMap); //Replace motors when odometry is incorporating
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         dash = DashBoard.getDash();
         detector = new DogeDetector(DogeDetector.Cam.PHONE, hardwareMap);
-        //sideGrabber = new MasqServo("sideGrabber", hardwareMap);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class MarkOne extends MasqRobot {
         blockPusher.scaleRange(0, 0.5);
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.7);
-        //sideGrabber.scaleRange(0, 1);
+        capper.scaleRange(0,1);
     }
 
     private void resetServos() {
@@ -72,7 +72,7 @@ public class MarkOne extends MasqRobot {
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
         foundationHook.lower();
-        //sideGrabber.setPosition(0);
+        capper.setPosition(0);
     }
 
     public void runStoneLeft(HardwareMap hardwareMap) {

@@ -115,9 +115,6 @@ public class StoneDetector extends MasqCVDetector {
 
                 return yellowMask;
             }
-            case RAW_IMAGE: {
-                return rawImage;
-            }
             default: {
                 return displayMat;
             }

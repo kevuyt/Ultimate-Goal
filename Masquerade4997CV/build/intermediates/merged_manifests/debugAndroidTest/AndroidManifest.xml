@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="DogeCV.test" >
+    package="MasqCV.test" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -10,8 +10,8 @@
         android:name="android.test.InstrumentationTestRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for DogeCV.test"
-        android:targetPackage="DogeCV.test" />
+        android:label="Tests for MasqCV.test"
+        android:targetPackage="MasqCV.test" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission
@@ -83,6 +83,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:supportsRtl="true"
         android:theme="@style/AppThemeRedRC" >
         <uses-library android:name="android.test.runner" />
         <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->

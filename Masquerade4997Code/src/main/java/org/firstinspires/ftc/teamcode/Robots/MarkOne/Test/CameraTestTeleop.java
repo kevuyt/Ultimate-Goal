@@ -62,7 +62,7 @@ public class CameraTestTeleop extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            robot.detector.skystoneDetector.setInput(readFrame());
+           // robot.detector.skystoneDetector.setInput(readFrame());
         }
     }
 
