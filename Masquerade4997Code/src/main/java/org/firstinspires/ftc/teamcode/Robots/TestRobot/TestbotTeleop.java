@@ -15,7 +15,7 @@ public class TestbotTeleop extends MasqLinearOpMode {
         robot.init(hardwareMap);
         robot.initializeTeleop();
         while (!opModeIsActive()) {
-            dash.create("Big Brain Time");
+            dash.create("Hello");
             dash.update();
         }
         waitForStart();

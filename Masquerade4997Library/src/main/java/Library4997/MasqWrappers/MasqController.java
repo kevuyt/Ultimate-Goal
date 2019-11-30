@@ -119,6 +119,10 @@ public class MasqController implements Runnable{
         rightBumperPrev = gamepad.right_bumper;
         rightTriggerPrev = rightTriggerPressed();
         leftTriggerPrev = leftTriggerPressed();
+        dPadDownPrev = dPadDown();
+        dPadLeftPrev = dPadLeft();
+        dPadRightPrev = dPadRight();
+        dPadUpPrev = dPadUp();
     }
 
     public String getName() {return name;}

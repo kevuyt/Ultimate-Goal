@@ -23,10 +23,10 @@ public class RobotTeleOp extends MasqLinearOpMode {
         double prevRotater = 0;
         double prevCapper = 0;
 
-        robot.driveTrain.resetEncoders();
-
-        dash.create("Hello ");
-        dash.update();
+        while(!opModeIsActive()) {
+            dash.create("Hello ");
+            dash.update();
+        }
 
         waitForStart();
 
@@ -36,9 +36,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
         robot.foundationHook.mid();
 
         while(opModeIsActive()) {
-
-
-
             if (controller1.rightBumper() || controller1.leftBumper()) {robot.MECH(controller1,0.5, 0.35);}
             else {robot.MECH(controller1,1, 0.7);}
 

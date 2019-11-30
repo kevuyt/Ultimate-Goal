@@ -58,6 +58,7 @@ public class MarkOne extends MasqRobot {
         driveTrain.setClosedLoop(true);
         lift.setClosedLoop(true);
         lift.setKp(0.001);
+        driveTrain.resetEncoders();
     }
 
     private void scaleServos() {

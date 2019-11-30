@@ -14,14 +14,14 @@ import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 import Library4997.MasqWrappers.DashBoard;
-import MasqCV.detectors.skystone.SkystoneDetectorv2;
+import MasqCV.detectors.skystone.SkystoneDetector;
 /**
  * Created by Keval Kataria on 10/27/2019
  */
 public class DogeDetector {
     private OpenCvCamera phoneCamera;
     private OpenCvWebcam webcam;
-    public SkystoneDetectorv2 skystoneDetector;
+    public SkystoneDetector skystoneDetector;
     private Cam cam;
 
     public enum Cam{
@@ -33,12 +33,12 @@ public class DogeDetector {
         int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());
         if(cam.equals(Cam.PHONE)){
             phoneCamera = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.FRONT, cameraMonitorViewId);
-            skystoneDetector = new SkystoneDetectorv2();
+            skystoneDetector = new SkystoneDetector();
             phoneCamera.setPipeline(skystoneDetector);
         }
         else if(cam.equals(Cam.WEBCAM)){
             webcam = new OpenCvWebcam(hwMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-            skystoneDetector = new SkystoneDetectorv2();
+            skystoneDetector = new SkystoneDetector();
             webcam.setPipeline(skystoneDetector);
         }
     }
