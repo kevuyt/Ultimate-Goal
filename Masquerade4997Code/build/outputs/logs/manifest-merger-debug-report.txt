@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
-INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
-INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
-INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
+ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
+INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
+INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
+INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
 MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:1-17:12
 MERGED from [:Masquerade4997Library] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Library\build\intermediates\library_manifest\debug\AndroidManifest.xml:8:1-17:12
 MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-65:12
@@ -25,25 +25,25 @@ MERGED from [org.openftc:easyopencv:1.2] C:\Users\Keval Standard\.gradle\caches\
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\f993d148e999fdf956a4937ae88c6ee1\versionedparcelable-28.0.0\AndroidManifest.xml:17:1-25:12
 MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\a4cce78b48541915b29a77ed3286103c\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [org.openftc:opencv-repackaged:4.1.0-A] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\ddc0dae290658feb35c843074f410f0b\opencv-repackaged-4.1.0-A\AndroidManifest.xml:2:1-11:12
-INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
-INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
-INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
+INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
+INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
+INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
 	package
 		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:11-51
 		INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
 		INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml
-	xmlns:android
-		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
 	android:versionCode
 		INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12
 		INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:9:5-63
 application
-ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:9:5-19
+ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:10:5-23:19
 MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-20
 MERGED from [:Masquerade4997CV] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997CV\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-20
 MERGED from [:Masquerade4997Library] C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Library\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-20
@@ -86,6 +86,30 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Keval Stan
 		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-45
 	android:name
 		ADDED from [:RobotCore-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\fa234a7adad7992a00584847078aeef6\RobotCore-release\AndroidManifest.xml:78:18-97
+activity#org.firstinspires.ftc.robotcontroller.internal.PermissionValidatorWrapper
+ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:11:5-22:16
+MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-38:20
+MERGED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-38:20
+	android:screenOrientation
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:12:9-45
+	android:label
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:14:9-41
+	android:launchMode
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:15:9-40
+	android:configChanges
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:13:9-55
+	android:name
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:11:15-103
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:17:9-20:25
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:18:13-73
+	android:name
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:18:23-70
+action#android.intent.action.MAIN
+ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:19:13-65
+	android:name
+		ADDED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:19:21-62
 uses-sdk
 INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml
@@ -150,28 +174,6 @@ ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Contro
 		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-30
 	android:name
 		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-78
-activity#org.firstinspires.ftc.robotcontroller.internal.PermissionValidatorWrapper
-ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-38:20
-	android:screenOrientation
-		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:32:13-49
-	android:label
-		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:13-45
-	android:launchMode
-		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:31:13-44
-	android:configChanges
-		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-59
-	android:name
-		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-101
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:13-37:29
-category#android.intent.category.LAUNCHER
-ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:17-77
-	android:name
-		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:27-74
-action#android.intent.action.MAIN
-ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:17-69
-	android:name
-		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:25-66
 activity#org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
 ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:9-57:20
 	android:screenOrientation
@@ -713,7 +715,7 @@ ADDED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transfor
 	android:name
 		ADDED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\4acba90664dfba2c2d7ca7871923e246\Analytics-release\AndroidManifest.xml:23:23-57
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-10:12 reason: org.tensorflow.lite has a targetSdkVersion < 4
+IMPLIED from C:\Users\Keval Standard\Documents\GitHub\Control\Masquerade4997Code\src\main\AndroidManifest.xml:8:1-24:12 reason: org.tensorflow.lite has a targetSdkVersion < 4
 uses-permission#android.permission.BLUETOOTH_ADMIN
 ADDED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\14ecd1dde031719bd4e459f489c77d28\Inspection-release\AndroidManifest.xml:12:5-74
 	android:name

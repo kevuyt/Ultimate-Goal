@@ -26,6 +26,7 @@ public class SkystoneDetector extends MasqCVDetector {
     private int imageWidth = 320;
     private int imageHeight = 240;
 
+    private Rect secondBlackRect = new Rect();
     private Rect foundRect = new Rect();
 
     private Mat rawImage = new Mat();
@@ -57,21 +58,24 @@ public class SkystoneDetector extends MasqCVDetector {
         List<MatOfPoint> contoursBlack = findContours(blackFilter, blackMask);
         List<Rect> rectsBlack = contoursToRects(contoursBlack);
         List<Rect> rectsBlackInYellow = filterByBound(rectsBlack, yellowBoundingRect);
-        List<List<Rect>> listOfBlackBlobs = groupIntoBlobs(rectsBlackInYellow, blobDistanceThreshold);
+        List<List<Rect>> listOfBlackBlobs = groupIntoBlobs(rectsBlack, blobDistanceThreshold);
         Rect bestSkystoneRect = chooseBestBlack(listOfBlackBlobs);
 
         //draw(contoursYellow, new Scalar(255, 150, 0));
         draw(contoursBlack, new Scalar(80, 80, 80));
-        draw(yellowBoundingRect, new Scalar(255, 255, 0));
+        //draw(yellowBoundingRect, new Scalar(255, 255, 0));
 
         found = bestSkystoneRect.area() > minimumArea;
+        if (!found) {
+            found = secondBlackRect.area() > minimumArea;
+        }
         if (found) {
             draw(bestSkystoneRect, new Scalar(0, 255, 0));
             draw(getCenterPoint(bestSkystoneRect), new Scalar(0, 255, 0));
             foundRect = bestSkystoneRect;
+            Imgproc.putText(displayMat, "Chosen", foundRect.tl(),0,1,new Scalar(255,255,255));
         }
-        Imgproc.putText(displayMat, "Chosen", foundRect.tl(),0,1,new Scalar(255,255,255));
-        // RENDER
+
         switch (stageToRenderToViewport) {
             case THRESHOLD:
                 Imgproc.cvtColor(blackMask, blackMask, Imgproc.COLOR_GRAY2BGR);
@@ -86,7 +90,7 @@ public class SkystoneDetector extends MasqCVDetector {
         blackFilter = new GrayscaleFilter(0, 50);
         yellowFilter = new LeviColorFilter(LeviColorFilter.ColorPreset.YELLOW, 90);
         blobDistanceThreshold = 50;
-        minimumArea = 200;
+        minimumArea = 100;
     }
 
 
@@ -156,6 +160,7 @@ public class SkystoneDetector extends MasqCVDetector {
             draw(blobBound, new Scalar(0, 150, 0));
 
             if (blobBound.area() > bestBlackRect.area()) {
+                secondBlackRect = bestBlackRect;
                 bestBlackRect = blobBound;
             }
         }
@@ -206,8 +211,10 @@ public class SkystoneDetector extends MasqCVDetector {
     }
     public Mat cropMat(Mat input, Point tl, Point br)  {
         if (!(tl == null || br == null || tl.x >= input.width() || tl.y >= input.height() || tl.x < 0 || tl.y < 0 || br.x > input.width() || br.y > input.height() || br.x <= 0 || br.y <= 0)) {
-            Imgproc.rectangle(input,new Point(0,0),new Point(br.x, tl.y), new Scalar(255,255,255), -1);
-            Imgproc.rectangle(input, new Point(tl.x,br.y), new Point(input.width(), input.height()), new Scalar(255,255,255), -1);
+            Imgproc.rectangle(input,new Point(0,0),new Point(input.width(), tl.y), new Scalar(255,255,255), -1);
+            Imgproc.rectangle(input, new Point(0,0), new Point(tl.x, input.height()), new Scalar(255,255,255), -1);
+            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(br.x, 0), new Scalar(255,255,255), -1);
+            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(0, br.y), new Scalar(255,255,255), -1);
         }
         else {
             DashBoard.getDash().create("Cropping failed due to invalid cropping margins");
@@ -223,8 +230,8 @@ public class SkystoneDetector extends MasqCVDetector {
     public void setClippingMargins(int top, int left, int bottom, int right) {
         tl = new Point(left, top);
         br = new Point(320 - right,240 - bottom);
-        imageWidth = right - left;
-        imageHeight = top - bottom;
+        imageWidth = 320 - right - left;
+        imageHeight = top - 240 + bottom;
     }
 
     public int getImageWidth() {

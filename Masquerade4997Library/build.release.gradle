@@ -6,4 +6,5 @@ dependencies {
     implementation (name: 'FtcCommon-release', ext: 'aar')
     implementation (name:'Analytics-release', ext:'aar')
     implementation (name:'WirelessP2p-release', ext:'aar')
+    implementation project(':openCVLibrary3')
 }

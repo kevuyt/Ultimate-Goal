@@ -1,9 +1,12 @@
 package Library4997.MasqResources;
 
+import android.graphics.Point;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.opencv.core.Rect;
 
 import java.util.Locale;
 
@@ -128,39 +131,7 @@ public class MasqUtils {
     public static String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
+    public static Point getCenterPoint(Rect rect) {
+        return new Point(rect.x + rect.width/2, rect.y + rect.height/2);
+    }
 }
-
-
-    /*public class KP {
-        public static final double TURN = 0.015;
-        public static final double TURN_POM = -0.1;
-        public static final double ANGLE = 0.005;
-        public static final double DRIVE = 3;
-        public static final double PATH = .01;
-        public static final double VELOCITY_TELE = 0.002;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class KI {
-        public static final double PATH = 0.0;
-        public static final double TURN = 0.0;
-        public static final double ANGLE = 0.000;
-        public static final double TURN_POM = 0.000005;
-        public static final double DRIVE = 0.0;
-        public static final double VELOCITY_TELE = 0.000;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class KD {
-        public static final double PATH = .0;
-        public static final double TURN = 0.0;
-        public static final double ANGLE = 0.000;
-        public static final double TURN_POM = -0.00;
-        public static final double DRIVE = 0.0;
-        public static final double VELOCITY_TELE = 0.000;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class ID {
-        public static final double TURN = 1.0;
-        public static final double DRIVE = 1.0;
-        public static final double MOTOR_TELEOP = 1.0;
-        public static final double MOTOR_AUTONOMOUS = 1.00;
-    }*/

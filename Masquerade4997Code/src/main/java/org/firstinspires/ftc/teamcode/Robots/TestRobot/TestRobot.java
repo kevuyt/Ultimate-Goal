@@ -30,6 +30,5 @@ public class TestRobot extends MasqRobot {
         MasqUtils.velocityTeleController = new MasqPIDController(0.002, 0, 0);
         MasqUtils.velocityAutoController = new MasqPIDController(0.002, 0, 0);
         driveTrain.setClosedLoop(true);
-        setMultipliers(0.5);
     }
 }
