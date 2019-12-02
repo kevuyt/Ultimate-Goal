@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Red;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
@@ -11,7 +12,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/15/2019
  */
-@Autonomous(name = "RedBuildWallAuto", group = "Prototype")
+@Autonomous(name = "RedBuildWallAuto", group = "MarkOne")
+@Disabled
 public class RedBuildWallAuto extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 

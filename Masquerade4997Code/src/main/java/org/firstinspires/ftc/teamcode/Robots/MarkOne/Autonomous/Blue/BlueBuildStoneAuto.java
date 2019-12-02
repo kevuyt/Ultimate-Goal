@@ -12,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/15/2019
  */
-@Autonomous(name = "BlueBuildStoneAuto", group = "Prototype")
+@Autonomous(name = "BlueBuildStoneAuto", group = "MarkOne")
 @Disabled
 public class BlueBuildStoneAuto extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();

@@ -9,7 +9,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 10/20/18.
  * Project: MasqLib
  */
-@TeleOp(name = "LibraryTestsTeleop", group = "Test")
+@TeleOp(name = "LibraryTestsTeleop", group = "Testbot")
 @Disabled
 public class LibraryTestsTeleop extends MasqLinearOpMode {
     private TestRobot robot = new TestRobot();

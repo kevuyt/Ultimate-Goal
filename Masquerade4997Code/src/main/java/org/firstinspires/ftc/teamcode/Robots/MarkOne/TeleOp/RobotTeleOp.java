@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/14/2019
  */
-@TeleOp(name = "RobotTeleOp", group = "Prototype")
+@TeleOp(name = "RobotTeleOp", group = "MarkOne")
 public class RobotTeleOp extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
@@ -44,7 +44,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else robot.intake.setVelocity(0);
 
             if (controller2.rightTriggerPressed()) robot.lift.setVelocity(1);
-            else if (controller2.leftTriggerPressed()) robot.lift.setVelocity(-controller2.leftTrigger());
+            else if (controller2.leftTriggerPressed()) robot.lift.setVelocity(-1);
             else robot.lift.setVelocity(0);
 
             if (Math.abs(robot.lift.encoder.getInches()) > 10) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
