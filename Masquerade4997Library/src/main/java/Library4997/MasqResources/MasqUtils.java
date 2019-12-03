@@ -1,9 +1,12 @@
 package Library4997.MasqResources;
 
+import android.graphics.Point;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.opencv.core.Rect;
 
 import java.util.Locale;
 
@@ -23,14 +26,14 @@ public class MasqUtils {
     public static final double MECH_ROTATION_MULTIPLIER = 0.4;
     public static final double DEFAULT_SLEEP_TIME = 0.5;
     public static final double DEFAULT_TIMEOUT = 2;
+    public static final double DEFAULT_SPEED_MULTIPLIER = Math.sqrt(2);
+    public static final double DEFAULT_TURN_MULTIPLIER = 1;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
-    public static final String VUFORIA_KEY = "AT47cqv/////AAABmfWDhjR9GUP+p3V+yVCiSZE6RH3" +
-            "KNyZpyijp6yi/cAQt+p5stWYPhiE0/oQ1v4HK9S6Y6JiCkmnWR5PN8rl" +
-            "xIgZXTZi5F3clx9w9LzsUfEhz2Ctt0E5a6Rss8uiHgZHEr+ZclXe4meX" +
-            "Tq0CPHfSlQNlWi6/KZJWnueUPLOkvMi48J9fPAp2xXrliVRQ3Zs0gWHj" +
-            "6/iH7SwxefH4aDwv4aOG9amOB+pqD0AZeBzeuQzjl5gjwDVZNchs8muA" +
-            "yAnqK/wrtoJ9gFWXlJ5wK1hzMnP3+pO+uJl3hU/3LF9tzsL60nZkxL0r" +
-            "zD+fIy0fi8xx1LfysN2URrT82AtUQ2teoPQRFFsgVmYii/W6/1ZUJKcwH";
+    public static final String VUFORIA_KEY = "Ac5sAIr/////AAABmeUEovYOek9pkuVkMLDtWVGIkr+aSwnxHoPcO" +
+            "Wo55EZxWMznvy9o+sR4uE8cUkHfJ2QywQNfK9SgCKSgjjRXD1lJvl3xiT0ddSjfE8JT9NMvGojoFG3nkaQP+Sq" +
+            "MGTgr25mUnTM3Y7v5kcetBEF1+vIcQL28SnoWDfGGMQ9Yt9IHo/W/72s5qWMCJLSS7/8X+Scybt98htjPVAOPI" +
+            "dcudmKVGUMIK5ajH8riMC/2i80n57oBV3YmEYFKq0kIl1/Yf0KP3Hre8pA2les4GgriDHZBmp/E/ixOo1H924+" +
+            "DrFzuLwkk7gs7kk4Jrdp1+jqrxPBJdr8MjYjtXjW+epFt1lcvIlP/4MK44iEH9AMQXYD9";
 
     public static MasqPIDController turnController;
     public static MasqPIDController driveController;
@@ -128,39 +131,7 @@ public class MasqUtils {
     public static String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
+    public static Point getCenterPoint(Rect rect) {
+        return new Point(rect.x + rect.width/2, rect.y + rect.height/2);
+    }
 }
-
-
-    /*public class KP {
-        public static final double TURN = 0.015;
-        public static final double TURN_POM = -0.1;
-        public static final double ANGLE = 0.005;
-        public static final double DRIVE = 3;
-        public static final double PATH = .01;
-        public static final double VELOCITY_TELE = 0.002;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class KI {
-        public static final double PATH = 0.0;
-        public static final double TURN = 0.0;
-        public static final double ANGLE = 0.000;
-        public static final double TURN_POM = 0.000005;
-        public static final double DRIVE = 0.0;
-        public static final double VELOCITY_TELE = 0.000;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class KD {
-        public static final double PATH = .0;
-        public static final double TURN = 0.0;
-        public static final double ANGLE = 0.000;
-        public static final double TURN_POM = -0.00;
-        public static final double DRIVE = 0.0;
-        public static final double VELOCITY_TELE = 0.000;
-        public static final double VELOCITY_AUTO = 0.002;
-    }
-    public class ID {
-        public static final double TURN = 1.0;
-        public static final double DRIVE = 1.0;
-        public static final double MOTOR_TELEOP = 1.0;
-        public static final double MOTOR_AUTONOMOUS = 1.00;
-    }*/

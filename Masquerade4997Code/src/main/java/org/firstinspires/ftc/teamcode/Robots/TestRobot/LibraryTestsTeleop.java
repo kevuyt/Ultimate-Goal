@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots.TestRobot;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -8,14 +9,15 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 10/20/18.
  * Project: MasqLib
  */
-@TeleOp(name = "LibraryTestsTeleop", group = "Test")
+@TeleOp(name = "LibraryTestsTeleop", group = "Testbot")
+@Disabled
 public class LibraryTestsTeleop extends MasqLinearOpMode {
     private TestRobot robot = new TestRobot();
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap);
         while (!opModeIsActive()) {
-            dash.create("Big Brain Time");
+            dash.create("Hello");
             dash.update();
         }
         waitForStart();

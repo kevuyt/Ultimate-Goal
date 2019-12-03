@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/15/2019
  */
-@Autonomous(name = "RedBuildBridgeAuto", group = "Prototype")
+@Autonomous(name = "RedBuildAuto", group = "MarkOne")
 public class RedBuildBridgeAuto extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 

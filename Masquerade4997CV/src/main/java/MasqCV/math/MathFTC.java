@@ -13,7 +13,7 @@ public class MathFTC {
 
     public static final float mmPerInch        = 25.4f;
     public static final float mmFTCFieldWidth  = (12*6) * mmPerInch;       // the width of the FTC field (from the center point to the outer panels)
-    public static final float mmTargetHeight   = (6) * mmPerInch;          // the height of the center of the target image above the floor
+    public static final float mmTargetHeight   = (2) * mmPerInch;          // the height of the center of the target image above the floor
 
     /**
      * A simple clamp function, which assumes a valid range.

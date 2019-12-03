@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/15/2019
  */
-@Autonomous(name = "BlueBuildBridgeAuto", group = "Prototype")
+@Autonomous(name = "BlueBuild", group = "MarkOne")
 public class BlueBuildBridgeAuto extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
@@ -29,6 +29,7 @@ public class BlueBuildBridgeAuto extends MasqLinearOpMode {
 
         robot.foundationHook.raise();
         robot.blockPusher.setPosition(1);
+
         robot.strafe(40, Strafe.LEFT, 1.5);
         robot.drive(42, 0.25);
         robot.turnAbsolute(0);
@@ -37,6 +38,7 @@ public class BlueBuildBridgeAuto extends MasqLinearOpMode {
         robot.drive(55, 0.25 ,Direction.BACKWARD,3);
         robot.foundationHook.raise();
         sleep();
+
         robot.strafe(60, Strafe.RIGHT, 2);
         robot.turnAbsolute(0);
         robot.foundationHook.mid();

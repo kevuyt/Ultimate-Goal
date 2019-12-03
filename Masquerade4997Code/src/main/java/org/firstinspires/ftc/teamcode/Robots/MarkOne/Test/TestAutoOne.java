@@ -4,12 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
+import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Keval Kataria on 11/3/2019
  */
-@Autonomous(name = "TestAutoOne", group = "Prototype")
+@Autonomous(name = "TestAutoOne", group = "MarkOne")
 public class TestAutoOne extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
@@ -17,7 +18,6 @@ public class TestAutoOne extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
         robot.initializeAutonomous();
-        robot.driveTrain.setClosedLoop(true);
 
         while (!opModeIsActive()) {
             dash.create("Hello");
@@ -25,7 +25,9 @@ public class TestAutoOne extends MasqLinearOpMode {
         }
 
         waitForStart();
-
-        robot.driveAbsoluteAngle(80,0);
+        robot.foundationHook.raise();
+        robot.blockPusher.setPosition(1);
+        sleep(1);
+        robot.strafe(90, Strafe.LEFT,500);
     }
 }

@@ -30,8 +30,8 @@ public class MasqDriveTrain implements MasqHardware {
     }
     public MasqDriveTrain(HardwareMap hardwareMap, MasqMotorModel motorModel){
         //FOLLOW DIRECTIONS OF THIS
-        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.REVERSE, "leftBack", DcMotor.Direction.REVERSE, "LEFTDRIVE", hardwareMap, motorModel);
-        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.FORWARD, "rightBack", DcMotor.Direction.FORWARD, "RIGHTDRIVE", hardwareMap, motorModel);
+        leftDrive = new MasqMotorSystem("leftFront", DcMotor.Direction.FORWARD, "leftBack", DcMotor.Direction.FORWARD, "LEFTDRIVE", hardwareMap, motorModel);
+        rightDrive = new MasqMotorSystem("rightFront", DcMotor.Direction.REVERSE, "rightBack", DcMotor.Direction.REVERSE, "RIGHTDRIVE", hardwareMap, motorModel);
     }
 
     public void resetEncoders () {
@@ -90,6 +90,12 @@ public class MasqDriveTrain implements MasqHardware {
     public double getCurrentPosition() {
         return (leftDrive.getCurrentPosition() + rightDrive.getCurrentPosition())/2;
     }
+    public double getCurrentPositionPositive() {
+        return (Math.abs(leftDrive.motor1.getCurrentPosition()) +
+                Math.abs(leftDrive.motor2.getCurrentPosition()) +
+                Math.abs(rightDrive.motor1.getCurrentPosition()) +
+                Math.abs(rightDrive.motor1.getCurrentPosition()))/4;
+    }
     public double getAbsolutePositon () {
         return (leftDrive.getAbsolutePosition() + rightDrive.getAbsolutePosition())/2;
     }
@@ -114,7 +120,7 @@ public class MasqDriveTrain implements MasqHardware {
 
     public void setDefaultModel(MasqMotorModel defaultModel) {this.defaultModel = defaultModel;}
 
-    public MasqEncoder getEncoder () {return leftDrive.motor1.getEncoder();}
+    public MasqEncoder getEncoder () {return rightDrive.motor1.getEncoder();}
 
     public List<MasqEncoder> getEncoders() {
         List<MasqEncoder> encoders = new ArrayList<>();

@@ -7,7 +7,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 9/28/2019
  */
-@TeleOp(name = "TestBotTeleop", group = "Test")
+@TeleOp(name = "TestBotTeleop", group = "Testbot")
 public class TestbotTeleop extends MasqLinearOpMode {
     private TestRobot robot = new TestRobot();
     @Override
@@ -15,7 +15,7 @@ public class TestbotTeleop extends MasqLinearOpMode {
         robot.init(hardwareMap);
         robot.initializeTeleop();
         while (!opModeIsActive()) {
-            dash.create("Big Brain Time");
+            dash.create("Hello");
             dash.update();
         }
         waitForStart();

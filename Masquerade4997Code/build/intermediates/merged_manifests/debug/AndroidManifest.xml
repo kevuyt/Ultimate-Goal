@@ -73,6 +73,7 @@
     -->
     <uses-feature android:name="android.hardware.camera" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
@@ -86,10 +87,7 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/AppThemeRedRC" > <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
-        <meta-data
-            android:name="org.firstinspires.latestSupportedControlHubVersion"
-            android:value="1" /> <!-- The main robot controller activity -->
+        android:theme="@style/AppThemeRedRC" >
         <activity
             android:name="org.firstinspires.ftc.robotcontroller.internal.PermissionValidatorWrapper"
             android:configChanges="orientation|screenSize"
@@ -102,6 +100,11 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <!-- Indicates to the ControlHubUpdater what the latest version of the Control Hub is that this app supports -->
+        <meta-data
+            android:name="org.firstinspires.latestSupportedControlHubVersion"
+            android:value="1" />
+
         <activity
             android:name="org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity"
             android:configChanges="orientation|screenSize"
