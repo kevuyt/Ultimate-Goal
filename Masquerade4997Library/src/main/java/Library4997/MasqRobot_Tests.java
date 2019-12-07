@@ -29,11 +29,6 @@ public class MasqRobot_Tests implements Tests {
     }
 
     @Override
-    public void RunAll() {
-
-    }
-
-    @Override
     public void RunAll(HardwareMap hardwareMap) {
         robot.mapHardware(hardwareMap);
         driveTest();

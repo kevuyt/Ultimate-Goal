@@ -70,8 +70,7 @@ public class MasqMotor_Tests implements Tests {
     masqMotor.setUnStalledAction(() -> {throw new AssertionError("enableStallDetectionTest failed"); });
     masqMotor.enableStallDetection(10,1e9,1200);
   }
-  @Override
-  public void RunAll() {
+  public void RunAll(HardwareMap hm) {
     RunWithoutEncoderTest();
     RunUsingEncoderTest();
     setDistanceTest();
@@ -87,8 +86,4 @@ public class MasqMotor_Tests implements Tests {
     enableStallDetectionTest();
   }
 
-  @Override
-  public void RunAll(HardwareMap hardwareMap) {
-
-  }
 }

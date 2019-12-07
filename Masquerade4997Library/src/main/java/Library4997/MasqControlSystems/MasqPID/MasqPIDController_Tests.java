@@ -15,12 +15,7 @@ public class MasqPIDController_Tests implements Tests {
     }
 
     @Override
-    public void RunAll() {
-        getOutputTest();
-    }
-
-    @Override
     public void RunAll(HardwareMap hardwareMap) {
-
+        getOutputTest();
     }
 }

@@ -55,9 +55,11 @@ public class MasqUtils {
 
     public static double adjustAngle(double angle) {
         while (angle > 180) angle -= 360;
-        while (angle <= -180) angle = 360;
+        while (angle <= -180) angle += 360;
         return angle;
     }
+
+
 
     public static boolean tolerance(double value1, double value2, double tolerance) {
         return Math.abs(value1 - value2) < tolerance;
