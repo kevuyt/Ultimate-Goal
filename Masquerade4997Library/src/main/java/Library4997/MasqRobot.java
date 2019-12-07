@@ -82,9 +82,7 @@ public abstract class MasqRobot {
         double targetAngle = tracker.getHeading();
         double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
         double clicksRemaining;
-        double angularError,
-                powerAdjustment, power, leftPower, rightPower, maxPower;
-        boolean bool;
+        double angularError, powerAdjustment, power, leftPower, rightPower, maxPower;
         do {
             clicksRemaining = (int) (targetClicks - Math.abs(driveTrain.getCurrentPosition()));
             power = driveController.getOutput(clicksRemaining) * speed;
@@ -105,7 +103,7 @@ public abstract class MasqRobot {
             dash.create("ERROR: ", clicksRemaining);
             dash.create("HEADING: ", tracker.getHeading());
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (Math.abs(angularError) > 5 || clicksRemaining/targetClicks > 0.05));
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (Math.abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
         driveTrain.stopDriving();
         sleep(sleepTime);
     }
@@ -148,7 +146,7 @@ public abstract class MasqRobot {
             dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && ((clicksRemaining / targetClicks) > 0.1));
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && ((clicksRemaining / targetClicks) > 0.01));
         //serializer.close();
         driveTrain.stopDriving();
         sleep(sleepTime);
