@@ -59,8 +59,6 @@ public class MasqUtils {
         return angle;
     }
 
-
-
     public static boolean tolerance(double value1, double value2, double tolerance) {
         return Math.abs(value1 - value2) < tolerance;
     }

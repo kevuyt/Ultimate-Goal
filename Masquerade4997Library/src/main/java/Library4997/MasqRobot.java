@@ -14,7 +14,6 @@ import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqSensors.MasqColorSensor;
 import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqController;
 import Library4997.MasqWrappers.MasqPredicate;
@@ -93,8 +92,8 @@ public abstract class MasqRobot {
             angularError = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
             powerAdjustment = angleController.getOutput(MasqUtils.adjustAngle(angularError));
             powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
-            leftPower = direction.value * (power - powerAdjustment);
-            rightPower = direction.value * (power + powerAdjustment);
+            leftPower = (direction.value * power) - powerAdjustment;
+            rightPower = (direction.value * power) + powerAdjustment;
             maxPower = MasqUtils.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
