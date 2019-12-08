@@ -289,7 +289,7 @@ public abstract class MasqRobot {
         stop(stopCondition, tracker.getHeading(), 0.5, Direction.FORWARD, timeout);
     }
 
-    public void xyPath(double x, double y, double heading, double speedDampener, double kp) {
+    public void gotoXY(double x, double y, double heading, double speedDampener, double kp) {
         // https://www.desmos.com/calculator/zbviad1hnz
         double lookAhead = 10;
         MasqPIDController speedController = new MasqPIDController(0.04, 0, 0);
@@ -323,23 +323,23 @@ public abstract class MasqRobot {
             dash.update();
         }
     }
-    public void xyPath(double x, double y, double heading, double speedDampener) {
-        xyPath(x, y, heading, speedDampener, 0.05);
+    public void gotoXY(double x, double y, double heading, double speedDampener) {
+        gotoXY(x, y, heading, speedDampener, 0.05);
     }
-    public void xyPath(double x, double y, double heading) {
-        xyPath(x, y, heading, 1);
+    public void gotoXY(double x, double y, double heading) {
+        gotoXY(x, y, heading, 1);
     }
-    public void xyPath(MasqPoint p, double heading, double speedDampener, double kp) {
-        xyPath(p.getX(), p.getY(), heading, speedDampener, kp);
+    public void gotoXY(MasqPoint p, double heading, double speedDampener, double kp) {
+        gotoXY(p.getX(), p.getY(), heading, speedDampener, kp);
     }
-    public void xyPath(MasqPoint p, double heading, double speedDampener) {
-        xyPath(p.getX(), p.getY(), heading, speedDampener);
+    public void gotoXY(MasqPoint p, double heading, double speedDampener) {
+        gotoXY(p.getX(), p.getY(), heading, speedDampener);
     }
-    public void xyPath(MasqPoint p, double heading) {
-        xyPath(p.getX(), p.getY(), heading, 1);
+    public void gotoXY(MasqPoint p, double heading) {
+        gotoXY(p.getX(), p.getY(), heading, 1);
     }
-    public void xyPath(MasqPoint p) {
-        xyPath(p.getX(), p.getY(), p.getH());
+    public void gotoXY(MasqPoint p) {
+        gotoXY(p.getX(), p.getY(), p.getH());
     }
 
     public void NFS(MasqController c) {
