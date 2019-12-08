@@ -26,6 +26,13 @@ import static Library4997.MasqResources.MasqUtils.velocityTeleController;
 /**
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
  */
+
+/*
+TODO:
+    Path Control
+    Unit Tests for all major functions
+    State Machine support
+ */
 public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap);
     public abstract void init(HardwareMap hardwareMap);
