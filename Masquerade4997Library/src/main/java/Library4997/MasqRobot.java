@@ -56,7 +56,7 @@ public abstract class MasqRobot {
             dash.create("ERROR: ", clicksRemaining);
             dash.create("HEADING: ", tracker.getHeading());
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (Math.abs(angularError) > 5 || clicksRemaining/targetClicks > 0.05));
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (Math.abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
         driveTrain.stopDriving();
         sleep(MasqUtils.DEFAULT_SLEEP_TIME);
     }
@@ -342,50 +342,6 @@ public abstract class MasqRobot {
     }
     public void xyPath(MasqPoint p) {
         xyPath(p.getX(), p.getY(), p.getH());
-    }
-
-    public void gotoXY(double x, double y, double heading, double speedDampener, double kp) {
-        MasqClock clock = new MasqClock();
-        MasqVector target = new MasqVector(x, y);
-        double lookAheadDistance = 10;
-        turnController.setKp(kp);
-        MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-        double targetInches = current.distanceToVector(target);
-        while (!clock.elapsedTime(3, MasqClock.Resolution.SECONDS) && !current.equal(2, target) && opModeIsActive()) {
-            MasqVector displacement = current.displacement(target);
-            double speed = displacement.getMagnitude() / targetInches;
-            MasqVector projection = current.projectOnTo(target);
-            double theta = Math.atan2(projection.getY(), projection.getX());
-            MasqVector lookahead = new MasqVector(projection.getX() + (lookAheadDistance * Math.cos(theta)), projection.getY() + (lookAheadDistance * Math.sin(theta)));
-            if (lookahead.getMagnitude() > target.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
-            MasqVector lookaheadDisplacement = current.displacement(lookahead);
-            double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-            driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
-            current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-            tracker.updateSystem();
-            dash.create("X: ", tracker.getGlobalX());
-            dash.create("Y: ", tracker.getGlobalY());
-            dash.create("Speed: ", speed * speedDampener);
-            dash.update();
-        }
-    }
-    public void gotoXY(double x, double y, double heading, double speedDampener) {
-        gotoXY(x, y, heading, speedDampener, 0.05);
-    }
-    public void gotoXY(double x, double y, double heading) {
-        gotoXY(x, y, heading, 1);
-    }
-    public void gotoXY(MasqPoint p, double heading, double speedDampener, double kp) {
-        gotoXY(p.getX(), p.getY(), heading, speedDampener, kp);
-    }
-    public void gotoXY(MasqPoint p, double heading, double speedDampener) {
-        gotoXY(p.getX(), p.getY(), heading, speedDampener);
-    }
-    public void gotoXY(MasqPoint p, double heading) {
-        gotoXY(p.getX(), p.getY(), heading, 1);
-    }
-    public void gotoXY(MasqPoint p) {
-        gotoXY(p.getX(), p.getY(), p.getH());
     }
 
     public void NFS(MasqController c) {
