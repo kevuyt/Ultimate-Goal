@@ -45,10 +45,14 @@ public class MasqUtils {
         try {Thread.sleep(milliSeconds);}
         catch (InterruptedException e) {e.printStackTrace();}
     }
-    public static void sleep (double sleep) {
-        try {Thread.sleep((long) sleep);}
-        catch (InterruptedException e) {e.printStackTrace();}
+    public static void sleep(double timeSeconds) {
+        try {
+            Thread.sleep((long) timeSeconds * 1000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
+    public static void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
     public static void setLinearOpMode(MasqLinearOpMode pLinearOpMode) {
         linearOpMode = pLinearOpMode;
     }

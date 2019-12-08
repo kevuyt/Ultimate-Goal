@@ -3,8 +3,6 @@ package Library4997;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
@@ -58,7 +56,7 @@ public abstract class MasqRobot {
             dash.update();
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (Math.abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
         driveTrain.stopDriving();
-        sleep(MasqUtils.DEFAULT_SLEEP_TIME);
+        MasqUtils.sleep(MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void strafe(double distance, Strafe angle, double timeout, double speed) {
         strafe(distance, angle.value, timeout, speed);
@@ -105,7 +103,7 @@ public abstract class MasqRobot {
             dash.update();
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (Math.abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
         driveTrain.stopDriving();
-        sleep(sleepTime);
+        MasqUtils.sleep(sleepTime);
     }
     public void drive(double distance, double speed, Direction strafe, double timeout) {
         drive(distance, speed, strafe, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
@@ -149,7 +147,7 @@ public abstract class MasqRobot {
         } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && ((clicksRemaining / targetClicks) > 0.01));
         //serializer.close();
         driveTrain.stopDriving();
-        sleep(sleepTime);
+        MasqUtils.sleep(sleepTime);
     }
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction strafe, double timeout) {
          driveAbsoluteAngle(distance, angle, speed, strafe, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
@@ -188,7 +186,7 @@ public abstract class MasqRobot {
             dash.update();
         }
         driveTrain.setVelocity(0,0);
-        sleep(sleepTime);
+        MasqUtils.sleep(sleepTime);
     }
     public void turnRelative(double angle, Direction direction, double timeout, double sleepTime, double kp, double ki) {
         turnRelative(angle, direction, timeout, sleepTime, kp, ki, turnController.getConstants()[2], true, true);
@@ -231,7 +229,7 @@ public abstract class MasqRobot {
             dash.update();
         }
         driveTrain.setVelocity(0,0);
-        sleep(sleepTime);
+        MasqUtils.sleep(sleepTime);
     }
     public void turnAbsolute(double angle, double timeout, double sleepTime, double kp, double ki) {
         turnAbsolute(angle, timeout, sleepTime, kp, ki, turnController.getConstants()[2]);
@@ -428,23 +426,5 @@ public abstract class MasqRobot {
         driveTrain.setKp(velocityAutoController.getKp());
         driveTrain.setKi(velocityAutoController.getKi());
         driveTrain.setKd(velocityAutoController.getKd());
-    }
-    public void setPIDConstants(double kp, double ki, double kd) {
-        driveTrain.setKp(kp);
-        driveTrain.setKi(ki);
-        driveTrain.setKd(kd);
-    }
-
-    public void sleep(double timeSeconds) {
-        try {
-            Thread.sleep((long) timeSeconds * 1000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
-    public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
-
-    public WebcamName getWebCameName (HardwareMap hardwareMap, String name) {
-        return hardwareMap.get(WebcamName.class, name);
     }
 }
