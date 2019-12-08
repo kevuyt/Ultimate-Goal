@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.DashBoard;
 import MasqCV.detectors.MasqCVDetector;
 
@@ -35,6 +36,8 @@ public class SkystoneDetector extends MasqCVDetector {
     private Mat blackMask = new Mat();
     private Mat yellowMask = new Mat();
     private Mat hierarchy  = new Mat();
+
+    private int offset = 0;
 
     private Point tl, br;
 
@@ -226,12 +229,24 @@ public class SkystoneDetector extends MasqCVDetector {
         this.br = br;
         imageWidth = (int) (br.x - tl.x);
         imageHeight = (int) (tl.y - br.y);
+        offset = (int) tl.x;
     }
     public void setClippingMargins(int top, int left, int bottom, int right) {
         tl = new Point(left, top);
         br = new Point(320 - right,240 - bottom);
         imageWidth = 320 - right - left;
         imageHeight = top - 240 + bottom;
+        offset = left;
+    }
+    public enum SkystonePosition {
+        LEFT("LEFT"), MIDDLE("MIDDLE"), RIGHT("RIGHT");
+        public final String position;
+        SkystonePosition (String value) {this.position = value;}
+    }
+    public SkystonePosition getPosition() {
+        if ((MasqUtils.getCenterPoint(foundRectangle()).x - offset) < getImageWidth()/3) return SkystonePosition.LEFT;
+        else if ((MasqUtils.getCenterPoint(foundRectangle()).x - offset) < (2 * getImageWidth()/3)) return SkystonePosition.MIDDLE;
+        else return SkystonePosition.RIGHT;
     }
 
     public int getImageWidth() {

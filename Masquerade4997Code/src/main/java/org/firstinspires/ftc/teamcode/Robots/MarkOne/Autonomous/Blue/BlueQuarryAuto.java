@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Blue;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
-import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOneDetector;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -19,22 +18,12 @@ public class BlueQuarryAuto extends MasqLinearOpMode {
         robot.init(hardwareMap);
         robot.initializeAutonomous();
 
-        MarkOneDetector.SkystonePosition position = robot.detector.getPosition();
-
         while(!opModeIsActive()) {
-            dash.create("Position: ", position);
+            dash.create("Position: ", robot.detector.getPosition());
             dash.update();
         }
         waitForStart();
 
-        robot.foundationHook.mid();
-        robot.blockPusher.setPosition(1);
-        sleep();
-
-        if(position == MarkOneDetector.SkystonePosition.LEFT) robot.runStoneLeft();
-        else if (position == MarkOneDetector.SkystonePosition.MIDDLE) robot.runStoneMiddle();
-        else if (position == MarkOneDetector.SkystonePosition.RIGHT) robot.runStoneRight();
-
-        robot.detector.stop();
+        robot.stopCV();
     }
 }
