@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Blue;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -19,11 +20,11 @@ public class BlueQuarryAuto extends MasqLinearOpMode {
         robot.initializeAutonomous();
 
         while(!opModeIsActive()) {
-            dash.create("Position: ", robot.detector.getPosition());
+            dash.create("Position: ", CVInterpreter.getPosition(robot.cv.detector));
             dash.update();
         }
         waitForStart();
 
-        robot.stopCV();
+        robot.cv.stop();
     }
 }

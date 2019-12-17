@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqWrappers.DashBoard;
+import MasqCV.MasqCVUtils;
 import MasqCV.scoring.MasqCVScorer;
-import MasqCV.MasqCV;
 
 
 /**
@@ -32,7 +32,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     
     protected boolean found = false;
 
-    public MasqCV.DetectionSpeed speed = MasqCV.DetectionSpeed.BALANCED;
+    public MasqCVUtils.DetectionSpeed speed = MasqCVUtils.DetectionSpeed.BALANCED;
     protected String detectorName = "MasqCV Detector";
 
     private Size size;
@@ -47,7 +47,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     protected Stage stageToRenderToViewport = Stage.FINAL_DISPLAY;
     private Stage[] stages = Stage.values();
 
-    public void setSpeed(MasqCV.DetectionSpeed speed){
+    public void setSpeed(MasqCVUtils.DetectionSpeed speed){
         this.speed = speed;
     }
     

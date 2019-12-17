@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import MasqCV.MasqCV;
+import MasqCV.MasqCVUtils;
 import MasqCV.detectors.MasqCVDetector;
 import MasqCV.filters.MasqCVColorFilter;
 import MasqCV.filters.LeviColorFilter;
@@ -21,7 +21,7 @@ import MasqCV.scoring.PerfectAreaScorer;
 import MasqCV.scoring.RatioScorer;
 
 public class StoneDetector extends MasqCVDetector {
-    public MasqCV.AreaScoringMethod areaScoringMethod = MasqCV.AreaScoringMethod.MAX_AREA; // Setting to decide to use MaxAreaScorer or PerfectAreaScorer
+    public MasqCVUtils.AreaScoringMethod areaScoringMethod = MasqCVUtils.AreaScoringMethod.MAX_AREA; // Setting to decide to use MaxAreaScorer or PerfectAreaScorer
 
     //Create the default filters and scorers
     public MasqCVColorFilter filter = new LeviColorFilter(LeviColorFilter.ColorPreset.YELLOW, 70); //Default Yellow blackFilter
@@ -127,11 +127,11 @@ public class StoneDetector extends MasqCVDetector {
         addScorer(ratioScorerForLongFace);
 
         // Add diffrent scoreres depending on the selected mode
-        if(areaScoringMethod == MasqCV.AreaScoringMethod.MAX_AREA){
+        if(areaScoringMethod == MasqCVUtils.AreaScoringMethod.MAX_AREA){
             addScorer(maxAreaScorer);
         }
 
-        if (areaScoringMethod == MasqCV.AreaScoringMethod.PERFECT_AREA){
+        if (areaScoringMethod == MasqCVUtils.AreaScoringMethod.PERFECT_AREA){
             addScorer(perfectAreaScorer);
         }
     }

@@ -3,10 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
-import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvWebcam;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
@@ -18,6 +15,7 @@ import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
+import MasqCV.MasqCV;
 import MasqCV.detectors.skystone.SkystoneDetector;
 
 /**
@@ -30,8 +28,8 @@ public class MarkOne extends MasqRobot {
     public MarkOneFoundationHook foundationHook;
     public MasqMotor  lift;
     public MasqMotorSystem intake;
-    private OpenCvWebcam webcam;
-    public SkystoneDetector detector;
+    public MasqCV cv;
+
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -62,23 +60,10 @@ public class MarkOne extends MasqRobot {
         lift.setKp(0.001);
         scaleServos();
         resetServos();
-        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
-                "cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        webcam = new OpenCvWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-        detector = new SkystoneDetector();
-        webcam.setPipeline(detector);
-        startCV();
+        SkystoneDetector detector = new SkystoneDetector();
         detector.setClippingMargins(100,80,110,70);
-    }
-
-    public void startCV(){
-        webcam.openCameraDevice();
-        webcam.startStreaming(320,240, OpenCvCameraRotation.UPRIGHT);
-    }
-
-    public void stopCV(){
-        webcam.stopStreaming();
-        webcam.closeCameraDevice();
+        cv = new MasqCV(detector, MasqCV.Cam.WEBCAM, hardwareMap);
+        cv.start();
     }
 
     private void scaleServos() {

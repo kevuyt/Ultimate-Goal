@@ -36,8 +36,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
         robot.foundationHook.mid();
 
         while(opModeIsActive()) {
-            if (controller1.rightBumper() || controller1.leftBumper()) {robot.MECH(controller1,0.5, 0.15);}
-            else {robot.MECH(controller1,1, 0.3);}
+            if (controller1.rightBumper() || controller1.leftBumper()) robot.MECH(controller1,0.5, 0.15);
+            else robot.MECH(controller1,1, 0.3);
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-1);
             else if (controller1.rightTriggerPressed()) robot.intake.setVelocity(1);

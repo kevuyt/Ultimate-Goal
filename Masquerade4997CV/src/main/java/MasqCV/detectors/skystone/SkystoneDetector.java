@@ -37,7 +37,7 @@ public class SkystoneDetector extends MasqCVDetector {
     private Mat yellowMask = new Mat();
     private Mat hierarchy  = new Mat();
 
-    private int offset = 0;
+    public int offset = 0;
 
     private Point tl, br;
 
