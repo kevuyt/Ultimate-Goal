@@ -39,9 +39,9 @@ public class MasqServoSystem implements MasqHardware {
     public MasqServoSystem(String name1, Servo.Direction direction1,
                              String name2, Servo.Direction direction2,
                              String name3, Servo.Direction direction3, HardwareMap hardwareMap) {
-        this( new MasqServo(name1, direction1, hardwareMap),
+        this(new MasqServo(name1, direction1, hardwareMap),
                 new MasqServo(name2, direction2, hardwareMap),
-                new MasqServo(name3, direction3, hardwareMap) );
+                new MasqServo(name3, direction3, hardwareMap));
     }
 
     public MasqServoSystem(String name1, Servo.Direction direction1,

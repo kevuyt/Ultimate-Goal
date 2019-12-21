@@ -52,9 +52,6 @@ public class DashBoard {
             create(hardware);
         }
     }
-    public void create(String string, String string2, Object... data) {
-        telemetry.addData(string, string2, data);
-    }
     public void create(final MasqSubSystem subSystem) {
         for (MasqHardware hardware : subSystem.getComponents()) {
             create(hardware.getDash());

@@ -28,7 +28,7 @@ public class MasqMatiboxUltraSensor implements MasqHardware {
         }
     public String[] getDash() {
             return new String[]{
-                    "Distance " + Double.toString(getDistance())
+                    "Distance " + getDistance()
             };
     }
 }

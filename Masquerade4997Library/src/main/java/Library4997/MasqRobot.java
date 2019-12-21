@@ -7,7 +7,6 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
@@ -65,20 +64,11 @@ public abstract class MasqRobot {
         driveTrain.stopDriving();
         MasqUtils.sleep(MasqUtils.DEFAULT_SLEEP_TIME);
     }
-    public void strafe(double distance, Strafe angle, double timeout, double speed) {
-        strafe(distance, angle.value, timeout, speed);
-    }
-    public void strafe(double distance, Strafe angle, double timeout) {
-        strafe(distance, angle.value, timeout,0.7);
-    }
-    public void strafe (double distance, Strafe angle) {
-        strafe(distance, angle, 1);
-    }
-    public void strafe(double distance, double angle) {
-        strafe(distance, angle,1,0.7);
-    }
     public void strafe(double distance, double angle, double timeout) {
         strafe(distance, angle, timeout, 0.7);
+    }
+    public void strafe (double distance, double angle) {
+        strafe(distance, angle, 1);
     }
 
     public void drive(double distance, double speed, Direction direction, double timeout, double sleepTime) {

@@ -47,10 +47,10 @@ public class MasqCRServoSystem implements MasqHardware {
                              String name2, CRServo.Direction direction2,
                              String name3, CRServo.Direction direction3,
                              String name4, CRServo.Direction direction4, HardwareMap hardwareMap) {
-        this( new MasqCRServo(name1, direction1, hardwareMap),
+        this(new MasqCRServo(name1, direction1, hardwareMap),
                 new MasqCRServo(name2, direction2, hardwareMap),
                 new MasqCRServo(name3, direction3, hardwareMap),
-                new MasqCRServo(name4, direction4, hardwareMap) );
+                new MasqCRServo(name4, direction4, hardwareMap));
     }
 
     public MasqCRServoSystem(MasqCRServo one, MasqCRServo two) {

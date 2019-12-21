@@ -26,16 +26,14 @@ public class MasqCRServo implements MasqHardware{
         servo.setDirection(direction);
         limitDetection = false;
     }
-    public MasqCRServo setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
+    public void setLimits(MasqLimitSwitch min, MasqLimitSwitch max){
         this.min = min; this.max = max;
         limitDetection = true;
-        return this;
     }
-    public MasqCRServo setLimit(MasqLimitSwitch min) {
+    public void setLimit(MasqLimitSwitch min) {
         this.min = min;
         this.max = null;
         limitDetection = false;
-        return this;
     }
     public void setPower (double power) {
         double motorPower = power;
