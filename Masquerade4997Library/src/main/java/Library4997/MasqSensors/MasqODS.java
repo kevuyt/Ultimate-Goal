@@ -42,7 +42,7 @@ public class MasqODS implements MasqHardware {
     }
     public String[] getDash() {
         return new String[]{
-                "Light Detected" + Double.toString(lightDetected()),
+                "Light Detected" + lightDetected(),
                 "Raw Ligh" + Double.toString(rawLight()),
                 "is Black:" + Boolean.toString(isBlack()),
                 "IS White:" + Boolean.toString(isWhite())
