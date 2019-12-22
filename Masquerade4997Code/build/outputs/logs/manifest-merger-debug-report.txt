@@ -4,7 +4,6 @@ ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997C
 INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:8:1-24:12
 INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:8:1-24:12
 INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:8:1-24:12
-MERGED from [:Masquerade4997CV] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:1-17:12
 MERGED from [:Masquerade4997Library] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:1-17:12
 MERGED from [:FtcRobotController] /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-65:12
 MERGED from [:RobotCore-release:] /Users/Archish/.gradle/caches/transforms-2/files-2.1/fa234a7adad7992a00584847078aeef6/RobotCore-release/AndroidManifest.xml:2:1-108:12
@@ -44,8 +43,6 @@ INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade49
 		ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:9:5-63
 application
 ADDED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml:10:5-23:19
-MERGED from [:Masquerade4997CV] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-20
-MERGED from [:Masquerade4997CV] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-20
 MERGED from [:Masquerade4997Library] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-20
 MERGED from [:Masquerade4997Library] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:5-20
 MERGED from [:FtcRobotController] /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:5-63:19
@@ -114,8 +111,6 @@ uses-sdk
 INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml
 INJECTED from /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Code/src/main/AndroidManifest.xml
-MERGED from [:Masquerade4997CV] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-13:41
-MERGED from [:Masquerade4997CV] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997CV/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-13:41
 MERGED from [:Masquerade4997Library] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-13:41
 MERGED from [:Masquerade4997Library] /Users/Archish/Documents/CodeProjects/Android/MasqLib/Masquerade4997Library/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-13:41
 MERGED from [:FtcRobotController] /Users/Archish/Documents/CodeProjects/Android/MasqLib/FtcRobotController/build/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-10:41
