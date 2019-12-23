@@ -5,18 +5,19 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
 
+import Library4997.MasqCV.MasqCV;
+import Library4997.MasqCV.detectors.skystone.SkystoneDetector;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
+import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
-import MasqCV.MasqCV;
-import MasqCV.detectors.skystone.SkystoneDetector;
+
 
 /**
  * Created by Archishmaan Peyyety on 2019-08-06.
@@ -41,13 +42,26 @@ public class MarkOne extends MasqRobot {
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         blockStopper = new MasqServo("blockStopper", hardwareMap);
-        tracker = new MasqPositionTracker(lift, intake.motor1, hardwareMap);
+        tracker = new MasqPositionTracker(lift, intake.motor1, hardwareMap) {
+            @Override
+            public double getXPosition() {
+                return -lift.getCurrentPosition();
+            }
+
+            @Override
+            public double getYPosition() {
+                return -intake.motor1.getCurrentPosition();
+            }
+        };
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         dash = DashBoard.getDash();
     }
 
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
+        setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+        tracker.setXRadius(0);
+        tracker.setYRadius(0);
         MasqUtils.driveController = new MasqPIDController(0.005,0,0);
         MasqUtils.angleController = new MasqPIDController(0.01,0,0);
         MasqUtils.turnController = new MasqPIDController(0.015,0,0);

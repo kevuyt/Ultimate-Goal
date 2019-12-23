@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqPositionTracker;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
@@ -36,6 +35,7 @@ public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap);
     public abstract void init(HardwareMap hardwareMap);
 
+    private MasqPositionTracker.DeadWheelPosition position;
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
@@ -313,7 +313,7 @@ public abstract class MasqRobot {
             double speed = speedController.getOutput(current.displacement(target).getMagnitude());
             driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
             current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-            tracker.updateSystem();
+            tracker.updateSystem(position);
             dash.create("X: ", tracker.getGlobalX());
             dash.create("Y: ", tracker.getGlobalY());
             dash.create("Angle: ", pathAngle + tracker.getHeading());
@@ -423,5 +423,9 @@ public abstract class MasqRobot {
         driveTrain.setKp(velocityAutoController.getKp());
         driveTrain.setKi(velocityAutoController.getKi());
         driveTrain.setKd(velocityAutoController.getKd());
+    }
+
+    public void setPosition(MasqPositionTracker.DeadWheelPosition position) {
+        this.position = position;
     }
 }
