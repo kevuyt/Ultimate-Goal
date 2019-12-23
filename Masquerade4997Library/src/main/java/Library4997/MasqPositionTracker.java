@@ -6,6 +6,9 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 
+import static Library4997.MasqResources.MasqUtils.adjustAngle;
+import static Library4997.MasqResources.MasqUtils.sleep;
+
 /**
  * Created by Archishmaan Peyyety on 8/9/18.
  * Project: MasqLib
@@ -14,6 +17,7 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
 public abstract class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, ySystem;
     public MasqAdafruitIMU imu;
+    private double prevHeading = 0;
     private double globalX = 0, globalY = 0, prevX = 0, prevY = 0, xRadius = 0, yRadius = 0;
 
     public enum DeadWheelPosition {
@@ -76,8 +80,12 @@ public abstract class MasqPositionTracker implements MasqHardware {
         prevX = getYPosition();
     }
     //TODO: Fill this in
+
     public double getDHeading() {
-        return 0;
+        double change = imu.getAbsoluteHeading() - prevHeading;
+        sleep(10);
+        prevHeading = imu.getAbsoluteHeading();
+        return adjustAngle(change);
     }
 
     public double getGlobalX() {
