@@ -62,9 +62,9 @@ public abstract class MasqPositionTracker implements MasqHardware {
     }
 
     private void bothPerpendicular() {
-        double dHeading = getDHeading();
-        double angularComponentX = xRadius * Math.PI * 2 * (dHeading / 360);
-        double angularComponentY = yRadius * Math.PI * 2 * (dHeading / 360);
+        double omega =  Math.PI * 2 * (getDHeading() / 360);
+        double angularComponentX = xRadius * omega;
+        double angularComponentY = yRadius * omega;
         double deltaX = (getXPosition() - prevX) - angularComponentX;
         double deltaY = (getYPosition() - prevY) - angularComponentY;
         double heading = Math.toRadians(getHeading());
