@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneSideGrabber;
@@ -42,8 +43,8 @@ public class MarkOne extends MasqRobot {
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
-        sideGrabberLeft = new MarkOneSideGrabber(hardwareMap,"leftAutoRotater", "leftAutoGrabber");
-        sideGrabberRight = new MarkOneSideGrabber(hardwareMap, "rightAutoRotater", "rightAutoGrabber");
+        sideGrabberLeft = new MarkOneSideGrabber(hardwareMap,"leftAutoRotater", "leftAutoGrabber", Servo.Direction.REVERSE);
+        sideGrabberRight = new MarkOneSideGrabber(hardwareMap, "rightAutoRotater", "rightAutoGrabber", Servo.Direction.FORWARD);
         blockStopper = new MasqServo("blockStopper", hardwareMap);
         tracker = new MasqPositionTracker(intake.motor2, intake.motor1, hardwareMap) {
             @Override

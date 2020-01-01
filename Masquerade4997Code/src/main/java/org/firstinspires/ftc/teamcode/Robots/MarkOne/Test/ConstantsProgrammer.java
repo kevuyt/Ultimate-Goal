@@ -43,9 +43,9 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             dash.create("Auto Grab Position: ", autoGrabPos);
             dash.update();
 
-            robot.foundationHook.leftHook.setPosition(hookPos);
-            robot.sideGrabberLeft.sideGrabber.servo1.setPosition(autoRotPos);
-            robot.sideGrabberLeft.sideGrabber.servo2.setPosition(autoGrabPos);
+            robot.foundationHook.rightHook.setPosition(hookPos);
+            robot.sideGrabberRight.sideGrabber.servo1.setPosition(autoRotPos);
+            robot.sideGrabberRight.sideGrabber.servo2.setPosition(autoGrabPos);
             sleep(1);
             controller1.update();
         }
