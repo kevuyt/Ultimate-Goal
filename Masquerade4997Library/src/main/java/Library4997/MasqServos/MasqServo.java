@@ -34,6 +34,9 @@ public class MasqServo implements MasqHardware{
         adjustedPosition = ((max - min) * position) + min;
         servo.setPosition(adjustedPosition);
     }
+    public void setDirection(Servo.Direction direction) {
+        servo.setDirection(direction);
+    }
     public void setLimits (MasqLimitSwitch min, MasqLimitSwitch max){
         limMin = min; limMax = max;
         limDetection = true;

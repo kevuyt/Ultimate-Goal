@@ -8,7 +8,7 @@ import Library4997.MasqWrappers.MasqController;
  */
 
 public interface MasqSubSystem {
-    void DriverControl(MasqController controller);
+    void DriverControl(MasqController controller) throws InterruptedException;
     String getName();
     MasqHardware[] getComponents();
 }

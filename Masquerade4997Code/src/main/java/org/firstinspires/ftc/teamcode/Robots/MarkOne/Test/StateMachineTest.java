@@ -31,7 +31,7 @@ public class StateMachineTest extends MasqLinearOpMode {
         State state = State.FULL_DRIVER;
 
         while (opModeIsActive()) {
-            switch (state){
+            switch (state) {
                 case FULL_DRIVER:
                     robot.MECH(controller1);
                     if (!controller1.leftBumper()) state = State.ARM_AUTOMATION;

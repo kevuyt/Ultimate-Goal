@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqSubSystem;
 import Library4997.MasqWrappers.MasqController;
@@ -13,10 +14,12 @@ import Library4997.MasqWrappers.MasqController;
  */
 public class MarkOneFoundationHook implements MasqSubSystem {
     private MasqServoSystem foundationHook;
-
+    public MasqServo leftHook, rightHook;
     public MarkOneFoundationHook(HardwareMap hardwareMap) {
-        foundationHook = new MasqServoSystem("rightGrabber", "leftGrabber", hardwareMap);
-        foundationHook.scaleRange(0, 1);
+        foundationHook = new MasqServoSystem("rightHook", "leftHook", hardwareMap);
+        foundationHook.scaleRange(0, 0.65);
+        leftHook = foundationHook.servo2;
+        rightHook = foundationHook.servo1;
     }
 
     @Override

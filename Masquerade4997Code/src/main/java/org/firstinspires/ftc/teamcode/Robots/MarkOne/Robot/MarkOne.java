@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneSideGrabber;
 
 import Library4997.MasqCV.MasqCV;
 import Library4997.MasqCV.detectors.skystone.SkystoneDetector;
@@ -27,10 +28,10 @@ public class MarkOne extends MasqRobot {
 
     public MasqServo blockGrabber, blockRotater, blockPusher, capper, blockStopper;
     public MarkOneFoundationHook foundationHook;
-    public MasqMotor  lift;
+    public MarkOneSideGrabber sideGrabberLeft, sideGrabberRight;
+    public MasqMotor lift;
     public MasqMotorSystem intake;
     public MasqCV cv;
-
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -41,13 +42,14 @@ public class MarkOne extends MasqRobot {
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
+        sideGrabberLeft = new MarkOneSideGrabber(hardwareMap,"leftAutoRotater", "leftAutoGrabber");
+        sideGrabberRight = new MarkOneSideGrabber(hardwareMap, "rightAutoRotater", "rightAutoGrabber");
         blockStopper = new MasqServo("blockStopper", hardwareMap);
         tracker = new MasqPositionTracker(intake.motor2, intake.motor1, hardwareMap) {
             @Override
             public double getXPosition() {
                 return -intake.motor1.getCurrentPosition();
             }
-
             @Override
             public double getYPosition() {
                 return -intake.motor2.getCurrentPosition();
@@ -57,16 +59,16 @@ public class MarkOne extends MasqRobot {
         dash = DashBoard.getDash();
     }
 
-    public void init(HardwareMap hardwareMap) {
+    public void init(HardwareMap hardwareMap) throws InterruptedException {
         mapHardware(hardwareMap);
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
         tracker.setXRadius(6);
         tracker.setYRadius(7.5);
-        MasqUtils.driveController = new MasqPIDController(0.005,0,0);
-        MasqUtils.angleController = new MasqPIDController(0.01,0,0);
-        MasqUtils.turnController = new MasqPIDController(0.015,0,0);
-        MasqUtils.velocityTeleController = new MasqPIDController(0.002, 0, 0);
-        MasqUtils.velocityAutoController = new MasqPIDController(0.002, 0, 0);
+        MasqUtils.driveController = new MasqPIDController(0.005);
+        MasqUtils.angleController = new MasqPIDController(0.01);
+        MasqUtils.turnController = new MasqPIDController(0.015);
+        MasqUtils.velocityTeleController = new MasqPIDController(0.002);
+        MasqUtils.velocityAutoController = new MasqPIDController(0.002);
         lift.encoder.setWheelDiameter(1);
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();
@@ -88,11 +90,13 @@ public class MarkOne extends MasqRobot {
         blockStopper.scaleRange(0.25,1);
     }
 
-    private void resetServos() {
+    private void resetServos() throws InterruptedException {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
         foundationHook.lower();
+        sideGrabberLeft.up();
+        sideGrabberRight.up();
         capper.setPosition(0);
         blockStopper.setPosition(0);
     }

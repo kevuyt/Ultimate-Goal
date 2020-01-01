@@ -24,7 +24,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
         double prevCapper = 0;
 
         while(!opModeIsActive()) {
-            dash.create("Hello ");
+            dash.create("Hello");
             dash.update();
         }
 
@@ -36,7 +36,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
         robot.foundationHook.mid();
 
         while(opModeIsActive()) {
-            if (controller1.rightBumper() || controller1.leftBumper()) robot.MECH(controller1,0.5, 0.15);
+            if (controller1.rightBumper() || controller1.leftBumper())
+                robot.MECH(controller1,0.5, 0.15);
             else robot.MECH(controller1,1, 0.3);
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-1);
@@ -47,11 +48,13 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else if (controller2.leftTriggerPressed()) robot.lift.setVelocity(-1);
             else robot.lift.setVelocity(0);
 
-            if (Math.abs(robot.lift.encoder.getInches()) > 10) MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
+            if (Math.abs(robot.lift.encoder.getInches()) > 10)
+                MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
             MasqUtils.toggle(controller2.dPadUpOnPress(), robot.capper, prevCapper);
 
+            robot.foundationHook.DriverControl(controller1);
             robot.foundationHook.DriverControl(controller1);
 
             prevGrabber = robot.blockGrabber.getPosition();
