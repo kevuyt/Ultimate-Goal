@@ -42,15 +42,15 @@ public class MarkOne extends MasqRobot {
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         blockStopper = new MasqServo("blockStopper", hardwareMap);
-        tracker = new MasqPositionTracker(lift, intake.motor1, hardwareMap) {
+        tracker = new MasqPositionTracker(intake.motor2, intake.motor1, hardwareMap) {
             @Override
             public double getXPosition() {
-                return -lift.getCurrentPosition();
+                return -intake.motor1.getCurrentPosition();
             }
 
             @Override
             public double getYPosition() {
-                return -intake.motor1.getCurrentPosition();
+                return -intake.motor2.getCurrentPosition();
             }
         };
         foundationHook = new MarkOneFoundationHook(hardwareMap);
@@ -60,8 +60,8 @@ public class MarkOne extends MasqRobot {
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
-        tracker.setXRadius(0);
-        tracker.setYRadius(0);
+        tracker.setXRadius(6);
+        tracker.setYRadius(7.5);
         MasqUtils.driveController = new MasqPIDController(0.005,0,0);
         MasqUtils.angleController = new MasqPIDController(0.01,0,0);
         MasqUtils.turnController = new MasqPIDController(0.015,0,0);

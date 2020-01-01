@@ -115,8 +115,9 @@ public abstract class MasqPositionTracker implements MasqHardware {
     public String[] getDash() {
         return new String[] {
             getName() +
-            "Globalx: " + globalX +
-            "Globaly: " + globalY
+            "GlobalX: " + globalX,
+            "GlobalY: " + globalY,
+            "Heading: " + getHeading(),
         };
     }
 }
