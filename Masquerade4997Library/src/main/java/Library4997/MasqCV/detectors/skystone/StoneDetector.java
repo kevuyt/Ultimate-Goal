@@ -12,13 +12,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import MasqCV.MasqCVUtils;
-import MasqCV.detectors.MasqCVDetector;
-import MasqCV.filters.LeviColorFilter;
-import MasqCV.filters.MasqCVColorFilter;
-import MasqCV.scoring.MaxAreaScorer;
-import MasqCV.scoring.PerfectAreaScorer;
-import MasqCV.scoring.RatioScorer;
+import Library4997.MasqCV.MasqCVUtils;
+import Library4997.MasqCV.detectors.MasqCVDetector;
+import Library4997.MasqCV.filters.LeviColorFilter;
+import Library4997.MasqCV.filters.MasqCVColorFilter;
+import Library4997.MasqCV.scoring.MaxAreaScorer;
+import Library4997.MasqCV.scoring.PerfectAreaScorer;
+import Library4997.MasqCV.scoring.RatioScorer;
+
 
 public class StoneDetector extends MasqCVDetector {
     public MasqCVUtils.AreaScoringMethod areaScoringMethod = MasqCVUtils.AreaScoringMethod.MAX_AREA; // Setting to decide to use MaxAreaScorer or PerfectAreaScorer

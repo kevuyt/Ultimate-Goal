@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems;
 
+import Library4997.MasqCV.detectors.MasqCVDetector;
+import Library4997.MasqCV.detectors.skystone.SkystoneDetector;
 import Library4997.MasqResources.MasqUtils;
-import MasqCV.detectors.MasqCVDetector;
-import MasqCV.detectors.skystone.SkystoneDetector;
+
 
 /**
  * Created by Archishmaan Peyyety on 2019-12-17.

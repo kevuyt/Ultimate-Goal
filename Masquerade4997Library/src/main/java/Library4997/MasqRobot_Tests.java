@@ -14,7 +14,7 @@ public class MasqRobot_Tests implements Tests {
         @Override
         public void mapHardware(HardwareMap hardwareMap) {
             driveTrain = new MasqMechanumDriveTrain(hardwareMap);
-            tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1, hardwareMap);
+            //tracker = new MasqPositionTracker(driveTrain.leftDrive.motor1, driveTrain.rightDrive.motor1, hardwareMap);
         }
 
         @Override

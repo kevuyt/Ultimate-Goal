@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -31,7 +30,7 @@ public class RedBuildWallAuto extends MasqLinearOpMode {
 
         robot.foundationHook.raise();
         sleep();
-        robot.strafe(30, Strafe.RIGHT, 1.5);
+        robot.strafe(30, 90, 1.5);
         robot.turnAbsolute(0);
         robot.drive(35, 0.25);
         robot.foundationHook.lower();
@@ -40,12 +39,12 @@ public class RedBuildWallAuto extends MasqLinearOpMode {
         robot.foundationHook.raise();
         sleep();
         robot.drive(5,Direction.BACKWARD);
-        robot.strafe(50, Strafe.LEFT, 2);
+        robot.strafe(50, -90, 2);
         robot.foundationHook.mid();
         sleep();
         robot.turnAbsolute(0);
         robot.drive(3,Direction.BACKWARD);
-        robot.strafe(35, Strafe.LEFT,2);
+        robot.strafe(35, -90,2);
         robot.turnAbsolute(0);
         robot.drive(1);
 

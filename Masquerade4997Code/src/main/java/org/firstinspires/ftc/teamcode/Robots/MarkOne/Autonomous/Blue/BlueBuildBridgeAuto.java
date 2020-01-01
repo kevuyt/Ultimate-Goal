@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
 import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqHelpers.Strafe;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -30,7 +29,7 @@ public class BlueBuildBridgeAuto extends MasqLinearOpMode {
         robot.foundationHook.raise();
         robot.blockPusher.setPosition(1);
 
-        robot.strafe(40, Strafe.LEFT, 1.5);
+        robot.strafe(40, -90, 1.5);
         robot.drive(42, 0.25);
         robot.turnAbsolute(0);
         robot.foundationHook.lower();
@@ -39,7 +38,7 @@ public class BlueBuildBridgeAuto extends MasqLinearOpMode {
         robot.foundationHook.raise();
         sleep();
 
-        robot.strafe(60, Strafe.RIGHT, 2);
+        robot.strafe(60, 90, 2);
         robot.turnAbsolute(0);
         robot.foundationHook.mid();
         robot.drive(15, 0.25);
