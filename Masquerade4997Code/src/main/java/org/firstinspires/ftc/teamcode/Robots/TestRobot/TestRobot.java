@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
-import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 

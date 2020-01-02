@@ -8,7 +8,7 @@ import java.util.List;
 
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqEncoder;
 

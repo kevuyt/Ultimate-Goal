@@ -13,7 +13,7 @@ import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
-import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
+import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
@@ -39,18 +39,18 @@ public class MarkOne extends MasqRobot {
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
-        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
+        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.USDIGITAL_E4T, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         sideGrabber = new MarkOneSideGrabber(hardwareMap);
         tracker = new MasqPositionTracker(intake.motor2, intake.motor1, hardwareMap) {
             @Override
             public double getXPosition() {
-                return -intake.motor1.getCurrentPosition();
+                return -intake.motor1.encoder.getInches();
             }
             @Override
             public double getYPosition() {
-                return -intake.motor2.getCurrentPosition();
+                return -intake.motor2.encoder.getInches();
             }
         };
         foundationHook = new MarkOneFoundationHook(hardwareMap);
@@ -61,25 +61,25 @@ public class MarkOne extends MasqRobot {
         mapHardware(hardwareMap);
         driveTrain.setTracker(tracker);
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
-        tracker.setXRadius(6);
-        tracker.setYRadius(7.5);
+        tracker.setXRadius(5.68);
+        tracker.setYRadius(7.11);
         MasqUtils.driveController = new MasqPIDController(0.005);
         MasqUtils.angleController = new MasqPIDController(0.01);
         MasqUtils.turnController = new MasqPIDController(0.015);
         MasqUtils.velocityTeleController = new MasqPIDController(0.002);
         MasqUtils.velocityAutoController = new MasqPIDController(0.002);
         lift.encoder.setWheelDiameter(1);
+        intake.motor1.encoder.setWheelDiameter(2);
+        intake.motor2.encoder.setWheelDiameter(2);
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();
         lift.setClosedLoop(true);
         lift.setKp(0.001);
         scaleServos();
         resetServos();
-        driveTrain.setTracker(tracker);
         SkystoneDetector detector = new SkystoneDetector();
         detector.setClippingMargins(100,80,110,70);
         cv = new MasqCV(detector, MasqCV.Cam.WEBCAM, hardwareMap);
-        cv.start();
     }
 
     private void scaleServos() {
@@ -95,8 +95,8 @@ public class MarkOne extends MasqRobot {
         blockGrabber.setPosition(1);
         foundationHook.raise();
         sideGrabber.leftUp();
-        sideGrabber.rightUp();
         sideGrabber.leftOpen();
+        sideGrabber.rightUp();
         sideGrabber.rightOpen();
         capper.setPosition(0);
     }

@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
+import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -33,8 +34,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
         robot.blockPusher.setPosition(1);
         double prevPusher = 1;
 
-        robot.sideGrabber.leftClose();
-        robot.sideGrabber.rightClose();
 
         while(opModeIsActive()) {
             if (controller1.rightBumper() || controller1.leftBumper())
@@ -57,12 +56,17 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             robot.foundationHook.DriverControl(controller1);
 
+            robot.sideGrabber.reset();
+
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();
             prevRotater = robot.blockRotater.getPosition();
             prevCapper = robot.capper.getPosition();
 
             dash.create("Lift: ", robot.lift.encoder.getInches());
+            dash.create("X: ",robot.tracker.getGlobalX());
+            dash.create("Y: ",robot.tracker.getGlobalY());
+            robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
             dash.update();
 
             controller1.update();

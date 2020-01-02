@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqHelpers.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;

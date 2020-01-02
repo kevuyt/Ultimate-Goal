@@ -1,4 +1,4 @@
-package Library4997.MasqResources.MasqHelpers;
+package Library4997.MasqMotors;
 
 /**
  * Created by Archish on 5/5/18.
@@ -16,7 +16,7 @@ public enum MasqMotorModel {
                 case NEVEREST60:
                     return 1680;
                 case USDIGITAL_E4T:
-                    return 1440;
+                    return 360;
                 case NEVERREST_CLASSIC:
                     return 6600;
                 case NEVERREST256:
