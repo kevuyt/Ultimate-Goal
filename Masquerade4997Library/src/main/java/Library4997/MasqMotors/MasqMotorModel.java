@@ -16,7 +16,7 @@ public enum MasqMotorModel {
                 case NEVEREST60:
                     return 1680;
                 case USDIGITAL_E4T:
-                    return 360;
+                    return 1440;
                 case NEVERREST_CLASSIC:
                     return 6600;
                 case NEVERREST256:

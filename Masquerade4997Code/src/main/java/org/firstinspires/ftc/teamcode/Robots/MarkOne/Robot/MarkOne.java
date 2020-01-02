@@ -46,11 +46,11 @@ public class MarkOne extends MasqRobot {
         tracker = new MasqPositionTracker(intake.motor2, intake.motor1, hardwareMap) {
             @Override
             public double getXPosition() {
-                return -intake.motor1.encoder.getInches();
+                return intake.motor1.encoder.getInches();
             }
             @Override
             public double getYPosition() {
-                return -intake.motor2.encoder.getInches();
+                return intake.motor2.encoder.getInches();
             }
         };
         foundationHook = new MarkOneFoundationHook(hardwareMap);
@@ -61,8 +61,8 @@ public class MarkOne extends MasqRobot {
         mapHardware(hardwareMap);
         driveTrain.setTracker(tracker);
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
-        tracker.setXRadius(5.68);
-        tracker.setYRadius(7.11);
+        tracker.setXRadius(5.68 * 1.91667);
+        tracker.setYRadius(7.11 * 1.91667);
         MasqUtils.driveController = new MasqPIDController(0.005);
         MasqUtils.angleController = new MasqPIDController(0.01);
         MasqUtils.turnController = new MasqPIDController(0.015);
@@ -94,10 +94,7 @@ public class MarkOne extends MasqRobot {
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
         foundationHook.raise();
-        sideGrabber.leftUp();
-        sideGrabber.leftOpen();
-        sideGrabber.rightUp();
-        sideGrabber.rightOpen();
+        sideGrabber.reset();
         capper.setPosition(0);
     }
 }

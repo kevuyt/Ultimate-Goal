@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
+import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -20,12 +21,13 @@ public class TestAutoOne extends MasqLinearOpMode {
         robot.initializeAutonomous();
 
         while (!opModeIsActive()) {
-            dash.create("Hello");
+            dash.create(robot.tracker);
+            robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
             dash.update();
         }
 
         waitForStart();
 
-        robot.gotoXY(new MasqPoint(5,0));
+        robot.gotoXY(new MasqPoint(20,0),30);
     }
 }

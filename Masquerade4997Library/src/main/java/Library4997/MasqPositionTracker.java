@@ -5,10 +5,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
-import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqResources.MasqUtils.adjustAngle;
-import static Library4997.MasqResources.MasqUtils.sleep;
 
 /**
  * Created by Archishmaan Peyyety on 8/9/18.
@@ -68,19 +66,14 @@ public abstract class MasqPositionTracker implements MasqHardware {
     }
 
     private void bothPerpendicular() {
-        double omega = Math.toRadians(getDHeading());
+        double dHeading = getDHeading();
+        double omega = Math.toRadians(dHeading);
         double angularComponentX = xRadius * omega;
         double angularComponentY = yRadius * omega;
-        DashBoard.getDash().create("angularComponentX: ", angularComponentX);
-        DashBoard.getDash().create("angularComponentY: ", angularComponentY);
-        DashBoard.getDash().create("getX: ", getXPosition());
-        DashBoard.getDash().create("getY: ", getYPosition());
         double deltaX = (getXPosition() - prevX) - angularComponentX;
-        double deltaY = (getYPosition() - prevY) - angularComponentY;
+        double deltaY = (getYPosition() - prevY) + angularComponentY;
         prevX = getXPosition();
         prevY = getYPosition();
-        DashBoard.getDash().create("deltaX: ", deltaX);
-        DashBoard.getDash().create("deltaY: ", deltaY);
         double heading = Math.toRadians(getHeading());
         double x = deltaX * Math.cos(heading) - deltaY * Math.sin(heading);
         double y = deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
@@ -90,16 +83,15 @@ public abstract class MasqPositionTracker implements MasqHardware {
 
     public double getDHeading() {
         double change = imu.getAbsoluteHeading() - prevHeading;
-        sleep(10);
         prevHeading = imu.getAbsoluteHeading();
         return adjustAngle(change);
     }
 
     public double getGlobalX() {
-        return globalX * ((2 * Math.PI) / 1440);
+        return globalX;
     }
     public double getGlobalY() {
-        return globalY * ((2 * Math.PI) / 1440);
+        return globalY;
     }
 
     public abstract double getXPosition();
