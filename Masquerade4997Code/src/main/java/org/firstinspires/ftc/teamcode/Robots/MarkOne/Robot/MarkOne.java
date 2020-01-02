@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneSideGrabber;
@@ -27,9 +26,9 @@ import Library4997.MasqWrappers.DashBoard;
  */
 public class MarkOne extends MasqRobot {
 
-    public MasqServo blockGrabber, blockRotater, blockPusher, capper, blockStopper;
+    public MasqServo blockGrabber, blockRotater, blockPusher, capper;
     public MarkOneFoundationHook foundationHook;
-    public MarkOneSideGrabber sideGrabberLeft, sideGrabberRight;
+    public MarkOneSideGrabber sideGrabber;
     public MasqMotor lift;
     public MasqMotorSystem intake;
     public MasqCV cv;
@@ -43,9 +42,7 @@ public class MarkOne extends MasqRobot {
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.REVHDHEX40, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
-        sideGrabberLeft = new MarkOneSideGrabber(hardwareMap,"leftAutoRotater", "leftAutoGrabber", Servo.Direction.REVERSE);
-        sideGrabberRight = new MarkOneSideGrabber(hardwareMap, "rightAutoRotater", "rightAutoGrabber", Servo.Direction.FORWARD);
-        blockStopper = new MasqServo("blockStopper", hardwareMap);
+        sideGrabber = new MarkOneSideGrabber(hardwareMap);
         tracker = new MasqPositionTracker(intake.motor2, intake.motor1, hardwareMap) {
             @Override
             public double getXPosition() {
@@ -62,6 +59,7 @@ public class MarkOne extends MasqRobot {
 
     public void init(HardwareMap hardwareMap) throws InterruptedException {
         mapHardware(hardwareMap);
+        driveTrain.setTracker(tracker);
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
         tracker.setXRadius(6);
         tracker.setYRadius(7.5);
@@ -89,17 +87,17 @@ public class MarkOne extends MasqRobot {
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.7);
         capper.scaleRange(0.5,1);
-        blockStopper.scaleRange(0.25,1);
     }
 
     private void resetServos() throws InterruptedException {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
-        foundationHook.lower();
-        sideGrabberLeft.up();
-        sideGrabberRight.up();
+        foundationHook.raise();
+        sideGrabber.leftUp();
+        sideGrabber.rightUp();
+        sideGrabber.leftOpen();
+        sideGrabber.rightOpen();
         capper.setPosition(0);
-        blockStopper.setPosition(0);
     }
 }

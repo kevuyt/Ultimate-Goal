@@ -33,7 +33,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
         robot.blockPusher.setPosition(1);
         double prevPusher = 1;
 
-        robot.foundationHook.mid();
+        robot.sideGrabber.leftClose();
+        robot.sideGrabber.rightClose();
 
         while(opModeIsActive()) {
             if (controller1.rightBumper() || controller1.leftBumper())
@@ -54,7 +55,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
             MasqUtils.toggle(controller2.dPadUpOnPress(), robot.capper, prevCapper);
 
-            robot.foundationHook.DriverControl(controller1);
             robot.foundationHook.DriverControl(controller1);
 
             prevGrabber = robot.blockGrabber.getPosition();
