@@ -59,8 +59,8 @@ public class MarkOne extends MasqRobot {
 
     public void init(HardwareMap hardwareMap) throws InterruptedException {
         mapHardware(hardwareMap);
-        driveTrain.setTracker(tracker);
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+        driveTrain.setTracker(tracker);
         tracker.setXRadius(5.68 * 1.91667);
         tracker.setYRadius(7.11 * 1.91667);
         MasqUtils.driveController = new MasqPIDController(0.005);

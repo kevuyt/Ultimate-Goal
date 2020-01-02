@@ -295,26 +295,26 @@ public abstract class MasqRobot {
         MasqClock clock = new MasqClock();
         MasqVector target = new MasqVector(x, y);
         MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-        MasqVector inital = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-        MasqVector pathDisplacment = inital.displacement(target);
+        MasqVector initial = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
+        MasqVector pathDisplacement = initial.displacement(target);
         while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(3, target) && opModeIsActive()) {
             MasqVector untransformedProjection = new MasqVector(
-                    current.projectOnTo(pathDisplacment).getX() - inital.getX(),
-                    current.projectOnTo(pathDisplacment).getY() - inital.getY()).projectOnTo(pathDisplacment);
+                    current.projectOnTo(pathDisplacement).getX() - initial.getX(),
+                    current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
             MasqVector projection = new MasqVector(
-                    untransformedProjection.getX() + inital.getX(),
-                    untransformedProjection.getY() + inital.getY());
-            double theta = Math.atan2(pathDisplacment.getY(), pathDisplacment.getX());
+                    untransformedProjection.getX() + initial.getX(),
+                    untransformedProjection.getY() + initial.getY());
+            double theta = Math.atan2(pathDisplacement.getY(), pathDisplacement.getX());
             MasqVector lookahead = new MasqVector(
                     projection.getX() + (lookAhead * Math.cos(theta)),
                     projection.getY() + (lookAhead * Math.sin(theta)));
-            if (inital.displacement(lookahead).getMagnitude() > pathDisplacment.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
+            if (initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
             MasqVector lookaheadDisplacement = current.displacement(lookahead);
             double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
             double speed = driveController.getOutput(current.displacement(target).getMagnitude());
             driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
             current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-            tracker.updateSystem(position);
+            tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
             dash.create("X: ", tracker.getGlobalX());
             dash.create("Y: ", tracker.getGlobalY());
             dash.create("Angle: ", pathAngle + tracker.getHeading());
