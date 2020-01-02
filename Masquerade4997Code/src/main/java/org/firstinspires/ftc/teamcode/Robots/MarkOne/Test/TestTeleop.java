@@ -19,7 +19,8 @@ public class TestTeleop extends MasqLinearOpMode {
         robot.initializeTeleop();
 
         while (!opModeIsActive()) {
-            dash.create("Hello");
+            dash.create(robot.tracker);
+            robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
             dash.update();
         }
 
