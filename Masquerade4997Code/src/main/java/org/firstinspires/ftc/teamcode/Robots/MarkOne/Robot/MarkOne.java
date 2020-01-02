@@ -77,6 +77,7 @@ public class MarkOne extends MasqRobot {
         lift.setKp(0.001);
         scaleServos();
         resetServos();
+        driveTrain.setTracker(tracker);
         SkystoneDetector detector = new SkystoneDetector();
         detector.setClippingMargins(100,80,110,70);
         cv = new MasqCV(detector, MasqCV.Cam.WEBCAM, hardwareMap);

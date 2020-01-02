@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
+import Library4997.MasqPositionTracker;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -27,7 +28,7 @@ public class TestTeleop extends MasqLinearOpMode {
             robot.MECH(controller1);
             dash.create(robot.tracker);
             dash.update();
-            controller1.update();
+            robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
         }
     }
 }
