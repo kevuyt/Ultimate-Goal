@@ -7,6 +7,7 @@ import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 
 import static Library4997.MasqResources.MasqUtils.adjustAngle;
+import static Library4997.MasqResources.MasqUtils.sleep;
 
 /**
  * Created by Archishmaan Peyyety on 8/9/18.
@@ -14,7 +15,7 @@ import static Library4997.MasqResources.MasqUtils.adjustAngle;
  */
 
 public abstract class MasqPositionTracker implements MasqHardware {
-    private MasqMotor xSystem, ySystem;
+    public MasqMotor xSystem, ySystem;
     public MasqAdafruitIMU imu;
     private double prevHeading;
     private double globalX = 0, globalY = 0, prevX = 0, prevY = 0, xRadius = 0, yRadius = 0;
@@ -61,30 +62,34 @@ public abstract class MasqPositionTracker implements MasqHardware {
         double y = deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
         globalX += x;
         globalY += y;
-        prevY = getXPosition();
-        prevX = getYPosition();
+        prevY = getYPosition();
+        prevX = getXPosition();
     }
 
     private void bothPerpendicular() {
-        double dHeading = getDHeading();
-        double omega = Math.toRadians(dHeading);
-        double angularComponentX = xRadius * omega;
-        double angularComponentY = yRadius * omega;
-        double deltaX = (getXPosition() - prevX) - angularComponentX;
-        double deltaY = (getYPosition() - prevY) + angularComponentY;
-        prevX = getXPosition();
-        prevY = getYPosition();
         double heading = Math.toRadians(getHeading());
-        double x = deltaX * Math.cos(heading) - deltaY * Math.sin(heading);
-        double y = deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
-        globalX += x;
-        globalY += y;
+        double xPosition = getXPosition();
+        double yPosition = getYPosition();
+        double dH = Math.toRadians(getDHeading(heading));
+        double dX = xPosition - prevX;
+        prevX = xPosition;
+        double dY = yPosition - prevY;
+        prevY = yPosition;
+        double angularComponentY = yRadius * dH;
+        double angularComponentX = xRadius * dH;
+        double dTranslationalX = dX - angularComponentX;
+        double dTranslationalY = dY + angularComponentY;
+        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
+        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
+        globalX += dGlobalX;
+        globalY += dGlobalY;
     }
 
-    public double getDHeading() {
-        double change = imu.getAbsoluteHeading() - prevHeading;
-        prevHeading = imu.getAbsoluteHeading();
-        return adjustAngle(change);
+    public double getDHeading(double current) {
+        double change = current - prevHeading;
+        prevHeading = current;
+        sleep(10);
+        return adjustAngle(Math.toDegrees(change));
     }
 
     public double getGlobalX() {
@@ -117,7 +122,6 @@ public abstract class MasqPositionTracker implements MasqHardware {
             "GlobalX: " + globalX,
             "GlobalY: " + globalY,
             "Heading: " + getHeading(),
-            "Heading Change: " + getDHeading()
         };
     }
 }

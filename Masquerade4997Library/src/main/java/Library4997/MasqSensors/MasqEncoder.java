@@ -25,7 +25,7 @@ public class MasqEncoder {
   }
 
   public double getInches () {
-    return (getRelativePosition()/getClicksPerInch()) * gearRatio;
+    return getRelativePosition() / getClicksPerInch();
   }
 
   public double getAbsolutePosition() {

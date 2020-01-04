@@ -25,7 +25,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
         double prevCapper = 0;
 
         while(!opModeIsActive()) {
-            dash.create("Hello");
+            dash.create("Manual Inches: ",robot.intake.motor2.getCurrentPosition() /
+                    (1440 / (2 * Math.PI)));
             dash.update();
         }
 
@@ -63,9 +64,11 @@ public class RobotTeleOp extends MasqLinearOpMode {
             prevRotater = robot.blockRotater.getPosition();
             prevCapper = robot.capper.getPosition();
 
-            dash.create("Lift: ", robot.lift.encoder.getInches());
             dash.create("X: ",robot.tracker.getGlobalX());
             dash.create("Y: ",robot.tracker.getGlobalY());
+            dash.create("H: ",robot.tracker.getHeading());
+            dash.create("Raw X: ",robot.intake.motor1.getCurrentPosition());
+            dash.create("Raw Y: ",robot.intake.motor2.getCurrentPosition());
             robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
             dash.update();
 

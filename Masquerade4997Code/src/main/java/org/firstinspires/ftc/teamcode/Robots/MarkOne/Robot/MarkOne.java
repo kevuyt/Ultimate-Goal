@@ -39,18 +39,18 @@ public class MarkOne extends MasqRobot {
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
-        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE,MasqMotorModel.USDIGITAL_E4T, hardwareMap);
+        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.USDIGITAL_E4T, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         sideGrabber = new MarkOneSideGrabber(hardwareMap);
-        tracker = new MasqPositionTracker(intake.motor2, intake.motor1, hardwareMap) {
+        tracker = new MasqPositionTracker(intake.motor1, intake.motor2, hardwareMap) {
             @Override
             public double getXPosition() {
-                return intake.motor1.encoder.getInches();
+                return intake.motor1.encoder.getRelativePosition() / (1150 / (2 * Math.PI));
             }
             @Override
             public double getYPosition() {
-                return intake.motor2.encoder.getInches();
+                return intake.motor2.encoder.getRelativePosition() / (1440 / (2 * Math.PI));
             }
         };
         foundationHook = new MarkOneFoundationHook(hardwareMap);
@@ -61,12 +61,12 @@ public class MarkOne extends MasqRobot {
         mapHardware(hardwareMap);
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
         driveTrain.setTracker(tracker);
-        tracker.setXRadius(5.68 * 1.91667);
-        tracker.setYRadius(7.11 * 1.91667);
+        tracker.setXRadius(5.68);
+        tracker.setYRadius(7.11);
         MasqUtils.driveController = new MasqPIDController(0.005);
-        MasqUtils.angleController = new MasqPIDController(0.01);
+        MasqUtils.angleController = new MasqPIDController(0.005);
         MasqUtils.turnController = new MasqPIDController(0.015);
-        MasqUtils.velocityTeleController = new MasqPIDController(0.002);
+        MasqUtils.velocityTeleController = new MasqPIDController(0.001);
         MasqUtils.velocityAutoController = new MasqPIDController(0.002);
         lift.encoder.setWheelDiameter(1);
         intake.motor1.encoder.setWheelDiameter(2);

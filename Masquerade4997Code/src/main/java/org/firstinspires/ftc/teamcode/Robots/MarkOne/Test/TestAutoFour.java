@@ -30,6 +30,8 @@ public class TestAutoFour extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.gotoXY(new MasqPoint(10,10, 90),30);
+        robot.gotoXY(new MasqPoint(20,20, 90),3);
+        robot.gotoXY(new MasqPoint(0,0, 0),30);
+        sleep(20);
     }
 }

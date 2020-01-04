@@ -290,7 +290,7 @@ public abstract class MasqRobot {
     public void gotoXY(double x, double y, double heading, double speedDampener, double kp,double timeout) {
         // https://www.desmos.com/calculator/zbviad1hnz
         double lookAhead = 10;
-        MasqPIDController driveController = new MasqPIDController(0.02);
+        MasqPIDController driveController = new MasqPIDController(0.04);
         turnController.setKp(kp);
         MasqClock clock = new MasqClock();
         MasqVector target = new MasqVector(x, y);

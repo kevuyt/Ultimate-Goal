@@ -31,9 +31,9 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     }
 
     public void leftUp() throws InterruptedException {
-        sideGrabber.servo1.setPosition(0);
-        Thread.sleep(500);
         leftClose();
+        Thread.sleep(500);
+        sideGrabber.servo1.setPosition(0);
     }
     public void leftDown() throws InterruptedException {
         sideGrabber.servo1.setPosition(1);
@@ -48,9 +48,9 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     }
 
     public void rightUp() throws InterruptedException {
-        sideGrabber.servo3.setPosition(0);
-        Thread.sleep(500);
         rightClose();
+        Thread.sleep(500);
+        sideGrabber.servo3.setPosition(0);
     }
     public void rightDown() throws InterruptedException {
         sideGrabber.servo3.setPosition(1);
