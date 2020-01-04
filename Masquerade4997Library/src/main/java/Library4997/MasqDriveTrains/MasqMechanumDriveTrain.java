@@ -10,7 +10,7 @@ import Library4997.MasqResources.MasqUtils;
 
 
 public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardware {
-    public static MasqPIDController turnController = new MasqPIDController(0.05);
+    public static MasqPIDController angleCorrectionController = new MasqPIDController(0.05);
     MasqPositionTracker tracker;
     public MasqMechanumDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
         super(name1, name2, name3, name4, hardwareMap);
@@ -27,7 +27,7 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     }
 
     public void setVelocityMECH(double angle, double speed, double targetHeading) {
-        double turnPower = turnController.getOutput(targetHeading - tracker.getHeading());
+        double turnPower = angleCorrectionController.getOutput(targetHeading - tracker.getHeading());
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;
@@ -98,11 +98,11 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     }
 
     public void setTurnControllerKp (double kp) {
-        turnController.setKp(kp);
+        angleCorrectionController.setKp(kp);
     }
 
     public void setPowerMECH(double angle, double speed, double targetHeading) {
-        double turnPower = turnController.getOutput(tracker.getHeading() - targetHeading);
+        double turnPower = angleCorrectionController.getOutput(tracker.getHeading() - targetHeading);
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.MECH_DRIVE_MULTIPLIER) - turnPower * MasqUtils.MECH_ROTATION_MULTIPLIER;

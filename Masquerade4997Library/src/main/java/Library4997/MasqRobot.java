@@ -19,6 +19,8 @@ import static Library4997.MasqResources.MasqUtils.driveController;
 import static Library4997.MasqResources.MasqUtils.turnController;
 import static Library4997.MasqResources.MasqUtils.velocityAutoController;
 import static Library4997.MasqResources.MasqUtils.velocityTeleController;
+import static Library4997.MasqResources.MasqUtils.xyAngleController;
+import static Library4997.MasqResources.MasqUtils.xySpeedController;
 
 
 /**
@@ -289,9 +291,9 @@ public abstract class MasqRobot {
     public void gotoXY(double x, double y, double heading, double speedDampener, double timeout) {
         // https://www.desmos.com/calculator/zbviad1hnz
         double lookAhead = 10;
-        MasqMechanumDriveTrain.turnController.setKp(MasqUtils.xyAngleController.getKp());
-        MasqMechanumDriveTrain.turnController.setKi(MasqUtils.xyAngleController.getKi());
-        MasqMechanumDriveTrain.turnController.setKd(MasqUtils.xyAngleController.getKd());
+        MasqMechanumDriveTrain.angleCorrectionController.setKp(xyAngleController.getKp());
+        MasqMechanumDriveTrain.angleCorrectionController.setKi(xyAngleController.getKi());
+        MasqMechanumDriveTrain.angleCorrectionController.setKd(xyAngleController.getKd());
         MasqClock clock = new MasqClock();
         MasqVector target = new MasqVector(x, y);
         MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
@@ -311,7 +313,7 @@ public abstract class MasqRobot {
             if (initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
             MasqVector lookaheadDisplacement = current.displacement(lookahead);
             double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-            double speed = MasqUtils.xySpeedController.getOutput(current.displacement(target).getMagnitude());
+            double speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
             driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
             current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
