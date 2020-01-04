@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 11/3/2019
  */
-@Autonomous(name = "TestAutoOne", group = "MarkOne")
+@Autonomous(name = "(-20, -20, 90) --> (0...)", group = "MarkOne")
 public class TestAutoOne extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 

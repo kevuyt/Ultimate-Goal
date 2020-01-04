@@ -10,7 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 /**
  * Created by Keval Kataria on 11/17/2019
  */
-@TeleOp(name = "TestTeleop", group = "MarkOne")
+@TeleOp(name = "Position Getter", group = "MarkOne")
 public class TestTeleop extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     @Override
@@ -19,18 +19,20 @@ public class TestTeleop extends MasqLinearOpMode {
         robot.initializeTeleop();
 
         while (!opModeIsActive()) {
-            dash.create("X: ",robot.tracker.getGlobalX());
-            dash.create("Y: ",robot.tracker.getGlobalY());
-            robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+            dash.create("Manual Inches: ",robot.intake.motor2.getCurrentPosition() /
+                    (1440 / (2 * Math.PI)));
             dash.update();
         }
-
+        // DO NOT ADD MECH INSIDE. That will set velocity of wheels to 0
+        // and then you will not be able to roll the bot to positions easier.
         while(opModeIsActive()) {
-            robot.MECH(controller1,1, 0.3);
-            dash.create(robot.tracker);
-            dash.update();
-            robot.sideGrabber.reset();
+            dash.create("X: ",robot.tracker.getGlobalX());
+            dash.create("Y: ",robot.tracker.getGlobalY());
+            dash.create("H: ",robot.tracker.getHeading());
+            dash.create("Raw X: ",robot.intake.motor1.getCurrentPosition());
+            dash.create("Raw Y: ",robot.intake.motor2.getCurrentPosition());
             robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+            dash.update();
         }
     }
 }

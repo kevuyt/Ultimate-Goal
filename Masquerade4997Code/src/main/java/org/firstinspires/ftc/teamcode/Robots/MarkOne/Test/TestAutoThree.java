@@ -12,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 2020-01-02.
  * Project: MasqLib
  */
-@Autonomous(name = "TestAutoThree", group = "MarkOne")
+@Autonomous(name = "(20, 20, 0)", group = "MarkOne")
 public class TestAutoThree extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
