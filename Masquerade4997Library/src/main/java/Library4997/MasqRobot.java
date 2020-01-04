@@ -3,7 +3,6 @@ package Library4997;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
@@ -287,17 +286,18 @@ public abstract class MasqRobot {
         stop(stopCondition, tracker.getHeading(), 0.5, Direction.FORWARD, timeout);
     }
 
-    public void gotoXY(double x, double y, double heading, double speedDampener, double kp,double timeout) {
+    public void gotoXY(double x, double y, double heading, double speedDampener, double timeout) {
         // https://www.desmos.com/calculator/zbviad1hnz
         double lookAhead = 10;
-        MasqPIDController driveController = new MasqPIDController(0.04);
-        turnController.setKp(kp);
+        MasqMechanumDriveTrain.turnController.setKp(MasqUtils.xyAngleController.getKp());
+        MasqMechanumDriveTrain.turnController.setKi(MasqUtils.xyAngleController.getKi());
+        MasqMechanumDriveTrain.turnController.setKd(MasqUtils.xyAngleController.getKd());
         MasqClock clock = new MasqClock();
         MasqVector target = new MasqVector(x, y);
         MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector initial = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector pathDisplacement = initial.displacement(target);
-        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(3, target) && opModeIsActive()) {
+        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(2, target) && opModeIsActive()) {
             MasqVector untransformedProjection = new MasqVector(
                     current.projectOnTo(pathDisplacement).getX() - initial.getX(),
                     current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
@@ -311,34 +311,24 @@ public abstract class MasqRobot {
             if (initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
             MasqVector lookaheadDisplacement = current.displacement(lookahead);
             double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-            double speed = driveController.getOutput(current.displacement(target).getMagnitude());
+            double speed = MasqUtils.xySpeedController.getOutput(current.displacement(target).getMagnitude());
             driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
             current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
             dash.create("X: ", tracker.getGlobalX());
             dash.create("Y: ", tracker.getGlobalY());
+            dash.create("LEFT POWER: ", driveTrain.leftDrive.getPower());
+            dash.create("RIGHT POWER: ", driveTrain.rightDrive.getPower());
             dash.create("Angle: ", pathAngle + tracker.getHeading());
             dash.update();
         }
         driveTrain.stopDriving();
     }
-    public void gotoXY(double x, double y, double heading, double speedDampener, double timeout) {
-        gotoXY(x, y, heading, speedDampener, 0.05,timeout);
-    }
-    public void gotoXY(double x, double y, double heading, double timeout) {
-        gotoXY(x, y, heading, 1,timeout);
-    }
-    public void gotoXY(MasqPoint p, double heading, double speedDampener, double kp, double timeout) {
-        gotoXY(p.getX(), p.getY(), heading, speedDampener, kp,timeout);
-    }
-    public void gotoXY(MasqPoint p, double heading, double speedDampener, double timeout) {
-        gotoXY(p.getX(), p.getY(), heading, speedDampener, timeout);
-    }
-    public void gotoXY(MasqPoint p, double heading, double timeout) {
-        gotoXY(p.getX(), p.getY(), heading, 1, timeout);
+    public void gotoXY(MasqPoint p, double speedDampener, double timeout) {
+        gotoXY(p.getX(), p.getY(), p.getH(), speedDampener, timeout);
     }
     public void gotoXY(MasqPoint p, double timeout) {
-        gotoXY(p.getX(), p.getY(), p.getH(), timeout);
+        gotoXY(p.getX(), p.getY(), p.getH(), 1, timeout);
     }
     public void gotoXY(MasqPoint p) {
         gotoXY(p, DEFAULT_TIMEOUT);

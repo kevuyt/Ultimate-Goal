@@ -10,7 +10,7 @@ import Library4997.MasqResources.MasqUtils;
 
 
 public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardware {
-    MasqPIDController turnController = new MasqPIDController(0.05);
+    public static MasqPIDController turnController = new MasqPIDController(0.05);
     MasqPositionTracker tracker;
     public MasqMechanumDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
         super(name1, name2, name3, name4, hardwareMap);
@@ -97,6 +97,9 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         rightDrive.motor2.setPower(rightBack);
     }
 
+    public void setTurnControllerKp (double kp) {
+        turnController.setKp(kp);
+    }
 
     public void setPowerMECH(double angle, double speed, double targetHeading) {
         double turnPower = turnController.getOutput(tracker.getHeading() - targetHeading);

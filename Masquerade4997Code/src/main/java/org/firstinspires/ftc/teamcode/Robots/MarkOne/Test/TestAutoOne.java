@@ -28,6 +28,7 @@ public class TestAutoOne extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.gotoXY(new MasqPoint(20,0),30);
+        robot.gotoXY(new MasqPoint(-20,-20, 90),30);
+        robot.gotoXY(new MasqPoint(0,0, 0),30);
     }
 }
