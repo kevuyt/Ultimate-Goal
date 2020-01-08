@@ -97,7 +97,7 @@ public abstract class MasqPositionTracker implements MasqHardware {
         prevYR = yRPosition;
         double dYL = yLPosition - prevYL;
         prevYL = yLPosition;
-        double dH = (dYR - dYL) / (2 * trackWidth);
+        double dH = (dYR - dYL) / trackWidth;
         double dTranslationalY = (yRPosition + yLPosition) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
