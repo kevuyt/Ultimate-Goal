@@ -6,9 +6,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import java.util.ArrayList;
 import java.util.List;
 
+import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqEncoder;
 
@@ -129,6 +130,12 @@ public class MasqDriveTrain implements MasqHardware {
         encoders.add(rightDrive.motor1.getEncoder());
         encoders.add(rightDrive.motor2.getEncoder());
         return encoders;
+    }
+
+    public List<MasqMotor> getMotors () {
+        List<MasqMotor> allMotors = new ArrayList<>(leftDrive.motors);
+        allMotors.addAll(rightDrive.motors);
+        return allMotors;
     }
 
     public String getName() {

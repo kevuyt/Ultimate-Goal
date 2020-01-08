@@ -6,9 +6,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.Constants;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqSubSystem;
 import Library4997.MasqWrappers.MasqController;
+
+import static Library4997.MasqResources.MasqUtils.sleep;
 
 /**
  * Created by Archishmaan Peyyety on 2020-01-01.
@@ -16,58 +19,68 @@ import Library4997.MasqWrappers.MasqController;
  */
 public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     public MasqServoSystem sideGrabber;
+    public MasqServo leftRotater, leftGrabber, rightRotater, rightGrabber;
 
     public MarkOneSideGrabber(HardwareMap hardwareMap) {
         sideGrabber = new MasqServoSystem("leftAutoRotater", "leftAutoGrabber", "rightAutoRotater", "rightAutoGrabber", hardwareMap);
-        sideGrabber.servo1.scaleRange(0.5, 1);
-        sideGrabber.servo2.scaleRange(0.5, 0.85);
-        sideGrabber.servo3.scaleRange(0.2,0.75);
-        sideGrabber.servo4.scaleRange(0.3,1);
-        sideGrabber.servo1.setDirection(Servo.Direction.REVERSE);
+        leftRotater = sideGrabber.servo1;
+        leftGrabber = sideGrabber.servo2;
+        rightRotater = sideGrabber.servo3;
+        rightGrabber = sideGrabber.servo4;
+        leftRotater.setDirection(Servo.Direction.REVERSE);
     }
 
     @Override
-    public void DriverControl(MasqController controller) throws InterruptedException {
+    public void DriverControl(MasqController controller) {
     }
 
-    public void leftUp() throws InterruptedException {
-        leftClose();
-        Thread.sleep(500);
-        sideGrabber.servo1.setPosition(0);
+    public void scaleServos() {
+        leftRotater.scaleRange(0.5, 1);
+        leftGrabber.scaleRange(0.5, 0.85);
+        rightRotater.scaleRange(0.1,0.7);
+        rightGrabber.scaleRange(0.2,0.6);
     }
-    public void leftDown() throws InterruptedException {
-        sideGrabber.servo1.setPosition(1);
-        Thread.sleep(500);
-        leftOpen();
+
+    public void leftUp() {
+        leftRotater.setPosition(0);
+    }
+    public void leftDown() {
+        leftRotater.setPosition(1);
     }
     public void leftClose() {
-        sideGrabber.servo2.setPosition(1);
+        leftGrabber.setPosition(1);
+        sleep(1.);
     }
     public void leftOpen() {
-        sideGrabber.servo2.setPosition(0);
+        leftGrabber.setPosition(0);
     }
 
-    public void rightUp() throws InterruptedException {
-        rightClose();
-        Thread.sleep(500);
-        sideGrabber.servo3.setPosition(0);
+    public void rightUp() {
+        rightRotater.setPosition(0);
     }
-    public void rightDown() throws InterruptedException {
-        sideGrabber.servo3.setPosition(1);
-        Thread.sleep(500);
-        rightOpen();
+    public void rightMid() {
+        rightRotater.setPosition(0.35);
+    }
+    public void rightDown() {
+        rightRotater.setPosition(1);
+        sleep(1.);
     }
     public void rightClose() {
-        sideGrabber.servo4.setPosition(1);
+        rightGrabber.setPosition(1);
+        sleep(1.);
+    }
+    public void rightSlightClose() {
+        rightGrabber.setPosition(0.625);
+        sleep(1.);
     }
     public void rightOpen() {
-        sideGrabber.servo4.setPosition(0);
+        rightGrabber.setPosition(0);
     }
     public void reset() {
-        sideGrabber.servo1.setPosition(0);
-        sideGrabber.servo2.setPosition(1);
-        sideGrabber.servo3.setPosition(0);
-        sideGrabber.servo4.setPosition(1);
+        leftUp();
+        rightUp();
+        leftOpen();
+        rightOpen();
     }
 
     @Override
