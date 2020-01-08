@@ -52,28 +52,21 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         robot.sideGrabber.rightSlightClose();
         robot.gotoXY(stone1);
         runSimultaneously(() -> {robot.sideGrabber.rightDown();
-                    sleep(1.25);
                     robot.sideGrabber.rightClose();
-                    sleep(1.25);
                     robot.sideGrabber.rightMid();
                     robot.sideGrabber.leftClose();},
                 () -> robot.stopDriving(0.1));
-        sleep(1.25);
         robot.gotoXY(bridge,0.75);
         velocityAutoController.setKp(0.006);
         robot.gotoXY(foundation,3.5);
         velocityAutoController.setKp(0.004);
         runSimultaneously(() -> {robot.sideGrabber.rightDown();
-            sleep(1);
             robot.sideGrabber.rightSlightClose();
-            sleep(1);
             robot.sideGrabber.rightMid();},() -> robot.stopDriving(0.1));
         robot.gotoXY(bridge);
         robot.gotoXY(stone4,4);
         runSimultaneously(() -> {robot.sideGrabber.rightDown();
-            sleep(1.25);
             robot.sideGrabber.rightClose();
-            sleep(1.25);
             robot.sideGrabber.rightMid();},() -> robot.stopDriving(0.25));/*
         robot.gotoXY(bridge,0.8);
         robot.gotoXY(foundation,3.25);

@@ -122,7 +122,7 @@ public class MarkOne extends MasqRobot {
         do {
             isMoving = false;
             driveTrain.setVelocity(0);
-            for (MasqMotor motor : driveTrain.motors) {
+            for (MasqMotor motor : driveTrain.getMotors()) {
                 if (!tolerance(motor.getVelocity(),0,tolerance)) isMoving = true;
             }
         } while (isMoving);

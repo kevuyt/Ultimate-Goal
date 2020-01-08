@@ -14,7 +14,7 @@ import Library4997.MasqSensors.MasqLimitSwitch;
  */
 public class MasqMotorSystem implements MasqHardware {
     public MasqMotor motor1 , motor2, motor3;
-    private List<MasqMotor> motors;
+    public List<MasqMotor> motors;
     public int numMotors;
     double kp, ki, kd;
     private double currentPower = 0;
