@@ -11,11 +11,14 @@ import Library4997.MasqCV.detectors.skystone.SkystoneDetector;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
-import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
+import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel;
+import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel.Measurement;
+import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel.WheelPosition;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
@@ -82,6 +85,18 @@ public class MarkOne extends MasqRobot {
         SkystoneDetector detector = new SkystoneDetector();
         detector.setClippingMargins(100,80,110,70);
         cv = new MasqCV(detector, MasqCV.Cam.WEBCAM, hardwareMap);
+    }
+
+    public Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker createTracker() {
+        Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker tracker = new Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker();
+        MasqDeadwheel masqDeadwheel = new MasqDeadwheel(intake.motor1, WheelPosition.BOTTOM, Measurement.X) {
+            @Override
+            public double getInches() {
+                return 0;
+            }
+        };
+        tracker.addWheel(masqDeadwheel);
+        return tracker;
     }
 
     private void scaleServos() {

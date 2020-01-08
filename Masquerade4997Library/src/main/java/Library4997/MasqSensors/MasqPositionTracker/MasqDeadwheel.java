@@ -39,6 +39,10 @@ public class MasqDeadwheel {
         return measurement;
     }
 
+    public double getInches() {
+        return 0;
+    }
+
     public double getChange() {
         latestPosition = getPosition();
         double change = latestPosition - prevPosition;
