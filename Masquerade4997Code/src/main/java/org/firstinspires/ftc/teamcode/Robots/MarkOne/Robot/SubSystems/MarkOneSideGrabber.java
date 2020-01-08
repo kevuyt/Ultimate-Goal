@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.Constants;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqSubSystem;
 import Library4997.MasqWrappers.MasqController;
@@ -16,13 +17,14 @@ import Library4997.MasqWrappers.MasqController;
  */
 public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     public MasqServoSystem sideGrabber;
+    public MasqServo leftRotater, leftGrabber, rightRotater, rightGrabber;
 
     public MarkOneSideGrabber(HardwareMap hardwareMap) {
         sideGrabber = new MasqServoSystem("leftAutoRotater", "leftAutoGrabber", "rightAutoRotater", "rightAutoGrabber", hardwareMap);
-        sideGrabber.servo1.scaleRange(0.5, 1);
-        sideGrabber.servo2.scaleRange(0.5, 0.85);
-        sideGrabber.servo3.scaleRange(0.1,0.7);
-        sideGrabber.servo4.scaleRange(0.2,0.6);
+        leftRotater = sideGrabber.servo1;
+        leftGrabber = sideGrabber.servo2;
+        rightRotater = sideGrabber.servo3;
+        rightGrabber = sideGrabber.servo4;
         sideGrabber.servo1.setDirection(Servo.Direction.REVERSE);
     }
 
@@ -30,6 +32,11 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     public void DriverControl(MasqController controller) {
     }
 
+    public void scaleServos() {
+        leftRotater.scaleRange(0.5, 1);
+        leftGrabber.scaleRange(0.5, 0.85);
+        rightRotater.scaleRange(0.1,0.7);
+        rightGrabber.scaleRange(0.2,0.6);}
     public void leftUp() {
         sideGrabber.servo1.setPosition(0);
     }

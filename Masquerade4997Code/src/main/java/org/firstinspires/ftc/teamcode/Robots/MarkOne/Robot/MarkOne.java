@@ -106,6 +106,7 @@ public class MarkOne extends MasqRobot {
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.7);
         capper.scaleRange(0.5,1);
+        sideGrabber.scaleServos();
     }
 
     private void resetServos() {
@@ -117,9 +118,14 @@ public class MarkOne extends MasqRobot {
         capper.setPosition(0);
     }
     public void stopDriving(double tolerance) {
-        while(!tolerance(driveTrain.leftDrive.motor1.getVelocity(),0,tolerance)) {
+        boolean isMoving;
+        do {
+            isMoving = false;
             driveTrain.setVelocity(0);
-        }
+            for (MasqMotor motor : driveTrain.motors) {
+                if (!tolerance(motor.getVelocity(),0,tolerance)) isMoving = true;
+            }
+        } while (isMoving);
         driveTrain.setPower(0);
     }
 }

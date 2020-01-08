@@ -412,14 +412,14 @@ public abstract class MasqRobot {
     }
 
     public void initializeTeleop(){
-        driveTrain.setKp(velocityTeleController.getConstants()[0]);
-        driveTrain.setKi(velocityTeleController.getConstants()[1]);
-        driveTrain.setKd(velocityTeleController.getConstants()[2]);
+        driveTrain.setKp(velocityTeleController.getKp());
+        driveTrain.setKi(velocityTeleController.getKi());
+        driveTrain.setKd(velocityTeleController.getKd());
     }
     public void initializeAutonomous() {
-        driveTrain.setKp(velocityAutoController.getConstants()[0]);
-        driveTrain.setKi(velocityAutoController.getConstants()[1]);
-        driveTrain.setKd(velocityAutoController.getConstants()[2]);
+        driveTrain.setKp(velocityAutoController.getKp());
+        driveTrain.setKi(velocityAutoController.getKi());
+        driveTrain.setKd(velocityAutoController.getKd());
     }
 
     public void setPosition(MasqPositionTracker.DeadWheelPosition position) {
