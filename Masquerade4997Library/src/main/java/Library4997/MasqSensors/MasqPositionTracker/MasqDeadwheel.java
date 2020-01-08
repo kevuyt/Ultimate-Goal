@@ -10,7 +10,7 @@ public class MasqDeadwheel {
     private MasqMotor motor;
     private WheelPosition wheelPosition;
     private Measurement measurement;
-    private double latestPosition, prevPosition;
+    private double latestPosition, prevPosition, radius;
     public enum WheelPosition {
         TOP, BOTTOM, LEFT, RIGHT, CENTER
     }
@@ -18,10 +18,11 @@ public class MasqDeadwheel {
         X, Y
     }
 
-    public MasqDeadwheel(MasqMotor motor, WheelPosition wheelPosition, Measurement measurement) {
+    public MasqDeadwheel(MasqMotor motor, WheelPosition wheelPosition, Measurement measurement, double radius) {
         this.motor = motor;
         this.wheelPosition = wheelPosition;
         this.measurement = measurement;
+        this.radius = radius;
     }
 
     public void reset(){
@@ -33,6 +34,10 @@ public class MasqDeadwheel {
 
     public WheelPosition getWheelPosition() {
         return wheelPosition;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 
     public Measurement getMeasurement() {

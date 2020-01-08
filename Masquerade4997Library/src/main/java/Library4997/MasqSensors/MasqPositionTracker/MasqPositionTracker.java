@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel.Measurement;
 
 /**
  * Created by Archishmaan Peyyety on 2020-01-08.
@@ -29,16 +30,12 @@ public class MasqPositionTracker {
 
     public void updateSystem() {
         double heading = Math.toRadians(imu.getRelativeYaw());
-        double dX, dY, angularComponentX, angularComponentY;
-        dX = dY = angularComponentY = angularComponentX = 0;
-        if (wheels.size() == 4) {
+        double dX, dY, dH, angularComponentX, angularComponentY;
+        dX = dY = dH = angularComponentY = angularComponentX = 0;
+        if (getWheelsType(Measurement.X).size() > 1) {
 
-        } else if (wheels.size() == 3) {
-            if (xWheels > yWheels) {
+        } else if (getWheelsType(Measurement.Y).size() > 1) {
 
-            } else {
-
-            }
         } else {
 
         }
@@ -62,6 +59,14 @@ public class MasqPositionTracker {
 
     public double getGlobalY() {
         return globalY;
+    }
+
+    public List<MasqDeadwheel> getWheelsType(Measurement m) {
+        List<MasqDeadwheel> deadwheels = new ArrayList<>();
+        for (MasqDeadwheel masqDeadwheel : wheels) {
+            if (masqDeadwheel.getMeasurement() == m) deadwheels.add(masqDeadwheel);
+        }
+        return deadwheels;
     }
 
     public void addWheel(MasqDeadwheel deadwheel) {
