@@ -1,1 +1,1 @@
-include ':FtcRobotController', ':openCVLibrary3', ':Masquerade4997Dashboard', ':Masquerade4997Library', ':Masquerade4997Code'
+include ':FtcRobotController', ':openCVLibrary3', ':Masquerade4997Library', ':Masquerade4997Code'
