@@ -22,6 +22,8 @@ import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel.WheelPosition;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
+import static Library4997.MasqResources.MasqUtils.tolerance;
+
 
 /**
  * Created by Archishmaan Peyyety on 2019-08-06.
@@ -70,7 +72,7 @@ public class MarkOne extends MasqRobot {
         MasqUtils.angleController = new MasqPIDController(0.005);
         MasqUtils.turnController = new MasqPIDController(0.015);
         MasqUtils.velocityTeleController = new MasqPIDController(0.001);
-        MasqUtils.velocityAutoController = new MasqPIDController(0.002);
+        MasqUtils.velocityAutoController = new MasqPIDController(0.004);
         MasqUtils.xySpeedController = new MasqPIDController(0.04, 0, 0);
         MasqUtils.xyAngleController = new MasqPIDController(0.05, 0, 0);
         lift.encoder.setWheelDiameter(1);
@@ -106,12 +108,18 @@ public class MarkOne extends MasqRobot {
         capper.scaleRange(0.5,1);
     }
 
-    private void resetServos() throws InterruptedException {
+    private void resetServos() {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
         foundationHook.raise();
         sideGrabber.reset();
         capper.setPosition(0);
+    }
+    public void stopDriving(double tolerance) {
+        while(!tolerance(driveTrain.leftDrive.motor1.getVelocity(),0,tolerance)) {
+            driveTrain.setVelocity(0);
+        }
+        driveTrain.setPower(0);
     }
 }

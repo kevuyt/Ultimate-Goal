@@ -149,7 +149,7 @@ public abstract class MasqRobot {
         MasqUtils.sleep(sleepTime);
     }
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction strafe, double timeout) {
-         driveAbsoluteAngle(distance, angle, speed, strafe, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
+        driveAbsoluteAngle(distance, angle, speed, strafe, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void driveAbsoluteAngle(double distance, int angle, double speed, Direction strafe) {
         driveAbsoluteAngle(distance, angle, speed, strafe, MasqUtils.DEFAULT_TIMEOUT);
@@ -299,7 +299,7 @@ public abstract class MasqRobot {
         MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector initial = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector pathDisplacement = initial.displacement(target);
-        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(2, target) && opModeIsActive()) {
+        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(0.5, target) && opModeIsActive()) {
             MasqVector untransformedProjection = new MasqVector(
                     current.projectOnTo(pathDisplacement).getX() - initial.getX(),
                     current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
@@ -417,9 +417,9 @@ public abstract class MasqRobot {
         driveTrain.setKd(velocityTeleController.getConstants()[2]);
     }
     public void initializeAutonomous() {
-        driveTrain.setKp(velocityAutoController.getKp());
-        driveTrain.setKi(velocityAutoController.getKi());
-        driveTrain.setKd(velocityAutoController.getKd());
+        driveTrain.setKp(velocityAutoController.getConstants()[0]);
+        driveTrain.setKi(velocityAutoController.getConstants()[1]);
+        driveTrain.setKd(velocityAutoController.getConstants()[2]);
     }
 
     public void setPosition(MasqPositionTracker.DeadWheelPosition position) {
