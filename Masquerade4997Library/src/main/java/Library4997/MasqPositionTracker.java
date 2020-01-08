@@ -18,10 +18,10 @@ public abstract class MasqPositionTracker implements MasqHardware {
     public MasqMotor xSystem, ySystem;
     public MasqAdafruitIMU imu;
     private double prevHeading;
-    private double globalX = 0, globalY = 0, prevX = 0, prevY = 0, xRadius = 0, yRadius = 0;
+    private double globalX = 0, globalY = 0, prevX = 0, prevY = 0, prevYR = 0, prevYL = 0, xRadius = 0, yRadius = 0, trackWidth = 0;
 
     public enum DeadWheelPosition {
-        BOTH_CENTER, BOTH_PERPENDICULAR
+        BOTH_CENTER, BOTH_PERPENDICULAR, THREE
     }
 
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, HardwareMap hardwareMap) {
@@ -44,6 +44,7 @@ public abstract class MasqPositionTracker implements MasqHardware {
         switch (position) {
             case BOTH_CENTER: bothCenter(); break;
             case BOTH_PERPENDICULAR: bothPerpendicular(); break;
+            case THREE: three(); break;
             default: break;
         }
     }
@@ -79,6 +80,27 @@ public abstract class MasqPositionTracker implements MasqHardware {
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
         double dTranslationalY = dY + angularComponentY;
+        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
+        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
+        globalX += dGlobalX;
+        globalY += dGlobalY;
+    }
+
+    private void three() {
+        double heading = Math.toRadians(getHeading());
+        double xPosition = getXPosition();
+        double yRPosition = getYPosition();
+        double yLPosition = getYPosition();
+        double dX = xPosition - prevX;
+        prevX = xPosition;
+        double dYR = yRPosition - prevYR;
+        prevYR = yRPosition;
+        double dYL = yLPosition - prevYL;
+        prevYL = yLPosition;
+        double dH = (dYR - dYL) / (2 * trackWidth);
+        double dTranslationalY = (yRPosition + yLPosition) / 2;
+        double angularComponentX = xRadius * dH;
+        double dTranslationalX = dX - angularComponentX;
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
