@@ -47,6 +47,7 @@ public class MasqEncoder {
 
   public void setWheelDiameter(double wheelDiameter) {
     this.wheelDiameter = wheelDiameter;
+    clicksPerInch = (model.CPR() / (wheelDiameter * Math.PI));
   }
 
   public double getRPM () {

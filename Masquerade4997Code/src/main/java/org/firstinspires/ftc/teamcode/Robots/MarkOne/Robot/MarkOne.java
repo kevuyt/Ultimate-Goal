@@ -16,9 +16,6 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
-import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel;
-import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel.Measurement;
-import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel.WheelPosition;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
@@ -34,7 +31,7 @@ public class MarkOne extends MasqRobot {
     public MasqServo blockGrabber, blockRotater, blockPusher, capper;
     public MarkOneFoundationHook foundationHook;
     public MarkOneSideGrabber sideGrabber;
-    public MasqMotor lift;
+    public MasqMotor lift,X;
     public MasqMotorSystem intake;
     public MasqCV cv;
 
@@ -44,18 +41,23 @@ public class MarkOne extends MasqRobot {
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
-        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.USDIGITAL_E4T, hardwareMap);
+        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.REVTHROUGHBORE, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         sideGrabber = new MarkOneSideGrabber(hardwareMap);
+        X = new MasqMotor("X", MasqMotorModel.USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE,hardwareMap);
         tracker = new MasqPositionTracker(intake.motor1, intake.motor2, hardwareMap) {
             @Override
             public double getXPosition() {
-                return intake.motor1.encoder.getRelativePosition() / (1150 / (2 * Math.PI));
+                return X.getCurrentPosition() / (MasqMotorModel.USDIGITAL_E4T.CPR() / (2 * Math.PI));
             }
             @Override
-            public double getYPosition() {
-                return intake.motor2.encoder.getRelativePosition() / (1440 / (2 * Math.PI));
+            public double getYLPosition() {
+                return intake.motor2.getCurrentPosition() / (MasqMotorModel.REVTHROUGHBORE.CPR() / (2 * Math.PI));
+            }
+            @Override
+            public double getYRPosition() {
+                return intake.motor1.getCurrentPosition() / (MasqMotorModel.REVTHROUGHBORE.CPR() / (2 * Math.PI));
             }
         };
         foundationHook = new MarkOneFoundationHook(hardwareMap);
@@ -67,7 +69,7 @@ public class MarkOne extends MasqRobot {
         setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
         driveTrain.setTracker(tracker);
         tracker.setXRadius(5.68);
-        tracker.setYRadius(7.11);
+        tracker.setTrackWidth(14.625);
         MasqUtils.driveController = new MasqPIDController(0.005);
         MasqUtils.angleController = new MasqPIDController(0.005);
         MasqUtils.turnController = new MasqPIDController(0.015);
@@ -76,8 +78,8 @@ public class MarkOne extends MasqRobot {
         MasqUtils.xySpeedController = new MasqPIDController(0.04, 0, 0);
         MasqUtils.xyAngleController = new MasqPIDController(0.05, 0, 0);
         lift.encoder.setWheelDiameter(1);
-        intake.motor1.encoder.setWheelDiameter(2);
-        intake.motor2.encoder.setWheelDiameter(2);
+        X.setWheelDiameter(2);
+        intake.setWheelDiameter(2);
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();
         lift.setClosedLoop(true);
@@ -89,9 +91,9 @@ public class MarkOne extends MasqRobot {
         cv = new MasqCV(detector, MasqCV.Cam.WEBCAM, hardwareMap);
     }
 
-    public Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker createTracker() {
-        Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker tracker = new Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker();
-        MasqDeadwheel masqDeadwheel = new MasqDeadwheel(intake.motor1, WheelPosition.BOTTOM, Measurement.X) {
+ /*   public Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker createTracker() {
+        Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker tracker = new Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker(hardwareMap);
+        MasqDeadwheel masqDeadwheel = new MasqDeadwheel(intake.motor1, WheelPosition.BOTTOM, Measurement.X,5068) {
             @Override
             public double getInches() {
                 return 0;
@@ -100,7 +102,7 @@ public class MarkOne extends MasqRobot {
         tracker.addWheel(masqDeadwheel);
         return tracker;
     }
-
+*/
     private void scaleServos() {
         blockPusher.scaleRange(0, 0.5);
         blockGrabber.scaleRange(0, 0.5);

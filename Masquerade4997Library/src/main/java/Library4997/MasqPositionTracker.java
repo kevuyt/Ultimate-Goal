@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqResources.MasqUtils.adjustAngle;
 import static Library4997.MasqResources.MasqUtils.sleep;
@@ -17,7 +18,8 @@ import static Library4997.MasqResources.MasqUtils.sleep;
 public abstract class MasqPositionTracker implements MasqHardware {
     public MasqMotor xSystem, ySystem;
     public MasqAdafruitIMU imu;
-    private double prevHeading;
+    private double prevHeading, prevTime;
+
     private double globalX = 0, globalY = 0, prevX = 0, prevY = 0, prevYR = 0, prevYL = 0, xRadius = 0, yRadius = 0, trackWidth = 0;
 
     public enum DeadWheelPosition {
@@ -42,8 +44,8 @@ public abstract class MasqPositionTracker implements MasqHardware {
     }
     public void updateSystem (DeadWheelPosition position) {
         switch (position) {
-            case BOTH_CENTER: bothCenter(); break;
-            case BOTH_PERPENDICULAR: bothPerpendicular(); break;
+            /*case BOTH_CENTER: bothCenter(); break;
+            case BOTH_PERPENDICULAR: bothPerpendicular(); break;*/
             case THREE: three(); break;
             default: break;
         }
@@ -55,7 +57,7 @@ public abstract class MasqPositionTracker implements MasqHardware {
         imu.reset();
     }
 
-    private void bothCenter() {
+    /*private void bothCenter() {
         double deltaX = (getXPosition() - prevX);
         double deltaY = (getYPosition() - prevY);
         double heading = Math.toRadians(getHeading());
@@ -84,13 +86,13 @@ public abstract class MasqPositionTracker implements MasqHardware {
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
-    }
+    }*/
 
     private void three() {
         double heading = Math.toRadians(getHeading());
         double xPosition = getXPosition();
-        double yRPosition = getYPosition();
-        double yLPosition = getYPosition();
+        double yLPosition = getYLPosition();
+        double yRPosition = getYRPosition();
         double dX = xPosition - prevX;
         prevX = xPosition;
         double dYR = yRPosition - prevYR;
@@ -98,7 +100,8 @@ public abstract class MasqPositionTracker implements MasqHardware {
         double dYL = yLPosition - prevYL;
         prevYL = yLPosition;
         double dH = (dYR - dYL) / trackWidth;
-        double dTranslationalY = (yRPosition + yLPosition) / 2;
+        DashBoard.getDash().create("Delta Heading: ",dH);
+        double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
@@ -108,7 +111,9 @@ public abstract class MasqPositionTracker implements MasqHardware {
     }
 
     public double getDHeading(double current) {
-        double change = current - prevHeading;
+        double tChange = System.nanoTime()/1e9 - prevTime;
+        prevTime = System.nanoTime()/1e9;
+        double change = (current - prevHeading)/*/tChange*/;
         prevHeading = current;
         sleep(10);
         return adjustAngle(Math.toDegrees(change));
@@ -122,7 +127,8 @@ public abstract class MasqPositionTracker implements MasqHardware {
     }
 
     public abstract double getXPosition();
-    public abstract double getYPosition();
+    public abstract double getYLPosition();
+    public abstract double getYRPosition();
 
     public void setXRadius(double xRadius) {
         this.xRadius = xRadius;
@@ -130,6 +136,10 @@ public abstract class MasqPositionTracker implements MasqHardware {
 
     public void setYRadius(double yRadius) {
         this.yRadius = yRadius;
+    }
+
+    public void setTrackWidth(double trackWidth) {
+        this.trackWidth = trackWidth;
     }
 
     @Override
