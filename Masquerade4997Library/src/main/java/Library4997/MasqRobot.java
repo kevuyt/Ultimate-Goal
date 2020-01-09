@@ -316,7 +316,7 @@ public abstract class MasqRobot {
             double speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
             driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
             current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-            tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+            tracker.updateSystem();
             dash.create("X: ", tracker.getGlobalX());
             dash.create("Y: ", tracker.getGlobalY());
             dash.create("LEFT POWER: ", driveTrain.leftDrive.getPower());
@@ -422,7 +422,4 @@ public abstract class MasqRobot {
         driveTrain.setKd(velocityAutoController.getKd());
     }
 
-    public void setPosition(MasqPositionTracker.DeadWheelPosition position) {
-        this.position = position;
-    }
 }

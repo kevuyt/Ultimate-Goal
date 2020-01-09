@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
@@ -10,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 11/3/2019
  */
 @Autonomous(name = "StateMachineTest", group = "Z_Test")
+@Disabled
 public class StateMachineTest extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 

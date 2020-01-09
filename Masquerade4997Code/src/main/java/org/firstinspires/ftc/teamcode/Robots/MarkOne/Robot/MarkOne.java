@@ -46,27 +46,14 @@ public class MarkOne extends MasqRobot {
         capper = new MasqServo("capper", hardwareMap);
         sideGrabber = new MarkOneSideGrabber(hardwareMap);
         X = new MasqMotor("X", MasqMotorModel.USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE,hardwareMap);
-        tracker = new MasqPositionTracker(intake.motor1, intake.motor2, hardwareMap) {
-            @Override
-            public double getXPosition() {
-                return X.getInches();
-            }
-            @Override
-            public double getYLPosition() {
-                return intake.motor2.getInches();
-            }
-            @Override
-            public double getYRPosition() {
-                return intake.motor1.getInches();
-            }
-        };
+        tracker = new MasqPositionTracker(X,intake.motor1, intake.motor2, hardwareMap);
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         dash = DashBoard.getDash();
     }
 
-    public void init(HardwareMap hardwareMap) throws InterruptedException {
+    public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
-        setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+        tracker.setPosition(MasqPositionTracker.DeadWheelPosition.THREE);
         driveTrain.setTracker(tracker);
         tracker.setXRadius(5.68);
         tracker.setTrackWidth(14.625);
