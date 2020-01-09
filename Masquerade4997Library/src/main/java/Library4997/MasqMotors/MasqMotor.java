@@ -343,6 +343,10 @@ public class MasqMotor implements MasqHardware {
         encoder.setWheelDiameter(diameter);
     }
 
+    public double getInches() {
+        return encoder.getInches();
+    }
+
     public String getName() {
         return nameMotor;
     }

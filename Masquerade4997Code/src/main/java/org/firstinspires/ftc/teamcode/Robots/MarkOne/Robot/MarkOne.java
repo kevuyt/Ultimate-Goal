@@ -49,15 +49,15 @@ public class MarkOne extends MasqRobot {
         tracker = new MasqPositionTracker(intake.motor1, intake.motor2, hardwareMap) {
             @Override
             public double getXPosition() {
-                return X.getCurrentPosition() / (MasqMotorModel.USDIGITAL_E4T.CPR() / (2 * Math.PI));
+                return X.getInches();
             }
             @Override
             public double getYLPosition() {
-                return intake.motor2.getCurrentPosition() / (MasqMotorModel.REVTHROUGHBORE.CPR() / (2 * Math.PI));
+                return intake.motor2.getInches();
             }
             @Override
             public double getYRPosition() {
-                return intake.motor1.getCurrentPosition() / (MasqMotorModel.REVTHROUGHBORE.CPR() / (2 * Math.PI));
+                return intake.motor1.getInches();
             }
         };
         foundationHook = new MarkOneFoundationHook(hardwareMap);
