@@ -10,7 +10,7 @@ public class MasqDeadwheel {
     private MasqMotor motor;
     private WheelPosition wheelPosition;
     private Measurement measurement;
-    private double latestPosition, prevPosition, radius;
+    private double latestPosition, latestTime, prevPosition, prevTime, radius;
     public enum WheelPosition {
         TOP, BOTTOM, LEFT, RIGHT, CENTER
     }
@@ -53,5 +53,11 @@ public class MasqDeadwheel {
         double change = latestPosition - prevPosition;
         prevPosition = latestPosition;
         return change;
+    }
+    public double getVelocity() {
+        latestTime = System.nanoTime();
+        double change = latestTime - prevTime;
+        prevTime = latestTime;
+        return getChange() / change;
     }
 }

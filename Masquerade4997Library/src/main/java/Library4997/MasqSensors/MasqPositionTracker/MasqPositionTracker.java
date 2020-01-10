@@ -34,8 +34,12 @@ public class MasqPositionTracker {
         dX = dY = dH = angularComponentY = angularComponentX = 0;
         if (getWheelsType(Measurement.X).size() > 1) {
 
-        } else if (getWheelsType(Measurement.Y).size() > 1) {
+        } else {
 
+        }
+        if (getWheelsType(Measurement.Y).size() > 1) {
+            double dW1 = getWheelsType(Measurement.Y).get(1).getVelocity();
+            double dW2 = getWheelsType(Measurement.Y).get(2).getVelocity();
         } else {
 
         }
