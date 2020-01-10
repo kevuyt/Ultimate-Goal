@@ -115,17 +115,23 @@ public class MasqUtils {
             thread.start();
         }
     }
-    public void toggle (boolean button, double current, double prev, double value1, double value2, Runnable action1, Runnable action2) {
+    public static void toggle (boolean button, double current, double prev, double value1, double value2, Runnable action1, Runnable action2) {
         if (button && tolerance(current, prev, 0.01))  {
             if (current == value1) new Thread(action1).start();
             else if (current == value2) new Thread (action2).start();
         }
     }
-    public void toggle(boolean button, MasqServo servo, double prevPos, double tolerance) {
+    public static void toggle(boolean button, MasqServo servo, double prevPos, double tolerance) {
         if (button && tolerance(servo.getPosition(), prevPos, tolerance)) {
             if (servo.getPosition() == 0) servo.setPosition(1);
             else if (servo.getPosition() ==1) servo.setPosition(0);
         }
+    }
+    public static double scaleNumber(double m, double currentMin, double currentMax, double newMin, double newMax) {
+        return (((m - currentMin) * (newMax - newMin)) / (currentMax - currentMin)) + newMin;
+    }
+    public static double scaleNumber(double m, double newMin, double newMax) {
+        return scaleNumber(m, 0, 1, newMin, newMax);
     }
     public static Double formatAngle(AngleUnit angleUnit, double angle) {
         return Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle)));
