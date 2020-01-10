@@ -214,7 +214,7 @@ public class MasqMotorSystem implements MasqHardware {
     }
     public void setWheelDiameter(double diameter) {
         for (MasqMotor motor : motors) {
-            motor.encoder.setWheelDiameter(2);
+            motor.encoder.setWheelDiameter(diameter);
         }
     }
 
