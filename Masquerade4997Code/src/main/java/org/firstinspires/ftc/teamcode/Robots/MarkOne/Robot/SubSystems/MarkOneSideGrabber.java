@@ -38,7 +38,7 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
         leftRotater.scaleRange(0.5, 1);
         leftGrabber.scaleRange(0.5, 0.85);
         rightRotater.scaleRange(0.1,0.7);
-        rightGrabber.scaleRange(0.2,0.6);
+        rightGrabber.scaleRange(0.2,0.65);
     }
 
     public void leftUp() {
@@ -60,6 +60,7 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     }
     public void rightMid() {
         rightRotater.setPosition(0.35);
+        sleep(1.);
     }
     public void rightDown() {
         rightRotater.setPosition(1);

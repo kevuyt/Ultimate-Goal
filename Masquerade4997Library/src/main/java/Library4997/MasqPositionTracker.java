@@ -121,7 +121,8 @@ public class MasqPositionTracker implements MasqHardware {
         DashBoard.getDash().create("Delta Heading: ",dH);
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
-        double dTranslationalX = dX - angularComponentX;
+        double dTranslationalX = dX + angularComponentX;
+        DashBoard.getDash().create("DTransX: ", dTranslationalX);
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;

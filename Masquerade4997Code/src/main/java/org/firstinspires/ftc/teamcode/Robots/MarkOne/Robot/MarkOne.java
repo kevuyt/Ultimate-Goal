@@ -16,9 +16,11 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
+import static Library4997.MasqResources.MasqUtils.DEFAULT_TIMEOUT;
 import static Library4997.MasqResources.MasqUtils.tolerance;
 
 
@@ -78,18 +80,6 @@ public class MarkOne extends MasqRobot {
         cv = new MasqCV(detector, MasqCV.Cam.WEBCAM, hardwareMap);
     }
 
- /*   public Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker createTracker() {
-        Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker tracker = new Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker(hardwareMap);
-        MasqDeadwheel masqDeadwheel = new MasqDeadwheel(intake.motor1, WheelPosition.BOTTOM, Measurement.X,5068) {
-            @Override
-            public double getInches() {
-                return 0;
-            }
-        };
-        tracker.addWheel(masqDeadwheel);
-        return tracker;
-    }
-*/
     private void scaleServos() {
         blockPusher.scaleRange(0, 0.5);
         blockGrabber.scaleRange(0, 0.5);
@@ -108,13 +98,14 @@ public class MarkOne extends MasqRobot {
     }
     public void stopDriving(double tolerance) {
         boolean isMoving;
+        MasqClock timeoutClock = new MasqClock();
         do {
             isMoving = false;
             driveTrain.setVelocity(0);
             for (MasqMotor motor : driveTrain.getMotors()) {
                 if (!tolerance(motor.getVelocity(),0,tolerance)) isMoving = true;
             }
-        } while (isMoving);
+        } while (isMoving && !timeoutClock.elapsedTime(DEFAULT_TIMEOUT, MasqClock.Resolution.SECONDS));
         driveTrain.setPower(0);
     }
 }
