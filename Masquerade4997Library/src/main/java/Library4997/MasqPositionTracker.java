@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
-import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqResources.MasqUtils.adjustAngle;
 import static Library4997.MasqResources.MasqUtils.sleep;
@@ -118,11 +117,9 @@ public class MasqPositionTracker implements MasqHardware {
         double dYL = yLPosition - prevYL;
         prevYL = yLPosition;
         double dH = (dYR - dYL) / trackWidth;
-        DashBoard.getDash().create("Delta Heading: ",dH);
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX + angularComponentX;
-        DashBoard.getDash().create("DTransX: ", dTranslationalX);
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
