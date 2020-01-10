@@ -231,13 +231,13 @@ public abstract class MasqRobot {
         MasqUtils.sleep(sleepTime);
     }
     public void turnAbsolute(double angle, double timeout, double sleepTime, double kp, double ki) {
-        turnAbsolute(angle, timeout, sleepTime, kp, ki, turnController.getConstants()[2]);
+        turnAbsolute(angle, timeout, sleepTime, kp, ki, turnController.getKd());
     }
     public void turnAbsolute(double angle, double timeout, double sleepTime, double kp) {
-        turnAbsolute(angle, timeout, sleepTime, kp, turnController.getConstants()[1]);
+        turnAbsolute(angle, timeout, sleepTime, kp, turnController.getKi());
     }
     public void turnAbsolute(double angle,  double timeout, double sleepTime) {
-        turnAbsolute(angle, timeout, sleepTime, turnController.getConstants()[0]);
+        turnAbsolute(angle, timeout, sleepTime, turnController.getKp());
     }
     public void turnAbsolute(double angle, double timeout)  {
         turnAbsolute(angle, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
@@ -288,7 +288,7 @@ public abstract class MasqRobot {
         stop(stopCondition, tracker.getHeading(), 0.5, Direction.FORWARD, timeout);
     }
 
-    public void gotoXY(double x, double y, double heading, double speedDampener, double timeout) {
+    public void gotoXY(double x, double y, double heading, double timeout, double radius, double speedDampener) {
         // https://www.desmos.com/calculator/zbviad1hnz
         double lookAhead = 10;
         MasqMechanumDriveTrain.angleCorrectionController.setKp(xyAngleController.getKp());
@@ -299,7 +299,7 @@ public abstract class MasqRobot {
         MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector initial = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector pathDisplacement = initial.displacement(target);
-        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(0.5, target) && opModeIsActive()) {
+        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(radius, target) && opModeIsActive()) {
             MasqVector untransformedProjection = new MasqVector(
                     current.projectOnTo(pathDisplacement).getX() - initial.getX(),
                     current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
@@ -316,7 +316,7 @@ public abstract class MasqRobot {
             double speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
             driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
             current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-            tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+            tracker.updateSystem();
             dash.create("X: ", tracker.getGlobalX());
             dash.create("Y: ", tracker.getGlobalY());
             dash.create("LEFT POWER: ", driveTrain.leftDrive.getPower());
@@ -326,14 +326,17 @@ public abstract class MasqRobot {
         }
         driveTrain.stopDriving();
     }
-    public void gotoXY(MasqPoint p, double speedDampener, double timeout) {
-        gotoXY(p.getX(), p.getY(), p.getH(), speedDampener, timeout);
+    public void gotoXY(MasqPoint p, double timeout, double radius,double speedDampener) {
+        gotoXY(p.getX(), p.getY(), p.getH(), timeout,radius, speedDampener);
+    }
+    public void gotoXY(MasqPoint p, double timeout,double radius) {
+        gotoXY(p,  timeout,radius, 1);
     }
     public void gotoXY(MasqPoint p, double timeout) {
-        gotoXY(p.getX(), p.getY(), p.getH(), 1, timeout);
+        gotoXY(p,timeout, 0.5);
     }
     public void gotoXY(MasqPoint p) {
-        gotoXY(p, DEFAULT_TIMEOUT);
+        gotoXY(p,DEFAULT_TIMEOUT);
     }
 
     public void NFS(MasqController c) {
@@ -422,7 +425,4 @@ public abstract class MasqRobot {
         driveTrain.setKd(velocityAutoController.getKd());
     }
 
-    public void setPosition(MasqPositionTracker.DeadWheelPosition position) {
-        this.position = position;
-    }
 }

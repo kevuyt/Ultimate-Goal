@@ -46,7 +46,7 @@ public class MasqPIDController {
 
     //For normal use
     public double getOutput (double error) {
-        return getOutput(error,clock.milliseconds()/1e3);
+        return getOutput(error,clock.seconds());
     }
 
     public double[] getConstants() {

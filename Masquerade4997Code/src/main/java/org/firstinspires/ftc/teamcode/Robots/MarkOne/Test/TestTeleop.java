@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
@@ -11,6 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 11/17/2019
  */
 @TeleOp(name = "Position Getter", group = "MarkOne")
+@Disabled
 public class TestTeleop extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     @Override
@@ -31,7 +33,7 @@ public class TestTeleop extends MasqLinearOpMode {
             dash.create("H: ",robot.tracker.getHeading());
             dash.create("Raw X: ",robot.intake.motor1.getCurrentPosition());
             dash.create("Raw Y: ",robot.intake.motor2.getCurrentPosition());
-            robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+            robot.tracker.updateSystem();
             dash.update();
         }
     }
