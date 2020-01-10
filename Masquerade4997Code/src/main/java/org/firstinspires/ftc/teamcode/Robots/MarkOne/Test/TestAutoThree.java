@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
@@ -13,6 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @Autonomous(name = "(20, 20, 0)", group = "MarkOne")
+@Disabled
 public class TestAutoThree extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
@@ -24,7 +26,7 @@ public class TestAutoThree extends MasqLinearOpMode {
         while (!opModeIsActive()) {
             dash.create("X: ",robot.tracker.getGlobalX());
             dash.create("Y: ",robot.tracker.getGlobalY());
-            robot.tracker.updateSystem(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+            robot.tracker.updateSystem();
             dash.update();
         }
 

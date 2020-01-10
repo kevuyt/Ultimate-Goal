@@ -339,6 +339,14 @@ public class MasqMotor implements MasqHardware {
         this.minPower = minPower;
     }
 
+    public void setWheelDiameter(double diameter) {
+        encoder.setWheelDiameter(diameter);
+    }
+
+    public double getInches() {
+        return encoder.getInches();
+    }
+
     public String getName() {
         return nameMotor;
     }

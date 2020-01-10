@@ -16,9 +16,11 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
+import static Library4997.MasqResources.MasqUtils.DEFAULT_TIMEOUT;
 import static Library4997.MasqResources.MasqUtils.tolerance;
 
 
@@ -31,7 +33,7 @@ public class MarkOne extends MasqRobot {
     public MasqServo blockGrabber, blockRotater, blockPusher, capper;
     public MarkOneFoundationHook foundationHook;
     public MarkOneSideGrabber sideGrabber;
-    public MasqMotor lift;
+    public MasqMotor lift,X;
     public MasqMotorSystem intake;
     public MasqCV cv;
 
@@ -41,30 +43,22 @@ public class MarkOne extends MasqRobot {
         blockGrabber = new MasqServo("blockGrabber", hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
-        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.USDIGITAL_E4T, hardwareMap);
+        intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.REVTHROUGHBORE, hardwareMap);
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         sideGrabber = new MarkOneSideGrabber(hardwareMap);
-        tracker = new MasqPositionTracker(intake.motor1, intake.motor2, hardwareMap) {
-            @Override
-            public double getXPosition() {
-                return intake.motor1.encoder.getRelativePosition() / (1150 / (2 * Math.PI));
-            }
-            @Override
-            public double getYPosition() {
-                return intake.motor2.encoder.getRelativePosition() / (1440 / (2 * Math.PI));
-            }
-        };
+        X = new MasqMotor("X", MasqMotorModel.USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE,hardwareMap);
+        tracker = new MasqPositionTracker(X,intake.motor1, intake.motor2, hardwareMap);
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         dash = DashBoard.getDash();
     }
 
-    public void init(HardwareMap hardwareMap) throws InterruptedException {
+    public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
-        setPosition(MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR);
+        tracker.setPosition(MasqPositionTracker.DeadWheelPosition.THREE);
         driveTrain.setTracker(tracker);
         tracker.setXRadius(5.68);
-        tracker.setYRadius(7.11);
+        tracker.setTrackWidth(14.625);
         MasqUtils.driveController = new MasqPIDController(0.005);
         MasqUtils.angleController = new MasqPIDController(0.005);
         MasqUtils.turnController = new MasqPIDController(0.015);
@@ -73,8 +67,8 @@ public class MarkOne extends MasqRobot {
         MasqUtils.xySpeedController = new MasqPIDController(0.04, 0, 0);
         MasqUtils.xyAngleController = new MasqPIDController(0.05, 0, 0);
         lift.encoder.setWheelDiameter(1);
-        intake.motor1.encoder.setWheelDiameter(2);
-        intake.motor2.encoder.setWheelDiameter(2);
+        X.setWheelDiameter(2);
+        intake.setWheelDiameter(2);
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();
         lift.setClosedLoop(true);
@@ -104,13 +98,14 @@ public class MarkOne extends MasqRobot {
     }
     public void stopDriving(double tolerance) {
         boolean isMoving;
+        MasqClock timeoutClock = new MasqClock();
         do {
             isMoving = false;
             driveTrain.setVelocity(0);
             for (MasqMotor motor : driveTrain.getMotors()) {
                 if (!tolerance(motor.getVelocity(),0,tolerance)) isMoving = true;
             }
-        } while (isMoving);
+        } while (isMoving && !timeoutClock.elapsedTime(DEFAULT_TIMEOUT, MasqClock.Resolution.SECONDS));
         driveTrain.setPower(0);
     }
 }
