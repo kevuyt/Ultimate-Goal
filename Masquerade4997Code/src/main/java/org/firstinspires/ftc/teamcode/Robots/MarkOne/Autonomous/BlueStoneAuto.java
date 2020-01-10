@@ -50,7 +50,7 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         }
 
         waitForStart();
-        runSimultaneously(() -> {robot.cv.stop();},() -> {chooseAuto();});
+        runSimultaneously(() -> robot.cv.stop(), this::chooseAuto);
 
     }
     private void chooseAuto() {
