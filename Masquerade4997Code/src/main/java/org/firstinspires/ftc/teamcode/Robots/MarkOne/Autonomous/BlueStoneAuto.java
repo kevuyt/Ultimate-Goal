@@ -35,12 +35,14 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         robot.init(hardwareMap);
         robot.initializeAutonomous();
         stones.add(null);
+
         stones.add(new MasqPoint(-17,29,90));
-        stones.add(new MasqPoint(-7,24.75,90));
-        stones.add(null);
+        stones.add(new MasqPoint(-7,29,90));
+        stones.add(new MasqPoint(0,29,90));
+
         stones.add(new MasqPoint(4,27.5,90));
-        stones.add(null);
-        stones.add(null);
+        stones.add(new MasqPoint(12,27.5,90));
+        stones.add(new MasqPoint(20,27.5,90));
         // robot.cv.start();
 
         while(!opModeIsActive()) {
