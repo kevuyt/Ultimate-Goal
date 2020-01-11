@@ -330,14 +330,14 @@ public abstract class MasqRobot {
         }
         driveTrain.setPower(0);
     }
-    public void gotoXY(MasqPoint p, double timeout, double radius,double speedDampener) {
+    public void gotoXY(MasqPoint p, double timeout, double radius, double speedDampener) {
         gotoXY(p.getX(), p.getY(), p.getH(), timeout,radius, speedDampener);
     }
     public void gotoXY(MasqPoint p, double timeout,double radius) {
-        gotoXY(p,  timeout,radius, 0.7);
+        gotoXY(p, timeout, radius, 0.7);
     }
     public void gotoXY(MasqPoint p, double timeout) {
-        gotoXY(p,timeout, 0.5);
+        gotoXY(p, timeout, 0.5);
     }
     public void gotoXY(MasqPoint p) {
         gotoXY(p,DEFAULT_TIMEOUT);

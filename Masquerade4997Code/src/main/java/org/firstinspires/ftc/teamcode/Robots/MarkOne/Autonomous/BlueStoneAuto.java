@@ -38,7 +38,7 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         stones.add(new MasqPoint(-17,29,90));
         stones.add(new MasqPoint(-7,24.75,90));
         stones.add(null);
-        stones.add(new MasqPoint(4,25.5,90));
+        stones.add(new MasqPoint(4,27.5,90));
         stones.add(null);
         stones.add(null);
         // robot.cv.start();
@@ -65,7 +65,7 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         robot.gotoXY(stones.get(1));
         robot.sideGrabber.rightDown();
         robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightUp();
+        robot.sideGrabber.rightMid();
         robot.gotoXY(bridge,1);
         robot.gotoXY(foundation,2.5,3);
         robot.sideGrabber.rightOpen();
@@ -74,7 +74,7 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         robot.gotoXY(stones.get(4),4);
         robot.sideGrabber.rightDown();
         robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightUp();
+        robot.sideGrabber.rightMid();
         robot.gotoXY(bridge,1);
         robot.gotoXY(foundation,2.5,3);
         robot.sideGrabber.rightSlightClose();
@@ -83,8 +83,10 @@ public class BlueStoneAuto extends MasqLinearOpMode{
                 robot.tracker.getHeading(), 2, 0.5, 1);
         robot.foundationHook.lower();
         sleep(1);
-        // Need to resolve this thing with the 180.
         robot.gotoXY(new MasqPoint(-74, 0, -90));
+        robot.foundationHook.raise();
+        robot.gotoXY(new MasqPoint(-84, 24, -90));
+        robot.gotoXY(-34, 24, -90, 2, 0.5, 1);
     }
     private void runStoneMiddle() {}
     private void runStoneRight() {}
