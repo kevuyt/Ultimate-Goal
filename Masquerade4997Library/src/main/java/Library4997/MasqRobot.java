@@ -302,7 +302,8 @@ public abstract class MasqRobot {
         MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector initial = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
         MasqVector pathDisplacement = initial.displacement(target);
-        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(radius, target) && opModeIsActive()) {
+        double speed = 1;
+        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(radius, target) && opModeIsActive() && speed > 0.1) {
             MasqVector untransformedProjection = new MasqVector(
                     current.projectOnTo(pathDisplacement).getX() - initial.getX(),
                     current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
@@ -316,7 +317,7 @@ public abstract class MasqRobot {
             if (initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
             MasqVector lookaheadDisplacement = current.displacement(lookahead);
             double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-            double speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
+            speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
             driveTrain.setVelocityMECH(pathAngle + tracker.getHeading(), speed * speedDampener, heading);
             current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             tracker.updateSystem();
@@ -327,7 +328,7 @@ public abstract class MasqRobot {
             dash.create("Angle: ", pathAngle + tracker.getHeading());
             dash.update();
         }
-        driveTrain.stopDriving();
+        driveTrain.setPower(0);
     }
     public void gotoXY(MasqPoint p, double timeout, double radius,double speedDampener) {
         gotoXY(p.getX(), p.getY(), p.getH(), timeout,radius, speedDampener);
