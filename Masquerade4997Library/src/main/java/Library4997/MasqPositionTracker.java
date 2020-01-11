@@ -16,7 +16,7 @@ import static Library4997.MasqResources.MasqUtils.sleep;
 
 public class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, yLSystem, yRSystem, ySystem;
-    private MasqAdafruitIMU imu;
+    public MasqAdafruitIMU imu;
     private double prevHeading, prevTime;
 
     private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius,trackWidth;

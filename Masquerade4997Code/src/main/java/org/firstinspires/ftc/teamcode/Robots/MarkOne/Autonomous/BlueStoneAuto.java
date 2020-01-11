@@ -7,6 +7,7 @@ import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 import java.util.ArrayList;
 import java.util.List;
 
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -27,6 +28,7 @@ public class BlueStoneAuto extends MasqLinearOpMode{
     private MasqPoint
             bridge = new MasqPoint(-25,15,90),
             foundation = new MasqPoint(-88,28,90),
+            grabFoundation = new MasqPoint(-88,34,90),
             rotation = new MasqPoint(-84,28,179);
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -36,7 +38,7 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         stones.add(new MasqPoint(-17,29,90));
         stones.add(new MasqPoint(-7,24.75,90));
         stones.add(null);
-        stones.add(new MasqPoint(7,25.5,90));
+        stones.add(new MasqPoint(4,25.5,90));
         stones.add(null);
         stones.add(null);
         // robot.cv.start();
@@ -47,7 +49,10 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         }
 
         waitForStart();
-        robot.resetServos();
+        robot.sideGrabber.rightUp();
+        robot.sideGrabber.leftUp();
+        robot.sideGrabber.rightOpen();
+        robot.sideGrabber.leftClose();
         //runSimultaneously(() -> robot.cv.stop(), this::chooseAuto);
         runStoneLeft();
     }
@@ -57,37 +62,29 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         else runStoneRight();
     }
     private void runStoneLeft() {
-        robot.sideGrabber.rightSlightClose();
         robot.gotoXY(stones.get(1));
         robot.sideGrabber.rightDown();
         robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightMid();
-        robot.sideGrabber.leftClose();
+        robot.sideGrabber.rightUp();
         robot.gotoXY(bridge,1);
         robot.gotoXY(foundation,2.5,3);
-        robot.sideGrabber.rightSlightClose();
+        robot.sideGrabber.rightOpen();
+        robot.sideGrabber.rightUp();
         robot.gotoXY(bridge,1);
         robot.gotoXY(stones.get(4),4);
         robot.sideGrabber.rightDown();
         robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightMid();
+        robot.sideGrabber.rightUp();
         robot.gotoXY(bridge,1);
         robot.gotoXY(foundation,2.5,3);
         robot.sideGrabber.rightSlightClose();
-        /*
-        robot.gotoXY(bridge,1);
-        robot.gotoXY(stones.get(2),2.5);
-        robot.sideGrabber.rightDown();
-        robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightMid();
-        robot.gotoXY(bridge,1);
-        velocityAutoController.setKp(0.006);
-        robot.gotoXY(foundation,2.5);
-        velocityAutoController.setKp(0.004);
-        robot.sideGrabber.rightSlightClose();*/
-        robot.gotoXY(rotation);
+        robot.turnRelative(90, Direction.LEFT);
+        robot.gotoXY(robot.tracker.getGlobalX(), robot.tracker.getGlobalY() + 6,
+                robot.tracker.getHeading(), 2, 0.5, 1);
         robot.foundationHook.lower();
-        sleep();
+        sleep(1);
+        // Need to resolve this thing with the 180.
+        robot.gotoXY(new MasqPoint(-74, 0, -90));
     }
     private void runStoneMiddle() {}
     private void runStoneRight() {}

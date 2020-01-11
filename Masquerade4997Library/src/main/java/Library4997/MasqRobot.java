@@ -334,7 +334,7 @@ public abstract class MasqRobot {
         gotoXY(p.getX(), p.getY(), p.getH(), timeout,radius, speedDampener);
     }
     public void gotoXY(MasqPoint p, double timeout,double radius) {
-        gotoXY(p,  timeout,radius, 1);
+        gotoXY(p,  timeout,radius, 0.7);
     }
     public void gotoXY(MasqPoint p, double timeout) {
         gotoXY(p,timeout, 0.5);
