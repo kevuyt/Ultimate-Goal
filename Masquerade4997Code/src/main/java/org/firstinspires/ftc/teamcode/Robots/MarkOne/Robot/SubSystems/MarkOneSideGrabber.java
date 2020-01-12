@@ -41,47 +41,52 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
         rightGrabber.scaleRange(0,0.65);
     }
 
-    public void leftUp() {
+    public void leftUp(double sleepTime) {
         leftRotater.setPosition(0);
+        sleep(sleepTime);
     }
-    public void leftDown() {
+    public void leftDown(double sleepTime) {
         leftRotater.setPosition(1);
+        sleep(sleepTime);
     }
-    public void leftClose() {
+    public void leftClose(double sleepTime) {
         leftGrabber.setPosition(1);
-        sleep(1.);
+        sleep(sleepTime);
     }
-    public void leftOpen() {
+    public void leftOpen(double sleepTime) {
         leftGrabber.setPosition(0);
+        sleep(sleepTime);
     }
 
-    public void rightUp() {
+    public void rightUp(double sleepTime) {
         rightRotater.setPosition(0);
+        sleep(sleepTime);
     }
-    public void rightMid() {
+    public void rightMid(double sleepTime) {
         rightRotater.setPosition(0.35);
-        sleep(1.);
+        sleep(sleepTime);
     }
-    public void rightDown() {
+    public void rightDown(double sleepTime) {
         rightRotater.setPosition(1);
-        sleep(1.);
+        sleep(sleepTime);
     }
-    public void rightClose() {
+    public void rightClose(double sleepTime) {
         rightGrabber.setPosition(1);
-        sleep(1.);
+        sleep(sleepTime);
     }
-    public void rightSlightClose() {
+    public void rightSlightClose(double sleepTime) {
         rightGrabber.setPosition(0.625);
-        sleep(1.);
+        sleep(sleepTime);
     }
-    public void rightOpen() {
+    public void rightOpen(double sleepTime) {
         rightGrabber.setPosition(0);
+        sleep(sleepTime);
     }
     public void reset() {
-        leftUp();
-        rightUp();
-        leftOpen();
-        rightOpen();
+        leftUp(0);
+        rightUp(1);
+        leftOpen(0);
+        rightOpen(0);
     }
 
     @Override
