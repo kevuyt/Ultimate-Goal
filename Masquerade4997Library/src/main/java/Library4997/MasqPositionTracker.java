@@ -19,7 +19,7 @@ public class MasqPositionTracker implements MasqHardware {
     public MasqAdafruitIMU imu;
     private double prevHeading, prevTime;
 
-    private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius,trackWidth;
+    private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth, prevTimeStamp;
     private DeadWheelPosition position;
 
     public enum DeadWheelPosition {
@@ -124,6 +124,30 @@ public class MasqPositionTracker implements MasqHardware {
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
+    }
+
+    private void threev2() {
+        double currentTimeStamp = System.nanoTime() / 1e9;
+        double dT = currentTimeStamp - prevTimeStamp;
+        prevTimeStamp = currentTimeStamp;
+        double heading = Math.toRadians(getHeading());
+        double xPosition = xSystem.getInches();
+        double yLPosition = yLSystem.getInches();
+        double yRPosition = yRSystem.getInches();
+        double dX = (xPosition - prevX) / dT;
+        prevX = xPosition;
+        double dYR = (yRPosition - prevYR) / dT;
+        prevYR = yRPosition;
+        double dYL = (yLPosition - prevYL) / dT;
+        prevYL = yLPosition;
+        double dH = (dYR - dYL) / trackWidth;
+        double dTranslationalY = (dYR + dYL) / 2;
+        double angularComponentX = xRadius * dH;
+        double dTranslationalX = dX + angularComponentX;
+        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
+        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
+        globalX += dGlobalX * dT;
+        globalY += dGlobalY * dT;
     }
 
     public double getDHeading(double current) {

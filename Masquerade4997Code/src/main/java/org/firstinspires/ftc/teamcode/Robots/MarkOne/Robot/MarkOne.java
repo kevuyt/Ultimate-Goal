@@ -33,7 +33,7 @@ public class MarkOne extends MasqRobot {
     public MasqServo blockGrabber, blockRotater, blockPusher, capper;
     public MarkOneFoundationHook foundationHook;
     public MarkOneSideGrabber sideGrabber;
-    public MasqMotor lift,X;
+    public MasqMotor lift, x;
     public MasqMotorSystem intake;
     public MasqCV cv;
 
@@ -47,8 +47,8 @@ public class MarkOne extends MasqRobot {
         blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         sideGrabber = new MarkOneSideGrabber(hardwareMap);
-        X = new MasqMotor("X", MasqMotorModel.USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE,hardwareMap);
-        tracker = new MasqPositionTracker(X,intake.motor1, intake.motor2, hardwareMap);
+        x = new MasqMotor("X", MasqMotorModel.USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE,hardwareMap);
+        tracker = new MasqPositionTracker(x,intake.motor1, intake.motor2, hardwareMap);
         foundationHook = new MarkOneFoundationHook(hardwareMap);
         dash = DashBoard.getDash();
     }
@@ -67,7 +67,7 @@ public class MarkOne extends MasqRobot {
         MasqUtils.xySpeedController = new MasqPIDController(0.04, 0, 0);
         MasqUtils.xyAngleController = new MasqPIDController(0.05, 0, 0);
         lift.encoder.setWheelDiameter(1);
-        X.setWheelDiameter(2);
+        x.setWheelDiameter(2);
         intake.setWheelDiameter(2);
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();

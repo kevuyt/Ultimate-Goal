@@ -28,10 +28,10 @@ public class TestTeleop extends MasqLinearOpMode {
         // DO NOT ADD MECH INSIDE. That will set velocity of wheels to 0
         // and then you will not be able to roll the bot to positions easier.
         while(opModeIsActive()) {
-            dash.create("X: ",robot.tracker.getGlobalX());
+            dash.create("x: ",robot.tracker.getGlobalX());
             dash.create("Y: ",robot.tracker.getGlobalY());
             dash.create("H: ",robot.tracker.getHeading());
-            dash.create("Raw X: ",robot.intake.motor1.getCurrentPosition());
+            dash.create("Raw x: ",robot.intake.motor1.getCurrentPosition());
             dash.create("Raw Y: ",robot.intake.motor2.getCurrentPosition());
             robot.tracker.updateSystem();
             dash.update();

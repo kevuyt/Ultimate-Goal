@@ -24,7 +24,7 @@ public class TestAutoThree extends MasqLinearOpMode {
         robot.initializeAutonomous();
 
         while (!opModeIsActive()) {
-            dash.create("X: ",robot.tracker.getGlobalX());
+            dash.create("x: ",robot.tracker.getGlobalX());
             dash.create("Y: ",robot.tracker.getGlobalY());
             robot.tracker.updateSystem();
             dash.update();
