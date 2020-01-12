@@ -43,8 +43,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else if (controller1.rightTriggerPressed()) robot.intake.setVelocity(1);
             else robot.intake.setVelocity(0);
 
-
-
             robot.lift.setVelocity(controller2.leftStickY());
             robot.x.setPower(controller2.rightStickY());
             MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
@@ -70,6 +68,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             dash.create("Raw YL: ",robot.intake.motor2.getCurrentPosition());
             dash.create("Raw YR: ", robot.intake.motor1.getCurrentPosition());
             dash.create("XR stick: ", controller1.rightStickX());
+            robot.tracker.updateSystem();
             dash.update();
 
             controller1.update();
