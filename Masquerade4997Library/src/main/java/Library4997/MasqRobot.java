@@ -40,7 +40,6 @@ public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap);
     public abstract void init(HardwareMap hardwareMap) throws InterruptedException;
 
-    private MasqPositionTracker.DeadWheelPosition position;
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     public DashBoard dash;
