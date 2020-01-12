@@ -90,32 +90,6 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         robot.gotoXY(new MasqPoint(-84, 24, -90));
         robot.gotoXY(-34, 24, -90, 2, 0.5, 1);
     }
-    private void runStoneMiddle() {
-        robot.gotoXY(stones.get(2));
-        robot.sideGrabber.rightDown();
-        robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightMid();
-        robot.gotoXY(bridge,1);
-        robot.gotoXY(foundation,2.5,3);
-        robot.sideGrabber.rightOpen();
-        robot.sideGrabber.rightUp();
-        robot.gotoXY(bridge,1);
-        robot.gotoXY(stones.get(5),4);
-        robot.sideGrabber.rightDown();
-        robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightMid();
-        robot.gotoXY(bridge,1);
-        robot.gotoXY(foundation,2.5,3);
-        robot.sideGrabber.rightSlightClose();
-        robot.turnRelative(90, Direction.LEFT);
-        robot.gotoXY(robot.tracker.getGlobalX(), robot.tracker.getGlobalY() + 6,
-                robot.tracker.getHeading(), 2, 0.5, 1);
-        robot.foundationHook.lower();
-        sleep(1);
-        robot.gotoXY(new MasqPoint(-74, 0, -90));
-        robot.foundationHook.raise();
-        robot.gotoXY(new MasqPoint(-84, 24, -90));
-        robot.gotoXY(new MasqPoint(-34, 24, -90));
-    }
+    private void runStoneMiddle() {}
     private void runStoneRight() {}
 }

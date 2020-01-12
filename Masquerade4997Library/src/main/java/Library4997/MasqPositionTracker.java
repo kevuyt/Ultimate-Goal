@@ -116,29 +116,29 @@ public class MasqPositionTracker implements MasqHardware {
         prevYR = yRPosition;
         double dYL = yLPosition - prevYL;
         prevYL = yLPosition;
-        double dH = (dYR - dYL) / trackWidth;
+        double dH = (dYL - dYR) / trackWidth;
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
-        double dTranslationalX = dX + angularComponentX;
+        double dTranslationalX = dX - angularComponentX;
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
     }
 
+
     private void threev2() {
         double currentTimeStamp = System.nanoTime();
-        double dT = currentTimeStamp - prevTimeStamp;
-        prevTimeStamp = currentTimeStamp;
+
         double heading = Math.toRadians(getHeading());
         double xPosition = xSystem.getInches();
         double yLPosition = yLSystem.getInches();
         double yRPosition = yRSystem.getInches();
-        double dX = (xPosition - prevX) / dT;
+        double dX = xPosition - prevX;
         prevX = xPosition;
-        double dYR = (yRPosition - prevYR) / dT;
+        double dYR = yRPosition - prevYR;
         prevYR = yRPosition;
-        double dYL = (yLPosition - prevYL) / dT;
+        double dYL = yLPosition - prevYL;
         prevYL = yLPosition;
         double dH = (dYR - dYL) / trackWidth;
         double dTranslationalY = (dYR + dYL) / 2;
@@ -146,14 +146,13 @@ public class MasqPositionTracker implements MasqHardware {
         double dTranslationalX = dX - angularComponentX;
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
-        globalX += dGlobalX * dT;
-        globalY += dGlobalY * dT;
+        globalX += dGlobalX;
+        globalY += dGlobalY;
     }
 
+
     public double getDHeading(double current) {
-        double tChange = System.nanoTime()/1e9 - prevTime;
-        prevTime = System.nanoTime()/1e9;
-        double change = (current - prevHeading)/*/tChange*/;
+        double change = (current - prevHeading);
         prevHeading = current;
         sleep(10);
         return adjustAngle(Math.toDegrees(change));
