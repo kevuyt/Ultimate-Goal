@@ -62,7 +62,7 @@ public class MasqPositionTracker implements MasqHardware {
         switch (position) {
             case BOTH_CENTER: bothCenter(); break;
             case BOTH_PERPENDICULAR: bothPerpendicular(); break;
-            case THREE: three(); break;
+            case THREE: threev2(); break;
             default: break;
         }
     }
