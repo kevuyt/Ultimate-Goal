@@ -13,8 +13,6 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
 
 /**
  * Created by Keval Kataria on 1/4/2020
@@ -51,35 +49,31 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         }
 
         waitForStart();
-        robot.sideGrabber.rightUp();
-        robot.sideGrabber.leftUp();
-        robot.sideGrabber.rightOpen();
-        robot.sideGrabber.leftClose();
-        //runSimultaneously(() -> robot.cv.stop(), this::chooseAuto);
+        robot.sideGrabber.rightUp(0);
+        robot.sideGrabber.leftUp(1);
+        robot.sideGrabber.rightOpen(0);
+        robot.sideGrabber.leftClose(0);
+        /*if (position == LEFT) runSimultaneously(() -> runStoneLeft(),() -> robot.cv.stop());
+        else if (position == MIDDLE) runSimultaneously(() -> runStoneMiddle(),() -> robot.cv.stop());
+        else runSimultaneously(() -> runStoneRight(),() -> robot.cv.stop());*/
         runStoneLeft();
-    }
-    private void chooseAuto() {
-        if (position == LEFT) runStoneLeft();
-        else if (position == MIDDLE) runStoneMiddle();
-        else runStoneRight();
     }
     private void runStoneLeft() {
         robot.gotoXY(stones.get(1));
-        robot.sideGrabber.rightDown();
-        robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightMid();
+        robot.sideGrabber.rightDown(1);
+        robot.sideGrabber.rightClose(1);
+        robot.sideGrabber.rightMid(0);
         robot.gotoXY(bridge,1);
         robot.gotoXY(foundation,2.5,3);
-        robot.sideGrabber.rightOpen();
-        robot.sideGrabber.rightUp();
+        robot.sideGrabber.rightOpen(0);
         robot.gotoXY(bridge,1);
         robot.gotoXY(stones.get(4),4);
-        robot.sideGrabber.rightDown();
-        robot.sideGrabber.rightClose();
-        robot.sideGrabber.rightMid();
+        robot.sideGrabber.rightDown(1);
+        robot.sideGrabber.rightClose(1);
+        robot.sideGrabber.rightMid(0);
         robot.gotoXY(bridge,1);
         robot.gotoXY(foundation,2.5,3);
-        robot.sideGrabber.rightSlightClose();
+        robot.sideGrabber.rightOpen(0);
         robot.turnRelative(90, Direction.LEFT);
         robot.gotoXY(robot.tracker.getGlobalX(), robot.tracker.getGlobalY() + 6,
                 robot.tracker.getHeading(), 2, 0.5, 1);
