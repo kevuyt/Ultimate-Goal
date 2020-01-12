@@ -62,7 +62,7 @@ public class MasqPositionTracker implements MasqHardware {
         switch (position) {
             case BOTH_CENTER: bothCenter(); break;
             case BOTH_PERPENDICULAR: bothPerpendicular(); break;
-            case THREE: threev2(); break;
+            case THREE: three(); break;
             default: break;
         }
     }
@@ -127,7 +127,7 @@ public class MasqPositionTracker implements MasqHardware {
     }
 
     private void threev2() {
-        double currentTimeStamp = System.nanoTime() / 1e9;
+        double currentTimeStamp = System.nanoTime();
         double dT = currentTimeStamp - prevTimeStamp;
         prevTimeStamp = currentTimeStamp;
         double heading = Math.toRadians(getHeading());
@@ -143,7 +143,7 @@ public class MasqPositionTracker implements MasqHardware {
         double dH = (dYR - dYL) / trackWidth;
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
-        double dTranslationalX = dX + angularComponentX;
+        double dTranslationalX = dX - angularComponentX;
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX * dT;

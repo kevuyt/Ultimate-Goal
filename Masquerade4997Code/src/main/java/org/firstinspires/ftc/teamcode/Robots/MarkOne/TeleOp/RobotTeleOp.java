@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
-import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -25,8 +24,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
         double prevCapper = 0;
 
         while(!opModeIsActive()) {
-            dash.create("Manual Inches: ",robot.intake.motor2.getCurrentPosition() /
-                    (1440 / (2 * Math.PI)));
+            dash.create("Heading: ", robot.tracker.getHeading());
             dash.update();
         }
 
@@ -46,7 +44,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else robot.intake.setVelocity(0);
 
             robot.lift.setVelocity(controller2.leftStickY());
-
+            robot.x.setPower(controller2.rightStickY());
             MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
@@ -63,7 +61,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             dash.create("X: ",robot.tracker.getGlobalX());
             dash.create("Y: ",robot.tracker.getGlobalY());
-            dash.create("Raw X: ",robot.X.getCurrentPosition());
+            dash.create("Raw X: ",robot.x.getCurrentPosition());
             dash.create("Raw YL: ",robot.intake.motor2.getCurrentPosition());
             dash.create("Raw YR: ", robot.intake.motor1.getCurrentPosition());
             dash.create("XR stick: ", controller1.rightStickX());

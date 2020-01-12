@@ -115,7 +115,7 @@ public class BlueStoneAuto extends MasqLinearOpMode{
         robot.gotoXY(new MasqPoint(-74, 0, -90));
         robot.foundationHook.raise();
         robot.gotoXY(new MasqPoint(-84, 24, -90));
-        robot.gotoXY(-34, 24, -90, 2, 0.5, 1);
+        robot.gotoXY(new MasqPoint(-34, 24, -90));
     }
     private void runStoneRight() {}
 }
