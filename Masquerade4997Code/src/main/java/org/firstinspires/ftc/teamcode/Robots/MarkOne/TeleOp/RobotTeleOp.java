@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
+import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -30,13 +31,14 @@ public class RobotTeleOp extends MasqLinearOpMode {
         }
 
         waitForStart();
+
         robot.blockPusher.setPosition(1);
         double prevPusher = 1;
 
 
         while(opModeIsActive()) {
             if (controller1.rightBumper() || controller1.leftBumper())
-                robot.MECH(controller1,0.5, 0.15);
+                robot.MECH(controller1,0.5, 0.25);
             else robot.MECH(controller1,1, 0.5);
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-1);
@@ -44,7 +46,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else robot.intake.setVelocity(0);
 
             robot.lift.setVelocity(controller2.leftStickY());
-            robot.x.setPower(controller2.rightStickY());
+
             MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
@@ -52,19 +54,16 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             robot.foundationHook.DriverControl(controller1);
 
-            robot.sideGrabber.leftClose();
-            robot.sideGrabber.rightClose();
-            robot.sideGrabber.rightUp();
-            robot.sideGrabber.leftUp();
+            robot.sideGrabber.reset();
 
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();
             prevRotater = robot.blockRotater.getPosition();
             prevCapper = robot.capper.getPosition();
 
-            dash.create("x: ",robot.tracker.getGlobalX());
+            dash.create("X: ",robot.tracker.getGlobalX());
             dash.create("Y: ",robot.tracker.getGlobalY());
-            dash.create("Raw x: ",robot.x.getCurrentPosition());
+            dash.create("Raw X: ",robot.X.getCurrentPosition());
             dash.create("Raw YL: ",robot.intake.motor2.getCurrentPosition());
             dash.create("Raw YR: ", robot.intake.motor1.getCurrentPosition());
             dash.create("XR stick: ", controller1.rightStickX());
