@@ -17,9 +17,9 @@ import static Library4997.MasqResources.MasqUtils.sleep;
 public class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, yLSystem, yRSystem, ySystem;
     public MasqAdafruitIMU imu;
-    private double prevHeading, prevTime;
+    private double prevHeading, heading;
 
-    private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth, prevTimeStamp;
+    private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
     private DeadWheelPosition position;
 
     public enum DeadWheelPosition {
@@ -126,11 +126,7 @@ public class MasqPositionTracker implements MasqHardware {
         globalY += dGlobalY;
     }
 
-
     private void threev2() {
-        double currentTimeStamp = System.nanoTime();
-
-        double heading = Math.toRadians(getHeading());
         double xPosition = xSystem.getInches();
         double yLPosition = yLSystem.getInches();
         double yRPosition = yRSystem.getInches();
@@ -140,7 +136,8 @@ public class MasqPositionTracker implements MasqHardware {
         prevYR = yRPosition;
         double dYL = yLPosition - prevYL;
         prevYL = yLPosition;
-        double dH = (dYR - dYL) / trackWidth;
+        double dH = (dYL - dYR) / trackWidth;
+        heading += dH;
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
@@ -149,7 +146,6 @@ public class MasqPositionTracker implements MasqHardware {
         globalX += dGlobalX;
         globalY += dGlobalY;
     }
-
 
     public double getDHeading(double current) {
         double change = (current - prevHeading);
