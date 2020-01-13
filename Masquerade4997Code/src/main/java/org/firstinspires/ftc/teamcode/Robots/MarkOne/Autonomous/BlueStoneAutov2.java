@@ -61,8 +61,10 @@ public class BlueStoneAutov2 extends MasqLinearOpMode{
         robot.sideGrabber.leftUp(0);
         robot.sideGrabber.rightOpen(0);
         robot.sideGrabber.leftClose(0);
-        if (position == LEFT) runSimultaneously(() -> mainAuto(stones.get(1), stones.get(4)),() -> robot.cv.stop());
-        else if (position == MIDDLE) runSimultaneously(() -> mainAuto(stones.get(2), stones.get(5)),() -> robot.cv.stop());
+        if (position == LEFT) runSimultaneously(() -> mainAuto(stones.get(1), stones.get(4)),
+                () -> robot.cv.stop());
+        else if (position == MIDDLE) runSimultaneously(() -> mainAuto(stones.get(2), stones.get(5)),
+                () -> robot.cv.stop());
         else runSimultaneously(() -> mainAuto(stones.get(3), stones.get(6)),() -> robot.cv.stop());
         //mainAuto(stones.get(3), stones.get(6));
     }
@@ -71,14 +73,15 @@ public class BlueStoneAutov2 extends MasqLinearOpMode{
         robot.sideGrabber.rightDown(1);
         robot.sideGrabber.rightClose(1);
         robot.sideGrabber.rightMid(0);
-        robot.xyPath(robot.getCurrentWayPoint(), bridge1, bridge2, foundation);
+        robot.xyPath(bridge1, bridge2, foundation);
         robot.sideGrabber.rightLowMid(0);
         robot.sideGrabber.rightOpen(0);
-        robot.xyPath(robot.getCurrentWayPoint(),bridge2,bridge1,new MasqWayPoint(stone2,0.5,0));
+        robot.xyPath(bridge2,bridge1,
+                new MasqWayPoint(stone2,0.5,0));
         robot.sideGrabber.rightDown(1);
         robot.sideGrabber.rightClose(1);
         robot.sideGrabber.rightMid(0);
-        robot.xyPath(robot.getCurrentWayPoint(),bridge1,bridge2,foundation);
+        robot.xyPath(bridge1,bridge2,foundation);
         robot.sideGrabber.rightLowMid(0);
         robot.sideGrabber.rightOpen(0);
         sleep();
@@ -89,12 +92,11 @@ public class BlueStoneAutov2 extends MasqLinearOpMode{
                 robot.tracker.getHeading()),2,0.5,1);
         robot.foundationHook.lower();
         sleep(1);
-        robot.gotoXY(new MasqPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY()-20,robot.tracker.getHeading()));
+        robot.gotoXY(new MasqPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY()-20,
+                robot.tracker.getHeading()));
         robot.gotoXY(new MasqPoint(-60, 0, -90),2,0.5,0.5);
         robot.foundationHook.raise();
         robot.gotoXY(new MasqPoint(-84, 24, -90));
         robot.gotoXY(new MasqPoint(-34, 24, -90));
     }
-    private void runStoneMiddle() {}
-    private void runStoneRight() {}
 }
