@@ -61,11 +61,18 @@ public class BlueStoneAutov2 extends MasqLinearOpMode{
         robot.sideGrabber.leftUp(0);
         robot.sideGrabber.rightOpen(0);
         robot.sideGrabber.leftClose(0);
-        if (position == LEFT) runSimultaneously(() -> mainAuto(stones.get(1), stones.get(4)),
-                () -> robot.cv.stop());
-        else if (position == MIDDLE) runSimultaneously(() -> mainAuto(stones.get(2), stones.get(5)),
-                () -> robot.cv.stop());
-        else runSimultaneously(() -> mainAuto(stones.get(3), stones.get(6)),() -> robot.cv.stop());
+        if (position == LEFT) runSimultaneously(
+                () -> mainAuto(stones.get(1), stones.get(4)),
+                () -> robot.cv.stop()
+        );
+        else if (position == MIDDLE) runSimultaneously(
+                () -> mainAuto(stones.get(2), stones.get(5)),
+                () -> robot.cv.stop()
+        );
+        else runSimultaneously(
+                () -> mainAuto(stones.get(3), stones.get(6)),
+                () -> robot.cv.stop()
+        );
         //mainAuto(stones.get(3), stones.get(6));
     }
     private void mainAuto(MasqPoint stone1, MasqPoint stone2) {
