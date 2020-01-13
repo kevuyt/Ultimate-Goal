@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,8 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
 
 /**
  * Created by Keval Kataria on 1/4/2020
@@ -42,13 +45,14 @@ public class BlueStoneAutov2 extends MasqLinearOpMode{
         stones.add(new MasqPoint(-7,29,90));
         stones.add(new MasqPoint(0,29,90));
 
-        stones.add(new MasqPoint(6,30,90));
+        stones.add(new MasqPoint(7.5,30,90));
         stones.add(new MasqPoint(12,30,90));
         stones.add(new MasqPoint(22,30,90));
-        // robot.cv.start();
+        robot.cv.start();
 
         while(!opModeIsActive()) {
-            dash.create("Hello");
+            position = CVInterpreter.getPosition(robot.cv.detector);
+            dash.create("Skystone Position: ", position);
             dash.update();
         }
 
@@ -57,10 +61,10 @@ public class BlueStoneAutov2 extends MasqLinearOpMode{
         robot.sideGrabber.leftUp(0);
         robot.sideGrabber.rightOpen(0);
         robot.sideGrabber.leftClose(0);
-        /*if (position == LEFT) runSimultaneously(() -> mainAuto(stones.get(1), stones.get(4));,() -> robot.cv.stop());
-        else if (position == MIDDLE) runSimultaneously(() -> runStoneMiddle(),() -> robot.cv.stop());
-        else runSimultaneously(() -> runStoneRight(),() -> robot.cv.stop());*/
-        mainAuto(stones.get(3), stones.get(6));
+        if (position == LEFT) runSimultaneously(() -> mainAuto(stones.get(1), stones.get(4)),() -> robot.cv.stop());
+        else if (position == MIDDLE) runSimultaneously(() -> mainAuto(stones.get(2), stones.get(5)),() -> robot.cv.stop());
+        else runSimultaneously(() -> mainAuto(stones.get(3), stones.get(6)),() -> robot.cv.stop());
+        //mainAuto(stones.get(3), stones.get(6));
     }
     private void mainAuto(MasqPoint stone1, MasqPoint stone2) {
         robot.gotoXY(stone1);
