@@ -93,6 +93,13 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
         rightOpen(0);
     }
 
+    public void teleReset() {
+        leftUp(0);
+        rightUp(0);
+        leftOpen(0);
+        rightOpen(0);
+    }
+
     @Override
     public String getName() {
         return "SideGrabber";

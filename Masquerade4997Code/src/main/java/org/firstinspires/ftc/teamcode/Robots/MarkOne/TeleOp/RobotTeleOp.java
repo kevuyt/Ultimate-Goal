@@ -52,7 +52,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             robot.foundationHook.DriverControl(controller1);
 
-            robot.sideGrabber.reset();
+            robot.sideGrabber.teleReset();
 
             prevGrabber = robot.blockGrabber.getPosition();
             prevPusher = robot.blockPusher.getPosition();
