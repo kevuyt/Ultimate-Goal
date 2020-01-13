@@ -3,6 +3,11 @@ package Library4997;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
@@ -343,11 +348,14 @@ public abstract class MasqRobot {
     }
 
     public void xyPath(double lookAhead, MasqWayPoint... points) {
+        List<MasqWayPoint> pointsWithRobot = Arrays.asList(points);
+        pointsWithRobot.add(0,getCurrentWayPoint());
+        points = (MasqWayPoint[]) pointsWithRobot.toArray();
         MasqMechanumDriveTrain.angleCorrectionController.setKp(xyAngleController.getKp());
         MasqMechanumDriveTrain.angleCorrectionController.setKi(xyAngleController.getKi());
         MasqMechanumDriveTrain.angleCorrectionController.setKd(xyAngleController.getKd());
         int index = 1;
-        while (index < points.length ) {
+        while (index < Objects.requireNonNull(points).length ) {
             MasqVector target = new MasqVector(points[index].getX(), points[index].getY());
             MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             MasqVector initial = new MasqVector(points[index - 1].getX(), points[index - 1].getY());
@@ -561,5 +569,7 @@ public abstract class MasqRobot {
         driveTrain.setKi(velocityAutoController.getKi());
         driveTrain.setKd(velocityAutoController.getKd());
     }
-
+    public MasqWayPoint getCurrentWayPoint() {
+        return new MasqWayPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading()), 10, 1);
+    }
 }

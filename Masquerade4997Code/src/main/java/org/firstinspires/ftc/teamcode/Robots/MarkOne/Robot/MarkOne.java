@@ -18,12 +18,8 @@ import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
-
-import static Library4997.MasqResources.MasqUtils.DEFAULT_TIMEOUT;
-import static Library4997.MasqResources.MasqUtils.tolerance;
 
 
 /**
@@ -101,18 +97,5 @@ public class MarkOne extends MasqRobot {
 
     public MasqWayPoint getCurrentWayPoint() {
         return new MasqWayPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading()), 10, 1);
-    }
-
-    public void stopDriving(double tolerance) {
-        boolean isMoving;
-        MasqClock timeoutClock = new MasqClock();
-        do {
-            isMoving = false;
-            driveTrain.setVelocity(0);
-            for (MasqMotor motor : driveTrain.getMotors()) {
-                if (!tolerance(motor.getVelocity(),0,tolerance)) isMoving = true;
-            }
-        } while (isMoving && !timeoutClock.elapsedTime(DEFAULT_TIMEOUT, MasqClock.Resolution.SECONDS));
-        driveTrain.setPower(0);
     }
 }
