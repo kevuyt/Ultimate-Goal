@@ -224,7 +224,7 @@ public abstract class MasqRobot {
                 && !timeoutClock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             error = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
             power = turnController.getOutput(error);
-            if (Math.abs(power) >= 1) {power /= Math.abs(power);}
+            if (Math.abs(power) >= 1) power /= Math.abs(power);
             driveTrain.setVelocity(-power, power);
             dash.create("KP: ", kp);
             dash.create("RIGHT POWER: " ,power);
@@ -249,7 +249,7 @@ public abstract class MasqRobot {
         turnAbsolute(angle, timeout, MasqUtils.DEFAULT_SLEEP_TIME);
     }
     public void turnAbsolute(double angle)  {
-        turnAbsolute(angle, 0.5);
+        turnAbsolute(angle, DEFAULT_TIMEOUT);
     }
 
     public void stop(MasqPredicate stopCondtion, double angle, double speed, Direction direction, double timeout) {

@@ -33,9 +33,9 @@ public class Midnight extends MasqRobot {
     @Override
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
-        MasqUtils.driveController = new MasqPIDController(0.005);
+        MasqUtils.driveController = new MasqPIDController(0.002);
         MasqUtils.angleController = new MasqPIDController(0.005);
-        MasqUtils.turnController = new MasqPIDController(0.01);
+        MasqUtils.turnController = new MasqPIDController(0.005);
         MasqUtils.velocityTeleController = new MasqPIDController(0.001);
         MasqUtils.velocityAutoController = new MasqPIDController(0.004);
         MasqUtils.xySpeedController = new MasqPIDController(0.04, 0, 0);
