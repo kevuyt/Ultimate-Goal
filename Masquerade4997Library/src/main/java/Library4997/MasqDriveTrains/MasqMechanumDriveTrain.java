@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqMotors.MasqMotorModel;
+import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqUtils;
@@ -21,9 +22,11 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     public MasqMechanumDriveTrain(HardwareMap hardwareMap){
         super(hardwareMap);
     }
-    public MasqMechanumDriveTrain(HardwareMap hardwareMap,
-            MasqMotorModel motorModel){
+    public MasqMechanumDriveTrain(HardwareMap hardwareMap, MasqMotorModel motorModel){
         super(hardwareMap, motorModel);
+    }
+    public MasqMechanumDriveTrain(MasqMotorSystem left, MasqMotorSystem right) {
+        super(left, right);
     }
 
     public void setVelocityMECH(double angle, double speed, double targetHeading) {

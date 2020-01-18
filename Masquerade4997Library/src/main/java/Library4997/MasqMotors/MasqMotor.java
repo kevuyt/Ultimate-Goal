@@ -36,9 +36,10 @@ public class MasqMotor implements MasqHardware {
     private double rpmPreviousError = 0;
     private int stalledRPMThreshold = 10;
     private double prevRate = 0;
-    private Runnable stallAction = () -> {
+    private Runnable
+            stallAction = () -> {
 
-    },
+            },
             unStalledAction = () -> {
 
             };

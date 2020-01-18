@@ -68,6 +68,10 @@ public class MasqMotorSystem implements MasqHardware {
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
     }
+    public MasqMotorSystem(MasqMotor m1) {
+        motor1 = m1;
+        numMotors = 1;
+    }
     public void setBreakMode() {
         for (MasqMotor masqMotor : motors)
             masqMotor.setBreakMode();
