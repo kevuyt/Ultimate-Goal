@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.util.Range;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
@@ -488,8 +487,6 @@ public abstract class MasqRobot {
         float turn = c.rightStickX();
         double left = move - turn;
         double right = move + turn;
-        left *= -1;
-        right *= -1;
         double max = MasqUtils.max(left, right);
         if(max > 1.0) {
             left /= max;

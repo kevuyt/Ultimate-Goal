@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
@@ -68,8 +69,9 @@ public class MasqMotorSystem implements MasqHardware {
         motors = Arrays.asList(motor1, motor2);
         numMotors = 2;
     }
-    public MasqMotorSystem(MasqMotor m1) {
-        motor1 = m1;
+    public MasqMotorSystem(String name, MasqMotorModel masqMotorModel, DcMotor.Direction direction, HardwareMap hardwareMap) {
+        motor1 = new MasqMotor(name, masqMotorModel, direction, hardwareMap);
+        motors = Collections.singletonList(motor1);
         numMotors = 1;
     }
     public void setBreakMode() {

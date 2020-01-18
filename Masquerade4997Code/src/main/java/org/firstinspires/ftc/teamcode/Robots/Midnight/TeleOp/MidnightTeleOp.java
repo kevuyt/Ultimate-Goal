@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.Midnight.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Midnight;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -8,6 +10,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Archishmaan Peyyety on 2020-01-17.
  * Project: MasqLib
  */
+@TeleOp(name = "MidnightTeleOp", group = "ZZZ")
 public class MidnightTeleOp extends MasqLinearOpMode {
     private Midnight robot = new Midnight();
     @Override

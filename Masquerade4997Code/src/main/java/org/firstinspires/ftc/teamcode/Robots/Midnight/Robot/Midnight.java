@@ -7,7 +7,6 @@ import org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.SubSystems.Foundatio
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
-import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
@@ -23,8 +22,8 @@ public class Midnight extends MasqRobot {
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         foundationHook = new FoundationHook(hardwareMap);
-        MasqMotorSystem left = new MasqMotorSystem(new MasqMotor("left", MasqMotorModel.ORBITAL20, DcMotor.Direction.FORWARD, hardwareMap));
-        MasqMotorSystem right = new MasqMotorSystem(new MasqMotor("right", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap));
+        MasqMotorSystem left = new MasqMotorSystem("left", MasqMotorModel.ORBITAL20, DcMotor.Direction.FORWARD, hardwareMap);
+        MasqMotorSystem right = new MasqMotorSystem("right", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
         driveTrain = new MasqMechanumDriveTrain(left, right);
         tracker = new MasqPositionTracker(hardwareMap);
     }
