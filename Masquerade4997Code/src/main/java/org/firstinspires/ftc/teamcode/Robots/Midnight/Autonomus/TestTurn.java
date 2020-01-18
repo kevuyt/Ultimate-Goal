@@ -16,7 +16,7 @@ public class TestTurn extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        robot.initializeTeleop();
+        robot.initializeAutonomous();
 
         while(!opModeIsActive()) {
             dash.create("Heading: ", robot.tracker.getHeading());

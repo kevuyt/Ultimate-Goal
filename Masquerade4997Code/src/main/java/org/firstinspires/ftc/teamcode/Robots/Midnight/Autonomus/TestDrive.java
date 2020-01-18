@@ -16,10 +16,11 @@ public class TestDrive extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        robot.initializeTeleop();
+        robot.initializeAutonomous();
 
         while(!opModeIsActive()) {
-            dash.create("Heading: ", robot.tracker.getHeading());
+            dash.create("Left Position: ", robot.driveTrain.leftDrive.getCurrentPosition());
+            dash.create("Right Position: ", robot.driveTrain.rightDrive.getCurrentPosition());
             dash.update();
         }
 
