@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
@@ -10,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 9/14/2019
  */
 @TeleOp(name = "PositionTeleOp", group = "MarkOne")
+@Disabled
 public class PositionTeleOp extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
