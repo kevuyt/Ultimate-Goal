@@ -19,7 +19,7 @@ import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.RIG
  * Project: MasqLib
  */
 public class FoundationHook implements MasqSubSystem, Constants {
-    private MasqServo leftHook, rightHook;
+    public MasqServo leftHook, rightHook;
     public FoundationHook(HardwareMap hardwareMap) {
         leftHook = new MasqServo("leftHook", hardwareMap);
         rightHook = new MasqServo("rightHook", hardwareMap);

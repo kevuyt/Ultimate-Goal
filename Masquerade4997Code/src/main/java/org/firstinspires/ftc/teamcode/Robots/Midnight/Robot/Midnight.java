@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode.Robots.Midnight.Robot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.SubSystems.FoundationHook;
+
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
@@ -17,8 +19,10 @@ import Library4997.MasqRobot;
  * Project: MasqLib
  */
 public class Midnight extends MasqRobot {
+    public FoundationHook foundationHook;
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
+        foundationHook = new FoundationHook(hardwareMap);
         MasqMotorSystem left = new MasqMotorSystem(new MasqMotor("left", MasqMotorModel.ORBITAL20, DcMotor.Direction.FORWARD, hardwareMap));
         MasqMotorSystem right = new MasqMotorSystem(new MasqMotor("right", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap));
         driveTrain = new MasqMechanumDriveTrain(left, right);
