@@ -12,6 +12,7 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
 /**
@@ -20,8 +21,11 @@ import Library4997.MasqWrappers.DashBoard;
  */
 public class Midnight extends MasqRobot {
     public FoundationHook foundationHook;
+    public MasqServo grabber, pivot;
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
+        pivot = new MasqServo("pivot", hardwareMap);
+        grabber = new MasqServo("grabber", hardwareMap);
         foundationHook = new FoundationHook(hardwareMap);
         MasqMotorSystem left = new MasqMotorSystem("left", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
         MasqMotorSystem right = new MasqMotorSystem("right", MasqMotorModel.ORBITAL20, DcMotor.Direction.FORWARD, hardwareMap);
@@ -33,7 +37,7 @@ public class Midnight extends MasqRobot {
     @Override
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
-        MasqUtils.driveController = new MasqPIDController(0.002);
+        MasqUtils.driveController = new MasqPIDController(0.0015);
         MasqUtils.angleController = new MasqPIDController(0.005);
         MasqUtils.turnController = new MasqPIDController(0.005);
         MasqUtils.velocityTeleController = new MasqPIDController(0.001);

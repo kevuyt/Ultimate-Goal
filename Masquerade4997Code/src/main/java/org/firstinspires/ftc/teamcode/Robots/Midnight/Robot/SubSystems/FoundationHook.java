@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.SubSystems;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.Constants;
-
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqSubSystem;
@@ -18,7 +16,7 @@ import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.RIG
  * Created by Archishmaan Peyyety on 2020-01-17.
  * Project: MasqLib
  */
-public class FoundationHook implements MasqSubSystem, Constants {
+public class FoundationHook implements MasqSubSystem {
     public MasqServo leftHook, rightHook;
     public FoundationHook(HardwareMap hardwareMap) {
         leftHook = new MasqServo("leftHook", hardwareMap);

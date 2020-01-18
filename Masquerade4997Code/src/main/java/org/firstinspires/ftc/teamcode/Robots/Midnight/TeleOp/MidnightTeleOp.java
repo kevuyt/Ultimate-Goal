@@ -27,6 +27,7 @@ public class MidnightTeleOp extends MasqLinearOpMode {
 
         while (opModeIsActive()) {
             robot.NFS(controller1);
+            robot.foundationHook.DriverControl(controller1);
         }
     }
 }
