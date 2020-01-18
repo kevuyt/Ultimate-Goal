@@ -54,6 +54,10 @@ public class MasqPositionTracker implements MasqHardware {
         imu = new MasqAdafruitIMU(imuName, hardwareMap);
         reset();
     }
+    public MasqPositionTracker(HardwareMap hardwareMap) {
+        imu = new MasqAdafruitIMU("imu", hardwareMap);
+        imu.reset();
+    }
 
     public double getHeading () {
         return imu.getRelativeYaw();
