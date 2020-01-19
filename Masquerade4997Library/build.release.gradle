@@ -1,7 +1,8 @@
 dependencies {
     implementation project(':FtcRobotController')
     implementation (name: 'RobotCore-release', ext: 'aar')
-    implementation(name: 'RobotCore-release-sources', ext: 'jar')
+    implementation (name: 'RobotCore-release-sources', ext: 'jar')
+    implementation (name: 'Jama-1.0.3', ext: 'jar')
     implementation (name: 'Hardware-release', ext: 'aar')
     implementation (name: 'FtcCommon-release', ext: 'aar')
     implementation (name:'Analytics-release', ext:'aar')
