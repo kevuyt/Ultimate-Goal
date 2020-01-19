@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class MasqPolynomial {
     //Coeffs are ordered in standard form i.e greatest to smallest degree
-    private List<Integer> coeffs = new ArrayList<>();
+    private List<Double> coeffs = new ArrayList<>();
     private int n;
 
     public double getOutput(double input) {
@@ -22,7 +22,7 @@ public class MasqPolynomial {
         return output;
     }
 
-    public void setCoeff(int term, int coeff) {
+    public void setCoeff(int term, double coeff) {
         try {
             coeffs.set(term - 1, coeff);
         } catch (IndexOutOfBoundsException e) {
