@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
@@ -13,7 +12,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "ConstantsProgrammer", group = "MarkOne")
-@Disabled
 public class ConstantsProgrammer extends MasqLinearOpMode {
     public MarkOne robot = new MarkOne();
     private double hookPos;

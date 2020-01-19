@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots.Midnight.Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Midnight;
@@ -11,6 +12,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "MidnightTest", group = "ZZZ")
+@Disabled
+
 public class MidnightTest extends MasqLinearOpMode {
     private Midnight robot = new Midnight();
     @Override
