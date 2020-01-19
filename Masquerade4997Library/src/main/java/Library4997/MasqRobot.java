@@ -484,7 +484,7 @@ public abstract class MasqRobot {
 
     public void NFS(MasqController c) {
         float move = -c.leftStickY();
-        float turn = c.rightStickX();
+        float turn = c.rightStickX() * 0.7f;
         double left = move + turn;
         double right = move - turn;
         double max = MasqUtils.max(left, right);

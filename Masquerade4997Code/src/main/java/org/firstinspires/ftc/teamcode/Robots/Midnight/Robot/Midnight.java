@@ -15,15 +15,20 @@ import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
+import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.CAP_UP;
+import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.GRAB_INIT;
+import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.PIVOT_INIT;
+
 /**
  * Created by Archishmaan Peyyety on 2020-01-17.
  * Project: MasqLib
  */
 public class Midnight extends MasqRobot {
     public FoundationHook foundationHook;
-    public MasqServo grabber, pivot;
+    public MasqServo grabber, pivot, capstone;
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
+        capstone = new MasqServo("capstone", hardwareMap);
         pivot = new MasqServo("pivot", hardwareMap);
         grabber = new MasqServo("grabber", hardwareMap);
         foundationHook = new FoundationHook(hardwareMap);
@@ -53,6 +58,9 @@ public class Midnight extends MasqRobot {
 
     }
     public void resetServos() {
-
+        capstone.setPosition(CAP_UP);
+        foundationHook.hooksUp();
+        pivot.setPosition(PIVOT_INIT);
+        grabber.setPosition(GRAB_INIT);
     }
 }

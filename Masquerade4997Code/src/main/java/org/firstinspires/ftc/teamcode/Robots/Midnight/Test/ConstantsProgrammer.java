@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "ConstantsProgrammer", group = "ZZZ")
 public class ConstantsProgrammer extends MasqLinearOpMode {
     public Midnight robot = new Midnight();
-    private double leftHookPos, rightHookPos, pivotPos, grabberPos;
+    private double leftHookPos, rightHookPos, pivotPos, grabberPos, capstone;
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
@@ -44,12 +44,18 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             if (controller1.leftBumper()) pivotPos += 0.001;
             else if (controller1.leftTriggerPressed()) pivotPos -= 0.001;
             pivotPos = Range.clip(pivotPos,0,1);
-            robot.grabber.setPosition(pivotPos);
+            robot.pivot.setPosition(pivotPos);
+
+            if (controller2.a()) capstone += 0.001;
+            else if (controller2.y()) capstone -= 0.001;
+            capstone = Range.clip(capstone,0,1);
+            robot.capstone.setPosition(capstone);
 
             dash.create("Left Hook Position: ", leftHookPos);
             dash.create("Right Hook Position: ", rightHookPos);
-            dash.create("Grabber Position: ", leftHookPos);
-            dash.create("Pivot Position: ", rightHookPos);
+            dash.create("Grabber Position: ", grabberPos);
+            dash.create("Pivot Position: ", pivotPos);
+            dash.create("Capstone Position: ", capstone);
             dash.update();
         }
     }
