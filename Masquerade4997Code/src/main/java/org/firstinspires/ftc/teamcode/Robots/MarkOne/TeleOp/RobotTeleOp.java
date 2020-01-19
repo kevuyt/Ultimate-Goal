@@ -36,15 +36,17 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
         while(opModeIsActive()) {
             if (controller1.rightBumper() || controller1.leftBumper())
-                robot.MECH(controller1,0.5, 0.25);
-            else robot.MECH(controller1,1, 0.5);
+                robot.MECH(controller1,0.5, 0.2);
+            else robot.MECH(controller1,1, 0.4);
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-1);
             else if (controller1.rightTriggerPressed()) robot.intake.setVelocity(1);
             else robot.intake.setVelocity(0);
+            if (controller2.rightTriggerPressed()) robot.lift.setVelocity(0.5*controller2.leftStickY());
+            else robot.lift.setVelocity(controller2.leftStickY());
 
-            robot.lift.setVelocity(controller2.leftStickY());
-            robot.x.setPower(controller2.rightStickY());
+            robot.tapeMeasure.setPower(controller2.rightStickY());
+
             MasqUtils.toggle(controller2.yOnPress(), robot.blockRotater, prevRotater);
             MasqUtils.toggle(controller2.xOnPress(), robot.blockGrabber, prevGrabber);
             MasqUtils.toggle(controller2.aOnPress(), robot.blockPusher,prevPusher);
@@ -61,7 +63,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             dash.create("X: ",robot.tracker.getGlobalX());
             dash.create("Y: ",robot.tracker.getGlobalY());
-            dash.create("Raw X: ",robot.x.getCurrentPosition());
+            dash.create("Raw X: ",robot.tapeMeasure.getCurrentPosition());
             dash.create("Raw YL: ",robot.intake.motor2.getCurrentPosition());
             dash.create("Raw YR: ", robot.intake.motor1.getCurrentPosition());
             dash.create("XR stick: ", controller1.rightStickX());
