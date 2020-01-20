@@ -481,7 +481,7 @@ public abstract class MasqRobot {
                     driveTrain.setVelocityMECH (
                             pathAngle + tracker.getHeading(),
                             speed * 0.7,
-                            pointsWithRobot.get(index).getH()
+                            -pointsWithRobot.get(index).getH()
                     );
                 }
 
@@ -492,13 +492,14 @@ public abstract class MasqRobot {
                 dash.create("Tank Mode: ", tankMode);
                 dash.create("X: ", tracker.getGlobalX());
                 dash.create("Y: ", tracker.getGlobalY());
-                dash.create("H: ", heading);
+                dash.create("H: ", -tracker.getHeading());
                 dash.create("LAx: ", lookahead.getX());
                 dash.create("LAy: ", lookahead.getY());
                 dash.create("LEFT POWER: ", leftPower);
                 dash.create("RIGHT POWER: ", rightPower);
                 dash.create("Path Angle (Angular Error): ", pathAngle);
                 dash.create("Power Adjustment: ", powerAdjustment);
+                dash.create("Target Heading: ", pointsWithRobot.get(index).getH());
                 dash.create("KP: ", travelAngleController.getKp());
                 dash.update();
             }
