@@ -147,14 +147,14 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.h
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#getMotorVelocity-int-">getMotorVelocity</a></span>(int&nbsp;motor)</code>
-<div class="block">Returns the velocity of the indicated motor in ticks per second.</div>
+<div class="block">Returns the minVelocity of the indicated motor in ticks per second.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#getMotorVelocity-int-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">getMotorVelocity</a></span>(int&nbsp;motor,
                 <a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</code>
-<div class="block">Returns the velocity of the indicated motor.</div>
+<div class="block">Returns the minVelocity of the indicated motor.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -203,7 +203,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.h
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#setMotorVelocity-int-double-">setMotorVelocity</a></span>(int&nbsp;motor,
                 double&nbsp;ticksPerSecond)</code>
-<div class="block">Sets the target velocity of the indicated motor.</div>
+<div class="block">Sets the target minVelocity of the indicated motor.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
@@ -211,7 +211,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.h
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#setMotorVelocity-int-double-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">setMotorVelocity</a></span>(int&nbsp;motor,
                 double&nbsp;angularRate,
                 <a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</code>
-<div class="block">Sets the target velocity of the indicated motor.</div>
+<div class="block">Sets the target minVelocity of the indicated motor.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
@@ -320,7 +320,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.h
 <h4>setMotorVelocity</h4>
 <pre>void&nbsp;setMotorVelocity(int&nbsp;motor,
                       double&nbsp;ticksPerSecond)</pre>
-<div class="block">Sets the target velocity of the indicated motor.</div>
+<div class="block">Sets the target minVelocity of the indicated motor.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>motor</code> - the port number of the motor on this controller</dd>
@@ -337,10 +337,10 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.h
 <pre>void&nbsp;setMotorVelocity(int&nbsp;motor,
                       double&nbsp;angularRate,
                       <a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</pre>
-<div class="block">Sets the target velocity of the indicated motor.</div>
+<div class="block">Sets the target minVelocity of the indicated motor.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>motor</code> - motor whose velocity is to be adjusted</dd>
+<dd><code>motor</code> - motor whose minVelocity is to be adjusted</dd>
 <dd><code>angularRate</code> - the new target rate for that motor, in 'unit's per second</dd>
 <dd><code>unit</code> - the unit inw which angularRate is expressed.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
@@ -355,12 +355,12 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.h
 <li class="blockList">
 <h4>getMotorVelocity</h4>
 <pre>double&nbsp;getMotorVelocity(int&nbsp;motor)</pre>
-<div class="block">Returns the velocity of the indicated motor in ticks per second.</div>
+<div class="block">Returns the minVelocity of the indicated motor in ticks per second.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>motor</code> - the motor whose velocity is desired</dd>
+<dd><code>motor</code> - the motor whose minVelocity is desired</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the current target velocity of the motor in ticks per second</dd>
+<dd>the current target minVelocity of the motor in ticks per second</dd>
 </dl>
 </li>
 </ul>
@@ -372,13 +372,13 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorController.h
 <h4>getMotorVelocity</h4>
 <pre>double&nbsp;getMotorVelocity(int&nbsp;motor,
                         <a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</pre>
-<div class="block">Returns the velocity of the indicated motor.</div>
+<div class="block">Returns the minVelocity of the indicated motor.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>motor</code> - the motor whose velocity is desired</dd>
-<dd><code>unit</code> - the angular unit in which the velocity is to be expressed</dd>
+<dd><code>motor</code> - the motor whose minVelocity is desired</dd>
+<dd><code>unit</code> - the angular unit in which the minVelocity is to be expressed</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the current velocity of the motor</dd>
+<dd>the current minVelocity of the motor</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#getVelocity-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-"><code>DcMotorEx.getVelocity(AngleUnit)</code></a></dd>
 </dl>

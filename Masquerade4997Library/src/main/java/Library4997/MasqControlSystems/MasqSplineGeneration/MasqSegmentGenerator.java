@@ -24,20 +24,20 @@ public class MasqSegmentGenerator {
         Matrix xConstraints = new Matrix(
                 new double[][]{
                         {current.getX()},
-                        {current.getVelocity()},
+                        {current.getMinVelocity()},
                         {0},
                         {destination.getX()},
-                        {destination.getVelocity()},
+                        {destination.getMinVelocity()},
                         {0}
                 }
         );
         Matrix yConstraints = new Matrix(
                 new double[][]{
                         {current.getY()},
-                        {current.getVelocity()},
+                        {current.getMinVelocity()},
                         {0},
                         {destination.getY()},
-                        {destination.getVelocity()},
+                        {destination.getMinVelocity()},
                         {0}
                 }
         );

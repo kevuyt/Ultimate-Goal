@@ -9,7 +9,7 @@ import Library4997.MasqResources.MasqMath.MasqVector;
  * Project: MasqLib
  */
 public class MasqWayPoint implements MasqHardware {
-    private double x, y, h, radius, velocity;
+    private double x, y, h, radius, minVelocity, lookAhead, angularCorrectionSpeed;
 
 
     public MasqWayPoint(MasqPoint p) {
@@ -17,21 +17,47 @@ public class MasqWayPoint implements MasqHardware {
         this.y = p.getY();
         this.h = p.getH();
         this.radius = 0.1;
-        this.velocity = 0;
+        this.minVelocity = 0;
     }
     public MasqWayPoint(MasqPoint p, double radius) {
         this.x = p.getX();
         this.y = p.getY();
         this.h = p.getH();
         this.radius = radius;
-        velocity = 0;
+        minVelocity = 0;
     }
-    public MasqWayPoint(MasqPoint p, double radius, double velocity) {
+    public MasqWayPoint(MasqPoint p, double radius, double minVelocity) {
         this.x = p.getX();
         this.y = p.getY();
         this.h = p.getH();
         this.radius = radius;
-        this.velocity = velocity;
+        this.minVelocity = minVelocity;
+    }
+
+    public MasqWayPoint(MasqPoint p, double radius, double minVelocity, double lookAhead, double angularCorrectionSpeed) {
+        this.x = p.getX();
+        this.y = p.getY();
+        this.h = p.getH();
+        this.radius = radius;
+        this.minVelocity = minVelocity;
+        this.lookAhead = lookAhead;
+        this.angularCorrectionSpeed = angularCorrectionSpeed;
+    }
+
+    public double getLookAhead() {
+        return lookAhead;
+    }
+
+    public void setLookAhead(double lookAhead) {
+        this.lookAhead = lookAhead;
+    }
+
+    public double getAngularCorrectionSpeed() {
+        return angularCorrectionSpeed;
+    }
+
+    public void setAngularCorrectionSpeed(double angularCorrectionSpeed) {
+        this.angularCorrectionSpeed = angularCorrectionSpeed;
     }
 
     public double getH() {
@@ -66,12 +92,12 @@ public class MasqWayPoint implements MasqHardware {
         this.radius = radius;
     }
 
-    public double getVelocity() {
-        return velocity;
+    public double getMinVelocity() {
+        return minVelocity;
     }
 
-    public void setVelocity(double velocity) {
-        this.velocity = velocity;
+    public void setMinVelocity(double minVelocity) {
+        this.minVelocity = minVelocity;
     }
 
     public MasqVector toVector() {

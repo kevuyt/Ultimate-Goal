@@ -7,6 +7,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.opencv.core.Rect;
 import java.util.Locale;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
+import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -141,5 +142,18 @@ public class MasqUtils {
     }
     public static Point getCenterPoint(Rect rect) {
         return new Point(rect.x + rect.width/2, rect.y + rect.height/2);
+    }
+    public static MasqVector getLookAhead(MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
+        MasqVector pathDisplacement = initial.displacement(finalPos);
+        MasqVector untransformedProjection = new MasqVector(
+                current.projectOnTo(pathDisplacement).getX() - initial.getX(),
+                current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
+        MasqVector projection = new MasqVector(
+                untransformedProjection.getX() + initial.getX(),
+                untransformedProjection.getY() + initial.getY());
+        double theta = Math.atan2(pathDisplacement.getY(), pathDisplacement.getX());
+        return new MasqVector(
+                projection.getX() + (lookAhead * Math.cos(theta)),
+                projection.getY() + (lookAhead * Math.sin(theta)));
     }
 }

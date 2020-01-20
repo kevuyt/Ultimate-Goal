@@ -189,7 +189,6 @@ public class MasqPositionTracker implements MasqHardware {
     @Override
     public String[] getDash() {
         return new String[] {
-            getName() +
             "GlobalX: " + globalX,
             "GlobalY: " + globalY,
             "Heading: " + getHeading(),

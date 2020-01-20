@@ -133,7 +133,7 @@ var activeTableTab = "activeTableTab";
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/Axis.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">Axis</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/Gyroscope.html#getAngularVelocityAxes--">getAngularVelocityAxes</a></span>()</code>
-<div class="block">Returns the axes on which the gyroscope measures angular velocity.</div>
+<div class="block">Returns the axes on which the gyroscope measures angular minVelocity.</div>
 </td>
 </tr>
 </table>
@@ -158,13 +158,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>getAngularVelocityAxes</h4>
 <pre>java.util.Set&lt;<a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/Axis.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">Axis</a>&gt;&nbsp;getAngularVelocityAxes()</pre>
-<div class="block">Returns the axes on which the gyroscope measures angular velocity. Some gyroscopes
- measure angular velocity on all three axes (X, Y, & Z) while others measure on only
+<div class="block">Returns the axes on which the gyroscope measures angular minVelocity. Some gyroscopes
+ measure angular minVelocity on all three axes (X, Y, & Z) while others measure on only
  a subset, typically the Z axis. This method allows you to determine what information
  is usefully returned through <a href="../../../../com/qualcomm/robotcore/hardware/Gyroscope.html#getAngularVelocity-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-"><code>getAngularVelocity(AngleUnit)</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the axes on which the gyroscope measures angular velocity.</dd>
+<dd>the axes on which the gyroscope measures angular minVelocity.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/Gyroscope.html#getAngularVelocity-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-"><code>getAngularVelocity(AngleUnit)</code></a></dd>
 </dl>
@@ -178,7 +178,7 @@ var activeTableTab = "activeTableTab";
 <h4>getAngularVelocity</h4>
 <pre><a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngularVelocity.html" title="class in org.firstinspires.ftc.robotcore.external.navigation">AngularVelocity</a>&nbsp;getAngularVelocity(<a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</pre>
 <div class="block">Returns the angular rotation rate across all the axes measured by the gyro. Axes
- on which angular velocity is not measured are reported as zero.</div>
+ on which angular minVelocity is not measured are reported as zero.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>unit</code> - the unit in which the rotation rates are to be returned (the time

@@ -239,13 +239,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImplEx.html#getVelocity--">getVelocity</a></span>()</code>
-<div class="block">Returns the current velocity of the motor, in ticks per second</div>
+<div class="block">Returns the current minVelocity of the motor, in ticks per second</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImplEx.html#getVelocity-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">getVelocity</a></span>(<a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</code>
-<div class="block">Returns the current velocity of the motor, in angular units per second</div>
+<div class="block">Returns the current minVelocity of the motor, in angular units per second</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -300,14 +300,14 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImplEx.html#setVelocity-double-">setVelocity</a></span>(double&nbsp;angularRate)</code>
-<div class="block">Sets the velocity of the motor</div>
+<div class="block">Sets the minVelocity of the motor</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorImplEx.html#setVelocity-double-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">setVelocity</a></span>(double&nbsp;angularRate,
            <a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</code>
-<div class="block">Sets the velocity of the motor</div>
+<div class="block">Sets the minVelocity of the motor</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
@@ -473,7 +473,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 <h4>setVelocity</h4>
 <pre>public&nbsp;void&nbsp;setVelocity(double&nbsp;angularRate)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#setVelocity-double-">DcMotorEx</a></code></span></div>
-<div class="block">Sets the velocity of the motor</div>
+<div class="block">Sets the minVelocity of the motor</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#setVelocity-double-">setVelocity</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></code></dd>
@@ -491,7 +491,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 <pre>public&nbsp;void&nbsp;setVelocity(double&nbsp;angularRate,
                         <a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#setVelocity-double-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">DcMotorEx</a></code></span></div>
-<div class="block">Sets the velocity of the motor</div>
+<div class="block">Sets the minVelocity of the motor</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#setVelocity-double-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">setVelocity</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></code></dd>
@@ -511,12 +511,12 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 <h4>getVelocity</h4>
 <pre>public&nbsp;double&nbsp;getVelocity()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#getVelocity--">DcMotorEx</a></code></span></div>
-<div class="block">Returns the current velocity of the motor, in ticks per second</div>
+<div class="block">Returns the current minVelocity of the motor, in ticks per second</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#getVelocity--">getVelocity</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the current velocity of the motor</dd>
+<dd>the current minVelocity of the motor</dd>
 </dl>
 </li>
 </ul>
@@ -528,14 +528,14 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 <h4>getVelocity</h4>
 <pre>public&nbsp;double&nbsp;getVelocity(<a href="../../../../org/firstinspires/ftc/robotcore/external/navigation/AngleUnit.html" title="enum in org.firstinspires.ftc.robotcore.external.navigation">AngleUnit</a>&nbsp;unit)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#getVelocity-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">DcMotorEx</a></code></span></div>
-<div class="block">Returns the current velocity of the motor, in angular units per second</div>
+<div class="block">Returns the current minVelocity of the motor, in angular units per second</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#getVelocity-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">getVelocity</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>unit</code> - the units in which the angular rate is desired</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the current velocity of the motor</dd>
+<dd>the current minVelocity of the motor</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html#setVelocity-double-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-"><code>DcMotorEx.setVelocity(double, AngleUnit)</code></a></dd>
 </dl>
@@ -596,7 +596,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 
  Readers are reminded that <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.RunMode.html#RUN_TO_POSITION"><code>DcMotor.RunMode.RUN_TO_POSITION</code></a> mode makes use of <em>both</em>
  the coefficients set for RUN_TO_POSITION <em>and</em> the coefficients set for RUN_WITH_ENCODER,
- due to the fact that internally the RUN_TO_POSITION logic calculates an on-the-fly velocity goal
+ due to the fact that internally the RUN_TO_POSITION logic calculates an on-the-fly minVelocity goal
  on each control cycle, then (logically) runs the RUN_WITH_ENCODER logic. Because of that double-
  layering, only the proportional ('p') coefficient makes logical sense for use in the RUN_TO_POSITION
  coefficients.</div>
@@ -644,7 +644,7 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/DcMotorEx.html" 
 
  Readers are reminded that <a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.RunMode.html#RUN_TO_POSITION"><code>DcMotor.RunMode.RUN_TO_POSITION</code></a> mode makes use of <em>both</em>
  the coefficients set for RUN_TO_POSITION <em>and</em> the coefficients set for RUN_WITH_ENCODER,
- due to the fact that internally the RUN_TO_POSITION logic calculates an on-the-fly velocity goal
+ due to the fact that internally the RUN_TO_POSITION logic calculates an on-the-fly minVelocity goal
  on each control cycle, then (logically) runs the RUN_WITH_ENCODER logic. Because of that double-
  layering, only the proportional ('p') coefficient makes logical sense for use in the RUN_TO_POSITION
  coefficients.</div>

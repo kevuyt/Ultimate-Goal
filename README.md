@@ -150,7 +150,7 @@ Changes include:
     - Added blocks for DcMotorEx methods.
         + These are enhanced methods that you can use when supported by the motor controller hardware.
 	+ The REV Robotics Expansion Hub supports these enhanced methods.
-	+ Enhanced methods include methods to get/set motor velocity (in encoder pulses per second), get/set PIDF coefficients, etc..
+	+ Enhanced methods include methods to get/set motor minVelocity (in encoder pulses per second), get/set PIDF coefficients, etc..
 
  * Modest Improvements in Logging
     - Decrease frequency of battery checker voltage statements.
@@ -170,7 +170,7 @@ Changes include:
     - Added support for a REV Touch Sensor (no longer have to configure as a generic digital device).
     
  * Miscellaneous
-    - Fixed some errors in the definitions for acceleration and velocity in our javadoc documentation.
+    - Fixed some errors in the definitions for acceleration and minVelocity in our javadoc documentation.
     - Added ability to play audio files on Driver Station
     - When user is configuring an Expansion Hub, the LED on the Expansion Hub will change blink pattern (purple-cyan)  to indicate which Hub is currently being configured.
     - Renamed I2cSensorType to I2cDeviceType.

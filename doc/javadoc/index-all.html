@@ -2286,7 +2286,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/Gyroscope.html#getAngularVelocityAxes--">getAngularVelocityAxes()</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/Gyroscope.html" title="interface in com.qualcomm.robotcore.hardware">Gyroscope</a></dt>
 <dd>
-<div class="block">Returns the axes on which the gyroscope measures angular velocity.</div>
+<div class="block">Returns the axes on which the gyroscope measures angular minVelocity.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/ftccommon/FtcAboutActivity.html#getAppVersion--">getAppVersion()</a></span> - Static method in class com.qualcomm.ftccommon.<a href="com/qualcomm/ftccommon/FtcAboutActivity.html" title="class in com.qualcomm.ftccommon">FtcAboutActivity</a></dt>
 <dd>&nbsp;</dd>
@@ -3003,11 +3003,11 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#getMotorVelocity-int-">getMotorVelocity(int)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorControllerEx</a></dt>
 <dd>
-<div class="block">Returns the velocity of the indicated motor in ticks per second.</div>
+<div class="block">Returns the minVelocity of the indicated motor in ticks per second.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#getMotorVelocity-int-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">getMotorVelocity(int, AngleUnit)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorControllerEx</a></dt>
 <dd>
-<div class="block">Returns the velocity of the indicated motor.</div>
+<div class="block">Returns the minVelocity of the indicated motor.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorController.html#getMotorZeroPowerBehavior-int-">getMotorZeroPowerBehavior(int)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorController.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorController</a></dt>
 <dd>
@@ -3527,11 +3527,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorEx.html#getVelocity--">getVelocity()</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></dt>
 <dd>
-<div class="block">Returns the current velocity of the motor, in ticks per second</div>
+<div class="block">Returns the current minVelocity of the motor, in ticks per second</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorEx.html#getVelocity-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">getVelocity(AngleUnit)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></dt>
 <dd>
-<div class="block">Returns the current velocity of the motor, in angular units per second</div>
+<div class="block">Returns the current minVelocity of the motor, in angular units per second</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorImplEx.html#getVelocity--">getVelocity()</a></span> - Method in class com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorImplEx.html" title="class in com.qualcomm.robotcore.hardware">DcMotorImplEx</a></dt>
 <dd>&nbsp;</dd>
@@ -4933,7 +4933,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/firstinspires/ftc/robotcore/external/navigation/NavUtil.html#meanIntegrate-org.firstinspires.ftc.robotcore.external.navigation.Acceleration-org.firstinspires.ftc.robotcore.external.navigation.Acceleration-">meanIntegrate(Acceleration, Acceleration)</a></span> - Static method in class org.firstinspires.ftc.robotcore.external.navigation.<a href="org/firstinspires/ftc/robotcore/external/navigation/NavUtil.html" title="class in org.firstinspires.ftc.robotcore.external.navigation">NavUtil</a></dt>
 <dd>
-<div class="block">Integrate between two accelerations to determine a change in velocity using an assumption
+<div class="block">Integrate between two accelerations to determine a change in minVelocity using an assumption
  that the mean of the accelerations has been acting the entire interval.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/firstinspires/ftc/robotcore/external/JavaUtil.html#medianOfList-java.util.List-">medianOfList(List)</a></span> - Static method in class org.firstinspires.ftc.robotcore.external.<a href="org/firstinspires/ftc/robotcore/external/JavaUtil.html" title="class in org.firstinspires.ftc.robotcore.external">JavaUtil</a></dt>
@@ -6979,11 +6979,11 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#setMotorVelocity-int-double-">setMotorVelocity(int, double)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorControllerEx</a></dt>
 <dd>
-<div class="block">Sets the target velocity of the indicated motor.</div>
+<div class="block">Sets the target minVelocity of the indicated motor.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html#setMotorVelocity-int-double-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">setMotorVelocity(int, double, AngleUnit)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorControllerEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorControllerEx</a></dt>
 <dd>
-<div class="block">Sets the target velocity of the indicated motor.</div>
+<div class="block">Sets the target minVelocity of the indicated motor.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorController.html#setMotorZeroPowerBehavior-int-com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior-">setMotorZeroPowerBehavior(int, DcMotor.ZeroPowerBehavior)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorController.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorController</a></dt>
 <dd>
@@ -7281,11 +7281,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorEx.html#setVelocity-double-">setVelocity(double)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></dt>
 <dd>
-<div class="block">Sets the velocity of the motor</div>
+<div class="block">Sets the minVelocity of the motor</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorEx.html#setVelocity-double-org.firstinspires.ftc.robotcore.external.navigation.AngleUnit-">setVelocity(double, AngleUnit)</a></span> - Method in interface com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorEx.html" title="interface in com.qualcomm.robotcore.hardware">DcMotorEx</a></dt>
 <dd>
-<div class="block">Sets the velocity of the motor</div>
+<div class="block">Sets the minVelocity of the motor</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/qualcomm/robotcore/hardware/DcMotorImplEx.html#setVelocity-double-">setVelocity(double)</a></span> - Method in class com.qualcomm.robotcore.hardware.<a href="com/qualcomm/robotcore/hardware/DcMotorImplEx.html" title="class in com.qualcomm.robotcore.hardware">DcMotorImplEx</a></dt>
 <dd>&nbsp;</dd>
@@ -8073,7 +8073,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/firstinspires/ftc/robotcore/external/navigation/Velocity.html#unit">unit</a></span> - Variable in class org.firstinspires.ftc.robotcore.external.navigation.<a href="org/firstinspires/ftc/robotcore/external/navigation/Velocity.html" title="class in org.firstinspires.ftc.robotcore.external.navigation">Velocity</a></dt>
 <dd>
-<div class="block">The distance units in which this velocity is expressed.</div>
+<div class="block">The distance units in which this minVelocity is expressed.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/firstinspires/ftc/robotcore/external/StateMachine.html#unMaskEvent-org.firstinspires.ftc.robotcore.external.Event-">unMaskEvent(Event)</a></span> - Method in class org.firstinspires.ftc.robotcore.external.<a href="org/firstinspires/ftc/robotcore/external/StateMachine.html" title="class in org.firstinspires.ftc.robotcore.external">StateMachine</a></dt>
 <dd>&nbsp;</dd>

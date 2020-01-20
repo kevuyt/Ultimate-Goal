@@ -67,6 +67,12 @@ public class MasqVector implements MasqHardware {
         return deg;
     }
 
+    public double angleTan(MasqVector v) {
+        double atan1 = Math.atan2(v.getY(), v.getX());
+        double atan2 = Math.atan2(getY(), getX());
+        return Math.toDegrees(atan2 - atan1);
+    }
+
     public double distanceToVector(MasqVector point) {
         return Math.hypot(point.getX() - getX(), point.getY() - getY());
     }
