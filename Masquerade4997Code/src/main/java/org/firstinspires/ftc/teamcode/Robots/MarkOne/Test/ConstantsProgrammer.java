@@ -22,16 +22,16 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
         robot.init(hardwareMap);
 
         while (!opModeIsActive()) {
-            dash.create("Bruh moment");
+            dash.create("Hello, this is a constants programmer.");
             dash.update();
         }
 
         waitForStart();
         while (opModeIsActive()) {
-            if (controller1.a()) hookPos+=0.001;
-            else if (controller1.b()) hookPos-=0.001;
+            if (controller1.a()) hookPos += 0.001;
+            else if (controller1.b()) hookPos -= 0.001;
             hookPos = Range.clip(hookPos,0,1);
-            robot.foundationHook.rightHook.setPosition(1-hookPos);
+            robot.foundationHook.rightHook.setPosition(1 - hookPos);
             robot.foundationHook.leftHook.setPosition(hookPos);
             dash.create("Position: ", hookPos);
             dash.update();
