@@ -26,9 +26,11 @@ public class XYTankTest extends MasqLinearOpMode {
         }
 
         waitForStart();
-        //MasqWayPoint p = new MasqWayPoint(new MasqPoint(0, 20), 1);
-        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(30, 30, 45), 1,
+        MasqWayPoint p = new MasqWayPoint(new MasqPoint(0, 10, 0), 1);
+        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(40, 40, 90), 1,
+                0, 10, 0.02);
+        MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(40, 80, 0), 1,
                 0, 10, 0.01);
-        robot.xyPathTank(p1);
+        robot.xyPathTank(p, p1, p2);
     }
 }

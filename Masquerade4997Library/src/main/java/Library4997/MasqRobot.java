@@ -442,9 +442,12 @@ public abstract class MasqRobot {
     }
 
     public void xyPathTank(MasqWayPoint... points) {
+        MasqMechanumDriveTrain.angleCorrectionController.setKp(xyAngleController.getKp());
+        MasqMechanumDriveTrain.angleCorrectionController.setKi(xyAngleController.getKi());
+        MasqMechanumDriveTrain.angleCorrectionController.setKd(xyAngleController.getKd());
         double lookAheadDistance = 10;
         List<MasqWayPoint> pointsWithRobot = new ArrayList<>(Arrays.asList(points));
-        pointsWithRobot.add(0,getCurrentWayPoint());
+        pointsWithRobot.add(0, getCurrentWayPoint());
         MasqPIDController travelAngleController = new MasqPIDController(0.01, 0, 0);
         int index = 1;
         while (index < pointsWithRobot.size()) {
@@ -452,7 +455,7 @@ public abstract class MasqRobot {
             if (pointsWithRobot.get(index).getAngularCorrectionSpeed() != 0) travelAngleController.setKp(pointsWithRobot.get(index).getAngularCorrectionSpeed());
             MasqVector target = new MasqVector(pointsWithRobot.get(index).getX(), pointsWithRobot.get(index).getY());
             MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-            MasqVector initial = new MasqVector(pointsWithRobot.get(index-1).getX(), pointsWithRobot.get(index-1).getY());
+            MasqVector initial = new MasqVector(pointsWithRobot.get(index - 1).getX(), pointsWithRobot.get(index - 1).getY());
             double speed = 1;
             while (!current.equal(pointsWithRobot.get(index).getRadius(), target) && opModeIsActive() && speed > 0.1) {
                 double heading = Math.toRadians(-tracker.getHeading());
@@ -472,19 +475,18 @@ public abstract class MasqRobot {
                 double powerAdjustment = travelAngleController.getOutput(pathAngle);
                 double leftPower = speed + powerAdjustment;
                 double rightPower = speed - powerAdjustment;
-                boolean tankMode = !current.equal(5, target);
+                boolean tankMode = !current.equal(10, target);
 
 
                 if (tankMode) driveTrain.setPower(leftPower, rightPower);
                 else {
                     pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-                    driveTrain.setVelocityMECH (
+                    driveTrain.setVelocityMECH(
                             pathAngle + tracker.getHeading(),
                             speed * 0.7,
                             -pointsWithRobot.get(index).getH()
                     );
                 }
-
 
                 tracker.updateSystem();
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
