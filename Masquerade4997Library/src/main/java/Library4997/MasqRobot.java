@@ -405,7 +405,7 @@ public abstract class MasqRobot {
         MasqVector pathDisplacement = initial.displacement(target);
         while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(radius, target) && opModeIsActive()) {
             double heading = -tracker.getHeading();
-            MasqVector headingUnitVector = new MasqVector(Math.cos(heading), Math.sin(heading));
+            MasqVector headingUnitVector = new MasqVector(Math.sin(heading), Math.cos(heading));
             MasqVector untransformedProjection = new MasqVector(
                     current.projectOnTo(pathDisplacement).getX() - initial.getX(),
                      current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
@@ -421,11 +421,11 @@ public abstract class MasqRobot {
             double pathAngle = headingUnitVector.angleDeg(lookaheadDisplacement);
             double speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
             double powerAdjustment = travelAngleController.getOutput(pathAngle);
-            double leftPower = speed - powerAdjustment;
-            double rightPower = speed + powerAdjustment;
-            driveTrain.setVelocity(leftPower * speedDampener, rightPower * speedDampener);
-            current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
+            double leftPower = speed + powerAdjustment;
+            double rightPower = speed - powerAdjustment;
+            //driveTrain.setVelocity(leftPower * speedDampener, rightPower * speedDampener);
             tracker.updateSystem();
+            current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             dash.create("X: ", tracker.getGlobalX());
             dash.create("Y: ", tracker.getGlobalY());
             dash.create("H: ", heading);
