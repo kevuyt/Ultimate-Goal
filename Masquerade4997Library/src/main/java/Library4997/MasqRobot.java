@@ -395,52 +395,6 @@ public abstract class MasqRobot {
         xyPath(10, points);
     }
 
-    public void gotoXYTank(double x, double y, double radius, double timeout, double speedDampener) {
-        double lookAhead = 10;
-        MasqPIDController travelAngleController = new MasqPIDController(0.01, 0, 0);
-        MasqClock clock = new MasqClock();
-        MasqVector target = new MasqVector(x, y);
-        MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-        MasqVector initial = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-        MasqVector pathDisplacement = initial.displacement(target);
-        while (!clock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && !current.equal(radius, target) && opModeIsActive()) {
-            double heading = Math.toRadians(-tracker.getHeading());
-            MasqVector headingUnitVector = new MasqVector(Math.sin(heading), Math.cos(heading));
-            MasqVector untransformedProjection = new MasqVector(
-                    current.projectOnTo(pathDisplacement).getX() - initial.getX(),
-                    current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
-            MasqVector projection = new MasqVector(
-                    untransformedProjection.getX() + initial.getX(),
-                    untransformedProjection.getY() + initial.getY());
-            double theta = Math.atan2(pathDisplacement.getY(), pathDisplacement.getX());
-            MasqVector lookahead = new MasqVector(
-                    projection.getX() + (lookAhead * Math.cos(theta)),
-                    projection.getY() + (lookAhead * Math.sin(theta)));
-            if (initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude()) lookahead = new MasqVector(target.getX(), target.getY());
-            MasqVector lookaheadDisplacement = current.displacement(lookahead);
-            double pathAngle = headingUnitVector.angleDeg(lookaheadDisplacement);
-            double speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
-            double powerAdjustment = travelAngleController.getOutput(pathAngle);
-            double leftPower = speed + powerAdjustment;
-            double rightPower = speed - powerAdjustment;
-            driveTrain.setPower(leftPower * speedDampener, rightPower * speedDampener);
-            tracker.updateSystem();
-            current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-            dash.create("X: ", tracker.getGlobalX());
-            dash.create("Y: ", tracker.getGlobalY());
-            dash.create("H: ", heading);
-            dash.create("LAx: ", lookahead.getX());
-            dash.create("LAy: ", lookahead.getY());
-            dash.create("LAdx: ", lookaheadDisplacement.getX());
-            dash.create("LAdy: ", lookaheadDisplacement.getY());
-            dash.create("LEFT POWER: ", leftPower);
-            dash.create("RIGHT POWER: ", rightPower);
-            dash.create("Error: ", pathAngle);
-            dash.update();
-        }
-        driveTrain.stopDriving();
-    }
-
     public void xyPathTank(MasqWayPoint... points) {
         MasqMechanumDriveTrain.angleCorrectionController.setKp(xyAngleController.getKp());
         MasqMechanumDriveTrain.angleCorrectionController.setKi(xyAngleController.getKi());
