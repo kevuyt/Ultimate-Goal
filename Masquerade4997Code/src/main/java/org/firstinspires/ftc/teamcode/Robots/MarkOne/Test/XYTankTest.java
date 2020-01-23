@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -32,9 +30,6 @@ public class XYTankTest extends MasqLinearOpMode {
         }
         waitForStart();
 
-
-        robot.foundationHook.raise();
-        sleep(10);
         /*MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(0, 10, 0), 1,
                 0, 0.7, 10, 0.01);
         MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(20, 30, 90), 1,
@@ -45,7 +40,7 @@ public class XYTankTest extends MasqLinearOpMode {
                 0, 0.3,10, 0.02);
 
         //robot.xyPathTank(p0, p1, p2, p3);
-        robot.xyPathTank(p0, p1, p2, p3);*/
+        robot.xyPathTank(p0, p1, p2, p3);
         robot.foundationHook.lower();
         sleep(1);
         MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(-20, 20, -45), 1,
@@ -58,6 +53,6 @@ public class XYTankTest extends MasqLinearOpMode {
         robot.xyPathTank(4, p0, p1);
         robot.foundationHook.raise();
         sleep(1);
-        //robot.gotoXY(new MasqPoint(-40, 20, 90));
+        //robot.gotoXY(new MasqPoint(-40, 20, 90));*/
     }
 }

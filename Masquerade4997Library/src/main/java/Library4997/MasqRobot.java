@@ -348,7 +348,7 @@ public abstract class MasqRobot {
 
     public void xyPath(double lookAhead, MasqWayPoint... points) {
         List<MasqWayPoint> pointsWithRobot = new ArrayList<>(Arrays.asList(points));
-        pointsWithRobot.add(0,getCurrentWayPoint());
+        pointsWithRobot.add(0, getCurrentWayPoint());
         MasqMechanumDriveTrain.angleCorrectionController.setKp(xyAngleController.getKp());
         MasqMechanumDriveTrain.angleCorrectionController.setKi(xyAngleController.getKi());
         MasqMechanumDriveTrain.angleCorrectionController.setKd(xyAngleController.getKd());
@@ -381,9 +381,12 @@ public abstract class MasqRobot {
                 tracker.updateSystem();
                 dash.create("X: ", tracker.getGlobalX());
                 dash.create("Y: ", tracker.getGlobalY());
+                dash.create("H: ", tracker.getHeading());
                 dash.create("LEFT POWER: ", driveTrain.leftDrive.getPower());
                 dash.create("RIGHT POWER: ", driveTrain.rightDrive.getPower());
                 dash.create("Angle: ", pathAngle + tracker.getHeading());
+                dash.create("TargetHeading: ", pointsWithRobot.get(index).getH());
+                dash.create("speed: ", speed * 0.7);
                 dash.update();
             }
             index++;
@@ -447,22 +450,6 @@ public abstract class MasqRobot {
 
                 tracker.updateSystem();
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-                dash.create("Size: ", pointsWithRobot.size());
-                dash.create("Index: ", index);
-                dash.create("Approaching Final Pos: ", approachingFinalPos);
-                dash.create("Tank Mode: ", tankMode);
-                dash.create("X: ", tracker.getGlobalX());
-                dash.create("Y: ", tracker.getGlobalY());
-                dash.create("H: ", -tracker.getHeading());
-                dash.create("LAx: ", lookahead.getX());
-                dash.create("LAy: ", lookahead.getY());
-                dash.create("LEFT POWER: ", leftPower);
-                dash.create("RIGHT POWER: ", rightPower);
-                dash.create("Path Angle (Angular Error): ", pathAngle);
-                dash.create("Power Adjustment: ", powerAdjustment);
-                dash.create("Target Heading: ", pointsWithRobot.get(index).getH());
-                dash.create("KP: ", travelAngleController.getKp());
-                dash.update();
             }
             index++;
         }

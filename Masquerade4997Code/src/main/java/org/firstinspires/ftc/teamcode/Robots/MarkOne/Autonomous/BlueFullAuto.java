@@ -93,8 +93,9 @@ public class BlueFullAuto extends MasqLinearOpMode {
         robot.xyPath(bridge1, bridge2, foundation);
         //robot.sideGrabber.rightLowMid(0);
         //robot.sideGrabber.rightOpen(0.5);
+
         robot.turnRelative(90, Direction.LEFT, 1.5);
-        robot.gotoXY(robot.tracker.getGlobalX(), robot.tracker.getGlobalY() + 7,
+        robot.gotoXY(robot.tracker.getGlobalX(), robot.tracker.getGlobalY() + 5,
                 robot.tracker.getHeading(), 1, 0.5, 1);
         robot.foundationHook.lower();
         sleep(1);
@@ -108,7 +109,9 @@ public class BlueFullAuto extends MasqLinearOpMode {
                 0, 0.7, 10, 0.01);
         robot.xyPathTank(2, p1, p2);
         robot.foundationHook.raise();
-        MasqWayPoint push = new MasqWayPoint(new MasqPoint(-80, 20, 90), 1);
-        robot.xyPath(push, park);
+        robot.xyPath(park);
+        dash.create("Completed Path");
+        dash.update();
+        sleep(10);
     }
 }
