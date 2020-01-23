@@ -425,7 +425,9 @@ public abstract class MasqRobot {
                 MasqVector lookaheadDisplacement = current.displacement(lookahead);
                 double pathAngle = headingUnitVector.angleTan(lookaheadDisplacement);
                 speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
-                speed = scaleNumber(speed, pointsWithRobot.get(index).getMinVelocity(), pointsWithRobot.get(index).getMaxVelocity());
+                double maxVelocity = 1;
+                if (pointsWithRobot.get(index).getMaxVelocity() != 0) maxVelocity = pointsWithRobot.get(index).getMaxVelocity();
+                speed = scaleNumber(speed, pointsWithRobot.get(index).getMinVelocity(), maxVelocity);
                 double powerAdjustment = travelAngleController.getOutput(pathAngle);
                 double leftPower = speed + powerAdjustment;
                 double rightPower = speed - powerAdjustment;

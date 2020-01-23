@@ -26,15 +26,17 @@ public class XYTankTest extends MasqLinearOpMode {
             dash.update();
         }
         waitForStart();
-        MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(0, 10, 0), 1);
 
-        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(15, 30, 90), 1,
+        MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(0, 10, 0), 1,
                 0, 0.7, 10, 0.01);
-        MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(25, 30, 90), 1,
-                0, 0.7,10, 0.01);
+        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(20, 30, 90), 1,
+                0, 0.7, 10, 0.02);
+        MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(35, 60, 30), 1,
+                0, 0.7, 10, 0.02);
         MasqWayPoint p3 = new MasqWayPoint(new MasqPoint(40, 80, 0), 1,
-                0, 0.7,10, 0.01);
+                0, 0.7,10, 0.02);
 
+        //robot.xyPathTank(p0, p1, p2, p3);
         robot.xyPathTank(p0, p1, p2, p3);
     }
 }
