@@ -9,7 +9,7 @@ import Library4997.MasqResources.MasqMath.MasqVector;
  * Project: MasqLib
  */
 public class MasqWayPoint implements MasqHardware {
-    private double x, y, h, radius, minVelocity, lookAhead, angularCorrectionSpeed;
+    private double x, y, h, radius, minVelocity, maxVelocity, lookAhead, angularCorrectionSpeed;
 
 
     public MasqWayPoint(MasqPoint p) {
@@ -19,22 +19,22 @@ public class MasqWayPoint implements MasqHardware {
         this.radius = 0.1;
         this.minVelocity = 0;
     }
-    public MasqWayPoint(MasqPoint p, double radius) {
+    public MasqWayPoint(MasqPoint p, double targetRadius) {
         this.x = p.getX();
         this.y = p.getY();
         this.h = p.getH();
-        this.radius = radius;
+        this.radius = targetRadius;
         minVelocity = 0;
     }
-    public MasqWayPoint(MasqPoint p, double radius, double minVelocity) {
+    public MasqWayPoint(MasqPoint p, double targetRadius, double minVelocity) {
         this.x = p.getX();
         this.y = p.getY();
         this.h = p.getH();
-        this.radius = radius;
+        this.radius = targetRadius;
         this.minVelocity = minVelocity;
     }
 
-    public MasqWayPoint(MasqPoint p, double radius, double minVelocity, double lookAhead, double angularCorrectionSpeed) {
+    public MasqWayPoint(MasqPoint p, double radius, double minVelocity, double maxVelocity, double lookAhead, double angularCorrectionSpeed) {
         this.x = p.getX();
         this.y = p.getY();
         this.h = p.getH();
@@ -94,6 +94,14 @@ public class MasqWayPoint implements MasqHardware {
 
     public double getMinVelocity() {
         return minVelocity;
+    }
+
+    public double getMaxVelocity() {
+        return maxVelocity;
+    }
+
+    public void setMaxVelocity(double maxVelocity) {
+        this.maxVelocity = maxVelocity;
     }
 
     public void setMinVelocity(double minVelocity) {

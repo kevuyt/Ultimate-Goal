@@ -18,19 +18,23 @@ public class XYTankTest extends MasqLinearOpMode {
     public void runLinearOpMode() {
         robot.init(hardwareMap);
         robot.initializeAutonomous();
+        robot.sideGrabber.teleReset();
         while (!opModeIsActive()) {
             dash.create("Hello, this is a test for a tank based gotoXY.");
             dash.create(robot.tracker);
             robot.tracker.updateSystem();
             dash.update();
         }
-
         waitForStart();
-        MasqWayPoint p = new MasqWayPoint(new MasqPoint(0, 10, 0), 1);
-        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(40, 40, 90), 1,
-                0, 10, 0.02);
-        MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(40, 80, 0), 1,
-                0, 10, 0.01);
-        robot.xyPathTank(p, p1, p2);
+        MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(0, 10, 0), 1);
+
+        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(15, 30, 90), 1,
+                0, 0.7, 10, 0.01);
+        MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(25, 30, 90), 1,
+                0, 0.7,10, 0.01);
+        MasqWayPoint p3 = new MasqWayPoint(new MasqPoint(40, 80, 0), 1,
+                0, 0.7,10, 0.01);
+
+        robot.xyPathTank(p0, p1, p2, p3);
     }
 }
