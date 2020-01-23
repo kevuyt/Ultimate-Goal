@@ -15,7 +15,6 @@ public class MasqServo implements MasqHardware{
     private Servo servo;
     private String nameServo;
     MasqClock clock = new MasqClock();
-    private double targetPosition;
     private double max = 1, min = 0;
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
@@ -30,7 +29,6 @@ public class MasqServo implements MasqHardware{
         servo.setDirection(direction);
     }
     public void setPosition (double position) {
-        targetPosition = position;
         adjustedPosition = ((max - min) * position) + min;
         servo.setPosition(adjustedPosition);
     }
@@ -54,7 +52,7 @@ public class MasqServo implements MasqHardware{
     public void setMax(double max){this.max = max;}
     public void setMin(double min){this.min = min;}
     public void scaleRange (double min, double max) {
-        servo.scaleRange(min,max);
+        servo.scaleRange(min, max);
     }
     public void sleep (int time) throws InterruptedException {
         servo.wait(time);

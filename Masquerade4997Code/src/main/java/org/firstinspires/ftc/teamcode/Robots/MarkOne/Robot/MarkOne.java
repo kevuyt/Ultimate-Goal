@@ -97,7 +97,7 @@ public class MarkOne extends MasqRobot {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
-        foundationHook.raise();
+        //foundationHook.raise();
         sideGrabber.reset();
         capper.setPosition(0);
     }
