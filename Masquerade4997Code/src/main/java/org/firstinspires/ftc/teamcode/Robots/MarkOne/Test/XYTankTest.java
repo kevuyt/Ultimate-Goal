@@ -14,7 +14,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "XYTankTest", group = "MarkOne")
 public class XYTankTest extends MasqLinearOpMode {
     public MarkOne robot = new MarkOne();
-    private double hookPos;
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap);
@@ -45,8 +44,6 @@ public class XYTankTest extends MasqLinearOpMode {
         MasqWayPoint p1 = new MasqWayPoint().setPoint(-36,18,-90).setModeSwitchRadius(5)
                 .setPointSwitchRadius(5).setMinVelocity(0);
 
-
-
-        robot.xyPathTank(20, p0, p1);
+        robot.xyPath(20, p0, p1);
     }
 }

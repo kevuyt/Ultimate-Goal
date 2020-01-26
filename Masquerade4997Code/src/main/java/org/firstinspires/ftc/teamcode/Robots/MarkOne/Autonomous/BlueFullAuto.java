@@ -63,7 +63,7 @@ public class BlueFullAuto extends MasqLinearOpMode {
         MasqWayPoint bridge1kk = new MasqWayPoint(new MasqPoint(-47, 20, -90), 5, 0.7);
         MasqWayPoint bridge2kk = new MasqWayPoint(new MasqPoint(-57, 20, -90), 5, 0).setMaxVelocity(0.7f);
         MasqWayPoint bridge3kk = new MasqWayPoint(new MasqPoint(-47, 25, -90), 5, 0);
-        robot.xyPathTank(20, bridge1kk, bridge2kk);
+        robot.xyPath(20, bridge1kk, bridge2kk);
 
         /*if (position == LEFT) runSimultaneously(
                 () -> mainAuto(stones.get(1), stones.get(4)),
@@ -111,7 +111,7 @@ public class BlueFullAuto extends MasqLinearOpMode {
                 0, 0.7, 10, 0.01);
         MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(-68, 5, 90), 1,
                 0, 0.7, 10, 0.01);
-        robot.xyPathTank(2, p1, p2);
+        robot.xyPath(2, p1, p2);
         robot.foundationHook.raise();
         robot.xyPath(park);
         dash.create("Completed Path");
