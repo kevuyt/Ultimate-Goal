@@ -4,8 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqMath.MasqPoint;
+import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPointV2;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -32,15 +31,22 @@ public class XYTankTest extends MasqLinearOpMode {
         }
         waitForStart();
 
-        MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(0, 10, 0), 1,
-                0, 0.7, 10, 0.01);
+        /*MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(0, 5, 0), 1,
+                0, 0.7, 5, 0.01);
         MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(20, 30, 90), 1,
-                0, 0.7, 10, 0.02);
+                0, 0.7, 5, 0.02);
         MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(35, 60, 0), 1,
-                0, 0.5, 10, 0.02);
+                0, 0.5, 5, 0.02);
         MasqWayPoint p3 = new MasqWayPoint(new MasqPoint(40, 80, 0), 1,
-                0, 0.3,10, 0.02);
+                0, 0.3,5, 0.02);*/
 
-        robot.xyPathTank(20, p0, p1, p2, p3);
+        MasqWayPointV2 p0 = new MasqWayPointV2().setPoint(-0,18,0).setModeSwitchRadius(5)
+                .setPointSwitchRadius(5);
+        MasqWayPointV2 p1 = new MasqWayPointV2().setPoint(-36,18,-90).setModeSwitchRadius(5)
+                .setPointSwitchRadius(5).setMinVelocity(0);
+
+
+
+        robot.xyPathTankv2(20, p0, p1);
     }
 }

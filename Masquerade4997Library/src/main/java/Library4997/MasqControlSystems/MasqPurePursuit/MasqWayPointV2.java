@@ -9,10 +9,10 @@ import Library4997.MasqResources.MasqMath.MasqPoint;
  */
 public class MasqWayPointV2 implements MasqHardware {
     private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
-            minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10, angularCorrectionSpeed = 0.02;
+            minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10, angularCorrectionSpeed = 0.015;
 
     private String name;
-    private PointMode switchMode;
+    private PointMode switchMode = PointMode.SWITCH;
 
     public enum PointMode {
         MECH, TANK, SWITCH
