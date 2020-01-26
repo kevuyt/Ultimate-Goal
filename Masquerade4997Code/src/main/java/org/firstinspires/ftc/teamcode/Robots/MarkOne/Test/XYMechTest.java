@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqMath.MasqPoint;
+
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -26,8 +26,6 @@ public class XYMechTest extends MasqLinearOpMode {
         }
 
         waitForStart();
-        //MasqWayPoint p = new MasqWayPoint(new MasqPoint(0, 20), 1);
-        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(30, 30, -45));
-        robot.xyPath(p1);
+
     }
 }
