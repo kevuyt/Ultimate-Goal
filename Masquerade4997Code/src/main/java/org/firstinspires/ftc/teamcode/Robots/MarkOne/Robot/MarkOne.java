@@ -9,14 +9,12 @@ import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneSid
 import Library4997.MasqCV.MasqCV;
 import Library4997.MasqCV.detectors.skystone.SkystoneDetector;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqPositionTrackerV2;
-import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
@@ -100,9 +98,5 @@ public class MarkOne extends MasqRobot {
         //foundationHook.raise();
         sideGrabber.reset();
         capper.setPosition(0);
-    }
-
-    public MasqWayPoint getCurrentWayPoint() {
-        return new MasqWayPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading()), 10, 1);
     }
 }
