@@ -10,7 +10,7 @@ import Library4997.MasqResources.MasqMath.MasqVector;
  */
 public class MasqWayPoint implements MasqHardware {
     private double x, y, h, radius, minVelocity, maxVelocity, lookAhead, angularCorrectionSpeed;
-
+    private String name;
 
     public MasqWayPoint(MasqPoint p) {
         this.x = p.getX();
@@ -104,6 +104,11 @@ public class MasqWayPoint implements MasqHardware {
         this.maxVelocity = maxVelocity;
     }
 
+    public MasqWayPoint setMaxVelocity(float maxVelocity) {
+        this.maxVelocity = maxVelocity;
+        return this;
+    }
+
     public void setMinVelocity(double minVelocity) {
         this.minVelocity = minVelocity;
     }
@@ -112,9 +117,14 @@ public class MasqWayPoint implements MasqHardware {
         return new MasqVector(getX(), getY());
     }
 
+    public MasqWayPoint setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override

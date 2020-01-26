@@ -93,6 +93,11 @@ public class MasqVector implements MasqHardware {
         return Math.toDegrees(Math.atan(getY() / getX()));
     }
 
+    public MasqVector setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     @Override
     public String getName() {
         return name;
@@ -103,7 +108,6 @@ public class MasqVector implements MasqHardware {
         return new String[]{
                 "X: " + getX(),
                 "Y: " + getY(),
-                "Direction: " + getDirection()
         };
     }
 }

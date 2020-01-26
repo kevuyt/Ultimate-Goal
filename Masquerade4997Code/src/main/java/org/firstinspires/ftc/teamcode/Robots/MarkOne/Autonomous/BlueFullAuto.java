@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
-import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,10 +43,10 @@ public class BlueFullAuto extends MasqLinearOpMode {
         stones.add(new MasqPoint(15, 30, 90));
         stones.add(new MasqPoint(22, 28.5, 90));
 
-        robot.cv.start();
+        //robot.cv.start();
 
         while (!opModeIsActive()) {
-            position = CVInterpreter.getPosition(robot.cv.detector);
+            //position = CVInterpreter.getPosition(robot.cv.detector);
             dash.create("Skystone Position: ", position);
             dash.update();
         }
@@ -56,10 +55,15 @@ public class BlueFullAuto extends MasqLinearOpMode {
 
         robot.sideGrabber.rightUp(0);
         robot.sideGrabber.leftUp(0);
-        robot.sideGrabber.rightOpen(0);
+        robot.sideGrabber.rightClose(0);
         robot.sideGrabber.leftClose(0);
 
-        mainAuto(stones.get(1), stones.get(4));
+        //mainAuto(stones.get(1), stones.get(4));
+        robot.gotoXY(stones.get(1));
+        MasqWayPoint bridge1kk = new MasqWayPoint(new MasqPoint(-47, 20, -90), 5, 0.7);
+        MasqWayPoint bridge2kk = new MasqWayPoint(new MasqPoint(-57, 20, -90), 5, 0).setMaxVelocity(0.7f);
+        MasqWayPoint bridge3kk = new MasqWayPoint(new MasqPoint(-47, 25, -90), 5, 0);
+        robot.xyPathTank(20, bridge1kk, bridge2kk);
 
         /*if (position == LEFT) runSimultaneously(
                 () -> mainAuto(stones.get(1), stones.get(4)),

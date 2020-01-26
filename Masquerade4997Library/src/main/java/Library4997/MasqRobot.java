@@ -429,7 +429,7 @@ public abstract class MasqRobot {
                     else break;
                 }
                 MasqVector lookaheadDisplacement = current.displacement(lookahead);
-                double pathAngle = headingUnitVector.angleTan(lookaheadDisplacement);
+                double pathAngle = MasqUtils.adjustAngle(headingUnitVector.angleTan(lookaheadDisplacement));
                 speed = xySpeedController.getOutput(current.displacement(target).getMagnitude());
                 double maxVelocity = 1;
                 if (pointsWithRobot.get(index).getMaxVelocity() != 0) maxVelocity = pointsWithRobot.get(index).getMaxVelocity();
@@ -437,19 +437,29 @@ public abstract class MasqRobot {
                 double powerAdjustment = travelAngleController.getOutput(pathAngle);
                 double leftPower = speed + powerAdjustment;
                 double rightPower = speed - powerAdjustment;
-                boolean tankMode = !current.equal(10, target);
 
-                if (approachingFinalPos || !tankMode) {
+                if (approachingFinalPos || current.equal(10, target)) {
                     pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
                     driveTrain.setVelocityMECH(
                             pathAngle + tracker.getHeading(), speed,
                             -pointsWithRobot.get(index).getH()
                     );
                 }
-                else driveTrain.setPower(leftPower, rightPower);
+                else driveTrain.setVelocity(leftPower, rightPower);
+
+                dash.create("Left Power: ", leftPower);
+                dash.create("Right Power: " , rightPower);
+                dash.create("Power Adjustment: ", powerAdjustment);
+                dash.create("pathAngle: ", pathAngle);
 
                 tracker.updateSystem();
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
+                int i = 0;
+                for (MasqWayPoint point : pointsWithRobot) {
+                    dash.create(point.setName("Index: " + i));
+                    i++;
+                }
+                dash.update();
             }
             index++;
         }
@@ -541,5 +551,8 @@ public abstract class MasqRobot {
     }
     public MasqWayPoint getCurrentWayPoint() {
         return new MasqWayPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading()), 10, 1);
+    }
+    public MasqWayPoint getCurrentWayPointNormalized() {
+        return new MasqWayPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), -tracker.getHeading()), 10, 1);
     }
 }

@@ -69,8 +69,8 @@ public class MarkOne extends MasqRobot {
         MasqUtils.turnController = new MasqPIDController(0.015);
         MasqUtils.velocityTeleController = new MasqPIDController(0.001);
         MasqUtils.velocityAutoController = new MasqPIDController(0.004);
-        MasqUtils.xySpeedController = new MasqPIDController(0.04, 0, 0);
-        MasqUtils.xyAngleController = new MasqPIDController(0.05, 0, 0);
+        MasqUtils.xySpeedController = new MasqPIDController(0.02, 0, 0);
+        MasqUtils.xyAngleController = new MasqPIDController(0.03, 0, 0);
         lift.encoder.setWheelDiameter(1);
         tapeMeasure.setWheelDiameter(2);
         intake.setWheelDiameter(2);

@@ -1,15 +1,20 @@
 package Library4997.MasqResources;
 
 import android.graphics.Point;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.opencv.core.Rect;
+
 import java.util.Locale;
+
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqServos.MasqServoSystem;
+import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 
@@ -145,9 +150,11 @@ public class MasqUtils {
     }
     public static MasqVector getLookAhead(MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
         MasqVector pathDisplacement = initial.displacement(finalPos);
+        DashBoard.getDash().create(pathDisplacement.setName("pathDisplacement"));
         MasqVector untransformedProjection = new MasqVector(
                 current.projectOnTo(pathDisplacement).getX() - initial.getX(),
                 current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
+        DashBoard.getDash().create(untransformedProjection.setName("untransformedProjection"));
         MasqVector projection = new MasqVector(
                 untransformedProjection.getX() + initial.getX(),
                 untransformedProjection.getY() + initial.getY());
