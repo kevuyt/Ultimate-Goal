@@ -36,7 +36,7 @@ public class MarkOneFoundationHook implements MasqSubSystem {
         rightHook.setPosition(0.8);
         leftHook.setPosition(0);
     }
-    private void mid() {
+    public void mid() {
         rightHook.setPosition(0.6);
         leftHook.setPosition(0.4);
     }

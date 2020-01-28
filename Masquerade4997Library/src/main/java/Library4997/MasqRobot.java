@@ -26,6 +26,7 @@ import static Library4997.MasqResources.MasqUtils.DEFAULT_TIMEOUT;
 import static Library4997.MasqResources.MasqUtils.angleController;
 import static Library4997.MasqResources.MasqUtils.driveController;
 import static Library4997.MasqResources.MasqUtils.scaleNumber;
+import static Library4997.MasqResources.MasqUtils.tolerance;
 import static Library4997.MasqResources.MasqUtils.turnController;
 import static Library4997.MasqResources.MasqUtils.velocityAutoController;
 import static Library4997.MasqResources.MasqUtils.velocityTeleController;
@@ -183,8 +184,8 @@ public abstract class MasqRobot {
             error = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
             power = turnController.getOutput(error);
             if (Math.abs(power) >= 1) power /= Math.abs(power);
-            if (left) leftPower = -power;
-            if (right) rightPower = power;
+            if (left) leftPower = power;
+            if (right) rightPower = -power;
             driveTrain.setVelocity(leftPower, rightPower);
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", tracker.getHeading());
@@ -217,21 +218,21 @@ public abstract class MasqRobot {
     }
 
     public void turnAbsolute(double angle,  double timeout, double sleepTime, double kp, double ki, double kd) {
-        double targetAngle = MasqUtils.adjustAngle(angle);
+        //double targetAngle = MasqUtils.adjustAngle(angle);
         double acceptableError = 2;
-        double error = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
+        double error = MasqUtils.adjustAngle(angle - tracker.getHeading());
         double power;
         turnController.setConstants(kp, ki, kd);
         timeoutClock.reset();
         while (opModeIsActive() && (MasqUtils.adjustAngle(Math.abs(error)) > acceptableError)
                 && !timeoutClock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
-            error = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
+            error = MasqUtils.adjustAngle(angle - tracker.getHeading());
             power = turnController.getOutput(error);
             if (Math.abs(power) >= 1) power /= Math.abs(power);
             driveTrain.setVelocity(-power, power);
             dash.create("KP: ", kp);
             dash.create("RIGHT POWER: " ,power);
-            dash.create("TargetAngle", targetAngle);
+            dash.create("TargetAngle", angle);
             dash.create("Heading", tracker.getHeading());
             dash.create("AngleLeftToCover", error);
             dash.update();
@@ -415,6 +416,7 @@ public abstract class MasqRobot {
                 index < pointsWithRobot.size()) {
             double lookAheadDistance = pointsWithRobot.get(index).getLookAhead();
             travelAngleController.setKp(pointsWithRobot.get(index).getAngularCorrectionSpeed());
+            MasqMechanumDriveTrain.angleCorrectionController.setKp(pointsWithRobot.get(index).getAngularCorrectionSpeed());
             MasqVector target = new MasqVector(pointsWithRobot.get(index).getX(), pointsWithRobot.get(index).getY());
             MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             MasqVector initial = new MasqVector(pointsWithRobot.get(index - 1).getX(), pointsWithRobot.get(index - 1).getY());

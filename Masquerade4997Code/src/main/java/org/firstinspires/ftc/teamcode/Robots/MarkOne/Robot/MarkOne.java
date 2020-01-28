@@ -20,6 +20,8 @@ import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
+import static Library4997.MasqCV.MasqCV.Cam.WEBCAM;
+
 
 /**
  * Created by Archishmaan Peyyety on 2019-08-06.
@@ -64,11 +66,11 @@ public class MarkOne extends MasqRobot {
         driveTrain.setTracker(tracker);
         MasqUtils.driveController = new MasqPIDController(0.005);
         MasqUtils.angleController = new MasqPIDController(0.003);
-        MasqUtils.turnController = new MasqPIDController(0.015);
+        MasqUtils.turnController = new MasqPIDController(0.01);
         MasqUtils.velocityTeleController = new MasqPIDController(0.001);
         MasqUtils.velocityAutoController = new MasqPIDController(0.004);
-        MasqUtils.xySpeedController = new MasqPIDController(0.02, 0, 0);
-        MasqUtils.xyAngleController = new MasqPIDController(0.01, 0, 0);
+        MasqUtils.xySpeedController = new MasqPIDController(0.05, 0, 0);
+        MasqUtils.xyAngleController = new MasqPIDController(0.02, 0, 0);
         lift.encoder.setWheelDiameter(1);
         tapeMeasure.setWheelDiameter(2);
         intake.setWheelDiameter(2);
@@ -78,9 +80,12 @@ public class MarkOne extends MasqRobot {
         lift.setKp(0.007);
         scaleServos();
         resetServos();
+    }
+
+    public void initCamera(HardwareMap hardwareMap) {
         SkystoneDetector detector = new SkystoneDetector();
         detector.setClippingMargins(100,80,110,70);
-        cv = new MasqCV(detector, MasqCV.Cam.WEBCAM, hardwareMap);
+        cv = new MasqCV(detector, WEBCAM, hardwareMap);
     }
 
     private void scaleServos() {
@@ -91,11 +96,11 @@ public class MarkOne extends MasqRobot {
         sideGrabber.scaleServos();
     }
 
-    public void resetServos() {
+    private void resetServos() {
         blockPusher.setPosition(0);
         blockRotater.setPosition(0);
         blockGrabber.setPosition(1);
-        //foundationHook.raise();
+        foundationHook.raise();
         sideGrabber.reset();
         capper.setPosition(0);
     }
