@@ -7,6 +7,7 @@ import org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.SubSystems.Foundatio
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
+import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
@@ -15,7 +16,7 @@ import Library4997.MasqRobot;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
 
-import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.CAP_UP;
+import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.CAP_STORE;
 import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.GRAB_INIT;
 import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.PIVOT_INIT;
 
@@ -26,10 +27,12 @@ import static org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Constants.PIV
 public class Midnight extends MasqRobot {
     public FoundationHook foundationHook;
     public MasqServo grabber, pivot, capstone;
+    public MasqMotor lift;
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         capstone = new MasqServo("capstone", hardwareMap);
         pivot = new MasqServo("pivot", hardwareMap);
+        lift = new MasqMotor("lift", MasqMotorModel.ORBITAL20, hardwareMap);
         grabber = new MasqServo("grabber", hardwareMap);
         foundationHook = new FoundationHook(hardwareMap);
         MasqMotorSystem left = new MasqMotorSystem("left", MasqMotorModel.ORBITAL20, DcMotor.Direction.REVERSE, hardwareMap);
@@ -58,7 +61,7 @@ public class Midnight extends MasqRobot {
 
     }
     public void resetServos() {
-        capstone.setPosition(CAP_UP);
+        capstone.setPosition(CAP_STORE);
         foundationHook.hooksUp();
         pivot.setPosition(PIVOT_INIT);
         grabber.setPosition(GRAB_INIT);

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
@@ -12,6 +13,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "XYTankTest", group = "MarkOne")
+@Disabled
 public class XYTankTest extends MasqLinearOpMode {
     public MarkOne robot = new MarkOne();
     @Override
@@ -29,15 +31,6 @@ public class XYTankTest extends MasqLinearOpMode {
             dash.update();
         }
         waitForStart();
-
-        /*MasqWayPoint p0 = new MasqWayPoint(new MasqPoint(0, 5, 0), 1,
-                0, 0.7, 5, 0.01);
-        MasqWayPoint p1 = new MasqWayPoint(new MasqPoint(20, 30, 90), 1,
-                0, 0.7, 5, 0.02);
-        MasqWayPoint p2 = new MasqWayPoint(new MasqPoint(35, 60, 0), 1,
-                0, 0.5, 5, 0.02);
-        MasqWayPoint p3 = new MasqWayPoint(new MasqPoint(40, 80, 0), 1,
-                0, 0.3,5, 0.02);*/
 
         MasqWayPoint p0 = new MasqWayPoint().setPoint(-0,18,0).setModeSwitchRadius(5)
                 .setPointSwitchRadius(5);

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter;
@@ -21,6 +22,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
  * Created by Keval Kataria on 1/4/2020
  */
 @Autonomous(name = "Blue Two Stone", group = "MarkOne")
+@Disabled
 public class BlueTwoStone extends MasqLinearOpMode{
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;

@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Robots.Midnight.Test;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
@@ -13,7 +12,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "ConstantsProgrammer", group = "ZZZ")
-@Disabled
 
 public class ConstantsProgrammer extends MasqLinearOpMode {
     public Midnight robot = new Midnight();
@@ -23,7 +21,7 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
         robot.init(hardwareMap);
 
         while (!opModeIsActive()) {
-            dash.create("Bruh moment");
+            dash.create("Constants Programmer");
             dash.update();
         }
 
@@ -54,11 +52,11 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             capstone = Range.clip(capstone,0,1);
             robot.capstone.setPosition(capstone);
 
-            dash.create("Left Hook Position: ", leftHookPos);
-            dash.create("Right Hook Position: ", rightHookPos);
-            dash.create("Grabber Position: ", grabberPos);
-            dash.create("Pivot Position: ", pivotPos);
-            dash.create("Capstone Position: ", capstone);
+            dash.create("Left Hook Position Cont 1 (+A, -Y): ", leftHookPos);
+            dash.create("Right Hook Position Cont 1 (+X, -B): ", rightHookPos);
+            dash.create("Grabber Position Cont 1 (+RB, -RT): ", grabberPos);
+            dash.create("Pivot Position Cont 1 (+LB, -LT): ", pivotPos);
+            dash.create("Capstone Position Cont 2 (+A, -Y): ", capstone);
             dash.update();
         }
     }
