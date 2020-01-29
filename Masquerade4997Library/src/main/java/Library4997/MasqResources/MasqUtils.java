@@ -100,11 +100,11 @@ public class MasqUtils {
         return value;
     }
     public static void toggle(boolean button, MasqServo servo, double prevPos) {
-        /*if (tolerance(servo.getPosition(), prevPos,0.01) && button) {
+        if (tolerance(servo.getPosition(), prevPos,0.01) && button) {
             if (tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
             else if (tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
-        }*/
-        if(button){
+        }
+        /*if(button){
             currState = true;
         }
         else{
@@ -121,7 +121,7 @@ public class MasqUtils {
         }
         else{
             servo.setPosition(0);
-        }
+        }*/
     }
     public static void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
         for (MasqServo servo : servoSystem.servos) {

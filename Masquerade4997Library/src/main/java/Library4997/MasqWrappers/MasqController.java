@@ -21,6 +21,12 @@ public class MasqController implements Runnable{
         this.name = name;
         this.gamepad = g;
     }
+
+    public enum Button {
+      A, B, X, Y,
+      D_UP, D_DOWN, D_LEFT, D_RIGHT
+    }
+
     public boolean a() {return gamepad.a;}
     public boolean x() {return gamepad.x;}
     public boolean y() {return gamepad.y;}
@@ -154,6 +160,28 @@ public class MasqController implements Runnable{
                 "D_LEFT: " + dPadLeft(),
                 "D_RIGHT: " + dPadRight(),
         };
+    }
+
+    public boolean getButton(Button b) {
+        switch (b) {
+            case X:
+                return x();
+            case A:
+                return a();
+            case B:
+                return b();
+            case Y:
+                return y();
+            case D_UP:
+                return dPadUp();
+            case D_DOWN:
+                return dPadDown();
+            case D_LEFT:
+                return dPadLeft();
+            case D_RIGHT:
+                return dPadRight();
+        }
+        return false;
     }
 
     @Override
