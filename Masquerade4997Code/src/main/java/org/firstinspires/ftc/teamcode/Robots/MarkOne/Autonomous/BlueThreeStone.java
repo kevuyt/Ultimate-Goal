@@ -100,12 +100,9 @@ public class BlueThreeStone extends MasqLinearOpMode {
         robot.sideGrabber.rightLowMid(0);
     }
 
-    /*private void foundationPark() {
-        sleep(0.25);
+    private void foundationPark() {
         robot.turnAbsolute(170,1.5);
-        //robot.xyPath(2, new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
-        //        robot.tracker.getGlobalY()+5,170).setMinVelocity(0).setTimeout(1));
-        robot.drive(5, Direction.BACKWARD);
+        robot.drive(7, Direction.BACKWARD);
         robot.foundationHook.lower();
         sleep();
         MasqWayPoint p1 = new MasqWayPoint()
@@ -117,22 +114,23 @@ public class BlueThreeStone extends MasqLinearOpMode {
         sleep();
         MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90);
         robot.xyPath(2, park);
-    }*/
-    private void foundationPark() {
-        sleep(0.25);
+    }
+
+    /*private void foundationPark() {
         robot.turnAbsolute(170,1.5);
         robot.drive(7, Direction.BACKWARD);
         robot.foundationHook.lower();
         sleep();
         MasqWayPoint p1 = new MasqWayPoint()
-                .setPoint(new MasqPoint(-92, 5, 170))
+                .setPoint(new MasqPoint(-92, 0, 170))
                 .setMinVelocity(0.5)
                 .setModeSwitchRadius(5);
         robot.xyPath(3, p1);
         robot.foundationHook.raise();
         sleep();
-        MasqWayPoint exit = new MasqWayPoint().setPoint(-80,5,175).setSwitchMode(MECH);
+        MasqWayPoint exit = new MasqWayPoint().setPoint(-70,5,175).setSwitchMode(MECH);
         MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90).setSwitchMode(MECH);
         robot.xyPath(4, exit, park);
-    }
+    }*/
 }
+

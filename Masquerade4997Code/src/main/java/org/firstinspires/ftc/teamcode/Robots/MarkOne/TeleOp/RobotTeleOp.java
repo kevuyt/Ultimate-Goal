@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Robots.MarkOne.TeleOp;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
@@ -12,7 +11,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 9/14/2019
  */
 @TeleOp(name = "RobotTeleOp", group = "MarkOne")
-@Disabled
 public class RobotTeleOp extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
@@ -39,7 +37,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             if (controller1.rightBumper() || controller1.leftBumper())
                 robot.MECH(controller1,0.5, 0.2);
-            else robot.MECH(controller1,1, 0.4);
+            else robot.MECH(controller1,1, 0.5);
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-1);
             else if (controller1.rightTriggerPressed()) robot.intake.setVelocity(1);
