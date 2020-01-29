@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -99,21 +100,39 @@ public class BlueThreeStone extends MasqLinearOpMode {
         robot.sideGrabber.rightLowMid(0);
     }
 
-    private void foundationPark() {
+    /*private void foundationPark() {
         sleep(0.25);
         robot.turnAbsolute(170,1.5);
-        robot.xyPath(2, new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
-                robot.tracker.getGlobalY()+5,170).setMinVelocity(0).setTimeout(1));
+        //robot.xyPath(2, new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
+        //        robot.tracker.getGlobalY()+5,170).setMinVelocity(0).setTimeout(1));
+        robot.drive(5, Direction.BACKWARD);
         robot.foundationHook.lower();
         sleep();
         MasqWayPoint p1 = new MasqWayPoint()
-                .setPoint(new MasqPoint(-75, 5, 90))
+                .setPoint(new MasqPoint(-80, 5, 80))
                 .setMinVelocity(0.5)
                 .setModeSwitchRadius(5);
-        robot.xyPath(2.5, p1);
+        robot.xyPath(3, p1);
         robot.foundationHook.raise();
         sleep();
         MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90);
         robot.xyPath(2, park);
+    }*/
+    private void foundationPark() {
+        sleep(0.25);
+        robot.turnAbsolute(170,1.5);
+        robot.drive(7, Direction.BACKWARD);
+        robot.foundationHook.lower();
+        sleep();
+        MasqWayPoint p1 = new MasqWayPoint()
+                .setPoint(new MasqPoint(-92, 5, 170))
+                .setMinVelocity(0.5)
+                .setModeSwitchRadius(5);
+        robot.xyPath(3, p1);
+        robot.foundationHook.raise();
+        sleep();
+        MasqWayPoint exit = new MasqWayPoint().setPoint(-80,5,175).setSwitchMode(MECH);
+        MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90).setSwitchMode(MECH);
+        robot.xyPath(4, exit, park);
     }
 }
