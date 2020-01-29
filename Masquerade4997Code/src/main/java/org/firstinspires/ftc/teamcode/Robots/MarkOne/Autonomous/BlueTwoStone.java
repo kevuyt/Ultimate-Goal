@@ -72,9 +72,9 @@ public class BlueTwoStone extends MasqLinearOpMode{
                 () -> robot.cv.stop()
         );
         else runSimultaneously(
-                    () -> mainAuto(stones.get(3), stones.get(6)),
-                    () -> robot.cv.stop()
-            );
+                () -> mainAuto(stones.get(3), stones.get(6)),
+                () -> robot.cv.stop()
+        );
     }
 
     private void mainAuto(MasqPoint stone1, MasqPoint stone2) {
