@@ -14,6 +14,7 @@ public class MasqWayPoint implements MasqHardware {
     private String name;
     private PointMode switchMode = PointMode.SWITCH;
 
+    private Runnable onComplete = null;
     public enum PointMode {
         MECH, TANK, SWITCH
     }
@@ -124,6 +125,11 @@ public class MasqWayPoint implements MasqHardware {
         return this;
     }
 
+    public MasqWayPoint setOnComplete(Runnable onComplete) {
+        this.onComplete = onComplete;
+        return this;
+    }
+
     public double getX() {
         return x;
     }
@@ -184,6 +190,10 @@ public class MasqWayPoint implements MasqHardware {
     public MasqWayPoint setName(String name) {
         this.name = name;
         return this;
+    }
+
+    public Runnable getOnComplete() {
+        return onComplete;
     }
 
     @Override

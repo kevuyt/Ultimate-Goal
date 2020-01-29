@@ -547,6 +547,8 @@ public abstract class MasqRobot {
                 }
                 dash.update();
             }
+            if (pointsWithRobot.get(index).getOnComplete() != null)
+                pointsWithRobot.get(index).getOnComplete().run();
             index++;
         }
         driveTrain.stopDriving();
