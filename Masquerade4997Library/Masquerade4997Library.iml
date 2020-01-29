@@ -102,7 +102,5 @@
     <orderEntry type="library" name="Gradle: :WirelessP2p-release:@aar" level="project" />
     <orderEntry type="module" module-name="FtcRobotController" />
     <orderEntry type="module" module-name="openCVLibrary3" />
-    <orderEntry type="module" module-name="FtcRobotController" />
-    <orderEntry type="module" module-name="openCVLibrary3" />
   </component>
 </module>

@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -22,7 +24,6 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
  * Created by Keval Kataria on 1/4/2020
  */
 @Autonomous(name = "Blue Three Stone", group = "MarkOne")
-@Disabled
 public class BlueThreeStone extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
@@ -30,8 +31,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(-18, 18, -90).setSwitchMode(MECH),
             bridge2 = new MasqWayPoint().setPoint(-59, 22.5, -90),
-            foundation = new MasqWayPoint().setPoint(-90, 30, -90).setTargetRadius(3)
-                    .setMinVelocity(0.3);
+            foundation = new MasqWayPoint().setPoint(-92, 30, -90).setTargetRadius(3);
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -41,15 +41,14 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
         stones.add(null);
 
-        stones.add(new MasqWayPoint().setPoint(-19, 28.5, -90).setMinVelocity(0));
-        stones.add(new MasqWayPoint().setPoint(-9, 30.5, -90).setMinVelocity(0));
-        stones.add(new MasqWayPoint().setPoint(0, 30, -90).setMinVelocity(0));
+        stones.add(new MasqWayPoint().setPoint(-19, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(-11, 31.5, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(0, 30, -90).setMinVelocity(0).setTargetRadius(0.5));
 
-        stones.add(new MasqWayPoint().setPoint(5, 30.5, -90).setMinVelocity(0));
-        stones.add(new MasqWayPoint().setPoint(15, 30, -90).setMinVelocity(0));
-        stones.add(new MasqWayPoint().setPoint(22, 28.5, -90).setMinVelocity(0));
+        stones.add(new MasqWayPoint().setPoint(5, 32.25,-90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(15, 30, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(22, 28.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
-        robot.cv.start();
 
         while (!opModeIsActive()) {
             position = CVInterpreter.getPosition(robot.cv.detector);
@@ -75,9 +74,9 @@ public class BlueThreeStone extends MasqLinearOpMode {
                 () -> robot.cv.stop()
         );
         else runSimultaneously(
-                () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
-                () -> robot.cv.stop()
-        );
+                    () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
+                    () -> robot.cv.stop()
+            );
     }
 
     private void mainAuto(MasqWayPoint stone1, MasqWayPoint stone2, MasqWayPoint stone3) {
@@ -91,7 +90,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
         if (firstStone) robot.xyPath(4,stone);
         else robot.xyPath(9,bridge2.setSwitchMode(MECH),bridge1, stone);
         robot.driveTrain.stopDriving();
-        if (firstStone) robot.sideGrabber.rightDown(0.25);
+        if (firstStone) robot.sideGrabber.rightDown(0.35);
         else robot.sideGrabber.rightDown(1);
         robot.sideGrabber.rightClose(1);
         robot.sideGrabber.rightMid(1);
@@ -103,21 +102,22 @@ public class BlueThreeStone extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
+        sleep(0.25);
         robot.turnAbsolute(179,1.5);
         robot.xyPath(2, new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
-                robot.tracker.getGlobalY()+3,robot.tracker.getHeading()).setMinVelocity(0));
+                robot.tracker.getGlobalY()+5,robot.tracker.getHeading()).setMinVelocity(0).setTimeout(1));
         robot.foundationHook.lower();
-        sleep(0.5);
-        robot.turnAbsolute(165,0.5);
-        MasqWayPoint p1 = new MasqWayPoint().setPoint(new MasqPoint(-68, 0, 90)).setMinVelocity(0.8)
-                .setTimeout(3);
-        MasqWayPoint p2 = new MasqWayPoint().setPoint(new MasqPoint(-85, 10, 90)).setMinVelocity(0.7);
-        robot.xyPath(4, p1, p2);
-        MasqWayPoint park = new MasqWayPoint().setPoint(-37,22,90);
+        sleep();
+        MasqUtils.xySpeedController.setKp(0.08);
+        MasqUtils.xyAngleController.setKp(0.06);
+        MasqWayPoint p1 = new MasqWayPoint().setPoint(new MasqPoint(-80, -10, 30)).setMinVelocity(0.9)
+                .setTargetRadius(0.5).setModeSwitchRadius(5);
+        MasqWayPoint p2 = new MasqWayPoint().setPoint(new MasqPoint(-80, -5, 0)).setMinVelocity(0.9);
+        robot.xyPath(2.5, p1, p2);
+        MasqUtils.xySpeedController.setKp(0.045);
+        MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90);
         robot.foundationHook.raise();
         sleep();
         robot.xyPath(2, park);
-        dash.create("Completed Path");
-        dash.update();
     }
 }
