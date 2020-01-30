@@ -39,12 +39,12 @@ public class BlueThreeStone extends MasqLinearOpMode {
         stones.add(null);
 
         stones.add(new MasqWayPoint().setPoint(-19, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
-        stones.add(new MasqWayPoint().setPoint(-11, 31.5, -90).setMinVelocity(0).setTargetRadius(0.5));
-        stones.add(new MasqWayPoint().setPoint(0, 30, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(-11, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(0, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
-        stones.add(new MasqWayPoint().setPoint(5, 32.25,-90).setMinVelocity(0).setTargetRadius(0.5));
-        stones.add(new MasqWayPoint().setPoint(15, 30, -90).setMinVelocity(0).setTargetRadius(0.5));
-        stones.add(new MasqWayPoint().setPoint(22, 28.5, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(5, 29.5,-90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(22, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
 
         while (!opModeIsActive()) {
