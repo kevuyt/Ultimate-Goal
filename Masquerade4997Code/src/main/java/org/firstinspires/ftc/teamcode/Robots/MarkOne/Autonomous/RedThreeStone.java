@@ -14,13 +14,13 @@ import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.RIGHT;
 
 /**
  * Created by Keval Kataria on 1/4/2020
  */
-@Autonomous(name = "Red Stone", group = "MarkOne")
+@Autonomous(name = "Reversed Blue", group = "MarkOne")
 public class RedThreeStone extends MasqLinearOpMode{
     private MarkOne robot = new MarkOne();
     private CVInterpreter.SkystonePosition position;
@@ -33,7 +33,7 @@ public class RedThreeStone extends MasqLinearOpMode{
             foundationThree = new MasqWayPoint().setPoint(92, 30, 90).setTargetRadius(3).setMinVelocity(0);
 
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         robot.init(hardwareMap);
         robot.initializeAutonomous();
         robot.initCamera(hardwareMap);
@@ -64,7 +64,7 @@ public class RedThreeStone extends MasqLinearOpMode{
 
         //mainAuto(stones.get(1), stones.get(4),stones.get(2));
 
-        if (position == LEFT) runSimultaneously(
+        if (position == RIGHT) runSimultaneously(
                 () -> mainAuto(stones.get(1), stones.get(4),stones.get(2)),
                 () -> robot.cv.stop()
         );
