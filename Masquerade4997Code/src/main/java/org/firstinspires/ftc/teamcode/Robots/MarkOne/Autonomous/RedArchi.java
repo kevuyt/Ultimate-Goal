@@ -109,14 +109,14 @@ public class RedArchi extends MasqLinearOpMode{
         robot.foundationHook.lower();
         sleep(1);
         MasqWayPoint p0 = new MasqWayPoint()
-                .setPoint(new MasqPoint(82, 20, -135))
+                .setPoint(new MasqPoint(82, 20, -100))
                 .setMinVelocity(0.5)
                 .setModeSwitchRadius(5);
         MasqWayPoint p1 = new MasqWayPoint()
                 .setPoint(new MasqPoint(80, 0, -80))
                 .setMinVelocity(0.5)
                 .setModeSwitchRadius(5);
-        robot.xyPath(3, p0, p1);
+        robot.xyPath(2, p0, p1);
         robot.foundationHook.raise();
         sleep();
         MasqWayPoint park = new MasqWayPoint().setPoint(40,22,-90);
