@@ -416,6 +416,7 @@ public abstract class MasqRobot {
             double lookAheadDistance = pointsWithRobot.get(index).getLookAhead();
             travelAngleController.setKp(pointsWithRobot.get(index).getAngularCorrectionSpeed());
             MasqMechanumDriveTrain.angleCorrectionController.setKp(pointsWithRobot.get(index).getAngularCorrectionSpeed());
+            xySpeedController.setKp(pointsWithRobot.get(index).getDriveCorrectionSpeed());
             MasqVector target = new MasqVector(pointsWithRobot.get(index).getX(), pointsWithRobot.get(index).getY());
             MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             MasqVector initial = new MasqVector(pointsWithRobot.get(index - 1).getX(), pointsWithRobot.get(index - 1).getY());
@@ -456,19 +457,13 @@ public abstract class MasqRobot {
                 }
                 else driveTrain.setVelocity(leftPower, rightPower);
 
-                dash.create("Left Power: ", leftPower);
-                dash.create("Right Power: " , rightPower);
-                dash.create("Power Adjustment: ", powerAdjustment);
-                dash.create("pathAngle: ", pathAngle);
-
                 tracker.updateSystem();
-                current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
-                int i = 0;
-                for (MasqWayPoint point : pointsWithRobot) {
-                    dash.create(point.setName("Index: " + i));
-                    i++;
-                }
+                dash.create(current.setName("Current Point"));
+                dash.create("Heading: ", Math.toDegrees(heading));
+                dash.create("Angular Correction Speed: ", MasqMechanumDriveTrain.angleCorrectionController.getKp());
+                dash.create("Drive Correction Speed: ", pointsWithRobot.get(index).getDriveCorrectionSpeed());
                 dash.update();
+                current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             }
             index++;
         }
