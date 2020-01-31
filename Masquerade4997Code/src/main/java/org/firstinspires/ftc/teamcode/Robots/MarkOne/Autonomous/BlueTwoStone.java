@@ -51,7 +51,7 @@ public class BlueTwoStone extends MasqLinearOpMode{
         robot.cv.start();
 
         while(!opModeIsActive()) {
-            position = CVInterpreter.getPosition(robot.cv.detector);
+            position = CVInterpreter.getBlue(robot.cv.detector);
             dash.create("Skystone Position: ", position);
             dash.update();
         }

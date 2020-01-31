@@ -50,7 +50,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
         stones.add(new MasqWayPoint().setPoint(22, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
         while (!opModeIsActive()) {
-            position = CVInterpreter.getPosition(robot.cv.detector);
+            position = CVInterpreter.getBlue(robot.cv.detector);
             dash.create("Skystone Position: " + position);
             dash.update();
         }

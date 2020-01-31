@@ -15,10 +15,16 @@ public class CVInterpreter {
         public final String position;
         SkystonePosition (String value) {this.position = value;}
     }
-    public static SkystonePosition getPosition(MasqCVDetector genDetector) {
+    public static SkystonePosition getBlue(MasqCVDetector genDetector) {
         SkystoneDetector detector = (SkystoneDetector) genDetector;
         if ((MasqUtils.getCenterPoint(detector.foundRectangle()).x - detector.offset) < detector.getImageWidth()/3) return SkystonePosition.LEFT;
         else if ((MasqUtils.getCenterPoint(detector.foundRectangle()).x - detector.offset) < (2 * detector.getImageWidth()/3)) return SkystonePosition.MIDDLE;
         else return SkystonePosition.RIGHT;
+    }
+    public static SkystonePosition getRed(MasqCVDetector genDetector) {
+        SkystoneDetector detector = (SkystoneDetector) genDetector;
+        if ((MasqUtils.getCenterPoint(detector.foundRectangle()).x - detector.offset) < detector.getImageWidth()/3) return SkystonePosition.RIGHT;
+        else if ((MasqUtils.getCenterPoint(detector.foundRectangle()).x - detector.offset) < (2 * detector.getImageWidth()/3)) return SkystonePosition.LEFT;
+        else return SkystonePosition.MIDDLE;
     }
 }

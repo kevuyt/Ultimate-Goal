@@ -56,7 +56,7 @@ public class RedArchi extends MasqLinearOpMode{
                 .setAngularCorrectionSpeed(0.05).setDriveCorrectionSpeed(0.07));
 
         while(!opModeIsActive()) {
-            position = CVInterpreter.getPosition(robot.cv.detector);
+            position = CVInterpreter.getBlue(robot.cv.detector);
             dash.create("Skystone Position: ", position);
             dash.update();
         }
