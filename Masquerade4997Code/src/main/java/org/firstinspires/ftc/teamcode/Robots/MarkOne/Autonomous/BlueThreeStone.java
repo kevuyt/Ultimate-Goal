@@ -11,7 +11,6 @@ import java.util.List;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
-import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -44,7 +43,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
         stones.add(new MasqWayPoint().setPoint(-19, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
         stones.add(new MasqWayPoint().setPoint(-11, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
-        stones.add(new MasqWayPoint().setPoint(0, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(-3, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
         stones.add(new MasqWayPoint().setPoint(5, 29.5,-90).setMinVelocity(0).setTargetRadius(0.5));
         stones.add(new MasqWayPoint().setPoint(15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
@@ -52,7 +51,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
         while (!opModeIsActive()) {
             position = CVInterpreter.getPosition(robot.cv.detector);
-            dash.create("Skystone Position: ");
+            dash.create("Skystone Position: " + position);
             dash.update();
         }
 
@@ -104,12 +103,12 @@ public class BlueThreeStone extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        robot.turnAbsolute(170,1.5);
+        robot.turnAbsolute(175,1.5);
         robot.drive(7, Direction.BACKWARD);
         robot.foundationHook.lower();
         sleep();
         MasqWayPoint p1 = new MasqWayPoint()
-                .setPoint(new MasqPoint(-80, 5, 80))
+                .setPoint(new MasqPoint(-80, 0, 80))
                 .setMinVelocity(0.5)
                 .setModeSwitchRadius(5);
         robot.xyPath(3, p1);
@@ -118,22 +117,5 @@ public class BlueThreeStone extends MasqLinearOpMode {
         MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90);
         robot.xyPath(2, park);
     }
-
-    /*private void foundationPark() {
-        robot.turnAbsolute(170,1.5);
-        robot.drive(7, Direction.BACKWARD);
-        robot.foundationHook.lower();
-        sleep();
-        MasqWayPoint p1 = new MasqWayPoint()
-                .setPoint(new MasqPoint(-92, 0, 170))
-                .setMinVelocity(0.5)
-                .setModeSwitchRadius(5);
-        robot.xyPath(3, p1);
-        robot.foundationHook.raise();
-        sleep();
-        MasqWayPoint exit = new MasqWayPoint().setPoint(-70,5,175).setSwitchMode(MECH);
-        MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90).setSwitchMode(MECH);
-        robot.xyPath(4, exit, park);
-    }*/
 }
 
