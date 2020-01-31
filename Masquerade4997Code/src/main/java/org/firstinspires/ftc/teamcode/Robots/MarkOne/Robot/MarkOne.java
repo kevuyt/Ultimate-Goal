@@ -29,7 +29,7 @@ import static Library4997.MasqCV.MasqCV.Cam.WEBCAM;
  */
 public class MarkOne extends MasqRobot {
 
-    public MasqServo blockGrabber, blockRotater, blockPusher, capper;
+    public MasqServo blockGrabber, blockRotater, capper;
     public MarkOneFoundationHook foundationHook;
     public MarkOneSideGrabber sideGrabber;
     public MasqMotor lift, tapeMeasure;
@@ -44,7 +44,6 @@ public class MarkOne extends MasqRobot {
         lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
         blockRotater = new MasqServo("blockRotater", hardwareMap);
         intake = new MasqMotorSystem("intakeRight", DcMotorSimple.Direction.FORWARD, "intakeLeft", DcMotorSimple.Direction.REVERSE, MasqMotorModel.REVTHROUGHBORE, hardwareMap);
-        blockPusher = new MasqServo("blockPusher", hardwareMap);
         capper = new MasqServo("capper", hardwareMap);
         sideGrabber = new MarkOneSideGrabber(hardwareMap);
         tapeMeasure = new MasqMotor("X", MasqMotorModel.USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE,hardwareMap);
@@ -90,7 +89,6 @@ public class MarkOne extends MasqRobot {
     }
 
     private void scaleServos() {
-        blockPusher.scaleRange(0, 0.5);
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.7);
         capper.scaleRange(0.5,1);
@@ -98,9 +96,8 @@ public class MarkOne extends MasqRobot {
     }
 
     private void resetServos() {
-        blockPusher.setPosition(0);
         blockRotater.setPosition(0);
-        blockGrabber.setPosition(1);
+        blockGrabber.setPosition(0);
         foundationHook.raise();
         sideGrabber.reset();
         capper.setPosition(0);

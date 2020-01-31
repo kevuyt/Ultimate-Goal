@@ -99,11 +99,27 @@ public class MasqUtils {
         if (value < upperThresh) return prev;
         return value;
     }
-    public static void toggle(boolean button, MasqServo servo, double prevPos) {
-        if (tolerance(servo.getPosition(), prevPos,0.01) && button) {
+    public static void toggle(boolean button, MasqServo servo) {
+        if (button) {
+            currState= true;
+        } else {
+            currState = false;
+            if (prevState) {
+                taskState = !taskState;
+            }
+        }
+
+        prevState = currState;
+
+        if (taskState) {
+            servo.setPosition(1);
+        } else {
+            servo.setPosition(0);
+        }
+        /*if (tolerance(servo.getPosition(), prevPos,0.01) && button) {
             if (tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
             else if (tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
-        }
+        }*/
         /*if(button){
             currState = true;
         }
@@ -123,7 +139,7 @@ public class MasqUtils {
             servo.setPosition(0);
         }*/
     }
-    public static void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
+    /*public static void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
         for (MasqServo servo : servoSystem.servos) {
             toggle(button, servo, prevPos);
         }
@@ -152,7 +168,7 @@ public class MasqUtils {
             if (servo.getPosition() == 0) servo.setPosition(1);
             else if (servo.getPosition() ==1) servo.setPosition(0);
         }
-    }
+    }*/
     public static double scaleNumber(double m, double currentMin, double currentMax, double newMin, double newMax) {
         return (((m - currentMin) * (newMax - newMin)) / (currentMax - currentMin)) + newMin;
     }

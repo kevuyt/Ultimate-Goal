@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +11,13 @@ import java.util.List;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
 
 /**
  * Created by Keval Kataria on 1/4/2020
@@ -34,7 +38,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
         robot.initializeAutonomous();
-        //robot.initCamera(hardwareMap);
+        robot.initCamera(hardwareMap);
 
         stones.add(null);
 
@@ -46,9 +50,8 @@ public class BlueThreeStone extends MasqLinearOpMode {
         stones.add(new MasqWayPoint().setPoint(15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
         stones.add(new MasqWayPoint().setPoint(22, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
-
         while (!opModeIsActive()) {
-            //position = CVInterpreter.getPosition(robot.cv.detector);
+            position = CVInterpreter.getPosition(robot.cv.detector);
             dash.create("Skystone Position: ");
             dash.update();
         }
@@ -61,8 +64,8 @@ public class BlueThreeStone extends MasqLinearOpMode {
         robot.sideGrabber.leftClose(0);
         robot.foundationHook.mid();
 
-        mainAuto(stones.get(1), stones.get(4),stones.get(2));
-        /*
+        //mainAuto(stones.get(1), stones.get(4),stones.get(2));
+
         if (position == LEFT) runSimultaneously(
                 () -> mainAuto(stones.get(1), stones.get(4),stones.get(2)),
                 () -> robot.cv.stop()
@@ -75,7 +78,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
                 () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
                 () -> robot.cv.stop()
         );
-        */
+
     }
 
     private void mainAuto(MasqWayPoint stone1, MasqWayPoint stone2, MasqWayPoint stone3) {

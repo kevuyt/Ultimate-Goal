@@ -20,19 +20,12 @@ public class PositionTeleOp extends MasqLinearOpMode {
         robot.init(hardwareMap);
         robot.initializeTeleop();
 
-        double prevGrabber = 1;
-        double prevRotater = 0;
-        double prevCapper = 0;
-
         while(!opModeIsActive()) {
             dash.create("Heading: ", robot.tracker.getHeading());
             dash.update();
         }
 
         waitForStart();
-
-        robot.blockPusher.setPosition(1);
-        double prevPusher = 1;
 
 
         while(opModeIsActive()) {

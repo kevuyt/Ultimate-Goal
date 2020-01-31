@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
 /**
@@ -13,18 +12,19 @@ import Library4997.MasqSensors.MasqLimitSwitch;
 
 public class MasqServo implements MasqHardware{
     private Servo servo;
-    private String nameServo;
-    MasqClock clock = new MasqClock();
+    private String name;
     private double max = 1, min = 0;
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
     private double adjustedPosition;
+
+
     public MasqServo(String name, HardwareMap hardwareMap) {
-        this.nameServo = name;
+        this.name = name;
         servo = hardwareMap.servo.get(name);
     }
     public MasqServo(String name, Servo.Direction direction, HardwareMap hardwareMap){
-        this.nameServo = name;
+        this.name = name;
         servo = hardwareMap.servo.get(name);
         servo.setDirection(direction);
     }
@@ -41,7 +41,7 @@ public class MasqServo implements MasqHardware{
     }
     private boolean limitPressed () {
         if (limDetection) return  limMin.isPressed() || limMax.isPressed();
-        else return false;
+        return false;
     }
     public double getPosition () {
         return servo.getPosition();
@@ -58,7 +58,7 @@ public class MasqServo implements MasqHardware{
         servo.wait(time);
     }
     public String getName() {
-        return nameServo;
+        return name;
     }
 
     public String[] getDash() {
@@ -66,4 +66,5 @@ public class MasqServo implements MasqHardware{
                 "Current Position:" + servo.getPosition()
         };
     }
+
 }
