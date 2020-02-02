@@ -16,10 +16,6 @@ import static Library4997.MasqResources.MasqUtils.toggle;
 public class RobotTeleOp extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
-    public static boolean currStateBlockGrabber=false, prevStateBlockGrabber =false, taskStateBlockGrabber =false;
-    public static boolean currStateBlockRotator=false, prevStateBlockRotator =false, taskStateBlockRotator =false;
-    public static boolean currStateCapper=false, prevStateCapper =false, taskStateCapper =false;
-
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
@@ -45,9 +41,10 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             robot.tapeMeasure.setPower(controller2.rightStickY());
 
-            toggle(controller2.x(),robot.blockGrabber);
-            toggle(controller2.y(),robot.blockRotater);
-            toggle(controller2.dPadUp(),robot.capper);
+            if (controller2.a()) robot.blockGrabber.setPosition(0);
+            else if (controller2.x()) robot.blockGrabber.setPosition(1);
+            robot.toggleBlockRotator(controller2);
+            robot.toggleCapper(controller2);
 
             robot.foundationHook.DriverControl(controller1);
 
@@ -67,64 +64,5 @@ public class RobotTeleOp extends MasqLinearOpMode {
         }
     }
 
-    /*public void toggleBlockGrabber() {
 
-        if (controller2.x()) {
-            currStateBlockGrabber = true;
-        } else {
-            currStateBlockGrabber = false;
-            if (prevStateBlockGrabber) {
-                taskStateBlockGrabber = !taskStateBlockGrabber;
-            }
-        }
-
-        prevStateBlockGrabber = currStateBlockGrabber;
-
-        if (taskStateBlockGrabber) {
-            robot.blockGrabber.setPosition(1);
-        } else {
-            robot.blockGrabber.setPosition(0);
-        }
-    }
-
-
-    public void toggleBlockRotator() {
-
-        if (controller2.y()) {
-            currStateBlockRotator = true;
-        } else {
-            currStateBlockRotator = false;
-            if (prevStateBlockRotator) {
-                taskStateBlockRotator = !taskStateBlockRotator;
-            }
-        }
-
-        prevStateBlockRotator = currStateBlockRotator;
-
-        if (taskStateBlockRotator) {
-            robot.blockRotater.setPosition(1);
-        } else {
-            robot.blockRotater.setPosition(0);
-        }
-    }
-
-    public void toggleCapper() {
-
-        if (controller2.dPadUp()) {
-            currStateCapper = true;
-        } else {
-            currStateCapper = false;
-            if (prevStateCapper) {
-                taskStateCapper = !taskStateCapper;
-            }
-        }
-
-        prevStateCapper = currStateCapper;
-
-        if (taskStateCapper) {
-            robot.capper.setPosition(1);
-        } else {
-            robot.capper.setPosition(0);
-        }
-    }*/
 }

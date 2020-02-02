@@ -27,8 +27,8 @@ public class BlueThreeStone extends MasqLinearOpMode {
     private SkystonePosition position;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
-            bridge1 = new MasqWayPoint().setPoint(-18, 18, -90).setSwitchMode(MECH),
-            bridge2 = new MasqWayPoint().setPoint(-59, 22.5, -90),
+            bridge1 = new MasqWayPoint().setPoint(-18, 17, -90).setSwitchMode(MECH),
+            bridge2 = new MasqWayPoint().setPoint(-59, 21.5, -90),
             foundationOne = new MasqWayPoint().setPoint(-86, 30, -90).setTargetRadius(3).setMinVelocity(0),
             foundationTwo = new MasqWayPoint().setPoint(-88, 30, -90).setTargetRadius(3).setMinVelocity(0),
             foundationThree = new MasqWayPoint().setPoint(-92, 30, -90).setTargetRadius(3).setMinVelocity(0);
@@ -41,11 +41,11 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
         stones.add(null);
 
-        stones.add(new MasqWayPoint().setPoint(-19, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(-17, 30.5, -90).setMinVelocity(0).setTargetRadius(0.5));
         stones.add(new MasqWayPoint().setPoint(-11, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
         stones.add(new MasqWayPoint().setPoint(-3, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
-        stones.add(new MasqWayPoint().setPoint(5, 29.5,-90).setMinVelocity(0).setTargetRadius(0.5));
+        stones.add(new MasqWayPoint().setPoint(7, 29.5,-90).setMinVelocity(0).setTargetRadius(0.5));
         stones.add(new MasqWayPoint().setPoint(15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
         stones.add(new MasqWayPoint().setPoint(22, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5));
 
