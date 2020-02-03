@@ -16,7 +16,7 @@ public interface Constants {
             GRAB_INIT = 0.31,
             GRAB_MID = 0.73,
             RELEASE = 0.45;
-    double CAP_STORE = 0.9,
+    double  CAP_STORE = 0.9,
             CAP_RELEASE = 0.30;
 
 }
