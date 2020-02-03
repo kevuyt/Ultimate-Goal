@@ -182,6 +182,12 @@ public class MasqUtils {
     public static Point getCenterPoint(Rect rect) {
         return new Point(rect.x + rect.width/2, rect.y + rect.height/2);
     }
+    public static double getLightPower(double currentTime, double maxTime, double initalPeriod, double finalPeriod) {
+        double scaledTime = currentTime / maxTime;
+        double b = scaledTime * (finalPeriod - initalPeriod) + initalPeriod;
+        double p = (Math.PI * 2) / b;
+        return Math.sin(currentTime * p);
+    }
     public static MasqVector getLookAhead(MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
         MasqVector pathDisplacement = initial.displacement(finalPos);
         MasqVector untransformedProjection = new MasqVector(
