@@ -35,6 +35,68 @@ import static Library4997.MasqResources.MasqUtils.xySpeedController;
 
 /**
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
+ * Pullin' out the coupe at the lot
+ * Told 'em "Fuck 12, fuck SWAT"
+ * Bustin' all the bales out the box
+ * I just hit a lick with the box
+ * Had to put the stick in a box, mm
+ * Pour up the whole damn seal, I'ma get lazy
+ * I got the mojo-deals, we been trappin' like the '80's
+ * She sucked a nigga soul, got the Cash App
+ * Told 'em wipe a nigga nose, say slatt, slatt
+ * I won't never sell my soul, and I can back that
+ * And I really wanna know, where you at, at?
+ * I was out back, where the stash at
+ * Cruise the city in a bulletproof Cadillac (skrrt)
+ * 'Cause I know these niggas after where the bag at
+ * Gotta move smarter, gotta move harder
+ * Niggas tryna get me for my water
+ * I lay his ass down on my son or my daughter
+ * I had the Draco with me, Dwayne Carter
+ * 'Lotta niggas out here playin', ain't ballin'
+ * I done put my whole arm in the rim, Vince Carter
+ * And I know probably get a key for the quarter
+ * Shawty barely seen in double C's I bought her
+ * Got a bitch that's looking like Aaliyah, she a model
+ * I got the pink slip, all my whips is key-less
+ * Compton, I'm about to get the key to the city
+ * Patek like the sea, forget it
+ * Pullin' out the coupe at the lot
+ * Told 'em "Fuck 12, fuck SWAT"
+ * Bustin' all the bales out the box
+ * I just hit a lick with the box
+ * Had to put the stick in a box, mm
+ * Pour up the whole damn seal, I'ma get lazy
+ * I got the mojo-deals, we been trappin' like the '80's
+ * She sucked a nigga soul, got the Cash App
+ * Told 'em wipe a nigga nose, say slatt, slatt
+ * I won't never sell my soul, and I can back that
+ * And I really wanna know, where you at, at?
+ * Ha-ha-ha, I been movin' 'em out
+ * If Steelo with me, then he got the blues in the pouch
+ * Took her to the forest, put the wood in her mouth
+ * Bitch don't wear no shoes in my house
+ * The private I'm flyin' in, I never wanna fly again
+ * I take my chances in traffic
+ * She suckin' on dick no hands with it
+ * I just made the Rollie plain like a landing-strip
+ * I'm a 2020 president candidate
+ * I done put a hunnid bands on Zimmerman shit
+ * I been movin' real gangsta, so that's why she pick a Crip
+ * Shawty call me Chris Cole, 'cause I pop my shit
+ * Got it out the mud, there's nothin' you can tell me, yeah
+ * When I had the drugs, I was street-wealthy, yeah
+ * Pullin' out the coupe at the lot
+ * Told 'em "Fuck 12, fuck SWAT"
+ * Bustin' all the bales out the box
+ * I just hit a lick with the box
+ * Had to put the stick in a box, mm
+ * Pour up the whole damn seal, I'ma get lazy
+ * I got the mojo-deals, we been trappin' like the '80's
+ * She sucked a nigga soul, got the Cash App
+ * Told 'em wipe a nigga nose, say slatt, slatt
+ * I won't never sell my soul, and I can back that
+ * And I really wanna know, where you at, at?
  */
 
 /*
@@ -255,7 +317,7 @@ public abstract class MasqRobot {
         turnAbsolute(angle, DEFAULT_TIMEOUT);
     }
 
-    public void stop(MasqPredicate stopCondtion, double angle, double speed, Direction direction, double timeout) {
+    public void stop(MasqPredicate stopCondition, double angle, double speed, Direction direction, double timeout) {
         MasqClock timeoutTimer = new MasqClock();
         driveTrain.resetEncoders();
         double angularError, powerAdjustment, power, leftPower, rightPower, maxPower;
@@ -278,7 +340,7 @@ public abstract class MasqRobot {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("Angle Error", angularError);
             dash.update();
-        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && stopCondtion.run());
+        } while (opModeIsActive() && !timeoutTimer.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && stopCondition.run());
         driveTrain.stopDriving();
     }
     public void stop(MasqPredicate stopCondition, double angle, double speed, Direction direction) {
