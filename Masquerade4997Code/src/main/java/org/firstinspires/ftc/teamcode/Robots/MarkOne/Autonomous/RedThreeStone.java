@@ -93,14 +93,14 @@ public class RedThreeStone extends MasqLinearOpMode{
             MasqUtils.xyAngleController.setKp(0.04);
         }
         else robot.xyPath(9, bridge2.setSwitchMode(MECH), bridge1, stone);
-        robot.driveTrain.stopDriving();
+        robot.driveTrain.setVelocity(0);
         if (firstStone) robot.sideGrabber.leftDown(0.35);
         else robot.sideGrabber.leftDown(1);
         robot.sideGrabber.leftClose(1);
         robot.sideGrabber.leftMid(1);
         if (firstStone) robot.xyPath(5, bridge1, bridge2.setSwitchMode(MECH), foundation);
         else robot.xyPath(5, bridge1, bridge2, foundation);
-        robot.driveTrain.stopDriving();
+        robot.driveTrain.setVelocity(0);
         robot.sideGrabber.leftSlightClose(0);
         robot.sideGrabber.leftLowMid(0);
     }
@@ -119,6 +119,6 @@ public class RedThreeStone extends MasqLinearOpMode{
         sleep();
         MasqWayPoint park = new MasqWayPoint().setPoint(40,22,-90);
         robot.xyPath(2, park);
-        robot.driveTrain.stopDriving();
+        robot.driveTrain.setVelocity(0);
     }
 }

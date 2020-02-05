@@ -83,9 +83,6 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
     }
-    public void stopDriving() {
-        setVelocity(0);
-    }
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();
     }

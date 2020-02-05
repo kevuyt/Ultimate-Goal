@@ -37,7 +37,7 @@ public class MasqAdafruitIMU implements MasqHardware {
     }
     public double getAbsoluteHeading() {
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        return formatAngle(angles.angleUnit, angles.firstAngle);
+        return -formatAngle(angles.angleUnit, angles.firstAngle);
     }
     public double getRelativeYaw() {
         return getAbsoluteHeading() - zeroPos;

@@ -43,8 +43,6 @@ public class MasqUtils {
     public static MasqPIDController velocityAutoController;
     public static MasqPIDController angleController;
 
-    public static boolean currState=false, prevState=false, taskState=false;
-
     public static void sleep (int milliSeconds) {
         try {Thread.sleep(milliSeconds);}
         catch (InterruptedException e) {e.printStackTrace();}
@@ -93,80 +91,6 @@ public class MasqUtils {
         for (double d: vals) if (min > d) min = d;
         return min;
     }
-    public double lowPass (double upperThresh, double value, double prev) {
-        if (value < upperThresh) return prev;
-        return value;
-    }
-    public static void toggle(boolean button, MasqServo servo) {
-        if (button) {
-            currState= true;
-        } else {
-            currState = false;
-            if (prevState) {
-                taskState = !taskState;
-            }
-        }
-
-        prevState = currState;
-
-        if (taskState) {
-            servo.setPosition(1);
-        } else {
-            servo.setPosition(0);
-        }
-        /*if (tolerance(servo.getPosition(), prevPos,0.01) && button) {
-            if (tolerance(servo.getPosition(), 0, 0.01)) servo.setPosition(1);
-            else if (tolerance(servo.getPosition(), 1, 0.01)) servo.setPosition(0);
-        }*/
-        /*if(button){
-            currState = true;
-        }
-        else{
-            currState = false;
-            if(prevState){
-                taskState=!taskState;
-            }
-        }
-
-        prevState = currState;
-
-        if(taskState){
-            servo.setPosition(1);
-        }
-        else{
-            servo.setPosition(0);
-        }*/
-    }
-    /*public static void toggle(boolean button, MasqServoSystem servoSystem, double prevPos) {
-        for (MasqServo servo : servoSystem.servos) {
-            toggle(button, servo, prevPos);
-        }
-    }
-    public static void toggle(boolean button, MasqServo servo, double prevPos, double pos1, double pos2) {
-        if (tolerance(servo.getPosition(), prevPos, 0.01) && button) {
-            if (tolerance(servo.getPosition(), pos1, 0.01)) servo.setPosition(pos2);
-            else if (tolerance(servo.getPosition(), pos2, 0.01)) servo.setPosition(pos1);
-        }
-    }
-    public static void toggle (boolean button, MasqServo servo, double prePos, Runnable action) {
-        toggle(button, servo, prePos);
-        if (button) {
-            Thread thread = new Thread(action);
-            thread.start();
-        }
-    }
-    public static void toggle (boolean button, double current, double prev, double value1, double value2, Runnable action1, Runnable action2) {
-        if (button && tolerance(current, prev, 0.01))  {
-            if (current == value1) new Thread(action1).start();
-            else if (current == value2) new Thread (action2).start();
-        }
-    }
-    public static void toggle(boolean button, MasqServo servo, double prevPos, double tolerance) {
-        if (button && tolerance(servo.getPosition(), prevPos, tolerance)) {
-            if (servo.getPosition() == 0) servo.setPosition(1);
-            else if (servo.getPosition() ==1) servo.setPosition(0);
-        }
-    }*/
     public static double scaleNumber(double m, double currentMin, double currentMax, double newMin, double newMax) {
         return (((m - currentMin) * (newMax - newMin)) / (currentMax - currentMin)) + newMin;
     }
@@ -176,17 +100,11 @@ public class MasqUtils {
     public static Double formatAngle(AngleUnit angleUnit, double angle) {
         return Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle)));
     }
-    public static String formatDegrees(double degrees){
+    private static String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
     public static Point getCenterPoint(Rect rect) {
         return new Point(rect.x + rect.width/2, rect.y + rect.height/2);
-    }
-    public static double getLightPower(double currentTime, double maxTime, double initalPeriod, double finalPeriod) {
-        double scaledTime = currentTime / maxTime;
-        double b = scaledTime * (finalPeriod - initalPeriod) + initalPeriod;
-        double p = (Math.PI * 2) / b;
-        return Math.sin(currentTime * p);
     }
     public static MasqVector getLookAhead(MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
         MasqVector pathDisplacement = initial.displacement(finalPos);

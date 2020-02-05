@@ -30,16 +30,16 @@ import static Library4997.MasqCV.MasqCV.Cam.WEBCAM;
  */
 public class MarkOne extends MasqRobot {
 
-    public MasqServo blockGrabber, blockRotater, capper;
+    public MasqServo blockGrabber;
+    private MasqServo blockRotater, capper;
     public MarkOneFoundationHook foundationHook;
     public MarkOneSideGrabber sideGrabber;
     public MasqMotor lift, tapeMeasure;
     public MasqMotorSystem intake;
     public MasqCV cv;
     public MasqPositionTrackerV2 trackerV2;
-    private static boolean prevStateBlockGrabber =false, taskStateBlockGrabber = true,
-            prevStateBlockRotator =false, taskStateBlockRotator =false, prevStateCapper =false,
-            taskStateCapper =false;
+    private boolean prevStateBlockRotator =false, taskStateBlockRotator =false,
+            prevStateCapper =false, taskStateCapper =false;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -106,26 +106,6 @@ public class MarkOne extends MasqRobot {
         sideGrabber.reset();
         capper.setPosition(0);
     }
-    public void toggleBlockGrabber(MasqController controller) {
-
-        boolean currStateBlockGrabber = false;
-        if (controller.x()) {
-            currStateBlockGrabber = true;
-        } else {
-            if (prevStateBlockGrabber) {
-                taskStateBlockGrabber = !taskStateBlockGrabber;
-            }
-        }
-
-        prevStateBlockGrabber = currStateBlockGrabber;
-
-        if (taskStateBlockGrabber) {
-            blockGrabber.setPosition(1);
-        } else {
-            blockGrabber.setPosition(0);
-        }
-    }
-
 
     public void toggleBlockRotator(MasqController controller) {
 

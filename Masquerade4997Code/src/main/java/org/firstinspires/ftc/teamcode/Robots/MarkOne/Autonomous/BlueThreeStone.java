@@ -90,14 +90,14 @@ public class BlueThreeStone extends MasqLinearOpMode {
     private void grabStone(MasqWayPoint stone, MasqWayPoint foundation, boolean firstStone) {
         if (firstStone) robot.xyPath(4, stone);
         else robot.xyPath(9, bridge2.setSwitchMode(MECH), bridge1, stone);
-        robot.driveTrain.stopDriving();
+        robot.driveTrain.setVelocity(0);
         if (firstStone) robot.sideGrabber.rightDown(0.35);
         else robot.sideGrabber.rightDown(1);
         robot.sideGrabber.rightClose(1);
         robot.sideGrabber.rightMid(1);
         if (firstStone) robot.xyPath(5, bridge1, bridge2.setSwitchMode(MECH), foundation);
         else robot.xyPath(5, bridge1, bridge2, foundation);
-        robot.driveTrain.stopDriving();
+        robot.driveTrain.setVelocity(0);
         robot.sideGrabber.rightSlightClose(0);
         robot.sideGrabber.rightLowMid(0);
     }
