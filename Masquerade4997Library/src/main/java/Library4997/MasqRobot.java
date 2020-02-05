@@ -1,7 +1,6 @@
 package Library4997;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.util.Range;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +8,6 @@ import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPointLegacy;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
@@ -222,34 +220,6 @@ public abstract class MasqRobot {
 
     public static boolean opModeIsActive() {return MasqUtils.opModeIsActive();}
 
-    public void strafe(double distance, double angle, double timeout, double speed) {
-        driveTrain.resetEncoders();
-        double targetClicks = distance * driveTrain.getEncoder().getClicksPerInch();
-        double clicksRemaining;
-        double power, angularError, targetAngle = tracker.getHeading(), powerAdjustment;
-        timeoutClock.reset();
-        do {
-            clicksRemaining = targetClicks - Math.abs(driveTrain.getCurrentPositionPositive());
-            power = driveController.getOutput(clicksRemaining) * speed;
-            power = Range.clip(power, -1.0, +1.0);
-            angularError = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
-            powerAdjustment = angleController.getOutput(MasqUtils.adjustAngle(angularError));
-            powerAdjustment = Range.clip(powerAdjustment, -1.0, +1.0);
-            driveTrain.setVelocityMECH(angle, power, tracker.getHeading(), powerAdjustment);
-            dash.create("ERROR: ", clicksRemaining);
-            dash.create("HEADING: ", tracker.getHeading());
-            dash.update();
-        } while (opModeIsActive() && !timeoutClock.elapsedTime(timeout, MasqClock.Resolution.SECONDS) && (Math.abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
-        driveTrain.setVelocity(0);
-        MasqUtils.sleep(MasqUtils.DEFAULT_SLEEP_TIME);
-    }
-    public void strafe(double distance, double angle, double timeout) {
-        strafe(distance, angle, timeout, 0.7);
-    }
-    public void strafe (double distance, double angle) {
-        strafe(distance, angle, DEFAULT_TIMEOUT);
-    }
-
     public void drive(double distance, double speed, Direction direction, double timeout, double sleepTime) {
         driveTrain.resetEncoders();
         double targetAngle = tracker.getHeading();
@@ -261,8 +231,8 @@ public abstract class MasqRobot {
             power = driveController.getOutput(clicksRemaining) * speed;
             angularError = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
             powerAdjustment = angleController.getOutput(MasqUtils.adjustAngle(angularError));
-            leftPower = (direction.value * power) - powerAdjustment;
-            rightPower = (direction.value * power) + powerAdjustment;
+            leftPower = (direction.value * power) + powerAdjustment;
+            rightPower = (direction.value * power) - powerAdjustment;
             maxPower = MasqUtils.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
@@ -302,8 +272,8 @@ public abstract class MasqRobot {
             power = driveController.getOutput(clicksRemaining) * speed;
             angularError = MasqUtils.adjustAngle(angle - tracker.getHeading());
             powerAdjustment = angleController.getOutput(angularError);
-            leftPower = power - powerAdjustment;
-            rightPower = power + powerAdjustment;
+            leftPower = power + powerAdjustment;
+            rightPower = power - powerAdjustment;
             maxPower = MasqUtils.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
@@ -393,8 +363,8 @@ public abstract class MasqRobot {
             angularError = MasqUtils.adjustAngle(angle - tracker.getHeading());
             powerAdjustment = angleController.getOutput(angularError);
             powerAdjustment *= direction.value;
-            leftPower = power - powerAdjustment;
-            rightPower = power + powerAdjustment;
+            leftPower = power + powerAdjustment;
+            rightPower = power - powerAdjustment;
             maxPower = MasqUtils.max(Math.abs(leftPower), Math.abs(rightPower));
             if (maxPower > 1.0) {
                 leftPower /= maxPower;
@@ -547,7 +517,7 @@ public abstract class MasqRobot {
                     pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
                     driveTrain.setVelocityMECH(
                             pathAngle + tracker.getHeading(), speed,
-                            -pointsWithRobot.get(index).getH()
+                            pointsWithRobot.get(index).getH()
                     );
                 }
                 else {
