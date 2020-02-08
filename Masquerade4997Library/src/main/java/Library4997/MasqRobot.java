@@ -462,6 +462,7 @@ public abstract class MasqRobot {
                 dash.update();
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             }
+            if (pointsWithRobot.get(index).getOnComplete() != null) pointsWithRobot.get(index).getOnComplete().run();
             index++;
         }
         driveTrain.setVelocity(0);

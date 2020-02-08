@@ -31,14 +31,13 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     }
 
     @Override
-    public void DriverControl(MasqController controller) {
-    }
+    public void DriverControl(MasqController controller) {}
 
     public void scaleServos() {
-        leftRotater.scaleRange(0.5, 1);
-        leftGrabber.scaleRange(0.5, 0.85);
-        rightRotater.scaleRange(0.1,0.7);
-        rightGrabber.scaleRange(0,0.65);
+        /*leftRotater.scaleRange(0.5, 1);
+        leftGrabber.scaleRange(0.5, 0.85);*/
+        rightRotater.scaleRange(0, 0.7);
+        rightGrabber.scaleRange(0, 0.6);
     }
 
     public void leftUp(double sleepTime) {

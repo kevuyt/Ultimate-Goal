@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Robots.Midnight.Autonomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.Robots.Midnight.Robot.Midnight;
@@ -12,6 +13,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @Autonomous(name = "Park", group = "Testbot")
+@Disabled
+
 public class Park extends MasqLinearOpMode {
     private Midnight robot = new Midnight();
     int sleeptime;
