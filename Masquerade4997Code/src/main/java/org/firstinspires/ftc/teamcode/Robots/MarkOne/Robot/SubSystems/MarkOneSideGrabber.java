@@ -110,6 +110,12 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
         rightClose(0);
     }
 
+    public void getSet() {
+        leftRotater.setPosition(leftRotater.getPosition());
+        leftGrabber.setPosition(leftGrabber.getPosition());
+        rightRotater.setPosition(rightRotater.getPosition());
+        rightGrabber.setPosition(rightGrabber.getPosition());
+    }
     @Override
     public String getName() {
         return "SideGrabber";
@@ -119,4 +125,6 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     public MasqHardware[] getComponents() {
         return new MasqHardware[0];
     }
+
+
 }

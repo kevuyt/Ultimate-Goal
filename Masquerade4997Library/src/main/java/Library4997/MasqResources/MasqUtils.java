@@ -12,7 +12,6 @@ import java.util.Locale;
 
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqResources.MasqMath.MasqVector;
-import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 
@@ -119,4 +118,5 @@ public class MasqUtils {
                 projection.getX() + (lookAhead * Math.cos(theta)),
                 projection.getY() + (lookAhead * Math.sin(theta)));
     }
+
 }

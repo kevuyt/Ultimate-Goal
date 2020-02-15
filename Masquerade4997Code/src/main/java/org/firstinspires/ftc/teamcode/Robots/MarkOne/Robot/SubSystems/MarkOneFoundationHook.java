@@ -41,6 +41,11 @@ public class MarkOneFoundationHook implements MasqSubSystem {
         leftHook.setPosition(0.4);
     }
 
+    public void getSet() {
+        leftHook.setPosition(leftHook.getPosition());
+        rightHook.setPosition(rightHook.getPosition());
+    }
+
     @Override
     public String getName() {
         return "FoundatonHook";

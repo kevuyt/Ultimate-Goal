@@ -14,9 +14,9 @@ android {
     buildToolsVersion '28.0.3'
 }
 dependencies {
-    //implementation project(':Masquerade4997CV')
     implementation project(':openCVLibrary3')
     implementation 'junit:junit:4.12'
+
 }
 
 repositories {

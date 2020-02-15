@@ -630,7 +630,7 @@ public abstract class MasqRobot {
         driveTrain.setKi(velocityAutoController.getKi());
         driveTrain.setKd(velocityAutoController.getKd());
     }
-    private MasqWayPoint getCurrentWayPoint() {
+    public MasqWayPoint getCurrentWayPoint() {
         return new MasqWayPoint().setPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading())).setName("Inital WayPoint");
     }
 }

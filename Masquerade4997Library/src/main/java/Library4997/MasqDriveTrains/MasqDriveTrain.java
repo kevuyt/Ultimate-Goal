@@ -63,7 +63,7 @@ public class MasqDriveTrain implements MasqHardware {
     }
 
 
-    public double getRate() {
+    public double getVelocity() {
         return (leftDrive.getVelocity() + rightDrive.getVelocity())/2;
     }
     public double getPower() {
@@ -144,7 +144,7 @@ public class MasqDriveTrain implements MasqHardware {
     }
     public String[] getDash() {
         return new String[]{
-                "Rate "+ getRate(),
+                "Rate "+ getVelocity(),
                 "Left Position: " + leftDrive.getAbsolutePosition(),
                 "Right Position: " + rightDrive.getAbsolutePosition(),
         };
