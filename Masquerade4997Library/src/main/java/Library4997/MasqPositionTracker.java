@@ -82,8 +82,8 @@ public class MasqPositionTracker implements MasqHardware {
         double deltaX = (xSystem.getInches() - prevX);
         double deltaY = (ySystem.getInches() - prevY);
         double heading = Math.toRadians(getHeading());
-        double x = deltaX * Math.cos(heading) + deltaY * Math.sin(heading);
-        double y = - deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
+        double x = deltaX * Math.cos(heading) - deltaY * Math.sin(heading);
+        double y = deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
         globalX += x;
         globalY += y;
         prevY = ySystem.getInches();
@@ -103,8 +103,8 @@ public class MasqPositionTracker implements MasqHardware {
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
         double dTranslationalY = dY + angularComponentY;
-        double dGlobalX = dTranslationalX * Math.cos(heading) + dTranslationalY * Math.sin(heading);
-        double dGlobalY = - dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
+        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
+        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
     }
@@ -124,8 +124,8 @@ public class MasqPositionTracker implements MasqHardware {
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
-        double dGlobalX = dTranslationalX * Math.cos(heading) + dTranslationalY * Math.sin(heading);
-        double dGlobalY = - dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
+        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
+        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
     }
@@ -145,8 +145,8 @@ public class MasqPositionTracker implements MasqHardware {
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
-        double dGlobalX = dTranslationalX * Math.cos(heading) + dTranslationalY * Math.sin(heading);
-        double dGlobalY = - dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
+        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
+        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
     }

@@ -19,13 +19,13 @@ public class MarkOneFoundationHook implements MasqSubSystem {
         rightHook = foundationHook.servo1;
         leftHook = foundationHook.servo2;
         //rightHook.scaleRange(0.33, 1);
-        leftHook.scaleRange(0.1,0.7);
+        leftHook.scaleRange(0.35,0.75);
     }
 
     @Override
     public void DriverControl(MasqController controller) {
-        if(controller.b()) lower();
-        else raise();
+        if(controller.b()) raise();
+        else lower();
     }
 
     public void lower() {

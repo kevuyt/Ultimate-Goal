@@ -14,7 +14,6 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 1/18/2020
  */
 @Autonomous(name = "Park", group = "MarkOne")
-@Disabled
 public class ParkAuto extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private int sleeptime;

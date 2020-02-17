@@ -21,12 +21,11 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 public class MasqUtils {
     private static MasqLinearOpMode linearOpMode;
-    public static final double MECH_DRIVE_MULTIPLIER = 1.4;
-    public static final double MECH_ROTATION_MULTIPLIER = 0.4;
     public static final double DEFAULT_SLEEP_TIME = 0.5;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = Math.sqrt(2);
     public static final double DEFAULT_TURN_MULTIPLIER = 1;
+    public static final double DEFAULT_TOLERANCE = 2;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = "Ac5sAIr/////AAABmeUEovYOek9pkuVkMLDtWVGIkr+aSwnxHoPcO" +
             "Wo55EZxWMznvy9o+sR4uE8cUkHfJ2QywQNfK9SgCKSgjjRXD1lJvl3xiT0ddSjfE8JT9NMvGojoFG3nkaQP+Sq" +

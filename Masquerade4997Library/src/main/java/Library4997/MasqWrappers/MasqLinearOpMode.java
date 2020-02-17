@@ -49,5 +49,5 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             Thread.currentThread().interrupt();
         }
     }
-    public void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
+    public void sleep() {sleep(1.);}
 }
