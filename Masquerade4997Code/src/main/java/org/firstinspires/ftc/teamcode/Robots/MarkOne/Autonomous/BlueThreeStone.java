@@ -9,15 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.SWITCH;
 import static Library4997.MasqResources.MasqHelpers.Direction.BACKWARD;
-import static Library4997.MasqResources.MasqUtils.DEFAULT_SLEEP_TIME;
-import static Library4997.MasqResources.MasqUtils.DEFAULT_TIMEOUT;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
@@ -99,7 +95,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.sideGrabber.rightMid(0.5);
         }), foundationOne,true);
         grabStone(stone2, foundationThree,false);
-        grabStone(stone3.setPoint(stone3.getX(), stone3.getY()+3, stone3.getH()), foundationTwo,false);
+        grabStone(stone3.setPoint(stone3.getX(), stone3.getY() + 3, stone3.getH()), foundationTwo,false);
         foundationPark();
     }
 
@@ -113,14 +109,8 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.sideGrabber.rightMid(1);
         }));
         robot.driveTrain.setVelocity(0);
-        //if (firstStone) robot.sideGrabber.rightDown(0.35);
-        /*else robot.sideGrabber.rightDown(1);
-        robot.sideGrabber.rightClose(1);
-        robot.sideGrabber.rightMid(1);*/
         robot.xyPath(5, bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
-        /*robot.sideGrabber.rightOpen(0);
-        robot.sideGrabber.rightLowMid(0);*/
     }
 
     private void foundationPark() {
@@ -129,7 +119,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
         robot.foundationHook.lower();
         sleep();
         robot.driveTrain.setVelocity(1);
-        sleep(1.);
+        sleep();
         robot.driveTrain.setVelocity(0);
         robot.turnAbsolute(-70,1);
         robot.foundationHook.raise();
