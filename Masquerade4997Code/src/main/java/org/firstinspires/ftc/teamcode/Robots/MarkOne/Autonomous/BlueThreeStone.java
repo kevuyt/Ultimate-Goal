@@ -10,10 +10,10 @@ import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.SWITCH;
 import static Library4997.MasqResources.MasqHelpers.Direction.BACKWARD;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
@@ -44,7 +44,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
             });
 
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         robot.init(hardwareMap);
         robot.initializeAutonomous();
         robot.initCamera(hardwareMap);
@@ -73,10 +73,8 @@ public class BlueThreeStone extends MasqLinearOpMode {
         robot.sideGrabber.leftClose(0);
         robot.foundationHook.raise();
 
-        //mainAuto(stones.get(1), stones.get(4),stones.get(2));
-
         if (position == LEFT) runSimultaneously(
-                () -> mainAuto(stones.get(1), stones.get(4),stones.get(2)),
+                () -> mainAuto(stones.get(1), stones.get(4),stones.get(3)),
                 () -> robot.cv.stop()
         );
         else if (position == MIDDLE) runSimultaneously(
@@ -106,8 +104,10 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
         }), stone.setOnComplete(() -> {
-            robot.sideGrabber.rightClose(1);
-            robot.sideGrabber.rightMid(1);
+            int closeSleep = 1, rotateSleep = 1;
+            //robot.stop(closeSleep + rotateSleep);
+            robot.sideGrabber.rightClose(closeSleep);
+            robot.sideGrabber.rightMid(rotateSleep);
         }));
         robot.driveTrain.setVelocity(0);
         robot.xyPath(5, bridge1.setOnComplete(null), bridge2, foundation);
@@ -118,18 +118,40 @@ public class BlueThreeStone extends MasqLinearOpMode {
         robot.turnAbsolute(180,1.5);
         robot.drive(7, 1.75,BACKWARD,1);
         robot.foundationHook.lower();
+        MasqWayPoint park = new MasqWayPoint().setPoint(-40,28,90)
+                .setDriveCorrectionSpeed(0.2).setLookAhead(5);
         sleep();
-        robot.driveTrain.setVelocity(0.2,1);
-        robot.tracker.updateOverTime(1.5);
-        robot.driveTrain.setVelocity(0);
-        robot.turnAbsolute(-90,1);
+        foundationRotation(24);
+        robot.xyPath(1, park);
+        robot.stop(0.5);
+    }
+
+    private void foundationRotation(double inches) {
+        double curr = Math.abs(robot.driveTrain.leftDrive.getInches());
+        double tar = curr + inches;
+        while (curr < tar && opModeIsActive()) {
+            robot.driveTrain.setVelocity(0.5, 1);
+            robot.tracker.updateSystem();
+            curr = Math.abs(robot.driveTrain.leftDrive.getInches());
+        }
         robot.driveTrain.setVelocity(0);
         robot.foundationHook.raise();
-        robot.driveTrain.setVelocity(-1,-0.3);
-        robot.tracker.updateOverTime(1);
-        robot.driveTrain.setVelocity(0);
-        MasqWayPoint park = new MasqWayPoint().setPoint(-40,28,90).setDriveCorrectionSpeed(0.2).setLookAhead(5);
-        robot.xyPath(1,park);
-        robot.stop(0.5);
+        robot.stop(1);
+    }
+
+    private void legacy() {
+        robot.turnAbsolute(175,1.5);
+        robot.drive(7, Direction.BACKWARD);
+        robot.foundationHook.lower();
+        sleep();
+        MasqWayPoint p1 = new MasqWayPoint()
+                .setPoint(new MasqPoint(-80, 0, 80))
+                .setMinVelocity(0.5)
+                .setModeSwitchRadius(5);
+        robot.xyPath(3, p1);
+        robot.foundationHook.raise();
+        sleep();
+        MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90);
+        robot.xyPath(2, park);
     }
 }
