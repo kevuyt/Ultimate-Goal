@@ -102,6 +102,7 @@ MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
+            tracker.updateSystem();
             dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
@@ -145,6 +146,7 @@ MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
+            tracker.updateSystem();
             //serializer.writeData(new Object[]{clicksRemaining, power, angularError, angularIntegral, angularDerivative, leftPower, rightPower, powerAdjustment});
             dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
@@ -184,6 +186,7 @@ MasqRobot {
             if (left) leftPower = power;
             if (right) rightPower = -power;
             driveTrain.setVelocity(leftPower, rightPower);
+            tracker.updateSystem();
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", tracker.getHeading());
             dash.create("AngleLeftToCover", error);
@@ -219,12 +222,13 @@ MasqRobot {
         double power = 1;
         turnController.setConstants(kp, ki, kd);
         timeoutClock.reset();
-        while (opModeIsActive() && power > 0.1
+        while (opModeIsActive() && power > 0.15
                 && !timeoutClock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             double error = MasqUtils.adjustAngle(angle - tracker.getHeading());
             power = turnController.getOutput(MasqUtils.scaleNumber(error,0, currentMax,0,1));
             if (Math.abs(power) >= 1) power /= Math.abs(power);
             driveTrain.setVelocity(-power, power);
+            tracker.updateSystem();
             dash.create("KP: ", kp);
             dash.create("RIGHT POWER: " ,power);
             dash.create("TargetAngle", angle);
@@ -269,6 +273,7 @@ MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
+            tracker.updateSystem();
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("Angle Error", angularError);

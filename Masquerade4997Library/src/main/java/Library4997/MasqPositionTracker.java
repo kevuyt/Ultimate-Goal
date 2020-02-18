@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
+import Library4997.MasqSensors.MasqClock;
 
 import static Library4997.MasqResources.MasqUtils.adjustAngle;
 import static Library4997.MasqResources.MasqUtils.sleep;
@@ -68,6 +69,12 @@ public class MasqPositionTracker implements MasqHardware {
             case BOTH_PERPENDICULAR: bothPerpendicular(); break;
             case THREE: three(); break;
             default: break;
+        }
+    }
+    public void updateOverTime(double time) {
+        MasqClock clock = new MasqClock();
+        while (!clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) {
+            updateSystem();
         }
     }
 

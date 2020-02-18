@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -29,15 +30,15 @@ public class BlueThreeStone extends MasqLinearOpMode {
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH),
             bridge2 = new MasqWayPoint().setPoint(-59, 24, -90).setSwitchMode(MECH),
-            foundationOne = new MasqWayPoint().setPoint(-84, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationOne = new MasqWayPoint().setPoint(-87, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             }),
-            foundationTwo = new MasqWayPoint().setPoint(-87, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationTwo = new MasqWayPoint().setPoint(-89.5, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             }),
-            foundationThree = new MasqWayPoint().setPoint(-92, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             });
@@ -50,13 +51,13 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
         stones.add(null);
 
-        stones.add(new MasqWayPoint().setPoint(-17.5, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setSwitchMode(SWITCH).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-8.5, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setSwitchMode(SWITCH).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-3, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setSwitchMode(SWITCH).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-17.5, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-8.5, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-3, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
 
-        stones.add(new MasqWayPoint().setPoint(7, 29.5,-90).setMinVelocity(0).setTargetRadius(0.5).setSwitchMode(SWITCH).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setSwitchMode(SWITCH).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(22, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setSwitchMode(SWITCH).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(7, 29.5,-90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(23, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
 
         while (!opModeIsActive()) {
             position = CVInterpreter.getBlue(robot.cv.detector);
@@ -94,8 +95,8 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.sideGrabber.rightClose(1);
             robot.sideGrabber.rightMid(0.5);
         }), foundationOne,true);
-        grabStone(stone2, foundationThree,false);
-        grabStone(stone3.setPoint(stone3.getX(), stone3.getY() + 3, stone3.getH()), foundationTwo,false);
+        grabStone(stone2.setPoint(stone2.getX(), stone2.getY() + 3, stone2.getH()), foundationThree,false);
+        grabStone(stone3.setPoint(stone3.getX(), stone3.getY() + 6, stone3.getH()), foundationTwo,false);
         foundationPark();
     }
 
@@ -115,17 +116,20 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
     private void foundationPark() {
         robot.turnAbsolute(180,1.5);
-        robot.drive(7, BACKWARD);
+        robot.drive(7, 1.75,BACKWARD,1);
         robot.foundationHook.lower();
         sleep();
-        robot.driveTrain.setVelocity(1);
-        sleep();
+        robot.driveTrain.setVelocity(0.2,1);
+        robot.tracker.updateOverTime(1.5);
         robot.driveTrain.setVelocity(0);
-        robot.turnAbsolute(-70,1);
+        robot.turnAbsolute(-90,1);
+        robot.driveTrain.setVelocity(0);
         robot.foundationHook.raise();
-        robot.stop(1);
-        MasqWayPoint park = new MasqWayPoint().setPoint(-45,28,90).setDriveCorrectionSpeed(0.2);
+        robot.driveTrain.setVelocity(-1,-0.3);
+        robot.tracker.updateOverTime(1);
+        robot.driveTrain.setVelocity(0);
+        MasqWayPoint park = new MasqWayPoint().setPoint(-40,28,90).setDriveCorrectionSpeed(0.2).setLookAhead(5);
         robot.xyPath(1,park);
-        robot.stop(0.2);
+        robot.stop(0.5);
     }
 }

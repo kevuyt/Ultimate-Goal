@@ -71,9 +71,9 @@ public class MarkOne extends MasqRobot {
         driveTrain.setTracker(tracker);
         MasqUtils.driveController = new MasqPIDController(0.005);
         MasqUtils.angleController = new MasqPIDController(0.003);
-        MasqUtils.turnController = new MasqPIDController(0.01);
+        MasqUtils.turnController = new MasqPIDController(1);
         MasqUtils.velocityTeleController = new MasqPIDController(0.001);
-        MasqUtils.velocityAutoController = new MasqPIDController(0.004);
+        MasqUtils.velocityAutoController = new MasqPIDController(0.002);
         MasqUtils.xySpeedController = new MasqPIDController(0.08, 0, 0);
         MasqUtils.xyAngleController = new MasqPIDController(0.06, 0, 0);
         lift.encoder.setWheelDiameter(2);
