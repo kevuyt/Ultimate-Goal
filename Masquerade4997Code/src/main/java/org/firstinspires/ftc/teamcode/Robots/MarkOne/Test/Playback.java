@@ -11,11 +11,11 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
- * Created by Archishmaan Peyyety on 2020-02-15.
+ * Created by Archishmaan Peyyety on 2020-02-18.
  * Project: MasqLib
  */
-@TeleOp(name = "Ghost", group = "MarkOne")
-public class Ghost extends MasqLinearOpMode {
+@TeleOp(name = "Playback", group = "MarkOne")
+public class Playback extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private double currVel = 0;
     private List<MasqWayPoint> points = new ArrayList<>();
@@ -31,24 +31,8 @@ public class Ghost extends MasqLinearOpMode {
         }
 
         waitForStart();
-        points.add(robot.getCurrentWayPoint());
-        int index = 1;
-        while(opModeIsActive()) {
-            MasqWayPoint point = new MasqWayPoint();
-            teleop();
-            point = point.setPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY(), robot.tracker.getHeading());
-            double dXY = points.get(index - 1).getPoint().distanceToVector(point.getPoint());
-            double switchPoint = dXY / 1.5;
-            point = point.setPointSwitchRadius(switchPoint).setMinVelocity(currVel).setMaxVelocity(currVel);
-            point = point.setOnComplete(
-                    () -> {
-                        robot.foundationHook.getSet();
-                        robot.sideGrabber.getSet();
-                    }
-            );
-            points.add(point);
-        }
-        marshall("ghost", points);
+        MasqWayPoint points[] = unmarshall("ghost.json");
+        robot.xyPath(30, points);
 
     }
     private void teleop() {
@@ -82,7 +66,8 @@ public class Ghost extends MasqLinearOpMode {
         controller2.update();
     }
 
-    private void marshall(String name, List<MasqWayPoint> points){
+    private MasqWayPoint[] unmarshall(String name){
         name += ".json";
+        return null;
     }
 }

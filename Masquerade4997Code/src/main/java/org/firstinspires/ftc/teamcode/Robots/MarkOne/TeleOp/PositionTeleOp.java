@@ -11,6 +11,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 9/14/2019
  */
 @TeleOp(name = "PositionTeleOp", group = "MarkOne")
+@Disabled
 public class PositionTeleOp extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
 
