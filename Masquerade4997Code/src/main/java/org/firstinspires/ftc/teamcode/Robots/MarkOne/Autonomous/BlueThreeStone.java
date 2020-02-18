@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -104,7 +103,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
         }), stone.setOnComplete(() -> {
-            int closeSleep = 1, rotateSleep = 1;
+            double closeSleep = 1, rotateSleep = 1;
             //robot.stop(closeSleep + rotateSleep);
             robot.sideGrabber.rightClose(closeSleep);
             robot.sideGrabber.rightMid(rotateSleep);
@@ -116,17 +115,17 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
     private void foundationPark() {
         robot.turnAbsolute(180,1.5);
-        robot.drive(7, 1.75,BACKWARD,1);
+        robot.drive(7,1.75,BACKWARD,1);
         robot.foundationHook.lower();
         MasqWayPoint park = new MasqWayPoint().setPoint(-40,28,90)
                 .setDriveCorrectionSpeed(0.2).setLookAhead(5);
         sleep();
-        foundationRotation(24);
+        foundationRotation(20, -90);
         robot.xyPath(1, park);
         robot.stop(0.5);
     }
 
-    private void foundationRotation(double inches) {
+    private void foundationRotation(double inches, double heading) {
         double curr = Math.abs(robot.driveTrain.leftDrive.getInches());
         double tar = curr + inches;
         while (curr < tar && opModeIsActive()) {
@@ -134,6 +133,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.tracker.updateSystem();
             curr = Math.abs(robot.driveTrain.leftDrive.getInches());
         }
+        robot.turnAbsolute(-90, 1);
         robot.driveTrain.setVelocity(0);
         robot.foundationHook.raise();
         robot.stop(1);
@@ -141,16 +141,16 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
     private void legacy() {
         robot.turnAbsolute(175,1.5);
-        robot.drive(7, Direction.BACKWARD);
+        robot.drive(7, 1.75, BACKWARD,1);
         robot.foundationHook.lower();
-        sleep();
+        robot.stop(1);
         MasqWayPoint p1 = new MasqWayPoint()
                 .setPoint(new MasqPoint(-80, 0, 80))
                 .setMinVelocity(0.5)
                 .setModeSwitchRadius(5);
         robot.xyPath(3, p1);
         robot.foundationHook.raise();
-        sleep();
+        robot.stop(1);
         MasqWayPoint park = new MasqWayPoint().setPoint(-45,22,90);
         robot.xyPath(2, park);
     }
