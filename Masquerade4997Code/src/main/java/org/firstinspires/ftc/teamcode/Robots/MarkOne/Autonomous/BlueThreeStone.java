@@ -10,6 +10,7 @@ import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqResources.MasqMath.MasqPoint;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -88,12 +89,17 @@ public class BlueThreeStone extends MasqLinearOpMode {
 
     private void mainAuto(MasqWayPoint stone1, MasqWayPoint stone2, MasqWayPoint stone3) {
         grabStone(stone1.setSwitchMode(MECH).setOnComplete(() -> {
-            robot.sideGrabber.rightDown(0.35);
             robot.sideGrabber.rightClose(1);
             robot.sideGrabber.rightMid(0.5);
         }), foundationOne,true);
-        grabStone(stone2.setPoint(stone2.getX(), stone2.getY() + 3, stone2.getH()), foundationThree,false);
-        grabStone(stone3.setPoint(stone3.getX(), stone3.getY() + 6, stone3.getH()), foundationTwo,false);
+        grabStone (
+                stone2.setPoint(stone2.getX(), stone2.getY() + 3, stone2.getH()),
+                foundationThree,false
+        );
+        grabStone (
+                stone3.setPoint(stone3.getX(), stone3.getY() + 6, stone3.getH()),
+                foundationTwo,false
+        );
         foundationPark();
     }
 
@@ -103,7 +109,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
         }), stone.setOnComplete(() -> {
-            double closeSleep = 1, rotateSleep = 1;
+            double closeSleep = 1, rotateSleep = 0.5;
             //robot.stop(closeSleep + rotateSleep);
             robot.sideGrabber.rightClose(closeSleep);
             robot.sideGrabber.rightMid(rotateSleep);
@@ -114,21 +120,23 @@ public class BlueThreeStone extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        robot.turnAbsolute(180,1.5);
-        robot.drive(7,1.75,BACKWARD,1);
+        robot.turnAbsolute(180,1);
+        robot.drive(7,1.25,BACKWARD,1);
         robot.foundationHook.lower();
-        MasqWayPoint park = new MasqWayPoint().setPoint(-40,28,90)
-                .setDriveCorrectionSpeed(0.2).setLookAhead(5);
         sleep();
         foundationRotation(20, -90);
-        robot.xyPath(1, park);
+        robot.xyPath(1,
+                new MasqWayPoint().setPoint(-40,28, robot.tracker.getHeading())
+                .setDriveCorrectionSpeed(0.2).setLookAhead(5));
         robot.stop(0.5);
     }
 
     private void foundationRotation(double inches, double heading) {
         double curr = Math.abs(robot.driveTrain.leftDrive.getInches());
         double tar = curr + inches;
-        while (curr < tar && opModeIsActive()) {
+        MasqClock timeout = new MasqClock();
+        while (curr < tar && opModeIsActive() &&
+                !timeout.elapsedTime(2, MasqClock.Resolution.SECONDS)) {
             robot.driveTrain.setVelocity(0.5, 1);
             robot.tracker.updateSystem();
             curr = Math.abs(robot.driveTrain.leftDrive.getInches());
