@@ -86,8 +86,8 @@ public class BlueMaxStones extends MasqLinearOpMode {
                 () -> robot.cv.stop()
         );
         else runSimultaneously(
-                    () -> mainAuto(stones.get(3), stones.get(6), stones.get(2), stones.get(4)),
-                    () -> robot.cv.stop()
+                () -> mainAuto(stones.get(3), stones.get(6), stones.get(2), stones.get(4)),
+                () -> robot.cv.stop()
         );
     }
 
