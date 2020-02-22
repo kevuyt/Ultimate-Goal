@@ -36,6 +36,6 @@ public class ParkAuto extends MasqLinearOpMode {
 
         waitForStart();
         sleep(sleeptime);
-        robot.xyPath(2,new MasqWayPoint().setPoint(24,0,0));
+        robot.xyPath(2,new MasqWayPoint().setPoint(0,24,0));
     }
 }

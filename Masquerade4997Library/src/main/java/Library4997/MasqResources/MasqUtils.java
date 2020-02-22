@@ -41,10 +41,6 @@ public class MasqUtils {
     public static MasqPIDController velocityAutoController;
     public static MasqPIDController angleController;
 
-    public static void sleep (int milliSeconds) {
-        try {Thread.sleep(milliSeconds);}
-        catch (InterruptedException e) {e.printStackTrace();}
-    }
     public static void sleep(double timeSeconds) {
         try {
             Thread.sleep((long) timeSeconds * 1000);

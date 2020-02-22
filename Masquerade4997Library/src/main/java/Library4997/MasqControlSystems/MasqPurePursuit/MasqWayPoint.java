@@ -11,12 +11,14 @@ import Library4997.MasqResources.MasqMath.MasqVector;
 public class MasqWayPoint implements MasqHardware {
     private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
-            angularCorrectionSpeed = 0.02, speedBias = 0.5, driveCorrectionSpeed = 0.06;
+            angularCorrectionSpeed = 0.02, speedBias = 0.5, driveCorrectionSpeed = 0.07;
 
     private String name;
     private PointMode switchMode = PointMode.SWITCH;
 
     private Runnable onComplete = null;
+
+    private Runnable onSimul = null;
 
     public enum PointMode {
         MECH, TANK, SWITCH
@@ -201,6 +203,15 @@ public class MasqWayPoint implements MasqHardware {
 
     public Runnable getOnComplete() {
         return onComplete;
+    }
+
+    public Runnable getOnSimul() {
+        return onSimul;
+    }
+
+    public MasqWayPoint setOnSimul(Runnable onSimul) {
+        this.onSimul = onSimul;
+        return this;
     }
 
     public MasqVector getPoint() {

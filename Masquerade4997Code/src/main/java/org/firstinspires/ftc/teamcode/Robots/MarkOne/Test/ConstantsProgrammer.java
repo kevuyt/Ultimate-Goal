@@ -13,14 +13,12 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Project: MasqLib
  */
 @TeleOp(name = "ConstantsProgrammer", group = "MarkOne")
-@Disabled
 public class ConstantsProgrammer extends MasqLinearOpMode {
     public MarkOne robot = new MarkOne();
     private double hookPos, leftGrabber, rightGrabber, leftRotator, rightRotator;
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap);
-
         while (!opModeIsActive()) {
             dash.create("Hello, this is a constants programmer.");
             dash.update();
@@ -30,8 +28,6 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
         while (opModeIsActive()) {
             if (controller1.a()) hookPos += 0.001;
             else if (controller1.b()) hookPos -= 0.001;
-            hookPos = Range.clip(hookPos,0,1);
-
 
             if (controller1.dPadUp()) leftGrabber += 0.001;
             else if (controller1.dPadDown()) leftGrabber -= 0.001;
@@ -49,6 +45,8 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             rightGrabber = Range.clip(rightGrabber, 0 , 1);
             leftRotator = Range.clip(leftRotator, 0 , 1);
             rightRotator = Range.clip(rightRotator, 0 , 1);
+            hookPos = Range.clip(hookPos,0,1);
+
 
             robot.sideGrabber.rightGrabber.setPosition(rightGrabber);
             robot.sideGrabber.leftGrabber.setPosition(leftGrabber);

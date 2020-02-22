@@ -26,6 +26,7 @@ import static Library4997.MasqResources.MasqUtils.DEFAULT_SLEEP_TIME;
 import static Library4997.MasqResources.MasqUtils.DEFAULT_TIMEOUT;
 import static Library4997.MasqResources.MasqUtils.angleController;
 import static Library4997.MasqResources.MasqUtils.driveController;
+import static Library4997.MasqResources.MasqUtils.formatAngle;
 import static Library4997.MasqResources.MasqUtils.scaleNumber;
 import static Library4997.MasqResources.MasqUtils.turnController;
 import static Library4997.MasqResources.MasqUtils.velocityAutoController;
@@ -361,6 +362,10 @@ MasqRobot {
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             }
             if (pointsWithRobot.get(index).getOnComplete() != null) pointsWithRobot.get(index).getOnComplete().run();
+            if (pointsWithRobot.get(index).getOnSimul() != null) {
+                Thread thread = new Thread(pointsWithRobot.get(index).getOnSimul());
+                thread.start();
+            }
             index++;
         }
         driveTrain.setVelocity(0);
