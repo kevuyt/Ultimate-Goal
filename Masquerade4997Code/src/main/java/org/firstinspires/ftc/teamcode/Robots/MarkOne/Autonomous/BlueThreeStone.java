@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqMath.MasqPoint;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -22,7 +20,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 /**
  * Created by Keval Kataria on 1/4/2020
  */
-@Autonomous(name = "Blue", group = "MarkOne")
+@Autonomous(name = "Blue Three Stones", group = "MarkOne")
 public class BlueThreeStone extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
@@ -110,7 +108,6 @@ public class BlueThreeStone extends MasqLinearOpMode {
             robot.sideGrabber.rightDown(0);
         }), stone.setOnComplete(() -> {
             double closeSleep = 1, rotateSleep = 1;
-            //robot.stop(closeSleep + rotateSleep);
             robot.sideGrabber.rightClose(closeSleep);
             robot.sideGrabber.rightMid(rotateSleep);
         }));
@@ -132,21 +129,5 @@ public class BlueThreeStone extends MasqLinearOpMode {
                 .setDriveCorrectionSpeed(0.2).setLookAhead(5);
         robot.xyPath(5, p1, p2, p3);
         robot.stop(0.5);
-    }
-
-    private void foundationRotation(double inches, double heading) {
-        double curr = Math.abs(robot.driveTrain.leftDrive.getInches());
-        double tar = curr + inches;
-        MasqClock timeout = new MasqClock();
-        while (curr < tar && opModeIsActive() &&
-                !timeout.elapsedTime(2, MasqClock.Resolution.SECONDS)) {
-            robot.driveTrain.setVelocity(0.5, 1);
-            robot.tracker.updateSystem();
-            curr = Math.abs(robot.driveTrain.leftDrive.getInches());
-        }
-        robot.turnAbsolute(-90, 1);
-        robot.driveTrain.setVelocity(0);
-        robot.foundationHook.raise();
-        robot.stop(1);
     }
 }

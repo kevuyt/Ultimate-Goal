@@ -18,7 +18,7 @@ import static Library4997.MasqResources.MasqUtils.sleep;
 public class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, yLSystem, yRSystem, ySystem;
     public MasqAdafruitIMU imu;
-    private double prevHeading, heading;
+    private double prevHeading, heading, xDrift, yDrift;
 
     private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
     private DeadWheelPosition position;
@@ -170,10 +170,15 @@ public class MasqPositionTracker implements MasqHardware {
     }
 
     public double getGlobalX() {
-        return globalX;
+        return globalX + xDrift;
     }
     public double getGlobalY() {
-        return globalY;
+        return globalY + yDrift;
+    }
+
+    public void setDrift(double x, double y) {
+        xDrift = x;
+        yDrift = y;
     }
 
     public void setXRadius(double xRadius) {
