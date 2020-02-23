@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Red;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -20,8 +20,8 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 /**
  * Created by Keval Kataria on 1/4/2020
  */
-@Autonomous(name = "BlueThreeNeut", group = "MarkOne")
-public class BlueThreeNeut extends MasqLinearOpMode {
+@Autonomous(name = "RedThreeNeut", group = "MarkOne")
+public class RedThreeNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
     private List<MasqWayPoint> stones = new ArrayList<>();

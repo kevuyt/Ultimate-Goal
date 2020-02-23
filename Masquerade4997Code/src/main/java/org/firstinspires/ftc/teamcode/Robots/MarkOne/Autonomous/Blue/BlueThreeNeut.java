@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
+package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Blue;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -20,11 +20,10 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 /**
  * Created by Keval Kataria on 1/4/2020
  */
-@Autonomous(name = "BlueFourNeut", group = "MarkOne")
-public class BlueFourNeut extends MasqLinearOpMode {
+@Autonomous(name = "BluereeNeut", group = "MarkOne")
+public class BlueThreeNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
-    private int stoneCount = 0;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH),
@@ -41,10 +40,6 @@ public class BlueFourNeut extends MasqLinearOpMode {
                 robot.sideGrabber.rightLowMid(0);
             }),
             foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.rightLowMid(0);
-                robot.sideGrabber.rightOpen(1);
-            }),
-            foundationFour = new MasqWayPoint().setPoint(-48, 32, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightLowMid(0);
                 robot.sideGrabber.rightOpen(1);
             });
@@ -94,22 +89,20 @@ public class BlueFourNeut extends MasqLinearOpMode {
         );
     }
 
-    private void mainAuto(MasqWayPoint... stones) {
-        grabStone(stones[0].setSwitchMode(MECH).setOnComplete(() -> {
+    private void mainAuto(MasqWayPoint stone1, MasqWayPoint stone2, MasqWayPoint stone3) {
+        grabStone(stone1.setSwitchMode(MECH).setOnComplete(() -> {
             robot.sideGrabber.rightClose(1);
             robot.sideGrabber.rightUp(0.5);
-        }), foundationOne);
+        }), foundationOne,true);
         robot.tracker.setDrift(0, -3);
-        grabStone(stones[1], foundationTwo);
+        grabStone(stone2, foundationTwo,false);
         robot.tracker.setDrift(0, -6);
-        grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(0, -9);
-        grabStone(stones[3], foundationFour);
+        grabStone(stone3, foundationThree,false);
         foundationPark();
     }
 
-    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation) {
-        if (stoneCount == 0) robot.xyPath(4, stone);
+    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation, boolean firstStone) {
+        if (firstStone) robot.xyPath(4, stone);
         else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
@@ -121,7 +114,6 @@ public class BlueFourNeut extends MasqLinearOpMode {
         robot.driveTrain.setVelocity(0);
         robot.xyPath(5, bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
-        stoneCount++;
     }
 
     private void foundationPark() {
