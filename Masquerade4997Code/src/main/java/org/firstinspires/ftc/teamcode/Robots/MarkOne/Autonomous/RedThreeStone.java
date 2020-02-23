@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqMath.MasqPoint;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -133,21 +131,5 @@ public class RedThreeStone extends MasqLinearOpMode {
                 .setDriveCorrectionSpeed(0.2).setLookAhead(5);
         robot.xyPath(5, p1, p2, p3);
         robot.stop(0.5);
-    }
-
-    private void foundationRotation(double inches, double heading) {
-        double curr = Math.abs(robot.driveTrain.rightDrive.getInches());
-        double tar = curr + inches;
-        MasqClock timeout = new MasqClock();
-        while (curr < tar && opModeIsActive() &&
-                !timeout.elapsedTime(2, MasqClock.Resolution.SECONDS)) {
-            robot.driveTrain.setVelocity(1, 0.5);
-            robot.tracker.updateSystem();
-            curr = Math.abs(robot.driveTrain.rightDrive.getInches());
-        }
-        robot.turnAbsolute(90, 1);
-        robot.driveTrain.setVelocity(0);
-        robot.foundationHook.raise();
-        robot.stop(1);
     }
 }
