@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -116,15 +117,12 @@ public class BlueMaxStones extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-
-        MasqWayPoint p3 = new MasqWayPoint().setPoint(-45,28, -robot.tracker.getHeading())
-                .setDriveCorrectionSpeed(0.2).setLookAhead(5);
-        p3 = p3.setOnSimul(() -> {
-            sleep(0.5);
-            robot.sideGrabber.rightClose(0);
-            robot.sideGrabber.rightUp(0);
-        });
-        robot.xyPath(5, p3);
-        robot.stop(0.5);
+        sleep(0.5);
+        robot.sideGrabber.rightClose(0);
+        robot.sideGrabber.rightUp(0);
+        /*MasqWayPoint p3 = new MasqWayPoint().setPoint(-45,28, -robot.tracker.getHeading())
+                .setLookAhead(5);
+        robot.xyPath(2, p3);*/
+        robot.drive(48, Direction.BACKWARD);
     }
 }
