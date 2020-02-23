@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqSensors.MasqClock;
 
 
 /**
@@ -14,6 +15,7 @@ import Library4997.MasqResources.MasqUtils;
 public abstract class MasqLinearOpMode extends LinearOpMode {
     protected DashBoard dash;
     protected MasqController controller1, controller2;
+    protected MasqClock timeoutClock = new MasqClock();
     public final void runOpMode() throws InterruptedException {
         try {
             dash = new DashBoard(super.telemetry);

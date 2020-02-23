@@ -26,15 +26,14 @@ public class RobotTeleOp extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
+            intakeSpeed = 1;
             if (controller1.rightBumper() || controller1.leftBumper()) {
                 robot.MECH(controller1,0.5, 0.2);
                 intakeSpeed = 0.5;
             }
 
-            else {
-                robot.MECH(controller1,Math.sqrt(2) * 0.8, 0.5);
-                intakeSpeed = 1;
-            }
+            else robot.MECH(controller1,Math.sqrt(2) * 0.9, 0.5);
+
 
             if (controller1.leftTriggerPressed()) robot.intake.setVelocity(-intakeSpeed);
             else if (controller1.rightTriggerPressed()) robot.intake.setVelocity(intakeSpeed);
