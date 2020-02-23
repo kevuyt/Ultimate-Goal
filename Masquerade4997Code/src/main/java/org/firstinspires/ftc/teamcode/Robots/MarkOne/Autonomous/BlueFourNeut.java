@@ -94,17 +94,17 @@ public class BlueFourNeut extends MasqLinearOpMode {
         );
     }
 
-    private void mainAuto(MasqWayPoint stone1, MasqWayPoint stone2, MasqWayPoint stone3) {
-        grabStone(stone1.setSwitchMode(MECH).setOnComplete(() -> {
+    private void mainAuto(MasqWayPoint... stones) {
+        grabStone(stones[0].setSwitchMode(MECH).setOnComplete(() -> {
             robot.sideGrabber.rightClose(1);
             robot.sideGrabber.rightUp(0.5);
         }), foundationOne);
         robot.tracker.setDrift(0, -3);
-        grabStone(stone2, foundationTwo);
+        grabStone(stones[1], foundationTwo);
         robot.tracker.setDrift(0, -6);
-        grabStone(stone3, foundationThree);
+        grabStone(stones[2], foundationThree);
         robot.tracker.setDrift(0, -9);
-        grabStone(stone3, foundationFour);
+        grabStone(stones[3], foundationFour);
         foundationPark();
     }
 
