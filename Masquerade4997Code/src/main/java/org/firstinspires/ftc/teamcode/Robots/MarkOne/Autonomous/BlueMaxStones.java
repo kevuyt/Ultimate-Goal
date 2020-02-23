@@ -77,7 +77,7 @@ public class BlueMaxStones extends MasqLinearOpMode {
         robot.foundationHook.raise();
 
         if (position == LEFT) runSimultaneously(
-                () -> mainAuto(stones.get(1), stones.get(4),stones.get(3)),
+                () -> mainAuto(stones.get(1), stones.get(4),stones.get(2)),
                 () -> robot.cv.stop()
         );
         else if (position == MIDDLE) runSimultaneously(
