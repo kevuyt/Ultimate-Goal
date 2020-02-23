@@ -20,8 +20,8 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 /**
  * Created by Keval Kataria on 1/4/2020
  */
-@Autonomous(name = "Blue Max Stones", group = "MarkOne")
-public class BlueMaxStones extends MasqLinearOpMode {
+@Autonomous(name = "BlueFourNeut", group = "MarkOne")
+public class BlueFourNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
     private List<MasqWayPoint> stones = new ArrayList<>();
@@ -43,6 +43,10 @@ public class BlueMaxStones extends MasqLinearOpMode {
                 robot.sideGrabber.rightLowMid(0);
                 robot.sideGrabber.rightOpen(1);
             });
+    foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+        robot.sideGrabber.rightLowMid(0);
+        robot.sideGrabber.rightOpen(1);
+    });
 
     @Override
     public void runLinearOpMode() {
@@ -84,9 +88,9 @@ public class BlueMaxStones extends MasqLinearOpMode {
                 () -> robot.cv.stop()
         );
         else runSimultaneously(
-                () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
-                () -> robot.cv.stop()
-        );
+                    () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
+                    () -> robot.cv.stop()
+            );
     }
 
     private void mainAuto(MasqWayPoint stone1, MasqWayPoint stone2, MasqWayPoint stone3) {
@@ -97,6 +101,8 @@ public class BlueMaxStones extends MasqLinearOpMode {
         robot.tracker.setDrift(0, -3);
         grabStone(stone2, foundationTwo,false);
         robot.tracker.setDrift(0, -6);
+        grabStone(stone3, foundationThree,false);
+        robot.tracker.setDrift(0, -9);
         grabStone(stone3, foundationThree,false);
         foundationPark();
     }

@@ -12,7 +12,7 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static Library4997.MasqResources.MasqHelpers.Direction.BACKWARD;
+import static Library4997.MasqResources.MasqUtils.velocityAutoController;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
@@ -20,8 +20,8 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 /**
  * Created by Keval Kataria on 1/4/2020
  */
-@Autonomous(name = "Blue Three Stones", group = "MarkOne")
-public class BlueThreeStone extends MasqLinearOpMode {
+@Autonomous(name = "BlueThreeNeut", group = "MarkOne")
+public class BlueThreeNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
     private List<MasqWayPoint> stones = new ArrayList<>();
@@ -117,17 +117,11 @@ public class BlueThreeStone extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        robot.turnAbsolute(178,1);
-        robot.drive(5,1,BACKWARD,1);
-        robot.foundationHook.lower();
-        sleep();
-        MasqWayPoint p1 = new MasqWayPoint().setPoint(-60,0, 90)
-                .setDriveCorrectionSpeed(0.2).setMinVelocity(0);
-        MasqWayPoint p2 = new MasqWayPoint().setPoint(-90,20, 60)
-                .setDriveCorrectionSpeed(1).setTimeout(1).setSwitchMode(MECH).setOnComplete(() -> robot.foundationHook.raise());
-        MasqWayPoint p3 = new MasqWayPoint().setPoint(-45,28, 90)
-                .setDriveCorrectionSpeed(0.2).setLookAhead(5);
-        robot.xyPath(5, p1, p2, p3);
-        robot.stop(0.5);
+        robot.sideGrabber.rightClose(0);
+        robot.sideGrabber.rightUp(0);
+        velocityAutoController.setKp(0.001);
+        MasqWayPoint p3 = new MasqWayPoint().setPoint(-40,24, -90);
+        robot.xyPath(29 - timeoutClock.seconds(), p3);
+        //obot.drive(60, Direction.BACKWARD);
     }
 }
