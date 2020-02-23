@@ -20,7 +20,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 /**
  * Created by Keval Kataria on 1/4/2020
  */
-@Autonomous(name = "BluereeNeut", group = "MarkOne")
+@Autonomous(name = "BlueThreeNeut", group = "MarkOne")
 public class BlueThreeNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
