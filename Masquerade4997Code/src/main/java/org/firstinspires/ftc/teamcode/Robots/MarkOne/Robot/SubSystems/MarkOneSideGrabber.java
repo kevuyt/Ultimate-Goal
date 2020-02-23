@@ -49,8 +49,16 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
         leftRotater.setPosition(1);
         sleep(sleepTime);
     }
+    public void leftLowMid(double sleepTime) {
+        leftRotater.setPosition(0.45);
+        sleep(sleepTime);
+    }
     public void leftClose(double sleepTime) {
         leftGrabber.setPosition(1);
+        sleep(sleepTime);
+    }
+    public void leftSlightClose(double sleepTime) {
+        leftGrabber.setPosition(0.5);
         sleep(sleepTime);
     }
     public void leftOpen(double sleepTime) {
