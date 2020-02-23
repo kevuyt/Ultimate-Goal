@@ -40,9 +40,8 @@ public class BlueMaxStones extends MasqLinearOpMode {
                 robot.sideGrabber.rightLowMid(0);
             }),
             foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.rightOpen(1);
                 robot.sideGrabber.rightLowMid(0);
-
+                robot.sideGrabber.rightOpen(1);
             });
 
     @Override
@@ -87,7 +86,7 @@ public class BlueMaxStones extends MasqLinearOpMode {
         else runSimultaneously(
                 () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
                 () -> robot.cv.stop()
-            );
+        );
     }
 
     private void mainAuto(MasqWayPoint stone1, MasqWayPoint stone2, MasqWayPoint stone3) {
@@ -121,9 +120,8 @@ public class BlueMaxStones extends MasqLinearOpMode {
         robot.sideGrabber.rightClose(0);
         robot.sideGrabber.rightUp(0);
         velocityAutoController.setKp(0.001);
-        MasqWayPoint p3 = new MasqWayPoint().setDriveCorrectionSpeed(0.04).setPoint(-45,28, -robot.tracker.getHeading());
-        robot.xyPath(2, p3);
-        robot.driveTrain.setVelocity(0);
+        MasqWayPoint p3 = new MasqWayPoint().setPoint(-40,24, -robot.tracker.getHeading());
+        robot.xyPath(29 - timeoutClock.seconds(), p3);
         //obot.drive(60, Direction.BACKWARD);
     }
 }

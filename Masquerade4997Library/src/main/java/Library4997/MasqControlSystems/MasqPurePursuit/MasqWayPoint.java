@@ -18,7 +18,6 @@ public class MasqWayPoint implements MasqHardware {
 
     private Runnable onComplete = null;
 
-    private Runnable onSimul = null;
 
     public enum PointMode {
         MECH, TANK, SWITCH
@@ -205,14 +204,6 @@ public class MasqWayPoint implements MasqHardware {
         return onComplete;
     }
 
-    public Runnable getOnSimul() {
-        return onSimul;
-    }
-
-    public MasqWayPoint setOnSimul(Runnable onSimul) {
-        this.onSimul = onSimul;
-        return this;
-    }
 
     public MasqVector getPoint() {
         return new MasqVector(x,y);

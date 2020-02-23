@@ -123,7 +123,7 @@ public class BlueThreeStone extends MasqLinearOpMode {
         MasqWayPoint p1 = new MasqWayPoint().setPoint(-60,0, 90)
                 .setDriveCorrectionSpeed(0.2).setMinVelocity(0);
         MasqWayPoint p2 = new MasqWayPoint().setPoint(-90,20, 60)
-                .setDriveCorrectionSpeed(1).setTimeout(1).setSwitchMode(MECH).setOnSimul(() -> robot.foundationHook.raise());
+                .setDriveCorrectionSpeed(1).setTimeout(1).setSwitchMode(MECH).setOnComplete(() -> robot.foundationHook.raise());
         MasqWayPoint p3 = new MasqWayPoint().setPoint(-45,28, 90)
                 .setDriveCorrectionSpeed(0.2).setLookAhead(5);
         robot.xyPath(5, p1, p2, p3);
