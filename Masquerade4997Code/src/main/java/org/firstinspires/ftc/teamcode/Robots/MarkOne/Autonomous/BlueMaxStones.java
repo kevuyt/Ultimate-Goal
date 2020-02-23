@@ -26,7 +26,7 @@ public class BlueMaxStones extends MasqLinearOpMode {
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH),
-            bridge2 = new MasqWayPoint().setPoint(-59, 24, -90).setSwitchMode(MECH).setOnComplete(() -> {
+            bridge2 = new MasqWayPoint().setPoint(-59, 25, -90).setSwitchMode(MECH).setOnComplete(() -> {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
@@ -38,13 +38,11 @@ public class BlueMaxStones extends MasqLinearOpMode {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             }),
-            foundationThree = new MasqWayPoint().setPoint(-56, 16, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.rightDown(1);
-                robot.sideGrabber.rightOpen(1);
-                robot.sideGrabber.rightUp(0);
-            }),
-            park = new MasqWayPoint().setPoint(-45,28, 0)
-            .setDriveCorrectionSpeed(0.2).setLookAhead(5);
+            foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+                robot.sideGrabber.rightSlightClose(0);
+                robot.sideGrabber.rightLowMid(0);
+
+            });
 
     @Override
     public void runLinearOpMode() {
@@ -77,7 +75,7 @@ public class BlueMaxStones extends MasqLinearOpMode {
         robot.foundationHook.raise();
 
         if (position == LEFT) runSimultaneously(
-                () -> mainAuto(stones.get(1), stones.get(4),stones.get(2)),
+                () -> mainAuto(stones.get(1), stones.get(4),stones.get(3)),
                 () -> robot.cv.stop()
         );
         else if (position == MIDDLE) runSimultaneously(
@@ -98,12 +96,11 @@ public class BlueMaxStones extends MasqLinearOpMode {
         robot.tracker.setDrift(0, -3);
         grabStone(stone2, foundationTwo,false);
         robot.tracker.setDrift(0, -6);
-        //bridge2 = foundationThree.setX(foundationThree.getX() - 10);
-        grabStone(stone3, foundationThree,false, true);
-        robot.xyPath(5, park.setH(robot.tracker.getHeading()));
+        grabStone(stone3, foundationThree,false);
+        foundationPark();
     }
 
-    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation, boolean firstStone, boolean lastStone) {
+    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation, boolean firstStone) {
         if (firstStone) robot.xyPath(4, stone);
         else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
             robot.sideGrabber.rightOpen(0);
@@ -114,11 +111,20 @@ public class BlueMaxStones extends MasqLinearOpMode {
             robot.sideGrabber.rightUp(rotateSleep);
         }));
         robot.driveTrain.setVelocity(0);
-        if (lastStone) robot.xyPath(5, bridge1.setOnComplete(null), foundation);
-        else robot.xyPath(5, bridge1.setOnComplete(null), bridge2, foundation);
+        robot.xyPath(5, bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
     }
-    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation, boolean firstStone) {
-        grabStone(stone, foundation, firstStone, false);
+
+    private void foundationPark() {
+
+        MasqWayPoint p3 = new MasqWayPoint().setPoint(-45,28, -robot.tracker.getHeading())
+                .setDriveCorrectionSpeed(0.2).setLookAhead(5);
+        p3 = p3.setOnSimul(() -> {
+            sleep(0.5);
+            robot.sideGrabber.rightClose(0);
+            robot.sideGrabber.rightUp(0);
+        });
+        robot.xyPath(5, p3);
+        robot.stop(0.5);
     }
 }
