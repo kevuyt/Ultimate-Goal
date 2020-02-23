@@ -120,7 +120,7 @@ public class BlueMaxStones extends MasqLinearOpMode {
         robot.sideGrabber.rightClose(0);
         robot.sideGrabber.rightUp(0);
         velocityAutoController.setKp(0.001);
-        MasqWayPoint p3 = new MasqWayPoint().setPoint(-40,24, -robot.tracker.getHeading());
+        MasqWayPoint p3 = new MasqWayPoint().setPoint(-40,24, -90);
         robot.xyPath(29 - timeoutClock.seconds(), p3);
         //obot.drive(60, Direction.BACKWARD);
     }
