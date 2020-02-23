@@ -52,9 +52,9 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             robot.sideGrabber.rightRotater.setPosition(rightRotator);
             robot.sideGrabber.leftRotater.setPosition(leftRotator);
 
-            robot.driveTrain.setPower(speed);
+            //robot.driveTrain.setPower(speed);
 
-            dash.create("SPEED (+D_UP, -D_DOWN): ", speed);
+            dash.create("Left Grabber (+D_UP, -D_DOWN): ", speed);
             dash.create("Right Grabber (+D_RIGHT, -D_LEFT): ", rightGrabber);
             dash.create("Left Rotator (+LB, -LT): ", leftRotator);
             dash.create("Right Rotator (+RB, -RT): ", rightRotator);
