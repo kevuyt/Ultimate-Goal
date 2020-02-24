@@ -12,10 +12,9 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static Library4997.MasqResources.MasqUtils.velocityAutoController;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.RIGHT;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.RIGHT;
 
 /**
  * Created by Keval Kataria on 1/4/2020
@@ -31,7 +30,7 @@ public class RedThreeNeut extends MasqLinearOpMode {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
             }),
-            park = new MasqWayPoint().setPoint(40,24, 90),
+            park = new MasqWayPoint().setPoint(40,24, 90).setMaxVelocity(0.3).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(86, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
@@ -41,8 +40,8 @@ public class RedThreeNeut extends MasqLinearOpMode {
                 robot.sideGrabber.leftLowMid(0);
             }),
             foundationThree = new MasqWayPoint().setPoint(90, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.leftLowMid(1);
-                robot.sideGrabber.leftOpen(0);
+                robot.sideGrabber.leftSlightClose(0);
+                robot.sideGrabber.leftLowMid(0);
             });
 
     @Override
@@ -97,7 +96,7 @@ public class RedThreeNeut extends MasqLinearOpMode {
         }), foundationOne,true);
         robot.tracker.setDrift(0, 3);
         grabStone(stone2, foundationTwo,false);
-        robot.tracker.setDrift(-2, 6);
+        robot.tracker.setDrift(0, 6);
         grabStone(stone3, foundationThree,false);
         foundationPark();
     }
@@ -118,9 +117,6 @@ public class RedThreeNeut extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        robot.sideGrabber.leftClose(0);
-        robot.sideGrabber.leftUp(0);
-        velocityAutoController.setKp(0.001);
         robot.xyPath(29 - timeoutClock.seconds(), bridge2.setMinVelocity(0.3), park);
         robot.stop(29 - timeoutClock.seconds());
         //obot.drive(60, Direction.BACKWARD);
