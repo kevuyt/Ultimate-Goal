@@ -31,6 +31,7 @@ public class RedThreeNeut extends MasqLinearOpMode {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
             }),
+            park = new MasqWayPoint().setPoint(40,24, 90),
             foundationOne = new MasqWayPoint().setPoint(86, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
@@ -39,9 +40,9 @@ public class RedThreeNeut extends MasqLinearOpMode {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
             }),
-            foundationThree = new MasqWayPoint().setPoint(92, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.leftLowMid(0);
-                robot.sideGrabber.leftOpen(1);
+            foundationThree = new MasqWayPoint().setPoint(90, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+                robot.sideGrabber.leftLowMid(1);
+                robot.sideGrabber.leftOpen(0);
             });
 
     @Override
@@ -52,13 +53,13 @@ public class RedThreeNeut extends MasqLinearOpMode {
 
         stones.add(null);
 
-        stones.add(new MasqWayPoint().setPoint(15, 29.5, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(8, 29.5, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(0, 29.5, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(15, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+/**/    stones.add(new MasqWayPoint().setPoint(8, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+/**/    stones.add(new MasqWayPoint().setPoint(0, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
 
-        stones.add(new MasqWayPoint().setPoint(-9, 29.5,90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-15, 29.5, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-25, 29.5, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
+        stones.add(new MasqWayPoint().setPoint(-9, 29,90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-15, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+/**/    stones.add(new MasqWayPoint().setPoint(-25, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
 
         while (!opModeIsActive()) {
             position = CVInterpreter.getRed(robot.cv.detector);
@@ -94,7 +95,7 @@ public class RedThreeNeut extends MasqLinearOpMode {
             robot.sideGrabber.leftClose(1);
             robot.sideGrabber.leftUp(0.5);
         }), foundationOne,true);
-        robot.tracker.setDrift(-2, 3);
+        robot.tracker.setDrift(0, 3);
         grabStone(stone2, foundationTwo,false);
         robot.tracker.setDrift(-2, 6);
         grabStone(stone3, foundationThree,false);
@@ -120,8 +121,8 @@ public class RedThreeNeut extends MasqLinearOpMode {
         robot.sideGrabber.leftClose(0);
         robot.sideGrabber.leftUp(0);
         velocityAutoController.setKp(0.001);
-        MasqWayPoint p3 = new MasqWayPoint().setPoint(40,24, 90);
-        robot.xyPath(29 - timeoutClock.seconds(), p3);
+        robot.xyPath(29 - timeoutClock.seconds(), bridge2.setMinVelocity(0.3), park);
+        robot.stop(29 - timeoutClock.seconds());
         //obot.drive(60, Direction.BACKWARD);
     }
 }
