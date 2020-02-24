@@ -23,7 +23,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 public class RedFourNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
-    private int stoneCount = 0;
+    private int stoneCount = 1;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH),
@@ -31,7 +31,7 @@ public class RedFourNeut extends MasqLinearOpMode {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
             }),
-            park = new MasqWayPoint().setPoint(35,24, 90).setMaxVelocity(0.5).setMinVelocity(0),
+            park = new MasqWayPoint().setPoint(35,24, 180).setMaxVelocity(1).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(86, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
@@ -44,7 +44,7 @@ public class RedFourNeut extends MasqLinearOpMode {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
             }),
-            foundationFour = new MasqWayPoint().setPoint(48, 32, 180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationFour = new MasqWayPoint().setPoint(60, 24, 180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftLowMid(0);
                 robot.sideGrabber.leftOpen(1);
             });
@@ -103,7 +103,7 @@ public class RedFourNeut extends MasqLinearOpMode {
         grabStone(stones[1], foundationTwo);
         robot.tracker.setDrift(0, 6);
         grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(0, 9);
+        robot.tracker.setDrift(0, 12);
         grabStone(stones[3], foundationFour);
         foundationPark();
     }
@@ -119,15 +119,20 @@ public class RedFourNeut extends MasqLinearOpMode {
             robot.sideGrabber.leftUp(rotateSleep);
         }));
         robot.driveTrain.setVelocity(0);
-        if (stoneCount == 4) bridge2.setH(180);
+        if (stoneCount == 4) {
+            bridge2.setH(180).setOnComplete(() -> {
+                robot.sideGrabber.rightDown(0);
+                robot.sideGrabber.rightOpen(0);
+            });
+        }
         robot.xyPath(5, exitStone(), bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
         stoneCount++;
     }
 
     private void foundationPark() {
-        robot.xyPath(29 - timeoutClock.seconds(), bridge2.setMinVelocity(0.5), park);
-        robot.stop(29 - timeoutClock.seconds());
+        robot.xyPath(5, park);
+        robot.stop(5 - timeoutClock.seconds());
     }
 
     private MasqWayPoint exitStone() {
