@@ -12,7 +12,6 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static Library4997.MasqResources.MasqUtils.velocityAutoController;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
@@ -31,6 +30,7 @@ public class BlueThreeNeut extends MasqLinearOpMode {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
+            park = new MasqWayPoint().setPoint(35,24, 90).setMaxVelocity(0.5).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(-86, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
@@ -40,8 +40,8 @@ public class BlueThreeNeut extends MasqLinearOpMode {
                 robot.sideGrabber.rightLowMid(0);
             }),
             foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.rightLowMid(0);
-                robot.sideGrabber.rightOpen(1);
+                robot.sideGrabber.leftSlightClose(0);
+                robot.sideGrabber.leftLowMid(0);
             });
 
     @Override
@@ -117,11 +117,7 @@ public class BlueThreeNeut extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        robot.sideGrabber.rightClose(0);
-        robot.sideGrabber.rightUp(0);
-        velocityAutoController.setKp(0.001);
-        MasqWayPoint p3 = new MasqWayPoint().setPoint(-40,24, -90);
-        robot.xyPath(29 - timeoutClock.seconds(), p3);
-        //obot.drive(60, Direction.BACKWARD);
+        robot.xyPath(29 - timeoutClock.seconds(), bridge2.setMinVelocity(0.5), park);
+        robot.stop(29 - timeoutClock.seconds());
     }
 }

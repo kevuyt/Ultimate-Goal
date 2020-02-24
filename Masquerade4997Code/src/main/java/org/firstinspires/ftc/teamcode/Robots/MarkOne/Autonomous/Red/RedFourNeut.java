@@ -103,7 +103,7 @@ public class RedFourNeut extends MasqLinearOpMode {
         grabStone(stones[1], foundationTwo);
         robot.tracker.setDrift(0, 6);
         grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(0, 12);
+        robot.tracker.setDrift(0, 6);
         grabStone(stones[3], foundationFour);
         foundationPark();
     }
