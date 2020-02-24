@@ -23,6 +23,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 public class RedThreeNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
+    private int stoneCount = 1;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH),
@@ -93,16 +94,16 @@ public class RedThreeNeut extends MasqLinearOpMode {
         grabStone(stones[0].setSwitchMode(MECH).setOnComplete(() -> {
             robot.sideGrabber.leftClose(1);
             robot.sideGrabber.leftUp(0.5);
-        }), foundationOne,true);
+        }), foundationOne);
         robot.tracker.setDrift(0, 3);
-        grabStone(stones[1], foundationTwo,false);
+        grabStone(stones[1], foundationTwo);
         robot.tracker.setDrift(0, 6);
-        grabStone(stones[2], foundationThree,false);
+        grabStone(stones[2], foundationThree);
         foundationPark();
     }
 
-    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation, boolean firstStone) {
-        if (firstStone) robot.xyPath(4, stone);
+    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation) {
+        if (stoneCount == 1) robot.xyPath(4, stone);
         else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
             robot.sideGrabber.leftOpen(0);
             robot.sideGrabber.leftDown(0);
@@ -114,6 +115,7 @@ public class RedThreeNeut extends MasqLinearOpMode {
         robot.driveTrain.setVelocity(0);
         robot.xyPath(5, exitStone(), bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
+        stoneCount++;
     }
 
     private void foundationPark() {

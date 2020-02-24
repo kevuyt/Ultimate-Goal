@@ -41,8 +41,8 @@ public class RedFourNeut extends MasqLinearOpMode {
                 robot.sideGrabber.leftLowMid(0);
             }),
             foundationThree = new MasqWayPoint().setPoint(92, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+                robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
-                robot.sideGrabber.leftOpen(1);
             }),
             foundationFour = new MasqWayPoint().setPoint(48, 32, 180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftLowMid(0);
@@ -98,18 +98,18 @@ public class RedFourNeut extends MasqLinearOpMode {
         grabStone(stones[0].setSwitchMode(MECH).setOnComplete(() -> {
             robot.sideGrabber.leftClose(1);
             robot.sideGrabber.leftUp(0.5);
-        }), foundationOne,true);
+        }), foundationOne);
         robot.tracker.setDrift(0, 3);
-        grabStone(stones[1], foundationTwo,false);
+        grabStone(stones[1], foundationTwo);
         robot.tracker.setDrift(0, 6);
-        grabStone(stones[2], foundationThree,false);
+        grabStone(stones[2], foundationThree);
         robot.tracker.setDrift(0, 9);
-        grabStone(stones[3], foundationFour,false);
+        grabStone(stones[3], foundationFour);
         foundationPark();
     }
 
-    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation, boolean firstStone) {
-        if (firstStone) robot.xyPath(4, stone);
+    private void grabStone(MasqWayPoint stone, MasqWayPoint foundation) {
+        if (stoneCount == 1) robot.xyPath(4, stone);
         else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
             robot.sideGrabber.leftOpen(0);
             robot.sideGrabber.leftDown(0);
@@ -119,8 +119,10 @@ public class RedFourNeut extends MasqLinearOpMode {
             robot.sideGrabber.leftUp(rotateSleep);
         }));
         robot.driveTrain.setVelocity(0);
+        if (stoneCount == 4) bridge2.setH(180);
         robot.xyPath(5, exitStone(), bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
+        stoneCount++;
     }
 
     private void foundationPark() {
@@ -134,12 +136,12 @@ public class RedFourNeut extends MasqLinearOpMode {
     }
 
     private MasqWayPoint[] middleStones() {
-        return new MasqWayPoint[]{stones.get(2), stones.get(5),stones.get(3)};
+        return new MasqWayPoint[]{stones.get(2), stones.get(5), stones.get(3), stones.get(1)};
     }
     private MasqWayPoint[] leftStones() {
-        return new MasqWayPoint[]{stones.get(3), stones.get(6),stones.get(2)};
+        return new MasqWayPoint[]{stones.get(3), stones.get(6), stones.get(2), stones.get(1)};
     }
     private MasqWayPoint[] rightStones() {
-        return new MasqWayPoint[]{stones.get(1), stones.get(4),stones.get(3)};
+        return new MasqWayPoint[]{stones.get(1), stones.get(4), stones.get(3), stones.get(2)};
     }
 }
