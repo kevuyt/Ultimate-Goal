@@ -32,7 +32,7 @@ public class RedIndependent extends MasqLinearOpMode {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
             }),
-            park = new MasqWayPoint().setPoint(35,24, 180).setMaxVelocity(1).setMinVelocity(0),
+            park = new MasqWayPoint().setPoint(35,24, -90).setMaxVelocity(1).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(86, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
@@ -44,10 +44,6 @@ public class RedIndependent extends MasqLinearOpMode {
             foundationThree = new MasqWayPoint().setPoint(92, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
-            }),
-            foundationFour = new MasqWayPoint().setPoint(60, 24, 180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.leftLowMid(0);
-                robot.sideGrabber.leftOpen(1);
             });
 
     @Override
@@ -138,9 +134,7 @@ public class RedIndependent extends MasqLinearOpMode {
                 .setDriveCorrectionSpeed(0.2).setMinVelocity(0).setOnComplete(() -> robot.foundationHook.raise());
         MasqWayPoint p2 = new MasqWayPoint().setPoint(90,20, -60)
                 .setDriveCorrectionSpeed(1);
-        MasqWayPoint p3 = new MasqWayPoint().setPoint(40,28, -90)
-                .setDriveCorrectionSpeed(0.2).setLookAhead(5);
-        robot.xyPath(5, p1, p2, p3);
+        robot.xyPath(5, p1, p2, park);
         robot.stop(0.5);
     }
     private MasqWayPoint exitStone() {
