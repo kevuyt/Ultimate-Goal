@@ -61,7 +61,7 @@ public class RedThreeNeut extends MasqLinearOpMode {
         stones.add(new MasqWayPoint().setPoint(-25, 29.5, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
 
         while (!opModeIsActive()) {
-            position = CVInterpreter.getBlue(robot.cv.detector);
+            position = CVInterpreter.getRed(robot.cv.detector);
             dash.create("Skystone Position: " + position);
             dash.update();
         }
@@ -84,7 +84,7 @@ public class RedThreeNeut extends MasqLinearOpMode {
                 () -> robot.cv.stop()
         );
         else runSimultaneously(
-                () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
+                () -> mainAuto(stones.get(3), stones.get(6),stones.get(2)),
                 () -> robot.cv.stop()
         );
     }
@@ -94,9 +94,9 @@ public class RedThreeNeut extends MasqLinearOpMode {
             robot.sideGrabber.leftClose(1);
             robot.sideGrabber.leftUp(0.5);
         }), foundationOne,true);
-        robot.tracker.setDrift(0, -3);
+        robot.tracker.setDrift(-2, 3);
         grabStone(stone2, foundationTwo,false);
-        robot.tracker.setDrift(0, -6);
+        robot.tracker.setDrift(-2, 6);
         grabStone(stone3, foundationThree,false);
         foundationPark();
     }

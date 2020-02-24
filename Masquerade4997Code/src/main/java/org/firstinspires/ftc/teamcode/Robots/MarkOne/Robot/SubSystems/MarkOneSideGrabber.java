@@ -27,7 +27,7 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
         leftGrabber = sideGrabber.servo2;
         rightRotater = sideGrabber.servo3;
         rightGrabber = sideGrabber.servo4;
-        leftRotater.setDirection(Servo.Direction.REVERSE);
+        //leftRotater.setDirection(Servo.Direction.REVERSE);
         leftGrabber.setDirection((Servo.Direction.REVERSE));
     }
 
@@ -35,18 +35,18 @@ public class MarkOneSideGrabber implements MasqSubSystem, Constants {
     public void DriverControl(MasqController controller) {}
 
     public void scaleServos() {
-        leftRotater.scaleRange(0.5, 0.9);
-        leftGrabber.scaleRange(0.24, 0.67);
+        leftRotater.scaleRange(0.1, 0.5);
+        leftGrabber.scaleRange(0.24, 0.75);
         rightRotater.scaleRange(0.23, 0.65);
         rightGrabber.scaleRange(0.07, 0.6);
     }
 
     public void leftUp(double sleepTime) {
-        leftRotater.setPosition(0);
+        leftRotater.setPosition(1);
         sleep(sleepTime);
     }
     public void leftDown(double sleepTime) {
-        leftRotater.setPosition(1);
+        leftRotater.setPosition(0);
         sleep(sleepTime);
     }
     public void leftLowMid(double sleepTime) {

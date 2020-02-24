@@ -46,7 +46,6 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             rightRotator = Range.clip(rightRotator, 0 , 1);
             hookPos = Range.clip(hookPos,0,1);
 
-
             robot.sideGrabber.rightGrabber.setPosition(rightGrabber);
             robot.sideGrabber.leftGrabber.setPosition(speed);
             robot.sideGrabber.rightRotater.setPosition(rightRotator);
