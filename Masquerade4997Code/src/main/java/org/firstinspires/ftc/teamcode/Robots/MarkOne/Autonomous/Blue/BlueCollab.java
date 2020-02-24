@@ -125,7 +125,7 @@ public class BlueCollab extends MasqLinearOpMode {
                 robot.sideGrabber.leftOpen(0);
             });
         }
-        robot.xyPath(5, bridge1.setOnComplete(null), bridge2, foundation);
+        robot.xyPath(5, exitStone(), bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
         stoneCount++;
     }
@@ -133,5 +133,10 @@ public class BlueCollab extends MasqLinearOpMode {
     private void foundationPark() {
         robot.xyPath(5, park);
         robot.stop(5 - timeoutClock.seconds());
+    }
+
+    private MasqWayPoint exitStone() {
+        return new MasqWayPoint()
+                .setPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY() - 6, -robot.tracker.getHeading());
     }
 }
