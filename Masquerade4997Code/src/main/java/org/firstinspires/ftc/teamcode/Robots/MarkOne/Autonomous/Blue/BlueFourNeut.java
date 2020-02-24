@@ -12,7 +12,6 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static Library4997.MasqResources.MasqUtils.velocityAutoController;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.LEFT;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
@@ -24,7 +23,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 public class BlueFourNeut extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
-    private int stoneCount = 0;
+    private int stoneCount = 1;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH),
@@ -32,6 +31,7 @@ public class BlueFourNeut extends MasqLinearOpMode {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
+            park = new MasqWayPoint().setPoint(-35,24, 180).setMaxVelocity(1).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(-86, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
@@ -41,10 +41,10 @@ public class BlueFourNeut extends MasqLinearOpMode {
                 robot.sideGrabber.rightLowMid(0);
             }),
             foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+                robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
-                robot.sideGrabber.rightOpen(1);
             }),
-            foundationFour = new MasqWayPoint().setPoint(-48, 32, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationFour = new MasqWayPoint().setPoint(-60, 24, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightLowMid(0);
                 robot.sideGrabber.rightOpen(1);
             });
@@ -81,15 +81,15 @@ public class BlueFourNeut extends MasqLinearOpMode {
         robot.foundationHook.raise();
 
         if (position == LEFT) runSimultaneously(
-                () -> mainAuto(stones.get(1), stones.get(4),stones.get(3)),
+                () -> mainAuto(stones.get(1), stones.get(4),stones.get(3), stones.get(2)),
                 () -> robot.cv.stop()
         );
         else if (position == MIDDLE) runSimultaneously(
-                () -> mainAuto(stones.get(2), stones.get(5),stones.get(3)),
+                () -> mainAuto(stones.get(2), stones.get(5),stones.get(3), stones.get(1)),
                 () -> robot.cv.stop()
         );
         else runSimultaneously(
-                () -> mainAuto(stones.get(3), stones.get(6),stones.get(1)),
+                () -> mainAuto(stones.get(3), stones.get(6), stones.get(1), stones.get(2)),
                 () -> robot.cv.stop()
         );
     }
@@ -109,7 +109,7 @@ public class BlueFourNeut extends MasqLinearOpMode {
     }
 
     private void grabStone(MasqWayPoint stone, MasqWayPoint foundation) {
-        if (stoneCount == 0) robot.xyPath(4, stone);
+        if (stoneCount == 1) robot.xyPath(4, stone);
         else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
@@ -119,17 +119,19 @@ public class BlueFourNeut extends MasqLinearOpMode {
             robot.sideGrabber.rightUp(rotateSleep);
         }));
         robot.driveTrain.setVelocity(0);
+        if (stoneCount == 4) {
+            bridge2.setH(180).setOnComplete(() -> {
+                robot.sideGrabber.leftDown(0);
+                robot.sideGrabber.leftOpen(0);
+            });
+        }
         robot.xyPath(5, bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
         stoneCount++;
     }
 
     private void foundationPark() {
-        robot.sideGrabber.rightClose(0);
-        robot.sideGrabber.rightUp(0);
-        velocityAutoController.setKp(0.001);
-        MasqWayPoint p3 = new MasqWayPoint().setPoint(-40,24, -90);
-        robot.xyPath(29 - timeoutClock.seconds(), p3);
-        //obot.drive(60, Direction.BACKWARD);
+        robot.xyPath(5, park);
+        robot.stop(5 - timeoutClock.seconds());
     }
 }
