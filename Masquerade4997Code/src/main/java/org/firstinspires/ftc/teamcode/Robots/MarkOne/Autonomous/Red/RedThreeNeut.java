@@ -17,7 +17,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.RIGHT;
 
 /**
- * Created by Keval Kataria on 1/4/2020
+ *  Created by Keval Kataria on 1/4/2020
  */
 @Autonomous(name = "RedThreeNeut", group = "MarkOne")
 public class RedThreeNeut extends MasqLinearOpMode {
