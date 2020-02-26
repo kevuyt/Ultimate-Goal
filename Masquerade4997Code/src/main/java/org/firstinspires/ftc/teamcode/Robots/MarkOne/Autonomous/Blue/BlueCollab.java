@@ -57,13 +57,13 @@ public class BlueCollab extends MasqLinearOpMode {
 
         stones.add(null);
 
-        stones.add(new MasqWayPoint().setPoint(-15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-8, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(0, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-15, 29, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-8, 29, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(0, 29, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
 
-        stones.add(new MasqWayPoint().setPoint(9, 29.5,-90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(15, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(25, 29.5, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
+        stones.add(new MasqWayPoint().setPoint(9, 29,-90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(15, 29, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(25, 29, -90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
 
         while (!opModeIsActive()) {
             position = CVInterpreter.getBlue(robot.cv.detector);
@@ -105,7 +105,7 @@ public class BlueCollab extends MasqLinearOpMode {
         grabStone(stones[2], foundationThree);
         robot.tracker.setDrift(0, -9);
         grabStone(stones[3], foundationFour);
-        foundationPark();
+        park();
     }
 
     private void grabStone(MasqWayPoint stone, MasqWayPoint foundation) {
@@ -130,7 +130,7 @@ public class BlueCollab extends MasqLinearOpMode {
         stoneCount++;
     }
 
-    private void foundationPark() {
+    private void park() {
         robot.xyPath(5, park);
         robot.stop(5 - timeoutClock.seconds());
     }
