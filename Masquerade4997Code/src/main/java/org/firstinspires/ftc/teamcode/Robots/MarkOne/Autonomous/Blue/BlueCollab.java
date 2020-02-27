@@ -25,31 +25,33 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 public class BlueCollab extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
-    private int stoneCount = 1, maxStones = 4;
+    private int stoneCount = 1, maxStones = 4, reducedXPBasedYCorrection = 1;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
-            bridge1 = new MasqWayPoint().setPoint(-24, 24, -90).setSwitchMode(MECH),
-            bridge2 = new MasqWayPoint().setPoint(-60, 24, -90).setSwitchMode(MECH).setOnComplete(() -> {
-                robot.sideGrabber.rightClose(0);
-                robot.sideGrabber.rightUp(0);
-            }),
+            bridge1 = new MasqWayPoint().setPoint(-24, 22, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
+            bridge2 = new MasqWayPoint().setPoint(-60, 22, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1)
+                    .setOnComplete(() -> {
+                        robot.sideGrabber.rightClose(0);
+                        robot.sideGrabber.rightUp(0);
+                    }
+            ),
             park = new MasqWayPoint().setPoint(-35,24, 180).setMaxVelocity(1).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(-86, 28, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
-            }).setDriveCorrectionSpeed(0.04),
+            }).setDriveCorrectionSpeed(0.06),
             foundationTwo = new MasqWayPoint().setPoint(-88, 28, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
-            }).setDriveCorrectionSpeed(0.04),
+            }).setDriveCorrectionSpeed(0.06),
             foundationThree = new MasqWayPoint().setPoint(-90, 28, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
-            }).setDriveCorrectionSpeed(0.04),
-            foundationFour = new MasqWayPoint().setPoint(-60, 28, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            }).setDriveCorrectionSpeed(0.06),
+            foundationFour = new MasqWayPoint().setPoint(-60, 18, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightLowMid(0);
                 robot.sideGrabber.rightOpen(0);
-            }).setDriveCorrectionSpeed(0.04);
+            }).setDriveCorrectionSpeed(0.06);
 
     @Override
     public void runLinearOpMode() {
@@ -109,16 +111,19 @@ public class BlueCollab extends MasqLinearOpMode {
                 );
             }).setSwitchMode(MECH).setMinVelocity(0).setTargetRadius(0.5)
                     .setDriveCorrectionSpeed(0.04);
+
+            stones[index] =
+                    stones[index].setY(stones[index].getY() + reducedXPBasedYCorrection);
             index++;
         }
         robot.tracker.setDrift(4, 0);
-        grabStone(stones[0], foundationOne);
+        grabStone(stones[0], foundationOne.setY(foundationOne.getY() + reducedXPBasedYCorrection));
         robot.tracker.setDrift(4, -4);
-        grabStone(stones[1], foundationTwo);
+        grabStone(stones[1], foundationTwo.setY(foundationTwo.getY() + reducedXPBasedYCorrection));
         robot.tracker.setDrift(4, -6);
-        grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(4, -6);
-        grabStone(stones[3], foundationFour);
+        grabStone(stones[2], foundationThree.setY(foundationThree.getY() + reducedXPBasedYCorrection));
+        robot.tracker.setDrift(4, -8);
+        grabStone(stones[3], foundationFour.setY(foundationFour.getY() + reducedXPBasedYCorrection));
         park();
     }
 
@@ -151,13 +156,28 @@ public class BlueCollab extends MasqLinearOpMode {
     }
 
     private MasqWayPoint[] middleStones() {
-        return new MasqWayPoint[]{stones.get(2), stones.get(5), stones.get(3), stones.get(1)};
+        return new MasqWayPoint[] {
+                stones.get(2),
+                stones.get(5),
+                stones.get(3),
+                stones.get(1)
+        };
     }
     private MasqWayPoint[] rightStones() {
-        return new MasqWayPoint[]{stones.get(3), stones.get(6), stones.get(2), stones.get(1)};
+        return new MasqWayPoint[] {
+                stones.get(3),
+                stones.get(6),
+                stones.get(2),
+                stones.get(1)
+        };
     }
     private MasqWayPoint[] leftStones() {
-        return new MasqWayPoint[]{stones.get(1), stones.get(4), stones.get(3), stones.get(2)};
+        return new MasqWayPoint[]{
+                stones.get(1),
+                stones.get(4),
+                stones.get(3),
+                stones.get(2).setY(30)
+        };
     }
     private MasqWayPoint enterStone(MasqWayPoint stone) {
         return new MasqWayPoint().setPoint(stone.getX() - 4, 24, -90).setSwitchMode(MECH);
