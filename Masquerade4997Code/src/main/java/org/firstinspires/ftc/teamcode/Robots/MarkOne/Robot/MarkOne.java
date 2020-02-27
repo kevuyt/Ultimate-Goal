@@ -33,7 +33,8 @@ import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
 public class MarkOne extends MasqRobot {
 
     public MasqServo blockGrabber;
-    private MasqServo blockRotater, capper;
+    public MasqServo blockRotater;
+    private MasqServo capper;
     public MarkOneFoundationHook foundationHook;
     public MarkOneSideGrabber sideGrabber;
     public MasqMotor lift, tapeMeasure;

@@ -40,19 +40,20 @@ public class BlueCollab extends MasqLinearOpMode {
             foundationOne = new MasqWayPoint().setPoint(-86, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
-            }).setDriveCorrectionSpeed(0.05),
+            }),
             foundationTwo = new MasqWayPoint().setPoint(-88, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
-            }).setDriveCorrectionSpeed(0.05),
+            }),
             foundationThree = new MasqWayPoint().setPoint(-90, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
-            }).setDriveCorrectionSpeed(0.05),
+            }),
             foundationFour = new MasqWayPoint().setPoint(-60, 18, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightLowMid(0);
                 robot.sideGrabber.rightOpen(0);
             });
+
 
     @Override
     public void runLinearOpMode() {
@@ -129,7 +130,7 @@ public class BlueCollab extends MasqLinearOpMode {
         else robot.xyPath(9, bridge2, bridge1Exit.setOnComplete(() -> {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
-        }), enterStone(stone), stone);
+        }), stone);
         robot.driveTrain.setVelocity(0);
         if (stoneCount == 4) {
             bridge2.setH(180).setOnComplete(() -> {
@@ -156,16 +157,16 @@ public class BlueCollab extends MasqLinearOpMode {
         return new MasqWayPoint[] {
                 stones.get(2),
                 stones.get(5).setDriveCorrectionSpeed(0.04).setY(30),
-                stones.get(3).setX(stones.get(3).getX() + 2).setY(32),
-                stones.get(1).setX(stones.get(1).getX() + 2).setY(34).setDriveCorrectionSpeed(0.04)
+                stones.get(3).setX(stones.get(3).getX() + 2).setY(32).setTimeout(1.5),
+                stones.get(1).setX(stones.get(1).getX() + 2).setY(34).setDriveCorrectionSpeed(0.04).setTimeout(1.5)
         };
     }
     private MasqWayPoint[] rightStones() {
         return new MasqWayPoint[] {
                 stones.get(3),
-                stones.get(6).setDriveCorrectionSpeed(0.04),
-                stones.get(2),
-                stones.get(1)
+                stones.get(6).setDriveCorrectionSpeed(0.04).setY(30),
+                stones.get(2).setX(stones.get(2).getX() + 2).setY(32).setTimeout(1),
+                stones.get(1).setX(stones.get(1).getX() + 2).setY(34).setDriveCorrectionSpeed(0.05).setTimeout(1)
         };
     }
     private MasqWayPoint[] leftStones() {
@@ -175,8 +176,5 @@ public class BlueCollab extends MasqLinearOpMode {
                 stones.get(3),
                 stones.get(2).setY(30)
         };
-    }
-    private MasqWayPoint enterStone(MasqWayPoint stone) {
-        return new MasqWayPoint().setPoint(stone.getX() - 4, 24, -90).setSwitchMode(MECH);
     }
 }

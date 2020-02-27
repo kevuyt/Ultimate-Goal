@@ -14,7 +14,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "ConstantsProgrammer", group = "MarkOne")
 public class ConstantsProgrammer extends MasqLinearOpMode {
     public MarkOne robot = new MarkOne();
-    private double hookPos, speed, rightGrabber, leftRotator, rightRotator;
+    private double hookPos, speed, rightGrabber, leftRotator, rightRotator, rotator;
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap);
@@ -40,19 +40,24 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             if (controller1.rightBumper()) rightRotator += 0.001;
             else if (controller1.rightTriggerPressed()) rightRotator -= 0.001;
 
+            if (controller2.rightBumper()) rotator += 0.001;
+            else if (controller2.rightTriggerPressed()) rotator -= 0.001;
+
             speed = Range.clip(speed, 0 , 1);
             rightGrabber = Range.clip(rightGrabber, 0 , 1);
             leftRotator = Range.clip(leftRotator, 0 , 1);
             rightRotator = Range.clip(rightRotator, 0 , 1);
             hookPos = Range.clip(hookPos,0,1);
+            rotator = Range.clip(rotator, 0, 1);
 
             robot.sideGrabber.rightGrabber.setPosition(rightGrabber);
             robot.sideGrabber.leftGrabber.setPosition(speed);
             robot.sideGrabber.rightRotater.setPosition(rightRotator);
             robot.sideGrabber.leftRotater.setPosition(leftRotator);
+            robot.blockRotater.setPosition(rotator);
 
             //robot.driveTrain.setPower(speed);
-
+            dash.create("Rotator (+D_UP, -D_DOWN): ", rotator);
             dash.create("Left Grabber (+D_UP, -D_DOWN): ", speed);
             dash.create("Right Grabber (+D_RIGHT, -D_LEFT): ", rightGrabber);
             dash.create("Left Rotator (+LB, -LT): ", leftRotator);

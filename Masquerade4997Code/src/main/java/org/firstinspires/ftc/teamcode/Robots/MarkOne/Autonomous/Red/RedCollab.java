@@ -23,7 +23,7 @@ import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVI
 public class RedCollab extends MasqLinearOpMode {
     private MarkOne robot = new MarkOne();
     private SkystonePosition position;
-    private int stoneCount = 1;
+    private int stoneCount = 1, maxStones = 4;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH),
@@ -40,7 +40,7 @@ public class RedCollab extends MasqLinearOpMode {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
             }),
-            foundationThree = new MasqWayPoint().setPoint(92, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationThree = new MasqWayPoint().setPoint(90, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
             }),
@@ -86,8 +86,6 @@ public class RedCollab extends MasqLinearOpMode {
         else runStones = leftStones();
 
         //idk why but the first stone always needs a lil more in the x, it goes to the right position tho
-        runStones[0] = runStones[0].setX(runStones[0].getX() + 3);
-
         runSimultaneously(
                 () -> mainAuto(runStones),
                 () -> robot.cv.stop()
@@ -95,16 +93,27 @@ public class RedCollab extends MasqLinearOpMode {
     }
 
     private void mainAuto(MasqWayPoint... stones) {
-        grabStone(stones[0].setSwitchMode(MECH).setOnComplete(() -> {
-            robot.sideGrabber.leftClose(1);
-            robot.sideGrabber.leftUp(0.5);
-        }), foundationOne);
-        robot.tracker.setDrift(0, 1);
+        int index = 0;
+        while (index < maxStones) {
+            stones[index] = stones[index].setOnComplete(() -> {
+                double closeSleep = 1, upSleep = 0;
+                runSimultaneously(
+                        () -> robot.stop(closeSleep + upSleep),
+                        () -> {
+                            robot.sideGrabber.leftClose(closeSleep);
+                            robot.sideGrabber.leftUp(upSleep);
+                        }
+                );
+            }).setSwitchMode(MECH).setMinVelocity(0);
+            index++;
+        }
+        grabStone(stones[0], foundationOne);
+        robot.tracker.setDrift(-3, 1);
         grabStone(stones[1], foundationTwo);
         bridge1.setY(25);
-        robot.tracker.setDrift(0, 3);
+        robot.tracker.setDrift(-3, 4);
         grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(0, 3);
+        robot.tracker.setDrift(-3, 4);
         grabStone(stones[3], foundationFour);
         foundationPark();
     }
@@ -114,12 +123,7 @@ public class RedCollab extends MasqLinearOpMode {
         else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
             robot.sideGrabber.leftOpen(0);
             robot.sideGrabber.leftDown(0);
-        }), stone.setOnComplete(() -> {
-            double closeSleep = 1, rotateSleep = 0;
-            robot.sideGrabber.leftClose(closeSleep);
-            robot.sideGrabber.leftUp(rotateSleep);
-        }));
-        robot.driveTrain.setVelocity(0);
+        }), stone);
         if (stoneCount == 4) {
             bridge2.setH(180).setOnComplete(() -> {
                 robot.sideGrabber.rightDown(0);
@@ -142,12 +146,27 @@ public class RedCollab extends MasqLinearOpMode {
     }
 
     private MasqWayPoint[] middleStones() {
-        return new MasqWayPoint[]{stones.get(2), stones.get(5), stones.get(3), stones.get(1)};
+        return new MasqWayPoint[] {
+                stones.get(2),
+                stones.get(5),
+                stones.get(3),
+                stones.get(1)
+        };
     }
     private MasqWayPoint[] leftStones() {
-        return new MasqWayPoint[]{stones.get(3), stones.get(6), stones.get(2), stones.get(1)};
+        return new MasqWayPoint[] {
+                stones.get(3),
+                stones.get(6),
+                stones.get(2),
+                stones.get(1)
+        };
     }
     private MasqWayPoint[] rightStones() {
-        return new MasqWayPoint[]{stones.get(1), stones.get(4), stones.get(3), stones.get(2)};
+        return new MasqWayPoint[] {
+                stones.get(1),
+                stones.get(4),
+                stones.get(3),
+                stones.get(2).setY(32)
+        };
     }
 }
