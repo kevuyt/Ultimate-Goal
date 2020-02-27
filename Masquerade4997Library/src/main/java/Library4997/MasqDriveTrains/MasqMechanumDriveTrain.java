@@ -8,7 +8,6 @@ import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqWrappers.DashBoard;
 
 
 public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardware {
@@ -40,8 +39,6 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
             rightFront /= max;
             rightBack /= max;
         }
-        DashBoard.getDash().create("Left Front Power: ", leftFront);
-        DashBoard.getDash().create("Left Back Power: ", leftBack);
         leftDrive.motor1.setVelocity(leftFront);
         leftDrive.motor2.setVelocity(leftBack);
         rightDrive.motor1.setVelocity(rightFront);
