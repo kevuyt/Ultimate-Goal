@@ -39,7 +39,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else if (controller1.rightTriggerPressed()) robot.intake.setVelocity(intakeSpeed);
             else robot.intake.setVelocity(0);
 
-            robot.lift.setVelocity(controller2.leftStickY());
+            if (controller2.leftBumper()) robot.lift.setVelocity(controller2.leftStickY()*0.5);
+            else robot.lift.setVelocity(controller2.leftStickY());
 
             robot.tapeMeasure.setPower(controller2.rightStickY());
 

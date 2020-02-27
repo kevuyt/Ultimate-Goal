@@ -32,7 +32,7 @@ public class BlueIndependent extends MasqLinearOpMode {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
-            park = new MasqWayPoint().setPoint(-35,24, 90).setMaxVelocity(1).setMinVelocity(0),
+            park = new MasqWayPoint().setPoint(-35,24, 90).setMaxVelocity(1).setMinVelocity(0).setLookAhead(3),
             foundationOne = new MasqWayPoint().setPoint(-86, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
@@ -118,17 +118,36 @@ public class BlueIndependent extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        robot.turnAbsolute(170,1);
-        robot.drive(10,0.7, BACKWARD,1);
+        /*robot.turnAbsolute(170,1);
+        robot.drive(10,0.5, BACKWARD,1);
+        robot.foundationHook.lower();
+        sleep();
+        MasqWayPoint p1 = new MasqWayPoint().setPoint(-92,5, 160)
+                .setOnComplete(() -> {
+                    robot.turnAbsolute(90);
+                    robot.foundationHook.raise();
+                    robot.stop(1);
+                }).setMinVelocity(0);
+        robot.xyPath(6, p1, park);
+        robot.stop(0.5);*/
+
+        //MasqWayPoint p1 = new MasqWayPoint().setPoint(-)
+
+        robot.turnAbsolute(180,1);
+        robot.drive(7,1.25, BACKWARD,1);
         robot.foundationHook.lower();
         sleep();
         MasqWayPoint p1 = new MasqWayPoint().setPoint(-60,0, 90)
-                .setDriveCorrectionSpeed(0.2).setMinVelocity(0)
-                .setOnComplete(() -> {
-                    robot.foundationHook.raise();
-                    robot.drive(20, BACKWARD);
-                });
-        robot.xyPath(6, p1, park);
+                .setDriveCorrectionSpeed(0.2).setAngularCorrectionSpeed(0.05)
+                .setMinVelocity(0).setOnComplete(
+                        () -> {
+                            robot.foundationHook.raise();
+                            sleep();
+                            robot.drive(-10);
+                        }
+                );
+
+        robot.xyPath(5, p1, park);
         robot.stop(0.5);
     }
 

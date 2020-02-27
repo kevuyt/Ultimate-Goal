@@ -2,9 +2,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.Range;
-
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
-
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 

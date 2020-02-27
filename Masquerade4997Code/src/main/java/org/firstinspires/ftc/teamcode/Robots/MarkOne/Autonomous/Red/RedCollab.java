@@ -31,7 +31,7 @@ public class RedCollab extends MasqLinearOpMode {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
             }),
-            park = new MasqWayPoint().setPoint(35,24, 180).setMaxVelocity(1).setMinVelocity(0),
+            park = new MasqWayPoint().setPoint(35,24, 180).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(86, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
@@ -44,7 +44,7 @@ public class RedCollab extends MasqLinearOpMode {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
             }),
-            foundationFour = new MasqWayPoint().setPoint(60, 24, 180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationFour = new MasqWayPoint().setPoint(60, 20, 180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftLowMid(0);
                 robot.sideGrabber.leftOpen(1);
             });
@@ -99,11 +99,12 @@ public class RedCollab extends MasqLinearOpMode {
             robot.sideGrabber.leftClose(1);
             robot.sideGrabber.leftUp(0.5);
         }), foundationOne);
-        robot.tracker.setDrift(0, 3);
+        robot.tracker.setDrift(0, 1);
         grabStone(stones[1], foundationTwo);
-        robot.tracker.setDrift(0, 6);
+        bridge1.setY(25);
+        robot.tracker.setDrift(0, 3);
         grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(0, 6);
+        robot.tracker.setDrift(0, 3);
         grabStone(stones[3], foundationFour);
         foundationPark();
     }
