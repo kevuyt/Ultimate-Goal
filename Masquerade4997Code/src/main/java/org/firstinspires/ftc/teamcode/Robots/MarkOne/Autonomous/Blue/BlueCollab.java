@@ -156,8 +156,8 @@ public class BlueCollab extends MasqLinearOpMode {
         return new MasqWayPoint[] {
                 stones.get(2),
                 stones.get(5).setDriveCorrectionSpeed(0.04).setY(30),
-                stones.get(3).setX(stones.get(3).getX() + 2),
-                stones.get(1).setX(stones.get(1).getX() + 2)
+                stones.get(3).setX(stones.get(3).getX() + 2).setY(32),
+                stones.get(1).setX(stones.get(1).getX() + 2).setY(34).setDriveCorrectionSpeed(0.04)
         };
     }
     private MasqWayPoint[] rightStones() {
