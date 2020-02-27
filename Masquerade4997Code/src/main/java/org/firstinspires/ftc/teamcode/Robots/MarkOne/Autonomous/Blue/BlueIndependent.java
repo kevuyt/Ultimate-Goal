@@ -118,21 +118,6 @@ public class BlueIndependent extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        /*robot.turnAbsolute(170,1);
-        robot.drive(10,0.5, BACKWARD,1);
-        robot.foundationHook.lower();
-        sleep();
-        MasqWayPoint p1 = new MasqWayPoint().setPoint(-92,5, 160)
-                .setOnComplete(() -> {
-                    robot.turnAbsolute(90);
-                    robot.foundationHook.raise();
-                    robot.stop(1);
-                }).setMinVelocity(0);
-        robot.xyPath(6, p1, park);
-        robot.stop(0.5);*/
-
-        //MasqWayPoint p1 = new MasqWayPoint().setPoint(-)
-
         robot.turnAbsolute(180,1);
         robot.drive(7,1.25, BACKWARD,1);
         robot.foundationHook.lower();

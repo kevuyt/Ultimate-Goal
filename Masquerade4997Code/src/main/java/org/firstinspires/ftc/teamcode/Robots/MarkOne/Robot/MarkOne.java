@@ -150,7 +150,7 @@ public class MarkOne extends MasqRobot {
     }
     public void stop(double time) {
         MasqClock clock = new MasqClock();
-        while(!clock.elapsedTime(time, SECONDS)) {
+        while(!clock.elapsedTime(time, SECONDS) && opModeIsActive()) {
             driveTrain.setVelocity(0);
         }
         driveTrain.setPower(0);

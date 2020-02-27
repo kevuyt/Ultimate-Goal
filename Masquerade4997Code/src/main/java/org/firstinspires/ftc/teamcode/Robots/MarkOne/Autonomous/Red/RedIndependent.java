@@ -114,12 +114,6 @@ public class RedIndependent extends MasqLinearOpMode {
             robot.sideGrabber.leftUp(rotateSleep);
         }));
         robot.driveTrain.setVelocity(0);
-        if (stoneCount == 4) {
-            bridge2.setH(180).setOnComplete(() -> {
-                robot.sideGrabber.rightDown(0);
-                robot.sideGrabber.rightOpen(0);
-            });
-        }
         robot.xyPath(5, exitStone(), bridge1.setOnComplete(null), bridge2, foundation);
         robot.driveTrain.setVelocity(0);
         stoneCount++;
@@ -155,12 +149,12 @@ public class RedIndependent extends MasqLinearOpMode {
     }
 
     private MasqWayPoint[] middleStones() {
-        return new MasqWayPoint[]{stones.get(2), stones.get(5), stones.get(3), stones.get(1)};
+        return new MasqWayPoint[]{stones.get(2), stones.get(5), stones.get(3)};
     }
     private MasqWayPoint[] leftStones() {
-        return new MasqWayPoint[]{stones.get(3), stones.get(6), stones.get(2), stones.get(1)};
+        return new MasqWayPoint[]{stones.get(3), stones.get(6), stones.get(2)};
     }
     private MasqWayPoint[] rightStones() {
-        return new MasqWayPoint[]{stones.get(1), stones.get(4), stones.get(3), stones.get(2)};
+        return new MasqWayPoint[]{stones.get(1), stones.get(4), stones.get(3)};
     }
 }
