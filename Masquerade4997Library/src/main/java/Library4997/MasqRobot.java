@@ -30,10 +30,8 @@ import static Library4997.MasqResources.MasqUtils.scaleNumber;
 import static Library4997.MasqResources.MasqUtils.turnController;
 import static Library4997.MasqResources.MasqUtils.velocityAutoController;
 import static Library4997.MasqResources.MasqUtils.velocityTeleController;
-import static Library4997.MasqResources.MasqUtils.xSpeedController;
 import static Library4997.MasqResources.MasqUtils.xyAngleController;
 import static Library4997.MasqResources.MasqUtils.xySpeedController;
-import static Library4997.MasqResources.MasqUtils.ySpeedController;
 
 
 /**
@@ -478,15 +476,9 @@ MasqRobot {
                     else break;
                 }
                 MasqVector lookaheadDisplacement = current.displacement(lookahead);
-                speedx = xSpeedController.getOutput(target.getX() - current.getX());
-                speedy = ySpeedController.getOutput(target.getY() - current.getY());
-                speedx = scaleNumber(speedx, pointsWithRobot.get(index).getMinVelocity(), pointsWithRobot.get(index).getMaxVelocity());
-                speedy = scaleNumber(speedy, pointsWithRobot.get(index).getMinVelocity(), pointsWithRobot.get(index).getMaxVelocity());
                 double pathAngle = 90 - Math.toDegrees(Math.atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-                driveTrain.setVelocityMECHXY(
-                        pathAngle + tracker.getHeading(), speedx, speedy,
-                        -pointsWithRobot.get(index).getH()
-                );
+
+                driveTrain.setVelocityMECHXY(pathAngle + tracker.getHeading(), current, target, -pointsWithRobot.get(index).getH());
 
                 tracker.updateSystem();
                 dash.create("x Speed: ", speedx);

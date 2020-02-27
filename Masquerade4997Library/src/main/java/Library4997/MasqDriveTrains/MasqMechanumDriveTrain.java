@@ -7,7 +7,11 @@ import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
+
+import static Library4997.MasqResources.MasqUtils.xSpeedController;
+import static Library4997.MasqResources.MasqUtils.ySpeedController;
 
 
 public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardware {
@@ -45,25 +49,46 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         rightDrive.motor2.setVelocity(rightBack);
     }
 
-    public void setVelocityMECHXY(double angle, double speedx, double speedy, double targetHeading) {
+    public void setVelocityMECHXY(double angle, MasqVector current, MasqVector target, double targetHeading) {
         double turnPower = angleCorrectionController.getOutput(MasqUtils.adjustAngle(targetHeading - tracker.getHeading()));
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
-        double leftFront = (Math.sin(adjustedAngle) * speedy * MasqUtils.DEFAULT_SPEED_MULTIPLIER) - turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double leftBack = (Math.cos(adjustedAngle) * speedx * MasqUtils.DEFAULT_SPEED_MULTIPLIER) - turnPower  * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double rightFront = (Math.cos(adjustedAngle) * speedx * MasqUtils.DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double rightBack = (Math.sin(adjustedAngle) * speedy * MasqUtils.DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
-        if (max > 1) {
-            leftFront /= max;
-            leftBack /= max;
-            rightFront /= max;
-            rightBack /= max;
+
+        double speedx = xSpeedController.getOutput(target.getX() - current.getX());
+        double leftFrontX = (Math.sin(adjustedAngle) * speedx * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+        double leftBackX = (Math.cos(adjustedAngle) * speedx * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+        double rightFrontX = (Math.cos(adjustedAngle) * speedx * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+        double rightBackX = (Math.sin(adjustedAngle) * speedx * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+
+        double speedy = ySpeedController.getOutput(target.getY() - current.getY());
+        double leftFrontY = (Math.sin(adjustedAngle) * speedy * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+        double leftBackY = (Math.cos(adjustedAngle) * speedy * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+        double rightFrontY = (Math.cos(adjustedAngle) * speedy * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+        double rightBackY = (Math.sin(adjustedAngle) * speedy * MasqUtils.DEFAULT_SPEED_MULTIPLIER);
+
+
+        double maxX = Math.max(Math.max(Math.abs(leftFrontX), Math.abs(leftBackX)), Math.max(Math.abs(rightFrontX), Math.abs(rightBackX)));
+        double maxY = Math.max(Math.max(Math.abs(leftFrontY), Math.abs(leftBackY)), Math.max(Math.abs(rightFrontY), Math.abs(rightBackY)));
+
+        if (maxX > 1) {
+            leftFrontX /= maxX;
+            leftBackX /= maxX;
+            rightFrontX /= maxX;
+            rightBackX /= maxX;
         }
-        leftDrive.motor1.setVelocity(leftFront);
-        leftDrive.motor2.setVelocity(leftBack);
-        rightDrive.motor1.setVelocity(rightFront);
-        rightDrive.motor2.setVelocity(rightBack);
+
+        if (maxY > 1) {
+            leftFrontY /= maxY;
+            leftBackY /= maxY;
+            rightFrontY /= maxY;
+            rightBackY /= maxY;
+        }
+
+        double powerAdjustment = turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
+        leftDrive.motor1.setVelocity(leftFrontX + leftFrontY - powerAdjustment);
+        leftDrive.motor2.setVelocity(leftBackX + leftBackY - powerAdjustment);
+        rightDrive.motor1.setVelocity(rightFrontX + rightFrontY + powerAdjustment);
+        rightDrive.motor2.setVelocity(rightBackX + rightBackY + powerAdjustment);
     }
 
 
