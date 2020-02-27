@@ -24,7 +24,7 @@ public class DriveTest extends MasqLinearOpMode {
             robot.tracker.updateSystem();
             dash.update();
         }
-        robot.drive(-20);
+        robot.turnAbsolute(-170,1);
         waitForStart();
 
     }

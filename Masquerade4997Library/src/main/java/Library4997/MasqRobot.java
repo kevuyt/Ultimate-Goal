@@ -174,6 +174,7 @@ MasqRobot {
         double targetAngle = MasqUtils.adjustAngle(tracker.getHeading()) + (direction.value * angle);
         double acceptableError = .5;
         double error = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
+        double initalErr = error;
         double power;
         double leftPower = 0, rightPower = 0;
         turnController.setConstants(kp, ki, kd);
@@ -181,7 +182,7 @@ MasqRobot {
         while (opModeIsActive() && (MasqUtils.adjustAngle(Math.abs(error)) > acceptableError)
                 && !timeoutClock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
             error = MasqUtils.adjustAngle(targetAngle - tracker.getHeading());
-            power = turnController.getOutput(error);
+            power = error / initalErr * 0.3;
             if (Math.abs(power) >= 1) power /= Math.abs(power);
             if (left) leftPower = power;
             if (right) rightPower = -power;
