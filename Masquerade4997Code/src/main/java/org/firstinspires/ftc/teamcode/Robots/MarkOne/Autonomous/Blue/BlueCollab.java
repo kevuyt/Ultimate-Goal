@@ -52,7 +52,7 @@ public class BlueCollab extends MasqLinearOpMode {
             foundationFour = new MasqWayPoint().setPoint(-60, 18, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightLowMid(0);
                 robot.sideGrabber.rightOpen(0);
-            }).setDriveCorrectionSpeed(0.05);
+            });
 
     @Override
     public void runLinearOpMode() {
@@ -137,7 +137,7 @@ public class BlueCollab extends MasqLinearOpMode {
                 robot.sideGrabber.leftOpen(0);
             });
         }
-        robot.xyPath(5, exitStone(), bridge1Entry.setOnComplete(null), bridge2, foundation);
+        robot.xyPath(5, exitStone(), bridge1Entry, bridge2, foundation);
         robot.driveTrain.setVelocity(0);
         stoneCount++;
     }
@@ -155,9 +155,9 @@ public class BlueCollab extends MasqLinearOpMode {
     private MasqWayPoint[] middleStones() {
         return new MasqWayPoint[] {
                 stones.get(2),
-                stones.get(5).setDriveCorrectionSpeed(0.04),
-                stones.get(3),
-                stones.get(1)
+                stones.get(5).setDriveCorrectionSpeed(0.04).setY(30),
+                stones.get(3).setX(stones.get(3).getX() + 2),
+                stones.get(1).setX(stones.get(1).getX() + 2)
         };
     }
     private MasqWayPoint[] rightStones() {
@@ -170,10 +170,10 @@ public class BlueCollab extends MasqLinearOpMode {
     }
     private MasqWayPoint[] leftStones() {
         return new MasqWayPoint[]{
-                stones.get(1).setDriveCorrectionSpeed(0.07),
+                stones.get(1),
                 stones.get(4).setDriveCorrectionSpeed(0.04),
-                stones.get(3).setDriveCorrectionSpeed(0.06),
-                stones.get(2).setY(30).setDriveCorrectionSpeed(0.06)
+                stones.get(3),
+                stones.get(2).setY(30)
         };
     }
     private MasqWayPoint enterStone(MasqWayPoint stone) {
