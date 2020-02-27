@@ -45,8 +45,13 @@ public class RedCollab extends MasqLinearOpMode {
                 robot.sideGrabber.leftLowMid(0);
             }),
             foundationFour = new MasqWayPoint().setPoint(60, 20, 180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
-                robot.sideGrabber.leftLowMid(0);
-                robot.sideGrabber.leftOpen(1);
+                runSimultaneously(
+                        () -> robot.stop(1),
+                        () -> {
+                            robot.sideGrabber.leftLowMid(0);
+                            robot.sideGrabber.leftOpen(1);
+                        }
+                );
             });
 
     @Override
@@ -57,13 +62,13 @@ public class RedCollab extends MasqLinearOpMode {
 
         stones.add(null);
         // MEASURED VALUES, DO NOT EDIT
-        stones.add(new MasqWayPoint().setPoint(12, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(4, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-4, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(12, 28, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(4, 28, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-4, 28, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
 
-        stones.add(new MasqWayPoint().setPoint(-13, 29,90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-21, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
-        stones.add(new MasqWayPoint().setPoint(-29, 29, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
+        stones.add(new MasqWayPoint().setPoint(-13, 28,90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-21, 28, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2));
+        stones.add(new MasqWayPoint().setPoint(-29, 28, 90).setMinVelocity(0).setTargetRadius(0.5).setModeSwitchRadius(2).setDriveCorrectionSpeed(0.04));
 
         while (!opModeIsActive()) {
             position = CVInterpreter.getRed(robot.cv.detector);
@@ -85,8 +90,7 @@ public class RedCollab extends MasqLinearOpMode {
         else if (position == MIDDLE) runStones = middleStones();
         else runStones = leftStones();
 
-        //idk why but the first stone always needs a lil more in the x, it goes to the right position tho
-        runSimultaneously(
+        runSimultaneously (
                 () -> mainAuto(runStones),
                 () -> robot.cv.stop()
         );
@@ -107,13 +111,14 @@ public class RedCollab extends MasqLinearOpMode {
             }).setSwitchMode(MECH).setMinVelocity(0);
             index++;
         }
+        robot.tracker.setDrift(-3, 1);
         grabStone(stones[0], foundationOne);
         robot.tracker.setDrift(-3, 1);
         grabStone(stones[1], foundationTwo);
-        bridge1.setY(25);
-        robot.tracker.setDrift(-3, 4);
+        robot.tracker.setDrift(0, 3);
+        bridge1 = bridge1.setX(bridge1.getX() + 10);
         grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(-3, 4);
+        robot.tracker.setDrift(0, 3);
         grabStone(stones[3], foundationFour);
         foundationPark();
     }
@@ -166,7 +171,7 @@ public class RedCollab extends MasqLinearOpMode {
                 stones.get(1),
                 stones.get(4),
                 stones.get(3),
-                stones.get(2).setY(32)
+                stones.get(2)
         };
     }
 }
