@@ -36,6 +36,8 @@ public class MasqUtils {
 
     public static MasqPIDController turnController;
     public static MasqPIDController xySpeedController;
+    public static MasqPIDController xSpeedController = new MasqPIDController(0.04);
+    public static MasqPIDController ySpeedController = new MasqPIDController(0.07);
     public static MasqPIDController xyAngleController;
     public static MasqPIDController driveController;
     public static MasqPIDController velocityTeleController;
