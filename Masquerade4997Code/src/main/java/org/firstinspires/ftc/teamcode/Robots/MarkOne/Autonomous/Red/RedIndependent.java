@@ -8,7 +8,10 @@ import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpre
 import java.util.ArrayList;
 import java.util.List;
 
+import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+import Library4997.MasqResources.MasqHelpers.Direction;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -27,7 +30,7 @@ public class RedIndependent extends MasqLinearOpMode {
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1 = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH),
-            bridge2 = new MasqWayPoint().setPoint(59, 25, 90).setSwitchMode(MECH).setOnComplete(() -> {
+            bridge2 = new MasqWayPoint().setPoint(60, 25, 90).setSwitchMode(MECH).setOnComplete(() -> {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
             }),
@@ -102,11 +105,11 @@ public class RedIndependent extends MasqLinearOpMode {
             }).setSwitchMode(MECH).setMinVelocity(0);
             index++;
         }
-        robot.tracker.setDrift(-3, 1);
+        /*robot.tracker.setDrift(-3, 1);
         grabStone(stones[0], foundationOne);
         robot.tracker.setDrift(-3, 1);
-        grabStone(stones[1], foundationTwo);
-        robot.tracker.setDrift(0, 3);
+        grabStone(stones[1], foundationTwo);*/
+        //robot.tracker.setDrift(0, 3);
         bridge1 = bridge1.setX(bridge1.getX() + 10);
         grabStone(stones[2], foundationThree);
         foundationPark();
@@ -124,19 +127,23 @@ public class RedIndependent extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-
-        MasqWayPoint p0 = new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
-                robot.tracker.getGlobalY() - 10, -robot.tracker.getHeading()).setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.04);
-
-        MasqWayPoint p1 = new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
-                robot.tracker.getGlobalY() + 15, 170).setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.04);
-
-        robot.xyPath(3, p0, p1);
-        robot.foundationHook.lower();
+        initFoundationControllers();
         robot.sideGrabber.leftUp(0);
+        robot.sideGrabber.leftOpen(0);
+        robot.turnAbsolute(-175,1.5);
+        robot.drive(9, Direction.BACKWARD);
+        robot.foundationHook.lower();
         sleep();
-        robot.drive(45);
-        MasqWayPoint p2 = new MasqWayPoint().setPoint(60,5, -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH);
+        MasqWayPoint moveFoundation = new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
+                -5, 178).setAngularCorrectionSpeed(0.04).setSwitchMode(MECH);
+
+        robot.xyPath(2, moveFoundation);
+
+        runSimultaneously(
+                () -> robot.foundationHook.raise(),
+                () -> robot.stop(1)
+        );
+        MasqWayPoint p2 = new MasqWayPoint().setPoint(80,0, -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH);
         robot.xyPath(6, p2, park);
         robot.stop(0.5);
     }
@@ -166,5 +173,15 @@ public class RedIndependent extends MasqLinearOpMode {
                 stones.get(4),
                 stones.get(3),
         };
+    }
+
+    private void initFoundationControllers() {
+        MasqUtils.driveController = new MasqPIDController(0.005);
+        MasqUtils.angleController = new MasqPIDController(0.003);
+        MasqUtils.turnController = new MasqPIDController(0.01);
+        MasqUtils.velocityTeleController = new MasqPIDController(0.001);
+        MasqUtils.velocityAutoController = new MasqPIDController(0.0045);
+        MasqUtils.xySpeedController = new MasqPIDController(0.045, 0, 0);
+        MasqUtils.xyAngleController = new MasqPIDController(0.04, 0, 0);
     }
 }

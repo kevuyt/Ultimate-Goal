@@ -102,7 +102,6 @@ MasqRobot {
                 rightPower /= maxPower;
             }
             driveTrain.setVelocity(leftPower, rightPower);
-            tracker.updateSystem();
             dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
@@ -218,22 +217,24 @@ MasqRobot {
                 turnController.getConstants()[0], turnController.getConstants()[1], turnController.getConstants()[2], left, right);
     }
 
-    public void turnAbsolute(double angle,  double timeout, double sleepTime,double kp, double ki, double kd) {
-        double currentMax = MasqUtils.adjustAngle(angle - tracker.getHeading());
-        double power = 1;
+    public void turnAbsolute(double angle,  double timeout, double sleepTime, double kp, double ki, double kd) {
+        //double targetAngle = MasqUtils.adjustAngle(angle);
+        double acceptableError = 2;
+        double error = MasqUtils.adjustAngle(angle - tracker.getHeading());
+        double power;
         turnController.setConstants(kp, ki, kd);
         timeoutClock.reset();
-        while (opModeIsActive() && power > 0.15
+        while (opModeIsActive() && (MasqUtils.adjustAngle(Math.abs(error)) > acceptableError)
                 && !timeoutClock.elapsedTime(timeout, MasqClock.Resolution.SECONDS)) {
-            double error = MasqUtils.adjustAngle(angle - tracker.getHeading());
-            power = turnController.getOutput(MasqUtils.scaleNumber(error,0, currentMax,0,1));
+            error = MasqUtils.adjustAngle(angle - tracker.getHeading());
+            power = turnController.getOutput(error);
             if (Math.abs(power) >= 1) power /= Math.abs(power);
             driveTrain.setVelocity(-power, power);
-            tracker.updateSystem();
             dash.create("KP: ", kp);
             dash.create("RIGHT POWER: " ,power);
             dash.create("TargetAngle", angle);
             dash.create("Heading", tracker.getHeading());
+            dash.create("AngleLeftToCover", error);
             dash.update();
         }
         driveTrain.setVelocity(0,0);
