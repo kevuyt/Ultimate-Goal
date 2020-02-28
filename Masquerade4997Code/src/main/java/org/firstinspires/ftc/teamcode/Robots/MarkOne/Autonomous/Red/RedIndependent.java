@@ -9,11 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
-import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static Library4997.MasqResources.MasqHelpers.Direction.BACKWARD;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
 import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.RIGHT;
@@ -126,18 +124,20 @@ public class RedIndependent extends MasqLinearOpMode {
     }
 
     private void foundationPark() {
-        robot.turnRelative(90, Direction.LEFT);
-        robot.drive(10,0.5, BACKWARD,1);
+
+        MasqWayPoint p0 = new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
+                robot.tracker.getGlobalY() - 10, -robot.tracker.getHeading()).setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.04);
+
+        MasqWayPoint p1 = new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
+                robot.tracker.getGlobalY() + 15, 170).setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.04);
+
+        robot.xyPath(3, p0, p1);
         robot.foundationHook.lower();
+        robot.sideGrabber.leftUp(0);
         sleep();
-        MasqWayPoint p1 = new MasqWayPoint().setPoint(92,0, -160)
-                .setOnComplete(() -> {
-                    robot.turnAbsolute(90);
-                    robot.foundationHook.raise();
-                    robot.stop(1);
-                }).setMinVelocity(0).setSwitchMode(MECH);
+        robot.drive(45);
         MasqWayPoint p2 = new MasqWayPoint().setPoint(60,5, -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH);
-        robot.xyPath(6, p1, p2, park);
+        robot.xyPath(6, p2, park);
         robot.stop(0.5);
     }
 
