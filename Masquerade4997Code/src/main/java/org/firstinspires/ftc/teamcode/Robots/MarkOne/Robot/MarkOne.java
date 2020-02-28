@@ -34,7 +34,7 @@ public class MarkOne extends MasqRobot {
 
     public MasqServo blockGrabber;
     public MasqServo blockRotater;
-    private MasqServo capper;
+    public MasqServo capper;
     public MarkOneFoundationHook foundationHook;
     public MarkOneSideGrabber sideGrabber;
     public MasqMotor lift, tapeMeasure;
@@ -98,7 +98,7 @@ public class MarkOne extends MasqRobot {
     private void scaleServos() {
         blockGrabber.scaleRange(0, 0.5);
         blockRotater.scaleRange(0.02, 0.75);
-        capper.scaleRange(0.65,1);
+        capper.scaleRange(0.4, 0.8);
         sideGrabber.scaleServos();
     }
 

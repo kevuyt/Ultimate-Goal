@@ -49,7 +49,7 @@ public class BlueCollab extends MasqLinearOpMode {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             }),
-            foundationFour = new MasqWayPoint().setPoint(-60, 18, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationFour = new MasqWayPoint().setPoint(-45, 20, -180).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightLowMid(0);
                 robot.sideGrabber.rightOpen(0);
             });
@@ -172,9 +172,9 @@ public class BlueCollab extends MasqLinearOpMode {
     private MasqWayPoint[] leftStones() {
         return new MasqWayPoint[]{
                 stones.get(1),
-                stones.get(4).setDriveCorrectionSpeed(0.04),
-                stones.get(3),
-                stones.get(2).setY(30)
+                stones.get(4).setDriveCorrectionSpeed(0.04).setY(30),
+                stones.get(3).setX(stones.get(3).getX() + 2).setY(32).setTimeout(1),
+                stones.get(2).setX(stones.get(2).getX() + 2).setY(34).setDriveCorrectionSpeed(0.05).setTimeout(1)
         };
     }
 }
