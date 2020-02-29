@@ -140,7 +140,8 @@ public class BlueIndependent extends MasqLinearOpMode {
         sleep();
 
         double initial = Math.abs(robot.driveTrain.getInches());
-        while(Math.abs(robot.driveTrain.getInches()) < (initial + 60) && !timeoutClock.elapsedTime(27, MasqClock.Resolution.SECONDS)) {
+        while(Math.abs(robot.driveTrain.getInches()) < (initial + 60)
+                && !timeoutClock.elapsedTime(27, MasqClock.Resolution.SECONDS)) {
             robot.driveTrain.setVelocity(1,0.5);
             robot.tracker.updateSystem();
         }
@@ -150,7 +151,8 @@ public class BlueIndependent extends MasqLinearOpMode {
                 () -> robot.stop(1)
         );
 
-        MasqWayPoint p2 = new MasqWayPoint().setPoint(-85,0, -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH).setTimeout(1);
+        MasqWayPoint p2 = new MasqWayPoint().setPoint(-85,0,
+                -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH).setTimeout(1);
         robot.xyPath(6, p2, park);
         robot.stop(0.5);
     }
