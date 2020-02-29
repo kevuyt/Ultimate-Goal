@@ -12,6 +12,7 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -139,7 +140,7 @@ public class BlueIndependent extends MasqLinearOpMode {
         sleep();
 
         double initial = Math.abs(robot.driveTrain.getInches());
-        while(Math.abs(robot.driveTrain.getInches()) < (initial + 40)) {
+        while(Math.abs(robot.driveTrain.getInches()) < (initial + 60) && !timeoutClock.elapsedTime(27, MasqClock.Resolution.SECONDS)) {
             robot.driveTrain.setVelocity(1,0.5);
             robot.tracker.updateSystem();
         }
