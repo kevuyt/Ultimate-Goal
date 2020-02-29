@@ -52,6 +52,9 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.setVelocity(power);
         rightDrive.setVelocity(power);
     }
+    public double getInches() {
+        return (leftDrive.getInches() + rightDrive.getInches())/2;
+    }
 
     public void setPower(double power) {
         leftDrive.setPower(power);

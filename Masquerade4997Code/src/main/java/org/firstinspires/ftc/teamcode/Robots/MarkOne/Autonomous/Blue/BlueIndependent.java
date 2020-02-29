@@ -34,7 +34,7 @@ public class BlueIndependent extends MasqLinearOpMode {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
-            park = new MasqWayPoint().setPoint(-35,24, 90).setMaxVelocity(1).setMinVelocity(0).setLookAhead(3),
+            park = new MasqWayPoint().setPoint(-35,24, 180).setMaxVelocity(1).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(-86, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
@@ -128,22 +128,28 @@ public class BlueIndependent extends MasqLinearOpMode {
 
     private void foundationPark() {
         initFoundationControllers();
-        robot.sideGrabber.leftUp(0);
-        robot.sideGrabber.leftOpen(0);
+
+        robot.sideGrabber.rightOpen(0);
+        robot.sideGrabber.rightUp(0);
+
         robot.turnAbsolute(175,1);
         robot.drive(7, Direction.BACKWARD, 1);
+
         robot.foundationHook.lower();
         sleep();
-        MasqWayPoint moveFoundation = new MasqWayPoint().setPoint(robot.tracker.getGlobalX(),
-                -5, -178).setAngularCorrectionSpeed(0.04).setSwitchMode(MECH).setDriveCorrectionSpeed(0.3);
 
-        robot.xyPath(2, moveFoundation);
+        double initial = Math.abs(robot.driveTrain.getInches());
+        while(Math.abs(robot.driveTrain.getInches()) < (initial + 40)) {
+            robot.driveTrain.setVelocity(1,0.5);
+            robot.tracker.updateSystem();
+        }
 
         runSimultaneously(
                 () -> robot.foundationHook.raise(),
                 () -> robot.stop(1)
         );
-        MasqWayPoint p2 = new MasqWayPoint().setPoint(-80,0, -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH);
+
+        MasqWayPoint p2 = new MasqWayPoint().setPoint(-85,0, -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH).setTimeout(1);
         robot.xyPath(6, p2, park);
         robot.stop(0.5);
     }
@@ -156,8 +162,8 @@ public class BlueIndependent extends MasqLinearOpMode {
     private MasqWayPoint[] middleStones() {
         return new MasqWayPoint[] {
                 stones.get(2),
-                stones.get(5).setX(17),
-                stones.get(3)
+                stones.get(5),
+                stones.get(3).setX(stones.get(3).getX())
         };
     }
     private MasqWayPoint[] leftStones() {
