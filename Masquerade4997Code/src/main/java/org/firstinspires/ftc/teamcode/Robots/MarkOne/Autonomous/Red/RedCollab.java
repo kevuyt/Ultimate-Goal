@@ -112,7 +112,8 @@ public class RedCollab extends MasqLinearOpMode {
             }).setSwitchMode(MECH).setMinVelocity(0);
             index++;
         }
-        robot.tracker.setDrift(0, 0);
+        // negative drift move it to the right.
+        robot.tracker.setDrift(-3, 0);
         grabStone(stones[0], foundationOne);
         robot.tracker.setDrift(-3, 1.5);
         grabStone(stones[1], foundationTwo);
