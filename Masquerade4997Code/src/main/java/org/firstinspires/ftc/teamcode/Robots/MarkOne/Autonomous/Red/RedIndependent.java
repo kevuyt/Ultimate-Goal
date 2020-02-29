@@ -29,7 +29,6 @@ public class RedIndependent extends MasqLinearOpMode {
     private int stoneCount = 1, maxStones = 3;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
-            bridge1 = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH),
             bridge1Entry = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
             bridge1Exit = new MasqWayPoint().setPoint(24, 22, 90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
             bridge2 = new MasqWayPoint().setPoint(60, 25, 90).setSwitchMode(MECH).setOnComplete(() -> {
@@ -37,7 +36,7 @@ public class RedIndependent extends MasqLinearOpMode {
                 robot.sideGrabber.leftUp(0);
             }),
             park = new MasqWayPoint().setPoint(35,24, 180).setMinVelocity(0),
-            foundationOne = new MasqWayPoint().setPoint(86, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationOne = new MasqWayPoint().setPoint(82, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
             }),
@@ -108,12 +107,12 @@ public class RedIndependent extends MasqLinearOpMode {
             index++;
         }
         robot.tracker.setDrift(-3, 0);
-        grabStone(stones[0], foundationOne);
-        robot.tracker.setDrift(-3, 1);
+        grabStone(stones[0], foundationThree);
+        robot.tracker.setDrift(-3, 1.5);
         grabStone(stones[1], foundationTwo);
-        robot.tracker.setDrift(-3, 2);
+        robot.tracker.setDrift(-3, 3);
         bridge1Exit = bridge1Exit.setX(bridge1Exit.getX() + 10);
-        grabStone(stones[2], foundationThree);
+        grabStone(stones[2], foundationOne);
         foundationPark();
     }
 

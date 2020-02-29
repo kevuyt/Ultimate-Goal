@@ -26,7 +26,8 @@ public class RedCollab extends MasqLinearOpMode {
     private int stoneCount = 1, maxStones = 4;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
-            bridge1 = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH),
+            bridge1Entry = new MasqWayPoint().setPoint(24, 20, 90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
+            bridge1Exit = new MasqWayPoint().setPoint(24, 22, 90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
             bridge2 = new MasqWayPoint().setPoint(59, 25, 90).setSwitchMode(MECH).setOnComplete(() -> {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
@@ -111,21 +112,21 @@ public class RedCollab extends MasqLinearOpMode {
             }).setSwitchMode(MECH).setMinVelocity(0);
             index++;
         }
-        robot.tracker.setDrift(-3, 1);
+        robot.tracker.setDrift(0, 0);
         grabStone(stones[0], foundationOne);
-        robot.tracker.setDrift(-3, 1);
+        robot.tracker.setDrift(-3, 1.5);
         grabStone(stones[1], foundationTwo);
-        robot.tracker.setDrift(0, 3);
-        bridge1 = bridge1.setX(bridge1.getX() + 10);
+        robot.tracker.setDrift(-3, 3);
+        bridge1Exit = bridge1Exit.setX(bridge1Exit.getX() + 10);
         grabStone(stones[2], foundationThree);
-        robot.tracker.setDrift(0, 3);
+        robot.tracker.setDrift(-5, 4.5);
         grabStone(stones[3], foundationFour);
         foundationPark();
     }
 
     private void grabStone(MasqWayPoint stone, MasqWayPoint foundation) {
         if (stoneCount == 1) robot.xyPath(4, stone);
-        else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
+        else robot.xyPath(9, bridge2, bridge1Exit.setOnComplete(() -> {
             robot.sideGrabber.leftOpen(0);
             robot.sideGrabber.leftDown(0);
         }), stone);
@@ -135,7 +136,7 @@ public class RedCollab extends MasqLinearOpMode {
                 robot.sideGrabber.rightOpen(0);
             });
         }
-        robot.xyPath(5, exitStone(), bridge1.setOnComplete(null), bridge2, foundation);
+        robot.xyPath(5, exitStone(), bridge1Entry, bridge2, foundation);
         robot.driveTrain.setVelocity(0);
         stoneCount++;
     }

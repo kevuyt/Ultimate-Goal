@@ -97,7 +97,7 @@ public class MarkOne extends MasqRobot {
 
     private void scaleServos() {
         blockGrabber.scaleRange(0, 0.5);
-        blockRotater.scaleRange(0.02, 0.75);
+        //blockRotater.scaleRange(0.02, 0.78);
         capper.scaleRange(0.4, 0.8);
         sideGrabber.scaleServos();
     }
