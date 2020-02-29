@@ -116,7 +116,7 @@ public class BlueCollab extends MasqLinearOpMode {
         }
         robot.tracker.setDrift(4, 0);
         grabStone(stones[0], foundationOne.setY(foundationOne.getY() + reducedXPBasedYCorrection));
-        robot.tracker.setDrift(4, -4);
+        robot.tracker.setDrift(4, -3);
         grabStone(stones[1], foundationTwo.setY(foundationTwo.getY() + reducedXPBasedYCorrection));
         robot.tracker.setDrift(4, -6);
         grabStone(stones[2], foundationThree.setY(foundationThree.getY() + reducedXPBasedYCorrection));

@@ -35,7 +35,7 @@ public class RedIndependentWallPark extends MasqLinearOpMode {
                 robot.sideGrabber.leftClose(0);
                 robot.sideGrabber.leftUp(0);
             }),
-            park = new MasqWayPoint().setPoint(35,0, 180).setMinVelocity(0),
+            park = new MasqWayPoint().setPoint(35,-5, 180).setMinVelocity(0),
             foundationOne = new MasqWayPoint().setPoint(82, 32, 90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.leftSlightClose(0);
                 robot.sideGrabber.leftLowMid(0);
@@ -108,9 +108,9 @@ public class RedIndependentWallPark extends MasqLinearOpMode {
         }
         robot.tracker.setDrift(-3, 0);
         grabStone(stones[0], foundationThree);
-        robot.tracker.setDrift(-3, 1.5);
+        robot.tracker.setDrift(-3, 2);
         grabStone(stones[1], foundationTwo);
-        robot.tracker.setDrift(-3, 3);
+        robot.tracker.setDrift(-3, 4);
         bridge1Exit = bridge1Exit.setX(bridge1Exit.getX() + 10);
         grabStone(stones[2], foundationOne);
         foundationPark();

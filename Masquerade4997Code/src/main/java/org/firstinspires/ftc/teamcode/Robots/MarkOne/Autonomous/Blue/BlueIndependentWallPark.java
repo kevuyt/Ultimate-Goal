@@ -30,7 +30,8 @@ public class BlueIndependentWallPark extends MasqLinearOpMode {
     private int stoneCount = 1, maxStones = 3;
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
-            bridge1 = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH),
+            bridge1Entry = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
+            bridge1Exit = new MasqWayPoint().setPoint(-24, 22, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
             bridge2 = new MasqWayPoint().setPoint(-59, 25, -90).setSwitchMode(MECH).setOnComplete(() -> {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
@@ -117,12 +118,12 @@ public class BlueIndependentWallPark extends MasqLinearOpMode {
 
     private void grabStone(MasqWayPoint stone, MasqWayPoint foundation) {
         if (stoneCount == 1) robot.xyPath(4, stone);
-        else robot.xyPath(9, bridge2, bridge1.setOnComplete(() -> {
+        else robot.xyPath(9, bridge2, bridge1Exit.setOnComplete(() -> {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
         }), stone);
         robot.driveTrain.setVelocity(0);
-        robot.xyPath(5, exitStone(), bridge1.setOnComplete(null), bridge2, foundation);
+        robot.xyPath(5, exitStone(), bridge1Entry, bridge2, foundation);
         robot.driveTrain.setVelocity(0);
         stoneCount++;
     }
@@ -150,7 +151,7 @@ public class BlueIndependentWallPark extends MasqLinearOpMode {
                 () -> robot.foundationHook.raise(),
                 () -> robot.stop(1)
         );
-
+        robot.sideGrabber.leftDown(0);
         robot.xyPath(6, park);
         robot.stop(0.5);
     }
