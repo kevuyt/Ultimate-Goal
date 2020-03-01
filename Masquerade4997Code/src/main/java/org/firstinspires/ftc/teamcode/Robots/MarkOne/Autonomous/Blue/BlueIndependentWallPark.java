@@ -31,12 +31,14 @@ public class BlueIndependentWallPark extends MasqLinearOpMode {
     private List<MasqWayPoint> stones = new ArrayList<>();
     private MasqWayPoint
             bridge1Entry = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
-            bridge1Exit = new MasqWayPoint().setPoint(-24, 22, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
+            bridge1Exit = new MasqWayPoint().setPoint(-24, 18, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
             bridge2 = new MasqWayPoint().setPoint(-59, 25, -90).setSwitchMode(MECH).setOnComplete(() -> {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
-            park = new MasqWayPoint().setPoint(-35,0, 180).setMaxVelocity(1).setMinVelocity(0),
+            park = new MasqWayPoint().setPoint(-35,0, 180).setMaxVelocity(1).setMinVelocity(0).setOnComplete(
+                    () -> robot.sideGrabber.leftDown(0)
+            ),
             foundationOne = new MasqWayPoint().setPoint(-86, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
@@ -111,7 +113,7 @@ public class BlueIndependentWallPark extends MasqLinearOpMode {
         grabStone(stones[0], foundationOne);
         robot.tracker.setDrift(4, -3);
         grabStone(stones[1], foundationTwo);
-        robot.tracker.setDrift(4, -6);
+        robot.tracker.setDrift(5, -10);
         grabStone(stones[2], foundationThree);
         foundationPark();
     }
@@ -165,14 +167,14 @@ public class BlueIndependentWallPark extends MasqLinearOpMode {
         return new MasqWayPoint[] {
                 stones.get(2),
                 stones.get(5),
-                stones.get(3).setX(stones.get(3).getX())
+                stones.get(3)
         };
     }
     private MasqWayPoint[] leftStones() {
         return new MasqWayPoint[] {
                 stones.get(1),
                 stones.get(4),
-                stones.get(3)
+                stones.get(3).setX(stones.get(3).getX() + 3)
         };
     }
     private MasqWayPoint[] rightStones() {

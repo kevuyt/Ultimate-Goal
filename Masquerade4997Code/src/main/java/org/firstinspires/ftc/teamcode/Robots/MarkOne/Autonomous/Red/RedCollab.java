@@ -119,6 +119,7 @@ public class RedCollab extends MasqLinearOpMode {
         grabStone(stones[1], foundationTwo);
         robot.tracker.setDrift(-3, 3);
         bridge1Exit = bridge1Exit.setX(bridge1Exit.getX() + 10);
+        bridge1Entry = bridge1Entry.setY(bridge1Entry.getY() - 2);
         grabStone(stones[2], foundationThree);
         robot.tracker.setDrift(-5, 4.5);
         grabStone(stones[3], foundationFour);

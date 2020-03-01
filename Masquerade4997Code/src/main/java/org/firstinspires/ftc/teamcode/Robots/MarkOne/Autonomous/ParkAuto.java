@@ -2,8 +2,9 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.Range;
+
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -31,7 +32,10 @@ public class ParkAuto extends MasqLinearOpMode {
         }
 
         waitForStart();
-        sleep(sleeptime);
-        robot.xyPath(2,new MasqWayPoint().setPoint(0,24,0).setDriveCorrectionSpeed(0.02));
+        //sleep(sleeptime);
+        //robot.xyPath(2,new MasqWayPoint().setPoint(0,24,0).setDriveCorrectionSpeed(0.02));
+        robot.tapeMeasure.setVelocity(-1);
+        sleep(400);
+        robot.tapeMeasure.setVelocity(0);
     }
 }
