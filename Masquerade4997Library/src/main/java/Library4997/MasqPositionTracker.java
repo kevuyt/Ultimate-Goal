@@ -137,27 +137,6 @@ public class MasqPositionTracker implements MasqHardware {
         globalY += dGlobalY;
     }
 
-    private void threev2() {
-        double xPosition = xSystem.getInches();
-        double yLPosition = yLSystem.getInches();
-        double yRPosition = yRSystem.getInches();
-        double dX = xPosition - prevX;
-        prevX = xPosition;
-        double dYR = yRPosition - prevYR;
-        prevYR = yRPosition;
-        double dYL = yLPosition - prevYL;
-        prevYL = yLPosition;
-        double dH = (dYL - dYR) / trackWidth;
-        heading += dH;
-        double dTranslationalY = (dYR + dYL) / 2;
-        double angularComponentX = xRadius * dH;
-        double dTranslationalX = dX - angularComponentX;
-        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
-        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
-        globalX += dGlobalX;
-        globalY += dGlobalY;
-    }
-
     public double getDHeading(double current) {
         double change = (current - prevHeading);
         prevHeading = current;
