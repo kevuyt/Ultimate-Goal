@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 
 /**
@@ -11,13 +12,13 @@ import Library4997.MasqSensors.MasqAdafruitIMU;
  * Project: MasqLib
  */
 
-public class MasqPositionTrackerV2 implements MasqHardware {
+public class MasqPositionTrackerV2 implements MasqHardware, Runnable {
     private MasqMotor xSystem, yLSystem, yRSystem;
     public MasqAdafruitIMU imu;
     private double heading, globalX, globalY;
     private boolean running;
 
-    private double prevX, prevYR, prevYL, xRadius, trackWidth;
+    private double prevX, prevYR, prevYL, xRadius, trackWidth, threadSleep = 1;
 
     public MasqPositionTrackerV2(MasqMotor xSystem, MasqMotor yLSystem, MasqMotor yRSystem, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
@@ -28,7 +29,7 @@ public class MasqPositionTrackerV2 implements MasqHardware {
     }
 
     public double getHeading () {
-        return imu.getRelativeYaw();
+        return Math.toDegrees(heading);
     }
 
     public void reset() {
@@ -46,7 +47,9 @@ public class MasqPositionTrackerV2 implements MasqHardware {
         double xPosition = xSystem.getInches();
         double yLPosition = yLSystem.getInches();
         double yRPosition = yRSystem.getInches();
-        double heading = (yLPosition - yRPosition) / trackWidth;
+        heading = Math.toRadians(MasqUtils.adjustAngle(Math.toDegrees(
+                (yLPosition - yRPosition) / trackWidth
+        )));
         double dX = xPosition - prevX;
         prevX = xPosition;
         double dYR = yRPosition - prevYR;
@@ -61,6 +64,14 @@ public class MasqPositionTrackerV2 implements MasqHardware {
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
+    }
+
+    public double getThreadSleep() {
+        return threadSleep;
+    }
+
+    public void setThreadSleep(double threadSleep) {
+        this.threadSleep = threadSleep;
     }
 
     public double getGlobalX() {
@@ -95,5 +106,17 @@ public class MasqPositionTrackerV2 implements MasqHardware {
                 "GlobalY: " + globalY,
                 "Heading: " + getHeading(),
         };
+    }
+
+    @Override
+    public void run() {
+        while (running) {
+            updateSystem();
+            try {
+                Thread.sleep((long) threadSleep);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -519,7 +519,7 @@ MasqRobot {
         driveTrain.leftDrive.setPower(left);
     }
 
-    public void MECH(MasqController c, Direction direction, boolean fieldCentric, double speedMultiplier, double turnMultiplier) {
+    public void MECH(MasqController c, Direction direction, boolean fieldCentric, double speedMultiplier, double turnMultiplier, boolean power) {
         int disable = 0;
         if (fieldCentric) disable = 1;
 
@@ -546,23 +546,32 @@ MasqRobot {
             rightFront /= Math.abs(max);
             rightBack /= Math.abs(max);
         }
-
-        driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value);
-        driveTrain.leftDrive.motor2.setVelocity(leftBack * direction.value);
-        driveTrain.rightDrive.motor1.setVelocity(rightFront * direction.value);
-        driveTrain.rightDrive.motor2.setVelocity(rightBack * direction.value);
+        if (!power) {
+            driveTrain.leftDrive.motor1.setVelocity(leftFront * direction.value);
+            driveTrain.leftDrive.motor2.setVelocity(leftBack * direction.value);
+            driveTrain.rightDrive.motor1.setVelocity(rightFront * direction.value);
+            driveTrain.rightDrive.motor2.setVelocity(rightBack * direction.value);
+        } else {
+            driveTrain.leftDrive.motor1.setPower(leftFront * direction.value);
+            driveTrain.leftDrive.motor2.setPower(leftBack * direction.value);
+            driveTrain.rightDrive.motor1.setPower(rightFront * direction.value);
+            driveTrain.rightDrive.motor2.setPower(rightBack * direction.value);
+        }
     }
     public void MECH(MasqController c, Direction direction) {
-        MECH(c, direction, false, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER);
+        MECH(c, direction, false, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER, false);
     }
     public void MECH(MasqController c, boolean disabled) {
-        MECH(c, Direction.FORWARD, disabled, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER);
+        MECH(c, Direction.FORWARD, disabled, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER, false);
+    }
+    public void MECH(MasqController c, boolean fieldCentric, boolean power) {
+        MECH(c, Direction.FORWARD, fieldCentric, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER, power);
     }
     public void MECH(MasqController c) {
-        MECH(c, Direction.FORWARD, false, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER);
+        MECH(c, Direction.FORWARD, false, MasqUtils.DEFAULT_SPEED_MULTIPLIER, MasqUtils.DEFAULT_TURN_MULTIPLIER, false);
     }
     public void MECH(MasqController c, double speedMutliplier, double turnMultiplier) {
-        MECH(c, Direction.FORWARD, false, speedMutliplier, turnMultiplier);
+        MECH(c, Direction.FORWARD, false, speedMutliplier, turnMultiplier, false);
     }
 
     public void initializeTeleop(){
