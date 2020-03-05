@@ -14,6 +14,10 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
+import static android.icu.util.MeasureUnit.RADIAN;
+import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
+import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADIANS;
+
 
 /**
  * Created by Archish on 10/16/17.
@@ -56,10 +60,15 @@ public class MasqUtils {
         linearOpMode = pLinearOpMode;
     }
 
-    public static double adjustAngle(double angle) {
+    public static double adjustAngle(double angle, AngleUnit angleUnit) {
+        if (angleUnit == RADIANS) angle = Math.toDegrees(angle);
         while (angle > 180) angle -= 360;
         while (angle <= -180) angle += 360;
+        if (angleUnit == RADIANS) return Math.toRadians(angle);
         return angle;
+    }
+    public static double adjustAngle(double angle) {
+        return adjustAngle(angle, DEGREES);
     }
 
     public static boolean tolerance(double value1, double value2, double tolerance) {
@@ -95,10 +104,10 @@ public class MasqUtils {
         return scaleNumber(m, 0, 1, newMin, newMax);
     }
     public static Double formatAngle(AngleUnit angleUnit, double angle) {
-        return Double.valueOf(formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle)));
+        return Double.valueOf(formatDegrees(DEGREES.fromUnit(angleUnit, angle)));
     }
     private static String formatDegrees(double degrees){
-        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
+        return String.format(Locale.getDefault(), "%.1f", DEGREES.normalize(degrees));
     }
     public static Point getCenterPoint(Rect rect) {
         return new Point(rect.x + rect.width/2, rect.y + rect.height/2);

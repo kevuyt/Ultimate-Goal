@@ -2,10 +2,14 @@ package Library4997;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqAdafruitIMU;
+
+import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADIANS;
 
 /**
  * Created by Archishmaan Peyyety on 8/9/18.
@@ -47,9 +51,7 @@ public class MasqPositionTrackerV2 implements MasqHardware, Runnable {
         double xPosition = xSystem.getInches();
         double yLPosition = yLSystem.getInches();
         double yRPosition = yRSystem.getInches();
-        heading = Math.toRadians(MasqUtils.adjustAngle(Math.toDegrees(
-                (yLPosition - yRPosition) / trackWidth
-        )));
+        heading = MasqUtils.adjustAngle((yLPosition - yRPosition) / trackWidth, RADIANS);
         double dX = xPosition - prevX;
         prevX = xPosition;
         double dYR = yRPosition - prevYR;
