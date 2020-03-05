@@ -61,15 +61,7 @@ public class MasqUtils {
     }
 
     public static double adjustAngle(double angle, AngleUnit angleUnit) {
-        if (angleUnit == RADIANS) {
-            while (angle > Math.PI) angle -= 2 * Math.PI;
-            while (angle <= -Math.PI) angle += 2 * Math.PI;
-        }
-        else {
-            while (angle > 180) angle -= 360;
-            while (angle <= -180) angle += 360;
-        }
-        return angle;
+        return angleUnit.normalize(angle);
     }
     public static double adjustAngle(double angle) {
         return adjustAngle(angle, DEGREES);
