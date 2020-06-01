@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
-import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter;
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.CVInterpreter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,9 @@ import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.RIGHT;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.CVInterpreter.SkystonePosition;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.CVInterpreter.SkystonePosition.MIDDLE;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.CVInterpreter.SkystonePosition.RIGHT;
 
 /**
  *  Created by Keval Kataria on 1/4/2020

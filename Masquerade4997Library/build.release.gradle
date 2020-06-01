@@ -7,9 +7,7 @@ dependencies {
     implementation (name: 'FtcCommon-release', ext: 'aar')
     implementation (name:'Analytics-release', ext:'aar')
     implementation (name:'WirelessP2p-release', ext:'aar')
-    implementation project(':openCVLibrary3')
     api 'org.openftc:easyopencv:1.2'
-    implementation 'com.github.dogecv:dogecv:2020.4-alpha'
     // Required -- JUnit 4 framework
 
 }

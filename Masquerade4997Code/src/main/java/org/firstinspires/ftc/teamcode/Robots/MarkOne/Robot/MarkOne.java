@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneFou
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.MarkOneSideGrabber;
 
 import Library4997.MasqCV.MasqCV;
-import Library4997.MasqCV.detectors.skystone.SkystoneDetector;
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.SkystoneDetector;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;

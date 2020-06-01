@@ -1,10 +1,11 @@
 package Library4997.MasqCV.scoring;
 
-import com.disnodeteam.dogecv.math.MathFTC;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfDouble;
+
+import static Library4997.MasqCV.math.MathFTC.mean;
 
 
 /**
@@ -23,6 +24,6 @@ public class ColorDevScorer extends MasqCVScorer {
     @Override
     public double calculateScore(Mat input) {
         Core.meanStdDev(input, mean, std);
-        return MathFTC.mean(std.get(0,0));
+        return mean(std.get(0,0));
     }
 }

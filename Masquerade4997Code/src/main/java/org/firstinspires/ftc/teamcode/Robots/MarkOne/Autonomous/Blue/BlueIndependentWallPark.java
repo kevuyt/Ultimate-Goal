@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Blue;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.MarkOne;
-import org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter;
+import org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.CVInterpreter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +16,8 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.MIDDLE;
-import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Robot.SubSystems.CVInterpreter.SkystonePosition.RIGHT;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.CVInterpreter.SkystonePosition.MIDDLE;
+import static org.firstinspires.ftc.teamcode.Robots.MarkOne.Autonomous.Vision.CVInterpreter.SkystonePosition.RIGHT;
 
 /**
  * Created by Archishmaan Peyyety on 2020-02-29.
