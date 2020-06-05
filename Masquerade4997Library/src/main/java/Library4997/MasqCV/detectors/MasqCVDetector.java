@@ -18,7 +18,7 @@ import Library4997.MasqCV.filters.MasqCVColorFilter;
 import Library4997.MasqWrappers.DashBoard;
 
 /**
- * Created by Keval Kataria on 9/10/2018.
+ * Created by Keval Kataria on 6/1/2020.
  */
 
 public abstract class MasqCVDetector extends OpenCvPipeline {
@@ -97,7 +97,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         Imgproc.drawContours(displayMat, contours, -1, color, 2);
     }
     protected void drawRect(Rect rect, Scalar color) {
-            Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 2);
+            Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 4);
         }
     protected void drawCenterPoint(Point point, Scalar color) {
             Imgproc.circle(displayMat, point, 2, color);
@@ -132,12 +132,14 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         imageHeight = top - 240 + bottom;
         offset = left;
     }
+
     public int getImageWidth() {
         return imageWidth;
     }
     public int getImageHeight() {
         return imageHeight;
     }
+    public boolean isFound() {return found;}
 
     private Rect boundingRect(List<Rect> rects) {
         int minX = 999;

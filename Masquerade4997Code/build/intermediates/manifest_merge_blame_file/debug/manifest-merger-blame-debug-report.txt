@@ -145,8 +145,7 @@
 87-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-41
 88        android:largeHeap="true"
 88-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:9-33
-89        android:supportsRtl="true"
-89-->[com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\be83d9011ae79ae39c27280cc602cb65\dogecv-2020.4-alpha\AndroidManifest.xml:14:9-35
+89        android:testOnly="true"
 90        android:theme="@style/AppThemeRedRC" >
 90-->[:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-45
 91        <activity

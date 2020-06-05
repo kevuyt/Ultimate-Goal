@@ -40,9 +40,8 @@ TODO:
     Unit Tests for all major functions
     State Machine support
  */
-public abstract class
-MasqRobot {
-    public abstract void mapHardware(HardwareMap hardwareMap);
+public abstract class MasqRobot {
+    public abstract void mapHardware(HardwareMap hardwareMap) throws InterruptedException;
     public abstract void init(HardwareMap hardwareMap) throws InterruptedException;
 
     public MasqMechanumDriveTrain driveTrain;

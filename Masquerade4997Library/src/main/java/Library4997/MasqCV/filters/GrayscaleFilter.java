@@ -15,6 +15,7 @@ public class GrayscaleFilter extends MasqCVColorFilter {
         this.upper = new Scalar(upper);
     }
 
+    @Override
     public void process(Mat input, Mat mask) {
         // Convert the input to grayscale
         Imgproc.cvtColor(input,input,Imgproc.COLOR_RGB2GRAY);

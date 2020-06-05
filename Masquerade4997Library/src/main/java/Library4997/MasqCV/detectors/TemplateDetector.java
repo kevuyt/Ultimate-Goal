@@ -11,6 +11,7 @@ public class TemplateDetector extends MasqCVDetector {
     /**
      create filters
      */
+
     //private MasqCVColorFilter blackFilter = new GrayscaleFilter(0, 50);
 
     @Override
@@ -21,17 +22,18 @@ public class TemplateDetector extends MasqCVDetector {
         displayMat = input.clone();
 
         /**
-         find all contours for each filter and select the best rectange
+         find all contours for each filter and select the best rectangle
          */
 
         /*List<MatOfPoint> contoursBlack = findContours(blackFilter, workingMat.clone());
         List<Rect> rectsBlack = contoursToRects(contoursBlack);
-        List<List<Rect>> listOfBlackBlobs = groupIntoBlobs(rectsBlack);
-        foundRect = chooseBestBlack(listOfBlackBlobs);*/
+        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsBlack);
+        foundRect = chooseBestRect(listOfBlobs);*/
 
         /**
         draw the contours on the displayMat (optional)
          */
+
         //drawContours(contoursBlack, new Scalar(80, 80, 80));
 
         found = foundRect.area() > minimumArea;

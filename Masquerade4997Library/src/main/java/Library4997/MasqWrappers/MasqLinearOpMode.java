@@ -45,11 +45,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         }
     }
     public void sleep(double timeSeconds) {
-        try {
-            Thread.sleep((long) timeSeconds * 1000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
+        sleep((long) timeSeconds*1000);
     }
-    public void sleep() {sleep(1.);}
+    public void sleep() {sleep(1000);}
 }

@@ -11,7 +11,6 @@ MERGED from [:Hardware-release:] C:\Users\Keval Standard\.gradle\caches\transfor
 MERGED from [:FtcCommon-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\a62533f230cb543151c57a6d38575e2a\FtcCommon-release\AndroidManifest.xml:3:1-235:12
 MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\8862df74926c6c2a79ef554c5251eda6\Analytics-release\AndroidManifest.xml:2:1-26:12
 MERGED from [:WirelessP2p-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\39977b9a00f6b8d3330c6212edf406d3\WirelessP2p-release\AndroidManifest.xml:2:1-11:12
-MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\be83d9011ae79ae39c27280cc602cb65\dogecv-2020.4-alpha\AndroidManifest.xml:2:1-17:12
 MERGED from [:tfod-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\241c616e396499d06188c6dc02555f03\tfod-release\AndroidManifest.xml:2:1-11:12
 MERGED from [:tensorflow-lite-0.0.0-nightly:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\7b4c311e2d99b0d5d78be3749c890f0f\tensorflow-lite-0.0.0-nightly\AndroidManifest.xml:2:1-6:12
 MERGED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\22b3a487a565bb29d5895d2f75bf3995\Inspection-release\AndroidManifest.xml:2:1-32:12
@@ -52,8 +51,6 @@ MERGED from [:FtcCommon-release:] C:\Users\Keval Standard\.gradle\caches\transfo
 MERGED from [:FtcCommon-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\a62533f230cb543151c57a6d38575e2a\FtcCommon-release\AndroidManifest.xml:23:5-233:19
 MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\8862df74926c6c2a79ef554c5251eda6\Analytics-release\AndroidManifest.xml:19:5-24:19
 MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\8862df74926c6c2a79ef554c5251eda6\Analytics-release\AndroidManifest.xml:19:5-24:19
-MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\be83d9011ae79ae39c27280cc602cb65\dogecv-2020.4-alpha\AndroidManifest.xml:11:5-15:19
-MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\be83d9011ae79ae39c27280cc602cb65\dogecv-2020.4-alpha\AndroidManifest.xml:11:5-15:19
 MERGED from [:tensorflow-lite-0.0.0-nightly:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\7b4c311e2d99b0d5d78be3749c890f0f\tensorflow-lite-0.0.0-nightly\AndroidManifest.xml:4:5-5:19
 MERGED from [:tensorflow-lite-0.0.0-nightly:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\7b4c311e2d99b0d5d78be3749c890f0f\tensorflow-lite-0.0.0-nightly\AndroidManifest.xml:4:5-5:19
 MERGED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\22b3a487a565bb29d5895d2f75bf3995\Inspection-release\AndroidManifest.xml:19:5-30:19
@@ -66,8 +63,6 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Keval Stan
 MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\570f380f669baa59f32226e888be52bf\versionedparcelable-28.0.0\AndroidManifest.xml:22:5-23:19
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\f1491a81a65d4033a56d6549564e765e\support-compat-28.0.0\AndroidManifest.xml:22:18-91
-	android:supportsRtl
-		ADDED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\be83d9011ae79ae39c27280cc602cb65\dogecv-2020.4-alpha\AndroidManifest.xml:14:9-35
 	android:label
 		ADDED from [:FtcRobotController] C:\Users\Keval Standard\Documents\GitHub\Control\FtcRobotController\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-41
 	android:exported
@@ -124,8 +119,6 @@ MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transfo
 MERGED from [:Analytics-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\8862df74926c6c2a79ef554c5251eda6\Analytics-release\AndroidManifest.xml:5:5-7:41
 MERGED from [:WirelessP2p-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\39977b9a00f6b8d3330c6212edf406d3\WirelessP2p-release\AndroidManifest.xml:5:5-7:41
 MERGED from [:WirelessP2p-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\39977b9a00f6b8d3330c6212edf406d3\WirelessP2p-release\AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\be83d9011ae79ae39c27280cc602cb65\dogecv-2020.4-alpha\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.dogecv:dogecv:2020.4-alpha] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\be83d9011ae79ae39c27280cc602cb65\dogecv-2020.4-alpha\AndroidManifest.xml:7:5-9:41
 MERGED from [:tfod-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\241c616e396499d06188c6dc02555f03\tfod-release\AndroidManifest.xml:7:5-9:41
 MERGED from [:tfod-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\241c616e396499d06188c6dc02555f03\tfod-release\AndroidManifest.xml:7:5-9:41
 MERGED from [:Inspection-release:] C:\Users\Keval Standard\.gradle\caches\transforms-2\files-2.1\22b3a487a565bb29d5895d2f75bf3995\Inspection-release\AndroidManifest.xml:7:5-9:41
