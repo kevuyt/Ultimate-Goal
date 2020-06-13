@@ -19,8 +19,8 @@ public class MarkOneFoundationHook implements MasqSubSystem {
         MasqServoSystem foundationHook = new MasqServoSystem("rightHook", "leftHook", hardwareMap);
         rightHook = foundationHook.servo1;
         leftHook = foundationHook.servo2;
-        rightHook.scaleRange(0.2, 0.95);
-        leftHook.scaleRange(0.45,0.8);
+        rightHook.scaleRange(0.39, 0.95);
+        leftHook.scaleRange(0.39,0.9);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class MarkOneFoundationHook implements MasqSubSystem {
         rightHook.setPosition(0);
     }
     public void mid() {
-        leftHook.setPosition(0.6);
-        rightHook.setPosition(0.4);
+        leftHook.setPosition(0.5);
+        rightHook.setPosition(0.5);
     }
 
     public void getSet() {

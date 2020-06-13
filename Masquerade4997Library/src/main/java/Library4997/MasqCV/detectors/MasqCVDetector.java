@@ -25,12 +25,11 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
 
     public abstract Mat process(Mat input);
 
-    protected int minimumArea = 100;
+    protected int minimumArea = 10;
     protected int imageWidth = 320;
     protected int imageHeight = 240;
 
     protected Rect foundRect = new Rect();
-
     protected Mat output = new Mat();
     protected Mat workingMat;
     protected Mat displayMat;
@@ -64,7 +63,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         }
         return rects;
     }
-    protected List<List<Rect>> groupIntoBlobs(List<Rect> rects) {
+    protected List<List<Rect>> groupIntoBlobs(List<Rect> rects, int blobDistanceThreshold) {
         List<List<Rect>> listOfBlobs = new ArrayList<>();
         List<Rect> unusedRects = new ArrayList<>(rects);
 
@@ -75,6 +74,13 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
             while (!toProcess.isEmpty()) {
                 Rect currentRect = toProcess.poll();
                 currentBlob.add(currentRect);
+
+                for (int i = 0; i < unusedRects.size(); i++) {
+                    if (distance(getCenterPoint(currentRect), getCenterPoint(unusedRects.get(i))) < blobDistanceThreshold) {
+                        toProcess.add(unusedRects.remove(i));
+                        i--;
+                    }
+                }
             }
             listOfBlobs.add(currentBlob);
         }
@@ -82,7 +88,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         return listOfBlobs;
     }
     protected Rect chooseBestRect(List<List<Rect>> listOfBlobs) {
-        Rect bestRect = new Rect();
+        Rect bestRect = boundingRect(listOfBlobs.get(0));
         for (List<Rect> blob : listOfBlobs) {
             Rect blobBound = boundingRect(blob);
             drawRect(blobBound, new Scalar(0, 150, 0));
@@ -112,7 +118,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         }
         return rectsInsideBound;
     }
-    protected Point getCenterPoint(Rect rect) {
+    public Point getCenterPoint(Rect rect) {
         return new Point(rect.x + rect.width / 2, rect.y + rect.height / 2);
     }
     public Rect getFoundRect() {return foundRect;}
@@ -155,6 +161,9 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         }
 
         return new Rect(minX, minY, maxX - minX, maxY - minY);
+    }
+    private double distance(Point a, Point b) {
+        return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
     }
     @Override
     public final Mat processFrame(Mat input) {

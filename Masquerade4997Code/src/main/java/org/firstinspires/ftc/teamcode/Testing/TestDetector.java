@@ -33,27 +33,27 @@ public class TestDetector extends MasqCVDetector {
 
         List<MatOfPoint> contoursYellow = findContours(yellowFilter, workingMat.clone());
         List<Rect> rectsYellow = contoursToRects(contoursYellow);
-        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsYellow);
+        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsYellow,10);
         foundRect = chooseBestRect(listOfBlobs);
 
         /*List<MatOfPoint> contoursRed = findContours(redFilter, workingMat.clone());
         List<Rect> rectsRed = contoursToRects(contoursRed);
-        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsRed);
+        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsRed,50);
         foundRect = chooseBestRect(listOfBlobs);*/
 
         /*List<MatOfPoint> contoursBlue = findContours(blueFilter, workingMat.clone());
         List<Rect> rectsBlue = contoursToRects(contoursBlue);
-        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsBlue);
+        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsBlue,50);
         foundRect = chooseBestRect(listOfBlobs);*/
 
         /*List<MatOfPoint> contoursWhite = findContours(whiteFilter, workingMat.clone());
         List<Rect> rectsWhite = contoursToRects(contoursWhite);
-        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsWhite);
+        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsWhite,50);
         foundRect = chooseBestRect(listOfBlobs);*/
 
         /*List<MatOfPoint> contoursBlack = findContours(blackFilter, workingMat.clone());
         List<Rect> rectsBlack = contoursToRects(contoursBlack);
-        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsBlack);
+        List<List<Rect>> listOfBlobs = groupIntoBlobs(rectsBlack,50);
         foundRect = chooseBestRect(listOfBlobs);*/
 
         drawContours(contoursYellow, new Scalar(220,220,0));

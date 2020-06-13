@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.MarkOne.Autonomous.Vision.SkystoneDetector;
 import org.firstinspires.ftc.teamcode.MarkOne.Robot.SubSystems.MarkOneFoundationHook;
 import org.firstinspires.ftc.teamcode.MarkOne.Robot.SubSystems.MarkOneSideGrabber;
+import org.openftc.easyopencv.OpenCvCameraRotation;
 
 import Library4997.MasqCV.MasqCamera;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
@@ -92,11 +93,11 @@ public class MarkOne extends MasqRobot {
         SkystoneDetector detector = new SkystoneDetector();
         detector.setClippingMargins(90,90,110,50);
         camera = new MasqCamera(detector, WEBCAM, hardwareMap);
-        camera.start();
+        camera.start(OpenCvCameraRotation.UPSIDE_DOWN);
     }
 
     private void scaleServos() {
-        blockGrabber.scaleRange(0, 0.5);
+        blockGrabber.scaleRange(0, 0.48);
         blockRotater.scaleRange(0.098, 0.78);
         capper.scaleRange(0.4, 0.8);
         sideGrabber.scaleServos();
@@ -104,7 +105,7 @@ public class MarkOne extends MasqRobot {
 
     private void resetServos() {
         blockRotater.setPosition(0);
-        blockGrabber.setPosition(1);
+        blockGrabber.setPosition(0);
         foundationHook.raise();
         sideGrabber.reset();
         capper.setPosition(0);

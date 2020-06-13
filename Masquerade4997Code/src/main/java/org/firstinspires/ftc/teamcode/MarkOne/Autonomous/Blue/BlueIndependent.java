@@ -29,20 +29,22 @@ public class BlueIndependent extends MasqLinearOpMode {
     private MasqWayPoint
             bridge1Entry = new MasqWayPoint().setPoint(-24, 20, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
             bridge1Exit = new MasqWayPoint().setPoint(-24, 22, -90).setSwitchMode(MECH).setDriveCorrectionSpeed(0.1),
-            bridge2 = new MasqWayPoint().setPoint(-59, 25, -90).setSwitchMode(MECH).setOnComplete(() -> {
+            bridge2 = new MasqWayPoint().setPoint(-59, 23, -90).setSwitchMode(MECH).setOnComplete(() -> {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
-            park = new MasqWayPoint().setPoint(-30,24, 180).setMaxVelocity(1).setMinVelocity(0),
-            foundationOne = new MasqWayPoint().setPoint(-86, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            park = new MasqWayPoint().setPoint(-35,24, 0).setMaxVelocity(1).setMinVelocity(0).setOnComplete(() -> robot.sideGrabber.rightDown(0.5)),
+            pullFoundation1 = new MasqWayPoint().setPoint(-75,10,160).setMaxVelocity(1).setMinVelocity(0.5).setDriveCorrectionSpeed(0.2),
+            pullFoundation2 = new MasqWayPoint().setPoint(-75,0,90).setMaxVelocity(1).setMinVelocity(0).setAngularCorrectionSpeed(0.1),
+            foundationOne = new MasqWayPoint().setPoint(-86, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             }),
-            foundationTwo = new MasqWayPoint().setPoint(-88, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationTwo = new MasqWayPoint().setPoint(-88, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             }),
-            foundationThree = new MasqWayPoint().setPoint(-92, 32, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
+            foundationThree = new MasqWayPoint().setPoint(-92, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
                 robot.sideGrabber.rightSlightClose(0);
                 robot.sideGrabber.rightLowMid(0);
             });
@@ -65,6 +67,7 @@ public class BlueIndependent extends MasqLinearOpMode {
         while (!opModeIsActive()) {
             position = CVInterpreter.getBlue(robot.camera.detector);
             dash.create("Skystone Position: " + position);
+            dash.create(robot.camera.detector.getFoundRect().area());
             dash.update();
         }
 
@@ -106,9 +109,9 @@ public class BlueIndependent extends MasqLinearOpMode {
         }
         robot.tracker.setDrift(4, 0);
         grabStone(stones[0], foundationOne);
-        robot.tracker.setDrift(4, -3);
+        robot.tracker.setDrift(4, 0);
         grabStone(stones[1], foundationTwo);
-        robot.tracker.setDrift(4, -6);
+        robot.tracker.setDrift(4, -4);
         grabStone(stones[2], foundationThree);
         foundationPark();
     }
@@ -118,7 +121,7 @@ public class BlueIndependent extends MasqLinearOpMode {
         else robot.xyPath(9, bridge2, bridge1Exit.setOnComplete(() -> {
             robot.sideGrabber.rightOpen(0);
             robot.sideGrabber.rightDown(0);
-        }), stone);
+        }), stone.setY(stone.getY()+1));
         robot.driveTrain.setVelocity(0);
         robot.xyPath(5, exitStone(), bridge1Entry, bridge2, foundation);
         robot.driveTrain.setVelocity(0);
@@ -135,23 +138,18 @@ public class BlueIndependent extends MasqLinearOpMode {
         robot.drive(7, Direction.BACKWARD, 1);
 
         robot.foundationHook.lower();
-        sleep();
+        robot.sideGrabber.rightClose(1);
 
-        double initial = Math.abs(robot.driveTrain.getInches());
-        while(Math.abs(robot.driveTrain.getInches()) < (initial + 60)
-                && !timeoutClock.elapsedTime(27, MasqClock.Resolution.SECONDS)) {
-            robot.driveTrain.setVelocity(1,0.5);
-            robot.tracker.updateSystem();
-        }
+        robot.xyPath(2,pullFoundation1, pullFoundation2.setOnComplete(()->robot.turnAbsolute(-90,1)));
 
         runSimultaneously(
                 () -> robot.foundationHook.raise(),
                 () -> robot.stop(1)
         );
 
-        MasqWayPoint p2 = new MasqWayPoint().setPoint(-85,0,
-                -robot.tracker.getHeading()).setMinVelocity(0).setSwitchMode(MECH).setTimeout(1);
-        robot.xyPath(6, p2, park);
+        MasqWayPoint p2 = new MasqWayPoint().setPoint(-60,10,
+                0).setMinVelocity(0).setSwitchMode(MECH).setTimeout(1);
+        robot.xyPath(4, p2, park);
         robot.stop(0.5);
     }
 

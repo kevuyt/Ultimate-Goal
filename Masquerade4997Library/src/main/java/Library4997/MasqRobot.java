@@ -100,6 +100,7 @@ public abstract class MasqRobot {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
             }
+            tracker.updateSystem();
             driveTrain.setVelocity(leftPower, rightPower);
             dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
@@ -227,6 +228,7 @@ public abstract class MasqRobot {
             power = turnController.getOutput(error);
             if (Math.abs(power) >= 1) power /= Math.abs(power);
             driveTrain.setVelocity(-power, power);
+            tracker.updateSystem();
             dash.create("KP: ", kp);
             dash.create("RIGHT POWER: " ,power);
             dash.create("TargetAngle", angle);
