@@ -33,7 +33,7 @@ public class BlueIndependent extends MasqLinearOpMode {
                 robot.sideGrabber.rightClose(0);
                 robot.sideGrabber.rightUp(0);
             }),
-            park = new MasqWayPoint().setPoint(-35,24, 0).setMaxVelocity(1).setMinVelocity(0).setOnComplete(() -> robot.sideGrabber.rightDown(0.5)),
+            park = new MasqWayPoint().setPoint(-35,24, 0).setMaxVelocity(1).setMinVelocity(0),
             pullFoundation1 = new MasqWayPoint().setPoint(-75,10,160).setMaxVelocity(1).setMinVelocity(0.5).setDriveCorrectionSpeed(0.2),
             pullFoundation2 = new MasqWayPoint().setPoint(-75,0,90).setMaxVelocity(1).setMinVelocity(0).setAngularCorrectionSpeed(0.1),
             foundationOne = new MasqWayPoint().setPoint(-86, 30, -90).setTargetRadius(3).setMinVelocity(0).setOnComplete(() -> {
@@ -148,7 +148,7 @@ public class BlueIndependent extends MasqLinearOpMode {
         );
 
         MasqWayPoint p2 = new MasqWayPoint().setPoint(-60,10,
-                0).setMinVelocity(0).setSwitchMode(MECH).setTimeout(1);
+                0).setMinVelocity(0).setSwitchMode(MECH).setTimeout(1).setOnComplete(() -> robot.sideGrabber.rightDown(0));
         robot.xyPath(4, p2, park);
         robot.stop(0.5);
     }
