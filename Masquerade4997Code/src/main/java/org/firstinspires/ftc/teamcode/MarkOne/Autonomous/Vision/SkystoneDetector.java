@@ -14,6 +14,7 @@ import Library4997.MasqCV.filters.MasqCVColorFilter;
 
 public class SkystoneDetector extends MasqCVDetector {
     private MasqCVColorFilter blackFilter = new GrayscaleFilter(0, 50);
+
     @Override
     public Mat process(Mat input) {
         cropMat(input, tl, br);
@@ -27,7 +28,6 @@ public class SkystoneDetector extends MasqCVDetector {
         Rect bestSkystoneRect = chooseBestRect(listOfBlackBlobs);
 
         drawContours(contoursBlack, new Scalar(80, 80, 80));
-
 
         found = bestSkystoneRect.area() > minimumArea;
 

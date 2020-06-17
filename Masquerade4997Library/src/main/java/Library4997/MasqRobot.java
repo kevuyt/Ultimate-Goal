@@ -215,9 +215,8 @@ public abstract class MasqRobot {
                 turnController.getConstants()[0], turnController.getConstants()[1], turnController.getConstants()[2], left, right);
     }
 
-    public void turnAbsolute(double angle,  double timeout, double sleepTime, double kp, double ki, double kd) {
+    public void turnAbsolute(double angle,  double timeout, double acceptableError, double sleepTime, double kp, double ki, double kd) {
         //double targetAngle = MasqUtils.adjustAngle(angle);
-        double acceptableError = 2;
         double error = MasqUtils.adjustAngle(angle - tracker.getHeading());
         double power;
         turnController.setConstants(kp, ki, kd);
@@ -239,17 +238,20 @@ public abstract class MasqRobot {
         driveTrain.setVelocity(0,0);
         MasqUtils.sleep(sleepTime);
     }
-    public void turnAbsolute(double angle, double timeout, double sleepTime,  double kp, double ki) {
-        turnAbsolute(angle, timeout, sleepTime,  kp, ki, turnController.getKd());
+    public void turnAbsolute(double angle, double timeout, double acceptableError, double sleepTime,  double kp, double ki) {
+        turnAbsolute(angle, timeout, acceptableError, sleepTime,  kp, ki, turnController.getKd());
     }
-    public void turnAbsolute(double angle, double timeout, double sleepTime, double kp) {
-        turnAbsolute(angle, timeout, sleepTime, kp, turnController.getKi());
+    public void turnAbsolute(double angle, double timeout, double acceptableError, double sleepTime, double kp) {
+        turnAbsolute(angle, timeout, acceptableError, sleepTime, kp, turnController.getKi());
     }
-    public void turnAbsolute(double angle,  double timeout, double sleepTime) {
-        turnAbsolute(angle, timeout, sleepTime,turnController.getKp());
+    public void turnAbsolute(double angle,  double timeout, double acceptableError, double sleepTime) {
+        turnAbsolute(angle, timeout, acceptableError, sleepTime,turnController.getKp());
+    }
+    public void turnAbsolute(double angle, double timeout, double acceptableError) {
+        turnAbsolute(angle, timeout, acceptableError, DEFAULT_SLEEP_TIME);
     }
     public void turnAbsolute(double angle, double timeout)  {
-        turnAbsolute(angle, timeout, DEFAULT_SLEEP_TIME);
+        turnAbsolute(angle, timeout, 2);
     }
     public void turnAbsolute(double angle) {
         turnAbsolute(angle, DEFAULT_TIMEOUT);

@@ -75,7 +75,7 @@ public class MarkOne extends MasqRobot {
         MasqUtils.angleController = new MasqPIDController(0.003);
         MasqUtils.turnController = new MasqPIDController(0.003);
         MasqUtils.velocityTeleController = new MasqPIDController(0.001);
-        MasqUtils.velocityAutoController = new MasqPIDController(0.0015);
+        MasqUtils.velocityAutoController = new MasqPIDController(0.001);
         MasqUtils.xySpeedController = new MasqPIDController(0.08, 0, 0);
         MasqUtils.xyAngleController = new MasqPIDController(0.06, 0, 0);
         lift.encoder.setWheelDiameter(2);
@@ -97,9 +97,9 @@ public class MarkOne extends MasqRobot {
     }
 
     private void scaleServos() {
-        blockGrabber.scaleRange(0, 0.48);
+        blockGrabber.scaleRange(0, 0.45);
         blockRotater.scaleRange(0.098, 0.78);
-        capper.scaleRange(0.4, 0.8);
+        capper.scaleRange(0.4, 0.77);
         sideGrabber.scaleServos();
     }
 

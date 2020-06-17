@@ -12,7 +12,6 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqResources.MasqHelpers.Direction;
 import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
@@ -64,6 +63,7 @@ public class BlueIndependent extends MasqLinearOpMode {
         stones.add(new MasqWayPoint().setPoint(13, 28,-90));
         stones.add(new MasqWayPoint().setPoint(21, 28, -90));
         stones.add(new MasqWayPoint().setPoint(29, 28, -90));
+
         while (!opModeIsActive()) {
             position = CVInterpreter.getBlue(robot.camera.detector);
             dash.create("Skystone Position: " + position);
@@ -140,7 +140,7 @@ public class BlueIndependent extends MasqLinearOpMode {
         robot.foundationHook.lower();
         robot.sideGrabber.rightClose(1);
 
-        robot.xyPath(2,pullFoundation1, pullFoundation2.setOnComplete(()->robot.turnAbsolute(-90,1)));
+        robot.xyPath(2,pullFoundation1, pullFoundation2.setOnComplete(()->robot.turnAbsolute(-90,0.75,10)));
 
         runSimultaneously(
                 () -> robot.foundationHook.raise(),

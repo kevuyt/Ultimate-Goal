@@ -88,7 +88,12 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         return listOfBlobs;
     }
     protected Rect chooseBestRect(List<List<Rect>> listOfBlobs) {
-        Rect bestRect = boundingRect(listOfBlobs.get(0));
+        Rect bestRect = new Rect();
+        try {
+            bestRect = boundingRect(listOfBlobs.get(0));
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
         for (List<Rect> blob : listOfBlobs) {
             Rect blobBound = boundingRect(blob);
             drawRect(blobBound, new Scalar(0, 150, 0));
