@@ -18,10 +18,6 @@ import static Library4997.MasqCV.filters.LeviColorFilter.ColorPreset.YELLOW;
  * Created by Keval Kataria on 9/12/2020
  */
 public class RingDetector extends MasqCVDetector {
-    /**
-     create filters
-     */
-
     private MasqCVColorFilter yellowFilter = new LeviColorFilter(YELLOW, 50);
 
     @Override
@@ -31,18 +27,10 @@ public class RingDetector extends MasqCVDetector {
         workingMat = input.clone();
         displayMat = input.clone();
 
-        /**
-         find all contours for each filter and select the best rectangle
-         */
-
         List<MatOfPoint> contoursYellow = findContours(yellowFilter, workingMat.clone());
         List<Rect> rects = contoursToRects(contoursYellow);
         List<List<Rect>> listOfBlobs = groupIntoBlobs(rects, 10);
         foundRect = chooseBestRect(listOfBlobs);
-
-        /**
-         draw the contours on the displayMat (optional)
-         */
 
         drawContours(contoursYellow, new Scalar(80, 80, 80));
 
