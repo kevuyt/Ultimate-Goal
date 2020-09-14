@@ -48,12 +48,12 @@ public class Blue extends MasqLinearOpMode {
         else target = zoneC;
 
         robot.xyPath(5, target);
-        robot.xyPath(2, new MasqWayPoint().setPoint(-7.5, -65, 180));
+        robot.xyPath(2, new MasqWayPoint().setPoint(-7.5, -60, 180));
         robot.shoot();
-        robot.xyPath(2, new MasqWayPoint().setPoint(-14.5, -65, 180));
+        robot.xyPath(2, new MasqWayPoint().setPoint(-14.5, -60, 180));
         robot.shoot();
-        robot.xyPath(2, new MasqWayPoint().setPoint(-23, -65, 180));
+        robot.xyPath(2, new MasqWayPoint().setPoint(-23, -60, 180));
         robot.shoot();
-        robot.xyPath(2, new MasqWayPoint().setPoint(-23,-80, 180));
+        robot.xyPath(2, new MasqWayPoint().setPoint(-23,-70, 180));
     }
 }

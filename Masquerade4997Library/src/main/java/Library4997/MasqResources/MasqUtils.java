@@ -1,6 +1,7 @@
 package Library4997.MasqResources;
 
 import android.graphics.Point;
+import android.text.style.ImageSpan;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -15,6 +16,8 @@ import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static android.icu.util.MeasureUnit.RADIAN;
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADIANS;
 
@@ -118,8 +121,26 @@ public class MasqUtils {
                 untransformedProjection.getY() + initial.getY());
         double theta = Math.atan2(pathDisplacement.getY(), pathDisplacement.getX());
         return new MasqVector(
-                projection.getX() + (lookAhead * Math.cos(theta)),
-                projection.getY() + (lookAhead * Math.sin(theta)));
+                projection.getX() + (lookAhead * cos(theta)),
+                projection.getY() + (lookAhead * sin(theta)));
+    }
+
+    //https://www.desmos.com/calculator/putboztuqn
+    public static MasqVector getLookAheadv2 (MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
+        double slope1 = (finalPos.getY()-initial.getY())/(finalPos.getX()-initial.getX());
+        double slope2 = -1/slope1;
+        double theta = Math.atan2(finalPos.getY()-initial.getY(),finalPos.getX()-initial.getX());
+
+        MasqVector projection = new MasqVector(
+                (slope1*finalPos.getX() + current.getY() - slope2*current.getX()-finalPos.getY())/(slope1-slope2),
+                current.getY() + slope2*(((slope1*finalPos.getX() + current.getY() - slope2*current.getX()-finalPos.getY())/(slope1-slope2))-current.getX())
+        );
+
+        if(initial.distanceToVector(finalPos) > (initial.distanceToVector(projection)+ lookAhead))
+            return new MasqVector(projection.getX() + lookAhead*cos(theta), projection.getY()+lookAhead*sin(theta));
+        //For when the robot goes past the target, we don't want the lookahead to be further from the target
+        else return new MasqVector(projection.getX() - lookAhead*cos(theta), projection.getY() - lookAhead*sin(theta));
+
     }
 
 }
