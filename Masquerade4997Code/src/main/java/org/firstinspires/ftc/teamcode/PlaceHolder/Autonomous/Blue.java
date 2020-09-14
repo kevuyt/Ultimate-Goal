@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder;
 import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
 
@@ -12,6 +14,7 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.Heigh
 /**
  * Created by Keval Kataria on 9/13/2020
  */
+@Autonomous(name = "Blue", group = "PlaceHolder")
 public class Blue extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
     private HeightFinder.TargetZone zone;
@@ -38,7 +41,6 @@ public class Blue extends MasqLinearOpMode {
         waitForStart();
 
         timeoutClock.reset();
-
 
         MasqWayPoint target;
         if (zone == A) target = zoneA;

@@ -42,4 +42,5 @@ public class RingDetector extends MasqCVDetector {
         }
         return displayMat;
     }
+
 }

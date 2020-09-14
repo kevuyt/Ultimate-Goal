@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder;
 import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
 
@@ -12,9 +14,11 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.Heigh
 /**
  * Created by Keval Kataria on 9/12/2020
  */
+@Autonomous(name = "Red", group = "PlaceHolder")
 public class Red extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
     private HeightFinder.TargetZone zone;
+
     private MasqWayPoint zoneA = new MasqWayPoint().setMaxVelocity(1).setMinVelocity(0.7)
             .setOnComplete(() ->{robot.claw.setPosition(1);}).setPoint(-11.5, -111.5,0).setTimeout(5);
     private MasqWayPoint zoneB = new MasqWayPoint().setMaxVelocity(1).setMinVelocity(0.7)
