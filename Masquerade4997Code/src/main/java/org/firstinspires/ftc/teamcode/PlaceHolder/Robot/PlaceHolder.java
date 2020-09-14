@@ -37,9 +37,9 @@ public class PlaceHolder extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap);
         lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
-        intake = new MasqMotor("intake", MasqMotorModel.REVTHROUGHBORE, hardwareMap);
-        transfer = new MasqMotor("transfer", MasqMotorModel.REVTHROUGHBORE, hardwareMap);
-        shooter = new MasqMotor("shooter", MasqMotorModel.REVTHROUGHBORE, hardwareMap);
+        intake = new MasqMotor("intake", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
+        transfer = new MasqMotor("transfer", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
+        shooter = new MasqMotor("shooter", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
         claw = new MasqServo("claw",hardwareMap);
         tracker = new MasqPositionTracker(intake, transfer, shooter, hardwareMap);
         dash = DashBoard.getDash();
