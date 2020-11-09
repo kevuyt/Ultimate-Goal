@@ -20,6 +20,7 @@ public class MasqSegmentGenerator {
                     {20, 12, 6, 2, 0, 0},
             }
     );
+
     public void updateSegmentPolynomials(MasqWayPoint current, MasqWayPoint destination) {
         Matrix xConstraints = new Matrix(
                 new double[][]{

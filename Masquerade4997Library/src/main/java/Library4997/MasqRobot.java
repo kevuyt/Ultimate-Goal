@@ -579,13 +579,9 @@ public abstract class MasqRobot {
 
     public void initializeTeleop(){
         driveTrain.setKp(velocityTeleController.getKp());
-        driveTrain.setKi(velocityTeleController.getKi());
-        driveTrain.setKd(velocityTeleController.getKd());
     }
     public void initializeAutonomous() {
         driveTrain.setKp(velocityAutoController.getKp());
-        driveTrain.setKi(velocityAutoController.getKi());
-        driveTrain.setKd(velocityAutoController.getKd());
     }
     public MasqWayPoint getCurrentWayPoint() {
         return new MasqWayPoint().setPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading())).setName("Inital WayPoint");

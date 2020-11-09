@@ -7,17 +7,17 @@
 // the build definitions, you can place those customizations in this file, but
 // please think carefully as to whether such customizations are really necessary
 // before doing so.
+
+
 // Custom definitions may go here
+
 // Include common definitions from above.
 apply from: '../build.common.gradle'
-android {
-    buildToolsVersion '28.0.3'
-}
-dependencies {
-    implementation 'junit:junit:4.12'
-
-}
 
 repositories {
-    google()
+    maven { url = "https://dl.bintray.com/first-tech-challenge/ftcsdk/" }
+}
+
+dependencies {
+    annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
 }

@@ -20,11 +20,11 @@ public class Blue extends MasqLinearOpMode {
     private HeightFinder.TargetZone zone;
 
     private MasqWayPoint zoneA = new MasqWayPoint().setMaxVelocity(1).setMinVelocity(0.7)
-            .setOnComplete(() ->{robot.claw.setPosition(1);}).setPoint(11.5, -111.5,0).setTimeout(5);
+            .setOnComplete(() ->{robot.clawServo.setPosition(1);}).setPoint(11.5, -111.5,0).setTimeout(5);
     private MasqWayPoint zoneB = new MasqWayPoint().setMaxVelocity(1).setMinVelocity(0.7)
-            .setOnComplete(() ->{robot.claw.setPosition(1);}).setPoint(-11.5, -106,0).setTimeout(4);
+            .setOnComplete(() ->{robot.clawServo.setPosition(1);}).setPoint(-11.5, -106,0).setTimeout(4);
     private MasqWayPoint zoneC = new MasqWayPoint().setMaxVelocity(1).setMinVelocity(0.7)
-            .setOnComplete(() ->{robot.claw.setPosition(1);}).setPoint(11.5, -94,0).setTimeout(4);
+            .setOnComplete(() ->{robot.clawServo.setPosition(1);}).setPoint(11.5, -94,0).setTimeout(4);
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -48,6 +48,7 @@ public class Blue extends MasqLinearOpMode {
         else target = zoneC;
 
         robot.xyPath(5, target);
+        robot.clawServo.setPosition(1);
         robot.xyPath(2, new MasqWayPoint().setPoint(-7.5, -60, 180));
         robot.shoot();
         robot.xyPath(2, new MasqWayPoint().setPoint(-14.5, -60, 180));

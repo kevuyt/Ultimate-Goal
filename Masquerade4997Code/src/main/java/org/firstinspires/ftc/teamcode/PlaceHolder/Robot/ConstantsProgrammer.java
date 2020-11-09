@@ -3,8 +3,6 @@ package org.firstinspires.ftc.teamcode.PlaceHolder.Robot;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
-
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -33,7 +31,7 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
 
             claw = Range.clip(claw, 0,1);
 
-            robot.claw.setPosition(claw);
+            robot.clawServo.setPosition(claw);
 
             dash.create("Claw (+A, -B): ", claw);
             dash.update();

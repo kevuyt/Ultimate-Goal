@@ -1,11 +1,28 @@
 /**
+ * @license
+ * Copyright 2018 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
  * @fileoverview FTC robot blocks related to TensorFlow Object Detection for Rover Ruckus (2018-2019)
  * @author lizlooney@google.com (Liz Looney)
  */
 
 // The following are generated dynamically in HardwareUtil.fetchJavaScriptForHardware():
-// createRoverRuckusTfodLabelDropdown
-// ROVER_RUCKUS_TFOD_LABEL_TOOLTIPS
+// createTfodRoverRuckusLabelDropdown
+// TFOD_ROVER_RUCKUS_LABEL_TOOLTIPS
 // tfodRoverRuckusIdentifierForJavaScript
 // vuforiaRoverRuckusIdentifierForJavaScript
 // The following are defined in vars.js:
@@ -172,11 +189,11 @@ Blockly.Blocks['tfodRoverRuckus_typedEnum_label'] = {
     this.appendDummyInput()
         .appendField(createNonEditableField('Label'))
         .appendField('.')
-        .appendField(createRoverRuckusTfodLabelDropdown(), 'LABEL');
+        .appendField(createTfodRoverRuckusLabelDropdown(), 'LABEL');
     this.setColour(getPropertyColor);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
-    var TOOLTIPS = ROVER_RUCKUS_TFOD_LABEL_TOOLTIPS;
+    var TOOLTIPS = TFOD_ROVER_RUCKUS_LABEL_TOOLTIPS;
     this.setTooltip(function() {
       var key = thisBlock.getFieldValue('LABEL');
       for (var i = 0; i < TOOLTIPS.length; i++) {

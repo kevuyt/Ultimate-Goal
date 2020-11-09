@@ -11,14 +11,13 @@ import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqPositionTracker;
-import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqWrappers.DashBoard;
-import Library4997.MasqWrappers.MasqController;
 
 import static Library4997.MasqCV.MasqCamera.Cam.WEBCAM;
+import static Library4997.MasqResources.MasqUtils.*;
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
 
 
@@ -28,20 +27,20 @@ import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
 public class PlaceHolder extends MasqRobot {
 
     public MasqCamera camera;
-    public MasqMotor intake, transfer, lift, shooter;
-    public MasqServo claw;
+    public MasqMotor intake, encoder, clawMotor, shooter;
+    public MasqServo clawServo;
     private boolean prevStateClaw =false, taskStateClaw =false;
 
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap);
-        lift = new MasqMotor("lift", MasqMotorModel.NEVEREST60, hardwareMap);
+        clawMotor = new MasqMotor("clawMotor", MasqMotorModel.NEVEREST60, hardwareMap);
         intake = new MasqMotor("intake", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
-        transfer = new MasqMotor("transfer", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
+        encoder = new MasqMotor("encoder", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
         shooter = new MasqMotor("shooter", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
-        claw = new MasqServo("claw",hardwareMap);
-        tracker = new MasqPositionTracker(intake, transfer, shooter, hardwareMap);
+        clawServo = new MasqServo("clawServo",hardwareMap);
+        tracker = new MasqPositionTracker(intake, encoder, shooter, hardwareMap);
         dash = DashBoard.getDash();
     }
 
@@ -52,19 +51,18 @@ public class PlaceHolder extends MasqRobot {
         tracker.setTrackWidth(14.625);
 
         driveTrain.setTracker(tracker);
-
-        MasqUtils.driveController = new MasqPIDController(0.005);
-        MasqUtils.angleController = new MasqPIDController(0.003);
-        MasqUtils.turnController = new MasqPIDController(0.003);
-        MasqUtils.velocityTeleController = new MasqPIDController(0.001);
-        MasqUtils.velocityAutoController = new MasqPIDController(0.001);
-        MasqUtils.xySpeedController = new MasqPIDController(0.08, 0, 0);
-        MasqUtils.xyAngleController = new MasqPIDController(0.06, 0, 0);
+        driveController = new MasqPIDController(0.005);
+        angleController = new MasqPIDController(0.003);
+        turnController = new MasqPIDController(0.003);
+        velocityTeleController = new MasqPIDController(0.001);
+        velocityAutoController = new MasqPIDController(0.001);
+        xySpeedController = new MasqPIDController(0.08);
+        xyAngleController = new MasqPIDController(0.06);
 
         intake.setWheelDiameter(2);
-        lift.setClosedLoop(true);
-        lift.encoder.setWheelDiameter(2);
-        lift.setKp(0.01);
+        clawMotor.setClosedLoop(true);
+        clawMotor.encoder.setWheelDiameter(2);
+        clawMotor.setKp(0.01);
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();
 
@@ -80,17 +78,17 @@ public class PlaceHolder extends MasqRobot {
     }
 
     private void scaleServos() {
-        claw.scaleRange(0,1);
+        clawServo.scaleRange(0,1);
     }
 
     private void resetServos() {
-        claw.setPosition(0);
+        clawServo.setPosition(0);
     }
 
-    public void toggleClaw(MasqController controller) {
+    public void toggleClawServo(boolean button) {
 
         boolean currStateClaw = false;
-        if (controller.y()) {
+        if (button) {
             currStateClaw = true;
         } else {
             if (prevStateClaw) {
@@ -101,9 +99,9 @@ public class PlaceHolder extends MasqRobot {
         prevStateClaw = currStateClaw;
 
         if (taskStateClaw) {
-            claw.setPosition(1);
+            clawServo.setPosition(1);
         } else {
-            claw.setPosition(0);
+            clawServo.setPosition(0);
         }
     }
 

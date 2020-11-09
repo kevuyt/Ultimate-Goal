@@ -1,1 +1,27 @@
-[{"outputType":{"type":"AAPT_FRIENDLY_MERGED_MANIFESTS"},"apkData":{"type":"MAIN","splits":[],"versionCode":-1,"enabled":true,"outputFile":"Masquerade4997Library-debug.aar","fullName":"debug","baseName":"debug","dirName":""},"path":"AndroidManifest.xml","properties":{"packageId":"team4997lib","split":""}}]
+{
+  "version": 1,
+  "applicationId": "com.qualcomm.ftcrobotcontroller",
+  "variantType": "LIBRARY",
+  "elements": [
+    {
+      "outputType": {
+        "type": "AAPT_FRIENDLY_MERGED_MANIFESTS"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 38,
+        "versionName": "6.0",
+        "outputFile": "Masquerade4997Library-debug.aar",
+        "fullName": "debug",
+        "baseName": "debug",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {
+        "packageId": "com.qualcomm.ftcrobotcontroller",
+        "split": ""
+      }
+    }
+  ]
+}
