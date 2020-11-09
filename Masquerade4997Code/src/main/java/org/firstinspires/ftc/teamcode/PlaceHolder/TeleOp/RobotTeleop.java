@@ -26,9 +26,7 @@ public class RobotTeleop extends MasqLinearOpMode {
             robot.MECH(controller1);
             robot.toggleClawServo(controller1.y());
             robot.intake.setPower(controller1.rightTrigger()-controller1.leftTrigger());
-            if(controller1.rightBumper()) robot.shooter.setPower(1);
-            else robot.shooter.setPower(0);
-
+            if(controller1.rightBumperOnPress()) robot.shoot();
         }
     }
 }
