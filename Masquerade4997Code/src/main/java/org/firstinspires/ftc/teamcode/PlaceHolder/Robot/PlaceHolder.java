@@ -41,7 +41,7 @@ public class PlaceHolder extends MasqRobot {
         encoder = new MasqMotor("encoder", USDIGITAL_E4T, hardwareMap);
         shooter = new MasqMotor("shooter", USDIGITAL_E4T, hardwareMap);
         clawServo = new MasqServo("clawServo",hardwareMap);
-        tracker = new MasqPositionTracker(intake, encoder, shooter, hardwareMap);
+        tracker = new MasqPositionTracker(intake, shooter, shooter, hardwareMap);
         dash = getDash();
     }
 
@@ -49,14 +49,14 @@ public class PlaceHolder extends MasqRobot {
         mapHardware(hardwareMap);
         tracker.setPosition(THREE);
         tracker.setXRadius(5.68);
-        tracker.setTrackWidth(14.625);
+        tracker.setTrackWidth(13.75);
 
         driveTrain.setTracker(tracker);
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.003);
         velocityTeleController = new MasqPIDController(0.0000001);
-        velocityAutoController = new MasqPIDController(0.001);
+        velocityAutoController = new MasqPIDController(0.0000001);
         xySpeedController = new MasqPIDController(0.08);
         xyAngleController = new MasqPIDController(0.06);
 
