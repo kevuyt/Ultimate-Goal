@@ -3,22 +3,23 @@ package org.firstinspires.ftc.teamcode.PlaceHolder.Robot;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.RingDetector;
-import org.openftc.easyopencv.OpenCvCameraRotation;
 
 import Library4997.MasqCV.MasqCamera;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqServos.MasqServo;
-import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqCV.MasqCamera.Cam.WEBCAM;
+import static Library4997.MasqMotors.MasqMotorModel.*;
+import static Library4997.MasqPositionTracker.DeadWheelPosition.THREE;
 import static Library4997.MasqResources.MasqUtils.*;
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
+import static Library4997.MasqWrappers.DashBoard.getDash;
+import static org.openftc.easyopencv.OpenCvCameraRotation.UPSIDE_DOWN;
 
 
 /**
@@ -34,19 +35,19 @@ public class PlaceHolder extends MasqRobot {
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
-        driveTrain = new MasqMechanumDriveTrain(hardwareMap);
-        clawMotor = new MasqMotor("clawMotor", MasqMotorModel.NEVEREST60, hardwareMap);
-        intake = new MasqMotor("intake", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
-        encoder = new MasqMotor("encoder", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
-        shooter = new MasqMotor("shooter", MasqMotorModel.USDIGITAL_E4T, hardwareMap);
+        driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
+        clawMotor = new MasqMotor("clawMotor", NEVEREST60, hardwareMap);
+        intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
+        encoder = new MasqMotor("encoder", USDIGITAL_E4T, hardwareMap);
+        shooter = new MasqMotor("shooter", USDIGITAL_E4T, hardwareMap);
         clawServo = new MasqServo("clawServo",hardwareMap);
         tracker = new MasqPositionTracker(intake, encoder, shooter, hardwareMap);
-        dash = DashBoard.getDash();
+        dash = getDash();
     }
 
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
-        tracker.setPosition(MasqPositionTracker.DeadWheelPosition.THREE);
+        tracker.setPosition(THREE);
         tracker.setXRadius(5.68);
         tracker.setTrackWidth(14.625);
 
@@ -54,7 +55,7 @@ public class PlaceHolder extends MasqRobot {
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.003);
-        velocityTeleController = new MasqPIDController(0.001);
+        velocityTeleController = new MasqPIDController(0.0000001);
         velocityAutoController = new MasqPIDController(0.001);
         xySpeedController = new MasqPIDController(0.08);
         xyAngleController = new MasqPIDController(0.06);
@@ -74,7 +75,7 @@ public class PlaceHolder extends MasqRobot {
         RingDetector detector = new RingDetector();
         detector.setClippingMargins(90,90,110,50);
         camera = new MasqCamera(detector, WEBCAM, hardwareMap);
-        camera.start(OpenCvCameraRotation.UPSIDE_DOWN);
+        camera.start(UPSIDE_DOWN);
     }
 
     private void scaleServos() {

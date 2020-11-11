@@ -10,6 +10,7 @@ import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqWrappers.DashBoard;
 
 /**
  * This is a custom motor that includes stall detection and telemetry
@@ -21,7 +22,7 @@ public class MasqMotor implements MasqHardware {
     private String nameMotor;
     private double targetPower;
     private boolean velocityControlState = false;
-    private double kp = 0.1, ki = 0, kd = 0;
+    private double kp = 0.001, ki = 0, kd = 0;
     public MasqEncoder encoder;
     private double prevPos = 0;
     private double error;
@@ -142,11 +143,7 @@ public class MasqMotor implements MasqHardware {
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
         rate = (rate * 60) / encoder.getClicksPerRotation();
-        if (rate != 0) return rate;
-        else {
-            prevRate = rate;
-            return rate;
-        }
+        return rate;
     }
     public double getAngle () {
         return (motor.getCurrentPosition() * encoder.getClicksPerRotation()) / 360;
@@ -157,11 +154,10 @@ public class MasqMotor implements MasqHardware {
         motor.setPower(power);
         return power;
     }
-    public double setVelocity(double power) {
+    public void setVelocity(double power) {
         targetPower = power;
         error = (encoder.getRPM() * power) - getVelocity();
-        double tChange = (System.nanoTime() - previousTime)/1e9;
-        motorPower = calculateVelocityCorrection(power, tChange);
+        motorPower = calculateVelocityCorrection(power);
         if (!closedLoop) motorPower = power;
         if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
@@ -196,9 +192,10 @@ public class MasqMotor implements MasqHardware {
         }
         if (Math.abs(motorPower) < minPower && minPower != 0) motorPower = 0;
         motor.setPower(motorPower);
-        return motor.getPower();
+        motor.getPower();
     }
-    public  double calculateVelocityCorrection(double power, double tChange) {
+    public  double calculateVelocityCorrection(double power) {
+        double tChange = (System.nanoTime() - previousTime)/1e9;
         rpmIntegral += error * tChange;
         rpmDerivative = (error - rpmPreviousError) / tChange;
         double p = error*kp;
@@ -312,6 +309,14 @@ public class MasqMotor implements MasqHardware {
 
     public double getInches() {
         return encoder.getInches();
+    }
+
+    public double getError() {
+        return error;
+    }
+
+    public double getTargetPower() {
+        return targetPower;
     }
 
     public String getName() {

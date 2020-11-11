@@ -12,6 +12,7 @@ public enum MasqMotorModel {
                 case ORBITAL20:
                     return 537.6;
                 case NEVEREST40:
+                case REVHDHEX40:
                     return 1120;
                 case NEVEREST60:
                     return 1680;
@@ -21,8 +22,6 @@ public enum MasqMotorModel {
                     return 6600;
                 case NEVERREST256:
                     return 4400;
-                case REVHDHEX40:
-                    return 2240;
                 case REVHDHEX20:
                     return 560;
                 case REVTHROUGHBORE:
