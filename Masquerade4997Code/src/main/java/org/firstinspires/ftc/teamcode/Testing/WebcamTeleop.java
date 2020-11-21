@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder;
+
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
@@ -16,14 +18,16 @@ public class WebcamTeleop extends MasqLinearOpMode {
         robot.init(hardwareMap);
 
         while(!opModeIsActive()) {
-            dash.create("Found: ", robot.detector.isFound());
+            dash.create("Average: ", robot.detector.getAverage());
+            dash.create("Zone: ", HeightFinder.findZone(robot.detector));
             dash.update();
         }
 
         waitForStart();
 
         while(opModeIsActive()) {
-            dash.create("Found: ", robot.detector.isFound());
+            dash.create("Average: ", robot.detector.getAverage());
+            dash.create("Zone: ", HeightFinder.findZone(robot.detector));
             dash.update();
         }
     }

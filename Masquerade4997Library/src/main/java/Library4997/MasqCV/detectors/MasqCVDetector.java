@@ -39,8 +39,8 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     protected Point tl, br;
     public int offset = 0;
 
-    protected void cropMat(Mat input, Point tl, Point br)  {
-        if (!(tl == null || br == null || tl.x >= input.width() || tl.y >= input.height() || tl.x < 0 || tl.y < 0 || br.x > input.width() || br.y > input.height() || br.x <= 0 || br.y <= 0)) {
+    protected Mat cropMat(Mat input, Point tl, Point br)  {
+        /*if (!(tl == null || br == null || tl.x >= input.width() || tl.y >= input.height() || tl.x < 0 || tl.y < 0 || br.x > input.width() || br.y > input.height() || br.x <= 0 || br.y <= 0)) {
             Imgproc.rectangle(input,new Point(0,0),new Point(input.width(), tl.y), new Scalar(255,255,255), -1);
             Imgproc.rectangle(input, new Point(0,0), new Point(tl.x, input.height()), new Scalar(255,255,255), -1);
             Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(br.x, 0), new Scalar(255,255,255), -1);
@@ -48,7 +48,8 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         }
         else {
             DashBoard.getDash().create("Cropping failed due to invalid cropping margins");
-        }
+        }*/
+        return input.submat(new Rect(tl,br));
     }
     protected List<MatOfPoint> findContours(MasqCVColorFilter filter, Mat mask) {
         filter.process(workingMat, mask);

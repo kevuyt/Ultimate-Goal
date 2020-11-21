@@ -26,12 +26,10 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.UPSIDE_DOWN;
  * Created by Keval Kataria on 9/12/2020
  */
 public class PlaceHolder extends MasqRobot {
-
     public MasqCamera camera;
     public MasqMotor intake, encoder, clawMotor, shooter;
-    public MasqServo clawServo;
+    public MasqServo clawServo/*, flicker*/;
     private boolean prevStateClaw =false, taskStateClaw =false;
-
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -40,7 +38,8 @@ public class PlaceHolder extends MasqRobot {
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
         encoder = new MasqMotor("encoder", USDIGITAL_E4T, hardwareMap);
         shooter = new MasqMotor("shooter", USDIGITAL_E4T, hardwareMap);
-        clawServo = new MasqServo("clawServo",hardwareMap);
+        clawServo = new MasqServo("clawServo", hardwareMap);
+        //flicker = new MasqServo("flicker", hardwareMap);
         tracker = new MasqPositionTracker(intake, shooter, shooter, hardwareMap);
         dash = getDash();
     }
@@ -80,10 +79,12 @@ public class PlaceHolder extends MasqRobot {
 
     private void scaleServos() {
         clawServo.scaleRange(0,1);
+        //flicker.scaleRange(0,1);
     }
 
     private void resetServos() {
         clawServo.setPosition(0);
+        //flicker.setPosition0);
     }
 
     public void toggleClawServo(boolean button) {
@@ -114,6 +115,9 @@ public class PlaceHolder extends MasqRobot {
         driveTrain.setPower(0);
     }
     public void shoot() {
-
+        shooter.setVelocity(1);
+        while(!(shooter.getInches() > 12)) {
+            sleep(0.1);
+        }
     }
 }
