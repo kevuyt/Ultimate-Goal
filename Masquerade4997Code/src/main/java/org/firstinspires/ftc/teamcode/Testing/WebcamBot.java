@@ -14,14 +14,9 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.UPSIDE_DOWN;
  * Created by Keval Kataria on 6/4/2020
  */
 public class WebcamBot extends MasqRobot {
-    RingDetector detector;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
-        detector = new RingDetector();
-        detector.setClippingMargins(125,90,90,200);
-        MasqCamera camera = new MasqCamera(detector, WEBCAM, hardwareMap);
-        camera.start(UPSIDE_DOWN);
     }
 
     @Override

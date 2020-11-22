@@ -3,8 +3,10 @@ package Library4997.MasqSensors;
 
 import com.qualcomm.ftcrobotcontroller.R.id;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.Hardware;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -15,13 +17,17 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqUtils;
+
+import static org.firstinspires.ftc.robotcore.external.tfod.TfodCurrentGame.TFOD_MODEL_ASSET;
 
 /**
  * Created by Archish on 9/7/17.
@@ -60,6 +66,7 @@ public class MasqVuforia implements MasqHardware {
     public MasqVuforia(String t1, String t2, String t3, String asset) {
         parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
         targetOne = t1;
         targetTwo = t2;
@@ -97,10 +104,17 @@ public class MasqVuforia implements MasqHardware {
         targetOne = t1;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
         trackOne = vuforiaTrackables.get(0);
-        trackables = Arrays.asList(trackOne);
+        trackables = Collections.singletonList(trackOne);
         trackOne.setName(targetOne);
         allTrackables.addAll(vuforiaTrackables);
         numTargets = 1;
+    }
+    public MasqVuforia(boolean webcam) {
+        parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        if(webcam) parameters.cameraName = MasqUtils.getHardwareMap().get(WebcamName.class, "Webcam 1");
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+
     }
     public void init(){
         locationOne = createMatrix(x1, y1, z1, u1, v1, w1);
@@ -184,6 +198,15 @@ public class MasqVuforia implements MasqHardware {
         return lastLocation.formatAsTransform();
     }
     private boolean isSeen(String track){return ((VuforiaTrackableDefaultListener)getTrackable(track).getListener()).isVisible();}
+    public TFObjectDetector tfod(String... labels) {
+        int tfodMonitorViewId = MasqUtils.getHardwareMap().appContext.getResources().getIdentifier(
+                "tfodMonitorViewId", "id", MasqUtils.getHardwareMap().appContext.getPackageName());
+        TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
+        tfodParameters.minResultConfidence = 0.6f;
+        TFObjectDetector tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
+        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, labels);
+        return tfod;
+    }
 
     @Override
     public String getName() {return "VUFORIA";}

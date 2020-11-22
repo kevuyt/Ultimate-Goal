@@ -82,7 +82,7 @@ public class MasqUtils {
     public static boolean opModeIsActive() {
         return linearOpMode.opModeIsActive();
     }
-    public HardwareMap getHardwareMap() {
+    public static HardwareMap getHardwareMap() {
         return linearOpMode.hardwareMap;
     }
 
