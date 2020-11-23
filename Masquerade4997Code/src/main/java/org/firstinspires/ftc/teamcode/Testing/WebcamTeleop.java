@@ -2,46 +2,39 @@ package org.firstinspires.ftc.teamcode.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
-
-import Library4997.MasqSensors.MasqVuforia;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
+/**
+ * Created by Keval Kataria on 11/22/2020
+ */
 
 @TeleOp
-public class WebcamTeleop extends MasqLinearOpMode {
-
+public class WebcamTeleop  extends MasqLinearOpMode {
+    public WebcamBot robot = new WebcamBot();
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        MasqVuforia vuforia = new MasqVuforia(true);
-        TFObjectDetector tfod = vuforia.tfod( "Quad", "Single");
-        tfod.setClippingMargins(160,230,400,300);
-        tfod.activate();
+        robot.init(hardwareMap);
+        try {
 
-        while(!opModeIsActive()) {
-            float height = 0;
-            if(tfod.getRecognitions().size() > 0) {
-                for (Recognition recognition : tfod.getRecognitions()) {
-                    if (recognition.getHeight() > height) height = recognition.getHeight();
-                }
+            robot.camera.start();
+            while (!opModeIsActive()) {
+                dash.create(robot.detector.getFoundRect().height);
+                dash.update();
             }
-            dash.create("Height: " + height);
-            dash.update();
+
+        } catch(Exception e) {
+            while(true) {
+                dash.create(e);
+                dash.update();
+                sleep(100);
+            }
         }
 
         waitForStart();
 
         while (opModeIsActive()) {
-            float height = 0;
-            if(tfod.getRecognitions().size() > 0) {
-                for (Recognition recognition : tfod.getRecognitions()) {
-                    if (recognition.getHeight() > height) height = recognition.getHeight();
-                }
-            }
-            dash.create("Height: " + height);
+            dash.create(robot.detector.getFoundRect().height);
             dash.update();
         }
-        tfod.shutdown();
     }
 }

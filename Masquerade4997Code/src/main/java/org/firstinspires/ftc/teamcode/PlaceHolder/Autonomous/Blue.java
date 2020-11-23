@@ -2,14 +2,13 @@ package org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder;
 import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
 
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
-import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder.TargetZone.A;
-import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder.TargetZone.B;
+//import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder.TargetZone.A;
+//import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.HeightFinder.TargetZone.B;
 
 /**
  * Created by Keval Kataria on 9/13/2020
@@ -17,7 +16,7 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.Heigh
 @Autonomous(name = "Blue", group = "PlaceHolder")
 public class Blue extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
-    private HeightFinder.TargetZone zone;
+    //private HeightFinder.TargetZone zone;
 
     private MasqWayPoint zoneA = new MasqWayPoint().setMaxVelocity(1).setMinVelocity(0.7)
             .setOnComplete(() ->{robot.clawServo.setPosition(1);}).setPoint(11.5, -111.5,0).setTimeout(5);
@@ -33,9 +32,9 @@ public class Blue extends MasqLinearOpMode {
         robot.initCamera(hardwareMap);
 
         while(!opModeIsActive()) {
-            zone = HeightFinder.findZone(robot.camera.detector);
-            dash.create("Zone: " + zone);
-            dash.update();
+           // zone = HeightFinder.findZone(robot.camera.detector);
+            //dash.create("Zone: " + zone);
+            //dash.update();
         }
 
         waitForStart();
@@ -43,11 +42,11 @@ public class Blue extends MasqLinearOpMode {
         timeoutClock.reset();
 
         MasqWayPoint target;
-        if (zone == A) target = zoneA;
-        else if (zone == B) target = zoneB;
-        else target = zoneC;
+        //if (zone == A) target = zoneA;
+       // else if (zone == B) target = zoneB;
+        //else target = zoneC;
 
-        robot.xyPath(5, target);
+        //robot.xyPath(5, target);
         robot.clawServo.setPosition(1);
         robot.xyPath(2, new MasqWayPoint().setPoint(-7.5, -60, 180));
         robot.shoot();

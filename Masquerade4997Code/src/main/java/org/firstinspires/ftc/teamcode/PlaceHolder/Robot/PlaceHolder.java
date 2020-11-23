@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode.PlaceHolder.Robot;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.RingDetector;
-
 import Library4997.MasqCV.MasqCamera;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
@@ -71,10 +69,10 @@ public class PlaceHolder extends MasqRobot {
     }
 
     public void initCamera(HardwareMap hardwareMap) {
-        RingDetector detector = new RingDetector();
-        detector.setClippingMargins(90,90,110,50);
-        camera = new MasqCamera(detector, WEBCAM, hardwareMap);
-        camera.start(UPSIDE_DOWN);
+        //RingDetector detector = new RingDetector();
+        //detector.setClippingMargins(90,90,110,50);
+      //  camera = new MasqCamera(detector, WEBCAM, hardwareMap);
+       // camera.start(UPSIDE_DOWN);
     }
 
     private void scaleServos() {

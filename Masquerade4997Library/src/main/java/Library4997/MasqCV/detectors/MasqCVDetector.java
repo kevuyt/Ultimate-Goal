@@ -15,41 +15,36 @@ import java.util.LinkedList;
 import java.util.List;
 
 import Library4997.MasqCV.filters.MasqCVColorFilter;
-import Library4997.MasqWrappers.DashBoard;
 
 /**
  * Created by Keval Kataria on 6/1/2020.
  */
 
 public abstract class MasqCVDetector extends OpenCvPipeline {
-
-    public abstract Mat process(Mat input);
-
-    protected int minimumArea = 10;
-    protected int imageWidth = 320;
-    protected int imageHeight = 240;
+    protected int minimumArea = 1;
+    protected int imageWidth = 1280;
+    protected int imageHeight = 960;
 
     protected Rect foundRect = new Rect();
-    protected Mat output = new Mat();
     protected Mat workingMat;
     protected Mat displayMat;
-    
+
     protected boolean found = false;
 
     protected Point tl, br;
     public int offset = 0;
 
-    protected Mat cropMat(Mat input, Point tl, Point br)  {
+    protected void cropMat(Mat input, Point tl, Point br)  {
         /*if (!(tl == null || br == null || tl.x >= input.width() || tl.y >= input.height() || tl.x < 0 || tl.y < 0 || br.x > input.width() || br.y > input.height() || br.x <= 0 || br.y <= 0)) {
-            Imgproc.rectangle(input,new Point(0,0),new Point(input.width(), tl.y), new Scalar(255,255,255), -1);
-            Imgproc.rectangle(input, new Point(0,0), new Point(tl.x, input.height()), new Scalar(255,255,255), -1);
-            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(br.x, 0), new Scalar(255,255,255), -1);
-            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(0, br.y), new Scalar(255,255,255), -1);
+            Imgproc.rectangle(input,new Point(0,0),new Point(input.width(), tl.y), new Scalar(0,0,0), -1);
+            Imgproc.rectangle(input, new Point(0,0), new Point(tl.x, input.height()), new Scalar(0,0,0), -1);
+            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(br.x, 0), new Scalar(0,0,0), -1);
+            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(0, br.y), new Scalar(0,0,0), -1);
         }
         else {
             DashBoard.getDash().create("Cropping failed due to invalid cropping margins");
         }*/
-        return input.submat(new Rect(tl,br));
+        input.submat(new Rect(tl,br));
     }
     protected List<MatOfPoint> findContours(MasqCVColorFilter filter, Mat mask) {
         filter.process(workingMat, mask);
@@ -97,7 +92,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         }
         for (List<Rect> blob : listOfBlobs) {
             Rect blobBound = boundingRect(blob);
-            drawRect(blobBound, new Scalar(0, 150, 0));
+            drawRect(blobBound, new Scalar(0, 150, 0), false);
 
             if (blobBound.area() > bestRect.area()) {
                 bestRect = blobBound;
@@ -106,10 +101,11 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         return bestRect;
     }
     protected void drawContours(List<MatOfPoint> contours, Scalar color) {
-        Imgproc.drawContours(displayMat, contours, -1, color, 2);
+        Imgproc.drawContours(displayMat, contours, -1, color, 1);
     }
-    protected void drawRect(Rect rect, Scalar color) {
-            Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 4);
+    protected void drawRect(Rect rect, Scalar color, boolean fill) {
+        if(fill) Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, -1);
+        else Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 4);
         }
     protected void drawCenterPoint(Point point, Scalar color) {
             Imgproc.circle(displayMat, point, 2, color);
@@ -129,7 +125,6 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     }
     public Rect getFoundRect() {return foundRect;}
 
-
     public void setClippingMargins(Point tl, Point br) {
         this.tl = tl;
         this.br = br;
@@ -139,9 +134,9 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     }
     public void setClippingMargins(int top, int left, int bottom, int right) {
         tl = new Point(left, top);
-        br = new Point(320 - right,240 - bottom);
-        imageWidth = 320 - right - left;
-        imageHeight = top - 240 + bottom;
+        br = new Point(1280 - right,960 - bottom);
+        imageWidth = 1280 - right - left;
+        imageHeight = 960 - top - bottom;
         offset = left;
     }
 
@@ -172,19 +167,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
     }
     @Override
-    public final Mat processFrame(Mat input) {
-
-        Log.d("MasqCVDetector", "Input mat size:" + input.size());
-        input.copyTo(output);
-
-        if(output.empty()){
-            return input;
-        }
-
-        output = process(output);
-
-        return output;
-    }
+    public Mat processFrame(Mat input) {return input;}
     @Override
     public void onViewportTapped() {}
 }

@@ -18,10 +18,7 @@ public class CbColorFilter extends MasqCVColorFilter {
     @Override
     public void process(Mat input, Mat mask) {
         Imgproc.cvtColor(input, input, Imgproc.COLOR_RGB2YCrCb);
-
-        // Blur it
-        Imgproc.GaussianBlur(input,input,new Size(5,5),0);
-        // Run in range check
+        Core.extractChannel(input, input, 2);
         Core.inRange(input, lower, upper, mask);
         input.release();
     }

@@ -15,7 +15,7 @@ public class TemplateDetector extends MasqCVDetector {
     //private MasqCVColorFilter blackFilter = new GrayscaleFilter(0, 50);
 
     @Override
-    public Mat process(Mat input) {
+    public Mat processFrame(Mat input) {
         cropMat(input,tl, br);
 
         workingMat = input.clone();
@@ -31,7 +31,7 @@ public class TemplateDetector extends MasqCVDetector {
         foundRect = chooseBestRect(listOfBlobs);*/
 
         /**
-        draw the contours on the displayMat (optional)
+         *draw the contours on the displayMat (optional)
          */
 
         //drawContours(contoursBlack, new Scalar(80, 80, 80));
@@ -39,7 +39,7 @@ public class TemplateDetector extends MasqCVDetector {
         found = foundRect.area() > minimumArea;
 
         if (found) {
-            drawRect(foundRect, new Scalar(0, 255, 0));
+            drawRect(foundRect, new Scalar(0, 255, 0), true);
             drawCenterPoint(getCenterPoint(foundRect), new Scalar(0, 255, 0));
             Imgproc.putText(displayMat, "Chosen", foundRect.tl(),0,1,new Scalar(255,255,255));
         }

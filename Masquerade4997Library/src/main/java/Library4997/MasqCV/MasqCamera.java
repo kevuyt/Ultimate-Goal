@@ -46,7 +46,7 @@ public class MasqCamera {
         }
         else if(cam.equals(Cam.WEBCAM)){
             webcam.openCameraDevice();
-            webcam.startStreaming(320,240, rotation);
+            webcam.startStreaming(1280,960, rotation);
         }
     }
     public void start() {
