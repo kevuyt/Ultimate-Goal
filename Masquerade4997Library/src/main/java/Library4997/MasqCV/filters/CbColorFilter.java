@@ -9,7 +9,7 @@ import org.opencv.imgproc.Imgproc;
 public class CbColorFilter extends MasqCVColorFilter {
     Scalar lower;
     Scalar upper;
-
+    Mat cb;
     public CbColorFilter(int lower, int upper) {
         this.lower = new Scalar(lower);
         this.upper = new Scalar(upper);
@@ -18,8 +18,10 @@ public class CbColorFilter extends MasqCVColorFilter {
     @Override
     public void process(Mat input, Mat mask) {
         Imgproc.cvtColor(input, input, Imgproc.COLOR_RGB2YCrCb);
-        Core.extractChannel(input, input, 2);
-        Core.inRange(input, lower, upper, mask);
+        Core.extractChannel(input, cb, 2);
+        Imgproc.GaussianBlur(cb,cb,new Size(5,5),0);
+        Core.inRange(cb, lower, upper, mask);
         input.release();
+        //cb.release();
     }
 }

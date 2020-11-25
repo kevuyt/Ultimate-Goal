@@ -16,7 +16,7 @@ public class WebcamBot extends MasqRobot {
     @Override
     public void mapHardware(HardwareMap hardwareMap) throws InterruptedException {
         detector = new TestDetector();
-        detector.setClippingMargins(200,110,130,400);
+        detector.setClippingMargins(500,350,250,600);
         camera = new MasqCamera(detector,WEBCAM, hardwareMap);
     }
 

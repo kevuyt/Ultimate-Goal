@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Testing;
+package org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -12,7 +12,7 @@ import Library4997.MasqCV.detectors.MasqCVDetector;
 /**
  * Created by Keval Kataria on 6/1/2020
  */
-public class TestDetector extends MasqCVDetector {
+public class RingDetector extends MasqCVDetector {
     double avg, control;
 
     @Override
@@ -34,5 +34,6 @@ public class TestDetector extends MasqCVDetector {
 
         return displayMat;
     }
-    public double[] getValues() {return new double[] {control,avg};}
+    public double getAverage() {return avg;}
+    public double getControl() {return control;}
 }

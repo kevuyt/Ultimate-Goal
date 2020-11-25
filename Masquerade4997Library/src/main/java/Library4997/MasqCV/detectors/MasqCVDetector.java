@@ -47,7 +47,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         input.submat(new Rect(tl,br));
     }
     protected List<MatOfPoint> findContours(MasqCVColorFilter filter, Mat mask) {
-        filter.process(workingMat, mask);
+        filter.process(workingMat,mask);
         List<MatOfPoint> contours = new ArrayList<>();
         Imgproc.findContours(mask, contours, new Mat(), Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
         return contours;
@@ -105,7 +105,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     }
     protected void drawRect(Rect rect, Scalar color, boolean fill) {
         if(fill) Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, -1);
-        else Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 4);
+        else Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 3);
         }
     protected void drawCenterPoint(Point point, Scalar color) {
             Imgproc.circle(displayMat, point, 2, color);
@@ -121,7 +121,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         return rectsInsideBound;
     }
     public Point getCenterPoint(Rect rect) {
-        return new Point(rect.x + rect.width / 2, rect.y + rect.height / 2);
+        return new Point(rect.x + rect.width / 2.0, rect.y + rect.height / 2.0);
     }
     public Rect getFoundRect() {return foundRect;}
 
