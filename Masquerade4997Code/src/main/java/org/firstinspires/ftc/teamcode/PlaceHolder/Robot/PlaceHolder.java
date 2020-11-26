@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.PlaceHolder.Robot;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.RingDetector;
+
 import Library4997.MasqCV.MasqCamera;
 import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
@@ -17,7 +19,6 @@ import static Library4997.MasqPositionTracker.DeadWheelPosition.THREE;
 import static Library4997.MasqResources.MasqUtils.*;
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
 import static Library4997.MasqWrappers.DashBoard.getDash;
-import static org.openftc.easyopencv.OpenCvCameraRotation.UPSIDE_DOWN;
 
 
 /**
@@ -25,20 +26,16 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.UPSIDE_DOWN;
  */
 public class PlaceHolder extends MasqRobot {
     public MasqCamera camera;
-    public MasqMotor intake, encoder, clawMotor, shooter;
-    public MasqServo clawServo/*, flicker*/;
-    private boolean prevStateClaw =false, taskStateClaw =false;
+    public MasqMotor intake, encoder1, encoder2, shooter;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
-        clawMotor = new MasqMotor("clawMotor", NEVEREST60, hardwareMap);
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
-        encoder = new MasqMotor("encoder", USDIGITAL_E4T, hardwareMap);
-        shooter = new MasqMotor("shooter", USDIGITAL_E4T, hardwareMap);
-        clawServo = new MasqServo("clawServo", hardwareMap);
-        //flicker = new MasqServo("flicker", hardwareMap);
-        tracker = new MasqPositionTracker(intake, shooter, shooter, hardwareMap);
+        encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, hardwareMap);
+        shooter = new MasqMotor("shooter", NEVERREST_CLASSIC, hardwareMap);
+        encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
+        tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
         dash = getDash();
     }
 
@@ -57,52 +54,15 @@ public class PlaceHolder extends MasqRobot {
         xySpeedController = new MasqPIDController(0.08);
         xyAngleController = new MasqPIDController(0.06);
 
-        intake.setWheelDiameter(2);
-        clawMotor.setClosedLoop(true);
-        clawMotor.encoder.setWheelDiameter(2);
-        clawMotor.setKp(0.01);
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();
-
-        scaleServos();
-        resetServos();
     }
 
     public void initCamera(HardwareMap hardwareMap) {
-        //RingDetector detector = new RingDetector();
-        //detector.setClippingMargins(90,90,110,50);
-      //  camera = new MasqCamera(detector, WEBCAM, hardwareMap);
-       // camera.start(UPSIDE_DOWN);
-    }
-
-    private void scaleServos() {
-        clawServo.scaleRange(0,1);
-        //flicker.scaleRange(0,1);
-    }
-
-    private void resetServos() {
-        clawServo.setPosition(0);
-        //flicker.setPosition0);
-    }
-
-    public void toggleClawServo(boolean button) {
-
-        boolean currStateClaw = false;
-        if (button) {
-            currStateClaw = true;
-        } else {
-            if (prevStateClaw) {
-                taskStateClaw = !taskStateClaw;
-            }
-        }
-
-        prevStateClaw = currStateClaw;
-
-        if (taskStateClaw) {
-            clawServo.setPosition(1);
-        } else {
-            clawServo.setPosition(0);
-        }
+        RingDetector detector = new RingDetector();
+        detector.setClippingMargins(500,350,250,600);
+        camera = new MasqCamera(detector,WEBCAM, hardwareMap);
+        camera.start();
     }
 
     public void stop(double time) {
@@ -112,10 +72,12 @@ public class PlaceHolder extends MasqRobot {
         }
         driveTrain.setPower(0);
     }
-    public void shoot() {
-        shooter.setVelocity(1);
-        while(!(shooter.getInches() > 12)) {
+    public void shoot(double power) {
+        shooter.setVelocity(power);
+        while(shooter.getInches() < 12) {
             sleep(0.1);
         }
+        shooter.setVelocity(0);
+        shooter.resetEncoder();
     }
 }

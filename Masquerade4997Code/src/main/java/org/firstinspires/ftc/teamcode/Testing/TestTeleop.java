@@ -9,31 +9,29 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 
 @TeleOp
-public class WebcamTeleop  extends MasqLinearOpMode {
-    public WebcamBot robot = new WebcamBot();
+public class TestTeleop extends MasqLinearOpMode {
+    public TestBot robot = new TestBot();
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        robot.camera.start();
+        robot.initializeTeleop();
 
         while (!opModeIsActive()) {
-            dash.create(robot.detector.getValues()[0]);
-            dash.create(robot.detector.getValues()[1]);
+            robot.tracker.updateSystem();
+            dash.create("X: "+ robot.tracker.getGlobalX());
+            dash.create("Y: "+ robot.tracker.getGlobalY());
             dash.update();
         }
 
         waitForStart();
 
         while (opModeIsActive()) {
-            dash.create(robot.detector.getValues()[0]);
-            dash.create(robot.detector.getValues()[1]);
+            robot.MECH(controller1);
+            robot.tracker.updateSystem();
+            dash.create("X: "+ robot.tracker.getGlobalX());
+            dash.create("Y: "+ robot.tracker.getGlobalY());
             dash.update();
         }
-    }
-
-    @Override
-    public void stopLinearOpMode() {
-        robot.camera.stop();
     }
 }

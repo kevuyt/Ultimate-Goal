@@ -31,7 +31,6 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
 
             claw = Range.clip(claw, 0,1);
 
-            robot.clawServo.setPosition(claw);
 
             dash.create("Claw (+A, -B): ", claw);
             dash.update();

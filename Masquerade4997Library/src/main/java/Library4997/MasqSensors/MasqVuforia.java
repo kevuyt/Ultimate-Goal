@@ -3,7 +3,6 @@ package Library4997.MasqSensors;
 
 import com.qualcomm.ftcrobotcontroller.R.id;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.util.Hardware;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -67,7 +66,7 @@ public class MasqVuforia implements MasqHardware {
         parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
 
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        this.vuforia = ClassFactory.getInstance().createVuforia(parameters);
         targetOne = t1;
         targetTwo = t2;
         targetThree = t3;
@@ -85,7 +84,7 @@ public class MasqVuforia implements MasqHardware {
     public MasqVuforia(String t1, String t2, String asset)  {
         parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        this.vuforia = ClassFactory.getInstance().createVuforia(parameters);
         targetOne = t1;
         targetTwo = t2;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
@@ -100,7 +99,7 @@ public class MasqVuforia implements MasqHardware {
     public MasqVuforia(String t1, String asset) {
         parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        this.vuforia = ClassFactory.getInstance().createVuforia(parameters);
         targetOne = t1;
         vuforiaTrackables = this.vuforia.loadTrackablesFromAsset(asset);
         trackOne = vuforiaTrackables.get(0);
@@ -113,7 +112,7 @@ public class MasqVuforia implements MasqHardware {
         parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         if(webcam) parameters.cameraName = MasqUtils.getHardwareMap().get(WebcamName.class, "Webcam 1");
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        this.vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
     }
     public void init(){
@@ -150,7 +149,7 @@ public class MasqVuforia implements MasqHardware {
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
         parameters.vuforiaLicenseKey = MasqUtils.VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        this.vuforia = ClassFactory.getInstance().createVuforia(parameters);
         relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
         relicTemplate = relicTrackables.get(0);
         relicTemplate.setName("relicVuMarkTemplate");
