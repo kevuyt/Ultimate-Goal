@@ -6,6 +6,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqAdafruitIMU;
 import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqResources.MasqUtils.adjustAngle;
 import static Library4997.MasqResources.MasqUtils.sleep;
@@ -19,7 +20,6 @@ public class MasqPositionTracker implements MasqHardware {
     private MasqMotor xSystem, yLSystem, yRSystem, ySystem;
     public MasqAdafruitIMU imu;
     private double prevHeading, heading, xDrift, yDrift;
-
     private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
     private DeadWheelPosition position;
 
@@ -127,28 +127,7 @@ public class MasqPositionTracker implements MasqHardware {
         prevYR = yRPosition;
         double dYL = yLPosition - prevYL;
         prevYL = yLPosition;
-        double dH = (dYL - dYR) / trackWidth;
-        double dTranslationalY = (dYR + dYL) / 2;
-        double angularComponentX = xRadius * dH;
-        double dTranslationalX = dX - angularComponentX;
-        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
-        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
-        globalX += dGlobalX;
-        globalY += dGlobalY;
-    }
-
-    private void threev2() {
-        double xPosition = xSystem.getInches();
-        double yLPosition = yLSystem.getInches();
-        double yRPosition = yRSystem.getInches();
-        double dX = xPosition - prevX;
-        prevX = xPosition;
-        double dYR = yRPosition - prevYR;
-        prevYR = yRPosition;
-        double dYL = yLPosition - prevYL;
-        prevYL = yLPosition;
-        double dH = (dYL - dYR) / trackWidth;
-        heading += dH;
+        double dH = (dYR - dYL) / trackWidth;
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;

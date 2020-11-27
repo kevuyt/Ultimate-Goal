@@ -28,8 +28,6 @@ import static Library4997.MasqResources.MasqUtils.angleController;
 import static Library4997.MasqResources.MasqUtils.driveController;
 import static Library4997.MasqResources.MasqUtils.scaleNumber;
 import static Library4997.MasqResources.MasqUtils.turnController;
-import static Library4997.MasqResources.MasqUtils.velocityAutoController;
-import static Library4997.MasqResources.MasqUtils.velocityTeleController;
 import static Library4997.MasqResources.MasqUtils.xyAngleController;
 import static Library4997.MasqResources.MasqUtils.xySpeedController;
 
@@ -577,12 +575,6 @@ public abstract class MasqRobot {
         MECH(c, Direction.FORWARD, false, speedMutliplier, turnMultiplier, false);
     }
 
-    public void initializeTeleop(){
-        driveTrain.setKp(velocityTeleController.getKp());
-    }
-    public void initializeAutonomous() {
-        driveTrain.setKp(velocityAutoController.getKp());
-    }
     public MasqWayPoint getCurrentWayPoint() {
         return new MasqWayPoint().setPoint(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading())).setName("Inital WayPoint");
     }

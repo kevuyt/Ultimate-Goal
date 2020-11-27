@@ -47,8 +47,6 @@ public class MasqUtils {
     public static MasqPIDController ySpeedController = new MasqPIDController(0.07);
     public static MasqPIDController xyAngleController;
     public static MasqPIDController driveController;
-    public static MasqPIDController velocityTeleController;
-    public static MasqPIDController velocityAutoController;
     public static MasqPIDController angleController;
 
     public static void sleep(double timeSeconds) {

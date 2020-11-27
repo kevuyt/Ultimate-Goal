@@ -18,7 +18,6 @@ public class RobotTeleop extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        robot.initializeTeleop();
 
         while(!opModeIsActive()) {
             dash.create("Initialized");
@@ -29,7 +28,6 @@ public class RobotTeleop extends MasqLinearOpMode {
 
         while(opModeIsActive()) {
             robot.MECH(controller1);
-            //robot.toggleClawServo(controller1.y());
             robot.intake.setVelocity(controller1.rightTrigger()-controller1.leftTrigger());
             if(controller1.y()) robot.shooter.setVelocity(-1);
             else robot.shooter.setVelocity(0);

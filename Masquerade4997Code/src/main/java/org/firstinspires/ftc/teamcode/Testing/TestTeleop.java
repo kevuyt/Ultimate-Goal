@@ -10,12 +10,11 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 
 @TeleOp
 public class TestTeleop extends MasqLinearOpMode {
-    public TestBot robot = new TestBot();
+    private TestBot robot = new TestBot();
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        robot.initializeTeleop();
 
         while (!opModeIsActive()) {
             robot.tracker.updateSystem();
@@ -31,6 +30,10 @@ public class TestTeleop extends MasqLinearOpMode {
             robot.tracker.updateSystem();
             dash.create("X: "+ robot.tracker.getGlobalX());
             dash.create("Y: "+ robot.tracker.getGlobalY());
+            dash.create("X Inches: " + robot.intake.getInches());
+            dash.create("yL Inches: " + robot.encoder1.getInches());
+            dash.create("yR Inches: " + robot.encoder2.getInches());
+
             dash.update();
         }
     }

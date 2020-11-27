@@ -33,7 +33,7 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         angle = Math.toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
         double leftFront = (Math.sin(adjustedAngle) * speed * MasqUtils.DEFAULT_SPEED_MULTIPLIER) - turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.DEFAULT_SPEED_MULTIPLIER) - turnPower  * MasqUtils.DEFAULT_TURN_MULTIPLIER;
+        double leftBack = (Math.cos(adjustedAngle) * speed * MasqUtils.DEFAULT_SPEED_MULTIPLIER) - turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
         double rightFront = (Math.cos(adjustedAngle) * speed * MasqUtils.DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
         double rightBack = (Math.sin(adjustedAngle) * speed * MasqUtils.DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
         double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
