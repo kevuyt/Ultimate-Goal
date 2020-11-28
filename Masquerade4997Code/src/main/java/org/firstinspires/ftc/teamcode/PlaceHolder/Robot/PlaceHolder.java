@@ -11,7 +11,6 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqPositionTracker;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqServos.MasqServo;
 
 import static Library4997.MasqCV.MasqCamera.Cam.WEBCAM;
 import static Library4997.MasqMotors.MasqMotorModel.*;
@@ -27,6 +26,7 @@ import static Library4997.MasqWrappers.DashBoard.getDash;
 public class PlaceHolder extends MasqRobot {
     public MasqCamera camera;
     public MasqMotor intake, encoder1, encoder2, shooter;
+    public RingDetector detector;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -58,7 +58,7 @@ public class PlaceHolder extends MasqRobot {
     }
 
     public void initCamera(HardwareMap hardwareMap) {
-        RingDetector detector = new RingDetector();
+        detector = new RingDetector();
         detector.setClippingMargins(500,350,250,600);
         camera = new MasqCamera(detector,WEBCAM, hardwareMap);
         camera.start();

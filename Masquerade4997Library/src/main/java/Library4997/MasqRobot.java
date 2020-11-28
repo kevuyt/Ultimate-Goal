@@ -323,7 +323,7 @@ public abstract class MasqRobot {
                     !current.equal(pointsWithRobot.get(index).getTargetRadius(), target) && opModeIsActive() && speed > 0.1) {
                 double heading = Math.toRadians(-tracker.getHeading());
                 MasqVector headingUnitVector = new MasqVector(Math.sin(heading), Math.cos(heading));
-                MasqVector lookahead = MasqUtils.getLookAhead(initial, current, target, lookAheadDistance);
+                MasqVector lookahead = MasqUtils.getLookAheadv2(initial, current, target, lookAheadDistance);
                 MasqVector pathDisplacement = initial.displacement(target);
                 boolean closerThanLookAhead = initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude();
                 boolean approachingFinalPos = index == pointsWithRobot.size() - 1;

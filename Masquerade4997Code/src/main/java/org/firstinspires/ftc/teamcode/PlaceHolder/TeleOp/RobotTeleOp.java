@@ -1,18 +1,16 @@
 package org.firstinspires.ftc.teamcode.PlaceHolder.TeleOp;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
 
-import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 /**
  * Created by Keval Kataria on 11/9/2020
  */
-@TeleOp(name = "RobotTeleop", group = "PlaceHolder")
-public class RobotTeleop extends MasqLinearOpMode {
+@TeleOp(name = "RobotTeleOp", group = "PlaceHolder")
+public class RobotTeleOp extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
 
     @Override
