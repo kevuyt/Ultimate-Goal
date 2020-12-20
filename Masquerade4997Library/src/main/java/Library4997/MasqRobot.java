@@ -30,6 +30,7 @@ import static Library4997.MasqResources.MasqUtils.scaleNumber;
 import static Library4997.MasqResources.MasqUtils.turnController;
 import static Library4997.MasqResources.MasqUtils.xyAngleController;
 import static Library4997.MasqResources.MasqUtils.xySpeedController;
+import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
 
 
 /**
@@ -323,7 +324,7 @@ public abstract class MasqRobot {
                     !current.equal(pointsWithRobot.get(index).getTargetRadius(), target) && opModeIsActive() && speed > 0.1) {
                 double heading = Math.toRadians(-tracker.getHeading());
                 MasqVector headingUnitVector = new MasqVector(Math.sin(heading), Math.cos(heading));
-                MasqVector lookahead = MasqUtils.getLookAheadv2(initial, current, target, lookAheadDistance);
+                MasqVector lookahead = MasqUtils.getLookAhead(initial, current, target, lookAheadDistance);
                 MasqVector pathDisplacement = initial.displacement(target);
                 boolean closerThanLookAhead = initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude();
                 boolean approachingFinalPos = index == pointsWithRobot.size() - 1;
@@ -354,10 +355,9 @@ public abstract class MasqRobot {
                 else driveTrain.setVelocity(leftPower, rightPower);
 
                 tracker.updateSystem();
-                dash.create(current.setName("Current Point"));
-                dash.create("Heading: ", Math.toDegrees(heading));
-                dash.create("Angular Correction Speed: ", MasqMechanumDriveTrain.angleCorrectionController.getKp());
-                dash.create("Drive Correction Speed: ", pointsWithRobot.get(index).getDriveCorrectionSpeed());
+                dash.create("X: "+ tracker.getGlobalX());
+                dash.create("Y: "+ tracker.getGlobalY());
+                dash.update();
                 dash.update();
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             }
@@ -452,7 +452,7 @@ public abstract class MasqRobot {
         MasqMechanumDriveTrain.angleCorrectionController.setKd(xyAngleController.getKd());
         List<MasqWayPoint> pointsWithRobot = new ArrayList<>(Arrays.asList(points));
         pointsWithRobot.add(0, getCurrentWayPoint());
-        MasqPIDController travelAngleController = new MasqPIDController(0.01, 0, 0);
+        MasqPIDController travelAngleController = new MasqPIDController(0);
         int index = 1;
         MasqClock pointTimeout = new MasqClock();
         timeoutClock.reset();
@@ -464,10 +464,9 @@ public abstract class MasqRobot {
             MasqVector target = new MasqVector(pointsWithRobot.get(index).getX(), pointsWithRobot.get(index).getY());
             MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             MasqVector initial = new MasqVector(pointsWithRobot.get(index - 1).getX(), pointsWithRobot.get(index - 1).getY());
-            double speedx = 1, speedy = 1;
             pointTimeout.reset();
             while (!pointTimeout.elapsedTime(pointsWithRobot.get(index).getTimeout(), MasqClock.Resolution.SECONDS) &&
-                    !current.equal(pointsWithRobot.get(index).getTargetRadius(), target) && opModeIsActive() && Math.abs(speedx) > 0.1 && Math.abs(speedy) > 0.1) {
+                    !current.equal(pointsWithRobot.get(index).getTargetRadius(), target) && opModeIsActive()) {
                 MasqVector lookahead = MasqUtils.getLookAhead(initial, current, target, lookAheadDistance);
                 MasqVector pathDisplacement = initial.displacement(target);
                 boolean closerThanLookAhead = initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude();
@@ -482,8 +481,6 @@ public abstract class MasqRobot {
                 driveTrain.setVelocityMECHXY(pathAngle + tracker.getHeading(), current, target, -pointsWithRobot.get(index).getH());
 
                 tracker.updateSystem();
-                dash.create("x Speed: ", speedx);
-                dash.create("y Speed: ", speedx);
                 dash.update();
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             }
@@ -580,5 +577,19 @@ public abstract class MasqRobot {
     }
     public MasqWayPointLegacy getCurrentWayPointLegacy() {
         return new MasqWayPointLegacy(new MasqPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading()));
+    }
+    public void stop(double time) {
+        MasqClock clock = new MasqClock();
+        while(!clock.elapsedTime(time, SECONDS) && opModeIsActive()) {
+            driveTrain.setVelocity(0);
+        }
+        driveTrain.setPower(0);
+    }
+    public void stop() {
+        MasqClock clock = new MasqClock();
+        while(!clock.elapsedTime(2, SECONDS) && opModeIsActive()) {
+            driveTrain.setVelocity(0);
+        }
+        driveTrain.setPower(0);
     }
 }

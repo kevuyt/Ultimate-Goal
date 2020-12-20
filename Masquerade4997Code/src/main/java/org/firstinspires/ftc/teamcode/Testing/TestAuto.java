@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
+
 import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -27,7 +29,7 @@ public class TestAuto extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.xyPath(2, new MasqWayPoint().setPoint(0,-24,90));
-        sleep(20.0);
+        robot.xyPath(2, new MasqWayPoint().setPoint(-24,0,0).setTimeout(2).setTargetRadius(1));
+        robot.stop(2);
     }
 }

@@ -135,6 +135,7 @@ public class MasqPositionTracker implements MasqHardware {
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
+
     }
 
     public double getDHeading(double current) {

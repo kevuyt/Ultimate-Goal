@@ -12,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "ConstantsProgrammer", group = "PlaceHolder")
 public class ConstantsProgrammer extends MasqLinearOpMode {
     public PlaceHolder robot = new PlaceHolder();
-    private double claw;
+    private double claw, rotater;
 
     @Override
     public void runLinearOpMode() {
@@ -29,10 +29,16 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
             if (controller1.a()) claw += 0.001;
             else if (controller1.b()) claw -= 0.001;
 
+            if (controller1.y()) rotater += 0.001;
+            else if (controller1.x()) rotater -= 0.001;
+
             claw = Range.clip(claw, 0,1);
+            rotater = Range.clip(rotater, 0,1);
 
-
+            robot.claw.claw.setPosition(claw);
+            robot.claw.rotater.setPosition(rotater);
             dash.create("Claw (+A, -B): ", claw);
+            dash.create("Rotater (+Y, -X): ", rotater);
             dash.update();
         }
     }

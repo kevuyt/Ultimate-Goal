@@ -36,12 +36,13 @@ public class Red extends MasqLinearOpMode {
 
         robot.camera.stop();
 
-        MasqWayPoint target, strafe = new MasqWayPoint().setPoint(-24,0,0).setSwitchMode(MECH);
+        MasqWayPoint target, strafe = new MasqWayPoint().setPoint(-10,-24,0).setSwitchMode(MECH);
 
-        if (zone == A) target = new MasqWayPoint().setPoint(-24,-60,90);
-        else if (zone == B) target = new MasqWayPoint().setPoint(-7,-84,90);
-        else target = new MasqWayPoint().setPoint(-24,-108,90);
+        if (zone == A) target = new MasqWayPoint().setPoint(-10,-60,90);
+        else if (zone == B) target = new MasqWayPoint().setPoint(114,-84,90);
+        else target = new MasqWayPoint().setPoint(-110,-108,90);
 
         robot.xyPath(4, strafe, target);
+        robot.stop();
     }
 }

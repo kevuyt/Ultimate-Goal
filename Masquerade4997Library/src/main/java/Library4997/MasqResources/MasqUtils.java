@@ -15,6 +15,7 @@ import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
+import static Library4997.MasqWrappers.DashBoard.getDash;
 import static android.icu.util.MeasureUnit.RADIAN;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -125,19 +126,22 @@ public class MasqUtils {
 
     //https://www.desmos.com/calculator/putboztuqn
     public static MasqVector getLookAheadv2 (MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
+        if(finalPos.getY() == initial.getY()) return new MasqVector(current.getX(), initial.getY());
+        if(finalPos.getX() == initial.getX() ) return new MasqVector(initial.getX(),current.getY());
+
         double slope1 = (finalPos.getY()-initial.getY())/(finalPos.getX()-initial.getX());
         double slope2 = -1/slope1;
         double theta = Math.atan2(finalPos.getY()-initial.getY(),finalPos.getX()-initial.getX());
+        double x = ((slope2 * current.getX()) + initial.getY() - current.getY() - (slope1 * initial.getX()))/(slope2-slope1);
 
-        MasqVector projection = new MasqVector(
-                (slope1*finalPos.getX() + current.getY() - slope2*current.getX()-finalPos.getY())/(slope1-slope2),
-                current.getY() + slope2*(((slope1*finalPos.getX() + current.getY() - slope2*current.getX()-finalPos.getY())/(slope1-slope2))-current.getX())
-        );
+        MasqVector projection = new MasqVector(x, (x-initial.getX())*slope1 + initial.getY());
 
-        if(initial.distanceToVector(finalPos) > (initial.distanceToVector(projection)+ lookAhead))
-            return new MasqVector(projection.getX() + lookAhead*cos(theta), projection.getY()+lookAhead*sin(theta));
-        //For when the robot goes past the target, we don't want the lookahead to be further from the target
-        else return new MasqVector(projection.getX() - lookAhead*cos(theta), projection.getY() - lookAhead*sin(theta));
+        if(finalPos.distanceToVector(initial) > (finalPos.distanceToVector(projection) - lookAhead)) {
+            getDash().update();
+            return new MasqVector(projection.getX() + lookAhead * cos(theta), projection.getY() + lookAhead * sin(theta));
+        }
+        getDash().update();
+        return new MasqVector(projection.getX() - lookAhead*cos(theta), projection.getY() - lookAhead*sin(theta));
 
     }
 

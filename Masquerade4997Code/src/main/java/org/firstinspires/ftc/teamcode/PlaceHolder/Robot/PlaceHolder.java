@@ -18,6 +18,7 @@ import static Library4997.MasqPositionTracker.DeadWheelPosition.THREE;
 import static Library4997.MasqResources.MasqUtils.*;
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
 import static Library4997.MasqWrappers.DashBoard.getDash;
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 
 
 /**
@@ -27,20 +28,27 @@ public class PlaceHolder extends MasqRobot {
     public MasqCamera camera;
     public MasqMotor intake, encoder1, encoder2, shooter;
     public RingDetector detector;
+    public RotatingClaw claw;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
-        encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, hardwareMap);
-        shooter = new MasqMotor("shooter", NEVERREST_CLASSIC, hardwareMap);
+        encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, REVERSE, hardwareMap);
         encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
+        shooter = new MasqMotor("shooter", NEVERREST_CLASSIC, hardwareMap);
         tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
+        claw = new RotatingClaw(hardwareMap);
         dash = getDash();
     }
 
     public void init(HardwareMap hardwareMap) {
         mapHardware(hardwareMap);
+        intake.setWheelDiameter(2);
+        encoder1.setWheelDiameter(2);
+        encoder2.setWheelDiameter(2);
+        shooter.setWheelDiameter(4);
+
         tracker.setPosition(THREE);
         tracker.setXRadius(5.68);
         tracker.setTrackWidth(13.75);
@@ -49,11 +57,11 @@ public class PlaceHolder extends MasqRobot {
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.003);
-        xySpeedController = new MasqPIDController(0.08);
+        xySpeedController = new MasqPIDController(0.01);
         xyAngleController = new MasqPIDController(0.06);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(1e-7);
+        driveTrain.setKp(5e-8);
         driveTrain.resetEncoders();
     }
 
@@ -62,14 +70,6 @@ public class PlaceHolder extends MasqRobot {
         detector.setClippingMargins(500,350,250,600);
         camera = new MasqCamera(detector,WEBCAM, hardwareMap);
         camera.start();
-    }
-
-    public void stop(double time) {
-        MasqClock clock = new MasqClock();
-        while(!clock.elapsedTime(time, SECONDS) && opModeIsActive()) {
-            driveTrain.setVelocity(0);
-        }
-        driveTrain.setPower(0);
     }
     public void shoot(double power) {
         shooter.setVelocity(power);

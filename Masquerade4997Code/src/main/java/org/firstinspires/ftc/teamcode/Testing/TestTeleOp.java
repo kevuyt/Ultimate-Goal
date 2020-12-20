@@ -18,7 +18,7 @@ public class TestTeleOp extends MasqLinearOpMode {
 
         while (!opModeIsActive()) {
             robot.tracker.updateSystem();
-
+            robot.driveTrain.setClosedLoop(false);
             dash.create("X: "+ robot.tracker.getGlobalX());
             dash.create("Y: "+ robot.tracker.getGlobalY());
             dash.update();
@@ -27,6 +27,7 @@ public class TestTeleOp extends MasqLinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
+            robot.driveTrain.setClosedLoop(true);
             robot.MECH(controller1);
 
             robot.tracker.updateSystem();

@@ -50,11 +50,11 @@ public class TestBot extends MasqRobot {
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.003);
-        xySpeedController = new MasqPIDController(0.08);
+        xySpeedController = new MasqPIDController(0.01);
         xyAngleController = new MasqPIDController(0.06);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(1e-7);
+        driveTrain.setKp(5e-8);
         driveTrain.resetEncoders();
     }
 }

@@ -9,6 +9,7 @@ import Library4997.MasqPositionTracker;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqResources.MasqUtils.xSpeedController;
 import static Library4997.MasqResources.MasqUtils.ySpeedController;
@@ -47,6 +48,11 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
         leftDrive.motor2.setVelocity(leftBack);
         rightDrive.motor1.setVelocity(rightFront);
         rightDrive.motor2.setVelocity(rightBack);
+        DashBoard.getDash().create("LeftFront Power: ",leftFront);
+        DashBoard.getDash().create("Turn Power: ",turnPower);
+        DashBoard.getDash().create("Speed",speed);
+        DashBoard.getDash().create("Angle", angle);
+
     }
 
     public void setVelocityMECHXY(double angle, MasqVector current, MasqVector target, double targetHeading) {

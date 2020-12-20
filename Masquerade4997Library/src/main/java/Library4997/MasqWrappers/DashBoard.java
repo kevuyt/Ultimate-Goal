@@ -37,6 +37,11 @@ public class DashBoard {
     public void create(String string, Object data) {
         telemetry.addData(string, data);
     }
+    public void create(Object... data) {
+        for (Object dash : data) {
+            telemetry.addLine(dash.toString());
+        }
+    }
     public void create(final MasqHardware hardware) {
         dashLength = hardware.getDash().length;
         for (int i = 0; i < dashLength; i++) {
