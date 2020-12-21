@@ -18,6 +18,8 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneF
 public class Red extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
     private TargetZone zone;
+    MasqWayPoint target = new MasqWayPoint(), strafe = new MasqWayPoint().setPoint(-10,-24,0).setSwitchMode(MECH);
+
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -36,13 +38,13 @@ public class Red extends MasqLinearOpMode {
 
         robot.camera.stop();
 
-        MasqWayPoint target, strafe = new MasqWayPoint().setPoint(-10,-24,0).setSwitchMode(MECH);
+        robot.claw.lower();
 
-        if (zone == A) target = new MasqWayPoint().setPoint(-10,-60,90);
-        else if (zone == B) target = new MasqWayPoint().setPoint(114,-84,90);
-        else target = new MasqWayPoint().setPoint(-110,-108,90);
+        if (zone == A) target = target.setPoint(-10,-60,90);
+        else if (zone == B) target = target.setPoint(14,-84,90);
+        else target = target.setPoint(-10,-108,90);
 
-        robot.xyPath(4, strafe, target);
+        robot.xyPath(4, strafe, target.setOnComplete(() -> robot.claw.open()));
         robot.stop();
     }
 }

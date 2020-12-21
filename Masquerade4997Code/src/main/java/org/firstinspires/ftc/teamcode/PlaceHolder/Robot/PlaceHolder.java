@@ -57,12 +57,14 @@ public class PlaceHolder extends MasqRobot {
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.003);
-        xySpeedController = new MasqPIDController(0.01);
+        xySpeedController = new MasqPIDController(0.08);
         xyAngleController = new MasqPIDController(0.06);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(5e-8);
+        driveTrain.setKp(1e-7);
         driveTrain.resetEncoders();
+
+        claw.reset();
     }
 
     public void initCamera(HardwareMap hardwareMap) {
