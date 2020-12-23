@@ -18,8 +18,7 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneF
 public class Red extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
     private TargetZone zone;
-    MasqWayPoint target = new MasqWayPoint(), strafe = new MasqWayPoint().setPoint(-10,-24,0).setSwitchMode(MECH);
-
+    MasqWayPoint target = new MasqWayPoint().setTimeout(5), strafe = new MasqWayPoint().setPoint(-14,-36,0).setSwitchMode(MECH);
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -29,8 +28,9 @@ public class Red extends MasqLinearOpMode {
         while(!opModeIsActive()) {
             zone = findZone(robot.camera.detector);
             dash.create("Zone: " + zone);
-            dash.create("Control" + robot.detector.getControl());
-            dash.create("Average" + robot.detector.getAverage());
+            dash.create("Control: " + robot.detector.getControl());
+            dash.create("Top: " + robot.detector.getTop());
+            dash.create("Bottom: ", robot.detector.getBottom());
             dash.update();
         }
 
@@ -41,10 +41,15 @@ public class Red extends MasqLinearOpMode {
         robot.claw.lower();
 
         if (zone == A) target = target.setPoint(-10,-60,90);
-        else if (zone == B) target = target.setPoint(14,-84,90);
+        else if (zone == B) target = target.setPoint(-4,-84,0);
         else target = target.setPoint(-10,-108,90);
 
-        robot.xyPath(4, strafe, target.setOnComplete(() -> robot.claw.open()));
+        if(zone != A) robot.xyPath(7, strafe, target.setOnComplete(() -> robot.claw.open()));
+        else robot.xyPath(3,target.setOnComplete(() -> robot.claw.open()));
         robot.stop();
+
+        robot.xyPath(3,new MasqWayPoint().setPoint(19,-60,0).setTimeout(3).setOnComplete(() -> robot.shoot(1)));
+        robot.xyPath(2,new MasqWayPoint().setPoint(26.5,-60,0).setOnComplete(() -> robot.shoot(1)));
+        robot.xyPath(2,new MasqWayPoint().setPoint(34,-60,0).setOnComplete(() -> robot.shoot(1)));
     }
 }

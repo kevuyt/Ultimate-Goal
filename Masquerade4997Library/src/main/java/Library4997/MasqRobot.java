@@ -407,7 +407,6 @@ public abstract class MasqRobot {
                 speed = scaleNumber(speed, pointsWithRobot.get(index).getMinVelocity(), maxVelocity);
                 double powerAdjustment = travelAngleController.getOutput(pathAngle);
 
-
                 MasqWayPoint.PointMode mode = pointsWithRobot.get(index).getSwitchMode();
                 boolean mechMode = approachingFinalPos ||
                         (current.equal(pointsWithRobot.get(index).getModeSwitchRadius(), target) && mode == SWITCH) ||

@@ -8,13 +8,12 @@ import static java.lang.Math.abs;
  * Created by Keval Kataria on 11/25/2020
  */
 public class ZoneFinder {
-    public enum TargetZone {
-        A,B,C
-    }
+    public enum TargetZone {A,B,C}
+
     public static TargetZone findZone (MasqCVDetector detector) {
         RingDetector ringDetector = (RingDetector) detector;
-        if (abs(ringDetector.getAverage() - ringDetector.getControl()) < 1.75) return TargetZone.B;
-        else if (ringDetector.getAverage() > ringDetector.getControl()) return TargetZone.C;
+        if (abs(ringDetector.getTop()-ringDetector.getBottom()) > 15) return TargetZone.B;
+        else if (abs(((ringDetector.getTop() + ringDetector.getBottom())/2 - ringDetector.getControl())) > 10) return TargetZone.C;
         else return TargetZone.A;
     }
 }

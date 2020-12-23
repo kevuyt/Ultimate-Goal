@@ -75,10 +75,14 @@ public class MasqPositionTracker implements MasqHardware {
         MasqClock clock = new MasqClock();
         while (!clock.elapsedTime(time, MasqClock.Resolution.SECONDS)) {
             updateSystem();
+            DashBoard.getDash().create("X: ", globalX);
+            DashBoard.getDash().create("Y: ", globalY);
+            DashBoard.getDash().create("H: ", getHeading());
+            DashBoard.getDash().update();
         }
     }
 
-    public void reset() {
+    private void reset() {
         xSystem.resetEncoder();
         yLSystem.resetEncoder();
         yRSystem.resetEncoder();
@@ -135,7 +139,6 @@ public class MasqPositionTracker implements MasqHardware {
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
-
     }
 
     public double getDHeading(double current) {
