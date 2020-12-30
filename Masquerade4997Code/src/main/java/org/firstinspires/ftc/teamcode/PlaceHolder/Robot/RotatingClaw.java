@@ -11,7 +11,7 @@ import Library4997.MasqWrappers.MasqController;
  * Created by Keval Kataria on 11/26/2020
  */
 public class RotatingClaw implements MasqSubSystem {
-    MasqServo claw, rotater;
+    public MasqServo claw, rotater;
 
     public RotatingClaw(HardwareMap hardwareMap) {
         claw = new MasqServo("claw",hardwareMap);
