@@ -13,8 +13,6 @@ public class MasqClock implements MasqHardware {
     private long pauseStart;
     private long pauseLength;
 
-    private String name = "CLOCK";
-
 
     public MasqClock() {this.reset();}
     public void reset() {
@@ -38,8 +36,8 @@ public class MasqClock implements MasqHardware {
     }
 
 
-    public boolean elapsedTime(double time, Resolution resolution) {
-        return nanoseconds() > (long)(time * resolution.multiplier);
+    public boolean hasNotBeen(double time, Resolution resolution) {
+        return nanoseconds() <= (long) (time * resolution.multiplier);
     }
 
     public void pause() {
@@ -53,7 +51,7 @@ public class MasqClock implements MasqHardware {
     }
 
     public boolean isPaused() {return isPaused;}
-    public String getName() {return name;}
+    public String getName() {return "CLOCK";}
     public String[] getDash() {
         return new String[]{
                 String.format(Locale.US, "%.5f  %s", seconds(), isPaused() ? "PAUSED" : "")

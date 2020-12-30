@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision;
 
-import Library4997.MasqCV.detectors.MasqCVDetector;
+import Library4997.MasqVision.MasqCVDetector;
 
 import static java.lang.Math.abs;
 

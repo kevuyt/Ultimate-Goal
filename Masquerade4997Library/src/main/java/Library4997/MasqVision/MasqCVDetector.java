@@ -1,6 +1,4 @@
-package Library4997.MasqCV.detectors;
-
-import android.util.Log;
+package Library4997.MasqVision;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
@@ -14,7 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import Library4997.MasqCV.filters.MasqCVColorFilter;
+import Library4997.MasqVision.filters.MasqCVColorFilter;
 
 /**
  * Created by Keval Kataria on 6/1/2020.
@@ -105,7 +103,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     }
     protected void drawRect(Rect rect, Scalar color, boolean fill) {
         if(fill) Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, -1);
-        else Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 3);
+        else Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 2);
         }
     protected void drawCenterPoint(Point point, Scalar color) {
             Imgproc.circle(displayMat, point, 2, color);

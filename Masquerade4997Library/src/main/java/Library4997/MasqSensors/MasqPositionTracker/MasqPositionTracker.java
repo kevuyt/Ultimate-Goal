@@ -2,47 +2,115 @@ package Library4997.MasqSensors.MasqPositionTracker;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import java.util.ArrayList;
-import java.util.List;
+import Library4997.MasqMotors.MasqMotor;
+import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqSensors.MasqClock;
+import Library4997.MasqWrappers.DashBoard;
 
-import Library4997.MasqSensors.MasqAdafruitIMU;
-import Library4997.MasqSensors.MasqPositionTracker.MasqDeadwheel.Measurement;
+import static Library4997.MasqResources.MasqUtils.adjustAngle;
+import static Library4997.MasqResources.MasqUtils.sleep;
 
 /**
- * Created by Archishmaan Peyyety on 2020-01-08.
+ * Created by Archishmaan Peyyety on 8/9/18.
  * Project: MasqLib
  */
-public class MasqPositionTracker {
-    private List<MasqDeadwheel> wheels = new ArrayList<>();
-    private double globalX, globalY, prevHeading;
-    private MasqAdafruitIMU imu;
-    private int xWheels, yWheels;
 
-    public MasqPositionTracker(HardwareMap hardwareMap) {
+public class MasqPositionTracker implements MasqHardware {
+    private MasqMotor xSystem, yLSystem, yRSystem, ySystem;
+    public MasqAdafruitIMU imu;
+    private double prevHeading, heading, xDrift, yDrift;
+    private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
+    private DeadWheelPosition position;
+
+    public enum DeadWheelPosition {
+        BOTH_CENTER, BOTH_PERPENDICULAR, THREE
+    }
+
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor yLSystem, MasqMotor yRSystem, HardwareMap hardwareMap) {
+        this.xSystem = xSystem;
+        this.yLSystem = yLSystem;
+        this.yRSystem = yRSystem;
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
         reset();
     }
-    public MasqPositionTracker(String imuName, HardwareMap hardwareMap) {
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, String imuName, HardwareMap hardwareMap) {
+        this.xSystem = xSystem;
+        this.ySystem = ySystem;
         imu = new MasqAdafruitIMU(imuName, hardwareMap);
         reset();
     }
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, HardwareMap hardwareMap) {
+        this.xSystem = xSystem;
+        this.ySystem = ySystem;
+        imu = new MasqAdafruitIMU("imu", hardwareMap);
+        prevHeading = imu.getAbsoluteHeading();
+        reset();
+    }
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor yLSystem, MasqMotor yRSystem, String imuName, HardwareMap hardwareMap) {
+        this.xSystem = xSystem;
+        this.yLSystem = yLSystem;
+        this.yRSystem = yRSystem;
+        imu = new MasqAdafruitIMU(imuName, hardwareMap);
+        reset();
+    }
+    public MasqPositionTracker(HardwareMap hardwareMap) {
+        imu = new MasqAdafruitIMU("imu", hardwareMap);
+        imu.reset();
+    }
 
-    public void updateSystem() {
-        double heading = Math.toRadians(imu.getRelativeYaw());
-        double dX, dY, dH, angularComponentX, angularComponentY;
-        dX = dY = dH = angularComponentY = angularComponentX = 0;
-        if (getWheelsType(Measurement.X).size() > 1) {
-
-        } else {
-
+    public double getHeading () {
+        return imu.getRelativeYaw();
+    }
+    public void updateSystem () {
+        switch (position) {
+            case BOTH_CENTER: bothCenter(); break;
+            case BOTH_PERPENDICULAR: bothPerpendicular(); break;
+            case THREE: three(); break;
+            default: break;
         }
-        if (getWheelsType(Measurement.Y).size() > 1) {
-            double dW1 = getWheelsType(Measurement.Y).get(1).getVelocity();
-            double dW2 = getWheelsType(Measurement.Y).get(2).getVelocity();
-        } else {
-
+    }
+    public void updateOverTime(double time) {
+        MasqClock clock = new MasqClock();
+        while (clock.hasNotBeen(time, MasqClock.Resolution.SECONDS)) {
+            updateSystem();
+            DashBoard.getDash().create("X: ", globalX);
+            DashBoard.getDash().create("Y: ", globalY);
+            DashBoard.getDash().create("H: ", getHeading());
+            DashBoard.getDash().update();
         }
+    }
+
+    private void reset() {
+        xSystem.resetEncoder();
+        yLSystem.resetEncoder();
+        yRSystem.resetEncoder();
+        imu.reset();
+    }
+
+    private void bothCenter() {
+        double deltaX = (xSystem.getInches() - prevX);
+        double deltaY = (ySystem.getInches() - prevY);
+        double heading = Math.toRadians(getHeading());
+        double x = deltaX * Math.cos(heading) - deltaY * Math.sin(heading);
+        double y = deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
+        globalX += x;
+        globalY += y;
+        prevY = ySystem.getInches();
+        prevX = xSystem.getInches();
+    }
+
+    private void bothPerpendicular() {
+        double heading = Math.toRadians(getHeading());
+        double xPosition = xSystem.getInches();
+        double yPosition = ySystem.getInches();
+        double dH = Math.toRadians(getDHeading(heading));
+        double dX = xPosition - prevX;
+        prevX = xPosition;
+        double dY = yPosition - prevY;
+        prevY = yPosition;
+        double angularComponentY = yRadius * dH;
+        double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
         double dTranslationalY = dY + angularComponentY;
         double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
@@ -51,31 +119,73 @@ public class MasqPositionTracker {
         globalY += dGlobalY;
     }
 
-    public void reset() {
-        for (MasqDeadwheel masqDeadwheel : wheels) {
-            masqDeadwheel.reset();
-        }
-        imu.reset();
+    private void three() {
+        double heading = Math.toRadians(getHeading());
+        double xPosition = xSystem.getInches();
+        double yLPosition = yLSystem.getInches();
+        double yRPosition = yRSystem.getInches();
+        double dX = xPosition - prevX;
+        prevX = xPosition;
+        double dYR = yRPosition - prevYR;
+        prevYR = yRPosition;
+        double dYL = yLPosition - prevYL;
+        prevYL = yLPosition;
+        double dH = (dYR - dYL) / trackWidth;
+        double dTranslationalY = (dYR + dYL) / 2;
+        double angularComponentX = xRadius * dH;
+        double dTranslationalX = dX - angularComponentX;
+        double dGlobalX = dTranslationalX * Math.cos(heading) - dTranslationalY * Math.sin(heading);
+        double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
+        globalX += dGlobalX;
+        globalY += dGlobalY;
     }
+
+    public double getDHeading(double current) {
+        double change = (current - prevHeading);
+        prevHeading = current;
+        sleep(10);
+        return adjustAngle(Math.toDegrees(change));
+    }
+
+    public void setYRadius(double yRadius) {
+        this.yRadius = yRadius;
+    }
+
     public double getGlobalX() {
-        return globalX;
+        return globalX + xDrift;
     }
-
     public double getGlobalY() {
-        return globalY;
+        return globalY + yDrift;
     }
 
-    public List<MasqDeadwheel> getWheelsType(Measurement m) {
-        List<MasqDeadwheel> deadwheels = new ArrayList<>();
-        for (MasqDeadwheel masqDeadwheel : wheels) {
-            if (masqDeadwheel.getMeasurement() == m) deadwheels.add(masqDeadwheel);
-        }
-        return deadwheels;
+    public void setDrift(double x, double y) {
+        xDrift = x;
+        yDrift = y;
     }
 
-    public void addWheel(MasqDeadwheel deadwheel) {
-        if (deadwheel.getMeasurement() == MasqDeadwheel.Measurement.X) xWheels++;
-        else yWheels++;
-        wheels.add(deadwheel);
+    public void setXRadius(double xRadius) {
+        this.xRadius = xRadius;
+    }
+
+    public void setTrackWidth(double trackWidth) {
+        this.trackWidth = trackWidth;
+    }
+
+    public void setPosition(MasqPositionTracker.DeadWheelPosition position) {
+        this.position = position;
+    }
+
+    @Override
+    public String getName() {
+        return "Tracker";
+    }
+
+    @Override
+    public String[] getDash() {
+        return new String[] {
+                "GlobalX: " + globalX,
+                "GlobalY: " + globalY,
+                "Heading: " + getHeading(),
+        };
     }
 }

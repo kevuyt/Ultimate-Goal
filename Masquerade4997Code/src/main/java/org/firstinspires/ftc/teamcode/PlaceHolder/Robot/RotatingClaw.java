@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqServos.MasqServo;
-import Library4997.MasqSubSystem;
+import Library4997.MasqResources.MasqHelpers.MasqSubSystem;
 import Library4997.MasqWrappers.MasqController;
 
 /**

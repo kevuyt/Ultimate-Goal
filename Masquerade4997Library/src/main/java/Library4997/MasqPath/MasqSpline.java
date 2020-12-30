@@ -1,9 +1,9 @@
-package Library4997.MasqControlSystems.MasqSplineGeneration;
+package Library4997.MasqPath;
 
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+import Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint;
 
 /**
  * Created by Archishmaan Peyyety on 2020-01-19.

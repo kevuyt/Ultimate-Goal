@@ -4,10 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
 
-import Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint;
+import Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
-import static Library4997.MasqControlSystems.MasqPurePursuit.MasqWayPoint.PointMode.MECH;
+import static Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint.PointMode.MECH;
 import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneFinder.TargetZone.*;
 import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneFinder.*;
 

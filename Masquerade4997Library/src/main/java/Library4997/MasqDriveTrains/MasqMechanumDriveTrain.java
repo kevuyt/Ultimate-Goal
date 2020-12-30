@@ -2,10 +2,10 @@ package Library4997.MasqDriveTrains;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
+import Library4997.MasqResources.MasqMath.MasqPIDController;
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
-import Library4997.MasqPositionTracker;
+import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqUtils;

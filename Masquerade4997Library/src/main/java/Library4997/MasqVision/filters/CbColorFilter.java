@@ -1,4 +1,4 @@
-package Library4997.MasqCV.filters;
+package Library4997.MasqVision.filters;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;

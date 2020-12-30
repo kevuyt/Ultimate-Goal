@@ -1,4 +1,4 @@
-package Library4997.MasqControlSystems.MasqPID;
+package Library4997.MasqResources.MasqMath;
 
 import com.qualcomm.robotcore.util.Range;
 

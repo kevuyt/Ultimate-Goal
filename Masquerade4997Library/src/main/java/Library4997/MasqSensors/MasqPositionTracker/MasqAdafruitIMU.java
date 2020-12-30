@@ -1,4 +1,4 @@
-package Library4997.MasqSensors;
+package Library4997.MasqSensors.MasqPositionTracker;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;

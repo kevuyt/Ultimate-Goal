@@ -7,7 +7,7 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
-import Library4997.MasqCV.detectors.MasqCVDetector;
+import Library4997.MasqVision.MasqCVDetector;
 
 /**
  * Created by Keval Kataria on 6/1/2020
@@ -29,6 +29,8 @@ public class RingDetector extends MasqCVDetector {
         control = Core.mean(workingMat.clone().submat(controlRect)).val[0];
         top = Core.mean(workingMat.submat(topRect)).val[0];
         bottom = Core.mean(workingMat.submat(bottomRect)).val[0];
+
+        workingMat.release();
 
         drawRect(controlRect,new Scalar(255,0,0),false);
         drawRect(topRect,new Scalar(0,0,255),false);

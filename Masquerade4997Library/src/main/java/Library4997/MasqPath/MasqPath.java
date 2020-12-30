@@ -1,4 +1,4 @@
-package Library4997.MasqControlSystems.MasqPurePursuit;
+package Library4997.MasqPath;
 
 import java.util.Arrays;
 import java.util.List;

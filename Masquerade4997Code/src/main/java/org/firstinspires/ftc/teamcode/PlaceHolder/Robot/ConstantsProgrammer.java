@@ -15,7 +15,7 @@ public class ConstantsProgrammer extends MasqLinearOpMode {
     private double claw, rotater;
 
     @Override
-    public void runLinearOpMode() {
+    public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
 
         while (!opModeIsActive()) {

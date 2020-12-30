@@ -1,4 +1,4 @@
-package Library4997.MasqControlSystems.MasqSplineGeneration;
+package Library4997.MasqPath;
 
 import java.util.ArrayList;
 import java.util.List;

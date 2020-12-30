@@ -1,4 +1,4 @@
-package Library4997;
+package Library4997.MasqResources.MasqHelpers;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqWrappers.MasqController;

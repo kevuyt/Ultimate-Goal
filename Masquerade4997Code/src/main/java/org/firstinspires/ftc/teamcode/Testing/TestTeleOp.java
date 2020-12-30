@@ -17,27 +17,20 @@ public class TestTeleOp extends MasqLinearOpMode {
         robot.init(hardwareMap);
 
         while (!opModeIsActive()) {
-            robot.tracker.updateSystem();
-            robot.driveTrain.setClosedLoop(false);
-            dash.create("X: "+ robot.tracker.getGlobalX());
-            dash.create("Y: "+ robot.tracker.getGlobalY());
+            dash.create("VS: ", robot.shooter.getVelocity());
+            robot.shooter.setVelocity(controller1.rightTrigger()-controller1.leftTrigger());
+
+            dash.create("VI: ", robot.intake.getVelocity());
+            if(controller1.rightBumper()) robot.intake.setVelocity(1);
+            else if (controller1.leftBumper()) robot.intake.setVelocity(0);
+
             dash.update();
         }
 
         waitForStart();
 
-        while (opModeIsActive()) {
-            robot.driveTrain.setClosedLoop(true);
+        while(opModeIsActive()) {
             robot.MECH(controller1);
-
-            robot.tracker.updateSystem();
-
-            dash.create("X: "+ robot.tracker.getGlobalX());
-            dash.create("Y: "+ robot.tracker.getGlobalY());
-            dash.create("X Inches: " + robot.intake.getInches());
-            dash.create("yL Inches: " + robot.encoder1.getInches());
-            dash.create("yR Inches: " + robot.encoder2.getInches());
-            dash.update();
         }
     }
 }

@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqSubSystem;
+import Library4997.MasqResources.MasqHelpers.MasqSubSystem;
 
 /**
  * This is a telemetry wrapper class.
@@ -120,13 +120,10 @@ public class DashBoard {
         open = true;
     }
     public void startUpdate (){
-        Runnable main = new Runnable() {
-            @Override
-            public void run() {
-                while (MasqUtils.opModeIsActive() && open) {
-                    update();
-                    MasqUtils.sleep(100);
-                }
+        Runnable main = () -> {
+            while (MasqUtils.opModeIsActive() && open) {
+                update();
+                MasqUtils.sleep(100);
             }
         };
         Thread t = new Thread(main);

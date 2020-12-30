@@ -4,21 +4,19 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.RingDetector;
 
-import Library4997.MasqCV.MasqCamera;
-import Library4997.MasqControlSystems.MasqPID.MasqPIDController;
+import Library4997.MasqVision.MasqCamera;
+import Library4997.MasqResources.MasqMath.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqPositionTracker;
+import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 import Library4997.MasqRobot;
-import Library4997.MasqSensors.MasqClock;
 
-import static Library4997.MasqCV.MasqCamera.Cam.WEBCAM;
+import static Library4997.MasqVision.MasqCamera.Cam.WEBCAM;
 import static Library4997.MasqMotors.MasqMotorModel.*;
-import static Library4997.MasqPositionTracker.DeadWheelPosition.THREE;
+import static Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker.DeadWheelPosition.THREE;
 import static Library4997.MasqResources.MasqUtils.*;
 import static Library4997.MasqWrappers.DashBoard.getDash;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
-
 
 /**
  * Created by Keval Kataria on 9/12/2020
@@ -30,11 +28,11 @@ public class PlaceHolder extends MasqRobot {
     public RotatingClaw claw;
 
     @Override
-    public void mapHardware(HardwareMap hardwareMap) {
+    public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
 
         shooter = new MasqMotor("shooter", NEVERREST_CLASSIC, REVERSE, hardwareMap);
-        intake = new MasqMotor("intake", USDIGITAL_E4T, REVERSE, hardwareMap);
+        intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
 
         claw = new RotatingClaw(hardwareMap);
 
@@ -44,10 +42,10 @@ public class PlaceHolder extends MasqRobot {
 
         dash = getDash();
     }
- 
-    public void init(HardwareMap hardwareMap) {
 
+    public void init(HardwareMap hardwareMap) throws InterruptedException{
         mapHardware(hardwareMap);
+
         intake.setWheelDiameter(2);
         encoder1.setWheelDiameter(2);
         encoder2.setWheelDiameter(2);
@@ -55,7 +53,7 @@ public class PlaceHolder extends MasqRobot {
         shooter.resetEncoder();
 
         tracker.setPosition(THREE);
-        tracker.setXRadius(5.68);
+        tracker.setXRadius(5.675);
         tracker.setTrackWidth(13.75);
 
         driveTrain.setTracker(tracker);

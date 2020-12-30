@@ -48,4 +48,5 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         sleep((long) timeSeconds*1000);
     }
     public void sleep() {sleep(1000);}
+    public  MasqController getDefaultController() {return controller1;}
 }
