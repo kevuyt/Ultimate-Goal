@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.RingDetector;
 import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.RotatingClaw;
 
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqVision.MasqCamera;
 import Library4997.MasqResources.MasqMath.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;

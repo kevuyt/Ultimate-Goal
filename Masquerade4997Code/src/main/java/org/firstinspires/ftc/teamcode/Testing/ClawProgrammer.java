@@ -11,17 +11,14 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
 @TeleOp(name = "ClawProgrammer", group = "Test")
 public class ClawProgrammer extends MasqLinearOpMode {
     private TestBot robot = new TestBot();
-    private MasqServoProgrammer servoProgrammer;
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        servoProgrammer = new MasqServoProgrammer(robot.claw.claw, robot.claw.rotater)
+        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.claw, robot.claw.rotater);
 
-        while (!opModeIsActive()) {
-            dash.create("Hello, this is the Claw Programmer");
-            dash.update();
-        }
+        dash.create("Hello, this is the Claw Programmer");
+        dash.update();
 
         waitForStart();
 
