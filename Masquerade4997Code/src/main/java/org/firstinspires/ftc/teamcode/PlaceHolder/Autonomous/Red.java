@@ -14,6 +14,11 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneF
 /**
  * Created by Keval Kataria on 11/27/2020
  */
+/*
+  TODO:
+ * Shooting Method
+ * Collection of Starter Stack
+ */
 @Autonomous(name = "Red", group = "PlaceHolder")
 public class Red extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
@@ -51,9 +56,12 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
 
         robot.xyPath(3,new MasqWayPoint().setPoint(19,-60,0));
-        sleep();
+        sleep(); //Stand-in for shooting
         robot.xyPath(2,new MasqWayPoint().setPoint(26.5,-60,0));
-        sleep();
+        sleep(); //Stand-in for shooting
         robot.xyPath(2,new MasqWayPoint().setPoint(34,-60,0));
+        sleep();
+
+        robot.xyPath(2, new MasqWayPoint(robot.tracker.getGlobalX(), -75, robot.tracker.getHeading()));
     }
 }
