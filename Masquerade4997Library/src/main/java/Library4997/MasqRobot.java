@@ -21,7 +21,6 @@ import Library4997.MasqWrappers.*;
 import static Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint.PointMode.*;
 import static Library4997.MasqResources.MasqUtils.*;
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
-import static Library4997.MasqWrappers.DashBoard.getDash;
 
 /**
  * MasqRobot--> Contains all hardware and methods to runLinearOpMode the robot.
@@ -29,7 +28,7 @@ import static Library4997.MasqWrappers.DashBoard.getDash;
 
 public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap) throws InterruptedException;
-    public abstract void init(HardwareMap hardwareMap) throws InterruptedException;
+    public abstract void init(HardwareMap hardwareMape) throws InterruptedException;
 
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;

@@ -29,7 +29,6 @@ public class MasqMotor implements MasqHardware {
     public double destination = 0;
     private double motorPower;
     private double currentMax, currentMin;
-    private double currentZero;
     public double rpmIntegral = 0;
     public double rpmDerivative = 0;
     private double rpmPreviousError = 0;
@@ -114,7 +113,7 @@ public class MasqMotor implements MasqHardware {
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         setVelocity(speed);
         while (opModeIsActive() && motor.isBusy() &&
-                clock.hasNotPassed(5, MasqClock.Resolution.SECONDS)) {}
+                clock.hasNotPassed(5, MasqClock.Resolution.SECONDS)) {MasqUtils.sleep(0.1);}
         setVelocity(0);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
@@ -157,6 +156,7 @@ public class MasqMotor implements MasqHardware {
         targetPower = power;
         motorPower = calculateVelocityCorrection(power);
         if (!closedLoop) motorPower = power;
+        double currentZero;
         if (limitDetection) {
             if (minLim != null && minLim.isPressed() && power < 0 ||
                     maxLim != null && maxLim.isPressed() && power > 0)

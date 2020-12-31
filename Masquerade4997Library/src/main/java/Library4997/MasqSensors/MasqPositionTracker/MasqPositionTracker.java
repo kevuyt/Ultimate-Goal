@@ -64,6 +64,7 @@ public class MasqPositionTracker implements MasqHardware {
     public double getHeading () {
         return imu.getRelativeYaw();
     }
+
     public void updateSystem () {
         switch (position) {
             case BOTH_CENTER: bothCenter(); break;
@@ -101,7 +102,6 @@ public class MasqPositionTracker implements MasqHardware {
         prevY = ySystem.getInches();
         prevX = xSystem.getInches();
     }
-
     private void bothPerpendicular() {
         double heading = Math.toRadians(getHeading());
         double xPosition = xSystem.getInches();
@@ -120,7 +120,6 @@ public class MasqPositionTracker implements MasqHardware {
         globalX += dGlobalX;
         globalY += dGlobalY;
     }
-
     private void three() {
         double heading = Math.toRadians(getHeading());
         double xPosition = xSystem.getInches();
@@ -155,9 +154,7 @@ public class MasqPositionTracker implements MasqHardware {
         return adjustAngle(Math.toDegrees(change));
     }
 
-    public void setYRadius(double yRadius) {
-        this.yRadius = yRadius;
-    }
+
 
     public double getGlobalX() {
         return globalX + xDrift;
@@ -171,22 +168,14 @@ public class MasqPositionTracker implements MasqHardware {
         yDrift = y;
     }
 
-    public void setXRadius(double xRadius) {
-        this.xRadius = xRadius;
-    }
+    public void setXRadius(double xRadius) {this.xRadius = xRadius;}
+    public void setYRadius(double yRadius) {this.yRadius = yRadius;}
+    public void setTrackWidth(double trackWidth) {this.trackWidth = trackWidth;}
 
-    public void setTrackWidth(double trackWidth) {
-        this.trackWidth = trackWidth;
-    }
-
-    public void setPosition(MasqPositionTracker.DeadWheelPosition position) {
-        this.position = position;
-    }
+    public void setPosition(MasqPositionTracker.DeadWheelPosition position) {this.position = position;}
 
     @Override
-    public String getName() {
-        return "Tracker";
-    }
+    public String getName() {return "Tracker";}
 
     @Override
     public String[] getDash() {

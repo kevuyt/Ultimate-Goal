@@ -13,17 +13,16 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneF
 
 /**
  * Created by Keval Kataria on 11/27/2020
- */
-/*
-  TODO:
- * Shooting Method
- * Collection of Starter Stack
+ *
+ * TODO:
+ *  Shooting Method
+ *  Collection of Starter Stack
  */
 @Autonomous(name = "Red", group = "PlaceHolder")
 public class Red extends MasqLinearOpMode {
     private PlaceHolder robot = new PlaceHolder();
     private TargetZone zone;
-    MasqWayPoint target = new MasqWayPoint().setTimeout(5), strafe = new MasqWayPoint().setPoint(-14,-36,0).setSwitchMode(MECH);
+    MasqWayPoint target = new MasqWayPoint().setTimeout(5).setTargetRadius(4).setOnComplete(() -> robot.claw.open()), strafe = new MasqWayPoint(-4,-36,0).setSwitchMode(MECH);
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -35,7 +34,7 @@ public class Red extends MasqLinearOpMode {
             dash.create("Zone: " + zone);
             dash.create("Control: " + robot.detector.getControl());
             dash.create("Top: " + robot.detector.getTop());
-            dash.create("Bottom: ", robot.detector.getBottom());
+            dash.create("Bottom: " + robot.detector.getBottom());
             dash.update();
         }
 
@@ -45,23 +44,41 @@ public class Red extends MasqLinearOpMode {
 
         robot.claw.lower();
 
-        if (zone == A) target = target.setPoint(-2,-63.5,90);
-        else if (zone == B) target = target.setPoint(-4,-84,0);
-        else target = target.setPoint(-2,-108,90);
+        if (zone == A) target = target.setPoint(-6,-63.5,90);
+        else if (zone == B) target = target.setPoint(0,-84,0);
+        else target = target.setPoint(-6,-108,90);
 
-        if(zone != A) robot.xyPath(7, strafe, target.setOnComplete(() -> robot.claw.open()));
-        else robot.xyPath(3,target.setOnComplete(() -> robot.claw.open()));
+        if(zone != A) robot.xyPath(7, strafe, target);
+        else robot.xyPath(3,target);
         robot.stop();
 
         robot.claw.raise();
 
-        robot.xyPath(3,new MasqWayPoint().setPoint(19,-60,0));
-        sleep(); //Stand-in for shooting
-        robot.xyPath(2,new MasqWayPoint().setPoint(26.5,-60,0));
-        sleep(); //Stand-in for shooting
-        robot.xyPath(2,new MasqWayPoint().setPoint(34,-60,0));
-        sleep();
+        robot.xyPath(3,new MasqWayPoint(19,-60,-10).setTimeout(3));
+        sleep(1.5); //Stand-in for shooting
+        robot.xyPath(2,new MasqWayPoint(26.5,-60,-10));
+        sleep(1.5); //Stand-in for shooting
+        robot.xyPath(2,new MasqWayPoint(34,-60,-10));
+        sleep(1.5);
 
-        robot.xyPath(2, new MasqWayPoint(robot.tracker.getGlobalX(), -75, robot.tracker.getHeading()));
+        if(zone != A) {
+            robot.intake.setVelocity(1);
+            robot.xyPath(4, new MasqWayPoint(-2, -44, 180).setTimeout(4));
+            robot.intake.setVelocity(0);
+
+            robot.xyPath(2, new MasqWayPoint(9, -60, -10));
+            sleep(4.5); //Stand-in for shooting (4.5 s for 3 rings when zone C)
+        }
+
+        if(zone == C) {
+            robot.intake.setVelocity(1);
+            robot.xyPath(4, new MasqWayPoint(-2, -44, 180).setTimeout(4));
+            robot.intake.setVelocity(0);
+
+            robot.xyPath(2, new MasqWayPoint(9, -60, -10));
+            sleep(1.5); //Stand-in for shooting
+        }
+
+        robot.xyPath(1, new MasqWayPoint(robot.tracker.getGlobalX(), -64, robot.tracker.getHeading()));
     }
 }

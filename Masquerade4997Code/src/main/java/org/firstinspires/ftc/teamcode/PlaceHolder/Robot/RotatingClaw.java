@@ -29,7 +29,7 @@ public class RotatingClaw implements MasqSubSystem {
     public void close() {claw.setPosition(0);}
     public void open() {claw.setPosition(0.3);}
 
-    public void raise() {rotater.setPosition(0.15);}
+    public void raise() {rotater.setPosition(0.1);}
     public void lower() {rotater.setPosition(.85);}
 
     public void reset() {
@@ -39,11 +39,11 @@ public class RotatingClaw implements MasqSubSystem {
 
     @Override
     public String getName() {
-        return "Claw";
+        return "Rotating Claw";
     }
 
     @Override
     public MasqHardware[] getComponents() {
-        return new MasqHardware[0];
+        return new MasqHardware[] {claw, rotater};
     }
 }
