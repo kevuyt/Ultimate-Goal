@@ -34,6 +34,7 @@ public class MasqMotor implements MasqHardware {
     public double rpmDerivative = 0;
     private double rpmPreviousError = 0;
     private int stalledRPMThreshold = 10;
+    private boolean reversedEncoder = false;
     private double prevRate = 0;
     private Runnable
             stallAction = () -> {
@@ -113,7 +114,7 @@ public class MasqMotor implements MasqHardware {
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         setVelocity(speed);
         while (opModeIsActive() && motor.isBusy() &&
-                clock.hasNotBeen(5, MasqClock.Resolution.SECONDS)) {}
+                clock.hasNotPassed(5, MasqClock.Resolution.SECONDS)) {}
         setVelocity(0);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
@@ -132,6 +133,7 @@ public class MasqMotor implements MasqHardware {
         return encoder.getRelativePosition();
     }
     public double getAbsolutePosition () {
+        if(reversedEncoder) return -motor.getCurrentPosition();
         return motor.getCurrentPosition();
     }
     public double getVelocity() {
@@ -276,44 +278,26 @@ public class MasqMotor implements MasqHardware {
     private boolean opModeIsActive() {
         return MasqUtils.opModeIsActive();
     }
-    public DcMotorController getController () {
-        return motor.getController();
-    }
-    public int getPortNumber () {
-        return motor.getPortNumber();
-    }
+    public DcMotorController getController () {return motor.getController();}
+    public int getPortNumber () {return motor.getPortNumber();}
 
-    public void setMotorModel (MasqMotorModel model) {
-        encoder.setModel(model);
-    }
+    public void setMotorModel (MasqMotorModel model) {encoder.setModel(model);}
 
-    public boolean isClosedLoop() {
-        return closedLoop;
-    }
+    public boolean isClosedLoop() {return closedLoop;}
 
-    public double getMinPower() {
-        return minPower;
-    }
+    public double getMinPower() {return minPower;}
 
-    public void setMinPower(double minPower) {
-        this.minPower = minPower;
-    }
+    public void setMinPower(double power) {minPower = power;}
 
-    public void setWheelDiameter(double diameter) {
-        encoder.setWheelDiameter(diameter);
-    }
+    public void setWheelDiameter(double diameter) {encoder.setWheelDiameter(diameter);}
 
-    public double getInches() {
-        return encoder.getInches();
-    }
+    public double getInches() {return encoder.getInches();}
 
-    public double getTargetPower() {
-        return targetPower;
-    }
+    public double getTargetPower() {return targetPower;}
 
-    public String getName() {
-        return nameMotor;
-    }
+    public void reverseEncoder() {reversedEncoder = !reversedEncoder;}
+
+    public String getName() {return nameMotor;}
     public String[] getDash() {
         return new String[] {
                 "Current Position: " + getCurrentPosition(),

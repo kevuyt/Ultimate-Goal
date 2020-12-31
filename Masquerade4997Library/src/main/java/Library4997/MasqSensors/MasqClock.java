@@ -36,7 +36,7 @@ public class MasqClock implements MasqHardware {
     }
 
 
-    public boolean hasNotBeen(double time, Resolution resolution) {
+    public boolean hasNotPassed(double time, Resolution resolution) {
         return nanoseconds() <= (long) (time * resolution.multiplier);
     }
 

@@ -14,7 +14,7 @@ public class MasqWayPoint implements MasqHardware {
             angularCorrectionSpeed = 0.02, speedBias = 0.5, driveCorrectionSpeed = 0.07;
 
     private String name;
-    private PointMode switchMode = PointMode.SWITCH;
+    private PointMode switchMode = PointMode.MECH;
 
     private Runnable onComplete = null;
 
@@ -24,6 +24,12 @@ public class MasqWayPoint implements MasqHardware {
     }
 
     public MasqWayPoint(){}
+
+    public MasqWayPoint(double x,double y, double h) {
+        this.x = x;
+        this.y = y;
+        this.h = h;
+    }
 
     public MasqWayPoint(double x, double y, double h, double targetRadius, double modeSwitchRadius,
                         double pointSwitchRadius, double minVelocity, double maxVelocity, double timeout,

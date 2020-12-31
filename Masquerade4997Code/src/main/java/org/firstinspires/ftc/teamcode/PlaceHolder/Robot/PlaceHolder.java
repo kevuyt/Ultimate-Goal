@@ -31,27 +31,34 @@ public class PlaceHolder extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
 
-        shooter = new MasqMotor("shooter", NEVERREST_CLASSIC, REVERSE, hardwareMap);
+        shooter = new MasqMotor("shooter", NEVERREST37, REVERSE, hardwareMap);
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
 
         claw = new RotatingClaw(hardwareMap);
 
         encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, REVERSE, hardwareMap);
         encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
-        tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
-
-        dash = getDash();
     }
 
     public void init(HardwareMap hardwareMap) throws InterruptedException{
         mapHardware(hardwareMap);
 
+        shooter.setClosedLoop(true);
+        shooter.reverseEncoder();
+        shooter.setKp(1e-8);
+        intake.reverseEncoder();
+
         intake.setWheelDiameter(2);
         encoder1.setWheelDiameter(2);
         encoder2.setWheelDiameter(2);
         shooter.setWheelDiameter(4);
-        shooter.resetEncoder();
 
+        shooter.resetEncoder();
+        intake.resetEncoder();
+        encoder1.resetEncoder();
+        encoder2.resetEncoder();
+
+        tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
         tracker.setPosition(THREE);
         tracker.setXRadius(5.675);
         tracker.setTrackWidth(13.75);
@@ -64,7 +71,7 @@ public class PlaceHolder extends MasqRobot {
         xyAngleController = new MasqPIDController(0.09);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(1e-7);
+        driveTrain.setKp(3e-8);
         driveTrain.resetEncoders();
 
         claw.reset();
@@ -75,15 +82,5 @@ public class PlaceHolder extends MasqRobot {
         detector.setClippingMargins(600,360,250,750);
         camera = new MasqCamera(detector,WEBCAM, hardwareMap);
         camera.start();
-    }
-    public void shoot(double power) {
-        intake.setVelocity(1);
-        sleep(0.25);
-        shooter.setVelocity(power);
-        while(shooter.getInches() < 12) {
-            sleep(0.1);
-        }
-        shooter.setVelocity(0);
-        shooter.resetEncoder();
     }
 }

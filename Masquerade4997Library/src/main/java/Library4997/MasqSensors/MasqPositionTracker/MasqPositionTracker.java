@@ -21,6 +21,8 @@ public class MasqPositionTracker implements MasqHardware {
     private double prevHeading, heading, xDrift, yDrift;
     private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
     private DeadWheelPosition position;
+    private DashBoard dash = DashBoard.getDash();
+
 
     public enum DeadWheelPosition {
         BOTH_CENTER, BOTH_PERPENDICULAR, THREE
@@ -72,7 +74,7 @@ public class MasqPositionTracker implements MasqHardware {
     }
     public void updateOverTime(double time) {
         MasqClock clock = new MasqClock();
-        while (clock.hasNotBeen(time, MasqClock.Resolution.SECONDS)) {
+        while (clock.hasNotPassed(time, MasqClock.Resolution.SECONDS)) {
             updateSystem();
             DashBoard.getDash().create("X: ", globalX);
             DashBoard.getDash().create("Y: ", globalY);
@@ -138,6 +140,12 @@ public class MasqPositionTracker implements MasqHardware {
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
+        dash.create("Raw X: " + xPosition);
+        dash.create("Raw YR: " + yRPosition);
+        dash.create("Raw YL" + yLPosition);
+        dash.create("AngularComponent X: " + angularComponentX);
+        dash.create("Global X: " + globalX);
+        dash.create("Global Y: " + globalY);
     }
 
     public double getDHeading(double current) {

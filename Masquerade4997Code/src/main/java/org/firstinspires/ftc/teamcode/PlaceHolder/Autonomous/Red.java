@@ -48,8 +48,8 @@ public class Red extends MasqLinearOpMode {
         else robot.xyPath(3,target.setOnComplete(() -> robot.claw.open()));
         robot.stop();
 
-        robot.xyPath(3,new MasqWayPoint().setPoint(19,-60,0).setTimeout(3).setOnComplete(() -> robot.shoot(1)));
-        robot.xyPath(2,new MasqWayPoint().setPoint(26.5,-60,0).setOnComplete(() -> robot.shoot(1)));
-        robot.xyPath(2,new MasqWayPoint().setPoint(34,-60,0).setOnComplete(() -> robot.shoot(1)));
+        robot.xyPath(3,new MasqWayPoint().setPoint(19,-60,0));
+        robot.xyPath(2,new MasqWayPoint().setPoint(26.5,-60,0));
+        robot.xyPath(2,new MasqWayPoint().setPoint(34,-60,0));
     }
 }

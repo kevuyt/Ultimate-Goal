@@ -13,7 +13,7 @@ import Library4997.MasqSensors.MasqClock;
  * Custom Linear opMode
  */
 public abstract class MasqLinearOpMode extends LinearOpMode {
-    protected DashBoard dash;
+    public DashBoard dash;
     protected MasqController controller1, controller2;
     protected MasqClock timeoutClock = new MasqClock();
     public final void runOpMode() throws InterruptedException {
@@ -29,7 +29,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         }
     }
     public abstract void runLinearOpMode() throws InterruptedException;
-    public void stopLinearOpMode() {}
+    public void stopLinearOpMode() throws InterruptedException {}
     public void runSimultaneously(Runnable... runnables) {
         List<Thread> threads = new ArrayList<>();
         int i = 0;

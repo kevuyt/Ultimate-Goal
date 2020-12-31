@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode.Testing;
+package org.firstinspires.ftc.teamcode.PlaceHolder.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
 
 import Library4997.MasqServos.MasqServoProgrammer;
 import Library4997.MasqWrappers.MasqLinearOpMode;
@@ -10,7 +12,7 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  */
 @TeleOp(name = "ClawProgrammer", group = "Test")
 public class ClawProgrammer extends MasqLinearOpMode {
-    private TestBot robot = new TestBot();
+    private PlaceHolder robot = new PlaceHolder();
 
     @Override
     public void runLinearOpMode() throws InterruptedException {

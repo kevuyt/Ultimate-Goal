@@ -12,6 +12,7 @@ import java.util.Locale;
 
 import Library4997.MasqResources.MasqMath.MasqPIDController;
 import Library4997.MasqResources.MasqMath.MasqVector;
+import Library4997.MasqWrappers.DashBoard;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqWrappers.DashBoard.getDash;
@@ -139,7 +140,6 @@ public class MasqUtils {
         }
         getDash().update();
         return new MasqVector(projection.getX() - lookAhead*cos(theta), projection.getY() - lookAhead*sin(theta));
-
     }
 
 }

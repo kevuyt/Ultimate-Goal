@@ -12,6 +12,7 @@ public class MasqEncoder {
   private MasqMotor motor;
   private double wheelDiameter = 4, gearRatio = 1;
   private double currentPosition, zeroPos;
+
   public MasqEncoder(MasqMotor motor, MasqMotorModel model) {
     this.model = model;
     this.motor = motor;
@@ -43,8 +44,8 @@ public class MasqEncoder {
     return (model.CPR() / (wheelDiameter * Math.PI)) * gearRatio;
   }
 
-  public void setWheelDiameter(double wheelDiameter) {
-    this.wheelDiameter = wheelDiameter;
+  public void setWheelDiameter(double diameter) {
+    wheelDiameter = diameter;
   }
 
   public double getRPM () {
@@ -57,8 +58,8 @@ public class MasqEncoder {
     return gearRatio;
   }
 
-  public void setGearRatio(double gearRatio) {
-    this.gearRatio = gearRatio;
+  public void setGearRatio(double ratio) {
+    gearRatio = ratio;
   }
 
   public void setModel(MasqMotorModel model) {

@@ -12,13 +12,14 @@ import static Library4997.MasqWrappers.DashBoard.getDash;
  * Created by Keval Kataria on 12/30/2020
  */
 
-public class MasqServoProgrammer implements  Runnable{
+public class MasqServoProgrammer {
     MasqController controller = getLinearOpMode().getDefaultController();
     MasqServo servo1, servo2;
     String name1, name2;
     double val1, val2;
     int numServos;
     DashBoard dash = getDash();
+
     public MasqServoProgrammer(MasqServo servo1, MasqServo servo2) {
         this.servo1 = servo1;
         this.servo2 = servo2;
@@ -32,14 +33,13 @@ public class MasqServoProgrammer implements  Runnable{
         numServos = 1;
     }
 
-    @Override
     public void run() {
-        if (controller.a()) val1 += 0.001;
-        else if (controller.b()) val1 -= 0.001;
+        if (controller.a()) val1 += 0.0001;
+        else if (controller.b()) val1 -= 0.0001;
 
         if (numServos == 2) {
-            if (controller.y()) val2 += 0.001;
-            else if (controller.x()) val2 -= 0.001;
+            if (controller.y()) val2 += 0.0001;
+            else if (controller.x()) val2 -= 0.0001;
         }
 
         val1 = Range.clip(val1, 0,1);

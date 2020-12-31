@@ -5,7 +5,7 @@ package Library4997.MasqMotors;
  */
 
 public enum MasqMotorModel {
-    ORBITAL20, NEVEREST40, NEVEREST60, USDIGITAL_E4T, REVHDHEX40, NEVERREST_CLASSIC, NEVERREST256, REVHDHEX20, REVTHROUGHBORE;
+    ORBITAL20, NEVEREST40, NEVEREST60, USDIGITAL_E4T, REVHDHEX40, NEVERREST_CLASSIC, NEVERREST256, REVHDHEX20, REVTHROUGHBORE, NEVERREST37;
         public static double DEFAULT_CPR = 537.6;
         public static double CPR(MasqMotorModel motorModel) {
             switch (motorModel){
@@ -19,19 +19,19 @@ public enum MasqMotorModel {
                 case USDIGITAL_E4T:
                     return 1440;
                 case NEVERREST_CLASSIC:
-                    return 6600;
+                    return 28;
                 case NEVERREST256:
                     return 4400;
                 case REVHDHEX20:
                     return 560;
                 case REVTHROUGHBORE:
                     return 8192;
+                case NEVERREST37:
+                    return 103.6;
             }
             return DEFAULT_CPR;
         }
-        public double CPR () {
-            return CPR(this);
-        }
+        public double CPR () {return CPR(this);}
         public static int DEFAULT_RPM = 150;
         public static int RPM(MasqMotorModel motorModel) {
             switch (motorModel) {
@@ -44,13 +44,13 @@ public enum MasqMotorModel {
                 case REVHDHEX40:
                     return 150;
                 case NEVERREST_CLASSIC:
-                    return 28;
+                    return 6600;
                 case REVHDHEX20:
                     return 300;
+                case NEVERREST37:
+                    return 1780;
             }
             return DEFAULT_RPM;
         }
-        public int RPM () {
-            return RPM(this);
-        }
+        public int RPM () {return RPM(this);}
 }

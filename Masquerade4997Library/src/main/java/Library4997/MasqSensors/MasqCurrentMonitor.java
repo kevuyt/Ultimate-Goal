@@ -26,8 +26,8 @@ public class MasqCurrentMonitor {
         hubTwo = hardwareMap.get(LynxModule.class, hubTwoName);
     }
 
-    public MasqCurrentMonitor(HardwareMap opMode) {
-        this(opMode, "Expansion Hub 1", "Expansion Hub 2");
+    public MasqCurrentMonitor(HardwareMap hardwareMap) {
+        this(hardwareMap, "Expansion Hub 1", "Expansion Hub 2");
     }
 
     public double getMotorCurrent(MasqMotor motor) {
