@@ -34,7 +34,7 @@ public abstract class MasqRobot {
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     private MasqClock timeoutClock = new MasqClock();
-    private DashBoard dash = getDash();
+    protected DashBoard dash;
 
     public void strafe(double distance, double angle, double timeout, double speed) {
         MasqClock timeoutTimer = new MasqClock();

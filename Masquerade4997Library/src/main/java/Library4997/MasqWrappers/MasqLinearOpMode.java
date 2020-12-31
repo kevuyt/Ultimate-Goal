@@ -44,9 +44,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             for(Thread t : threads) if (!t.isAlive()) count++;
         }
     }
-    public void sleep(double timeSeconds) {
-        sleep((long) timeSeconds*1000);
-    }
-    public void sleep() {sleep(1000);}
+    public void sleep(double timeSeconds) {MasqUtils.sleep(timeSeconds)}
+    public void sleep() {MasqUtils.sleep();}
     public  MasqController getDefaultController() {return controller1;}
 }

@@ -40,16 +40,20 @@ public class Red extends MasqLinearOpMode {
 
         robot.claw.lower();
 
-        if (zone == A) target = target.setPoint(-10,-60,90);
+        if (zone == A) target = target.setPoint(-2,-63.5,90);
         else if (zone == B) target = target.setPoint(-4,-84,0);
-        else target = target.setPoint(-10,-108,90);
+        else target = target.setPoint(-2,-108,90);
 
         if(zone != A) robot.xyPath(7, strafe, target.setOnComplete(() -> robot.claw.open()));
         else robot.xyPath(3,target.setOnComplete(() -> robot.claw.open()));
         robot.stop();
 
+        robot.claw.raise();
+
         robot.xyPath(3,new MasqWayPoint().setPoint(19,-60,0));
+        sleep();
         robot.xyPath(2,new MasqWayPoint().setPoint(26.5,-60,0));
+        sleep();
         robot.xyPath(2,new MasqWayPoint().setPoint(34,-60,0));
     }
 }

@@ -10,6 +10,7 @@ import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 import Library4997.MasqRobot;
+import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqVision.MasqCamera.Cam.WEBCAM;
 import static Library4997.MasqMotors.MasqMotorModel.*;
@@ -38,6 +39,8 @@ public class PlaceHolder extends MasqRobot {
 
         encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, REVERSE, hardwareMap);
         encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
+
+        dash = getDash();
     }
 
     public void init(HardwareMap hardwareMap) throws InterruptedException{
@@ -46,7 +49,6 @@ public class PlaceHolder extends MasqRobot {
         shooter.setClosedLoop(true);
         shooter.reverseEncoder();
         shooter.setKp(1e-8);
-        intake.reverseEncoder();
 
         intake.setWheelDiameter(2);
         encoder1.setWheelDiameter(2);
@@ -67,11 +69,11 @@ public class PlaceHolder extends MasqRobot {
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.003);
-        xySpeedController = new MasqPIDController(0.12);
+        xySpeedController = new MasqPIDController(0.08);
         xyAngleController = new MasqPIDController(0.09);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(3e-8);
+        driveTrain.setKp(5e-8);
         driveTrain.resetEncoders();
 
         claw.reset();

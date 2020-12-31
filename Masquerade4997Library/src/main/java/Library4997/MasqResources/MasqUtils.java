@@ -55,7 +55,7 @@ public class MasqUtils {
             Thread.currentThread().interrupt();
         }
     }
-    public static void sleep() {sleep(MasqUtils.DEFAULT_SLEEP_TIME);}
+    public static void sleep() {sleep(DEFAULT_SLEEP_TIME);}
     public static void setLinearOpMode(MasqLinearOpMode pLinearOpMode) {
         linearOpMode = pLinearOpMode;
     }

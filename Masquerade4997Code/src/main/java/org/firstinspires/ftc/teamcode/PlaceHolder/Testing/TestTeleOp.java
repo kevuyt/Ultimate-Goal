@@ -25,7 +25,8 @@ public class TestTeleOp extends MasqLinearOpMode {
 
             dash.create("VI: ", robot.intake.getPower());
             if(controller1.rightBumper()) robot.intake.setVelocity(1);
-            else if (controller1.leftBumper()) robot.intake.setVelocity(0);
+            else if (controller1.leftBumper()) robot.intake.setVelocity(-1);
+            else robot.intake.setVelocity(0);
 
             dash.update();
         }
