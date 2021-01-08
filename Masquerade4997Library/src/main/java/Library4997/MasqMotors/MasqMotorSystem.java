@@ -18,8 +18,6 @@ public class MasqMotorSystem implements MasqHardware {
     public List<MasqMotor> motors;
     public int numMotors;
     double kp, ki, kd;
-    private double currentPower = 0;
-    private double slowDown = 0;
     private String systemName;
     private MasqMotorModel encoder = MasqMotorModel.ORBITAL20;
     public MasqMotorSystem(String name1, DcMotor.Direction direction, String name2, DcMotor.Direction direction2, String systemName, HardwareMap hardwareMap, MasqMotorModel encoder) {
@@ -74,29 +72,21 @@ public class MasqMotorSystem implements MasqHardware {
         motors = Collections.singletonList(motor1);
         numMotors = 1;
     }
-    public void setBreakMode() {
-        for (MasqMotor masqMotor : motors)
-            masqMotor.setBreakMode();
-    }
-    public MasqMotorSystem resetEncoders() {
+    public void resetEncoders() {
         for (MasqMotor masqMotor : motors)
             masqMotor.resetEncoder();
-        return this;
     }
-    public MasqMotorSystem setKp(double kp){
+    public void setKp(double kp){
         this.kp = kp;
         for (MasqMotor masqMotor: motors) masqMotor.setKp(kp);
-        return this;
     }
-    public MasqMotorSystem setKi(double ki){
+    public void setKi(double ki){
         this.ki = ki;
         for (MasqMotor masqMotor: motors) masqMotor.setKi(ki);
-        return this;
     }
-    public MasqMotorSystem setKd(double kd){
+    public void setKd(double kd){
         this.kd = kd;
         for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
-        return this;
     }
     public double getPower() {
         double num = 0, sum = 0;
@@ -118,7 +108,6 @@ public class MasqMotorSystem implements MasqHardware {
         for (MasqMotor masqMotor : motors) masqMotor.setMinPower(power);
     }
     public void setVelocity(double power) {
-        currentPower = power;
         for (MasqMotor masqMotor : motors) masqMotor.setVelocity(power);
     }
     public void setPower(double power) {
@@ -135,30 +124,13 @@ public class MasqMotorSystem implements MasqHardware {
         }
     }
 
-    public MasqMotorSystem setDistance(int distance){
-        for (MasqMotor masqMotor: motors)
-            masqMotor.setDistance(distance);
-        return this;
-    }
-    public MasqMotorSystem runUsingEncoder() {
+    public void runUsingEncoder() {
         for (MasqMotor masqMotor: motors)
             masqMotor.runUsingEncoder();
-        return this;
     }
-    public MasqMotorSystem breakMotors(){
+    public void runWithoutEncoder() {
         for (MasqMotor masqMotor: motors)
-            masqMotor.setBreakMode();
-        return this;
-    }
-    public MasqMotorSystem unBreakMotors(){
-        for (MasqMotor masqMotor: motors)
-            masqMotor.unBreakMode();
-        return this;
-    }
-    public MasqMotorSystem runWithoutEncoders() {
-        for (MasqMotor masqMotor: motors)
-            masqMotor.runWithoutEncoders();
-        return this;
+            masqMotor.runWithoutEncoder();
     }
     public double getAngle () {
         double sum = 0, num = 0;
@@ -187,17 +159,15 @@ public class MasqMotorSystem implements MasqHardware {
         return rate/i;
     }
     public boolean isBusy() {
-        boolean isBusy = false;
-        for (MasqMotor masqMotor: motors)
-            isBusy = masqMotor.isBusy();
-        return isBusy;
+        for (MasqMotor masqMotor: motors) if(masqMotor.isBusy()) return true;
+        return false;
     }
-    public double getCurrentPosition() {
+    public int getCurrentPosition() {
         int total = 0;
         for (MasqMotor m : motors) total += m.getCurrentPosition();
         return total / numMotors;
     }
-    public double getAbsolutePosition ()  {
+    public int getAbsolutePosition ()  {
         int total = 0;
         for (MasqMotor m : motors) total += m.getAbsolutePosition();
         return total / numMotors;

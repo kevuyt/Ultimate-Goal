@@ -1,36 +1,30 @@
 package Library4997.MasqDriveTrains;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqUtils;
 import Library4997.MasqSensors.MasqEncoder;
 
+import static Library4997.MasqMotors.MasqMotorModel.REVHDHEX20;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.*;
 
 
 public class MasqDriveTrain implements MasqHardware {
     public MasqMotorSystem leftDrive, rightDrive;
-    private MasqMotorModel defaultModel = MasqMotorModel.REVHDHEX20;
 
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
-        leftDrive = new MasqMotorSystem(name1, REVERSE, name2, REVERSE, "LEFTDRIVE", hardwareMap, defaultModel);
-        rightDrive = new MasqMotorSystem(name3, FORWARD, name4, FORWARD, "RIGHTDRIVE", hardwareMap, defaultModel);
+        leftDrive = new MasqMotorSystem(name1, REVERSE, name2, REVERSE, "LEFTDRIVE", hardwareMap, REVHDHEX20);
+        rightDrive = new MasqMotorSystem(name3, FORWARD, name4, FORWARD, "RIGHTDRIVE", hardwareMap, REVHDHEX20);
     }
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap, MasqMotorModel masqMotorModel) {
         leftDrive = new MasqMotorSystem(name1, REVERSE, name2, REVERSE, "LEFTDRIVE", hardwareMap, masqMotorModel);
         rightDrive = new MasqMotorSystem(name3, FORWARD, name4, FORWARD, "RIGHTDRIVE", hardwareMap, masqMotorModel);
     }
     public MasqDriveTrain(HardwareMap hardwareMap){
-        leftDrive = new MasqMotorSystem("leftFront", FORWARD, "leftBack", FORWARD, "LEFTDRIVE", hardwareMap, defaultModel);
-        rightDrive = new MasqMotorSystem("rightFront", REVERSE, "rightBack", REVERSE, "RIGHTDRIVE", hardwareMap, defaultModel);
+        leftDrive = new MasqMotorSystem("leftFront", FORWARD, "leftBack", FORWARD, "LEFTDRIVE", hardwareMap, REVHDHEX20);
+        rightDrive = new MasqMotorSystem("rightFront", REVERSE, "rightBack", REVERSE, "RIGHTDRIVE", hardwareMap, REVHDHEX20);
     }
     public MasqDriveTrain(HardwareMap hardwareMap, MasqMotorModel motorModel){
         leftDrive = new MasqMotorSystem("leftFront", FORWARD, "leftBack", FORWARD, "LEFTDRIVE", hardwareMap, motorModel);
@@ -85,18 +79,12 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.runUsingEncoder();
         rightDrive.runUsingEncoder();
     }
-    public void runWithoutEncoders() {
-        leftDrive.runUsingEncoder();
-        rightDrive.runUsingEncoder();
-    }
-    private boolean opModeIsActive() {
-        return MasqUtils.opModeIsActive();
-    }
-    public void zeroPowerBehavior(){
-        rightDrive.breakMotors();
+    public void runWithoutEncoder() {
+        leftDrive.runWithoutEncoder();
+        rightDrive.runWithoutEncoder();
     }
 
-    public double getCurrentPosition() {
+    public int getCurrentPosition() {
         return (leftDrive.getCurrentPosition() + rightDrive.getCurrentPosition())/2;
     }
     public double getCurrentPositionPositive() {
@@ -105,7 +93,7 @@ public class MasqDriveTrain implements MasqHardware {
                 Math.abs(rightDrive.motor1.getCurrentPosition()) +
                 Math.abs(rightDrive.motor1.getCurrentPosition()))/4;
     }
-    public double getAbsolutePosition () {
+    public int getAbsolutePosition () {
         return (leftDrive.getAbsolutePosition() + rightDrive.getAbsolutePosition())/2;
     }
 
@@ -128,20 +116,6 @@ public class MasqDriveTrain implements MasqHardware {
     }
 
     public MasqEncoder getEncoder () {return rightDrive.motor1.getEncoder();}
-    public List<MasqEncoder> getEncoders() {
-        List<MasqEncoder> encoders = new ArrayList<>();
-        encoders.add(leftDrive.motor1.getEncoder());
-        encoders.add(leftDrive.motor2.getEncoder());
-        encoders.add(rightDrive.motor1.getEncoder());
-        encoders.add(rightDrive.motor2.getEncoder());
-        return encoders;
-    }
-
-    public List<MasqMotor> getMotors () {
-        List<MasqMotor> allMotors = new ArrayList<>(leftDrive.motors);
-        allMotors.addAll(rightDrive.motors);
-        return allMotors;
-    }
 
     public String getName() {return "DRIVETRAIN";}
     public String[] getDash() {

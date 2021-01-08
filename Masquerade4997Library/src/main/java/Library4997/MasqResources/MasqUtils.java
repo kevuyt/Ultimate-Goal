@@ -31,8 +31,6 @@ public class MasqUtils {
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = Math.sqrt(2);
     public static final double DEFAULT_TURN_MULTIPLIER = 1;
-    public static final double DEFAULT_TOLERANCE = 2;
-    public static final double STALL_POWER = 0.1;
     public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = "Ac5sAIr/////AAABmeUEovYOek9pkuVkMLDtWVGIkr+aSwnxHoPcO" +
             "Wo55EZxWMznvy9o+sR4uE8cUkHfJ2QywQNfK9SgCKSgjjRXD1lJvl3xiT0ddSjfE8JT9NMvGojoFG3nkaQP+Sq" +
@@ -48,7 +46,6 @@ public class MasqUtils {
     public static MasqPIDController driveController;
     public static MasqPIDController angleController;
 
-
     public static void sleep(double timeSeconds) {
         try {
             Thread.sleep((long) timeSeconds * 1000);
@@ -57,8 +54,8 @@ public class MasqUtils {
         }
     }
     public static void sleep() {sleep(DEFAULT_SLEEP_TIME);}
-    public static void setLinearOpMode(MasqLinearOpMode pLinearOpMode) {
-        linearOpMode = pLinearOpMode;
+    public static void setLinearOpMode(MasqLinearOpMode opMode) {
+        linearOpMode = opMode;
     }
 
     public static double adjustAngle(double angle, AngleUnit angleUnit) {
@@ -70,9 +67,6 @@ public class MasqUtils {
 
     public static boolean tolerance(double value1, double value2, double tolerance) {
         return Math.abs(value1 - value2) < tolerance;
-    }
-    public static Telemetry getTelemetry() {
-        return linearOpMode.telemetry;
     }
     public static MasqLinearOpMode getLinearOpMode () {
         return linearOpMode;

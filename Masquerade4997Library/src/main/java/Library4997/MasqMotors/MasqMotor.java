@@ -26,7 +26,6 @@ public class MasqMotor implements MasqHardware {
     private double prevPos = 0;
     private boolean stalled = false;
     private double previousTime = 0;
-    public double destination = 0;
     private double motorPower;
     private double currentMax, currentMin;
     public double rpmIntegral = 0;
@@ -95,16 +94,14 @@ public class MasqMotor implements MasqHardware {
         return this;
     }
 
-    public void runWithoutEncoders () {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
+    public void runWithoutEncoder() {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
+    public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
+
     public void resetEncoder() {
         encoder.resetEncoder();
     }
 
-    public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
-    public void setDistance (double distance) {
-        resetEncoder();
-        destination = distance;
-    }
+
     public void runToPosition(int inches, double speed){
         MasqClock clock = new MasqClock();
         resetEncoder();
@@ -119,13 +116,6 @@ public class MasqMotor implements MasqHardware {
     }
     boolean isBusy () {
         return motor.isBusy();
-    }
-    public void setBreakMode () {
-        motor.setPower(0);
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-    }
-    public void unBreakMode () {
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
     }
 
     public double getCurrentPosition() {
