@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.teamcode.PlaceHolder.Robot;
+package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.RingDetector;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
 
+import Library4997.MasqServos.MasqServo;
 import Library4997.MasqVision.MasqCamera;
 import Library4997.MasqResources.MasqMath.MasqPIDController;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
@@ -21,11 +22,12 @@ import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 /**
  * Created by Keval Kataria on 9/12/2020
  */
-public class PlaceHolder extends MasqRobot {
+public class Osiris extends MasqRobot {
     public MasqCamera camera;
     public MasqMotor intake, encoder1, encoder2, shooter;
     public RingDetector detector;
     public RotatingClaw claw;
+    public MasqServo flicker;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
@@ -35,6 +37,8 @@ public class PlaceHolder extends MasqRobot {
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
 
         claw = new RotatingClaw(hardwareMap);
+
+        flicker = new MasqServo("flicker", hardwareMap);
 
         encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, REVERSE, hardwareMap);
         encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
@@ -77,6 +81,7 @@ public class PlaceHolder extends MasqRobot {
         driveTrain.resetEncoders();
 
         claw.reset();
+        flicker.setPosition(0);
     }
 
     public void initCamera(HardwareMap hardwareMap) {

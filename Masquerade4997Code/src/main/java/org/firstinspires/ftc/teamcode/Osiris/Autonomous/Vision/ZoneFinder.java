@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision;
+package org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision;
 
 import Library4997.MasqVision.MasqCVDetector;
 

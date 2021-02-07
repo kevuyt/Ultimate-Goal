@@ -1,8 +1,8 @@
-package org.firstinspires.ftc.teamcode.PlaceHolder.Testing;
+package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
+import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
@@ -10,9 +10,9 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 11/22/2020
  */
 
-@TeleOp(name = "TestTeleOp", group = "Test")
+@TeleOp(name = "TestTelOp", group = "Test")
 public class TestTeleOp extends MasqLinearOpMode {
-    private PlaceHolder robot = new PlaceHolder();
+    private Osiris robot = new Osiris();
 
     @Override
     public void runLinearOpMode() throws InterruptedException {

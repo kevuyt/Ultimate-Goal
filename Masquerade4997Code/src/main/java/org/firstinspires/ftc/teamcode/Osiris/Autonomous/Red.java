@@ -1,15 +1,15 @@
-package org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous;
+package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.PlaceHolder.Robot.PlaceHolder;
+import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
 import static Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint.PointMode.MECH;
-import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneFinder.TargetZone.*;
-import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneFinder.*;
+import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.TargetZone.*;
+import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.*;
 
 /**
  * Created by Keval Kataria on 11/27/2020
@@ -18,9 +18,9 @@ import static org.firstinspires.ftc.teamcode.PlaceHolder.Autonomous.Vision.ZoneF
  *  Shooting Method
  *  Collection of Starter Stack
  */
-@Autonomous(name = "Red", group = "PlaceHolder")
+@Autonomous(name = "Red", group = "Osiris")
 public class Red extends MasqLinearOpMode {
-    private PlaceHolder robot = new PlaceHolder();
+    private Osiris robot = new Osiris();
     private TargetZone zone;
     MasqWayPoint target = new MasqWayPoint().setTimeout(5).setTargetRadius(4).setOnComplete(() -> robot.claw.open()), strafe = new MasqWayPoint(-4,-36,0).setSwitchMode(MECH);
 
