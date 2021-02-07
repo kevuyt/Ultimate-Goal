@@ -7,6 +7,7 @@ import Library4997.MasqWrappers.MasqController;
 
 import static Library4997.MasqResources.MasqUtils.getLinearOpMode;
 import static Library4997.MasqWrappers.DashBoard.getDash;
+import static com.qualcomm.robotcore.hardware.Servo.Direction.FORWARD;
 
 /**
  * Created by Keval Kataria on 12/30/2020
@@ -25,6 +26,10 @@ public class MasqServoProgrammer {
         this.servos = servos;
         for (int i = 0; i < servos.length; i++) names[i] = servos[i].getName();
         numServos = servos.length;
+        for (MasqServo servo : servos) {
+            servo.scaleRange(0,1);
+            servo.setDirection(FORWARD);
+        }
     }
 
     public void run() {

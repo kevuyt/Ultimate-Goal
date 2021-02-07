@@ -60,9 +60,9 @@ public class MasqController implements Runnable{
     }
 
     public boolean dPadUpOnPress() {return dPadUp() && !dPadUpPrev;}
-    public boolean dPadDownOnPress() {return dPadUp() && !dPadDownPrev;}
-    public boolean dPadUpRightPress() {return dPadUp() && !dPadRightPrev;}
-    public boolean dPadUpLeftPress() {return dPadUp() && !dPadLeftPrev;}
+    public boolean dPadDownOnPress() {return dPadDown() && !dPadDownPrev;}
+    public boolean dPadRightOnPress() {return dPadRight() && !dPadRightPrev;}
+    public boolean dPadLeftOnPress() {return dPadLeft() && !dPadLeftPrev;}
 
     public boolean leftBumper() {
         return gamepad.left_bumper;

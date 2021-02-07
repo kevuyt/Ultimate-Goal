@@ -26,9 +26,15 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
         while(opModeIsActive()) {
             //robot.MECH();
+
             robot.intake.setVelocity(controller1.rightTrigger()-controller1.leftTrigger());
+
             if(controller1.y()) robot.shooter.setVelocity(-1);
             else robot.shooter.setVelocity(0);
+
+            if(controller1.dPadUp()) robot.flicker.setPosition(1);
+            else robot.flicker.setPosition(0);
+
         }
     }
 }
