@@ -17,15 +17,13 @@ public class ServoProgrammer extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.flicker);
+        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.flicker, robot.hopper);
 
-        dash.create("Hello, this is the Claw Programmer");
+        dash.create("Hello, this is the Servo Programmer");
         dash.update();
 
         waitForStart();
 
-        while(opModeIsActive()) {
-            servoProgrammer.run();
-        }
+        while(opModeIsActive()) servoProgrammer.run();
     }
 }

@@ -123,7 +123,7 @@ public class DashBoard {
         Runnable main = () -> {
             while (MasqUtils.opModeIsActive() && open) {
                 update();
-                MasqUtils.sleep(100);
+                MasqUtils.sleep(0.1);
             }
         };
         Thread t = new Thread(main);

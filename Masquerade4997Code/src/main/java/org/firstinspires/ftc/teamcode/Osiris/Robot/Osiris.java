@@ -28,18 +28,19 @@ public class Osiris extends MasqRobot {
     public MasqMotor intake, encoder1, encoder2, shooter;
     public RingDetector detector;
     public RotatingClaw claw;
-    public MasqServo flicker;
+    public MasqServo flicker, hopper;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
 
-        shooter = new MasqMotor("shooter", NEVERREST37, DcMotorSimple.Direction.REVERSE, hardwareMap);
-        intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
+        shooter = new MasqMotor("shooter", NEVERREST37, hardwareMap);
+        intake = new MasqMotor("intake", USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE, hardwareMap);
 
         claw = new RotatingClaw(hardwareMap);
 
         flicker = new MasqServo("flicker", hardwareMap);
+        hopper = new MasqServo("hopper", hardwareMap);
 
         encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE, hardwareMap);
         encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
@@ -81,11 +82,7 @@ public class Osiris extends MasqRobot {
         driveTrain.setKp(9e-8);
         driveTrain.resetEncoders();
 
-        claw.reset();
-        flicker.setDirection(Servo.Direction.REVERSE);
-        flicker.scaleRange(0.65, 0.86);
-        flicker.setPosition(0);
-
+        initServos();
     }
 
     public void initCamera(HardwareMap hardwareMap) {
@@ -93,5 +90,14 @@ public class Osiris extends MasqRobot {
         detector.setClippingMargins(600,360,250,750);
         camera = new MasqCamera(detector,WEBCAM, hardwareMap);
         camera.start();
+    }
+
+    private void initServos() {
+        claw.reset();
+        flicker.setDirection(Servo.Direction.REVERSE);
+        flicker.scaleRange(0, 0.35);
+        flicker.setPosition(0);
+        hopper.scaleRange(0.11, 0.33);
+        hopper.setPosition(0);
     }
 }

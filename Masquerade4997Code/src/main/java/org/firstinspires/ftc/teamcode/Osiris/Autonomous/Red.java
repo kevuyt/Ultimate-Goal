@@ -13,10 +13,6 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 
 /**
  * Created by Keval Kataria on 11/27/2020
- *
- * TODO:
- *  Shooting Method
- *  Collection of Starter Stack
  */
 @Autonomous(name = "Red", group = "Osiris")
 public class Red extends MasqLinearOpMode {
@@ -55,30 +51,42 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
 
         robot.xyPath(3,new MasqWayPoint(19,-60,-10).setTimeout(3));
-        sleep(1.5); //Stand-in for shooting
+
+        robot.shooter.setVelocity(1);
+        shoot(1);
         robot.xyPath(2,new MasqWayPoint(26.5,-60,-10));
-        sleep(1.5); //Stand-in for shooting
+        shoot(1);
         robot.xyPath(2,new MasqWayPoint(34,-60,-10));
-        sleep(1.5);
+        shoot(1);
+        robot.shooter.setVelocity(0);
 
-        if(zone != A) {
-            robot.intake.setVelocity(1);
-            robot.xyPath(4, new MasqWayPoint(-2, -44, 180).setTimeout(4));
-            robot.intake.setVelocity(0);
-
-            robot.xyPath(2, new MasqWayPoint(9, -60, -10));
-            sleep(4.5); //Stand-in for shooting (4.5 s for 3 rings when zone C)
-        }
+        if(zone == B) shootStack(1);
 
         if(zone == C) {
-            robot.intake.setVelocity(1);
-            robot.xyPath(4, new MasqWayPoint(-2, -44, 180).setTimeout(4));
-            robot.intake.setVelocity(0);
-
-            robot.xyPath(2, new MasqWayPoint(9, -60, -10));
-            sleep(1.5); //Stand-in for shooting
+            shootStack(3);
+            shootStack(1);
         }
 
-        robot.xyPath(1, new MasqWayPoint(robot.tracker.getGlobalX(), -64, robot.tracker.getHeading()));
+        robot.xyPath(1, new MasqWayPoint(robot.tracker.getGlobalX(), -64, 180));
+    }
+    private void shoot(int iterations) {
+        robot.shooter.setVelocity(1);
+
+        for (int i = 0; i < iterations; i++) {
+            robot.flicker.setPosition(1);
+            sleep(0.5);
+            robot.flicker.setPosition(0);
+            sleep(0.5);
+        }
+
+        robot.shooter.setVelocity(0);
+    }
+    private void shootStack(int rings) {
+        robot.intake.setVelocity(1);
+        robot.xyPath(4, new MasqWayPoint(-2, -44, 180).setTimeout(4));
+        robot.intake.setVelocity(0);
+
+        robot.xyPath(2, new MasqWayPoint(9, -60, -10));
+        shoot(rings);
     }
 }

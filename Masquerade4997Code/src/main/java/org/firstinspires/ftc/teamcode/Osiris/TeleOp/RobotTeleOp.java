@@ -6,6 +6,8 @@ import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
+import static java.lang.Math.abs;
+
 /**
  * Created by Keval Kataria on 11/9/2020
  */
@@ -25,16 +27,23 @@ public class RobotTeleOp extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            //robot.MECH();
+            robot.MECH();
 
             robot.intake.setVelocity(controller1.rightTrigger()-controller1.leftTrigger());
 
-            if(controller1.y()) robot.shooter.setVelocity(-1);
-            else robot.shooter.setVelocity(0);
+            if(controller1.y()) {
+                robot.shooter.setVelocity(1);
+                robot.hopper.setPosition(1);
+
+            }
+            else {
+                robot.shooter.setVelocity(0);
+                robot.hopper.setPosition(0);
+
+            }
 
             if(controller1.dPadUp()) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
-
         }
     }
 }
