@@ -18,7 +18,7 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 public class Red extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
-    MasqWayPoint target = new MasqWayPoint().setTimeout(5).setTargetRadius(4).setOnComplete(() -> robot.claw.open()), strafe = new MasqWayPoint(-4,-36,0).setSwitchMode(MECH);
+    MasqWayPoint target = new MasqWayPoint().setTimeout(5).setTargetRadius(4).setOnComplete(() -> robot.claw.open()), strafe = new MasqWayPoint(-10,-36,0).setSwitchMode(MECH).setTimeout(5);
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -38,25 +38,26 @@ public class Red extends MasqLinearOpMode {
 
         robot.camera.stop();
 
+
         robot.claw.lower();
 
-        if (zone == A) target = target.setPoint(-6,-63.5,90);
-        else if (zone == B) target = target.setPoint(0,-84,0);
-        else target = target.setPoint(-6,-108,90);
+
+        if (zone == A) target = target.setPoint(-10,-63.5,90);
+        else if (zone == B) target = target.setPoint(4,-80,0);
+        else target = target.setPoint(-10,-108,90);
+
 
         if(zone != A) robot.xyPath(7, strafe, target);
         else robot.xyPath(3,target);
         robot.stop();
 
         robot.claw.raise();
-
-        robot.xyPath(3,new MasqWayPoint(19,-60,-10).setTimeout(3));
-
-        robot.shooter.setVelocity(1);
+/*
+        robot.xyPath(new MasqWayPoint(19,-60,170).setTimeout(3));
         shoot(1);
-        robot.xyPath(2,new MasqWayPoint(26.5,-60,-10));
+        robot.xyPath(new MasqWayPoint(26.5,-60,170));
         shoot(1);
-        robot.xyPath(2,new MasqWayPoint(34,-60,-10));
+        robot.xyPath(new MasqWayPoint(34,-60,170));
         shoot(1);
         robot.shooter.setVelocity(0);
 
@@ -68,6 +69,7 @@ public class Red extends MasqLinearOpMode {
         }
 
         robot.xyPath(1, new MasqWayPoint(robot.tracker.getGlobalX(), -64, 180));
+         */
     }
     private void shoot(int iterations) {
         robot.shooter.setVelocity(1);

@@ -19,6 +19,7 @@ import static Library4997.MasqMotors.MasqMotorModel.*;
 import static Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker.DeadWheelPosition.THREE;
 import static Library4997.MasqResources.MasqUtils.*;
 import static Library4997.MasqWrappers.DashBoard.getDash;
+import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_RIGHT;
 
 /**
  * Created by Keval Kataria on 9/12/2020
@@ -72,6 +73,7 @@ public class Osiris extends MasqRobot {
         tracker.setTrackWidth(13.75);
 
         driveTrain.setTracker(tracker);
+
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.003);
@@ -79,7 +81,7 @@ public class Osiris extends MasqRobot {
         xyAngleController = new MasqPIDController(0.09);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(9e-8);
+        driveTrain.setKp(1e-8);
         driveTrain.resetEncoders();
 
         initServos();
@@ -87,9 +89,9 @@ public class Osiris extends MasqRobot {
 
     public void initCamera(HardwareMap hardwareMap) {
         detector = new RingDetector();
-        detector.setClippingMargins(600,360,250,750);
+        detector.setClippingMargins(570,140,300,970);
         camera = new MasqCamera(detector,WEBCAM, hardwareMap);
-        camera.start();
+        camera.start(SIDEWAYS_RIGHT);
     }
 
     private void initServos() {

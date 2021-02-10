@@ -24,8 +24,9 @@ public class TestAuto extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.xyPath(10, new MasqWayPoint(24,0,0).setTimeout(10));
+        robot.xyPath(new MasqWayPoint(24,0,0).setTimeout(30));
 
+        robot.driveTrain.setClosedLoop(false);
         robot.tracker.updateOverTime(29-timeoutClock.seconds());
     }
 }

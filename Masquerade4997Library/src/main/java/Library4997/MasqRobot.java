@@ -337,6 +337,7 @@ public abstract class MasqRobot {
                 tracker.updateSystem();
                 dash.create("X: "+ tracker.getGlobalX());
                 dash.create("Y: "+ tracker.getGlobalY());
+                dash.create("Path Angle: " + pathAngle);
                 dash.update();
                 current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             }
