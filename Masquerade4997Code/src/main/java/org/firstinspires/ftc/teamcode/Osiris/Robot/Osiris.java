@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
+import com.qualcomm.hardware.motors.NeveRest3_7GearmotorV1;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -35,8 +36,8 @@ public class Osiris extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
 
-        shooter = new MasqMotor("shooter", NEVERREST37, hardwareMap);
-        intake = new MasqMotor("intake", USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE, hardwareMap);
+        shooter = new MasqMotor("shooter", NEVERREST37, DcMotorSimple.Direction.REVERSE, hardwareMap);
+        intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
 
         claw = new RotatingClaw(hardwareMap);
 
@@ -54,9 +55,7 @@ public class Osiris extends MasqRobot {
     public void init(HardwareMap hardwareMap) throws InterruptedException{
         mapHardware(hardwareMap);
 
-        shooter.setClosedLoop(true);
-        shooter.reverseEncoder();
-        shooter.setKp(1e-8);
+        shooter.setClosedLoop(false);
 
         intake.setWheelDiameter(2);
         encoder1.setWheelDiameter(2);

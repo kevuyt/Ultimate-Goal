@@ -10,7 +10,8 @@ public enum MasqMotorModel {
         public static double CPR(MasqMotorModel motorModel) {
             switch (motorModel){
                 case ORBITAL20:
-                    return 537.6;
+                case REVHDHEX20:
+                    return 560;
                 case NEVEREST40:
                 case REVHDHEX40:
                     return 1120;
@@ -22,12 +23,10 @@ public enum MasqMotorModel {
                     return 28;
                 case NEVERREST256:
                     return 4400;
-                case REVHDHEX20:
-                    return 560;
                 case REVTHROUGHBORE:
                     return 8192;
                 case NEVERREST37:
-                    return 103.6;
+                    return 44.4;
             }
             return DEFAULT_CPR;
         }
@@ -36,7 +35,7 @@ public enum MasqMotorModel {
         public static int RPM(MasqMotorModel motorModel) {
             switch (motorModel) {
                 case ORBITAL20:
-                    return 340;
+                    return 315;
                 case NEVEREST40:
                     return 160;
                 case NEVEREST60:

@@ -41,12 +41,16 @@ public class MasqDriveTrain implements MasqHardware {
     }
 
     public void setVelocity(double leftPower, double rightPower) {
-        rightDrive.setVelocity(rightPower);
-        leftDrive.setVelocity(leftPower);
+        rightDrive.setVelocities(rightPower);
+        leftDrive.setVelocities(leftPower);
     }
     public void setVelocity(double power){
-        leftDrive.setVelocity(power);
-        rightDrive.setVelocity(power);
+        leftDrive.setVelocities(power);
+        rightDrive.setVelocities(power);
+    }
+    public void setVelocities(double... powers) {
+        leftDrive.setVelocities(powers[0], powers[1]);
+        rightDrive.setVelocities(powers[2], powers[3]);
     }
 
     public double getInches() {return (leftDrive.getInches() + rightDrive.getInches())/2;}
@@ -59,6 +63,10 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
     }
+    public void setPowers(double... powers) {
+        leftDrive.setPowers(powers[0], powers[1]);
+        rightDrive.setPowers(powers[2], powers[3]);
+    }
 
 
     public double getVelocity() {
@@ -69,10 +77,10 @@ public class MasqDriveTrain implements MasqHardware {
     }
 
     public void setVelocityLeft(double power) {
-        leftDrive.setVelocity(power);
+        leftDrive.setVelocities(power);
     }
     public void setVelocityRight(double power) {
-        rightDrive.setVelocity(power);
+        rightDrive.setVelocities(power);
     }
 
     public void runUsingEncoder() {

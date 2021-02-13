@@ -107,11 +107,18 @@ public class MasqMotorSystem implements MasqHardware {
     public void setMinPower(double power) {
         for (MasqMotor masqMotor : motors) masqMotor.setMinPower(power);
     }
-    public void setVelocity(double power) {
+    public void setVelocities(double power) {
         for (MasqMotor masqMotor : motors) masqMotor.setVelocity(power);
+    }
+    public void setVelocities(double... powers) {
+        for (int i = 0; i < numMotors; i++)  motors.get(i).setVelocity(powers[i]);
     }
     public void setPower(double power) {
         for (MasqMotor masqMotor : motors)masqMotor.setPower(power);
+    }
+    public void setPowers(double... powers) {
+        for (int i = 0; i < numMotors; i++)  motors.get(i).setPower(powers[i]);
+
     }
     public void setClosedLoop (boolean closedLoop) {
         for (MasqMotor masqMotor : motors) {
