@@ -9,6 +9,7 @@ import Library4997.MasqWrappers.DashBoard;
 
 import static Library4997.MasqResources.MasqUtils.adjustAngle;
 import static Library4997.MasqResources.MasqUtils.sleep;
+import static java.lang.Math.toRadians;
 
 /**
  * Created by Archishmaan Peyyety on 8/9/18.
@@ -16,13 +17,15 @@ import static Library4997.MasqResources.MasqUtils.sleep;
  */
 
 public class MasqPositionTracker implements MasqHardware {
-    private MasqMotor xSystem, yLSystem, yRSystem, ySystem;
+    private MasqMotor xSystem;
+    private MasqMotor yLSystem;
+    private MasqMotor yRSystem;
+    private MasqMotor ySystem;
     public MasqAdafruitIMU imu;
-    private double prevHeading, heading, xDrift, yDrift;
+    private double prevHeading, xDrift, yDrift;
     private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
     private DeadWheelPosition position;
     private DashBoard dash = DashBoard.getDash();
-
 
     public enum DeadWheelPosition {
         BOTH_CENTER, BOTH_PERPENDICULAR, THREE
@@ -77,24 +80,30 @@ public class MasqPositionTracker implements MasqHardware {
         MasqClock clock = new MasqClock();
         while (clock.hasNotPassed(time, MasqClock.Resolution.SECONDS)) {
             updateSystem();
-            DashBoard.getDash().create("X: ", globalX);
-            DashBoard.getDash().create("Y: ", globalY);
-            DashBoard.getDash().create("H: ", getHeading());
-            DashBoard.getDash().update();
+            dash.create(this);
+            dash.update();
         }
     }
 
-    private void reset() {
+    public void reset() {
         xSystem.resetEncoder();
         yLSystem.resetEncoder();
         yRSystem.resetEncoder();
+
         imu.reset();
+
+        xSystem.setWheelDiameter(2);
+        yLSystem.setWheelDiameter(2);
+        yRSystem.setWheelDiameter(2);
+
+        globalX = 0;
+        globalY = 0;
     }
 
     private void bothCenter() {
         double deltaX = (xSystem.getInches() - prevX);
         double deltaY = (ySystem.getInches() - prevY);
-        double heading = Math.toRadians(getHeading());
+        double heading = toRadians(getHeading());
         double x = deltaX * Math.cos(heading) - deltaY * Math.sin(heading);
         double y = deltaX * Math.sin(heading) + deltaY * Math.cos(heading);
         globalX += x;
@@ -103,10 +112,10 @@ public class MasqPositionTracker implements MasqHardware {
         prevX = xSystem.getInches();
     }
     private void bothPerpendicular() {
-        double heading = Math.toRadians(getHeading());
+        double heading = toRadians(getHeading());
         double xPosition = xSystem.getInches();
         double yPosition = ySystem.getInches();
-        double dH = Math.toRadians(getDHeading(heading));
+        double dH = toRadians(getDHeading(heading));
         double dX = xPosition - prevX;
         prevX = xPosition;
         double dY = yPosition - prevY;
@@ -121,7 +130,7 @@ public class MasqPositionTracker implements MasqHardware {
         globalY += dGlobalY;
     }
     private void three() {
-        double heading = Math.toRadians(getHeading());
+        double heading = toRadians(getHeading());
         double xPosition = xSystem.getInches();
         double yLPosition = yLSystem.getInches();
         double yRPosition = yRSystem.getInches();
@@ -139,12 +148,6 @@ public class MasqPositionTracker implements MasqHardware {
         double dGlobalY = dTranslationalX * Math.sin(heading) + dTranslationalY * Math.cos(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
-        dash.create("Raw X: " + xPosition);
-        dash.create("Raw YR: " + yRPosition);
-        dash.create("Raw YL" + yLPosition);
-        dash.create("AngularComponent X: " + angularComponentX);
-        dash.create("Global X: " + globalX);
-        dash.create("Global Y: " + globalY);
     }
 
     public double getDHeading(double current) {
@@ -173,6 +176,16 @@ public class MasqPositionTracker implements MasqHardware {
     public void setTrackWidth(double trackWidth) {this.trackWidth = trackWidth;}
 
     public void setPosition(MasqPositionTracker.DeadWheelPosition position) {this.position = position;}
+
+    public MasqMotor getXSystem() {
+        return xSystem;
+    }
+    public MasqMotor getYLSystem() {
+        return yLSystem;
+    }
+    public MasqMotor getYRSystem() {
+        return yRSystem;
+    }
 
     @Override
     public String getName() {return "Tracker";}

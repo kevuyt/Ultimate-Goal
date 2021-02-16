@@ -11,8 +11,8 @@ import Library4997.MasqWrappers.MasqLinearOpMode;
  * Created by Keval Kataria on 12/30/2020
  */
 
-@Autonomous(name = "TestAuto", group = "Test")
-public class TestAuto extends MasqLinearOpMode {
+@Autonomous(name = "XYPathTester", group = "Test")
+public class XYPathTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
 
     @Override
@@ -26,7 +26,6 @@ public class TestAuto extends MasqLinearOpMode {
 
         robot.xyPath(new MasqWayPoint(24,0,0).setTimeout(30));
 
-        robot.driveTrain.setClosedLoop(false);
         robot.tracker.updateOverTime(29-timeoutClock.seconds());
     }
 }

@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
-import com.qualcomm.hardware.motors.NeveRest3_7GearmotorV1;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -27,7 +25,7 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_RIGHT;
  */
 public class Osiris extends MasqRobot {
     public MasqCamera camera;
-    public MasqMotor intake, encoder1, encoder2, shooter;
+    public MasqMotor intake, encoder, shooter;
     public RingDetector detector;
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
@@ -36,7 +34,7 @@ public class Osiris extends MasqRobot {
     public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
 
-        shooter = new MasqMotor("shooter", NEVERREST37, DcMotorSimple.Direction.REVERSE, hardwareMap);
+        shooter = new MasqMotor("shooter", USDIGITAL_E4T, hardwareMap);
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
 
         claw = new RotatingClaw(hardwareMap);
@@ -44,9 +42,8 @@ public class Osiris extends MasqRobot {
         flicker = new MasqServo("flicker", hardwareMap);
         hopper = new MasqServo("hopper", hardwareMap);
 
-        encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, DcMotorSimple.Direction.REVERSE, hardwareMap);
-        encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
-        tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
+        encoder = new MasqMotor("encoder", USDIGITAL_E4T, hardwareMap);
+        tracker = new MasqPositionTracker(intake, shooter, encoder, hardwareMap);
 
         dash = getDash();
     }
@@ -55,32 +52,21 @@ public class Osiris extends MasqRobot {
     public void init(HardwareMap hardwareMap) throws InterruptedException{
         mapHardware(hardwareMap);
 
-        shooter.setClosedLoop(false);
-
-        intake.setWheelDiameter(2);
-        encoder1.setWheelDiameter(2);
-        encoder2.setWheelDiameter(2);
-        shooter.setWheelDiameter(4);
-
-        shooter.resetEncoder();
-        intake.resetEncoder();
-        encoder1.resetEncoder();
-        encoder2.resetEncoder();
-
         tracker.setPosition(THREE);
         tracker.setXRadius(5.675);
         tracker.setTrackWidth(13.75);
+        tracker.reset();
 
         driveTrain.setTracker(tracker);
 
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
-        turnController = new MasqPIDController(0.003);
+        turnController = new MasqPIDController(0.03);
         xySpeedController = new MasqPIDController(0.08);
         xyAngleController = new MasqPIDController(0.09);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(1e-8);
+        driveTrain.setKp(2e-8);
         driveTrain.resetEncoders();
 
         initServos();
@@ -89,16 +75,16 @@ public class Osiris extends MasqRobot {
     public void initCamera(HardwareMap hardwareMap) {
         detector = new RingDetector();
         detector.setClippingMargins(570,140,300,970);
-        camera = new MasqCamera(detector,WEBCAM, hardwareMap);
+        camera = new MasqCamera(detector, WEBCAM, hardwareMap);
         camera.start(SIDEWAYS_RIGHT);
     }
 
     private void initServos() {
         claw.reset();
         flicker.setDirection(Servo.Direction.REVERSE);
-        flicker.scaleRange(0, 0.35);
+        flicker.scaleRange(0.1, 0.38);
         flicker.setPosition(0);
-        hopper.scaleRange(0.11, 0.33);
+        hopper.scaleRange(0.15, 0.344);
         hopper.setPosition(0);
     }
 }

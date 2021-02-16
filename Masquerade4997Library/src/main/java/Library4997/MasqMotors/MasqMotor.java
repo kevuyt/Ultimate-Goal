@@ -2,6 +2,7 @@ package Library4997.MasqMotors;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
@@ -33,14 +34,9 @@ public class MasqMotor implements MasqHardware {
     private double rpmPreviousError = 0;
     private int stalledRPMThreshold = 10;
     private boolean reversedEncoder = false;
-    private double prevRate = 0;
     private Runnable
-            stallAction = () -> {
-
-            },
-            unStalledAction = () -> {
-
-            };
+            stallAction,
+            unStalledAction;
     private double minPosition, maxPosition;
     private boolean
             limitDetection,
@@ -231,7 +227,8 @@ public class MasqMotor implements MasqHardware {
     }
     public void enableStallDetection() {
         setStallDetection(true);
-        Runnable mainRunnable = () -> { while (opModeIsActive()) {
+        Runnable mainRunnable = () -> {
+            while (opModeIsActive()) {
             stalled = getStalled();
             if (getStallDetection()) {
                 if (stalled) stallAction.run();
@@ -286,6 +283,8 @@ public class MasqMotor implements MasqHardware {
     public double getTargetPower() {return targetPower;}
 
     public void reverseEncoder() {reversedEncoder = !reversedEncoder;}
+
+    public void setDirection(DcMotor.Direction direction) {motor.setDirection(direction);}
 
     public String getName() {return nameMotor;}
     public String[] getDash() {

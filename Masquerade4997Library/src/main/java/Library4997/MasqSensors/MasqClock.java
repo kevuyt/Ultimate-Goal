@@ -39,6 +39,9 @@ public class MasqClock implements MasqHardware {
     public boolean hasNotPassed(double time, Resolution resolution) {
         return nanoseconds() <= (long) (time * resolution.multiplier);
     }
+    public boolean hasNotPassed(double time) {
+        return hasNotPassed(time, Resolution.SECONDS);
+    }
 
     public void pause() {
         if (!isPaused) pauseStart = System.nanoTime();

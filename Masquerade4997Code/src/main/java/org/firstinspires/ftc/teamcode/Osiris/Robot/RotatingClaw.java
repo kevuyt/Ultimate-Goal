@@ -16,21 +16,20 @@ public class RotatingClaw implements MasqSubSystem {
     public RotatingClaw(HardwareMap hardwareMap) {
         claw = new MasqServo("claw",hardwareMap);
         rotater = new MasqServo("rotater",hardwareMap);
-
     }
     @Override
     public void DriverControl(MasqController controller) throws InterruptedException {
-        if (controller.a()) claw.setPosition(1);
-        else if (controller.b()) claw.setPosition(0);
-        if (controller.x()) rotater.setPosition(1);
-        else if (controller.y()) rotater.setPosition(0);
+        if (controller.a()) open();
+        else if (controller.b()) close();
+        if (controller.x()) lower();
+        else if (controller.y()) raise();
     }
 
-    public void close() {claw.setPosition(0);}
-    public void open() {claw.setPosition(0.3);}
+    public void close() {claw.setPosition(0.095);}
+    public void open() {claw.setPosition(0.34);}
 
-    public void raise() {rotater.setPosition(0.1);}
-    public void lower() {rotater.setPosition(.85);}
+    public void raise() {rotater.setPosition(0.15);}
+    public void lower() {rotater.setPosition(0.94);}
 
     public void reset() {
         close();

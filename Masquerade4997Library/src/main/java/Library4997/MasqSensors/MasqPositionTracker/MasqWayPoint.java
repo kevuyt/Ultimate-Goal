@@ -16,7 +16,7 @@ public class MasqWayPoint implements MasqHardware {
     private String name;
     private PointMode switchMode = PointMode.MECH;
 
-    private Runnable onComplete = null;
+    private Runnable onComplete = () -> {};
 
 
     public enum PointMode {

@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.util.Range;
 import Library4997.MasqResources.MasqMath.MasqIntegrator;
 import Library4997.MasqSensors.MasqClock;
 
+import static com.qualcomm.robotcore.util.Range.clip;
+
 /**
  * Created by Archish on 4/9/18.
  */
@@ -15,8 +17,6 @@ public class MasqPIDController {
     private double ki = 0;
     private double kd = 0;
     private double prevError = 0;
-    private double prevD = 0;
-    private double deriv, timeChange = 0;
     private MasqClock clock = new MasqClock();
 
     public MasqPIDController(double kp, double ki, double kd) {
@@ -32,21 +32,15 @@ public class MasqPIDController {
         this.kp = kp;
     }
 
-    //For testing
-    public double getOutput (double error, double timeChange) {
-        this.timeChange = timeChange;
-        clock.reset();
-        deriv = (error - prevError) / timeChange;
-        prevError = error;
-        prevD = deriv;
-        return Range.clip((error * kp) +
-                (ki * integrator.getIntegral(error, timeChange)) +
-                (kd * deriv), -1, 1);
-    }
-
-    //For normal use
     public double getOutput (double error) {
-        return getOutput(error,clock.seconds());
+        double timeChange = clock.seconds();
+        double derivative = (error - prevError) / timeChange;
+        double integral = integrator.getIntegral(error);
+        clock.reset();
+        prevError = error;
+        return clip((error * kp) +
+                (ki * integral) +
+                (kd * derivative), -1, 1);
     }
 
     public double[] getConstants() {
@@ -77,9 +71,6 @@ public class MasqPIDController {
         this.kd = kd;
     }
 
-    public MasqClock getClock() {
-        return clock;
-    }
     public double getKp() {
         return kp;
     }

@@ -116,25 +116,4 @@ public class MasqUtils {
                 projection.getX() + (lookAhead * cos(theta)),
                 projection.getY() + (lookAhead * sin(theta)));
     }
-
-    //https://www.desmos.com/calculator/putboztuqn
-    public static MasqVector getLookAheadv2 (MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
-        if(finalPos.getY() == initial.getY()) return new MasqVector(current.getX(), initial.getY());
-        if(finalPos.getX() == initial.getX() ) return new MasqVector(initial.getX(),current.getY());
-
-        double slope1 = (finalPos.getY()-initial.getY())/(finalPos.getX()-initial.getX());
-        double slope2 = -1/slope1;
-        double theta = Math.atan2(finalPos.getY()-initial.getY(),finalPos.getX()-initial.getX());
-        double x = ((slope2 * current.getX()) + initial.getY() - current.getY() - (slope1 * initial.getX()))/(slope2-slope1);
-
-        MasqVector projection = new MasqVector(x, (x-initial.getX())*slope1 + initial.getY());
-
-        if(finalPos.distanceToVector(initial) > (finalPos.distanceToVector(projection) - lookAhead)) {
-            getDash().update();
-            return new MasqVector(projection.getX() + lookAhead * cos(theta), projection.getY() + lookAhead * sin(theta));
-        }
-        getDash().update();
-        return new MasqVector(projection.getX() - lookAhead*cos(theta), projection.getY() - lookAhead*sin(theta));
-    }
-
 }
