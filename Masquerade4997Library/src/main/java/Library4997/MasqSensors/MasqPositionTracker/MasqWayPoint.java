@@ -4,6 +4,8 @@ import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqResources.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqMath.MasqVector;
 
+import static Library4997.MasqResources.MasqUtils.*;
+
 /**
  * Created by Archishmaan Peyyety on 2020-01-23.
  * Project: MasqLib
@@ -11,7 +13,7 @@ import Library4997.MasqResources.MasqMath.MasqVector;
 public class MasqWayPoint implements MasqHardware {
     private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
-            angularCorrectionSpeed = 0.02, speedBias = 0.5, driveCorrectionSpeed = 0.07;
+            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07;
 
     private String name;
     private PointMode switchMode = PointMode.MECH;
@@ -96,6 +98,8 @@ public class MasqWayPoint implements MasqHardware {
     }
 
     public MasqWayPoint setTargetRadius(double targetRadius) {
+        modeSwitchRadius += targetRadius - this.targetRadius;
+        pointSwitchRadius += targetRadius - this.targetRadius;
         this.targetRadius = targetRadius;
         return this;
     }

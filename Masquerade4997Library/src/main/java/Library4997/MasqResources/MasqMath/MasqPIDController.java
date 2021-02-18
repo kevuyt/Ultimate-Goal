@@ -13,7 +13,7 @@ import static com.qualcomm.robotcore.util.Range.clip;
 
 public class MasqPIDController {
     private MasqIntegrator integrator = new MasqIntegrator();
-    private double kp;
+    private double kp = 0;
     private double ki = 0;
     private double kd = 0;
     private double prevError = 0;
@@ -31,6 +31,7 @@ public class MasqPIDController {
     public MasqPIDController(double kp) {
         this.kp = kp;
     }
+    public MasqPIDController() {}
 
     public double getOutput (double error) {
         double timeChange = clock.seconds();

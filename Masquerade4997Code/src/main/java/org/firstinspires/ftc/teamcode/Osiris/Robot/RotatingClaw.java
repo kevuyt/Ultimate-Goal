@@ -25,7 +25,7 @@ public class RotatingClaw implements MasqSubSystem {
         else if (controller.y()) raise();
     }
 
-    public void close() {claw.setPosition(0.095);}
+    public void close() {claw.setPosition(0.13);}
     public void open() {claw.setPosition(0.34);}
 
     public void raise() {rotater.setPosition(0.15);}

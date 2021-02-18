@@ -14,7 +14,6 @@ import static java.lang.Math.abs;
 @TeleOp(name = "RobotTeleOp", group = "Osiris")
 public class RobotTeleOp extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    private boolean fieldCentric = false;
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
@@ -28,12 +27,12 @@ public class RobotTeleOp extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            robot.MECH(fieldCentric);
+            robot.MECH();
 
             robot.intake.setVelocity(controller1.rightTrigger()-controller1.leftTrigger());
 
             if(controller1.y()) {
-                robot.shooter.setVelocity(-0.7);
+                robot.shooter.setVelocity(0.7);
                 robot.hopper.setPosition(1);
 
             }
@@ -44,10 +43,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             if(controller1.dPadUp()) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
-
-            if(controller1.dPadRight()) fieldCentric = true;
-            else if (controller1.dPadLeft()) fieldCentric = false;
-
 
             dash.update();
         }

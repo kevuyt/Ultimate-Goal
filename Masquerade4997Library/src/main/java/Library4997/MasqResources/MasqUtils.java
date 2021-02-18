@@ -27,7 +27,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGR
 
 public class MasqUtils {
     private static MasqLinearOpMode linearOpMode;
-    public static final double DEFAULT_SLEEP_TIME = 0.5;
+    public static final double DEFAULT_SLEEP_TIME = 0;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = Math.sqrt(2);
     public static final double DEFAULT_TURN_MULTIPLIER = 1;
@@ -39,10 +39,8 @@ public class MasqUtils {
             "DrFzuLwkk7gs7kk4Jrdp1+jqrxPBJdr8MjYjtXjW+epFt1lcvIlP/4MK44iEH9AMQXYD9";
 
     public static MasqPIDController turnController;
-    public static MasqPIDController xySpeedController;
     public static MasqPIDController xSpeedController;
     public static MasqPIDController ySpeedController;
-    public static MasqPIDController xyAngleController;
     public static MasqPIDController driveController;
     public static MasqPIDController angleController;
 

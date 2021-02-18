@@ -61,12 +61,10 @@ public class Osiris extends MasqRobot {
 
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
-        turnController = new MasqPIDController(0.03);
-        xySpeedController = new MasqPIDController(0.08);
-        xyAngleController = new MasqPIDController(0.09);
+        turnController = new MasqPIDController(0.045);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(2e-8);
+        driveTrain.setKp(8e-8);
         driveTrain.resetEncoders();
 
         initServos();
@@ -82,7 +80,7 @@ public class Osiris extends MasqRobot {
     private void initServos() {
         claw.reset();
         flicker.setDirection(Servo.Direction.REVERSE);
-        flicker.scaleRange(0.1, 0.38);
+        flicker.scaleRange(0.05, 0.38);
         flicker.setPosition(0);
         hopper.scaleRange(0.15, 0.344);
         hopper.setPosition(0);

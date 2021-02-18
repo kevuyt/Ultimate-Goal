@@ -73,7 +73,6 @@ public class MasqPositionTracker implements MasqHardware {
             case BOTH_CENTER: bothCenter(); break;
             case BOTH_PERPENDICULAR: bothPerpendicular(); break;
             case THREE: three(); break;
-            default: break;
         }
     }
     public void updateOverTime(double time) {
@@ -86,15 +85,22 @@ public class MasqPositionTracker implements MasqHardware {
     }
 
     public void reset() {
-        xSystem.resetEncoder();
-        yLSystem.resetEncoder();
-        yRSystem.resetEncoder();
+        if(xSystem != null) {
+            xSystem.resetEncoder();
+            xSystem.setWheelDiameter(2);
+        }
+        if(ySystem != null) {
+            ySystem.resetEncoder();
+            ySystem.setWheelDiameter(2);
+        }
+        if(yLSystem != null && yRSystem != null) {
+            yLSystem.resetEncoder();
+            yRSystem.resetEncoder();
+            yLSystem.setWheelDiameter(2);
+            yRSystem.setWheelDiameter(2);
+        }
 
         imu.reset();
-
-        xSystem.setWheelDiameter(2);
-        yLSystem.setWheelDiameter(2);
-        yRSystem.setWheelDiameter(2);
 
         globalX = 0;
         globalY = 0;
