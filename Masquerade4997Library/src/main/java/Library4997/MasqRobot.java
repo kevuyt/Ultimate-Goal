@@ -29,12 +29,16 @@ import static java.lang.Math.*;
 
 public abstract class MasqRobot {
     public abstract void mapHardware(HardwareMap hardwareMap) throws InterruptedException;
-    public abstract void init(HardwareMap hardwareMape) throws InterruptedException;
+    public abstract void init(HardwareMap hardwareMap, OpMode opmode) throws InterruptedException;
 
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
     private MasqClock timeoutClock = new MasqClock();
     protected DashBoard dash;
+
+    public enum OpMode {
+        AUTO, TELEOP
+    }
 
     public void strafe(double distance, double angle, double timeout, double speed) {
         MasqClock timeoutTimer = new MasqClock();
@@ -328,7 +332,7 @@ public abstract class MasqRobot {
                 }
                 else {
                     int direction = 1;
-                    if(abs(pathAngle) > 135) direction = -1;
+                    if(abs(pathAngle) > 100) direction = -1;
                     driveTrain.setVelocity(direction * leftPower, direction * rightPower);
                 }
 
@@ -347,7 +351,7 @@ public abstract class MasqRobot {
             pointsWithRobot.get(index).getOnComplete().run();
             index++;
         }
-        driveTrain.setVelocity(0);
+        stop();
     }
     public void xyPath(MasqWayPoint... points) {
         double timeout = 0;

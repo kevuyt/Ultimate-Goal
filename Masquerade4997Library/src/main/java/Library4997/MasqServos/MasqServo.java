@@ -5,6 +5,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import Library4997.MasqResources.MasqHelpers.MasqHardware;
 import Library4997.MasqSensors.MasqLimitSwitch;
+import Library4997.MasqWrappers.DashBoard;
+
+import static Library4997.MasqWrappers.DashBoard.getDash;
 
 /**
  * Created by Archish on 10/28/16.
@@ -17,6 +20,7 @@ public class MasqServo implements MasqHardware{
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
     private double adjustedPosition;
+    private boolean prevState = false, taskState = false, currState = false;
 
 
     public MasqServo(String name, HardwareMap hardwareMap) {
@@ -57,6 +61,19 @@ public class MasqServo implements MasqHardware{
     public void sleep (int time) throws InterruptedException {
         servo.wait(time);
     }
+
+    public void toggle(boolean button) {
+        currState = false;
+
+        if (button) currState = true;
+        else if (prevState) taskState = !taskState;
+
+        prevState = currState;
+
+        if (taskState) setPosition(1);
+        else setPosition(0);
+    }
+
     public String getName() {
         return name;
     }

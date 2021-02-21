@@ -7,6 +7,8 @@ import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import Library4997.MasqServos.MasqServoProgrammer;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
+import static Library4997.MasqRobot.OpMode.TELEOP;
+
 /**
  * Created by Keval Kataria on 12/30/2020
  */
@@ -16,8 +18,8 @@ public class ServoProgrammer extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        robot.init(hardwareMap);
-        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.claw, robot.claw.rotater);
+        robot.init(hardwareMap, TELEOP);
+        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotater());
 
         dash.create("Hello, this is the Servo Programmer");
         dash.update();

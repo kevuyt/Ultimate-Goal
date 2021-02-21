@@ -7,6 +7,8 @@ import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint;
 import Library4997.MasqWrappers.MasqLinearOpMode;
 
+import static Library4997.MasqRobot.OpMode.AUTO;
+
 /**
  * Created by Keval Kataria on 12/30/2020
  */
@@ -17,7 +19,7 @@ public class XYPathTester extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() throws InterruptedException {
-        robot.init(hardwareMap);
+        robot.init(hardwareMap, AUTO);
 
         dash.create("Initialized");
         dash.update();

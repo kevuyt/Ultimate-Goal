@@ -12,7 +12,9 @@ import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 import Library4997.MasqRobot;
+import Library4997.MasqWrappers.MasqController;
 
+import static Library4997.MasqRobot.OpMode.AUTO;
 import static Library4997.MasqVision.MasqCamera.Cam.WEBCAM;
 import static Library4997.MasqMotors.MasqMotorModel.*;
 import static Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker.DeadWheelPosition.THREE;
@@ -49,7 +51,7 @@ public class Osiris extends MasqRobot {
     }
 
     @Override
-    public void init(HardwareMap hardwareMap) throws InterruptedException{
+    public void init(HardwareMap hardwareMap, OpMode opmode) throws InterruptedException{
         mapHardware(hardwareMap);
 
         tracker.setPosition(THREE);
@@ -64,10 +66,15 @@ public class Osiris extends MasqRobot {
         turnController = new MasqPIDController(0.045);
 
         driveTrain.setClosedLoop(true);
-        driveTrain.setKp(8e-8);
         driveTrain.resetEncoders();
 
         initServos();
+
+        if(opmode == AUTO) {
+            driveTrain.setKp(8e-8);
+            initCamera(hardwareMap);
+        }
+        else driveTrain.setKp(5e-9);
     }
 
     public void initCamera(HardwareMap hardwareMap) {
