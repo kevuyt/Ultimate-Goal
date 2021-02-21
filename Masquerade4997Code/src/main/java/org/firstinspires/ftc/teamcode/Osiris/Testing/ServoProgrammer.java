@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqServos.MasqServoProgrammer;
-import Library4997.MasqWrappers.MasqLinearOpMode;
+import Library4997.MasqResources.MasqLinearOpMode;
 
 import static Library4997.MasqRobot.OpMode.TELEOP;
 

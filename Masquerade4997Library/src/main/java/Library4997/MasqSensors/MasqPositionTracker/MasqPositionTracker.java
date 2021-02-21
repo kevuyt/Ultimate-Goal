@@ -3,12 +3,12 @@ package Library4997.MasqSensors.MasqPositionTracker;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqWrappers.DashBoard;
+import Library4997.MasqResources.DashBoard;
 
-import static Library4997.MasqResources.MasqUtils.adjustAngle;
-import static Library4997.MasqResources.MasqUtils.sleep;
+import static Library4997.MasqUtils.adjustAngle;
+import static Library4997.MasqUtils.sleep;
 import static java.lang.Math.toRadians;
 
 /**

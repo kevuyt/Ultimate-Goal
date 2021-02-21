@@ -1,10 +1,8 @@
 package Library4997.MasqSensors.MasqPositionTracker;
 
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqMath.MasqPoint;
-import Library4997.MasqResources.MasqMath.MasqVector;
-
-import static Library4997.MasqResources.MasqUtils.*;
+import Library4997.MasqResources.MasqHardware;
+import Library4997.MasqMath.MasqPoint;
+import Library4997.MasqMath.MasqVector;
 
 /**
  * Created by Archishmaan Peyyety on 2020-01-23.

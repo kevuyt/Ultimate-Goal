@@ -1,4 +1,4 @@
-package Library4997.MasqResources.MasqHelpers;
+package Library4997.MasqResources;
 
 
 

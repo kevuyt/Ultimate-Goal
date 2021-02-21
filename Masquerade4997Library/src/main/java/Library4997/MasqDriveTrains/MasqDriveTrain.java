@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHardware;
 import Library4997.MasqSensors.MasqEncoder;
 
 import static Library4997.MasqMotors.MasqMotorModel.REVHDHEX20;

@@ -1,25 +1,22 @@
 package Library4997;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import Library4997.MasqResources.MasqMath.MasqPIDController;
-import Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint;
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
-import Library4997.MasqResources.MasqHelpers.Direction;
-import Library4997.MasqResources.MasqMath.MasqPoint;
-import Library4997.MasqResources.MasqMath.MasqVector;
+import Library4997.MasqMath.*;
+import Library4997.MasqResources.DashBoard;
+import Library4997.MasqResources.Direction;
+import Library4997.MasqMath.MasqVector;
 import Library4997.MasqSensors.MasqClock;
-import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
-import Library4997.MasqWrappers.*;
+import Library4997.MasqSensors.MasqPositionTracker.*;
 
-import static Library4997.MasqResources.MasqHelpers.Direction.FORWARD;
-import static Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint.PointMode.*;
-import static Library4997.MasqResources.MasqUtils.*;
+import static Library4997.MasqResources.Direction.FORWARD;
+import static Library4997.MasqUtils.*;
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
+import static Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint.PointMode.*;
 import static com.qualcomm.robotcore.util.Range.clip;
 import static java.lang.Math.*;
 
@@ -239,7 +236,7 @@ public abstract class MasqRobot {
     }
     public void turnAbsolute(double angle) {turnAbsolute(angle, DEFAULT_TIMEOUT);}
 
-    public void stopWhen(MasqPredicate stopCondition, double angle, double speed, Direction direction, double timeout) {
+    public void stopWhen(boolean stopCondition, double angle, double speed, Direction direction, double timeout) {
         MasqClock timeoutTimer = new MasqClock();
         driveTrain.resetEncoders();
         double angularError, powerAdjustment, power, leftPower, rightPower, maxPower;
@@ -263,22 +260,22 @@ public abstract class MasqRobot {
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("Angle Error", angularError);
             dash.update();
-        } while (opModeIsActive() && timeoutTimer.hasNotPassed(timeout, SECONDS) && stopCondition.run());
+        } while (opModeIsActive() && timeoutTimer.hasNotPassed(timeout, SECONDS) && !stopCondition);
         driveTrain.setVelocity(0);
     }
-    public void stopWhen(MasqPredicate stopCondition, double angle, double speed, Direction direction) {
+    public void stopWhen(boolean stopCondition, double angle, double speed, Direction direction) {
         stopWhen(stopCondition, angle, speed, direction, DEFAULT_TIMEOUT);
     }
-    public void stopWhen(MasqPredicate sensor, double angle, double power) {
+    public void stopWhen(boolean sensor, double angle, double power) {
         stopWhen(sensor, angle, power, FORWARD);
     }
-    public void stopWhen(MasqPredicate stopCondition, double angle) {
+    public void stopWhen(boolean stopCondition, double angle) {
         stopWhen(stopCondition, angle, 0.5);
     }
-    public void stopWhen(MasqPredicate sensor){
+    public void stopWhen(boolean sensor){
         stopWhen(sensor, tracker.getHeading());
     }
-    public void stopWhen(MasqPredicate stopCondition, int timeout) {
+    public void stopWhen(boolean stopCondition, int timeout) {
         stopWhen(stopCondition, tracker.getHeading(), 0.5, FORWARD, timeout);
     }
 
@@ -359,9 +356,9 @@ public abstract class MasqRobot {
         xyPath(timeout, points);
     }
 
-    public void NFS(MasqController c) {
-        float move = -c.leftStickY();
-        float turn = c.rightStickX() * 0.7f;
+    public void NFS(Gamepad c) {
+        float move = -c.left_stick_y;
+        float turn = c.right_stick_x * 0.7f;
         double left = move + turn;
         double right = move - turn;
         double max = max(left, right);
@@ -372,29 +369,21 @@ public abstract class MasqRobot {
         driveTrain.setPower(left, right);
     }
 
-    public void TANK(MasqController c) {
-        double left = -c.leftStickY();
-        double right = -c.rightStickY();
-        double leftRate = driveTrain.leftDrive.getVelocity();
-        double rightRate = driveTrain.rightDrive.getVelocity();
-        double maxRate = max(abs(leftRate/left), abs(rightRate/right));
-        leftRate /= maxRate;
-        rightRate /= maxRate;
-        double leftError =  left - leftRate;
-        double rightError = right - rightRate;
-        driveTrain.rightDrive.setPower(right);
-        driveTrain.leftDrive.setPower(left);
+    public void TANK(Gamepad c) {
+        driveTrain.rightDrive.setVelocity(c.right_stick_y);
+        driveTrain.leftDrive.setVelocity(c.left_stick_y);
     }
 
-    public void MECH(MasqController c, Direction direction, boolean fieldCentric, double speedMultiplier, double turnMultiplier, boolean power) {
+    public void MECH(Gamepad c, Direction direction, boolean fieldCentric, double speedMultiplier, double turnMultiplier, boolean power) {
         int disable = 0;
         if (fieldCentric) disable = 1;
 
-        double x = -c.leftStickY();
-        double y = c.leftStickX();
-        double xR = c.rightStickX();
+        double x = -c.left_stick_x;
+        double y = c.left_stick_y;
+        double xR = c.right_stick_x;
 
-        double angle = Math.atan2(y, x) + (toRadians(tracker.getHeading()) * disable);
+
+        double angle = Math.atan2(x, y) + (toRadians(tracker.getHeading()) * disable);
         double adjustedAngle = angle + Math.PI/4;
 
         double speedMagnitude = Math.hypot(x, y) * speedMultiplier * direction.value;
@@ -415,19 +404,17 @@ public abstract class MasqRobot {
 
         if (power) driveTrain.setPowers(leftFront, leftBack, rightFront, rightBack);
         else driveTrain.setVelocities(leftFront, leftBack, rightFront, rightBack);
-
-        dash.create("Turn Magnitude: " + turnMagnitude);
     }
-    public void MECH(MasqController c, double speedMutliplier, double turnMultiplier) {
+    public void MECH(Gamepad c, double speedMutliplier, double turnMultiplier) {
         MECH(c, FORWARD, false, speedMutliplier, turnMultiplier, false);
     }
-    public void MECH(MasqController c, boolean disabled) {
+    public void MECH(Gamepad c, boolean disabled) {
         MECH(c, FORWARD, disabled, DEFAULT_SPEED_MULTIPLIER, DEFAULT_TURN_MULTIPLIER, false);
     }
-    public void MECH(MasqController c, boolean fieldCentric, boolean power) {
+    public void MECH(Gamepad c, boolean fieldCentric, boolean power) {
         MECH(c, FORWARD, fieldCentric, DEFAULT_SPEED_MULTIPLIER, DEFAULT_TURN_MULTIPLIER, power);
     }
-    public void MECH(MasqController c) {
+    public void MECH(Gamepad c) {
         MECH(c, FORWARD, false, DEFAULT_SPEED_MULTIPLIER, DEFAULT_TURN_MULTIPLIER, false);
     }
     public void MECH(boolean fieldCentric) {

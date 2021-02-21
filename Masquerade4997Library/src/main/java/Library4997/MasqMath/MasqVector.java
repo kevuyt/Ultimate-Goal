@@ -1,6 +1,6 @@
-package Library4997.MasqResources.MasqMath;
+package Library4997.MasqMath;
 
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHardware;
 
 /**
  * Created by Archishmaan Peyyety on 8/13/18.

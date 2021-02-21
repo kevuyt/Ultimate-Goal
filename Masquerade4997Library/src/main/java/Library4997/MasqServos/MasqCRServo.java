@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHardware;
 
 /**
  * Created by Archish on 11/4/16.

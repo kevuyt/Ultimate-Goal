@@ -3,8 +3,8 @@ package Library4997.MasqSensors;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqResources.MasqHardware;
+import Library4997.MasqUtils;
 
 
 /**

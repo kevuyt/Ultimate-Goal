@@ -1,12 +1,10 @@
-package Library4997.MasqWrappers;
+package Library4997.MasqResources;
 
 import com.qualcomm.robotcore.util.RobotLog;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqUtils;
-import Library4997.MasqResources.MasqHelpers.MasqSubSystem;
+import Library4997.MasqUtils;
 
 /**
  * This is a telemetry wrapper class.

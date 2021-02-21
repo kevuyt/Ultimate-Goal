@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import Library4997.MasqWrappers.MasqLinearOpMode;
+import Library4997.MasqResources.MasqLinearOpMode;
 
 import static Library4997.MasqRobot.OpMode.TELEOP;
 import static java.lang.Math.abs;
@@ -33,9 +33,9 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             robot.MECH();
 
-            if(!enabled) robot.intake.setVelocity(controller1.rightTrigger()-controller1.leftTrigger());
+            if(!enabled) robot.intake.setVelocity(gamepad1.right_trigger - gamepad1.left_trigger);
 
-            if(controller1.leftBumper()) {
+            if(gamepad1.left_bumper) {
                 robot.shooter.setVelocity(shooterSpeed);
                 robot.hopper.setPosition(1);
                 enabled = true;
@@ -46,13 +46,13 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 enabled = false;
             }
 
-            if(controller1.rightBumper() && enabled) robot.flicker.setPosition(1);
+            if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
-            if(controller1.dPadLeft()) shooterSpeed = 0.54;
-            if(controller1.dPadRight()) shooterSpeed = 0.6;
+            if(gamepad1.dpad_left) shooterSpeed = 0.54;
+            if(gamepad1.dpad_right) shooterSpeed = 0.6;
 
-            robot.claw.driverControl(controller1);
+            robot.claw.driverControl(gamepad1);
 
             mode = shooterSpeed == 0.54 ? "POWERSHOT" : "GOAL";
 

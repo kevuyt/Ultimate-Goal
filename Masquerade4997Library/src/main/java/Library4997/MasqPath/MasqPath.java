@@ -3,9 +3,9 @@ package Library4997.MasqPath;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqResources.MasqMath.MasqPoint;
-import Library4997.MasqResources.MasqMath.MasqVector;
-import Library4997.MasqWrappers.DashBoard;
+import Library4997.MasqMath.MasqPoint;
+import Library4997.MasqMath.MasqVector;
+import Library4997.MasqResources.DashBoard;
 
 /**
  * Created by Archishmaan Peyyety on 8/11/18.

@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHardware;
 import Library4997.MasqServos.MasqServo;
-import Library4997.MasqResources.MasqHelpers.MasqSubSystem;
-import Library4997.MasqWrappers.MasqController;
+import Library4997.MasqResources.MasqSubSystem;
 
 /**
  * Created by Keval Kataria on 11/26/2020
@@ -19,9 +19,9 @@ public class RotatingClaw implements MasqSubSystem {
         reset();
     }
     @Override
-    public void driverControl(MasqController controller) throws InterruptedException {
-        claw.toggle(controller.a());
-        rotater.toggle(controller.b());
+    public void driverControl(Gamepad controller) throws InterruptedException {
+        claw.toggle(controller.a);
+        rotater.toggle(controller.b);
     }
 
     public void close() {claw.setPosition(0);}

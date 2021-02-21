@@ -1,11 +1,12 @@
-package Library4997.MasqWrappers;
+package Library4997.MasqResources;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 
 
@@ -14,15 +15,12 @@ import Library4997.MasqSensors.MasqClock;
  */
 public abstract class MasqLinearOpMode extends LinearOpMode {
     public DashBoard dash;
-    protected MasqController controller1, controller2;
     protected MasqClock timeoutClock = new MasqClock();
     public final void runOpMode() throws InterruptedException {
         try {
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();
             MasqUtils.setLinearOpMode(this);
-            controller1 = new MasqController(super.gamepad1, "controller1");
-            controller2 = new MasqController(super.gamepad2, "controller2");
             runLinearOpMode();
         } finally {
             stopLinearOpMode();
@@ -46,5 +44,5 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     }
     public void sleep(double timeSeconds) {MasqUtils.sleep(timeSeconds);}
     public void sleep() {MasqUtils.sleep();}
-    public  MasqController getDefaultController() {return controller1;}
+    public Gamepad getDefaultController() {return gamepad1;}
 }

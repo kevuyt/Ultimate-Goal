@@ -3,11 +3,8 @@ package Library4997.MasqServos;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHardware;
 import Library4997.MasqSensors.MasqLimitSwitch;
-import Library4997.MasqWrappers.DashBoard;
-
-import static Library4997.MasqWrappers.DashBoard.getDash;
 
 /**
  * Created by Archish on 10/28/16.

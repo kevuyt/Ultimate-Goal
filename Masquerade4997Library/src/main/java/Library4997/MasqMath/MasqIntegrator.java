@@ -1,4 +1,4 @@
-package Library4997.MasqResources.MasqMath;
+package Library4997.MasqMath;
 
 import static java.lang.System.nanoTime;
 

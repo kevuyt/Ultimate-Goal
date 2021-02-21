@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint;
-import Library4997.MasqWrappers.MasqLinearOpMode;
+import Library4997.MasqResources.MasqLinearOpMode;
 
 import static Library4997.MasqRobot.OpMode.AUTO;
 import static Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint.PointMode.*;

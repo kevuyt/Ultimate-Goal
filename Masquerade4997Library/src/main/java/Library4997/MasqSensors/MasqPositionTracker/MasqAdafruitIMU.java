@@ -9,9 +9,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
+import Library4997.MasqResources.MasqHardware;
 
-import static Library4997.MasqResources.MasqUtils.formatAngle;
+import static Library4997.MasqUtils.formatAngle;
 
 
 /**

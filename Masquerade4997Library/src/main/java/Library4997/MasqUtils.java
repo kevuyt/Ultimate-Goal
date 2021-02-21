@@ -1,22 +1,18 @@
-package Library4997.MasqResources;
+package Library4997;
 
 import android.graphics.Point;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.opencv.core.Rect;
 
 import java.util.Locale;
 
-import Library4997.MasqResources.MasqMath.MasqPIDController;
-import Library4997.MasqResources.MasqMath.MasqVector;
-import Library4997.MasqServos.MasqServo;
-import Library4997.MasqWrappers.DashBoard;
-import Library4997.MasqWrappers.MasqLinearOpMode;
+import Library4997.MasqMath.MasqPIDController;
+import Library4997.MasqMath.MasqVector;
+import Library4997.MasqResources.MasqLinearOpMode;
 
-import static Library4997.MasqWrappers.DashBoard.getDash;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;

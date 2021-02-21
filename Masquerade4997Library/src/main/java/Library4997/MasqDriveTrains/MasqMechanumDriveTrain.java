@@ -5,10 +5,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import Library4997.MasqMotors.MasqMotorModel;
 import Library4997.MasqMotors.MasqMotorSystem;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
-import Library4997.MasqResources.MasqHelpers.MasqHardware;
-import Library4997.MasqResources.MasqUtils;
+import Library4997.MasqResources.MasqHardware;
+import Library4997.MasqUtils;
 
-import static Library4997.MasqResources.MasqUtils.*;
+import static Library4997.MasqUtils.*;
 
 
 public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardware {

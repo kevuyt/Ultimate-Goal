@@ -1,8 +1,8 @@
-package Library4997.MasqResources.MasqMath;
+package Library4997.MasqMath;
 
 import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqResources.MasqMath.MasqIntegrator;
+import Library4997.MasqMath.MasqIntegrator;
 import Library4997.MasqSensors.MasqClock;
 
 import static com.qualcomm.robotcore.util.Range.clip;

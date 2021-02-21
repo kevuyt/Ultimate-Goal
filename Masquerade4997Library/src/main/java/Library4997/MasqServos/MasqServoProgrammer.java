@@ -1,12 +1,12 @@
 package Library4997.MasqServos;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
-import Library4997.MasqWrappers.DashBoard;
-import Library4997.MasqWrappers.MasqController;
+import Library4997.MasqResources.DashBoard;
 
-import static Library4997.MasqResources.MasqUtils.getLinearOpMode;
-import static Library4997.MasqWrappers.DashBoard.getDash;
+import static Library4997.MasqUtils.getLinearOpMode;
+import static Library4997.MasqResources.DashBoard.getDash;
 import static com.qualcomm.robotcore.hardware.Servo.Direction.FORWARD;
 
 /**
@@ -14,7 +14,7 @@ import static com.qualcomm.robotcore.hardware.Servo.Direction.FORWARD;
  */
 
 public class MasqServoProgrammer {
-    MasqController controller = getLinearOpMode().getDefaultController();
+    Gamepad controller = getLinearOpMode().getDefaultController();
     MasqServo[] servos;
     String[] names;
     double val1, val2, val3, val4, val5;
@@ -33,27 +33,27 @@ public class MasqServoProgrammer {
     }
 
     public void run() {
-        if (controller.a()) val1 += 0.0001;
-        else if (controller.b()) val1 -= 0.0001;
+        if (controller.a) val1 += 0.0001;
+        else if (controller.b) val1 -= 0.0001;
 
         if (numServos > 1) {
-            if (controller.y()) val2 += 0.0001;
-            else if (controller.x()) val2 -= 0.0001;
+            if (controller.y) val2 += 0.0001;
+            else if (controller.x) val2 -= 0.0001;
         }
 
         if (numServos > 2) {
-            if (controller.rightBumper()) val3 += 0.0001;
-            else if (controller.leftBumper()) val3 -= 0.0001;
+            if (controller.right_bumper) val3 += 0.0001;
+            else if (controller.left_bumper) val3 -= 0.0001;
         }
 
         if (numServos > 3) {
-            if (controller.rightTriggerPressed()) val4 += 0.0001;
-            else if (controller.leftTriggerPressed()) val4 -= 0.0001;
+            if (controller.right_trigger > 0) val4 += 0.0001;
+            else if (controller.left_trigger > 0) val4 -= 0.0001;
         }
 
         if (numServos > 4) {
-            if (controller.leftStickY() > 0) val5 += 0.0001;
-            else if (controller.leftStickY() < 0) val5 -= 0.0001;
+            if (controller.left_stick_y > 0) val5 += 0.0001;
+            else if (controller.left_stick_y < 0) val5 -= 0.0001;
         }
 
         val1 = Range.clip(val1, 0,1);
