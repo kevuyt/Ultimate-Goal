@@ -110,16 +110,6 @@ public class MasqMotorSystem implements MasqHardware {
     public void setVelocity(double power) {
         for (MasqMotor masqMotor : motors) masqMotor.setVelocity(power);
     }
-    public void setVelocities(double... powers) {
-        for (int i = 0; i < numMotors; i++)  motors.get(i).setVelocity(powers[i]);
-    }
-    public void setPower(double power) {
-        for (MasqMotor masqMotor : motors)masqMotor.setPower(power);
-    }
-    public void setPowers(double... powers) {
-        for (int i = 0; i < numMotors; i++)  motors.get(i).setPower(powers[i]);
-
-    }
     public void setClosedLoop (boolean closedLoop) {
         for (MasqMotor masqMotor : motors) {
             masqMotor.setClosedLoop(closedLoop);
@@ -131,31 +121,6 @@ public class MasqMotorSystem implements MasqHardware {
         }
     }
 
-    public void runUsingEncoder() {
-        for (MasqMotor masqMotor: motors)
-            masqMotor.runUsingEncoder();
-    }
-    public void runWithoutEncoder() {
-        for (MasqMotor masqMotor: motors)
-            masqMotor.runWithoutEncoder();
-    }
-    public double getAngle () {
-        double sum = 0, num = 0;
-        for (MasqMotor masqMotor: motors) {
-            sum += masqMotor.getAngle();
-            num++;
-        }
-        return sum/num;
-    }
-    public double getAveragePositivePosition() {
-        double sum = 0;
-        double num = 1;
-        for (MasqMotor motor : motors) {
-            sum += Math.abs(motor.getCurrentPosition());
-            num++;
-        }
-        return sum/num;
-    }
     public double getVelocity(){
         double i = 0;
         double rate = 0;
@@ -165,10 +130,7 @@ public class MasqMotorSystem implements MasqHardware {
         }
         return rate/i;
     }
-    public boolean isBusy() {
-        for (MasqMotor masqMotor: motors) if(masqMotor.isBusy()) return true;
-        return false;
-    }
+
     public int getCurrentPosition() {
         int total = 0;
         for (MasqMotor m : motors) total += m.getCurrentPosition();
@@ -180,29 +142,8 @@ public class MasqMotorSystem implements MasqHardware {
         return total / numMotors;
     }
 
-    public double getKp() {
-        return kp;
-    }
-
-    public double getKi() {
-        return ki;
-    }
-
-    public double getKd() {
-        return kd;
-    }
-
-    public MasqMotorModel getEncoder() {
-        return encoder;
-    }
-    public void setWheelDiameter(double diameter) {
-        for (MasqMotor motor : motors) {
-            motor.encoder.setWheelDiameter(diameter);
-        }
-    }
-
-    public void setEncoder(MasqMotorModel encoder) {
-        this.encoder = encoder;
+    public void startVelocityControl() {
+        for(MasqMotor motor : motors) motor.startVelocityControl();
     }
 
     public String getName() {

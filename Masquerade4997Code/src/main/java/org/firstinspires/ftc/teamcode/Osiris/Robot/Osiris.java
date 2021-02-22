@@ -72,6 +72,8 @@ public class Osiris extends MasqRobot {
         if(opmode == AUTO) {
             driveTrain.setKp(8e-8);
             initCamera(hardwareMap);
+            driveTrain.startVelocityControl();
+            shooter.startVelocityControl();
         }
         else driveTrain.setKp(5e-9);
     }

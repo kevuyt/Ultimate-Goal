@@ -13,6 +13,7 @@ import Library4997.MasqMath.MasqPIDController;
 import Library4997.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqLinearOpMode;
 
+import static java.lang.Double.valueOf;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
@@ -90,7 +91,7 @@ public class MasqUtils {
         return scaleNumber(m, 0, 1, newMin, newMax);
     }
     public static Double formatAngle(AngleUnit angleUnit, double angle) {
-        return Double.valueOf(formatDegrees(DEGREES.fromUnit(angleUnit, angle)));
+        return valueOf(formatDegrees(DEGREES.fromUnit(angleUnit, angle)));
     }
     private static String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", DEGREES.normalize(degrees));

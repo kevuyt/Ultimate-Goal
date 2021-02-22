@@ -48,7 +48,6 @@ public class Red extends MasqLinearOpMode {
         else if (zone == B) target = target.setPoint(-3,-80,-20).setPointSwitchRadius(24);
         else target = target.setPoint(-10,-103,30);
 
-        robot.shooter.setVelocity(0.52);
 
         if(zone != A) robot.xyPath(strafe, target);
         else robot.xyPath(target);
@@ -57,7 +56,7 @@ public class Red extends MasqLinearOpMode {
         robot.shooter.setVelocity(0.52);
         robot.claw.open();
         robot.hopper.setPosition(1);
-        sleep(1.0);
+        sleep();
         robot.claw.raise();
 
         robot.xyPath(new MasqWayPoint(0,-68,180).setTimeout(20).setDriveCorrectionSpeed(0.035));
@@ -74,14 +73,10 @@ public class Red extends MasqLinearOpMode {
 
         robot.shooter.setVelocity(0);
 
-        if(zone == B) {
-            robot.turnAbsolute(45);
-            shootStack(1);
-        }
+        if(zone != A) {
+            robot.turnAbsolute(-45);
 
-        if(zone == C) {
-            robot.turnAbsolute(45);
-            shootStack(3);
+            if(zone == C) shootStack(3);
             shootStack(1);
         }
 
@@ -108,15 +103,14 @@ public class Red extends MasqLinearOpMode {
     private void shootStack(int rings) {
         robot.hopper.setPosition(0);
         robot.intake.setVelocity(-1);
-        robot.xyPath(new MasqWayPoint(-6, -44,0).setTimeout(4).setSwitchMode(SWITCH).setAngularCorrectionSpeed(0.12));
-        robot.intake.setVelocity(0);
-        robot.turnAbsolute(0);
-
-        robot.hopper.setPosition(1);
+        robot.xyPath(new MasqWayPoint(-6, -44, robot.tracker.getHeading()).setTimeout(4).setSwitchMode(SWITCH).setAngularCorrectionSpeed(0.12));
         robot.shooter.setVelocity(0.6);
-        robot.xyPath(new MasqWayPoint(9, -60, 190).setSwitchMode(SWITCH).setModeSwitchRadius(5).setTimeout(4));
-        robot.stop();
-        robot.turnAbsolute(190);
+        sleep();
+        robot.intake.setVelocity(0);
+        robot.turnAbsolute(0,4);
+        robot.hopper.setPosition(1);
+        robot.xyPath(new MasqWayPoint(9, -60, 180).setSwitchMode(SWITCH).setModeSwitchRadius(5).setTimeout(4));
+        robot.turnAbsolute(180);
         flick(rings);
         robot.shooter.setVelocity(0);
     }

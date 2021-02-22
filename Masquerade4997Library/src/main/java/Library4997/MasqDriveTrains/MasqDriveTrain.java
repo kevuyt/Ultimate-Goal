@@ -48,48 +48,20 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.setVelocity(power);
         rightDrive.setVelocity(power);
     }
-    public void setVelocities(double... powers) {
-        leftDrive.setVelocities(powers[0], powers[1]);
-        rightDrive.setVelocities(powers[2], powers[3]);
+    public void setVelocity(double leftFront, double leftBack, double rightFront, double rightBack) {
+        leftDrive.motor1.setVelocity(leftFront);
+        leftDrive.motor2.setVelocity(leftBack);
+        rightDrive.motor1.setVelocity(rightFront);
+        rightDrive.motor2.setVelocity(rightBack);
     }
 
     public double getInches() {return (leftDrive.getInches() + rightDrive.getInches())/2;}
-
-    public void setPower(double power) {
-        leftDrive.setPower(power);
-        rightDrive.setPower(power);
-    }
-    public void setPower(double leftPower, double rightPower) {
-        leftDrive.setPower(leftPower);
-        rightDrive.setPower(rightPower);
-    }
-    public void setPowers(double... powers) {
-        leftDrive.setPowers(powers[0], powers[1]);
-        rightDrive.setPowers(powers[2], powers[3]);
-    }
-
 
     public double getVelocity() {
         return (leftDrive.getVelocity() + rightDrive.getVelocity())/2;
     }
     public double getPower() {
         return (leftDrive.getPower() + rightDrive.getPower()) /2;
-    }
-
-    public void setVelocityLeft(double power) {
-        leftDrive.setVelocities(power);
-    }
-    public void setVelocityRight(double power) {
-        rightDrive.setVelocities(power);
-    }
-
-    public void runUsingEncoder() {
-        leftDrive.runUsingEncoder();
-        rightDrive.runUsingEncoder();
-    }
-    public void runWithoutEncoder() {
-        leftDrive.runWithoutEncoder();
-        rightDrive.runWithoutEncoder();
     }
 
     public int getCurrentPosition() {
@@ -101,9 +73,6 @@ public class MasqDriveTrain implements MasqHardware {
                 Math.abs(rightDrive.motor1.getCurrentPosition()) +
                 Math.abs(rightDrive.motor1.getCurrentPosition()))/4;
     }
-    public int getAbsolutePosition () {
-        return (leftDrive.getAbsolutePosition() + rightDrive.getAbsolutePosition())/2;
-    }
 
     public void setClosedLoop (boolean closedLoop) {
         leftDrive.setClosedLoop(closedLoop);
@@ -114,13 +83,10 @@ public class MasqDriveTrain implements MasqHardware {
         leftDrive.setKp(kp);
         rightDrive.setKp(kp);
     }
-    public void setKi(double ki) {
-        leftDrive.setKi(ki);
-        rightDrive.setKi(ki);
-    }
-    public void setKd(double kd) {
-        leftDrive.setKd(kd);
-        rightDrive.setKd(kd);
+
+    public void startVelocityControl() {
+        leftDrive.startVelocityControl();
+        rightDrive.startVelocityControl();
     }
 
     public MasqEncoder getEncoder () {return rightDrive.motor1.getEncoder();}
