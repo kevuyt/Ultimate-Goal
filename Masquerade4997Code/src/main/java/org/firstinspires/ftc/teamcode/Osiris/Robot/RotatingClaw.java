@@ -31,8 +31,8 @@ public class RotatingClaw implements MasqSubSystem {
     public void lower() {rotater.setPosition(1);}
 
     public void reset() {
-        claw.scaleRange(0.12, 0.78);
-        rotater.scaleRange(0.15, 0.96);
+        claw.scaleRange(0.1, 0.78);
+        rotater.scaleRange(0.01, 0.96);
         close();
         raise();
     }

@@ -3,7 +3,7 @@ package Library4997.MasqPath;
 import java.util.Arrays;
 import java.util.List;
 
-import Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint;
+import Library4997.MasqMath.MasqWayPoint;
 
 /**
  * Created by Archishmaan Peyyety on 2020-01-19.

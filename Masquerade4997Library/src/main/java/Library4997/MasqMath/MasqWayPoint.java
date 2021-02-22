@@ -1,8 +1,6 @@
-package Library4997.MasqSensors.MasqPositionTracker;
+package Library4997.MasqMath;
 
 import Library4997.MasqResources.MasqHardware;
-import Library4997.MasqMath.MasqPoint;
-import Library4997.MasqMath.MasqVector;
 
 /**
  * Created by Archishmaan Peyyety on 2020-01-23.
@@ -11,7 +9,7 @@ import Library4997.MasqMath.MasqVector;
 public class MasqWayPoint implements MasqHardware {
     private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
-            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07;
+            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07, acceptableError = 1;
 
     private String name;
     private PointMode switchMode = PointMode.MECH;
@@ -29,36 +27,6 @@ public class MasqWayPoint implements MasqHardware {
         this.x = x;
         this.y = y;
         this.h = h;
-    }
-
-    public MasqWayPoint(double x, double y, double h, double targetRadius, double modeSwitchRadius,
-                        double pointSwitchRadius, double minVelocity, double maxVelocity, double timeout,
-                        double lookAhead, double angularCorrectionSpeed) {
-        this.x = x;
-        this.y = y;
-        this.h = h;
-        this.targetRadius = targetRadius;
-        this.modeSwitchRadius = modeSwitchRadius;
-        this.pointSwitchRadius = pointSwitchRadius;
-        this.minVelocity = minVelocity;
-        this.maxVelocity = maxVelocity;
-        this.timeout = timeout;
-        this.lookAhead = lookAhead;
-        this.angularCorrectionSpeed = angularCorrectionSpeed;
-    }
-    public MasqWayPoint(MasqPoint p, double targetRadius, double modeSwitchRadius, double pointSwitchRadius,
-                        double minVelocity, double maxVelocity, double timeout, double lookAhead, double angularCorrectionSpeed) {
-        this.x = p.getX();
-        this.y = p.getY();
-        this.h = p.getH();
-        this.targetRadius = targetRadius;
-        this.modeSwitchRadius = modeSwitchRadius;
-        this.pointSwitchRadius = pointSwitchRadius;
-        this.minVelocity = minVelocity;
-        this.maxVelocity = maxVelocity;
-        this.timeout = timeout;
-        this.lookAhead = lookAhead;
-        this.angularCorrectionSpeed = angularCorrectionSpeed;
     }
 
     public MasqWayPoint setSwitchMode(PointMode switchMode) {
@@ -207,6 +175,13 @@ public class MasqWayPoint implements MasqHardware {
     public double getSpeedBias() {
         return speedBias;
     }
+
+    public MasqWayPoint setAcceptableError(double acceptableError) {
+        this.acceptableError = acceptableError;
+        return this;
+    }
+
+    public double getAcceptableError() {return acceptableError;}
 
     public Runnable getOnComplete() {
         return onComplete;

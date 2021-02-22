@@ -16,7 +16,7 @@ import Library4997.MasqSensors.MasqPositionTracker.*;
 import static Library4997.MasqResources.Direction.FORWARD;
 import static Library4997.MasqUtils.*;
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
-import static Library4997.MasqSensors.MasqPositionTracker.MasqWayPoint.PointMode.*;
+import static Library4997.MasqMath.MasqWayPoint.PointMode.*;
 import static com.qualcomm.robotcore.util.Range.clip;
 import static java.lang.Math.*;
 
@@ -217,7 +217,6 @@ public abstract class MasqRobot {
             dash.update();
         }
         driveTrain.setVelocity(0,0);
-        sleep(sleepTime);
     }
     public void turnAbsolute(double angle, double timeout, double acceptableError, double sleepTime,  double kp, double ki) {
         turnAbsolute(angle, timeout, acceptableError, sleepTime,  kp, ki, turnController.getKd());
@@ -295,10 +294,13 @@ public abstract class MasqRobot {
             MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             MasqVector initial = new MasqVector(pointsWithRobot.get(index - 1).getX(), pointsWithRobot.get(index - 1).getY());
             double speed = 1;
+            double heading = toRadians(-tracker.getHeading());
             pointTimeout.reset();
             while (pointTimeout.hasNotPassed(pointsWithRobot.get(index).getTimeout(), SECONDS) &&
-                    !current.equal(pointsWithRobot.get(index).getTargetRadius(), target) && opModeIsActive() && speed > 0.1) {
-                double heading = toRadians(-tracker.getHeading());
+                    !(current.equal(pointsWithRobot.get(index).getTargetRadius(), target) &&
+                    (abs(toDegrees(heading - pointsWithRobot.get(index).getH())) < pointsWithRobot.get(index).getAcceptableError())) &&
+                    opModeIsActive() && speed > 0.1) {
+                heading = toRadians(-tracker.getHeading());
                 MasqVector headingUnitVector = new MasqVector(Math.sin(heading), Math.cos(heading));
                 MasqVector lookahead = getLookAhead(initial, current, target, lookAheadDistance);
                 MasqVector pathDisplacement = initial.displacement(target);
@@ -312,6 +314,7 @@ public abstract class MasqRobot {
                 double pathAngle = adjustAngle(headingUnitVector.angleTan(lookaheadDisplacement));
                 speed = speedController.getOutput(current.displacement(target).getMagnitude());
                 speed = scaleNumber(speed, pointsWithRobot.get(index).getMinVelocity(), pointsWithRobot.get(index).getMaxVelocity());
+                if(current.equal(pointsWithRobot.get(index).getTargetRadius(), target)) speed /= 10;
                 double powerAdjustment = angleController.getOutput(pathAngle);
                 double leftPower = speed + powerAdjustment;
                 double rightPower = speed - powerAdjustment;
@@ -378,8 +381,8 @@ public abstract class MasqRobot {
         int disable = 0;
         if (fieldCentric) disable = 1;
 
-        double x = -c.left_stick_x;
-        double y = c.left_stick_y;
+        double x = c.left_stick_x;
+        double y = -c.left_stick_y;
         double xR = c.right_stick_x;
 
 

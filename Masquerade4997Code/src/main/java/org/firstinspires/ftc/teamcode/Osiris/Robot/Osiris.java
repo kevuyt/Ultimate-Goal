@@ -62,7 +62,7 @@ public class Osiris extends MasqRobot {
 
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
-        turnController = new MasqPIDController(0.045);
+        turnController = new MasqPIDController(0.05);
 
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();

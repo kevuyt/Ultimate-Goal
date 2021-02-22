@@ -18,6 +18,7 @@ public class OdometryTester extends MasqLinearOpMode {
     double shooterSpeed = 0.6;
     String mode;
     boolean enabled = false;
+
     @Override
     public void runLinearOpMode() throws InterruptedException {
         robot.init(hardwareMap, TELEOP);
@@ -58,12 +59,12 @@ public class OdometryTester extends MasqLinearOpMode {
             if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left) shooterSpeed = 0.54;
+            if(gamepad1.dpad_left) shooterSpeed = 0.52;
             if(gamepad1.dpad_right) shooterSpeed = 0.6;
 
             robot.claw.driverControl(gamepad1);
 
-            mode = shooterSpeed == 0.54 ? "POWERSHOT" : "GOAL";
+            mode = shooterSpeed == 0.52 ? "POWERSHOT" : "GOAL";
 
             dash.create("Shooter Mode: " + mode);
             dash.create(robot.tracker);
