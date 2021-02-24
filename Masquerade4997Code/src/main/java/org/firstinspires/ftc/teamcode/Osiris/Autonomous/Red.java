@@ -23,7 +23,7 @@ public class Red extends MasqLinearOpMode {
             strafe = new MasqWayPoint(-7,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002);
 
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         robot.init(hardwareMap, AUTO);
 
         while(!opModeIsActive()) {
@@ -80,7 +80,6 @@ public class Red extends MasqLinearOpMode {
             shootStack(1);
         }
 
-        /**/
         robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), -72, 0).setSwitchMode(SWITCH));
         robot.turnAbsolute(0);
 
@@ -94,10 +93,10 @@ public class Red extends MasqLinearOpMode {
     private void flick(int iterations) {
         for (int i = 0; i < iterations; i++) {
             robot.flicker.setPosition(0.9);
-            sleep(1.0);
+            sleep(100);
 
             robot.flicker.setPosition(0);
-            sleep(1.0);
+            sleep(100);
         }
     }
     private void shootStack(int rings) {

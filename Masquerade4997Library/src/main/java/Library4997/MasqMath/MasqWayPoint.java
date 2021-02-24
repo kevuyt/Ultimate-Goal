@@ -9,7 +9,8 @@ import Library4997.MasqResources.MasqHardware;
 public class MasqWayPoint implements MasqHardware {
     private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
-            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07, acceptableError = 1;
+            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07,
+            turnRadius = 5;
 
     private String name;
     private PointMode switchMode = PointMode.MECH;
@@ -176,17 +177,12 @@ public class MasqWayPoint implements MasqHardware {
         return speedBias;
     }
 
-    public MasqWayPoint setAcceptableError(double acceptableError) {
-        this.acceptableError = acceptableError;
-        return this;
-    }
-
-    public double getAcceptableError() {return acceptableError;}
-
     public Runnable getOnComplete() {
         return onComplete;
     }
 
+    public void setTurnRadius(double turnRadius) {this.turnRadius = turnRadius;}
+    public double getTurnRadius() {return turnRadius;}
 
     public MasqVector getPoint() {
         return new MasqVector(x,y);

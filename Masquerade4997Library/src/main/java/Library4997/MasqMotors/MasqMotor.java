@@ -11,6 +11,10 @@ import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
+import static Library4997.MasqUtils.opModeIsActive;
+import static java.lang.Math.abs;
+import static java.lang.System.nanoTime;
+
 /**
  * This is a custom motor that includes stall detection and telemetry
  */
@@ -105,7 +109,7 @@ public class MasqMotor implements MasqHardware {
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         setVelocity(speed);
         while (opModeIsActive() && motor.isBusy() &&
-                clock.hasNotPassed(5, MasqClock.Resolution.SECONDS)) {MasqUtils.sleep(0.1);}
+                clock.hasNotPassed(5, MasqClock.Resolution.SECONDS)) {MasqUtils.sleep(100);}
         setVelocity(0);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
@@ -122,8 +126,8 @@ public class MasqMotor implements MasqHardware {
     }
     public double getVelocity() {
         double deltaPosition = getCurrentPosition() - prevPos;
-        previousTime = System.nanoTime();
-        double tChange = (System.nanoTime() - previousTime) / 1e9;
+        previousTime = nanoTime();
+        double tChange = (nanoTime() - previousTime) / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
         rate = (rate * 60) / encoder.getClicksPerRotation();
@@ -171,20 +175,20 @@ public class MasqMotor implements MasqHardware {
             if (maxLim != null && maxLim.isPressed() && power >0) motorPower = 0;
             else if (motor.getCurrentPosition() < currentMin && power < 0) motorPower = 0;
         }
-        if (Math.abs(motorPower) < minPower && minPower != 0) motorPower = 0;
+        if (abs(motorPower) < minPower && minPower != 0) motorPower = 0;
         motor.setPower(motorPower);
     }
     public  double calculateVelocityCorrection(double power) {
-        double tChange = (System.nanoTime() - previousTime)/1e9;
+        double tChange = (nanoTime() - previousTime) / 1e9;
         double error = (encoder.getRPM() * power) - getVelocity();
         rpmIntegral += error * tChange;
         rpmDerivative = (error - rpmPreviousError) / tChange;
-        double p = error*kp;
-        double i = rpmIntegral*ki;
-        double d = rpmDerivative*kd;
+        double p = error * kp;
+        double i = rpmIntegral * ki;
+        double d = rpmDerivative * kd;
         double motorPower = power + (p + i + d);
         rpmPreviousError = error;
-        previousTime = System.nanoTime();
+        previousTime = nanoTime();
         return motorPower;
     }
 
@@ -194,16 +198,14 @@ public class MasqMotor implements MasqHardware {
     public void startVelocityControl () {
         setVelocityControlState(true);
         Runnable velocityControl = () -> {
-            while (opModeIsActive() && velocityControlState) {
-                setVelocity(targetPower);
-            }
+            while (opModeIsActive() && velocityControlState) setVelocity(targetPower);
         };
         Thread velocityThread = new Thread(velocityControl);
         velocityThread.start();
     }
 
     private boolean getStalled() {
-        return Math.abs(getVelocity()) < stalledRPMThreshold;
+        return abs(getVelocity()) < stalledRPMThreshold;
     }
     public void setStalledAction(Runnable action) {
         stallAction = action;
@@ -215,9 +217,6 @@ public class MasqMotor implements MasqHardware {
     private boolean getStallDetection () {return stallDetection;}
     public synchronized boolean isStalled() {
         return stalled;
-    }
-    public int getStalledRPMThreshold() {
-        return stalledRPMThreshold;
     }
     public void setStalledRPMThreshold(int stalledRPMThreshold) {
         this.stalledRPMThreshold = stalledRPMThreshold;
@@ -251,16 +250,6 @@ public class MasqMotor implements MasqHardware {
 
     public void setKp(double kp) {
         this.kp = kp;
-    }
-    public void setKi(double ki) {
-        this.ki = ki;
-    }
-    public void setKd(double kd) {
-        this.kd = kd;
-    }
-
-    private boolean opModeIsActive() {
-        return MasqUtils.opModeIsActive();
     }
     public DcMotorController getController () {return motor.getController();}
     public int getPortNumber () {return motor.getPortNumber();}

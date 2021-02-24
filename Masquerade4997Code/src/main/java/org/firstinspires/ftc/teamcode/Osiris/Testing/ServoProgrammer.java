@@ -17,7 +17,7 @@ public class ServoProgrammer extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
 
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         robot.init(hardwareMap, TELEOP);
         MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotater());
 

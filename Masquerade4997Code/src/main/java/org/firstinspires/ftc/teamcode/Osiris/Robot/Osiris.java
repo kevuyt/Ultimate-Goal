@@ -11,6 +11,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 import Library4997.MasqServos.MasqServo;
+import Library4997.MasqUtils;
 import Library4997.MasqVision.MasqCamera;
 
 import static Library4997.MasqMotors.MasqMotorModel.*;
@@ -32,7 +33,7 @@ public class Osiris extends MasqRobot {
     public MasqServo flicker, hopper;
 
     @Override
-    public void mapHardware(HardwareMap hardwareMap) throws InterruptedException{
+    public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
 
         shooter = new MasqMotor("shooter", USDIGITAL_E4T, hardwareMap);
@@ -50,7 +51,7 @@ public class Osiris extends MasqRobot {
     }
 
     @Override
-    public void init(HardwareMap hardwareMap, OpMode opmode) throws InterruptedException{
+    public void init(HardwareMap hardwareMap, OpMode opmode) {
         mapHardware(hardwareMap);
 
         tracker.setPosition(THREE);
@@ -58,7 +59,7 @@ public class Osiris extends MasqRobot {
         tracker.setTrackWidth(13.75);
         tracker.reset();
 
-        driveTrain.setTracker(tracker);
+        setTracker(tracker);
 
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
@@ -70,7 +71,7 @@ public class Osiris extends MasqRobot {
         initServos();
 
         if(opmode == AUTO) {
-            driveTrain.setKp(8e-8);
+            driveTrain.setKp(5e-8);
             initCamera(hardwareMap);
             driveTrain.startVelocityControl();
             shooter.startVelocityControl();

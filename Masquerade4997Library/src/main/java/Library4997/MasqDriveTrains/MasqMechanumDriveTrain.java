@@ -2,17 +2,14 @@ package Library4997.MasqDriveTrains;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import Library4997.MasqMotors.MasqMotorModel;
-import Library4997.MasqMotors.MasqMotorSystem;
-import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
+import Library4997.MasqMotors.*;
 import Library4997.MasqResources.MasqHardware;
 import Library4997.MasqUtils;
 
 import static Library4997.MasqUtils.*;
-
+import static java.lang.Math.*;
 
 public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardware {
-    private MasqPositionTracker tracker;
 
     public MasqMechanumDriveTrain(HardwareMap hardwareMap){
         super(hardwareMap);
@@ -25,14 +22,14 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     }
 
     public void setVelocityMECH(double angle, double speed, double targetHeading) {
-        double turnPower = angleController.getOutput(adjustAngle(targetHeading - tracker.getHeading()));
-        angle = Math.toRadians(angle);
+        double turnPower = angleController.getOutput(adjustAngle(targetHeading - getTracker().getHeading()));
+        angle = toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
-        double leftFront = (Math.sin(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double leftBack = (Math.cos(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double rightFront = (Math.cos(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double rightBack = (Math.sin(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
-        double max = Math.max(Math.max(Math.abs(leftFront), Math.abs(leftBack)), Math.max(Math.abs(rightFront), Math.abs(rightBack)));
+        double leftFront = (sin(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
+        double leftBack = (cos(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
+        double rightFront = (cos(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
+        double rightBack = (sin(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * MasqUtils.DEFAULT_TURN_MULTIPLIER;
+        double max = max(max(abs(leftFront), abs(leftBack)), max(abs(rightFront), abs(rightBack)));
 
         if (max > 1) {
             leftFront /= max;
@@ -47,10 +44,6 @@ public class MasqMechanumDriveTrain extends MasqDriveTrain implements MasqHardwa
     }
 
     public void setVelocityMECH(double angle, double speed) {
-        setVelocityMECH(angle, speed, tracker.getHeading());
-    }
-
-    public void setTracker(MasqPositionTracker tracker) {
-        this.tracker = tracker;
+        setVelocityMECH(angle, speed, getTracker().getHeading());
     }
 }

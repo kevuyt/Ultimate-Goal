@@ -1,31 +1,26 @@
 package Library4997.MasqSensors;
 
+import android.annotation.SuppressLint;
+
 import java.util.Locale;
 
 import Library4997.MasqResources.MasqHardware;
+
+import static java.lang.System.nanoTime;
+import static java.util.Locale.US;
 
 
 public class MasqClock implements MasqHardware {
 
     private long startTime;
 
-    private boolean isPaused = false;
-    private long pauseStart;
-    private long pauseLength;
-
 
     public MasqClock() {this.reset();}
-    public void reset() {
-        isPaused = false;
-        pauseStart = 0L;
-        pauseLength = 0L;
-        startTime = System.nanoTime();
-    }
+    public void reset() {startTime = nanoTime();}
 
-    public long nanoseconds() {return System.nanoTime() - startTime - pauseLength;}
+    public long nanoseconds() {return nanoTime() - startTime;}
     public double milliseconds() {return nanoseconds() * 1E-6;}
     public double seconds() {return nanoseconds() * 1E-9;}
-
 
     public enum Resolution {
         NANOSECONDS (1),
@@ -43,21 +38,10 @@ public class MasqClock implements MasqHardware {
         return hasNotPassed(time, Resolution.SECONDS);
     }
 
-    public void pause() {
-        if (!isPaused) pauseStart = System.nanoTime();
-        isPaused = true;
-    }
-
-    public void resume() {
-        if (isPaused) pauseLength += (System.nanoTime() - pauseStart);
-        isPaused = false;
-    }
-
-    public boolean isPaused() {return isPaused;}
     public String getName() {return "CLOCK";}
     public String[] getDash() {
         return new String[]{
-                String.format(Locale.US, "%.5f  %s", seconds(), isPaused() ? "PAUSED" : "")
+                String.format(US, "Seconds passed: %.5f", seconds())
         };
     }
 

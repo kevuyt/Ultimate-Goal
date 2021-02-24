@@ -1,21 +1,20 @@
 package Library4997.MasqSensors;
 
-/**
- * Created by Archishmaan Peyyety on 7/17/18.
- * Project: MasqLib
- */
-
-import com.qualcomm.hardware.lynx.LynxController;
-import com.qualcomm.hardware.lynx.LynxDcMotorController;
-import com.qualcomm.hardware.lynx.LynxModule;
-import com.qualcomm.hardware.lynx.commands.core.LynxGetADCCommand;
-import com.qualcomm.hardware.lynx.commands.core.LynxGetADCResponse;
+import com.qualcomm.hardware.lynx.*;
+import com.qualcomm.hardware.lynx.commands.core.*;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.RobotLog;
 
 import java.lang.reflect.Method;
 
 import Library4997.MasqMotors.MasqMotor;
+
+import static com.qualcomm.hardware.lynx.commands.core.LynxGetADCCommand.Channel.*;
+
+/**
+ * Created by Archishmaan Peyyety on 7/17/18.
+ * Project: MasqLib
+ */
 
 public class MasqCurrentMonitor {
     LynxModule hubOne;
@@ -26,8 +25,8 @@ public class MasqCurrentMonitor {
         hubTwo = hardwareMap.get(LynxModule.class, hubTwoName);
     }
 
-    public MasqCurrentMonitor(HardwareMap hardwareMap) {
-        this(hardwareMap, "Expansion Hub 1", "Expansion Hub 2");
+    public MasqCurrentMonitor(HardwareMap hardwareMap, int hub1Number, int hub2Number) {
+        this(hardwareMap, "Expansion Hub " + hub1Number, "Expansion Hub " + hub2Number);
     }
 
     public double getMotorCurrent(MasqMotor motor) {
@@ -45,10 +44,10 @@ public class MasqCurrentMonitor {
         if (hub == null) return 0;
         LynxGetADCCommand.Channel channel;
         int motorPort = motor.getPortNumber();
-        if (motorPort == 0) channel = LynxGetADCCommand.Channel.MOTOR0_CURRENT;
-        else if (motorPort == 1) channel = LynxGetADCCommand.Channel.MOTOR1_CURRENT;
-        else if (motorPort == 2) channel = LynxGetADCCommand.Channel.MOTOR2_CURRENT;
-        else if (motorPort == 3) channel = LynxGetADCCommand.Channel.MOTOR3_CURRENT;
+        if (motorPort == 0) channel = MOTOR0_CURRENT;
+        else if (motorPort == 1) channel = MOTOR1_CURRENT;
+        else if (motorPort == 2) channel = MOTOR2_CURRENT;
+        else if (motorPort == 3) channel = MOTOR3_CURRENT;
         else return 0;
         return getADCValue(hub, channel);
     }

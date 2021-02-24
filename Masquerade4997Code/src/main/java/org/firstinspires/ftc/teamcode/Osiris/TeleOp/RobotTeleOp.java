@@ -19,7 +19,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
     boolean enabled = false;
 
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         robot.init(hardwareMap, TELEOP);
 
         while(!opModeIsActive()) {

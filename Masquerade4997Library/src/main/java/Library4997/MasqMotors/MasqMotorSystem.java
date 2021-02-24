@@ -80,14 +80,6 @@ public class MasqMotorSystem implements MasqHardware {
         this.kp = kp;
         for (MasqMotor masqMotor: motors) masqMotor.setKp(kp);
     }
-    public void setKi(double ki){
-        this.ki = ki;
-        for (MasqMotor masqMotor: motors) masqMotor.setKi(ki);
-    }
-    public void setKd(double kd){
-        this.kd = kd;
-        for (MasqMotor masqMotor: motors) masqMotor.setKd(kd);
-    }
     public double getPower() {
         double num = 0, sum = 0;
         for (MasqMotor masqMotor: motors) {

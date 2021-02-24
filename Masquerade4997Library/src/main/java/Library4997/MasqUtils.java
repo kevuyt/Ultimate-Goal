@@ -2,6 +2,7 @@ package Library4997;
 
 import android.graphics.Point;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -12,6 +13,7 @@ import java.util.Locale;
 import Library4997.MasqMath.MasqPIDController;
 import Library4997.MasqMath.MasqVector;
 import Library4997.MasqResources.MasqLinearOpMode;
+import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 
 import static java.lang.Double.valueOf;
 import static java.lang.Math.cos;
@@ -25,7 +27,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGR
 
 public class MasqUtils {
     private static MasqLinearOpMode linearOpMode;
-    public static final double DEFAULT_SLEEP_TIME = 0;
+    private static MasqPositionTracker tracker;
+    public static final long DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = Math.sqrt(2);
     public static final double DEFAULT_TURN_MULTIPLIER = 1;
@@ -37,22 +40,18 @@ public class MasqUtils {
             "DrFzuLwkk7gs7kk4Jrdp1+jqrxPBJdr8MjYjtXjW+epFt1lcvIlP/4MK44iEH9AMQXYD9";
 
     public static MasqPIDController turnController;
-    public static MasqPIDController xSpeedController;
-    public static MasqPIDController ySpeedController;
     public static MasqPIDController driveController;
     public static MasqPIDController angleController;
 
-    public static void sleep(double timeSeconds) {
-        try {
-            Thread.sleep((long) timeSeconds * 1000);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
+    public static void sleep(long milliSeconds) {
+        getLinearOpMode().sleep(milliSeconds);
     }
     public static void sleep() {sleep(DEFAULT_SLEEP_TIME);}
-    public static void setLinearOpMode(MasqLinearOpMode opMode) {
-        linearOpMode = opMode;
+    public static void setLinearOpMode(MasqLinearOpMode opMode) {linearOpMode = opMode;}
+    public static void setTracker(MasqPositionTracker positionTracker) {
+        tracker = positionTracker;
     }
+    public static MasqPositionTracker getTracker() {return tracker;}
 
     public static double adjustAngle(double angle, AngleUnit angleUnit) {
         return angleUnit.normalize(angle);

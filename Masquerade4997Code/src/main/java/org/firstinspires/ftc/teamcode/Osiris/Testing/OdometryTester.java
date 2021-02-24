@@ -20,7 +20,7 @@ public class OdometryTester extends MasqLinearOpMode {
     boolean enabled = false;
 
     @Override
-    public void runLinearOpMode() throws InterruptedException {
+    public void runLinearOpMode() {
         robot.init(hardwareMap, TELEOP);
         robot.driveTrain.setClosedLoop(false);
 

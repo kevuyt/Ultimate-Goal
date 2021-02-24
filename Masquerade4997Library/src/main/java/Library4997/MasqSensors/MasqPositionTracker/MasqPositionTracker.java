@@ -8,6 +8,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqResources.MasqHardware;
 import Library4997.MasqSensors.MasqClock;
 import Library4997.MasqResources.DashBoard;
+import Library4997.MasqUtils;
 
 import static Library4997.MasqSensors.MasqClock.Resolution.SECONDS;
 import static Library4997.MasqUtils.adjustAngle;
@@ -41,6 +42,7 @@ public class MasqPositionTracker implements MasqHardware {
         this.yRSystem = yRSystem;
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
+        MasqUtils.setTracker(this);
         reset();
     }
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, HardwareMap hardwareMap) {
@@ -48,10 +50,12 @@ public class MasqPositionTracker implements MasqHardware {
         this.ySystem = ySystem;
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
+        MasqUtils.setTracker(this);
         reset();
     }
     public MasqPositionTracker(HardwareMap hardwareMap) {
         imu = new MasqAdafruitIMU("imu", hardwareMap);
+        MasqUtils.setTracker(this);
         imu.reset();
     }
 
@@ -141,8 +145,8 @@ public class MasqPositionTracker implements MasqHardware {
         double dTranslationalY = (dYR + dYL) / 2;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX - angularComponentX;
-        double dGlobalX = dTranslationalX * cos(heading) - dTranslationalY * sin(heading);
-        double dGlobalY = dTranslationalX * sin(heading) + dTranslationalY * cos(heading);
+        double dGlobalX = dTranslationalX * cos(heading) + dTranslationalY * sin(heading);
+        double dGlobalY = dTranslationalY * cos(heading) - dTranslationalX * sin(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
     }

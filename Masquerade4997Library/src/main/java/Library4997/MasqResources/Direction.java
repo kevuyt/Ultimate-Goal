@@ -7,8 +7,8 @@ package Library4997.MasqResources;
 public enum Direction {
     FORWARD (+1),
     BACKWARD (-1),
-    LEFT (+1),
-    RIGHT (-1),
+    LEFT (-1),
+    RIGHT (+1),
     DOWN(-1),
     UP(+1),
     IN(+1),

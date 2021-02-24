@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
  */
 
 public interface MasqSubSystem {
-    void driverControl(Gamepad controller) throws InterruptedException;
+    void driverControl(Gamepad controller) ;
     String getName();
     MasqHardware[] getComponents();
 }

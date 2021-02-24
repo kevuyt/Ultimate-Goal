@@ -26,8 +26,8 @@ import static java.util.Arrays.asList;
  */
 
 public abstract class MasqRobot {
-    public abstract void mapHardware(HardwareMap hardwareMap) throws InterruptedException;
-    public abstract void init(HardwareMap hardwareMap, OpMode opmode) throws InterruptedException;
+    public abstract void mapHardware(HardwareMap hardwareMap);
+    public abstract void init(HardwareMap hardwareMap, OpMode opmode);
 
     public MasqMechanumDriveTrain driveTrain;
     public MasqPositionTracker tracker;
@@ -38,153 +38,122 @@ public abstract class MasqRobot {
         AUTO, TELEOP
     }
 
-    public void strafe(double distance, double angle, double timeout, double speed) {
-        MasqClock timeoutTimer = new MasqClock();
-        driveTrain.resetEncoders();
-        double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
-        double clicksRemaining;
-        double power, angularError, targetAngle = tracker.getHeading(), powerAdjustment;
-        do {
-            clicksRemaining = (int) (targetClicks - abs(driveTrain.getCurrentPositionPositive()));
-            power = driveController.getOutput(clicksRemaining) * speed;
-            power = clip(power,-1,1);
-            angularError = adjustAngle(targetAngle - tracker.getHeading());
-            driveTrain.setVelocityMECH(angle, power);
-            dash.create("ERROR: ", clicksRemaining);
-            dash.create("HEADING: ", tracker.getHeading());
-            dash.update();
-        } while (opModeIsActive() && timeoutTimer.hasNotPassed(timeout, SECONDS) && (abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
-        driveTrain.setVelocity(0);
-        sleep(DEFAULT_SLEEP_TIME);
-    }
-    public void strafe(double distance, double angle, double timeout) {
-        strafe(distance, angle, timeout, 0.7);
-    }
-    public void strafe (double distance, double angle) {
-        strafe(distance, angle, 1);
-    }
-
-    public void drive(double distance, double speed, Direction direction, double timeout, double sleepTime) {
-        MasqClock timeoutTimer = new MasqClock();
-        driveTrain.resetEncoders();
+    public void drive(double distance, Direction direction, double timeout) {
         double targetAngle = tracker.getHeading();
-        double targetClicks = (int)(distance * driveTrain.getEncoder().getClicksPerInch());
-        double clicksRemaining;
-        double angularError, powerAdjustment, power, leftPower, rightPower, maxPower;
+        double targetClicks = distance * driveTrain.getEncoder().getClicksPerInch();
+        double clicksRemaining, angularError, powerAdjustment, power, leftPower, rightPower, maxPower;
+
+        driveTrain.resetEncoders();
+        timeoutClock.reset();
         do {
-            clicksRemaining = (int) (targetClicks - abs(driveTrain.getCurrentPosition()));
-            power = driveController.getOutput(clicksRemaining) * speed;
-            power = clip(power, -1.0, +1.0);
+            clicksRemaining = targetClicks - abs(driveTrain.getCurrentPosition());
+            power = driveController.getOutput(clicksRemaining);
+            power = clip(power, -1, 1);
             angularError = adjustAngle(targetAngle - tracker.getHeading());
-            powerAdjustment = angleController.getOutput(adjustAngle(angularError));
-            powerAdjustment = clip(powerAdjustment, -1.0, +1.0);
+            powerAdjustment = angleController.getOutput(angularError);
+            powerAdjustment = clip(powerAdjustment, -1, 1);
             leftPower = (direction.value * power) - powerAdjustment;
             rightPower = (direction.value * power) + powerAdjustment;
+
             maxPower = max(abs(leftPower), abs(rightPower));
-            if (maxPower > 1.0) {
+            if (maxPower > 1) {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
             }
+
             tracker.updateSystem();
             driveTrain.setVelocity(leftPower, rightPower);
+
             dash.create("LEFT POWER: ", leftPower);
             dash.create("RIGHT POWER: ", rightPower);
             dash.create("ERROR: ", clicksRemaining);
             dash.create("HEADING: ", tracker.getHeading());
             dash.update();
-        } while (opModeIsActive() && timeoutTimer.hasNotPassed(timeout, SECONDS) && (abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
+        } while (opModeIsActive() && timeoutClock.hasNotPassed(timeout, SECONDS) && (abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
         driveTrain.setVelocity(0);
-        sleep(sleepTime);
     }
-    public void drive(double distance, double speed, Direction direction, double timeout) {
-        drive(distance, speed, direction, timeout, DEFAULT_SLEEP_TIME);
-    }
-    public void drive(double distance, double speed, Direction direction) {
-        drive(distance, speed, direction, DEFAULT_TIMEOUT);
-    }
-    public void drive(double distance, Direction direction, double timeout) {
-        drive(distance, 1, direction, timeout);
-    }
-    public void drive(double distance, double speed){drive(distance, speed, FORWARD);}
-    public void drive(double distance, Direction direction) {drive(distance, 1, direction);}
-    public void drive(double distance) {drive(distance, 1);}
+    public void drive(double distance, Direction direction) {drive(distance, direction, DEFAULT_TIMEOUT);}
+    public void drive(double distance) {drive(distance, FORWARD);}
 
     public void turnRelative(double angle, Direction direction, double timeout) {
         double targetAngle = adjustAngle(tracker.getHeading()) + (direction.value * angle);
-        double acceptableError = .5;
-        double error = adjustAngle(targetAngle - tracker.getHeading());
-        double power;
-        double leftPower = 0, rightPower = 0;
+        double acceptableError = 0.5;
+        double error, power;
+
         timeoutClock.reset();
-        while (opModeIsActive() && (adjustAngle(abs(error)) > acceptableError)
-                && timeoutClock.hasNotPassed(timeout, SECONDS)) {
+        do {
             error = adjustAngle(targetAngle - tracker.getHeading());
             power = turnController.getOutput(error);
-            if (abs(power) >= 1) power /= abs(power);
-            driveTrain.setVelocity(-power, power);
+            if (abs(power) > 1) power /= abs(power);
+            driveTrain.setVelocity(power, -power);
+
             dash.create("TargetAngle", targetAngle);
             dash.create("Heading", tracker.getHeading());
             dash.create("AngleLeftToCover", error);
             dash.create("Power: ", power);
             dash.create("Raw Power: ", driveTrain.getPower());
             dash.update();
-        }
-        driveTrain.setVelocity(0,0);
+        } while (opModeIsActive() && (adjustAngle(abs(error)) > acceptableError) && timeoutClock.hasNotPassed(timeout, SECONDS));
+        driveTrain.setVelocity(0);
     }
     public void turnRelative(double angle, Direction direction)  {
         turnRelative(angle, direction, DEFAULT_TIMEOUT);
     }
 
     public void turnAbsolute(double angle,  double timeout, double acceptableError) {
-        double error = adjustAngle(angle - tracker.getHeading());
+        double error;
         double power;
+
         timeoutClock.reset();
-        while (opModeIsActive() && (adjustAngle(abs(error)) > acceptableError)
-                && timeoutClock.hasNotPassed(timeout, SECONDS)) {
+        do {
             error = adjustAngle(angle - tracker.getHeading());
             power = turnController.getOutput(error);
-            if (abs(power) >= 1) power /= abs(power);
-            driveTrain.setVelocity(-power, power);
+            if (abs(power) > 1) power /= abs(power);
+
+            driveTrain.setVelocity(power, -power);
             tracker.updateSystem();
+
             dash.create("KP: ", turnController.getKp());
-            dash.create("RIGHT POWER: " ,power);
-            dash.create("TargetAngle", angle);
-            dash.create("Heading", tracker.getHeading());
-            dash.create("AngleLeftToCover", error);
+            dash.create("Power: " ,power);
+            dash.create("TargetAngle: ", angle);
+            dash.create("Heading: ", tracker.getHeading());
+            dash.create("AngleLeftToCover: ", error);
             dash.update();
-        }
-        driveTrain.setVelocity(0,0);
+        } while (opModeIsActive() && (adjustAngle(abs(error)) > acceptableError) && timeoutClock.hasNotPassed(timeout, SECONDS));
+        driveTrain.setVelocity(0);
     }
     public void turnAbsolute(double angle, double timeout)  {
-        turnAbsolute(angle, timeout, 1);
+        turnAbsolute(angle, timeout, 0.5);
     }
     public void turnAbsolute(double angle) {turnAbsolute(angle, DEFAULT_TIMEOUT);}
 
     public void stopWhen(boolean stopCondition, double angle, double speed, Direction direction, double timeout) {
-        MasqClock timeoutTimer = new MasqClock();
-        driveTrain.resetEncoders();
         double angularError, powerAdjustment, power, leftPower, rightPower, maxPower;
+
+        timeoutClock.reset();
         do {
             power = direction.value * speed;
             power = clip(power, -1.0, +1.0);
             angularError = adjustAngle(angle - tracker.getHeading());
             powerAdjustment = angleController.getOutput(angularError);
             powerAdjustment = clip(powerAdjustment, -1.0, +1.0);
-            powerAdjustment *= direction.value;
-            leftPower = power - powerAdjustment;
-            rightPower = power + powerAdjustment;
+            leftPower = power + powerAdjustment;
+            rightPower = power - powerAdjustment;
+
             maxPower = max(abs(leftPower), abs(rightPower));
-            if (maxPower > 1.0) {
+            if (maxPower > 1) {
                 leftPower /= maxPower;
                 rightPower /= maxPower;
             }
+
             driveTrain.setVelocity(leftPower, rightPower);
             tracker.updateSystem();
+
             dash.create("LEFT POWER: ",leftPower);
             dash.create("RIGHT POWER: ",rightPower);
             dash.create("Angle Error", angularError);
             dash.update();
-        } while (opModeIsActive() && timeoutTimer.hasNotPassed(timeout, SECONDS) && !stopCondition);
+        } while (opModeIsActive() && timeoutClock.hasNotPassed(timeout, SECONDS) && !stopCondition);
         driveTrain.setVelocity(0);
     }
     public void stopWhen(boolean stopCondition, double angle, double speed, Direction direction) {
@@ -219,14 +188,11 @@ public abstract class MasqRobot {
             MasqVector current = new MasqVector(tracker.getGlobalX(), tracker.getGlobalY());
             MasqVector initial = new MasqVector(pointsWithRobot.get(index - 1).getX(), pointsWithRobot.get(index - 1).getY());
             double speed = 1;
-            double heading = toRadians(tracker.getHeading());
             double pathAngle;
             pointTimeout.reset();
             while (pointTimeout.hasNotPassed(pointsWithRobot.get(index).getTimeout(), SECONDS) &&
-                    !(current.equal(pointsWithRobot.get(index).getTargetRadius(), target.getPoint()) &&
-                    (abs(toDegrees(heading - pointsWithRobot.get(index).getH())) < pointsWithRobot.get(index).getAcceptableError())) &&
-                    opModeIsActive() && speed > 0.1) {
-                heading = toRadians(tracker.getHeading());
+                    !current.equal(pointsWithRobot.get(index).getTargetRadius(), target.getPoint()) && opModeIsActive() && speed > 0.1) {
+                double heading = toRadians(tracker.getHeading());
                 MasqVector headingUnitVector = new MasqVector(sin(heading), cos(heading));
                 MasqVector lookahead = getLookAhead(initial, current, target.getPoint(), lookAheadDistance);
                 MasqVector pathDisplacement = initial.displacement(target.getPoint());
@@ -239,7 +205,6 @@ public abstract class MasqRobot {
                 MasqVector lookaheadDisplacement = current.displacement(lookahead);
                 speed = speedController.getOutput(current.displacement(target.getPoint()).getMagnitude());
                 speed = scaleNumber(speed, target.getMinVelocity(), target.getMaxVelocity());
-                if(current.equal(target.getTargetRadius(), target.getPoint())) speed /= 10;
 
                 PointMode mode = target.getSwitchMode();
                 boolean mechMode =(current.equal(target.getModeSwitchRadius(), target.getPoint()) && mode == SWITCH) ||
@@ -305,7 +270,7 @@ public abstract class MasqRobot {
         driveTrain.leftDrive.setVelocity(c.left_stick_y);
     }
 
-    public void MECH(Gamepad c, Direction direction, boolean fieldCentric, double speedMultiplier, double turnMultiplier) {
+    public void MECH(Gamepad c, boolean fieldCentric, double speedMultiplier, double turnMultiplier) {
         int disable = 0;
         if (fieldCentric) disable = 1;
 
@@ -317,7 +282,7 @@ public abstract class MasqRobot {
         double angle = atan2(x, y) + (toRadians(tracker.getHeading()) * disable);
         double adjustedAngle = angle + PI/4;
 
-        double speedMagnitude = hypot(x, y) * speedMultiplier * direction.value;
+        double speedMagnitude = hypot(x, y) * speedMultiplier;
         double turnMagnitude = xR * turnMultiplier;
 
         double leftFront = (sin(adjustedAngle) * speedMagnitude) + turnMagnitude;
@@ -335,17 +300,11 @@ public abstract class MasqRobot {
 
         driveTrain.setVelocity(leftFront, leftBack, rightFront, rightBack);
     }
-    public void MECH(Gamepad c, double speedMutliplier, double turnMultiplier) {
-        MECH(c, FORWARD, false, speedMutliplier, turnMultiplier);
-    }
     public void MECH(Gamepad c, boolean fieldCentric) {
-        MECH(c, FORWARD, fieldCentric, DEFAULT_SPEED_MULTIPLIER, DEFAULT_TURN_MULTIPLIER);
+        MECH(c, fieldCentric, DEFAULT_SPEED_MULTIPLIER, DEFAULT_TURN_MULTIPLIER);
     }
     public void MECH(Gamepad c) {
-        MECH(c, FORWARD, false, DEFAULT_SPEED_MULTIPLIER, DEFAULT_TURN_MULTIPLIER);
-    }
-    public void MECH(boolean fieldCentric) {
-        MECH(getLinearOpMode().getDefaultController(), fieldCentric);
+        MECH(c, false);
     }
     public void MECH() {MECH(getLinearOpMode().getDefaultController());}
 

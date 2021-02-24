@@ -9,6 +9,9 @@ import java.util.List;
 import Library4997.MasqUtils;
 import Library4997.MasqSensors.MasqClock;
 
+import static Library4997.MasqUtils.DEFAULT_SLEEP_TIME;
+import static Library4997.MasqUtils.setLinearOpMode;
+
 
 /**
  * Custom Linear opMode
@@ -20,14 +23,14 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
         try {
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();
-            MasqUtils.setLinearOpMode(this);
+            setLinearOpMode(this);
             runLinearOpMode();
         } finally {
             stopLinearOpMode();
         }
     }
-    public abstract void runLinearOpMode() throws InterruptedException;
-    public void stopLinearOpMode() throws InterruptedException {}
+    public abstract void runLinearOpMode();
+    public void stopLinearOpMode() {}
     public void runSimultaneously(Runnable... runnables) {
         List<Thread> threads = new ArrayList<>();
         int i = 0;
@@ -42,7 +45,6 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             for(Thread t : threads) if (!t.isAlive()) count++;
         }
     }
-    public void sleep(double timeSeconds) {MasqUtils.sleep(timeSeconds);}
-    public void sleep() {MasqUtils.sleep();}
+    public void sleep() {sleep(DEFAULT_SLEEP_TIME);}
     public Gamepad getDefaultController() {return gamepad1;}
 }

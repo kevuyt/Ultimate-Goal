@@ -9,6 +9,7 @@ import Library4997.MasqSensors.MasqEncoder;
 
 import static Library4997.MasqMotors.MasqMotorModel.REVHDHEX20;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.*;
+import static java.lang.Math.abs;
 
 
 public class MasqDriveTrain implements MasqHardware {
@@ -68,10 +69,10 @@ public class MasqDriveTrain implements MasqHardware {
         return (leftDrive.getCurrentPosition() + rightDrive.getCurrentPosition())/2;
     }
     public double getCurrentPositionPositive() {
-        return (Math.abs(leftDrive.motor1.getCurrentPosition()) +
-                Math.abs(leftDrive.motor2.getCurrentPosition()) +
-                Math.abs(rightDrive.motor1.getCurrentPosition()) +
-                Math.abs(rightDrive.motor1.getCurrentPosition()))/4;
+        return (abs(leftDrive.motor1.getCurrentPosition()) +
+                abs(leftDrive.motor2.getCurrentPosition()) +
+                abs(rightDrive.motor1.getCurrentPosition()) +
+                abs(rightDrive.motor1.getCurrentPosition()))/4;
     }
 
     public void setClosedLoop (boolean closedLoop) {
