@@ -48,11 +48,10 @@ public class Red extends MasqLinearOpMode {
         else if (zone == B) target = target.setPoint(-3,-80,-20).setPointSwitchRadius(24);
         else target = target.setPoint(-10,-103,30);
 
-
         if(zone != A) robot.xyPath(strafe, target);
         else robot.xyPath(target);
         robot.turnAbsolute(-target.getH(),1);
-
+/*
         robot.shooter.setVelocity(0.52);
         robot.claw.open();
         robot.hopper.setPosition(1);
@@ -79,7 +78,7 @@ public class Red extends MasqLinearOpMode {
             if(zone == C) shootStack(3);
             shootStack(1);
         }
-
+*/
         robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), -72, 0).setSwitchMode(SWITCH));
         robot.turnAbsolute(0);
 
