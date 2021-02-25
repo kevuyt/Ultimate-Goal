@@ -37,6 +37,10 @@ public class RotatingClaw implements MasqSubSystem {
 
     public MasqServo getClaw() {return claw;}
     public MasqServo getRotater() {return rotater;}
+    public void startPositionControl() {
+        claw.startPositionControl();
+        rotater.startPositionControl();
+    }
 
     @Override
     public String getName() {return "Rotating Claw";}

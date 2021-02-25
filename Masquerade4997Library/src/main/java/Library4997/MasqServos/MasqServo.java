@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 import Library4997.MasqResources.MasqHardware;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
+import static Library4997.MasqUtils.opModeIsActive;
+
 /**
  * Created by Archish on 10/28/16.
  */
@@ -16,8 +18,9 @@ public class MasqServo implements MasqHardware{
     private double max = 1, min = 0;
     private MasqLimitSwitch limMin, limMax;
     private boolean limDetection;
-    private double adjustedPosition;
+    private double position;
     private boolean prevState = false, taskState = false, currState = false;
+    private boolean positionControlState = false;
 
 
     public MasqServo(String name, HardwareMap hardwareMap) {
@@ -30,8 +33,8 @@ public class MasqServo implements MasqHardware{
         servo.setDirection(direction);
     }
     public void setPosition (double position) {
-        adjustedPosition = ((max - min) * position) + min;
-        servo.setPosition(adjustedPosition);
+        this.position = position;
+        servo.setPosition(position);
     }
     public void setDirection(Servo.Direction direction) {
         servo.setDirection(direction);
@@ -47,11 +50,6 @@ public class MasqServo implements MasqHardware{
     public double getPosition () {
         return servo.getPosition();
     }
-    public double getRawPosition() {
-        return adjustedPosition;
-    }
-    public void setMax(double max){this.max = max;}
-    public void setMin(double min){this.min = min;}
     public void scaleRange (double min, double max) {
         servo.scaleRange(min, max);
     }
@@ -69,6 +67,19 @@ public class MasqServo implements MasqHardware{
 
         if (taskState) setPosition(1);
         else setPosition(0);
+    }
+
+    public void setPositionControlState(boolean positionControlState) {
+        this.positionControlState = positionControlState;
+    }
+
+    public void startPositionControl() {
+        positionControlState = true;
+        Runnable positionControl = () -> {
+            while (opModeIsActive() && positionControlState) setPosition(position);
+        };
+        Thread positionThread = new Thread(positionControl);
+        positionThread.start();
     }
 
     public String getName() {

@@ -45,42 +45,39 @@ public class Red extends MasqLinearOpMode {
         robot.claw.lower();
 
         if (zone == A) target = target.setPoint(-7,-63.5,70);
-        else if (zone == B) target = target.setPoint(-3,-80,-20).setPointSwitchRadius(24);
+        else if (zone == B) target = target.setPoint(-3,-85,-20).setPointSwitchRadius(24);
         else target = target.setPoint(-10,-103,30);
 
         if(zone != A) robot.xyPath(strafe, target);
         else robot.xyPath(target);
-        robot.turnAbsolute(-target.getH(),1);
-/*
-        robot.shooter.setVelocity(0.52);
+        robot.turnAbsolute(target.getH(),1);
+
+        robot.shooter.setVelocity(0.6);
         robot.claw.open();
         robot.hopper.setPosition(1);
         sleep();
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(0,-68,180).setTimeout(20).setDriveCorrectionSpeed(0.035));
-        robot.turnAbsolute(180);
+        robot.xyPath(new MasqWayPoint(4,-66,180).setTimeout(4).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
         flick(1);
 
-        robot.xyPath(new MasqWayPoint(8, -68, 180).setDriveCorrectionSpeed(0.015));
-        robot.turnAbsolute(180);
+        robot.xyPath(new MasqWayPoint(12, -66, 180).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
         flick(1);
 
-        robot.xyPath(new MasqWayPoint(17, -68, 180).setDriveCorrectionSpeed(0.015));
-        robot.turnAbsolute(180);
+        robot.xyPath(new MasqWayPoint(20, -66, 180).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
         flick(1);
 
         robot.shooter.setVelocity(0);
 
-        if(zone != A) {
+        /*if(zone != A) {
             robot.turnAbsolute(-45);
 
             if(zone == C) shootStack(3);
             shootStack(1);
         }
-*/
-        robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), -72, 0).setSwitchMode(SWITCH));
-        robot.turnAbsolute(0);
+         */
+
+        robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), -72, 0).setSwitchMode(SWITCH).setNoHeading(true));
 
         while(timeoutClock.hasNotPassed(29.5)) {
             robot.tracker.updateSystem();
@@ -92,23 +89,22 @@ public class Red extends MasqLinearOpMode {
     private void flick(int iterations) {
         for (int i = 0; i < iterations; i++) {
             robot.flicker.setPosition(0.9);
-            sleep(100);
+            sleep(1000);
 
             robot.flicker.setPosition(0);
-            sleep(100);
+            sleep();
         }
     }
     private void shootStack(int rings) {
         robot.hopper.setPosition(0);
         robot.intake.setVelocity(-1);
-        robot.xyPath(new MasqWayPoint(-6, -44, robot.tracker.getHeading()).setTimeout(4).setSwitchMode(SWITCH).setAngularCorrectionSpeed(0.12));
-        robot.shooter.setVelocity(0.6);
-        sleep();
+        robot.xyPath(new MasqWayPoint(-6, -44, robot.tracker.getHeading()).setTimeout(3).setSwitchMode(SWITCH).setAngularCorrectionSpeed(0.12));
+        robot.shooter.setVelocity(0.82);
+        sleep(500);
         robot.intake.setVelocity(0);
-        robot.turnAbsolute(0,4);
-        robot.hopper.setPosition(1);
-        robot.xyPath(new MasqWayPoint(9, -60, 180).setSwitchMode(SWITCH).setModeSwitchRadius(5).setTimeout(4));
         robot.turnAbsolute(180);
+        robot.hopper.setPosition(1);
+        robot.xyPath(new MasqWayPoint(9, -60, 180).setSwitchMode(SWITCH).setModeSwitchRadius(5));
         flick(rings);
         robot.shooter.setVelocity(0);
     }

@@ -48,12 +48,12 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left) shooterSpeed = 0.54;
-            if(gamepad1.dpad_right) shooterSpeed = 0.6;
+            if(gamepad1.dpad_left) shooterSpeed = 0.62;
+            if(gamepad1.dpad_right) shooterSpeed = 0.85;
 
             robot.claw.driverControl(gamepad1);
 
-            mode = shooterSpeed == 0.54 ? "POWERSHOT" : "GOAL";
+            mode = shooterSpeed == 0.62 ? "POWERSHOT" : "GOAL";
 
             dash.create("Shooter Mode: " + mode);
             dash.update();

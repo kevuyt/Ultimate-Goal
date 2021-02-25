@@ -12,6 +12,8 @@ public class MasqWayPoint implements MasqHardware {
             angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07,
             turnRadius = 5;
 
+    private boolean noHeading = false;
+
     private String name;
     private PointMode switchMode = PointMode.MECH;
 
@@ -192,6 +194,12 @@ public class MasqWayPoint implements MasqHardware {
         this.name = name;
         return this;
     }
+
+    public MasqWayPoint setNoHeading(boolean noHeading) {
+        this.noHeading = noHeading;
+        return this;
+    }
+    public boolean noHeading() {return noHeading;}
 
     @Override
     public String getName() {

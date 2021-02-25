@@ -107,8 +107,7 @@ public abstract class MasqRobot {
         timeoutClock.reset();
         do {
             error = adjustAngle(angle - tracker.getHeading());
-            power = turnController.getOutput(error);
-            if (abs(power) > 1) power /= abs(power);
+            power = clip(turnController.getOutput(error), -1, 1);
 
             driveTrain.setVelocity(power, -power);
             tracker.updateSystem();
@@ -212,10 +211,8 @@ public abstract class MasqRobot {
 
                 if (mechMode) {
                     pathAngle = 90 - toDegrees(atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-                    driveTrain.setVelocityMECH(
-                            pathAngle - tracker.getHeading(), speed,
-                            target.getH()
-                    );
+                    if(target.noHeading()) target.setH(tracker.getHeading());
+                    driveTrain.setVelocityMECH(pathAngle - tracker.getHeading(), speed, target.getH());
                 }
                 else {
                     pathAngle = adjustAngle(headingUnitVector.angleTan(lookaheadDisplacement));
@@ -231,10 +228,7 @@ public abstract class MasqRobot {
 
                 tracker.updateSystem();
 
-                dash.create("X: "+ tracker.getGlobalX());
-                dash.create("Y: "+ tracker.getGlobalY());
-                dash.create("Look Ahead Displacement X: ", lookaheadDisplacement.getX());
-                dash.create("Look Ahead Displacement Y: ", lookaheadDisplacement.getY());
+                dash.create(tracker);
                 dash.create("Distance Left", target.getPoint().displacement(current).getMagnitude());
                 dash.create("Path Angle: ", pathAngle);
                 dash.update();
