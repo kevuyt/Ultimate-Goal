@@ -46,7 +46,7 @@ public class Red extends MasqLinearOpMode {
 
         if (zone == A) target.setPoint(-7,-63.5,70);
         else if (zone == B) target.setPoint(-3,-85,-20).setPointSwitchRadius(24);
-        else target.setPoint(-7,-103,50);
+        else target.setPoint(-8,-110,50);
 
         if(zone != A) robot.xyPath(strafe, target);
         else robot.xyPath(target);
