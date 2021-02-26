@@ -44,9 +44,9 @@ public class Red extends MasqLinearOpMode {
 
         robot.claw.lower();
 
-        if (zone == A) target = target.setPoint(-7,-63.5,70);
-        else if (zone == B) target = target.setPoint(-3,-85,-20).setPointSwitchRadius(24);
-        else target = target.setPoint(-10,-103,30);
+        if (zone == A) target.setPoint(-7,-63.5,70);
+        else if (zone == B) target.setPoint(-3,-85,-20).setPointSwitchRadius(24);
+        else target.setPoint(-7,-103,50);
 
         if(zone != A) robot.xyPath(strafe, target);
         else robot.xyPath(target);
@@ -58,13 +58,13 @@ public class Red extends MasqLinearOpMode {
         sleep();
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(4,-66,180).setTimeout(4).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
+        robot.xyPath(new MasqWayPoint(6,-66,180).setTimeout(4).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
         flick(1);
 
-        robot.xyPath(new MasqWayPoint(12, -66, 180).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
+        robot.xyPath(new MasqWayPoint(13, -66, 180).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
         flick(1);
 
-        robot.xyPath(new MasqWayPoint(20, -66, 180).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
+        robot.xyPath(new MasqWayPoint(22, -66, 180).setDriveCorrectionSpeed(0.015).setAngularCorrectionSpeed(0.06));
         flick(1);
 
         robot.shooter.setVelocity(0);
@@ -77,13 +77,8 @@ public class Red extends MasqLinearOpMode {
         }
          */
 
-        robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), -72, 0).setSwitchMode(SWITCH).setNoHeading(true));
-
-        while(timeoutClock.hasNotPassed(29.5)) {
-            robot.tracker.updateSystem();
-            dash.create(robot.tracker);
-            dash.update();
-        }
+        robot.claw.lower();
+        robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), -75, 0).setSwitchMode(SWITCH).setNoHeading(true).setDriveCorrectionSpeed(0.04));
     }
 
     private void flick(int iterations) {

@@ -114,13 +114,9 @@ public class MasqMotorSystem implements MasqHardware {
     }
 
     public double getVelocity(){
-        double i = 0;
         double rate = 0;
-        for (MasqMotor masqMotor: motors){
-            rate += masqMotor.getVelocity();
-            i++;
-        }
-        return rate/i;
+        for (MasqMotor masqMotor: motors)rate += masqMotor.getVelocity();
+        return rate / numMotors;
     }
 
     public int getCurrentPosition() {

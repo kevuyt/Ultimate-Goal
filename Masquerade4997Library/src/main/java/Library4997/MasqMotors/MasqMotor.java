@@ -130,7 +130,7 @@ public class MasqMotor implements MasqHardware {
         double tChange = (nanoTime() - previousTime) / 1e9;
         prevPos = getCurrentPosition();
         double rate = deltaPosition / tChange;
-        rate = (rate * 60) / encoder.getClicksPerRotation();
+        rate = (rate * 60) / encoder.getClicksPerRotation() / encoder.getRPM();
         return rate;
     }
 
@@ -180,7 +180,7 @@ public class MasqMotor implements MasqHardware {
     }
     public  double calculateVelocityCorrection(double power) {
         double tChange = (nanoTime() - previousTime) / 1e9;
-        double error = (encoder.getRPM() * power) - getVelocity();
+        double error = encoder.getRPM() * (power - getVelocity());
         rpmIntegral += error * tChange;
         rpmDerivative = (error - rpmPreviousError) / tChange;
         double p = error * kp;
@@ -205,7 +205,7 @@ public class MasqMotor implements MasqHardware {
     }
 
     private boolean getStalled() {
-        return abs(getVelocity()) < stalledRPMThreshold;
+        return abs(getVelocity() * encoder.getRPM()) < stalledRPMThreshold;
     }
     public void setStalledAction(Runnable action) {
         stallAction = action;
