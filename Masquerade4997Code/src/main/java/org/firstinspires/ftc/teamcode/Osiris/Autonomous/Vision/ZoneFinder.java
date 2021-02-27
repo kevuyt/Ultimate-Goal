@@ -12,7 +12,7 @@ public class ZoneFinder {
 
     public static TargetZone findZone (MasqCVDetector detector) {
         RingDetector ringDetector = (RingDetector) detector;
-        if (abs(ringDetector.getTop()-ringDetector.getBottom()) > 10) return TargetZone.B;
+        if (abs(ringDetector.getTop()-ringDetector.getBottom()) > 15) return TargetZone.B;
         else if (abs(((ringDetector.getTop() + ringDetector.getBottom()) / 2 - ringDetector.getControl())) > 10) return TargetZone.C;
         else return TargetZone.A;
     }

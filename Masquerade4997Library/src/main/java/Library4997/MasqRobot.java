@@ -122,7 +122,7 @@ public abstract class MasqRobot {
         driveTrain.setVelocity(0);
     }
     public void turnAbsolute(double angle, double timeout)  {
-        turnAbsolute(angle, timeout, 0.5);
+        turnAbsolute(angle, timeout, 1);
     }
     public void turnAbsolute(double angle) {turnAbsolute(angle, DEFAULT_TIMEOUT);}
 
@@ -211,7 +211,6 @@ public abstract class MasqRobot {
 
                 if (mechMode) {
                     pathAngle = 90 - toDegrees(atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-                    if(target.noHeading()) target.setH(tracker.getHeading());
                     driveTrain.setVelocityMECH(pathAngle - tracker.getHeading(), speed, target.getH());
                 }
                 else {

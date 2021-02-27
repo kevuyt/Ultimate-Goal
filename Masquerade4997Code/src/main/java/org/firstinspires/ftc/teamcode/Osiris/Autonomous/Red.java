@@ -22,8 +22,8 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 public class Red extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
-    private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.0035),
-            strafe = new MasqWayPoint(-7,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002);
+    private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.002),
+            strafe = new MasqWayPoint(-5,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002);
 
     @Override
     public void runLinearOpMode() {
@@ -32,6 +32,7 @@ public class Red extends MasqLinearOpMode {
         while(!opModeIsActive()) {
             zone = findZone(robot.camera.detector);
 
+            dash.create("Remove download wire");
             dash.create("Zone: " + zone);
             dash.create("Control: " + robot.detector.getControl());
             dash.create("Top: " + robot.detector.getTop());
@@ -47,9 +48,9 @@ public class Red extends MasqLinearOpMode {
 
         robot.claw.lower();
 
-        if (zone == A) target.setPoint(-7,-63.5,70);
+        if (zone == A) target.setPoint(-7,-62,80);
         else if (zone == B) target.setPoint(-3,-85,-20).setPointSwitchRadius(24);
-        else target.setPoint(-8,-110,50);
+        else target.setPoint(-8,-106,40);
 
         robot.shooter.setVelocity(0.6);
 
@@ -63,28 +64,52 @@ public class Red extends MasqLinearOpMode {
         sleep();
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(7,-66,180).setTimeout(5).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
+        int heading = zone == B ? 185 : 180;
+
+        robot.xyPath(new MasqWayPoint(7,-64, heading).setTimeout(5).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.03));
+        robot.turnAbsolute(heading,5);
         flick(1);
 
-        robot.xyPath(new MasqWayPoint(14, -66, 180).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
+        heading = zone == B ? 184 : 180;
+
+        robot.xyPath(new MasqWayPoint(14, -65, heading).setTimeout(3).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
+        robot.turnAbsolute(heading);
         flick(1);
 
-        robot.xyPath(new MasqWayPoint(22, -66, 180).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
+        heading = zone == B ? 184 : 180;
+
+        robot.xyPath(new MasqWayPoint(23, -66, heading).setTimeout(3).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
+        robot.turnAbsolute(heading);
         flick(1);
 
         robot.shooter.setVelocity(0);
+        robot.claw.mid();
+
+        robot.xyPath(new MasqWayPoint(zone == B ? 27 : 24, -29, 180).setDriveCorrectionSpeed(0.002).setAngularCorrectionSpeed(0.05).setTimeout(3));
+
+        robot.claw.close();
+        sleep();
+
+        target.setAngularCorrectionSpeed(zone == A ? 0.08 : 0.12).setH(target.getH() + (zone == B ? -15 : 30));
+        MasqWayPoint back = new MasqWayPoint(robot.tracker.getGlobalX(), -50, robot.tracker.getHeading()).setSwitchMode(TANK);
+
+        if(zone == A) robot.xyPath(target);
+        else robot.xyPath(back, target);
+        robot.turnAbsolute(target.getH(),3);
+        robot.claw.open();
+        sleep();
 
         /*if(zone != A) {
-
             if(zone == C) {
                 shootStack(3);
-                robot.turnAbsolute(0);
             }
             shootStack(1);
         }
          */
-        robot.claw.lower();
-        robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), -75, 0).setSwitchMode(SWITCH).setNoHeading(true).setDriveCorrectionSpeed(0.025));
+
+        MasqWayPoint park = new MasqWayPoint(robot.tracker.getGlobalX(), -75, robot.tracker.getHeading()).setDriveCorrectionSpeed(0.025).setAngularCorrectionSpeed(0.03);
+        if(zone != B) park.setX(park.getX() + 10);
+        robot.xyPath(park);
     }
 
     private void flick(int iterations) {

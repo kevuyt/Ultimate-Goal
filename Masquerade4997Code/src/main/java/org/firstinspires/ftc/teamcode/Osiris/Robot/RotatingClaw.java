@@ -16,6 +16,7 @@ public class RotatingClaw implements MasqSubSystem {
         rotater = new MasqServo("rotater",hardwareMap);
         reset();
     }
+
     @Override
     public void driverControl(Gamepad controller) {
         claw.toggle(controller.a);
@@ -26,6 +27,7 @@ public class RotatingClaw implements MasqSubSystem {
     public void open() {claw.setPosition(1);}
 
     public void raise() {rotater.setPosition(0);}
+    public void mid() {rotater.setPosition(0.9);}
     public void lower() {rotater.setPosition(1);}
 
     public void reset() {
@@ -37,10 +39,6 @@ public class RotatingClaw implements MasqSubSystem {
 
     public MasqServo getClaw() {return claw;}
     public MasqServo getRotater() {return rotater;}
-    public void startPositionControl() {
-        claw.startPositionControl();
-        rotater.startPositionControl();
-    }
 
     @Override
     public String getName() {return "Rotating Claw";}
