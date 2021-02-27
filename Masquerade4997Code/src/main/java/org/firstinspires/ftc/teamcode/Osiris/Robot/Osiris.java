@@ -17,6 +17,7 @@ import Library4997.MasqVision.MasqCamera;
 import static Library4997.MasqMotors.MasqMotorModel.*;
 import static Library4997.MasqResources.DashBoard.getDash;
 import static Library4997.MasqRobot.OpMode.AUTO;
+import static Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker.DeadWheelPosition.BOTH_PERPENDICULAR;
 import static Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker.DeadWheelPosition.THREE;
 import static Library4997.MasqUtils.*;
 import static Library4997.MasqVision.MasqCamera.Cam.WEBCAM;
@@ -56,6 +57,7 @@ public class Osiris extends MasqRobot {
 
         tracker.setPosition(THREE);
         tracker.setXRadius(5.675);
+        //tracker.setYRadius(6.75);
         tracker.setTrackWidth(13.75);
         tracker.reset();
 
@@ -63,7 +65,7 @@ public class Osiris extends MasqRobot {
 
         driveController = new MasqPIDController(0.005);
         angleController = new MasqPIDController(0.003);
-        turnController = new MasqPIDController(0.05);
+        turnController = new MasqPIDController(0.04);
 
         driveTrain.setClosedLoop(true);
         driveTrain.resetEncoders();

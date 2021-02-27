@@ -14,7 +14,7 @@ import static Library4997.MasqRobot.OpMode.TELEOP;
 @TeleOp(name = "RobotTeleOp", group = "Osiris")
 public class RobotTeleOp extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    double shooterSpeed = 0.6;
+    double shooterSpeed = 0.66;
     String mode;
     boolean enabled = false;
 
@@ -45,15 +45,19 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 enabled = false;
             }
 
-            if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
+            if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(0.75);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left) shooterSpeed = 0.62;
-            if(gamepad1.dpad_right) shooterSpeed = 0.85;
+            if(gamepad1.dpad_left) {
+                shooterSpeed = 0.58;
+                mode = "POWERSHOT";
+            }
+            else if(gamepad1.dpad_right) {
+                shooterSpeed = 0.66;
+                mode = "GOAL";
+            }
 
             robot.claw.driverControl(gamepad1);
-
-            mode = shooterSpeed == 0.62 ? "POWERSHOT" : "GOAL";
 
             dash.create("Shooter Mode: " + mode);
             dash.update();

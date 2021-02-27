@@ -123,10 +123,10 @@ public class MasqPositionTracker implements MasqHardware {
         prevY = yPosition;
         double angularComponentY = yRadius * dH;
         double angularComponentX = xRadius * dH;
-        double dTranslationalX = dX - angularComponentX;
-        double dTranslationalY = dY + angularComponentY;
-        double dGlobalX = dTranslationalX * cos(heading) - dTranslationalY * sin(heading);
-        double dGlobalY = dTranslationalX * sin(heading) + dTranslationalY * cos(heading);
+        double dTranslationalX = dX + angularComponentX;
+        double dTranslationalY = dY - angularComponentY;
+        double dGlobalX = dTranslationalX * cos(heading) + dTranslationalY * sin(heading);
+        double dGlobalY = dTranslationalY * cos(heading) - dTranslationalX * sin(heading);
         globalX += dGlobalX;
         globalY += dGlobalY;
     }
@@ -155,7 +155,6 @@ public class MasqPositionTracker implements MasqHardware {
         double current = toRadians(getHeading());
         double change = (current - prevHeading);
         prevHeading = current;
-        sleep(10);
         return adjustAngle(change, RADIANS);
     }
 
