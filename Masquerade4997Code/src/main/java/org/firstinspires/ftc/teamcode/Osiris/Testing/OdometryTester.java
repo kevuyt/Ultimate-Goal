@@ -39,8 +39,6 @@ public class OdometryTester extends MasqLinearOpMode {
         robot.driveTrain.setClosedLoop(true);
 
         while(opModeIsActive()) {
-            robot.tracker.updateSystem();
-
             robot.MECH();
 
             if(!enabled) robot.intake.setVelocity(gamepad1.right_trigger - gamepad1.left_trigger);
@@ -56,18 +54,28 @@ public class OdometryTester extends MasqLinearOpMode {
                 enabled = false;
             }
 
-            if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
+            if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(0.85);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left) shooterSpeed = 0.52;
-            if(gamepad1.dpad_right) shooterSpeed = 0.6;
+            if(gamepad1.dpad_left) {
+                shooterSpeed = 0.58;
+                mode = "POWER SHOT";
+            }
+            else if(gamepad1.dpad_right) {
+                shooterSpeed = 0.66;
+                mode = "GOAL";
+            }
+            else if(gamepad1.dpad_up) {
+                shooterSpeed = 0.70;
+                mode = "HIGH POWER";
+            }
 
             robot.claw.driverControl(gamepad1);
 
-            mode = shooterSpeed == 0.52 ? "POWERSHOT" : "GOAL";
+            robot.tracker.updateSystem();
 
-            dash.create("Shooter Mode: " + mode);
             dash.create(robot.tracker);
+            dash.create("Shooter Mode: " + mode);
             dash.update();
         }
     }
