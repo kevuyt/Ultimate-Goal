@@ -36,6 +36,11 @@ public class Red extends MasqLinearOpMode {
             dash.create("Top: " + robot.detector.getTop());
             dash.create("Bottom: " + robot.detector.getBottom());
             dash.update();
+
+            if(isStopRequested()) {
+                robot.camera.stop();
+                break;
+            }
         }
 
         waitForStart();
@@ -47,7 +52,7 @@ public class Red extends MasqLinearOpMode {
         robot.claw.lower();
 
         if (zone == A) target.setPoint(-7,-62,50);
-        else if (zone == B) target.setPoint(-3,-87,-10).setPointSwitchRadius(24);
+        else if (zone == B) target.setPoint(-3,-83,-10).setPointSwitchRadius(24);
         else target.setPoint(-8,-110,45);
 
         robot.shooter.setVelocity(0.6);
@@ -56,7 +61,7 @@ public class Red extends MasqLinearOpMode {
         else robot.xyPath(target);
         robot.turnAbsolute(target.getH(),1);
 
-        robot.shooter.setVelocity(0.58);
+        robot.shooter.setVelocity(0.54);
         robot.claw.open();
         robot.hopper.setPosition(1);
         sleep();
@@ -74,7 +79,7 @@ public class Red extends MasqLinearOpMode {
         robot.turnAbsolute(heading);
         flick();
 
-        heading = zone == B ? 184 : 181;
+        heading = zone == B ? 183 : 180;
 
         robot.xyPath(new MasqWayPoint(23, -65, heading).setTimeout(3).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
         robot.turnAbsolute(heading);
@@ -83,12 +88,17 @@ public class Red extends MasqLinearOpMode {
         robot.shooter.setVelocity(0);
         robot.claw.mid();
 
-        robot.xyPath(new MasqWayPoint(zone == B ? 29 : 24.5, -30, 180).setDriveCorrectionSpeed(0.002).setAngularCorrectionSpeed(0.05).setTimeout(4));
+        double wobble;
+        if(zone == A) wobble = 23.5;
+        else if(zone == B) wobble = 27.5;
+        else wobble = 23;
+
+        robot.xyPath(new MasqWayPoint(wobble, zone == B ? -32 : -30, 180).setDriveCorrectionSpeed(0.0005).setAngularCorrectionSpeed(0.05).setTimeout(5));
 
         robot.claw.close();
         sleep();
 
-        target.setAngularCorrectionSpeed(zone == A ? 0.08 : 0.12).setY(target.getY() + 4).setH(target.getH() + (zone == B ? -15 : 30));
+        target.setAngularCorrectionSpeed(zone == A ? 0.08 : 0.12).setY(target.getY() + (zone == B ? 0 : 4)).setH(target.getH() + (zone == B ? -15 : 30));
         MasqWayPoint back = new MasqWayPoint(robot.tracker.getGlobalX(), -50, robot.tracker.getHeading()).setSwitchMode(TANK);
 
         if(zone == A) robot.xyPath(target);
@@ -97,6 +107,7 @@ public class Red extends MasqLinearOpMode {
         robot.turnAbsolute(target.getH(),3);
         robot.claw.open();
         sleep();
+        robot.claw.raise();
 
         MasqWayPoint park = new MasqWayPoint(robot.tracker.getGlobalX(), -75, robot.tracker.getHeading()).setDriveCorrectionSpeed(0.025).setAngularCorrectionSpeed(0.03);
         if(zone != B) park.setX(park.getX() + 10);

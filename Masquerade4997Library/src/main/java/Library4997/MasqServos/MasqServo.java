@@ -57,7 +57,7 @@ public class MasqServo implements MasqHardware{
         servo.wait(time);
     }
 
-    public void toggle(boolean button) {
+    public void toggle(boolean button, double pos1, double pos2) {
         currState = false;
 
         if (button) currState = true;
@@ -65,10 +65,10 @@ public class MasqServo implements MasqHardware{
 
         prevState = currState;
 
-        if (taskState) setPosition(1);
-        else setPosition(0);
+        if (taskState) setPosition(pos1);
+        else setPosition(pos2);
     }
-
+    public void toggle (boolean button) {toggle(button, 0, 1);}
     public void setPositionControlState(boolean positionControlState) {
         this.positionControlState = positionControlState;
     }
