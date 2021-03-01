@@ -20,7 +20,7 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 public class Red extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
-    private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.004),
+    private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.004).setPointSwitchRadius(24),
             strafe = new MasqWayPoint(-5,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002);
 
     @Override
@@ -52,8 +52,8 @@ public class Red extends MasqLinearOpMode {
         robot.claw.lower();
 
         if (zone == A) target.setPoint(-7,-62,50);
-        else if (zone == B) target.setPoint(-3,-83,-10).setPointSwitchRadius(24);
-        else target.setPoint(-8,-110,45);
+        else if (zone == B) target.setPoint(-4,-85,0);
+        else target.setPoint(-8,-110,42);
 
         robot.shooter.setVelocity(0.6);
 
@@ -61,63 +61,77 @@ public class Red extends MasqLinearOpMode {
         else robot.xyPath(target);
         robot.turnAbsolute(target.getH(),1);
 
-        robot.shooter.setVelocity(0.54);
+        robot.shooter.setVelocity(0.56);
         robot.claw.open();
         robot.hopper.setPosition(1);
         sleep();
         robot.claw.raise();
 
-        int heading = zone == B ? 185 : 182;
+        double heading;
+        if(zone == A) heading = 182;
+        else if(zone == B) heading = 186;
+        else heading = 182;
 
-        robot.xyPath(new MasqWayPoint(7,-64, heading).setTimeout(5).setDriveCorrectionSpeed(0.007).setAngularCorrectionSpeed(0.03));
+        robot.xyPath(new MasqWayPoint(7,-64, heading).setTimeout(5).setDriveCorrectionSpeed(0.008).setAngularCorrectionSpeed(0.03));
         robot.turnAbsolute(heading,5);
         flick();
 
-        heading = zone == B ? 184 : 180;
+        if(zone == A) heading = 180;
+        else if(zone == B) heading = 184;
+        else heading = 185;
 
         robot.xyPath(new MasqWayPoint(14, -64, heading).setTimeout(3).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
         robot.turnAbsolute(heading);
         flick();
 
-        heading = zone == B ? 183 : 180;
+        if(zone == A) heading = 180;
+        else if(zone == B) heading = 184;
+        else heading = 180;
 
         robot.xyPath(new MasqWayPoint(23, -65, heading).setTimeout(3).setDriveCorrectionSpeed(0.01).setAngularCorrectionSpeed(0.06));
         robot.turnAbsolute(heading);
         flick();
 
         robot.shooter.setVelocity(0);
-        robot.claw.mid();
+        robot.claw.lower();
 
-        double wobble;
-        if(zone == A) wobble = 23.5;
-        else if(zone == B) wobble = 27.5;
-        else wobble = 23;
+        double wobbleY;
+        if(zone == A) wobbleY = -28;
+        else if(zone == B) wobbleY = -30;
+        else wobbleY = -26;
 
-        robot.xyPath(new MasqWayPoint(wobble, zone == B ? -32 : -30, 180).setDriveCorrectionSpeed(0.0005).setAngularCorrectionSpeed(0.05).setTimeout(5));
+        double wobbleX;
+        if(zone == A) wobbleX = 24;
+        else if(zone == B) wobbleX = 28.5;
+        else wobbleX = 25;
+
+        robot.xyPath(new MasqWayPoint(wobbleX, wobbleY, 180).setMinVelocity(0.27).setDriveCorrectionSpeed(0.02).setAngularCorrectionSpeed(0.05).setTimeout(5));
 
         robot.claw.close();
         sleep();
 
-        target.setAngularCorrectionSpeed(zone == A ? 0.08 : 0.12).setY(target.getY() + (zone == B ? 0 : 4)).setH(target.getH() + (zone == B ? -15 : 30));
+        target.setH(target.getH() + (zone == B ? -15 : 25)).setSwitchMode(MECH);
         MasqWayPoint back = new MasqWayPoint(robot.tracker.getGlobalX(), -50, robot.tracker.getHeading()).setSwitchMode(TANK);
+
+        robot.claw.mid();
 
         if(zone == A) robot.xyPath(target);
         else robot.xyPath(back, target);
-        turnController.setKp(0.03);
+        turnController.setKp(0.02);
         robot.turnAbsolute(target.getH(),3);
         robot.claw.open();
         sleep();
         robot.claw.raise();
 
-        MasqWayPoint park = new MasqWayPoint(robot.tracker.getGlobalX(), -75, robot.tracker.getHeading()).setDriveCorrectionSpeed(0.025).setAngularCorrectionSpeed(0.03);
+        MasqWayPoint park = new MasqWayPoint(robot.tracker.getGlobalX(), -72, robot.tracker.getHeading()).setDriveCorrectionSpeed(0.025).setAngularCorrectionSpeed(0.03);
         if(zone != B) park.setX(park.getX() + 10);
         robot.xyPath(park);
     }
 
     private void flick() {
-            robot.flicker.setPosition(0.9);
-            sleep(1000);
-            robot.flicker.setPosition(0);
-            sleep();
+        robot.flicker.setPosition(0.9);
+        sleep(1000);
+        robot.flicker.setPosition(0);
+        sleep();
     }
 }
