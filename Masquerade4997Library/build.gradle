@@ -18,10 +18,6 @@ android {
     }
 }
 
-dependencies {
-    implementation files('../libs/Jama-1.0.3.jar')
-}
-
 repositories {
     maven { url = "https://dl.bintray.com/first-tech-challenge/ftcsdk/" }
 
@@ -29,5 +25,10 @@ repositories {
         dirs '../libs'
     }
 }
+dependencies {
+    implementation project(':FtcRobotController')
+    implementation 'org.openftc:easyopencv:1.4.1'
+    implementation files('../libs/Jama-1.0.3.jar')
+}
 
-apply from: 'build.release.gradle'
+apply from: '../build.dependencies.gradle'

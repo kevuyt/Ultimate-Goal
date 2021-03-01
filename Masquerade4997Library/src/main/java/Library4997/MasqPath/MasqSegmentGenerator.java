@@ -1,6 +1,5 @@
 package Library4997.MasqPath;
 
-
 import Jama.Matrix;
 import Library4997.MasqMath.MasqWayPoint;
 
