@@ -17,12 +17,6 @@ public class MasqPath {
     private List<MasqPoint> wayPoints;
     private MasqVector end;
     private MasqVector carrot;
-    public MasqPath (double lookAheadDistance, List<MasqPoint> wayPoints) {
-        this.lookAheadDistance = lookAheadDistance;
-        this.wayPoints = wayPoints;
-        end = new MasqVector(wayPoints.get(1).getX() - wayPoints.get(0).getX(),
-                wayPoints.get(1).getY() - wayPoints.get(0).getY());
-    }
     public MasqPath (double lookAheadDistance, MasqPoint... wayPoints) {
         this.lookAheadDistance = lookAheadDistance;
         this.wayPoints = Arrays.asList(wayPoints);
@@ -32,7 +26,7 @@ public class MasqPath {
     public void updateSystem (MasqPoint robot) {
         MasqVector robotVector = robot.toVector();
         MasqVector unitVector = end.unitVector();
-        //carrot = unitVector.multiply(robotVector.dotProduct(end) + lookAheadDistance);
+        carrot = unitVector.multiply(robotVector.dotProduct(end) + lookAheadDistance);
     }
     public double getOrientationError(double angle, MasqPoint robot) {
         MasqVector directionVector = new MasqVector(Math.sin(Math.toRadians(angle)), Math.cos(Math.toRadians(angle)), "direction");

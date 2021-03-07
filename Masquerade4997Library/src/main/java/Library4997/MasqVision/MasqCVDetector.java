@@ -24,10 +24,12 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     protected int imageHeight = 960;
 
     protected Rect foundRect = new Rect();
+    protected Rect secondRect = new Rect();
     protected Mat workingMat;
     protected Mat displayMat;
 
     protected boolean found = false;
+    protected boolean found2 = false;
 
     protected Point tl, br;
     public int offset = 0;
@@ -98,6 +100,25 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         }
         return bestRect;
     }
+    protected Rect[] chooseTwoRects(List<List<Rect>> listOfBlobs) {
+        Rect bestRect = new Rect();
+        Rect secondRect = new Rect();
+        try {
+            bestRect = boundingRect(listOfBlobs.get(0));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (List<Rect> blob : listOfBlobs) {
+            Rect blobBound = boundingRect(blob);
+            drawRect(blobBound, new Scalar(0, 150, 0), false);
+
+            if (blobBound.area() > bestRect.area()) {
+                secondRect = bestRect;
+                bestRect = blobBound;
+            }
+        }
+        return new Rect[] {bestRect, secondRect};
+    }
     protected void drawContours(List<MatOfPoint> contours, Scalar color) {
         Imgproc.drawContours(displayMat, contours, -1, color, 1);
     }
@@ -122,6 +143,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         return new Point(rect.x + rect.width / 2.0, rect.y + rect.height / 2.0);
     }
     public Rect getFoundRect() {return foundRect;}
+    public Rect getSecondRect() {return secondRect;}
 
     public void setClippingMargins(Point tl, Point br) {
         this.tl = tl;
@@ -145,6 +167,9 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         return imageHeight;
     }
     public boolean isFound() {return found;}
+
+    public boolean isFound2() {return found2;}
+
 
     private Rect boundingRect(List<Rect> rects) {
         int minX = 999;

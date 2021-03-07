@@ -112,4 +112,20 @@ public class MasqUtils {
                 projection.getY() + (lookAhead * sin(theta)));
     }
 
+    public static double[] negate(double[] values) {
+        double[] result = new double[values.length];
+        for (int i = 0; i < values.length; i++) {
+            result[i] = -values[i];
+        }
+        return result;
+    }
+
+    public static int[] negate(int[] values) {
+        int[] result = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            result[i] = -values[i];
+        }
+        return result;
+    }
+
 }

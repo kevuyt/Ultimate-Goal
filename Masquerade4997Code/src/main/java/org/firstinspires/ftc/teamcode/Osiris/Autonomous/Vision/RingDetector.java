@@ -1,45 +1,51 @@
 package org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision;
 
 import org.opencv.core.Mat;
-import org.opencv.core.Point;
+import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
+
+import java.util.List;
 
 import Library4997.MasqVision.MasqCVDetector;
-
-import static org.opencv.core.Core.*;
-import static org.opencv.imgproc.Imgproc.*;
+import Library4997.MasqVision.filters.GrayscaleFilter;
+import Library4997.MasqVision.filters.LumaFilter;
+import Library4997.MasqVision.filters.MasqCVColorFilter;
 
 /**
- * Created by Keval Kataria on 6/1/2020
+ * Created by Keval Kataria on 3/6/2021
  */
 public class RingDetector extends MasqCVDetector {
-    double top, control, bottom;
+    private MasqCVColorFilter lumaFilter = new LumaFilter(150);
 
     @Override
     public Mat processFrame(Mat input) {
+        cropMat(input, tl, br);
+
         workingMat = input.clone();
         displayMat = input.clone();
 
-        cvtColor(workingMat, workingMat,COLOR_RGB2YCrCb);
-        extractChannel(workingMat,workingMat,1);
+        List<MatOfPoint> contoursBright = findContours(lumaFilter, workingMat.clone());
+        List<Rect> rectsBright = contoursToRects(contoursBright);
+        List<List<Rect>> listsOfBrightBlobs = groupIntoBlobs(rectsBright,10);
+        Rect[] rings = chooseTwoRects(listsOfBrightBlobs);
+        Rect bestRect = rings[0];
+        Rect second = rings[0];
 
-        Rect topRect = new Rect(tl,new Point(br.x,tl.y + (br.y-tl.y) * 3.0 / 4));
-        Rect bottomRect = new Rect(new Point(tl.x,topRect.br().y), br);
-        Rect controlRect = new Rect(new Point(tl.x,br.y),new Point(br.x,br.y + topRect.height + bottomRect.height));
-        control = mean(workingMat.clone().submat(controlRect)).val[0];
-        top = mean(workingMat.submat(topRect)).val[0];
-        bottom = mean(workingMat.submat(bottomRect)).val[0];
+        found = bestRect.area() > minimumArea;
+        found2 = second.area() > minimumArea;
 
-        workingMat.release();
-
-        drawRect(controlRect,new Scalar(255,0,0),false);
-        drawRect(topRect,new Scalar(0,0,255),false);
-        drawRect(bottomRect,new Scalar(0,255,0),false);
-
+        if (found) {
+            drawRect(bestRect, new Scalar(0, 255, 0), false);
+            drawCenterPoint(getCenterPoint(bestRect), new Scalar(0, 255, 0));
+            foundRect = bestRect;
+        }
+        if (found2) {
+            drawRect(second, new Scalar(0, 255, 0), false);
+            drawCenterPoint(getCenterPoint(second), new Scalar(0, 255, 0));
+            secondRect = second;
+        }
         return displayMat;
     }
-    public double getTop() {return top;}
-    public double getBottom() {return bottom;}
-    public double getControl() {return control;}
 }

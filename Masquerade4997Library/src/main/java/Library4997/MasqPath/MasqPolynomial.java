@@ -1,37 +1,42 @@
 package Library4997.MasqPath;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.commons.math3.analysis.integration.SimpsonIntegrator;
+import org.apache.commons.math3.analysis.polynomials.PolynomialFunction;
+import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
+import org.apache.commons.math3.exception.NoDataException;
+import org.apache.commons.math3.exception.NullArgumentException;
+
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+import static org.apache.commons.math3.analysis.integration.SimpsonIntegrator.SIMPSON_MAX_ITERATIONS_COUNT;
 
 /**
- * Created by Archishmaan Peyyety on 2020-01-19.
- * Project: MasqLib
+ * Created by Keval Kataria on 3/7/2021
  */
-public class MasqPolynomial {
-    //Coeffs are ordered in standard form i.e greatest to smallest degree
-    private List<Double> coeffs = new ArrayList<>();
-    private int n;
+public class MasqPolynomial extends PolynomialFunction {
 
-    public double getOutput(double input) {
-        int i = 0;
-        int output = 0;
-        while (i < n) {
-            output += coeffs.get(i) * Math.pow(input, n - i - 1);
-            i++;
-        }
-        return output;
+    public MasqPolynomial(double[] c) throws NullArgumentException, NoDataException {
+        super(c);
     }
 
-    public void setCoeff(int term, double coeff) {
-        try {
-            coeffs.set(term - 1, coeff);
-        } catch (IndexOutOfBoundsException e) {
-            n++;
-            coeffs.add(term - 1, coeff);
-        }
+
+    //Use this for arc length only. To find real value use "output(x);"
+    @Override
+    public double value(double x) {
+        return sqrt(1 - pow(polynomialDerivative().value(x), 2));
     }
 
-    public void reset() {
-        coeffs.clear();
+    public double output(double x) {return evaluate(getCoefficients(), x);}
+
+    public static double getArcLength(PolynomialSplineFunction function, double maxX) {
+        SimpsonIntegrator integrator = new SimpsonIntegrator();
+        PolynomialFunction[] polynomials = function.getPolynomials();
+
+        for (int i = 0; i < polynomials.length; i++) {
+            polynomials[i] = new MasqPolynomial(polynomials[i].getCoefficients());
+        }
+
+        function = new PolynomialSplineFunction(function.getKnots(), polynomials);
+        return integrator.integrate(SIMPSON_MAX_ITERATIONS_COUNT, function, 0, maxX);
     }
 }

@@ -11,9 +11,9 @@ public class ZoneFinder {
     public enum TargetZone {A,B,C}
 
     public static TargetZone findZone (MasqCVDetector detector) {
-        RingDetector ringDetector = (RingDetector) detector;
-        if (abs(ringDetector.getTop()-ringDetector.getBottom()) > 15) return TargetZone.B;
-        else if (abs(((ringDetector.getTop() + ringDetector.getBottom()) / 2 - ringDetector.getControl())) > 10) return TargetZone.C;
+        HeightDetector heightDetector = (HeightDetector) detector;
+        if (abs(heightDetector.getTop()- heightDetector.getBottom()) > 15) return TargetZone.B;
+        else if (abs(((heightDetector.getTop() + heightDetector.getBottom()) / 2 - heightDetector.getControl())) > 10) return TargetZone.C;
         else return TargetZone.A;
     }
 }

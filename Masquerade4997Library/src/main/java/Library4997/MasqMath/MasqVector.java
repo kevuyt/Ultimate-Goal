@@ -46,8 +46,8 @@ public class MasqVector implements MasqHardware {
         return new MasqVector(getX()/getMagnitude(), getY()/getMagnitude());
     }
 
-    public static MasqVector multiply(double scalar, MasqVector v) {
-        return new MasqVector(v.getX() * scalar, v.getY() * scalar);
+    public  MasqVector multiply(double scalar) {
+        return new MasqVector(getX() * scalar, getY() * scalar);
     }
 
     public double getMagnitude () {
@@ -86,7 +86,7 @@ public class MasqVector implements MasqHardware {
     }
 
     public MasqVector projectOnTo(MasqVector v) {
-        return multiply(dotProduct(v) / (v.getMagnitude() * v.getMagnitude()), v);
+        return multiply(dotProduct(v) / (v.getMagnitude() * v.getMagnitude()));
     }
 
     public double getDirection () {
