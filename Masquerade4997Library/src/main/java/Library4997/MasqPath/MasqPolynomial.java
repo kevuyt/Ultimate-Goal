@@ -1,10 +1,8 @@
 package Library4997.MasqPath;
 
 import org.apache.commons.math3.analysis.integration.SimpsonIntegrator;
-import org.apache.commons.math3.analysis.polynomials.PolynomialFunction;
-import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
-import org.apache.commons.math3.exception.NoDataException;
-import org.apache.commons.math3.exception.NullArgumentException;
+import org.apache.commons.math3.analysis.polynomials.*;
+import org.apache.commons.math3.exception.*;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -22,9 +20,7 @@ public class MasqPolynomial extends PolynomialFunction {
 
     //Use this for arc length only. To find real value use "output(x);"
     @Override
-    public double value(double x) {
-        return sqrt(1 - pow(polynomialDerivative().value(x), 2));
-    }
+    public double value(double x) {return sqrt(1 - pow(polynomialDerivative().value(x), 2));}
 
     public double output(double x) {return evaluate(getCoefficients(), x);}
 

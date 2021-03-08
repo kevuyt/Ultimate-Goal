@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Osiris.Robot;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.HeightDetector;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
 
 import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
 import Library4997.MasqMath.MasqPIDController;
@@ -11,6 +11,7 @@ import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 import Library4997.MasqServos.MasqServo;
+import Library4997.MasqVision.MasqCVDetector;
 import Library4997.MasqVision.MasqCamera;
 
 import static Library4997.MasqMotors.MasqMotorModel.*;
@@ -27,7 +28,6 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_RIGHT;
 public class Osiris extends MasqRobot {
     public MasqCamera camera;
     public MasqMotor intake, encoder, shooter;
-    public HeightDetector detector;
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
 
@@ -78,7 +78,7 @@ public class Osiris extends MasqRobot {
     }
 
     public void initCamera(HardwareMap hardwareMap) {
-        detector = new HeightDetector();
+        RingDetector detector = new RingDetector();
         detector.setClippingMargins(570,140,300,970);
         camera = new MasqCamera(detector, WEBCAM, hardwareMap);
         camera.start(SIDEWAYS_RIGHT);

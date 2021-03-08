@@ -1,16 +1,10 @@
 package Library4997.MasqVision;
 
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
-import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
+import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import Library4997.MasqVision.filters.MasqCVColorFilter;
 
@@ -35,15 +29,8 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     public int offset = 0;
 
     protected void cropMat(Mat input, Point tl, Point br)  {
-        /*if (!(tl == null || br == null || tl.x >= input.width() || tl.y >= input.height() || tl.x < 0 || tl.y < 0 || br.x > input.width() || br.y > input.height() || br.x <= 0 || br.y <= 0)) {
-            Imgproc.rectangle(input,new Point(0,0),new Point(input.width(), tl.y), new Scalar(0,0,0), -1);
-            Imgproc.rectangle(input, new Point(0,0), new Point(tl.x, input.height()), new Scalar(0,0,0), -1);
-            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(br.x, 0), new Scalar(0,0,0), -1);
-            Imgproc.rectangle(input, new Point(input.width(), input.height()), new Point(0, br.y), new Scalar(0,0,0), -1);
-        }
-        else {
-            DashBoard.getDash().create("Cropping failed due to invalid cropping margins");
-        }*/
+        this.tl = tl;
+        this.br = br;
         input.submat(new Rect(tl,br));
     }
     protected List<MatOfPoint> findContours(MasqCVColorFilter filter, Mat mask) {

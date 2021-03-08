@@ -2,7 +2,6 @@ package Library4997;
 
 import android.graphics.Point;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -10,14 +9,12 @@ import org.opencv.core.Rect;
 
 import java.util.Locale;
 
-import Library4997.MasqMath.MasqPIDController;
-import Library4997.MasqMath.MasqVector;
+import Library4997.MasqMath.*;
 import Library4997.MasqResources.MasqLinearOpMode;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
 
 import static java.lang.Double.valueOf;
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
+import static java.lang.Math.*;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
 
 

@@ -1,10 +1,8 @@
 package Library4997.MasqPath;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import Library4997.MasqMath.MasqPoint;
-import Library4997.MasqMath.MasqVector;
+import Library4997.MasqMath.*;
 import Library4997.MasqResources.DashBoard;
 
 /**

@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqMath.MasqWayPoint;
@@ -20,6 +21,7 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 public class Red extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
+    RingDetector detector = new RingDetector();
     private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.004).setPointSwitchRadius(24),
             strafe = new MasqWayPoint(-5,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002);
 
@@ -28,13 +30,13 @@ public class Red extends MasqLinearOpMode {
         robot.init(hardwareMap, AUTO);
 
         while(!opModeIsActive()) {
-            zone = findZone(robot.camera.detector);
+            zone = detector.findZone();
 
             dash.create("Remove download wire");
             dash.create("Zone: " + zone);
-            dash.create("Control: " + robot.detector.getControl());
-            dash.create("Top: " + robot.detector.getTop());
-            dash.create("Bottom: " + robot.detector.getBottom());
+            dash.create("Control: " + detector.getControl());
+            dash.create("Top: " + detector.getTop());
+            dash.create("Bottom: " + detector.getBottom());
             dash.update();
 
             if(isStopRequested()) {

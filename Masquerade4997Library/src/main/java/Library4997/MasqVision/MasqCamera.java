@@ -3,11 +3,7 @@ package Library4997.MasqVision;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.openftc.easyopencv.OpenCvCamera;
-import org.openftc.easyopencv.OpenCvCameraFactory;
-import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvInternalCamera;
-import org.openftc.easyopencv.OpenCvWebcam;
+import org.openftc.easyopencv.*;
 
 import static Library4997.MasqVision.MasqCamera.Cam.*;
 import static org.openftc.easyopencv.OpenCvCameraRotation.UPRIGHT;
@@ -19,58 +15,78 @@ public class MasqCamera {
     private OpenCvCamera phoneCam;
     private OpenCvWebcam webcam;
     public MasqCVDetector detector;
+    private OpenCvCameraRotation rotation;
     private Cam cam;
 
-    public enum Cam{
+    public enum Cam {
         PHONE, WEBCAM
     }
 
-    public MasqCamera(MasqCVDetector detector, Cam cam, HardwareMap hardwareMap){
+    public MasqCamera(MasqCVDetector detector, Cam cam, HardwareMap hardwareMap) {
         this.cam = cam;
         this.detector = detector;
+
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        if(cam.equals(PHONE)){
+        if (cam.equals(PHONE)) {
             phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
             phoneCam.setPipeline(detector);
-        }
-        else if(cam.equals(WEBCAM)){
+        } else if (cam.equals(WEBCAM)) {
             webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
             webcam.setPipeline(detector);
         }
     }
 
-    public void start(OpenCvCameraRotation rotation){
-        if(cam.equals(PHONE)){
+    public void start(OpenCvCameraRotation rotation) {
+        if (cam.equals(PHONE)) {
             phoneCam.openCameraDevice();
-            phoneCam.startStreaming(320,240, rotation);
+            phoneCam.startStreaming(320, 240, rotation);
         }
-        else if(cam.equals(WEBCAM)){
-            webcam.openCameraDeviceAsync(() -> webcam.startStreaming(1280, 960, rotation));
+        else {
+            webcam.openCameraDevice();
+            webcam.startStreaming(1280, 960, rotation);
         }
-    }
-    public void start() {
-        start(UPRIGHT);
+        this.rotation = rotation;
     }
 
-    public void stop(){
-        if(cam.equals(PHONE)){
+    public void start() {
+        start(UPRIGHT);
+        rotation = UPRIGHT;
+    }
+
+    public void stop() {
+        if (cam.equals(PHONE)) {
             phoneCam.stopStreaming();
             phoneCam.closeCameraDevice();
-        }
-        else if(cam.equals(WEBCAM)){
+        } else if (cam.equals(WEBCAM)) {
             webcam.stopStreaming();
             webcam.closeCameraDevice();
         }
     }
 
-    public void pause(){
-        if(cam.equals(PHONE)) phoneCam.pauseViewport();
-        else if(cam.equals(WEBCAM)) webcam.pauseViewport();
+    public void pause() {
+        if (cam.equals(PHONE)) phoneCam.pauseViewport();
+        else if (cam.equals(WEBCAM)) webcam.pauseViewport();
     }
 
-    public void resume(){
-        if(cam.equals(PHONE)) phoneCam.resumeViewport();
-        else if(cam.equals(WEBCAM)) webcam.resumeViewport();
+    public void resume() {
+        if (cam.equals(PHONE)) phoneCam.resumeViewport();
+        else if (cam.equals(WEBCAM)) webcam.resumeViewport();
     }
 
+    public OpenCvCamera getCamera() {
+        if (cam.equals(PHONE)) return phoneCam;
+        else return webcam;
+    }
+    public void changePipeline(MasqCVDetector detector) {
+        if(cam == PHONE) {
+            phoneCam.stopStreaming();
+            phoneCam.setPipeline(detector);
+            phoneCam.startStreaming(320, 240, rotation);
+        }
+        else {
+            webcam.stopStreaming();
+            webcam.setPipeline(detector);
+            webcam.startStreaming(1280, 960, rotation);
+        }
+    }
 }
