@@ -100,19 +100,6 @@ public class MasqMotor implements MasqHardware {
         encoder.resetEncoder();
     }
 
-
-    public void runToPosition(int inches, double speed){
-        MasqClock clock = new MasqClock();
-        resetEncoder();
-        double clicks = -inches * encoder.getClicksPerInch();
-        motor.setTargetPosition((int) clicks);
-        motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        setVelocity(speed);
-        while (opModeIsActive() && motor.isBusy() &&
-                clock.hasNotPassed(5, MasqClock.Resolution.SECONDS)) {MasqUtils.sleep(100);}
-        setVelocity(0);
-        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    }
     boolean isBusy () {
         return motor.isBusy();
     }

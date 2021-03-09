@@ -27,15 +27,16 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_RIGHT;
  */
 public class Osiris extends MasqRobot {
     public MasqCamera camera;
-    public MasqMotor intake, encoder, shooter;
+    public MasqMotor intake, encoder1, encoder2, shooter;
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
+    private int rings;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
         driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
 
-        shooter = new MasqMotor("shooter", USDIGITAL_E4T, hardwareMap);
+        shooter = new MasqMotor("shooter", REVHDHEX1, hardwareMap);
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
 
         claw = new RotatingClaw(hardwareMap);
@@ -43,8 +44,9 @@ public class Osiris extends MasqRobot {
         flicker = new MasqServo("flicker", hardwareMap);
         hopper = new MasqServo("hopper", hardwareMap);
 
-        encoder = new MasqMotor("encoder", USDIGITAL_E4T, hardwareMap);
-        tracker = new MasqPositionTracker(intake, shooter, encoder, hardwareMap);
+        encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, hardwareMap);
+        encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
+        tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
 
         dash = getDash();
     }
@@ -55,7 +57,6 @@ public class Osiris extends MasqRobot {
 
         tracker.setPosition(THREE);
         tracker.setXRadius(5.675);
-        //tracker.setYRadius(6.75);
         tracker.setTrackWidth(13.75);
         tracker.reset();
 
@@ -89,7 +90,8 @@ public class Osiris extends MasqRobot {
         flicker.setDirection(Servo.Direction.REVERSE);
         flicker.scaleRange(0.05, 0.38);
         flicker.setPosition(0);
-        hopper.scaleRange(0.15, 0.344);
+        hopper.scaleRange(0.05, 0.344);
         hopper.setPosition(0);
     }
+    public int getRings() {return rings;}
 }

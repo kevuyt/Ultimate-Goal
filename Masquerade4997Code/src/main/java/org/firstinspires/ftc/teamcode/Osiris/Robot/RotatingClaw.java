@@ -20,19 +20,19 @@ public class RotatingClaw implements MasqSubSystem {
     @Override
     public void driverControl(Gamepad controller) {
         claw.toggle(controller.a);
-        rotater.toggle(controller.b, 0.4, 1);
+        rotater.toggle(controller.b);
     }
 
     public void close() {claw.setPosition(0);}
     public void open() {claw.setPosition(1);}
 
-    public void raise() {rotater.setPosition(0.4);}
-    public void mid() {rotater.setPosition(0.8);}
+    public void raise() {rotater.setPosition(0);}
+    public void mid() {rotater.setPosition(0.7);}
     public void lower() {rotater.setPosition(1);}
 
     public void reset() {
-        claw.scaleRange(0.05, 0.4);
-        rotater.scaleRange(0.01, 0.96);
+        claw.scaleRange(0.1, 0.4);
+        rotater.scaleRange(0.39, 0.96);
         close();
         //init();
     }

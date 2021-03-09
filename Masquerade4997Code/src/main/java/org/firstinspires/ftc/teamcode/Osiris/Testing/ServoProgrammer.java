@@ -19,7 +19,7 @@ public class ServoProgrammer extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap, TELEOP);
-        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotater());
+        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotater(), robot.hopper, robot.flicker);
 
         dash.create("Hello, this is the Servo Programmer");
         dash.update();

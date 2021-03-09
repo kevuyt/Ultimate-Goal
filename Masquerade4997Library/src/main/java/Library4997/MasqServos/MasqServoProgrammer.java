@@ -72,18 +72,18 @@ public class MasqServoProgrammer {
         }
 
         if(numServos > 2) {
-            servos[2].setPosition(val2);
-            dash.create(names[2] + " (+RB, -LB): ", val2);
+            servos[2].setPosition(val3);
+            dash.create(names[2] + " (+RB, -LB): ", val3);
         }
 
         if(numServos > 3) {
-            servos[3].setPosition(val2);
-            dash.create(names[3] + " (+RT, -LT): ", val2);
+            servos[3].setPosition(val4);
+            dash.create(names[3] + " (+RT, -LT): ", val4);
         }
 
         if(numServos > 4) {
-            servos[4].setPosition(val2);
-            dash.create(names[4] + " (+LUp, -LDown): ", val2);
+            servos[4].setPosition(val5);
+            dash.create(names[4] + " (+LUp, -LDown): ", val5);
         }
 
         dash.update();
