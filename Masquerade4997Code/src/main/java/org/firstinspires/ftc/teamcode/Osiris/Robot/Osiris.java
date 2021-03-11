@@ -10,6 +10,7 @@ import Library4997.MasqMath.MasqPIDController;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
+import Library4997.MasqSensors.MasqRangeSensor;
 import Library4997.MasqServos.MasqServo;
 import Library4997.MasqVision.MasqCVDetector;
 import Library4997.MasqVision.MasqCamera;
@@ -30,7 +31,6 @@ public class Osiris extends MasqRobot {
     public MasqMotor intake, encoder1, encoder2, shooter;
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
-    private int rings;
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
@@ -93,5 +93,7 @@ public class Osiris extends MasqRobot {
         hopper.scaleRange(0.05, 0.344);
         hopper.setPosition(0);
     }
-    public int getRings() {return rings;}
+    public int getRings() {
+        return 0; //Placeholder until we get distance sensor
+    }
 }

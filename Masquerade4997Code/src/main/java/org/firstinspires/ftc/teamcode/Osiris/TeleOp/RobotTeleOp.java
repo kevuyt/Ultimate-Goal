@@ -64,6 +64,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             robot.claw.driverControl(gamepad1);
 
             dash.create("Shooter Mode: " + mode);
+            //dash.create("Rings in Hopper: " + robot.getRings());
             dash.update();
         }
     }
