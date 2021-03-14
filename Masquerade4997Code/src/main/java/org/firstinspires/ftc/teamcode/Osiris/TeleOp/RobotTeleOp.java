@@ -48,23 +48,14 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left) {
-                shooterSpeed = 0.58;
-                mode = "POWER SHOT";
-            }
-            else if(gamepad1.dpad_right) {
-                shooterSpeed = 0.66;
-                mode = "GOAL";
-            }
-            else if(gamepad1.dpad_up) {
-                shooterSpeed = 0.70;
-                mode = "HIGH POWER";
-            }
+            if(gamepad1.dpad_left)  shooterSpeed -= 0.0001;
+            else if(gamepad1.dpad_right) shooterSpeed += 0.0001;
 
             robot.claw.driverControl(gamepad1);
 
-            dash.create("Shooter Mode: " + mode);
-            //dash.create("Rings in Hopper: " + robot.getRings());
+            dash.create("Speed: ", shooterSpeed);
+            //dash.create("Shooter Mode: ", mode);
+            //dash.create("Rings in Hopper: ", robot.getRings());
             dash.update();
         }
     }

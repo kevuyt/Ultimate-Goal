@@ -68,7 +68,7 @@ public class Osiris extends MasqRobot {
 
         initServos();
 
-        shooter.setClosedLoop(true);
+        //shooter.setClosedLoop(true);
         shooter.setKp(5e-10);
 
         if(opmode == AUTO) {
@@ -87,7 +87,7 @@ public class Osiris extends MasqRobot {
 
     private void initServos() {
         claw.reset();
-        flicker.scaleRange(0.065, 0.18);
+        flicker.scaleRange(0.045, 0.18);
         flicker.setPosition(0);
         hopper.scaleRange(0.05, 0.344);
         hopper.setPosition(0);
