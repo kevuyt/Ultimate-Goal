@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.*;
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.TargetZone;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import org.opencv.core.Rect;
 
@@ -11,7 +11,6 @@ import Library4997.MasqResources.MasqLinearOpMode;
 
 import static Library4997.MasqRobot.OpMode.AUTO;
 import static Library4997.MasqUtils.getCenterPoint;
-import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.findZone;
 
 /**
  * Created by Keval Kataria on 3/7/2021
@@ -19,34 +18,44 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 @TeleOp(name = "VisionTester", group = "Test")
 public class VisionTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    RingDetector ringDetector = new RingDetector();
+    RingDetector detector;
+    double top = 570, left = 140, bottom = 300, right = 970;
 
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap, AUTO);
+        detector = (RingDetector) robot.camera.detector;
 
         while(!opModeIsActive()) {
-            TargetZone zone = ringDetector.findZone();
+            TargetZone zone = detector.findZone();
 
-            dash.create("Remove download wire");
+            top -= 0.01 * gamepad1.left_stick_y;
+            bottom += 0.01 * gamepad1.left_stick_y;
+            right -= 0.01 * gamepad1.left_stick_x;
+            left += 0.01 * gamepad1.left_stick_x;
+
+            detector.setClippingMargins((int) top, (int) left, (int) bottom, (int) right);
+
             dash.create("Zone: " + zone);
-            dash.create("Control: " + ringDetector.getControl());
-            dash.create("Top: " + ringDetector.getTop());
-            dash.create("Bottom: " + ringDetector.getBottom());
+            dash.create("Control: " + detector.getControl());
+            dash.create("Top: " + detector.getTop());
+            dash.create("Bottom: " + detector.getBottom());
+            dash.create("");
+            dash.create(top, left, bottom, right);
             dash.update();
 
             if(isStopRequested()) {
                 robot.camera.stop();
-                break;
+                return;
             }
         }
 
         waitForStart();
 
-        ringDetector.switchDetection();
+        detector.switchDetection();
 
         while(opModeIsActive()) {
-            Rect rect = ringDetector.getFoundRect();
+            Rect rect = detector.getFoundRect();
 
             dash.create("Center Point X: ", getCenterPoint(rect).x);
             dash.create("Height: ", rect.height);

@@ -28,11 +28,6 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     protected Point tl, br;
     public int offset = 0;
 
-    protected void cropMat(Mat input, Point tl, Point br)  {
-        this.tl = tl;
-        this.br = br;
-        input.submat(new Rect(tl,br));
-    }
     protected List<MatOfPoint> findContours(MasqCVColorFilter filter, Mat mask) {
         filter.process(workingMat,mask);
         List<MatOfPoint> contours = new ArrayList<>();

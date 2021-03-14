@@ -1,9 +1,10 @@
 package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.TargetZone;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqMath.MasqWayPoint;
@@ -12,7 +13,7 @@ import Library4997.MasqResources.MasqLinearOpMode;
 import static Library4997.MasqMath.MasqWayPoint.PointMode.*;
 import static Library4997.MasqRobot.OpMode.AUTO;
 import static Library4997.MasqUtils.turnController;
-import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.TargetZone.*;
+import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone.*;
 
 /**
  * Created by Keval Kataria on 3/8/2021
@@ -21,8 +22,8 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 public class Red extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
+    private RingDetector detector;
     int iterations;
-    RingDetector detector = new RingDetector();
     private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.004).setPointSwitchRadius(24),
             strafe = new MasqWayPoint(-5,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002),
             stack = new MasqWayPoint(4, 30, 0).setSwitchMode(TANK);
@@ -30,11 +31,11 @@ public class Red extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap, AUTO);
+        detector = (RingDetector) robot.camera.detector;
 
         while (!opModeIsActive()) {
             zone = detector.findZone();
 
-            dash.create("Remove download wire");
             dash.create("Zone: " + zone);
             dash.create("Control: " + detector.getControl());
             dash.create("Top: " + detector.getTop());
@@ -43,7 +44,7 @@ public class Red extends MasqLinearOpMode {
 
             if (isStopRequested()) {
                 robot.camera.stop();
-                break;
+                return;
             }
         }
 

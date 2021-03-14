@@ -45,7 +45,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 enabled = false;
             }
 
-            if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(0.85);
+            if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
             if(gamepad1.dpad_left) {

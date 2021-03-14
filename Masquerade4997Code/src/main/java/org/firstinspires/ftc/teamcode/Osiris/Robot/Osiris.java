@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
 
@@ -10,9 +9,7 @@ import Library4997.MasqMath.MasqPIDController;
 import Library4997.MasqMotors.MasqMotor;
 import Library4997.MasqRobot;
 import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
-import Library4997.MasqSensors.MasqRangeSensor;
 import Library4997.MasqServos.MasqServo;
-import Library4997.MasqVision.MasqCVDetector;
 import Library4997.MasqVision.MasqCamera;
 
 import static Library4997.MasqMotors.MasqMotorModel.*;
@@ -21,7 +18,7 @@ import static Library4997.MasqRobot.OpMode.AUTO;
 import static Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker.DeadWheelPosition.THREE;
 import static Library4997.MasqUtils.*;
 import static Library4997.MasqVision.MasqCamera.Cam.WEBCAM;
-import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_RIGHT;
+import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_LEFT;
 
 /**
  * Created by Keval Kataria on 9/12/2020
@@ -71,6 +68,9 @@ public class Osiris extends MasqRobot {
 
         initServos();
 
+        shooter.setClosedLoop(true);
+        shooter.setKp(5e-10);
+
         if(opmode == AUTO) {
             driveTrain.setKp(5e-8);
             initCamera(hardwareMap);
@@ -82,18 +82,15 @@ public class Osiris extends MasqRobot {
         RingDetector detector = new RingDetector();
         detector.setClippingMargins(570,140,300,970);
         camera = new MasqCamera(detector, WEBCAM, hardwareMap);
-        camera.start(SIDEWAYS_RIGHT);
+        camera.start(SIDEWAYS_LEFT);
     }
 
     private void initServos() {
         claw.reset();
-        flicker.setDirection(Servo.Direction.REVERSE);
-        flicker.scaleRange(0.05, 0.38);
+        flicker.scaleRange(0.065, 0.18);
         flicker.setPosition(0);
         hopper.scaleRange(0.05, 0.344);
         hopper.setPosition(0);
     }
-    public int getRings() {
-        return 0; //Placeholder until we get distance sensor
-    }
+    public int getRings() {return 0; /*Placeholder until we get distance sensor*/}
 }

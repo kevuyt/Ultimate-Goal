@@ -15,7 +15,6 @@ public class MasqCamera {
     private OpenCvCamera phoneCam;
     private OpenCvWebcam webcam;
     public MasqCVDetector detector;
-    private OpenCvCameraRotation rotation;
     private Cam cam;
 
     public enum Cam {
@@ -45,12 +44,10 @@ public class MasqCamera {
             webcam.openCameraDevice();
             webcam.startStreaming(1280, 960, rotation);
         }
-        this.rotation = rotation;
     }
 
     public void start() {
         start(UPRIGHT);
-        rotation = UPRIGHT;
     }
 
     public void stop() {
@@ -76,17 +73,5 @@ public class MasqCamera {
     public OpenCvCamera getCamera() {
         if (cam.equals(PHONE)) return phoneCam;
         else return webcam;
-    }
-    public void changePipeline(MasqCVDetector detector) {
-        if(cam == PHONE) {
-            phoneCam.stopStreaming();
-            phoneCam.setPipeline(detector);
-            phoneCam.startStreaming(320, 240, rotation);
-        }
-        else {
-            webcam.stopStreaming();
-            webcam.setPipeline(detector);
-            webcam.startStreaming(1280, 960, rotation);
-        }
     }
 }

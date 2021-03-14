@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import Library4997.MasqMath.MasqWayPoint;
@@ -11,8 +12,7 @@ import Library4997.MasqResources.MasqLinearOpMode;
 import static Library4997.MasqRobot.OpMode.AUTO;
 import static Library4997.MasqMath.MasqWayPoint.PointMode.*;
 import static Library4997.MasqUtils.turnController;
-import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.TargetZone.*;
-import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder.*;
+import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone.*;
 
 /**
  * Created by Keval Kataria on 11/27/2020
@@ -21,18 +21,19 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.ZoneFinder
 public class RedLegacy extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
-    RingDetector detector = new RingDetector();
+    RingDetector detector;
     private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.004).setPointSwitchRadius(24),
             strafe = new MasqWayPoint(-5,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002);
 
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap, AUTO);
+        detector = (RingDetector) robot.camera.detector;
+
 
         while(!opModeIsActive()) {
             zone = detector.findZone();
 
-            dash.create("Remove download wire");
             dash.create("Zone: " + zone);
             dash.create("Control: " + detector.getControl());
             dash.create("Top: " + detector.getTop());
@@ -41,7 +42,7 @@ public class RedLegacy extends MasqLinearOpMode {
 
             if(isStopRequested()) {
                 robot.camera.stop();
-                break;
+                return;
             }
         }
 

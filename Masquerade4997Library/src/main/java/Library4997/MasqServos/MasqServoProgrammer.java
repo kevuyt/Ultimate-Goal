@@ -34,7 +34,7 @@ public class MasqServoProgrammer {
 
     public void init() {
         dash.create("Which servos do you want to test?");
-        String[] testServos = new String[numServos];
+        String[] testServos = {"No", "No", "No", "No", "No"};
 
         if (controller.a) testServos[0] = "Yes";
         else if (controller.b) testServos[0] = "No";

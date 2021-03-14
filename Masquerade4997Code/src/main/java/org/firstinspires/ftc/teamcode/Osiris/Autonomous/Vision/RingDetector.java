@@ -13,7 +13,6 @@ import Library4997.MasqVision.MasqCVDetector;
 import Library4997.MasqVision.filters.LumaFilter;
 import Library4997.MasqVision.filters.MasqCVColorFilter;
 
-import static Library4997.MasqUtils.getCenterPoint;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -26,7 +25,7 @@ import static org.opencv.imgproc.Imgproc.*;
 public class RingDetector extends MasqCVDetector {
     double top, control, bottom;
     private MasqCVColorFilter lumaFilter = new LumaFilter(100);
-    double prevtime = System.nanoTime();
+    double prevTime = 0;
     private boolean init = true;
 
     private double ratio = 1;
@@ -38,9 +37,9 @@ public class RingDetector extends MasqCVDetector {
     public Mat processFrame(Mat input) {
         double time = System.nanoTime();
 
-        if(time - prevtime > 3e9) {
+        if(time - prevTime > 3e9) {
             if(init) {
-                prevtime = time;
+                prevTime = time;
                 workingMat = input.clone();
                 displayMat = input.clone();
 
@@ -51,8 +50,8 @@ public class RingDetector extends MasqCVDetector {
                 Rect bottomRect = new Rect(new Point(tl.x, topRect.br().y), br);
                 Rect controlRect = new Rect(new Point(tl.x, br.y), new Point(br.x, br.y + topRect.height + bottomRect.height));
                 control = mean(workingMat.clone().submat(controlRect)).val[0];
-                top = mean(workingMat.submat(topRect)).val[0];
-                bottom = mean(workingMat.submat(bottomRect)).val[0];
+                top = mean(workingMat.clone().submat(topRect)).val[0];
+                bottom = mean(workingMat.clone().submat(bottomRect)).val[0];
 
                 workingMat.release();
 
@@ -61,8 +60,7 @@ public class RingDetector extends MasqCVDetector {
                 drawRect(bottomRect, new Scalar(0, 255, 0), false);
             }
             else {
-                cropMat(input, tl, br);
-
+                input.submat(new Rect(tl,br));
                 workingMat = input.clone();
                 displayMat = input.clone();
 
@@ -102,10 +100,10 @@ public class RingDetector extends MasqCVDetector {
 
     public enum TargetZone {A,B,C}
 
-    public ZoneFinder.TargetZone findZone () {
-        if (abs(getTop()- getBottom()) > 15) return ZoneFinder.TargetZone.B;
-        else if (abs(((getTop() + getBottom()) / 2 - getControl())) > 10) return ZoneFinder.TargetZone.C;
-        else return ZoneFinder.TargetZone.A;
+    public TargetZone findZone () {
+        if (abs(getTop()- getBottom()) > 15) return TargetZone.B;
+        else if (abs(((getTop() + getBottom()) / 2 - getControl())) > 10) return TargetZone.C;
+        else return TargetZone.A;
     }
 
     public MasqPoint[] findRings() {
