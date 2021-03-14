@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
@@ -13,6 +14,7 @@ import static Library4997.MasqRobot.OpMode.TELEOP;
  */
 
 @TeleOp(name = "OdometryTester", group = "Test")
+@Disabled
 public class OdometryTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     double shooterSpeed = 0.6;

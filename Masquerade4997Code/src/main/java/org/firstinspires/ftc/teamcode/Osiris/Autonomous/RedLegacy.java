@@ -42,7 +42,7 @@ public class RedLegacy extends MasqLinearOpMode {
 
             if(isStopRequested()) {
                 robot.camera.stop();
-                return;
+                break;
             }
         }
 

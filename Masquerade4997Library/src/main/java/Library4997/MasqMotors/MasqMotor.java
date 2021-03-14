@@ -12,6 +12,8 @@ import Library4997.MasqSensors.MasqEncoder;
 import Library4997.MasqSensors.MasqLimitSwitch;
 
 import static Library4997.MasqUtils.opModeIsActive;
+import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
+import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 import static java.lang.Math.abs;
 import static java.lang.System.nanoTime;
 
@@ -93,8 +95,14 @@ public class MasqMotor implements MasqHardware {
         return this;
     }
 
-    public void runWithoutEncoder() {motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);}
-    public void runUsingEncoder() {motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);}
+    public void runWithoutEncoder() {
+        motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motor.setZeroPowerBehavior(FLOAT);
+    }
+    public void runUsingEncoder() {
+        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor.setZeroPowerBehavior(BRAKE);
+    }
 
     public void resetEncoder() {
         encoder.resetEncoder();

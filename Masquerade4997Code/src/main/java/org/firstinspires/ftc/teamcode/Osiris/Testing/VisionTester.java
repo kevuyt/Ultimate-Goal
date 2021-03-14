@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
@@ -7,6 +8,7 @@ import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.Targ
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import org.opencv.core.Rect;
 
+import Library4997.MasqMath.MasqPoint;
 import Library4997.MasqResources.MasqLinearOpMode;
 
 import static Library4997.MasqRobot.OpMode.AUTO;
@@ -16,6 +18,7 @@ import static Library4997.MasqUtils.getCenterPoint;
  * Created by Keval Kataria on 3/7/2021
  */
 @TeleOp(name = "VisionTester", group = "Test")
+@Disabled
 public class VisionTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     RingDetector detector;
@@ -46,7 +49,7 @@ public class VisionTester extends MasqLinearOpMode {
 
             if(isStopRequested()) {
                 robot.camera.stop();
-                return;
+                break;
             }
         }
 
@@ -56,9 +59,12 @@ public class VisionTester extends MasqLinearOpMode {
 
         while(opModeIsActive()) {
             Rect rect = detector.getFoundRect();
+            MasqPoint[] rings = detector.findRings();
 
             dash.create("Center Point X: ", getCenterPoint(rect).x);
             dash.create("Height: ", rect.height);
+            if(rings.length > 0) dash.create("Ring 1: ", rings[0].getX(), rings[0].getY());
+            if(rings.length == 2) dash.create("Ring 2: ", rings[1].getX(), rings[1].getY());
             dash.update();
         }
 

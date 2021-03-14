@@ -134,6 +134,13 @@ public class MasqMotorSystem implements MasqHardware {
         for(MasqMotor motor : motors) motor.startVelocityControl();
     }
 
+    public void runUsingEncoder() {
+        for(MasqMotor motor : motors) motor.runUsingEncoder();
+    }
+    public void runWithoutEncoder() {
+        for(MasqMotor motor : motors) motor.runWithoutEncoder();
+    }
+
     public String getName() {
         return systemName;
     }

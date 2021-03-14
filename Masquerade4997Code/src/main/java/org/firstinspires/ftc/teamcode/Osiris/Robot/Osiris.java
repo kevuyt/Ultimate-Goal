@@ -68,8 +68,8 @@ public class Osiris extends MasqRobot {
 
         initServos();
 
-        //shooter.setClosedLoop(true);
-        shooter.setKp(5e-10);
+        shooter.setClosedLoop(true);
+        shooter.setKp(0); //Placeholder until I get shooter encoder
 
         if(opmode == AUTO) {
             driveTrain.setKp(5e-8);
@@ -80,7 +80,7 @@ public class Osiris extends MasqRobot {
 
     public void initCamera(HardwareMap hardwareMap) {
         RingDetector detector = new RingDetector();
-        detector.setClippingMargins(570,140,300,970);
+        detector.setClippingMargins(662,324,208,786);
         camera = new MasqCamera(detector, WEBCAM, hardwareMap);
         camera.start(SIDEWAYS_LEFT);
     }
@@ -92,5 +92,5 @@ public class Osiris extends MasqRobot {
         hopper.scaleRange(0.05, 0.344);
         hopper.setPosition(0);
     }
-    public int getRings() {return 0; /*Placeholder until we get distance sensor*/}
+    public int getRings() {return 0;} //Placeholder until I get distance sensor
 }

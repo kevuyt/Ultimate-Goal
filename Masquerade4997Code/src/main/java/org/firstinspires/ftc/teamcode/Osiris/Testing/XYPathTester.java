@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
@@ -14,6 +15,7 @@ import static Library4997.MasqRobot.OpMode.TELEOP;
  */
 
 @TeleOp(name = "XYPathTester", group = "Test")
+@Disabled
 public class XYPathTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private double heading = 0;

@@ -51,7 +51,7 @@ public class MasqPoint implements MasqHardware {
 
     @Override
     public String getName() {
-        return null;
+        return "Point";
     }
 
     @Override

@@ -1,5 +1,6 @@
 package Library4997.MasqDriveTrains;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import Library4997.MasqMotors.MasqMotorModel;
@@ -88,6 +89,15 @@ public class MasqDriveTrain implements MasqHardware {
     public void startVelocityControl() {
         leftDrive.startVelocityControl();
         rightDrive.startVelocityControl();
+    }
+
+    public void runUsingEncoder() {
+        leftDrive.runUsingEncoder();
+        rightDrive.runUsingEncoder();
+    }
+    public void runWithoutEncoder() {
+        leftDrive.runWithoutEncoder();
+        rightDrive.runWithoutEncoder();
     }
 
     public MasqEncoder getEncoder () {return rightDrive.motor1.getEncoder();}

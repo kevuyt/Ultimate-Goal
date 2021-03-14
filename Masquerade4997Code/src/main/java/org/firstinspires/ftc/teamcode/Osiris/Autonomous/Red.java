@@ -44,7 +44,7 @@ public class Red extends MasqLinearOpMode {
 
             if (isStopRequested()) {
                 robot.camera.stop();
-                return;
+                break;
             }
         }
 

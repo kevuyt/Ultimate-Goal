@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
@@ -13,6 +14,7 @@ import static Library4997.MasqRobot.OpMode.TELEOP;
  * Created by Keval Kataria on 12/30/2020
  */
 @TeleOp(name = "ServoProgrammer", group = "Test")
+@Disabled
 public class ServoProgrammer extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
 
