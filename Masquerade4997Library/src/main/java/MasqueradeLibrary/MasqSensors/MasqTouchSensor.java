@@ -1,4 +1,4 @@
-package MasqueradeLibrary;
+package MasqueradeLibrary.MasqSensors;
 
 import androidx.annotation.NonNull;
 
@@ -10,6 +10,7 @@ import static com.qualcomm.robotcore.hardware.DigitalChannel.Mode.INPUT;
 /**
  * Created by Keval Kataria on 3/15/2021
  */
+
 public class MasqTouchSensor {
     private final DigitalChannel limitSwitch;
     private final String name;

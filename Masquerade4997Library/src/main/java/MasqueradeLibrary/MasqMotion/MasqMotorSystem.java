@@ -1,12 +1,15 @@
-package MasqueradeLibrary;
+package MasqueradeLibrary.MasqMotion;
 
 import androidx.annotation.NonNull;
+
+import MasqueradeLibrary.MasqSensors.MasqTouchSensor;
 
 import static java.util.Locale.US;
 
 /**
  * Created by Keval Kataria on 3/15/2021
  */
+
 public class MasqMotorSystem {
     MasqMotor[] motors;
     String name;
@@ -32,6 +35,12 @@ public class MasqMotorSystem {
     }
     public void setVelocityControl (boolean velocityControl) {
         for (MasqMotor masqMotor : motors) masqMotor.setVelocityControl(velocityControl);
+    }
+
+    public double getPower() {
+        double sum = 0;
+        for (MasqMotor masqMotor: motors) sum += Math.abs(masqMotor.getPower());
+        return sum/motors.length;
     }
 
     @NonNull

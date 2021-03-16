@@ -1,10 +1,13 @@
-package MasqueradeLibrary;
+package MasqueradeLibrary.MasqMotion;
 
 import androidx.annotation.NonNull;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
+
+import MasqueradeLibrary.MasqSensors.MasqTouchSensor;
 
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.*;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
@@ -14,6 +17,7 @@ import static java.util.Locale.US;
 /**
  * Created by Keval Kataria on 3/11/2021
  */
+
 public class MasqMotor {
     private DcMotor motor;
     private MasqMotorModel model;
@@ -86,6 +90,9 @@ public class MasqMotor {
 
     public void setWheelDiameter(double diameter) {wheelDiameter = diameter;}
     public void setGearRatio(double gearRatio) {this.gearRatio = gearRatio;}
+
+    public DcMotorController getController () {return motor.getController();}
+    public int getPortNumber () {return motor.getPortNumber();}
 
     @NonNull
     @Override
