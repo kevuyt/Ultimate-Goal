@@ -14,6 +14,7 @@ import static java.lang.Math.*;
 public class MasqDriveTrain {
     public MasqMotorSystem leftDrive, rightDrive;
     public MasqMotor motor1, motor2, motor3, motor4;
+    public MasqMotorModel model;
 
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap, MasqMotorModel model) {
         motor1 = new MasqMotor(name1, model, hardwareMap);
@@ -23,6 +24,8 @@ public class MasqDriveTrain {
 
         leftDrive = new MasqMotorSystem("LeftDrive", motor1, motor2);
         rightDrive = new MasqMotorSystem("RightDrive", motor3, motor4);
+
+        this.model = model;
     }
     public MasqDriveTrain(String name1, String name2, String name3, String name4, HardwareMap hardwareMap) {
         new MasqDriveTrain(name1, name2, name3, name4, hardwareMap, REVHDHEX20);
@@ -57,6 +60,8 @@ public class MasqDriveTrain {
 
     public double getInches() {return (leftDrive.getInches() + rightDrive.getInches())/2;}
 
+    public double getCurrentPosition() {return getInches() * model.CPR;}
+
     public double getPower() {
         return (leftDrive.getPower() + rightDrive.getPower()) /2;
     }
@@ -66,8 +71,7 @@ public class MasqDriveTrain {
         rightDrive.setVelocityControl(velocityControl);
     }
 
-    public void setPowerMECH(double angle, double speed, double targetHeading) {
-        double turnPower = angleController.getOutput(adjustAngle(targetHeading - getTracker().getHeading()));
+    public void setPowerMECH(double angle, double speed, double turnPower) {
         angle = toRadians(angle);
         double adjustedAngle = angle + Math.PI/4;
 
@@ -88,9 +92,5 @@ public class MasqDriveTrain {
         motor2.setPower(leftBack);
         motor3.setPower(rightFront);
         motor4.setPower(rightBack);
-    }
-
-    public void setPowerMECH(double angle, double speed) {
-        setPowerMECH(angle, speed, getTracker().getHeading());
     }
 }

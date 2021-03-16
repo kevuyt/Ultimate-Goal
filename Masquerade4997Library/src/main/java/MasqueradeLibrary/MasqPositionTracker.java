@@ -2,6 +2,7 @@ package MasqueradeLibrary;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import MasqueradeLibrary.MasqMotion.MasqDriveTrain;
 import MasqueradeLibrary.MasqMotion.MasqMotor;
 import MasqueradeLibrary.MasqResources.DashBoard;
 import MasqueradeLibrary.MasqResources.MasqUtils;
@@ -20,14 +21,14 @@ public class MasqPositionTracker {
     private MasqMotor yLSystem;
     private MasqMotor yRSystem;
     private MasqMotor ySystem;
+    private MasqDriveTrain driveTrain;
     public MasqAdafruitIMU imu;
     private double prevHeading;
     private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
     private DeadWheelPosition position;
-    private DashBoard dash = DashBoard.getDash();
 
     public enum DeadWheelPosition {
-        BOTH_CENTER, BOTH_PERPENDICULAR, THREE
+        TWO_CENTER, TWO_BACK_RIGHT, TWO_BACK_LEFT, THREE, TANK
     }
 
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor yLSystem, MasqMotor yRSystem, HardwareMap hardwareMap) {
@@ -37,19 +38,25 @@ public class MasqPositionTracker {
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
+        position = DeadWheelPosition.THREE;
         reset();
     }
-    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, HardwareMap hardwareMap) {
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, boolean left, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
         imu = new MasqAdafruitIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
+        if(left) position = DeadWheelPosition.TWO_BACK_LEFT;
+        else position = DeadWheelPosition.TWO_BACK_RIGHT;
         reset();
     }
-    public MasqPositionTracker(HardwareMap hardwareMap) {
+    public MasqPositionTracker(MasqDriveTrain driveTrain, HardwareMap hardwareMap) {
+        this.driveTrain = driveTrain;
         imu = new MasqAdafruitIMU("imu", hardwareMap);
+        prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
+        position = DeadWheelPosition.TANK;
         imu.reset();
     }
 
@@ -59,9 +66,11 @@ public class MasqPositionTracker {
 
     public void updateSystem () {
         switch (position) {
-            case BOTH_CENTER: bothCenter(); break;
-            case BOTH_PERPENDICULAR: bothPerpendicular(); break;
+            case TWO_CENTER: twoCenter(); break;
+            case TWO_BACK_RIGHT: twoPerpendicular(false); break;
+            case TWO_BACK_LEFT: twoPerpendicular(true); break;
             case THREE: three(); break;
+            case TANK: tank(); break;
         }
     }
 
@@ -82,12 +91,11 @@ public class MasqPositionTracker {
         }
 
         imu.reset();
-
         globalX = 0;
         globalY = 0;
     }
 
-    private void bothCenter() {
+    private void twoCenter() {
         double deltaX = (xSystem.getInches() - prevX);
         double deltaY = (ySystem.getInches() - prevY);
         double heading = toRadians(getHeading());
@@ -98,7 +106,7 @@ public class MasqPositionTracker {
         prevY = ySystem.getInches();
         prevX = xSystem.getInches();
     }
-    private void bothPerpendicular() {
+    private void twoPerpendicular(boolean left) {
         double heading = toRadians(getHeading());
         double xPosition = xSystem.getInches();
         double yPosition = ySystem.getInches();
@@ -108,9 +116,10 @@ public class MasqPositionTracker {
         double dY = yPosition - prevY;
         prevY = yPosition;
         double angularComponentY = yRadius * dH;
+        if(left) angularComponentY *= -1;
         double angularComponentX = xRadius * dH;
         double dTranslationalX = dX + angularComponentX;
-        double dTranslationalY = dY - angularComponentY;
+        double dTranslationalY = dY + angularComponentY;
         double dGlobalX = dTranslationalX * cos(heading) + dTranslationalY * sin(heading);
         double dGlobalY = dTranslationalY * cos(heading) - dTranslationalX * sin(heading);
         globalX += dGlobalX;
@@ -137,6 +146,17 @@ public class MasqPositionTracker {
         globalY += dGlobalY;
     }
 
+    private void tank() {
+        double heading = toRadians(getHeading());
+        double yPosition = driveTrain.getInches();
+        double dY = yPosition - prevY;
+        prevY = yPosition;
+        double dGlobalX = dY * sin(heading);
+        double dGlobalY = dY * cos(heading);
+        globalX += dGlobalX;
+        globalY += dGlobalY;
+    }
+
     public double getDHeading() {
         double current = toRadians(getHeading());
         double change = (current - prevHeading);
@@ -155,5 +175,4 @@ public class MasqPositionTracker {
     public void setYRadius(double yRadius) {this.yRadius = yRadius;}
     public void setTrackWidth(double trackWidth) {this.trackWidth = trackWidth;}
 
-    public void setPosition(DeadWheelPosition position) {this.position = position;}
 }

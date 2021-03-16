@@ -22,6 +22,8 @@ public class MasqVector {
 
     public double getX() {return x;}
     public double getY() {return y;}
+    public void setX(double x) {this.x = x;}
+    public void setY(double y) {this.y = y;}
 
     public double getMagnitude () {return hypot(getX(), getY());}
     public double dotProduct(MasqVector v) {return (this.getX() * v.getX()) + (this.getY() * v.getY());}

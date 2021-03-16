@@ -105,18 +105,14 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     protected void drawRect(Rect rect, Scalar color, boolean fill) {
         if(fill) Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, -1);
         else Imgproc.rectangle(displayMat, rect.tl(), rect.br(), color, 2);
-        }
+    }
     protected void drawCenterPoint(Point point, Scalar color) {
-            Imgproc.circle(displayMat, point, 2, color);
-        }
+        Imgproc.circle(displayMat, point, 2, color);
+    }
 
     protected List<Rect> filterByBound(List<Rect> rects, Rect boundingRect) {
         List<Rect> rectsInsideBound = new ArrayList<>();
-        for (Rect rect : rects) {
-            if (boundingRect.contains(getCenterPoint(rect))) {
-                rectsInsideBound.add(rect);
-            }
-        }
+        for (Rect rect : rects) if (boundingRect.contains(getCenterPoint(rect))) rectsInsideBound.add(rect);
         return rectsInsideBound;
     }
     public Point getCenterPoint(Rect rect) {
@@ -132,10 +128,9 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
         imageHeight = 960 - top - bottom;
         offset = left;
     }
+
     public boolean isFound() {return found;}
-
     public boolean isFound2() {return found2;}
-
 
     private Rect boundingRect(List<Rect> rects) {
         int minX = 999;
@@ -155,6 +150,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     private double distance(Point a, Point b) {
         return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
     }
+
     @Override
     public Mat processFrame(Mat input) {return input;}
     @Override
