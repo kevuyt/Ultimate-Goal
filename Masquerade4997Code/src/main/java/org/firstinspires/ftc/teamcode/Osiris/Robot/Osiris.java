@@ -4,20 +4,16 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
 
-import Library4997.MasqDriveTrains.MasqMechanumDriveTrain;
-import Library4997.MasqMath.MasqPIDController;
-import Library4997.MasqMotors.MasqMotor;
-import Library4997.MasqRobot;
-import Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker;
-import Library4997.MasqServos.MasqServo;
-import Library4997.MasqVision.MasqCamera;
+import MasqueradeLibrary.MasqMath.MasqPIDController;
+import MasqueradeLibrary.MasqMotion.*;
+import MasqueradeLibrary.MasqPositionTracker;
+import MasqueradeLibrary.MasqRobot;
+import MasqueradeLibrary.MasqVision.MasqCamera;
 
-import static Library4997.MasqMotors.MasqMotorModel.*;
-import static Library4997.MasqResources.DashBoard.getDash;
-import static Library4997.MasqRobot.OpMode.AUTO;
-import static Library4997.MasqSensors.MasqPositionTracker.MasqPositionTracker.DeadWheelPosition.THREE;
-import static Library4997.MasqUtils.*;
-import static Library4997.MasqVision.MasqCamera.Cam.WEBCAM;
+import static MasqueradeLibrary.MasqMotion.MasqMotor.MasqMotorModel.*;
+import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
+import static MasqueradeLibrary.MasqResources.MasqUtils.*;
+import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
 import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_LEFT;
 
 /**
@@ -31,7 +27,7 @@ public class Osiris extends MasqRobot {
 
     @Override
     public void mapHardware(HardwareMap hardwareMap) {
-        driveTrain = new MasqMechanumDriveTrain(hardwareMap, REVHDHEX20);
+        driveTrain = new MasqDriveTrain(hardwareMap);
 
         shooter = new MasqMotor("shooter", REVHDHEX1, hardwareMap);
         intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
@@ -52,7 +48,6 @@ public class Osiris extends MasqRobot {
     public void init(HardwareMap hardwareMap, OpMode opmode) {
         mapHardware(hardwareMap);
 
-        tracker.setPosition(THREE);
         tracker.setXRadius(5.675);
         tracker.setTrackWidth(13.75);
         tracker.reset();
@@ -63,25 +58,20 @@ public class Osiris extends MasqRobot {
         angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.04);
 
-        driveTrain.setClosedLoop(true);
+        driveTrain.setVelocityControl(true);
         driveTrain.resetEncoders();
 
         initServos();
 
-        shooter.setClosedLoop(true);
-        shooter.setKp(0); //Placeholder until I get shooter encoder
+        shooter.setVelocityControl(true);
 
-        if(opmode == AUTO) {
-            driveTrain.setKp(5e-8);
-            initCamera(hardwareMap);
-        }
-        else driveTrain.setKp(5e-9);
+        if(opmode == AUTO) initCamera(hardwareMap);
     }
 
     public void initCamera(HardwareMap hardwareMap) {
         RingDetector detector = new RingDetector();
         detector.setClippingMargins(662,324,208,786);
-        camera = new MasqCamera(detector, WEBCAM, hardwareMap);
+        camera = new MasqCamera(detector, hardwareMap);
         camera.start(SIDEWAYS_LEFT);
     }
 

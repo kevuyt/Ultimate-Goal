@@ -8,11 +8,11 @@ import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.Targ
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import org.opencv.core.Rect;
 
-import Library4997.MasqMath.MasqPoint;
-import Library4997.MasqResources.MasqLinearOpMode;
+import MasqueradeLibrary.MasqMath.MasqVector;
+import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
 
-import static Library4997.MasqRobot.OpMode.AUTO;
-import static Library4997.MasqUtils.getCenterPoint;
+import static MasqueradeLibrary.MasqResources.MasqUtils.getCenterPoint;
+import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
 
 /**
  * Created by Keval Kataria on 3/7/2021
@@ -59,10 +59,11 @@ public class VisionTester extends MasqLinearOpMode {
 
         while(opModeIsActive()) {
             Rect rect = detector.getFoundRect();
-            MasqPoint[] rings = detector.findRings();
+            MasqVector[] rings = detector.findRings();
 
             dash.create("Center Point X: ", getCenterPoint(rect).x);
             dash.create("Height: ", rect.height);
+
             if(rings.length > 0) dash.create("Ring 1: ", rings[0].getX(), rings[0].getY());
             if(rings.length == 2) dash.create("Ring 2: ", rings[1].getX(), rings[1].getY());
             dash.update();

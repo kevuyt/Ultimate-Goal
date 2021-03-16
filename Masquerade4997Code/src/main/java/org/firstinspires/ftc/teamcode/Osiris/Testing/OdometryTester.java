@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import Library4997.MasqResources.MasqLinearOpMode;
+import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
 
-import static Library4997.MasqRobot.OpMode.TELEOP;
+import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
 
 /**
  * Created by Keval Kataria on 11/22/2020
@@ -17,14 +17,11 @@ import static Library4997.MasqRobot.OpMode.TELEOP;
 @Disabled
 public class OdometryTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    double shooterSpeed = 0.6;
-    String mode;
-    boolean enabled = false;
 
     @Override
     public void runLinearOpMode() {
         robot.init(hardwareMap, TELEOP);
-        robot.driveTrain.setClosedLoop(false);
+        robot.driveTrain.setVelocityControl(false);
 
         while (!opModeIsActive()) {
             robot.tracker.updateSystem();
@@ -38,7 +35,7 @@ public class OdometryTester extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.driveTrain.setClosedLoop(true);
+        robot.driveTrain.setVelocityControl(true);
 
         while(opModeIsActive()) {
             robot.MECH();
@@ -46,7 +43,6 @@ public class OdometryTester extends MasqLinearOpMode {
             robot.tracker.updateSystem();
 
             dash.create(robot.tracker);
-            dash.create("Shooter Mode: " + mode);
             dash.update();
         }
     }

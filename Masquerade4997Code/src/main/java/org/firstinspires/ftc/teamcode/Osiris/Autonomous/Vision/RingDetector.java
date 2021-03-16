@@ -8,10 +8,10 @@ import org.opencv.core.Scalar;
 
 import java.util.List;
 
-import Library4997.MasqMath.MasqPoint;
-import Library4997.MasqVision.MasqCVDetector;
-import Library4997.MasqVision.filters.LumaFilter;
-import Library4997.MasqVision.filters.MasqCVColorFilter;
+import MasqueradeLibrary.MasqMath.MasqVector;
+import MasqueradeLibrary.MasqVision.LumaFilter;
+import MasqueradeLibrary.MasqVision.MasqCVColorFilter;
+import MasqueradeLibrary.MasqVision.MasqCVDetector;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
@@ -31,7 +31,6 @@ public class RingDetector extends MasqCVDetector {
     private double ratio = 1;
     private double x0 = 0;
     private double y0 = 0;
-    private MasqPoint ring1 = new MasqPoint(0,0), ring2 = new MasqPoint(0,0);
 
     @Override
     public Mat processFrame(Mat input) {
@@ -106,16 +105,17 @@ public class RingDetector extends MasqCVDetector {
         else return TargetZone.A;
     }
 
-    public MasqPoint[] findRings() {
-        if(isFound()) {
-            ring1 = new MasqPoint(getCenterPoint(getFoundRect()).x - 480 + x0,
+    public MasqVector[] findRings() {
+        MasqVector ring1 = null, ring2 = null;
+        if(isFound() && isFound2()) {
+            ring1 = new MasqVector("Ring1", getCenterPoint(getFoundRect()).x - 480 + x0,
                     sqrt(pow(getFoundRect().height * ratio, 2) - pow(getCenterPoint(getFoundRect()).x, 2)) + y0);
-            ring2 = new MasqPoint(getCenterPoint(getSecondRect()).x - 480 + x0,
+            ring2 = new MasqVector("Ring 2", getCenterPoint(getSecondRect()).x - 480 + x0,
                     sqrt(pow(getSecondRect().height * ratio, 2) - pow(getCenterPoint(getSecondRect()).x, 2)) + y0);
         }
-        else if(isFound2()) ring1 = new MasqPoint(getCenterPoint(getSecondRect()).x - 480 + x0,
+        else if(isFound()) ring2 = new MasqVector("Ring 2", getCenterPoint(getSecondRect()).x - 480 + x0,
                 sqrt(pow(getSecondRect().height * ratio, 2) - pow(getCenterPoint(getSecondRect()).x, 2)) + y0);
-        return new MasqPoint[] {ring1, ring2};
+        return new MasqVector[] {ring1, ring2};
     }
 
     public void setRatio(double ratio) {this.ratio = ratio;}

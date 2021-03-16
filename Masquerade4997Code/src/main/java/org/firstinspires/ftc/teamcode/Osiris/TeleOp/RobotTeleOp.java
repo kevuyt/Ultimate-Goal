@@ -4,9 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import Library4997.MasqResources.MasqLinearOpMode;
+import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
 
-import static Library4997.MasqRobot.OpMode.TELEOP;
+import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
 
 /**
  * Created by Keval Kataria on 11/9/2020
@@ -32,15 +32,15 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             robot.MECH();
 
-            if(!enabled) robot.intake.setVelocity(gamepad1.right_trigger - gamepad1.left_trigger);
+            if(!enabled) robot.intake.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
 
             if(gamepad1.left_bumper) {
-                robot.shooter.setVelocity(shooterSpeed);
+                robot.shooter.setPower(shooterSpeed);
                 robot.hopper.setPosition(1);
                 enabled = true;
             }
             else {
-                robot.shooter.setVelocity(0);
+                robot.shooter.setPower(0);
                 robot.hopper.setPosition(0);
                 enabled = false;
             }

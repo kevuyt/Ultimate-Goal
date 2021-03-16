@@ -1,14 +1,17 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
+import androidx.annotation.NonNull;
+
 import com.qualcomm.robotcore.hardware.*;
 
-import Library4997.MasqResources.*;
-import Library4997.MasqServos.MasqServo;
+import MasqueradeLibrary.MasqMotion.MasqServo;
+
+import static java.util.Locale.US;
 
 /**
  * Created by Keval Kataria on 11/26/2020
  */
-public class RotatingClaw implements MasqSubSystem {
+public class RotatingClaw {
     private MasqServo claw, rotater;
 
     public RotatingClaw(HardwareMap hardwareMap) {
@@ -17,7 +20,6 @@ public class RotatingClaw implements MasqSubSystem {
         reset();
     }
 
-    @Override
     public void driverControl(Gamepad controller) {
         claw.toggle(controller.a);
         rotater.toggle(controller.b);
@@ -34,15 +36,14 @@ public class RotatingClaw implements MasqSubSystem {
         claw.scaleRange(0.1, 0.4);
         rotater.scaleRange(0.39, 0.96);
         close();
-        //init();
     }
 
     public MasqServo getClaw() {return claw;}
     public MasqServo getRotater() {return rotater;}
 
+    @NonNull
     @Override
-    public String getName() {return "Rotating Claw";}
-
-    @Override
-    public MasqHardware[] getComponents() {return new MasqHardware[] {claw, rotater};}
+    public String toString() {
+        return String.format(US,"Rotating Claw:\nClaw Position: %.2f\nRotater Position: %.2f", claw.getPosition(), rotater.getPosition());
+    }
 }
