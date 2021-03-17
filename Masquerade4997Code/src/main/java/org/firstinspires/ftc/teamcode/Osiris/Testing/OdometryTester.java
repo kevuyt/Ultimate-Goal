@@ -20,7 +20,7 @@ public class OdometryTester extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() {
-        robot.init(hardwareMap, TELEOP);
+        robot.init(TELEOP);
         robot.driveTrain.setVelocityControl(false);
 
         while (!opModeIsActive()) {

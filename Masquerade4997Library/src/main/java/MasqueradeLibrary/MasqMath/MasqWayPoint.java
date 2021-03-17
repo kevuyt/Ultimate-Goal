@@ -3,6 +3,9 @@ package MasqueradeLibrary.MasqMath;
 
 import androidx.annotation.NonNull;
 
+import static MasqueradeLibrary.MasqPositionTracker.DeadWheelPosition.TANK;
+import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
+import static MasqueradeLibrary.MasqResources.MasqUtils.getTracker;
 import static java.util.Locale.US;
 
 /**
@@ -23,7 +26,12 @@ public class MasqWayPoint {
     public enum PointMode {MECH, TANK, SWITCH}
 
 
-    public MasqWayPoint() {}
+    public MasqWayPoint() {
+        x = getTracker().getGlobalX();
+        y = getTracker().getGlobalY();
+        h = getTracker().getHeading();
+        if(getTracker().getPosition() == TANK) switchMode = PointMode.TANK;
+    }
     public MasqWayPoint(double x,double y, double h) {
         this.x = x;
         this.y = y;
@@ -31,7 +39,7 @@ public class MasqWayPoint {
     }
 
     public MasqWayPoint setSwitchMode(PointMode switchMode) {
-        this.switchMode = switchMode;
+        if(getTracker().getPosition() != TANK) this.switchMode = switchMode;
         return this;
     }
 

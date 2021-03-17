@@ -10,10 +10,8 @@ import MasqueradeLibrary.MasqMath.MasqPIDController;
 import MasqueradeLibrary.MasqMath.MasqVector;
 import MasqueradeLibrary.MasqMath.MasqWayPoint;
 import MasqueradeLibrary.MasqMotion.MasqDriveTrain;
-import MasqueradeLibrary.MasqPositionTracker;
 import MasqueradeLibrary.MasqResources.DashBoard;
 import MasqueradeLibrary.MasqResources.MasqClock;
-import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqueradeLibrary.MasqMath.MasqWayPoint.PointMode;
 import static MasqueradeLibrary.MasqMath.MasqWayPoint.PointMode.*;
@@ -25,13 +23,11 @@ import static java.util.Arrays.asList;
 
 /**
  * Created by Keval Kataria on 3/15/2021
- * TODO
- *  Rewrite Drive method to use tank odometry
  */
 
 public abstract class MasqRobot {
-    public abstract void mapHardware(HardwareMap hardwareMap);
-    public abstract void init(HardwareMap hardwareMap, OpMode opmode);
+    public abstract void mapHardware();
+    public abstract void init(OpMode opmode);
 
     public MasqDriveTrain driveTrain;
     public MasqPositionTracker tracker;
@@ -41,41 +37,6 @@ public abstract class MasqRobot {
     public enum OpMode {
         AUTO, TELEOP
     }
-
-    public void drive(double distance, double timeout) {
-        double targetAngle = tracker.getHeading();
-        double targetClicks = distance * driveTrain.model.CPR;
-        double clicksRemaining, angularError, powerAdjustment, power, leftPower, rightPower, maxPower;
-
-        driveTrain.resetEncoders();
-        timeoutClock.reset();
-        do {
-            clicksRemaining = targetClicks - abs(driveTrain.getCurrentPosition());
-            power = driveController.getOutput(clicksRemaining);
-            power = clip(power, -1, 1);
-            angularError = adjustAngle(targetAngle - tracker.getHeading());
-            powerAdjustment = angleController.getOutput(angularError);
-            powerAdjustment = clip(powerAdjustment, -1, 1);
-            leftPower = power - powerAdjustment;
-            rightPower = power + powerAdjustment;
-
-            maxPower = max(abs(leftPower), abs(rightPower));
-            if (maxPower > 1) {
-                leftPower /= maxPower;
-                rightPower /= maxPower;
-            }
-            tracker.updateSystem();
-            driveTrain.setPower(leftPower, rightPower);
-
-            dash.create("LEFT POWER: ", leftPower);
-            dash.create("RIGHT POWER: ", rightPower);
-            dash.create("ERROR: ", clicksRemaining);
-            dash.create("HEADING: ", tracker.getHeading());
-            dash.update();
-        } while (opModeIsActive() && timeoutClock.hasNotPassed(timeout, SECONDS) && (abs(angularError) > 5 || clicksRemaining/targetClicks > 0.01));
-        driveTrain.setPower(0);
-    }
-    public void drive(double distance) {drive(distance, DEFAULT_TIMEOUT);}
 
     public void turnAbsolute(double angle, double timeout) {
         double error, power;
@@ -179,22 +140,21 @@ public abstract class MasqRobot {
     }
 
     public void NFS(Gamepad c) {
-        float move = -c.left_stick_y;
-        float turn = c.right_stick_x * 0.7f;
+        double move = -c.left_stick_y;
+        double turn = c.right_stick_x;
         double left = move + turn;
         double right = move - turn;
+
         double max = max(left, right);
         if(max > 1.0) {
             left /= max;
             right /= max;
         }
+
         driveTrain.setPower(left, right);
     }
 
-    public void TANK(Gamepad c) {
-        driveTrain.rightDrive.setPower(c.right_stick_y);
-        driveTrain.leftDrive.setPower(c.left_stick_y);
-    }
+    public void TANK(Gamepad c) {driveTrain.setPower(-c.left_stick_y, -c.right_stick_y);}
 
     public void MECH(Gamepad c) {
         double x = c.left_stick_x;
@@ -202,11 +162,11 @@ public abstract class MasqRobot {
         double xR = c.right_stick_x;
         double angle = atan2(x, y);
 
-        driveTrain.setPowerMECH(angle,hypot(x, y),xR);
+        driveTrain.setPowerMECH(angle, hypot(x, y), xR);
     }
     public void MECH() {MECH(getLinearOpMode().getDefaultController());}
 
     public MasqWayPoint getCurrentWayPoint() {
-        return new MasqWayPoint().setPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading()).setName("Inital WayPoint");
+        return new MasqWayPoint().setPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading()).setName("Initial WayPoint");
     }
 }

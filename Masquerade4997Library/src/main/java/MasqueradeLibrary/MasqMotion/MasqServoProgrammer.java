@@ -38,30 +38,30 @@ public class MasqServoProgrammer {
 
         if (controller.a) testServos[0] = "Yes";
         else if (controller.b) testServos[0] = "No";
-        dash.create(names[0] + " (Yes: A, No: B): ", testServos[0]);
+        dash.create(names[0] + " (Yes: A, No: B):", testServos[0]);
 
         if (numServos > 1) {
             if (controller.y) testServos[1] = "Yes";
             else if (controller.x) testServos[1] = "No";
-            dash.create(names[1] + " (Yes: Y, No: X): ", testServos[1]);
+            dash.create(names[1] + " (Yes: Y, No: X):", testServos[1]);
         }
 
         if (numServos > 2) {
             if (controller.right_bumper) testServos[2] = "Yes";
             else if (controller.left_bumper) testServos[2] = "No";
-            dash.create(names[2] + " (Yes: RB, No: LB): ", testServos[2]);
+            dash.create(names[2] + " (Yes: RB, No: LB):", testServos[2]);
         }
 
         if (numServos > 3) {
             if (controller.right_trigger > 0) testServos[3] = "Yes";
             else if (controller.left_trigger > 0) testServos[3] = "No";
-            dash.create(names[3] + " (Yes: RT, No: LT): ", testServos[3]);
+            dash.create(names[3] + " (Yes: RT, No: LT):", testServos[3]);
         }
 
         if (numServos > 4) {
             if (controller.left_stick_y > 0) testServos[4] = "Yes";
             else if (controller.left_stick_y < 0) testServos[4] = "No";
-            dash.create(names[4] + " (Yes: LUp, No: LDown): ", testServos[4]);
+            dash.create(names[4] + " (Yes: LUp, No: LDown):", testServos[4]);
         }
 
 

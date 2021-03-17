@@ -164,15 +164,12 @@ public class MasqPositionTracker {
         return adjustAngle(change, RADIANS);
     }
 
-    public double getGlobalX() {
-        return globalX;
-    }
-    public double getGlobalY() {
-        return globalY;
-    }
+    public double getGlobalX() {return globalX;}
+    public double getGlobalY() {return globalY;}
 
     public void setXRadius(double xRadius) {this.xRadius = xRadius;}
     public void setYRadius(double yRadius) {this.yRadius = yRadius;}
     public void setTrackWidth(double trackWidth) {this.trackWidth = trackWidth;}
 
+    public DeadWheelPosition getPosition() {return position;}
 }

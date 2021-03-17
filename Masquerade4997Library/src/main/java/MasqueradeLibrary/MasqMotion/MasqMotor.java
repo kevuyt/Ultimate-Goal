@@ -2,13 +2,14 @@ package MasqueradeLibrary.MasqMotion;
 
 import androidx.annotation.NonNull;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
 import MasqueradeLibrary.MasqSensors.MasqTouchSensor;
 
+import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.*;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 import static java.lang.Math.PI;
@@ -27,9 +28,9 @@ public class MasqMotor {
     private String name;
 
     public enum MasqMotorModel {
-        ORBITAL20 (560, 315), NEVEREST40(1120, 160), NEVEREST60(1680,105),
-        USDIGITAL_E4T(1440, 0), REVHDHEX40(1120, 150), REVHDHEX20(560, 300),
-        REVTHROUGHBORE(8192, 0), NEVERREST37(44.4, 1780), REVHDHEX1(38, 6000);
+        NEVEREST_20 (560, 315), NEVEREST_40(1120, 160), NEVEREST_60(1680,105),
+        E4T(1440, 0), HDHEX_40(1120, 150), HDHEX_20(560, 300),
+        THROUGHBORE(8192, 0), NEVEREST_37(44.4, 1780), HDHEX_1(38, 6000);
 
         public final double CPR;
         public final int RPM;
@@ -40,15 +41,15 @@ public class MasqMotor {
         }
     }
 
-    public MasqMotor(String name, MasqMotorModel model, HardwareMap hardwareMap) {
-        motor = hardwareMap.get(DcMotor.class, name);
+    public MasqMotor(String name, MasqMotorModel model) {
+        motor = getHardwareMap().get(DcMotor.class, name);
         motor.setZeroPowerBehavior(BRAKE);
         this.model = model;
         resetEncoder();
         this.name = name;
     }
-    public MasqMotor(String name, MasqMotorModel model, DcMotor.Direction direction, HardwareMap hardwareMap) {
-        motor = hardwareMap.dcMotor.get(name);
+    public MasqMotor(String name, MasqMotorModel model, Direction direction) {
+        motor = getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);
         motor.setZeroPowerBehavior(BRAKE);
         this.model = model;

@@ -22,7 +22,7 @@ public class XYPathTester extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() {
-        robot.init(hardwareMap, TELEOP);
+        robot.init(TELEOP);
 
         dash.create(robot.tracker);
         dash.update();

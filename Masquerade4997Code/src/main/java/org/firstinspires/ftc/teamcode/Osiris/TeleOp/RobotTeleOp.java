@@ -20,7 +20,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() {
-        robot.init(hardwareMap, TELEOP);
+        robot.init(TELEOP);
 
         while(!opModeIsActive()) {
             dash.create("Initialized");

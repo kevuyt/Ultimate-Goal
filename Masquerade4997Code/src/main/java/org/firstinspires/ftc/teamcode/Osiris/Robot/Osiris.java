@@ -24,34 +24,35 @@ public class Osiris extends MasqRobot {
     public MasqMotor intake, encoder1, encoder2, shooter;
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
+    private HardwareMap hardwareMap;
 
     @Override
-    public void mapHardware(HardwareMap hardwareMap) {
-        driveTrain = new MasqDriveTrain(hardwareMap);
+    public void mapHardware() {
+        driveTrain = new MasqDriveTrain();
 
-        shooter = new MasqMotor("shooter", REVHDHEX1, hardwareMap);
-        intake = new MasqMotor("intake", USDIGITAL_E4T, hardwareMap);
+        shooter = new MasqMotor("shooter", HDHEX_1);
+        intake = new MasqMotor("intake", E4T);
 
         claw = new RotatingClaw(hardwareMap);
 
         flicker = new MasqServo("flicker", hardwareMap);
         hopper = new MasqServo("hopper", hardwareMap);
 
-        encoder1 = new MasqMotor("encoder1", USDIGITAL_E4T, hardwareMap);
-        encoder2 = new MasqMotor("encoder2", USDIGITAL_E4T, hardwareMap);
+        encoder1 = new MasqMotor("encoder1", E4T);
+        encoder2 = new MasqMotor("encoder2", E4T);
         tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
 
         dash = getDash();
     }
 
     @Override
-    public void init(HardwareMap hardwareMap, OpMode opmode) {
-        mapHardware(hardwareMap);
+    public void init(OpMode opmode) {
+        hardwareMap = getHardwareMap();
+        mapHardware();
 
         tracker.setXRadius(5.675);
         tracker.setTrackWidth(13.75);
         tracker.reset();
-
         setTracker(tracker);
 
         driveController = new MasqPIDController(0.005);
@@ -65,10 +66,10 @@ public class Osiris extends MasqRobot {
 
         shooter.setVelocityControl(true);
 
-        if(opmode == AUTO) initCamera(hardwareMap);
+        if(opmode == AUTO) initCamera();
     }
 
-    public void initCamera(HardwareMap hardwareMap) {
+    public void initCamera() {
         RingDetector detector = new RingDetector();
         detector.setClippingMargins(662,324,208,786);
         camera = new MasqCamera(detector, hardwareMap);

@@ -28,16 +28,16 @@ public class Red extends MasqLinearOpMode {
 
     @Override
     public void runLinearOpMode() {
-        robot.init(hardwareMap, AUTO);
+        robot.init(AUTO);
         RingDetector detector = (RingDetector) robot.camera.detector;
 
         while (!opModeIsActive()) {
             zone = detector.findZone();
 
-            dash.create("Zone: " + zone);
-            dash.create("Control: " + detector.getControl());
-            dash.create("Top: " + detector.getTop());
-            dash.create("Bottom: " + detector.getBottom());
+            dash.create("Zone: ", zone);
+            dash.create("Control: ",  detector.getControl());
+            dash.create("Top: ",  detector.getTop());
+            dash.create("Bottom: ",  detector.getBottom());
             dash.update();
 
             if (isStopRequested()) {
@@ -52,8 +52,6 @@ public class Red extends MasqLinearOpMode {
         robot.camera.stop();
         robot.tracker.reset();
 
-        robot.claw.raise();
-
         if(zone == B) {
             iterations = 1;
             target.setPoint(-4,-85,0);
@@ -66,6 +64,7 @@ public class Red extends MasqLinearOpMode {
 
         robot.shooter.setPower(1);
         shoot(iterations);
+        robot.shooter.setPower(0);
 
         if(zone != A) {
             robot.intake.setPower(1);
