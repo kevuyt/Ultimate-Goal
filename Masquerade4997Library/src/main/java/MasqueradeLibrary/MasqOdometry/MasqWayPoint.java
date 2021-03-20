@@ -1,10 +1,10 @@
-package MasqueradeLibrary.MasqMath;
-
+package MasqueradeLibrary.MasqOdometry;
 
 import androidx.annotation.NonNull;
 
-import static MasqueradeLibrary.MasqPositionTracker.DeadWheelPosition.TANK;
-import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
+import MasqueradeLibrary.MasqMath.MasqVector;
+
+import static MasqueradeLibrary.MasqOdometry.MasqPositionTracker.DeadWheelPosition.TANK;
 import static MasqueradeLibrary.MasqResources.MasqUtils.getTracker;
 import static java.util.Locale.US;
 
@@ -15,16 +15,12 @@ import static java.util.Locale.US;
 public class MasqWayPoint {
     private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
-            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07,
-            turnRadius = 5;
-
+            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07;
     private String name = "WayPoint";
     private PointMode switchMode = PointMode.MECH;
-
     private Runnable onComplete = () -> {};
 
     public enum PointMode {MECH, TANK, SWITCH}
-
 
     public MasqWayPoint() {
         x = getTracker().getGlobalX();
@@ -181,9 +177,6 @@ public class MasqWayPoint {
     public Runnable getOnComplete() {
         return onComplete;
     }
-
-    public void setTurnRadius(double turnRadius) {this.turnRadius = turnRadius;}
-    public double getTurnRadius() {return turnRadius;}
 
     public MasqVector getPoint() {
         return new MasqVector(name, x, y);

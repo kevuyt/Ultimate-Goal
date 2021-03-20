@@ -23,9 +23,9 @@ public class DashBoard {
     public static DashBoard getDash() {return instance;}
 
     public void create(String string) {telemetry.addLine(string);}
-    public void create(Object data) {telemetry.addLine(data.toString());}
+    public void create(Object data) {create(data.toString());}
     public void create(String string, Object data) {telemetry.addData(string, data);}
-    public void create(Object... data) {for (Object dash : data) telemetry.addLine(dash.toString());}
+    public void create(Object... data) {for (Object dash : data) create(dash);}
 
     public void createSticky(String string){
         telemetry.log().add(string);

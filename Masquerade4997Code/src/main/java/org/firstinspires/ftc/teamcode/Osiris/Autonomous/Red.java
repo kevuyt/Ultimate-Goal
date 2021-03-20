@@ -6,10 +6,10 @@ import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import MasqueradeLibrary.MasqMath.MasqWayPoint;
+import MasqueradeLibrary.MasqOdometry.MasqWayPoint;
 import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
 
-import static MasqueradeLibrary.MasqMath.MasqWayPoint.PointMode.*;
+import static MasqueradeLibrary.MasqOdometry.MasqWayPoint.PointMode.*;
 import static MasqueradeLibrary.MasqResources.MasqUtils.turnController;
 import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
 import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone.*;

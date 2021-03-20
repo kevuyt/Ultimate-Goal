@@ -2,16 +2,15 @@ package MasqueradeLibrary.MasqMotion;
 
 import androidx.annotation.NonNull;
 
+import com.qualcomm.robotcore.hardware.*;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
-import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.Range;
 
 import MasqueradeLibrary.MasqSensors.MasqTouchSensor;
 
 import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.*;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
+import static com.qualcomm.robotcore.util.Range.clip;
 import static java.lang.Math.PI;
 import static java.util.Locale.US;
 
@@ -21,60 +20,44 @@ import static java.util.Locale.US;
 
 public class MasqMotor {
     private DcMotor motor;
-    private MasqMotorModel model;
-    private double wheelDiameter = 4, gearRatio = 1, zeroPos;
-    private boolean minLimit, maxLimit;
+    private double wheelDiameter = 4, gearRatio = 1;
+    private int zeroPos;
+    private boolean hasMin, hasMax;
     private MasqTouchSensor minLim, maxLim = null;
     private String name;
 
-    public enum MasqMotorModel {
-        NEVEREST_20 (560, 315), NEVEREST_40(1120, 160), NEVEREST_60(1680,105),
-        E4T(1440, 0), HDHEX_40(1120, 150), HDHEX_20(560, 300),
-        THROUGHBORE(8192, 0), NEVEREST_37(44.4, 1780), HDHEX_1(38, 6000);
-
-        public final double CPR;
-        public final int RPM;
-
-        MasqMotorModel(double CPR, int RPM) {
-            this.CPR = CPR;
-            this.RPM = RPM;
-        }
-    }
-
-    public MasqMotor(String name, MasqMotorModel model) {
+    public MasqMotor(String name) {
         motor = getHardwareMap().get(DcMotor.class, name);
         motor.setZeroPowerBehavior(BRAKE);
-        this.model = model;
         resetEncoder();
         this.name = name;
     }
-    public MasqMotor(String name, MasqMotorModel model, Direction direction) {
+    public MasqMotor(String name, Direction direction) {
         motor = getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);
         motor.setZeroPowerBehavior(BRAKE);
-        this.model = model;
         resetEncoder();
         this.name = name;
     }
 
-    public double getCurrentPosition() {return getAbsolutePosition() - zeroPos;}
+    public int getCurrentPosition() {return getAbsolutePosition() - zeroPos;}
     public double getInches () {return getCurrentPosition() / getClicksPerInch();}
-    public double getAbsolutePosition () {return motor.getCurrentPosition();}
-    public double getClicksPerInch() {return (model.CPR / (wheelDiameter * PI)) * gearRatio;}
-    public void resetEncoder() {zeroPos = (int) getAbsolutePosition();}
+    public int getAbsolutePosition () {return motor.getCurrentPosition();}
+    public double getClicksPerInch() {return (motor.getMotorType().getTicksPerRev() / (wheelDiameter * PI)) * gearRatio;}
+    public void resetEncoder() {zeroPos = getAbsolutePosition();}
 
     public void setLimits(MasqTouchSensor min, MasqTouchSensor max){
-        maxLim = max; minLim = min;
-        maxLimit = true;
-        minLimit = true;
+        maxLim = max;
+        minLim = min;
+        hasMax = hasMin = true;
     }
     public void setMinLimit(MasqTouchSensor min) {
         minLim = min;
-        minLimit = true;
+        hasMin = true;
     }
     public void setMaxLimit(MasqTouchSensor max) {
         maxLim = max;
-        maxLimit = true;
+        hasMax = true;
     }
 
     public void setVelocityControl(boolean velocityControl) {
@@ -83,8 +66,8 @@ public class MasqMotor {
     }
 
     public void setPower(double power) {
-        if(power > 0 && maxLimit && maxLim.isPressed() || power < 0 && minLimit && minLim.isPressed()) power = 0;
-        power = Range.clip(power, -1, 1);
+        if(power > 0 && hasMax && maxLim.isPressed() || power < 0 && hasMin && minLim.isPressed()) power = 0;
+        power = clip(power, -1, 1);
         motor.setPower(power);
     }
     public double getPower() {return motor.getPower();}
@@ -98,6 +81,7 @@ public class MasqMotor {
     @NonNull
     @Override
     public String toString() {
-        return String.format(US, "%s:\nPower: %.2f\nCurrent Inches: %f\nVelocity Control: %s", name, getPower(), getInches(), motor.getMode() == RUN_WITHOUT_ENCODER ? "No" : "Yes");
+        return String.format(US, "%s:\nPower: %.2f\nCurrent Inches: %f\nVelocity Control: %s",
+                name, getPower(), getInches(), motor.getMode() == RUN_WITHOUT_ENCODER ? "No" : "Yes");
     }
 }

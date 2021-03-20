@@ -5,6 +5,8 @@ import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 
 import java.util.*;
 
+import MasqueradeLibrary.MasqOdometry.MasqWayPoint;
+
 import static MasqueradeLibrary.MasqMath.MasqPolynomial.getArcLength;
 import static MasqueradeLibrary.MasqResources.MasqUtils.negate;
 

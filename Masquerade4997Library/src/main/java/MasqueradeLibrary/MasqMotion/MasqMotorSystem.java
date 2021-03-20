@@ -26,6 +26,11 @@ public class MasqMotorSystem {
         for (MasqMotor masqMotor : motors) sum += masqMotor.getInches();
         return sum / motors.length;
     }
+    public double getCurrentPosition() {
+        double sum = 0;
+        for(MasqMotor motor : motors) sum += motor.getCurrentPosition();
+        return sum / motors.length;
+    }
 
     public void setPower(double power) {
         for (MasqMotor masqMotor : motors) masqMotor.setPower(power);

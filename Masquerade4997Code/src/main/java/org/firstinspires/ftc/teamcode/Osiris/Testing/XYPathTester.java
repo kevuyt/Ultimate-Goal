@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import MasqueradeLibrary.MasqMath.MasqWayPoint;
+import MasqueradeLibrary.MasqOdometry.MasqWayPoint;
 import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;

@@ -1,5 +1,7 @@
 package MasqueradeLibrary.MasqMath;
 
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 import MasqueradeLibrary.MasqResources.MasqClock;
 
 import static com.qualcomm.robotcore.util.Range.clip;
@@ -14,16 +16,12 @@ public class MasqPIDController {
     private double ki = 0;
     private double kd = 0;
     private double prevError = 0;
-    private MasqClock clock = new MasqClock();
+    private ElapsedTime clock = new ElapsedTime();
 
     public MasqPIDController(double kp, double ki, double kd) {
         this.kp = kp;
         this.ki = ki;
         this.kd = kd;
-    }
-    public MasqPIDController(double kp, double ki) {
-        this.kp = kp;
-        this.ki = ki;
     }
     public MasqPIDController(double kp) {this.kp = kp;}
     public MasqPIDController() {}

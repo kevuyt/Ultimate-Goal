@@ -1,12 +1,11 @@
-package MasqueradeLibrary;
+package MasqueradeLibrary.MasqOdometry;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import MasqueradeLibrary.MasqMotion.MasqDriveTrain;
 import MasqueradeLibrary.MasqMotion.MasqMotor;
-import MasqueradeLibrary.MasqResources.DashBoard;
 import MasqueradeLibrary.MasqResources.MasqUtils;
-import MasqueradeLibrary.MasqSensors.MasqAdafruitIMU;
+import MasqueradeLibrary.MasqSensors.MasqIMU;
 
 import static MasqueradeLibrary.MasqResources.MasqUtils.adjustAngle;
 import static java.lang.Math.*;
@@ -22,7 +21,7 @@ public class MasqPositionTracker {
     private MasqMotor yRSystem;
     private MasqMotor ySystem;
     private MasqDriveTrain driveTrain;
-    public MasqAdafruitIMU imu;
+    private MasqIMU imu;
     private double prevHeading;
     private double globalX, globalY, prevX, prevY, prevYR, prevYL, xRadius, yRadius, trackWidth;
     private DeadWheelPosition position;
@@ -35,7 +34,7 @@ public class MasqPositionTracker {
         this.xSystem = xSystem;
         this.yLSystem = yLSystem;
         this.yRSystem = yRSystem;
-        imu = new MasqAdafruitIMU("imu", hardwareMap);
+        imu = new MasqIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.THREE;
@@ -44,7 +43,7 @@ public class MasqPositionTracker {
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, boolean left, HardwareMap hardwareMap) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        imu = new MasqAdafruitIMU("imu", hardwareMap);
+        imu = new MasqIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         if(left) position = DeadWheelPosition.TWO_BACK_LEFT;
@@ -53,7 +52,7 @@ public class MasqPositionTracker {
     }
     public MasqPositionTracker(MasqDriveTrain driveTrain, HardwareMap hardwareMap) {
         this.driveTrain = driveTrain;
-        imu = new MasqAdafruitIMU("imu", hardwareMap);
+        imu = new MasqIMU("imu", hardwareMap);
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.TANK;

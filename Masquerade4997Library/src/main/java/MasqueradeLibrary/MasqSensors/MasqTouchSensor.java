@@ -12,15 +12,15 @@ import static com.qualcomm.robotcore.hardware.DigitalChannel.Mode.INPUT;
  */
 
 public class MasqTouchSensor {
-    private final DigitalChannel limitSwitch;
+    private final DigitalChannel touchSensor;
     private final String name;
 
     public MasqTouchSensor(String name, HardwareMap hardwareMap) {
         this.name = name;
-        limitSwitch = hardwareMap.digitalChannel.get(name);
-        limitSwitch.setMode(INPUT);
+        touchSensor = hardwareMap.digitalChannel.get(name);
+        touchSensor.setMode(INPUT);
     }
-    public boolean isPressed() {return limitSwitch.getState();}
+    public boolean isPressed() {return touchSensor.getState();}
 
     @NonNull
     @Override

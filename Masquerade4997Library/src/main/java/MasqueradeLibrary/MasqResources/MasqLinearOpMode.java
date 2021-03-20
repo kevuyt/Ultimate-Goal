@@ -2,6 +2,7 @@ package MasqueradeLibrary.MasqResources;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import static MasqueradeLibrary.MasqResources.MasqUtils.*;
 
 public abstract class MasqLinearOpMode extends LinearOpMode {
     public DashBoard dash;
-    protected MasqClock timeoutClock = new MasqClock();
+    protected ElapsedTime timeoutClock = new ElapsedTime();
     public final void runOpMode() {
         try {
             dash = new DashBoard(super.telemetry);

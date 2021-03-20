@@ -1,7 +1,5 @@
 package MasqueradeLibrary.MasqMath;
 
-import org.apache.commons.math3.analysis.solvers.PolynomialSolver;
-
 import static java.lang.System.nanoTime;
 
 /**

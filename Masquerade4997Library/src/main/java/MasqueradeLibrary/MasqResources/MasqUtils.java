@@ -11,10 +11,11 @@ import java.util.Locale;
 
 import MasqueradeLibrary.MasqMath.MasqPIDController;
 import MasqueradeLibrary.MasqMath.MasqVector;
-import MasqueradeLibrary.MasqPositionTracker;
+import MasqueradeLibrary.MasqOdometry.MasqPositionTracker;
 
 import static java.lang.Double.valueOf;
 import static java.lang.Math.*;
+import static java.util.Locale.US;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
 
 
@@ -27,9 +28,8 @@ public class MasqUtils {
     private static MasqPositionTracker tracker;
     public static final long DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 2;
-    public static final double DEFAULT_SPEED_MULTIPLIER = Math.sqrt(2);
+    public static final double DEFAULT_SPEED_MULTIPLIER = sqrt(2);
     public static final double DEFAULT_TURN_MULTIPLIER = 1;
-    public static final double ODS_WHITE = 0.7, ODS_BLACK = 0.3;
     public static final String VUFORIA_KEY = "Ac5sAIr/////AAABmeUEovYOek9pkuVkMLDtWVGIkr+aSwnxHoPcO" +
             "Wo55EZxWMznvy9o+sR4uE8cUkHfJ2QywQNfK9SgCKSgjjRXD1lJvl3xiT0ddSjfE8JT9NMvGojoFG3nkaQP+Sq" +
             "MGTgr25mUnTM3Y7v5kcetBEF1+vIcQL28SnoWDfGGMQ9Yt9IHo/W/72s5qWMCJLSS7/8X+Scybt98htjPVAOPI" +
@@ -40,33 +40,25 @@ public class MasqUtils {
     public static MasqPIDController driveController;
     public static MasqPIDController angleController;
 
-    public static void sleep(long milliSeconds) {
-        getLinearOpMode().sleep(milliSeconds);
-    }
+    public static void sleep(long milliSeconds) {getLinearOpMode().sleep(milliSeconds);}
     public static void sleep() {sleep(DEFAULT_SLEEP_TIME);}
+
     public static void setLinearOpMode(MasqLinearOpMode opMode) {linearOpMode = opMode;}
+    public static MasqLinearOpMode getLinearOpMode() {return linearOpMode;}
+    public static boolean opModeIsActive() {return linearOpMode.opModeIsActive();}
+    public static HardwareMap getHardwareMap() {return linearOpMode.hardwareMap;}
     public static void setTracker(MasqPositionTracker positionTracker) {tracker = positionTracker;}
     public static MasqPositionTracker getTracker() {return tracker;}
 
     public static double adjustAngle(double angle, AngleUnit angleUnit) {
         return angleUnit.normalize(angle);
     }
-    public static double adjustAngle(double angle) {
-        return adjustAngle(angle, DEGREES);
-    }
+    public static double adjustAngle(double angle) {return adjustAngle(angle, DEGREES);}
 
     public static boolean tolerance(double value1, double value2, double tolerance) {
-        return Math.abs(value1 - value2) < tolerance;
+        return abs(value1 - value2) < tolerance;
     }
-    public static MasqLinearOpMode getLinearOpMode () {
-        return linearOpMode;
-    }
-    public static boolean opModeIsActive() {
-        return linearOpMode.opModeIsActive();
-    }
-    public static HardwareMap getHardwareMap() {
-        return linearOpMode.hardwareMap;
-    }
+
 
     public static double max(double... vals) {
         double max = Double.MIN_VALUE;
@@ -88,7 +80,7 @@ public class MasqUtils {
         return valueOf(formatDegrees(DEGREES.fromUnit(angleUnit, angle)));
     }
     private static String formatDegrees(double degrees){
-        return String.format(Locale.getDefault(), "%.1f", DEGREES.normalize(degrees));
+        return String.format(US, "%.2f", adjustAngle(degrees));
     }
     public static Point getCenterPoint(Rect rect) {
         return new Point(rect.x + rect.width/2, rect.y + rect.height/2);

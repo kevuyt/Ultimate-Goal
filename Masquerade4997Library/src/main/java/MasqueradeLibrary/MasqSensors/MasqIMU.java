@@ -18,13 +18,13 @@ import static java.util.Locale.US;
  * Created by Keval Kataria on 3/15/2021
  */
 
-public class MasqAdafruitIMU {
+public class MasqIMU {
     private BNO055IMU imu;
     private Orientation angles;
-    private double zeroHeading = 0, zeroPitch = 0, zeroRoll = 0;
+    private double zeroHeading, zeroPitch, zeroRoll;
     private String name;
 
-    public MasqAdafruitIMU(String name, HardwareMap hardwareMap) {
+    public MasqIMU(String name, HardwareMap hardwareMap) {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.mode = BNO055IMU.SensorMode.IMU;
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -38,8 +38,8 @@ public class MasqAdafruitIMU {
         this.name = name;
     }
 
-    public MasqAdafruitIMU(HardwareMap hardwareMap) {
-        new MasqAdafruitIMU("IMU", hardwareMap);
+    public MasqIMU(HardwareMap hardwareMap) {
+        new MasqIMU("IMU", hardwareMap);
     }
 
     public double getAbsoluteHeading() {

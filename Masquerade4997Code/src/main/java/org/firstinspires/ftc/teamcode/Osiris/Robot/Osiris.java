@@ -6,11 +6,10 @@ import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
 
 import MasqueradeLibrary.MasqMath.MasqPIDController;
 import MasqueradeLibrary.MasqMotion.*;
-import MasqueradeLibrary.MasqPositionTracker;
+import MasqueradeLibrary.MasqOdometry.MasqPositionTracker;
 import MasqueradeLibrary.MasqRobot;
 import MasqueradeLibrary.MasqVision.MasqCamera;
 
-import static MasqueradeLibrary.MasqMotion.MasqMotor.MasqMotorModel.*;
 import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
 import static MasqueradeLibrary.MasqResources.MasqUtils.*;
 import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
@@ -30,16 +29,16 @@ public class Osiris extends MasqRobot {
     public void mapHardware() {
         driveTrain = new MasqDriveTrain();
 
-        shooter = new MasqMotor("shooter", HDHEX_1);
-        intake = new MasqMotor("intake", E4T);
+        shooter = new MasqMotor("shooter");
+        intake = new MasqMotor("intake");
 
         claw = new RotatingClaw(hardwareMap);
 
         flicker = new MasqServo("flicker", hardwareMap);
         hopper = new MasqServo("hopper", hardwareMap);
 
-        encoder1 = new MasqMotor("encoder1", E4T);
-        encoder2 = new MasqMotor("encoder2", E4T);
+        encoder1 = new MasqMotor("encoder1");
+        encoder2 = new MasqMotor("encoder2");
         tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
 
         dash = getDash();
