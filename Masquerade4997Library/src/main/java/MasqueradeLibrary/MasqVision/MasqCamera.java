@@ -13,43 +13,44 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.UPRIGHT;
 /**
  * Created by Keval Kataria on 6/1/2020
  */
+
 public class MasqCamera {
-    private OpenCvWebcam webCam;
+    private OpenCvWebcam camera;
     public MasqCVDetector detector;
     private boolean streaming = false, paused = false;
 
     public MasqCamera(MasqCVDetector detector, HardwareMap hardwareMap) {
         this.detector = detector;
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        webCam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-        webCam.setPipeline(detector);
+        camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+        camera.setPipeline(detector);
     }
 
     public void start(OpenCvCameraRotation rotation) {
-        webCam.openCameraDevice();
-        webCam.startStreaming(1280, 960, rotation);
+        camera.openCameraDevice();
+        camera.startStreaming(1280, 960, rotation);
         streaming = true;
     }
 
     public void start() {start(UPRIGHT);}
 
     public void stop() {
-        webCam.stopStreaming();
-        webCam.closeCameraDevice();
+        camera.stopStreaming();
+        camera.closeCameraDevice();
         streaming = false;
     }
 
     public void pause() {
-        webCam.pauseViewport();
+        camera.pauseViewport();
         paused = true;
     }
 
     public void resume() {
-        webCam.resumeViewport();
+        camera.resumeViewport();
         paused = false;
     }
 
-    public OpenCvWebcam getCamera() {return webCam;}
+    public OpenCvWebcam getCamera() {return camera;}
 
     @NonNull
     @Override

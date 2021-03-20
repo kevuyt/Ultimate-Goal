@@ -113,74 +113,37 @@ public class MasqWayPoint {
         return this;
     }
 
-    public double getX() {
-        return x;
-    }
+    public double getX() {return x;}
+    public double getY() {return y;}
+    public double getH() {return h;}
 
-    public double getY() {
-        return y;
-    }
+    public double getTargetRadius() {return targetRadius;}
+    public double getModeSwitchRadius() {return modeSwitchRadius;}
+    public double getPointSwitchRadius() {return pointSwitchRadius;}
 
-    public double getH() {
-        return h;
-    }
+    public double getMinVelocity() {return minVelocity;}
+    public double getMaxVelocity() {return maxVelocity;}
 
-    public double getTargetRadius() {
-        return targetRadius;
-    }
+    public double getTimeout() {return timeout;}
 
-    public double getModeSwitchRadius() {
-        return modeSwitchRadius;
-    }
+    public double getLookAhead() {return lookAhead;}
 
-    public double getPointSwitchRadius() {
-        return pointSwitchRadius;
-    }
-
-    public double getMinVelocity() {
-        return minVelocity;
-    }
-
-    public double getMaxVelocity() {
-        return maxVelocity;
-    }
-
-    public double getTimeout() {
-        return timeout;
-    }
-
-    public double getLookAhead() {
-        return lookAhead;
-    }
-
-    public double getAngularCorrectionSpeed() {
-        return angularCorrectionSpeed;
-    }
-
-    public PointMode getSwitchMode() {
-        return switchMode;
-    }
-
+    public double getAngularCorrectionSpeed() {return angularCorrectionSpeed;}
     public double getDriveCorrectionSpeed() {
         return driveCorrectionSpeed;
     }
+
+    public PointMode getSwitchMode() {return switchMode;}
 
     public MasqWayPoint setSpeedBias(double speedBias) {
         this.speedBias = speedBias;
         return this;
     }
+    public double getSpeedBias() {return speedBias;}
 
-    public double getSpeedBias() {
-        return speedBias;
-    }
+    public Runnable getOnComplete() {return onComplete;}
 
-    public Runnable getOnComplete() {
-        return onComplete;
-    }
-
-    public MasqVector getPoint() {
-        return new MasqVector(name, x, y);
-    }
+    public MasqVector getPoint() {return new MasqVector(name, x, y);}
 
     public MasqWayPoint setName(String name) {
         this.name = name;

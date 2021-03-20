@@ -17,7 +17,6 @@ import static java.util.Locale.US;
  */
 
 public class MasqIRSeeker {
-    private final I2cDevice irSeeker;
     private final I2cDeviceSynch irSeekerManager;
     private final String name;
 
@@ -35,7 +34,7 @@ public class MasqIRSeeker {
 
     public MasqIRSeeker(String name, int i2cAddress, HardwareMap hardwareMap) {
         this.name = name;
-        irSeeker = hardwareMap.i2cDevice.get(name);
+        I2cDevice irSeeker = hardwareMap.i2cDevice.get(name);
         irSeeker.resetDeviceConfigurationForOpMode();
         irSeekerManager = new I2cDeviceSynchImpl(irSeeker, I2cAddr.create8bit(i2cAddress), false);
         irSeekerManager.resetDeviceConfigurationForOpMode();

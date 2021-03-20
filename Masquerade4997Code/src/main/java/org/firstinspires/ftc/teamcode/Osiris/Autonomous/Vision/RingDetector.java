@@ -6,6 +6,7 @@ import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 
+import java.util.Arrays;
 import java.util.List;
 
 import MasqueradeLibrary.MasqMath.MasqVector;
@@ -66,9 +67,9 @@ public class RingDetector extends MasqCVDetector {
                 List<MatOfPoint> contoursBright = findContours(lumaFilter, workingMat.clone());
                 List<Rect> rectsBright = contoursToRects(contoursBright);
                 List<List<Rect>> listsOfBrightBlobs = groupIntoBlobs(rectsBright, 10);
-                Rect[] rings = chooseTwoRects(listsOfBrightBlobs);
-                Rect bestRect = rings[0];
-                Rect second = rings[0];
+                List<Rect> rings = chooseRects(listsOfBrightBlobs);
+                Rect bestRect = rings.get(0);
+                Rect second = rings.get(1);
 
                 drawContours(contoursBright, new Scalar(80, 80, 80));
 

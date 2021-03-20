@@ -1,10 +1,14 @@
 package MasqueradeLibrary.MasqVision;
 
+import android.content.pm.ResolveInfo;
+
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
 import java.util.*;
+
+import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
 
 /**
  * Created by Keval Kataria on 6/1/2020.
@@ -20,11 +24,10 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     protected Mat workingMat;
     protected Mat displayMat;
 
-    protected boolean found = false;
-    protected boolean found2 = false;
+    protected boolean found, found2;
 
     protected Point tl, br;
-    public int offset = 0;
+    public int offset;
 
     protected List<MatOfPoint> findContours(MasqCVColorFilter filter, Mat mask) {
         filter.process(workingMat,mask);
@@ -52,7 +55,7 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
                 currentBlob.add(currentRect);
 
                 for (int i = 0; i < unusedRects.size(); i++) {
-                    if (distance(getCenterPoint(currentRect), getCenterPoint(unusedRects.get(i))) < blobDistanceThreshold) {
+                    if (currentRect != null && distance(getCenterPoint(currentRect), getCenterPoint(unusedRects.get(i))) < blobDistanceThreshold) {
                         toProcess.add(unusedRects.remove(i));
                         i--;
                     }
@@ -63,41 +66,19 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
 
         return listOfBlobs;
     }
-    protected Rect chooseBestRect(List<List<Rect>> listOfBlobs) {
-        Rect bestRect = new Rect();
-        try {
-            bestRect = boundingRect(listOfBlobs.get(0));
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        for (List<Rect> blob : listOfBlobs) {
-            Rect blobBound = boundingRect(blob);
-            drawRect(blobBound, new Scalar(0, 150, 0), false);
 
-            if (blobBound.area() > bestRect.area()) {
-                bestRect = blobBound;
-            }
-        }
-        return bestRect;
-    }
-    protected Rect[] chooseTwoRects(List<List<Rect>> listOfBlobs) {
-        Rect bestRect = new Rect();
-        Rect secondRect = new Rect();
+    protected List<Rect> chooseRects(List<List<Rect>> listOfBlobs) {
+        List<Rect> rects = new ArrayList<>();
         try {
-            bestRect = boundingRect(listOfBlobs.get(0));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        for (List<Rect> blob : listOfBlobs) {
-            Rect blobBound = boundingRect(blob);
-            drawRect(blobBound, new Scalar(0, 150, 0), false);
-
-            if (blobBound.area() > bestRect.area()) {
-                secondRect = bestRect;
-                bestRect = blobBound;
+            rects.add(boundingRect(listOfBlobs.get(0)));
+            for(List<Rect> blob : listOfBlobs) {
+                Rect blobBound = boundingRect(blob);
+                drawRect(blobBound, new Scalar(0, 150, 0), false);
+                if(blobBound.area() > rects.get(0).area()) rects.add(0, blobBound);
             }
-        }
-        return new Rect[] {bestRect, secondRect};
+        } catch (Exception e) {getDash().create("Blobs List is Empty!");}
+
+        return rects;
     }
     protected void drawContours(List<MatOfPoint> contours, Scalar color) {
         Imgproc.drawContours(displayMat, contours, -1, color, 1);
