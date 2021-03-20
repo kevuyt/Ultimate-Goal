@@ -13,6 +13,7 @@ import static MasqueradeLibrary.MasqResources.MasqUtils.negate;
 /**
  * Created by Keval Kataria on 3/6/2021
  */
+
 public class MasqSpline {
     public static PolynomialSplineFunction getSpline(MasqWayPoint... points) {
         PolynomialSplineFunction[] potentials = getPotentialSplines(points);
@@ -27,31 +28,19 @@ public class MasqSpline {
     public static PolynomialSplineFunction[] getPotentialSplines(MasqWayPoint... points) {
         double[] x = new double[points.length];
         double[] y = new double[points.length];
-        PolynomialSplineFunction[] functions = new PolynomialSplineFunction[5];
+        List<PolynomialSplineFunction> functions = new ArrayList<>();
         SplineInterpolator interpolator = new SplineInterpolator();
 
         x[0] = y[0] = 0;
         for(int i = 0; i< points.length; i++) x[i + 1] = points[i].getX();
         for(int i = 0; i< points.length; i++) y[i + 1] = points[i].getY();
 
-        try{functions[0] = interpolator.interpolate(x, y);}
-        catch(Exception e) {functions[0] = null;}
+        try{functions.add(interpolator.interpolate(x, y));} catch(Exception e) {e.printStackTrace();}
+        try{functions.add(interpolator.interpolate(y, x));} catch(Exception e) {e.printStackTrace();}
+        try{functions.add(interpolator.interpolate(negate(y), x));} catch(Exception e) {e.printStackTrace();}
+        try{functions.add(interpolator.interpolate(y,negate(x)));} catch(Exception e) {e.printStackTrace();}
+        try{functions.add(interpolator.interpolate(negate(y),negate(x)));} catch(Exception e) {e.printStackTrace();}
 
-        try{functions[1] = interpolator.interpolate(y, x);}
-        catch(Exception e) {functions[1] = null;}
-
-        try{functions[2] = interpolator.interpolate(negate(y), x);}
-        catch(Exception e) {functions[2] = null;}
-        try{functions[3] = interpolator.interpolate(y,negate(x));}
-        catch(Exception e) {functions[3] = null;}
-
-        try{functions[4] = interpolator.interpolate(negate(y),negate(x));}
-        catch(Exception e) {functions[4] = null;}
-
-        List<PolynomialSplineFunction> polynomials = new ArrayList<>();
-        for (PolynomialSplineFunction function : functions) if (function != null) polynomials.add(function);
-        polynomials.toArray(functions);
-
-        return functions;
+        return functions.toArray(new PolynomialSplineFunction[0]);
     }
 }

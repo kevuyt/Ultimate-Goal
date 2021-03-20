@@ -12,7 +12,6 @@ import static org.apache.commons.math3.analysis.integration.SimpsonIntegrator.SI
  * Created by Keval Kataria on 3/7/2021
  */
 public class MasqPolynomial extends PolynomialFunction {
-
     public MasqPolynomial(double[] c) throws NullArgumentException, NoDataException {
         super(c);
     }
@@ -28,9 +27,7 @@ public class MasqPolynomial extends PolynomialFunction {
         SimpsonIntegrator integrator = new SimpsonIntegrator();
         PolynomialFunction[] polynomials = function.getPolynomials();
 
-        for (int i = 0; i < polynomials.length; i++) {
-            polynomials[i] = new MasqPolynomial(polynomials[i].getCoefficients());
-        }
+        for(int i = 0; i < polynomials.length; i++) polynomials[i] = new MasqPolynomial(polynomials[i].getCoefficients());
 
         function = new PolynomialSplineFunction(function.getKnots(), polynomials);
         return integrator.integrate(SIMPSON_MAX_ITERATIONS_COUNT, function, 0, maxX);

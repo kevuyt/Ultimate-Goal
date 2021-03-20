@@ -16,6 +16,7 @@ import static MasqueradeLibrary.MasqResources.MasqUtils.*;
 public abstract class MasqLinearOpMode extends LinearOpMode {
     public DashBoard dash;
     protected ElapsedTime timeoutClock = new ElapsedTime();
+
     public final void runOpMode() {
         try {
             dash = new DashBoard(super.telemetry);
@@ -28,11 +29,12 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
     }
     public abstract void runLinearOpMode();
     public void stopLinearOpMode() {}
-    public void runSimultaneously(Runnable... runnables) {
+
+    public void runSimultaneously(Runnable... actions) {
         List<Thread> threads = new ArrayList<>();
         int i = 0;
-        for (Runnable runnable : runnables) {
-            threads.add(new Thread(runnable));
+        for (Runnable action : actions) {
+            threads.add(new Thread(action));
             threads.get(i).start();
             i++;
         }
@@ -42,6 +44,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             for(Thread t : threads) if (!t.isAlive()) count++;
         }
     }
+
     public void sleep() {sleep(DEFAULT_SLEEP_TIME);}
     public Gamepad getDefaultController() {return gamepad1;}
 }

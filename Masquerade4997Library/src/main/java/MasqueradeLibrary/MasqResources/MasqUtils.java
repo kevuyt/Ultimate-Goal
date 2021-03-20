@@ -30,11 +30,11 @@ public class MasqUtils {
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = sqrt(2);
     public static final double DEFAULT_TURN_MULTIPLIER = 1;
-    public static final String VUFORIA_KEY = "Ac5sAIr/////AAABmeUEovYOek9pkuVkMLDtWVGIkr+aSwnxHoPcO" +
-            "Wo55EZxWMznvy9o+sR4uE8cUkHfJ2QywQNfK9SgCKSgjjRXD1lJvl3xiT0ddSjfE8JT9NMvGojoFG3nkaQP+Sq" +
-            "MGTgr25mUnTM3Y7v5kcetBEF1+vIcQL28SnoWDfGGMQ9Yt9IHo/W/72s5qWMCJLSS7/8X+Scybt98htjPVAOPI" +
-            "dcudmKVGUMIK5ajH8riMC/2i80n57oBV3YmEYFKq0kIl1/Yf0KP3Hre8pA2les4GgriDHZBmp/E/ixOo1H924+" +
-            "DrFzuLwkk7gs7kk4Jrdp1+jqrxPBJdr8MjYjtXjW+epFt1lcvIlP/4MK44iEH9AMQXYD9";
+    public static final String VUFORIA_KEY = "AfbTJrD/////AAABmUej6YcOSE12mu7/2FcsZfdGXFK+GVVrTUq" +
+            "n2Oki4pa+iRwrgeicZ+d2FUjjB8J8ett3omSP/q6P94JsNKWFGHRsg//Y6UMrxo1eX3bKnYhaOpAZ8LQdS0w" +
+            "WrUFnGfnde+sgSnexbGpviPD38wvJq44FSsGLpI4Gz05zkEHrJRwxZ1eEt9rWc1Rs8NsIildRuOHjKd4WuF+" +
+            "oyeuTNxj9HLCTuVRtvIpVE8SbcqXUoYDkPUWU2glz5RtdGOkVQPGUDGAM1UJ2MeTHsuOhA18K8j6lSlQauMT" +
+            "nDm5N85KELfrDl008Q35GRvf4fwcAXpSIg1fGc8/yDpeGkAvTmRx1A+GQHbfnw5LiJWl0fY7BCqd2";
 
     public static MasqPIDController turnController;
     public static MasqPIDController driveController;
@@ -65,11 +65,6 @@ public class MasqUtils {
         for (double d: vals) if (max < d) max = d;
         return max;
     }
-    public static double min(double... vals) {
-        double min = Double.MAX_VALUE;
-        for (double d: vals) if (min > d) min = d;
-        return min;
-    }
     public static double scaleNumber(double m, double currentMin, double currentMax, double newMin, double newMax) {
         return (((m - currentMin) * (newMax - newMin)) / (currentMax - currentMin)) + newMin;
     }
@@ -93,17 +88,14 @@ public class MasqUtils {
         MasqVector projection = new MasqVector("projection",
                 untransformedProjection.getX() + initial.getX(),
                 untransformedProjection.getY() + initial.getY());
-        double theta = Math.atan2(pathDisplacement.getY(), pathDisplacement.getX());
-        return new MasqVector("lookAhead",
-                projection.getX() + (lookAhead * cos(theta)),
+        double theta = atan2(pathDisplacement.getY(), pathDisplacement.getX());
+        return new MasqVector("lookAhead", projection.getX() + (lookAhead * cos(theta)),
                 projection.getY() + (lookAhead * sin(theta)));
     }
 
     public static double[] negate(double[] values) {
         double[] result = new double[values.length];
-        for (int i = 0; i < values.length; i++) {
-            result[i] = -values[i];
-        }
+        for(int i = 0; i < values.length; i++) result[i] = -values[i];
         return result;
     }
 }
