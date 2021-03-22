@@ -17,6 +17,7 @@ import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
 /**
  * Created by Keval Kataria on 3/7/2021
  */
+
 @TeleOp(name = "VisionTester", group = "Test")
 public class VisionTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();

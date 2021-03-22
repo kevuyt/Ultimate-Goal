@@ -13,7 +13,7 @@ import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
  * Created by Keval Kataria on 11/22/2020
  */
 
-@TeleOp(name = "OdometryTester", group = "Test")
+@TeleOp
 public class OdometryTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
 

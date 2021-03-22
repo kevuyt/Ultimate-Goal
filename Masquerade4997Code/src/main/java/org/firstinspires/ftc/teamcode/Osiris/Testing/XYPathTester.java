@@ -26,6 +26,8 @@ public class XYPathTester extends MasqLinearOpMode {
             dash.create(robot.tracker);
             dash.update();
 
+            robot.tracker.updateSystem();
+
             if(isStopRequested()) break;
         }
 

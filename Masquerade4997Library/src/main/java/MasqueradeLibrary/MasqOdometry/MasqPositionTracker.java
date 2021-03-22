@@ -10,6 +10,7 @@ import MasqueradeLibrary.MasqResources.MasqUtils;
 import MasqueradeLibrary.MasqSensors.MasqIMU;
 
 import static MasqueradeLibrary.MasqResources.MasqUtils.adjustAngle;
+import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static java.lang.Math.*;
 import static java.util.Locale.US;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADIANS;
@@ -36,38 +37,36 @@ public class MasqPositionTracker {
         public String getName() {return name;}
     }
 
-    public MasqPositionTracker(MasqMotor xSystem, MasqMotor yLSystem, MasqMotor yRSystem, HardwareMap hardwareMap) {
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor yLSystem, MasqMotor yRSystem) {
         this.xSystem = xSystem;
         this.yLSystem = yLSystem;
         this.yRSystem = yRSystem;
-        imu = new MasqIMU("imu", hardwareMap);
+        imu = new MasqIMU("imu", getHardwareMap());
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.THREE;
         reset();
     }
-    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, boolean left, HardwareMap hardwareMap) {
+    public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, boolean left) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        imu = new MasqIMU("imu", hardwareMap);
+        imu = new MasqIMU("imu", getHardwareMap());
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         if(left) position = DeadWheelPosition.TWO_BACK_LEFT;
         else position = DeadWheelPosition.TWO_BACK_RIGHT;
         reset();
     }
-    public MasqPositionTracker(MasqDriveTrain driveTrain, HardwareMap hardwareMap) {
+    public MasqPositionTracker(MasqDriveTrain driveTrain) {
         this.driveTrain = driveTrain;
-        imu = new MasqIMU("imu", hardwareMap);
+        imu = new MasqIMU("imu", getHardwareMap());
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.TANK;
         imu.reset();
     }
 
-    public double getHeading () {
-        return imu.getHeading();
-    }
+    public double getHeading () {return imu.getHeading();}
 
     public void updateSystem () {
         switch (position) {
@@ -181,6 +180,7 @@ public class MasqPositionTracker {
     @NonNull
     @Override
     public String toString() {
-        return String.format(US, "Tracker:\nGlobal X: %.2f\nGlobalY: %.2f\nHeading: %.2f\nMode: %s", globalX, globalY, getHeading(), position.getName());
+        return String.format(US, "Tracker:\nGlobal X: %.2f\nGlobalY: %.2f\nHeading: %.2f\nMode: %s",
+                globalX, globalY, getHeading(), position.getName());
     }
 }

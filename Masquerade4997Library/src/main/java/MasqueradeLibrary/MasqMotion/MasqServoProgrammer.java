@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.util.Range;
 import MasqueradeLibrary.MasqResources.DashBoard;
 
 import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
+import static MasqueradeLibrary.MasqResources.MasqUtils.clip;
 import static MasqueradeLibrary.MasqResources.MasqUtils.getLinearOpMode;
 import static com.qualcomm.robotcore.hardware.Servo.Direction.FORWARD;
 
@@ -17,28 +18,33 @@ public class MasqServoProgrammer {
     Gamepad controller = getLinearOpMode().getDefaultController();
     MasqServo[] servos;
     String[] names;
-    double val1, val2, val3, val4, val5;
+    double[] values;
     int numServos;
     DashBoard dash = getDash();
 
     public MasqServoProgrammer(MasqServo... servos) {
-        names = new String[servos.length];
-        this.servos = servos;
-        for (int i = 0; i < servos.length; i++) names[i] = servos[i].getName();
         numServos = servos.length;
-        for (MasqServo servo : servos) {
-            servo.scaleRange(0,1);
-            servo.setDirection(FORWARD);
+        values = new double[numServos];
+        names = new String[numServos];
+        this.servos = servos;
+
+        for (int i = 0; i < numServos; i++) {
+            names[i] = servos[i].getName();
+            servos[i].scaleRange(0,1);
+            servos[i].setDirection(FORWARD);
         }
+
     }
 
     public void init() {
         dash.create("Which servos do you want to test?");
-        String[] testServos = {"No", "No", "No", "No", "No"};
+        String[] testServos = new String[numServos];
 
-        if (controller.a) testServos[0] = "Yes";
-        else if (controller.b) testServos[0] = "No";
-        dash.create(names[0] + " (Yes: A, No: B):", testServos[0]);
+        if(numServos > 0) {
+            if (controller.a) testServos[0] = "Yes";
+            else if (controller.b) testServos[0] = "No";
+            dash.create(names[0] + " (Yes: A, No: B):", testServos[0]);
+        }
 
         if (numServos > 1) {
             if (controller.y) testServos[1] = "Yes";
@@ -63,61 +69,45 @@ public class MasqServoProgrammer {
             else if (controller.left_stick_y < 0) testServos[4] = "No";
             dash.create(names[4] + " (Yes: LUp, No: LDown):", testServos[4]);
         }
+
+        dash.update();
     }
 
     public void run() {
-        if (controller.a) val1 += 0.0001;
-        else if (controller.b) val1 -= 0.0001;
+        if(numServos > 0) {
+            if (controller.a) values[0] += 0.0001;
+            else if (controller.b) values[0] -= 0.0001;
+        }
 
         if (numServos > 1) {
-            if (controller.y) val2 += 0.0001;
-            else if (controller.x) val2 -= 0.0001;
+            if (controller.y) values[1] += 0.0001;
+            else if (controller.x) values[1] -= 0.0001;
         }
 
         if (numServos > 2) {
-            if (controller.right_bumper) val3 += 0.0001;
-            else if (controller.left_bumper) val3 -= 0.0001;
+            if (controller.right_bumper) values[2] += 0.0001;
+            else if (controller.left_bumper) values[2] -= 0.0001;
         }
 
         if (numServos > 3) {
-            if (controller.right_trigger > 0) val4 += 0.0001;
-            else if (controller.left_trigger > 0) val4 -= 0.0001;
+            if (controller.right_trigger > 0) values[3] += 0.0001;
+            else if (controller.left_trigger > 0) values[3] -= 0.0001;
         }
 
         if (numServos > 4) {
-            if (controller.left_stick_y > 0) val5 += 0.0001;
-            else if (controller.left_stick_y < 0) val5 -= 0.0001;
+            if (controller.left_stick_y > 0) values[4] += 0.0001;
+            else if (controller.left_stick_y < 0) values[4] -= 0.0001;
         }
 
-        val1 = Range.clip(val1, 0,1);
-        val2 = Range.clip(val2, 0,1);
-        val3 = Range.clip(val3, 0,1);
-        val4 = Range.clip(val4, 0,1);
-        val5 = Range.clip(val5, 0,1);
+        clip(values);
 
+        if(numServos > 0) dash.create(names[0] + " (+A, -B): ", values[0]);
+        if(numServos > 1) dash.create(names[1] + " (+Y, -X): ", values[1]);
+        if(numServos > 2) dash.create(names[2] + " (+RB, -LB): ", values[2]);
+        if(numServos > 3) dash.create(names[3] + " (+RT, -LT): ", values[3]);
+        if(numServos > 4) dash.create(names[4] + " (+LUp, -LDown): ", values[4]);
 
-        servos[0].setPosition(val1);
-        dash.create(names[0] + " (+A, -B): ", val1);
-
-        if(numServos > 1) {
-            servos[1].setPosition(val2);
-            dash.create(names[1] + " (+Y, -X): ", val2);
-        }
-
-        if(numServos > 2) {
-            servos[2].setPosition(val3);
-            dash.create(names[2] + " (+RB, -LB): ", val3);
-        }
-
-        if(numServos > 3) {
-            servos[3].setPosition(val4);
-            dash.create(names[3] + " (+RT, -LT): ", val4);
-        }
-
-        if(numServos > 4) {
-            servos[4].setPosition(val5);
-            dash.create(names[4] + " (+LUp, -LDown): ", val5);
-        }
+        for(int i = 0; i < numServos; i++) servos[i].setPosition(values[i]);
 
         dash.update();
     }

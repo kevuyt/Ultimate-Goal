@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
@@ -25,6 +26,7 @@ public class Osiris extends MasqRobot {
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
     private HardwareMap hardwareMap;
+    public DistanceSensor distanceSensor;
 
     @Override
     public void mapHardware() {
@@ -40,7 +42,9 @@ public class Osiris extends MasqRobot {
 
         encoder1 = new MasqMotor("encoder1");
         encoder2 = new MasqMotor("encoder2", REVERSE);
-        tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
+        tracker = new MasqPositionTracker(intake, encoder1, encoder2);
+
+        distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
 
         dash = getDash();
     }
@@ -82,4 +86,5 @@ public class Osiris extends MasqRobot {
         hopper.setPosition(0);
     }
     public int getRings() {return 0;} //Placeholder until I get distance sensor
+
 }
