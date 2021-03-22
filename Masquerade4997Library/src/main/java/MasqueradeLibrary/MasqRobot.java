@@ -76,37 +76,34 @@ public abstract class MasqRobot {
             speedController.setKp(target.getDriveCorrectionSpeed());
 
             double speed = 1;
-            double pathAngle;
             speedController.reset();
             angleController.reset();
             pointTimeout.reset();
             while (pointTimeout.seconds() < target.getTimeout()&&
-                    !current.equal(target.getTargetRadius(), target.getPoint()) && opModeIsActive() && speed > 0.1) {
+                    !current.equal(target.getTargetRadius(), target.getPoint()) && opModeIsActive() && speed > 0.1 + target.getMinVelocity()) {
                 double heading = toRadians(tracker.getHeading());
                 MasqVector headingUnitVector = new MasqVector("Heading Unit Vector", sin(heading), cos(heading));
                 MasqVector lookahead = getLookAhead(initial, current, target.getPoint(), target.getLookAhead());
-                MasqVector pathDisplacement = initial.displacement(target.getPoint());
-                boolean closerThanLookAhead = initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude();
-                boolean approachingFinalPos = index == pointsWithRobot.size() - 1;
-                if (closerThanLookAhead) {
-                    if (approachingFinalPos) lookahead = target.getPoint();
+                MasqVector pathDisplacement = initial.displacement(target.getPoint()).setName("Path Displacement");
+
+                if (initial.displacement(lookahead).getMagnitude() > pathDisplacement.getMagnitude()) {
+                    if (index == pointsWithRobot.size() - 1) lookahead = target.getPoint();
                     else break;
                 }
-                MasqVector lookaheadDisplacement = current.displacement(lookahead);
+                MasqVector lookaheadDisplacement = current.displacement(lookahead).setName("Look Ahead Displacement");
                 speed = speedController.getOutput(current.displacement(target.getPoint()).getMagnitude());
                 speed = scaleNumber(speed, target.getMinVelocity(), target.getMaxVelocity());
+                double pathAngle = adjustAngle(headingUnitVector.angleTo(lookaheadDisplacement));
 
                 PointMode mode = target.getSwitchMode();
-                boolean mechMode =(current.equal(target.getModeSwitchRadius(), target.getPoint()) && mode == SWITCH) ||
+                boolean mechMode = (current.equal(target.getModeSwitchRadius(), target.getPoint()) && mode == SWITCH) ||
                         mode == MECH;
 
                 if (mechMode) {
                     double turnPower = angleController.getOutput(adjustAngle(target.getH() - tracker.getHeading()));
-                    pathAngle = 90 - toDegrees(atan2(lookaheadDisplacement.getY(), lookaheadDisplacement.getX()));
-                    driveTrain.setPowerMECH(pathAngle - tracker.getHeading(), speed, turnPower);
+                    driveTrain.setPowerMECH(toRadians(pathAngle), speed, turnPower);
                 }
                 else {
-                    pathAngle = adjustAngle(headingUnitVector.angleTo(lookaheadDisplacement));
                     double powerAdjustment = angleController.getOutput(pathAngle);
                     double leftPower = speed + powerAdjustment;
                     double rightPower = speed - powerAdjustment;
@@ -122,6 +119,7 @@ public abstract class MasqRobot {
                 dash.create(tracker);
                 dash.create("Distance Left", target.getPoint().displacement(current).getMagnitude());
                 dash.create("Path Angle: ", pathAngle);
+                dash.create(lookaheadDisplacement);
                 dash.update();
 
                 current.setX(tracker.getGlobalX());
@@ -162,6 +160,8 @@ public abstract class MasqRobot {
         double angle = atan2(x, y);
 
         driveTrain.setPowerMECH(angle, hypot(x, y), xR);
+
+        dash.create("Angle: ", angle);
     }
     public void MECH() {MECH(getLinearOpMode().getDefaultController());}
 

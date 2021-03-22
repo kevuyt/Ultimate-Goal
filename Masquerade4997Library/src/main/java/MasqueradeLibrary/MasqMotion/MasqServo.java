@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.*;
 
 import MasqueradeLibrary.MasqSensors.MasqTouchSensor;
 
+import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static MasqueradeLibrary.MasqResources.MasqUtils.opModeIsActive;
 import static java.util.Locale.US;
 
@@ -20,13 +21,13 @@ public class MasqServo {
     private boolean limDetection;
     private boolean prevState = false, taskState = false;
 
-    public MasqServo(String name, HardwareMap hardwareMap) {
+    public MasqServo(String name) {
         this.name = name;
-        servo = hardwareMap.servo.get(name);
+        servo = getHardwareMap().servo.get(name);
     }
-    public MasqServo(String name, Servo.Direction direction, HardwareMap hardwareMap){
+    public MasqServo(String name, Servo.Direction direction){
         this.name = name;
-        servo = hardwareMap.servo.get(name);
+        servo = getHardwareMap().servo.get(name);
         servo.setDirection(direction);
     }
     public void setPosition (double position) {

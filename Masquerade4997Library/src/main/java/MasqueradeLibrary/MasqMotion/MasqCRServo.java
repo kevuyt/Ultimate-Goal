@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import MasqueradeLibrary.MasqSensors.MasqTouchSensor;
 
+import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static java.util.Locale.US;
 
 /**
@@ -18,14 +19,14 @@ public class MasqCRServo {
     private String nameCr_Servo;
     private MasqTouchSensor min, max = null;
     private boolean limitDetection;
-    public MasqCRServo(String name, HardwareMap hardwareMap){
+    public MasqCRServo(String name){
         this.nameCr_Servo = name;
-        servo = hardwareMap.crservo.get(name);
+        servo = getHardwareMap().crservo.get(name);
         limitDetection = false;
     }
-    public MasqCRServo (String name, CRServo.Direction direction, HardwareMap hardwareMap){
+    public MasqCRServo (String name, CRServo.Direction direction){
         this.nameCr_Servo = name;
-        servo = hardwareMap.crservo.get(name);
+        servo = getHardwareMap().crservo.get(name);
         servo.setDirection(direction);
         limitDetection = false;
     }

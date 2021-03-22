@@ -2,7 +2,10 @@ package MasqueradeLibrary.MasqMotion;
 
 import androidx.annotation.NonNull;
 
+import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
+
 import static MasqueradeLibrary.MasqResources.MasqUtils.*;
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static java.lang.Math.*;
 import static java.util.Locale.US;
 
@@ -14,16 +17,16 @@ public class MasqDriveTrain {
     public MasqMotorSystem leftDrive, rightDrive;
     public MasqMotor motor1, motor2, motor3, motor4;
 
-    public MasqDriveTrain() {
-        motor1 = new MasqMotor("LeftFront");
-        motor2 = new MasqMotor("LeftBack");
-        motor3 = new MasqMotor("RightFront");
-        motor4 = new MasqMotor("RightBack");
+    public MasqDriveTrain(Direction direction) {
+        motor1 = new MasqMotor("leftFront", direction.inverted());
+        motor2 = new MasqMotor("leftBack", direction.inverted());
+        motor3 = new MasqMotor("rightFront", direction);
+        motor4 = new MasqMotor("rightBack", direction);
 
         leftDrive = new MasqMotorSystem("LeftDrive", motor1, motor2);
         rightDrive = new MasqMotorSystem("RightDrive", motor3, motor4);
-
     }
+    public MasqDriveTrain() {new MasqDriveTrain(FORWARD);}
 
     public void resetEncoders () {
         leftDrive.resetEncoders();
@@ -47,13 +50,12 @@ public class MasqDriveTrain {
     }
 
     public void setPowerMECH(double angle, double speed, double turnPower) {
-        angle = toRadians(angle);
-        double adjustedAngle = angle + PI/4;
+        angle += PI / 4;
 
-        double leftFront = (sin(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * DEFAULT_TURN_MULTIPLIER;
-        double leftBack = (cos(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * DEFAULT_TURN_MULTIPLIER;
-        double rightFront = (cos(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * DEFAULT_TURN_MULTIPLIER;
-        double rightBack = (sin(adjustedAngle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * DEFAULT_TURN_MULTIPLIER;
+        double leftFront = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * DEFAULT_TURN_MULTIPLIER;
+        double leftBack = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * DEFAULT_TURN_MULTIPLIER;
+        double rightFront = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * DEFAULT_TURN_MULTIPLIER;
+        double rightBack = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * DEFAULT_TURN_MULTIPLIER;
 
         double max = max(abs(leftFront), abs(leftBack), abs(rightFront), abs(rightBack));
         if (max > 1) {

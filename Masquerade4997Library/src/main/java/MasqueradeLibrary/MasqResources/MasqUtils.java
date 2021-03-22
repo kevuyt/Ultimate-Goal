@@ -29,7 +29,7 @@ public class MasqUtils {
     public static final long DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = sqrt(2);
-    public static final double DEFAULT_TURN_MULTIPLIER = 1;
+    public static final double DEFAULT_TURN_MULTIPLIER = 0.7;
     public static final String VUFORIA_KEY = "AfbTJrD/////AAABmUej6YcOSE12mu7/2FcsZfdGXFK+GVVrTUq" +
             "n2Oki4pa+iRwrgeicZ+d2FUjjB8J8ett3omSP/q6P94JsNKWFGHRsg//Y6UMrxo1eX3bKnYhaOpAZ8LQdS0w" +
             "WrUFnGfnde+sgSnexbGpviPD38wvJq44FSsGLpI4Gz05zkEHrJRwxZ1eEt9rWc1Rs8NsIildRuOHjKd4WuF+" +
@@ -37,7 +37,6 @@ public class MasqUtils {
             "nDm5N85KELfrDl008Q35GRvf4fwcAXpSIg1fGc8/yDpeGkAvTmRx1A+GQHbfnw5LiJWl0fY7BCqd2";
 
     public static MasqPIDController turnController;
-    public static MasqPIDController driveController;
     public static MasqPIDController angleController;
 
     public static void sleep(long milliSeconds) {getLinearOpMode().sleep(milliSeconds);}
@@ -82,14 +81,11 @@ public class MasqUtils {
     }
     public static MasqVector getLookAhead(MasqVector initial, MasqVector current, MasqVector finalPos, double lookAhead) {
         MasqVector pathDisplacement = initial.displacement(finalPos);
-        MasqVector untransformedProjection = new MasqVector("untransformedProjection",
+        MasqVector projection = new MasqVector("Projection",
                 current.projectOnTo(pathDisplacement).getX() - initial.getX(),
-                current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement);
-        MasqVector projection = new MasqVector("projection",
-                untransformedProjection.getX() + initial.getX(),
-                untransformedProjection.getY() + initial.getY());
+                current.projectOnTo(pathDisplacement).getY() - initial.getY()).projectOnTo(pathDisplacement).add(initial);
         double theta = atan2(pathDisplacement.getY(), pathDisplacement.getX());
-        return new MasqVector("lookAhead", projection.getX() + (lookAhead * cos(theta)),
+        return new MasqVector("Look Ahead", projection.getX() + (lookAhead * cos(theta)),
                 projection.getY() + (lookAhead * sin(theta)));
     }
 

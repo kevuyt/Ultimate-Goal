@@ -13,6 +13,7 @@ import MasqueradeLibrary.MasqVision.MasqCamera;
 import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
 import static MasqueradeLibrary.MasqResources.MasqUtils.*;
 import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_LEFT;
 
 /**
@@ -27,18 +28,18 @@ public class Osiris extends MasqRobot {
 
     @Override
     public void mapHardware() {
-        driveTrain = new MasqDriveTrain();
+        driveTrain = new MasqDriveTrain(REVERSE);
 
         shooter = new MasqMotor("shooter");
-        intake = new MasqMotor("intake");
+        intake = new MasqMotor("intake", REVERSE);
 
-        claw = new RotatingClaw(hardwareMap);
+        claw = new RotatingClaw();
 
-        flicker = new MasqServo("flicker", hardwareMap);
-        hopper = new MasqServo("hopper", hardwareMap);
+        flicker = new MasqServo("flicker");
+        hopper = new MasqServo("hopper");
 
         encoder1 = new MasqMotor("encoder1");
-        encoder2 = new MasqMotor("encoder2");
+        encoder2 = new MasqMotor("encoder2", REVERSE);
         tracker = new MasqPositionTracker(intake, encoder1, encoder2, hardwareMap);
 
         dash = getDash();
@@ -54,8 +55,6 @@ public class Osiris extends MasqRobot {
         tracker.reset();
         setTracker(tracker);
 
-        driveController = new MasqPIDController(0.005);
-        angleController = new MasqPIDController(0.003);
         turnController = new MasqPIDController(0.04);
 
         driveTrain.setVelocityControl(true);

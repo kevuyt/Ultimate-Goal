@@ -1,5 +1,7 @@
 package MasqueradeLibrary.MasqOdometry;
 
+import androidx.annotation.NonNull;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import MasqueradeLibrary.MasqMotion.MasqDriveTrain;
@@ -9,6 +11,7 @@ import MasqueradeLibrary.MasqSensors.MasqIMU;
 
 import static MasqueradeLibrary.MasqResources.MasqUtils.adjustAngle;
 import static java.lang.Math.*;
+import static java.util.Locale.US;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADIANS;
 
 /**
@@ -27,7 +30,10 @@ public class MasqPositionTracker {
     private DeadWheelPosition position;
 
     public enum DeadWheelPosition {
-        TWO_CENTER, TWO_BACK_RIGHT, TWO_BACK_LEFT, THREE, TANK
+        TWO_CENTER("Center"), TWO_BACK_RIGHT("Two Right"), TWO_BACK_LEFT("Two Left"), THREE("Three"), TANK("Tank");
+        String name;
+        DeadWheelPosition(String name) {this.name = name;}
+        public String getName() {return name;}
     }
 
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor yLSystem, MasqMotor yRSystem, HardwareMap hardwareMap) {
@@ -171,4 +177,10 @@ public class MasqPositionTracker {
     public void setTrackWidth(double trackWidth) {this.trackWidth = trackWidth;}
 
     public DeadWheelPosition getPosition() {return position;}
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format(US, "Tracker:\nGlobal X: %.2f\nGlobalY: %.2f\nHeading: %.2f\nMode: %s", globalX, globalY, getHeading(), position.getName());
+    }
 }

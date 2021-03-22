@@ -14,7 +14,6 @@ import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
  * Created by Keval Kataria on 12/30/2020
  */
 @TeleOp(name = "ServoProgrammer", group = "Test")
-@Disabled
 public class ServoProgrammer extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
 

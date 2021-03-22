@@ -15,7 +15,7 @@ import static java.util.Locale.US;
 public class MasqWayPoint {
     private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
-            angularCorrectionSpeed = 0.08, speedBias = 0.5, driveCorrectionSpeed = 0.07;
+            angularCorrectionSpeed = 0.08, driveCorrectionSpeed = 0.12;
     private String name = "WayPoint";
     private PointMode switchMode = PointMode.MECH;
     private Runnable onComplete = () -> {};
@@ -32,6 +32,7 @@ public class MasqWayPoint {
         this.x = x;
         this.y = y;
         this.h = h;
+        if(getTracker().getPosition() == TANK) switchMode = PointMode.TANK;
     }
 
     public MasqWayPoint setSwitchMode(PointMode switchMode) {
@@ -134,12 +135,6 @@ public class MasqWayPoint {
     }
 
     public PointMode getSwitchMode() {return switchMode;}
-
-    public MasqWayPoint setSpeedBias(double speedBias) {
-        this.speedBias = speedBias;
-        return this;
-    }
-    public double getSpeedBias() {return speedBias;}
 
     public Runnable getOnComplete() {return onComplete;}
 

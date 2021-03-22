@@ -14,9 +14,9 @@ import static java.util.Locale.US;
 public class RotatingClaw {
     private MasqServo claw, rotater;
 
-    public RotatingClaw(HardwareMap hardwareMap) {
-        claw = new MasqServo("claw",hardwareMap);
-        rotater = new MasqServo("rotater",hardwareMap);
+    public RotatingClaw() {
+        claw = new MasqServo("claw");
+        rotater = new MasqServo("rotater");
         reset();
     }
 

@@ -101,7 +101,7 @@ public class RingDetector extends MasqCVDetector {
     public enum TargetZone {A,B,C}
 
     public TargetZone findZone () {
-        if (abs(getTop()- getBottom()) > 15) return TargetZone.B;
+        if (abs(getTop()- getBottom()) > 10) return TargetZone.B;
         else if (abs(((getTop() + getBottom()) / 2 - getControl())) > 10) return TargetZone.C;
         else return TargetZone.A;
     }

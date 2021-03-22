@@ -25,6 +25,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(!opModeIsActive()) {
             dash.create("Initialized");
             dash.update();
+
+            if(isStopRequested()) break;
         }
 
         waitForStart();
@@ -32,7 +34,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             robot.MECH();
 
-            if(!enabled) robot.intake.setPower(gamepad1.right_trigger - gamepad1.left_trigger);
+            if(!enabled) robot.intake.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
 
             if(gamepad1.left_bumper) {
                 robot.shooter.setPower(shooterSpeed);

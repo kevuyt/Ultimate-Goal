@@ -14,7 +14,6 @@ import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
  */
 
 @TeleOp(name = "OdometryTester", group = "Test")
-@Disabled
 public class OdometryTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
 
@@ -31,6 +30,8 @@ public class OdometryTester extends MasqLinearOpMode {
             dash.create("Raw YL: ", robot.encoder1.getInches());
             dash.create("Raw YR: ", robot.encoder2.getInches());
             dash.update();
+
+            if(isStopRequested()) break;
         }
 
         waitForStart();

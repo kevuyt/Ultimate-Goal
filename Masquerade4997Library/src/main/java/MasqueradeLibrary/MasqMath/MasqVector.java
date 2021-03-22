@@ -36,7 +36,13 @@ public class MasqVector {
     public MasqVector unitVector () {return new MasqVector(name, getX()/getMagnitude(), getY()/getMagnitude());}
     public MasqVector multiply(double scalar) {return new MasqVector(name, getX() * scalar, getY() * scalar);}
     public MasqVector displacement(MasqVector v) {return new MasqVector(name, v.getX() - getX(), v.getY() - getY());}
-    public MasqVector projectOnTo(MasqVector v) {return multiply(dotProduct(v) / (v.getMagnitude() * v.getMagnitude()));}
+    public MasqVector projectOnTo(MasqVector v) {return v.unitVector().multiply(dotProduct(v.unitVector()));}
+    public MasqVector add(MasqVector v) {return new MasqVector(name, getX() + v.getX(), getY() + v.getY());}
+
+    public MasqVector setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     @NonNull
     @Override

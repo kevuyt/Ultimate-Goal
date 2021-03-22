@@ -9,7 +9,7 @@ import MasqueradeLibrary.MasqSensors.MasqTouchSensor;
 
 import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.*;
-import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
+import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.*;
 import static com.qualcomm.robotcore.util.Range.clip;
 import static java.lang.Math.PI;
 import static java.util.Locale.US;
@@ -28,14 +28,12 @@ public class MasqMotor {
 
     public MasqMotor(String name) {
         motor = getHardwareMap().get(DcMotor.class, name);
-        motor.setZeroPowerBehavior(BRAKE);
         resetEncoder();
         this.name = name;
     }
     public MasqMotor(String name, Direction direction) {
         motor = getHardwareMap().dcMotor.get(name);
         motor.setDirection(direction);
-        motor.setZeroPowerBehavior(BRAKE);
         resetEncoder();
         this.name = name;
     }
@@ -61,8 +59,14 @@ public class MasqMotor {
     }
 
     public void setVelocityControl(boolean velocityControl) {
-        if(velocityControl) motor.setMode(RUN_USING_ENCODER);
-        else motor.setMode(RUN_WITHOUT_ENCODER);
+        if(velocityControl) {
+            motor.setMode(RUN_USING_ENCODER);
+            motor.setZeroPowerBehavior(BRAKE);
+        }
+        else {
+            motor.setMode(RUN_WITHOUT_ENCODER);
+            motor.setZeroPowerBehavior(FLOAT);
+        }
     }
 
     public void setPower(double power) {

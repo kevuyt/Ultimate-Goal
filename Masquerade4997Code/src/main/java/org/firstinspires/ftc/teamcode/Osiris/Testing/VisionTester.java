@@ -18,11 +18,10 @@ import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
  * Created by Keval Kataria on 3/7/2021
  */
 @TeleOp(name = "VisionTester", group = "Test")
-@Disabled
 public class VisionTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     RingDetector detector;
-    double top = 570, left = 140, bottom = 300, right = 970;
+    double top = 662, left = 324, bottom = 208, right = 786;
 
     @Override
     public void runLinearOpMode() {
@@ -64,12 +63,11 @@ public class VisionTester extends MasqLinearOpMode {
             dash.create("Center Point X:", getCenterPoint(rect).x);
             dash.create("Height:", rect.height);
 
-            if(rings.length > 0) {
+            if(rings[0] != null) {
                 dash.create("Ring 1 X:", rings[0].getX());
                 dash.create("Ring 1 Y:", rings[0].getY());
-
             }
-            if(rings.length == 2) {
+            if(rings[1] != null) {
                 dash.create("Ring 2 X:", rings[1].getX());
                 dash.create("Ring 2 Y:", rings[1].getY());
             }
