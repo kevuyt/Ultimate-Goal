@@ -16,12 +16,11 @@ import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
 @TeleOp
 public class ServoProgrammer extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    private MasqServoProgrammer servoProgrammer;
 
     @Override
     public void runLinearOpMode() {
         robot.init(TELEOP);
-        servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotater(), robot.hopper, robot.flicker);
+        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotater(), robot.hopper, robot.flicker);
 
         while(!opModeIsActive()) {
             servoProgrammer.init();

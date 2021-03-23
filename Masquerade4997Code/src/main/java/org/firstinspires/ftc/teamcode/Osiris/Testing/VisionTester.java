@@ -22,7 +22,6 @@ import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
 public class VisionTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     RingDetector detector;
-    double top = 662, left = 324, bottom = 208, right = 786;
 
     @Override
     public void runLinearOpMode() {
@@ -32,19 +31,10 @@ public class VisionTester extends MasqLinearOpMode {
         while(!opModeIsActive()) {
             TargetZone zone = detector.findZone();
 
-            top -= 0.01 * gamepad1.left_stick_y;
-            bottom += 0.01 * gamepad1.left_stick_y;
-            right -= 0.01 * gamepad1.left_stick_x;
-            left += 0.01 * gamepad1.left_stick_x;
-
-            detector.setClippingMargins((int) top, (int) left, (int) bottom, (int) right);
-
             dash.create("Zone:", zone);
             dash.create("Control:", detector.getControl());
             dash.create("Top:", detector.getTop());
             dash.create("Bottom:", detector.getBottom());
-            dash.create("");
-            dash.create(top, left, bottom, right);
             dash.update();
 
             if(isStopRequested()) {

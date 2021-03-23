@@ -2,15 +2,12 @@ package MasqueradeLibrary.MasqOdometry;
 
 import androidx.annotation.NonNull;
 
-import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import MasqueradeLibrary.MasqMotion.MasqDriveTrain;
 import MasqueradeLibrary.MasqMotion.MasqMotor;
 import MasqueradeLibrary.MasqResources.MasqUtils;
 import MasqueradeLibrary.MasqSensors.MasqIMU;
 
 import static MasqueradeLibrary.MasqResources.MasqUtils.adjustAngle;
-import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static java.lang.Math.*;
 import static java.util.Locale.US;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADIANS;
@@ -41,7 +38,7 @@ public class MasqPositionTracker {
         this.xSystem = xSystem;
         this.yLSystem = yLSystem;
         this.yRSystem = yRSystem;
-        imu = new MasqIMU("imu", getHardwareMap());
+        imu = new MasqIMU();
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.THREE;
@@ -50,7 +47,7 @@ public class MasqPositionTracker {
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, boolean left) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        imu = new MasqIMU("imu", getHardwareMap());
+        imu = new MasqIMU();
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         if(left) position = DeadWheelPosition.TWO_BACK_LEFT;
@@ -59,7 +56,7 @@ public class MasqPositionTracker {
     }
     public MasqPositionTracker(MasqDriveTrain driveTrain) {
         this.driveTrain = driveTrain;
-        imu = new MasqIMU("imu", getHardwareMap());
+        imu = new MasqIMU();
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.TANK;

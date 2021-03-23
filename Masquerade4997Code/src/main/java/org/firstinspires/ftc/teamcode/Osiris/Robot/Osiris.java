@@ -9,6 +9,7 @@ import MasqueradeLibrary.MasqMath.MasqPIDController;
 import MasqueradeLibrary.MasqMotion.*;
 import MasqueradeLibrary.MasqOdometry.MasqPositionTracker;
 import MasqueradeLibrary.MasqRobot;
+import MasqueradeLibrary.MasqSensors.MasqDistanceSensor;
 import MasqueradeLibrary.MasqVision.MasqCamera;
 
 import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
@@ -26,7 +27,7 @@ public class Osiris extends MasqRobot {
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
     private HardwareMap hardwareMap;
-    public DistanceSensor distanceSensor;
+    public MasqDistanceSensor distanceSensor;
 
     @Override
     public void mapHardware() {
@@ -44,7 +45,7 @@ public class Osiris extends MasqRobot {
         encoder2 = new MasqMotor("encoder2", REVERSE);
         tracker = new MasqPositionTracker(intake, encoder1, encoder2);
 
-        distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
+        distanceSensor = new MasqDistanceSensor("distanceSensor");
 
         dash = getDash();
     }

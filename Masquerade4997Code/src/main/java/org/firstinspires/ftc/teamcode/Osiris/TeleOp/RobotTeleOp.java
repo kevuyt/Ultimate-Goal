@@ -22,12 +22,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
     public void runLinearOpMode() {
         robot.init(TELEOP);
 
-        while(!opModeIsActive()) {
-            dash.create("Initialized");
-            dash.update();
-
-            if(isStopRequested()) break;
-        }
+        dash.create("Initialized");
+        dash.update();
 
         waitForStart();
 
@@ -55,9 +51,9 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             robot.claw.driverControl(gamepad1);
 
-            dash.create("Speed: ", shooterSpeed);
-            //dash.create("Shooter Mode: ", mode);
-            //dash.create("Rings in Hopper: ", robot.getRings());
+            dash.create("Speed:", shooterSpeed);
+            //dash.create("Shooter Mode:", mode);
+            //dash.create("Rings in Hopper:", robot.getRings());
             dash.update();
         }
     }

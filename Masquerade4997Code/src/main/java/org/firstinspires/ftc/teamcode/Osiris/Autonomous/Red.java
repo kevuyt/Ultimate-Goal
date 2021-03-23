@@ -34,10 +34,10 @@ public class Red extends MasqLinearOpMode {
         while (!opModeIsActive()) {
             zone = detector.findZone();
 
-            dash.create("Zone: ", zone);
-            dash.create("Control: ",  detector.getControl());
-            dash.create("Top: ",  detector.getTop());
-            dash.create("Bottom: ",  detector.getBottom());
+            dash.create("Zone:", zone);
+            dash.create("Control:",  detector.getControl());
+            dash.create("Top:",  detector.getTop());
+            dash.create("Bottom:",  detector.getBottom());
             dash.update();
 
             if (isStopRequested()) {

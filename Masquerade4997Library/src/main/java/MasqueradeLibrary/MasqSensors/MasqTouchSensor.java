@@ -2,25 +2,24 @@ package MasqueradeLibrary.MasqSensors;
 
 import androidx.annotation.NonNull;
 
-import com.qualcomm.robotcore.hardware.DigitalChannel;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
-import static com.qualcomm.robotcore.hardware.DigitalChannel.Mode.INPUT;
+import static MasqueradeLibrary.MasqResources.MasqUtils.getHardwareMap;
 
 /**
  * Created by Keval Kataria on 3/15/2021
  */
 
 public class MasqTouchSensor {
-    private final DigitalChannel touchSensor;
-    private final String name;
+    private TouchSensor touchSensor;
+    private String name;
 
-    public MasqTouchSensor(String name, HardwareMap hardwareMap) {
+    public MasqTouchSensor(String name) {
         this.name = name;
-        touchSensor = hardwareMap.digitalChannel.get(name);
-        touchSensor.setMode(INPUT);
+        touchSensor = getHardwareMap().get(TouchSensor.class, name);
     }
-    public boolean isPressed() {return touchSensor.getState();}
+
+    public boolean isPressed() {return touchSensor.isPressed();}
 
     @NonNull
     @Override

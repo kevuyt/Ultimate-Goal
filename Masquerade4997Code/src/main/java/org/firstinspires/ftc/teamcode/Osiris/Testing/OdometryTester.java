@@ -26,9 +26,9 @@ public class OdometryTester extends MasqLinearOpMode {
             robot.tracker.updateSystem();
 
             dash.create(robot.tracker);
-            dash.create("Raw X: ", robot.intake.getInches());
-            dash.create("Raw YL: ", robot.encoder1.getInches());
-            dash.create("Raw YR: ", robot.encoder2.getInches());
+            dash.create("Raw X:", robot.intake.getInches());
+            dash.create("Raw YL:", robot.encoder1.getInches());
+            dash.create("Raw YR:", robot.encoder2.getInches());
             dash.update();
 
             if(isStopRequested()) break;
