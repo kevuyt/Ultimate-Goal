@@ -3,6 +3,7 @@ package MasqueradeLibrary.MasqResources;
 import android.graphics.Point;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.opencv.core.Rect;
@@ -94,11 +95,6 @@ public class MasqUtils {
         for(int i = 0; i < values.length; i++) result[i] = -values[i];
         return result;
     }
-    public static void clip(float min, float max, double... values) {
-        for(int i = 0; i < values.length; i++) {
-            if(values[i] > max) values[i] = max;
-            else if(values[i] < min) values[i] = min;
-        }
-    }
-    public static void clip(double... values) {clip(0f, 1f,values);}
+    public static double clip(double value) {return Range.clip(value, 0, 1);}
+    public static void clip(double[] values) {for(int i = 0; i < values.length; i++) values[i] = clip(values[i]);}
 }
