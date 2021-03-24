@@ -1,4 +1,4 @@
-package MasqueradeLibrary.MasqVision;
+package MasqLibrary.MasqVision;
 
 import androidx.annotation.NonNull;
 
@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.*;
 
+import static MasqLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static java.util.Locale.US;
 import static org.openftc.easyopencv.OpenCvCameraRotation.UPRIGHT;
 
@@ -17,12 +18,12 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.UPRIGHT;
 public class MasqCamera {
     private OpenCvWebcam camera;
     public MasqCVDetector detector;
-    private boolean streaming = false, paused = false;
+    private boolean streaming = false;
 
-    public MasqCamera(MasqCVDetector detector, HardwareMap hardwareMap) {
+    public MasqCamera(MasqCVDetector detector) {
         this.detector = detector;
-        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+        int cameraMonitorViewId = getHardwareMap().appContext.getResources().getIdentifier("cameraMonitorViewId", "id", getHardwareMap().appContext.getPackageName());
+        camera = OpenCvCameraFactory.getInstance().createWebcam(getHardwareMap().get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         camera.setPipeline(detector);
     }
 
@@ -40,21 +41,9 @@ public class MasqCamera {
         streaming = false;
     }
 
-    public void pause() {
-        camera.pauseViewport();
-        paused = true;
-    }
-
-    public void resume() {
-        camera.resumeViewport();
-        paused = false;
-    }
-
-    public OpenCvWebcam getCamera() {return camera;}
-
     @NonNull
     @Override
     public String toString() {
-        return String.format(US, "Webcam:\nStreaming: %s\nPaused: %s", streaming ? "Yes" :"No", paused ? "Yes" : "No");
+        return String.format(US, "Webcam:\nStreaming: %s", streaming ? "Yes" :"No");
     }
 }
