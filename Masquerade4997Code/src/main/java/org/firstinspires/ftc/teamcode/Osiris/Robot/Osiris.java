@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
-import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector;
 
 import MasqueradeLibrary.MasqMath.MasqPIDController;
 import MasqueradeLibrary.MasqMotion.*;
@@ -21,6 +20,7 @@ import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_LEFT;
 /**
  * Created by Keval Kataria on 9/12/2020
  */
+
 public class Osiris extends MasqRobot {
     public MasqCamera camera;
     public MasqMotor intake, encoder1, encoder2, shooter;

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision;
+package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
@@ -23,6 +23,7 @@ import static org.opencv.imgproc.Imgproc.*;
 /**
  * Created by Keval Kataria on 6/1/2020
  */
+
 public class RingDetector extends MasqCVDetector {
     double top, control, bottom;
     private MasqCVColorFilter lumaFilter = new LumaFilter(100);

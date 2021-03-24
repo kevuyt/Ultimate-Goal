@@ -2,8 +2,7 @@ package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import MasqueradeLibrary.MasqOdometry.MasqWayPoint;
@@ -12,12 +11,13 @@ import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
 import static MasqueradeLibrary.MasqOdometry.MasqWayPoint.PointMode.*;
 import static MasqueradeLibrary.MasqResources.MasqUtils.turnController;
 import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
-import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone.*;
+import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone.*;
 
 /**
  * Created by Keval Kataria on 3/8/2021
  */
-@Autonomous(name = "Red", group = "Osiris")
+
+@Autonomous(preselectTeleOp = "RobotTeleOp")
 public class Red extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
