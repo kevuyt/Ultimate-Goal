@@ -27,10 +27,15 @@ public class MasqCamera {
         camera.setPipeline(detector);
     }
 
-    public void start(OpenCvCameraRotation rotation) {
+    public void start(int width, int height, OpenCvCameraRotation rotation) {
+        detector.setResolution(width, height);
         camera.openCameraDevice();
-        camera.startStreaming(1280, 960, rotation);
+        camera.startStreaming(width, height, rotation);
         streaming = true;
+    }
+
+    public void start(OpenCvCameraRotation rotation) {
+        start(1280, 960, rotation);
     }
 
     public void start() {start(UPRIGHT);}

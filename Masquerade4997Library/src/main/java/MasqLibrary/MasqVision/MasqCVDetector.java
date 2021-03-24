@@ -99,17 +99,18 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     }
     public Rect getFoundRect() {return foundRect;}
     public Rect getSecondRect() {return secondRect;}
+    public boolean isFound() {return found;}
+    public boolean isFound2() {return found2;}
 
     public void setClippingMargins(int top, int left, int bottom, int right) {
         tl = new Point(left, top);
-        br = new Point(1280 - right,960 - bottom);
-        imageWidth = 1280 - right - left;
-        imageHeight = 960 - top - bottom;
+        br = new Point(imageWidth - right,imageHeight - bottom);
         offset = left;
     }
-
-    public boolean isFound() {return found;}
-    public boolean isFound2() {return found2;}
+    public void setResolution(int width, int height) {
+        imageWidth = width;
+        imageHeight = height;
+    }
 
     private Rect boundingRect(List<Rect> rects) {
         int minX = 999;
@@ -131,7 +132,11 @@ public abstract class MasqCVDetector extends OpenCvPipeline {
     }
 
     @Override
-    public Mat processFrame(Mat input) {return input;}
+    public Mat processFrame(Mat input) {
+        input.submat(new Rect(tl, br));
+        return process(input);
+    }
+    public abstract Mat process(Mat input);
     @Override
     public void onViewportTapped() {}
 }

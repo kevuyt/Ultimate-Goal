@@ -26,10 +26,10 @@ public class RingDetector extends MasqCVDetector {
     private double y0 = 0;
 
     @Override
-    public Mat processFrame(Mat input) {
+    public Mat process(Mat input) {
         double time = System.nanoTime();
 
-        if(time - prevTime > 3e9) {
+        if(time - prevTime > 1e9) {
             if(init) {
                 prevTime = time;
                 workingMat = input.clone();
