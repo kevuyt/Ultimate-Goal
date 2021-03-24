@@ -26,7 +26,6 @@ public class Osiris extends MasqRobot {
     public MasqMotor intake, encoder1, encoder2, shooter;
     public RotatingClaw claw;
     public MasqServo flicker, hopper;
-    private HardwareMap hardwareMap;
     public MasqDistanceSensor distanceSensor;
 
     @Override
@@ -52,7 +51,6 @@ public class Osiris extends MasqRobot {
 
     @Override
     public void init(OpMode opmode) {
-        hardwareMap = getHardwareMap();
         mapHardware();
 
         tracker.setXRadius(5.675);

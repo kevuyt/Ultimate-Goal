@@ -69,16 +69,16 @@ public class Red extends MasqLinearOpMode {
         if(zone != A) {
             robot.intake.setPower(1);
             robot.xyPath(stack);
-            if(zone == B) while(robot.getRings() < 1) sleep(100);
-            else {
+            if(zone == C) {
                 robot.shooter.setPower(1);
                 while(robot.getRings() < 2) sleep(100);
                 shoot(1);
                 robot.shooter.setPower(0);
-                while(robot.getRings() < 3) sleep(100);
             }
+            while(robot.getRings() < 3) sleep(100);
         }
 
+        robot.intake.setPower(0);
         robot.claw.mid();
 
         robot.shooter.setPower(0.6);
