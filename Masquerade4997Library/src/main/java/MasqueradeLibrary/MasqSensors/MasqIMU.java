@@ -36,7 +36,6 @@ public class MasqIMU {
         imu.initialize(parameters);
         this.name = name;
     }
-    public MasqIMU() {new MasqIMU("imu");}
 
     public double getAbsoluteHeading() {
         angles = imu.getAngularOrientation(INTRINSIC, ZYX, AngleUnit.DEGREES);

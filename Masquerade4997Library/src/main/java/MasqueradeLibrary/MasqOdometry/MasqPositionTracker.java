@@ -38,7 +38,7 @@ public class MasqPositionTracker {
         this.xSystem = xSystem;
         this.yLSystem = yLSystem;
         this.yRSystem = yRSystem;
-        imu = new MasqIMU();
+        imu = new MasqIMU("imu");
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.THREE;
@@ -47,7 +47,7 @@ public class MasqPositionTracker {
     public MasqPositionTracker(MasqMotor xSystem, MasqMotor ySystem, boolean left) {
         this.xSystem = xSystem;
         this.ySystem = ySystem;
-        imu = new MasqIMU();
+        imu = new MasqIMU("imu");
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         if(left) position = DeadWheelPosition.TWO_BACK_LEFT;
@@ -56,7 +56,7 @@ public class MasqPositionTracker {
     }
     public MasqPositionTracker(MasqDriveTrain driveTrain) {
         this.driveTrain = driveTrain;
-        imu = new MasqIMU();
+        imu = new MasqIMU("imu");
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.TANK;
