@@ -1,10 +1,9 @@
 package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.*;
 
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector;
-import org.firstinspires.ftc.teamcode.Osiris.Autonomous.Vision.RingDetector.TargetZone;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector;
+import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import org.opencv.core.Rect;
 
@@ -18,7 +17,7 @@ import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
  * Created by Keval Kataria on 3/7/2021
  */
 
-@TeleOp(name = "VisionTester", group = "Test")
+@TeleOp
 public class VisionTester extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     RingDetector detector;

@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Osiris.Testing;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.*;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
