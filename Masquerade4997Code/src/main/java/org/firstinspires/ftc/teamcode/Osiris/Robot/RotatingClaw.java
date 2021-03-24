@@ -2,9 +2,9 @@ package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
 import androidx.annotation.NonNull;
 
-import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
-import MasqueradeLibrary.MasqMotion.MasqServo;
+import MasqLibrary.MasqMotion.MasqServo;
 
 import static java.util.Locale.US;
 
@@ -13,38 +13,38 @@ import static java.util.Locale.US;
  */
 
 public class RotatingClaw {
-    private MasqServo claw, rotater;
+    private MasqServo claw, rotator;
 
     public RotatingClaw() {
         claw = new MasqServo("claw");
-        rotater = new MasqServo("rotater");
+        rotator = new MasqServo("rotator");
         reset();
     }
 
     public void driverControl(Gamepad controller) {
         claw.toggle(controller.a);
-        rotater.toggle(controller.b);
+        rotator.toggle(controller.b);
     }
 
     public void close() {claw.setPosition(0);}
     public void open() {claw.setPosition(1);}
 
-    public void raise() {rotater.setPosition(0);}
-    public void mid() {rotater.setPosition(0.7);}
-    public void lower() {rotater.setPosition(1);}
+    public void raise() {rotator.setPosition(0);}
+    public void mid() {rotator.setPosition(0.7);}
+    public void lower() {rotator.setPosition(1);}
 
     public void reset() {
         claw.scaleRange(0.1, 0.4);
-        rotater.scaleRange(0.39, 0.96);
+        rotator.scaleRange(0.39, 0.96);
         close();
     }
 
     public MasqServo getClaw() {return claw;}
-    public MasqServo getRotater() {return rotater;}
+    public MasqServo getRotator() {return rotator;}
 
     @NonNull
     @Override
     public String toString() {
-        return String.format(US,"Rotating Claw:\nClaw Position: %.2f\nRotater Position: %.2f", claw.getPosition(), rotater.getPosition());
+        return String.format(US,"Rotating Claw:\nClaw Position: %.2f\nRotater Position: %.2f", claw.getPosition(), rotator.getPosition());
     }
 }

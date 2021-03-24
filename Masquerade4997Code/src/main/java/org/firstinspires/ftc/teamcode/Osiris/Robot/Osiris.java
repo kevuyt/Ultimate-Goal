@@ -4,16 +4,16 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector;
 
-import MasqueradeLibrary.MasqMath.MasqPIDController;
-import MasqueradeLibrary.MasqMotion.*;
-import MasqueradeLibrary.MasqOdometry.MasqPositionTracker;
-import MasqueradeLibrary.MasqRobot;
-import MasqueradeLibrary.MasqSensors.MasqDistanceSensor;
-import MasqueradeLibrary.MasqVision.MasqCamera;
+import MasqLibrary.MasqMath.MasqPIDController;
+import MasqLibrary.MasqMotion.*;
+import MasqLibrary.MasqOdometry.MasqPositionTracker;
+import MasqLibrary.MasqRobot;
+import MasqLibrary.MasqSensors.MasqDistanceSensor;
+import MasqLibrary.MasqVision.MasqCamera;
 
-import static MasqueradeLibrary.MasqResources.DashBoard.getDash;
-import static MasqueradeLibrary.MasqResources.MasqUtils.*;
-import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
+import static MasqLibrary.MasqResources.DashBoard.getDash;
+import static MasqLibrary.MasqResources.MasqUtils.*;
+import static MasqLibrary.MasqRobot.OpMode.AUTO;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 import static org.openftc.easyopencv.OpenCvCameraRotation.SIDEWAYS_LEFT;
 
@@ -75,7 +75,7 @@ public class Osiris extends MasqRobot {
     public void initCamera() {
         RingDetector detector = new RingDetector();
         detector.setClippingMargins(662,324,208,786);
-        camera = new MasqCamera(detector, hardwareMap);
+        camera = new MasqCamera(detector);
         camera.start(SIDEWAYS_LEFT);
     }
 

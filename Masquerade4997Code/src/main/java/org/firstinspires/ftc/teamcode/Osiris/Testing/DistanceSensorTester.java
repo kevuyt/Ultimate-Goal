@@ -4,9 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.*;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
+import MasqLibrary.MasqResources.MasqLinearOpMode;
 
-import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
+import static MasqLibrary.MasqRobot.OpMode.TELEOP;
 
 /**
  * Created by Keval Kataria on 3/22/2021

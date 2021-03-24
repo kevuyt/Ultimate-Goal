@@ -1,22 +1,13 @@
 package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
-import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
+import org.opencv.core.*;
 
-import java.util.Arrays;
 import java.util.List;
 
-import MasqueradeLibrary.MasqMath.MasqVector;
-import MasqueradeLibrary.MasqVision.LumaFilter;
-import MasqueradeLibrary.MasqVision.MasqCVColorFilter;
-import MasqueradeLibrary.MasqVision.MasqCVDetector;
+import MasqLibrary.MasqMath.MasqVector;
+import MasqLibrary.MasqVision.*;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 import static org.opencv.core.Core.*;
 import static org.opencv.imgproc.Imgproc.*;
 

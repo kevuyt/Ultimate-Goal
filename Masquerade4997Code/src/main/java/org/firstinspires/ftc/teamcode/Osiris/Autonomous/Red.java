@@ -5,12 +5,12 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import MasqueradeLibrary.MasqOdometry.MasqWayPoint;
-import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
+import MasqLibrary.MasqOdometry.MasqWayPoint;
+import MasqLibrary.MasqResources.MasqLinearOpMode;
 
-import static MasqueradeLibrary.MasqOdometry.MasqWayPoint.PointMode.*;
-import static MasqueradeLibrary.MasqResources.MasqUtils.turnController;
-import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
+import static MasqLibrary.MasqOdometry.MasqWayPoint.PointMode.*;
+import static MasqLibrary.MasqResources.MasqUtils.turnController;
+import static MasqLibrary.MasqRobot.OpMode.AUTO;
 import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone.*;
 
 /**

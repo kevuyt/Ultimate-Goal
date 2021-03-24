@@ -4,10 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.*;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import MasqueradeLibrary.MasqMotion.MasqServoProgrammer;
-import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
+import MasqLibrary.MasqMotion.MasqServoProgrammer;
+import MasqLibrary.MasqResources.MasqLinearOpMode;
 
-import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
+import static MasqLibrary.MasqRobot.OpMode.TELEOP;
 
 /**
  * Created by Keval Kataria on 12/30/2020
@@ -20,7 +20,7 @@ public class ServoProgrammer extends MasqLinearOpMode {
     @Override
     public void runLinearOpMode() {
         robot.init(TELEOP);
-        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotater(), robot.hopper, robot.flicker);
+        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.claw.getClaw(), robot.claw.getRotator(), robot.hopper, robot.flicker);
 
         while(!opModeIsActive()) {
             servoProgrammer.init();

@@ -4,10 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.*;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
-import MasqueradeLibrary.MasqOdometry.MasqWayPoint;
-import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
+import MasqLibrary.MasqOdometry.MasqWayPoint;
+import MasqLibrary.MasqResources.MasqLinearOpMode;
 
-import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
+import static MasqLibrary.MasqRobot.OpMode.TELEOP;
 
 /**
  * Created by Keval Kataria on 12/30/2020
@@ -34,7 +34,7 @@ public class XYPathTester extends MasqLinearOpMode {
         timeoutClock.reset();
 
         robot.xyPath(new MasqWayPoint(24, 24, 0).setTimeout(30 - timeoutClock.seconds()).setMinVelocity(0));
-        sleep((long) (30000 - timeoutClock.milliseconds()));
+        sleep((long) (30e3 - timeoutClock.milliseconds()));
 
     }
 }

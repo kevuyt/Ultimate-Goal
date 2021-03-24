@@ -7,11 +7,11 @@ import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import org.opencv.core.Rect;
 
-import MasqueradeLibrary.MasqMath.MasqVector;
-import MasqueradeLibrary.MasqResources.MasqLinearOpMode;
+import MasqLibrary.MasqMath.MasqVector;
+import MasqLibrary.MasqResources.MasqLinearOpMode;
 
-import static MasqueradeLibrary.MasqResources.MasqUtils.getCenterPoint;
-import static MasqueradeLibrary.MasqRobot.OpMode.AUTO;
+import static MasqLibrary.MasqResources.MasqUtils.getCenterPoint;
+import static MasqLibrary.MasqRobot.OpMode.AUTO;
 
 /**
  * Created by Keval Kataria on 3/7/2021
