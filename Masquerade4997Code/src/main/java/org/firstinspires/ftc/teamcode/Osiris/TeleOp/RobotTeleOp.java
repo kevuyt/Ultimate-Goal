@@ -11,10 +11,11 @@ import static MasqueradeLibrary.MasqRobot.OpMode.TELEOP;
 /**
  * Created by Keval Kataria on 11/9/2020
  */
-@TeleOp(name = "RobotTeleOp", group = "Osiris")
+
+@TeleOp(group = "Main")
 public class RobotTeleOp extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    double shooterSpeed = 0.66;
+    double shooterSpeed = 0.66, intakeSpeed = 0.5;
     String mode = "GOAL";
     boolean enabled = false;
 
@@ -30,7 +31,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             robot.MECH();
 
-            if(!enabled) robot.intake.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
+            if(!enabled) robot.intake.setPower(intakeSpeed * gamepad1.left_trigger - gamepad1.right_trigger);
 
             if(gamepad1.left_bumper) {
                 robot.shooter.setPower(shooterSpeed);
@@ -48,10 +49,13 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             if(gamepad1.dpad_left)  shooterSpeed -= 0.0001;
             else if(gamepad1.dpad_right) shooterSpeed += 0.0001;
+            if(gamepad1.dpad_down)  intakeSpeed -= 0.0001;
+            else if(gamepad1.dpad_up) intakeSpeed += 0.0001;
 
             robot.claw.driverControl(gamepad1);
 
-            dash.create("Speed:", shooterSpeed);
+            dash.create("Shooter Speed:", shooterSpeed);
+            dash.create("Intake Speed:", intakeSpeed);
             //dash.create("Shooter Mode:", mode);
             //dash.create("Rings in Hopper:", robot.getRings());
             dash.update();

@@ -81,9 +81,9 @@ public class Osiris extends MasqRobot {
 
     private void initServos() {
         claw.reset();
-        flicker.scaleRange(0.045, 0.18);
+        flicker.scaleRange(0.04, 0.13);
         flicker.setPosition(0);
-        hopper.scaleRange(0.05, 0.344);
+        hopper.scaleRange(0.115, 0.344);
         hopper.setPosition(0);
     }
     public int getRings() {return 0;} //Placeholder until I get distance sensor
