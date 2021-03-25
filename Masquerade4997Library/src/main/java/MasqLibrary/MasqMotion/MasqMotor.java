@@ -25,6 +25,7 @@ public class MasqMotor {
     private boolean hasMin, hasMax;
     private MasqTouchSensor minLim, maxLim = null;
     private String name;
+    private double min = -1, max = 1;
 
     public MasqMotor(String name) {
         motor = getHardwareMap().get(DcMotor.class, name);
@@ -57,6 +58,10 @@ public class MasqMotor {
         maxLim = max;
         hasMax = true;
     }
+    public void scalePower(double min, double max) {
+        this.min = min;
+        this.max = max;
+    }
 
     public void setVelocityControl(boolean velocityControl) {
         if(velocityControl) {
@@ -71,7 +76,7 @@ public class MasqMotor {
 
     public void setPower(double power) {
         if(power > 0 && hasMax && maxLim.isPressed() || power < 0 && hasMin && minLim.isPressed()) power = 0;
-        power = clip(power, -1, 1);
+        power = clip(power, min, max);
         motor.setPower(power);
     }
     public double getPower() {return motor.getPower();}

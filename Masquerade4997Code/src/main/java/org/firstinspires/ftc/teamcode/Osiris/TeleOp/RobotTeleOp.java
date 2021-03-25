@@ -7,6 +7,7 @@ import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import MasqLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqLibrary.MasqRobot.OpMode.TELEOP;
+import static org.firstinspires.ftc.teamcode.Osiris.Robot.Constants.*;
 
 /**
  * Created by Keval Kataria on 11/9/2020
@@ -15,7 +16,6 @@ import static MasqLibrary.MasqRobot.OpMode.TELEOP;
 @TeleOp(group = "Main")
 public class RobotTeleOp extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    double shooterSpeed = 0.66, intakeSpeed = 0.5;
     String mode = "GOAL";
     boolean enabled = false;
 
@@ -32,10 +32,10 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             robot.MECH();
 
-            if(!enabled) robot.intake.setPower(intakeSpeed * gamepad1.left_trigger - gamepad1.right_trigger);
+            if(!enabled) robot.intake.setPower(INTAKE_POWER * gamepad1.left_trigger - gamepad1.right_trigger);
 
             if(gamepad1.left_bumper) {
-                robot.shooter.setPower(shooterSpeed);
+                robot.shooter.setPower(SHOOTER_POWER);
                 robot.hopper.setPosition(1);
                 enabled = true;
             }
@@ -48,15 +48,16 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left)  shooterSpeed -= 0.0001;
-            else if(gamepad1.dpad_right) shooterSpeed += 0.0001;
-            if(gamepad1.dpad_down)  intakeSpeed -= 0.0001;
-            else if(gamepad1.dpad_up) intakeSpeed += 0.0001;
+            if(gamepad1.dpad_left)  SHOOTER_POWER -= 0.0001;
+            else if(gamepad1.dpad_right) SHOOTER_POWER += 0.0001;
+            if(gamepad1.dpad_down)  INTAKE_POWER -= 0.0001;
+            else if(gamepad1.dpad_up) INTAKE_POWER += 0.0001;
 
             robot.claw.driverControl(gamepad1);
 
-            dash.create("Shooter Speed:", shooterSpeed);
-            dash.create("Intake Speed:", intakeSpeed);
+            dash.create("Shooter Speed:", SHOOTER_POWER);
+            dash.create("Intake Speed:", INTAKE_POWER);
+            dash.create("Shooter Inches: ", robot.shooter);
             //dash.create("Shooter Mode:", mode);
             //dash.create("Rings in Hopper:", robot.getRings());
             dash.update();
