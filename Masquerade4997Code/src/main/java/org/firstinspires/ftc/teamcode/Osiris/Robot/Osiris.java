@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
-import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector;
 
 import MasqLibrary.MasqMath.MasqPIDController;
