@@ -22,7 +22,8 @@ public class Red extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
     private TargetZone zone;
     int iterations;
-    private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5).setAngularCorrectionSpeed(0.004).setPointSwitchRadius(24).setName("Drop Zone"),
+    private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5)
+            .setAngularCorrectionSpeed(0.004).setPointSwitchRadius(24).setName("Drop Zone"),
             strafe = new MasqWayPoint(-5,-30,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.002),
             stack = new MasqWayPoint(4, 30, 0).setSwitchMode(TANK).setName("Starter Stack");
 
@@ -87,19 +88,23 @@ public class Red extends MasqLinearOpMode {
         else robot.xyPath(target);
         robot.turnAbsolute(target.getH(),1);
 
-        robot.xyPath(new MasqWayPoint(7,-64, 180).setTimeout(5).setDriveCorrectionSpeed(0.008).setAngularCorrectionSpeed(0.07));
+        robot.xyPath(new MasqWayPoint(7,-64, 180).setTimeout(5).setDriveCorrectionSpeed(0.008)
+                .setAngularCorrectionSpeed(0.07));
         shoot(1);
 
-        robot.xyPath(new MasqWayPoint(7,-64, 180).setTimeout(5).setDriveCorrectionSpeed(0.008).setAngularCorrectionSpeed(0.07));
+        robot.xyPath(new MasqWayPoint(7,-64, 180).setTimeout(5).setDriveCorrectionSpeed(0.008)
+                .setAngularCorrectionSpeed(0.07));
         shoot(1);
 
-        robot.xyPath(new MasqWayPoint(7,-64, 180).setTimeout(5).setDriveCorrectionSpeed(0.008).setAngularCorrectionSpeed(0.07));
+        robot.xyPath(new MasqWayPoint(7,-64, 180).setTimeout(5).setDriveCorrectionSpeed(0.008)
+                .setAngularCorrectionSpeed(0.07));
         shoot(1);
 
         robot.shooter.setPower(0);
         robot.claw.lower();
 
-        robot.xyPath(new MasqWayPoint(24, -28, 180).setMinVelocity(0.27).setDriveCorrectionSpeed(0.02).setAngularCorrectionSpeed(0.05).setTimeout(5).setName("Second Wobble Goal"));
+        robot.xyPath(new MasqWayPoint(24, -28, 180).setMinVelocity(0.27).setDriveCorrectionSpeed(0.02)
+                .setAngularCorrectionSpeed(0.05).setTimeout(5).setName("Second Wobble Goal"));
 
         robot.claw.close();
         sleep();
@@ -117,7 +122,8 @@ public class Red extends MasqLinearOpMode {
         sleep();
         robot.claw.raise();
 
-        MasqWayPoint park = new MasqWayPoint(robot.tracker.getGlobalX(), -72, robot.tracker.getHeading()).setDriveCorrectionSpeed(0.025).setAngularCorrectionSpeed(0.03).setName("Park");
+        MasqWayPoint park = new MasqWayPoint(robot.tracker.getGlobalX(), -72, robot.tracker.getHeading())
+                .setDriveCorrectionSpeed(0.025).setAngularCorrectionSpeed(0.03).setName("Park");
         if(zone != B) park.setX(park.getX() + 10);
         robot.xyPath(park);
     }

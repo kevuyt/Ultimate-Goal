@@ -5,5 +5,4 @@ dependencies {
     implementation project(':FtcRobotController')
     implementation project(':Masquerade4997Library')
     implementation 'org.openftc:easyopencv:1.4.1'
-    annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
 }
