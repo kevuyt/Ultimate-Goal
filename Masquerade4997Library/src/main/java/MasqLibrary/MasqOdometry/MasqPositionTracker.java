@@ -17,10 +17,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADI
  */
 
 public class MasqPositionTracker {
-    private MasqMotor xSystem;
-    private MasqMotor yLSystem;
-    private MasqMotor yRSystem;
-    private MasqMotor ySystem;
+    private MasqMotor xSystem, yLSystem, yRSystem, ySystem;
     private MasqDriveTrain driveTrain;
     private MasqIMU imu;
     private double prevHeading;

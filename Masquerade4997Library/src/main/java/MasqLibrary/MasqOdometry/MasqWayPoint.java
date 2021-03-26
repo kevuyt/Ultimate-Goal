@@ -13,7 +13,7 @@ import static java.util.Locale.US;
  */
 
 public class MasqWayPoint {
-    private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
+    private double x = getTracker().getGlobalX(), y = getTracker().getGlobalY(), h = getTracker().getHeading(), targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
             angularCorrectionSpeed = 0.08, driveCorrectionSpeed = 0.12;
     private String name = "WayPoint";
@@ -22,17 +22,12 @@ public class MasqWayPoint {
 
     public enum PointMode {MECH, TANK, SWITCH}
 
-    public MasqWayPoint() {
-        x = getTracker().getGlobalX();
-        y = getTracker().getGlobalY();
-        h = getTracker().getHeading();
-        if(getTracker().getPosition() == TANK) switchMode = PointMode.TANK;
-    }
+    public MasqWayPoint() {if(getTracker().getPosition() == TANK) switchMode = PointMode.TANK;}
     public MasqWayPoint(double x,double y, double h) {
+        this();
         this.x = x;
         this.y = y;
         this.h = h;
-        if(getTracker().getPosition() == TANK) switchMode = PointMode.TANK;
     }
 
     public MasqWayPoint setSwitchMode(PointMode switchMode) {
@@ -130,9 +125,7 @@ public class MasqWayPoint {
     public double getLookAhead() {return lookAhead;}
 
     public double getAngularCorrectionSpeed() {return angularCorrectionSpeed;}
-    public double getDriveCorrectionSpeed() {
-        return driveCorrectionSpeed;
-    }
+    public double getDriveCorrectionSpeed() {return driveCorrectionSpeed;}
 
     public PointMode getSwitchMode() {return switchMode;}
 

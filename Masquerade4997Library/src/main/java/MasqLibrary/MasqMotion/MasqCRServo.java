@@ -3,6 +3,7 @@ package MasqLibrary.MasqMotion;
 import androidx.annotation.NonNull;
 
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
@@ -10,7 +11,7 @@ import static MasqLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static java.util.Locale.US;
 
 /**
- * Created by Archish on 11/4/16.
+ * Created by Keval Kataria on 3/15/2021
  */
 
 public class MasqCRServo {
@@ -18,12 +19,13 @@ public class MasqCRServo {
     private String nameCr_Servo;
     private MasqTouchSensor min, max = null;
     private boolean limitDetection;
+
     public MasqCRServo(String name){
         this.nameCr_Servo = name;
         servo = getHardwareMap().crservo.get(name);
         limitDetection = false;
     }
-    public MasqCRServo (String name, CRServo.Direction direction){
+    public MasqCRServo (String name, Direction direction){
         this.nameCr_Servo = name;
         servo = getHardwareMap().crservo.get(name);
         servo.setDirection(direction);
@@ -47,7 +49,6 @@ public class MasqCRServo {
         }
         servo.setPower(motorPower);
     }
-    public void sleep (int time) throws InterruptedException {servo.wait(time);}
     public double getPower() {return servo.getPower();}
 
     @NonNull

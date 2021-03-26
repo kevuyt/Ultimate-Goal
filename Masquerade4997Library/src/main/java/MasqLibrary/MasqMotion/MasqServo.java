@@ -2,7 +2,8 @@ package MasqLibrary.MasqMotion;
 
 import androidx.annotation.NonNull;
 
-import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.Servo.Direction;
 
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
@@ -10,7 +11,7 @@ import static MasqLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static java.util.Locale.US;
 
 /**
- * Created by Archish on 10/28/16.
+ * Created by Keval Kataria on 3/15/2021
  */
 
 public class MasqServo {
@@ -24,7 +25,7 @@ public class MasqServo {
         this.name = name;
         servo = getHardwareMap().servo.get(name);
     }
-    public MasqServo(String name, Servo.Direction direction){
+    public MasqServo(String name, Direction direction){
         this.name = name;
         servo = getHardwareMap().servo.get(name);
         servo.setDirection(direction);
@@ -68,6 +69,5 @@ public class MasqServo {
     public String toString() {
         return String.format(US, "%s:\nPosition: %.2f", name, getPosition());
     }
-
     public String getName() {return name;}
 }
