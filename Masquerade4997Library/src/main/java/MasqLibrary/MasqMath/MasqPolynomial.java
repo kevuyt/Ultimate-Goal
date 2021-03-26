@@ -12,22 +12,23 @@ import static org.apache.commons.math3.analysis.integration.SimpsonIntegrator.SI
  * Created by Keval Kataria on 3/7/2021
  */
 public class MasqPolynomial extends PolynomialFunction {
-    public MasqPolynomial(double[] c) throws NullArgumentException, NoDataException {
+    private boolean arcLength;
+    public MasqPolynomial(double[] c, boolean arcLength) throws NullArgumentException, NoDataException {
         super(c);
+        this.arcLength = arcLength;
     }
 
-
-    //Use this for arc length only. To find real value use "output(x);"
     @Override
-    public double value(double x) {return sqrt(1 - pow(polynomialDerivative().value(x), 2));}
-
-    public double output(double x) {return evaluate(getCoefficients(), x);}
+    public double value(double x) {
+        if(arcLength) return sqrt(1 - pow(polynomialDerivative().value(x), 2));
+        else return super.value(x);
+    }
 
     public static double getArcLength(PolynomialSplineFunction function, double maxX) {
         SimpsonIntegrator integrator = new SimpsonIntegrator();
         PolynomialFunction[] polynomials = function.getPolynomials();
 
-        for(int i = 0; i < polynomials.length; i++) polynomials[i] = new MasqPolynomial(polynomials[i].getCoefficients());
+        for(int i = 0; i < polynomials.length; i++) polynomials[i] = new MasqPolynomial(polynomials[i].getCoefficients(), true);
 
         function = new PolynomialSplineFunction(function.getKnots(), polynomials);
         return integrator.integrate(SIMPSON_MAX_ITERATIONS_COUNT, function, 0, maxX);
