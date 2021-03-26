@@ -13,14 +13,10 @@ import static org.firstinspires.ftc.robotcore.external.Telemetry.Log.DisplayOrde
 
 public class DashBoard {
     private Telemetry telemetry;
-    private static DashBoard instance;
 
     public DashBoard(Telemetry telemetry){
         this.telemetry = telemetry;
-        instance = this;
     }
-
-    public static DashBoard getDash() {return instance;}
 
     public void create(String string) {telemetry.addLine(string);}
     public void create(Object data) {create(data.toString());}

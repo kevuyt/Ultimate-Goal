@@ -22,6 +22,7 @@ public abstract class MasqLinearOpMode extends LinearOpMode {
             dash = new DashBoard(super.telemetry);
             dash.setNewFirst();
             setLinearOpMode(this);
+            setDash(dash);
             runLinearOpMode();
         } finally {
             stopLinearOpMode();

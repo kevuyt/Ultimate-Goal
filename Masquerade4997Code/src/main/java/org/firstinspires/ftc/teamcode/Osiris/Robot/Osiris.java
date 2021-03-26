@@ -9,7 +9,6 @@ import MasqLibrary.MasqRobot;
 import MasqLibrary.MasqSensors.MasqDistanceSensor;
 import MasqLibrary.MasqVision.MasqCamera;
 
-import static MasqLibrary.MasqResources.DashBoard.getDash;
 import static MasqLibrary.MasqResources.MasqUtils.*;
 import static MasqLibrary.MasqRobot.OpMode.AUTO;
 import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;

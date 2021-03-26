@@ -4,9 +4,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import MasqLibrary.MasqResources.DashBoard;
 
-import static MasqLibrary.MasqResources.DashBoard.getDash;
-import static MasqLibrary.MasqResources.MasqUtils.clip;
-import static MasqLibrary.MasqResources.MasqUtils.getLinearOpMode;
+import static MasqLibrary.MasqResources.MasqUtils.*;
 import static com.qualcomm.robotcore.hardware.Servo.Direction.FORWARD;
 
 /**
@@ -21,7 +19,6 @@ public class MasqServoProgrammer {
     int numServos;
     DashBoard dash = getDash();
     String[] testServos;
-
 
     public MasqServoProgrammer(MasqServo... servos) {
         numServos = servos.length;

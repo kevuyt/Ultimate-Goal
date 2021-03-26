@@ -25,6 +25,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGR
 public class MasqUtils {
     private static MasqLinearOpMode linearOpMode;
     private static MasqPositionTracker tracker;
+    private static DashBoard dash;
     public static final long DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = sqrt(2);
@@ -46,6 +47,8 @@ public class MasqUtils {
     public static HardwareMap getHardwareMap() {return linearOpMode.hardwareMap;}
     public static void setTracker(MasqPositionTracker positionTracker) {tracker = positionTracker;}
     public static MasqPositionTracker getTracker() {return tracker;}
+    public static void setDash(DashBoard dashboard) {dash = dashboard;}
+    public static DashBoard getDash() {return dash;}
 
     public static double adjustAngle(double angle, AngleUnit angleUnit) {
         return angleUnit.normalize(angle);

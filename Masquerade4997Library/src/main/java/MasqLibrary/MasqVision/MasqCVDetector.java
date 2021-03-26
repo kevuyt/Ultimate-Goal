@@ -6,7 +6,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 
 import java.util.*;
 
-import static MasqLibrary.MasqResources.DashBoard.getDash;
+import static MasqLibrary.MasqResources.MasqUtils.getDash;
 
 /**
  * Created by Keval Kataria on 6/1/2020.
