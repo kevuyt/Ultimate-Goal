@@ -29,6 +29,7 @@ public class MasqDistanceSensor {
     @NonNull
     @Override
     public String toString() {
-        return String.format(US, "%s:\nMeters: %.2f\nInches: %.2f\nCentimeters: %.2f\nMillimeters: %.2f", name, meters(), inches(), centimeters(), millimeters());
+        return String.format(US, "%s:\nMeters: %.2f\nInches: %.2f\nCentimeters: %.2f\nMillimeters: %.2f",
+                name, meters(), inches(), centimeters(), millimeters());
     }
 }

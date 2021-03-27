@@ -57,7 +57,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             dash.create("Shooter Speed:", SHOOTER_POWER);
             dash.create("Intake Speed:", INTAKE_POWER);
-            dash.create("Shooter Inches: ", robot.shooter);
+            dash.create("Shooter Inches:", robot.shooter);
+            dash.create("Distance Measurement:", robot.distanceSensor)
             //dash.create("Shooter Mode:", mode);
             //dash.create("Rings in Hopper:", robot.getRings());
             dash.update();
