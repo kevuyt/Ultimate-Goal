@@ -88,3 +88,4 @@ lint/tmp/
 *.xml
 
 .idea/
+*.md
