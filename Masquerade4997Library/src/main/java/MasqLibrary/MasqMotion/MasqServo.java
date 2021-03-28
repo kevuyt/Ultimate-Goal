@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.Servo.Direction;
+import com.qualcomm.robotcore.hardware.ServoControllerEx;
 
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
@@ -30,6 +31,7 @@ public class MasqServo {
         servo = getHardwareMap().servo.get(name);
         servo.setDirection(direction);
     }
+
     public void setPosition (double position) {
         servo.setPosition(position);
     }
@@ -42,6 +44,7 @@ public class MasqServo {
     }
     private boolean limitPressed () {
         if (limDetection) return  limMin.isPressed() || limMax.isPressed();
+        servo.close();
         return false;
     }
     public double getPosition () {
@@ -64,10 +67,16 @@ public class MasqServo {
     }
     public void toggle (boolean button) {toggle(button, 0, 1);}
 
+    public void disable() {
+        ServoControllerEx controller = (ServoControllerEx) servo.getController();
+        controller.setServoPwmDisable(servo.getPortNumber());
+    }
+
     @NonNull
     @Override
     public String toString() {
         return String.format(US, "%s:\nPosition: %.2f", name, getPosition());
     }
     public String getName() {return name;}
+
 }

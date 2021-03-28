@@ -19,6 +19,7 @@ public class MasqServoProgrammer {
     int numServos;
     DashBoard dash = getDash();
     String[] testServos;
+    boolean first = true;
 
     public MasqServoProgrammer(MasqServo... servos) {
         numServos = servos.length;
@@ -64,8 +65,8 @@ public class MasqServoProgrammer {
         }
 
         if (numServos > 4) {
-            if (controller.left_stick_y > 0) testServos[4] = "Yes";
-            else if (controller.left_stick_y < 0) testServos[4] = "No";
+            if (controller.left_stick_y < 0) testServos[4] = "Yes";
+            else if (controller.left_stick_y > 0) testServos[4] = "No";
             dash.create(names[4] + " (Yes: LUp, No: LDown):", testServos[4]);
         }
 
@@ -73,6 +74,9 @@ public class MasqServoProgrammer {
     }
 
     public void run() {
+        if(first) for(int i = 0; i < numServos; i++) if(!testServos[i].equals("Yes")) servos[i].disable();
+        first = false;
+
         if(numServos > 0 && testServos[0].equals("Yes")) {
             if (controller.a) values[0] += 0.0001;
             else if (controller.b) values[0] -= 0.0001;
@@ -98,13 +102,12 @@ public class MasqServoProgrammer {
         }
 
         if (numServos > 4 && testServos[4].equals("Yes")) {
-            if (controller.left_stick_y > 0) values[4] += 0.0001;
-            else if (controller.left_stick_y < 0) values[4] -= 0.0001;
+            if (controller.left_stick_y < 0) values[4] += 0.0001;
+            else if (controller.left_stick_y > 0) values[4] -= 0.0001;
             dash.create(names[4] + " (+LUp, -LDown): ", values[4]);
         }
 
         clip(values);
-
         for(int i = 0; i < numServos; i++) if(testServos[i].equals("Yes")) servos[i].setPosition(values[i]);
 
         dash.update();
