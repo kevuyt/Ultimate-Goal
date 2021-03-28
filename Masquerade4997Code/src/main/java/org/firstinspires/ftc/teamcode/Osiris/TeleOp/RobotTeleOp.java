@@ -10,6 +10,8 @@ import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import MasqLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqLibrary.MasqRobot.OpMode.TELEOP;
+import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_USING_ENCODER;
+import static com.qualcomm.robotcore.hardware.MotorControlAlgorithm.PIDF;
 import static org.firstinspires.ftc.teamcode.Osiris.Robot.Constants.*;
 
 /**
@@ -61,12 +63,11 @@ public class RobotTeleOp extends MasqLinearOpMode {
             robot.claw.driverControl(gamepad1);
 
             DcMotorControllerEx controller = (DcMotorControllerEx) robot.shooter.getController();
-            PIDFCoefficients pidf = controller.getPIDFCoefficients(robot.shooter.getPortNumber(), DcMotor.RunMode.RUN_USING_ENCODER);
-            controller.setPIDFCoefficients(robot.shooter.getPortNumber(), DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(20, pidf.i, pidf.d, pidf.f, pidf.algorithm));
+            PIDFCoefficients pidf = controller.getPIDFCoefficients(robot.shooter.getPortNumber(), RUN_USING_ENCODER);
+            controller.setPIDFCoefficients(robot.shooter.getPortNumber(), RUN_USING_ENCODER, new PIDFCoefficients(10, pidf.i, pidf.d, pidf.f, PIDF));
 
             dash.create("Shooter Speed:", SHOOTER_POWER);
             dash.create("Intake Speed:", INTAKE_POWER);
-            dash.create(robot.shooter);
             dash.create(pidf);
             //dash.create("Shooter Mode:", mode);
             dash.create("Rings in Hopper:", robot.getRings());
