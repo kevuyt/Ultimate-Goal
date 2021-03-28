@@ -4,6 +4,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
+    buildToolsVersion '30.0.3'
+    ndkVersion '21.4.7075529'
 
     signingConfigs {
         release {
@@ -20,7 +22,6 @@ android {
                 storePassword 'android'
             }
         }
-
         debug {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
@@ -29,9 +30,7 @@ android {
         }
     }
 
-    aaptOptions {
-        noCompress "tflite"
-    }
+    aaptOptions {noCompress "tflite"}
 
     defaultConfig {
         signingConfig signingConfigs.debug
@@ -41,17 +40,14 @@ android {
 
         def manifestFile = project(':FtcRobotController').file('src/main/AndroidManifest.xml')
         def manifestText = manifestFile.getText()
-        //
         def vCodePattern = Pattern.compile("versionCode=\"(\\d+(\\.\\d+)*)\"")
         def matcher = vCodePattern.matcher(manifestText)
         matcher.find()
         def vCode = Integer.parseInt(matcher.group(1))
-        //
         def vNamePattern = Pattern.compile("versionName=\"(.*)\"")
         matcher = vNamePattern.matcher(manifestText)
         matcher.find()
         def vName = matcher.group(1)
-        //
         versionCode vCode
         versionName vName
     }
@@ -60,17 +56,13 @@ android {
         release {
             signingConfig signingConfigs.release
 
-            ndk {
-                abiFilters "armeabi-v7a"
-            }
+            ndk {abiFilters "armeabi-v7a"}
         }
         debug {
             debuggable true
             jniDebuggable true
             renderscriptDebuggable true
-            ndk {
-                abiFilters "armeabi-v7a"
-            }
+            ndk {abiFilters "armeabi-v7a"}
         }
     }
 
@@ -83,11 +75,6 @@ android {
         jni.srcDirs = []
         jniLibs.srcDir rootProject.file('libs')
     }
-    ndkVersion '21.4.7075529'
 }
 
-repositories {
-    flatDir {
-        dirs rootProject.file('libs')
-    }
-}
+repositories {flatDir {dirs rootProject.file('libs')}}

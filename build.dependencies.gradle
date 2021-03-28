@@ -2,9 +2,7 @@ repositories {
     mavenCentral()
     google()
     jcenter()
-    flatDir {
-        dirs rootProject.file('libs')
-    }
+    flatDir {dirs rootProject.file('libs')}
 }
 
 dependencies {

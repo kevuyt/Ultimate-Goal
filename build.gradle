@@ -1,6 +1,4 @@
-configurations {
-    doc { transitive false }
-}
+configurations {doc {transitive false}}
 
 buildscript {
     repositories {
@@ -8,9 +6,7 @@ buildscript {
         google()
         jcenter()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
-    }
+    dependencies {classpath 'com.android.tools.build:gradle:4.0.2'}
 }
 
 allprojects {
@@ -24,9 +20,7 @@ allprojects {
 repositories {
     mavenCentral()
 
-    flatDir {
-        dirs '../libs'
-    }
+    flatDir {dirs '../libs'}
 }
 
 dependencies {
@@ -40,14 +34,12 @@ dependencies {
 task extractJavadoc {
     doLast {
         def componentIds = configurations.doc.incoming.resolutionResult.allDependencies.collect { it.selected.id }
-
         def result = dependencies.createArtifactResolutionQuery()
                 .forComponents(componentIds)
                 .withArtifacts(JvmLibrary, SourcesArtifact, JavadocArtifact)
                 .execute()
-
         for (component in result.resolvedComponents) {
-            component.getArtifacts(JavadocArtifact).each { artifact ->
+            component.getArtifacts(JavadocArtifact).each {artifact ->
                 def version = artifact.identifier.componentIdentifier.version
                 def libName = artifact.identifier.componentIdentifier.moduleIdentifier.name
                 copy {
