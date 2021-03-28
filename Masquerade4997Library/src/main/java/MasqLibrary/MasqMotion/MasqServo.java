@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.Servo.Direction;
 import com.qualcomm.robotcore.hardware.ServoControllerEx;
+import com.qualcomm.robotcore.hardware.ServoImplEx;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.ServoConfigurationType;
 
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
@@ -16,7 +18,7 @@ import static java.util.Locale.US;
  */
 
 public class MasqServo {
-    private Servo servo;
+    ServoImplEx servo;
     private String name;
     private MasqTouchSensor limMin, limMax;
     private boolean limDetection;
@@ -24,12 +26,14 @@ public class MasqServo {
 
     public MasqServo(String name) {
         this.name = name;
-        servo = getHardwareMap().servo.get(name);
+        Servo servo = getHardwareMap().servo.get(name);
+        this.servo = new ServoImplEx((ServoControllerEx) servo.getController(), servo.getPortNumber(), ServoConfigurationType.getStandardServoType());
     }
     public MasqServo(String name, Direction direction){
         this.name = name;
-        servo = getHardwareMap().servo.get(name);
-        servo.setDirection(direction);
+        Servo servo = getHardwareMap().servo.get(name);
+        this.servo = new ServoImplEx((ServoControllerEx) servo.getController(), servo.getPortNumber(), ServoConfigurationType.getStandardServoType());
+        this.servo.setDirection(direction);
     }
 
     public void setPosition (double position) {
@@ -67,10 +71,7 @@ public class MasqServo {
     }
     public void toggle (boolean button) {toggle(button, 0, 1);}
 
-    public void disable() {
-        ServoControllerEx controller = (ServoControllerEx) servo.getController();
-        controller.setServoPwmDisable(servo.getPortNumber());
-    }
+    public void disable() {servo.setPwmDisable();}
 
     @NonNull
     @Override
