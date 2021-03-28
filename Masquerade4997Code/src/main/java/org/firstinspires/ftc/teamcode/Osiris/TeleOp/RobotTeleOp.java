@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.teamcode.Osiris.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorControllerEx;
+import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
@@ -57,10 +60,14 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             robot.claw.driverControl(gamepad1);
 
+            DcMotorControllerEx controller = (DcMotorControllerEx) robot.shooter.getController();
+            PIDFCoefficients pidf = controller.getPIDFCoefficients(robot.shooter.getPortNumber(), DcMotor.RunMode.RUN_USING_ENCODER);
+            controller.setPIDFCoefficients(robot.shooter.getPortNumber(), DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(20, pidf.i, pidf.d, pidf.f, pidf.algorithm));
+
             dash.create("Shooter Speed:", SHOOTER_POWER);
             dash.create("Intake Speed:", INTAKE_POWER);
             dash.create(robot.shooter);
-            dash.create(robot.distanceSensor);
+            dash.create(pidf);
             //dash.create("Shooter Mode:", mode);
             //dash.create("Rings in Hopper:", robot.getRings());
             dash.update();

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.qualcomm.robotcore.hardware.*;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
@@ -19,7 +20,7 @@ import static java.util.Locale.US;
  */
 
 public class MasqMotor {
-    private DcMotor motor;
+    private DcMotorEx motor;
     private double wheelDiameter = 4, gearRatio = 1;
     private int zeroPos;
     private boolean hasMin, hasMax;
@@ -28,12 +29,12 @@ public class MasqMotor {
     private double min = -1, max = 1;
 
     public MasqMotor(String name) {
-        motor = getHardwareMap().get(DcMotor.class, name);
+        motor = (DcMotorEx) getHardwareMap().get(DcMotor.class, name);
         resetEncoder();
         this.name = name;
     }
     public MasqMotor(String name, Direction direction) {
-        motor = getHardwareMap().dcMotor.get(name);
+        motor = (DcMotorEx) getHardwareMap().get(DcMotor.class, name);
         motor.setDirection(direction);
         resetEncoder();
         this.name = name;
