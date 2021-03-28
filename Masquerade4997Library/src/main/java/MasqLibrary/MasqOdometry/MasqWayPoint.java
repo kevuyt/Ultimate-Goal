@@ -13,7 +13,7 @@ import static java.util.Locale.US;
  */
 
 public class MasqWayPoint {
-    private double x = getTracker().getGlobalX(), y = getTracker().getGlobalY(), h = getTracker().getHeading(), targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
+    private double x, y, h, targetRadius = 1, modeSwitchRadius = 10, pointSwitchRadius = 10,
             minVelocity = 0.5, maxVelocity = 1, timeout = 2, lookAhead = 10,
             angularCorrectionSpeed = 0.08, driveCorrectionSpeed = 0.12;
     private String name = "WayPoint";
@@ -22,16 +22,15 @@ public class MasqWayPoint {
 
     public enum PointMode {MECH, TANK, SWITCH}
 
-    public MasqWayPoint() {if(getTracker().getPosition() == TANK) switchMode = PointMode.TANK;}
+    public MasqWayPoint() {}
     public MasqWayPoint(double x,double y, double h) {
-        this();
         this.x = x;
         this.y = y;
         this.h = h;
     }
 
     public MasqWayPoint setSwitchMode(PointMode switchMode) {
-        if(getTracker().getPosition() != TANK) this.switchMode = switchMode;
+        this.switchMode = switchMode;
         return this;
     }
 
