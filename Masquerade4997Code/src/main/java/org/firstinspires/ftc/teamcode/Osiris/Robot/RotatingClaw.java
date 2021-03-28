@@ -22,20 +22,21 @@ public class RotatingClaw {
     }
 
     public void driverControl(Gamepad controller) {
-        claw.toggle(controller.a);
-        rotator.toggle(controller.b);
+        if(controller.a) open();
+        else close();
+        rotator.toggle(controller.b, 0, 0.683);
     }
 
     public void close() {claw.setPosition(0);}
     public void open() {claw.setPosition(1);}
 
-    public void raise() {rotator.setPosition(0);}
-    public void mid() {rotator.setPosition(0.5);}
-    public void lower() {rotator.setPosition(1);}
+    public void raise() {rotator.setPosition(0.683);}
+    public void mid() {rotator.setPosition(0.2);}
+    public void lower() {rotator.setPosition(0);}
 
     public void reset() {
         claw.scaleRange(0.09, 0.4);
-        rotator.scaleRange(0.106, 0.717);
+        rotator.scaleRange(0.106, 1);
         close();
     }
 
@@ -45,6 +46,6 @@ public class RotatingClaw {
     @NonNull
     @Override
     public String toString() {
-        return String.format(US,"Rotating Claw:\nClaw Position: %.2f\nRotater Position: %.2f", claw.getPosition(), rotator.getPosition());
+        return String.format(US,"Rotating Claw:\nClaw Position: %.2f\nRotator Position: %.2f", claw.getPosition(), rotator.getPosition());
     }
 }

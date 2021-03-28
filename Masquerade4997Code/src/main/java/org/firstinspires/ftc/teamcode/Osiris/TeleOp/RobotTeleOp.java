@@ -37,12 +37,13 @@ public class RobotTeleOp extends MasqLinearOpMode {
         while(opModeIsActive()) {
             robot.MECH();
 
-            if(!enabled) robot.intake.setPower(INTAKE_POWER * gamepad1.left_trigger - gamepad1.right_trigger);
+            if(!enabled) robot.intake.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
 
             if(gamepad1.left_bumper) {
                 robot.shooter.setPower(SHOOTER_POWER);
                 robot.hopper.setPosition(1);
                 robot.compressor.setPosition(1);
+                robot.claw.close();
                 enabled = true;
             }
             else {
@@ -57,13 +58,10 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             if(gamepad1.dpad_left)  SHOOTER_POWER -= 0.001;
             else if(gamepad1.dpad_right) SHOOTER_POWER += 0.001;
-            if(gamepad1.dpad_down)  INTAKE_POWER -= 0.001;
-            else if(gamepad1.dpad_up) INTAKE_POWER += 0.001;
 
             robot.claw.driverControl(gamepad1);
 
             dash.create("Shooter Speed:", SHOOTER_POWER);
-            dash.create("Intake Speed:", INTAKE_POWER);
             //dash.create("Shooter Mode:", mode);
             dash.create("Rings in Hopper:", robot.getRings());
             dash.update();

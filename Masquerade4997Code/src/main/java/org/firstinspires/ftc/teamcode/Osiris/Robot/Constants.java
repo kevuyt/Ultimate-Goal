@@ -5,5 +5,5 @@ package org.firstinspires.ftc.teamcode.Osiris.Robot;
  */
 
 public class Constants {
-    public static double SHOOTER_POWER = 0.62, INTAKE_POWER = 1;
+    public static double SHOOTER_POWER = 0.62;
 }
