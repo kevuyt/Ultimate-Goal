@@ -9,6 +9,8 @@ import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigu
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
 import static MasqLibrary.MasqResources.MasqUtils.getHardwareMap;
+import static MasqLibrary.MasqResources.MasqUtils.sleep;
+import static MasqLibrary.MasqResources.MasqUtils.tolerance;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.*;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.*;
 import static com.qualcomm.robotcore.hardware.MotorControlAlgorithm.PIDF;
@@ -86,6 +88,13 @@ public class MasqMotor {
         motor.setPower(power);
     }
     public double getPower() {return motor.getPower();}
+
+    public void runToPosition(int position, double tolerance) {
+        motor.setMode(RUN_TO_POSITION);
+        motor.setTargetPosition(position);
+        while(!tolerance(getCurrentPosition(), position, tolerance)) sleep(50);
+        setVelocityControl(true);
+    }
 
     public void setWheelDiameter(double diameter) {wheelDiameter = diameter;}
     public void setGearRatio(double gearRatio) {this.gearRatio = gearRatio;}
