@@ -82,5 +82,10 @@ public class Osiris extends MasqRobot {
         compressor.setPosition(1);
     }
 
-    public int getRings() {return 0;} //Placeholder until I get distance sensor
+    public int getRings() {
+        if(distanceSensor.millimeters() < 110) return 3;
+        if(distanceSensor.millimeters() < 133) return 2;
+        if(distanceSensor.millimeters() < 147) return 1;
+        return 0;
+    }
 }
