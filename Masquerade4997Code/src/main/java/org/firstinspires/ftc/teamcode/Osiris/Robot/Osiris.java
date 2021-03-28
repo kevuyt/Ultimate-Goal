@@ -45,7 +45,6 @@ public class Osiris extends MasqRobot {
 
         dash = getDash();
     }
-
     @Override
     public void init(OpMode opmode) {
         mapHardware();
@@ -62,25 +61,23 @@ public class Osiris extends MasqRobot {
 
         initServos();
 
-        shooter.setVelocityControl(true);
+        //shooter.setVelocityControl(true);
 
         if(opmode == AUTO) initCamera();
     }
-
     public void initCamera() {
         RingDetector detector = new RingDetector();
         detector.setClippingMargins(662,324,208,786);
         camera = new MasqCamera(detector);
         camera.start(SIDEWAYS_LEFT);
     }
-
     private void initServos() {
         claw.reset();
-        flicker.scaleRange(0.04, 0.13);
+        flicker.scaleRange(0.07 , 0.21);
         flicker.setPosition(0);
-        hopper.scaleRange(0.789, 1);
+        hopper.scaleRange(0.57, 0.855);
         hopper.setPosition(0);
     }
-    public int getRings() {return 0;} //Placeholder until I get distance sensor
 
+    public int getRings() {return 0;} //Placeholder until I get distance sensor
 }
