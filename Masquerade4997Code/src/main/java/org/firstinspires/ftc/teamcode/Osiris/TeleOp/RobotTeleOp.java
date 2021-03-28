@@ -37,11 +37,13 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if(gamepad1.left_bumper) {
                 robot.shooter.setPower(SHOOTER_POWER);
                 robot.hopper.setPosition(1);
+                robot.compressor.setPosition(1);
                 enabled = true;
             }
             else {
                 robot.shooter.setPower(0);
                 robot.hopper.setPosition(0);
+                robot.compressor.setPosition(0);
                 enabled = false;
             }
 
