@@ -11,6 +11,7 @@ import MasqLibrary.MasqSensors.MasqTouchSensor;
 import static MasqLibrary.MasqResources.MasqUtils.getHardwareMap;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.*;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.*;
+import static com.qualcomm.robotcore.hardware.MotorControlAlgorithm.PIDF;
 import static com.qualcomm.robotcore.util.Range.clip;
 import static java.lang.Math.PI;
 import static java.util.Locale.US;
@@ -32,12 +33,16 @@ public class MasqMotor {
         motor = (DcMotorEx) getHardwareMap().get(DcMotor.class, name);
         resetEncoder();
         this.name = name;
+        PIDFCoefficients coefficients = motor.getPIDFCoefficients(RUN_USING_ENCODER);
+        motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(coefficients.p, coefficients.i, coefficients.d, coefficients.f, PIDF));
     }
     public MasqMotor(String name, Direction direction) {
         motor = (DcMotorEx) getHardwareMap().get(DcMotor.class, name);
         motor.setDirection(direction);
         resetEncoder();
         this.name = name;
+        PIDFCoefficients coefficients = motor.getPIDFCoefficients(RUN_USING_ENCODER);
+        motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(coefficients.p, coefficients.i, coefficients.d, coefficients.f, PIDF));
     }
 
     public int getCurrentPosition() {return getAbsolutePosition() - zeroPos;}
@@ -87,6 +92,9 @@ public class MasqMotor {
 
     public DcMotorController getController () {return motor.getController();}
     public int getPortNumber () {return motor.getPortNumber();}
+
+    public PIDFCoefficients getPIDF() {return motor.getPIDFCoefficients(RUN_USING_ENCODER);}
+    public void setPIDF(double p, double i, double d, double f) {motor.setVelocityPIDFCoefficients(p,i,d,f);}
 
     @NonNull
     @Override

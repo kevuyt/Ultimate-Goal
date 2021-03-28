@@ -63,6 +63,7 @@ public class Osiris extends MasqRobot {
         initServos();
 
         shooter.setVelocityControl(true);
+        shooter.setPIDF(50, 3, 0, 0);
 
         if(opmode == AUTO) initCamera();
     }
