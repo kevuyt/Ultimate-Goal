@@ -52,10 +52,10 @@ public class MasqDriveTrain {
     public void setPowerMECH(double angle, double speed, double turnPower) {
         angle += PI / 4;
 
-        double leftFront = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * DEFAULT_TURN_MULTIPLIER;
-        double leftBack = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower * DEFAULT_TURN_MULTIPLIER;
-        double rightFront = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * DEFAULT_TURN_MULTIPLIER;
-        double rightBack = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower * DEFAULT_TURN_MULTIPLIER;
+        double leftFront = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower;
+        double leftBack = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower;
+        double rightFront = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower;
+        double rightBack = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower;
 
         double max = max(abs(leftFront), abs(leftBack), abs(rightFront), abs(rightBack));
         if (max > 1) {

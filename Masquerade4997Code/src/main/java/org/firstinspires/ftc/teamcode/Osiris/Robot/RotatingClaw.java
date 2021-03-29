@@ -32,6 +32,7 @@ public class RotatingClaw {
     public void raise() {rotator.setPosition(0.683);}
     public void mid() {rotator.setPosition(0.2);}
     public void lower() {rotator.setPosition(0);}
+    public void init() {rotator.setPosition(1);}
 
     public void reset() {
         claw.scaleRange(0.09, 0.4);
