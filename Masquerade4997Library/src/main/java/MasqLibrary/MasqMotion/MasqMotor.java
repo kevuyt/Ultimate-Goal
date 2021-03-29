@@ -35,8 +35,8 @@ public class MasqMotor {
         motor = getHardwareMap().get(DcMotorEx.class, name);
         resetEncoder();
         this.name = name;
-        MotorConfigurationType type = motor.getMotorType();
-        double f = 32767 * 60 / type.getMaxRPM() / type.getTicksPerRev();
+
+        double f = 32767 / motor.getMotorType().getAchieveableMaxTicksPerSecond();
         motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(f / 10, f / 100, 0, f, PIDF));
         motor.setPIDFCoefficients(RUN_TO_POSITION, new PIDFCoefficients(0.5,0,0,0));
     }
