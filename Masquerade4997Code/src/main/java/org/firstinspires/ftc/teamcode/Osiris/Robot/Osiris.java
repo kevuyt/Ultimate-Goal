@@ -79,8 +79,8 @@ public class Osiris extends MasqRobot {
         flicker.setPosition(0);
         hopper.scaleRange(0.52, 0.842);
         hopper.setPosition(0);
-        compressor.scaleRange(0.125, 0.425);
-        compressor.setPosition(1);
+        compressor.scaleRange(0.125, 0.4);
+        compressor.setPosition(0);
     }
 
     public int getRings() {

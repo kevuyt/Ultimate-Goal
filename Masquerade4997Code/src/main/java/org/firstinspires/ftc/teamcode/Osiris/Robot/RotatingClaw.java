@@ -22,8 +22,7 @@ public class RotatingClaw {
     }
 
     public void driverControl(Gamepad controller) {
-        if(controller.a) open();
-        else close();
+        claw.toggle(controller.a, 1, 0);
         rotator.toggle(controller.b, 0, 0.683);
     }
 

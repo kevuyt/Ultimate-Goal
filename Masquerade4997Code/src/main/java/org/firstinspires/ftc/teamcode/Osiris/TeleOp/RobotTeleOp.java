@@ -1,18 +1,12 @@
 package org.firstinspires.ftc.teamcode.Osiris.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorControllerEx;
-import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 
 import MasqLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqLibrary.MasqRobot.OpMode.TELEOP;
-import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_USING_ENCODER;
-import static com.qualcomm.robotcore.hardware.MotorControlAlgorithm.PIDF;
-import static org.firstinspires.ftc.teamcode.Osiris.Robot.Constants.*;
 
 /**
  * Created by Keval Kataria on 11/9/2020
@@ -21,8 +15,9 @@ import static org.firstinspires.ftc.teamcode.Osiris.Robot.Constants.*;
 @TeleOp(group = "Main")
 public class RobotTeleOp extends MasqLinearOpMode {
     private Osiris robot = new Osiris();
-    String mode = "GOAL";
-    boolean enabled = false;
+    private String mode = "GOAL";
+    private double shooterPower = 0.5;
+    private boolean enabled = false;
 
     @Override
     public void runLinearOpMode() {
@@ -32,18 +27,23 @@ public class RobotTeleOp extends MasqLinearOpMode {
         dash.update();
 
         waitForStart();
-        //robot.claw.raise();
 
         while(opModeIsActive()) {
             robot.MECH();
 
-            if(!enabled) robot.intake.setPower(gamepad1.left_trigger - gamepad1.right_trigger);
+            if(!enabled && gamepad1.left_trigger > 0) robot.intake.setPower(1);
+            else if(!enabled && gamepad1.right_trigger > 0) robot.intake.setPower(-1);
+            else robot.intake.setPower(0);
 
             if(gamepad1.left_bumper) {
-                robot.shooter.setPower(SHOOTER_POWER);
+                robot.shooter.setPower(shooterPower);
                 robot.hopper.setPosition(1);
-                robot.compressor.setPosition(1);
                 robot.claw.close();
+                Thread thread = new Thread(() -> {
+                    sleep(1000);
+                    robot.compressor.setPosition(1);
+                });
+                thread.start();
                 enabled = true;
             }
             else {
@@ -56,13 +56,22 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left)  SHOOTER_POWER -= 0.001;
-            else if(gamepad1.dpad_right) SHOOTER_POWER += 0.001;
+            if(gamepad1.dpad_left) {
+                mode = "POWER_SHOT";
+                shooterPower = 0.426;
+            }
+            else if(gamepad1.dpad_right) {
+                mode = "GOAL";
+                shooterPower = 0.5;
+            }
+            else if(gamepad1.dpad_up) {
+                mode = "HIGH_POWER";
+                shooterPower = 0.55;
+            }
 
             robot.claw.driverControl(gamepad1);
 
-            dash.create("Shooter Speed:", SHOOTER_POWER);
-            //dash.create("Shooter Mode:", mode);
+            dash.create("Shooter Mode:", mode);
             dash.create("Rings in Hopper:", robot.getRings());
             dash.update();
         }
