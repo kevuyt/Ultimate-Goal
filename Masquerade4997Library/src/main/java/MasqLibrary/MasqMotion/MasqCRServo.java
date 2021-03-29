@@ -3,7 +3,10 @@ package MasqLibrary.MasqMotion;
 import androidx.annotation.NonNull;
 
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.CRServoImplEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
+import com.qualcomm.robotcore.hardware.ServoControllerEx;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.ServoConfigurationType;
 
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
@@ -15,21 +18,20 @@ import static java.util.Locale.US;
  */
 
 public class MasqCRServo {
-    private CRServo servo;
-    private String nameCr_Servo;
+    private CRServoImplEx servo;
+    private String name;
     private MasqTouchSensor min, max = null;
     private boolean limitDetection;
 
     public MasqCRServo(String name){
-        this.nameCr_Servo = name;
-        servo = getHardwareMap().crservo.get(name);
+        this.name = name;
+        CRServo servo = getHardwareMap().crservo.get(name);
+        this.servo = new CRServoImplEx((ServoControllerEx) servo.getController(), servo.getPortNumber(), ServoConfigurationType.getStandardServoType());
         limitDetection = false;
     }
     public MasqCRServo (String name, Direction direction){
-        this.nameCr_Servo = name;
-        servo = getHardwareMap().crservo.get(name);
+        this(name);
         servo.setDirection(direction);
-        limitDetection = false;
     }
     public void setLimits(MasqTouchSensor min, MasqTouchSensor max){
         this.min = min; this.max = max;
@@ -54,6 +56,6 @@ public class MasqCRServo {
     @NonNull
     @Override
     public String toString() {
-        return String.format(US, "%s:\nPower: %.2f", nameCr_Servo, getPower());
+        return String.format(US, "%s:\nPower: %.2f", name, getPower());
     }
 }

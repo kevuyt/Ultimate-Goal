@@ -63,7 +63,6 @@ public class Osiris extends MasqRobot {
         initServos();
 
         shooter.setVelocityControl(true);
-        shooter.setPIDF(50, 3, 0, 0);
 
         if(opmode == AUTO) initCamera();
     }
@@ -84,7 +83,7 @@ public class Osiris extends MasqRobot {
     }
 
     public int getRings() {
-        if(distanceSensor.millimeters() < 110) return 3;
+        if(distanceSensor.millimeters() < 120) return 3;
         if(distanceSensor.millimeters() < 133) return 2;
         if(distanceSensor.millimeters() < 147) return 1;
         return 0;

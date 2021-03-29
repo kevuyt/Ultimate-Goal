@@ -32,19 +32,17 @@ public class MasqMotor {
     private double min = -1, max = 1;
 
     public MasqMotor(String name) {
-        motor = (DcMotorEx) getHardwareMap().get(DcMotor.class, name);
+        motor = getHardwareMap().get(DcMotorEx.class, name);
         resetEncoder();
         this.name = name;
-        PIDFCoefficients coefficients = motor.getPIDFCoefficients(RUN_USING_ENCODER);
-        motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(coefficients.p, coefficients.i, coefficients.d, coefficients.f, PIDF));
+        MotorConfigurationType type = motor.getMotorType();
+        double f = 32767 * 60 / type.getMaxRPM() / type.getTicksPerRev();
+        motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(f / 10, f / 100, 0, f, PIDF));
+        motor.setPIDFCoefficients(RUN_TO_POSITION, new PIDFCoefficients(0.5,0,0,0));
     }
     public MasqMotor(String name, Direction direction) {
-        motor = (DcMotorEx) getHardwareMap().get(DcMotor.class, name);
+        this(name);
         motor.setDirection(direction);
-        resetEncoder();
-        this.name = name;
-        PIDFCoefficients coefficients = motor.getPIDFCoefficients(RUN_USING_ENCODER);
-        motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(coefficients.p, coefficients.i, coefficients.d, coefficients.f, PIDF));
     }
 
     public int getCurrentPosition() {return getAbsolutePosition() - zeroPos;}
