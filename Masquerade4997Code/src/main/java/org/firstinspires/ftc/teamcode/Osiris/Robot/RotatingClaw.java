@@ -13,7 +13,7 @@ import static java.util.Locale.US;
  */
 
 public class RotatingClaw {
-    private MasqServo claw, rotator;
+    private final MasqServo claw, rotator;
 
     public RotatingClaw() {
         claw = new MasqServo("claw");

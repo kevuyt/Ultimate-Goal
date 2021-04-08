@@ -18,6 +18,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
     private String mode = "GOAL";
     private double shooterPower = 0.5;
     private boolean enabled = false;
+    private Thread thread = new Thread();
 
     @Override
     public void runLinearOpMode() {
@@ -39,16 +40,19 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 robot.shooter.setPower(shooterPower);
                 robot.hopper.setPosition(1);
                 robot.claw.close();
-                Thread thread = new Thread(() -> {
-                    sleep(1000);
-                    robot.compressor.setPosition(1);
-                });
-                thread.start();
+                if (!thread.isAlive()) {
+                    thread = new Thread(() -> {
+                        sleep(1000);
+                        robot.compressor.setPosition(1);
+                    });
+                    thread.start();
+                }
                 enabled = true;
             }
             else {
                 robot.shooter.setPower(0);
                 robot.hopper.setPosition(0);
+                if(thread.isAlive()) thread.interrupt();
                 robot.compressor.setPosition(0);
                 enabled = false;
             }

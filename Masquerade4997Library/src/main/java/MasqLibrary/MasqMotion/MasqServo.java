@@ -54,9 +54,7 @@ public class MasqServo {
     public double getPosition () {
         return servo.getPosition();
     }
-    public void scaleRange (double min, double max) {
-        servo.scaleRange(min, max);
-    }
+    public void scaleRange (double min, double max) {servo.scaleRange(min, max);}
 
     public void toggle(boolean button, double pos1, double pos2) {
         boolean currState = false;
