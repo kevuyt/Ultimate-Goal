@@ -26,7 +26,7 @@ public abstract class MasqRobot {
 
     public MasqDriveTrain driveTrain;
     public MasqPositionTracker tracker;
-    private ElapsedTime timeoutClock = new ElapsedTime();
+    private final ElapsedTime timeoutClock = new ElapsedTime();
     protected DashBoard dash;
     private double targetHeading;
 

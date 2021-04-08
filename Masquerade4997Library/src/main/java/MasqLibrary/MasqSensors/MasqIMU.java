@@ -8,6 +8,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.*;
 
 import static MasqLibrary.MasqResources.MasqUtils.*;
 import static com.qualcomm.hardware.bosch.BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+import static com.qualcomm.hardware.bosch.BNO055IMU.AngleUnit.DEGREES;
 import static com.qualcomm.hardware.bosch.BNO055IMU.SensorMode.IMU;
 import static java.util.Locale.US;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.ZYX;
@@ -26,7 +27,7 @@ public class MasqIMU {
     public MasqIMU(String name) {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.mode = IMU;
-        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+        parameters.angleUnit = DEGREES;
         parameters.accelUnit = METERS_PERSEC_PERSEC;
         parameters.calibrationDataFile = "BNO055IMUCalibration.json";
         parameters.loggingEnabled = true;
