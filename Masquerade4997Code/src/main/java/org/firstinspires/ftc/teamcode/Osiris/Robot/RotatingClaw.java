@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import MasqLibrary.MasqMotion.MasqServo;
 
+import static com.qualcomm.robotcore.hardware.Servo.Direction.REVERSE;
 import static java.util.Locale.US;
 
 /**
@@ -22,21 +23,21 @@ public class RotatingClaw {
     }
 
     public void driverControl(Gamepad controller) {
-        claw.toggle(controller.a, 1, 0);
-        rotator.toggle(controller.b, 0, 0.683);
+        claw.toggle(controller.a);
+        rotator.toggle(controller.b, 0.18, 0.763);
     }
 
-    public void close() {claw.setPosition(0);}
-    public void open() {claw.setPosition(1);}
+    public void close() {claw.setPosition(1);}
+    public void open() {claw.setPosition(0);}
 
-    public void raise() {rotator.setPosition(0.683);}
-    public void mid() {rotator.setPosition(0.2);}
-    public void lower() {rotator.setPosition(0);}
+    public void raise() {rotator.setPosition(0.763);}
+    public void mid() {rotator.setPosition(0.4);}
+    public void lower() {rotator.setPosition(0.23);}
     public void init() {rotator.setPosition(1);}
 
     public void reset() {
         claw.scaleRange(0.09, 0.4);
-        rotator.scaleRange(0.106, 1);
+        claw.setDirection(REVERSE);
         close();
     }
 

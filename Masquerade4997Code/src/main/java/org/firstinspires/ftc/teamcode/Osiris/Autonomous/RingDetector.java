@@ -17,7 +17,7 @@ import static org.opencv.imgproc.Imgproc.*;
 
 public class RingDetector extends MasqCVDetector {
     double top, control, bottom;
-    private MasqCVColorFilter lumaFilter = new LumaFilter(100);
+    private final MasqCVColorFilter lumaFilter = new LumaFilter(100);
     double prevTime = 0;
     private boolean init = true;
 

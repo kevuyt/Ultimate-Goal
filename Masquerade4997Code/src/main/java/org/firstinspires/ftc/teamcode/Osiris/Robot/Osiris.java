@@ -76,9 +76,9 @@ public class Osiris extends MasqRobot {
         claw.reset();
         flicker.scaleRange(0.07 , 0.21);
         flicker.setPosition(0);
-        hopper.scaleRange(0.52, 0.842);
+        hopper.scaleRange(0.52, 0.833);
         hopper.setPosition(0);
-        compressor.scaleRange(0.125, 0.4);
+        compressor.scaleRange(0.125, 0.45);
         compressor.setPosition(0);
     }
 

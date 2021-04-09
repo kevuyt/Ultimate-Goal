@@ -14,7 +14,7 @@ import static MasqLibrary.MasqRobot.OpMode.TELEOP;
 
 @TeleOp(group = "Main")
 public class RobotTeleOp extends MasqLinearOpMode {
-    private Osiris robot = new Osiris();
+    private final Osiris robot = new Osiris();
     private String mode = "GOAL";
     private double shooterPower = 0.5;
     private boolean enabled = false;
@@ -55,6 +55,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 if(thread.isAlive()) thread.interrupt();
                 robot.compressor.setPosition(0);
                 enabled = false;
+                robot.claw.driverControl(gamepad1);
             }
 
             if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
@@ -73,7 +74,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 shooterPower = 0.55;
             }
 
-            robot.claw.driverControl(gamepad1);
 
             dash.create("Shooter Mode:", mode);
             dash.create("Rings in Hopper:", robot.getRings());

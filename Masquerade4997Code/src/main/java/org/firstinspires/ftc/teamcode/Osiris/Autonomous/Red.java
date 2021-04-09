@@ -16,11 +16,11 @@ import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.Targ
  * Created by Keval Kataria on 3/8/2021
  */
 
-@Autonomous(preselectTeleOp = "RobotTeleOp")
+@Autonomous(preselectTeleOp = "RobotTeleOp", group = "Main")
 public class Red extends MasqLinearOpMode {
-    private Osiris robot = new Osiris();
+    private final Osiris robot = new Osiris();
     private TargetZone zone;
-    private MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5)
+    private final MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH).setTargetRadius(5)
             .setAngularCorrectionSpeed(0.01).setModeSwitchRadius(24).setName("Drop Zone").setDriveCorrectionSpeed(0.16),
             strafe = new MasqWayPoint(5,30,0).setSwitchMode(TANK).setMinVelocity(0.8);
 

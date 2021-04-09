@@ -17,9 +17,9 @@ import static MasqLibrary.MasqRobot.OpMode.AUTO;
  * Created by Keval Kataria on 3/7/2021
  */
 
-@TeleOp
+@TeleOp(group = "Test")
 public class VisionTester extends MasqLinearOpMode {
-    private Osiris robot = new Osiris();
+    private final Osiris robot = new Osiris();
     RingDetector detector;
 
     @Override

@@ -13,18 +13,18 @@ import static MasqLibrary.MasqRobot.OpMode.TELEOP;
  * Created by Keval Kataria on 12/30/2020
  */
 
-@TeleOp
+@TeleOp(group = "Test")
 public class ServoProgrammer extends MasqLinearOpMode {
-    private Osiris robot = new Osiris();
+    private final Osiris robot = new Osiris();
 
     @Override
     public void runLinearOpMode() {
         robot.init(TELEOP);
-        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.hopper, robot.flicker, robot.compressor, robot.claw.getRotator(), robot.claw.getClaw());
+        MasqServoProgrammer servoProgrammer = new MasqServoProgrammer(robot.hopper, robot.flicker,
+                robot.compressor, robot.claw.getRotator(), robot.claw.getClaw());
 
         while(!opModeIsActive()) {
             servoProgrammer.init();
-
             if(isStopRequested()) break;
         }
 
