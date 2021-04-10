@@ -17,27 +17,26 @@ public class RotatingClaw {
     private final MasqServo claw, rotator;
 
     public RotatingClaw() {
-        claw = new MasqServo("claw");
+        claw = new MasqServo("claw", REVERSE);
         rotator = new MasqServo("rotator");
         reset();
     }
 
     public void driverControl(Gamepad controller) {
         claw.toggle(controller.a);
-        rotator.toggle(controller.b, 0.1, 0.603);
+        rotator.toggle(controller.b, 1, 0.3);
     }
 
     public void close() {claw.setPosition(1);}
     public void open() {claw.setPosition(0);}
 
-    public void raise() {rotator.setPosition(0.721);}
-    public void mid() {rotator.setPosition(0.2);}
-    public void lower() {rotator.setPosition(0.029);}
-    public void init() {rotator.setPosition(1);}
+    public void raise() {rotator.setPosition(0.3);}
+    public void mid() {rotator.setPosition(0.7);}
+    public void lower() {rotator.setPosition(1);}
+    public void init() {rotator.setPosition(0);}
 
     public void reset() {
         claw.scaleRange(0.09, 0.4);
-        claw.setDirection(REVERSE);
         close();
     }
 

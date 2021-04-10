@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Osiris.Robot;
 
+import com.qualcomm.robotcore.hardware.Servo.Direction;
+
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector;
 
 import MasqLibrary.MasqMath.MasqPIDController;
@@ -35,7 +37,7 @@ public class Osiris extends MasqRobot {
         claw = new RotatingClaw();
 
         flicker = new MasqServo("flicker");
-        hopper = new MasqServo("hopper");
+        hopper = new MasqServo("hopper", Direction.REVERSE);
         compressor = new MasqServo("compressor");
 
         encoder1 = new MasqMotor("encoder1");
@@ -74,11 +76,11 @@ public class Osiris extends MasqRobot {
     }
     private void initServos() {
         claw.reset();
-        flicker.scaleRange(0.07 , 0.21);
+        flicker.scaleRange(0, 0.22);
         flicker.setPosition(0);
-        hopper.scaleRange(0.52, 0.833);
+        hopper.scaleRange(0.643, 0.861);
         hopper.setPosition(0);
-        compressor.scaleRange(0.125, 0.45);
+        compressor.scaleRange(0.125, 0.44);
         compressor.setPosition(0);
     }
 

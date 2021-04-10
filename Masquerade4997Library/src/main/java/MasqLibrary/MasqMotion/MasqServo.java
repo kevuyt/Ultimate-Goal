@@ -2,8 +2,8 @@ package MasqLibrary.MasqMotion;
 
 import androidx.annotation.NonNull;
 
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.Servo.Direction;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoControllerEx;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.ServoConfigurationType;
@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.hardware.configuration.typecontainers.ServoConfigu
 import MasqLibrary.MasqSensors.MasqTouchSensor;
 
 import static MasqLibrary.MasqResources.MasqUtils.getHardwareMap;
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.REVERSE;
 import static java.util.Locale.US;
 
 /**
@@ -19,7 +20,7 @@ import static java.util.Locale.US;
 
 public class MasqServo {
     ServoImplEx servo;
-    private String name;
+    private final String name;
     private MasqTouchSensor limMin, limMax;
     private boolean limDetection;
     private boolean prevState = false, taskState = false;
@@ -33,7 +34,7 @@ public class MasqServo {
         this.name = name;
         Servo servo = getHardwareMap().servo.get(name);
         this.servo = new ServoImplEx((ServoControllerEx) servo.getController(), servo.getPortNumber(), ServoConfigurationType.getStandardServoType());
-        this.servo.setDirection(direction);
+        setDirection(direction);
     }
 
     public void setPosition (double position) {
