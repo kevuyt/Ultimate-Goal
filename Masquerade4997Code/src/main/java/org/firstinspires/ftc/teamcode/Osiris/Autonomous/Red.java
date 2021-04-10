@@ -50,15 +50,22 @@ public class Red extends MasqLinearOpMode {
         robot.camera.stop();
         robot.tracker.reset();
 
+        robot.compressor.setPosition(1);
+        robot.hopper.setPosition(1);
+        robot.claw.mid();
+        robot.shooter.setPower(0.7);
+
         if(zone == A) target.setPoint(17,64,45);
         else if(zone == B) target.setPoint(2,85,30);
         else target.setPoint(17,115,45);
 
-        robot.claw.mid();
-        robot.hopper.setPosition(1);
-        robot.shooter.setPower(0.42);
+        if(zone != A) {
+            robot.xyPath(new MasqWayPoint(-5, 24, 0));
+            sleep();
+            shoot(1);
+        }
 
-        if(zone != A) robot.xyPath(strafe, target);
+        /*if(zone != A) robot.xyPath(strafe, target);
         else robot.xyPath(target);
         sleep();
 
@@ -116,6 +123,8 @@ public class Red extends MasqLinearOpMode {
 
         robot.claw.init();
         sleep();
+
+         */
     }
 
     private void shoot(int iterations) {
