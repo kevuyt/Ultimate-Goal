@@ -24,15 +24,15 @@ public class RotatingClaw {
 
     public void driverControl(Gamepad controller) {
         claw.toggle(controller.a);
-        rotator.toggle(controller.b, 0.18, 0.763);
+        rotator.toggle(controller.b, 0.1, 0.603);
     }
 
     public void close() {claw.setPosition(1);}
     public void open() {claw.setPosition(0);}
 
-    public void raise() {rotator.setPosition(0.763);}
-    public void mid() {rotator.setPosition(0.4);}
-    public void lower() {rotator.setPosition(0.23);}
+    public void raise() {rotator.setPosition(0.721);}
+    public void mid() {rotator.setPosition(0.2);}
+    public void lower() {rotator.setPosition(0.029);}
     public void init() {rotator.setPosition(1);}
 
     public void reset() {

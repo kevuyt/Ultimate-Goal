@@ -29,7 +29,7 @@ public class Osiris extends MasqRobot {
     public void mapHardware() {
         driveTrain = new MasqDriveTrain(REVERSE);
 
-        shooter = new MasqMotor("shooter");
+        shooter = new MasqMotor("shooter", REVERSE);
         intake = new MasqMotor("intake", REVERSE);
 
         claw = new RotatingClaw();

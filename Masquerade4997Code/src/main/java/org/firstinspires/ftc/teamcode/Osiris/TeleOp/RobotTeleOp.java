@@ -61,7 +61,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             if(gamepad1.right_bumper && enabled) robot.flicker.setPosition(1);
             else robot.flicker.setPosition(0);
 
-            if(gamepad1.dpad_left) {
+            /*if(gamepad1.dpad_left) {
                 mode = "POWER_SHOT";
                 shooterPower = 0.426;
             }
@@ -72,10 +72,13 @@ public class RobotTeleOp extends MasqLinearOpMode {
             else if(gamepad1.dpad_up) {
                 mode = "HIGH_POWER";
                 shooterPower = 0.55;
-            }
+            }*/
 
+            if(gamepad1.dpad_left) shooterPower += 0.01;
+            else if(gamepad1.dpad_right) shooterPower -= 0.01;
 
-            dash.create("Shooter Mode:", mode);
+            //dash.create("Shooter Mode:", mode);
+            dash.create("Shooter Power:", shooterPower);
             dash.create("Rings in Hopper:", robot.getRings());
             dash.update();
         }
