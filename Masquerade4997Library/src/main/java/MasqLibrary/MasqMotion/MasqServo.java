@@ -37,21 +37,8 @@ public class MasqServo {
         setDirection(direction);
     }
 
-    public void setPosition (double position) {
-        servo.setPosition(position);
-    }
-    public void setDirection(Servo.Direction direction) {
-        servo.setDirection(direction);
-    }
-    public void setLimits (MasqTouchSensor min, MasqTouchSensor max){
-        limMin = min; limMax = max;
-        limDetection = true;
-    }
-    private boolean limitPressed () {
-        if (limDetection) return  limMin.isPressed() || limMax.isPressed();
-        servo.close();
-        return false;
-    }
+    public void setPosition (double position) {servo.setPosition(position);}
+    public void setDirection(Servo.Direction direction) {servo.setDirection(direction);}
     public double getPosition () {
         return servo.getPosition();
     }
