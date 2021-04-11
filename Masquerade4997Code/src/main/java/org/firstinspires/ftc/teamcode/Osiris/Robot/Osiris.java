@@ -90,4 +90,7 @@ public class Osiris extends MasqRobot {
         if(distanceSensor.millimeters() < 142.5) return 1;
         return 0;
     }
+    public void antiTipping() {
+
+    }
 }

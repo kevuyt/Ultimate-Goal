@@ -92,6 +92,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             //dash.create(robot.shooter);
             //dash.create(robot.intake);
             //dash.create("Rings in Hopper:", robot.getRings());
+            dash.create("PITCH:", robot.tracker.imu.getAbsolutePitch());
             dash.update();
         }
     }
