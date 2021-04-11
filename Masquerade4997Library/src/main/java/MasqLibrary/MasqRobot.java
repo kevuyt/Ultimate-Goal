@@ -166,6 +166,29 @@ public abstract class MasqRobot {
     }
     public void MECH() {MECH(getLinearOpMode().getDefaultController());}
 
+    // Scales turn power to make precise turns easier
+    public void EASYTURNMECH(Gamepad c) {
+        double x = c.left_stick_x;
+        double y = -c.left_stick_y;
+        double xR = c.right_stick_x;
+
+        // Lower range (-1 to -0.75)
+        if(xR < -0.75) {
+            xR = 2 * xR + 1;
+        }
+        // Upper range (0.75 to 1)
+        else if(xR > 0.75) {
+            xR = 2 * xR - 1;
+        }
+        // Middle range (-0.75 to 0.75)
+        else {
+            xR = xR / 1.5;
+        }
+
+        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR);
+    }
+    public void EASYTURNMECH() {EASYTURNMECH(getLinearOpMode().getDefaultController());}
+
     public MasqWayPoint getCurrentWayPoint() {
         return new MasqWayPoint().setPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading())
                 .setName("Initial WayPoint");
