@@ -16,7 +16,7 @@ import static MasqLibrary.MasqRobot.OpMode.TELEOP;
 public class RobotTeleOp extends MasqLinearOpMode {
     private final Osiris robot = new Osiris();
     private String mode = "GOAL";
-    private double shooterPower = 0.5;
+    private double shooterPower = 1, intakePower = 0.8;
     private Thread thread = new Thread(), thread2 = new Thread();
 
     @Override
@@ -29,7 +29,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            // Easier turning control
             robot.EASYTURNMECH();
 
             if(gamepad1.left_bumper) {
@@ -38,7 +37,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 robot.claw.close();
                 if (!thread.isAlive()) {
                     thread = new Thread(() -> {
-                        sleep(1000);
+                        sleep();
                         robot.compressor.setPosition(1);
                     });
                     thread.start();
@@ -61,47 +60,45 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 robot.compressor.setPosition(0);
                 robot.claw.driverControl(gamepad1);
                 robot.flicker.setPosition(0);
-                if(gamepad1.left_trigger > 0) robot.intake.setPower(1);
+                if(gamepad1.left_trigger > 0) robot.intake.setPower(intakePower);
                 else if(gamepad1.right_trigger > 0) robot.intake.setPower(-1);
                 else robot.intake.setPower(0);
             }
 
             if(gamepad1.dpad_left) {
                 mode = "POWER_SHOT";
-                shooterPower = 0.65;
+                shooterPower = 0.58;
             }
             else if(gamepad1.dpad_right) {
                 mode = "GOAL";
                 shooterPower = 1;
             }
-            else if(gamepad2.dpad_up) {
+            else if(gamepad1.dpad_up) {
                 mode = "MIDDLE";
-                shooterPower = 0.90;
+                shooterPower = 0.80;
             }
 
             /*
-            if(gamepad1.dpad_left) shooterPower -= 0.001;
-            if(gamepad1.dpad_right) shooterPower += 0.001;
+            if(gamepad1.dpad_left) shooterPower -= 0.005;
+            if(gamepad1.dpad_right) shooterPower += 0.005;
             */
+
+            if(gamepad1.right_stick_button) intakePower += 0.005;
+            if(gamepad1.left_stick_button) intakePower -= 0.005;
 
             dash.create("Shooter Mode:", mode);
             //dash.create(robot.shooter);
+            dash.create(robot.intake);
             dash.create("Rings in Hopper:", robot.getRings());
             dash.update();
         }
     }
     public void shoot() {
-        robot.flicker.setPosition(1);
-        sleep();
-        robot.flicker.setPosition(0);
-        sleep();
-        robot.flicker.setPosition(1);
-        sleep();
-        robot.flicker.setPosition(0);
-        sleep();
-        robot.flicker.setPosition(1);
-        sleep();
-        robot.flicker.setPosition(0);
-        sleep();
+        for(int i = 0; i < 3; i++) {
+            robot.flicker.setPosition(1);
+            sleep();
+            robot.flicker.setPosition(0);
+            sleep();
+        }
     }
 }
