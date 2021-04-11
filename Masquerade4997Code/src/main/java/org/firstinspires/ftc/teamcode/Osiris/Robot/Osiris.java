@@ -57,7 +57,7 @@ public class Osiris extends MasqRobot {
         tracker.reset();
         setTracker(tracker);
 
-        turnController = new MasqPIDController(0.04);
+        turnController = new MasqPIDController(0.02);
 
         driveTrain.setVelocityControl(true);
         driveTrain.resetEncoders();

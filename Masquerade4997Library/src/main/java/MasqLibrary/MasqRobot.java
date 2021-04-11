@@ -39,7 +39,7 @@ public abstract class MasqRobot {
         timeoutClock.reset();
         do {
             error = adjustAngle(angle - tracker.getHeading());
-            power = clip(turnController.getOutput(error));
+            power = turnController.getOutput(error);
 
             driveTrain.setPower(power, -power);
             tracker.updateSystem();
