@@ -55,7 +55,7 @@ public class Red extends MasqLinearOpMode {
         robot.compressor.setPosition(1);
         robot.hopper.setPosition(1);
 
-        if(zone == A) target.setPoint(17,64,45);
+        if(zone == A) target.setPoint(13,60,45);
         else if(zone == B) target.setPoint(-5,75,0).setMinVelocity(0.25);
         else target.setPoint(17,115,45);
 
@@ -82,17 +82,18 @@ public class Red extends MasqLinearOpMode {
 
         robot.hopper.setPosition(1);
         robot.compressor.setPosition(1);
-        robot.shooter.setPower(0.7);
+        robot.shooter.setPower(0.65);
 
-        robot.xyPath(new MasqWayPoint(-12,66, 0).setMinVelocity(0).setDriveCorrectionSpeed(0.08).setTimeout(4).setAngularCorrectionSpeed(0.07));
+        robot.xyPath(new MasqWayPoint(-12,65.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.08)
+                .setTimeout(4).setAngularCorrectionSpeed(0.03));
         flick();
 
-        robot.xyPath(new MasqWayPoint(-20,66, 0).setMinVelocity(0).setDriveCorrectionSpeed(0.04)
-                .setAngularCorrectionSpeed(0.03));
+        robot.xyPath(new MasqWayPoint(-20,66, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+                .setAngularCorrectionSpeed(0.03).setTimeout(4));
         flick();
 
-        robot.xyPath(new MasqWayPoint(-28,66.5, 0).setMinVelocity(0).setDriveCorrectionSpeed(0.04)
-                .setAngularCorrectionSpeed(0.03));
+        robot.xyPath(new MasqWayPoint(-30,66.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+                .setAngularCorrectionSpeed(0.03).setTimeout(4));
         flick();
 
         robot.shooter.setPower(0);
