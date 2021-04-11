@@ -7,6 +7,8 @@ import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
 import MasqLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqLibrary.MasqRobot.OpMode.TELEOP;
+import static java.lang.Math.atan2;
+import static java.lang.Math.hypot;
 
 /**
  * Created by Keval Kataria on 11/9/2020
@@ -29,7 +31,23 @@ public class RobotTeleOp extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            robot.MECH();
+            //robot.MECH();
+            // Easier turning control
+            double x = gamepad1.left_stick_x;
+            double y = -gamepad1.left_stick_y;
+            double xR = gamepad1.right_stick_x;
+
+            if(xR >= -1 && xR < -0.75) {
+                xR = 2 * xR + 1;
+            }
+            else if(xR > 0.75 && xR <= 1) {
+                xR = 2 * xR - 1;
+            }
+            else {
+                xR = xR / 1.5;
+            }
+
+            robot.driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR);
 
             if(gamepad1.left_bumper) {
                 robot.shooter.setPower(shooterPower);
@@ -67,7 +85,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             if(gamepad1.dpad_left) {
                 mode = "POWER_SHOT";
-                shooterPower = 0.79;
+                shooterPower = 0.65;
             }
             else if(gamepad1.dpad_right) {
                 mode = "GOAL";
