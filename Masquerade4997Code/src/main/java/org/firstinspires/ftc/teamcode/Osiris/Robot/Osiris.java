@@ -85,9 +85,9 @@ public class Osiris extends MasqRobot {
     }
 
     public int getRings() {
-        if(distanceSensor.millimeters() < 120) return 3;
-        if(distanceSensor.millimeters() < 133) return 2;
-        if(distanceSensor.millimeters() < 147) return 1;
+        if(distanceSensor.millimeters() < 105) return 3;
+        if(distanceSensor.millimeters() < 125) return 2;
+        if(distanceSensor.millimeters() < 142.5) return 1;
         return 0;
     }
 }

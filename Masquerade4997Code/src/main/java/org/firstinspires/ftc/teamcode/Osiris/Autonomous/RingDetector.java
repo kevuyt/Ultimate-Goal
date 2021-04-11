@@ -8,6 +8,7 @@ import MasqLibrary.MasqMath.MasqVector;
 import MasqLibrary.MasqVision.*;
 
 import static java.lang.Math.*;
+import static java.lang.System.nanoTime;
 import static org.opencv.core.Core.*;
 import static org.opencv.imgproc.Imgproc.*;
 
@@ -27,7 +28,7 @@ public class RingDetector extends MasqCVDetector {
 
     @Override
     public Mat process(Mat input) {
-        double time = System.nanoTime();
+        double time = nanoTime();
 
         if(time - prevTime > 1e9) {
             if(init) {
