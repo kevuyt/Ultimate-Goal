@@ -29,7 +29,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            robot.MECH();
+            // Easier turning control
+            robot.EASYTURNMECH();
 
             if(gamepad1.left_bumper) {
                 robot.shooter.setPower(shooterPower);
@@ -67,7 +68,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             if(gamepad1.dpad_left) {
                 mode = "POWER_SHOT";
-                shooterPower = 0.79;
+                shooterPower = 0.65;
             }
             else if(gamepad1.dpad_right) {
                 mode = "GOAL";
