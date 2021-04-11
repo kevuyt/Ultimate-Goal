@@ -67,33 +67,44 @@ public class Red extends MasqLinearOpMode {
             robot.claw.raise();
             robot.hopper.setPosition(0);
             robot.compressor.setPosition(0);
-            robot.shooter.setPower(0);
+            robot.shooter.setPower(-0.5);
             robot.intake.setPower(1);
-            robot.xyPath(new MasqWayPoint(-10, 30, 0).setOnComplete(() -> robot.claw.mid()).setDriveCorrectionSpeed(0.06), target);
+            robot.xyPath(new MasqWayPoint(-10, 40, 0).setOnComplete(() -> {
+                robot.claw.mid();
+                sleep();
+            }).setDriveCorrectionSpeed(0.02), target);
+            robot.intake.setPower(0);
+            robot.shooter.setPower(0);
         }
         else {
             robot.claw.mid();
             if (zone == C) robot.xyPath(strafe, target);
             else robot.xyPath(target);
         }
-        robot.claw.lower();
-        robot.claw.open();
-        sleep();
-
-        robot.hopper.setPosition(1);
-        robot.compressor.setPosition(1);
         robot.shooter.setPower(0.65);
 
-        robot.xyPath(new MasqWayPoint(-12,65.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.08)
-                .setTimeout(4).setAngularCorrectionSpeed(0.03));
+        robot.claw.lower();
+        robot.claw.open();
+        robot.hopper.setPosition(1);
+        sleep();
+
+        robot.compressor.setPosition(1);
+        robot.claw.raise();
+        robot.claw.close();
+
+        robot.xyPath(new MasqWayPoint(-6,65.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.08)
+                .setTimeout(5).setAngularCorrectionSpeed(0.03));
+        sleep(250);
         flick();
 
         robot.xyPath(new MasqWayPoint(-20,66, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4));
+        sleep(250);
         flick();
 
-        robot.xyPath(new MasqWayPoint(-30,66.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.xyPath(new MasqWayPoint(-29,66.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4));
+        sleep(250);
         flick();
 
         robot.shooter.setPower(0);
