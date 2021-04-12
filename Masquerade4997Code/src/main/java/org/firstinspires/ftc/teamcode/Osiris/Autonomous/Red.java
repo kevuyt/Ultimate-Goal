@@ -71,7 +71,7 @@ public class Red extends MasqLinearOpMode {
         park(false);
     }
     public void C() {
-        target.setPoint(17,115,45);
+        target.setPoint(17,110,45);
         firstWobble(true);
         powerShots();
         secondWobble(5,10,true, false);
@@ -98,7 +98,7 @@ public class Red extends MasqLinearOpMode {
         robot.compressor.setPosition(1);
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(-10,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.08)
+        robot.xyPath(new MasqWayPoint(-10,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.06)
                 .setTimeout(5).setAngularCorrectionSpeed(0.03).setName("First Power Shot"));
         robot.claw.close();
         sleep();
@@ -109,7 +109,7 @@ public class Red extends MasqLinearOpMode {
         sleep();
         flick();
 
-        robot.xyPath(new MasqWayPoint(-29,66.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.xyPath(new MasqWayPoint(-27,66.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Third Power Shot"));
         sleep();
         flick();
@@ -161,7 +161,7 @@ public class Red extends MasqLinearOpMode {
         robot.compressor.setPosition(1);
         robot.xyPath(new MasqWayPoint(0,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.08)
                 .setTimeout(5).setAngularCorrectionSpeed(0.04).setTimeout(4));
-        sleep(250);
+        sleep(1000);
         flick();
         robot.shooter.setPower(0);
     }
