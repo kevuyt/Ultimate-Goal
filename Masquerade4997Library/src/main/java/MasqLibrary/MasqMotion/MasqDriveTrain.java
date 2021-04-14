@@ -49,13 +49,18 @@ public class MasqDriveTrain {
         rightDrive.setVelocityControl(velocityControl);
     }
 
-    public void setPowerMECH(double angle, double speed, double turnPower) {
+    public void setPowerMECH(double angle, double speed, double turnPower, boolean antiTipping) {
         angle += PI / 4;
+        double speedMultiplier = speed * sqrt(2), antiTipForward = 0, antiTipRight = 0;
+        if(antiTipping) {
+            antiTipForward = getTracker().imu.getPitch() / -100;
+            antiTipRight = getTracker().imu.getRoll() / 100;
+        }
 
-        double leftFront = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower;
-        double leftBack = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) + turnPower;
-        double rightFront = (cos(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower;
-        double rightBack = (sin(angle) * speed * DEFAULT_SPEED_MULTIPLIER) - turnPower;
+        double leftFront = (sin(angle) * speedMultiplier) + turnPower + antiTipForward + antiTipRight;
+        double leftBack = (cos(angle) * speedMultiplier) + turnPower + antiTipForward - antiTipRight;
+        double rightFront = (cos(angle) * speedMultiplier) - turnPower + antiTipForward - antiTipRight;
+        double rightBack = (sin(angle) * speedMultiplier) - turnPower + antiTipForward + antiTipRight;
 
         double max = max(abs(leftFront), abs(leftBack), abs(rightFront), abs(rightBack));
         if (max > 1) {
@@ -70,8 +75,10 @@ public class MasqDriveTrain {
         motor3.setPower(rightFront);
         motor4.setPower(rightBack);
     }
+    public void setPowerMECH(double angle, double speed, double turnPower) {setPowerMECH(angle, speed, turnPower, false);}
 
-    @NonNull
+
+        @NonNull
     @Override
     public String toString() {
         return String.format(US, "DriveTrain:\nInches Traveled: %.2f", getInches());

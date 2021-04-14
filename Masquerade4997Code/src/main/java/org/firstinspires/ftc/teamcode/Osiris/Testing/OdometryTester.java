@@ -38,7 +38,7 @@ public class OdometryTester extends MasqLinearOpMode {
         robot.driveTrain.setVelocityControl(true);
 
         while(opModeIsActive()) {
-            robot.MECH();
+            robot.mech();
 
             robot.tracker.updateSystem();
 

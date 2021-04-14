@@ -29,7 +29,6 @@ public class MasqUtils {
     public static final long DEFAULT_SLEEP_TIME = 500;
     public static final double DEFAULT_TIMEOUT = 2;
     public static final double DEFAULT_SPEED_MULTIPLIER = sqrt(2);
-    public static final double DEFAULT_TURN_MULTIPLIER = 0.7;
     public static final String VUFORIA_KEY = "AfbTJrD/////AAABmUej6YcOSE12mu7/2FcsZfdGXFK+GVVrTUq" +
             "n2Oki4pa+iRwrgeicZ+d2FUjjB8J8ett3omSP/q6P94JsNKWFGHRsg//Y6UMrxo1eX3bKnYhaOpAZ8LQdS0w" +
             "WrUFnGfnde+sgSnexbGpviPD38wvJq44FSsGLpI4Gz05zkEHrJRwxZ1eEt9rWc1Rs8NsIildRuOHjKd4WuF+" +

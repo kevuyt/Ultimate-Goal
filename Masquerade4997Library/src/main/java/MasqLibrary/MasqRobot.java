@@ -140,7 +140,7 @@ public abstract class MasqRobot {
         xyPath(timeout, points);
     }
 
-    public void NFS(Gamepad c) {
+    public void nfs(Gamepad c) {
         double move = -c.left_stick_y;
         double turn = c.right_stick_x;
         double left = move + turn;
@@ -155,39 +155,35 @@ public abstract class MasqRobot {
         driveTrain.setPower(left, right);
     }
 
-    public void TANK(Gamepad c) {driveTrain.setPower(-c.left_stick_y, -c.right_stick_y);}
+    public void tank(Gamepad c) {driveTrain.setPower(-c.left_stick_y, -c.right_stick_y);}
 
-    public void MECH(Gamepad c) {
+    public void mech(Gamepad c, boolean antiTipping) {
         double x = c.left_stick_x;
         double y = -c.left_stick_y;
         double xR = c.right_stick_x;
 
-        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR);
+        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR, antiTipping);
     }
-    public void MECH() {MECH(getLinearOpMode().getDefaultController());}
+    public void mech(boolean antiTipping) {
+        mech(getLinearOpMode().getDefaultController(), antiTipping);
+    }
+    public void mech() {mech(false);}
 
-    // Scales turn power to make precise turns easier
-    public void EASYTURNMECH(Gamepad c) {
+    public void easyTurnMech(Gamepad c, boolean antiTipping) {
         double x = c.left_stick_x;
         double y = -c.left_stick_y;
         double xR = c.right_stick_x;
 
-        // Lower range (-1 to -0.75)
-        if(xR < -0.75) {
-            xR = 2 * xR + 1;
-        }
-        // Upper range (0.75 to 1)
-        else if(xR > 0.75) {
-            xR = 2 * xR - 1;
-        }
-        // Middle range (-0.75 to 0.75)
-        else {
-            xR = xR / 1.5;
-        }
+        if(xR < -0.75) xR = 2 * xR + 1;
+        else if(xR > 0.75) xR = 2 * xR - 1;
+        else xR = xR / 1.5;
 
-        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR);
+        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR, antiTipping);
     }
-    public void EASYTURNMECH() {EASYTURNMECH(getLinearOpMode().getDefaultController());}
+    public void easyTurnMech(boolean antiTipping) {
+        easyTurnMech(getLinearOpMode().getDefaultController(), antiTipping);
+    }
+    public void easyTurnMech() {easyTurnMech(false);}
 
     public MasqWayPoint getCurrentWayPoint() {
         return new MasqWayPoint().setPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading())
