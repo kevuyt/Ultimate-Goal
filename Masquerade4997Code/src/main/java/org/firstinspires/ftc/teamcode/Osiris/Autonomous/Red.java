@@ -81,6 +81,7 @@ public class Red extends MasqLinearOpMode {
     public void firstWobble(boolean avoidStack) {
         MasqWayPoint strafe = new MasqWayPoint(7,30,0).setSwitchMode(TANK).setMinVelocity(0.8);
 
+        robot.hopper.setPosition(1);
         robot.claw.mid();
         if (avoidStack) robot.xyPath(strafe, target);
         else robot.xyPath(target);
@@ -90,7 +91,6 @@ public class Red extends MasqLinearOpMode {
 
         robot.claw.lower();
         robot.claw.open();
-        robot.hopper.setPosition(1);
         robot.flicker.setPosition(0);
         sleep();
     }
@@ -158,9 +158,9 @@ public class Red extends MasqLinearOpMode {
     public void shootInGoal() {
         robot.shooter.setPower(0.7);
         robot.hopper.setPosition(1);
-        robot.compressor.setPosition(1);
         robot.xyPath(new MasqWayPoint(0,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.08)
                 .setTimeout(5).setAngularCorrectionSpeed(0.04).setTimeout(4));
+        robot.compressor.setPosition(1);
         sleep(1000);
         flick();
         robot.shooter.setPower(0);
@@ -174,6 +174,8 @@ public class Red extends MasqLinearOpMode {
         else robot.xyPath(park);
 
         robot.claw.lower();
+        dash.create("Time Left:", 30 - timeoutClock.milliseconds() / 1000.0);
+        dash.update();
         sleep((long) (30e3 - timeoutClock.milliseconds()));
     }
 
