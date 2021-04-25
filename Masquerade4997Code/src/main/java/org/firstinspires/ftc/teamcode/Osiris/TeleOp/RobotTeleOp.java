@@ -81,19 +81,14 @@ public class RobotTeleOp extends MasqLinearOpMode {
             /*
             if(gamepad1.dpad_left) shooterPower -= 0.005;
             if(gamepad1.dpad_right) shooterPower += 0.005;
-            */
-
-            /*
             if(gamepad1.right_stick_button) intakePower += 0.005;
             if(gamepad1.left_stick_button) intakePower -= 0.005;
             */
 
             dash.create("Shooter Mode:", mode);
-            //dash.create(robot.shooter);
-            //dash.create(robot.intake);
-            //dash.create("Rings in Hopper:", robot.getRings());
             dash.create("PITCH:", robot.tracker.imu.getPitch());
             dash.create("ROLL:", robot.tracker.imu.getRoll());
+            //dash.create(robot.shooter, robot.intake);
             dash.update();
         }
     }

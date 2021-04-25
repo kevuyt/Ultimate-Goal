@@ -59,14 +59,14 @@ public class Red extends MasqLinearOpMode {
         target.setPoint(13,58,45);
         firstWobble(false);
         powerShots();
-        secondWobble(2,0,false, false);
+        secondWobble(2,0,-20, false, false);
         park(true);
     }
     public void B() {
         target.setPoint(3,80,0).setMinVelocity(0.25);
         firstWobble(true);
         powerShots();
-        secondWobble(0,5,false, true);
+        secondWobble(0,5,-16,false, true);
         shootInGoal();
         park(false);
     }
@@ -74,7 +74,7 @@ public class Red extends MasqLinearOpMode {
         target.setPoint(17,110,45);
         firstWobble(true);
         powerShots();
-        secondWobble(5,10,true, false);
+        secondWobble(5,10,-16,true, false);
         park(false);
     }
 
@@ -86,7 +86,7 @@ public class Red extends MasqLinearOpMode {
         if (avoidStack) robot.xyPath(strafe, target);
         else robot.xyPath(target);
 
-        robot.shooter.setPower(0.55);
+        robot.shooter.setPower(0.56);
         sleep();
 
         robot.claw.lower();
@@ -98,7 +98,7 @@ public class Red extends MasqLinearOpMode {
         robot.compressor.setPosition(1);
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(-10,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.06)
+        robot.xyPath(new MasqWayPoint(-10,66, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.06)
                 .setTimeout(5).setAngularCorrectionSpeed(0.03).setName("First Power Shot"));
         robot.claw.close();
         sleep();
@@ -115,13 +115,15 @@ public class Red extends MasqLinearOpMode {
         flick();
 
         robot.shooter.setPower(0);
+        robot.hopper.setPosition(0);
+        robot.compressor.setPosition(0);
     }
-    public void secondWobble(double yDecrease, double xDecrease, boolean avoidStack, boolean intakeStack) {
+    public void secondWobble(double yDecrease, double xDecrease, double wobbleX, boolean avoidStack, boolean intakeStack) {
         robot.claw.mid();
         robot.claw.open();
 
-        robot.turnAbsolute(180,1);
-        robot.xyPath(new MasqWayPoint(-20, 29, 180).setMinVelocity(0).setTimeout(5)
+        robot.turnAbsolute(170,1);
+        robot.xyPath(new MasqWayPoint(wobbleX, 27, 180).setMinVelocity(0).setTimeout(5)
                 .setName("Second Wobble Goal").setDriveCorrectionSpeed(0.03).setAngularCorrectionSpeed(0.02));
 
         robot.claw.lower();
@@ -142,10 +144,8 @@ public class Red extends MasqLinearOpMode {
                     .setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.02).setName("Starter Stack");
 
             robot.intake.setPower(1);
-            robot.hopper.setPosition(0);
-            robot.compressor.setPosition(0);
             robot.turnAbsolute(30);
-            robot.xyPath(starterStack, target.setOnComplete(() -> robot.intake.setPower(0)));
+            robot.xyPath(starterStack, target);
         }
         else if(avoidStack) robot.xyPath(back, target);
         else robot.xyPath(target);
@@ -156,10 +156,11 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
     }
     public void shootInGoal() {
+        robot.intake.setPower(0);
         robot.shooter.setPower(0.7);
         robot.hopper.setPosition(1);
-        robot.xyPath(new MasqWayPoint(0,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.08)
-                .setTimeout(5).setAngularCorrectionSpeed(0.04).setTimeout(4));
+        robot.xyPath(new MasqWayPoint(0,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+                .setTimeout(5).setAngularCorrectionSpeed(0.04));
         robot.compressor.setPosition(1);
         sleep(1000);
         flick();

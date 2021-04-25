@@ -123,7 +123,7 @@ public abstract class MasqRobot {
                 dash.create(tracker);
                 dash.create("Distance Left", target.getPoint().displacement(current).getMagnitude());
                 dash.create("Path Angle: ", pathAngle);
-                dash.create(lookaheadDisplacement);
+                dash.create(target);
                 dash.update();
 
                 current.setX(tracker.getGlobalX());

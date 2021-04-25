@@ -22,6 +22,7 @@ public class DistanceSensorTester extends MasqLinearOpMode {
 
         while (!isStopRequested()) {
             dash.create(robot.distanceSensor);
+            dash.create("Rings in Hopper:", robot.getRings());
             dash.update();
         }
     }
