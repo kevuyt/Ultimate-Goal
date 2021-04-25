@@ -51,16 +51,43 @@ public class MasqDriveTrain {
 
     public void setPowerMECH(double angle, double speed, double turnPower, boolean antiTipping) {
         angle += PI / 4;
-        double speedMultiplier = speed * sqrt(2), antiTipForward = 0, antiTipRight = 0;
-        if(antiTipping) {
-            antiTipForward = getTracker().imu.getPitch() / -100;
-            antiTipRight = getTracker().imu.getRoll() / 100;
-        }
+        double speedMultiplier = speed * sqrt(2);
 
-        double leftFront = (sin(angle) * speedMultiplier) + turnPower + antiTipForward + antiTipRight;
-        double leftBack = (cos(angle) * speedMultiplier) + turnPower + antiTipForward - antiTipRight;
-        double rightFront = (cos(angle) * speedMultiplier) - turnPower + antiTipForward - antiTipRight;
-        double rightBack = (sin(angle) * speedMultiplier) - turnPower + antiTipForward + antiTipRight;
+        double leftFront = (sin(angle) * speedMultiplier) + turnPower;
+        double leftBack = (cos(angle) * speedMultiplier) + turnPower;
+        double rightFront = (cos(angle) * speedMultiplier) - turnPower;
+        double rightBack = (sin(angle) * speedMultiplier) - turnPower;
+
+        if(antiTipping) {
+            double pitch = getTracker().imu.getPitch();
+            double magnitude = getTracker().imu.getRoll() / 5;
+            if(abs(magnitude) < 0.4) magnitude = 0;
+
+            if(pitch < 135 && pitch > 45) {
+                leftFront += magnitude;
+                leftBack += magnitude;
+                rightFront += magnitude;
+                rightBack += magnitude;
+            }
+            else if(pitch > 225 && pitch < 315){
+                 leftFront -= magnitude;
+                 leftBack -= magnitude;
+                 rightFront -= magnitude;
+                 rightBack -= magnitude;
+            }
+            else if(pitch > 315 || pitch < 45) {
+                leftFront -= magnitude;
+                leftBack += magnitude;
+                rightFront += magnitude;
+                rightBack -= magnitude;
+            }
+            else {
+                leftFront += magnitude;
+                leftBack -= magnitude;
+                rightFront -= magnitude;
+                rightBack += magnitude;
+            }
+        }
 
         double max = max(abs(leftFront), abs(leftBack), abs(rightFront), abs(rightBack));
         if (max > 1) {

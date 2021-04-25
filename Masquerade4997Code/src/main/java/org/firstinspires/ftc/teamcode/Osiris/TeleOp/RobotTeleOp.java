@@ -28,8 +28,10 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
         waitForStart();
 
+        robot.tracker.imu.reset();
+
         while(opModeIsActive()) {
-            robot.easyTurnMech();
+            robot.easyTurnMech(true);
 
             if(gamepad1.left_bumper) {
                 robot.shooter.setPower(shooterPower);
@@ -87,6 +89,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
             */
 
             dash.create("Shooter Mode:", mode);
+            dash.create(robot.tracker.imu);
             dash.update();
         }
     }
