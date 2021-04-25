@@ -9,6 +9,7 @@ import MasqLibrary.MasqOdometry.MasqWayPoint;
 import MasqLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqLibrary.MasqOdometry.MasqWayPoint.PointMode.*;
+import static MasqLibrary.MasqResources.MasqUtils.turnController;
 import static MasqLibrary.MasqRobot.OpMode.AUTO;
 import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone.*;
 
@@ -58,22 +59,22 @@ public class Red extends MasqLinearOpMode {
     public void A() {
         target.setPoint(13,58,45);
         firstWobble(false);
-        powerShots();
-        secondWobble(2,0,-20, false, false);
+        powerShots(-11, -22, -29);
+        secondWobble(2,0,-17, false, false);
         park(true);
     }
     public void B() {
-        target.setPoint(3,80,0).setMinVelocity(0.25);
+        target.setPoint(5,80,0).setMinVelocity(0.25);
         firstWobble(true);
-        powerShots();
-        secondWobble(0,5,-16,false, true);
+        powerShots(-10, -21.5, -29);
+        secondWobble(2,5,-16.5,false, true);
         shootInGoal();
         park(false);
     }
     public void C() {
         target.setPoint(17,110,45);
         firstWobble(true);
-        powerShots();
+        powerShots(-8, -19, -27);
         secondWobble(5,10,-16,true, false);
         park(false);
     }
@@ -94,23 +95,26 @@ public class Red extends MasqLinearOpMode {
         robot.flicker.setPosition(0);
         sleep();
     }
-    public void powerShots() {
+    public void powerShots(double... x) {
         robot.compressor.setPosition(1);
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(-10,66, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.06)
+        robot.xyPath(new MasqWayPoint(x[0],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
                 .setTimeout(5).setAngularCorrectionSpeed(0.03).setName("First Power Shot"));
+        robot.turnAbsolute(0,1);
         robot.claw.close();
         sleep();
         flick();
 
-        robot.xyPath(new MasqWayPoint(-20,66, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.xyPath(new MasqWayPoint(x[1],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Second Power Shot"));
+        robot.turnAbsolute(0,1);
         sleep();
         flick();
 
-        robot.xyPath(new MasqWayPoint(-27,66.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.xyPath(new MasqWayPoint(x[2],66.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Third Power Shot"));
+        robot.turnAbsolute(0,1);
         sleep();
         flick();
 
@@ -131,16 +135,16 @@ public class Red extends MasqLinearOpMode {
 
         robot.claw.close();
 
-        target.setSwitchMode(MECH).setAngularCorrectionSpeed(0.03)
-                .setY(target.getY() - yDecrease).setX(target.getX() - xDecrease);
+        target.setSwitchMode(MECH).setAngularCorrectionSpeed(0.03).setY(target.getY() - yDecrease)
+                .setX(target.getX() - xDecrease);
         MasqWayPoint back = new MasqWayPoint(robot.tracker.getGlobalX(), 50, robot.tracker.getHeading())
-                .setSwitchMode(TANK).setAngularCorrectionSpeed(0.01);
+                .setSwitchMode(TANK).setAngularCorrectionSpeed(0.01).setName("Back");
 
         sleep(1000);
         robot.claw.mid();
 
         if(intakeStack) {
-            MasqWayPoint starterStack = new MasqWayPoint(-5, 40, 0).setSwitchMode(TANK)
+            MasqWayPoint starterStack = new MasqWayPoint(-3, 40, 0).setSwitchMode(TANK)
                     .setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.02).setName("Starter Stack");
 
             robot.intake.setPower(1);
@@ -157,10 +161,12 @@ public class Red extends MasqLinearOpMode {
     }
     public void shootInGoal() {
         robot.intake.setPower(0);
-        robot.shooter.setPower(0.7);
+        robot.shooter.setPower(0.64);
         robot.hopper.setPosition(1);
-        robot.xyPath(new MasqWayPoint(0,65, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.xyPath(new MasqWayPoint(6,67.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setTimeout(5).setAngularCorrectionSpeed(0.04));
+        turnController.setKp(0.04);
+        robot.turnAbsolute(0, 1);
         robot.compressor.setPosition(1);
         sleep(1000);
         flick();

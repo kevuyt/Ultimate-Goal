@@ -57,7 +57,7 @@ public class MasqPositionTracker {
         prevHeading = imu.getAbsoluteHeading();
         MasqUtils.setTracker(this);
         position = DeadWheelPosition.TANK;
-        imu.reset();
+        reset();
     }
 
     public double getHeading () {return imu.getHeading();}
