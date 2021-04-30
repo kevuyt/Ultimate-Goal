@@ -24,7 +24,7 @@ public class Osiris extends MasqRobot {
     public MasqCamera camera;
     public MasqMotor intake, encoder1, encoder2, shooter;
     public RotatingClaw claw;
-    public MasqServo flicker, hopper, compressor;
+    public MasqServo flicker, hopper, compressor, aligner;
     public MasqDistanceSensor distanceSensor;
 
     @Override
@@ -39,6 +39,7 @@ public class Osiris extends MasqRobot {
         flicker = new MasqServo("flicker");
         hopper = new MasqServo("hopper", Direction.REVERSE);
         compressor = new MasqServo("compressor");
+        aligner = new MasqServo("aligner");
 
         encoder1 = new MasqMotor("encoder1");
         encoder2 = new MasqMotor("encoder2", REVERSE);
@@ -82,6 +83,8 @@ public class Osiris extends MasqRobot {
         hopper.setPosition(0);
         compressor.scaleRange(0.125, 0.44);
         compressor.setPosition(0);
+        aligner.scaleRange(0.17, 0.95);
+        aligner.setPosition(1);
     }
 
     public int getRings() {

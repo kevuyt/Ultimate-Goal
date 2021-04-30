@@ -53,6 +53,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 else if(gamepad1.right_bumper) robot.flicker.setPosition(1);
                 else if(!thread2.isAlive()) robot.flicker.setPosition(0);
                 robot.intake.setPower(0);
+                robot.aligner.setPosition(1);
             }
             else {
                 robot.shooter.setPower(0);
@@ -65,6 +66,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
                 if(gamepad1.left_trigger > 0) robot.intake.setPower(1);
                 else if(gamepad1.right_trigger > 0) robot.intake.setPower(-1);
                 else robot.intake.setPower(0);
+                robot.aligner.setPosition(gamepad1.x ? 0 : 1);
             }
 
             if(gamepad1.dpad_left) {
