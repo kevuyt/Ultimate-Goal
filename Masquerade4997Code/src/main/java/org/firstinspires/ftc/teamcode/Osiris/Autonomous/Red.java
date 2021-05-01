@@ -66,17 +66,17 @@ public class Red extends MasqLinearOpMode {
     public void B() {
         target.setPoint(5, 80, 0).setMinVelocity(0.25);
         firstWobble(true);
-        powerShots(-10, -20, -29.5);
-        secondWobble(2, 5, -18, 1);
-        shootInGoal(1);
+        powerShots(-11, -20, -29.5);
+        secondWobble(2, 2, -18, 1);
+        shootInGoal(1, 12, 67.5, 0.58);
         park(false);
     }
     public void C() {
-        target.setPoint(15, 107, 45);
+        target.setPoint(17, 107, 45);
         firstWobble(true);
-        powerShots(-8, -19, -27.5);
-        secondWobble(5, 5, -16, 4);
-        shootInGoal(3);
+        powerShots(-5, -18, -27.5);
+        secondWobble(5, 5, -16.5, 4);
+        shootInGoal(3, 8, 66, 0.65);
         park(false);
     }
 
@@ -103,7 +103,7 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
 
         robot.xyPath(new MasqWayPoint(x[0],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
-                .setTimeout(5).setAngularCorrectionSpeed(0.05).setName("First Power Shot"));
+                .setTimeout(7).setAngularCorrectionSpeed(0.03).setName("First Power Shot"));
         robot.shooter.setPower(0.59);
         robot.turnAbsolute(0,2);
         robot.claw.close();
@@ -163,40 +163,49 @@ public class Red extends MasqLinearOpMode {
 
                 robot.xyPath(new MasqWayPoint(robot.tracker.getGlobalX(), 10, 0));
                 starterStack.setDriveCorrectionSpeed(0.005).setMinVelocity(0.2).setY(58).setX(2)
-                        .setOnComplete(() -> robot.claw.mid());
+                        .setOnComplete(() -> {
+                            Thread thread = new Thread(() -> {
+                                sleep(1000);
+                                robot.claw.mid();
+                            });
+                            thread.start();
+                        });
                 target.setOnComplete(() -> {
                     robot.intake.setPower(0);
                     robot.aligner.setPosition(1);
                     sleep();
+                    robot.intake.setPower(0);
                     robot.aligner.setPosition(0);
-                }).setMaxVelocity(0.7);
-                robot.turnAbsolute(0);
+                }).setMaxVelocity(0.7).setDriveCorrectionSpeed(0.11);
             }
-            else robot.turnAbsolute(30);
+            robot.turnAbsolute(30,1);
             robot.xyPath(starterStack, target);
         }
         else robot.xyPath(target);
-        sleep();
+        sleep(250);
 
         robot.claw.open();
-        sleep();
+        sleep(750);
         robot.claw.raise();
     }
-    public void shootInGoal(int rings) {
+    public void shootInGoal(int rings, double x, double y, double power) {
         turnController.setKp(0.04);
 
         robot.intake.setPower(1);
-        robot.shooter.setPower(0.58);
-        robot.hopper.setPosition(1);
-        robot.xyPath(new MasqWayPoint(12,67.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.shooter.setPower(power);
+        robot.xyPath(new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setTimeout(5).setAngularCorrectionSpeed(0.04));
         robot.aligner.setPosition(1);
         robot.intake.setPower(0);
+        robot.hopper.setPosition(1);
         robot.turnAbsolute(0, 2);
         robot.compressor.setPosition(1);
         sleep(750);
         robot.aligner.setPosition(0);
-        for(int i = 0; i < rings; i++) flick();
+        for(int i = 0; i < rings; i++) {
+            flick();
+            sleep();
+        }
         robot.shooter.setPower(0);
 
     }
