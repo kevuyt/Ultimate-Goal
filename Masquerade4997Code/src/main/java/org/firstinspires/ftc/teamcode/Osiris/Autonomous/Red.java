@@ -66,7 +66,7 @@ public class Red extends MasqLinearOpMode {
     public void B() {
         target.setPoint(5, 80, 0).setMinVelocity(0.25);
         firstWobble(true);
-        powerShots(-10, -21.5, -29);
+        powerShots(-10, -20, -29.5);
         secondWobble(2, 5, -18, 1);
         shootInGoal(1);
         park(false);
@@ -112,6 +112,7 @@ public class Red extends MasqLinearOpMode {
 
         robot.xyPath(new MasqWayPoint(x[1],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Second Power Shot"));
+        robot.shooter.setPower(0.59);
         robot.turnAbsolute(0,1);
         sleep();
         flick();
@@ -155,6 +156,8 @@ public class Red extends MasqLinearOpMode {
             robot.guard.setPosition(1);
             robot.intake.setPower(1);
 
+            turnController.setKp(0.02);
+
             if(numRings > 1) {
                 robot.claw.raise();
 
@@ -180,14 +183,15 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
     }
     public void shootInGoal(int rings) {
+        turnController.setKp(0.04);
+
         robot.intake.setPower(1);
-        robot.shooter.setPower(0.63);
+        robot.shooter.setPower(0.58);
         robot.hopper.setPosition(1);
-        robot.xyPath(new MasqWayPoint(9.5,67.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.xyPath(new MasqWayPoint(12,67.5, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setTimeout(5).setAngularCorrectionSpeed(0.04));
         robot.aligner.setPosition(1);
         robot.intake.setPower(0);
-        turnController.setKp(0.04);
         robot.turnAbsolute(0, 2);
         robot.compressor.setPosition(1);
         sleep(750);
