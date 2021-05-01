@@ -93,7 +93,6 @@ public class RobotTeleOp extends MasqLinearOpMode {
             */
 
             dash.create("Shooter Mode:", mode);
-            dash.create(robot.tracker.imu);
             dash.update();
         }
     }

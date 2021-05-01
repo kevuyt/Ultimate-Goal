@@ -57,37 +57,39 @@ public class Red extends MasqLinearOpMode {
     }
 
     public void A() {
-        target.setPoint(13,58,45);
+        target.setPoint(13, 58, 45);
         firstWobble(false);
-        powerShots(-11, -22, -29);
-        secondWobble(2,0,-17, false, false);
+        powerShots(-10, -19.5, -28);
+        secondWobble(2, 0, -19, false, false);
         park(true);
     }
     public void B() {
-        target.setPoint(5,80,0).setMinVelocity(0.25);
+        target.setPoint(5, 80, 0).setMinVelocity(0.25);
         firstWobble(true);
         powerShots(-10, -21.5, -29);
-        secondWobble(2,5,-16.5,false, true);
+        secondWobble(2, 5, -16, false, true);
         shootInGoal();
         park(false);
     }
     public void C() {
-        target.setPoint(17,110,45);
+        target.setPoint(15, 107, 45);
         firstWobble(true);
-        powerShots(-8, -19, -27);
-        secondWobble(5,10,-16,true, false);
+        powerShots(-8, -19, -27.5);
+        secondWobble(5, 5, -16, true, false);
         park(false);
     }
 
     public void firstWobble(boolean avoidStack) {
         MasqWayPoint strafe = new MasqWayPoint(7,30,0).setSwitchMode(TANK).setMinVelocity(0.8);
 
+        robot.guard.setPosition(1);
+
         robot.hopper.setPosition(1);
         robot.claw.mid();
         if (avoidStack) robot.xyPath(strafe, target);
         else robot.xyPath(target);
 
-        robot.shooter.setPower(0.56);
+        robot.shooter.setPower(0.57);
         sleep();
 
         robot.claw.lower();
@@ -125,6 +127,7 @@ public class Red extends MasqLinearOpMode {
     public void secondWobble(double yDecrease, double xDecrease, double wobbleX, boolean avoidStack, boolean intakeStack) {
         robot.claw.mid();
         robot.claw.open();
+        robot.guard.setPosition(0);
 
         robot.turnAbsolute(170,1);
         robot.xyPath(new MasqWayPoint(wobbleX, 27, 180).setMinVelocity(0).setTimeout(5)
@@ -160,6 +163,7 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
     }
     public void shootInGoal() {
+        robot.guard.setPosition(1);
         robot.intake.setPower(0);
         robot.shooter.setPower(0.64);
         robot.hopper.setPosition(1);
