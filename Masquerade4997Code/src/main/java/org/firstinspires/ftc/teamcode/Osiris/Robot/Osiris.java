@@ -40,7 +40,7 @@ public class Osiris extends MasqRobot {
         hopper = new MasqServo("hopper", Direction.REVERSE);
         compressor = new MasqServo("compressor");
         aligner = new MasqServo("aligner", Direction.REVERSE);
-        guard = new MasqServo("guard");
+        guard = new MasqServo("guard", Direction.REVERSE);
 
         encoder1 = new MasqMotor("encoder1");
         encoder2 = new MasqMotor("encoder2", REVERSE);
@@ -86,7 +86,7 @@ public class Osiris extends MasqRobot {
         compressor.setPosition(0);
         aligner.scaleRange(0.17, 0.95);
         aligner.setPosition(0);
-        guard.scaleRange(0.25, 0.75);
+        guard.scaleRange(0.08, 0.9);
         guard.setPosition(0);
 
     }

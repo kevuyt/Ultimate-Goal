@@ -30,6 +30,8 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
         robot.tracker.imu.reset();
 
+        robot.guard.setPosition(1);
+
         while(opModeIsActive()) {
             robot.easyTurnMech(true);
 
