@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Osiris.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone;
 import org.firstinspires.ftc.teamcode.Osiris.Robot.Osiris;
@@ -9,6 +10,7 @@ import MasqLibrary.MasqOdometry.MasqWayPoint;
 import MasqLibrary.MasqResources.MasqLinearOpMode;
 
 import static MasqLibrary.MasqOdometry.MasqWayPoint.PointMode.*;
+import static MasqLibrary.MasqResources.MasqUtils.clip;
 import static MasqLibrary.MasqResources.MasqUtils.turnController;
 import static MasqLibrary.MasqRobot.OpMode.AUTO;
 import static org.firstinspires.ftc.teamcode.Osiris.Autonomous.RingDetector.TargetZone.*;
@@ -102,23 +104,26 @@ public class Red extends MasqLinearOpMode {
         robot.compressor.setPosition(1);
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(x[0],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
-                .setTimeout(6).setAngularCorrectionSpeed(0.03).setName("First Power Shot"));
+        robot.xyPath(new MasqWayPoint(x[0],65.5, 0).setMinVelocity(0.25).setTimeout(6)
+                .setDriveCorrectionSpeed(0.06).setAngularCorrectionSpeed(0.03)
+                .setName("First Power Shot"));
         robot.shooter.setPower(0.59);
         robot.turnAbsolute(0,1);
         robot.claw.close();
         sleep(250);
         flick();
 
-        robot.xyPath(new MasqWayPoint(x[1],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
-                .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Second Power Shot"));
+        robot.xyPath(new MasqWayPoint(x[1],65.5, 0).setMinVelocity(0.25).setTimeout(4)
+                .setDriveCorrectionSpeed(0.06).setAngularCorrectionSpeed(0.03)
+                .setName("Second Power Shot"));
         robot.shooter.setPower(0.59);
         robot.turnAbsolute(0,1);
         sleep(250);
         flick();
 
-        robot.xyPath(new MasqWayPoint(x[2],66.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
-                .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Third Power Shot"));
+        robot.xyPath(new MasqWayPoint(x[2],66.5, 0).setMinVelocity(0.25).setTimeout(4)
+                .setDriveCorrectionSpeed(0.06).setAngularCorrectionSpeed(0.03)
+                .setName("Third Power Shot"));
         robot.turnAbsolute(0,1);
         sleep(250);
         flick();
@@ -148,7 +153,8 @@ public class Red extends MasqLinearOpMode {
         sleep(1000);
         robot.claw.mid();
 
-        MasqWayPoint curve = new MasqWayPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY(), robot.tracker.getHeading());
+        MasqWayPoint curve = new MasqWayPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY(),
+                robot.tracker.getHeading());
 
         if(numRings > 0) {
             MasqWayPoint starterStack = new MasqWayPoint(-3, 40, 0).setSwitchMode(TANK)
@@ -195,12 +201,13 @@ public class Red extends MasqLinearOpMode {
         robot.intake.setPower(1);
         robot.shooter.setPower(power);
         if (rings > 3) {
-            robot.xyPath(new MasqWayPoint(x - 10, y + 10,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.04),
+            robot.xyPath(new MasqWayPoint(x - 10, y + 10,0).setSwitchMode(TANK)
+                            .setAngularCorrectionSpeed(0.04),
                     new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
-                    .setTimeout(5).setAngularCorrectionSpeed(0.04));
+                            .setTimeout(5).setAngularCorrectionSpeed(0.04));
         }
-        else robot.xyPath(new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
-                .setTimeout(5).setAngularCorrectionSpeed(0.04));
+        else robot.xyPath(new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setTimeout(5)
+                .setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.04));
         robot.aligner.setPosition(1);
         robot.intake.setPower(0);
         robot.hopper.setPosition(1);
@@ -225,9 +232,9 @@ public class Red extends MasqLinearOpMode {
         else robot.xyPath(park);
 
         robot.claw.lower();
-        dash.create("Time Left:", 30 - timeoutClock.milliseconds() / 1000.0);
+        dash.create("Time Left:", 30 - timeoutClock.seconds());
         dash.update();
-        sleep((long) (30 - timeoutClock.milliseconds() / 1000));
+        sleep((long) Range.clip(30e3 - timeoutClock.milliseconds(),0,30e3));
     }
 
     private void flick() {
