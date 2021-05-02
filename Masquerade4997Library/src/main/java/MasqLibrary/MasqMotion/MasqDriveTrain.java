@@ -49,7 +49,7 @@ public class MasqDriveTrain {
         rightDrive.setVelocityControl(velocityControl);
     }
 
-    public void setPowerMECH(double angle, double speed, double turnPower, boolean antiTipping) {
+    public void setPowerMECH(double angle, double speed, double turnPower) {
         angle += PI / 4;
         double speedMultiplier = speed * sqrt(2);
 
@@ -57,37 +57,6 @@ public class MasqDriveTrain {
         double leftBack = (cos(angle) * speedMultiplier) + turnPower;
         double rightFront = (cos(angle) * speedMultiplier) - turnPower;
         double rightBack = (sin(angle) * speedMultiplier) - turnPower;
-
-        if(antiTipping) {
-            double pitch = getTracker().imu.getPitch();
-            double magnitude = getTracker().imu.getRoll() / 5;
-            if(abs(magnitude) < 0.4) magnitude = 0;
-
-            if(pitch < 135 && pitch > 45) {
-                leftFront += magnitude;
-                leftBack += magnitude;
-                rightFront += magnitude;
-                rightBack += magnitude;
-            }
-            else if(pitch > 225 && pitch < 315){
-                 leftFront -= magnitude;
-                 leftBack -= magnitude;
-                 rightFront -= magnitude;
-                 rightBack -= magnitude;
-            }
-            else if(pitch > 315 || pitch < 45) {
-                leftFront -= magnitude;
-                leftBack += magnitude;
-                rightFront += magnitude;
-                rightBack -= magnitude;
-            }
-            else {
-                leftFront += magnitude;
-                leftBack -= magnitude;
-                rightFront -= magnitude;
-                rightBack += magnitude;
-            }
-        }
 
         double max = max(abs(leftFront), abs(leftBack), abs(rightFront), abs(rightBack));
         if (max > 1) {
@@ -102,8 +71,6 @@ public class MasqDriveTrain {
         motor3.setPower(rightFront);
         motor4.setPower(rightBack);
     }
-    public void setPowerMECH(double angle, double speed, double turnPower) {setPowerMECH(angle, speed, turnPower, false);}
-
 
         @NonNull
     @Override

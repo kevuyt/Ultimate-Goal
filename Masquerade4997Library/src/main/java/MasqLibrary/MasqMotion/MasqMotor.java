@@ -12,6 +12,7 @@ import static MasqLibrary.MasqResources.MasqUtils.sleep;
 import static MasqLibrary.MasqResources.MasqUtils.tolerance;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.*;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.*;
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static com.qualcomm.robotcore.hardware.MotorControlAlgorithm.PIDF;
 import static com.qualcomm.robotcore.util.Range.clip;
 import static java.lang.Math.PI;
@@ -30,8 +31,10 @@ public class MasqMotor {
     private final String name;
     private double min = -1, max = 1;
 
-    public MasqMotor(String name) {
+    public MasqMotor(String name, Direction direction) {
         motor = getHardwareMap().get(DcMotorEx.class, name);
+        motor.setDirection(direction);
+
         resetEncoder();
         this.name = name;
 
@@ -39,9 +42,8 @@ public class MasqMotor {
         motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(f / 10, f / 100, 0, f, PIDF));
         motor.setPIDFCoefficients(RUN_TO_POSITION, new PIDFCoefficients(0.5,0,0,0));
     }
-    public MasqMotor(String name, Direction direction) {
-        this(name);
-        motor.setDirection(direction);
+    public MasqMotor(String name) {
+        this(name, FORWARD);
     }
 
     public int getCurrentPosition() {return getAbsolutePosition() - zeroPos;}

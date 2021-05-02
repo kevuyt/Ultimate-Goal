@@ -157,36 +157,34 @@ public abstract class MasqRobot {
 
     public void tank(Gamepad c) {driveTrain.setPower(-c.left_stick_y, -c.right_stick_y);}
 
-    public void mech(Gamepad c, boolean antiTipping) {
+    public void mech(Gamepad c) {
         double x = c.left_stick_x;
         double y = -c.left_stick_y;
         double xR = c.right_stick_x;
 
-        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR, antiTipping);
+        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR);
     }
     public void mech(boolean antiTipping) {
-        mech(getLinearOpMode().getDefaultController(), antiTipping);
+        mech(getLinearOpMode().getDefaultController());
     }
     public void mech() {mech(false);}
 
-    public void easyTurnMech(Gamepad c, boolean antiTipping) {
+    public void easyTurnMech(Gamepad c) {
         double x = c.left_stick_x;
         double y = -c.left_stick_y;
         double xR = c.right_stick_x;
 
-        if(xR < -0.75) xR = 2 * xR + 1;
-        else if(xR > 0.75) xR = 2 * xR - 1;
-        else xR = xR / 1.5;
+        xR = xR < 0 ? -(xR*xR) : xR*xR;
 
-        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR, antiTipping);
+        driveTrain.setPowerMECH(atan2(x, y), hypot(x, y), xR);
     }
     public void easyTurnMech(boolean antiTipping) {
-        easyTurnMech(getLinearOpMode().getDefaultController(), antiTipping);
+        easyTurnMech(getLinearOpMode().getDefaultController());
     }
     public void easyTurnMech() {easyTurnMech(false);}
 
     public MasqWayPoint getCurrentWayPoint() {
-        return new MasqWayPoint().setPoint(tracker.getGlobalX(), tracker.getGlobalY(), tracker.getHeading())
-                .setName("Initial WayPoint");
+        return new MasqWayPoint().setPoint(tracker.getGlobalX(), tracker.getGlobalY(),
+                tracker.getHeading()).setName("Initial WayPoint");
     }
 }
