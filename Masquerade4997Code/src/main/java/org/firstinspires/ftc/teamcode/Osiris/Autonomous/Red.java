@@ -24,7 +24,6 @@ public class Red extends MasqLinearOpMode {
     private final MasqWayPoint target = new MasqWayPoint().setTimeout(5).setSwitchMode(SWITCH)
             .setTargetRadius(5).setAngularCorrectionSpeed(0.01).setModeSwitchRadius(24)
             .setName("Drop Zone").setDriveCorrectionSpeed(0.13);
-    private MasqWayPoint curve;
 
     @Override
     public void runLinearOpMode() {
@@ -73,11 +72,11 @@ public class Red extends MasqLinearOpMode {
         park(false);
     }
     public void C() {
-        target.setPoint(17, 107, 45);
+        target.setPoint(17, 107, 45).setDriveCorrectionSpeed(0.17);
         firstWobble(true);
-        powerShots(-5, -18, -28.5);
-        secondWobble(5, 5, -17, 4);
-        shootInGoal(3, 8, 66, 0.65);
+        powerShots(-6, -18, -28.5);
+        secondWobble(5, 5, -18, 4);
+        shootInGoal(3, 8, 66, 0.67);
         park(false);
     }
 
@@ -104,24 +103,24 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
 
         robot.xyPath(new MasqWayPoint(x[0],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
-                .setTimeout(7).setAngularCorrectionSpeed(0.03).setName("First Power Shot"));
+                .setTimeout(6).setAngularCorrectionSpeed(0.03).setName("First Power Shot"));
         robot.shooter.setPower(0.59);
-        robot.turnAbsolute(0,2);
+        robot.turnAbsolute(0,1);
         robot.claw.close();
-        sleep();
+        sleep(250);
         flick();
 
         robot.xyPath(new MasqWayPoint(x[1],65.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Second Power Shot"));
         robot.shooter.setPower(0.59);
         robot.turnAbsolute(0,1);
-        sleep();
+        sleep(250);
         flick();
 
         robot.xyPath(new MasqWayPoint(x[2],66.5, 0).setMinVelocity(0.25).setDriveCorrectionSpeed(0.06)
                 .setAngularCorrectionSpeed(0.03).setTimeout(4).setName("Third Power Shot"));
         robot.turnAbsolute(0,1);
-        sleep();
+        sleep(250);
         flick();
 
         robot.shooter.setPower(0);
@@ -149,7 +148,7 @@ public class Red extends MasqLinearOpMode {
         sleep(1000);
         robot.claw.mid();
 
-        curve = new MasqWayPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY(), robot.tracker.getHeading());
+        MasqWayPoint curve = new MasqWayPoint(robot.tracker.getGlobalX(), robot.tracker.getGlobalY(), robot.tracker.getHeading());
 
         if(numRings > 0) {
             MasqWayPoint starterStack = new MasqWayPoint(-3, 40, 0).setSwitchMode(TANK)
@@ -182,7 +181,7 @@ public class Red extends MasqLinearOpMode {
                 }).setMaxVelocity(0.7).setDriveCorrectionSpeed(0.11);
                 curve.setX(target.getX() - 20).setY(target.getY() - 5).setSwitchMode(TANK);
             }
-            robot.turnAbsolute(30,1);
+            robot.turnAbsolute(30,0.5);
             robot.xyPath(starterStack, curve, target);
         }
         else robot.xyPath(target);
@@ -193,15 +192,19 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
     }
     public void shootInGoal(int rings, double x, double y, double power) {
-        turnController.setKp(0.04);
-
         robot.intake.setPower(1);
         robot.shooter.setPower(power);
-        robot.xyPath(curve, new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        if (rings > 3) {
+            robot.xyPath(new MasqWayPoint(x - 10, y + 10,0).setSwitchMode(TANK).setAngularCorrectionSpeed(0.04),
+                    new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+                    .setTimeout(5).setAngularCorrectionSpeed(0.04));
+        }
+        else robot.xyPath(new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setTimeout(5).setAngularCorrectionSpeed(0.04));
         robot.aligner.setPosition(1);
         robot.intake.setPower(0);
         robot.hopper.setPosition(1);
+        turnController.setKp(0.04);
         robot.turnAbsolute(0, 2);
         robot.compressor.setPosition(1);
         sleep(750);
