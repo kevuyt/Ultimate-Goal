@@ -31,20 +31,20 @@ public class MasqMotor {
     private final String name;
     private double min = -1, max = 1;
 
-    public MasqMotor(String name, Direction direction) {
+    public MasqMotor(String name, Direction direction, double pidAdjust) {
         motor = getHardwareMap().get(DcMotorEx.class, name);
         motor.setDirection(direction);
 
         resetEncoder();
         this.name = name;
 
-        double f = 32767 / motor.getMotorType().getAchieveableMaxTicksPerSecond();
+        double f = 32767 * pidAdjust / motor.getMotorType().getAchieveableMaxTicksPerSecond();
         motor.setPIDFCoefficients(RUN_USING_ENCODER, new PIDFCoefficients(f / 10, f / 100, 0, f, PIDF));
         motor.setPIDFCoefficients(RUN_TO_POSITION, new PIDFCoefficients(0.5,0,0,0));
     }
-    public MasqMotor(String name) {
-        this(name, FORWARD);
-    }
+    public MasqMotor(String name, Direction direction) {this(name, direction, 1);}
+    public MasqMotor(String name, double pidAdjust) {this(name, FORWARD, pidAdjust);}
+    public MasqMotor(String name) {this(name, FORWARD, 1);}
 
     public int getCurrentPosition() {return getAbsolutePosition() - zeroPos;}
     public double getInches () {return getCurrentPosition() / getClicksPerInch();}
