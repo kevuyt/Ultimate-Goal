@@ -86,7 +86,7 @@ public class Osiris extends MasqRobot {
         compressor.setPosition(0);
         aligner.scaleRange(0.17, 0.95);
         aligner.setPosition(0);
-        guard.scaleRange(0.08, 0.9);
+        guard.scaleRange(0.09, 0.94);
         guard.setPosition(0);
 
     }
