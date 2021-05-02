@@ -61,24 +61,24 @@ public class Red extends MasqLinearOpMode {
     public void A() {
         target.setPoint(13, 58, 45);
         firstWobble(false);
-        powerShots(-10, -19.5, -28);
-        secondWobble(2, 0, -19, 0);
+        powerShots(0.58, -6.5, -17.5, -28.5);
+        secondWobble(2, 0, -17, 0);
         park(true);
     }
     public void B() {
         target.setPoint(5, 80, 0).setMinVelocity(0.25);
         firstWobble(true);
-        powerShots(-11, -20, -29.5);
-        secondWobble(2, 2, -18, 1);
-        shootInGoal(1, 12, 67.5, 0.58);
+        powerShots(0.59, -9, -20, -29.5);
+        secondWobble(2, 2, -16.5, 1);
+        shootInGoal(1, 12, 67.5, 0.65);
         park(false);
     }
     public void C() {
         target.setPoint(17, 107, 45).setDriveCorrectionSpeed(0.17);
         firstWobble(true);
-        powerShots(-6, -18, -28.5);
-        secondWobble(5, 5, -18, 4);
-        shootInGoal(3, 8, 66, 0.67);
+        powerShots(0.57, -7, -18, -28.5);
+        secondWobble(0, 0, -18, 4);
+        shootInGoal(3, 8, 65, 0.67);
         park(false);
     }
 
@@ -92,22 +92,20 @@ public class Red extends MasqLinearOpMode {
         if (avoidStack) robot.xyPath(strafe, target);
         else robot.xyPath(target);
 
-        robot.shooter.setPower(0.59);
-        sleep();
-
         robot.claw.lower();
         robot.claw.open();
         robot.flicker.setPosition(0);
         sleep();
     }
-    public void powerShots(double... x) {
+    public void powerShots(double power, double... x) {
         robot.compressor.setPosition(1);
         robot.claw.raise();
 
-        robot.xyPath(new MasqWayPoint(x[0],65.5, 0).setMinVelocity(0.25).setTimeout(6)
+        robot.shooter.setPower(power);
+
+        robot.xyPath(new MasqWayPoint(x[0],64.5, 0).setMinVelocity(0.25).setTimeout(6)
                 .setDriveCorrectionSpeed(0.06).setAngularCorrectionSpeed(0.03)
                 .setName("First Power Shot"));
-        robot.shooter.setPower(0.59);
         robot.turnAbsolute(0,1);
         robot.claw.close();
         sleep(250);
@@ -116,7 +114,6 @@ public class Red extends MasqLinearOpMode {
         robot.xyPath(new MasqWayPoint(x[1],65.5, 0).setMinVelocity(0.25).setTimeout(4)
                 .setDriveCorrectionSpeed(0.06).setAngularCorrectionSpeed(0.03)
                 .setName("Second Power Shot"));
-        robot.shooter.setPower(0.59);
         robot.turnAbsolute(0,1);
         sleep(250);
         flick();
@@ -184,7 +181,7 @@ public class Red extends MasqLinearOpMode {
                     sleep();
                     robot.intake.setPower(0);
                     robot.aligner.setPosition(0);
-                }).setMaxVelocity(0.7).setDriveCorrectionSpeed(0.11);
+                }).setMaxVelocity(0.7).setDriveCorrectionSpeed(0.11).setAngularCorrectionSpeed(0.02);
                 curve.setX(target.getX() - 20).setY(target.getY() - 5).setSwitchMode(TANK);
             }
             robot.turnAbsolute(30,0.5);
@@ -198,19 +195,18 @@ public class Red extends MasqLinearOpMode {
         robot.claw.raise();
     }
     public void shootInGoal(int rings, double x, double y, double power) {
-        robot.intake.setPower(1);
+        robot.intake.setPower(-1);
         robot.shooter.setPower(power);
-        if (rings > 3) {
-            robot.xyPath(new MasqWayPoint(x - 10, y + 10,0).setSwitchMode(TANK)
-                            .setAngularCorrectionSpeed(0.04),
-                    new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
-                            .setTimeout(5).setAngularCorrectionSpeed(0.04));
-        }
-        else robot.xyPath(new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setTimeout(5)
-                .setDriveCorrectionSpeed(0.04).setAngularCorrectionSpeed(0.04));
+        MasqWayPoint topGoal = new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+                .setTimeout(5).setAngularCorrectionSpeed(0.04);
+        if (rings > 3) robot.xyPath(new MasqWayPoint(x - 10, y + 10,0).setSwitchMode(TANK)
+                .setAngularCorrectionSpeed(0.04), topGoal);
+        else robot.xyPath(topGoal);
         robot.aligner.setPosition(1);
         robot.intake.setPower(0);
         robot.hopper.setPosition(1);
+        robot.claw.close();
+        robot.claw.lower();
         turnController.setKp(0.04);
         robot.turnAbsolute(0, 2);
         robot.compressor.setPosition(1);
@@ -228,10 +224,11 @@ public class Red extends MasqLinearOpMode {
                 .setDriveCorrectionSpeed(0.025).setAngularCorrectionSpeed(0.03).setName("Park");
         MasqWayPoint exit = new MasqWayPoint(robot.tracker.getGlobalX() - 25, 50, robot.tracker.getHeading());
 
+        robot.claw.lower();
+
         if(backUp) robot.xyPath(exit, park.setX(robot.tracker.getGlobalX() - 25));
         else robot.xyPath(park);
 
-        robot.claw.lower();
         dash.create("Time Left:", 30 - timeoutClock.seconds());
         dash.update();
         sleep((long) Range.clip(30e3 - timeoutClock.milliseconds(),0,30e3));
