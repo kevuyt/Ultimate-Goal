@@ -57,6 +57,8 @@ public class MasqServo {
     }
     public void toggle (boolean button) {toggle(button, 0, 1);}
 
+    public void switchToggle() {taskState = !taskState;}
+
     public void disable() {servo.setPwmDisable();}
 
     @NonNull

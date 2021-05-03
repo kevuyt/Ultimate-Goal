@@ -59,7 +59,7 @@ public class Osiris extends MasqRobot {
         tracker.reset();
         setTracker(tracker);
 
-        turnController = new MasqPIDController(0.04);
+        turnController = new MasqPIDController(0.05);
 
         driveTrain.setVelocityControl(true);
         driveTrain.resetEncoders();
@@ -86,9 +86,7 @@ public class Osiris extends MasqRobot {
         compressor.setPosition(0);
         aligner.scaleRange(0.17, 0.95);
         aligner.setPosition(0);
-        guard.scaleRange(0.09, 0.94);
-        guard.setPosition(0);
-
+        guard.scaleRange(0.17, 0.98);
     }
 
     public int getRings() {

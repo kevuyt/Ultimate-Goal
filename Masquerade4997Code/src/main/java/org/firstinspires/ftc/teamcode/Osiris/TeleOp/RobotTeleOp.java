@@ -28,9 +28,13 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
         waitForStart();
 
-        robot.tracker.imu.reset();
+        timeoutClock.reset();
+        Thread timeThread = new Thread(() -> {
+            sleep((long) 90e3);
+            robot.guard.switchToggle();
+        });
 
-        robot.guard.setPosition(1);
+        robot.tracker.imu.reset();
 
         while(opModeIsActive()) {
             robot.easyTurnMech(true);
@@ -75,7 +79,7 @@ public class RobotTeleOp extends MasqLinearOpMode {
 
             if(gamepad1.dpad_left) {
                 mode = "POWER_SHOT";
-                shooterPower = 0.58;
+                shooterPower = 0.6;
             }
             else if(gamepad1.dpad_up) {
                 mode = "HIGH_POWER";

@@ -33,10 +33,12 @@ public class RotatingClaw {
     public void raise() {rotator.setPosition(0.3);}
     public void mid() {rotator.setPosition(0.9);}
     public void lower() {rotator.setPosition(1);}
+    public void init() {rotator.setPosition(0);}
 
     public void reset() {
         claw.scaleRange(0.09, 0.4);
         close();
+        init();
     }
 
     public MasqServo getClaw() {return claw;}
