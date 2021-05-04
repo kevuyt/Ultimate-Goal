@@ -12,7 +12,7 @@ import static org.apache.commons.math3.analysis.integration.SimpsonIntegrator.SI
  * Created by Keval Kataria on 3/7/2021
  */
 public class MasqPolynomial extends PolynomialFunction {
-    private boolean arcLength;
+    private final boolean arcLength;
     public MasqPolynomial(double[] c, boolean arcLength) throws NullArgumentException, NoDataException {
         super(c);
         this.arcLength = arcLength;
@@ -20,8 +20,7 @@ public class MasqPolynomial extends PolynomialFunction {
 
     @Override
     public double value(double x) {
-        if(arcLength) return sqrt(1 - pow(polynomialDerivative().value(x), 2));
-        else return super.value(x);
+        return arcLength ? sqrt(1 + pow(polynomialDerivative().value(x), 2)) : super.value(x);
     }
 
     public static double getArcLength(PolynomialSplineFunction function, double maxX) {

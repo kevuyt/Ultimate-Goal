@@ -20,7 +20,7 @@ public class MasqIntegrator {
   }
   public void reset() {
     prev = 0;
-    prevTime = nanoTime();
+    prevTime = nanoTime() / 1e9;
     integral = 0;
   }
 }

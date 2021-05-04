@@ -14,7 +14,7 @@ public class MasqPIDController {
     private double ki = 0;
     private double kd = 0;
     private double prevError = 0;
-    private ElapsedTime clock = new ElapsedTime();
+    private final ElapsedTime clock = new ElapsedTime();
 
     public MasqPIDController(double kp, double ki, double kd) {
         this.kp = kp;
