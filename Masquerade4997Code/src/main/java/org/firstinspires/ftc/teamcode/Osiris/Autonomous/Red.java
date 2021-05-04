@@ -61,24 +61,24 @@ public class Red extends MasqLinearOpMode {
     public void A() {
         target.setPoint(13, 58, 45);
         firstWobble(false);
-        powerShots(0.57, -6.5, -17.5, -28.5);
+        powerShots(-6.5, -17.5, -28.5);
         secondWobble(2, 0, -17, 0);
         park(true);
     }
     public void B() {
-        target.setPoint(3, 82, 0).setMinVelocity(0.25);
+        target.setPoint(3, 82, 0);
         firstWobble(true);
-        powerShots(0.57, -9, -18.5, -28.5);
+        powerShots(-9, -18.5, -28.5);
         secondWobble(2, 4, -17.5, 1);
-        shootInGoal(1, 9, 67.5, 0.67);
+        shootInGoal(1, 9, 67.5);
         park(false);
     }
     public void C() {
         target.setPoint(17, 107, 45).setDriveCorrectionSpeed(0.17);
         firstWobble(true);
-        powerShots(0.57, -7.5, -18, -28.5);
+        powerShots(-7.5, -18, -28.5);
         secondWobble(0, 0, -18, 4);
-        shootInGoal(3, 8, 65, 0.67);
+        shootInGoal(3, 8, 65);
         park(false);
     }
 
@@ -97,11 +97,11 @@ public class Red extends MasqLinearOpMode {
         robot.flicker.setPosition(0);
         sleep();
     }
-    public void powerShots(double power, double... x) {
+    public void powerShots(double... x) {
         robot.compressor.setPosition(1);
         robot.claw.raise();
 
-        robot.shooter.setPower(power);
+        robot.shooter.setPower(0.57);
 
         robot.xyPath(new MasqWayPoint(x[0],65, 0).setMinVelocity(0.25).setTimeout(6)
                 .setDriveCorrectionSpeed(0.06).setAngularCorrectionSpeed(0.03)
@@ -183,7 +183,6 @@ public class Red extends MasqLinearOpMode {
                     robot.intake.setPower(0);
                     robot.aligner.setPosition(0);
                 }).setMaxVelocity(0.7).setDriveCorrectionSpeed(0.11).setAngularCorrectionSpeed(0.02);
-                //curve.setX(target.getX() - 20).setY(target.getY() - 5).setSwitchMode(TANK);
             }
             robot.turnAbsolute(30,0.5);
             robot.xyPath(starterStack, target);
@@ -195,10 +194,10 @@ public class Red extends MasqLinearOpMode {
         sleep(750);
         robot.claw.raise();
     }
-    public void shootInGoal(int rings, double x, double y, double power) {
+    public void shootInGoal(int rings, double x, double y) {
         robot.intake.setPower(-1);
-        robot.shooter.setPower(power);
-        MasqWayPoint topGoal = new MasqWayPoint(x,y, 0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
+        robot.shooter.setPower(0.67);
+        MasqWayPoint topGoal = new MasqWayPoint(x, y,0).setMinVelocity(0.2).setDriveCorrectionSpeed(0.04)
                 .setTimeout(5).setAngularCorrectionSpeed(0.04);
         if (rings > 3) robot.xyPath(new MasqWayPoint(x - 10, y + 10,0).setSwitchMode(TANK)
                 .setAngularCorrectionSpeed(0.04), topGoal);
