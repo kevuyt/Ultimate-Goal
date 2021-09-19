@@ -21,16 +21,16 @@ public class MarkerDetector extends MasqCVDetector {
     public Mat process(Mat input) {
         double time = nanoTime();
 
-        if(time - prevTime > 1e9) {
+        if(time - prevTime > 1e6) {
             prevTime = time;
             workingMat = input.clone();
             displayMat = input.clone();
 
             extractChannel(workingMat, workingMat, 1);
 
-            Rect leftRect = new Rect(tl, new Point((br.x- tl.x) / 3, br.y));
-            Rect midRect = new Rect(new Point((br.x- tl.x) / 3, tl.y), new Point(2 * (br.x- tl.x) / 3, br.y));
-            Rect rightRect = new Rect(new Point(2 * (br.x- tl.x) / 3, tl.y), br);
+            Rect leftRect = new Rect(tl, new Point((br.x- tl.x) / 3 + tl.x, br.y));
+            Rect midRect = new Rect(new Point((br.x- tl.x) / 3 + tl.x, tl.y), new Point((2 * (br.x- tl.x) / 3) + tl.x, br.y));
+            Rect rightRect = new Rect(new Point(2 * (br.x- tl.x) / 3 + tl.x, tl.y), br);
 
             left = mean(workingMat.clone().submat(leftRect)).val[0];
             mid = mean(workingMat.clone().submat(midRect)).val[0];
