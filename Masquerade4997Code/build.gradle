@@ -1,8 +1,14 @@
 apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 
+android {
+    androidResources {
+        noCompress 'tflite'
+    }
+}
+
 dependencies {
     implementation project(':FtcRobotController')
     implementation project(':Masquerade4997Library')
-    implementation 'org.openftc:easyopencv:1.4.1'
+    implementation 'org.openftc:easyopencv:1.5.0'
 }

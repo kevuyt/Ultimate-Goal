@@ -29,7 +29,8 @@ public class MarkerDetector extends MasqCVDetector {
             extractChannel(workingMat, workingMat, 1);
 
             Rect leftRect = new Rect(tl, new Point((br.x- tl.x) / 3 + tl.x, br.y));
-            Rect midRect = new Rect(new Point((br.x- tl.x) / 3 + tl.x, tl.y), new Point((2 * (br.x- tl.x) / 3) + tl.x, br.y));
+            Rect midRect = new Rect(new Point((br.x- tl.x) / 3 + tl.x, tl.y),
+                    new Point((2 * (br.x- tl.x) / 3) + tl.x, br.y));
             Rect rightRect = new Rect(new Point(2 * (br.x- tl.x) / 3 + tl.x, tl.y), br);
 
             left = mean(workingMat.clone().submat(leftRect)).val[0];
