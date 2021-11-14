@@ -9,6 +9,6 @@ android {
 
 dependencies {
     implementation project(':FtcRobotController')
-    implementation project(':Masquerade4997Library')
     implementation 'org.openftc:easyopencv:1.5.0'
+    implementation files('../libs/Library.jar')
 }
